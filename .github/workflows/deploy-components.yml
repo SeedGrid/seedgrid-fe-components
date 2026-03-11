@@ -2,7 +2,7 @@ name: Publish Components and Showcase
 
 on:
   push:
-    branches: [main]
+    branches: [main, develop]
   workflow_dispatch:
 
 permissions:
@@ -10,9 +10,11 @@ permissions:
   id-token: write
 
 jobs:
+
   publish-components:
     name: Publish NPM Package (OIDC)
     runs-on: ubuntu-latest
+    if: github.ref_name == 'main'
     environment: npm
     permissions:
       contents: read
@@ -25,10 +27,10 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
 
-      - name: Setup pnpm (uses packageManager from package.json)
+      - name: Setup pnpm
         uses: pnpm/action-setup@v4
 
-      - name: Setup Node (registry)
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -36,7 +38,6 @@ jobs:
           registry-url: https://registry.npmjs.org
 
       - name: Force npm v11 (OIDC friendly)
-        shell: bash
         run: |
           npm i -g npm@^11
           npm -v
@@ -47,13 +48,12 @@ jobs:
       - name: Build components package
         run: pnpm -C packages/seedgrid-fe-components build
 
-      - name: Print workflow ref (must match Trusted Publisher)
-        shell: bash
+      - name: Print workflow ref
         run: |
           echo "GITHUB_REPOSITORY=$GITHUB_REPOSITORY"
           echo "GITHUB_WORKFLOW_REF=$GITHUB_WORKFLOW_REF"
 
-      - name: Resolve CalVer version (YYYY.MM.DD, then -1, -2...)
+      - name: Resolve CalVer version
         id: calver
         shell: bash
         run: |
@@ -74,7 +74,6 @@ jobs:
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
 
       - name: Publish components package (OIDC)
-        shell: bash
         env:
           NODE_AUTH_TOKEN: ""
           NPM_TOKEN: ""
@@ -83,10 +82,11 @@ jobs:
           npm config set registry https://registry.npmjs.org/
           npm publish --access public --provenance --tag latest --loglevel verbose
 
-  build-and-push-showcase-image:
+  build-and-deploy-showcase:
     name: Build & Push Showcase Docker Image + Deploy EasyPanel
     runs-on: ubuntu-latest
     needs: publish-components
+    if: always()
 
     permissions:
       contents: read
@@ -95,6 +95,26 @@ jobs:
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
+
+      - name: Define variables by branch
+        id: vars
+        shell: bash
+        run: |
+          BASE=$(date +"%Y.%m.%d")
+
+          if [[ "${GITHUB_REF_NAME}" == "main" ]]; then
+            VERSION="${{ needs.publish-components.outputs.calver }}"
+            DEPLOY_URL="${{ secrets.EASYPANEL_DEPLOY_URL_PRD }}"
+            IMAGE="ghcr.io/seedgrid/seedgrid-showcase"
+          else
+            VERSION="${BASE}-RC-${GITHUB_SHA::7}"
+            DEPLOY_URL="${{ secrets.EASYPANEL_DEPLOY_URL_DEV }}"
+            IMAGE="ghcr.io/seedgrid/seedgrid-showcase-dev"
+          fi
+
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "deploy_url=${DEPLOY_URL}" >> "$GITHUB_OUTPUT"
+          echo "image=${IMAGE}" >> "$GITHUB_OUTPUT"
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -106,14 +126,14 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Extract Docker metadata (CalVer + latest + sha)
+      - name: Extract Docker metadata
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/${{ github.repository_owner }}/seedgrid-showcase
+          images: ${{ steps.vars.outputs.image }}
           tags: |
             type=raw,value=latest
-            type=raw,value=${{ needs.publish-components.outputs.calver }}
+            type=raw,value=${{ steps.vars.outputs.version }}
             type=sha
 
       - name: Build and push showcase image
@@ -130,15 +150,13 @@ jobs:
       - name: Deploy on EasyPanel
         shell: bash
         env:
-          EASYPANEL_DEPLOY_URL: ${{ secrets.EASYPANEL_DEPLOY_URL }}
-          CALVER: ${{ needs.publish-components.outputs.calver }}
+          EASYPANEL_DEPLOY_URL: ${{ steps.vars.outputs.deploy_url }}
+          VERSION: ${{ steps.vars.outputs.version }}
         run: |
           if [[ -z "${EASYPANEL_DEPLOY_URL}" ]]; then
-            echo "::error::Missing secret EASYPANEL_DEPLOY_URL"
+            echo "::error::Missing EasyPanel deploy URL"
             exit 1
           fi
 
-          echo "Triggering EasyPanel deploy for version: ${CALVER}"
-          # EasyPanel normalmente aceita GET nesse endpoint, mas POST também funciona em alguns setups.
-          # Se o seu endpoint for GET, deixe como está.
+          echo "Triggering EasyPanel deploy for version: ${VERSION}"
           curl -fsSL "${EASYPANEL_DEPLOY_URL}"
