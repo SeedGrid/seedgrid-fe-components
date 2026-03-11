@@ -1,0 +1,41 @@
+{
+  "name": "seedgrid-fe",
+  "private": true,
+  "packageManager": "pnpm@9.12.0",
+  "scripts": {
+    "dev": "turbo dev",
+    "dev:components": "pnpm -C packages/seedgrid-fe-components dev",
+    "dev:showcase": "pnpm -C apps/showcase dev",
+    "dev:showcase:with-components": "pnpm -r --parallel dev:components dev:showcase",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck"
+  },
+  "devDependencies": {
+    "@seedgrid/fe-core": "workspace:*",
+    "@seedgrid/fe-commons": "workspace:*",
+    "@seedgrid/fe-theme": "workspace:*",
+    "@types/node": "^22.10.2",
+    "@types/fs-extra": "^11.0.4",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "react-hook-form": "^7.0.0",
+    "lucide-react": "^0.468.0",
+    "@tiptap/react": "^2.9.1",
+    "@tiptap/starter-kit": "^2.9.1",
+    "@tiptap/extension-underline": "^2.9.1",
+    "@tiptap/extension-link": "^2.9.1",
+    "@tiptap/extension-image": "^2.9.1",
+    "@tiptap/extension-text-align": "^2.9.1",
+    "@tiptap/extension-text-style": "^2.9.1",
+    "@tiptap/extension-color": "^2.9.1",
+    "@tiptap/extension-highlight": "^2.9.1",
+    "@tiptap/extension-subscript": "^2.9.1",
+    "@tiptap/extension-superscript": "^2.9.1",
+    "@tiptap/extension-font-family": "^2.9.1",
+    "turbo": "^2.0.6",
+    "typescript": "^5.5.4"
+  }
+}
