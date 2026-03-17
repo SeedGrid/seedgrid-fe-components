@@ -4,12 +4,8 @@ import * as React from "react";
 import Link from "next/link";
 import { useForm, type FieldValues } from "react-hook-form";
 import { Flame, Heart, ThumbsUp } from "lucide-react";
-import {
-  SgButton,
-  SgGrid,
-  SgPlayground,
-  SgRating
-} from "@seedgrid/fe-components";
+import { SgButton, SgGrid, SgRating } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference from "../ShowcasePropsReference";
@@ -224,7 +220,8 @@ function isSupportedLocale(locale: ShowcaseLocale): locale is keyof typeof RATIN
   return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
 }
 const BASIC_CODE = `import * as React from "react";
-import { SgRating } from "@seedgrid/fe-components";
+import { SgButton, SgGrid, SgRating } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [value, setValue] = React.useState(0);
@@ -244,7 +241,8 @@ export default function Example() {
 }`;
 
 const HALF_TOOLTIP_CODE = `import * as React from "react";
-import { SgRating } from "@seedgrid/fe-components";
+import { SgButton, SgGrid, SgRating } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [value, setValue] = React.useState(2.5);
@@ -268,7 +266,8 @@ export default function Example() {
 }`;
 
 const READONLY_DISABLED_CODE = `import * as React from "react";
-import { SgGrid, SgRating } from "@seedgrid/fe-components";
+import { SgButton, SgGrid, SgRating } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   return (
@@ -290,7 +289,8 @@ export default function Example() {
 }`;
 
 const SIZE_STARS_CODE = `import * as React from "react";
-import { SgGrid, SgRating } from "@seedgrid/fe-components";
+import { SgButton, SgGrid, SgRating } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [smValue, setSmValue] = React.useState(3);
@@ -326,7 +326,8 @@ export default function Example() {
 
 const COLORS_ICONS_CODE = `import * as React from "react";
 import { Flame, Heart, ThumbsUp } from "lucide-react";
-import { SgGrid, SgRating } from "@seedgrid/fe-components";
+import { SgButton, SgGrid, SgRating } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [heartValue, setHeartValue] = React.useState(4);
@@ -370,6 +371,7 @@ export default function Example() {
 
 const CALLBACK_CODE = `import * as React from "react";
 import { SgButton, SgGrid, SgRating } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [value, setValue] = React.useState(3);
@@ -418,7 +420,8 @@ export default function Example() {
 
 const RHF_CODE = `import * as React from "react";
 import { useForm, type FieldValues } from "react-hook-form";
-import { SgButton, SgRating } from "@seedgrid/fe-components";
+import { SgButton, SgGrid, SgRating } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [submitResult, setSubmitResult] = React.useState("-");
@@ -460,6 +463,7 @@ export default function Example() {
 
 const REQUIRED_CODE = `import * as React from "react";
 import { SgButton, SgGrid, SgRating } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [value, setValue] = React.useState(0);
@@ -495,6 +499,7 @@ export default function Example() {
 
 const PLAYGROUND_CODE = `import * as React from "react";
 import { SgButton, SgGrid, SgRating } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 const sizes = ["sm", "md", "lg", "xl"] as const;
 type Size = (typeof sizes)[number];

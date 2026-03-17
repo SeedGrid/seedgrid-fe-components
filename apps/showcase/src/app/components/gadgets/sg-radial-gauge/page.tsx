@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { SgButton, SgPlayground, SgRadialGauge, type SgRadialGaugePointer } from "@seedgrid/fe-components";
+import { SgButton, SgRadialGauge, type SgRadialGaugePointer } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../../CodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
@@ -26,7 +27,8 @@ function CodeBlock(props: { code: string }) {
 }
 
 const EXAMPLE_SPEEDOMETER_CODE = `import React from "react";
-import { SgRadialGauge } from "@seedgrid/fe-components";
+import { SgButton, SgRadialGauge, type SgRadialGaugePointer } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [rpm, setRpm] = React.useState(62);
@@ -77,7 +79,8 @@ export default function Example() {
 }`;
 
 const EXAMPLE_THICK_RING_CODE = `import React from "react";
-import { SgRadialGauge } from "@seedgrid/fe-components";
+import { SgButton, SgRadialGauge, type SgRadialGaugePointer } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [value, setValue] = React.useState(72);
@@ -137,7 +140,8 @@ export default function Example() {
 }`;
 
 const EXAMPLE_AXIS_INVERSED_CODE = `import React from "react";
-import { SgRadialGauge } from "@seedgrid/fe-components";
+import { SgButton, SgRadialGauge, type SgRadialGaugePointer } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [value, setValue] = React.useState(24);
@@ -182,7 +186,8 @@ export default function Example() {
 }`;
 
 const EXAMPLE_MULTI_POINTER_CODE = `import React from "react";
-import { SgRadialGauge, type SgRadialGaugePointer } from "@seedgrid/fe-components";
+import { SgButton, SgRadialGauge, type SgRadialGaugePointer } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [rpm, setRpm] = React.useState(62);
@@ -265,7 +270,8 @@ export default function Example() {
 }`;
 
 const EXAMPLE_RANGE_POINTER_CODE = `import React from "react";
-import { SgRadialGauge } from "@seedgrid/fe-components";
+import { SgButton, SgRadialGauge, type SgRadialGaugePointer } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   return (
@@ -296,7 +302,8 @@ export default function Example() {
 }`;
 
 const EXAMPLE_OTHER_PROPS_CODE = `import React from "react";
-import { SgButton, SgRadialGauge } from "@seedgrid/fe-components";
+import { SgButton, SgRadialGauge, type SgRadialGaugePointer } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [value, setValue] = React.useState(35);
@@ -362,7 +369,8 @@ export default function Example() {
 }`;
 
 const PLAYGROUND_CODE = `import * as React from "react";
-import { SgButton, SgRadialGauge } from "@seedgrid/fe-components";
+import { SgButton, SgRadialGauge, type SgRadialGaugePointer } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
   const [value, setValue] = React.useState(62);

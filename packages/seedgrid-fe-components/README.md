@@ -24,6 +24,12 @@ Instalacao recomendada (uso geral):
 pnpm add @seedgrid/fe-components @seedgrid/fe-theme react-hook-form lucide-react
 ```
 
+Se voce tambem quiser playground interativo com editor + preview, instale o pacote separado:
+
+```bash
+pnpm add @seedgrid/fe-playground
+```
+
 Se voce for usar `SgTextEditor`, instale tambem os peers do TipTap:
 
 ```bash
@@ -126,7 +132,8 @@ export default function ExampleForm() {
 - Menus: `SgMenu`, `SgDockMenu`, `SgBreadcrumb`.
 - Digits: `SgFlipDigit`, `SgFadeDigit`, `SgMatrixDigit`, `SgNeonDigit`, `SgSevenSegmentDigit`.
 - Gadgets: `SgClock`, `SgCalendar`, `SgQRCode`, `SgLinearGauge`, `SgRadialGauge`, `SgStringAnimator`.
-- Providers/Hooks: `SgEnvironmentProvider`, `SgTimeProvider`, `useSgPersistentState`, `useSgTime`, `useSgPersistence`.
+- Providers/Hooks: SgEnvironmentProvider, SgTimeProvider, useSgPersistentState, useSgTime, useSgPersistence.
+- Playground interativo: use @seedgrid/fe-playground para editor + preview com Sandpack.
 
 Para exemplos completos e props de cada componente, use o showcase local em `apps/showcase`.
 
@@ -137,7 +144,6 @@ Principais bibliotecas usadas pelo pacote:
 | Biblioteca | Licenca | Uso principal |
 | --- | --- | --- |
 | [`@pqina/flip`](https://pqina.nl/flip/) | MIT | Animacao do `SgFlipDigit` |
-| [`@codesandbox/sandpack-react`](https://sandpack.codesandbox.io/) | Apache-2.0 | `SgPlayground` (editor e preview) |
 | [`qrcode.react`](https://github.com/zpao/qrcode.react) | ISC | Renderizacao de QR Code |
 | [`@tiptap/react`](https://tiptap.dev/) | MIT | Base do `SgTextEditor` |
 | [`lucide-react`](https://lucide.dev/) | ISC | Iconografia em varios componentes |

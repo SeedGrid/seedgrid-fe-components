@@ -1,7 +1,15 @@
 "use client";
 
 import React from "react";
-import { SgDockLayout, SgDockZone, SgGrid, SgPlayground, SgToolBar, SgToolbarIconButton, toast } from "@seedgrid/fe-components";
+import {
+  SgDockLayout,
+  SgDockZone,
+  SgGrid,
+  SgToolBar,
+  SgToolbarIconButton,
+  toast,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import { Filter, Home, Pencil, Plus, RefreshCcw, Settings, Trash2, Users } from "lucide-react";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
@@ -275,7 +283,15 @@ function isSupportedLocale(locale: ShowcaseLocale): locale is keyof typeof TOOLB
 }
 
 const TOOLBAR_PLAYGROUND_CODE = `import * as React from "react";
-import { SgDockLayout, SgDockZone, SgToolBar, SgToolbarIconButton } from "@seedgrid/fe-components";
+import {
+  SgDockLayout,
+  SgDockZone,
+  SgGrid,
+  SgToolBar,
+  SgToolbarIconButton,
+  toast,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
   const options = ["horizontal-left", "horizontal-right", "vertical-down", "vertical-up"] as const;
@@ -404,7 +420,15 @@ export default function SgToolBarPage() {
           </div>
           <CodeBlock
             code={`import React from "react";
-import { SgDockLayout, SgDockZone, SgToolBar, SgToolbarIconButton } from "@seedgrid/fe-components";
+import {
+  SgDockLayout,
+  SgDockZone,
+  SgGrid,
+  SgToolBar,
+  SgToolbarIconButton,
+  toast,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import { Home, Users, Settings } from "lucide-react";
 
 export default function Example() {
@@ -464,7 +488,15 @@ export default function Example() {
           </div>
           <CodeBlock
             code={`import React from "react";
-import { SgDockLayout, SgDockZone, SgToolBar, SgToolbarIconButton, toast } from "@seedgrid/fe-components";
+import {
+  SgDockLayout,
+  SgDockZone,
+  SgGrid,
+  SgToolBar,
+  SgToolbarIconButton,
+  toast,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import { Plus, Pencil, Trash2 } from "lucide-react";
 
 export default function Example() {

@@ -3,11 +3,8 @@
 import React from "react";
 import Link from "next/link";
 import { useForm, type FieldValues } from "react-hook-form";
-import {
-  SgGrid,
-  SgInputText,
-  SgPlayground
-} from "@seedgrid/fe-components";
+import { SgGrid, SgInputText } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import { t, useShowcaseI18n } from "../../../i18n";
@@ -36,7 +33,8 @@ function CodeBlock(props: { code: string }) {
 
 const INPUT_TEXT_PLAYGROUND_CODE = `import * as React from "react";
 import { useForm } from "react-hook-form";
-import { SgButton, SgGrid, SgInputText } from "@seedgrid/fe-components";
+import { SgGrid, SgInputText } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
   const { control, watch, setValue } = useForm({
@@ -991,7 +989,8 @@ export default function SgInputTextPage() {
           </button>
         </div>
         <CodeBlock code={`import React from "react";
-import { SgInputText } from "@seedgrid/fe-components";
+import { SgGrid, SgInputText } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const nomeRef = React.useRef<HTMLInputElement | null>(null);

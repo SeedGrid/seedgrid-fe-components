@@ -2,11 +2,8 @@
 
 import * as React from "react";
 import Link from "next/link";
-import {
-  SgCarousel,
-  SgGrid,
-  SgPlayground
-} from "@seedgrid/fe-components";
+import { SgCarousel, SgGrid } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -319,13 +316,8 @@ function getCarouselTexts(locale: ShowcaseLocale): CarouselTexts {
 }
 
 const CAROUSEL_PLAYGROUND_APP_FILE = `import * as React from "react";
-import {
-  SgButton,
-  SgCarousel,
-  SgGrid,
-  SgInputSelect,
-  SgToggleSwitch
-} from "@seedgrid/fe-components";
+import { SgCarousel, SgGrid } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 const images = Array.from({ length: 6 }, (_, index) => ({
   id: index + 1,

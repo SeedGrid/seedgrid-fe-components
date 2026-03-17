@@ -5,7 +5,8 @@ import Link from "next/link";
 import { Check, X } from "lucide-react";
 import { useForm } from "react-hook-form";
 import type { FieldValues } from "react-hook-form";
-import { SgGrid, SgPlayground, SgToggleSwitch } from "@seedgrid/fe-components";
+import { SgGrid, SgToggleSwitch } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import { t, useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
@@ -140,7 +141,8 @@ export default function App() {
 }`;
 
 const BASIC_SHOWCASE_CODE = `import * as React from "react";
-import { SgToggleSwitch } from "@seedgrid/fe-components";
+import { SgGrid, SgToggleSwitch } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [value, setValue] = React.useState(false);
@@ -160,7 +162,8 @@ export default function Example() {
 
 const ICONS_SHOWCASE_CODE = `import * as React from "react";
 import { Check, X } from "lucide-react";
-import { SgToggleSwitch } from "@seedgrid/fe-components";
+import { SgGrid, SgToggleSwitch } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [value, setValue] = React.useState(true);
@@ -182,7 +185,8 @@ export default function Example() {
 
 const REMOTE_SHOWCASE_CODE = `import * as React from "react";
 import { Check, X } from "lucide-react";
-import { SgToggleSwitch } from "@seedgrid/fe-components";
+import { SgGrid, SgToggleSwitch } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [value, setValue] = React.useState(false);
@@ -216,7 +220,8 @@ export default function Example() {
 
 const EXTERNAL_SHOWCASE_CODE = `import * as React from "react";
 import { Check, X } from "lucide-react";
-import { SgToggleSwitch } from "@seedgrid/fe-components";
+import { SgGrid, SgToggleSwitch } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [value, setValue] = React.useState(false);
@@ -249,7 +254,8 @@ export default function Example() {
 const RHF_SHOWCASE_CODE = `import * as React from "react";
 import { Check, X } from "lucide-react";
 import { useForm, type FieldValues } from "react-hook-form";
-import { SgToggleSwitch } from "@seedgrid/fe-components";
+import { SgGrid, SgToggleSwitch } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [submitResult, setSubmitResult] = React.useState("-");
@@ -288,7 +294,8 @@ export default function Example() {
 
 const DISABLED_READONLY_SHOWCASE_CODE = `import * as React from "react";
 import { Check, X } from "lucide-react";
-import { SgToggleSwitch } from "@seedgrid/fe-components";
+import { SgGrid, SgToggleSwitch } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   return (

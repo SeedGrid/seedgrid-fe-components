@@ -1,7 +1,8 @@
 ﻿"use client";
 
 import React from "react";
-import { SgPlayground, SgTextEditor } from "@seedgrid/fe-components";
+import { SgTextEditor } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -28,6 +29,7 @@ function CodeBlock(props: { code: string }) {
 
 const TEXT_EDITOR_PLAYGROUND_APP_FILE = `import * as React from "react";
 import { SgTextEditor } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
   const [htmlBody, setHtmlBody] = React.useState("<p><strong>SeedGrid</strong> editor</p>");
@@ -137,6 +139,7 @@ export default function SgTextEditorPage() {
           <CodeBlock
             code={`import React from "react";
 import { SgTextEditor } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [htmlBody, setHtmlBody] = React.useState("<p><strong>SeedGrid</strong> editor</p>");
@@ -172,6 +175,7 @@ export default function Example() {
           <CodeBlock
             code={`import React from "react";
 import { SgTextEditor } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [htmlBody, setHtmlBody] = React.useState("<p>Editor without CSS</p>");
@@ -232,6 +236,7 @@ export default function Example() {
           <CodeBlock
             code={`import React from "react";
 import { SgTextEditor } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [radiusBody, setRadiusBody] = React.useState("<p>Editor with custom border radius</p>");

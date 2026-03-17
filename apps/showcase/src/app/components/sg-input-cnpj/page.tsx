@@ -2,7 +2,8 @@
 
 import React from "react";
 import Link from "next/link";
-import { SgGrid, SgInputCNPJ, SgPlayground } from "@seedgrid/fe-components";
+import { SgGrid, SgInputCNPJ } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import { t, useShowcaseI18n } from "../../../i18n";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
@@ -25,7 +26,8 @@ function CodeBlock(props: { code: string }) {
 }
 
 const INPUT_CNPJ_PLAYGROUND_CODE = `import * as React from "react";
-import { SgButton, SgGrid, SgInputCNPJ } from "@seedgrid/fe-components";
+import { SgGrid, SgInputCNPJ } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
   const [required, setRequired] = React.useState(false);

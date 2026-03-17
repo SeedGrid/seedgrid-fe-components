@@ -9,8 +9,8 @@ import {
   SgInputPassword,
   SgInputPhone,
   SgInputText,
-  SgPlayground
 } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -36,7 +36,15 @@ function CodeBlock(props: { code: string }) {
 }
 
 const GROUP_BOX_PLAYGROUND_CODE = `import * as React from "react";
-import { SgButton, SgGroupBox } from "@seedgrid/fe-components";
+import {
+  SgGroupBox,
+  SgInputPostalCode,
+  SgInputEmail,
+  SgInputPassword,
+  SgInputPhone,
+  SgInputText,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
   const [title, setTitle] = React.useState("Dados pessoais");
@@ -193,8 +201,9 @@ import {
   SgInputEmail,
   SgInputPassword,
   SgInputPhone,
-  SgInputText
+  SgInputText,
 } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const { control, handleSubmit, watch } = useForm({

@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { SgLinearGauge, SgPlayground, type SgLinearGaugePointer } from "@seedgrid/fe-components";
+import { SgLinearGauge, type SgLinearGaugePointer } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../../CodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
@@ -26,7 +27,8 @@ function CodeBlock(props: { code: string }) {
 }
 
 const EXAMPLE_DEFAULT_CODE = `import React from "react";
-import { SgLinearGauge } from "@seedgrid/fe-components";
+import { SgLinearGauge, type SgLinearGaugePointer } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [value, setValue] = React.useState(64);
@@ -53,6 +55,7 @@ export default function Example() {
 
 const EXAMPLE_VERTICAL_CODE = `import React from "react";
 import { SgLinearGauge, type SgLinearGaugePointer } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [temperature, setTemperature] = React.useState(28);
@@ -93,7 +96,8 @@ export default function Example() {
 }`;
 
 const PLAYGROUND_CODE = `import * as React from "react";
-import { SgButton, SgLinearGauge } from "@seedgrid/fe-components";
+import { SgLinearGauge, type SgLinearGaugePointer } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
   const [value, setValue] = React.useState(55);

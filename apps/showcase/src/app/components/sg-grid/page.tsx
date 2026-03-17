@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { SgGrid, SgPanel, SgPlayground, SgStack } from "@seedgrid/fe-components";
+import { SgGrid, SgPanel, SgStack } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -40,7 +41,8 @@ function Card(props: { title: string; subtitle?: string }) {
 }
 
 const GRID_PLAYGROUND_CODE = `import * as React from "react";
-import { SgGrid, SgPanel } from "@seedgrid/fe-components";
+import { SgGrid, SgPanel, SgStack } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
   const [dense, setDense] = React.useState(true);

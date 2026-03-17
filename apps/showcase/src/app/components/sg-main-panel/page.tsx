@@ -10,8 +10,8 @@ import {
   SgButton,
   SgInputText,
   SgBadge,
-  SgPlayground
 } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -55,7 +55,17 @@ function Card(props: { title: string; subtitle?: string }) {
 }
 
 const MAIN_PANEL_PLAYGROUND_CODE = `import * as React from "react";
-import { SgMainPanel, SgPanel, SgScreen } from "@seedgrid/fe-components";
+import {
+  SgScreen,
+  SgMainPanel,
+  SgPanel,
+  SgGrid,
+  SgStack,
+  SgButton,
+  SgInputText,
+  SgBadge,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
   const [gap, setGap] = React.useState(10);
@@ -96,8 +106,9 @@ import {
   SgStack,
   SgButton,
   SgInputText,
-  SgBadge
+  SgBadge,
 } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 function Card(props: { title: string; subtitle?: string }) {
   return (

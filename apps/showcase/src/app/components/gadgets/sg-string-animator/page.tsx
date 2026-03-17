@@ -1,13 +1,8 @@
 ﻿"use client";
 
 import * as React from "react";
-import {
-  SgStringAnimator,
-  type SgStringAnimatorRef,
-  SgButton,
-  SgPlayground,
-  SgGrid,
-} from "@seedgrid/fe-components";
+import { SgStringAnimator, type SgStringAnimatorRef, SgButton, SgGrid } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../../CodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
@@ -607,15 +602,8 @@ function getStringAnimatorTexts(locale: ShowcaseLocale): StringAnimatorTexts {
 // Playground
 // ---------------------------------------------------------------------------
 const PLAYGROUND_CODE = `import * as React from "react";
-import {
-  SgStringAnimator,
-  type SgStringAnimatorRef,
-  SgButton,
-  SgGrid,
-  SgInputText,
-  SgSlider,
-  SgToggleSwitch,
-} from "@seedgrid/fe-components";
+import { SgStringAnimator, type SgStringAnimatorRef, SgButton, SgGrid } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
   const animRef = React.useRef(null);

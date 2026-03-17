@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { SgInputText, SgPlayground } from "@seedgrid/fe-components";
+import { SgInputText } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -320,7 +321,8 @@ function UncontrolledNativeBenchmark() {
 }
 
 const BENCHMARK_PLAYGROUND_APP_FILE = `import * as React from "react";
-import { SgButton, SgInputText } from "@seedgrid/fe-components";
+import { SgInputText } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 const FIELD_COUNT = 20;
 const UPDATES = 80;

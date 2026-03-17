@@ -6,9 +6,9 @@ import {
   SgGrid,
   SgInputText,
   SgNeonDigit,
-  SgPlayground,
-  SgSlider
+  SgSlider,
 } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../../CodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
@@ -214,7 +214,14 @@ const SIZE_CODE = `<SgGrid columns={{ base: 1, md: 3 }} gap={12}>
 </SgGrid>`;
 
 const PLAYGROUND_CODE = `import * as React from "react";
-import { SgButton, SgGrid, SgInputText, SgNeonDigit, SgSlider } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgGrid,
+  SgInputText,
+  SgNeonDigit,
+  SgSlider,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
   const [value, setValue] = React.useState("Your Text");

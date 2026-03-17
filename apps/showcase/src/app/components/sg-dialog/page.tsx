@@ -1,8 +1,13 @@
 "use client";
 
 import React from "react";
+<<<<<<< HEAD
 import { SgButton, SgDialog, SgPlayground } from "@seedgrid/fe-components";
 import { useSgTheme } from "@seedgrid/fe-theme";
+=======
+import { SgButton, SgDialog } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
+>>>>>>> develop
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -29,6 +34,7 @@ function CodeBlock(props: { code: string }) {
 
 const DIALOG_PLAYGROUND_CODE = `import * as React from "react";
 import { SgButton, SgDialog } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
   const [open, setOpen] = React.useState(false);
@@ -158,6 +164,7 @@ export default function SgDialogPage() {
         <CodeBlock
           code={`import React from "react";
 import { SgButton, SgDialog } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [open, setOpen] = React.useState(false);
@@ -220,6 +227,7 @@ export default function Example() {
         <CodeBlock
           code={`import React from "react";
 import { SgButton, SgDialog } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [open, setOpen] = React.useState(false);
@@ -278,6 +286,7 @@ export default function Example() {
         <CodeBlock
           code={`import React from "react";
 import { SgButton, SgDialog } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [open, setOpen] = React.useState(false);
@@ -338,6 +347,7 @@ export default function Example() {
         <CodeBlock
           code={`import React from "react";
 import { SgButton, SgDialog } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [open, setOpen] = React.useState(false);
@@ -388,6 +398,7 @@ export default function Example() {
         <CodeBlock
           code={`import React from "react";
 import { SgButton, SgDialog } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [open, setOpen] = React.useState(false);

@@ -3,13 +3,8 @@
 import React from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
-import {
-  SgRadioGroup,
-  type SgRadioGroupOption,
-  SgButton,
-  SgGrid,
-  SgPlayground
-} from "@seedgrid/fe-components";
+import { SgRadioGroup, type SgRadioGroupOption, SgButton, SgGrid } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import {
   Heart,
   Star,

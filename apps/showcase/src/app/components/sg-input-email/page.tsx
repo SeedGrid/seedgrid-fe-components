@@ -2,7 +2,8 @@
 
 import React from "react";
 import Link from "next/link";
-import { DEFAULT_BLOCKED_EMAIL_DOMAINS, SgGrid, SgInputEmail, SgPlayground } from "@seedgrid/fe-components";
+import { DEFAULT_BLOCKED_EMAIL_DOMAINS, SgGrid, SgInputEmail } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -26,7 +27,8 @@ function CodeBlock(props: { code: string }) {
 }
 
 const INPUT_EMAIL_PLAYGROUND_CODE = `import * as React from "react";
-import { SgButton, SgGrid, SgInputEmail } from "@seedgrid/fe-components";
+import { DEFAULT_BLOCKED_EMAIL_DOMAINS, SgGrid, SgInputEmail } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
   const [required, setRequired] = React.useState(false);

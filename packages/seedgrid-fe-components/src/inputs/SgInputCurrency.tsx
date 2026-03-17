@@ -657,6 +657,8 @@ function SgInputCurrencyBase(props: SgInputCurrencyBaseProps) {
             {canShowClear ? (
               <button
                 type="button"
+                tabIndex={-1}
+                onMouseDown={(event) => event.preventDefault()}
                 onClick={handleClear}
                 className="rounded px-1 text-xs text-foreground/60 hover:text-foreground"
                 aria-label={t(i18n, "components.actions.clear")}

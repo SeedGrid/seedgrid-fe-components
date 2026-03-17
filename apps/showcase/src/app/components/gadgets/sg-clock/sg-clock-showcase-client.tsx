@@ -6,10 +6,10 @@ import {
   SgClockThemePicker,
   SgClockThemeProvider,
   SgButton,
-  SgPlayground,
   registerThemes,
-  sgClockThemesBuiltIn
+  sgClockThemesBuiltIn,
 } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import { t, useShowcaseI18n } from "../../../../i18n";
 import CodeBlockBase from "../../CodeBlockBase";
 import I18NReady from "../../I18NReady";
@@ -62,7 +62,15 @@ function RollerShowcase(props: { timezone: string; initialServerTime: string }) 
 
       <CodeBlockBase
         code={`import * as React from "react";
-import { SgButton, SgClock } from "@seedgrid/fe-components";
+import {
+  SgClock,
+  SgClockThemePicker,
+  SgClockThemeProvider,
+  SgButton,
+  registerThemes,
+  sgClockThemesBuiltIn,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export function RollerShowcase(props: { timezone: string; initialServerTime: string }) {
   const [showSeconds, setShowSeconds] = React.useState(true);
@@ -128,7 +136,15 @@ function FlipShowcase(props: { timezone: string; initialServerTime: string }) {
 
       <CodeBlockBase
         code={`import * as React from "react";
-import { SgButton, SgClock } from "@seedgrid/fe-components";
+import {
+  SgClock,
+  SgClockThemePicker,
+  SgClockThemeProvider,
+  SgButton,
+  registerThemes,
+  sgClockThemesBuiltIn,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export function FlipShowcase(props: { timezone: string; initialServerTime: string }) {
   const [showSeconds, setShowSeconds] = React.useState(true);
@@ -219,7 +235,15 @@ function buildExtraStyleCode(style: ExtraDigitalStyle): string {
   const closeScale = hasScale ? "        </div>\n" : "";
 
   return `import * as React from "react";
-import { SgButton, SgClock } from "@seedgrid/fe-components";
+import {
+  SgClock,
+  SgClockThemePicker,
+  SgClockThemeProvider,
+  SgButton,
+  registerThemes,
+  sgClockThemesBuiltIn,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export function ${exampleName}(props: { initialServerTime: string }) {
   const [showSeconds, setShowSeconds] = React.useState(true);
@@ -295,12 +319,14 @@ function DigitalStyleShowcase(props: { initialServerTime: string; style: ExtraDi
 }
 const CLOCK_PLAYGROUND_APP_FILE = `import * as React from "react";
 import {
-  SgButton,
   SgClock,
+  SgClockThemePicker,
   SgClockThemeProvider,
-  SgGrid,
-  type SgClockDigitalStyle
+  SgButton,
+  registerThemes,
+  sgClockThemesBuiltIn,
 } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 const DIGITAL_STYLE_OPTIONS: SgClockDigitalStyle[] = [
   "default",
@@ -467,7 +493,15 @@ export function SgClockShowcaseClient({ initialServerTime }: { initialServerTime
             <div className="mt-6">
               <CodeBlockBase
                 code={`import * as React from "react";
-import { SgButton, SgClock, SgClockThemePicker } from "@seedgrid/fe-components";
+import {
+  SgClock,
+  SgClockThemePicker,
+  SgClockThemeProvider,
+  SgButton,
+  registerThemes,
+  sgClockThemesBuiltIn,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import { t, useShowcaseI18n } from "../../../../i18n";
 
 export function AnalogExample(props: { initialServerTime: string }) {
@@ -601,7 +635,15 @@ export function InlineThemeExample(props: { initialServerTime: string }) {
             <div className="mt-6">
               <CodeBlockBase
                 code={`import * as React from "react";
-import { SgButton, SgClock } from "@seedgrid/fe-components";
+import {
+  SgClock,
+  SgClockThemePicker,
+  SgClockThemeProvider,
+  SgButton,
+  registerThemes,
+  sgClockThemesBuiltIn,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export function DigitalExample(props: { initialServerTime: string }) {
   const [timezone] = React.useState("America/Sao_Paulo");
@@ -662,7 +704,15 @@ export function DigitalExample(props: { initialServerTime: string }) {
             <div className="mt-6">
               <CodeBlockBase
                 code={`import * as React from "react";
-import { SgButton, SgClock } from "@seedgrid/fe-components";
+import {
+  SgClock,
+  SgClockThemePicker,
+  SgClockThemeProvider,
+  SgButton,
+  registerThemes,
+  sgClockThemesBuiltIn,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export function TimezoneExample(props: { initialServerTime: string }) {
   const [themeId] = React.useState("seedgrid");

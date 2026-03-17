@@ -2,7 +2,8 @@
 
 import React from "react";
 import { Check, X } from "lucide-react";
-import { SgButton, SgPlayground, SgPopup, type SgPopupAction } from "@seedgrid/fe-components";
+import { SgButton, SgPopup, type SgPopupAction } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -28,7 +29,8 @@ function CodeBlock(props: { code: string }) {
 }
 
 const POPUP_PLAYGROUND_CODE = `import * as React from "react";
-import { SgButton, SgPopup } from "@seedgrid/fe-components";
+import { SgButton, SgPopup, type SgPopupAction } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
   const anchorRef = React.useRef<HTMLButtonElement>(null);
@@ -150,7 +152,8 @@ export default function SgPopupPage() {
         </div>
         <CodeBlock
           code={`import React from "react";
-import { SgButton, SgPopup } from "@seedgrid/fe-components";
+import { SgButton, SgPopup, type SgPopupAction } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const btnRef = React.useRef<HTMLButtonElement>(null);
@@ -203,7 +206,8 @@ export default function Example() {
         <CodeBlock
           code={`import React from "react";
 import { Check, X } from "lucide-react";
-import { SgButton, SgPopup } from "@seedgrid/fe-components";
+import { SgButton, SgPopup, type SgPopupAction } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const btnRef = React.useRef<HTMLButtonElement>(null);

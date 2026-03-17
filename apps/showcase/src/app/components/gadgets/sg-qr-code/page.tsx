@@ -1,7 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { SgButton, SgPlayground, SgQRCode } from "@seedgrid/fe-components";
+import { SgButton, SgQRCode } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../../CodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";

@@ -2,7 +2,8 @@
 
 import React from "react";
 import { Camera, User, Users } from "lucide-react";
-import { SgAvatar, SgAvatarGroup, SgPlayground } from "@seedgrid/fe-components";
+import { SgAvatar, SgAvatarGroup } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -123,7 +124,8 @@ function CodeBlock(props: { code: string }) {
 
 const EXAMPLE_BASIC_CODE = `import React from "react";
 import { User } from "lucide-react";
-import { SgAvatar } from "@seedgrid/fe-components";
+import { SgAvatar, SgAvatarGroup } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   return (
@@ -136,7 +138,8 @@ export default function Example() {
 }`;
 
 const EXAMPLE_SHAPES_SIZES_CODE = `import React from "react";
-import { SgAvatar } from "@seedgrid/fe-components";
+import { SgAvatar, SgAvatarGroup } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   return (
@@ -152,7 +155,8 @@ export default function Example() {
 
 const EXAMPLE_SEVERITY_CODE = `import React from "react";
 import { Camera } from "lucide-react";
-import { SgAvatar } from "@seedgrid/fe-components";
+import { SgAvatar, SgAvatarGroup } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   return (
@@ -177,6 +181,7 @@ export default function Example() {
 const EXAMPLE_GROUP_CODE = `import React from "react";
 import { Users } from "lucide-react";
 import { SgAvatar, SgAvatarGroup } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   return (
@@ -200,7 +205,8 @@ export default function Example() {
 
 const PLAYGROUND_CODE = `import * as React from "react";
 import { User } from "lucide-react";
-import { SgAvatar, SgButton } from "@seedgrid/fe-components";
+import { SgAvatar, SgAvatarGroup } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
   const [shape, setShape] = React.useState<"circle" | "square">("circle");

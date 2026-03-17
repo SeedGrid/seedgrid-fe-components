@@ -1,12 +1,8 @@
 "use client";
 
 import React from "react";
-import {
-  SgButton,
-  SgConfirmationDialog,
-  SgPlayground,
-  type SgConfirmationDialogButtonConfig
-} from "@seedgrid/fe-components";
+import { SgButton, SgConfirmationDialog, type SgConfirmationDialogButtonConfig } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import { AlertTriangle, ShieldAlert, Trash2, X } from "lucide-react";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
@@ -119,7 +115,8 @@ function buildConfirmationProps(i18n: ShowcaseI18n): ShowcasePropRow[] {
 }
 
 const BASIC_CODE = `import React from "react";
-import { SgButton, SgConfirmationDialog } from "@seedgrid/fe-components";
+import { SgButton, SgConfirmationDialog, type SgConfirmationDialogButtonConfig } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function BasicConfirmationExample() {
   const [open, setOpen] = React.useState(false);
@@ -144,7 +141,8 @@ export default function BasicConfirmationExample() {
 
 const LEFT_ICON_CODE = `import React from "react";
 import { AlertTriangle } from "lucide-react";
-import { SgButton, SgConfirmationDialog } from "@seedgrid/fe-components";
+import { SgButton, SgConfirmationDialog, type SgConfirmationDialogButtonConfig } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function LeftIconConfirmationExample() {
   const [open, setOpen] = React.useState(false);
@@ -167,7 +165,8 @@ export default function LeftIconConfirmationExample() {
 
 const TOP_ICON_CODE = `import React from "react";
 import { ShieldAlert } from "lucide-react";
-import { SgButton, SgConfirmationDialog } from "@seedgrid/fe-components";
+import { SgButton, SgConfirmationDialog, type SgConfirmationDialogButtonConfig } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function TopIconConfirmationExample() {
   const [open, setOpen] = React.useState(false);
@@ -191,6 +190,7 @@ export default function TopIconConfirmationExample() {
 const CUSTOM_BUTTONS_CODE = `import React from "react";
 import { Trash2, X } from "lucide-react";
 import { SgButton, SgConfirmationDialog, type SgConfirmationDialogButtonConfig } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 const cancelButton: SgConfirmationDialogButtonConfig = {
   label: "No, keep it",
@@ -229,7 +229,8 @@ export default function CustomButtonsConfirmationExample() {
 }`;
 
 const SURFACE_CODE = `import React from "react";
-import { SgButton, SgConfirmationDialog } from "@seedgrid/fe-components";
+import { SgButton, SgConfirmationDialog, type SgConfirmationDialogButtonConfig } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function SurfaceConfirmationExample() {
   const [open, setOpen] = React.useState(false);

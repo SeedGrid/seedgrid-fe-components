@@ -2,7 +2,8 @@
 
 import React from "react";
 import { FolderKanban, Receipt, ShieldCheck, UserRound, Wrench } from "lucide-react";
-import { SgButton, SgPageControl, SgPageControlPage, SgPlayground } from "@seedgrid/fe-components";
+import { SgButton, SgPageControl, SgPageControlPage } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -30,7 +31,8 @@ function CodeBlock(props: { code: string }) {
 
 const EXAMPLE_BASIC_CODE = `import React from "react";
 import { Receipt, ShieldCheck, UserRound } from "lucide-react";
-import { SgPageControl, SgPageControlPage } from "@seedgrid/fe-components";
+import { SgButton, SgPageControl, SgPageControlPage } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   return (
@@ -59,6 +61,7 @@ export default function Example() {
 const EXAMPLE_CONTROLLED_CODE = `import React from "react";
 import { FolderKanban, Receipt, ShieldCheck, UserRound } from "lucide-react";
 import { SgButton, SgPageControl, SgPageControlPage } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [activePageId, setActivePageId] = React.useState("registration");
@@ -84,7 +87,8 @@ export default function Example() {
 
 const EXAMPLE_HIDDEN_CODE = `import React from "react";
 import { Receipt, ShieldCheck, UserRound, Wrench } from "lucide-react";
-import { SgPageControl, SgPageControlPage } from "@seedgrid/fe-components";
+import { SgButton, SgPageControl, SgPageControlPage } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [activePageId, setActivePageId] = React.useState("registration");
@@ -107,7 +111,8 @@ export default function Example() {
 
 const EXAMPLE_HINT_CODE = `import React from "react";
 import { Receipt, ShieldCheck, UserRound } from "lucide-react";
-import { SgPageControl, SgPageControlPage } from "@seedgrid/fe-components";
+import { SgButton, SgPageControl, SgPageControlPage } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   return (
@@ -143,6 +148,7 @@ export default function Example() {
 const PLAYGROUND_CODE = `import * as React from "react";
 import { Receipt, ShieldCheck, UserRound } from "lucide-react";
 import { SgButton, SgPageControl, SgPageControlPage } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
   const [pageControlStyle, setPageControlStyle] = React.useState<"underline" | "pills">("underline");

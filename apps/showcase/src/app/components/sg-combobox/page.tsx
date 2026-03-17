@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { SgButton, SgCombobox, SgPlayground } from "@seedgrid/fe-components";
+import { SgButton, SgCombobox } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
@@ -609,7 +610,8 @@ const [selectedAsync, setSelectedAsync] = React.useState<Country | null>(null);
           </div>
           <CodeBlockBase
             code={`import React from "react";
-import { SgCombobox } from "@seedgrid/fe-components";
+import { SgButton, SgCombobox } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 type Country = {
   id: number;

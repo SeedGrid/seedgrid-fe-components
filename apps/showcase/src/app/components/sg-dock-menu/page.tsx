@@ -5,10 +5,10 @@ import {
   SgButton,
   SgDockMenu,
   SgGrid,
-  SgPlayground,
   toast,
-  type SgDockMenuItem
+  type SgDockMenuItem,
 } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -46,7 +46,14 @@ function Section(props: { title: string; description?: string; children: React.R
 
 const BASIC_CODE = `import * as React from "react";
 import { Bell, Home, Mail, Settings, User } from "lucide-react";
-import { SgDockMenu, toast, type SgDockMenuItem } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgDockMenu,
+  SgGrid,
+  toast,
+  type SgDockMenuItem,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 const items: SgDockMenuItem[] = [
   { id: "home", icon: <Home size={24} />, label: "Home", onClick: () => toast.info("Home clicked") },
@@ -66,7 +73,14 @@ export default function Example() {
 
 const EXTERNAL_BADGE_CODE = `import * as React from "react";
 import { Bell, Home, Mail, Settings, User } from "lucide-react";
-import { SgButton, SgDockMenu, SgGrid, toast, type SgDockMenuItem } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgDockMenu,
+  SgGrid,
+  toast,
+  type SgDockMenuItem,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [badges, setBadges] = React.useState({ mail: 5, notifications: 12 });
@@ -103,7 +117,14 @@ export default function Example() {
 
 const ANCHORED_IN_AREA_CODE = `import * as React from "react";
 import { Home, Mail, Settings } from "lucide-react";
-import { SgDockMenu, type SgDockMenuItem } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgDockMenu,
+  SgGrid,
+  toast,
+  type SgDockMenuItem,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 const items: SgDockMenuItem[] = [
   { id: "home", icon: <Home size={22} />, label: "Home" },
@@ -127,7 +148,14 @@ export default function Example() {
 
 const POSITIONS_CODE = `import * as React from "react";
 import { Bell, Home, Mail } from "lucide-react";
-import { SgDockMenu, type SgDockMenuItem } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgDockMenu,
+  SgGrid,
+  toast,
+  type SgDockMenuItem,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 const items: SgDockMenuItem[] = [
   { id: "home", icon: <Home size={22} />, label: "Home" },
@@ -153,7 +181,14 @@ export default function Example() {
 
 const DRAG_DROP_CODE = `import * as React from "react";
 import { Bell, Home, Mail, Settings, User } from "lucide-react";
-import { SgDockMenu, type SgDockMenuItem } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgDockMenu,
+  SgGrid,
+  toast,
+  type SgDockMenuItem,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 const items: SgDockMenuItem[] = [
   { id: "home", icon: <Home size={24} />, label: "Home" },
@@ -180,7 +215,14 @@ export default function Example() {
 
 const VARIANTS_CODE = `import * as React from "react";
 import { Bell, Home, Mail, Settings } from "lucide-react";
-import { SgDockMenu, type SgDockMenuItem } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgDockMenu,
+  SgGrid,
+  toast,
+  type SgDockMenuItem,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 const items: SgDockMenuItem[] = [
   { id: "home", icon: <Home size={22} />, label: "Home" },
@@ -216,7 +258,14 @@ export default function Example() {
 
 const MANY_ITEMS_CODE = `import * as React from "react";
 import { Bookmark, Calendar, FileText, Heart, Image, MessageSquare, Search, Star } from "lucide-react";
-import { SgDockMenu, type SgDockMenuItem } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgDockMenu,
+  SgGrid,
+  toast,
+  type SgDockMenuItem,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 const items: SgDockMenuItem[] = [
   { id: "search", icon: <Search size={22} />, label: "Search" },
@@ -239,7 +288,14 @@ export default function Example() {
 
 const CALLBACKS_AND_DISABLED_CODE = `import * as React from "react";
 import { Bell, Bookmark, Calendar, FileText, Heart, Home, Image, Mail, MessageSquare, Search, Settings, Star, User } from "lucide-react";
-import { SgDockMenu, type SgDockMenuItem } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgDockMenu,
+  SgGrid,
+  toast,
+  type SgDockMenuItem,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [eventLog, setEventLog] = React.useState<string[]>([]);
@@ -281,7 +337,14 @@ export default function Example() {
 
 const PLAYGROUND_CODE = `import * as React from "react";
 import { Bell, Home, Mail, Settings, User } from "lucide-react";
-import { SgDockMenu, type SgDockMenuPosition } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgDockMenu,
+  SgGrid,
+  toast,
+  type SgDockMenuItem,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
   const [position, setPosition] = React.useState<SgDockMenuPosition>("center-bottom");

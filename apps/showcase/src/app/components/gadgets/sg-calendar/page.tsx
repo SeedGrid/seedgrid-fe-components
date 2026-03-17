@@ -1,13 +1,8 @@
 "use client";
 
 import * as React from "react";
-import {
-  SgButton,
-  SgCalendar,
-  SgEnvironmentProvider,
-  SgGrid,
-  SgPlayground
-} from "@seedgrid/fe-components";
+import { SgButton, SgCalendar, SgEnvironmentProvider, SgGrid } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../../CodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
@@ -43,7 +38,8 @@ export default function BasicCalendarExample() {
 }`;
 
 const CONTROLLED_EXAMPLE_CODE = `import * as React from "react";
-import { SgCalendar } from "@seedgrid/fe-components";
+import { SgButton, SgCalendar, SgEnvironmentProvider, SgGrid } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function ControlledCalendarExample() {
   const [selected, setSelected] = React.useState(new Date(2026, 2, 10));
@@ -72,7 +68,8 @@ export default function ControlledCalendarExample() {
 }`;
 
 const LOCALE_EXAMPLE_CODE = `import * as React from "react";
-import { SgButton, SgCalendar, SgGrid } from "@seedgrid/fe-components";
+import { SgButton, SgCalendar, SgEnvironmentProvider, SgGrid } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function LocaleCalendarExample() {
   const [locale, setLocale] = React.useState<"pt-BR" | "en-US" | "es">("pt-BR");
@@ -111,7 +108,8 @@ export default function LocaleCalendarExample() {
 }`;
 
 const CALENDAR_PLAYGROUND_APP_FILE = `import * as React from "react";
-import { SgButton, SgCalendar, SgGrid } from "@seedgrid/fe-components";
+import { SgButton, SgCalendar, SgEnvironmentProvider, SgGrid } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
   const [locale, setLocale] = React.useState<"pt-BR" | "en-US" | "es">("pt-BR");

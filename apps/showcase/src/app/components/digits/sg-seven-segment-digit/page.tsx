@@ -5,11 +5,11 @@ import {
   SgButton,
   SgGrid,
   SgInputText,
-  SgPlayground,
   SgSevenSegmentDigit,
   SgSlider,
-  type SgSevenSegmentDigitPalette
+  type SgSevenSegmentDigitPalette,
 } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../../CodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
@@ -262,7 +262,15 @@ const ss = pad(s);
 </div>`;
 
 const PLAYGROUND_CODE = `import * as React from "react";
-import { SgGrid, SgInputText, SgSevenSegmentDigit, SgSlider } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgGrid,
+  SgInputText,
+  SgSevenSegmentDigit,
+  SgSlider,
+  type SgSevenSegmentDigitPalette,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
   const [value, setValue] = React.useState("8");

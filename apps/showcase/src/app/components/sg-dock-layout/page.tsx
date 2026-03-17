@@ -1,13 +1,8 @@
 ﻿"use client";
 
 import React from "react";
-import {
-  SgDockLayout,
-  SgDockZone,
-  SgPlayground,
-  SgToolBar,
-  SgToolbarIconButton
-} from "@seedgrid/fe-components";
+import { SgDockLayout, SgDockZone, SgToolBar, SgToolbarIconButton } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import { ClipboardList, Home, LayoutGrid, Search, Settings, Users } from "lucide-react";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
@@ -35,6 +30,7 @@ function CodeBlock(props: { code: string }) {
 
 const DOCK_LAYOUT_PLAYGROUND_CODE = `import * as React from "react";
 import { SgDockLayout, SgDockZone, SgToolBar, SgToolbarIconButton } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import { ClipboardList, Home, LayoutGrid, Search, Settings, Users } from "lucide-react";
 
 export default function App() {
@@ -218,6 +214,7 @@ export default function SgDockLayoutPage() {
         <CodeBlock
           code={`import React from "react";
 import { SgDockLayout, SgDockZone, SgToolBar, SgToolbarIconButton } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import { ClipboardList, Home, LayoutGrid, Search, Settings, Users } from "lucide-react";
 
 export default function Example() {

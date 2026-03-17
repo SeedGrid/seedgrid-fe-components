@@ -4,7 +4,8 @@ import React from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import type { FieldValues } from "react-hook-form";
-import { SgButton, SgInputCurrency, SgGrid, SgPlayground } from "@seedgrid/fe-components";
+import { SgButton, SgInputCurrency, SgGrid } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import { t, useShowcaseI18n } from "../../../i18n";
@@ -29,6 +30,7 @@ function CodeBlock(props: { code: string }) {
 const CURRENCY_EDIT_PLAYGROUND_CODE = `import * as React from "react";
 import { useForm } from "react-hook-form";
 import { SgButton, SgInputCurrency, SgGrid } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
   const { control, watch, setValue } = useForm({
@@ -909,7 +911,8 @@ export default function SgInputCurrencyPage() {
           </p>
         </div>
         <CodeBlock code={`import React from "react";
-import { SgButton, SgInputCurrency } from "@seedgrid/fe-components";
+import { SgButton, SgInputCurrency, SgGrid } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const refA = React.useRef<HTMLInputElement | null>(null);

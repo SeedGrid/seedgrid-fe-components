@@ -1,7 +1,8 @@
 ﻿"use client";
 
 import React from "react";
-import { SgButton, SgExpandablePanel, SgPlayground } from "@seedgrid/fe-components";
+import { SgButton, SgExpandablePanel } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -28,6 +29,7 @@ function CodeBlock(props: { code: string }) {
 
 const EXAMPLE_INLINE_CONTROLLED_CODE = `import React from "react";
 import { SgButton, SgExpandablePanel } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [open, setOpen] = React.useState(true);
@@ -70,6 +72,7 @@ export default function Example() {
 
 const EXAMPLE_OVERLAY_BEHAVIOR_CODE = `import React from "react";
 import { SgButton, SgExpandablePanel } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [open, setOpen] = React.useState(false);
@@ -114,6 +117,7 @@ export default function Example() {
 
 const EXAMPLE_DEFAULT_OPEN_STYLES_CODE = `import React from "react";
 import { SgButton, SgExpandablePanel } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [panelKey, setPanelKey] = React.useState(0);
@@ -167,6 +171,7 @@ export default function Example() {
 
 const EXAMPLE_ACCESSIBILITY_FADE_CODE = `import React from "react";
 import { SgButton, SgExpandablePanel } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [open, setOpen] = React.useState(false);
@@ -205,6 +210,7 @@ export default function Example() {
 
 const EXAMPLE_NO_BACKDROP_CODE = `import React from "react";
 import { SgButton, SgExpandablePanel } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [open, setOpen] = React.useState(false);
@@ -240,6 +246,7 @@ export default function Example() {
 
 const PLAYGROUND_CODE = `import * as React from "react";
 import { SgButton, SgExpandablePanel } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
   const [open, setOpen] = React.useState(false);

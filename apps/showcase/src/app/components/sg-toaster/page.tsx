@@ -3,12 +3,12 @@
 import React from "react";
 import {
   SgButton,
-  SgPlayground,
   toast,
   type SgToastId,
   type SgToastType,
-  type SgToastOptions
+  type SgToastOptions,
 } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -153,7 +153,14 @@ toast.warning("Attention!");
 `;
 
 const PLAYGROUND_APP_FILE = `import * as React from "react";
-import { SgButton, SgStack, SgToaster, toast } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  toast,
+  type SgToastId,
+  type SgToastType,
+  type SgToastOptions,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 const positions = [
   "top-right",
