@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { SgPlayground } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -41,7 +41,7 @@ const RENDER_BODY_CODE = `<SgStack gap={12}>
 </SgStack>`;
 
 const APP_FILE_CODE = `import * as React from "react";
-import { SgButton, SgCard, SgInputText, SgStack } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
   const [name, setName] = React.useState("");

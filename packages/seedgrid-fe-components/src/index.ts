@@ -1,4 +1,4 @@
-﻿export { SgInputText } from "./inputs/SgInputText";
+export { SgInputText } from "./inputs/SgInputText";
 export type { SgInputTextProps } from "./inputs/SgInputText";
 export { SgInputNumber } from "./inputs/SgInputNumber";
 export type { SgInputNumberProps } from "./inputs/SgInputNumber";
@@ -233,8 +233,6 @@ export type {
   SgMenuBrand,
   SgMenuUser
 } from "./layout/SgMenu";
-export { default as SgPlayground } from "./others/SgPlayground";
-export type { SgPlaygroundProps } from "./others/SgPlayground";
 export { SgToolBar, SgToolbarIconButton } from "./layout/SgToolBar";
 export type {
   SgToolBarProps,

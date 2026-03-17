@@ -1,0 +1,49 @@
+{
+    "name":  "@seedgrid/fe-playground",
+    "version":  "0.1.0",
+    "license":  "MIT",
+    "type":  "module",
+    "repository":  {
+                       "type":  "git",
+                       "url":  "git+https://github.com/SeedGrid/seedgrid-fe-components.git",
+                       "directory":  "packages/seedgrid-fe-playground"
+                   },
+    "homepage":  "https://github.com/SeedGrid/seedgrid-fe-components/tree/main/packages/seedgrid-fe-playground",
+    "bugs":  {
+                 "url":  "https://github.com/SeedGrid/seedgrid-fe-components/issues"
+             },
+    "main":  "dist/index.js",
+    "types":  "dist/index.d.ts",
+    "exports":  {
+                    ".":  {
+                              "types":  "./dist/index.d.ts",
+                              "default":  "./dist/index.js"
+                          }
+                },
+    "sideEffects":  false,
+    "files":  [
+                  "dist"
+              ],
+    "scripts":  {
+                    "clean":  "node -e \"require(\u0027node:fs\u0027).rmSync(\u0027dist\u0027, { recursive: true, force: true })\"",
+                    "build":  "pnpm run clean \u0026\u0026 tsc -p tsconfig.json",
+                    "dev":  "tsc -p tsconfig.json --watch --preserveWatchOutput",
+                    "typecheck":  "tsc -p tsconfig.json --noEmit"
+                },
+    "peerDependencies":  {
+                             "@seedgrid/fe-components":  "^0.2.10",
+                             "react":  "^18.2.0 || ^19.0.0",
+                             "react-dom":  "^18.2.0 || ^19.0.0"
+                         },
+    "dependencies":  {
+                         "@codesandbox/sandpack-react":  "^2.20.0"
+                     },
+    "devDependencies":  {
+                            "@seedgrid/fe-components":  "workspace:*",
+                            "@types/react":  "^19.0.0",
+                            "@types/react-dom":  "^19.0.0",
+                            "react":  "19.0.0",
+                            "react-dom":  "19.0.0",
+                            "typescript":  "^5.5.4"
+                        }
+}

@@ -2,7 +2,8 @@
 
 import React from "react";
 import { Box, Building2, FilePenLine, Layers3, Receipt, Settings } from "lucide-react";
-import { SgBreadcrumb, SgButton, SgPlayground, type SgBreadcrumbItem } from "@seedgrid/fe-components";
+import { SgBreadcrumb, SgButton, type SgBreadcrumbItem } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -158,7 +159,8 @@ function getBreadcrumbTexts(locale: ShowcaseLocale): BreadcrumbTexts {
 
 const EXAMPLE_BASIC_CODE = `import React from "react";
 import { Box, Building2, FilePenLine, Layers3 } from "lucide-react";
-import { SgBreadcrumb, type SgBreadcrumbItem } from "@seedgrid/fe-components";
+import { SgBreadcrumb, SgButton, type SgBreadcrumbItem } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 const items: SgBreadcrumbItem[] = [
   { id: "modules", label: "Modules", href: "/modules", icon: <Layers3 className="size-4" /> },
@@ -172,7 +174,8 @@ export default function Example() {
 }`;
 
 const EXAMPLE_EXTERNAL_CODE = `import React from "react";
-import { SgBreadcrumb, SgButton } from "@seedgrid/fe-components";
+import { SgBreadcrumb, SgButton, type SgBreadcrumbItem } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [routeKey, setRouteKey] = React.useState<"registration" | "fiscal" | "integration">("registration");
@@ -193,7 +196,8 @@ export default function Example() {
 }`;
 
 const EXAMPLE_OVERFLOW_CODE = `import React from "react";
-import { SgBreadcrumb } from "@seedgrid/fe-components";
+import { SgBreadcrumb, SgButton, type SgBreadcrumbItem } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   return (
@@ -208,7 +212,8 @@ export default function Example() {
 
 const PLAYGROUND_CODE = `import * as React from "react";
 import { Layers3, Building2, Box, FilePenLine } from "lucide-react";
-import { SgBreadcrumb, SgButton, type SgBreadcrumbSeparator } from "@seedgrid/fe-components";
+import { SgBreadcrumb, SgButton, type SgBreadcrumbItem } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 const items = [
   { id: "modules", label: "Modules", href: "/modules", icon: <Layers3 className="size-4" /> },

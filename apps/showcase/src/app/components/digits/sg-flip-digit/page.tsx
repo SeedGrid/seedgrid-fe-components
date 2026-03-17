@@ -1,7 +1,8 @@
 ﻿"use client";
 
 import * as React from "react";
-import { SgButton, SgFlipDigit, SgGrid, SgPlayground } from "@seedgrid/fe-components";
+import { SgButton, SgFlipDigit, SgGrid } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../../CodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
@@ -186,6 +187,7 @@ React.useEffect(() => {
 
 const PLAYGROUND_APP_FILE = `import * as React from "react";
 import { SgButton, SgFlipDigit, SgGrid } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
   const [value, setValue] = React.useState("5");

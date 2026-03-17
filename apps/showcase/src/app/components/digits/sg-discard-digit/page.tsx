@@ -6,10 +6,10 @@ import {
   SgDiscardDigit,
   SgGrid,
   SgInputText,
-  SgPlayground,
   SgSlider,
-  type SgDiscardDigitHandle
+  type SgDiscardDigitHandle,
 } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../../CodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
@@ -343,7 +343,15 @@ React.useEffect(() => {
 </div>`;
 
 const PLAYGROUND_CODE = `import * as React from "react";
-import { SgButton, SgDiscardDigit, SgGrid, SgInputText, SgSlider, type SgDiscardDigitHandle } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgDiscardDigit,
+  SgGrid,
+  SgInputText,
+  SgSlider,
+  type SgDiscardDigitHandle,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
   const ref = React.useRef<SgDiscardDigitHandle>(null);

@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { SgBadge, SgBadgeOverlay, SgPlayground } from "@seedgrid/fe-components";
+import { SgBadge, SgBadgeOverlay } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -28,6 +29,7 @@ function CodeBlock(props: { code: string }) {
 
 const BADGE_OVERLAY_PLAYGROUND_CODE = `import * as React from "react";
 import { SgBadge, SgBadgeOverlay } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
   const [placement, setPlacement] = React.useState<"top-left" | "top-right" | "bottom-left" | "bottom-right" | "left" | "right" | "top" | "bottom">("top-right");
@@ -96,6 +98,7 @@ export default function SgBadgeOverlayPage() {
           <CodeBlock
             code={`import React from "react";
 import { SgBadge, SgBadgeOverlay } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   return (
@@ -131,6 +134,7 @@ export default function Example() {
           <CodeBlock
             code={`import React from "react";
 import { SgBadge, SgBadgeOverlay } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   return (

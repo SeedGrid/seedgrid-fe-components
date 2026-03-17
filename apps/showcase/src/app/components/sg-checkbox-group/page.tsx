@@ -9,8 +9,8 @@ import {
   type SgCheckboxGroupRef,
   SgButton,
   SgGrid,
-  SgPlayground
 } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import {
   Heart,
   Star,
@@ -939,7 +939,14 @@ const onSubmit = (data: any) => {
             </p>
           )}
           <CodeBlock>{`import React from "react";
-import { SgCheckboxGroup, type SgCheckboxGroupRef, SgButton, SgGrid } from "@seedgrid/fe-components";
+import {
+  SgCheckboxGroup,
+  type SgCheckboxGroupOption,
+  type SgCheckboxGroupRef,
+  SgButton,
+  SgGrid,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 const BASIC_OPTIONS = [
   { label: "Option 1", value: "option1" },

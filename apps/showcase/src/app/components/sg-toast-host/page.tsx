@@ -3,13 +3,13 @@
 import React from "react";
 import {
   SgButton,
-  SgPlayground,
   SgToastHost,
   toast,
   type SgToastId,
   type SgToastType,
-  type SgToastOptions
+  type SgToastOptions,
 } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -61,11 +61,27 @@ function emitToastByType(type: SgToastType, options?: SgToastOptions) {
 // ---------------------------------------------------------------------------
 
 const WHAT_IS_CODE = `// Antes: SgToaster fixo no layout (sem prioridade)
-import { SgToaster } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgToastHost,
+  toast,
+  type SgToastId,
+  type SgToastType,
+  type SgToastOptions,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 <SgToaster position="top-right" />
 
 // Depois: SgToastHost — suporta prioridade entre instâncias
-import { SgToastHost } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgToastHost,
+  toast,
+  type SgToastId,
+  type SgToastType,
+  type SgToastOptions,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 // layout.tsx — host padrão
 <SgToastHost position="top-right" />
@@ -94,7 +110,15 @@ toast.dismiss(); // remove all toasts
 `;
 
 const PRIORITY_CODE = `// layout.tsx — host padrão para todas as rotas
-import { SgToastHost } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgToastHost,
+  toast,
+  type SgToastId,
+  type SgToastType,
+  type SgToastOptions,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function RootLayout({ children }) {
   return (
@@ -107,7 +131,15 @@ export default function RootLayout({ children }) {
 
 // dashboard/page.tsx — host da página substitui o do layout
 // Enquanto o usuário estiver nesta página, o host do layout fica INATIVO.
-import { SgToastHost } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgToastHost,
+  toast,
+  type SgToastId,
+  type SgToastType,
+  type SgToastOptions,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function DashboardPage() {
   return (
@@ -212,7 +244,15 @@ const POSITIONING_CODE = `// Todas as posições disponíveis
 <SgToastHost position="bottom-right" />`;
 
 const PLAYGROUND_APP_FILE = `import * as React from "react";
-import { SgButton, SgStack, SgToastHost, toast } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgToastHost,
+  toast,
+  type SgToastId,
+  type SgToastType,
+  type SgToastOptions,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 const positions = [
   "top-right",

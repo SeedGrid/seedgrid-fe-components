@@ -12,8 +12,8 @@ import {
   SgButton,
   SgConfirmationDialog,
   SgGrid,
-  SgPlayground
 } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import { Pencil, Trash2 } from "lucide-react";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
@@ -260,7 +260,19 @@ const BASE_COLUMNS_CODE = `const BASE_COLUMNS = [
 ];`;
 
 const BASIC_CODE = `import React from "react";
-import { SgDatatable } from "@seedgrid/fe-components";
+import {
+  SgDatatable,
+  type SgDatatableColumn,
+  type SgDatatableFilterEvent,
+  type SgDatatablePageEvent,
+  type SgDatatableSelection,
+  type SgDatatableSortEvent,
+  type SgDatatableSortOrder,
+  SgButton,
+  SgConfirmationDialog,
+  SgGrid,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 ${PRODUCT_ROWS_CODE}
 
@@ -284,7 +296,19 @@ export default function BasicDatatableExample() {
 }`;
 
 const FILTER_CODE = `import React from "react";
-import { SgDatatable } from "@seedgrid/fe-components";
+import {
+  SgDatatable,
+  type SgDatatableColumn,
+  type SgDatatableFilterEvent,
+  type SgDatatablePageEvent,
+  type SgDatatableSelection,
+  type SgDatatableSortEvent,
+  type SgDatatableSortOrder,
+  SgButton,
+  SgConfirmationDialog,
+  SgGrid,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 ${PRODUCT_ROWS_CODE}
 
@@ -314,7 +338,19 @@ export default function FilterDatatableExample() {
 }`;
 
 const SELECTION_CODE = `import React from "react";
-import { SgButton, SgDatatable, SgGrid, type SgDatatableSelection } from "@seedgrid/fe-components";
+import {
+  SgDatatable,
+  type SgDatatableColumn,
+  type SgDatatableFilterEvent,
+  type SgDatatablePageEvent,
+  type SgDatatableSelection,
+  type SgDatatableSortEvent,
+  type SgDatatableSortOrder,
+  SgButton,
+  SgConfirmationDialog,
+  SgGrid,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 ${PRODUCT_ROWS_CODE}
 
@@ -379,7 +415,19 @@ export default function SelectionDatatableExample() {
 }`;
 
 const TEMPLATE_CODE = `import React from "react";
-import { SgDatatable } from "@seedgrid/fe-components";
+import {
+  SgDatatable,
+  type SgDatatableColumn,
+  type SgDatatableFilterEvent,
+  type SgDatatablePageEvent,
+  type SgDatatableSelection,
+  type SgDatatableSortEvent,
+  type SgDatatableSortOrder,
+  SgButton,
+  SgConfirmationDialog,
+  SgGrid,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 ${PRODUCT_ROWS_CODE}
 
@@ -450,7 +498,19 @@ export default function TemplateDatatableExample() {
 }`;
 
 const ACTIONS_CODE = `import React from "react";
-import { SgButton, SgConfirmationDialog, SgDatatable, SgGrid, type SgDatatableColumn } from "@seedgrid/fe-components";
+import {
+  SgDatatable,
+  type SgDatatableColumn,
+  type SgDatatableFilterEvent,
+  type SgDatatablePageEvent,
+  type SgDatatableSelection,
+  type SgDatatableSortEvent,
+  type SgDatatableSortOrder,
+  SgButton,
+  SgConfirmationDialog,
+  SgGrid,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import { Pencil, Trash2 } from "lucide-react";
 
 ${PERMISSION_ROWS_CODE}
@@ -540,7 +600,19 @@ export default function ActionsDatatableExample() {
 }`;
 
 const CONTROLLED_CODE = `import React from "react";
-import { SgButton, SgDatatable, SgGrid, type SgDatatablePageEvent, type SgDatatableSortEvent, type SgDatatableSortOrder } from "@seedgrid/fe-components";
+import {
+  SgDatatable,
+  type SgDatatableColumn,
+  type SgDatatableFilterEvent,
+  type SgDatatablePageEvent,
+  type SgDatatableSelection,
+  type SgDatatableSortEvent,
+  type SgDatatableSortOrder,
+  SgButton,
+  SgConfirmationDialog,
+  SgGrid,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 ${PRODUCT_ROWS_CODE}
 
@@ -605,7 +677,19 @@ export default function ControlledDatatableExample() {
 }`;
 
 const LOADING_EMPTY_CODE = `import React from "react";
-import { SgButton, SgDatatable, SgGrid } from "@seedgrid/fe-components";
+import {
+  SgDatatable,
+  type SgDatatableColumn,
+  type SgDatatableFilterEvent,
+  type SgDatatablePageEvent,
+  type SgDatatableSelection,
+  type SgDatatableSortEvent,
+  type SgDatatableSortOrder,
+  SgButton,
+  SgConfirmationDialog,
+  SgGrid,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 ${PRODUCT_ROWS_CODE}
 
@@ -726,9 +810,14 @@ import {
   type SgDatatableColumn,
   type SgDatatableFilterEvent,
   type SgDatatablePageEvent,
+  type SgDatatableSelection,
   type SgDatatableSortEvent,
-  type SgDatatableSortOrder
+  type SgDatatableSortOrder,
+  SgButton,
+  SgConfirmationDialog,
+  SgGrid,
 } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 ${PRODUCT_ROWS_CODE}
 

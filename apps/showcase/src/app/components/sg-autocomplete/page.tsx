@@ -1,7 +1,8 @@
 ﻿"use client";
 
 import React from "react";
-import { SgAutocomplete, SgPlayground, type SgAutocompleteItem } from "@seedgrid/fe-components";
+import { SgAutocomplete, type SgAutocompleteItem } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -30,6 +31,7 @@ function wrapExample(label: string, code: string) {
   return `import React from "react";
 import { useForm } from "react-hook-form";
 import { SgAutocomplete, type SgAutocompleteItem } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 type Country = {
   id: number;
@@ -72,7 +74,8 @@ ${code.split("\n").map((line) => (line ? `      ${line}` : "")).join("\n")}
 }
 
 const AUTOCOMPLETE_PLAYGROUND_APP_FILE = `import * as React from "react";
-import { SgAutocomplete } from "@seedgrid/fe-components";
+import { SgAutocomplete, type SgAutocompleteItem } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 type Country = {
   id: number;
@@ -454,6 +457,7 @@ export default function SgAutocompletePage() {
         <CodeBlock
           code={`import React from "react";
 import { SgAutocomplete, type SgAutocompleteItem } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 type Country = {
   id: number;

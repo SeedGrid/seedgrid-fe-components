@@ -2,7 +2,8 @@
 
 import React from "react";
 import Link from "next/link";
-import { SgButton, SgGrid, SgInputOTP, SgPlayground, type SgInputOTPRef } from "@seedgrid/fe-components";
+import { SgButton, SgGrid, SgInputOTP, type SgInputOTPRef } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -162,6 +163,7 @@ function isSupportedOtpLocale(locale: ShowcaseLocale): locale is keyof typeof OT
 }
 const OTP_PLAYGROUND_CODE = `import * as React from "react";
 import { SgButton, SgGrid, SgInputOTP, type SgInputOTPRef } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
   const otpRef = React.useRef<SgInputOTPRef | null>(null);

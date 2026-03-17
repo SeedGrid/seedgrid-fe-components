@@ -3,7 +3,8 @@
 import React from "react";
 import Link from "next/link";
 import { Check, X, Bookmark, Search, Users, Bell, Heart } from "lucide-react";
-import { SgButton, SgGrid, SgPlayground } from "@seedgrid/fe-components";
+import { SgButton, SgGrid } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -319,6 +320,7 @@ function getButtonTexts(locale: ShowcaseLocale): ButtonTexts {
 
 const BUTTON_PLAYGROUND_CODE = `import * as React from "react";
 import { SgButton, SgGrid } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import { Check } from "lucide-react";
 
 export default function App() {
@@ -663,7 +665,8 @@ export default function SgButtonShowcase() {
         </div>
 
         <CodeBlock code={`import { Check } from "lucide-react";
-import { SgButton } from "@seedgrid/fe-components";
+import { SgButton, SgGrid } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 // Elevated Buttons (solid + elevation)
 <SgButton severity="primary" appearance="solid" elevation="sm" leftIcon={<Check className="size-4" />}>Primary</SgButton>
@@ -791,7 +794,8 @@ import { SgButton } from "@seedgrid/fe-components";
           ))}
         </Row>
         <CodeBlock code={`import { Bookmark, Search, Users, Bell, Heart, X, Check } from "lucide-react";
-import { SgButton } from "@seedgrid/fe-components";
+import { SgButton, SgGrid } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 <SgButton severity="primary" shape="rounded" leftIcon={<Bookmark className="size-4" />} />
 <SgButton severity="secondary" shape="rounded" leftIcon={<Search className="size-4" />} />

@@ -409,6 +409,7 @@ function SgInputTextBase(props: SgInputTextBaseProps) {
             borderRadius: resolvedBorderRadius,
             paddingLeft: prefixPaddingStyle,
             paddingRight: suffixPaddingStyle,
+            fontFamily: "inherit",
             ...(prefixText ? { borderTopLeftRadius: 0, borderBottomLeftRadius: 0, borderLeftWidth: 0 } : {}),
             ...(suffixText ? { borderTopRightRadius: 0, borderBottomRightRadius: 0, borderRightWidth: 0 } : {}),
             ...(resolvedInputProps.style ?? {})
@@ -463,6 +464,8 @@ function SgInputTextBase(props: SgInputTextBaseProps) {
             {canShowClear ? (
               <button
                 type="button"
+                tabIndex={-1}
+                onMouseDown={(event) => event.preventDefault()}
                 onClick={handleClear}
                 className="rounded px-1 text-xs text-foreground/60 hover:text-foreground"
                 aria-label={t(i18n, "components.actions.clear")}

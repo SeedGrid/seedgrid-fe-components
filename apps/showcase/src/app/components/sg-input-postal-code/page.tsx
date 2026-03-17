@@ -4,7 +4,8 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import type { FieldValues } from "react-hook-form";
 import Link from "next/link";
-import { SgGrid, SgInputPostalCode, SgPlayground, type ViaCepResponse, type PostalCodeCountry } from "@seedgrid/fe-components";
+import { SgGrid, SgInputPostalCode, type ViaCepResponse, type PostalCodeCountry } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -40,7 +41,8 @@ const PLACEHOLDERS: Record<PostalCodeCountry, string> = {
 };
 
 const INPUT_POSTAL_CODE_PLAYGROUND_CODE = `import * as React from "react";
-import { SgButton, SgGrid, SgInputPostalCode } from "@seedgrid/fe-components";
+import { SgGrid, SgInputPostalCode, type ViaCepResponse, type PostalCodeCountry } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
   const [country, setCountry] = React.useState<"BR" | "PT" | "US">("BR");
@@ -841,7 +843,8 @@ export default function SgInputPostalCodePage() {
           </p>
         </div>
         <CodeBlock code={`import React from "react";
-import { SgInputPostalCode } from "@seedgrid/fe-components";
+import { SgGrid, SgInputPostalCode, type ViaCepResponse, type PostalCodeCountry } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const refA = React.useRef<HTMLInputElement | null>(null);

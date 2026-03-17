@@ -1,13 +1,8 @@
 "use client";
 
 import React from "react";
-import {
-  SgDockScreen,
-  SgDockZone,
-  SgPlayground,
-  SgToolBar,
-  SgToolbarIconButton
-} from "@seedgrid/fe-components";
+import { SgDockScreen, SgDockZone, SgToolBar, SgToolbarIconButton } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import { ClipboardList, Home, LayoutGrid, Search, Settings, Users } from "lucide-react";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
@@ -31,6 +26,7 @@ function Section(props: { title: string; description?: string; children: React.R
 
 const DOCK_SCREEN_BASIC_CODE = `import React from "react";
 import { SgDockScreen, SgDockZone, SgToolBar, SgToolbarIconButton } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import { ClipboardList, Home, LayoutGrid, Search, Settings, Users } from "lucide-react";
 
 export default function Example() {
@@ -78,6 +74,7 @@ export default function Example() {
 
 const DOCK_SCREEN_PLAYGROUND_CODE = `import * as React from "react";
 import { SgDockScreen, SgDockZone, SgToolBar, SgToolbarIconButton } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import { ClipboardList, Home, LayoutGrid, Search, Settings, Users } from "lucide-react";
 
 export default function App() {

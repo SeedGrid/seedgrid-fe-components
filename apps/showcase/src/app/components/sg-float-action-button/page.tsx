@@ -2,7 +2,8 @@
 
 import React from "react";
 import Link from "next/link";
-import { SgFloatActionButton, SgGrid, SgPlayground, type SgFABAction } from "@seedgrid/fe-components";
+import { SgFloatActionButton, SgGrid, type SgFABAction } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -77,7 +78,8 @@ const FAB_EXAMPLE_LINKS = [
 
 const FAB_PLAYGROUND_CODE = `import * as React from "react";
 import { Heart, Plus, Star } from "lucide-react";
-import { SgButton, SgGrid, SgFloatActionButton } from "@seedgrid/fe-components";
+import { SgFloatActionButton, SgGrid, type SgFABAction } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 const actions = [
   { icon: <Plus className="size-4" />, label: "New", onClick: () => {} },

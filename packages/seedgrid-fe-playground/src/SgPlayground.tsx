@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import * as React from "react";
 import {
@@ -8,8 +8,7 @@ import {
   type SandpackFiles,
   useSandpack
 } from "@codesandbox/sandpack-react";
-import { SgButton } from "../buttons/SgButton";
-import { SgCard } from "../layout/SgCard";
+import { SgButton, SgCard } from "@seedgrid/fe-components";
 
 function cn(...parts: Array<string | false | null | undefined>) {
   return parts.filter(Boolean).join(" ");
@@ -848,7 +847,7 @@ const SANDPACK_SEEDGRID_BLOCKED_EMAIL_DOMAINS_JSON_SHIM = JSON.stringify({
   blockedEmailDomains: []
 });
 
-// CJS shims for .js locale files (new npm versions after the JSON→TypeScript conversion).
+// CJS shims for .js locale files (new npm versions after the JSONâ†’TypeScript conversion).
 const SANDPACK_SEEDGRID_LOCALE_JS_SHIM = `module.exports = ${JSON.stringify(SANDPACK_MIN_COMPONENT_MESSAGES)};`;
 const SANDPACK_SEEDGRID_BLOCKED_EMAIL_JS_SHIM = `module.exports = ${JSON.stringify({ blockedEmailDomains: [] })};`;
 
@@ -1393,7 +1392,7 @@ export default function SgPlayground(props: Readonly<SgPlaygroundProps>) {
 
       // Sandpack runtime can evaluate JSON files as plain JS modules.
       // Provide CJS-compatible shims to keep @seedgrid/fe-components i18n/validators working.
-      // .json shims cover current npm versions; .js shims cover new versions after JSON→TypeScript conversion.
+      // .json shims cover current npm versions; .js shims cover new versions after JSONâ†’TypeScript conversion.
       nextFiles["/node_modules/@seedgrid/fe-components/dist/i18n/pt-BR.json"] = {
         code: SANDPACK_SEEDGRID_PT_BR_JSON_SHIM,
         hidden: true
@@ -1711,7 +1710,7 @@ export default function SgPlayground(props: Readonly<SgPlaygroundProps>) {
             )}
             onClick={() => setActivePanel("code")}
           >
-            Código
+            CÃ³digo
           </button>
           <button
             type="button"

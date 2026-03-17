@@ -7,8 +7,8 @@ import {
   type SgOrderListRef,
   SgButton,
   SgGrid,
-  SgPlayground
 } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import { Bell, Heart, Landmark, RefreshCw, Star } from "lucide-react";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";

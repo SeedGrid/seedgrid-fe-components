@@ -1,7 +1,8 @@
 ﻿"use client";
 
 import * as React from "react";
-import { SgButton, SgFadeDigit, SgPlayground } from "@seedgrid/fe-components";
+import { SgButton, SgFadeDigit } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../../CodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
@@ -444,7 +445,8 @@ function Ex6() {
 // Playground
 // ---------------------------------------------------------------------------
 const PLAYGROUND_CODE = `import * as React from "react";
-import { SgFadeDigit, SgButton } from "@seedgrid/fe-components";
+import { SgButton, SgFadeDigit } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 const PALETTE = [
   { label: "Padrao",  color: "#edebeb", backgroundColor: "#333232" },

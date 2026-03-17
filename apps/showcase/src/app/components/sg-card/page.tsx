@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { SgButton, SgCard, SgEnvironmentProvider, SgPlayground } from "@seedgrid/fe-components";
+import { SgButton, SgCard, SgEnvironmentProvider } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -27,7 +28,8 @@ function CodeBlock(props: { code: string }) {
 }
 
 const CARD_PLAYGROUND_CODE = `import * as React from "react";
-import { SgButton, SgCard } from "@seedgrid/fe-components";
+import { SgButton, SgCard, SgEnvironmentProvider } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
   const [cardStyle, setCardStyle] = React.useState<"default" | "outlined" | "elevated" | "flat">("default");
@@ -135,7 +137,8 @@ export default function SgCardPage() {
         </SgCard>
         <CodeBlock
           code={`import React from "react";
-import { SgCard } from "@seedgrid/fe-components";
+import { SgButton, SgCard, SgEnvironmentProvider } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   return (
@@ -203,7 +206,8 @@ export default function Example() {
         </SgCard>
         <CodeBlock
           code={`import React from "react";
-import { SgButton, SgCard } from "@seedgrid/fe-components";
+import { SgButton, SgCard, SgEnvironmentProvider } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   return (
@@ -284,7 +288,8 @@ export default function Example() {
         </div>
         <CodeBlock
           code={`import React from "react";
-import { SgButton, SgCard } from "@seedgrid/fe-components";
+import { SgButton, SgCard, SgEnvironmentProvider } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   return (
@@ -356,7 +361,8 @@ export default function Example() {
         </div>
         <CodeBlock
           code={`import React from "react";
-import { SgCard } from "@seedgrid/fe-components";
+import { SgButton, SgCard, SgEnvironmentProvider } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   return (
@@ -412,7 +418,8 @@ export default function Example() {
         </SgCard>
         <CodeBlock
           code={`import React from "react";
-import { SgCard } from "@seedgrid/fe-components";
+import { SgButton, SgCard, SgEnvironmentProvider } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   return (
@@ -484,7 +491,8 @@ export default function Example() {
         </SgEnvironmentProvider>
         <CodeBlock
           code={`import React from "react";
-import { SgCard, SgEnvironmentProvider } from "@seedgrid/fe-components";
+import { SgButton, SgCard, SgEnvironmentProvider } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   return (

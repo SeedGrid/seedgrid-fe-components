@@ -15,7 +15,8 @@ import {
   Mail,
   FileText
 } from "lucide-react";
-import { SgGrid, SgPlayground, SgSplitButton } from "@seedgrid/fe-components";
+import { SgGrid, SgSplitButton } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -315,7 +316,8 @@ function isSupportedLocale(locale: ShowcaseLocale): locale is keyof typeof SPLIT
 
 const SPLIT_BUTTON_PLAYGROUND_CODE = `import * as React from "react";
 import { Save, RefreshCw, Trash2 } from "lucide-react";
-import { SgButton, SgGrid, SgSplitButton } from "@seedgrid/fe-components";
+import { SgGrid, SgSplitButton } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 const items = [
   { label: "Update", icon: <RefreshCw className="size-4" />, onClick: () => {} },

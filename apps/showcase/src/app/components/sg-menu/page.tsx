@@ -6,13 +6,13 @@ import {
   SgDockLayout,
   SgDockZone,
   SgMenu,
-  SgPlayground,
   SgRadioGroup,
   SgToolBar,
   SgToolbarIconButton,
   type SgMenuNode,
-  type SgRadioGroupOption
+  type SgRadioGroupOption,
 } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import { BarChart2, ClipboardList, CreditCard, DollarSign, Download, Home, LayoutGrid, Plus, Printer, Save, Search, Settings, ShoppingCart, Trash2, Users, Wallet } from "lucide-react";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
@@ -340,7 +340,18 @@ const USER_MENU_CODE_SNIPPET = `const USER_MENU = [
 ];`;
 
 const EXAMPLE_SIDEBAR_CODE = `import React from "react";
-import { SgMenu } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgDockLayout,
+  SgDockZone,
+  SgMenu,
+  SgRadioGroup,
+  SgToolBar,
+  SgToolbarIconButton,
+  type SgMenuNode,
+  type SgRadioGroupOption,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import { ClipboardList, Home, LayoutGrid, Search, Settings, Users } from "lucide-react";
 
 ${MENU_CODE_SNIPPET}
@@ -380,7 +391,18 @@ export default function Example() {
 }`;
 
 const EXAMPLE_DRAWER_CODE = `import React from "react";
-import { SgButton, SgMenu } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgDockLayout,
+  SgDockZone,
+  SgMenu,
+  SgRadioGroup,
+  SgToolBar,
+  SgToolbarIconButton,
+  type SgMenuNode,
+  type SgRadioGroupOption,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import { ClipboardList, Home, LayoutGrid, Search, Settings, Users } from "lucide-react";
 
 ${MENU_CODE_SNIPPET}
@@ -418,7 +440,18 @@ export default function Example() {
 }`;
 
 const EXAMPLE_PANEL_MENU_CODE = `import React from "react";
-import { SgMenu } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgDockLayout,
+  SgDockZone,
+  SgMenu,
+  SgRadioGroup,
+  SgToolBar,
+  SgToolbarIconButton,
+  type SgMenuNode,
+  type SgRadioGroupOption,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import { ClipboardList, Home, LayoutGrid, Search, Settings, Users } from "lucide-react";
 
 ${MENU_CODE_SNIPPET}
@@ -436,7 +469,18 @@ export default function Example() {
 }`;
 
 const EXAMPLE_TIERED_CODE = `import React from "react";
-import { SgMenu } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgDockLayout,
+  SgDockZone,
+  SgMenu,
+  SgRadioGroup,
+  SgToolBar,
+  SgToolbarIconButton,
+  type SgMenuNode,
+  type SgRadioGroupOption,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import { ClipboardList, Home, LayoutGrid, Search, Settings, Users } from "lucide-react";
 
 ${MENU_CODE_SNIPPET}
@@ -454,7 +498,18 @@ export default function Example() {
 }`;
 
 const EXAMPLE_MEGA_HORIZONTAL_CODE = `import React from "react";
-import { SgMenu } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgDockLayout,
+  SgDockZone,
+  SgMenu,
+  SgRadioGroup,
+  SgToolBar,
+  SgToolbarIconButton,
+  type SgMenuNode,
+  type SgRadioGroupOption,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import { ClipboardList, Home, LayoutGrid, Search, Settings, Users } from "lucide-react";
 
 ${MEGA_MENU_CODE_SNIPPET}
@@ -473,7 +528,18 @@ export default function Example() {
 }`;
 
 const EXAMPLE_MEGA_VERTICAL_CODE = `import React from "react";
-import { SgMenu } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgDockLayout,
+  SgDockZone,
+  SgMenu,
+  SgRadioGroup,
+  SgToolBar,
+  SgToolbarIconButton,
+  type SgMenuNode,
+  type SgRadioGroupOption,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import { ClipboardList, Home, LayoutGrid, Search, Settings, Users } from "lucide-react";
 
 ${MEGA_MENU_CODE_SNIPPET}
@@ -492,7 +558,18 @@ export default function Example() {
 }`;
 
 const EXAMPLE_DOCKABLE_CODE = `import React from "react";
-import { SgDockLayout, SgDockZone, SgMenu, SgRadioGroup, SgToolBar, SgToolbarIconButton } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgDockLayout,
+  SgDockZone,
+  SgMenu,
+  SgRadioGroup,
+  SgToolBar,
+  SgToolbarIconButton,
+  type SgMenuNode,
+  type SgRadioGroupOption,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import { BarChart2, ClipboardList, CreditCard, DollarSign, Download, Home, Plus, Printer, Save, Search, Settings, ShoppingCart, Trash2, Users, Wallet } from "lucide-react";
 
 const DOCKABLE_MENU = [
@@ -664,7 +741,18 @@ export default function Example() {
 }`;
 
 const PLAYGROUND_CODE = `import * as React from "react";
-import { SgButton, SgMenu } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgDockLayout,
+  SgDockZone,
+  SgMenu,
+  SgRadioGroup,
+  SgToolBar,
+  SgToolbarIconButton,
+  type SgMenuNode,
+  type SgRadioGroupOption,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import { ClipboardList, Home, LayoutGrid, Search, Settings, Users } from "lucide-react";
 
 ${MENU_CODE_SNIPPET}

@@ -1,7 +1,8 @@
 ﻿"use client";
 
 import * as React from "react";
-import { SgButton, SgRoller3DDigit, SgPlayground } from "@seedgrid/fe-components";
+import { SgButton, SgRoller3DDigit } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../../CodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
@@ -222,6 +223,7 @@ const SIZE_CODE = `<div className="flex items-end gap-4">
 
 const PLAYGROUND_CODE = `import * as React from "react";
 import { SgButton, SgRoller3DDigit } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 const ALPHA = Array.from(" ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 

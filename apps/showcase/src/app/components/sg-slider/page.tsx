@@ -1,7 +1,8 @@
 ﻿"use client";
 
 import React from "react";
-import { SgButton, SgPlayground, SgSlider } from "@seedgrid/fe-components";
+import { SgButton, SgSlider } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -27,7 +28,8 @@ function CodeBlock(props: { code: string }) {
 }
 
 const EXAMPLE_BASIC_CODE = `import React from "react";
-import { SgSlider } from "@seedgrid/fe-components";
+import { SgButton, SgSlider } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [value, setValue] = React.useState(50);
@@ -50,6 +52,7 @@ export default function Example() {
 
 const EXAMPLE_CONTROLLED_CODE = `import React from "react";
 import { SgButton, SgSlider } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [value, setValue] = React.useState(35);
@@ -76,7 +79,8 @@ export default function Example() {
 }`;
 
 const EXAMPLE_STEP_WIDTH_CODE = `import React from "react";
-import { SgSlider } from "@seedgrid/fe-components";
+import { SgButton, SgSlider } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [value, setValue] = React.useState(25);
@@ -108,7 +112,8 @@ export default function Example() {
 }`;
 
 const EXAMPLE_ACCESSIBILITY_CODE = `import React from "react";
-import { SgSlider } from "@seedgrid/fe-components";
+import { SgButton, SgSlider } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [value, setValue] = React.useState(40);
@@ -142,7 +147,8 @@ export default function Example() {
 }`;
 
 const EXAMPLE_INPUT_PROPS_CODE = `import React from "react";
-import { SgSlider } from "@seedgrid/fe-components";
+import { SgButton, SgSlider } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [value, setValue] = React.useState(70);
@@ -177,6 +183,7 @@ export default function Example() {
 
 const PLAYGROUND_CODE = `import * as React from "react";
 import { SgButton, SgSlider } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
   const [min, setMin] = React.useState(0);

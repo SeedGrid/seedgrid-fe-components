@@ -1,13 +1,8 @@
 "use client";
 
 import React from "react";
-import {
-  SgEnvironmentProvider,
-  buildSgPersistenceKey,
-  useSgEnvironment,
-  SgInputText,
-  SgPlayground
-} from "@seedgrid/fe-components";
+import { SgEnvironmentProvider, buildSgPersistenceKey, useSgEnvironment, SgInputText } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../../CodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
@@ -33,12 +28,8 @@ function CodeBlock(props: { code: string }) {
 }
 
 const ENVIRONMENT_PLAYGROUND_APP_FILE = `import * as React from "react";
-import {
-  SgEnvironmentProvider,
-  SgInputText,
-  buildSgPersistenceKey,
-  useSgEnvironment
-} from "@seedgrid/fe-components";
+import { SgEnvironmentProvider, buildSgPersistenceKey, useSgEnvironment, SgInputText } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 function EnvInfo({ baseKey }: { baseKey: string }) {
   const env = useSgEnvironment();
@@ -153,7 +144,8 @@ export default function SgEnvironmentProviderPage() {
         </div>
         <CodeBlock
           code={`import React from "react";
-import { buildSgPersistenceKey, useSgEnvironment } from "@seedgrid/fe-components";
+import { SgEnvironmentProvider, buildSgPersistenceKey, useSgEnvironment, SgInputText } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 function Example() {
   const env = useSgEnvironment();
@@ -186,11 +178,8 @@ function Example() {
         </div>
         <CodeBlock
           code={`import React from "react";
-import {
-  SgEnvironmentProvider,
-  buildSgPersistenceKey,
-  useSgEnvironment
-} from "@seedgrid/fe-components";
+import { SgEnvironmentProvider, buildSgPersistenceKey, useSgEnvironment, SgInputText } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 function EnvInfo() {
   const env = useSgEnvironment();
@@ -221,12 +210,8 @@ export default function Example() {
         <div className="w-full">
           <CodeBlock
             code={`import React from "react";
-import {
-  SgEnvironmentProvider,
-  createApiPersistenceStrategy,
-  createCompositePersistenceStrategy,
-  createLocalStorageStrategy
-} from "@seedgrid/fe-components";
+import { SgEnvironmentProvider, buildSgPersistenceKey, useSgEnvironment, SgInputText } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 const api = createApiPersistenceStrategy({
   baseUrl: "https://api.seedgrid.com",
@@ -265,12 +250,8 @@ export default function Example() {
         <div className="w-full">
           <CodeBlock
             code={`import React from "react";
-import {
-  SgEnvironmentProvider,
-  createApiPersistenceStrategy,
-  createCompositePersistenceStrategy,
-  createLocalStorageStrategy
-} from "@seedgrid/fe-components";
+import { SgEnvironmentProvider, buildSgPersistenceKey, useSgEnvironment, SgInputText } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 const api = createApiPersistenceStrategy({
   baseUrl: "https://api.seedgrid.com",

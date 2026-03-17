@@ -1,7 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { SgPlayground, SgSkeleton } from "@seedgrid/fe-components";
+import { SgSkeleton } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -23,6 +24,7 @@ function Section(props: { title: string; description?: string; children: React.R
 
 const SHAPES_CODE = `import * as React from "react";
 import { SgSkeleton } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   return (
@@ -38,6 +40,7 @@ export default function Example() {
 
 const WIDTHS_CODE = `import * as React from "react";
 import { SgSkeleton } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   return (
@@ -52,6 +55,7 @@ export default function Example() {
 
 const ANIMATION_CODE = `import * as React from "react";
 import { SgSkeleton } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   return (
@@ -74,6 +78,7 @@ export default function Example() {
 
 const CARD_CODE = `import * as React from "react";
 import { SgSkeleton } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   return (
@@ -90,6 +95,7 @@ export default function Example() {
 
 const LIST_TABLE_CODE = `import * as React from "react";
 import { SgSkeleton } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   return (

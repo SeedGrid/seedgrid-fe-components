@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { SgBadge, SgPlayground } from "@seedgrid/fe-components";
+import { SgBadge } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -55,7 +56,8 @@ function ManualRemoveExample() {
 }
 
 const BADGE_PLAYGROUND_CODE = `import * as React from "react";
-import { SgBadge, SgButton } from "@seedgrid/fe-components";
+import { SgBadge } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
   const [severity, setSeverity] = React.useState<"primary" | "secondary" | "success" | "warning" | "danger" | "info" | "neutral">("primary");
@@ -131,6 +133,7 @@ export default function SgBadgePage() {
         <CodeBlock
           code={`import React from "react";
 import { SgBadge } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   return (
@@ -155,6 +158,7 @@ export default function Example() {
         <CodeBlock
           code={`import React from "react";
 import { SgBadge } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   return (
@@ -180,6 +184,7 @@ export default function Example() {
         <CodeBlock
           code={`import React from "react";
 import { SgBadge } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   return (
@@ -205,6 +210,7 @@ export default function Example() {
         <CodeBlock
           code={`import React from "react";
 import { SgBadge } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   return (
@@ -228,6 +234,7 @@ export default function Example() {
         <CodeBlock
           code={`import React from "react";
 import { SgBadge } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [visible, setVisible] = React.useState(true);

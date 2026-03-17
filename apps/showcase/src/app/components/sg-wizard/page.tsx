@@ -2,7 +2,14 @@
 
 import React from "react";
 import { MapPin, Tag, Send } from "lucide-react";
-import { SgInputEmail, SgInputPhone, SgInputText, SgPlayground, SgWizard, SgWizardPage } from "@seedgrid/fe-components";
+import {
+  SgInputEmail,
+  SgInputPhone,
+  SgInputText,
+  SgWizard,
+  SgWizardPage,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -28,7 +35,14 @@ function CodeBlock(props: { code: string }) {
 }
 
 const WIZARD_PLAYGROUND_APP_FILE = `import * as React from "react";
-import { SgInputEmail, SgInputPhone, SgInputText, SgWizard, SgWizardPage } from "@seedgrid/fe-components";
+import {
+  SgInputEmail,
+  SgInputPhone,
+  SgInputText,
+  SgWizard,
+  SgWizardPage,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
   const [payload, setPayload] = React.useState<Record<string, string> | null>(null);
@@ -235,7 +249,14 @@ export default function SgWizardPageDemo() {
           </div>
         ) : null}
         <CodeBlock code={`import React from "react";
-import { SgInputText, SgInputEmail, SgInputPhone, SgWizard, SgWizardPage } from "@seedgrid/fe-components";
+import {
+  SgInputEmail,
+  SgInputPhone,
+  SgInputText,
+  SgWizard,
+  SgWizardPage,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 const [submitted, setSubmitted] = React.useState<Record<string, string> | null>(null);
 const [formValues, setFormValues] = React.useState({
@@ -333,7 +354,14 @@ const [formValues, setFormValues] = React.useState({
           </SgWizardPage>
         </SgWizard>
         <CodeBlock code={`import { MapPin, Tag, Send } from "lucide-react";
-import { SgWizard, SgWizardPage } from "@seedgrid/fe-components";
+import {
+  SgInputEmail,
+  SgInputPhone,
+  SgInputText,
+  SgWizard,
+  SgWizardPage,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 <SgWizard
   stepper="icons"

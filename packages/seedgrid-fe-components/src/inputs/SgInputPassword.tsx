@@ -388,46 +388,57 @@ export function SgInputPassword(props: Readonly<SgInputPasswordProps>) {
           display: none;
         }
       `}</style>
-      <SgInputText
-        {...rest}
-        type={isHidden ? "password" : "text"}
-        maxLength={maxLength ?? 15}
-        error={error ?? internalError ?? undefined}
-        onClear={() => {
-          setInternalError(null);
-          onValidation?.(null);
-          onClear?.();
-        }}
-        inputProps={{ ...mergedInputProps, ref: setRef }}
-        iconButtons={[toggleIcon, ...(generateIcon ? [generateIcon] : []), ...(props.iconButtons ?? [])]}
-      />
-      <div className="mt-2">
-        {showStrengthBar ? (
-          <div className="mb-2 flex h-1 w-full gap-1">
-            {Array.from({ length: 5 }).map((_, index) => (
-              <span
-                key={index}
-                className={`h-full flex-1 rounded-full transition-all duration-300 ease-out ${
-                  index < Math.min(5, strengthScore) ? getStrengthColor(strengthScore) : "bg-border"
-                }`}
-              />
-            ))}
-          </div>
-        ) : null}
-        {(() => {
-          const unique = Array.from(
-            new Set(
-              unmetRequirements.filter((req) => req !== resolvedCommonPasswordMessage && req !== internalError)
-            )
-          );
-          return unique.length > 0 ? (
-            <ul className="space-y-1 text-xs text-destructive">
-              {unique.map((req) => (
-                <li key={req}>{req}</li>
+      <div style={{ width: rest.width ?? "100%" }}>
+        <SgInputText
+          {...rest}
+          type={isHidden ? "password" : "text"}
+          maxLength={maxLength ?? 15}
+          error={error ?? internalError ?? undefined}
+          onClear={() => {
+            setInternalError(null);
+            onValidation?.(null);
+            onClear?.();
+          }}
+          inputProps={{ ...mergedInputProps, ref: setRef }}
+          iconButtons={[
+            toggleIcon,
+            ...(generateIcon ? [generateIcon] : []),
+            ...(props.iconButtons ?? [])
+          ]}
+        />
+        <div className="mt-2">
+          {showStrengthBar ? (
+            <div className="mb-2 flex h-1 w-full gap-1">
+              {Array.from({ length: 5 }).map((_, index) => (
+                <span
+                  key={index}
+                  className={`h-full flex-1 rounded-full transition-all duration-300 ease-out ${
+                    index < Math.min(5, strengthScore)
+                      ? getStrengthColor(strengthScore)
+                      : "bg-border"
+                  }`}
+                />
               ))}
-            </ul>
-          ) : null;
-        })()}
+            </div>
+          ) : null}
+          {(() => {
+            const unique = Array.from(
+              new Set(
+                unmetRequirements.filter(
+                  (req) =>
+                    req !== resolvedCommonPasswordMessage && req !== internalError
+                )
+              )
+            );
+            return unique.length > 0 ? (
+              <ul className="space-y-1 text-xs text-destructive">
+                {unique.map((req) => (
+                  <li key={req}>{req}</li>
+                ))}
+              </ul>
+            ) : null;
+          })()}
+        </div>
       </div>
     </>
   );

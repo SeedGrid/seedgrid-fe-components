@@ -2,7 +2,8 @@
 
 import React from "react";
 import Link from "next/link";
-import { SgButton, SgGrid, SgInputTextArea, SgPlayground } from "@seedgrid/fe-components";
+import { SgButton, SgGrid, SgInputTextArea } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import { t, useShowcaseI18n } from "../../../i18n";
@@ -26,6 +27,7 @@ function CodeBlock(props: { code: string }) {
 
 const INPUT_TEXTAREA_PLAYGROUND_CODE = `import * as React from "react";
 import { SgButton, SgGrid, SgInputTextArea } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
   const [value, setValue] = React.useState("Texto inicial");
@@ -412,6 +414,7 @@ export default function SgInputTextAreaPage() {
           </ul>
           <CodeBlock code={`import React from "react";
 import { SgButton, SgGrid, SgInputTextArea } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
   const [controlledValue, setControlledValue] = React.useState("${t(i18n, "showcase.component.inputTextArea.defaults.controlled").replace(/\n/g, "\\n")}");

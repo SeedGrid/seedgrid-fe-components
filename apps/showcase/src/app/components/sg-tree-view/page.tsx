@@ -3,12 +3,12 @@
 import React from "react";
 import {
   SgCard,
-  SgPlayground,
   SgTreeView,
   sgTreeFromJsonWithChecked,
   type SgTreeNode,
-  type SgTreeViewRef
+  type SgTreeViewRef,
 } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import { Shield, Users, FileText, BarChart3 } from "lucide-react";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
@@ -88,7 +88,14 @@ const JSON_DATA = [
 ];
 
 const TREE_VIEW_PLAYGROUND_CODE = `import * as React from "react";
-import { SgTreeView, type SgTreeNode } from "@seedgrid/fe-components";
+import {
+  SgCard,
+  SgTreeView,
+  sgTreeFromJsonWithChecked,
+  type SgTreeNode,
+  type SgTreeViewRef,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 const nodes: SgTreeNode[] = [
   {
@@ -224,7 +231,14 @@ export default function SgTreeViewPage() {
         </div>
         <CodeBlock
           code={`import React from "react";
-import { SgTreeView } from "@seedgrid/fe-components";
+import {
+  SgCard,
+  SgTreeView,
+  sgTreeFromJsonWithChecked,
+  type SgTreeNode,
+  type SgTreeViewRef,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import { Shield, Users, FileText, BarChart3 } from "lucide-react";
 
 const nodes = [
@@ -337,7 +351,14 @@ export default function Example() {
         </div>
         <CodeBlock
           code={`import React from "react";
-import { SgTreeView } from "@seedgrid/fe-components";
+import {
+  SgCard,
+  SgTreeView,
+  sgTreeFromJsonWithChecked,
+  type SgTreeNode,
+  type SgTreeViewRef,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import { Shield, Users, FileText, BarChart3 } from "lucide-react";
 
 const nodes = [
@@ -423,7 +444,14 @@ export default function Example() {
         </SgCard>
         <CodeBlock
           code={`import React from "react";
-import { SgTreeView } from "@seedgrid/fe-components";
+import {
+  SgCard,
+  SgTreeView,
+  sgTreeFromJsonWithChecked,
+  type SgTreeNode,
+  type SgTreeViewRef,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 const nodes = [
   {
@@ -482,7 +510,14 @@ export default function Example() {
         </SgCard>
         <CodeBlock
           code={`import React from "react";
-import { SgTreeView, sgTreeFromJsonWithChecked } from "@seedgrid/fe-components";
+import {
+  SgCard,
+  SgTreeView,
+  sgTreeFromJsonWithChecked,
+  type SgTreeNode,
+  type SgTreeViewRef,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 const json = [
   {

@@ -1,7 +1,8 @@
 ﻿"use client";
 
 import React from "react";
-import { SgScreen, SgMainPanel, SgPanel, SgPlayground, SgStack } from "@seedgrid/fe-components";
+import { SgScreen, SgMainPanel, SgPanel, SgStack } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -32,6 +33,7 @@ const fullExampleCode = `"use client";
 
 import React from "react";
 import { SgScreen, SgMainPanel, SgPanel, SgStack } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function ExampleSgScreenPage() {
   return (
@@ -85,7 +87,8 @@ export default function ExampleSgScreenPage() {
 }`;
 
 const SCREEN_PLAYGROUND_CODE = `import * as React from "react";
-import { SgMainPanel, SgPanel, SgScreen, SgStack } from "@seedgrid/fe-components";
+import { SgScreen, SgMainPanel, SgPanel, SgStack } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
   return (

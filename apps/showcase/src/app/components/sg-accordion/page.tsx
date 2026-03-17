@@ -2,7 +2,8 @@
 
 import * as React from "react";
 import { Mail, ShieldCheck, TriangleAlert } from "lucide-react";
-import { SgAccordion, SgButton, SgPlayground, type SgAccordionItem } from "@seedgrid/fe-components";
+import { SgAccordion, SgButton, type SgAccordionItem } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import CodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -257,7 +258,8 @@ const COLOR_EXAMPLE_ITEMS: SgAccordionItem[] = [
 ];
 
 const BASIC_CODE = `import * as React from "react";
-import { SgAccordion, type SgAccordionItem } from "@seedgrid/fe-components";
+import { SgAccordion, SgButton, type SgAccordionItem } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 const items: SgAccordionItem[] = [
   {
@@ -298,6 +300,7 @@ export default function Example() {
 
 const MULTIPLE_CODE = `import * as React from "react";
 import { SgAccordion, SgButton, type SgAccordionItem } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 const items: SgAccordionItem[] = [
   { id: "personal", title: "Dados pessoais", content: <p className="text-sm">Conteudo 1</p> },
@@ -328,7 +331,8 @@ export default function Example() {
 }`;
 
 const HORIZONTAL_CODE = `import * as React from "react";
-import { SgAccordion, type SgAccordionItem } from "@seedgrid/fe-components";
+import { SgAccordion, SgButton, type SgAccordionItem } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 const items: SgAccordionItem[] = [
   {
@@ -362,6 +366,7 @@ export default function Example() {
 
 const CONTROLLED_CODE = `import * as React from "react";
 import { SgAccordion, SgButton, type SgAccordionItem } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 const items: SgAccordionItem[] = [
   { id: "personal", title: "Dados pessoais", content: <p className="text-sm">Conteudo 1</p> },
@@ -391,7 +396,8 @@ export default function Example() {
 
 const CUSTOM_CODE = `import * as React from "react";
 import { Mail, ShieldCheck, TriangleAlert } from "lucide-react";
-import { SgAccordion, type SgAccordionItem } from "@seedgrid/fe-components";
+import { SgAccordion, SgButton, type SgAccordionItem } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 const items: SgAccordionItem[] = [
   {
@@ -428,7 +434,8 @@ export default function Example() {
 }`;
 
 const COLOR_CUSTOMIZATION_CODE = `import * as React from "react";
-import { SgAccordion, type SgAccordionItem } from "@seedgrid/fe-components";
+import { SgAccordion, SgButton, type SgAccordionItem } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 const items: SgAccordionItem[] = [
   {
@@ -465,7 +472,8 @@ export default function Example() {
 }`;
 
 const PLAYGROUND_APP_FILE = `import * as React from "react";
-import { SgAccordion } from "@seedgrid/fe-components";
+import { SgAccordion, SgButton, type SgAccordionItem } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
   const [orientation, setOrientation] = React.useState<"vertical" | "horizontal">("vertical");
