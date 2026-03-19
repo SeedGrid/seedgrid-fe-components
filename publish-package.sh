@@ -152,6 +152,11 @@ if [[ -n "${NPM_OTP:-}" ]]; then
   PUBLISH_ARGS+=(--otp "${NPM_OTP}")
 fi
 
+if [[ "${PKG_VERSION}" == *-* ]]; then
+  echo "==> Detected prerelease version, publishing with --tag next"
+  PUBLISH_ARGS+=(--tag next)
+fi
+
 (
   cd "${ABS_PKG_DIR}"
   "${NPM_BIN}" publish "${PUBLISH_ARGS[@]}"
