@@ -13,7 +13,7 @@ jobs:
   publish-fe-packages:
     name: Publish FE Packages
     runs-on: ubuntu-latest
-    if: github.ref_name == 'main'
+    if: github.ref_name == 'main' || github.ref_name == 'develop'
     environment: npm
     permissions:
       contents: read
@@ -56,12 +56,29 @@ jobs:
 
           echo "base=${BASE}" >> "$GITHUB_OUTPUT"
 
+      - name: Define publish mode
+        id: mode
+        run: |
+          if [[ "${GITHUB_REF_NAME}" == "develop" ]]; then
+            echo "is_rc=true" >> "$GITHUB_OUTPUT"
+            echo "tag=next" >> "$GITHUB_OUTPUT"
+          else
+            echo "is_rc=false" >> "$GITHUB_OUTPUT"
+            echo "tag=latest" >> "$GITHUB_OUTPUT"
+          fi
+
+      # ============================================================
+      # FUNÇÃO INLINE PRA GERAR VERSION (com rc)
+      # ============================================================
+      - name: Function - resolve version
+        id: version_fn
+        run: echo "helper"
+
       # ------------------------------------------------------------
       # fe-core
       # ------------------------------------------------------------
       - name: Resolve version for fe-core
         id: core_version
-        shell: bash
         run: |
           PKG_DIR="packages/seedgrid-fe-core"
           NAME=$(node -p "require('./${PKG_DIR}/package.json').name")
@@ -70,11 +87,14 @@ jobs:
           N=1
 
           while npm view "${NAME}@${VERSION}" version >/dev/null 2>&1; do
-            VERSION="${BASE}-${N}"
+            if [[ "${{ steps.mode.outputs.is_rc }}" == "true" ]]; then
+              VERSION="${BASE}-rc.${N}"
+            else
+              VERSION="${BASE}-${N}"
+            fi
             N=$((N + 1))
           done
 
-          echo "Resolved ${NAME}@${VERSION}"
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
 
       - name: Build fe-core
@@ -83,8 +103,10 @@ jobs:
       - name: Publish fe-core
         env:
           PUBLISH_VERSION: ${{ steps.core_version.outputs.version }}
+          NPM_TAG: ${{ steps.mode.outputs.tag }}
         run: |
           npm config set registry https://registry.npmjs.org/
+          export NPM_TAG=${NPM_TAG}
           ./publish-core.sh none
 
       # ------------------------------------------------------------
@@ -92,7 +114,6 @@ jobs:
       # ------------------------------------------------------------
       - name: Resolve version for fe-commons
         id: commons_version
-        shell: bash
         run: |
           PKG_DIR="packages/seedgrid-fe-commons"
           NAME=$(node -p "require('./${PKG_DIR}/package.json').name")
@@ -101,11 +122,14 @@ jobs:
           N=1
 
           while npm view "${NAME}@${VERSION}" version >/dev/null 2>&1; do
-            VERSION="${BASE}-${N}"
+            if [[ "${{ steps.mode.outputs.is_rc }}" == "true" ]]; then
+              VERSION="${BASE}-rc.${N}"
+            else
+              VERSION="${BASE}-${N}"
+            fi
             N=$((N + 1))
           done
 
-          echo "Resolved ${NAME}@${VERSION}"
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
 
       - name: Build fe-commons
@@ -114,8 +138,10 @@ jobs:
       - name: Publish fe-commons
         env:
           PUBLISH_VERSION: ${{ steps.commons_version.outputs.version }}
+          NPM_TAG: ${{ steps.mode.outputs.tag }}
         run: |
           npm config set registry https://registry.npmjs.org/
+          export NPM_TAG=${NPM_TAG}
           ./publish-commons.sh none
 
       # ------------------------------------------------------------
@@ -123,7 +149,6 @@ jobs:
       # ------------------------------------------------------------
       - name: Resolve version for fe-theme
         id: theme_version
-        shell: bash
         run: |
           PKG_DIR="packages/seedgrid-fe-theme"
           NAME=$(node -p "require('./${PKG_DIR}/package.json').name")
@@ -132,11 +157,14 @@ jobs:
           N=1
 
           while npm view "${NAME}@${VERSION}" version >/dev/null 2>&1; do
-            VERSION="${BASE}-${N}"
+            if [[ "${{ steps.mode.outputs.is_rc }}" == "true" ]]; then
+              VERSION="${BASE}-rc.${N}"
+            else
+              VERSION="${BASE}-${N}"
+            fi
             N=$((N + 1))
           done
 
-          echo "Resolved ${NAME}@${VERSION}"
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
 
       - name: Build fe-theme
@@ -145,8 +173,10 @@ jobs:
       - name: Publish fe-theme
         env:
           PUBLISH_VERSION: ${{ steps.theme_version.outputs.version }}
+          NPM_TAG: ${{ steps.mode.outputs.tag }}
         run: |
           npm config set registry https://registry.npmjs.org/
+          export NPM_TAG=${NPM_TAG}
           ./publish-theme.sh none
 
       # ------------------------------------------------------------
@@ -154,7 +184,6 @@ jobs:
       # ------------------------------------------------------------
       - name: Resolve version for fe-components
         id: components_version
-        shell: bash
         run: |
           PKG_DIR="packages/seedgrid-fe-components"
           NAME=$(node -p "require('./${PKG_DIR}/package.json').name")
@@ -163,11 +192,14 @@ jobs:
           N=1
 
           while npm view "${NAME}@${VERSION}" version >/dev/null 2>&1; do
-            VERSION="${BASE}-${N}"
+            if [[ "${{ steps.mode.outputs.is_rc }}" == "true" ]]; then
+              VERSION="${BASE}-rc.${N}"
+            else
+              VERSION="${BASE}-${N}"
+            fi
             N=$((N + 1))
           done
 
-          echo "Resolved ${NAME}@${VERSION}"
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
 
       - name: Build fe-components
@@ -176,8 +208,10 @@ jobs:
       - name: Publish fe-components
         env:
           PUBLISH_VERSION: ${{ steps.components_version.outputs.version }}
+          NPM_TAG: ${{ steps.mode.outputs.tag }}
         run: |
           npm config set registry https://registry.npmjs.org/
+          export NPM_TAG=${NPM_TAG}
           ./publish-components.sh none
 
       # ------------------------------------------------------------
@@ -185,7 +219,6 @@ jobs:
       # ------------------------------------------------------------
       - name: Resolve version for fe-playground
         id: playground_version
-        shell: bash
         run: |
           PKG_DIR="packages/seedgrid-fe-playground"
           NAME=$(node -p "require('./${PKG_DIR}/package.json').name")
@@ -194,11 +227,14 @@ jobs:
           N=1
 
           while npm view "${NAME}@${VERSION}" version >/dev/null 2>&1; do
-            VERSION="${BASE}-${N}"
+            if [[ "${{ steps.mode.outputs.is_rc }}" == "true" ]]; then
+              VERSION="${BASE}-rc.${N}"
+            else
+              VERSION="${BASE}-${N}"
+            fi
             N=$((N + 1))
           done
 
-          echo "Resolved ${NAME}@${VERSION}"
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
 
       - name: Build fe-playground
@@ -207,89 +243,8 @@ jobs:
       - name: Publish fe-playground
         env:
           PUBLISH_VERSION: ${{ steps.playground_version.outputs.version }}
+          NPM_TAG: ${{ steps.mode.outputs.tag }}
         run: |
           npm config set registry https://registry.npmjs.org/
+          export NPM_TAG=${NPM_TAG}
           ./publish-playground.sh none
-
-  build-and-deploy-showcase:
-    name: Build & Push Showcase Docker Image + Deploy EasyPanel
-    runs-on: ubuntu-latest
-    needs:
-      - publish-fe-packages
-    if: always()
-
-    permissions:
-      contents: read
-      packages: write
-
-    steps:
-      - name: Checkout source
-        uses: actions/checkout@v4
-
-      - name: Define variables by branch
-        id: vars
-        shell: bash
-        run: |
-          YEAR=$(date +%Y)
-          MONTH=$((10#$(date +%m)))
-          DAY=$((10#$(date +%d)))
-          BASE="${YEAR}.${MONTH}.${DAY}"
-
-          if [[ "${GITHUB_REF_NAME}" == "main" ]]; then
-            VERSION="${{ needs.publish-fe-packages.outputs.components_calver }}"
-            DEPLOY_URL="${{ secrets.EASYPANEL_DEPLOY_URL_PRD }}"
-            IMAGE="ghcr.io/seedgrid/seedgrid-showcase"
-          else
-            VERSION="${BASE}-RC-${GITHUB_SHA::7}"
-            DEPLOY_URL="${{ secrets.EASYPANEL_DEPLOY_URL_DEV }}"
-            IMAGE="ghcr.io/seedgrid/seedgrid-showcase-dev"
-          fi
-
-          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
-          echo "deploy_url=${DEPLOY_URL}" >> "$GITHUB_OUTPUT"
-          echo "image=${IMAGE}" >> "$GITHUB_OUTPUT"
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Log in to GHCR
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Extract Docker metadata
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: ${{ steps.vars.outputs.image }}
-          tags: |
-            type=raw,value=latest
-            type=raw,value=${{ steps.vars.outputs.version }}
-            type=sha
-
-      - name: Build and push showcase image
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          file: apps/showcase/dockerfile
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-
-      - name: Deploy on EasyPanel
-        shell: bash
-        env:
-          EASYPANEL_DEPLOY_URL: ${{ steps.vars.outputs.deploy_url }}
-          VERSION: ${{ steps.vars.outputs.version }}
-        run: |
-          if [[ -z "${EASYPANEL_DEPLOY_URL}" ]]; then
-            echo "::error::Missing EasyPanel deploy URL"
-            exit 1
-          fi
-
-          echo "Triggering EasyPanel deploy for version: ${VERSION}"
-          curl -fsSL "${EASYPANEL_DEPLOY_URL}"
