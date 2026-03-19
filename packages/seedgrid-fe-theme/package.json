@@ -4,6 +4,14 @@
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SeedGrid/seedgrid-fe-components"
+  },
+  "homepage": "https://github.com/SeedGrid/seedgrid-fe-components",
+  "bugs": {
+    "url": "https://github.com/SeedGrid/seedgrid-fe-components/issues"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
