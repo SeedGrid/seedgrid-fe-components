@@ -73,8 +73,6 @@ jobs:
 
       - name: Publish components package (OIDC)
         env:
-          NODE_AUTH_TOKEN: ""
-          NPM_TOKEN: ""
           PUBLISH_VERSION: ${{ steps.calver.outputs.version }}
         run: |
           npm config set registry https://registry.npmjs.org/
@@ -147,8 +145,6 @@ jobs:
 
       - name: Publish ${{ matrix.pkg.id }} package (OIDC)
         env:
-          NODE_AUTH_TOKEN: ""
-          NPM_TOKEN: ""
           PUBLISH_VERSION: ${{ steps.calver.outputs.version }}
         run: |
           npm config set registry https://registry.npmjs.org/
