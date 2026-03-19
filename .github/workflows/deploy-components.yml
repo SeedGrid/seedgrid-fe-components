@@ -10,7 +10,6 @@ permissions:
   id-token: write
 
 jobs:
-
   publish-components:
     name: Publish NPM Package (OIDC)
     runs-on: ubuntu-latest
@@ -60,7 +59,11 @@ jobs:
           PKG_DIR="packages/seedgrid-fe-components"
           NAME=$(node -p "require('./${PKG_DIR}/package.json').name")
 
-          BASE=$(date +"%Y.%m.%d")
+          YEAR=$(date +%Y)
+          MONTH=$((10#$(date +%m)))
+          DAY=$((10#$(date +%d)))
+          BASE="${YEAR}.${MONTH}.${DAY}"
+
           VERSION="$BASE"
           N=1
 
@@ -69,6 +72,7 @@ jobs:
             N=$((N + 1))
           done
 
+          echo "Resolved ${NAME}@${VERSION}"
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
 
       - name: Publish components package (OIDC)
@@ -131,7 +135,11 @@ jobs:
           PKG_DIR="${{ matrix.pkg.dir }}"
           NAME=$(node -p "require('./${PKG_DIR}/package.json').name")
 
-          BASE=$(date +"%Y.%m.%d")
+          YEAR=$(date +%Y)
+          MONTH=$((10#$(date +%m)))
+          DAY=$((10#$(date +%d)))
+          BASE="${YEAR}.${MONTH}.${DAY}"
+
           VERSION="$BASE"
           N=1
 
@@ -170,7 +178,10 @@ jobs:
         id: vars
         shell: bash
         run: |
-          BASE=$(date +"%Y.%m.%d")
+          YEAR=$(date +%Y)
+          MONTH=$((10#$(date +%m)))
+          DAY=$((10#$(date +%d)))
+          BASE="${YEAR}.${MONTH}.${DAY}"
 
           if [[ "${GITHUB_REF_NAME}" == "main" ]]; then
             VERSION="${{ needs.publish-components.outputs.calver }}"
