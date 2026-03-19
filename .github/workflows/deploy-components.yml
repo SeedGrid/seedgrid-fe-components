@@ -69,23 +69,97 @@ jobs:
             N=$((N + 1))
           done
 
-          echo "Publishing ${NAME}@${VERSION}"
-          npm --prefix "${PKG_DIR}" version "${VERSION}" --no-git-tag-version
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
 
       - name: Publish components package (OIDC)
         env:
           NODE_AUTH_TOKEN: ""
           NPM_TOKEN: ""
+          PUBLISH_VERSION: ${{ steps.calver.outputs.version }}
         run: |
-          cd packages/seedgrid-fe-components
           npm config set registry https://registry.npmjs.org/
-          npm publish --access public --provenance --tag latest --loglevel verbose
+          ./publish-components.sh none
+
+  publish-fe-packages:
+    name: Publish FE Packages
+    runs-on: ubuntu-latest
+    if: github.ref_name == 'main'
+    environment: npm
+    permissions:
+      contents: read
+      id-token: write
+    strategy:
+      matrix:
+        pkg:
+          - id: commons
+            dir: packages/seedgrid-fe-commons
+            script: publish-commons.sh
+          - id: core
+            dir: packages/seedgrid-fe-core
+            script: publish-core.sh
+          - id: playground
+            dir: packages/seedgrid-fe-playground
+            script: publish-playground.sh
+          - id: theme
+            dir: packages/seedgrid-fe-theme
+            script: publish-theme.sh
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+
+      - name: Force npm v11 (OIDC friendly)
+        run: |
+          npm i -g npm@^11
+          npm -v
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Resolve CalVer version for ${{ matrix.pkg.id }}
+        id: calver
+        shell: bash
+        run: |
+          PKG_DIR="${{ matrix.pkg.dir }}"
+          NAME=$(node -p "require('./${PKG_DIR}/package.json').name")
+
+          BASE=$(date +"%Y.%m.%d")
+          VERSION="$BASE"
+          N=1
+
+          while npm view "${NAME}@${VERSION}" version >/dev/null 2>&1; do
+            VERSION="${BASE}-${N}"
+            N=$((N + 1))
+          done
+
+          echo "Resolved ${NAME}@${VERSION}"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+
+      - name: Publish ${{ matrix.pkg.id }} package (OIDC)
+        env:
+          NODE_AUTH_TOKEN: ""
+          NPM_TOKEN: ""
+          PUBLISH_VERSION: ${{ steps.calver.outputs.version }}
+        run: |
+          npm config set registry https://registry.npmjs.org/
+          ./${{ matrix.pkg.script }} none
 
   build-and-deploy-showcase:
     name: Build & Push Showcase Docker Image + Deploy EasyPanel
     runs-on: ubuntu-latest
-    needs: publish-components
+    needs:
+      - publish-components
+      - publish-fe-packages
     if: always()
 
     permissions:
