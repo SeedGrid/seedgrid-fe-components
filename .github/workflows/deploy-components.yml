@@ -10,73 +10,6 @@ permissions:
   id-token: write
 
 jobs:
-  publish-components:
-    name: Publish NPM Package (OIDC)
-    runs-on: ubuntu-latest
-    if: github.ref_name == 'main'
-    environment: npm
-    permissions:
-      contents: read
-      id-token: write
-
-    outputs:
-      calver: ${{ steps.calver.outputs.version }}
-
-    steps:
-      - name: Checkout source
-        uses: actions/checkout@v4
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: pnpm
-          registry-url: https://registry.npmjs.org
-
-      - name: Force npm v11 (OIDC friendly)
-        run: |
-          npm i -g npm@^11
-          npm -v
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Build components package
-        run: pnpm -C packages/seedgrid-fe-components build
-
-      - name: Resolve CalVer version
-        id: calver
-        shell: bash
-        run: |
-          PKG_DIR="packages/seedgrid-fe-components"
-          NAME=$(node -p "require('./${PKG_DIR}/package.json').name")
-
-          YEAR=$(date +%Y)
-          MONTH=$((10#$(date +%m)))
-          DAY=$((10#$(date +%d)))
-          BASE="${YEAR}.${MONTH}.${DAY}"
-
-          VERSION="$BASE"
-          N=1
-
-          while npm view "${NAME}@${VERSION}" version >/dev/null 2>&1; do
-            VERSION="${BASE}-${N}"
-            N=$((N + 1))
-          done
-
-          echo "Resolved ${NAME}@${VERSION}"
-          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
-
-      - name: Publish components package (OIDC)
-        env:
-          PUBLISH_VERSION: ${{ steps.calver.outputs.version }}
-        run: |
-          npm config set registry https://registry.npmjs.org/
-          ./publish-components.sh none
-
   publish-fe-packages:
     name: Publish FE Packages
     runs-on: ubuntu-latest
@@ -86,6 +19,9 @@ jobs:
       contents: read
       id-token: write
 
+    outputs:
+      components_calver: ${{ steps.components_version.outputs.version }}
+
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
@@ -96,7 +32,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: pnpm
           registry-url: https://registry.npmjs.org
 
@@ -104,11 +40,12 @@ jobs:
         run: |
           npm i -g npm@^11
           npm -v
+          node -v
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Resolve shared CalVer version
+      - name: Resolve shared CalVer base
         id: calver
         shell: bash
         run: |
@@ -119,6 +56,9 @@ jobs:
 
           echo "base=${BASE}" >> "$GITHUB_OUTPUT"
 
+      # ------------------------------------------------------------
+      # fe-core
+      # ------------------------------------------------------------
       - name: Resolve version for fe-core
         id: core_version
         shell: bash
@@ -147,6 +87,9 @@ jobs:
           npm config set registry https://registry.npmjs.org/
           ./publish-core.sh none
 
+      # ------------------------------------------------------------
+      # fe-commons
+      # ------------------------------------------------------------
       - name: Resolve version for fe-commons
         id: commons_version
         shell: bash
@@ -175,6 +118,9 @@ jobs:
           npm config set registry https://registry.npmjs.org/
           ./publish-commons.sh none
 
+      # ------------------------------------------------------------
+      # fe-theme
+      # ------------------------------------------------------------
       - name: Resolve version for fe-theme
         id: theme_version
         shell: bash
@@ -203,6 +149,40 @@ jobs:
           npm config set registry https://registry.npmjs.org/
           ./publish-theme.sh none
 
+      # ------------------------------------------------------------
+      # fe-components
+      # ------------------------------------------------------------
+      - name: Resolve version for fe-components
+        id: components_version
+        shell: bash
+        run: |
+          PKG_DIR="packages/seedgrid-fe-components"
+          NAME=$(node -p "require('./${PKG_DIR}/package.json').name")
+          BASE="${{ steps.calver.outputs.base }}"
+          VERSION="$BASE"
+          N=1
+
+          while npm view "${NAME}@${VERSION}" version >/dev/null 2>&1; do
+            VERSION="${BASE}-${N}"
+            N=$((N + 1))
+          done
+
+          echo "Resolved ${NAME}@${VERSION}"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+
+      - name: Build fe-components
+        run: pnpm -C packages/seedgrid-fe-components build
+
+      - name: Publish fe-components
+        env:
+          PUBLISH_VERSION: ${{ steps.components_version.outputs.version }}
+        run: |
+          npm config set registry https://registry.npmjs.org/
+          ./publish-components.sh none
+
+      # ------------------------------------------------------------
+      # fe-playground
+      # ------------------------------------------------------------
       - name: Resolve version for fe-playground
         id: playground_version
         shell: bash
@@ -235,7 +215,6 @@ jobs:
     name: Build & Push Showcase Docker Image + Deploy EasyPanel
     runs-on: ubuntu-latest
     needs:
-      - publish-components
       - publish-fe-packages
     if: always()
 
@@ -257,7 +236,7 @@ jobs:
           BASE="${YEAR}.${MONTH}.${DAY}"
 
           if [[ "${GITHUB_REF_NAME}" == "main" ]]; then
-            VERSION="${{ needs.publish-components.outputs.calver }}"
+            VERSION="${{ needs.publish-fe-packages.outputs.components_calver }}"
             DEPLOY_URL="${{ secrets.EASYPANEL_DEPLOY_URL_PRD }}"
             IMAGE="ghcr.io/seedgrid/seedgrid-showcase"
           else
