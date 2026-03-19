@@ -602,7 +602,14 @@ function getStringAnimatorTexts(locale: ShowcaseLocale): StringAnimatorTexts {
 // Playground
 // ---------------------------------------------------------------------------
 const PLAYGROUND_CODE = `import * as React from "react";
-import { SgStringAnimator, type SgStringAnimatorRef, SgButton, SgGrid } from "@seedgrid/fe-components";
+import {
+  SgStringAnimator,
+  type SgStringAnimatorRef,
+  SgButton,
+  SgGrid,
+  SgInputText,
+  SgToggleSwitch,
+} from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {

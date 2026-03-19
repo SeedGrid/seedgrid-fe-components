@@ -74,7 +74,10 @@ ${code.split("\n").map((line) => (line ? `      ${line}` : "")).join("\n")}
 }
 
 const AUTOCOMPLETE_PLAYGROUND_APP_FILE = `import * as React from "react";
-import { SgAutocomplete, type SgAutocompleteItem } from "@seedgrid/fe-components";
+import {
+  SgAutocomplete,
+  type SgAutocompleteItem,
+} from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 type Country = {

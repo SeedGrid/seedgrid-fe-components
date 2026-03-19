@@ -162,7 +162,12 @@ function isSupportedOtpLocale(locale: ShowcaseLocale): locale is keyof typeof OT
   return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
 }
 const OTP_PLAYGROUND_CODE = `import * as React from "react";
-import { SgButton, SgGrid, SgInputOTP, type SgInputOTPRef } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgGrid,
+  SgInputOTP,
+  type SgInputOTPRef,
+} from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {

@@ -211,8 +211,18 @@ export default function Example() {
 }`;
 
 const PLAYGROUND_CODE = `import * as React from "react";
-import { Layers3, Building2, Box, FilePenLine } from "lucide-react";
-import { SgBreadcrumb, SgButton, type SgBreadcrumbItem } from "@seedgrid/fe-components";
+import {
+  Layers3,
+  Building2,
+  Box,
+  FilePenLine,
+} from "lucide-react";
+import {
+  SgBreadcrumb,
+  SgButton,
+  type SgBreadcrumbItem,
+  type SgBreadcrumbSeparator,
+} from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 const items = [

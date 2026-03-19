@@ -43,6 +43,7 @@ import {
   SgInputPassword,
   SgInputPhone,
   SgInputText,
+  SgButton,
 } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 

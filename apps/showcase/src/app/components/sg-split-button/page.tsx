@@ -315,8 +315,16 @@ function isSupportedLocale(locale: ShowcaseLocale): locale is keyof typeof SPLIT
 }
 
 const SPLIT_BUTTON_PLAYGROUND_CODE = `import * as React from "react";
-import { Save, RefreshCw, Trash2 } from "lucide-react";
-import { SgGrid, SgSplitButton } from "@seedgrid/fe-components";
+import {
+  Save,
+  RefreshCw,
+  Trash2,
+} from "lucide-react";
+import {
+  SgGrid,
+  SgSplitButton,
+  SgButton,
+} from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 const items = [

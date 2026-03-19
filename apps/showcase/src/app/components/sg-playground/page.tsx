@@ -42,6 +42,12 @@ const RENDER_BODY_CODE = `<SgStack gap={12}>
 
 const APP_FILE_CODE = `import * as React from "react";
 import { SgPlayground } from "@seedgrid/fe-playground";
+import {
+  SgCard,
+  SgStack,
+  SgInputText,
+  SgButton,
+} from "@seedgrid/fe-components";
 
 export default function App() {
   const [name, setName] = React.useState("");

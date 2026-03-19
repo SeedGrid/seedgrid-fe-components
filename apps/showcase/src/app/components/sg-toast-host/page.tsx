@@ -251,6 +251,7 @@ import {
   type SgToastId,
   type SgToastType,
   type SgToastOptions,
+  SgStack,
 } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 

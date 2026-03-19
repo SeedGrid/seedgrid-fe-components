@@ -336,13 +336,20 @@ export default function Example() {
 }`;
 
 const PLAYGROUND_CODE = `import * as React from "react";
-import { Bell, Home, Mail, Settings, User } from "lucide-react";
+import {
+  Bell,
+  Home,
+  Mail,
+  Settings,
+  User,
+} from "lucide-react";
 import {
   SgButton,
   SgDockMenu,
   SgGrid,
   toast,
   type SgDockMenuItem,
+  type SgDockMenuPosition,
 } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 

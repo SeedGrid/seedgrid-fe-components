@@ -217,7 +217,11 @@ function isSupportedRadioLocale(locale: ShowcaseLocale): locale is keyof typeof 
 }
 const RADIO_GROUP_PLAYGROUND_APP_FILE = `import * as React from "react";
 import * as SeedGrid from "@seedgrid/fe-components";
-import { Heart, Star, ThumbsUp } from "lucide-react";
+import {
+  Heart,
+  Star,
+  ThumbsUp,
+} from "lucide-react";
 
 const SgRadioGroupFromLib = (SeedGrid as Record<string, unknown>).SgRadioGroup as
   | React.ComponentType<any>

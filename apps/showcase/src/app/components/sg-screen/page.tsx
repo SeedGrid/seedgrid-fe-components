@@ -87,7 +87,12 @@ export default function ExampleSgScreenPage() {
 }`;
 
 const SCREEN_PLAYGROUND_CODE = `import * as React from "react";
-import { SgScreen, SgMainPanel, SgPanel, SgStack } from "@seedgrid/fe-components";
+import {
+  SgScreen,
+  SgMainPanel,
+  SgPanel,
+  SgStack,
+} from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {

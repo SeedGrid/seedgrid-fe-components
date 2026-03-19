@@ -30,7 +30,12 @@ function Section(props: { title: string; description?: string; children: React.R
 }
 
 const PANEL_PLAYGROUND_CODE = `import * as React from "react";
-import { SgGrid, SgMainPanel, SgPanel, SgStack } from "@seedgrid/fe-components";
+import {
+  SgGrid,
+  SgMainPanel,
+  SgPanel,
+  SgStack,
+} from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {

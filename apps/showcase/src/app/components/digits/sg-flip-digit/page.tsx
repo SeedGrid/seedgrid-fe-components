@@ -186,7 +186,11 @@ React.useEffect(() => {
 </div>`;
 
 const PLAYGROUND_APP_FILE = `import * as React from "react";
-import { SgButton, SgFlipDigit, SgGrid } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgFlipDigit,
+  SgGrid,
+} from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {

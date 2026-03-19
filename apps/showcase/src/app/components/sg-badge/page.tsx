@@ -56,7 +56,7 @@ function ManualRemoveExample() {
 }
 
 const BADGE_PLAYGROUND_CODE = `import * as React from "react";
-import { SgBadge } from "@seedgrid/fe-components";
+import { SgBadge, SgButton } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {

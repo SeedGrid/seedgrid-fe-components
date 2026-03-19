@@ -27,7 +27,11 @@ function CodeBlock(props: { code: string }) {
 }
 
 const INPUT_CPFCNPJ_PLAYGROUND_CODE = `import * as React from "react";
-import { SgGrid, SgInputCPFCNPJ } from "@seedgrid/fe-components";
+import {
+  SgGrid,
+  SgInputCPFCNPJ,
+  SgButton,
+} from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {

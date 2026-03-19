@@ -498,7 +498,11 @@ export default function Example() {
 }`;
 
 const PLAYGROUND_CODE = `import * as React from "react";
-import { SgButton, SgGrid, SgRating } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgGrid,
+  SgRating,
+} from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 const sizes = ["sm", "md", "lg", "xl"] as const;

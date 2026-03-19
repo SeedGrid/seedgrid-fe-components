@@ -108,7 +108,12 @@ export default function LocaleCalendarExample() {
 }`;
 
 const CALENDAR_PLAYGROUND_APP_FILE = `import * as React from "react";
-import { SgButton, SgCalendar, SgEnvironmentProvider, SgGrid } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgCalendar,
+  SgEnvironmentProvider,
+  SgGrid,
+} from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {

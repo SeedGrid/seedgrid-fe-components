@@ -28,7 +28,12 @@ function CodeBlock(props: { code: string }) {
 }
 
 const ENVIRONMENT_PLAYGROUND_APP_FILE = `import * as React from "react";
-import { SgEnvironmentProvider, buildSgPersistenceKey, useSgEnvironment, SgInputText } from "@seedgrid/fe-components";
+import {
+  SgEnvironmentProvider,
+  buildSgPersistenceKey,
+  useSgEnvironment,
+  SgInputText,
+} from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 function EnvInfo({ baseKey }: { baseKey: string }) {

@@ -549,7 +549,7 @@ function SgInputCurrencyBase(props: SgInputCurrencyBaseProps) {
     bgClass,
     paddingLeft,
     paddingRight,
-    "py-2",
+    "pt-4 pb-1",
     "leading-[1.2]"
   ].join(" ");
 
@@ -564,15 +564,17 @@ function SgInputCurrencyBase(props: SgInputCurrencyBaseProps) {
   const prefixPaddingStyle = prefixText
     ? `calc(${prefixWidth}px + 0.75rem${props.prefixIcon ? " + 0.75rem" : ""})`
     : undefined;
+  const labelLeftStyle = prefixPaddingStyle ?? (props.prefixIcon ? "2.5rem" : "0.75rem");
   const iconButtonsPadding = iconButtonsCount > 0 ? `${iconButtonsCount * 1.5}rem` : "0rem";
   const baseRightPadding = canShowClear ? "2rem" : "0.75rem";
+  const suffixActionGap = suffixText && hasSuffix ? "0.375rem" : "0rem";
   const suffixPaddingStyle = suffixText
-    ? `calc(${suffixWidth}px + ${baseRightPadding} + ${iconButtonsPadding})`
+    ? `calc(${suffixWidth}px + ${baseRightPadding} + ${iconButtonsPadding} + ${suffixActionGap})`
     : hasSuffix
       ? `calc(${baseRightPadding} + ${iconButtonsPadding})`
       : undefined;
   const clearRightStyle = suffixText && suffixWidth
-    ? `${suffixWidth}px`
+    ? `calc(${suffixWidth}px + ${suffixActionGap})`
     : undefined;
 
   return (
@@ -626,21 +628,19 @@ function SgInputCurrencyBase(props: SgInputCurrencyBaseProps) {
         <label
           htmlFor={props.id}
           className={[
-            "absolute bg-[var(--sg-input-bg,hsl(var(--background)))] px-1 transition-all",
-            isFilled
-              ? "-top-2 left-3 text-xs"
-              : `top-3 text-sm ${props.prefixIcon ? "left-10" : "left-3"}`,
+            "absolute z-10 bg-[var(--sg-input-bg,hsl(var(--background)))] px-1 transition-all",
+            isFilled ? "-top-2 text-xs" : "top-3 text-sm",
             hasError
               ? "text-[hsl(var(--destructive))]"
               : isFilled
                 ? "text-[hsl(var(--primary))]"
                 : "text-foreground/60",
             hasError
-              ? "peer-focus:-top-2 peer-focus:left-3 peer-focus:text-xs peer-focus:text-[hsl(var(--destructive))]"
-              : "peer-focus:-top-2 peer-focus:left-3 peer-focus:text-xs peer-focus:text-[hsl(var(--primary))]",
+              ? "peer-focus:-top-2 peer-focus:text-xs peer-focus:text-[hsl(var(--destructive))]"
+              : "peer-focus:-top-2 peer-focus:text-xs peer-focus:text-[hsl(var(--primary))]",
             props.labelClassName ?? ""
           ].join(" ")}
-          style={prefixPaddingStyle ? { left: prefixPaddingStyle } : undefined}
+          style={{ left: labelLeftStyle }}
         >
           <span>{labelText}</span>
           {props.required ? (
@@ -651,7 +651,7 @@ function SgInputCurrencyBase(props: SgInputCurrencyBaseProps) {
         </label>
         {hasSuffix ? (
           <span
-            className="absolute right-2 top-1/2 flex -translate-y-1/2 items-center gap-1"
+            className="absolute right-2 top-1/2 z-20 flex -translate-y-1/2 items-center gap-1"
             style={clearRightStyle ? { right: clearRightStyle } : undefined}
           >
             {canShowClear ? (

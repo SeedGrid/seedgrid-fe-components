@@ -29,7 +29,11 @@ function CodeBlock(props: { code: string }) {
 
 const INPUT_NUMBER_PLAYGROUND_CODE = `import * as React from "react";
 import { useForm } from "react-hook-form";
-import { SgButton, SgGrid, SgInputNumber } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgGrid,
+  SgInputNumber,
+} from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {

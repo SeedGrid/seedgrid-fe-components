@@ -121,7 +121,11 @@ const SECTION_TITLES = [
 
 const PLAYGROUND_APP_FILE = `import * as React from "react";
 import * as SeedGrid from "@seedgrid/fe-components";
-import { Heart, Star, ThumbsUp } from "lucide-react";
+import {
+  Heart,
+  Star,
+  ThumbsUp,
+} from "lucide-react";
 
 const SgCheckboxGroupFromLib = (SeedGrid as Record<string, unknown>).SgCheckboxGroup as
   | React.ComponentType<any>

@@ -29,7 +29,11 @@ function CodeBlock(props: { code: string }) {
 
 const CURRENCY_EDIT_PLAYGROUND_CODE = `import * as React from "react";
 import { useForm } from "react-hook-form";
-import { SgButton, SgInputCurrency, SgGrid } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgInputCurrency,
+  SgGrid,
+} from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {

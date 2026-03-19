@@ -369,7 +369,11 @@ export default function Example() {
 }`;
 
 const PLAYGROUND_CODE = `import * as React from "react";
-import { SgButton, SgRadialGauge, type SgRadialGaugePointer } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgRadialGauge,
+  type SgRadialGaugePointer,
+} from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {

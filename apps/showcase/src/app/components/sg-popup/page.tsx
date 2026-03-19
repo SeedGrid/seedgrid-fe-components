@@ -29,7 +29,11 @@ function CodeBlock(props: { code: string }) {
 }
 
 const POPUP_PLAYGROUND_CODE = `import * as React from "react";
-import { SgButton, SgPopup, type SgPopupAction } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgPopup,
+  type SgPopupAction,
+} from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {

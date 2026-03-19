@@ -472,7 +472,11 @@ export default function Example() {
 }`;
 
 const PLAYGROUND_APP_FILE = `import * as React from "react";
-import { SgAccordion, SgButton, type SgAccordionItem } from "@seedgrid/fe-components";
+import {
+  SgAccordion,
+  SgButton,
+  type SgAccordionItem,
+} from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {

@@ -253,7 +253,11 @@ export default function SurfaceConfirmationExample() {
 
 const PLAYGROUND_APP_FILE = `import * as React from "react";
 import * as SeedGrid from "@seedgrid/fe-components";
-import { AlertTriangle, Trash2, X } from "lucide-react";
+import {
+  AlertTriangle,
+  Trash2,
+  X,
+} from "lucide-react";
 
 const SgConfirmationDialogFromLib = (SeedGrid as Record<string, unknown>).SgConfirmationDialog as
   | React.ComponentType<any>

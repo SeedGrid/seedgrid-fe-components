@@ -41,7 +41,11 @@ function Card(props: { title: string; subtitle?: string }) {
 }
 
 const GRID_PLAYGROUND_CODE = `import * as React from "react";
-import { SgGrid, SgPanel, SgStack } from "@seedgrid/fe-components";
+import {
+  SgGrid,
+  SgPanel,
+  SgStack,
+} from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {

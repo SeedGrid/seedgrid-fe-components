@@ -146,8 +146,16 @@ export default function Example() {
 }`;
 
 const PLAYGROUND_CODE = `import * as React from "react";
-import { Receipt, ShieldCheck, UserRound } from "lucide-react";
-import { SgButton, SgPageControl, SgPageControlPage } from "@seedgrid/fe-components";
+import {
+  Receipt,
+  ShieldCheck,
+  UserRound,
+} from "lucide-react";
+import {
+  SgButton,
+  SgPageControl,
+  SgPageControlPage,
+} from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {

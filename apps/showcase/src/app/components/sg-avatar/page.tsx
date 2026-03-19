@@ -205,7 +205,11 @@ export default function Example() {
 
 const PLAYGROUND_CODE = `import * as React from "react";
 import { User } from "lucide-react";
-import { SgAvatar, SgAvatarGroup } from "@seedgrid/fe-components";
+import {
+  SgAvatar,
+  SgAvatarGroup,
+  SgButton,
+} from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {

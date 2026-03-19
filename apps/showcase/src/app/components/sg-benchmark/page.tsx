@@ -321,7 +321,7 @@ function UncontrolledNativeBenchmark() {
 }
 
 const BENCHMARK_PLAYGROUND_APP_FILE = `import * as React from "react";
-import { SgInputText } from "@seedgrid/fe-components";
+import { SgInputText, SgButton } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 const FIELD_COUNT = 20;

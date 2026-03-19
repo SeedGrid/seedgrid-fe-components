@@ -27,7 +27,12 @@ function CodeBlock(props: { code: string }) {
 }
 
 const INPUT_EMAIL_PLAYGROUND_CODE = `import * as React from "react";
-import { DEFAULT_BLOCKED_EMAIL_DOMAINS, SgGrid, SgInputEmail } from "@seedgrid/fe-components";
+import {
+  DEFAULT_BLOCKED_EMAIL_DOMAINS,
+  SgGrid,
+  SgInputEmail,
+  SgButton,
+} from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {

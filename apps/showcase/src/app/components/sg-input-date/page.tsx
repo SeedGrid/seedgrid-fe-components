@@ -27,7 +27,11 @@ function CodeBlock(props: { code: string }) {
 }
 
 const INPUT_DATE_PLAYGROUND_CODE = `import * as React from "react";
-import { SgGrid, SgInputDate } from "@seedgrid/fe-components";
+import {
+  SgGrid,
+  SgInputDate,
+  SgButton,
+} from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {

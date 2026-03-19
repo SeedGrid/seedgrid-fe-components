@@ -41,7 +41,13 @@ const PLACEHOLDERS: Record<PostalCodeCountry, string> = {
 };
 
 const INPUT_POSTAL_CODE_PLAYGROUND_CODE = `import * as React from "react";
-import { SgGrid, SgInputPostalCode, type ViaCepResponse, type PostalCodeCountry } from "@seedgrid/fe-components";
+import {
+  SgGrid,
+  SgInputPostalCode,
+  type ViaCepResponse,
+  type PostalCodeCountry,
+  SgButton,
+} from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {

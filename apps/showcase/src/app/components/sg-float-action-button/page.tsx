@@ -77,8 +77,17 @@ const FAB_EXAMPLE_LINKS = [
 ];
 
 const FAB_PLAYGROUND_CODE = `import * as React from "react";
-import { Heart, Plus, Star } from "lucide-react";
-import { SgFloatActionButton, SgGrid, type SgFABAction } from "@seedgrid/fe-components";
+import {
+  Heart,
+  Plus,
+  Star,
+} from "lucide-react";
+import {
+  SgFloatActionButton,
+  SgGrid,
+  type SgFABAction,
+  SgButton,
+} from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 const actions = [

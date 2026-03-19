@@ -33,7 +33,11 @@ function CodeBlock(props: { code: string }) {
 
 const INPUT_TEXT_PLAYGROUND_CODE = `import * as React from "react";
 import { useForm } from "react-hook-form";
-import { SgGrid, SgInputText } from "@seedgrid/fe-components";
+import {
+  SgGrid,
+  SgInputText,
+  SgButton,
+} from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {

@@ -753,7 +753,14 @@ import {
   type SgRadioGroupOption,
 } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import { ClipboardList, Home, LayoutGrid, Search, Settings, Users } from "lucide-react";
+import {
+  ClipboardList,
+  Home,
+  LayoutGrid,
+  Search,
+  Settings,
+  Users,
+} from "lucide-react";
 
 ${MENU_CODE_SNIPPET}
 

@@ -27,7 +27,11 @@ function CodeBlock(props: { code: string }) {
 }
 
 const PLAYGROUND_CODE = `import * as React from "react";
-import { SgGrid, SgInputPassword } from "@seedgrid/fe-components";
+import {
+  SgGrid,
+  SgInputPassword,
+  SgButton,
+} from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function App() {
