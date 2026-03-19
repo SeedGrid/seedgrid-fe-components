@@ -93,9 +93,6 @@ echo "==> Typecheck ${PKG_NAME}"
 echo "==> Build ${PKG_NAME}"
 "${PNPM_BIN}" -C "${ABS_PKG_DIR}" build
 
-echo "==> npm publish --dry-run ${PKG_NAME}"
-"${NPM_BIN}" --prefix "${ABS_PKG_DIR}" publish --dry-run --access public
-
 if [[ -n "${PUBLISH_VERSION:-}" ]]; then
   echo "==> Setting version: ${PUBLISH_VERSION}"
   "${NPM_BIN}" --prefix "${ABS_PKG_DIR}" version "${PUBLISH_VERSION}" --no-git-tag-version
@@ -107,6 +104,10 @@ else
 fi
 
 PKG_VERSION=$(node -p "require('${ABS_PKG_DIR}/package.json').version")
+echo "==> Package version resolved: ${PKG_VERSION}"
+
+echo "==> npm publish --dry-run ${PKG_NAME}@${PKG_VERSION}"
+"${NPM_BIN}" --prefix "${ABS_PKG_DIR}" publish --dry-run --access public
 
 echo "==> Publishing ${PKG_NAME}@${PKG_VERSION}"
 PUBLISH_ARGS=(--access public)
@@ -116,4 +117,4 @@ fi
 
 "${NPM_BIN}" --prefix "${ABS_PKG_DIR}" publish "${PUBLISH_ARGS[@]}"
 
-echo "Done publishing ${PKG_NAME}."
+echo "Done publishing ${PKG_NAME}@${PKG_VERSION}."
