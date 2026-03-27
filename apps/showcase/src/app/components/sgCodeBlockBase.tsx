@@ -4,6 +4,10 @@ import React from "react";
 import { SgBadge, SgCard } from "@seedgrid/fe-components";
 import { t, useShowcaseI18n } from "../../i18n";
 
+type SgCodeBlockBaseProps =
+  | { code: string; sampleFile?: never }
+  | { sampleFile: string; code?: never };
+
 function unique(values: string[]) {
   return Array.from(new Set(values));
 }
@@ -76,10 +80,50 @@ function normalizeShowcaseCode(code: string) {
   return `${prepend.join("\n")}${hasAnyImport ? "\n" : "\n\n"}${code}`;
 }
 
-export default function sgCodeBlockBase(props: { code: string }) {
+function getInlineCode(props: SgCodeBlockBaseProps) {
+  return "code" in props ? (props.code ?? "") : "";
+}
+
+export default function sgCodeBlockBase(props: SgCodeBlockBaseProps) {
   const i18n = useShowcaseI18n();
   const [copied, setCopied] = React.useState(false);
-  const displayCode = React.useMemo(() => normalizeShowcaseCode(props.code), [props.code]);
+  const [resolvedCode, setResolvedCode] = React.useState(() => getInlineCode(props));
+
+  React.useEffect(() => {
+    if ("code" in props) {
+      setResolvedCode(props.code ?? "");
+      return;
+    }
+
+    let active = true;
+
+    const loadSampleFile = async () => {
+      try {
+        const response = await fetch(`/api/showcase-code?path=${encodeURIComponent(props.sampleFile)}`, {
+          cache: "no-store"
+        });
+        if (!response.ok) {
+          throw new Error(`Failed to load sample file: ${props.sampleFile}`);
+        }
+        const payload = await response.json() as { code?: string };
+        if (active) {
+          setResolvedCode(payload.code ?? "");
+        }
+      } catch {
+        if (active) {
+          setResolvedCode(`// Failed to load sample file: ${props.sampleFile}`);
+        }
+      }
+    };
+
+    void loadSampleFile();
+
+    return () => {
+      active = false;
+    };
+  }, [props.code, props.sampleFile]);
+
+  const displayCode = React.useMemo(() => normalizeShowcaseCode(resolvedCode), [resolvedCode]);
 
   const onCopy = async () => {
     try {
