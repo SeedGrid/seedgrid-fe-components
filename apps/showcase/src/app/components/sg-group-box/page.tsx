@@ -1,7 +1,7 @@
-"use client";
+﻿"use client";
 
 import React from "react";
-import { useForm } from "react-hook-form";
+import { useForm, type FieldValues } from "react-hook-form";
 import {
   SgGroupBox,
   SgInputPostalCode,
@@ -115,7 +115,7 @@ export default function SgGroupBoxPage() {
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({
     deps: [i18n.locale]
   });
-  const { control, handleSubmit, watch } = useForm({
+  const { control, handleSubmit, watch } = useForm<FieldValues>({
     defaultValues: {
       name: "",
       email: "",
@@ -195,7 +195,7 @@ export default function SgGroupBoxPage() {
         </div>
         <CodeBlock
           code={`import React from "react";
-import { useForm } from "react-hook-form";
+import { useForm, type FieldValues } from "react-hook-form";
 import {
   SgGroupBox,
   SgInputPostalCode,
@@ -207,7 +207,7 @@ import {
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function Example() {
-  const { control, handleSubmit, watch } = useForm({
+  const { control, handleSubmit, watch } = useForm<FieldValues>({
     defaultValues: {
       name: "",
       email: "",
@@ -295,3 +295,4 @@ export default function Example() {
     </I18NReady>
   );
 }
+

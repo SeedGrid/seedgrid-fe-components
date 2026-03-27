@@ -184,8 +184,8 @@ export function resolveMenuLayoutState(args: {
     dockMode && effectiveDockZone === "right" && !isCollapsed
       ? "end"
       : dockMode && effectiveDockZone === "left"
-      ? "start"
-      : null;
+        ? "start"
+        : null;
 
   const sidebarWidthCss =
     dockMode && isHorizontalDockZone && menuStyle !== "sidebar"
@@ -569,6 +569,8 @@ export function resolveMenuKeyboardAction(args: {
 
   return { type: "noop" };
 }
+
+
 
 
 

@@ -911,6 +911,31 @@ test("resolveMenuLayoutState derives dock orientation, alignment and sidebar wid
       sidebarWidthCss: "300px"
     }
   );
+
+  assert.deepEqual(
+    resolveMenuLayoutState({
+      dockMode: true,
+      effectiveDockZone: "right",
+      orientationDirection: "vertical-down",
+      position: "left",
+      horizontalDockAlign: null,
+      isCollapsed: true,
+      menuStyle: "sidebar",
+      effectiveMenuStyle: "panel",
+      pinnedState: false,
+      expandedWidthCss: "300px",
+      collapsedWidthCss: "72px"
+    }),
+    {
+      resolvedPosition: "right",
+      isHorizontalDockZone: false,
+      isVerticalDockZone: true,
+      tieredOpenToLeft: true,
+      isMegaMenuStyle: false,
+      dockAlign: null,
+      sidebarWidthCss: "72px"
+    }
+  );
 });
 
 test("SgMenu consumes the shared layout-state helper", () => {

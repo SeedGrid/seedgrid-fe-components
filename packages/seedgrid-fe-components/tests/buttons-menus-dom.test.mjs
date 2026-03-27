@@ -24,7 +24,7 @@ Module._load = function patchedLoad(request, parent, isMain) {
   return originalLoad.call(this, request, parent, isMain);
 };
 
-const { SgDockMenu, SgToolBar, SgMenu, SgWizard, SgWizardPage, SgSplitButton, SgFloatActionButton, SgExpandablePanel, SgTreeView, SgPopup } = require("../dist/sandbox.cjs");
+const { SgDockLayout, SgDockZone, SgDockMenu, SgToolBar, SgMenu, SgWizard, SgWizardPage, SgSplitButton, SgFloatActionButton, SgExpandablePanel, SgTreeView, SgPopup } = require("../dist/sandbox.cjs");
 
 Module._load = originalLoad;
 
@@ -93,6 +93,32 @@ function buildKeyboardMenu(props = {}) {
 }
 
 
+
+function buildRightDockedMenu(props = {}) {
+  return React.createElement(
+    SgDockLayout,
+    { id: "menu-dock-layout" },
+    React.createElement(
+      "div",
+      { style: { display: "grid", gridTemplateColumns: "1fr auto", height: "320px", width: "420px" } },
+      React.createElement("div", null, "Main content"),
+      React.createElement(SgDockZone, { zone: "right", style: { height: "320px" } }),
+      React.createElement(SgMenu, {
+        id: "main-menu-dock-right",
+        menuVariantStyle: "panel",
+        dockable: true,
+        dockZone: "right",
+        position: "right",
+        showCollapseButton: true,
+        collapsedWidth: 72,
+        menu: [
+          { id: "dashboard", label: "Dashboard", icon: React.createElement("span", null, "D"), url: "/dashboard" }
+        ],
+        ...props
+      })
+    )
+  );
+}
 
 function buildFab(props = {}) {
   return React.createElement(SgFloatActionButton, {
@@ -408,6 +434,40 @@ test("SgMenu collapses nested rendered keyboard branches with ArrowLeft", async 
 
     assert.equal(harness.document.querySelector('[data-sg-menu-node="security"]'), null);
     assert.equal(harness.document.querySelector('[data-sg-menu-node="billing"]'), null);
+  } finally {
+    harness.restore();
+  }
+});
+
+test("SgMenu docked on the right keeps a collapsed affordance and item icons visible", async () => {
+  const harness = setupDomHarness();
+  try {
+    await harness.render(buildRightDockedMenu());
+
+    const collapseButton = Array.from(harness.document.querySelectorAll("button")).find(
+      (button) => /collapse/i.test(button.getAttribute("aria-label") ?? "")
+    );
+    assert.ok(collapseButton);
+
+    await dispatchMouse(collapseButton, "click");
+    await flushDom();
+
+    const rightZone = harness.document.querySelector('[data-sg-dock-zone="right"]');
+    assert.ok(rightZone);
+
+    const dockedMenu = rightZone.firstElementChild;
+    assert.ok(dockedMenu);
+    assert.equal(dockedMenu.style.width, "72px");
+    assert.equal(dockedMenu.style.alignSelf, "");
+
+    const expandButton = Array.from(harness.document.querySelectorAll("button")).find(
+      (button) => /expand/i.test(button.getAttribute("aria-label") ?? "")
+    );
+    assert.ok(expandButton);
+
+    const dashboardNode = harness.document.querySelector('[data-sg-menu-node="dashboard"]');
+    assert.ok(dashboardNode);
+    assert.match(dashboardNode.textContent ?? "", /D/);
   } finally {
     harness.restore();
   }
@@ -862,6 +922,12 @@ test("SgTreeView expands, collapses and clears rendered checked nodes", async ()
     harness.restore();
   }
 });
+
+
+
+
+
+
 
 
 

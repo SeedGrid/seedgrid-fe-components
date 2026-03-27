@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import * as React from "react";
 import { createPortal } from "react-dom";
@@ -1619,11 +1619,7 @@ export function SgMenu(props: Readonly<SgMenuProps>) {
     </aside>
   );
   const shellForRender =
-    dockMode && effectiveDockZone === "right" && isCollapsed ? (
-      <div style={{ width: "100%", height: "100%", display: "flex", justifyContent: "flex-end" }}>
-        {sidebarShell}
-      </div>
-    ) : dockMode && isHorizontalDockZone ? (
+    dockMode && isHorizontalDockZone ? (
       <aside
         ref={(node) => {
           (menuRootRef as React.MutableRefObject<HTMLElement | null>).current = node;
@@ -1846,6 +1842,8 @@ function PinIcon(props: { pinned: boolean }) {
     </svg>
   );
 }
+
+
 
 
 

@@ -8,7 +8,7 @@
                     "build":  "next build",
                     "start":  "next start",
                     "typecheck":  "tsc --noEmit",
-                    "test:playground-snippets":  "node --test tests/playground-app-file-imports.test.mjs"
+                    "test:playground-snippets":  "node --test tests/playground-app-file-imports.test.mjs tests/showcase-contracts.test.mjs"
                 },
     "dependencies":  {
                          "lucide-react":  "^0.468.0",
@@ -41,3 +41,4 @@
                             "@types/react-dom":  "^19.0.0"
                         }
 }
+
