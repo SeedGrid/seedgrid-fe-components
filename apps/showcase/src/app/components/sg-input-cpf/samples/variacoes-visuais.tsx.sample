@@ -1,0 +1,11 @@
+import * as React from "react";
+import { SgInputCPF } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <>
+      <SgInputCPF id="a" label="Sem borda" hintText="000.000.000-00" withBorder={false} inputProps={{}} />
+      <SgInputCPF id="b" label="Filled" hintText="000.000.000-00" filled inputProps={{}} />
+    </>
+  );
+}

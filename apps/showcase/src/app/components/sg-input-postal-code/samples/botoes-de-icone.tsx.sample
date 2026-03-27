@@ -1,0 +1,20 @@
+import * as React from "react";
+import { useForm } from "react-hook-form";
+import { SgInputPostalCode } from "@seedgrid/fe-components";
+
+export default function App() {
+  const { register } = useForm({ defaultValues: { iconbtns: "" } });
+  return (
+    <SgInputPostalCode
+      id="demo-iconbtns"
+      label="Copiar texto"
+      hintText="00000-000"
+      name="iconbtns"
+      register={register}
+      iconButtons={[
+        <button key="copy" type="button" onClick={() => navigator.clipboard.writeText("01001-000")}>Copiar</button>,
+        <button key="alert" type="button" onClick={() => alert("ok")}>Alerta</button>
+      ]}
+    />
+  );
+}

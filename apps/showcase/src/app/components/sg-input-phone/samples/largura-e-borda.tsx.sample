@@ -1,0 +1,11 @@
+import * as React from "react";
+import { SgInputPhone } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <>
+      <SgInputPhone id="a" label="Width 200" hintText="(11) 99999-0000" width={200} />
+      <SgInputPhone id="b" label="Width 300" hintText="(11) 99999-0000" width={300} borderRadius={20} />
+    </>
+  );
+}

@@ -1,0 +1,21 @@
+import React from "react";
+import { SgStepperInput } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [value, setValue] = React.useState(12);
+
+  return (
+    <div className="space-y-2">
+      <SgStepperInput
+        id="stepper-basic"
+        minValue={0}
+        maxValue={40}
+        step={2}
+        defaultValue={12}
+        width={210}
+        onChange={setValue}
+      />
+      <p>Valor atual: {value}</p>
+    </div>
+  );
+}

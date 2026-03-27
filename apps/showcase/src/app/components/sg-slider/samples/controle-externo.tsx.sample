@@ -1,0 +1,26 @@
+import React from "react";
+import { SgButton, SgSlider } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [value, setValue] = React.useState(35);
+
+  return (
+    <div className="max-w-sm space-y-3">
+      <SgSlider
+        id="slider-controlled"
+        minValue={0}
+        maxValue={100}
+        value={value}
+        onChange={setValue}
+      />
+      <div className="flex flex-wrap gap-2">
+        <SgButton size="sm" appearance="outline" onClick={() => setValue(0)}>Min</SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => setValue(50)}>Meio</SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => setValue(100)}>Max</SgButton>
+      </div>
+      <p className="text-sm text-muted-foreground">
+        Valor controlado: <span className="font-semibold text-foreground">{value}</span>
+      </p>
+    </div>
+  );
+}

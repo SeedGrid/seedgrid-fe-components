@@ -1,0 +1,6 @@
+import * as React from "react";
+import { SgInputPostalCode } from "@seedgrid/fe-components";
+
+export default function App() {
+  return <SgInputPostalCode id="postal" label="Codigo postal obrigatorio" required requiredMessage="Informe o codigo postal." />;
+}

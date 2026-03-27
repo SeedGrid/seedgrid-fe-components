@@ -1,0 +1,21 @@
+import * as React from "react";
+import { SgButton, SgStepperInput } from "@seedgrid/fe-components";
+
+export default function App() {
+  const [min, setMin] = React.useState(0);
+  const [max, setMax] = React.useState(40);
+  const [step, setStep] = React.useState(2);
+  const [value, setValue] = React.useState(12);
+
+  return (
+    <div className="space-y-4 p-2">
+      <div className="grid gap-2 sm:grid-cols-3">
+        <SgButton size="sm" appearance="outline" onClick={() => { setMin(0); setMax(40); setStep(2); }}>0-40 / 2</SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => { setMin(-10); setMax(10); setStep(1); }}>-10 a 10 / 1</SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => { setMin(100); setMax(1000); setStep(50); }}>100-1000 / 50</SgButton>
+      </div>
+      <SgStepperInput id="playground-stepper" minValue={min} maxValue={max} step={step} value={value} onChange={setValue} width={220} />
+      <div className="text-sm">Valor atual: {value}</div>
+    </div>
+  );
+}

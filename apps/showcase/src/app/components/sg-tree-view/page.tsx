@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import {
@@ -10,7 +10,7 @@ import {
 } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import { Shield, Users, FileText, BarChart3 } from "lucide-react";
-import sgCodeBlockBase from "../sgCodeBlockBase";
+import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
@@ -31,7 +31,7 @@ function Section(props: { title: string; description?: string; children: React.R
 }
 
 function CodeBlock(props: { code: string }) {
-  return <sgCodeBlockBase code={props.code} />;
+  return <SgCodeBlockBase code={props.code} />;
 }
 
 const DATA: SgTreeNode[] = [
@@ -144,14 +144,14 @@ export default function App() {
 }`;
 
 const TREE_VIEW_PROPS: ShowcasePropRow[] = [
-  { prop: "nodes", type: "SgTreeNode[]", defaultValue: "[]", description: "Estrutura hierárquica de nós." },
-  { prop: "checkable / checkMode / confirmSelection", type: "boolean / token / token", defaultValue: "false / instant / all", description: "Comportamento de seleção com checkboxes." },
-  { prop: "checkedIds / defaultCheckedIds / onCheckedChange", type: "string[] / string[] / callback", defaultValue: "controlado / [] / -", description: "Estado de seleção." },
-  { prop: "expandedIds / defaultExpandedIds / onExpandedChange", type: "string[] / string[] / callback", defaultValue: "controlado / [] / -", description: "Estado de expansão." },
-  { prop: "searchable / searchPlaceholder / searchValue", type: "boolean / string / string", defaultValue: "false / Search... / controlado", description: "Busca e filtro da árvore." },
+  { prop: "nodes", type: "SgTreeNode[]", defaultValue: "[]", description: "Estrutura hierÃ¡rquica de nÃ³s." },
+  { prop: "checkable / checkMode / confirmSelection", type: "boolean / token / token", defaultValue: "false / instant / all", description: "Comportamento de seleÃ§Ã£o com checkboxes." },
+  { prop: "checkedIds / defaultCheckedIds / onCheckedChange", type: "string[] / string[] / callback", defaultValue: "controlado / [] / -", description: "Estado de seleÃ§Ã£o." },
+  { prop: "expandedIds / defaultExpandedIds / onExpandedChange", type: "string[] / string[] / callback", defaultValue: "controlado / [] / -", description: "Estado de expansÃ£o." },
+  { prop: "searchable / searchPlaceholder / searchValue", type: "boolean / string / string", defaultValue: "false / Search... / controlado", description: "Busca e filtro da Ã¡rvore." },
   { prop: "size / density / tone / iconTone", type: "tokens", defaultValue: "md / normal / default / default", description: "Ajustes visuais do componente." },
-  { prop: "onLeafClick / onExpand / onCollapse", type: "callbacks", defaultValue: "-", description: "Eventos de interação." },
-  { prop: "confirmBar / emptyText / maxHeightClassName", type: "objeto / string / string", defaultValue: "- / No results / -", description: "Configurações complementares da interface." },
+  { prop: "onLeafClick / onExpand / onCollapse", type: "callbacks", defaultValue: "-", description: "Eventos de interaÃ§Ã£o." },
+  { prop: "confirmBar / emptyText / maxHeightClassName", type: "objeto / string / string", defaultValue: "- / No results / -", description: "ConfiguraÃ§Ãµes complementares da interface." },
   { prop: "className", type: "string", defaultValue: "-", description: "Classes extras no container." },
   { prop: "style", type: "React.CSSProperties", defaultValue: "-", description: "Inline style adicional no container." }
 ];
@@ -576,3 +576,4 @@ export default function Example() {
     </I18NReady>
   );
 }
+

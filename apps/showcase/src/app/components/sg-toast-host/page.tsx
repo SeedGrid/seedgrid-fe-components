@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import {
@@ -10,7 +10,7 @@ import {
   type SgToastOptions,
 } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import sgCodeBlockBase from "../sgCodeBlockBase";
+import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
@@ -30,7 +30,7 @@ function Section(props: Readonly<{ title: string; description?: string; children
 }
 
 function CodeBlock(props: Readonly<{ code: string }>) {
-  return <sgCodeBlockBase code={props.code} />;
+  return <SgCodeBlockBase code={props.code} />;
 }
 
 // ---------------------------------------------------------------------------
@@ -72,7 +72,7 @@ import {
 import { SgPlayground } from "@seedgrid/fe-playground";
 <SgToaster position="top-right" />
 
-// Depois: SgToastHost — suporta prioridade entre instâncias
+// Depois: SgToastHost â€” suporta prioridade entre instÃ¢ncias
 import {
   SgButton,
   SgToastHost,
@@ -83,15 +83,15 @@ import {
 } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 
-// layout.tsx — host padrão
+// layout.tsx â€” host padrÃ£o
 <SgToastHost position="top-right" />
 
-// page.tsx específica — substitui o host do layout automaticamente
+// page.tsx especÃ­fica â€” substitui o host do layout automaticamente
 <SgToastHost position="bottom-center" />`;
 
 const SETUP_CODE = `import { SgToastHost, toast } from "@seedgrid/fe-components";
 
-// layout.tsx — mount once at root
+// layout.tsx â€” mount once at root
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR">
@@ -109,7 +109,7 @@ toast.success("Success!");
 toast.dismiss(); // remove all toasts
 `;
 
-const PRIORITY_CODE = `// layout.tsx — host padrão para todas as rotas
+const PRIORITY_CODE = `// layout.tsx â€” host padrÃ£o para todas as rotas
 import {
   SgButton,
   SgToastHost,
@@ -129,8 +129,8 @@ export default function RootLayout({ children }) {
   );
 }
 
-// dashboard/page.tsx — host da página substitui o do layout
-// Enquanto o usuário estiver nesta página, o host do layout fica INATIVO.
+// dashboard/page.tsx â€” host da pÃ¡gina substitui o do layout
+// Enquanto o usuÃ¡rio estiver nesta pÃ¡gina, o host do layout fica INATIVO.
 import {
   SgButton,
   SgToastHost,
@@ -235,7 +235,7 @@ toast.message("Default message");
 toast.warning("Attention!");
 `;
 
-const POSITIONING_CODE = `// Todas as posições disponíveis
+const POSITIONING_CODE = `// Todas as posiÃ§Ãµes disponÃ­veis
 <SgToastHost position="top-left" />
 <SgToastHost position="top-center" />
 <SgToastHost position="top-right" />    {/* default */}
@@ -525,7 +525,7 @@ export default function SgToastHostShowcase() {
 
   return (
     <I18NReady>
-      {/* Host ativo desta página — tem prioridade sobre o host do layout */}
+      {/* Host ativo desta pÃ¡gina â€” tem prioridade sobre o host do layout */}
       <SgToastHost position="bottom-right" />
 
       <div
@@ -536,19 +536,19 @@ export default function SgToastHostShowcase() {
         <ShowcaseStickyHeader
           stickyHeaderRef={stickyHeaderRef}
           title="SgToastHost"
-          subtitle="Marks where toasts appear in the tree. When multiple hosts exist simultaneously, the deepest one takes priority — letting a page override the layout host automatically."
+          subtitle="Marks where toasts appear in the tree. When multiple hosts exist simultaneously, the deepest one takes priority â€” letting a page override the layout host automatically."
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
 
         {/* 1 */}
         <Section
-          title="1) O que é o SgToastHost"
-          description="Versão inteligente do SgToaster com suporte a prioridade entre múltiplas instâncias na árvore React."
+          title="1) O que Ã© o SgToastHost"
+          description="VersÃ£o inteligente do SgToaster com suporte a prioridade entre mÃºltiplas instÃ¢ncias na Ã¡rvore React."
         >
           <div className="rounded-md border border-border bg-muted/30 p-4 text-sm space-y-3">
-            <p><strong>SgToaster</strong> — renderiza toasts no local onde é colocado, sem nenhuma lógica de prioridade.</p>
-            <p><strong>SgToastHost</strong> — igual ao SgToaster, mas se registra globalmente. Se houver dois hosts na árvore ao mesmo tempo, o mais profundo (mais próximo do conteúdo atual) fica ativo. O host do layout é desativado automaticamente enquanto o da página estiver montado.</p>
+            <p><strong>SgToaster</strong> â€” renderiza toasts no local onde Ã© colocado, sem nenhuma lÃ³gica de prioridade.</p>
+            <p><strong>SgToastHost</strong> â€” igual ao SgToaster, mas se registra globalmente. Se houver dois hosts na Ã¡rvore ao mesmo tempo, o mais profundo (mais prÃ³ximo do conteÃºdo atual) fica ativo. O host do layout Ã© desativado automaticamente enquanto o da pÃ¡gina estiver montado.</p>
           </div>
           <CodeBlock code={WHAT_IS_CODE} />
         </Section>
@@ -568,16 +568,16 @@ export default function SgToastHostShowcase() {
 
         {/* 3 */}
         <Section
-          title="3) Prioridade: layout vs página"
-          description="React executa os efeitos dos filhos antes dos pais (depth-first postorder). O host da página registra por último — e último registrado vence."
+          title="3) Prioridade: layout vs pÃ¡gina"
+          description="React executa os efeitos dos filhos antes dos pais (depth-first postorder). O host da pÃ¡gina registra por Ãºltimo â€” e Ãºltimo registrado vence."
         >
           <div className="rounded-md border border-border bg-muted/30 p-4 text-sm space-y-2">
             <p className="font-medium">Como funciona internamente:</p>
             <ol className="list-decimal list-inside space-y-1 text-muted-foreground">
-              <li>Layout monta → SgToastHost do layout registra (stack: [layout]). Ele fica ativo.</li>
-              <li>Página monta → SgToastHost da página registra (stack: [layout, page]). Ele passa a ser o ativo.</li>
-              <li>Usuário navega → SgToastHost da página desmonta, sai do stack. Layout volta a ser ativo.</li>
-              <li>Nova página com host próprio monta → ela passa a ser ativa imediatamente.</li>
+              <li>Layout monta â†’ SgToastHost do layout registra (stack: [layout]). Ele fica ativo.</li>
+              <li>PÃ¡gina monta â†’ SgToastHost da pÃ¡gina registra (stack: [layout, page]). Ele passa a ser o ativo.</li>
+              <li>UsuÃ¡rio navega â†’ SgToastHost da pÃ¡gina desmonta, sai do stack. Layout volta a ser ativo.</li>
+              <li>Nova pÃ¡gina com host prÃ³prio monta â†’ ela passa a ser ativa imediatamente.</li>
             </ol>
           </div>
           <CodeBlock code={PRIORITY_CODE} />
@@ -687,7 +687,7 @@ export default function SgToastHostShowcase() {
         {/* 11 */}
         <Section
           title="11) Posicionamento"
-          description="Aceita as mesmas 6 posições do SgToaster."
+          description="Aceita as mesmas 6 posiÃ§Ãµes do SgToaster."
         >
           <div className="grid grid-cols-3 gap-2 max-w-xs">
             {(["top-left", "top-center", "top-right", "bottom-left", "bottom-center", "bottom-right"]).map((pos) => (
@@ -724,3 +724,4 @@ export default function SgToastHostShowcase() {
     </I18NReady>
   );
 }
+

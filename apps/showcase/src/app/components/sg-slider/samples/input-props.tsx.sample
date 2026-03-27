@@ -1,0 +1,33 @@
+import React from "react";
+import { SgSlider } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [value, setValue] = React.useState(70);
+  const [focusCount, setFocusCount] = React.useState(0);
+
+  return (
+    <div className="space-y-2">
+      <p id="slider-input-props-help" className="text-sm text-muted-foreground">
+        Use Tab para focar o slider.
+      </p>
+      <SgSlider
+        id="slider-input-props"
+        minValue={0}
+        maxValue={100}
+        value={value}
+        ariaLabel="Volume de notificacoes"
+        onChange={setValue}
+        inputProps={{
+          name: "notificationVolume",
+          title: "Volume de notificacoes",
+          "aria-describedby": "slider-input-props-help",
+          onFocus: () => setFocusCount((prev) => prev + 1)
+        }}
+      />
+      <p className="text-sm text-muted-foreground">
+        Valor: <span className="font-semibold text-foreground">{value}</span> | Focos:{" "}
+        <span className="font-semibold text-foreground">{focusCount}</span>
+      </p>
+    </div>
+  );
+}

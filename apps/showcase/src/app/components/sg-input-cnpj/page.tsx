@@ -5,7 +5,7 @@ import Link from "next/link";
 import { SgGrid, SgInputCNPJ } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import { t, useShowcaseI18n } from "../../../i18n";
-import sgCodeBlockBase from "../sgCodeBlockBase";
+import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 
 function Section(props: { id?: string; title: string; description?: string; children: React.ReactNode }) {
@@ -21,72 +21,9 @@ function Section(props: { id?: string; title: string; description?: string; chil
   );
 }
 
-function CodeBlock(props: { code: string }) {
-  return <sgCodeBlockBase code={props.code.trimStart()} />;
+function CodeBlock(props: { sampleFile: string }) {
+  return <SgCodeBlockBase sampleFile={props.sampleFile} />;
 }
-
-const INPUT_CNPJ_PLAYGROUND_CODE = `import * as React from "react";
-import {
-  SgGrid,
-  SgInputCNPJ,
-  SgButton,
-} from "@seedgrid/fe-components";
-import { SgPlayground } from "@seedgrid/fe-playground";
-
-export default function App() {
-  const [required, setRequired] = React.useState(false);
-  const [filled, setFilled] = React.useState(false);
-  const [withBorder, setWithBorder] = React.useState(true);
-  const [value, setValue] = React.useState("");
-
-  return (
-    <div className="space-y-4 p-2">
-      <SgGrid columns={{ base: 2, md: 4 }} gap={8}>
-        <SgButton size="sm" appearance={required ? "solid" : "outline"} onClick={() => setRequired((prev) => !prev)}>
-          required
-        </SgButton>
-        <SgButton size="sm" appearance={filled ? "solid" : "outline"} onClick={() => setFilled((prev) => !prev)}>
-          filled
-        </SgButton>
-        <SgButton size="sm" appearance={withBorder ? "solid" : "outline"} onClick={() => setWithBorder((prev) => !prev)}>
-          withBorder
-        </SgButton>
-      </SgGrid>
-
-      <SgInputCNPJ
-        id="playground-input-cnpj"
-        label="SgInputCNPJ Playground"
-        hintText="Digite um CNPJ"
-        required={required}
-        filled={filled}
-        withBorder={withBorder}
-        inputProps={{}}
-        onChange={setValue}
-      />
-
-      <div className="rounded border border-border p-3">
-        <p className="mb-2 text-xs text-muted-foreground">labelPosition</p>
-        <SgGrid columns={{ base: 1, md: 3 }} gap={8}>
-          <SgInputCNPJ id="label-float" label="Float" hintText="00.000.000/0000-00" labelPosition="float" inputProps={{}} />
-          <SgInputCNPJ id="label-top" label="Top" hintText="00.000.000/0000-00" labelPosition="top" inputProps={{}} />
-          <SgInputCNPJ
-            id="label-left"
-            label="Left"
-            hintText="00.000.000/0000-00"
-            labelPosition="left"
-            labelWidth={120}
-            labelAlign="end"
-            inputProps={{}}
-          />
-        </SgGrid>
-      </div>
-
-      <div className="rounded border border-border bg-muted/40 p-3 text-xs">
-        Valor atual: <strong>{value || "-"}</strong>
-      </div>
-    </div>
-  );
-}`;
 
 export default function SgInputCNPJPage() {
   const i18n = useShowcaseI18n();
@@ -289,7 +226,7 @@ export default function SgInputCNPJPage() {
             {t(i18n, "showcase.common.labels.currentValue", { value: `\"${basicValue}\"` })}
           </p>
         </div>
-        <CodeBlock code={`<SgInputCNPJ\n  id="cnpj"\n  label="${t(i18n, "showcase.component.cnpj.labels.cnpj")}"\n  hintText="${t(i18n, "showcase.component.cnpj.labels.cnpjHint")}"\n  inputProps={{}}\n  onChange={(value) => console.log(value)}\n/>`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-cnpj/samples/basico.tsx.sample" />
       </Section>
 
       <Section
@@ -305,7 +242,7 @@ export default function SgInputCNPJPage() {
             inputProps={{ defaultValue: "AB.12C.345/0001-40" }}
           />
         </div>
-        <CodeBlock code={`<SgInputCNPJ\n  id="cnpj"\n  label="${t(i18n, "showcase.component.cnpj.labels.alnum")}"\n  hintText="${t(i18n, "showcase.component.cnpj.labels.alnumHint")}"\n  inputProps={{ defaultValue: "AB.12C.345/0001-40" }}\n/>`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-cnpj/samples/alfanumerico.tsx.sample" />
       </Section>
 
       <Section
@@ -313,29 +250,7 @@ export default function SgInputCNPJPage() {
         title={`3) ${t(i18n, "showcase.component.cnpj.sections.alnumList.title")}`}
         description={t(i18n, "showcase.component.cnpj.sections.alnumList.description")}
       >
-        <CodeBlock
-          code={`// Filial 0001
-9H.SD1.NFA/0001-01  (raw: 9HSD1NFA000101)
-LJ.AUX.GU2/0001-40  (raw: LJAUXGU2000140)
-GK.1EK.OFE/0001-58  (raw: GK1EKOFE000158)
-QF.18A.388/0001-00  (raw: QF18A388000100)
-KF.TG0.Z4P/0001-90  (raw: KFTG0Z4P000190)
-9P.UO0.1W2/0001-07  (raw: 9PUO01W2000107)
-GK.IPC.PIK/0001-52  (raw: GKIPCPIK000152)
-11.TYE.JIE/0001-68  (raw: 11TYEJIE000168)
-J1.KBD.U64/0001-09  (raw: J1KBDU64000109)
-L2.WTW.2N8/0001-06  (raw: L2WTW2N8000106)
-J0.KBM.EUL/0001-05  (raw: J0KBMEUL000105)
-ZQ.V25.1CK/0001-33  (raw: ZQV251CK000133)
-
-// Filial 0002
-B4.TMM.Q8D/0002-24  (raw: B4TMMQ8D000224)
-79.B4O.GMG/0002-50  (raw: 79B4OGMG000250)
-DN.FP6.V2Z/0002-05  (raw: DNFP6V2Z000205)
-RY.JCA.S6R/0002-68  (raw: RYJCAS6R000268)
-IW.UJ6.3BG/0002-46  (raw: IWUJ63BG000246)
-OW.R9D.U0T/0002-96  (raw: OWR9DU0T000296)`}
-        />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-cnpj/samples/lista-alfanumerica.tsx.sample" />
       </Section>
 
       <Section
@@ -358,7 +273,7 @@ OW.R9D.U0T/0002-96  (raw: OWR9DU0T000296)`}
             inputProps={{}}
           />
         </div>
-        <CodeBlock code={`<SgInputCNPJ\n  id="cnpj"\n  label="${t(i18n, "showcase.component.cnpj.labels.cnpj")}"\n  hintText="${t(i18n, "showcase.component.cnpj.labels.cnpjHint")}"\n  validateWithPublicaCnpj\n  publicaCnpjErrorMessage="${t(i18n, "showcase.component.cnpj.messages.publicaNotFound")}"\n  onPublicaCnpjResult={(data) => console.log(data)}\n  onPublicaCnpjError={(error) => console.log(error)}\n  inputProps={{}}\n/>`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-cnpj/samples/cnpj-publico.tsx.sample" />
         {publicaResult ? (
           <div className="mt-3 w-full rounded border border-border bg-foreground/5 p-3 text-xs">
             <div className="mb-2 text-sm font-semibold">{t(i18n, "showcase.component.cnpj.labels.publicaResult")}</div>
@@ -397,7 +312,7 @@ OW.R9D.U0T/0002-96  (raw: OWR9DU0T000296)`}
             inputProps={{}}
           />
         </div>
-        <CodeBlock code={`<SgInputCNPJ\n  id="cnpj"\n  label="${t(i18n, "showcase.component.cnpj.labels.required")}"\n  hintText="${t(i18n, "showcase.component.cnpj.labels.requiredHint")}"\n  required\n  requiredMessage="${t(i18n, "showcase.component.cnpj.messages.required")}"\n  inputProps={{}}\n/>`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-cnpj/samples/obrigatorio.tsx.sample" />
       </Section>
 
       <Section
@@ -414,7 +329,7 @@ OW.R9D.U0T/0002-96  (raw: OWR9DU0T000296)`}
             inputProps={{}}
           />
         </div>
-        <CodeBlock code={`<SgInputCNPJ\n  id="cnpj"\n  label="${t(i18n, "showcase.component.cnpj.labels.cnpj")}"\n  hintText="${t(i18n, "showcase.component.cnpj.labels.cnpjHint")}"\n  lengthMessage="${t(i18n, "showcase.component.cnpj.messages.length")}"\n  inputProps={{}}\n/>`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-cnpj/samples/tamanho.tsx.sample" />
       </Section>
 
       <Section
@@ -431,7 +346,7 @@ OW.R9D.U0T/0002-96  (raw: OWR9DU0T000296)`}
             inputProps={{}}
           />
         </div>
-        <CodeBlock code={`<SgInputCNPJ\n  id="cnpj"\n  label="${t(i18n, "showcase.component.cnpj.labels.cnpj")}"\n  hintText="${t(i18n, "showcase.component.cnpj.labels.cnpjHint")}"\n  invalidMessage="${t(i18n, "showcase.component.cnpj.messages.invalid")}"\n  inputProps={{}}\n/>`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-cnpj/samples/invalido.tsx.sample" />
       </Section>
 
       <Section
@@ -454,7 +369,7 @@ OW.R9D.U0T/0002-96  (raw: OWR9DU0T000296)`}
               : `\"${validationMsg}\"`}
           </p>
         </div>
-        <CodeBlock code={`<SgInputCNPJ\n  id="cnpj"\n  label="${t(i18n, "showcase.component.cnpj.labels.cnpj")}"\n  hintText="${t(i18n, "showcase.component.cnpj.labels.cnpjHint")}"\n  validation={(v) => (v.startsWith("00") ? "${t(i18n, "showcase.component.cnpj.messages.cannotStart")}" : null)}\n  onValidation={(msg) => console.log(msg)}\n  inputProps={{}}\n/>`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-cnpj/samples/validacao-customizada.tsx.sample" />
       </Section>
 
       <Section
@@ -480,7 +395,7 @@ OW.R9D.U0T/0002-96  (raw: OWR9DU0T000296)`}
             inputProps={{}}
           />
         </div>
-        <CodeBlock code={`<SgInputCNPJ id="a" label="${t(i18n, "showcase.common.labels.noBorder")}" hintText="${t(i18n, "showcase.component.cnpj.labels.cnpj")}" withBorder={false} inputProps={{}} />\n<SgInputCNPJ id="b" label="${t(i18n, "showcase.common.labels.filled")}" hintText="${t(i18n, "showcase.component.cnpj.labels.cnpj")}" filled inputProps={{}} />`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-cnpj/samples/variacoes-visuais.tsx.sample" />
       </Section>
 
       <Section
@@ -497,7 +412,7 @@ OW.R9D.U0T/0002-96  (raw: OWR9DU0T000296)`}
             inputProps={{}}
           />
         </div>
-        <CodeBlock code={`<SgInputCNPJ id="x" label="${t(i18n, "showcase.common.labels.noClear")}" hintText="${t(i18n, "showcase.component.cnpj.labels.cnpj")}" clearButton={false} inputProps={{}} />`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-cnpj/samples/sem-botao-limpar.tsx.sample" />
       </Section>
 
       <Section
@@ -522,7 +437,7 @@ OW.R9D.U0T/0002-96  (raw: OWR9DU0T000296)`}
             inputProps={{}}
           />
         </div>
-        <CodeBlock code={`<SgInputCNPJ id="a" label="${t(i18n, "showcase.common.labels.width200")}" hintText="${t(i18n, "showcase.component.cnpj.labels.cnpj")}" width={200} inputProps={{}} />\n<SgInputCNPJ id="b" label="${t(i18n, "showcase.common.labels.width300Rounded")}" hintText="${t(i18n, "showcase.component.cnpj.labels.cnpj")}" width={300} borderRadius={20} inputProps={{}} />`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-cnpj/samples/largura-e-borda.tsx.sample" />
       </Section>
 
       <Section
@@ -539,7 +454,7 @@ OW.R9D.U0T/0002-96  (raw: OWR9DU0T000296)`}
             inputProps={{ defaultValue: "00.000.000/0000-00" }}
           />
         </div>
-        <CodeBlock code={`<SgInputCNPJ id="a" label="${t(i18n, "showcase.common.labels.disabled")}" hintText="${t(i18n, "showcase.component.cnpj.labels.cnpj")}" enabled={false} inputProps={{}} />`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-cnpj/samples/desabilitado.tsx.sample" />
       </Section>
 
       <Section
@@ -568,7 +483,7 @@ OW.R9D.U0T/0002-96  (raw: OWR9DU0T000296)`}
             )}
           </div>
         </div>
-        <CodeBlock code={`<SgInputCNPJ\n  id="eventos"\n  label="${t(i18n, "showcase.component.cnpj.labels.withEvents")}"\n  hintText="${t(i18n, "showcase.component.cnpj.labels.cnpj")}"\n  required\n  inputProps={{}}\n  onChange={(v) => console.log("onChange:", v)}\n  onEnter={() => console.log("focus")}\n  onExit={() => console.log("blur")}\n  onClear={() => console.log("cleared")}\n  onValidation={(msg) => console.log("validation:", msg)}\n/>`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-cnpj/samples/eventos.tsx.sample" />
       </Section>
 
       <Section
@@ -598,28 +513,7 @@ OW.R9D.U0T/0002-96  (raw: OWR9DU0T000296)`}
       labelAlign="end"
     />
   </SgGrid>
-  <CodeBlock code={`<SgInputCNPJ
-  id="sg-input-cnpj-label-float"
-  label="${t(i18n, "showcase.common.labels.labelFloat")}"
-  inputProps={{}}
-  labelPosition="float"
-/>
-
-<SgInputCNPJ
-  id="sg-input-cnpj-label-top"
-  label="${t(i18n, "showcase.common.labels.labelTop")}"
-  inputProps={{}}
-  labelPosition="top"
-/>
-
-<SgInputCNPJ
-  id="sg-input-cnpj-label-left"
-  label="${t(i18n, "showcase.common.labels.labelLeft")}"
-  inputProps={{}}
-  labelPosition="left"
-  labelWidth={140}
-  labelAlign="end"
-/>`} />
+  <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-cnpj/samples/posicao-do-rotulo.tsx.sample" />
 </Section>
 
 <Section id="exemplo-15" title="15) Playground" description={t(i18n, "showcase.common.playground.description")}>
@@ -627,7 +521,7 @@ OW.R9D.U0T/0002-96  (raw: OWR9DU0T000296)`}
           title="SgInputCNPJ Playground"
           interactive
           codeContract="appFile"
-          code={INPUT_CNPJ_PLAYGROUND_CODE}
+          playgroundFile="apps/showcase/src/app/components/sg-input-cnpj/sg-input-cnpj.tsx.playground"
           height={640}
           defaultOpen
         />
@@ -673,5 +567,6 @@ OW.R9D.U0T/0002-96  (raw: OWR9DU0T000296)`}
     </I18NReady>
   );
 }
+
 
 

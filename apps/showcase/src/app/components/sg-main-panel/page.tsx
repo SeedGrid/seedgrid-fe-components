@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import {
@@ -12,7 +12,7 @@ import {
   SgBadge,
 } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import sgCodeBlockBase from "../sgCodeBlockBase";
+import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
@@ -479,7 +479,7 @@ export default function SgMainPanelPage() {
         </SgPanel>
 
         <SgStack className="mt-6">
-          <sgCodeBlockBase code={MAIN_PANEL_FULL_EXAMPLE_CODE} />
+          <SgCodeBlockBase code={MAIN_PANEL_FULL_EXAMPLE_CODE} />
         </SgStack>
       </Section>
 
@@ -500,5 +500,6 @@ export default function SgMainPanelPage() {
     </I18NReady>
   );
 }
+
 
 

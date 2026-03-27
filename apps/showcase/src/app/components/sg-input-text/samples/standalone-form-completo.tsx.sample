@@ -1,0 +1,31 @@
+import * as React from "react";
+import { SgInputText } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const nomeRef = React.useRef<HTMLInputElement | null>(null);
+  const emailRef = React.useRef<HTMLInputElement | null>(null);
+  const cpfRef = React.useRef<HTMLInputElement | null>(null);
+
+  React.useEffect(() => {
+    if (nomeRef.current) nomeRef.current.value = "Maria";
+    if (emailRef.current) emailRef.current.value = "maria@seedgrid.com";
+    if (cpfRef.current) cpfRef.current.value = "12345678909";
+  }, []);
+
+  const handleSave = () => {
+    console.log({
+      nome: nomeRef.current?.value ?? "",
+      email: emailRef.current?.value ?? "",
+      cpf: cpfRef.current?.value ?? ""
+    });
+  };
+
+  return (
+    <div className="space-y-3">
+      <SgInputText id="nome" label="Nome" inputProps={{ ref: nomeRef }} />
+      <SgInputText id="email" label="Email" inputProps={{ ref: emailRef }} />
+      <SgInputText id="cpf" label="CPF" inputProps={{ ref: cpfRef }} />
+      <button type="button" onClick={handleSave}>Salvar</button>
+    </div>
+  );
+}

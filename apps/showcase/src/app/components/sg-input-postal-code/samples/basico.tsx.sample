@@ -1,0 +1,8 @@
+import * as React from "react";
+import { useForm } from "react-hook-form";
+import { SgInputPostalCode } from "@seedgrid/fe-components";
+
+export default function App() {
+  const { register } = useForm({ defaultValues: { cep: "" } });
+  return <SgInputPostalCode id="cep" label="CEP (Brasil)" hintText="00000-000" name="cep" register={register} />;
+}

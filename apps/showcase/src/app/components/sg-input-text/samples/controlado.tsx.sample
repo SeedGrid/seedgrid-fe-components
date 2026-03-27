@@ -1,0 +1,16 @@
+import * as React from "react";
+import { useForm } from "react-hook-form";
+import { SgInputText } from "@seedgrid/fe-components";
+
+export default function App() {
+  const { control, watch, setValue } = useForm({ defaultValues: { controlled: "SeedGrid" } });
+  return (
+    <>
+      <SgInputText id="demo-controlled" label="Cliente" name="controlled" control={control} />
+      <button type="button" onClick={() => setValue("controlled", "Valor de API")}>Set API</button>
+      <button type="button" onClick={() => setValue("controlled", "Outro valor")}>Set Outro</button>
+      <button type="button" onClick={() => setValue("controlled", "")}>Limpar</button>
+      <p>Estado atual: "{watch("controlled")}"</p>
+    </>
+  );
+}

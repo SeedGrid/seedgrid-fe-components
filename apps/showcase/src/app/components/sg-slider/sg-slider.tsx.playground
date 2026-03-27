@@ -1,0 +1,41 @@
+import * as React from "react";
+import { SgButton, SgSlider } from "@seedgrid/fe-components";
+
+export default function App() {
+  const [min, setMin] = React.useState(0);
+  const [max, setMax] = React.useState(100);
+  const [step, setStep] = React.useState(1);
+  const [width, setWidth] = React.useState<number | string>(320);
+  const [disabled, setDisabled] = React.useState(false);
+  const [value, setValue] = React.useState(40);
+
+  return (
+    <div className="space-y-4 p-2">
+      <div className="grid gap-2 sm:grid-cols-5">
+        <SgButton size="sm" appearance="outline" onClick={() => { setMin(0); setMax(100); setStep(1); }}>0-100</SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => { setMin(-50); setMax(50); setStep(5); }}>-50 a 50</SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => setWidth(320)}>Width 320</SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => setWidth("18rem")}>Width 18rem</SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => setDisabled((prev) => !prev)}>{disabled ? "Habilitar" : "Desabilitar"}</SgButton>
+      </div>
+
+      <SgSlider
+        id="playground-slider"
+        minValue={min}
+        maxValue={max}
+        step={step}
+        value={value}
+        width={width}
+        disabled={disabled}
+        ariaLabel="Slider playground"
+        className="accent-[#c56a2d]"
+        onChange={setValue}
+        inputProps={{
+          name: "playgroundSlider",
+          title: "Slider playground"
+        }}
+      />
+      <div className="text-sm">Valor atual: {value}</div>
+    </div>
+  );
+}

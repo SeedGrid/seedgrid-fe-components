@@ -3,7 +3,7 @@
 import React from "react";
 import { SgButton, SgSlider } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import sgCodeBlockBase from "../sgCodeBlockBase";
+import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
@@ -23,8 +23,8 @@ function Section(props: { title: string; description?: string; children: React.R
   );
 }
 
-function CodeBlock(props: { code: string }) {
-  return <sgCodeBlockBase code={props.code} />;
+function CodeBlock(props: { sampleFile: string }) {
+  return <SgCodeBlockBase sampleFile={props.sampleFile} />;
 }
 
 const EXAMPLE_BASIC_CODE = `import React from "react";
@@ -374,7 +374,7 @@ export default function SgSliderPage() {
               Valor atual: <span className="font-semibold text-foreground">{basicValue}</span>
             </p>
           </div>
-          <CodeBlock code={EXAMPLE_BASIC_CODE} />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-slider/samples/basico.tsx.sample" />
         </Section>
 
         <Section title={texts.section2Title} description={texts.section2Description}>
@@ -395,7 +395,7 @@ export default function SgSliderPage() {
               Valor controlado: <span className="font-semibold text-foreground">{controlledValue}</span>
             </p>
           </div>
-          <CodeBlock code={EXAMPLE_CONTROLLED_CODE} />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-slider/samples/controle-externo.tsx.sample" />
         </Section>
 
         <Section title={texts.section3Title} description={texts.section3Description}>
@@ -421,7 +421,7 @@ export default function SgSliderPage() {
               Valor com step 5: <span className="font-semibold text-foreground">{stepWidthValue}</span>
             </p>
           </div>
-          <CodeBlock code={EXAMPLE_STEP_WIDTH_CODE} />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-slider/samples/step-e-width.tsx.sample" />
         </Section>
 
         <Section title={texts.section4Title} description={texts.section4Description}>
@@ -449,7 +449,7 @@ export default function SgSliderPage() {
               Nivel de prioridade: <span className="font-semibold text-foreground">{accessibilityValue}</span>
             </p>
           </div>
-          <CodeBlock code={EXAMPLE_ACCESSIBILITY_CODE} />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-slider/samples/class-name-aria-label-e-disabled.tsx.sample" />
         </Section>
 
         <Section title={texts.section5Title} description={texts.section5Description}>
@@ -476,7 +476,7 @@ export default function SgSliderPage() {
               <span className="font-semibold text-foreground">{inputFocusCount}</span>
             </p>
           </div>
-          <CodeBlock code={EXAMPLE_INPUT_PROPS_CODE} />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-slider/samples/input-props.tsx.sample" />
         </Section>
 
         <Section title={texts.section6Title} description={texts.section6Description}>
@@ -484,7 +484,7 @@ export default function SgSliderPage() {
             title={texts.playgroundTitle}
             interactive
             codeContract="appFile"
-            code={PLAYGROUND_CODE}
+            playgroundFile="apps/showcase/src/app/components/sg-slider/sg-slider.tsx.playground"
             height={560}
             defaultOpen
           />
@@ -496,3 +496,4 @@ export default function SgSliderPage() {
     </I18NReady>
   );
 }
+

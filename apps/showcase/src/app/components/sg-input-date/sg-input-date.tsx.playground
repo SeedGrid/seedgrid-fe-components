@@ -1,0 +1,41 @@
+import * as React from "react";
+import { SgButton, SgGrid, SgInputDate } from "@seedgrid/fe-components";
+
+export default function App() {
+  const [required, setRequired] = React.useState(false);
+  const [withRange, setWithRange] = React.useState(true);
+  const [filled, setFilled] = React.useState(false);
+  const [value, setValue] = React.useState("");
+
+  return (
+    <div className="space-y-4 p-2">
+      <SgGrid columns={{ base: 2, md: 4 }} gap={8}>
+        <SgButton size="sm" appearance={required ? "solid" : "outline"} onClick={() => setRequired((prev) => !prev)}>required</SgButton>
+        <SgButton size="sm" appearance={withRange ? "solid" : "outline"} onClick={() => setWithRange((prev) => !prev)}>range</SgButton>
+        <SgButton size="sm" appearance={filled ? "solid" : "outline"} onClick={() => setFilled((prev) => !prev)}>filled</SgButton>
+      </SgGrid>
+
+      <SgInputDate
+        id="playground-input-date"
+        label="SgInputDate Playground"
+        hintText="Selecione uma data"
+        required={required}
+        filled={filled}
+        minDate={withRange ? "2020-01-01" : undefined}
+        maxDate={withRange ? "2030-12-31" : undefined}
+        onChange={setValue}
+      />
+
+      <div className="rounded border border-border p-3">
+        <p className="mb-2 text-xs text-muted-foreground">labelPosition</p>
+        <SgGrid columns={{ base: 1, md: 3 }} gap={8}>
+          <SgInputDate id="label-float" label="Float" hintText="YYYY-MM-DD" labelPosition="float" />
+          <SgInputDate id="label-top" label="Top" hintText="YYYY-MM-DD" labelPosition="top" />
+          <SgInputDate id="label-left" label="Left" hintText="YYYY-MM-DD" labelPosition="left" labelWidth={120} labelAlign="end" />
+        </SgGrid>
+      </div>
+
+      <div className="rounded border border-border bg-muted/40 p-3 text-xs">Valor atual: <strong>{value || "-"}</strong></div>
+    </div>
+  );
+}

@@ -1,0 +1,11 @@
+import * as React from "react";
+import { SgGrid, SgInputTextArea } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <SgGrid columns={{ base: 1, sm: 2 }} gap={16}>
+      <SgInputTextArea id="demo-w250" label="Width 250" width={250} />
+      <SgInputTextArea id="demo-w350" label="Width 350" width={350} borderRadius={16} />
+    </SgGrid>
+  );
+}

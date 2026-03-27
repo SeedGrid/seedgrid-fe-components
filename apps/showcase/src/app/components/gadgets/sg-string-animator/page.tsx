@@ -3,7 +3,7 @@
 import * as React from "react";
 import { SgStringAnimator, type SgStringAnimatorRef, SgButton, SgGrid } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import sgCodeBlockBase from "../../sgCodeBlockBase";
+import SgCodeBlockBase from "../../sgCodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
@@ -875,7 +875,7 @@ export default function SgStringAnimatorShowcase() {
           description={texts.section1Description}
         >
           <Ex1 />
-          <sgCodeBlockBase code={EX1_CODE} />
+          <SgCodeBlockBase code={EX1_CODE} />
         </Section>
 
         {/* 2 */}
@@ -884,7 +884,7 @@ export default function SgStringAnimatorShowcase() {
           description={texts.section2Description}
         >
           <Ex2 />
-          <sgCodeBlockBase code={EX2_CODE} />
+          <SgCodeBlockBase code={EX2_CODE} />
         </Section>
 
         {/* 3 */}
@@ -893,7 +893,7 @@ export default function SgStringAnimatorShowcase() {
           description={texts.section3Description}
         >
           <Ex3 />
-          <sgCodeBlockBase code={EX3_CODE} />
+          <SgCodeBlockBase code={EX3_CODE} />
         </Section>
 
         {/* 4 */}
@@ -902,7 +902,7 @@ export default function SgStringAnimatorShowcase() {
           description={texts.section4Description}
         >
           <Ex4 />
-          <sgCodeBlockBase code={EX4_CODE} />
+          <SgCodeBlockBase code={EX4_CODE} />
         </Section>
 
         {/* 5 */}
@@ -911,7 +911,7 @@ export default function SgStringAnimatorShowcase() {
           description={texts.section5Description}
         >
           <Ex5 />
-          <sgCodeBlockBase code={EX5_CODE} />
+          <SgCodeBlockBase code={EX5_CODE} />
         </Section>
 
         {/* 6 */}
@@ -920,7 +920,7 @@ export default function SgStringAnimatorShowcase() {
           description={texts.section6Description}
         >
           <Ex6 />
-          <sgCodeBlockBase code={EX6_CODE} />
+          <SgCodeBlockBase code={EX6_CODE} />
         </Section>
 
         {/* 7 */}
@@ -929,7 +929,7 @@ export default function SgStringAnimatorShowcase() {
           description={texts.section7Description}
         >
           <Ex7 />
-          <sgCodeBlockBase code={EX7_CODE} />
+          <SgCodeBlockBase code={EX7_CODE} />
         </Section>
 
         {/* 8 */}
@@ -938,7 +938,7 @@ export default function SgStringAnimatorShowcase() {
           description={texts.section8Description}
         >
           <Ex8 />
-          <sgCodeBlockBase code={EX8_CODE} />
+          <SgCodeBlockBase code={EX8_CODE} />
         </Section>
 
         {/* 9 */}
@@ -947,7 +947,7 @@ export default function SgStringAnimatorShowcase() {
           description={texts.section9Description}
         >
           <Ex9 />
-          <sgCodeBlockBase code={EX9_CODE} />
+          <SgCodeBlockBase code={EX9_CODE} />
         </Section>
 
         {/* Playground */}
@@ -975,4 +975,5 @@ export default function SgStringAnimatorShowcase() {
     </I18NReady>
   );
 }
+
 

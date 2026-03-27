@@ -1,0 +1,12 @@
+import * as React from "react";
+import { SgGrid, SgInputPostalCode } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <SgGrid columns={{ base: 1, md: 3 }} gap={8}>
+      <SgInputPostalCode id="float" label="Float" labelPosition="float" />
+      <SgInputPostalCode id="top" label="Top" labelPosition="top" />
+      <SgInputPostalCode id="left" label="Left" labelPosition="left" labelWidth={140} labelAlign="end" />
+    </SgGrid>
+  );
+}

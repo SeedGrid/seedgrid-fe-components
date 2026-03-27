@@ -1,0 +1,6 @@
+import * as React from "react";
+import { SgInputPhone } from "@seedgrid/fe-components";
+
+export default function App() {
+  return <SgInputPhone id="x" label="Sem botao limpar" hintText="(11) 99999-0000" clearButton={false} />;
+}

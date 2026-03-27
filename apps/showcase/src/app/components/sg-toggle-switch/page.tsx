@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import Link from "next/link";
@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import type { FieldValues } from "react-hook-form";
 import { SgGrid, SgToggleSwitch } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import sgCodeBlockBase from "../sgCodeBlockBase";
+import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import { t, useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
 
@@ -24,6 +24,10 @@ function Section(props: { id?: string; title: string; description?: string; chil
       <div className="mt-4 space-y-4">{props.children}</div>
     </section>
   );
+}
+
+function CodeBlock(props: { sampleFile: string }) {
+  return <SgCodeBlockBase sampleFile={props.sampleFile} />;
 }
 
 const TOGGLE_SWITCH_PLAYGROUND_APP_FILE = `import * as React from "react";
@@ -657,9 +661,7 @@ export default function SgToggleSwitchPage() {
             Valor atual: <code className="rounded bg-muted px-1">{String(basicValue)}</code>
           </p>
         </div>
-        <sgCodeBlockBase
-          code={BASIC_SHOWCASE_CODE}
-        />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-toggle-switch/samples/basico.tsx.sample" />
       </Section>
 
       <Section
@@ -680,9 +682,7 @@ export default function SgToggleSwitchPage() {
             Valor atual: <code className="rounded bg-muted px-1">{String(iconValue)}</code>
           </p>
         </div>
-        <sgCodeBlockBase
-          code={ICONS_SHOWCASE_CODE}
-        />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-toggle-switch/samples/com-icones-on-off.tsx.sample" />
       </Section>
 
       <Section
@@ -710,9 +710,7 @@ export default function SgToggleSwitchPage() {
             )}
           </div>
         </div>
-        <sgCodeBlockBase
-          code={REMOTE_SHOWCASE_CODE}
-        />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-toggle-switch/samples/remote-simulacao-de-update.tsx.sample" />
       </Section>
 
       <Section
@@ -764,9 +762,7 @@ export default function SgToggleSwitchPage() {
             <div>capturado: <code className="rounded bg-muted px-1">{capturedValue}</code></div>
           </div>
         </div>
-        <sgCodeBlockBase
-          code={EXTERNAL_SHOWCASE_CODE}
-        />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-toggle-switch/samples/controlado-externamente-captura-do-valor.tsx.sample" />
       </Section>
 
       <Section
@@ -806,9 +802,7 @@ export default function SgToggleSwitchPage() {
             Ultimo submit: <code className="rounded bg-muted px-1">{submitResult}</code>
           </p>
         </form>
-        <sgCodeBlockBase
-          code={RHF_SHOWCASE_CODE}
-        />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-toggle-switch/samples/react-hook-form.tsx.sample" />
       </Section>
 
       <Section
@@ -834,9 +828,7 @@ export default function SgToggleSwitchPage() {
             offIcon={<X size={12} />}
           />
         </div>
-        <sgCodeBlockBase
-          code={DISABLED_READONLY_SHOWCASE_CODE}
-        />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-toggle-switch/samples/estados-disabled-read-only.tsx.sample" />
       </Section>
 
       <Section
@@ -848,7 +840,7 @@ export default function SgToggleSwitchPage() {
           title={texts.playgroundTitle}
           interactive
           codeContract="appFile"
-          code={TOGGLE_SWITCH_PLAYGROUND_APP_FILE}
+          playgroundFile="apps/showcase/src/app/components/sg-toggle-switch/sg-toggle-switch.tsx.playground"
           height={560}
           defaultOpen
         />
@@ -887,5 +879,6 @@ export default function SgToggleSwitchPage() {
     </I18NReady>
   );
 }
+
 
 

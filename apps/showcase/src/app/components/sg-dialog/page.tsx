@@ -1,10 +1,10 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import { useSgTheme } from "@seedgrid/fe-theme";
 import { SgButton, SgDialog } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import sgCodeBlockBase from "../sgCodeBlockBase";
+import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
@@ -25,7 +25,7 @@ function Section(props: { title: string; description?: string; children: React.R
 }
 
 function CodeBlock(props: { code: string }) {
-  return <sgCodeBlockBase code={props.code} />;
+  return <SgCodeBlockBase code={props.code} />;
 }
 
 const DIALOG_PLAYGROUND_CODE = `import * as React from "react";
@@ -56,7 +56,7 @@ export default function App() {
         onOpenChange={setOpen}
         severity={severity}
         size={size}
-        title="Configuração"
+        title="ConfiguraÃ§Ã£o"
         subtitle="Exemplo interativo"
         footer={
           <>
@@ -65,7 +65,7 @@ export default function App() {
           </>
         }
       >
-        <div className="text-sm text-muted-foreground">Conteúdo do diálogo.</div>
+        <div className="text-sm text-muted-foreground">ConteÃºdo do diÃ¡logo.</div>
       </SgDialog>
     </div>
   );
@@ -73,16 +73,16 @@ export default function App() {
 
 const DIALOG_PROPS: ShowcasePropRow[] = [
   { prop: "open / defaultOpen / onOpenChange", type: "boolean / boolean / callback", defaultValue: "controlado / false / -", description: "Controle de abertura." },
-  { prop: "title / subtitle / children / footer", type: "ReactNode", defaultValue: "-", description: "Estrutura principal do conteúdo." },
-  { prop: "size", type: "\"sm\" | \"md\" | \"lg\" | \"xl\" | \"full\"", defaultValue: "md", description: "Largura do diálogo." },
-  { prop: "severity", type: "token", defaultValue: "plain", description: "Acento visual do diálogo." },
-  { prop: "animation / transitionMs", type: "token / number", defaultValue: "zoom / 160", description: "Animação e duração da transição." },
-  { prop: "autoCloseMs", type: "number", defaultValue: "-", description: "Fecha automaticamente após o tempo informado." },
+  { prop: "title / subtitle / children / footer", type: "ReactNode", defaultValue: "-", description: "Estrutura principal do conteÃºdo." },
+  { prop: "size", type: "\"sm\" | \"md\" | \"lg\" | \"xl\" | \"full\"", defaultValue: "md", description: "Largura do diÃ¡logo." },
+  { prop: "severity", type: "token", defaultValue: "plain", description: "Acento visual do diÃ¡logo." },
+  { prop: "animation / transitionMs", type: "token / number", defaultValue: "zoom / 160", description: "AnimaÃ§Ã£o e duraÃ§Ã£o da transiÃ§Ã£o." },
+  { prop: "autoCloseMs", type: "number", defaultValue: "-", description: "Fecha automaticamente apÃ³s o tempo informado." },
   { prop: "customColor / elevation", type: "CSSProperties[\"backgroundColor\"] / \"none\" | \"sm\" | \"md\" | \"lg\" | CSSProperties[\"boxShadow\"]", defaultValue: "- / -", description: "Customiza cor de fundo e elevacao do card do dialog." },
   { prop: "closeable / closeOnOverlayClick / closeOnEsc", type: "boolean", defaultValue: "true / true / true", description: "Regras de fechamento." },
   { prop: "lockBodyScroll / restoreFocus", type: "boolean", defaultValue: "true / true", description: "Acessibilidade e foco." },
-  { prop: "onClose / initialFocusRef / ariaLabel", type: "callback / ref / string", defaultValue: "-", description: "Controle avançado de fechamento e foco." },
-  { prop: "className / style / overlayClassName / contentClassName / headerClassName / bodyClassName / footerClassName", type: "string / CSSProperties", defaultValue: "-", description: "Customização de estilos por seção." }
+  { prop: "onClose / initialFocusRef / ariaLabel", type: "callback / ref / string", defaultValue: "-", description: "Controle avanÃ§ado de fechamento e foco." },
+  { prop: "className / style / overlayClassName / contentClassName / headerClassName / bodyClassName / footerClassName", type: "string / CSSProperties", defaultValue: "-", description: "CustomizaÃ§Ã£o de estilos por seÃ§Ã£o." }
 ];
 
 export default function SgDialogPage() {
@@ -433,3 +433,4 @@ export default function Example() {
     </I18NReady>
   );
 }
+

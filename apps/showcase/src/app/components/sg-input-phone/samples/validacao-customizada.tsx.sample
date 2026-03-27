@@ -1,0 +1,14 @@
+import * as React from "react";
+import { SgInputPhone } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <SgInputPhone
+      id="telefone"
+      label="Telefone"
+      hintText="(11) 99999-0000"
+      validation={(value) => (value.startsWith("(00)") ? "DDD invalido" : null)}
+      onValidation={(message) => console.log(message)}
+    />
+  );
+}

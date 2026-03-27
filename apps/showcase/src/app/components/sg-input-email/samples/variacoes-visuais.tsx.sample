@@ -1,0 +1,11 @@
+import * as React from "react";
+import { SgInputEmail } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <>
+      <SgInputEmail id="a" label="Sem borda" hintText="name@domain.com" withBorder={false} />
+      <SgInputEmail id="b" label="Filled" hintText="name@domain.com" filled />
+    </>
+  );
+}

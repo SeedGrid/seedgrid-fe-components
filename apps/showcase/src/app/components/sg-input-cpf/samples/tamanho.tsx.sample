@@ -1,0 +1,14 @@
+import * as React from "react";
+import { SgInputCPF } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <SgInputCPF
+      id="cpf"
+      label="CPF"
+      hintText="000.000.000-00"
+      lengthMessage="CPF incompleto"
+      inputProps={{}}
+    />
+  );
+}

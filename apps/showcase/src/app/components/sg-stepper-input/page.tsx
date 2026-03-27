@@ -1,9 +1,9 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import { SgButton, SgStepperInput } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import sgCodeBlockBase from "../sgCodeBlockBase";
+import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
@@ -23,8 +23,8 @@ function Section(props: { title: string; description?: string; children: React.R
   );
 }
 
-function CodeBlock(props: { code: string }) {
-  return <sgCodeBlockBase code={props.code} />;
+function CodeBlock(props: { sampleFile: string }) {
+  return <SgCodeBlockBase sampleFile={props.sampleFile} />;
 }
 
 const EXAMPLE_BASIC_CODE = `import React from "react";
@@ -235,7 +235,7 @@ export default function SgStepperInputPage() {
               Valor atual: <span className="font-semibold text-foreground">{basicValue}</span>
             </p>
           </div>
-          <CodeBlock code={EXAMPLE_BASIC_CODE} />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-stepper-input/samples/basico.tsx.sample" />
         </Section>
 
         <Section title={texts.section2Title} description={texts.section2Description}>
@@ -258,7 +258,7 @@ export default function SgStepperInputPage() {
               Valor controlado: <span className="font-semibold text-foreground">{controlledValue}</span>
             </p>
           </div>
-          <CodeBlock code={EXAMPLE_CONTROLLED_CODE} />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-stepper-input/samples/controle-externo.tsx.sample" />
         </Section>
 
         <Section title={texts.section3Title} description={texts.section3Description}>
@@ -266,7 +266,7 @@ export default function SgStepperInputPage() {
             <SgStepperInput id="stepper-readonly" minValue={0} maxValue={10} value={7} readOnly />
             <SgStepperInput id="stepper-disabled" minValue={0} maxValue={10} value={4} disabled />
           </div>
-          <CodeBlock code={EXAMPLE_READONLY_CODE} />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-stepper-input/samples/read-only-e-disabled.tsx.sample" />
         </Section>
 
         <Section title={texts.section4Title} description={texts.section4Description}>
@@ -274,7 +274,7 @@ export default function SgStepperInputPage() {
             title={texts.playgroundTitle}
             interactive
             codeContract="appFile"
-            code={PLAYGROUND_CODE}
+            playgroundFile="apps/showcase/src/app/components/sg-stepper-input/sg-stepper-input.tsx.playground"
             height={520}
             defaultOpen
           />
@@ -286,3 +286,4 @@ export default function SgStepperInputPage() {
     </I18NReady>
   );
 }
+

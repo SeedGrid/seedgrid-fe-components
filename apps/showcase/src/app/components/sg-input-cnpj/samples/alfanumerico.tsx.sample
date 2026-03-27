@@ -1,0 +1,13 @@
+import * as React from "react";
+import { SgInputCNPJ } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <SgInputCNPJ
+      id="cnpj"
+      label="CNPJ alfanumerico"
+      hintText="AA.AAA.AAA/0001-00"
+      inputProps={{ defaultValue: "AB.12C.345/0001-40" }}
+    />
+  );
+}

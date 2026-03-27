@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import Link from "next/link";
@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import type { FieldValues } from "react-hook-form";
 import { SgButton, SgInputCurrency, SgGrid } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import sgCodeBlockBase from "../sgCodeBlockBase";
+import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import { t, useShowcaseI18n } from "../../../i18n";
 
@@ -24,7 +24,7 @@ function Section(props: { id?: string; title: string; description?: string; chil
 }
 
 function CodeBlock(props: { code: string }) {
-  return <sgCodeBlockBase code={props.code.trimStart()} />;
+  return <SgCodeBlockBase code={props.code.trimStart()} />;
 }
 
 const CURRENCY_EDIT_PLAYGROUND_CODE = `import * as React from "react";
@@ -1069,4 +1069,5 @@ export default function Example() {
     </I18NReady>
   );
 }
+
 

@@ -4,7 +4,7 @@ import React from "react";
 import { Box, Building2, FilePenLine, Layers3, Receipt, Settings } from "lucide-react";
 import { SgBreadcrumb, SgButton, type SgBreadcrumbItem } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import sgCodeBlockBase from "../sgCodeBlockBase";
+import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
@@ -59,7 +59,7 @@ function Section(props: { title: string; description?: string; children: React.R
 }
 
 function CodeBlock(props: { code: string }) {
-  return <sgCodeBlockBase code={props.code} />;
+  return <SgCodeBlockBase code={props.code} />;
 }
 
 type BreadcrumbTexts = {
@@ -354,4 +354,5 @@ export default function SgBreadcrumbPage() {
     </I18NReady>
   );
 }
+
 

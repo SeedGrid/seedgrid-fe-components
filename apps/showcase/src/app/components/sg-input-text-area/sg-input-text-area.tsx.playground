@@ -1,0 +1,36 @@
+import * as React from "react";
+import { SgButton, SgGrid, SgInputTextArea } from "@seedgrid/fe-components";
+
+export default function App() {
+  const [value, setValue] = React.useState("Texto inicial");
+  const [required, setRequired] = React.useState(false);
+  const [filled, setFilled] = React.useState(false);
+  const [withBorder, setWithBorder] = React.useState(true);
+  const [showCharCounter, setShowCharCounter] = React.useState(true);
+  const [maxLength, setMaxLength] = React.useState(120);
+  const [enabled, setEnabled] = React.useState(true);
+
+  return (
+    <div className="space-y-4 p-2">
+      <SgGrid columns={{ base: 2, md: 4 }} gap={8}>
+        <SgButton size="sm" appearance={required ? "solid" : "outline"} onClick={() => setRequired((prev) => !prev)}>required</SgButton>
+        <SgButton size="sm" appearance={filled ? "solid" : "outline"} onClick={() => setFilled((prev) => !prev)}>filled</SgButton>
+        <SgButton size="sm" appearance={withBorder ? "solid" : "outline"} onClick={() => setWithBorder((prev) => !prev)}>withBorder</SgButton>
+        <SgButton size="sm" appearance={showCharCounter ? "solid" : "outline"} onClick={() => setShowCharCounter((prev) => !prev)}>counter</SgButton>
+      </SgGrid>
+      <SgGrid columns={{ base: 2, md: 4 }} gap={8}>
+        <SgButton size="sm" appearance={enabled ? "solid" : "outline"} onClick={() => setEnabled((prev) => !prev)}>enabled</SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => setMaxLength((prev) => (prev === 120 ? 60 : 120))}>maxLength: {maxLength}</SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => setValue("Texto vindo da API\ncom quebra de linha.")}>Set API</SgButton>
+        <SgButton size="sm" appearance="outline" severity="danger" onClick={() => setValue("")}>Limpar</SgButton>
+      </SgGrid>
+      <SgInputTextArea id="playground-textarea" label="SgInputTextArea Playground" required={required} filled={filled} withBorder={withBorder} showCharCounter={showCharCounter} maxLength={maxLength} enabled={enabled} textareaProps={{ value, onChange: (event) => setValue(event.target.value) }} />
+      <SgGrid columns={{ base: 1, md: 3 }} gap={8}>
+        <SgInputTextArea id="label-float" label="Float" hintText="Type a note..." labelPosition="float" />
+        <SgInputTextArea id="label-top" label="Top" hintText="Type a note..." labelPosition="top" />
+        <SgInputTextArea id="label-left" label="Left" hintText="Type a note..." labelPosition="left" labelWidth={120} labelAlign="end" />
+      </SgGrid>
+      <div>Valor atual: <strong>{value || "-"}</strong></div>
+    </div>
+  );
+}

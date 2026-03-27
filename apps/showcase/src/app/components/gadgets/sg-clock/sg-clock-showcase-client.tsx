@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import * as React from "react";
 import {
@@ -11,7 +11,7 @@ import {
 } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import { t, useShowcaseI18n } from "../../../../i18n";
-import sgCodeBlockBase from "../../sgCodeBlockBase";
+import SgCodeBlockBase from "../../sgCodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
@@ -60,7 +60,7 @@ function RollerShowcase(props: { timezone: string; initialServerTime: string }) 
         />
       </div>
 
-      <sgCodeBlockBase
+      <SgCodeBlockBase
         code={`import * as React from "react";
 import {
   SgClock,
@@ -134,7 +134,7 @@ function FlipShowcase(props: { timezone: string; initialServerTime: string }) {
         />
       </div>
 
-      <sgCodeBlockBase
+      <SgCodeBlockBase
         code={`import * as React from "react";
 import {
   SgClock,
@@ -313,7 +313,7 @@ function DigitalStyleShowcase(props: { initialServerTime: string; style: ExtraDi
         </div>
       </div>
 
-      <sgCodeBlockBase code={buildExtraStyleCode(props.style)} />
+      <SgCodeBlockBase code={buildExtraStyleCode(props.style)} />
     </div>
   );
 }
@@ -413,7 +413,7 @@ const CLOCK_PROPS: ShowcasePropRow[] = [
   { prop: "className", type: "string", defaultValue: "-", description: "Classe extra no container do relogio." },
   { prop: "style", type: "React.CSSProperties", defaultValue: "-", description: "Inline style extra no container do relogio." },
   { prop: "centerOverlay", type: "ReactNode", defaultValue: "-", description: "Conteudo opcional sobreposto ao centro do relogio analogico." },
-  { prop: "cardTitle", type: "ReactNode", defaultValue: '"Clock/Relógio"', description: "Titulo do SgCard usado pelo gadget." },
+  { prop: "cardTitle", type: "ReactNode", defaultValue: '"Clock/RelÃ³gio"', description: "Titulo do SgCard usado pelo gadget." },
   { prop: "cardProps", type: 'Omit<SgCardProps, "children" | "title">', defaultValue: "-", description: "Sobrescreve configuracoes padrao do SgCard do gadget." }
 ];
 export function SgClockShowcaseClient({ initialServerTime }: { initialServerTime: string }) {
@@ -491,7 +491,7 @@ export function SgClockShowcaseClient({ initialServerTime }: { initialServerTime
             </div>
 
             <div className="mt-6">
-              <sgCodeBlockBase
+              <SgCodeBlockBase
                 code={`import * as React from "react";
 import {
   SgClock,
@@ -583,7 +583,7 @@ export function AnalogExample(props: { initialServerTime: string }) {
             </div>
 
             <div className="mt-6">
-              <sgCodeBlockBase
+              <SgCodeBlockBase
                 code={`import { SgClock } from "@seedgrid/fe-components";
 
 export function InlineThemeExample(props: { initialServerTime: string }) {
@@ -633,7 +633,7 @@ export function InlineThemeExample(props: { initialServerTime: string }) {
               <SgClock clockStyle="digital" size="lg" initialServerTime={initialServerTime} timezone={timezone} format={format} digitalStyle="default" />
             </div>
             <div className="mt-6">
-              <sgCodeBlockBase
+              <SgCodeBlockBase
                 code={`import * as React from "react";
 import {
   SgClock,
@@ -702,7 +702,7 @@ export function DigitalExample(props: { initialServerTime: string }) {
               <SgClock clockStyle="analog" size={220} initialServerTime={initialServerTime} themeId={themeId} timezone={timezone} showSeconds={false} />
             </div>
             <div className="mt-6">
-              <sgCodeBlockBase
+              <SgCodeBlockBase
                 code={`import * as React from "react";
 import {
   SgClock,
@@ -763,6 +763,7 @@ export function TimezoneExample(props: { initialServerTime: string }) {
     </I18NReady>
   );
 }
+
 
 
 

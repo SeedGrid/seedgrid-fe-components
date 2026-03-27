@@ -1,0 +1,19 @@
+import * as React from "react";
+import { SgInputPassword } from "@seedgrid/fe-components";
+
+export default function App() {
+  const [validationMsg, setValidationMsg] = React.useState<string | null>(null);
+
+  return (
+    <div className="w-80">
+      <SgInputPassword
+        id="demo-validation"
+        label="Senha com validacao"
+        hintText="Minimo de 8 caracteres"
+        validation={(value) => (value.length < 8 ? "A senha deve ter pelo menos 8 caracteres" : null)}
+        onValidation={(msg) => setValidationMsg(msg)}
+      />
+      <p className="mt-2 text-xs text-muted-foreground">onValidation: {validationMsg ?? "valid"}</p>
+    </div>
+  );
+}

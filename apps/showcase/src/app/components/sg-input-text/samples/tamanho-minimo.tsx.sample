@@ -1,0 +1,8 @@
+import * as React from "react";
+import { useForm } from "react-hook-form";
+import { SgInputText } from "@seedgrid/fe-components";
+
+export default function App() {
+  const { register } = useForm({ defaultValues: { minlength: "" } });
+  return <SgInputText id="demo-minlength" label="Min 5" minLength={5} showCharCounter name="minlength" register={register} />;
+}

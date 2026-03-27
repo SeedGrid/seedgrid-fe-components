@@ -1,0 +1,15 @@
+import { SgGroupBox } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <>
+      <SgGroupBox title="Width 320" width={320}>
+        <div>Conteúdo</div>
+      </SgGroupBox>
+
+      <SgGroupBox title="Height 180" height={180}>
+        <div>Conteúdo</div>
+      </SgGroupBox>
+    </>
+  );
+}

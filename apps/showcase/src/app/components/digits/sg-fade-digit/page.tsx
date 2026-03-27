@@ -3,7 +3,7 @@
 import * as React from "react";
 import { SgButton, SgFadeDigit } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import sgCodeBlockBase from "../../sgCodeBlockBase";
+import SgCodeBlockBase from "../../sgCodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
@@ -605,37 +605,37 @@ export default function SgFadeDigitShowcase() {
         {/* 1 */}
         <Section title={texts.section1Title} description={texts.section1Description}>
           <Ex1 />
-          <sgCodeBlockBase code={EX1_CODE} />
+          <SgCodeBlockBase code={EX1_CODE} />
         </Section>
 
         {/* 2 */}
         <Section title={texts.section2Title} description={texts.section2Description}>
           <Ex2 />
-          <sgCodeBlockBase code={EX2_CODE} />
+          <SgCodeBlockBase code={EX2_CODE} />
         </Section>
 
         {/* 3 */}
         <Section title={texts.section3Title} description={texts.section3Description}>
           <Ex3 />
-          <sgCodeBlockBase code={EX3_CODE} />
+          <SgCodeBlockBase code={EX3_CODE} />
         </Section>
 
         {/* 4 */}
         <Section title={texts.section4Title} description={texts.section4Description}>
           <Ex4 />
-          <sgCodeBlockBase code={EX4_CODE} />
+          <SgCodeBlockBase code={EX4_CODE} />
         </Section>
 
         {/* 5 */}
         <Section title={texts.section5Title} description={texts.section5Description}>
           <Ex5 />
-          <sgCodeBlockBase code={EX5_CODE} />
+          <SgCodeBlockBase code={EX5_CODE} />
         </Section>
 
         {/* 6 */}
         <Section title={texts.section6Title} description={texts.section6Description}>
           <Ex6 />
-          <sgCodeBlockBase code={EX6_CODE} />
+          <SgCodeBlockBase code={EX6_CODE} />
         </Section>
 
         {/* Playground */}
@@ -660,5 +660,6 @@ export default function SgFadeDigitShowcase() {
     </I18NReady>
   );
 }
+
 
 

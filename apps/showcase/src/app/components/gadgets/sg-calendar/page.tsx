@@ -1,9 +1,9 @@
-"use client";
+﻿"use client";
 
 import * as React from "react";
 import { SgButton, SgCalendar, SgEnvironmentProvider, SgGrid } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import sgCodeBlockBase from "../../sgCodeBlockBase";
+import SgCodeBlockBase from "../../sgCodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
@@ -425,17 +425,17 @@ export default function SgCalendarPage() {
 
           <Section title={texts.section1Title} description={texts.section1Description}>
             <BasicCalendarExample />
-            <sgCodeBlockBase code={BASIC_EXAMPLE_CODE} />
+            <SgCodeBlockBase code={BASIC_EXAMPLE_CODE} />
           </Section>
 
           <Section title={texts.section2Title} description={texts.section2Description}>
             <ControlledCalendarExample />
-            <sgCodeBlockBase code={CONTROLLED_EXAMPLE_CODE} />
+            <SgCodeBlockBase code={CONTROLLED_EXAMPLE_CODE} />
           </Section>
 
           <Section title={texts.section3Title} description={texts.section3Description}>
             <LocaleCalendarExample />
-            <sgCodeBlockBase code={LOCALE_EXAMPLE_CODE} />
+            <SgCodeBlockBase code={LOCALE_EXAMPLE_CODE} />
           </Section>
 
           <Section title={texts.section4Title} description={texts.section4Description}>
@@ -456,3 +456,4 @@ export default function SgCalendarPage() {
     </I18NReady>
   );
 }
+

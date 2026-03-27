@@ -1,0 +1,17 @@
+import * as React from "react";
+import { SgInputText } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <SgInputText
+      id="demo-events"
+      label="Digite e acompanhe"
+      required
+      onChange={(value) => console.log("onChange:", value)}
+      onEnter={() => console.log("focus")}
+      onExit={() => console.log("blur")}
+      onClear={() => console.log("cleared")}
+      onValidation={(message) => console.log("onValidation:", message)}
+    />
+  );
+}

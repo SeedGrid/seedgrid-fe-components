@@ -1,9 +1,9 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import { SgInputText } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import sgCodeBlockBase from "../sgCodeBlockBase";
+import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
@@ -190,7 +190,7 @@ function UncontrolledSgBenchmark() {
         <div>
           <div className="text-sm font-medium text-foreground/80">Fonte</div>
           <div className="mt-2">
-            <sgCodeBlockBase code={code} />
+            <SgCodeBlockBase code={code} />
           </div>
         </div>
       </div>
@@ -312,7 +312,7 @@ function UncontrolledNativeBenchmark() {
         <div>
           <div className="text-sm font-medium text-foreground/80">Fonte</div>
           <div className="mt-2">
-            <sgCodeBlockBase code={code} />
+            <SgCodeBlockBase code={code} />
           </div>
         </div>
       </div>
@@ -434,3 +434,4 @@ export default function BenchmarkPage() {
     </I18NReady>
   );
 }
+

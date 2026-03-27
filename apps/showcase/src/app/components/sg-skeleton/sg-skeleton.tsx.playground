@@ -1,0 +1,114 @@
+import * as React from "react";
+import * as SeedGrid from "@seedgrid/fe-components";
+
+const SgSkeletonFromLib = (SeedGrid as Record<string, unknown>).SgSkeleton as
+  | React.ComponentType<any>
+  | undefined;
+
+function LocalSkeleton(props: {
+  width?: string;
+  height?: string;
+  radius?: string;
+  animation?: "wave" | "pulse" | "none";
+}) {
+  const pulse = props.animation === "pulse" ? " animate-pulse" : "";
+  return (
+    <div
+      className={"block bg-slate-200" + pulse}
+      style={{
+        width: props.width,
+        height: props.height,
+        borderRadius: props.radius
+      }}
+    />
+  );
+}
+
+export default function App() {
+  const hasSkeleton = typeof SgSkeletonFromLib === "function";
+  const [shape, setShape] = React.useState<"text" | "rectangle" | "rounded" | "square" | "circle">("text");
+  const [animation, setAnimation] = React.useState<"wave" | "pulse" | "none">("wave");
+  const [width, setWidth] = React.useState("100%");
+  const [height, setHeight] = React.useState("16");
+  const [size, setSize] = React.useState("56");
+  const [customRadius, setCustomRadius] = React.useState("");
+
+  const useSize = shape === "square" || shape === "circle";
+  const hPx = Number(height) || 16;
+  const sPx = Number(size) || 56;
+  const radius =
+    customRadius.trim() ||
+    (shape === "circle" ? "9999px" : shape === "square" ? "0px" : shape === "rounded" ? "12px" : shape === "text" ? "9999px" : "6px");
+
+  return (
+    <div className="space-y-4 p-2">
+      {!hasSkeleton ? (
+        <div className="rounded border border-amber-200 bg-amber-50 p-2 text-xs text-amber-800">
+          SgSkeleton is not in the published package version used by Sandpack yet. Showing fallback.
+        </div>
+      ) : null}
+
+      <div className="grid gap-3 sm:grid-cols-2">
+        <label className="text-xs">
+          <span className="mb-1 block font-medium">Shape</span>
+          <select value={shape} onChange={(e) => setShape(e.target.value as any)} className="w-full rounded border border-border px-2 py-1">
+            <option value="text">text</option>
+            <option value="rectangle">rectangle</option>
+            <option value="rounded">rounded</option>
+            <option value="square">square</option>
+            <option value="circle">circle</option>
+          </select>
+        </label>
+
+        <label className="text-xs">
+          <span className="mb-1 block font-medium">Animation</span>
+          <select value={animation} onChange={(e) => setAnimation(e.target.value as any)} className="w-full rounded border border-border px-2 py-1">
+            <option value="wave">wave</option>
+            <option value="pulse">pulse</option>
+            <option value="none">none</option>
+          </select>
+        </label>
+
+        <label className="text-xs">
+          <span className="mb-1 block font-medium">Width</span>
+          <input value={width} onChange={(e) => setWidth(e.target.value)} className="w-full rounded border border-border px-2 py-1" />
+        </label>
+
+        <label className="text-xs">
+          <span className="mb-1 block font-medium">Height (px)</span>
+          <input value={height} onChange={(e) => setHeight(e.target.value)} className="w-full rounded border border-border px-2 py-1" />
+        </label>
+
+        <label className="text-xs">
+          <span className="mb-1 block font-medium">Size (px)</span>
+          <input value={size} onChange={(e) => setSize(e.target.value)} className="w-full rounded border border-border px-2 py-1" />
+        </label>
+
+        <label className="text-xs">
+          <span className="mb-1 block font-medium">Border radius (optional)</span>
+          <input value={customRadius} onChange={(e) => setCustomRadius(e.target.value)} placeholder="ex: 18px" className="w-full rounded border border-border px-2 py-1" />
+        </label>
+      </div>
+
+      <div className="rounded-xl border border-border p-5">
+        {hasSkeleton ? (
+          <SgSkeletonFromLib
+            shape={shape}
+            animation={animation}
+            width={useSize ? undefined : width}
+            height={useSize ? undefined : hPx}
+            size={useSize ? sPx : undefined}
+            borderRadius={radius}
+          />
+        ) : (
+          <LocalSkeleton
+            width={useSize ? sPx + "px" : width}
+            height={useSize ? sPx + "px" : hPx + "px"}
+            radius={radius}
+            animation={animation}
+          />
+        )}
+      </div>
+    </div>
+  );
+}

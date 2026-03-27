@@ -1,0 +1,15 @@
+import * as React from "react";
+import { SgInputCNPJ } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <SgInputCNPJ
+      id="cnpj"
+      label="CNPJ"
+      hintText="00.000.000/0000-00"
+      validation={(value) => (value.startsWith("00") ? "Nao pode iniciar com 00" : null)}
+      onValidation={(message) => console.log(message)}
+      inputProps={{}}
+    />
+  );
+}

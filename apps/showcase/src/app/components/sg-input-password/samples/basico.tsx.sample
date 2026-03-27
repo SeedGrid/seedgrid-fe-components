@@ -1,0 +1,18 @@
+import * as React from "react";
+import { SgInputPassword } from "@seedgrid/fe-components";
+
+export default function App() {
+  const [basicValue, setBasicValue] = React.useState("");
+
+  return (
+    <div className="w-80">
+      <SgInputPassword
+        id="demo-basic"
+        label="Senha"
+        hintText="Digite sua senha"
+        onChange={(value) => setBasicValue(value)}
+      />
+      <p className="mt-2 text-xs text-muted-foreground">Valor atual: {basicValue}</p>
+    </div>
+  );
+}

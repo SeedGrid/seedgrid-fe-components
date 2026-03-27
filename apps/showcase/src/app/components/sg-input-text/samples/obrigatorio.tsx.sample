@@ -1,0 +1,13 @@
+import * as React from "react";
+import { useForm } from "react-hook-form";
+import { SgInputText } from "@seedgrid/fe-components";
+
+export default function App() {
+  const { register } = useForm({ defaultValues: { required: "", requiredCustom: "" } });
+  return (
+    <>
+      <SgInputText id="demo-required" label="Campo obrigatorio" required name="required" register={register} />
+      <SgInputText id="demo-required-custom" label="Mensagem customizada" required requiredMessage="Campo obrigatorio" name="requiredCustom" register={register} />
+    </>
+  );
+}

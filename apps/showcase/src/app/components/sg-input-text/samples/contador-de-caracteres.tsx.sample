@@ -1,0 +1,8 @@
+import * as React from "react";
+import { useForm } from "react-hook-form";
+import { SgInputText } from "@seedgrid/fe-components";
+
+export default function App() {
+  const { register } = useForm({ defaultValues: { counter: "" } });
+  return <SgInputText id="demo-counter" label="Max 20" maxLength={20} showCharCounter name="counter" register={register} />;
+}

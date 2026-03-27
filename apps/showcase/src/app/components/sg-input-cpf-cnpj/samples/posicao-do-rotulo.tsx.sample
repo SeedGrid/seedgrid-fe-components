@@ -1,0 +1,12 @@
+import * as React from "react";
+import { SgGrid, SgInputCPFCNPJ } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <SgGrid columns={{ base: 1, md: 3 }} gap={8}>
+      <SgInputCPFCNPJ id="float" label="Float" labelPosition="float" inputProps={{}} />
+      <SgInputCPFCNPJ id="top" label="Top" labelPosition="top" inputProps={{}} />
+      <SgInputCPFCNPJ id="left" label="Left" labelPosition="left" labelWidth={140} labelAlign="end" inputProps={{}} />
+    </SgGrid>
+  );
+}

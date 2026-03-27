@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import Link from "next/link";
@@ -28,7 +28,7 @@ import {
   Bell,
   RefreshCw
 } from "lucide-react";
-import sgCodeBlockBase from "../sgCodeBlockBase";
+import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 
 function Section(props: { id?: string; title: string; description?: string; children: React.ReactNode }) {
@@ -45,7 +45,7 @@ function Section(props: { id?: string; title: string; description?: string; chil
 }
 
 function CodeBlock(props: { children: string }) {
-  return <sgCodeBlockBase code={props.children} />;
+  return <SgCodeBlockBase code={props.children} />;
 }
 
 const BASIC_OPTIONS: SgCheckboxGroupOption[] = [
@@ -870,7 +870,7 @@ const onSubmit = (data: any) => {
   { label: "Option 3", value: "option3" }
 ];
 
-// Label via i18n (pt-BR → "Selecionar todos", en-US → "Select all")
+// Label via i18n (pt-BR â†’ "Selecionar todos", en-US â†’ "Select all")
 <SgCheckboxGroup
   id="check-all"
   title="Select all example"
@@ -878,7 +878,7 @@ const onSubmit = (data: any) => {
   showCheckAll
 />
 
-// Com label e ícone customizados
+// Com label e Ã­cone customizados
 <SgCheckboxGroup
   id="check-all-custom"
   title="With custom label + icon"
@@ -901,7 +901,7 @@ const onSubmit = (data: any) => {
               { label: "Grape", value: "grape", checked: true }
             ]}
           />
-          <CodeBlock>{`// Sem value prop — estado inicial vem de option.checked
+          <CodeBlock>{`// Sem value prop â€” estado inicial vem de option.checked
 <SgCheckboxGroup
   id="source-checked"
   title="Favorite fruits (initial from source)"
@@ -1000,31 +1000,31 @@ const [output, setOutput] = React.useState("");
                   <th className="pb-2 pr-4 font-semibold">Prop</th>
                   <th className="pb-2 pr-4 font-semibold">Tipo</th>
                   <th className="pb-2 pr-4 font-semibold">Default</th>
-                  <th className="pb-2 font-semibold">Descrição</th>
+                  <th className="pb-2 font-semibold">DescriÃ§Ã£o</th>
                 </tr>
               </thead>
               <tbody className="divide-y">
                 {[
                   ["id", "string", "-", "ID do elemento raiz"],
-                  ["title", "string", "-", "Título exibido no GroupBox"],
-                  ["source", "SgCheckboxGroupOption[]", "-", "Lista de opções (label, value, checked?, icon?, disabled?)"],
+                  ["title", "string", "-", "TÃ­tulo exibido no GroupBox"],
+                  ["source", "SgCheckboxGroupOption[]", "-", "Lista de opÃ§Ãµes (label, value, checked?, icon?, disabled?)"],
                   ["value", "(string | number)[]", "-", "Valores selecionados (modo controlado)"],
-                  ["orientation", '"horizontal" | "vertical"', '"vertical"', "Layout das opções"],
-                  ["selectionStyle", '"checkbox" | "highlight"', '"checkbox"', "Estilo visual das opções"],
-                  ["iconOnly", "boolean", "false", "Exibe apenas ícones, sem labels"],
+                  ["orientation", '"horizontal" | "vertical"', '"vertical"', "Layout das opÃ§Ãµes"],
+                  ["selectionStyle", '"checkbox" | "highlight"', '"checkbox"', "Estilo visual das opÃ§Ãµes"],
+                  ["iconOnly", "boolean", "false", "Exibe apenas Ã­cones, sem labels"],
                   ["disabled", "boolean", "false", "Desabilita todo o grupo"],
                   ["readOnly", "boolean", "false", "Permite visualizar sem interagir"],
-                  ["required", "boolean", "false", "Campo obrigatório (adiciona * ao título)"],
-                  ["onChange", "(value: (string | number)[]) => void", "-", "Callback chamado ao mudar seleção"],
+                  ["required", "boolean", "false", "Campo obrigatÃ³rio (adiciona * ao tÃ­tulo)"],
+                  ["onChange", "(value: (string | number)[]) => void", "-", "Callback chamado ao mudar seleÃ§Ã£o"],
                   ["showCheckAll", "boolean", "false", "Exibe checkbox 'Selecionar todos' com estado indeterminate"],
-                  ["checkAllLabel", "string", '"Selecionar todos"', "Texto do checkbox de seleção total"],
+                  ["checkAllLabel", "string", '"Selecionar todos"', "Texto do checkbox de seleÃ§Ã£o total"],
                   ["name", "string", "-", "Nome do campo para RHF"],
                   ["control", "Control", "-", "Control do React Hook Form (modo Controller)"],
                   ["register", "UseFormRegister", "-", "Register do React Hook Form"],
                   ["error", "string", "-", "Mensagem de erro exibida abaixo do componente"],
                   ["className", "string", "-", "Classe CSS adicional do container"],
                   ["style", "React.CSSProperties", "-", "Inline style adicional do container"],
-                  ["optionClassName", "string", "-", "Classe CSS adicional de cada opção"],
+                  ["optionClassName", "string", "-", "Classe CSS adicional de cada opÃ§Ã£o"],
                   ["groupBoxProps", "object", "-", "Props adicionais para o SgGroupBox wrapper"],
                   ["ref", "SgCheckboxGroupRef", "-", "Ref com getChecked, setChecked, checkAll, clearAll"],
                 ].map(([prop, type, def, desc]) => (
@@ -1045,3 +1045,4 @@ const [output, setOutput] = React.useState("");
     </I18NReady>
   );
 }
+

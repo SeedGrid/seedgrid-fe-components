@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { SgGrid, SgInputDate } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import sgCodeBlockBase from "../sgCodeBlockBase";
+import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import { t, useShowcaseI18n } from "../../../i18n";
@@ -22,71 +22,9 @@ function Section(props: { id?: string; title: string; description?: string; chil
   );
 }
 
-function CodeBlock(props: { code: string }) {
-  return <sgCodeBlockBase code={props.code.trimStart()} />;
+function CodeBlock(props: { sampleFile: string }) {
+  return <SgCodeBlockBase sampleFile={props.sampleFile} />;
 }
-
-const INPUT_DATE_PLAYGROUND_CODE = `import * as React from "react";
-import {
-  SgGrid,
-  SgInputDate,
-  SgButton,
-} from "@seedgrid/fe-components";
-import { SgPlayground } from "@seedgrid/fe-playground";
-
-export default function App() {
-  const [required, setRequired] = React.useState(false);
-  const [withRange, setWithRange] = React.useState(true);
-  const [filled, setFilled] = React.useState(false);
-  const [value, setValue] = React.useState("");
-
-  return (
-    <div className="space-y-4 p-2">
-      <SgGrid columns={{ base: 2, md: 4 }} gap={8}>
-        <SgButton size="sm" appearance={required ? "solid" : "outline"} onClick={() => setRequired((prev) => !prev)}>
-          required
-        </SgButton>
-        <SgButton size="sm" appearance={withRange ? "solid" : "outline"} onClick={() => setWithRange((prev) => !prev)}>
-          range
-        </SgButton>
-        <SgButton size="sm" appearance={filled ? "solid" : "outline"} onClick={() => setFilled((prev) => !prev)}>
-          filled
-        </SgButton>
-      </SgGrid>
-
-      <SgInputDate
-        id="playground-input-date"
-        label="SgInputDate Playground"
-        hintText="Selecione uma data"
-        required={required}
-        filled={filled}
-        minDate={withRange ? "2020-01-01" : undefined}
-        maxDate={withRange ? "2030-12-31" : undefined}
-        onChange={setValue}
-      />
-
-      <div className="rounded border border-border p-3">
-        <p className="mb-2 text-xs text-muted-foreground">labelPosition</p>
-        <SgGrid columns={{ base: 1, md: 3 }} gap={8}>
-          <SgInputDate id="label-float" label="Float" hintText="YYYY-MM-DD" labelPosition="float" />
-          <SgInputDate id="label-top" label="Top" hintText="YYYY-MM-DD" labelPosition="top" />
-          <SgInputDate
-            id="label-left"
-            label="Left"
-            hintText="YYYY-MM-DD"
-            labelPosition="left"
-            labelWidth={120}
-            labelAlign="end"
-          />
-        </SgGrid>
-      </div>
-
-      <div className="rounded border border-border bg-muted/40 p-3 text-xs">
-        Valor atual: <strong>{value || "-"}</strong>
-      </div>
-    </div>
-  );
-}`;
 
 export default function SgInputDatePage() {
   const i18n = useShowcaseI18n();
@@ -274,7 +212,7 @@ export default function SgInputDatePage() {
               {t(i18n, "showcase.common.labels.currentValue", { value: basicValue })}
             </p>
           </div>
-          <CodeBlock code={`<SgInputDate\n  id="demo-basic"\n  label="${t(i18n, "showcase.component.inputDate.labels.date")}"\n  hintText="${t(i18n, "showcase.component.inputDate.labels.dateHint")}"\n  onChange={(value) => setBasicValue(value)}\n/>`} />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-date/samples/basico.tsx.sample" />
         </Section>
 
         <Section
@@ -290,7 +228,7 @@ export default function SgInputDatePage() {
               maxDate="2030-12-31"
             />
           </div>
-          <CodeBlock code={`<SgInputDate\n  id="demo-range"\n  label="${t(i18n, "showcase.component.inputDate.labels.period")}"\n  minDate="2020-01-01"\n  maxDate="2030-12-31"\n/>`} />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-date/samples/intervalo.tsx.sample" />
         </Section>
 
         <Section
@@ -304,7 +242,7 @@ export default function SgInputDatePage() {
               label={t(i18n, "showcase.component.inputDate.labels.eventDate")}
             />
           </div>
-          <CodeBlock code={`<SgInputDate\n  id="demo-float"\n  label="${t(i18n, "showcase.component.inputDate.labels.eventDate")}"\n/>`} />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-date/samples/data-fixa.tsx.sample" />
         </Section>
 
         <Section
@@ -331,25 +269,7 @@ export default function SgInputDatePage() {
       labelAlign="end"
     />
   </SgGrid>
-  <CodeBlock code={`<SgInputDate
-  id="sg-input-date-label-float"
-  label="${t(i18n, "showcase.common.labels.labelFloat")}"
-  labelPosition="float"
-/>
-
-<SgInputDate
-  id="sg-input-date-label-top"
-  label="${t(i18n, "showcase.common.labels.labelTop")}"
-  labelPosition="top"
-/>
-
-<SgInputDate
-  id="sg-input-date-label-left"
-  label="${t(i18n, "showcase.common.labels.labelLeft")}"
-  labelPosition="left"
-  labelWidth={140}
-  labelAlign="end"
-/>`} />
+  <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-date/samples/posicao-do-rotulo.tsx.sample" />
 </Section>
 
 <Section id="exemplo-5" title="5) Playground" description={t(i18n, "showcase.common.playground.description")}>
@@ -357,7 +277,7 @@ export default function SgInputDatePage() {
             title="SgInputDate Playground"
             interactive
             codeContract="appFile"
-            code={INPUT_DATE_PLAYGROUND_CODE}
+            playgroundFile="apps/showcase/src/app/components/sg-input-date/sg-input-date.tsx.playground"
             height={520}
             defaultOpen
           />

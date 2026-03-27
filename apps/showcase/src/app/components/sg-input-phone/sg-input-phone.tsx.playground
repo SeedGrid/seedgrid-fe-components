@@ -1,0 +1,40 @@
+import * as React from "react";
+import { SgButton, SgGrid, SgInputPhone } from "@seedgrid/fe-components";
+
+export default function App() {
+  const [required, setRequired] = React.useState(false);
+  const [filled, setFilled] = React.useState(false);
+  const [withBorder, setWithBorder] = React.useState(true);
+  const [value, setValue] = React.useState("");
+
+  return (
+    <div className="space-y-4 p-2">
+      <SgGrid columns={{ base: 2, md: 4 }} gap={8}>
+        <SgButton size="sm" appearance={required ? "solid" : "outline"} onClick={() => setRequired((prev) => !prev)}>required</SgButton>
+        <SgButton size="sm" appearance={filled ? "solid" : "outline"} onClick={() => setFilled((prev) => !prev)}>filled</SgButton>
+        <SgButton size="sm" appearance={withBorder ? "solid" : "outline"} onClick={() => setWithBorder((prev) => !prev)}>withBorder</SgButton>
+      </SgGrid>
+
+      <SgInputPhone
+        id="playground-phone"
+        label="SgInputPhone Playground"
+        hintText="(11) 99999-0000"
+        required={required}
+        filled={filled}
+        withBorder={withBorder}
+        onChange={setValue}
+      />
+
+      <div className="rounded border border-border p-3">
+        <p className="mb-2 text-xs text-muted-foreground">labelPosition</p>
+        <SgGrid columns={{ base: 1, md: 3 }} gap={8}>
+          <SgInputPhone id="label-float" label="Float" hintText="(11) 99999-0000" labelPosition="float" />
+          <SgInputPhone id="label-top" label="Top" hintText="(11) 99999-0000" labelPosition="top" />
+          <SgInputPhone id="label-left" label="Left" hintText="(11) 99999-0000" labelPosition="left" labelWidth={120} labelAlign="end" />
+        </SgGrid>
+      </div>
+
+      <div className="rounded border border-border bg-muted/40 p-3 text-xs">Valor atual: <strong>{value || "-"}</strong></div>
+    </div>
+  );
+}

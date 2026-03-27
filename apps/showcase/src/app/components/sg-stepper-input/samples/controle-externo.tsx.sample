@@ -1,0 +1,26 @@
+import React from "react";
+import { SgButton, SgStepperInput } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [value, setValue] = React.useState(18);
+
+  return (
+    <div className="space-y-3">
+      <SgStepperInput
+        id="stepper-controlled"
+        minValue={10}
+        maxValue={30}
+        step={1}
+        value={value}
+        width={210}
+        onChange={setValue}
+      />
+      <div className="flex flex-wrap gap-2">
+        <SgButton size="sm" appearance="outline" onClick={() => setValue(10)}>10</SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => setValue(20)}>20</SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => setValue(30)}>30</SgButton>
+      </div>
+      <p>Valor controlado: {value}</p>
+    </div>
+  );
+}

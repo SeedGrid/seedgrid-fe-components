@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import {
@@ -6,7 +6,7 @@ import {
   SgEnvironmentProvider,
   SgButton
 } from "@seedgrid/fe-components";
-import sgCodeBlockBase from "../../sgCodeBlockBase";
+import SgCodeBlockBase from "../../sgCodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
@@ -27,7 +27,7 @@ function Section(props: { title: string; description?: string; children: React.R
 }
 
 function CodeBlock(props: { code: string }) {
-  return <sgCodeBlockBase code={props.code} />;
+  return <SgCodeBlockBase code={props.code} />;
 }
 
 function BasicCounterDemo() {
@@ -50,7 +50,7 @@ function BasicCounterDemo() {
         <SgButton label="Reset" appearance="outline" severity="danger" onClick={() => clear()} />
       </div>
       <p className="text-xs text-muted-foreground text-center">
-        Recarregue a pagina — o valor persiste no localStorage.
+        Recarregue a pagina â€” o valor persiste no localStorage.
       </p>
     </div>
   );
@@ -106,8 +106,8 @@ function NamespacedCounter() {
 const HOOK_PARAMS: ShowcasePropRow[] = [
   { prop: "baseKey", type: "string", defaultValue: "-", description: "Chave base da entrada persistida. A chave final inclui namespace e scope do SgEnvironmentProvider." },
   { prop: "defaultValue", type: "T", defaultValue: "-", description: "Valor inicial usado antes do carregamento e apos clear()." },
-  { prop: "serialize", type: "(value: T) => unknown", defaultValue: "identity", description: "Funcao opcional para serializar antes de salvar (ex: Date → ISO string)." },
-  { prop: "deserialize", type: "(value: unknown) => T", defaultValue: "identity", description: "Funcao opcional para desserializar ao carregar (ex: ISO string → Date)." }
+  { prop: "serialize", type: "(value: T) => unknown", defaultValue: "identity", description: "Funcao opcional para serializar antes de salvar (ex: Date â†’ ISO string)." },
+  { prop: "deserialize", type: "(value: unknown) => T", defaultValue: "identity", description: "Funcao opcional para desserializar ao carregar (ex: ISO string â†’ Date)." }
 ];
 
 const HOOK_RETURN: ShowcasePropRow[] = [
@@ -257,3 +257,4 @@ export default function App() {
     </I18NReady>
   );
 }
+

@@ -1,0 +1,14 @@
+import * as React from "react";
+import { SgInputCPFCNPJ } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <SgInputCPFCNPJ
+      id="doc"
+      label="CPF ou CNPJ"
+      hintText="CPF ou CNPJ"
+      invalidMessage="Documento invalido"
+      inputProps={{}}
+    />
+  );
+}

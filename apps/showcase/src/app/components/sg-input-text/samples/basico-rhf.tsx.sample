@@ -1,0 +1,13 @@
+import * as React from "react";
+import { useForm } from "react-hook-form";
+import { SgInputText } from "@seedgrid/fe-components";
+
+export default function App() {
+  const { register, watch } = useForm({ defaultValues: { nome: "" } });
+  return (
+    <>
+      <SgInputText id="demo-basic" label="Nome completo" name="nome" register={register} />
+      <p>Valor atual: {watch("nome")}</p>
+    </>
+  );
+}

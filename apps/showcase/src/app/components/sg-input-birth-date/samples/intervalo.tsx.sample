@@ -1,0 +1,10 @@
+import * as React from "react";
+import { SgInputBirthDate } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <div className="w-80">
+      <SgInputBirthDate id="demo-range" label="Data de nascimento" minAge={12} maxAge={80} />
+    </div>
+  );
+}

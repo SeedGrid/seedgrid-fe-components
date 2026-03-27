@@ -9,7 +9,7 @@ import {
   SgSlider,
 } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import sgCodeBlockBase from "../../sgCodeBlockBase";
+import SgCodeBlockBase from "../../sgCodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
@@ -357,7 +357,7 @@ export default function SgNeonDigitShowcase() {
               <SgButton size="sm" severity="secondary" onClick={prevDigit}>Previous (-1)</SgButton>
             </div>
           </div>
-          <sgCodeBlockBase code={BASIC_CODE} />
+          <SgCodeBlockBase code={BASIC_CODE} />
         </Section>
 
         <Section title={texts.section2Title} description={texts.section2Description}>
@@ -365,7 +365,7 @@ export default function SgNeonDigitShowcase() {
             <SgNeonDigit value={word} color="#e2f6ff" backgroundColor="#101934" shadowColor="#47d1ff" />
             <SgButton size="sm" onClick={nextWord}>Change text</SgButton>
           </div>
-          <sgCodeBlockBase code={WORDS_CODE} />
+          <SgCodeBlockBase code={WORDS_CODE} />
         </Section>
 
         <Section title={texts.section3Title} description={texts.section3Description}>
@@ -399,7 +399,7 @@ export default function SgNeonDigitShowcase() {
               />
             </div>
           </SgGrid>
-          <sgCodeBlockBase code={SCRIPT_CODE} />
+          <SgCodeBlockBase code={SCRIPT_CODE} />
         </Section>
 
         <Section title={texts.section4Title} description={texts.section4Description}>
@@ -417,7 +417,7 @@ export default function SgNeonDigitShowcase() {
               <SgNeonDigit value="teste" color="#fff7e8" backgroundColor="#2a1a14" shadowColor="#fb923c" />
             </div>
           </SgGrid>
-          <sgCodeBlockBase code={THEMES_CODE} />
+          <SgCodeBlockBase code={THEMES_CODE} />
         </Section>
 
         <Section title={texts.section5Title} description={texts.section5Description}>
@@ -435,7 +435,7 @@ export default function SgNeonDigitShowcase() {
               <SgNeonDigit value="5" fontSize={72} padding={18} />
             </div>
           </SgGrid>
-          <sgCodeBlockBase code={SIZE_CODE} />
+          <SgCodeBlockBase code={SIZE_CODE} />
         </Section>
 
         <Section title={texts.section6Title} description={texts.section6Description}>
@@ -455,4 +455,5 @@ export default function SgNeonDigitShowcase() {
     </I18NReady>
   );
 }
+
 

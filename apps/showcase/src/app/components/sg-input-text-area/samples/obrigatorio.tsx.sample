@@ -1,0 +1,11 @@
+import * as React from "react";
+import { SgInputTextArea } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <>
+      <SgInputTextArea id="demo-required" label="Campo obrigatorio" required />
+      <SgInputTextArea id="demo-required-custom" label="Mensagem customizada" required requiredMessage="Campo obrigatorio" />
+    </>
+  );
+}

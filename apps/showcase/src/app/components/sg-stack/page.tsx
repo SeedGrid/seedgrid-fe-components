@@ -1,9 +1,9 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import { SgGrid, SgPanel, SgStack, SgButton } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import sgCodeBlockBase from "../sgCodeBlockBase";
+import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
@@ -163,7 +163,7 @@ export default function SgStackPage() {
           </SgGrid>
 
           <SgStack className="mt-6">
-            <sgCodeBlockBase
+            <SgCodeBlockBase
               code={`import { SgStack, SgButton } from "@seedgrid/fe-components";
 
 <SgStack gap={8}>
@@ -196,3 +196,4 @@ export default function SgStackPage() {
     </I18NReady>
   );
 }
+

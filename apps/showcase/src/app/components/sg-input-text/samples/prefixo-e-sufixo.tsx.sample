@@ -1,0 +1,15 @@
+import * as React from "react";
+import { useForm } from "react-hook-form";
+import { SgInputText } from "@seedgrid/fe-components";
+
+export default function App() {
+  const { control, setValue } = useForm({ defaultValues: { suffix: "", prefix: "", both: "" } });
+  return (
+    <>
+      <SgInputText id="demo-suffix" label="Email" suffixText="@gmail.com" name="suffix" control={control} />
+      <SgInputText id="demo-prefix-text" label="Website" prefixText="www." name="prefix" control={control} />
+      <button type="button" onClick={() => setValue("prefix", "www.test.com.br")}>Set valor externo</button>
+      <SgInputText id="demo-both" label="Dominio" prefixText="www." suffixText=".seedgrid.com.br" name="both" control={control} />
+    </>
+  );
+}

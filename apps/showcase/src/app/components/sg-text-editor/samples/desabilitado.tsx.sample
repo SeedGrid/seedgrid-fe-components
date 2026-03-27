@@ -1,0 +1,12 @@
+import { SgTextEditor } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgTextEditor
+      id="sg-text-editor-disabled"
+      valueHtml="<p><strong>Locked content</strong></p>"
+      disabled
+      showCssEditor={false}
+    />
+  );
+}

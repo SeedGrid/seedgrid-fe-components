@@ -1,0 +1,14 @@
+import * as React from "react";
+import { SgSkeleton } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+      <SgSkeleton shape="text" />
+      <SgSkeleton shape="rectangle" height={48} />
+      <SgSkeleton shape="rounded" height={48} />
+      <SgSkeleton shape="square" size={56} />
+      <SgSkeleton shape="circle" size={56} />
+    </div>
+  );
+}

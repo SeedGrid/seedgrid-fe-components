@@ -1,0 +1,45 @@
+import * as React from "react";
+import { SgTextEditor } from "@seedgrid/fe-components";
+
+export default function App() {
+  const [htmlBody, setHtmlBody] = React.useState("<p><strong>SeedGrid</strong> editor</p>");
+  const [cssText, setCssText] = React.useState("body { font-family: Arial; }");
+  const [showCssEditor, setShowCssEditor] = React.useState(true);
+  const [disabled, setDisabled] = React.useState(false);
+
+  return (
+    <div className="space-y-4 p-2">
+      <div className="flex flex-wrap items-center gap-3">
+        <label className="text-sm inline-flex items-center gap-1">
+          <input
+            className="mr-1"
+            type="checkbox"
+            checked={showCssEditor}
+            onChange={(e) => setShowCssEditor(e.target.checked)}
+          />
+          showCssEditor
+        </label>
+        <label className="text-sm inline-flex items-center gap-1">
+          <input
+            className="mr-1"
+            type="checkbox"
+            checked={disabled}
+            onChange={(e) => setDisabled(e.target.checked)}
+          />
+          disabled
+        </label>
+      </div>
+
+      <SgTextEditor
+        id="playground-text-editor"
+        valueHtml={htmlBody}
+        onChangeHtml={setHtmlBody}
+        cssText={cssText}
+        onCssTextChange={setCssText}
+        showCssEditor={showCssEditor}
+        disabled={disabled}
+        onSave={(file) => console.log(file.name)}
+      />
+    </div>
+  );
+}

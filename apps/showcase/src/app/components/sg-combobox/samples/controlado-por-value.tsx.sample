@@ -1,0 +1,62 @@
+import * as React from "react";
+import { SgButton, SgCombobox } from "@seedgrid/fe-components";
+
+type Country = {
+  id: number;
+  description: string;
+  code: string;
+  region: string;
+};
+
+const COUNTRIES: Country[] = [
+  { id: 1, description: "Brazil", code: "BR", region: "Americas" },
+  { id: 2, description: "Argentina", code: "AR", region: "Americas" },
+  { id: 3, description: "United States", code: "US", region: "Americas" },
+  { id: 4, description: "Canada", code: "CA", region: "Americas" },
+  { id: 5, description: "Germany", code: "DE", region: "Europe" },
+  { id: 6, description: "France", code: "FR", region: "Europe" },
+  { id: 7, description: "Portugal", code: "PT", region: "Europe" },
+  { id: 8, description: "India", code: "IN", region: "Asia" },
+  { id: 9, description: "Japan", code: "JP", region: "Asia" },
+  { id: 10, description: "Australia", code: "AU", region: "Oceania" }
+];
+
+export default function Example() {
+  const [selectedId, setSelectedId] = React.useState<string | number | null>(null);
+  const [selectedControlled, setSelectedControlled] = React.useState<Country | null>(null);
+  const selectedByValue = COUNTRIES.find((item) => String(item.id) === String(selectedId ?? "")) ?? null;
+
+  return (
+    <>
+      <SgCombobox<Country>
+        id="cb-controlled"
+        label="Country (controlled)"
+        value={selectedId}
+        source={COUNTRIES}
+        openOnFocus
+        mapItem={(raw) => ({
+          id: raw.id,
+          label: `${raw.description} (${raw.code})`,
+          value: raw.code,
+          group: raw.region
+        })}
+        onValueChange={setSelectedId}
+        onSelect={setSelectedControlled}
+      />
+
+      <SgButton onClick={() => setSelectedId(5)}>Set Germany (id 5)</SgButton>
+      <SgButton onClick={() => setSelectedId(9)}>Set Japan (id 9)</SgButton>
+      <SgButton onClick={() => setSelectedId(null)}>Clear value</SgButton>
+
+      <div>
+        <div>value: {selectedId == null || selectedId === "" ? "(empty)" : String(selectedId)}</div>
+        <div>
+          resolved by value: {selectedByValue ? `${selectedByValue.description} (${selectedByValue.code})` : "(none)"}
+        </div>
+        <div>
+          last onSelect: {selectedControlled ? `${selectedControlled.description} (${selectedControlled.code})` : "(none)"}
+        </div>
+      </div>
+    </>
+  );
+}

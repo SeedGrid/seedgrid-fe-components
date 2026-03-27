@@ -1,0 +1,15 @@
+import * as React from "react";
+import { SgInputPassword } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <div className="w-80">
+      <SgInputPassword
+        id="demo-required"
+        label="Senha obrigatoria"
+        hintText="Campo obrigatorio"
+        required
+      />
+    </div>
+  );
+}

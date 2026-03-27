@@ -1,0 +1,31 @@
+import * as React from "react";
+import { Check, X } from "lucide-react";
+import { SgToggleSwitch } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [value, setValue] = React.useState(false);
+  const [captured, setCaptured] = React.useState("(sem evento)");
+
+  return (
+    <div>
+      <SgToggleSwitch
+        id="demo-external"
+        label="Permitir sincronizacao"
+        checked={value}
+        onChange={(next) => {
+          setValue(next);
+          setCaptured("onChange -> " + String(next));
+        }}
+        onIcon={<Check size={12} />}
+        offIcon={<X size={12} />}
+      />
+
+      <button onClick={() => setValue(true)}>Setar true</button>
+      <button onClick={() => setValue(false)}>Setar false</button>
+      <button onClick={() => setValue((prev) => !prev)}>Toggle externo</button>
+      <button onClick={() => setCaptured("captura manual -> " + String(value))}>Capturar agora</button>
+
+      <p>capturado: {captured}</p>
+    </div>
+  );
+}

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import {
@@ -9,7 +9,7 @@ import {
   registerTheme,
   type SgClockTheme
 } from "@seedgrid/fe-components";
-import sgCodeBlockBase from "../../sgCodeBlockBase";
+import SgCodeBlockBase from "../../sgCodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
@@ -30,7 +30,7 @@ function Section(props: { title: string; description?: string; children: React.R
 }
 
 function CodeBlock(props: { code: string }) {
-  return <sgCodeBlockBase code={props.code} />;
+  return <SgCodeBlockBase code={props.code} />;
 }
 
 function ClockWithPicker() {
@@ -158,7 +158,7 @@ export default function App() {
             code={`import { registerTheme } from "@seedgrid/fe-components";
 import type { SgClockTheme } from "@seedgrid/fe-components";
 
-// Registra globalmente — disponivel para todos os SgClockThemeProvider
+// Registra globalmente â€” disponivel para todos os SgClockThemeProvider
 const myTheme: SgClockTheme = {
   id: "my-theme",
   label: "My Theme",
@@ -179,3 +179,4 @@ registerTheme(myTheme);
     </I18NReady>
   );
 }
+

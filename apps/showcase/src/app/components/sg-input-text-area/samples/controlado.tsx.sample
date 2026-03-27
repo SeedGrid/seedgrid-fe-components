@@ -1,0 +1,17 @@
+import * as React from "react";
+import { SgButton, SgGrid, SgInputTextArea } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [controlledValue, setControlledValue] = React.useState("Texto controlado");
+  return (
+    <div className="w-96 space-y-3">
+      <SgInputTextArea id="demo-controlled" label="Notas" textareaProps={{ value: controlledValue, onChange: (event) => setControlledValue(event.target.value) }} />
+      <SgGrid columns={{ base: 1, sm: 3 }} gap={8}>
+        <SgButton size="sm" appearance="outline" onClick={() => setControlledValue("Texto vindo da API")}>Set API</SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => setControlledValue("Outro exemplo")}>Set Outro</SgButton>
+        <SgButton size="sm" appearance="outline" severity="danger" onClick={() => setControlledValue("")}>Limpar</SgButton>
+      </SgGrid>
+      <p>Estado atual: "{controlledValue}"</p>
+    </div>
+  );
+}

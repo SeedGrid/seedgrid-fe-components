@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { SgGrid, SgInputBirthDate } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import sgCodeBlockBase from "../sgCodeBlockBase";
+import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import { t, useShowcaseI18n } from "../../../i18n";
 
@@ -21,73 +21,9 @@ function Section(props: { id?: string; title: string; description?: string; chil
   );
 }
 
-function CodeBlock(props: { code: string }) {
-  return <sgCodeBlockBase code={props.code.trimStart()} />;
+function CodeBlock(props: { sampleFile: string }) {
+  return <SgCodeBlockBase sampleFile={props.sampleFile} />;
 }
-
-const INPUT_BIRTH_DATE_PLAYGROUND_CODE = `import * as React from "react";
-import {
-  SgGrid,
-  SgInputBirthDate,
-  SgButton,
-} from "@seedgrid/fe-components";
-import { SgPlayground } from "@seedgrid/fe-playground";
-
-export default function App() {
-  const [required, setRequired] = React.useState(false);
-  const [minAge, setMinAge] = React.useState(18);
-  const [maxAgeEnabled, setMaxAgeEnabled] = React.useState(false);
-  const [filled, setFilled] = React.useState(false);
-  const [validation, setValidation] = React.useState<string | null>(null);
-
-  return (
-    <div className="space-y-4 p-2">
-      <SgGrid columns={{ base: 2, md: 4 }} gap={8}>
-        <SgButton size="sm" appearance={required ? "solid" : "outline"} onClick={() => setRequired((prev) => !prev)}>
-          required
-        </SgButton>
-        <SgButton size="sm" appearance={filled ? "solid" : "outline"} onClick={() => setFilled((prev) => !prev)}>
-          filled
-        </SgButton>
-        <SgButton size="sm" appearance="outline" onClick={() => setMinAge((prev) => (prev === 18 ? 21 : 18))}>
-          minAge: {minAge}
-        </SgButton>
-        <SgButton size="sm" appearance={maxAgeEnabled ? "solid" : "outline"} onClick={() => setMaxAgeEnabled((prev) => !prev)}>
-          maxAge
-        </SgButton>
-      </SgGrid>
-
-      <SgInputBirthDate
-        id="playground-input-birth-date"
-        label="SgInputBirthDate Playground"
-        required={required}
-        minAge={minAge}
-        maxAge={maxAgeEnabled ? 80 : undefined}
-        filled={filled}
-        onValidation={setValidation}
-      />
-
-      <div className="rounded border border-border p-3">
-        <p className="mb-2 text-xs text-muted-foreground">labelPosition</p>
-        <SgGrid columns={{ base: 1, md: 3 }} gap={8}>
-          <SgInputBirthDate id="label-float" label="Float" hintText="DD/MM/YYYY" labelPosition="float" />
-          <SgInputBirthDate id="label-top" label="Top" hintText="DD/MM/YYYY" labelPosition="top" />
-          <SgInputBirthDate
-            id="label-left"
-            label="Left"
-            hintText="DD/MM/YYYY"
-            labelPosition="left"
-            labelWidth={120}
-            labelAlign="end"
-          />
-        </SgGrid>
-      </div>
-      <div className="rounded border border-border bg-muted/40 p-3 text-xs">
-        onValidation: <strong>{validation ?? "(valid)"}</strong>
-      </div>
-    </div>
-  );
-}`;
 
 export default function SgInputBirthDatePage() {
   const i18n = useShowcaseI18n();
@@ -261,7 +197,7 @@ export default function SgInputBirthDatePage() {
               {t(i18n, "showcase.common.labels.onValidation")}: {validationMsg ?? t(i18n, "showcase.common.labels.valid")}
             </p>
           </div>
-          <CodeBlock code={`<SgInputBirthDate\n  id="demo-basic"\n  label="${t(i18n, "showcase.component.inputBirthDate.labels.birthDate")}"\n  minAge={18}\n  onValidation={(msg) => setValidationMsg(msg)}\n/>`} />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-birth-date/samples/basico.tsx.sample" />
         </Section>
 
         <Section
@@ -278,7 +214,7 @@ export default function SgInputBirthDatePage() {
               requiredMessage={t(i18n, "showcase.component.inputBirthDate.messages.required")}
             />
           </div>
-          <CodeBlock code={`<SgInputBirthDate\n  id="demo-required"\n  label="${t(i18n, "showcase.component.inputBirthDate.labels.birthDate")}"\n  minAge={18}\n  required\n  requiredMessage="${t(i18n, "showcase.component.inputBirthDate.messages.required")}"\n/>`} />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-birth-date/samples/obrigatorio.tsx.sample" />
         </Section>
 
         <Section
@@ -294,7 +230,7 @@ export default function SgInputBirthDatePage() {
               maxAge={80}
             />
           </div>
-          <CodeBlock code={`<SgInputBirthDate\n  id="demo-range"\n  label="${t(i18n, "showcase.component.inputBirthDate.labels.birthDate")}"\n  minAge={12}\n  maxAge={80}\n/>`} />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-birth-date/samples/intervalo.tsx.sample" />
         </Section>
 
         <Section
@@ -321,25 +257,7 @@ export default function SgInputBirthDatePage() {
       labelAlign="end"
     />
   </SgGrid>
-  <CodeBlock code={`<SgInputBirthDate
-  id="sg-input-birth-date-label-float"
-  label="${t(i18n, "showcase.common.labels.labelFloat")}"
-  labelPosition="float"
-/>
-
-<SgInputBirthDate
-  id="sg-input-birth-date-label-top"
-  label="${t(i18n, "showcase.common.labels.labelTop")}"
-  labelPosition="top"
-/>
-
-<SgInputBirthDate
-  id="sg-input-birth-date-label-left"
-  label="${t(i18n, "showcase.common.labels.labelLeft")}"
-  labelPosition="left"
-  labelWidth={140}
-  labelAlign="end"
-/>`} />
+  <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-birth-date/samples/posicao-do-rotulo.tsx.sample" />
 </Section>
 
 <Section id="exemplo-5" title="5) Playground" description={t(i18n, "showcase.common.playground.description")}>
@@ -347,7 +265,7 @@ export default function SgInputBirthDatePage() {
             title="SgInputBirthDate Playground"
             interactive
             codeContract="appFile"
-            code={INPUT_BIRTH_DATE_PLAYGROUND_CODE}
+            playgroundFile="apps/showcase/src/app/components/sg-input-birth-date/sg-input-birth-date.tsx.playground"
             height={540}
             defaultOpen
           />

@@ -1,10 +1,10 @@
-"use client";
+﻿"use client";
 
 import * as React from "react";
 import Link from "next/link";
 import { SgCarousel, SgGrid } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import sgCodeBlockBase from "../sgCodeBlockBase";
+import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import { useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
@@ -28,7 +28,7 @@ function Section(props: {
 }
 
 function CodeBlock(props: { code: string }) {
-  return <sgCodeBlockBase code={props.code} />;
+  return <SgCodeBlockBase code={props.code} />;
 }
 
 // Sample items for the carousels (picsum.photos)
@@ -150,7 +150,7 @@ const CAROUSEL_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", CarouselTexts> 
     headerSubtitle:
       "Um componente de carrossel responsivo com navegacao horizontal/vertical, autoplay e indicadores.",
     examplesLabel: "Examples",
-    propsLinkLabel: "Referência de Props",
+    propsLinkLabel: "ReferÃªncia de Props",
     sectionTitles: [
       "1) Basico - Horizontal",
       "2) Multiplos Items Visiveis",
@@ -179,7 +179,7 @@ const CAROUSEL_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", CarouselTexts> 
       "Carrossel que se adapta ao tamanho da tela mostrando diferentes quantidades de items",
       "Brinque com as propriedades do carrossel e veja as mudancas em tempo real",
     ],
-    propsTitle: "Referência de Props",
+    propsTitle: "ReferÃªncia de Props",
     propsColProp: "Prop",
     propsColType: "Tipo",
     propsColDefault: "Default",
@@ -189,7 +189,7 @@ const CAROUSEL_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", CarouselTexts> 
     headerSubtitle:
       "Um componente de carrossel responsivo com navegacao horizontal/vertical, autoplay e indicadores.",
     examplesLabel: "Examples",
-    propsLinkLabel: "Referência de Props",
+    propsLinkLabel: "ReferÃªncia de Props",
     sectionTitles: [
       "1) Basico - Horizontal",
       "2) Multiplos Items Visiveis",
@@ -218,7 +218,7 @@ const CAROUSEL_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", CarouselTexts> 
       "Carrossel que se adapta ao tamanho do ecra mostrando diferentes quantidades de items",
       "Brinque com as propriedades do carrossel e veja as mudancas em tempo real",
     ],
-    propsTitle: "Referência de Props",
+    propsTitle: "ReferÃªncia de Props",
     propsColProp: "Prop",
     propsColType: "Tipo",
     propsColDefault: "Default",
@@ -998,7 +998,7 @@ export default function SgCarouselPage() {
         <div className="space-y-4">
           <div className="rounded bg-muted/40 p-3">
             <p className="text-sm">
-              <span className="font-semibold">Índice Ativo:</span>{" "}
+              <span className="font-semibold">Ãndice Ativo:</span>{" "}
               <code className="rounded bg-background px-2 py-1">{activeIndex1}</code>
             </p>
           </div>
@@ -1011,7 +1011,7 @@ export default function SgCarouselPage() {
               height="100%"
               onIndexChange={(index) => {
                 setActiveIndex1(index);
-                log(`Índice mudou para: ${index}`);
+                log(`Ãndice mudou para: ${index}`);
               }}
             />
           </div>
@@ -1036,7 +1036,7 @@ export default function SgCarouselPage() {
             snippet: `    <div className="space-y-4">
       <div className="rounded bg-muted/40 p-3">
         <p className="text-sm">
-          <span className="font-semibold">Índice Ativo:</span>{" "}
+          <span className="font-semibold">Ãndice Ativo:</span>{" "}
           <code className="rounded bg-background px-2 py-1">{activeIndex}</code>
         </p>
       </div>
@@ -1049,7 +1049,7 @@ export default function SgCarouselPage() {
           height="100%"
           onIndexChange={(index) => {
             setActiveIndex(index);
-            log(\`Índice mudou para: \${index}\`);
+            log(\`Ãndice mudou para: \${index}\`);
           }}
         />
       </div>
@@ -1153,6 +1153,7 @@ export default function SgCarouselPage() {
     </I18NReady>
   );
 }
+
 
 
 

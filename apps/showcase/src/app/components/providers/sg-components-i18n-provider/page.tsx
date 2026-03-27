@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import {
@@ -11,7 +11,7 @@ import {
   componentsMessagesPtPt,
   SgInputText
 } from "@seedgrid/fe-components";
-import sgCodeBlockBase from "../../sgCodeBlockBase";
+import SgCodeBlockBase from "../../sgCodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
@@ -32,7 +32,7 @@ function Section(props: { title: string; description?: string; children: React.R
 }
 
 function CodeBlock(props: { code: string }) {
-  return <sgCodeBlockBase code={props.code} />;
+  return <SgCodeBlockBase code={props.code} />;
 }
 
 const LOCALES = [
@@ -178,7 +178,7 @@ export default function App() {
           <CodeBlock
             code={`import { setComponentsI18n, componentsMessagesEnUs } from "@seedgrid/fe-components";
 
-// Alternativa imperativa — sem Provider, afeta o escopo global
+// Alternativa imperativa â€” sem Provider, afeta o escopo global
 // Util para SSR ou configuracao inicial antes da montagem da arvore React
 setComponentsI18n({ locale: "en-US", messages: componentsMessagesEnUs });`}
           />
@@ -220,3 +220,4 @@ export default function App() {
     </I18NReady>
   );
 }
+

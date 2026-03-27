@@ -13,196 +13,196 @@ o que vai ser a tarefa:
 ### Checklist de acompanhamento
 
 #### Inputs
-[ ] SgInputText: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
-    [ ] 1) Básico (RHF)
-    [ ] 2) Obrigatório
-    [ ] 3) Controlado (caso necessário)
-    [ ] 4) Contador de caracteres
-    [ ] 5) Tamanho mínimo
-    [ ] 6) Mínimo de palavras
-    [ ] 7) Validação customizada
-    [ ] 8) Ícone prefixo
-    [ ] 9) Prefixo e sufixo
-    [ ] 10) Botões de ícone
-    [ ] 11) Variações visuais
-    [ ] 12) Sem botão limpar
-    [ ] 13) Largura e borda
-    [ ] 14) Desabilitado e somente leitura
-    [ ] 15) Erro externo
-    [ ] 16) Standalone (form completo)
-    [ ] 17) Eventos (standalone)
-    [ ] 18) Posição do rótulo
-    [ ] 19) Elevação
+[x] SgInputText: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
+    [x] 1) Básico (RHF)
+    [x] 2) Obrigatório
+    [x] 3) Controlado (caso necessário)
+    [x] 4) Contador de caracteres
+    [x] 5) Tamanho mínimo
+    [x] 6) Mínimo de palavras
+    [x] 7) Validação customizada
+    [x] 8) Ícone prefixo
+    [x] 9) Prefixo e sufixo
+    [x] 10) Botões de ícone
+    [x] 11) Variações visuais
+    [x] 12) Sem botão limpar
+    [x] 13) Largura e borda
+    [x] 14) Desabilitado e somente leitura
+    [x] 15) Erro externo
+    [x] 16) Standalone (form completo)
+    [x] 17) Eventos (standalone)
+    [x] 18) Posição do rótulo
+    [x] 19) Elevação
 
-[ ] SgInputTextArea: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
-    [ ] 1) Básico
-    [ ] 2) Obrigatório
-    [ ] 3) Controlado
-    [ ] 4) Contador
-    [ ] 5) Tamanho mínimo
-    [ ] 6) Mínimo de palavras
-    [ ] 7) Mínimo de linhas
-    [ ] 8) Validação customizada
-    [ ] 9) Tamanho e linhas
-    [ ] 10) Ícone prefixo
-    [ ] 11) Variações visuais
-    [ ] 12) Sem botão limpar
-    [ ] 13) Largura e borda
-    [ ] 14) Desabilitado e somente leitura
-    [ ] 15) Erro externo
-    [ ] 16) Eventos
-    [ ] 17) Posição do rótulo
-    [ ] 18) Playground
-[ ] SgInputPassword: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
-    [ ] 1) Básico
-    [ ] 2) Obrigatório
-    [ ] 3) Validação
-    [ ] 4) Variações visuais
-    [ ] 5) Eventos
-    [ ] 6) Posição do rótulo
-    [ ] 7) Playground
+[x] SgInputTextArea: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
+    [x] 1) Básico
+    [x] 2) Obrigatório
+    [x] 3) Controlado
+    [x] 4) Contador
+    [x] 5) Tamanho mínimo
+    [x] 6) Mínimo de palavras
+    [x] 7) Mínimo de linhas
+    [x] 8) Validação customizada
+    [x] 9) Tamanho e linhas
+    [x] 10) Ícone prefixo
+    [x] 11) Variações visuais
+    [x] 12) Sem botão limpar
+    [x] 13) Largura e borda
+    [x] 14) Desabilitado e somente leitura
+    [x] 15) Erro externo
+    [x] 16) Eventos
+    [x] 17) Posição do rótulo
+    [x] 18) Playground
+[x] SgInputPassword: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
+    [x] 1) Básico
+    [x] 2) Obrigatório
+    [x] 3) Validação
+    [x] 4) Variações visuais
+    [x] 5) Eventos
+    [x] 6) Posição do rótulo
+    [x] 7) Playground
 [x] SgInputOTP: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
     [x] 1) Básico
     [x] 2) Máscara customizada
     [x] 3) Colagem + onComplete
     [x] 4) Acesso por ref
     [x] 5) Playground
-[ ] SgInputSelect: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
-    [ ] Página do showcase não encontrada ou mapeamento pendente
-[ ] SgInputDate: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
-    [ ] 1) Básico
-    [ ] 2) Intervalo
-    [ ] 3) Data fixa
-    [ ] 4) Posição do rótulo
-    [ ] 5) Playground
-[ ] SgInputBirthDate: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
-    [ ] 1) Básico
-    [ ] 2) Obrigatório
-    [ ] 3) Intervalo
-    [ ] 4) Posição do rótulo
-    [ ] 5) Playground
-[ ] SgToggleSwitch: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
-    [ ] 1) Básico
-    [ ] 2) Com ícones (on/off)
-    [ ] 3) Remote (simulação de update)
-    [ ] 4) Controlado externamente + captura do valor
-    [ ] 5) React Hook Form
-    [ ] 6) Estados Disabled / ReadOnly
-    [ ] 7) Playground
-[ ] SgInputEmail: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
-    [ ] 1) Básico
-    [ ] 2) Obrigatório
-    [ ] 3) Inválido
-    [ ] 4) Bloqueados
-    [ ] 5) Validação customizada
-    [ ] 6) Lista de bloqueados
-    [ ] 7) JSON
-    [ ] 8) Variações visuais
-    [ ] 9) Sem botão limpar
-    [ ] 10) Largura e borda
-    [ ] 11) Desabilitado
-    [ ] 12) Eventos
-    [ ] 13) Posição do rótulo
-    [ ] 14) Playground
-[ ] SgInputCPF: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
-    [ ] 1) Básico
-    [ ] 2) Obrigatório
-    [ ] 3) Tamanho
-    [ ] 4) Inválido
-    [ ] 5) Validação customizada
-    [ ] 6) Variações visuais
-    [ ] 7) Sem botão limpar
-    [ ] 8) Largura e borda
-    [ ] 9) Desabilitado
-    [ ] 10) Eventos
-    [ ] 11) Posição do rótulo
-    [ ] 12) Playground
-[ ] SgInputCNPJ: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
-    [ ] 1) Básico
-    [ ] 2) Alfanumérico
-    [ ] 3) Lista alfanumérica
-    [ ] 4) CNPJ público
-    [ ] 5) Obrigatório
-    [ ] 6) Tamanho
-    [ ] 7) Inválido
-    [ ] 8) Validação customizada
-    [ ] 9) Variações visuais
-    [ ] 10) Sem botão limpar
-    [ ] 11) Largura e borda
-    [ ] 12) Desabilitado
-    [ ] 13) Eventos
-    [ ] 14) Posição do rótulo
-    [ ] 15) Playground
-[ ] SgInputCPFCNPJ: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
-    [ ] 1) Básico
-    [ ] 2) Obrigatório
-    [ ] 3) Inválido
-    [ ] 4) Validação customizada
-    [ ] 5) Alfanumérico
-    [ ] 6) Lista alfanumérica
-    [ ] 7) Variações visuais
-    [ ] 8) Sem botão limpar
-    [ ] 9) Largura e borda
-    [ ] 10) Desabilitado
-    [ ] 11) Eventos
-    [ ] 12) Posição do rótulo
-    [ ] 13) Playground
-[ ] SgInputPostalCode: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
-    [ ] 1) Básico
-    [ ] 2) Países
-    [ ] 3) Obrigatório
-    [ ] 4) Controlado
-    [ ] 5) Validação customizada
-    [ ] 6) ViaCEP
-    [ ] 7) Ícone prefixo
-    [ ] 8) Prefixo e sufixo
-    [ ] 9) Botões de ícone
-    [ ] 10) Variações visuais
-    [ ] 11) Largura e borda
-    [ ] 12) Desabilitado e somente leitura
-    [ ] 13) Standalone
-    [ ] 14) Eventos
-    [ ] 15) Posição do rótulo
-    [ ] 16) Playground
-[ ] SgInputPhone: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
-    [ ] 1) Básico
-    [ ] 2) Obrigatório
-    [ ] 3) Inválido
-    [ ] 4) Validação customizada
-    [ ] 5) Variações visuais
-    [ ] 6) Sem botão limpar
-    [ ] 7) Largura e borda
-    [ ] 8) Desabilitado
-    [ ] 9) Eventos
-    [ ] 10) Posição do rótulo
-    [ ] 11) Playground
-[ ] SgAutocomplete: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
-    [ ] 1) Básico
-    [ ] 2) Customizado
-    [ ] 3) Agrupado
-    [ ] 4) Dropdown
-    [ ] 5) Footer
-    [ ] 6) Tamanho mínimo
-    [ ] 7) Border radius
-    [ ] 8) Playground
-[ ] SgCombobox: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
-    [ ] 1) Básico com lista de objetos
-    [ ] 2) Controlado por value
-    [ ] 3) Source async + custom render
-    [ ] 4) Border radius
-    [ ] 5) Playground
-[ ] SgSlider: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
-    [ ] 1) Básico
-    [ ] 2) Controle externo
-    [ ] 3) Step e width
-    [ ] 4) className, ariaLabel e disabled
-    [ ] 5) inputProps
-    [ ] 6) Playground
-[ ] SgStepperInput: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
-    [ ] 1) Básico
-    [ ] 2) Controle externo
-    [ ] 3) Read-only e disabled
-    [ ] 4) Playground
+- SgInputSelect: página própria do showcase não encontrada; item listado no índice, mas sem rota dedicada em `apps/showcase/src/app/components`
+    - pendente de decisão: criar página dedicada ou remover do índice atual
+[x] SgInputDate: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
+    [x] 1) Básico
+    [x] 2) Intervalo
+    [x] 3) Data fixa
+    [x] 4) Posição do rótulo
+    [x] 5) Playground
+[x] SgInputBirthDate: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
+    [x] 1) Básico
+    [x] 2) Obrigatório
+    [x] 3) Intervalo
+    [x] 4) Posição do rótulo
+    [x] 5) Playground
+[x] SgToggleSwitch: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
+    [x] 1) Básico
+    [x] 2) Com ícones (on/off)
+    [x] 3) Remote (simulação de update)
+    [x] 4) Controlado externamente + captura do valor
+    [x] 5) React Hook Form
+    [x] 6) Estados Disabled / ReadOnly
+    [x] 7) Playground
+[x] SgInputEmail: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
+    [x] 1) Básico
+    [x] 2) Obrigatório
+    [x] 3) Inválido
+    [x] 4) Bloqueados
+    [x] 5) Validação customizada
+    [x] 6) Lista de bloqueados
+    [x] 7) JSON
+    [x] 8) Variações visuais
+    [x] 9) Sem botão limpar
+    [x] 10) Largura e borda
+    [x] 11) Desabilitado
+    [x] 12) Eventos
+    [x] 13) Posição do rótulo
+    [x] 14) Playground
+[x] SgInputCPF: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
+    [x] 1) Básico
+    [x] 2) Obrigatório
+    [x] 3) Tamanho
+    [x] 4) Inválido
+    [x] 5) Validação customizada
+    [x] 6) Variações visuais
+    [x] 7) Sem botão limpar
+    [x] 8) Largura e borda
+    [x] 9) Desabilitado
+    [x] 10) Eventos
+    [x] 11) Posição do rótulo
+    [x] 12) Playground
+[x] SgInputCNPJ: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
+    [x] 1) Básico
+    [x] 2) Alfanumérico
+    [x] 3) Lista alfanumérica
+    [x] 4) CNPJ público
+    [x] 5) Obrigatório
+    [x] 6) Tamanho
+    [x] 7) Inválido
+    [x] 8) Validação customizada
+    [x] 9) Variações visuais
+    [x] 10) Sem botão limpar
+    [x] 11) Largura e borda
+    [x] 12) Desabilitado
+    [x] 13) Eventos
+    [x] 14) Posição do rótulo
+    [x] 15) Playground
+[x] SgInputCPFCNPJ: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
+    [x] 1) Básico
+    [x] 2) Obrigatório
+    [x] 3) Inválido
+    [x] 4) Validação customizada
+    [x] 5) Alfanumérico
+    [x] 6) Lista alfanumérica
+    [x] 7) Variações visuais
+    [x] 8) Sem botão limpar
+    [x] 9) Largura e borda
+    [x] 10) Desabilitado
+    [x] 11) Eventos
+    [x] 12) Posição do rótulo
+    [x] 13) Playground
+[x] SgInputPostalCode: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
+    [x] 1) Básico
+    [x] 2) Países
+    [x] 3) Obrigatório
+    [x] 4) Controlado
+    [x] 5) Validação customizada
+    [x] 6) ViaCEP
+    [x] 7) Ícone prefixo
+    [x] 8) Prefixo e sufixo
+    [x] 9) Botões de ícone
+    [x] 10) Variações visuais
+    [x] 11) Largura e borda
+    [x] 12) Desabilitado e somente leitura
+    [x] 13) Standalone
+    [x] 14) Eventos
+    [x] 15) Posição do rótulo
+    [x] 16) Playground
+[x] SgInputPhone: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
+    [x] 1) Básico
+    [x] 2) Obrigatório
+    [x] 3) Inválido
+    [x] 4) Validação customizada
+    [x] 5) Variações visuais
+    [x] 6) Sem botão limpar
+    [x] 7) Largura e borda
+    [x] 8) Desabilitado
+    [x] 9) Eventos
+    [x] 10) Posição do rótulo
+    [x] 11) Playground
+[x] SgAutocomplete: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
+    [x] 1) Básico
+    [x] 2) Customizado
+    [x] 3) Agrupado
+    [x] 4) Dropdown
+    [x] 5) Footer
+    [x] 6) Tamanho mínimo
+    [x] 7) Border radius
+    [x] 8) Playground
+[x] SgCombobox: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
+    [x] 1) Básico com lista de objetos
+    [x] 2) Controlado por value
+    [x] 3) Source async + custom render
+    [x] 4) Border radius
+    [x] 5) Playground
+[x] SgSlider: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
+    [x] 1) Básico
+    [x] 2) Controle externo
+    [x] 3) Step e width
+    [x] 4) className, ariaLabel e disabled
+    [x] 5) inputProps
+    [x] 6) Playground
+[x] SgStepperInput: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
+    [x] 1) Básico
+    [x] 2) Controle externo
+    [x] 3) Read-only e disabled
+    [x] 4) Playground
 [ ] SgTextEditor: criar `samples`, extrair `.tsx.playground`, separar exemplos da página e validar com esbuild
     [ ] 1) Básico
     [ ] 2) Sem CSS

@@ -1,0 +1,67 @@
+import * as React from "react";
+import { SgCombobox } from "@seedgrid/fe-components";
+
+type Country = {
+  id: number;
+  description: string;
+  code: string;
+  region: string;
+};
+
+const COUNTRIES: Country[] = [
+  { id: 1, description: "Brazil", code: "BR", region: "Americas" },
+  { id: 2, description: "Argentina", code: "AR", region: "Americas" },
+  { id: 3, description: "United States", code: "US", region: "Americas" },
+  { id: 4, description: "Canada", code: "CA", region: "Americas" },
+  { id: 5, description: "Germany", code: "DE", region: "Europe" },
+  { id: 6, description: "France", code: "FR", region: "Europe" },
+  { id: 7, description: "Portugal", code: "PT", region: "Europe" },
+  { id: 8, description: "India", code: "IN", region: "Asia" },
+  { id: 9, description: "Japan", code: "JP", region: "Asia" },
+  { id: 10, description: "Australia", code: "AU", region: "Oceania" }
+];
+
+export default function Example() {
+  const source = async () => {
+    await new Promise((r) => setTimeout(r, 300));
+    return COUNTRIES;
+  };
+  const [selectedAsync, setSelectedAsync] = React.useState<Country | null>(null);
+
+  return (
+    <>
+      <SgCombobox<Country>
+        id="cb-async"
+        label="Country (async)"
+        source={source}
+        openOnFocus
+        grouped
+        loadingText="Loading countries..."
+        mapItem={(raw) => ({
+          id: raw.id,
+          label: raw.description,
+          value: raw.code,
+          group: raw.region
+        })}
+        renderGroupHeader={(group) => <span className="uppercase tracking-wide">{group}</span>}
+        renderItem={(item) => (
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-semibold">{item.value}</span>
+            <span>{item.label}</span>
+          </div>
+        )}
+        itemTooltip={(item) => <span>{item.label}</span>}
+        renderFooter={(_, hasResults) => (
+          <span className="text-xs text-muted-foreground">
+            {hasResults ? "Select one item from the list." : "No records."}
+          </span>
+        )}
+        onSelect={setSelectedAsync}
+      />
+
+      <div>
+        {selectedAsync ? `Selected: ${selectedAsync.description} (${selectedAsync.code})` : "No item selected"}
+      </div>
+    </>
+  );
+}

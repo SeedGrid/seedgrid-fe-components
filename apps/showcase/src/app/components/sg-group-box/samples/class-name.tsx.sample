@@ -1,0 +1,9 @@
+import { SgGroupBox } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgGroupBox title="className" className="bg-foreground/5 p-2 rounded-xl">
+      <div>Conteúdo</div>
+    </SgGroupBox>
+  );
+}

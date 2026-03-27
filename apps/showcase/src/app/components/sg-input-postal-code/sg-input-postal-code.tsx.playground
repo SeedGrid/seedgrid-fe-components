@@ -1,0 +1,52 @@
+import * as React from "react";
+import {
+  SgButton,
+  SgGrid,
+  SgInputPostalCode,
+} from "@seedgrid/fe-components";
+
+export default function App() {
+  const [country, setCountry] = React.useState<"BR" | "PT" | "US">("BR");
+  const [required, setRequired] = React.useState(false);
+  const [filled, setFilled] = React.useState(false);
+  const [withBorder, setWithBorder] = React.useState(true);
+  const [clearButton, setClearButton] = React.useState(true);
+  const [value, setValue] = React.useState("");
+
+  const hintByCountry = { BR: "00000-000", PT: "0000-000", US: "00000" } as const;
+
+  return (
+    <div className="space-y-4 p-2">
+      <SgGrid columns={{ base: 2, md: 3 }} gap={8}>
+        <SgButton size="sm" appearance="outline" onClick={() => setCountry("BR")}>BR</SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => setCountry("PT")}>PT</SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => setCountry("US")}>US</SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => setRequired((prev) => !prev)}>required: {String(required)}</SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => setFilled((prev) => !prev)}>filled: {String(filled)}</SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => setWithBorder((prev) => !prev)}>withBorder: {String(withBorder)}</SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => setClearButton((prev) => !prev)}>clearButton: {String(clearButton)}</SgButton>
+      </SgGrid>
+
+      <SgInputPostalCode
+        id="playground-postal"
+        country={country}
+        label="Postal code"
+        hintText={hintByCountry[country]}
+        required={required}
+        filled={filled}
+        withBorder={withBorder}
+        clearButton={clearButton}
+        inputProps={{ value, onChange: (event) => setValue(event.target.value) }}
+      />
+
+      <div className="rounded border border-border p-3">
+        <p className="mb-2 text-xs text-muted-foreground">labelPosition</p>
+        <SgGrid columns={{ base: 1, md: 3 }} gap={8}>
+          <SgInputPostalCode id="label-float" country={country} label="Float" hintText={hintByCountry[country]} labelPosition="float" />
+          <SgInputPostalCode id="label-top" country={country} label="Top" hintText={hintByCountry[country]} labelPosition="top" />
+          <SgInputPostalCode id="label-left" country={country} label="Left" hintText={hintByCountry[country]} labelPosition="left" labelWidth={120} labelAlign="end" />
+        </SgGrid>
+      </div>
+    </div>
+  );
+}

@@ -1,0 +1,27 @@
+import * as React from "react";
+import { Check, X } from "lucide-react";
+import { SgToggleSwitch } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <div>
+      <SgToggleSwitch
+        id="demo-disabled"
+        label="Disabled"
+        checked
+        enabled={false}
+        onIcon={<Check size={12} />}
+        offIcon={<X size={12} />}
+      />
+
+      <SgToggleSwitch
+        id="demo-readonly"
+        label="ReadOnly"
+        checked={false}
+        readOnly
+        onIcon={<Check size={12} />}
+        offIcon={<X size={12} />}
+      />
+    </div>
+  );
+}

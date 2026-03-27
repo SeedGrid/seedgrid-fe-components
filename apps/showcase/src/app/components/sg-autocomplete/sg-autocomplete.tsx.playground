@@ -1,0 +1,80 @@
+import * as React from "react";
+import {
+  SgAutocomplete,
+  type SgAutocompleteItem,
+} from "@seedgrid/fe-components";
+
+type Country = {
+  id: number;
+  description: string;
+  code: string;
+};
+
+const COUNTRIES: Country[] = [
+  { id: 1, description: "Afghanistan", code: "AF" },
+  { id: 2, description: "Albania", code: "AL" },
+  { id: 3, description: "Brazil", code: "BR" },
+  { id: 4, description: "Canada", code: "CA" },
+  { id: 5, description: "Germany", code: "DE" },
+  { id: 6, description: "India", code: "IN" },
+  { id: 7, description: "United States", code: "US" }
+];
+
+const source = async (query: string) => {
+  await new Promise((resolve) => setTimeout(resolve, 200));
+  const q = query.toLowerCase();
+  return COUNTRIES.filter((c) => c.description.toLowerCase().includes(q));
+};
+
+export default function App() {
+  const [selected, setSelected] = React.useState<{ id: number | string; label: string } | null>(null);
+  const [grouped, setGrouped] = React.useState(false);
+  const [showDropDownButton, setShowDropDownButton] = React.useState(true);
+
+  return (
+    <div className="space-y-4 p-2">
+      <div className="flex flex-wrap items-center gap-3">
+        <label className="text-sm inline-flex items-center gap-1">
+          <input
+            className="mr-1"
+            type="checkbox"
+            checked={grouped}
+            onChange={(e) => setGrouped(e.target.checked)}
+          />
+          grouped
+        </label>
+        <label className="text-sm inline-flex items-center gap-1">
+          <input
+            className="mr-1"
+            type="checkbox"
+            checked={showDropDownButton}
+            onChange={(e) => setShowDropDownButton(e.target.checked)}
+          />
+          showDropDownButton
+        </label>
+      </div>
+
+      <div className="w-80">
+        <SgAutocomplete
+          id="ac-playground"
+          label="Country"
+          source={source}
+          minLengthForSearch={1}
+          grouped={grouped}
+          showDropDownButton={showDropDownButton}
+          openOnFocus
+          mapItem={(raw: Country): SgAutocompleteItem => ({
+            id: raw.id,
+            label: raw.description,
+            group: raw.description[0]
+          })}
+          onSelect={(item) => setSelected({ id: item.id, label: item.label })}
+        />
+      </div>
+
+      <div className="rounded border border-border bg-muted/30 p-3 text-xs">
+        {selected ? `Selected: ${selected.label} (id ${selected.id})` : "No item selected"}
+      </div>
+    </div>
+  );
+}

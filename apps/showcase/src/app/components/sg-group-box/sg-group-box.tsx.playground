@@ -1,0 +1,36 @@
+import * as React from "react";
+import {
+  SgGroupBox,
+  SgButton,
+} from "@seedgrid/fe-components";
+
+export default function App() {
+  const [title, setTitle] = React.useState("Dados pessoais");
+  const [width, setWidth] = React.useState(420);
+  const [height, setHeight] = React.useState(220);
+
+  return (
+    <div className="space-y-4 p-2">
+      <div className="grid gap-2 sm:grid-cols-3">
+        <SgButton size="sm" appearance="outline" onClick={() => setTitle((prev) => prev === "Dados pessoais" ? "Informações da conta" : "Dados pessoais")}>
+          trocar título
+        </SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => setWidth((prev) => (prev === 420 ? 320 : 420))}>
+          width: {width}
+        </SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => setHeight((prev) => (prev === 220 ? 180 : 220))}>
+          height: {height}
+        </SgButton>
+      </div>
+
+      <SgGroupBox title={title} width={width} height={height}>
+        <div className="grid gap-2 sm:grid-cols-2">
+          <div className="rounded border border-border bg-muted/20 p-3 text-sm">Campo 1</div>
+          <div className="rounded border border-border bg-muted/20 p-3 text-sm">Campo 2</div>
+          <div className="rounded border border-border bg-muted/20 p-3 text-sm">Campo 3</div>
+          <div className="rounded border border-border bg-muted/20 p-3 text-sm">Campo 4</div>
+        </div>
+      </SgGroupBox>
+    </div>
+  );
+}

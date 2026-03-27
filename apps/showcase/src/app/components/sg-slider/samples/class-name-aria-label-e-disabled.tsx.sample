@@ -1,0 +1,33 @@
+import React from "react";
+import { SgSlider } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [value, setValue] = React.useState(40);
+
+  return (
+    <div className="space-y-3">
+      <SgSlider
+        id="slider-aria-class"
+        minValue={0}
+        maxValue={100}
+        value={value}
+        width="20rem"
+        ariaLabel="Nivel de prioridade"
+        className="accent-[#c56a2d]"
+        onChange={setValue}
+      />
+      <SgSlider
+        id="slider-disabled"
+        minValue={0}
+        maxValue={100}
+        value={65}
+        disabled
+        ariaLabel="Slider desabilitado"
+        width="20rem"
+      />
+      <p className="text-sm text-muted-foreground">
+        Nivel de prioridade: <span className="font-semibold text-foreground">{value}</span>
+      </p>
+    </div>
+  );
+}

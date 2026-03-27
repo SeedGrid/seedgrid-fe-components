@@ -1,0 +1,50 @@
+import React from "react";
+import { useForm } from "react-hook-form";
+import { SgAutocomplete, type SgAutocompleteItem } from "@seedgrid/fe-components";
+
+type Country = {
+  id: number;
+  description: string;
+  code: string;
+};
+
+const COUNTRIES: Country[] = [
+  { id: 1, description: "Afghanistan", code: "AF" },
+  { id: 2, description: "Albania", code: "AL" },
+  { id: 3, description: "Brazil", code: "BR" },
+  { id: 4, description: "South Africa", code: "ZA" }
+];
+
+const source = async (query: string) => {
+  await new Promise((resolve) => setTimeout(resolve, 200));
+  const q = query.toLowerCase();
+  return COUNTRIES.filter((c) => c.description.toLowerCase().includes(q));
+};
+
+const mapItem = (raw: Country): SgAutocompleteItem => ({
+  id: raw.id,
+  label: raw.description,
+  data: raw
+});
+
+export default function Example() {
+  const { control } = useForm({
+    defaultValues: { country: "" }
+  });
+
+  return (
+    <form>
+      <SgAutocomplete
+        id="country"
+        name="country"
+        control={control}
+        label="Country"
+        source={source}
+        renderFooter={(query) => (
+          <button>Add new "{query}"</button>
+        )}
+        mapItem={mapItem}
+      />
+    </form>
+  );
+}

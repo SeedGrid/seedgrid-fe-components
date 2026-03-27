@@ -1,0 +1,13 @@
+import * as React from "react";
+import { SgInputBirthDate } from "@seedgrid/fe-components";
+
+export default function App() {
+  const [validationMsg, setValidationMsg] = React.useState<string | null>(null);
+
+  return (
+    <div className="w-80">
+      <SgInputBirthDate id="demo-basic" label="Data de nascimento" minAge={18} onValidation={(msg) => setValidationMsg(msg)} />
+      <p className="mt-2 text-xs text-muted-foreground">onValidation: {validationMsg ?? "valid"}</p>
+    </div>
+  );
+}

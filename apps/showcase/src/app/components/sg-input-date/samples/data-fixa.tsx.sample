@@ -1,0 +1,10 @@
+import * as React from "react";
+import { SgInputDate } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <div className="w-80">
+      <SgInputDate id="demo-fixed" label="Data do evento" />
+    </div>
+  );
+}

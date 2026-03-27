@@ -1,0 +1,11 @@
+import * as React from "react";
+import { SgInputTextArea } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <>
+      <SgInputTextArea id="demo-disabled" label="Desabilitado" enabled={false} />
+      <SgInputTextArea id="demo-readonly" label="Somente leitura" textareaProps={{ readOnly: true }} />
+    </>
+  );
+}

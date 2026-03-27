@@ -1,0 +1,6 @@
+import * as React from "react";
+import { SgInputTextArea } from "@seedgrid/fe-components";
+
+export default function App() {
+  return <SgInputTextArea id="demo-counter" label="Max 100" maxLength={100} showCharCounter />;
+}

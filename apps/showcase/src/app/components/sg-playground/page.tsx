@@ -1,8 +1,8 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import sgCodeBlockBase from "../sgCodeBlockBase";
+import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
@@ -24,7 +24,7 @@ function Section(props: { title: string; description?: string; children: React.R
 function ExampleCodeCard(props: { code: string }) {
   return (
     <div className="mt-4">
-      <sgCodeBlockBase code={props.code} />
+      <SgCodeBlockBase code={props.code} />
     </div>
   );
 }
@@ -215,3 +215,4 @@ export default function SgPlaygroundPage() {
   </I18NReady>
   );
 }
+

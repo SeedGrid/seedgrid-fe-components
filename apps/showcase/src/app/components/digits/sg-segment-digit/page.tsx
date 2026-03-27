@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import * as React from "react";
 import {
@@ -9,7 +9,7 @@ import {
   SgSlider,
 } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import sgCodeBlockBase from "../../sgCodeBlockBase";
+import SgCodeBlockBase from "../../sgCodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
@@ -281,7 +281,7 @@ export default function SgSegmentDigitShowcase() {
               <SgButton size="sm" severity="info" onClick={randomDigit}>Random</SgButton>
             </div>
           </div>
-          <sgCodeBlockBase code={BASIC_CODE} />
+          <SgCodeBlockBase code={BASIC_CODE} />
         </Section>
 
         <Section title={texts.section2Title} description={texts.section2Description}>
@@ -298,7 +298,7 @@ export default function SgSegmentDigitShowcase() {
             </div>
             <SgButton size="sm" onClick={() => setSeconds((prev) => prev + 1)}>+1 second</SgButton>
           </div>
-          <sgCodeBlockBase code={CLOCK_CODE} />
+          <SgCodeBlockBase code={CLOCK_CODE} />
         </Section>
 
         <Section title={texts.section3Title} description={texts.section3Description}>
@@ -316,7 +316,7 @@ export default function SgSegmentDigitShowcase() {
               <SgSegmentDigit value="8" size={52} />
             </div>
           </SgGrid>
-          <sgCodeBlockBase code={SIZES_CODE} />
+          <SgCodeBlockBase code={SIZES_CODE} />
         </Section>
 
         <Section title={texts.section4Title} description={texts.section4Description}>
@@ -344,7 +344,7 @@ export default function SgSegmentDigitShowcase() {
               </div>
             </div>
           </SgGrid>
-          <sgCodeBlockBase code={COLORS_CODE} />
+          <SgCodeBlockBase code={COLORS_CODE} />
         </Section>
 
         <Section title={texts.section5Title} description={texts.section5Description}>
@@ -364,4 +364,5 @@ export default function SgSegmentDigitShowcase() {
     </I18NReady>
   );
 }
+
 

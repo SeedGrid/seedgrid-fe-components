@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import * as React from "react";
 import {
@@ -9,7 +9,7 @@ import {
   type SgDockMenuItem,
 } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import sgCodeBlockBase from "../sgCodeBlockBase";
+import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
@@ -743,14 +743,14 @@ export default function SgDockMenuPage() {
             style={{ position: "absolute" }}
           />
         </div>
-        <sgCodeBlockBase code={ANCHORED_IN_AREA_CODE} />
+        <SgCodeBlockBase code={ANCHORED_IN_AREA_CODE} />
       </Section>
 
       <Section title={texts.section2Title} description={texts.section2Description}>
         <div className="relative h-64 rounded-lg border-2 border-dashed border-border bg-muted/20">
           <SgDockMenu id="basic-dock" items={basicItems} position="center-bottom" zIndex={10} style={{ position: "absolute" }} />
         </div>
-        <sgCodeBlockBase code={BASIC_CODE} />
+        <SgCodeBlockBase code={BASIC_CODE} />
       </Section>
 
       <Section title={texts.section3Title} description={texts.section3Description}>
@@ -797,7 +797,7 @@ export default function SgDockMenuPage() {
             style={{ position: "absolute" }}
           />
         </div>
-        <sgCodeBlockBase code={EXTERNAL_BADGE_CODE} />
+        <SgCodeBlockBase code={EXTERNAL_BADGE_CODE} />
       </Section>
 
       <Section title={texts.section4Title} description={texts.section4Description}>
@@ -812,7 +812,7 @@ export default function SgDockMenuPage() {
           <div className="relative h-40 rounded-lg border-2 border-dashed border-border bg-muted/20"><SgDockMenu id="dock-center-bottom" items={positionItems} position="center-bottom" itemSize={36} gap={8} zIndex={10} style={{ position: "absolute" }} /></div>
           <div className="relative h-40 rounded-lg border-2 border-dashed border-border bg-muted/20"><SgDockMenu id="dock-right-bottom" items={positionItems} position="right-bottom" itemSize={36} gap={8} zIndex={10} style={{ position: "absolute" }} /></div>
         </div>
-        <sgCodeBlockBase code={POSITIONS_CODE} />
+        <SgCodeBlockBase code={POSITIONS_CODE} />
       </Section>
 
       <Section title={texts.section5Title} description={texts.section5Description}>
@@ -826,7 +826,7 @@ export default function SgDockMenuPage() {
             zIndex={10} style={{ position: "absolute" }}
           />
         </div>
-        <sgCodeBlockBase code={DRAG_DROP_CODE} />
+        <SgCodeBlockBase code={DRAG_DROP_CODE} />
       </Section>
 
       <Section title={texts.section6Title} description={texts.section6Description}>
@@ -850,14 +850,14 @@ export default function SgDockMenuPage() {
             />
           </div>
         </div>
-        <sgCodeBlockBase code={VARIANTS_CODE} />
+        <SgCodeBlockBase code={VARIANTS_CODE} />
       </Section>
 
       <Section title={texts.section7Title} description={texts.section7Description}>
         <div className="relative h-64 rounded-lg border-2 border-dashed border-border bg-muted/20">
           <SgDockMenu id="many-items-dock" items={manyItems} position="center-bottom" itemSize={44} gap={10} zIndex={10} style={{ position: "absolute" }} />
         </div>
-        <sgCodeBlockBase code={MANY_ITEMS_CODE} />
+        <SgCodeBlockBase code={MANY_ITEMS_CODE} />
       </Section>
 
       <Section title={texts.section8Title} description={texts.section8Description}>
@@ -876,7 +876,7 @@ export default function SgDockMenuPage() {
             <SgDockMenu id="disabled-dock" items={disabledItems} position="center-bottom" zIndex={10} style={{ position: "absolute" }} />
           </div>
         </div>
-        <sgCodeBlockBase code={CALLBACKS_AND_DISABLED_CODE} />
+        <SgCodeBlockBase code={CALLBACKS_AND_DISABLED_CODE} />
       </Section>
 
       <Section title={texts.section9Title} description={texts.section9Description}>
@@ -923,4 +923,5 @@ export default function SgDockMenuPage() {
     </I18NReady>
   );
 }
+
 

@@ -1,9 +1,9 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import { SgLinearGauge, type SgLinearGaugePointer } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import sgCodeBlockBase from "../../sgCodeBlockBase";
+import SgCodeBlockBase from "../../sgCodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
@@ -23,7 +23,7 @@ function Section(props: { title: string; description?: string; children: React.R
 }
 
 function CodeBlock(props: { code: string }) {
-  return <sgCodeBlockBase code={props.code} />;
+  return <SgCodeBlockBase code={props.code} />;
 }
 
 const EXAMPLE_DEFAULT_CODE = `import React from "react";
@@ -90,7 +90,7 @@ export default function Example() {
       ]}
       majorTickCount={6}
       minorTicksPerInterval={1}
-      labelFormatter={(v) => \`\${Math.round(v)}°\`}
+      labelFormatter={(v) => \`\${Math.round(v)}Â°\`}
     />
   );
 }`;
@@ -247,15 +247,15 @@ export default function SgLinearGaugePage() {
               ]}
               majorTickCount={6}
               minorTicksPerInterval={1}
-              labelFormatter={(v) => `${Math.round(v)}°`}
+              labelFormatter={(v) => `${Math.round(v)}Â°`}
             />
 
             <div className="space-y-3 text-sm">
               <p>
-                Current temperature: <span className="font-semibold">{Math.round(temperature)}°C</span>
+                Current temperature: <span className="font-semibold">{Math.round(temperature)}Â°C</span>
               </p>
               <p>
-                Target: <span className="font-semibold">{Math.round(target)}°C</span>
+                Target: <span className="font-semibold">{Math.round(target)}Â°C</span>
               </p>
               <label className="block">
                 Current
@@ -301,3 +301,4 @@ export default function SgLinearGaugePage() {
     </I18NReady>
   );
 }
+

@@ -1,0 +1,35 @@
+import * as React from "react";
+import { useForm } from "react-hook-form";
+import { SgButton, SgGrid, SgInputText } from "@seedgrid/fe-components";
+
+export default function App() {
+  const { control, watch, setValue } = useForm({ defaultValues: { value: "SeedGrid" } });
+  const value = watch("value") ?? "";
+  const [required, setRequired] = React.useState(false);
+  const [showCharCounter, setShowCharCounter] = React.useState(false);
+  const [filled, setFilled] = React.useState(false);
+  const [withBorder, setWithBorder] = React.useState(true);
+
+  return (
+    <div className="space-y-4 p-2">
+      <SgGrid columns={{ base: 2, md: 4 }} gap={8}>
+        <SgButton size="sm" appearance={required ? "solid" : "outline"} onClick={() => setRequired((prev) => !prev)}>required</SgButton>
+        <SgButton size="sm" appearance={showCharCounter ? "solid" : "outline"} onClick={() => setShowCharCounter((prev) => !prev)}>showCharCounter</SgButton>
+        <SgButton size="sm" appearance={filled ? "solid" : "outline"} onClick={() => setFilled((prev) => !prev)}>filled</SgButton>
+        <SgButton size="sm" appearance={withBorder ? "solid" : "outline"} onClick={() => setWithBorder((prev) => !prev)}>withBorder</SgButton>
+      </SgGrid>
+      <SgGrid columns={{ base: 2, md: 4 }} gap={8}>
+        <SgButton size="sm" appearance="outline" onClick={() => setValue("value", "Valor de API")}>Set API</SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => setValue("value", "Outro valor")}>Set Outro</SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => setValue("value", "")}>Limpar</SgButton>
+      </SgGrid>
+      <SgInputText id="playground-input-text" name="value" label="SgInputText Playground" control={control} required={required} showCharCounter={showCharCounter} filled={filled} withBorder={withBorder} maxLength={40} />
+      <SgGrid columns={{ base: 1, md: 3 }} gap={8}>
+        <SgInputText id="label-float" label="Float" hintText="Floating label" labelPosition="float" />
+        <SgInputText id="label-top" label="Top" hintText="Label on top" labelPosition="top" />
+        <SgInputText id="label-left" label="Left" hintText="Label on left" labelPosition="left" labelWidth={120} labelAlign="end" />
+      </SgGrid>
+      <div>Valor atual: <strong>{value || "-"}</strong></div>
+    </div>
+  );
+}

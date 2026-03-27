@@ -1,0 +1,18 @@
+import * as React from "react";
+import { SgInputPassword } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <>
+      <div className="w-80">
+        <SgInputPassword id="demo-noborder" label="Sem borda" withBorder={false} />
+      </div>
+      <div className="w-80">
+        <SgInputPassword id="demo-filled" label="Filled" filled />
+      </div>
+      <div className="w-80">
+        <SgInputPassword id="demo-noclear" label="Sem limpar" clearButton={false} />
+      </div>
+    </>
+  );
+}

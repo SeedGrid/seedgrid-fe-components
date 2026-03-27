@@ -1,0 +1,31 @@
+import React from "react";
+import { SgSlider } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [value, setValue] = React.useState(25);
+
+  return (
+    <div className="space-y-3">
+      <SgSlider
+        id="slider-step-width-number"
+        minValue={0}
+        maxValue={60}
+        step={5}
+        width={320}
+        value={value}
+        onChange={setValue}
+      />
+      <SgSlider
+        id="slider-step-width-string"
+        minValue={-20}
+        maxValue={20}
+        step={2}
+        width="18rem"
+        defaultValue={4}
+      />
+      <p className="text-sm text-muted-foreground">
+        Valor com step 5: <span className="font-semibold text-foreground">{value}</span>
+      </p>
+    </div>
+  );
+}

@@ -1,0 +1,21 @@
+import * as React from "react";
+import { Check, X } from "lucide-react";
+import { SgToggleSwitch } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [value, setValue] = React.useState(true);
+
+  return (
+    <div>
+      <SgToggleSwitch
+        id="demo-icons"
+        label="Status da conta"
+        checked={value}
+        onChange={setValue}
+        onIcon={<Check size={12} />}
+        offIcon={<X size={12} />}
+      />
+      <p>Valor atual: {String(value)}</p>
+    </div>
+  );
+}

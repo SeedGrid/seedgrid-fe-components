@@ -1,0 +1,15 @@
+import { SgGroupBox } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgGroupBox
+      title="Dados pessoais"
+      style={{ boxShadow: "inset 0 0 0 1px rgba(59, 130, 246, 0.2)" }}
+    >
+      <div className="grid gap-3 sm:grid-cols-2">
+        <div>Campo 1</div>
+        <div>Campo 2</div>
+      </div>
+    </SgGroupBox>
+  );
+}

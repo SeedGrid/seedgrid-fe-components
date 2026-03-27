@@ -1,8 +1,8 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import { useSgTheme } from "@seedgrid/fe-theme";
-import sgCodeBlockBase from "../components/sgCodeBlockBase";
+import SgCodeBlockBase from "../components/sgCodeBlockBase";
 import I18NReady from "../components/I18NReady";
 import { useShowcaseI18n, type ShowcaseLocale } from "../../i18n";
 
@@ -221,7 +221,7 @@ function Section({ title, description, children }: { title: string; description?
 }
 
 function CodeBlock({ code }: { code: string }) {
-  return <sgCodeBlockBase code={code} />;
+  return <SgCodeBlockBase code={code} />;
 }
 
 function ColorSwatch({ varName, label }: { varName: string; label: string }) {
@@ -473,3 +473,4 @@ const sgPalette = (name: string) => ({
     </I18NReady>
   );
 }
+

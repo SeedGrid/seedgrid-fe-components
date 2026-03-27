@@ -1,0 +1,10 @@
+import * as React from "react";
+import { SgInputDate } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <div className="w-80">
+      <SgInputDate id="demo-range" label="Periodo" minDate="2020-01-01" maxDate="2030-12-31" />
+    </div>
+  );
+}

@@ -1,11 +1,11 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import Link from "next/link";
 import { useForm, type FieldValues } from "react-hook-form";
 import { SgGrid, SgInputText } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import sgCodeBlockBase from "../sgCodeBlockBase";
+import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import { t, useShowcaseI18n } from "../../../i18n";
 
@@ -27,97 +27,9 @@ function Section(props: {
   );
 }
 
-function CodeBlock(props: { code: string }) {
-  return <sgCodeBlockBase code={props.code.trimStart()} />;
+function CodeBlock(props: { sampleFile: string }) {
+  return <SgCodeBlockBase sampleFile={props.sampleFile} />;
 }
-
-const INPUT_TEXT_PLAYGROUND_CODE = `import * as React from "react";
-import { useForm } from "react-hook-form";
-import {
-  SgGrid,
-  SgInputText,
-  SgButton,
-} from "@seedgrid/fe-components";
-import { SgPlayground } from "@seedgrid/fe-playground";
-
-export default function App() {
-  const { control, watch, setValue } = useForm({
-    defaultValues: {
-      value: "SeedGrid"
-    }
-  });
-
-  const value = watch("value") ?? "";
-  const [required, setRequired] = React.useState(false);
-  const [showCharCounter, setShowCharCounter] = React.useState(false);
-  const [filled, setFilled] = React.useState(false);
-  const [withBorder, setWithBorder] = React.useState(true);
-
-  return (
-    <div className="space-y-4 p-2">
-      <SgGrid columns={{ base: 2, md: 4 }} gap={8}>
-        <SgButton size="sm" appearance={required ? "solid" : "outline"} onClick={() => setRequired((prev) => !prev)}>
-          required
-        </SgButton>
-        <SgButton size="sm" appearance={showCharCounter ? "solid" : "outline"} onClick={() => setShowCharCounter((prev) => !prev)}>
-          showCharCounter
-        </SgButton>
-        <SgButton size="sm" appearance={filled ? "solid" : "outline"} onClick={() => setFilled((prev) => !prev)}>
-          filled
-        </SgButton>
-        <SgButton size="sm" appearance={withBorder ? "solid" : "outline"} onClick={() => setWithBorder((prev) => !prev)}>
-          withBorder
-        </SgButton>
-      </SgGrid>
-
-      <SgGrid columns={{ base: 2, md: 4 }} gap={8}>
-        <SgButton size="sm" appearance="outline" onClick={() => setValue("value", "Valor de API")}>
-          Set API
-        </SgButton>
-        <SgButton size="sm" appearance="outline" onClick={() => setValue("value", "Outro valor")}>
-          Set Outro
-        </SgButton>
-        <SgButton size="sm" appearance="outline" onClick={() => setValue("value", "")}>
-          Limpar
-        </SgButton>
-      </SgGrid>
-
-      <div className="rounded-md border border-border p-4">
-        <SgInputText
-          id="playground-input-text"
-          name="value"
-          label="SgInputText Playground"
-          control={control}
-          required={required}
-          showCharCounter={showCharCounter}
-          filled={filled}
-          withBorder={withBorder}
-          maxLength={40}
-        />
-      </div>
-
-      <div className="rounded-md border border-border p-4">
-        <p className="mb-2 text-xs text-muted-foreground">labelPosition</p>
-        <SgGrid columns={{ base: 1, md: 3 }} gap={8}>
-          <SgInputText id="label-float" label="Float" hintText="Floating label" labelPosition="float" />
-          <SgInputText id="label-top" label="Top" hintText="Label on top" labelPosition="top" />
-          <SgInputText
-            id="label-left"
-            label="Left"
-            hintText="Label on left"
-            labelPosition="left"
-            labelWidth={120}
-            labelAlign="end"
-          />
-        </SgGrid>
-      </div>
-
-      <div className="rounded-md border border-border bg-muted/30 p-3 text-xs">
-        Valor atual: <strong>{value || "-"}</strong>
-      </div>
-    </div>
-  );
-}`;
 
 export default function SgInputTextPage() {
   const i18n = useShowcaseI18n();
@@ -372,18 +284,7 @@ export default function SgInputTextPage() {
             {t(i18n, "showcase.common.labels.currentValue", { value: basicValue })}
           </p>
         </form>
-        <CodeBlock code={`<SgInputText
-  id="demo-basic"
-  label="${t(i18n, "showcase.component.inputText.labels.fullName")}"
-  name="nome"
-  register={register}
-/>
-
-<button type="submit">
-  ${t(i18n, "showcase.component.inputText.actions.submit")}
-</button>
-
-<p>${t(i18n, "showcase.common.labels.currentValue", { value: watch("nome") })}</p>`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text/samples/basico-rhf.tsx.sample" />
       </Section>
 
       <Section
@@ -410,22 +311,7 @@ export default function SgInputTextPage() {
             register={register}
           />
         </div>
-        <CodeBlock code={`<SgInputText
-  id="demo-required"
-  label="${t(i18n, "showcase.component.inputText.labels.requiredField")}"
-  required
-  name="required"
-  register={register}
-/>
-
-<SgInputText
-  id="demo-required-custom"
-  label="${t(i18n, "showcase.component.inputText.labels.customMessage")}"
-  required
-  requiredMessage="${t(i18n, "showcase.component.inputText.messages.requiredCustom")}"
-  name="requiredCustom"
-  register={register}
-/>`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text/samples/obrigatorio.tsx.sample" />
       </Section>
 
       <Section
@@ -473,27 +359,7 @@ export default function SgInputTextPage() {
             <li>{t(i18n, "showcase.component.inputText.bullets.controlled.3")}</li>
             <li>{t(i18n, "showcase.component.inputText.bullets.controlled.4")}</li>
           </ul>
-          <CodeBlock code={`// Controlled porque usamos watch (valor em tempo real) + setValue externo
-<SgInputText
-  id="demo-controlled"
-  label="${t(i18n, "showcase.component.inputText.labels.customerName")}"
-  name="controlled"
-  control={control}
-/>
-
-<button type="button" onClick={() => setValue("controlled", "${t(i18n, "showcase.component.inputText.values.apiSample")}")}>
-  ${t(i18n, "showcase.component.inputText.actions.setApi")}
-</button>
-
-<button type="button" onClick={() => setValue("controlled", "${t(i18n, "showcase.component.inputText.values.otherSample")}")}>
-  ${t(i18n, "showcase.component.inputText.actions.setOther")}
-</button>
-
-<button type="button" onClick={() => setValue("controlled", "")}>
-  ${t(i18n, "showcase.component.inputText.actions.clear")}
-</button>
-
-<p>${t(i18n, "showcase.common.labels.currentState")}: "{controlledValue}"</p>`} />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text/samples/controlado.tsx.sample" />
         </div>
       </Section>
 
@@ -512,14 +378,7 @@ export default function SgInputTextPage() {
             register={register}
           />
         </div>
-        <CodeBlock code={`<SgInputText
-  id="demo-counter"
-  label="${t(i18n, "showcase.component.inputText.labels.max20")}"
-  maxLength={20}
-  showCharCounter
-  name="counter"
-  register={register}
-/>`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text/samples/contador-de-caracteres.tsx.sample" />
       </Section>
 
       <Section
@@ -537,14 +396,7 @@ export default function SgInputTextPage() {
             register={register}
           />
         </div>
-        <CodeBlock code={`<SgInputText
-  id="demo-minlength"
-  label="${t(i18n, "showcase.component.inputText.labels.min5")}"
-  minLength={5}
-  showCharCounter
-  name="minlength"
-  register={register}
-/>`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text/samples/tamanho-minimo.tsx.sample" />
       </Section>
 
       <Section
@@ -562,14 +414,7 @@ export default function SgInputTextPage() {
             register={register}
           />
         </div>
-        <CodeBlock code={`<SgInputText
-  id="demo-words"
-  label="${t(i18n, "showcase.component.inputText.labels.min3Words")}"
-  minNumberOfWords={3}
-  minNumberOfWordsMessage="${t(i18n, "showcase.component.inputText.messages.min3Words")}"
-  name="words"
-  register={register}
-/>`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text/samples/minimo-de-palavras.tsx.sample" />
       </Section>
 
       <Section
@@ -595,18 +440,7 @@ export default function SgInputTextPage() {
             {validationMsg === null ? t(i18n, "showcase.common.labels.valid") : `"${validationMsg}"`}
           </p>
         </div>
-        <CodeBlock code={String.raw`<SgInputText
-  id="demo-validation"
-  label="${t(i18n, "showcase.component.inputText.labels.onlyLetters")}"
-  validation={(v) =>
-    /[^\p{L}\s]/u.test(v)
-      ? "${t(i18n, "showcase.component.inputText.messages.onlyLetters")}"
-      : null
-  }
-  onValidation={(msg) => console.log(msg)}
-  name="validation"
-  register={register}
-/>`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text/samples/validacao-customizada.tsx.sample" />
       </Section>
 
       <Section
@@ -625,15 +459,7 @@ export default function SgInputTextPage() {
             register={register}
           />
         </div>
-        <CodeBlock code={`<SgInputText
-  id="demo-prefix"
-  label="${t(i18n, "showcase.component.inputText.labels.search")}"
-  prefixIcon={
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-  }
-  name="prefixIcon"
-  register={register}
-/>`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text/samples/icone-prefixo.tsx.sample" />
       </Section>
 
       <Section
@@ -696,36 +522,7 @@ export default function SgInputTextPage() {
             <code className="rounded bg-muted px-1">{bothRaw}</code>
           </p>
         </div>
-        <CodeBlock code={`<SgInputText
-  id="demo-suffix"
-  label="${t(i18n, "showcase.component.inputText.labels.email")}"
-  suffixText="@gmail.com"
-  name="suffix"
-  control={control}
-  onChange={(value) => log(\`${t(i18n, "showcase.component.inputText.labels.fullValue")}: \${value}\`)}
-/>
-
-<SgInputText
-  id="demo-prefix-text"
-  label="${t(i18n, "showcase.component.inputText.labels.website")}"
-  prefixText="www."
-  name="prefix"
-  control={control}
-  onChange={(value) => log(\`${t(i18n, "showcase.component.inputText.labels.fullValue")}: \${value}\`)}
-/>
-
-<button type="button" onClick={() => setValue("prefix", "www.test.com.br")}>
-  ${t(i18n, "showcase.component.inputText.actions.setExternalValue")}
-</button>
-
-<SgInputText
-  id="demo-both"
-  label="${t(i18n, "showcase.component.inputText.labels.domain")}"
-  prefixText="www."
-  suffixText=".seedgrid.com.br"
-  name="both"
-  control={control}
-/>`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text/samples/prefixo-e-sufixo.tsx.sample" />
       </Section>
 
       <Section
@@ -788,37 +585,7 @@ export default function SgInputTextPage() {
             <li>{t(i18n, "showcase.component.inputText.bullets.iconButtons.2")}</li>
             <li>{t(i18n, "showcase.component.inputText.bullets.iconButtons.3")}</li>
           </ul>
-          <CodeBlock code={`<SgInputText
-  id="demo-iconbtns"
-  label="${t(i18n, "showcase.component.inputText.labels.copyText")}"
-  name="iconbtns"
-  register={register}
-  iconButtons={[
-    <button
-      key="copy"
-      type="button"
-      className="text-foreground/60 hover:text-primary"
-      title="${t(i18n, "showcase.component.inputText.actions.copy")}"
-      onClick={() => {
-        navigator.clipboard.writeText(iconBtnValue);
-        setIconBtnLog((prev) => [\`${t(i18n, "showcase.component.inputText.labels.copied")}: "\${iconBtnValue}"\`, ...prev].slice(0, 5));
-      }}
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
-    </button>,
-    <button
-      key="alert"
-      type="button"
-      className="text-foreground/60 hover:text-primary"
-      title="${t(i18n, "showcase.component.inputText.actions.showAlert")}"
-      onClick={() => {
-        setIconBtnLog((prev) => [\`${t(i18n, "showcase.component.inputText.labels.alertTriggered")}\`, ...prev].slice(0, 5));
-      }}
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
-    </button>
-  ]}
-/>`} />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text/samples/botoes-de-icone.tsx.sample" />
         </div>
       </Section>
 
@@ -845,8 +612,7 @@ export default function SgInputTextPage() {
             register={register}
           />
         </div>
-        <CodeBlock code={`<SgInputText id="demo-noborder" label="${t(i18n, "showcase.common.labels.noBorder")}" withBorder={false} name="noborder" register={register} />
-<SgInputText id="demo-filled" label="${t(i18n, "showcase.common.labels.filled")}" filled name="filled" register={register} />`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text/samples/variacoes-visuais.tsx.sample" />
       </Section>
 
       <Section
@@ -863,7 +629,7 @@ export default function SgInputTextPage() {
             register={register}
           />
         </div>
-        <CodeBlock code={`<SgInputText id="demo-noclear" label="${t(i18n, "showcase.common.labels.noClear")}" clearButton={false} name="noclear" register={register} />`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text/samples/sem-botao-limpar.tsx.sample" />
       </Section>
 
       <Section
@@ -888,8 +654,7 @@ export default function SgInputTextPage() {
             register={register}
           />
         </div>
-        <CodeBlock code={`<SgInputText id="demo-w200" label="${t(i18n, "showcase.common.labels.width200")}" width={200} name="w200" register={register} />
-<SgInputText id="demo-w300" label="${t(i18n, "showcase.common.labels.width300Rounded")}" width={300} borderRadius={20} name="w300" register={register} />`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text/samples/largura-e-borda.tsx.sample" />
       </Section>
 
       <Section
@@ -915,21 +680,7 @@ export default function SgInputTextPage() {
             register={register}
           />
         </div>
-        <CodeBlock code={`<SgInputText
-  id="demo-disabled"
-  label="${t(i18n, "showcase.common.labels.disabled")}"
-  enabled={false}
-  name="disabled"
-  register={register}
-/>
-
-<SgInputText
-  id="demo-readonly"
-  label="${t(i18n, "showcase.component.inputText.labels.readonly")}"
-  readOnly
-  name="readonly"
-  register={register}
-/>`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text/samples/desabilitado-e-somente-leitura.tsx.sample" />
       </Section>
 
       <Section
@@ -946,13 +697,7 @@ export default function SgInputTextPage() {
             register={register}
           />
         </div>
-        <CodeBlock code={`<SgInputText
-  id="demo-error"
-  label="${t(i18n, "showcase.component.inputText.labels.externalError")}"
-  error="${t(i18n, "showcase.component.inputText.messages.externalError")}"
-  name="error"
-  register={register}
-/>`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text/samples/erro-externo.tsx.sample" />
       </Section>
 
       {/* ?? Standalone Form ?? */}
@@ -992,39 +737,7 @@ export default function SgInputTextPage() {
             {t(i18n, "showcase.component.inputText.actions.save")}
           </button>
         </div>
-        <CodeBlock code={`import React from "react";
-import { SgGrid, SgInputText } from "@seedgrid/fe-components";
-import { SgPlayground } from "@seedgrid/fe-playground";
-
-export default function Example() {
-  const nomeRef = React.useRef<HTMLInputElement | null>(null);
-  const emailRef = React.useRef<HTMLInputElement | null>(null);
-  const cpfRef = React.useRef<HTMLInputElement | null>(null);
-
-  React.useEffect(() => {
-    if (nomeRef.current) nomeRef.current.value = "${t(i18n, "showcase.component.inputText.defaults.name")}";
-    if (emailRef.current) emailRef.current.value = "${t(i18n, "showcase.component.inputText.defaults.email")}";
-    if (cpfRef.current) cpfRef.current.value = "12345678909";
-  }, []);
-
-  const handleSave = () => {
-    const payload = {
-      nome: nomeRef.current?.value ?? "",
-      email: emailRef.current?.value ?? "",
-      cpf: cpfRef.current?.value ?? ""
-    };
-    console.log("Salvar:", payload);
-  };
-
-  return (
-    <div className="space-y-3">
-      <SgInputText id="nome" label="${t(i18n, "showcase.component.inputText.labels.name")}" inputProps={{ ref: nomeRef }} />
-      <SgInputText id="email" label="${t(i18n, "showcase.component.inputText.labels.emailLabel")}" inputProps={{ ref: emailRef }} />
-      <SgInputText id="cpf" label="${t(i18n, "showcase.component.inputText.labels.cpf")}" inputProps={{ ref: cpfRef }} />
-      <button type="button" onClick={handleSave}>${t(i18n, "showcase.component.inputText.actions.save")}</button>
-    </div>
-  );
-}`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text/samples/standalone-form-completo.tsx.sample" />
       </Section>
 
       <Section
@@ -1059,16 +772,7 @@ export default function Example() {
             )}
           </div>
         </div>
-        <CodeBlock code={`<SgInputText
-  id="demo-events"
-  label="${t(i18n, "showcase.common.labels.typeAndLog")}"
-  required
-  onChange={(v) => log(\`onChange: "\${v}"\`)}
-  onEnter={() => log("${t(i18n, "showcase.component.inputText.logs.onEnter")}")} 
-  onExit={() => log("${t(i18n, "showcase.component.inputText.logs.onExit")}")} 
-  onClear={() => log("${t(i18n, "showcase.component.inputText.logs.onClear")}")} 
-  onValidation={(msg) => log(\`${t(i18n, "showcase.common.labels.onValidation")}: \${msg ?? "${t(i18n, "showcase.common.labels.valid")}" }\`)}
-/>`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text/samples/eventos-standalone.tsx.sample" />
       </Section>
 
       <Section
@@ -1097,27 +801,7 @@ export default function Example() {
       labelAlign="end"
     />
   </SgGrid>
-  <CodeBlock code={`<SgInputText
-  id="sg-input-text-label-float"
-  label="${t(i18n, "showcase.common.labels.labelFloat")}"
-  labelPosition="float"
-/>
-
-<SgInputText
-  id="sg-input-text-label-top"
-  label="${t(i18n, "showcase.common.labels.labelTop")}"
-  labelPosition="top"
-  elevation="md"
-  withBorder={false}
-/>
-
-<SgInputText
-  id="sg-input-text-label-left"
-  label="${t(i18n, "showcase.common.labels.labelLeft")}"
-  labelPosition="left"
-  labelWidth={140}
-  labelAlign="end"
-/>`} />
+  <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text/samples/posicao-do-rotulo.tsx.sample" />
 </Section>
 
 <Section
@@ -1147,29 +831,7 @@ export default function Example() {
       elevation="lg"
     />
   </SgGrid>
-  <CodeBlock code={`<SgInputText
-  id="sg-input-text-elevation-none"
-  label="${t(i18n, "showcase.common.labels.elevationNone")}"
-  elevation="none"
-/>
-
-<SgInputText
-  id="sg-input-text-elevation-sm"
-  label="${t(i18n, "showcase.common.labels.elevationSm")}"
-  elevation="sm"
-/>
-
-<SgInputText
-  id="sg-input-text-elevation-md"
-  label="${t(i18n, "showcase.common.labels.elevationMd")}"
-  elevation="md"
-/>
-
-<SgInputText
-  id="sg-input-text-elevation-lg"
-  label="${t(i18n, "showcase.common.labels.elevationLg")}"
-  elevation="lg"
-/>`} />
+  <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text/samples/elevacao.tsx.sample" />
 </Section>
 
 <Section
@@ -1181,7 +843,7 @@ export default function Example() {
           title="SgInputText Playground"
           interactive
           codeContract="appFile"
-          code={INPUT_TEXT_PLAYGROUND_CODE}
+          playgroundFile="apps/showcase/src/app/components/sg-input-text/sg-input-text.tsx.playground"
           height={720}
           defaultOpen
         />
@@ -1251,3 +913,4 @@ export default function Example() {
     </I18NReady>
   );
 }
+

@@ -1,0 +1,13 @@
+import * as React from "react";
+import { useForm } from "react-hook-form";
+import { SgInputPostalCode } from "@seedgrid/fe-components";
+
+export default function App() {
+  const { register } = useForm({ defaultValues: { disabled: "01001-000", readonly: "01001-000" } });
+  return (
+    <>
+      <SgInputPostalCode id="demo-disabled" label="Desabilitado" hintText="00000-000" enabled={false} name="disabled" register={register} />
+      <SgInputPostalCode id="demo-readonly" label="Somente leitura" hintText="00000-000" readOnly name="readonly" register={register} />
+    </>
+  );
+}

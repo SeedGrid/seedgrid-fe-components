@@ -1,0 +1,54 @@
+import * as React from "react";
+import {
+  DEFAULT_BLOCKED_EMAIL_DOMAINS,
+  SgButton,
+  SgGrid,
+  SgInputEmail,
+} from "@seedgrid/fe-components";
+
+export default function App() {
+  const [required, setRequired] = React.useState(false);
+  const [blockFakeMail, setBlockFakeMail] = React.useState(true);
+  const [filled, setFilled] = React.useState(false);
+  const [withBorder, setWithBorder] = React.useState(true);
+  const [value, setValue] = React.useState("");
+
+  return (
+    <div className="space-y-4 p-2">
+      <SgGrid columns={{ base: 2, md: 4 }} gap={8}>
+        <SgButton size="sm" appearance={required ? "solid" : "outline"} onClick={() => setRequired((prev) => !prev)}>required</SgButton>
+        <SgButton size="sm" appearance={blockFakeMail ? "solid" : "outline"} onClick={() => setBlockFakeMail((prev) => !prev)}>blockFakeMail</SgButton>
+        <SgButton size="sm" appearance={filled ? "solid" : "outline"} onClick={() => setFilled((prev) => !prev)}>filled</SgButton>
+        <SgButton size="sm" appearance={withBorder ? "solid" : "outline"} onClick={() => setWithBorder((prev) => !prev)}>withBorder</SgButton>
+      </SgGrid>
+
+      <SgInputEmail
+        id="playground-input-email"
+        label="SgInputEmail Playground"
+        hintText="Type a valid email"
+        required={required}
+        blockFakeMail={blockFakeMail}
+        filled={filled}
+        withBorder={withBorder}
+        onChange={setValue}
+      />
+
+      <div className="rounded border border-border p-3">
+        <p className="mb-2 text-xs text-muted-foreground">labelPosition</p>
+        <SgGrid columns={{ base: 1, md: 3 }} gap={8}>
+          <SgInputEmail id="label-float" label="Float" hintText="name@domain.com" labelPosition="float" />
+          <SgInputEmail id="label-top" label="Top" hintText="name@domain.com" labelPosition="top" />
+          <SgInputEmail id="label-left" label="Left" hintText="name@domain.com" labelPosition="left" labelWidth={120} labelAlign="end" />
+        </SgGrid>
+      </div>
+
+      <div className="rounded border border-border bg-muted/40 p-3 text-xs">
+        Current value: <strong>{value || "-"}</strong>
+      </div>
+
+      <div className="rounded border border-border bg-muted/20 p-3 text-xs">
+        Blocked defaults: <strong>{DEFAULT_BLOCKED_EMAIL_DOMAINS.length}</strong>
+      </div>
+    </div>
+  );
+}

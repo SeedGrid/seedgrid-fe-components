@@ -1,10 +1,10 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import Link from "next/link";
 import { SgButton, SgGrid, SgInputTextArea } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import sgCodeBlockBase from "../sgCodeBlockBase";
+import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import { t, useShowcaseI18n } from "../../../i18n";
 
@@ -21,96 +21,9 @@ function Section(props: { id?: string; title: string; description?: string; chil
   );
 }
 
-function CodeBlock(props: { code: string }) {
-  return <sgCodeBlockBase code={props.code.trimStart()} />;
+function CodeBlock(props: { sampleFile: string }) {
+  return <SgCodeBlockBase sampleFile={props.sampleFile} />;
 }
-
-const INPUT_TEXTAREA_PLAYGROUND_CODE = `import * as React from "react";
-import {
-  SgButton,
-  SgGrid,
-  SgInputTextArea,
-} from "@seedgrid/fe-components";
-import { SgPlayground } from "@seedgrid/fe-playground";
-
-export default function App() {
-  const [value, setValue] = React.useState("Texto inicial");
-  const [required, setRequired] = React.useState(false);
-  const [filled, setFilled] = React.useState(false);
-  const [withBorder, setWithBorder] = React.useState(true);
-  const [showCharCounter, setShowCharCounter] = React.useState(true);
-  const [maxLength, setMaxLength] = React.useState(120);
-  const [enabled, setEnabled] = React.useState(true);
-
-  return (
-    <div className="space-y-4 p-2">
-      <SgGrid columns={{ base: 2, md: 4 }} gap={8}>
-        <SgButton size="sm" appearance={required ? "solid" : "outline"} onClick={() => setRequired((prev) => !prev)}>
-          required
-        </SgButton>
-        <SgButton size="sm" appearance={filled ? "solid" : "outline"} onClick={() => setFilled((prev) => !prev)}>
-          filled
-        </SgButton>
-        <SgButton size="sm" appearance={withBorder ? "solid" : "outline"} onClick={() => setWithBorder((prev) => !prev)}>
-          withBorder
-        </SgButton>
-        <SgButton size="sm" appearance={showCharCounter ? "solid" : "outline"} onClick={() => setShowCharCounter((prev) => !prev)}>
-          counter
-        </SgButton>
-      </SgGrid>
-
-      <SgGrid columns={{ base: 2, md: 4 }} gap={8}>
-        <SgButton size="sm" appearance={enabled ? "solid" : "outline"} onClick={() => setEnabled((prev) => !prev)}>
-          enabled
-        </SgButton>
-        <SgButton size="sm" appearance="outline" onClick={() => setMaxLength((prev) => (prev === 120 ? 60 : 120))}>
-          maxLength: {maxLength}
-        </SgButton>
-        <SgButton size="sm" appearance="outline" onClick={() => setValue("Texto vindo da API\\ncom quebra de linha.")}>
-          Set API
-        </SgButton>
-        <SgButton size="sm" appearance="outline" severity="danger" onClick={() => setValue("")}>
-          Limpar
-        </SgButton>
-      </SgGrid>
-
-      <SgInputTextArea
-        id="playground-textarea"
-        label="SgInputTextArea Playground"
-        required={required}
-        filled={filled}
-        withBorder={withBorder}
-        showCharCounter={showCharCounter}
-        maxLength={maxLength}
-        enabled={enabled}
-        textareaProps={{
-          value,
-          onChange: (event) => setValue(event.target.value)
-        }}
-      />
-
-      <div className="rounded-md border border-border p-4">
-        <p className="mb-2 text-xs text-muted-foreground">labelPosition</p>
-        <SgGrid columns={{ base: 1, md: 3 }} gap={8}>
-          <SgInputTextArea id="label-float" label="Float" hintText="Type a note..." labelPosition="float" />
-          <SgInputTextArea id="label-top" label="Top" hintText="Type a note..." labelPosition="top" />
-          <SgInputTextArea
-            id="label-left"
-            label="Left"
-            hintText="Type a note..."
-            labelPosition="left"
-            labelWidth={120}
-            labelAlign="end"
-          />
-        </SgGrid>
-      </div>
-
-      <div className="rounded-md border border-border bg-muted/30 p-3 text-xs">
-        Valor atual: <strong>{value || "-"}</strong>
-      </div>
-    </div>
-  );
-}`;
 
 export default function SgInputTextAreaPage() {
   const i18n = useShowcaseI18n();
@@ -328,7 +241,7 @@ export default function SgInputTextAreaPage() {
             {t(i18n, "showcase.common.labels.currentValue", { value: basicValue })}
           </p>
         </div>
-        <CodeBlock code={`<SgInputTextArea\n  id="demo-basic"\n  label="${t(i18n, "showcase.component.inputTextArea.labels.description")}"\n  onChange={(value) => console.log(value)}\n/>`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text-area/samples/basico.tsx.sample" />
       </Section>
 
       <Section
@@ -351,18 +264,7 @@ export default function SgInputTextAreaPage() {
             requiredMessage={t(i18n, "showcase.component.inputTextArea.messages.requiredCustom")}
           />
         </div>
-        <CodeBlock code={`<SgInputTextArea
-  id="demo-required"
-  label="${t(i18n, "showcase.component.inputTextArea.labels.requiredField")}"
-  required
-/>
-
-<SgInputTextArea
-  id="demo-required-custom"
-  label="${t(i18n, "showcase.component.inputTextArea.labels.customMessage")}"
-  required
-  requiredMessage="${t(i18n, "showcase.component.inputTextArea.messages.requiredCustom")}"
-/>`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text-area/samples/obrigatorio.tsx.sample" />
       </Section>
 
       <Section
@@ -416,40 +318,7 @@ export default function SgInputTextAreaPage() {
             <li>{t(i18n, "showcase.component.inputTextArea.bullets.controlled.3")}</li>
             <li>{t(i18n, "showcase.component.inputTextArea.bullets.controlled.4")}</li>
           </ul>
-          <CodeBlock code={`import React from "react";
-import { SgButton, SgGrid, SgInputTextArea } from "@seedgrid/fe-components";
-import { SgPlayground } from "@seedgrid/fe-playground";
-
-export default function Example() {
-  const [controlledValue, setControlledValue] = React.useState("${t(i18n, "showcase.component.inputTextArea.defaults.controlled").replace(/\n/g, "\\n")}");
-
-  return (
-    <div className="w-96 space-y-3">
-      <SgInputTextArea
-        id="demo-controlled"
-        label="${t(i18n, "showcase.component.inputTextArea.labels.notes")}"
-        textareaProps={{
-          value: controlledValue,
-          onChange: (event) => setControlledValue(event.target.value)
-        }}
-      />
-
-      <SgGrid columns={{ base: 1, sm: 3 }} gap={8}>
-        <SgButton size="sm" appearance="outline" onClick={() => setControlledValue("${t(i18n, "showcase.component.inputTextArea.values.apiSample").replace(/\n/g, "\\n")}")}>
-          ${t(i18n, "showcase.component.inputTextArea.actions.setApi")}
-        </SgButton>
-        <SgButton size="sm" appearance="outline" onClick={() => setControlledValue("${t(i18n, "showcase.component.inputTextArea.values.otherSample").replace(/\n/g, "\\n")}")}>
-          ${t(i18n, "showcase.component.inputTextArea.actions.setOther")}
-        </SgButton>
-        <SgButton size="sm" appearance="outline" severity="danger" onClick={() => setControlledValue("")}>
-          ${t(i18n, "showcase.component.inputTextArea.actions.clear")}
-        </SgButton>
-      </SgGrid>
-
-      <p>${t(i18n, "showcase.common.labels.currentState")}: "{controlledValue}"</p>
-    </div>
-  );
-}`} />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text-area/samples/controlado.tsx.sample" />
         </div>
       </Section>
 
@@ -466,7 +335,7 @@ export default function Example() {
             showCharCounter
           />
         </div>
-        <CodeBlock code={`<SgInputTextArea\n  id="demo-counter"\n  label="${t(i18n, "showcase.component.inputTextArea.labels.max100")}"\n  maxLength={100}\n  showCharCounter\n/>`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text-area/samples/contador.tsx.sample" />
       </Section>
 
       <Section
@@ -482,7 +351,7 @@ export default function Example() {
             showCharCounter
           />
         </div>
-        <CodeBlock code={`<SgInputTextArea\n  id="demo-minlength"\n  label="${t(i18n, "showcase.component.inputTextArea.labels.min10")}"\n  minLength={10}\n  showCharCounter\n/>`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text-area/samples/tamanho-minimo.tsx.sample" />
       </Section>
 
       <Section
@@ -498,7 +367,7 @@ export default function Example() {
             minNumberOfWordsMessage={t(i18n, "showcase.component.inputTextArea.messages.min5Words")}
           />
         </div>
-        <CodeBlock code={`<SgInputTextArea\n  id="demo-words"\n  label="${t(i18n, "showcase.component.inputTextArea.labels.min5Words")}"\n  minNumberOfWords={5}\n  minNumberOfWordsMessage="${t(i18n, "showcase.component.inputTextArea.messages.min5Words")}"\n/>`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text-area/samples/minimo-de-palavras.tsx.sample" />
       </Section>
 
       <Section
@@ -514,7 +383,7 @@ export default function Example() {
             minLinesMessage={t(i18n, "showcase.component.inputTextArea.messages.min3Lines")}
           />
         </div>
-        <CodeBlock code={`<SgInputTextArea\n  id="demo-minlines"\n  label="${t(i18n, "showcase.component.inputTextArea.labels.min3Lines")}"\n  minLines={3}\n  minLinesMessage="${t(i18n, "showcase.component.inputTextArea.messages.min3Lines")}"\n/>`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text-area/samples/minimo-de-linhas.tsx.sample" />
       </Section>
 
       <Section
@@ -536,7 +405,7 @@ export default function Example() {
             {validationMsg === null ? t(i18n, "showcase.common.labels.valid") : `"${validationMsg}"`}
           </p>
         </div>
-        <CodeBlock code={String.raw`<SgInputTextArea\n  id="demo-validation"\n  label="${t(i18n, "showcase.component.inputTextArea.labels.noNumbers")}"\n  validation={(v) =>\n    /\\d/.test(v) ? "${t(i18n, "showcase.component.inputTextArea.messages.noNumbers")}" : null\n  }\n  onValidation={(msg) => console.log(msg)}\n/>`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text-area/samples/validacao-customizada.tsx.sample" />
       </Section>
 
       <Section
@@ -560,7 +429,7 @@ export default function Example() {
             maxLines={8}
           />
         </div>
-        <CodeBlock code={`// ${t(i18n, "showcase.component.inputTextArea.labels.compact")}\n<SgInputTextArea\n  id="demo-height-small"\n  label="${t(i18n, "showcase.component.inputTextArea.labels.compact")}"\n  height={100}\n  maxLines={2}\n/>\n\n// ${t(i18n, "showcase.component.inputTextArea.labels.expanded")}\n<SgInputTextArea\n  id="demo-height-large"\n  label="${t(i18n, "showcase.component.inputTextArea.labels.expanded")}"\n  height={250}\n  maxLines={8}\n/>`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text-area/samples/tamanho-e-linhas.tsx.sample" />
       </Section>
 
       <Section
@@ -577,7 +446,7 @@ export default function Example() {
             }
           />
         </div>
-        <CodeBlock code={`<SgInputTextArea\n  id="notas"\n  label="${t(i18n, "showcase.component.inputTextArea.labels.notes")}"\n  prefixIcon={<PencilIcon />}\n/>`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text-area/samples/icone-prefixo.tsx.sample" />
       </Section>
 
       <Section
@@ -591,7 +460,7 @@ export default function Example() {
         <div className="w-96">
           <SgInputTextArea id="demo-filled" label={t(i18n, "showcase.common.labels.filled")} filled />
         </div>
-        <CodeBlock code={`<SgInputTextArea id="demo-noborder" label="${t(i18n, "showcase.common.labels.noBorder")}" withBorder={false} />\n<SgInputTextArea id="demo-filled" label="${t(i18n, "showcase.common.labels.filled")}" filled />`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text-area/samples/variacoes-visuais.tsx.sample" />
       </Section>
 
       <Section
@@ -602,7 +471,7 @@ export default function Example() {
         <div className="w-96">
           <SgInputTextArea id="demo-noclear" label={t(i18n, "showcase.common.labels.noClear")} clearButton={false} />
         </div>
-        <CodeBlock code={`<SgInputTextArea id="demo-noclear" label="${t(i18n, "showcase.common.labels.noClear")}" clearButton={false} />`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text-area/samples/sem-botao-limpar.tsx.sample" />
       </Section>
 
       <Section
@@ -614,10 +483,7 @@ export default function Example() {
           <SgInputTextArea id="demo-w250" label={t(i18n, "showcase.component.inputTextArea.labels.width250")} width={250} />
           <SgInputTextArea id="demo-w350" label={t(i18n, "showcase.component.inputTextArea.labels.width350Rounded")} width={350} borderRadius={16} />
         </SgGrid>
-        <CodeBlock code={`<SgGrid columns={{ base: 1, sm: 2 }} gap={16}>
-  <SgInputTextArea id="demo-w250" label="${t(i18n, "showcase.component.inputTextArea.labels.width250")}" width={250} />
-  <SgInputTextArea id="demo-w350" label="${t(i18n, "showcase.component.inputTextArea.labels.width350Rounded")}" width={350} borderRadius={16} />
-</SgGrid>`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text-area/samples/largura-e-borda.tsx.sample" />
       </Section>
 
       <Section
@@ -640,12 +506,7 @@ export default function Example() {
             textareaProps={{ readOnly: true, defaultValue: t(i18n, "showcase.component.inputTextArea.defaults.readonly") }}
           />
         </div>
-        <CodeBlock code={`<SgInputTextArea id="demo-disabled" label="${t(i18n, "showcase.common.labels.disabled")}" enabled={false} />
-<SgInputTextArea
-  id="demo-readonly"
-  label="${t(i18n, "showcase.component.inputTextArea.labels.readonly")}"
-  textareaProps={{ readOnly: true }}
-/>`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text-area/samples/desabilitado-e-somente-leitura.tsx.sample" />
       </Section>
 
       <Section
@@ -660,7 +521,7 @@ export default function Example() {
             error={t(i18n, "showcase.component.inputTextArea.messages.externalError")}
           />
         </div>
-        <CodeBlock code={`<SgInputTextArea\n  id="demo-error"\n  label="${t(i18n, "showcase.component.inputTextArea.labels.externalError")}"\n  error="${t(i18n, "showcase.component.inputTextArea.messages.externalError")}"\n/>`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text-area/samples/erro-externo.tsx.sample" />
       </Section>
 
       <Section
@@ -695,7 +556,7 @@ export default function Example() {
             )}
           </div>
         </div>
-        <CodeBlock code={`<SgInputTextArea\n  id="demo-events"\n  label="${t(i18n, "showcase.component.inputTextArea.labels.withEvents")}"\n  required\n  onChange={(v) => console.log("onChange:", v)}\n  onEnter={() => console.log("${t(i18n, "showcase.component.inputTextArea.logs.onEnter")}")} \n  onExit={() => console.log("${t(i18n, "showcase.component.inputTextArea.logs.onExit")}")} \n  onClear={() => console.log("${t(i18n, "showcase.component.inputTextArea.logs.onClear")}")} \n  onValidation={(msg) => console.log("validation:", msg)}\n/>`} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text-area/samples/eventos.tsx.sample" />
       </Section>
 
       <Section
@@ -722,25 +583,7 @@ export default function Example() {
       labelAlign="end"
     />
   </SgGrid>
-  <CodeBlock code={`<SgInputTextArea
-  id="sg-input-text-area-label-float"
-  label="${t(i18n, "showcase.common.labels.labelFloat")}"
-  labelPosition="float"
-/>
-
-<SgInputTextArea
-  id="sg-input-text-area-label-top"
-  label="${t(i18n, "showcase.common.labels.labelTop")}"
-  labelPosition="top"
-/>
-
-<SgInputTextArea
-  id="sg-input-text-area-label-left"
-  label="${t(i18n, "showcase.common.labels.labelLeft")}"
-  labelPosition="left"
-  labelWidth={140}
-  labelAlign="end"
-/>`} />
+  <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text-area/samples/posicao-do-rotulo.tsx.sample" />
 </Section>
 
 <Section
@@ -752,7 +595,7 @@ export default function Example() {
           title="SgInputTextArea Playground"
           interactive
           codeContract="appFile"
-          code={INPUT_TEXTAREA_PLAYGROUND_CODE}
+          playgroundFile="apps/showcase/src/app/components/sg-input-text-area/sg-input-text-area.tsx.playground"
           height={760}
           defaultOpen
         />
@@ -817,3 +660,4 @@ export default function Example() {
     </I18NReady>
   );
 }
+

@@ -1,0 +1,5 @@
+fetch("/seedgrid-blocked-email-domains.json")
+  .then((response) => response.json())
+  .then((data) => {
+    window.__seedgridBlockedEmailDomains = data.blockedEmailDomains ?? [];
+  });

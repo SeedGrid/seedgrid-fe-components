@@ -1,0 +1,33 @@
+import * as React from "react";
+import { Check, X } from "lucide-react";
+import { SgToggleSwitch } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [value, setValue] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+  const [log, setLog] = React.useState<string[]>([]);
+
+  const handleRemoteToggle = (nextValue: boolean) => {
+    setValue(nextValue);
+    setLoading(true);
+    setTimeout(() => {
+      setLog((prev) => ["value=" + String(nextValue), ...prev].slice(0, 8));
+      setLoading(false);
+    }, 450);
+  };
+
+  return (
+    <div>
+      <SgToggleSwitch
+        id="demo-remote"
+        label={loading ? "Salvando..." : "Publicar automaticamente"}
+        checked={value}
+        onChange={handleRemoteToggle}
+        enabled={!loading}
+        onIcon={<Check size={12} />}
+        offIcon={<X size={12} />}
+      />
+      <div>{log.map((entry, index) => <div key={index}>{entry}</div>)}</div>
+    </div>
+  );
+}

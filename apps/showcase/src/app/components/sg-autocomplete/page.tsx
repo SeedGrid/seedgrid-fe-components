@@ -3,7 +3,7 @@
 import React from "react";
 import { SgAutocomplete, type SgAutocompleteItem } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import sgCodeBlockBase from "../sgCodeBlockBase";
+import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
@@ -23,8 +23,8 @@ function Section(props: { title: string; description?: string; children: React.R
   );
 }
 
-function CodeBlock(props: { code: string }) {
-  return <sgCodeBlockBase code={props.code} />;
+function CodeBlock(props: { sampleFile: string }) {
+  return <SgCodeBlockBase sampleFile={props.sampleFile} />;
 }
 
 function wrapExample(label: string, code: string) {
@@ -259,28 +259,7 @@ export default function SgAutocompletePage() {
             <pre className="mt-2 rounded border border-border bg-foreground/5 p-2 text-xs">{JSON.stringify(selectedItem, null, 2)}</pre>
           ) : null}
         </div>
-        <CodeBlock code={wrapExample(
-          t(i18n, "showcase.component.autocomplete.labels.country"),
-          `const [selected, setSelected] = React.useState<SgAutocompleteItem | null>(null);
-
-<SgAutocomplete
-  id="country"
-  name="country"
-  control={control}
-  label=""
-  source={source}
-  mapItem={(raw) => ({
-    id: raw.id,
-    label: raw.description
-  })}
-  minLengthForSearch={1}
-  onSelect={(item) => setSelected(item)}
-/>
-
-{selected ? (
-  <pre>{JSON.stringify(selected, null, 2)}</pre>
-) : null}`
-        )} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-autocomplete/samples/basico.tsx.sample" />
       </Section>
 
       <Section
@@ -304,23 +283,7 @@ export default function SgAutocompletePage() {
             }}
           />
         </div>
-        <CodeBlock code={wrapExample(
-          t(i18n, "showcase.component.autocomplete.labels.country"),
-          `<SgAutocomplete
-  id="country"
-  name="country"
-  control={control}
-  label=""
-  source={source}
-  mapItem={mapItem}
-  renderItem={(item) => (
-    <div className="flex items-center gap-2">
-      <span>{item.data.code}</span>
-      <span>{item.label}</span>
-    </div>
-  )}
-/>`
-        )} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-autocomplete/samples/customizado.tsx.sample" />
       </Section>
 
       <Section
@@ -336,18 +299,7 @@ export default function SgAutocompletePage() {
             grouped
           />
         </div>
-        <CodeBlock code={wrapExample(
-          t(i18n, "showcase.component.autocomplete.labels.country"),
-          `<SgAutocomplete
-  id="country"
-  name="country"
-  control={control}
-  label=""
-  source={source}
-  mapItem={mapItem}
-  grouped
-/>`
-        )} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-autocomplete/samples/agrupado.tsx.sample" />
       </Section>
 
       <Section
@@ -364,18 +316,7 @@ export default function SgAutocompletePage() {
             openOnFocus
           />
         </div>
-        <CodeBlock code={wrapExample(
-          t(i18n, "showcase.component.autocomplete.labels.country"),
-          `<SgAutocomplete
-  id="country"
-  name="country"
-  control={control}
-  label=""
-  source={source}
-  showDropDownButton
-  openOnFocus
-/>`
-        )} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-autocomplete/samples/dropdown.tsx.sample" />
       </Section>
 
       <Section
@@ -400,19 +341,7 @@ export default function SgAutocompletePage() {
             )}
           />
         </div>
-        <CodeBlock code={wrapExample(
-          t(i18n, "showcase.component.autocomplete.labels.country"),
-          `<SgAutocomplete
-  id="country"
-  name="country"
-  control={control}
-  label=""
-  source={source}
-  renderFooter={(query) => (
-    <button>${t(i18n, "showcase.component.autocomplete.actions.addNew")} \\"{query}\\"</button>
-  )}
-/>`
-        )} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-autocomplete/samples/footer.tsx.sample" />
       </Section>
 
       <Section
@@ -428,17 +357,7 @@ export default function SgAutocompletePage() {
             minLengthForSearch={3}
           />
         </div>
-        <CodeBlock code={wrapExample(
-          t(i18n, "showcase.component.autocomplete.labels.country"),
-          `<SgAutocomplete
-  id="country"
-  name="country"
-  control={control}
-  label=""
-  source={source}
-          minLengthForSearch={3}
-/>`
-        )} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-autocomplete/samples/tamanho-minimo.tsx.sample" />
       </Section>
 
       <Section
@@ -457,54 +376,7 @@ export default function SgAutocompletePage() {
             borderRadius={14}
           />
         </div>
-        <CodeBlock
-          code={`import React from "react";
-import { SgAutocomplete, type SgAutocompleteItem } from "@seedgrid/fe-components";
-import { SgPlayground } from "@seedgrid/fe-playground";
-
-type Country = {
-  id: number;
-  description: string;
-  code: string;
-};
-
-const COUNTRIES: Country[] = [
-  { id: 1, description: "Afghanistan", code: "AF" },
-  { id: 2, description: "Albania", code: "AL" },
-  { id: 3, description: "Brazil", code: "BR" },
-  { id: 4, description: "South Africa", code: "ZA" }
-];
-
-const source = async (query: string) => {
-  await new Promise((resolve) => setTimeout(resolve, 200));
-  const q = query.toLowerCase();
-  return COUNTRIES.filter((c) => c.description.toLowerCase().includes(q));
-};
-
-const mapItem = (raw: Country): SgAutocompleteItem => ({
-  id: raw.id,
-  label: raw.description,
-  group: raw.description[0],
-  data: raw
-});
-
-export default function Example() {
-  return (
-    <div className="w-80">
-      <SgAutocomplete
-        id="ac-radius"
-        label="Country"
-        source={source}
-        mapItem={mapItem}
-        minLengthForSearch={1}
-        showDropDownButton
-        openOnFocus
-        borderRadius={14}
-      />
-    </div>
-  );
-}`}
-        />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-autocomplete/samples/border-radius.tsx.sample" />
       </Section>
 
       <Section
@@ -515,7 +387,7 @@ export default function Example() {
           title="SgAutocomplete Playground"
           interactive
           codeContract="appFile"
-          code={AUTOCOMPLETE_PLAYGROUND_APP_FILE}
+          playgroundFile="apps/showcase/src/app/components/sg-autocomplete/sg-autocomplete.tsx.playground"
           height={620}
           defaultOpen
         />
@@ -532,4 +404,5 @@ export default function Example() {
     </I18NReady>
   );
 }
+
 

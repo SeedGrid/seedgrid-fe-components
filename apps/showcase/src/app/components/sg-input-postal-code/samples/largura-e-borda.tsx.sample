@@ -1,0 +1,13 @@
+import * as React from "react";
+import { useForm } from "react-hook-form";
+import { SgInputPostalCode } from "@seedgrid/fe-components";
+
+export default function App() {
+  const { register } = useForm({ defaultValues: { w200: "", w300: "" } });
+  return (
+    <>
+      <SgInputPostalCode id="a" label="Width 200" hintText="00000-000" width={200} name="w200" register={register} />
+      <SgInputPostalCode id="b" label="Width 300" hintText="00000-000" width={300} borderRadius={20} name="w300" register={register} />
+    </>
+  );
+}

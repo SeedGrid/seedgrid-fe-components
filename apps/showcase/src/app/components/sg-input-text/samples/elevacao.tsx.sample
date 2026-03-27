@@ -1,0 +1,13 @@
+import * as React from "react";
+import { SgGrid, SgInputText } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <SgGrid columns={{ base: 1, md: 2 }} gap={8}>
+      <SgInputText id="sg-input-text-elevation-none" label="Elevation none" elevation="none" />
+      <SgInputText id="sg-input-text-elevation-sm" label="Elevation sm" elevation="sm" />
+      <SgInputText id="sg-input-text-elevation-md" label="Elevation md" elevation="md" />
+      <SgInputText id="sg-input-text-elevation-lg" label="Elevation lg" elevation="lg" />
+    </SgGrid>
+  );
+}

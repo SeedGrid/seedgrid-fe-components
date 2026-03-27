@@ -22,80 +22,9 @@ function Section(props: { id?: string; title: string; description?: string; chil
   );
 }
 
-function CodeBlock(props: { code: string }) {
-  return <SgCodeBlockBase code={props.code.trimStart()} />;
+function CodeBlock(props: { sampleFile: string }) {
+  return <SgCodeBlockBase sampleFile={props.sampleFile} />;
 }
-
-const PLAYGROUND_CODE = `import * as React from "react";
-import {
-  SgGrid,
-  SgInputPassword,
-  SgButton,
-} from "@seedgrid/fe-components";
-import { SgPlayground } from "@seedgrid/fe-playground";
-
-export default function App() {
-  const [required, setRequired] = React.useState(false);
-  const [filled, setFilled] = React.useState(false);
-  const [withBorder, setWithBorder] = React.useState(true);
-  const [showStrengthBar, setShowStrengthBar] = React.useState(true);
-  const [value, setValue] = React.useState("");
-
-  return (
-    <div className="space-y-4 p-2">
-      <SgGrid columns={{ base: 2, md: 4 }} gap={8}>
-        <SgButton size="sm" appearance={required ? "solid" : "outline"} onClick={() => setRequired((prev) => !prev)}>
-          required
-        </SgButton>
-        <SgButton size="sm" appearance={filled ? "solid" : "outline"} onClick={() => setFilled((prev) => !prev)}>
-          filled
-        </SgButton>
-        <SgButton size="sm" appearance={withBorder ? "solid" : "outline"} onClick={() => setWithBorder((prev) => !prev)}>
-          withBorder
-        </SgButton>
-        <SgButton size="sm" appearance={showStrengthBar ? "solid" : "outline"} onClick={() => setShowStrengthBar((prev) => !prev)}>
-          strengthBar
-        </SgButton>
-      </SgGrid>
-
-      <SgGrid columns={{ base: 2, md: 4 }} gap={8}>
-        <SgButton size="sm" appearance="outline" onClick={() => setValue("Aa1!Seedgrid")}>
-          Set API
-        </SgButton>
-        <SgButton size="sm" appearance="outline" onClick={() => setValue("")}>
-          Limpar
-        </SgButton>
-      </SgGrid>
-
-      <SgInputPassword
-        id="playground-password"
-        label="SgInputPassword Playground"
-        hintText="Digite ou gere"
-        required={required}
-        filled={filled}
-        withBorder={withBorder}
-        showStrengthBar={showStrengthBar}
-        inputProps={{ value, onChange: (event) => setValue(event.target.value) }}
-      />
-
-      <div className="rounded border border-border p-3">
-        <p className="mb-2 text-xs text-muted-foreground">labelPosition</p>
-        <SgGrid columns={{ base: 1, md: 3 }} gap={8}>
-          <SgInputPassword id="label-float" label="Float" hintText="Type password" labelPosition="float" />
-          <SgInputPassword id="label-top" label="Top" hintText="Type password" labelPosition="top" />
-          <SgInputPassword
-            id="label-left"
-            label="Left"
-            hintText="Type password"
-            labelPosition="left"
-            labelWidth={120}
-            labelAlign="end"
-          />
-        </SgGrid>
-      </div>
-    </div>
-  );
-}`;
 
 export default function SgInputPasswordPage() {
   const i18n = useShowcaseI18n();
@@ -295,7 +224,7 @@ export default function SgInputPasswordPage() {
               {t(i18n, "showcase.common.labels.currentValue", { value: basicValue })}
             </p>
           </div>
-          <CodeBlock code={`<SgInputPassword\n  id="demo-basic"\n  label="${t(i18n, "showcase.component.inputPassword.labels.password")}"\n  hintText="${t(i18n, "showcase.component.inputPassword.labels.passwordHint")}"\n  onChange={(value) => setBasicValue(value)}\n/>`} />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-password/samples/basico.tsx.sample" />
         </Section>
 
         <Section
@@ -311,7 +240,7 @@ export default function SgInputPasswordPage() {
               required
             />
           </div>
-          <CodeBlock code={`<SgInputPassword\n  id="demo-required"\n  label="${t(i18n, "showcase.component.inputPassword.labels.requiredPassword")}"\n  hintText="${t(i18n, "showcase.component.inputPassword.labels.requiredHint")}"\n  required\n/>`} />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-password/samples/obrigatorio.tsx.sample" />
         </Section>
 
         <Section
@@ -333,7 +262,7 @@ export default function SgInputPasswordPage() {
               {t(i18n, "showcase.common.labels.onValidation")}: {validationMsg ?? t(i18n, "showcase.common.labels.valid")}
             </p>
           </div>
-          <CodeBlock code={`<SgInputPassword\n  id="demo-validation"\n  label="${t(i18n, "showcase.component.inputPassword.labels.min8")}"\n  hintText="${t(i18n, "showcase.component.inputPassword.labels.min8Hint")}"\n  validation={(value) => value.length < 8 ? "${t(i18n, "showcase.component.inputPassword.messages.min8")}" : null}\n  onValidation={(msg) => setValidationMsg(msg)}\n/>`} />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-password/samples/validacao.tsx.sample" />
         </Section>
 
         <Section
@@ -350,7 +279,7 @@ export default function SgInputPasswordPage() {
           <div className="w-80">
             <SgInputPassword id="demo-noclear" label={t(i18n, "showcase.common.labels.noClear")} clearButton={false} />
           </div>
-          <CodeBlock code={`<SgInputPassword id="demo-noborder" label="${t(i18n, "showcase.common.labels.noBorder")}" withBorder={false} />\n<SgInputPassword id="demo-filled" label="${t(i18n, "showcase.common.labels.filled")}" filled />\n<SgInputPassword id="demo-noclear" label="${t(i18n, "showcase.common.labels.noClear")}" clearButton={false} />`} />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-password/samples/variacoes-visuais.tsx.sample" />
         </Section>
 
         <Section
@@ -376,7 +305,7 @@ export default function SgInputPasswordPage() {
               )}
             </div>
           </div>
-          <CodeBlock code={`<SgInputPassword\n  id="demo-events"\n  label="${t(i18n, "showcase.common.labels.typeAndLog")}"\n  required\n  onChange={(value) => log(\`onChange: "\${value}"\`)}\n  onEnter={() => log("${t(i18n, "showcase.component.inputPassword.logs.onEnter")}")}\n  onExit={() => log("${t(i18n, "showcase.component.inputPassword.logs.onExit")}")}\n  onClear={() => log("${t(i18n, "showcase.component.inputPassword.logs.onClear")}")}\n/>`} />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-password/samples/eventos.tsx.sample" />
         </Section>
 
         <Section
@@ -403,25 +332,7 @@ export default function SgInputPasswordPage() {
       labelAlign="end"
     />
   </SgGrid>
-  <CodeBlock code={`<SgInputPassword
-  id="sg-input-password-label-float"
-  label="${t(i18n, "showcase.common.labels.labelFloat")}"
-  labelPosition="float"
-/>
-
-<SgInputPassword
-  id="sg-input-password-label-top"
-  label="${t(i18n, "showcase.common.labels.labelTop")}"
-  labelPosition="top"
-/>
-
-<SgInputPassword
-  id="sg-input-password-label-left"
-  label="${t(i18n, "showcase.common.labels.labelLeft")}"
-  labelPosition="left"
-  labelWidth={140}
-  labelAlign="end"
-/>`} />
+  <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-password/samples/posicao-do-rotulo.tsx.sample" />
 </Section>
 
 <Section id="exemplo-7" title="7) Playground" description={t(i18n, "showcase.common.playground.description")}>
@@ -429,7 +340,7 @@ export default function SgInputPasswordPage() {
             title="SgInputPassword Playground"
             interactive
             codeContract="appFile"
-            code={PLAYGROUND_CODE}
+            playgroundFile="apps/showcase/src/app/components/sg-input-password/sg-input-password.tsx.playground"
             height={640}
             defaultOpen
           />

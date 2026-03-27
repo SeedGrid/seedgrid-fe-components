@@ -1,0 +1,19 @@
+import * as React from "react";
+import { SgInputCPFCNPJ } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <SgInputCPFCNPJ
+      id="eventos"
+      label="Digite e acompanhe os eventos"
+      hintText="CPF ou CNPJ"
+      required
+      inputProps={{}}
+      onChange={(value) => console.log("onChange:", value)}
+      onEnter={() => console.log("focus")}
+      onExit={() => console.log("blur")}
+      onClear={() => console.log("cleared")}
+      onValidation={(message) => console.log("validation:", message)}
+    />
+  );
+}

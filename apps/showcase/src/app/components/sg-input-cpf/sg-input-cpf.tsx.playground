@@ -1,0 +1,47 @@
+import * as React from "react";
+import {
+  SgButton,
+  SgGrid,
+  SgInputCPF,
+} from "@seedgrid/fe-components";
+
+export default function App() {
+  const [required, setRequired] = React.useState(false);
+  const [filled, setFilled] = React.useState(false);
+  const [withBorder, setWithBorder] = React.useState(true);
+  const [value, setValue] = React.useState("");
+
+  return (
+    <div className="space-y-4 p-2">
+      <SgGrid columns={{ base: 2, md: 4 }} gap={8}>
+        <SgButton size="sm" appearance={required ? "solid" : "outline"} onClick={() => setRequired((prev) => !prev)}>required</SgButton>
+        <SgButton size="sm" appearance={filled ? "solid" : "outline"} onClick={() => setFilled((prev) => !prev)}>filled</SgButton>
+        <SgButton size="sm" appearance={withBorder ? "solid" : "outline"} onClick={() => setWithBorder((prev) => !prev)}>withBorder</SgButton>
+      </SgGrid>
+
+      <SgInputCPF
+        id="playground-input-cpf"
+        label="SgInputCPF Playground"
+        hintText="Digite um CPF"
+        required={required}
+        filled={filled}
+        withBorder={withBorder}
+        inputProps={{}}
+        onChange={setValue}
+      />
+
+      <div className="rounded border border-border p-3">
+        <p className="mb-2 text-xs text-muted-foreground">labelPosition</p>
+        <SgGrid columns={{ base: 1, md: 3 }} gap={8}>
+          <SgInputCPF id="label-float" label="Float" hintText="000.000.000-00" labelPosition="float" inputProps={{}} />
+          <SgInputCPF id="label-top" label="Top" hintText="000.000.000-00" labelPosition="top" inputProps={{}} />
+          <SgInputCPF id="label-left" label="Left" hintText="000.000.000-00" labelPosition="left" labelWidth={120} labelAlign="end" inputProps={{}} />
+        </SgGrid>
+      </div>
+
+      <div className="rounded border border-border bg-muted/40 p-3 text-xs">
+        Valor atual: <strong>{value || "-"}</strong>
+      </div>
+    </div>
+  );
+}

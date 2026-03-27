@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import {
@@ -6,7 +6,7 @@ import {
   SgEnvironmentProvider,
   SgButton
 } from "@seedgrid/fe-components";
-import sgCodeBlockBase from "../../sgCodeBlockBase";
+import SgCodeBlockBase from "../../sgCodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
@@ -27,7 +27,7 @@ function Section(props: { title: string; description?: string; children: React.R
 }
 
 function CodeBlock(props: { code: string }) {
-  return <sgCodeBlockBase code={props.code} />;
+  return <SgCodeBlockBase code={props.code} />;
 }
 
 function ManualPersistenceDemo() {
@@ -38,17 +38,17 @@ function ManualPersistenceDemo() {
   const handleSave = async () => {
     const payload = { ts: Date.now(), msg: "hello from showcase" };
     await persistence.save("demo:manual", payload);
-    addLog(`save → demo:manual = ${JSON.stringify(payload)}`);
+    addLog(`save â†’ demo:manual = ${JSON.stringify(payload)}`);
   };
 
   const handleLoad = async () => {
     const result = await persistence.load("demo:manual");
-    addLog(`load → demo:manual = ${JSON.stringify(result)}`);
+    addLog(`load â†’ demo:manual = ${JSON.stringify(result)}`);
   };
 
   const handleClear = async () => {
     await persistence.clear("demo:manual");
-    addLog("clear → demo:manual");
+    addLog("clear â†’ demo:manual");
   };
 
   return (
@@ -69,7 +69,7 @@ function ManualPersistenceDemo() {
       </div>
       <p className="text-xs text-muted-foreground">
         Namespace: <span className="font-mono">{persistence.namespace || "(vazio)"}</span>{" "}
-        · Scope: <span className="font-mono">{persistence.scope}</span>
+        Â· Scope: <span className="font-mono">{persistence.scope}</span>
       </p>
     </div>
   );
@@ -162,3 +162,4 @@ await persistence.clear("form:draft");`}
     </I18NReady>
   );
 }
+

@@ -1,0 +1,16 @@
+import React from "react";
+import { SgTextEditor } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [htmlBody, setHtmlBody] = React.useState("<p>Editor without CSS</p>");
+
+  return (
+    <SgTextEditor
+      id="sg-text-editor-no-css"
+      valueHtml={htmlBody}
+      onChangeHtml={setHtmlBody}
+      showCssEditor={false}
+      onSave={(file) => console.log(file.name)}
+    />
+  );
+}

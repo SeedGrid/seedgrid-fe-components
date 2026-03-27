@@ -1,9 +1,9 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import { SgButton, SgCombobox } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import sgCodeBlockBase from "../sgCodeBlockBase";
+import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
@@ -21,6 +21,10 @@ function Section(props: { id?: string; title: string; description?: string; chil
       <div className="mt-4 flex flex-wrap gap-4">{props.children}</div>
     </section>
   );
+}
+
+function CodeBlock(props: { sampleFile: string }) {
+  return <SgCodeBlockBase sampleFile={props.sampleFile} />;
 }
 
 type Country = {
@@ -405,28 +409,7 @@ export default function SgComboboxPage() {
               {selectedCountry ? JSON.stringify(selectedCountry, null, 2) : "No item selected"}
             </div>
           </div>
-          <sgCodeBlockBase
-            code={`const [selectedCountry, setSelectedCountry] = React.useState<Country | null>(null);
-
-<SgCombobox<Country>
-  id="cb-basic"
-  label="Country"
-  source={COUNTRIES}
-  openOnFocus
-  grouped
-  mapItem={(raw) => ({
-    id: raw.id,
-    label: raw.description,
-    value: raw.code,
-    group: raw.region
-  })}
-  onSelect={setSelectedCountry}
-/>
-
-<div>
-  {selectedCountry ? JSON.stringify(selectedCountry, null, 2) : "No item selected"}
-</div>`}
-          />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-combobox/samples/basico-com-lista-de-objetos.tsx.sample" />
         </Section>
 
         <Section
@@ -472,41 +455,7 @@ export default function SgComboboxPage() {
               </div>
             </div>
           </div>
-          <sgCodeBlockBase
-            code={`const [selectedId, setSelectedId] = React.useState<string | number | null>(null);
-const [selectedControlled, setSelectedControlled] = React.useState<Country | null>(null);
-const selectedByValue = COUNTRIES.find((item) => String(item.id) === String(selectedId ?? "")) ?? null;
-
-<SgCombobox<Country>
-  id="cb-controlled"
-  label="Country (controlled)"
-  value={selectedId}
-  source={COUNTRIES}
-  openOnFocus
-  mapItem={(raw) => ({
-    id: raw.id,
-    label: \`\${raw.description} (\${raw.code})\`,
-    value: raw.code,
-    group: raw.region
-  })}
-  onValueChange={setSelectedId}
-  onSelect={setSelectedControlled}
-/>
-
-<SgButton onClick={() => setSelectedId(5)}>Set Germany (id 5)</SgButton>
-<SgButton onClick={() => setSelectedId(9)}>Set Japan (id 9)</SgButton>
-<SgButton onClick={() => setSelectedId(null)}>Clear value</SgButton>
-
-<div>
-  <div>value: {selectedId == null || selectedId === "" ? "(empty)" : String(selectedId)}</div>
-  <div>
-    resolved by value: {selectedByValue ? \`\${selectedByValue.description} (\${selectedByValue.code})\` : "(none)"}
-  </div>
-  <div>
-    last onSelect: {selectedControlled ? \`\${selectedControlled.description} (\${selectedControlled.code})\` : "(none)"}
-  </div>
-</div>`}
-          />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-combobox/samples/controlado-por-value.tsx.sample" />
         </Section>
 
         <Section
@@ -546,46 +495,7 @@ const selectedByValue = COUNTRIES.find((item) => String(item.id) === String(sele
               {selectedAsync ? `Selected: ${selectedAsync.description} (${selectedAsync.code})` : "No item selected"}
             </div>
           </div>
-          <sgCodeBlockBase
-            code={`const source = async () => {
-  await new Promise((r) => setTimeout(r, 300));
-  return COUNTRIES;
-};
-const [selectedAsync, setSelectedAsync] = React.useState<Country | null>(null);
-
-<SgCombobox<Country>
-  id="cb-async"
-  label="Country (async)"
-  source={source}
-  openOnFocus
-  grouped
-  loadingText="Loading countries..."
-  mapItem={(raw) => ({
-    id: raw.id,
-    label: raw.description,
-    value: raw.code,
-    group: raw.region
-  })}
-  renderGroupHeader={(group) => <span className="uppercase tracking-wide">{group}</span>}
-  renderItem={(item) => (
-    <div className="flex items-center gap-2">
-      <span className="text-xs font-semibold">{item.value}</span>
-      <span>{item.label}</span>
-    </div>
-  )}
-  itemTooltip={(item) => <span>{item.label}</span>}
-  renderFooter={(_, hasResults) => (
-    <span className="text-xs text-muted-foreground">
-      {hasResults ? "Select one item from the list." : "No records."}
-    </span>
-  )}
-  onSelect={setSelectedAsync}
-/>
-
-<div>
-  {selectedAsync ? \`Selected: \${selectedAsync.description} (\${selectedAsync.code})\` : "No item selected"}
-</div>`}
-          />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-combobox/samples/source-async-custom-render.tsx.sample" />
         </Section>
 
         <Section
@@ -608,52 +518,7 @@ const [selectedAsync, setSelectedAsync] = React.useState<Country | null>(null);
               })}
             />
           </div>
-          <sgCodeBlockBase
-            code={`import React from "react";
-import { SgButton, SgCombobox } from "@seedgrid/fe-components";
-import { SgPlayground } from "@seedgrid/fe-playground";
-
-type Country = {
-  id: number;
-  description: string;
-  code: string;
-  region: string;
-};
-
-const COUNTRIES: Country[] = [
-  { id: 1, description: "Brazil", code: "BR", region: "Americas" },
-  { id: 2, description: "Argentina", code: "AR", region: "Americas" },
-  { id: 3, description: "United States", code: "US", region: "Americas" },
-  { id: 4, description: "Canada", code: "CA", region: "Americas" },
-  { id: 5, description: "Germany", code: "DE", region: "Europe" },
-  { id: 6, description: "France", code: "FR", region: "Europe" },
-  { id: 7, description: "Portugal", code: "PT", region: "Europe" },
-  { id: 8, description: "India", code: "IN", region: "Asia" },
-  { id: 9, description: "Japan", code: "JP", region: "Asia" },
-  { id: 10, description: "Australia", code: "AU", region: "Oceania" }
-];
-
-export default function Example() {
-  return (
-    <div className="w-96">
-      <SgCombobox<Country>
-        id="cb-radius"
-        label="Country with custom radius"
-        source={COUNTRIES}
-        openOnFocus
-        grouped
-        borderRadius={14}
-        mapItem={(raw) => ({
-          id: raw.id,
-          label: raw.description,
-          value: raw.code,
-          group: raw.region
-        })}
-      />
-    </div>
-  );
-}`}
-          />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-combobox/samples/border-radius.tsx.sample" />
         </Section>
 
         <Section
@@ -664,7 +529,7 @@ export default function Example() {
             title="SgCombobox Playground"
             interactive
             codeContract="appFile"
-            code={PLAYGROUND_APP_FILE}
+            playgroundFile="apps/showcase/src/app/components/sg-combobox/sg-combobox.tsx.playground"
             height={560}
             defaultOpen
           />
@@ -709,5 +574,6 @@ export default function Example() {
     </I18NReady>
   );
 }
+
 
 

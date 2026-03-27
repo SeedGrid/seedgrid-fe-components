@@ -1,0 +1,43 @@
+import React from "react";
+import { SgCombobox } from "@seedgrid/fe-components";
+
+type Country = {
+  id: number;
+  description: string;
+  code: string;
+  region: string;
+};
+
+const COUNTRIES: Country[] = [
+  { id: 1, description: "Brazil", code: "BR", region: "Americas" },
+  { id: 2, description: "Argentina", code: "AR", region: "Americas" },
+  { id: 3, description: "United States", code: "US", region: "Americas" },
+  { id: 4, description: "Canada", code: "CA", region: "Americas" },
+  { id: 5, description: "Germany", code: "DE", region: "Europe" },
+  { id: 6, description: "France", code: "FR", region: "Europe" },
+  { id: 7, description: "Portugal", code: "PT", region: "Europe" },
+  { id: 8, description: "India", code: "IN", region: "Asia" },
+  { id: 9, description: "Japan", code: "JP", region: "Asia" },
+  { id: 10, description: "Australia", code: "AU", region: "Oceania" }
+];
+
+export default function Example() {
+  return (
+    <div className="w-96">
+      <SgCombobox<Country>
+        id="cb-radius"
+        label="Country with custom radius"
+        source={COUNTRIES}
+        openOnFocus
+        grouped
+        borderRadius={14}
+        mapItem={(raw) => ({
+          id: raw.id,
+          label: raw.description,
+          value: raw.code,
+          group: raw.region
+        })}
+      />
+    </div>
+  );
+}

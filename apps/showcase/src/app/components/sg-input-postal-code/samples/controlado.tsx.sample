@@ -1,0 +1,18 @@
+import * as React from "react";
+import { useForm } from "react-hook-form";
+import { SgInputPostalCode } from "@seedgrid/fe-components";
+
+export default function App() {
+  const { control, setValue, watch } = useForm({ defaultValues: { controlled: "01001-000" } });
+  const controlledValue = watch("controlled");
+
+  return (
+    <div>
+      <SgInputPostalCode id="demo-controlled" label="Controlado" hintText="00000-000" name="controlled" control={control} />
+      <button type="button" onClick={() => setValue("controlled", "04538-132")}>Set API</button>
+      <button type="button" onClick={() => setValue("controlled", "20040-020")}>Set other</button>
+      <button type="button" onClick={() => setValue("controlled", "")}>Clear</button>
+      <p>Estado atual: "{controlledValue}"</p>
+    </div>
+  );
+}

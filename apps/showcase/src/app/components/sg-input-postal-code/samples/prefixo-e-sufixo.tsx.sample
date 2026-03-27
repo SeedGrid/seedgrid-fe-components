@@ -1,0 +1,13 @@
+import * as React from "react";
+import { useForm } from "react-hook-form";
+import { SgInputPostalCode } from "@seedgrid/fe-components";
+
+export default function App() {
+  const { register } = useForm({ defaultValues: { prefix: "", suffix: "" } });
+  return (
+    <>
+      <SgInputPostalCode id="demo-prefix-text" label="Prefixo" hintText="00000-000" prefixText="CEP:" name="prefix" register={register} />
+      <SgInputPostalCode id="demo-suffix-text" label="Sufixo" hintText="00000-000" suffixText="BR" name="suffix" register={register} />
+    </>
+  );
+}

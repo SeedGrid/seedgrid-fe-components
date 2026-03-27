@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import Link from "next/link";
@@ -22,7 +22,7 @@ import {
   Bell,
   RefreshCw
 } from "lucide-react";
-import sgCodeBlockBase from "../sgCodeBlockBase";
+import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import { t, useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
 
@@ -47,7 +47,7 @@ function Section(props: { id?: string; title: string; description?: string; chil
 }
 
 function CodeBlock(props: { children: string }) {
-  return <sgCodeBlockBase code={props.children} />;
+  return <SgCodeBlockBase code={props.children} />;
 }
 
 function PropsTable(props: { id: string; props: PropDef[]; title: string; colProp: string; colType: string; colDefault: string; colDescription: string }) {
@@ -1127,6 +1127,7 @@ const onSubmit = (data: any) => {
     </I18NReady>
   );
 }
+
 
 
 

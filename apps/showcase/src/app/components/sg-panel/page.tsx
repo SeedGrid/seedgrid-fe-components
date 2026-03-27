@@ -1,9 +1,9 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import { SgGrid, SgMainPanel, SgPanel, SgStack } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import sgCodeBlockBase from "../sgCodeBlockBase";
+import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
@@ -66,14 +66,14 @@ export default function App() {
 
 const PANEL_PROPS: ShowcasePropRow[] = [
   { prop: "align", type: "\"top\" | \"left\" | \"right\" | \"bottom\" | \"client\"", defaultValue: "-", description: "Posicionamento dentro do SgMainPanel." },
-  { prop: "width / height", type: "number | string", defaultValue: "-", description: "Dimensão do painel (número vira %)." },
+  { prop: "width / height", type: "number | string", defaultValue: "-", description: "DimensÃ£o do painel (nÃºmero vira %)." },
   { prop: "span / rowSpan", type: "number", defaultValue: "-", description: "Span de colunas/linhas dentro do SgGrid." },
   { prop: "borderStyle", type: "\"none\" | \"solid\" | \"dashed\"", defaultValue: "solid", description: "Estilo da borda do panel." },
-  { prop: "padding", type: "number", defaultValue: "0", description: "Espaçamento interno." },
+  { prop: "padding", type: "number", defaultValue: "0", description: "EspaÃ§amento interno." },
   { prop: "scrollable", type: "boolean | \"auto\" | \"x\" | \"y\"", defaultValue: "false", description: "Comportamento de rolagem." },
-  { prop: "scrollbarGutter", type: "boolean", defaultValue: "false", description: "Reserva espaço para scrollbar." },
-  { prop: "children", type: "ReactNode", defaultValue: "-", description: "Conteúdo do painel." },
-  { prop: "className / style", type: "string / CSSProperties", defaultValue: "-", description: "Customização visual." }
+  { prop: "scrollbarGutter", type: "boolean", defaultValue: "false", description: "Reserva espaÃ§o para scrollbar." },
+  { prop: "children", type: "ReactNode", defaultValue: "-", description: "ConteÃºdo do painel." },
+  { prop: "className / style", type: "string / CSSProperties", defaultValue: "-", description: "CustomizaÃ§Ã£o visual." }
 ];
 
 type PanelTexts = {
@@ -237,7 +237,7 @@ export default function SgPanelPage() {
         </SgPanel>
 
         <SgStack className="mt-6">
-          <sgCodeBlockBase
+          <SgCodeBlockBase
             code={`<SgPanel className="h-[430px] rounded-xl bg-muted/30" padding={12}>
   <SgMainPanel gap={8} className="h-full w-full rounded-lg bg-background p-3">
     <SgPanel align="top" height={12} padding={10} className="rounded-md">
@@ -300,7 +300,7 @@ export default function SgPanelPage() {
         </SgGrid>
 
         <SgStack className="mt-6">
-          <sgCodeBlockBase
+          <SgCodeBlockBase
             code={`<SgGrid columns={{ base: 1, md: 4 }} gap={8} rowHeight={90} dense>
   <SgPanel padding={10} className="rounded-md">Item 1</SgPanel>
   <SgPanel span={2} padding={10} className="rounded-md">
@@ -333,7 +333,7 @@ export default function SgPanelPage() {
         </SgGrid>
 
         <SgStack className="mt-6">
-          <sgCodeBlockBase
+          <SgCodeBlockBase
             code={`<SgGrid columns={{ base: 1, md: 3 }} gap={4}>
   <SgPanel borderStyle="none" padding={12} className="rounded-lg bg-muted/50">
     children + borderStyle="none"
@@ -400,7 +400,7 @@ export default function SgPanelPage() {
         </SgGrid>
 
         <SgStack className="mt-6">
-          <sgCodeBlockBase
+          <SgCodeBlockBase
             code={`<SgGrid columns={{ base: 1, md: 2 }} gap={4}>
   <SgPanel scrollable padding={10} className="h-48 rounded-lg">
     <SgStack gap={6}>
@@ -469,7 +469,7 @@ export default function SgPanelPage() {
         </SgStack>
 
         <SgStack className="mt-6">
-          <sgCodeBlockBase
+          <SgCodeBlockBase
             code={`<SgStack gap={10}>
   <SgPanel className="h-[260px] rounded-xl bg-muted/30" padding={10}>
     <SgMainPanel gap={8} className="h-full rounded-lg bg-background p-3">
@@ -511,3 +511,4 @@ export default function SgPanelPage() {
     </I18NReady>
   );
 }
+

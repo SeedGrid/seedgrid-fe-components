@@ -1,0 +1,6 @@
+import * as React from "react";
+import { SgInputEmail } from "@seedgrid/fe-components";
+
+export default function App() {
+  return <SgInputEmail id="email" label="Desabilitado" hintText="name@domain.com" enabled={false} />;
+}

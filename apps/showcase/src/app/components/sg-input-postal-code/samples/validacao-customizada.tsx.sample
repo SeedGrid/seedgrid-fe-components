@@ -1,0 +1,14 @@
+import * as React from "react";
+import { SgInputPostalCode } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <SgInputPostalCode
+      id="cep"
+      label="CEP (Brasil)"
+      hintText="00000-000"
+      validation={(value) => (value.startsWith("00") ? "CEP nao pode iniciar com 00." : null)}
+      onValidation={(message) => console.log(message)}
+    />
+  );
+}

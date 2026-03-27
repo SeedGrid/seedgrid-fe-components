@@ -1,0 +1,20 @@
+import * as React from "react";
+import { useForm } from "react-hook-form";
+import { SgInputText } from "@seedgrid/fe-components";
+
+export default function App() {
+  const { register, watch } = useForm({ defaultValues: { iconbtns: "" } });
+  const value = watch("iconbtns");
+  return (
+    <SgInputText
+      id="demo-iconbtns"
+      label="Copiar texto"
+      name="iconbtns"
+      register={register}
+      iconButtons={[
+        <button key="copy" type="button" onClick={() => navigator.clipboard.writeText(value)}>Copiar</button>,
+        <button key="alert" type="button" onClick={() => alert("ok")}>Alerta</button>
+      ]}
+    />
+  );
+}
