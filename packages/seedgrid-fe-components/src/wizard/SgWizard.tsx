@@ -2,7 +2,12 @@
 
 import React from "react";
 import { t, useComponentsI18n } from "../i18n";
-import { canProceedWizardAction, clampWizardStep } from "./logic";
+import {
+  canNavigateToWizardStep,
+  canProceedWizardAction,
+  clampWizardStep,
+  type WizardStepNavigation
+} from "./logic";
 
 export type SgWizardPageProps = {
   title?: string;
@@ -34,6 +39,7 @@ export type SgWizardProps = {
   initialStep?: number;
   labels?: Partial<SgWizardLabels>;
   stepper?: SgWizardStepper;
+  stepNavigation?: WizardStepNavigation;
   className?: string;
   style?: React.CSSProperties;
 };
@@ -50,12 +56,16 @@ function StepperBar({
   i18n,
   pages,
   currentStep,
-  mode
+  mode,
+  canNavigateStep,
+  onNavigateStep
 }: {
   pages: Array<React.ReactElement<SgWizardPageProps>>;
   currentStep: number;
   mode: "numbered" | "icons";
   i18n: ReturnType<typeof useComponentsI18n>;
+  canNavigateStep: (index: number) => boolean;
+  onNavigateStep: (index: number) => void;
 }) {
   return (
     <nav aria-label={t(i18n, "components.wizard.progress")} className="mb-8">
@@ -63,41 +73,57 @@ function StepperBar({
         {pages.map((page, i) => {
           const isCompleted = i < currentStep;
           const isCurrent = i === currentStep;
+          const isClickable = canNavigateStep(i);
           const title = page.props.title ?? t(i18n, "components.wizard.step", { step: i + 1 });
           const icon = page.props.icon;
           const isLast = i === pages.length - 1;
+          const content = (
+            <>
+              <div
+                aria-current={isCurrent ? "step" : undefined}
+                className={`flex items-center justify-center rounded-full border-2 transition-colors duration-200 ${
+                  isCompleted
+                    ? "border-[hsl(var(--primary))] bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))]"
+                    : isCurrent
+                      ? "border-[hsl(var(--primary))] bg-[rgb(var(--sg-surface,var(--sg-bg)))] text-[hsl(var(--primary))]"
+                      : "border-border bg-[rgb(var(--sg-surface,var(--sg-bg)))] text-muted-foreground"
+                }`}
+                style={{ width: 40, height: 40 }}
+              >
+                {isCompleted ? (
+                  <CheckIcon className="size-5" />
+                ) : mode === "icons" && icon ? (
+                  <span className="flex items-center justify-center size-5">{icon}</span>
+                ) : (
+                  <span className="text-sm font-semibold">{i + 1}</span>
+                )}
+              </div>
+              <span
+                className={`mt-2 text-xs font-medium text-center max-w-[80px] leading-tight ${
+                  isCompleted || isCurrent ? "text-[hsl(var(--primary))]" : "text-muted-foreground"
+                }`}
+              >
+                {title}
+              </span>
+            </>
+          );
 
           return (
             <li key={i} className={`flex items-center ${isLast ? "" : "flex-1"}`}>
-              <div className="flex flex-col items-center">
-                {/* Circle */}
-                <div
-                  className={`flex items-center justify-center rounded-full border-2 transition-colors duration-200 ${
-                    isCompleted
-                      ? "border-[hsl(var(--primary))] bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))]"
-                      : isCurrent
-                        ? "border-[hsl(var(--primary))] bg-[rgb(var(--sg-surface,var(--sg-bg)))] text-[hsl(var(--primary))]"
-                        : "border-border bg-[rgb(var(--sg-surface,var(--sg-bg)))] text-muted-foreground"
-                  }`}
-                  style={{ width: 40, height: 40 }}
+              {isClickable ? (
+                <button
+                  type="button"
+                  onClick={() => onNavigateStep(i)}
+                  className="flex cursor-pointer flex-col items-center rounded-md outline-none transition-opacity duration-200 hover:opacity-90 focus-visible:ring-2 focus-visible:ring-[hsl(var(--primary))] focus-visible:ring-offset-2"
+                  data-sg-wizard-step={i}
                 >
-                  {isCompleted ? (
-                    <CheckIcon className="size-5" />
-                  ) : mode === "icons" && icon ? (
-                    <span className="flex items-center justify-center size-5">{icon}</span>
-                  ) : (
-                    <span className="text-sm font-semibold">{i + 1}</span>
-                  )}
+                  {content}
+                </button>
+              ) : (
+                <div className="flex flex-col items-center" data-sg-wizard-step={i}>
+                  {content}
                 </div>
-                {/* Label */}
-                <span
-                  className={`mt-2 text-xs font-medium text-center max-w-[80px] leading-tight ${
-                    isCompleted || isCurrent ? "text-[hsl(var(--primary))]" : "text-muted-foreground"
-                  }`}
-                >
-                  {title}
-                </span>
-              </div>
+              )}
 
               {/* Connector line */}
               {!isLast ? (
@@ -124,6 +150,7 @@ export function SgWizard(props: SgWizardProps) {
   ) as Array<React.ReactElement<SgWizardPageProps>>;
 
   const stepper = props.stepper ?? "none";
+  const stepNavigation = props.stepNavigation ?? "previous-and-next";
 
   const [step, setStep] = React.useState(() => clampWizardStep(props.initialStep, pages.length));
   const [isFinishing, setIsFinishing] = React.useState(false);
@@ -174,9 +201,29 @@ export function SgWizard(props: SgWizardProps) {
     }
   };
 
+  const canNavigateStep = React.useCallback((targetStep: number) => {
+    return canNavigateToWizardStep({
+      currentStep: step,
+      targetStep,
+      pageCount: pages.length,
+      stepNavigation
+    });
+  }, [pages.length, step, stepNavigation]);
+
   const goPrevious = () => {
     if (isFirst) return;
     setStep((prev) => Math.max(prev - 1, 0));
+  };
+
+  const handleStepNavigation = async (targetStep: number) => {
+    if (!canNavigateStep(targetStep)) return;
+
+    if (targetStep < step) {
+      setStep(targetStep);
+      return;
+    }
+
+    await goNext();
   };
 
   const handleFinish = async () => {
@@ -205,7 +252,14 @@ export function SgWizard(props: SgWizardProps) {
   return (
     <div className={props.className} style={props.style}>
       {stepper !== "none" ? (
-        <StepperBar pages={pages} currentStep={step} mode={stepper} i18n={i18n} />
+        <StepperBar
+          pages={pages}
+          currentStep={step}
+          mode={stepper}
+          i18n={i18n}
+          canNavigateStep={canNavigateStep}
+          onNavigateStep={handleStepNavigation}
+        />
       ) : null}
       <div ref={pageRef}>{pages[step]}</div>
       <div className="mt-6 flex flex-wrap items-center justify-between gap-3">

@@ -336,9 +336,18 @@ export type {
   SgClockThemeResolver
 } from "./gadgets/clock/themes";
 export { SgWizard, SgWizardPage } from "./wizard/SgWizard";
-export type { SgWizardProps, SgWizardPageProps, SgWizardLabels, SgWizardStepper } from "./wizard/SgWizard";
-export { canProceedWizardAction, clampWizardStep } from "./wizard/logic";
-export type { WizardGuardRunner } from "./wizard/logic";
+export type {
+  SgWizardProps,
+  SgWizardPageProps,
+  SgWizardLabels,
+  SgWizardStepper
+} from "./wizard/SgWizard";
+export {
+  canNavigateToWizardStep,
+  canProceedWizardAction,
+  clampWizardStep
+} from "./wizard/logic";
+export type { WizardGuardRunner, WizardStepNavigation } from "./wizard/logic";
 export { clearLocalPersistentState, readLocalPersistentState, resolvePersistedStateValue, writeLocalPersistentState } from "./environment/persistent-state";
 export {
   SgEnvironmentProvider,

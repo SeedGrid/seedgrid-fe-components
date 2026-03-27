@@ -22,7 +22,11 @@ Module._load = function patchedLoad(request, parent, isMain) {
   return originalLoad.call(this, request, parent, isMain);
 };
 
-const { clampWizardStep, canProceedWizardAction } = require("../dist/sandbox.cjs");
+const {
+  clampWizardStep,
+  canNavigateToWizardStep,
+  canProceedWizardAction
+} = require("../dist/sandbox.cjs");
 
 Module._load = originalLoad;
 
@@ -32,6 +36,59 @@ test("clampWizardStep keeps the step inside the valid page range", () => {
   assert.equal(clampWizardStep(1, 3), 1);
   assert.equal(clampWizardStep(99, 3), 2);
   assert.equal(clampWizardStep(3, 0), 0);
+});
+
+test("canNavigateToWizardStep allows previous steps and only the immediate next step by default", () => {
+  assert.equal(
+    canNavigateToWizardStep({ currentStep: 2, targetStep: 1, pageCount: 4 }),
+    true
+  );
+  assert.equal(
+    canNavigateToWizardStep({ currentStep: 2, targetStep: 0, pageCount: 4 }),
+    true
+  );
+  assert.equal(
+    canNavigateToWizardStep({ currentStep: 1, targetStep: 2, pageCount: 4 }),
+    true
+  );
+  assert.equal(
+    canNavigateToWizardStep({ currentStep: 1, targetStep: 3, pageCount: 4 }),
+    false
+  );
+  assert.equal(
+    canNavigateToWizardStep({ currentStep: 1, targetStep: 1, pageCount: 4 }),
+    false
+  );
+});
+
+test("canNavigateToWizardStep respects explicit navigation modes", () => {
+  assert.equal(
+    canNavigateToWizardStep({
+      currentStep: 2,
+      targetStep: 1,
+      pageCount: 4,
+      stepNavigation: "previous"
+    }),
+    true
+  );
+  assert.equal(
+    canNavigateToWizardStep({
+      currentStep: 1,
+      targetStep: 2,
+      pageCount: 4,
+      stepNavigation: "previous"
+    }),
+    false
+  );
+  assert.equal(
+    canNavigateToWizardStep({
+      currentStep: 2,
+      targetStep: 1,
+      pageCount: 4,
+      stepNavigation: "none"
+    }),
+    false
+  );
 });
 
 test("canProceedWizardAction stops immediately when the page is invalid", async () => {

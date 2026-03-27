@@ -53,6 +53,8 @@ test("SgWizard renders translated progress and action labels", () => {
   assert.match(html, />Compte</);
   assert.match(html, />Etape 2</);
   assert.match(html, />Terminer</);
+  assert.match(html, /data-sg-wizard-step="0"/);
+  assert.match(html, /cursor-pointer/);
 });
 
 test("SgWizard clamps the initial step and shows the last page actions", () => {
@@ -108,6 +110,21 @@ test("SgWizard hides the progress nav when stepper is none", () => {
 
   assert.doesNotMatch(html, /aria-label="Progress"/);
   assert.match(html, />Next</);
+});
+
+test("SgWizard can disable clickable step navigation", () => {
+  const html = renderWithLocale(
+    "en",
+    React.createElement(
+      SgWizard,
+      { onFinish: () => {}, stepper: "numbered", initialStep: 1, stepNavigation: "none" },
+      React.createElement(SgWizardPage, { title: "Account" }, React.createElement("div", null, "A")),
+      React.createElement(SgWizardPage, { title: "Profile" }, React.createElement("div", null, "B"))
+    )
+  );
+
+  assert.match(html, /data-sg-wizard-step="0"/);
+  assert.doesNotMatch(html, /cursor-pointer/);
 });
 
 test("SgWizard clamps negative initial steps to the first page", () => {

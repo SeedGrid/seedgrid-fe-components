@@ -506,6 +506,106 @@ test("SgWizard advances and goes back through rendered actions", async () => {
   }
 });
 
+test("SgWizard allows clicking a previous rendered step and the immediate next step", async () => {
+  const harness = setupDomHarness();
+  try {
+    const stepChanges = [];
+    await harness.render(
+      buildWizard({
+        initialStep: 1,
+        onStepChange: (step) => stepChanges.push(step)
+      })
+    );
+    await flushDom();
+
+    const accountStepButton = Array.from(harness.document.querySelectorAll('button')).find(
+      (button) =>
+        button.getAttribute("data-sg-wizard-step") === "0" &&
+        /Account/i.test(button.textContent ?? "")
+    );
+    assert.ok(accountStepButton);
+
+    await dispatchMouse(accountStepButton, "click");
+    await flushDom();
+
+    assert.match(harness.document.body.textContent ?? "", /Account step/i);
+
+    const profileStepButton = Array.from(harness.document.querySelectorAll('button')).find(
+      (button) =>
+        button.getAttribute("data-sg-wizard-step") === "1" &&
+        /Profile/i.test(button.textContent ?? "")
+    );
+    assert.ok(profileStepButton);
+
+    await dispatchMouse(profileStepButton, "click");
+    await flushDom();
+
+    assert.match(harness.document.body.textContent ?? "", /Profile step/i);
+    assert.deepEqual(stepChanges.slice(0, 3), [1, 0, 1]);
+  } finally {
+    harness.restore();
+  }
+});
+
+test("SgWizard blocks rendered clicks to a future step beyond the immediate next", async () => {
+  const harness = setupDomHarness();
+  try {
+    await harness.render(buildWizard({ initialStep: 0 }));
+    await flushDom();
+
+    const reviewStepButton = Array.from(harness.document.querySelectorAll('button')).find(
+      (button) =>
+        button.getAttribute("data-sg-wizard-step") === "2" &&
+        /Review/i.test(button.textContent ?? "")
+    );
+    assert.equal(reviewStepButton, undefined);
+
+    const reviewStepNode = harness.document.querySelector('[data-sg-wizard-step="2"]');
+    assert.ok(reviewStepNode);
+    assert.equal(reviewStepNode.tagName, "DIV");
+    assert.match(harness.document.body.textContent ?? "", /Account step/i);
+  } finally {
+    harness.restore();
+  }
+});
+
+test("SgWizard reuses validation when advancing through a rendered step click", async () => {
+  const harness = setupDomHarness();
+  try {
+    await harness.render(buildWizardWithValidation());
+    await flushDom();
+
+    const profileStepButton = Array.from(harness.document.querySelectorAll('button')).find(
+      (button) =>
+        button.getAttribute("data-sg-wizard-step") === "1" &&
+        /Profile/i.test(button.textContent ?? "")
+    );
+    assert.ok(profileStepButton);
+
+    await dispatchMouse(profileStepButton, "click");
+    await flushDom();
+    await flushDom();
+
+    assert.match(harness.document.body.textContent ?? "", /Required field/i);
+    assert.doesNotMatch(harness.document.body.textContent ?? "", /Profile step/i);
+
+    const input = harness.document.querySelector('#wizard-required-field');
+    assert.ok(input);
+    await dispatchInput(input, "ok");
+    await flushDom();
+    await dispatchBlur(input);
+    await flushDom();
+
+    await dispatchMouse(profileStepButton, "click");
+    await flushDom();
+    await flushDom();
+
+    assert.match(harness.document.body.textContent ?? "", /Profile step/i);
+  } finally {
+    harness.restore();
+  }
+});
+
 test("SgWizard blocks next and finish when guards deny the rendered action", async () => {
   const harness = setupDomHarness();
   try {

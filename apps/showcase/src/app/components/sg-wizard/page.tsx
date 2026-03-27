@@ -56,6 +56,7 @@ export default function App() {
     <div className="space-y-4 p-2">
       <SgWizard
         stepper="numbered"
+        stepNavigation="previous-and-next"
         labels={{ next: "Next", previous: "Back", finish: "Finish" }}
         validateStep={(index) => {
           if (index !== 0) return true;
@@ -123,7 +124,8 @@ export default function App() {
 const WIZARD_PROPS: ShowcasePropRow[] = [
   { prop: "children", type: "ReactNode (SgWizardPage[])", defaultValue: "-", description: "Paginas renderizadas em ordem dentro do wizard." },
   { prop: "initialStep", type: "number", defaultValue: "0", description: "Indice inicial da etapa ativa." },
-  { prop: "stepper", type: "\"numbered\" | \"icons\" | \"none\"", defaultValue: "\"numbered\"", description: "Modo visual do stepper." },
+  { prop: "stepper", type: "\"numbered\" | \"icons\" | \"none\"", defaultValue: "\"none\"", description: "Modo visual do stepper." },
+  { prop: "stepNavigation", type: "\"none\" | \"previous\" | \"previous-and-next\"", defaultValue: "\"previous-and-next\"", description: "Controla quais etapas do stepper podem ser clicadas." },
   { prop: "labels", type: "{ next, previous, finish }", defaultValue: "interno", description: "Override dos textos dos botoes de navegacao." },
   { prop: "validateStep", type: "(stepIndex) => boolean", defaultValue: "-", description: "Valida uma etapa antes de avancar." },
   { prop: "onBeforeNext", type: "(stepIndex) => boolean | Promise<boolean>", defaultValue: "-", description: "Hook antes de avancar para a proxima etapa." },
@@ -166,6 +168,7 @@ export default function SgWizardPageDemo() {
         <SgWizard
           stepper="numbered"
           initialStep={0}
+          stepNavigation="previous-and-next"
           onStepChange={(i) => setStep(i)}
           onFinish={async () => {
             setSubmitted(null);
@@ -267,6 +270,7 @@ const [formValues, setFormValues] = React.useState({
 
 <SgWizard
   stepper="numbered"
+  stepNavigation="previous-and-next"
   onFinish={async () => {
     setSubmitted(null);
     await new Promise((r) => setTimeout(r, 800));
@@ -319,6 +323,54 @@ const [formValues, setFormValues] = React.useState({
 {submitted && (
   <pre>{JSON.stringify(submitted, null, 2)}</pre>
 )}`} />
+      </Section>
+
+      <Section
+        title={t(i18n, "showcase.component.wizard.sections.stepNavigation.title")}
+        description={t(i18n, "showcase.component.wizard.sections.stepNavigation.description")}
+      >
+        <SgWizard
+          stepper="numbered"
+          initialStep={2}
+          stepNavigation="previous"
+          onFinish={() => {}}
+        >
+          <SgWizardPage title="Introducao">
+            <div className="rounded border border-border bg-foreground/5 p-4">
+              <div className="text-sm font-semibold">1. Introducao</div>
+              <p className="mt-1 text-sm text-muted-foreground">Somente etapas anteriores podem ser clicadas.</p>
+            </div>
+          </SgWizardPage>
+          <SgWizardPage title="Detalhes">
+            <div className="rounded border border-border bg-foreground/5 p-4">
+              <div className="text-sm font-semibold">2. Detalhes</div>
+              <p className="mt-1 text-sm text-muted-foreground">O usuario pode voltar clicando no stepper.</p>
+            </div>
+          </SgWizardPage>
+          <SgWizardPage title="Revisao">
+            <div className="rounded border border-border bg-foreground/5 p-4">
+              <div className="text-sm font-semibold">3. Revisao</div>
+              <p className="mt-1 text-sm text-muted-foreground">O step atual nao fica clicavel.</p>
+            </div>
+          </SgWizardPage>
+          <SgWizardPage title="Confirmacao">
+            <div className="rounded border border-border bg-foreground/5 p-4">
+              <div className="text-sm font-semibold">4. Confirmacao</div>
+              <p className="mt-1 text-sm text-muted-foreground">Passos futuros continuam bloqueados.</p>
+            </div>
+          </SgWizardPage>
+        </SgWizard>
+        <CodeBlock code={`<SgWizard
+  stepper="numbered"
+  initialStep={2}
+  stepNavigation="previous"
+  onFinish={() => {}}
+>
+  <SgWizardPage title="Introducao">...</SgWizardPage>
+  <SgWizardPage title="Detalhes">...</SgWizardPage>
+  <SgWizardPage title="Revisao">...</SgWizardPage>
+  <SgWizardPage title="Confirmacao">...</SgWizardPage>
+</SgWizard>`} />
       </Section>
 
       <Section
