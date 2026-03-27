@@ -6,7 +6,7 @@ import { useForm, type FieldValues } from "react-hook-form";
 import { Flame, Heart, ThumbsUp } from "lucide-react";
 import { SgButton, SgGrid, SgRating } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import CodeBlockBase from "../CodeBlockBase";
+import sgCodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference from "../ShowcasePropsReference";
 import { useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
@@ -995,42 +995,42 @@ export default function SgRatingPage() {
 
         <Section id="exemplo-1" title={texts.sectionTitles[0] ?? ""} description={texts.sectionDescriptions[0] ?? ""}>
           <BasicExample />
-          <CodeBlockBase code={BASIC_CODE} />
+          <sgCodeBlockBase code={BASIC_CODE} />
         </Section>
 
         <Section id="exemplo-2" title={texts.sectionTitles[1] ?? ""} description={texts.sectionDescriptions[1] ?? ""}>
           <HalfTooltipExample />
-          <CodeBlockBase code={HALF_TOOLTIP_CODE} />
+          <sgCodeBlockBase code={HALF_TOOLTIP_CODE} />
         </Section>
 
         <Section id="exemplo-3" title={texts.sectionTitles[2] ?? ""} description={texts.sectionDescriptions[2] ?? ""}>
           <ReadonlyDisabledExample />
-          <CodeBlockBase code={READONLY_DISABLED_CODE} />
+          <sgCodeBlockBase code={READONLY_DISABLED_CODE} />
         </Section>
 
         <Section id="exemplo-4" title={texts.sectionTitles[3] ?? ""} description={texts.sectionDescriptions[3] ?? ""}>
           <SizeStarsExample />
-          <CodeBlockBase code={SIZE_STARS_CODE} />
+          <sgCodeBlockBase code={SIZE_STARS_CODE} />
         </Section>
 
         <Section id="exemplo-5" title={texts.sectionTitles[4] ?? ""} description={texts.sectionDescriptions[4] ?? ""}>
           <ColorsIconsExample />
-          <CodeBlockBase code={COLORS_ICONS_CODE} />
+          <sgCodeBlockBase code={COLORS_ICONS_CODE} />
         </Section>
 
         <Section id="exemplo-6" title={texts.sectionTitles[5] ?? ""} description={texts.sectionDescriptions[5] ?? ""}>
           <CallbackExample />
-          <CodeBlockBase code={CALLBACK_CODE} />
+          <sgCodeBlockBase code={CALLBACK_CODE} />
         </Section>
 
         <Section id="exemplo-7" title={texts.sectionTitles[6] ?? ""} description={texts.sectionDescriptions[6] ?? ""}>
           <RhfExample />
-          <CodeBlockBase code={RHF_CODE} />
+          <sgCodeBlockBase code={RHF_CODE} />
         </Section>
 
         <Section id="exemplo-8" title={texts.sectionTitles[7] ?? ""} description={texts.sectionDescriptions[7] ?? ""}>
           <RequiredExample />
-          <CodeBlockBase code={REQUIRED_CODE} />
+          <sgCodeBlockBase code={REQUIRED_CODE} />
         </Section>
 
         <Section id="exemplo-9" title={texts.sectionTitles[8] ?? ""} description={texts.sectionDescriptions[8] ?? ""}>

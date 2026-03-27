@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import type { FieldValues } from "react-hook-form";
 import { SgButton, SgGrid, SgInputNumber } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import CodeBlockBase from "../CodeBlockBase";
+import sgCodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import { t, useShowcaseI18n } from "../../../i18n";
 
@@ -24,7 +24,7 @@ function Section(props: { id?: string; title: string; description?: string; chil
 }
 
 function CodeBlock(props: { code: string }) {
-  return <CodeBlockBase code={props.code.trimStart()} />;
+  return <sgCodeBlockBase code={props.code.trimStart()} />;
 }
 
 const INPUT_NUMBER_PLAYGROUND_CODE = `import * as React from "react";

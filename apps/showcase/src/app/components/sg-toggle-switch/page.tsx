@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import type { FieldValues } from "react-hook-form";
 import { SgGrid, SgToggleSwitch } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import CodeBlockBase from "../CodeBlockBase";
+import sgCodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import { t, useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
 
@@ -657,7 +657,7 @@ export default function SgToggleSwitchPage() {
             Valor atual: <code className="rounded bg-muted px-1">{String(basicValue)}</code>
           </p>
         </div>
-        <CodeBlockBase
+        <sgCodeBlockBase
           code={BASIC_SHOWCASE_CODE}
         />
       </Section>
@@ -680,7 +680,7 @@ export default function SgToggleSwitchPage() {
             Valor atual: <code className="rounded bg-muted px-1">{String(iconValue)}</code>
           </p>
         </div>
-        <CodeBlockBase
+        <sgCodeBlockBase
           code={ICONS_SHOWCASE_CODE}
         />
       </Section>
@@ -710,7 +710,7 @@ export default function SgToggleSwitchPage() {
             )}
           </div>
         </div>
-        <CodeBlockBase
+        <sgCodeBlockBase
           code={REMOTE_SHOWCASE_CODE}
         />
       </Section>
@@ -764,7 +764,7 @@ export default function SgToggleSwitchPage() {
             <div>capturado: <code className="rounded bg-muted px-1">{capturedValue}</code></div>
           </div>
         </div>
-        <CodeBlockBase
+        <sgCodeBlockBase
           code={EXTERNAL_SHOWCASE_CODE}
         />
       </Section>
@@ -806,7 +806,7 @@ export default function SgToggleSwitchPage() {
             Ultimo submit: <code className="rounded bg-muted px-1">{submitResult}</code>
           </p>
         </form>
-        <CodeBlockBase
+        <sgCodeBlockBase
           code={RHF_SHOWCASE_CODE}
         />
       </Section>
@@ -834,7 +834,7 @@ export default function SgToggleSwitchPage() {
             offIcon={<X size={12} />}
           />
         </div>
-        <CodeBlockBase
+        <sgCodeBlockBase
           code={DISABLED_READONLY_SHOWCASE_CODE}
         />
       </Section>

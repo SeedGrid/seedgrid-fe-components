@@ -3,7 +3,7 @@
 import * as React from "react";
 import { SgButton, SgCalendar, SgEnvironmentProvider, SgGrid } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import CodeBlockBase from "../../CodeBlockBase";
+import sgCodeBlockBase from "../../CodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
@@ -425,17 +425,17 @@ export default function SgCalendarPage() {
 
           <Section title={texts.section1Title} description={texts.section1Description}>
             <BasicCalendarExample />
-            <CodeBlockBase code={BASIC_EXAMPLE_CODE} />
+            <sgCodeBlockBase code={BASIC_EXAMPLE_CODE} />
           </Section>
 
           <Section title={texts.section2Title} description={texts.section2Description}>
             <ControlledCalendarExample />
-            <CodeBlockBase code={CONTROLLED_EXAMPLE_CODE} />
+            <sgCodeBlockBase code={CONTROLLED_EXAMPLE_CODE} />
           </Section>
 
           <Section title={texts.section3Title} description={texts.section3Description}>
             <LocaleCalendarExample />
-            <CodeBlockBase code={LOCALE_EXAMPLE_CODE} />
+            <sgCodeBlockBase code={LOCALE_EXAMPLE_CODE} />
           </Section>
 
           <Section title={texts.section4Title} description={texts.section4Description}>

@@ -3,7 +3,7 @@
 import * as React from "react";
 import { SgButton, SgFlipDigit, SgGrid } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import CodeBlockBase from "../../CodeBlockBase";
+import sgCodeBlockBase from "../../CodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
@@ -296,7 +296,7 @@ export default function SgFlipDigitShowcase() {
               <SgButton onClick={randomDigit} size="sm" severity="info">Random</SgButton>
             </div>
           </div>
-          <CodeBlockBase code={BASIC_EXAMPLE_CODE} />
+          <sgCodeBlockBase code={BASIC_EXAMPLE_CODE} />
         </Section>
 
         <Section
@@ -307,7 +307,7 @@ export default function SgFlipDigitShowcase() {
             <SgFlipDigit value={letter} />
             <SgButton onClick={nextLetter} size="sm">Proxima letra</SgButton>
           </div>
-          <CodeBlockBase code={LETTER_EXAMPLE_CODE} />
+          <sgCodeBlockBase code={LETTER_EXAMPLE_CODE} />
         </Section>
 
         <Section
@@ -328,7 +328,7 @@ export default function SgFlipDigitShowcase() {
               <SgFlipDigit value={digit} width={120} height={180} fontSize={120} />
             </div>
           </div>
-          <CodeBlockBase code={SIZE_EXAMPLE_CODE} />
+          <sgCodeBlockBase code={SIZE_EXAMPLE_CODE} />
         </Section>
 
         <Section
@@ -342,7 +342,7 @@ export default function SgFlipDigitShowcase() {
             <SgFlipDigit value={String((Number(digit) + 2) % 10)} />
             <SgFlipDigit value={String((Number(digit) + 3) % 10)} />
           </div>
-          <CodeBlockBase code={SEQUENCE_EXAMPLE_CODE} />
+          <sgCodeBlockBase code={SEQUENCE_EXAMPLE_CODE} />
         </Section>
 
         <Section
@@ -355,7 +355,7 @@ export default function SgFlipDigitShowcase() {
               {running ? "Parar" : "Iniciar"}
             </SgButton>
           </div>
-          <CodeBlockBase code={AUTO_EXAMPLE_CODE} />
+          <sgCodeBlockBase code={AUTO_EXAMPLE_CODE} />
         </Section>
 
         <Section

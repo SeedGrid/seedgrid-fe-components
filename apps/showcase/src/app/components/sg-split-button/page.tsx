@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 import { SgGrid, SgSplitButton } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import CodeBlockBase from "../CodeBlockBase";
+import sgCodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
@@ -45,7 +45,7 @@ function Row(props: { children: React.ReactNode }) {
 }
 
 function CodeBlock(props: { code: string }) {
-  return <CodeBlockBase code={props.code.trim()} />;
+  return <sgCodeBlockBase code={props.code.trim()} />;
 }
 
 function capitalize(s: string) {

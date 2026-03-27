@@ -3,7 +3,7 @@
 import * as React from "react";
 import { SgButton, SgQRCode } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import CodeBlockBase from "../../CodeBlockBase";
+import sgCodeBlockBase from "../../CodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
@@ -409,7 +409,7 @@ export default function SgQRCodePage() {
         </div>
 
         <div className="mt-6">
-          <CodeBlockBase code={INTERACTIVE_EXAMPLE_CODE} />
+          <sgCodeBlockBase code={INTERACTIVE_EXAMPLE_CODE} />
         </div>
       </Section>
 

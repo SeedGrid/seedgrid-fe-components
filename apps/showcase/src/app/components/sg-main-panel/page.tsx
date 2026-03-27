@@ -12,7 +12,7 @@ import {
   SgBadge,
 } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import CodeBlockBase from "../CodeBlockBase";
+import sgCodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
@@ -479,7 +479,7 @@ export default function SgMainPanelPage() {
         </SgPanel>
 
         <SgStack className="mt-6">
-          <CodeBlockBase code={MAIN_PANEL_FULL_EXAMPLE_CODE} />
+          <sgCodeBlockBase code={MAIN_PANEL_FULL_EXAMPLE_CODE} />
         </SgStack>
       </Section>
 

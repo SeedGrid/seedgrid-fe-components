@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { SgButton, SgGrid, SgInputOTP, type SgInputOTPRef } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import CodeBlockBase from "../CodeBlockBase";
+import sgCodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import { t, useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
@@ -23,7 +23,7 @@ function Section(props: { id?: string; title: string; description?: string; chil
 }
 
 function CodeBlock(props: { code: string }) {
-  return <CodeBlockBase code={props.code.trimStart()} />;
+  return <sgCodeBlockBase code={props.code.trimStart()} />;
 }
 
 function ValuePanel(props: { masked: string; raw: string; expectedLength: number; completeValue?: string }) {

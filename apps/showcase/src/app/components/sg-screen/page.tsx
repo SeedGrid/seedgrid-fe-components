@@ -3,7 +3,7 @@
 import React from "react";
 import { SgScreen, SgMainPanel, SgPanel, SgStack } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import CodeBlockBase from "../CodeBlockBase";
+import sgCodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
@@ -242,7 +242,7 @@ export default function SgScreenPage() {
           </SgPanel>
 
           <SgStack className="mt-6">
-            <CodeBlockBase code={fullExampleCode} />
+            <sgCodeBlockBase code={fullExampleCode} />
           </SgStack>
         </Section>
 

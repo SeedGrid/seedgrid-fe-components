@@ -3,7 +3,7 @@
 import * as React from "react";
 import { SgSkeleton } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import CodeBlockBase from "../CodeBlockBase";
+import sgCodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
@@ -283,7 +283,7 @@ export default function SgSkeletonPage() {
           <SgSkeleton shape="circle" size={56} />
         </div>
         <div className="mt-6">
-          <CodeBlockBase code={SHAPES_CODE} />
+          <sgCodeBlockBase code={SHAPES_CODE} />
         </div>
       </Section>
 
@@ -298,7 +298,7 @@ export default function SgSkeletonPage() {
           <SgSkeleton shape="text" width="52%" />
         </div>
         <div className="mt-6">
-          <CodeBlockBase code={WIDTHS_CODE} />
+          <sgCodeBlockBase code={WIDTHS_CODE} />
         </div>
       </Section>
 
@@ -321,7 +321,7 @@ export default function SgSkeletonPage() {
           </div>
         </div>
         <div className="mt-6">
-          <CodeBlockBase code={ANIMATION_CODE} />
+          <sgCodeBlockBase code={ANIMATION_CODE} />
         </div>
       </Section>
 
@@ -338,7 +338,7 @@ export default function SgSkeletonPage() {
           </div>
         </div>
         <div className="mt-6">
-          <CodeBlockBase code={CARD_CODE} />
+          <sgCodeBlockBase code={CARD_CODE} />
         </div>
       </Section>
 
@@ -375,7 +375,7 @@ export default function SgSkeletonPage() {
           </div>
         </div>
         <div className="mt-6">
-          <CodeBlockBase code={LIST_TABLE_CODE} />
+          <sgCodeBlockBase code={LIST_TABLE_CODE} />
         </div>
       </Section>
 

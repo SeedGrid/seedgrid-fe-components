@@ -3,7 +3,7 @@
 import * as React from "react";
 import { SgButton, SgFadeDigit } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import CodeBlockBase from "../../CodeBlockBase";
+import sgCodeBlockBase from "../../CodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
@@ -605,37 +605,37 @@ export default function SgFadeDigitShowcase() {
         {/* 1 */}
         <Section title={texts.section1Title} description={texts.section1Description}>
           <Ex1 />
-          <CodeBlockBase code={EX1_CODE} />
+          <sgCodeBlockBase code={EX1_CODE} />
         </Section>
 
         {/* 2 */}
         <Section title={texts.section2Title} description={texts.section2Description}>
           <Ex2 />
-          <CodeBlockBase code={EX2_CODE} />
+          <sgCodeBlockBase code={EX2_CODE} />
         </Section>
 
         {/* 3 */}
         <Section title={texts.section3Title} description={texts.section3Description}>
           <Ex3 />
-          <CodeBlockBase code={EX3_CODE} />
+          <sgCodeBlockBase code={EX3_CODE} />
         </Section>
 
         {/* 4 */}
         <Section title={texts.section4Title} description={texts.section4Description}>
           <Ex4 />
-          <CodeBlockBase code={EX4_CODE} />
+          <sgCodeBlockBase code={EX4_CODE} />
         </Section>
 
         {/* 5 */}
         <Section title={texts.section5Title} description={texts.section5Description}>
           <Ex5 />
-          <CodeBlockBase code={EX5_CODE} />
+          <sgCodeBlockBase code={EX5_CODE} />
         </Section>
 
         {/* 6 */}
         <Section title={texts.section6Title} description={texts.section6Description}>
           <Ex6 />
-          <CodeBlockBase code={EX6_CODE} />
+          <sgCodeBlockBase code={EX6_CODE} />
         </Section>
 
         {/* Playground */}

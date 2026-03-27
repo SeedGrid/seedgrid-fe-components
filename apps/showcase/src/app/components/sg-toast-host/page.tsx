@@ -10,7 +10,7 @@ import {
   type SgToastOptions,
 } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import CodeBlockBase from "../CodeBlockBase";
+import sgCodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
@@ -30,7 +30,7 @@ function Section(props: Readonly<{ title: string; description?: string; children
 }
 
 function CodeBlock(props: Readonly<{ code: string }>) {
-  return <CodeBlockBase code={props.code} />;
+  return <sgCodeBlockBase code={props.code} />;
 }
 
 // ---------------------------------------------------------------------------

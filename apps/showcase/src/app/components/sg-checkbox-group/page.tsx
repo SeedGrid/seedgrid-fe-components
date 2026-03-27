@@ -28,7 +28,7 @@ import {
   Bell,
   RefreshCw
 } from "lucide-react";
-import CodeBlockBase from "../CodeBlockBase";
+import sgCodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 
 function Section(props: { id?: string; title: string; description?: string; children: React.ReactNode }) {
@@ -45,7 +45,7 @@ function Section(props: { id?: string; title: string; description?: string; chil
 }
 
 function CodeBlock(props: { children: string }) {
-  return <CodeBlockBase code={props.children} />;
+  return <sgCodeBlockBase code={props.children} />;
 }
 
 const BASIC_OPTIONS: SgCheckboxGroupOption[] = [

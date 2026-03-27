@@ -2,7 +2,7 @@
 
 import React from "react";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import CodeBlockBase from "../CodeBlockBase";
+import sgCodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
@@ -24,7 +24,7 @@ function Section(props: { title: string; description?: string; children: React.R
 function ExampleCodeCard(props: { code: string }) {
   return (
     <div className="mt-4">
-      <CodeBlockBase code={props.code} />
+      <sgCodeBlockBase code={props.code} />
     </div>
   );
 }

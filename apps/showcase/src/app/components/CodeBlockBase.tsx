@@ -76,7 +76,7 @@ function normalizeShowcaseCode(code: string) {
   return `${prepend.join("\n")}${hasAnyImport ? "\n" : "\n\n"}${code}`;
 }
 
-export default function CodeBlockBase(props: { code: string }) {
+export default function sgCodeBlockBase(props: { code: string }) {
   const i18n = useShowcaseI18n();
   const [copied, setCopied] = React.useState(false);
   const displayCode = React.useMemo(() => normalizeShowcaseCode(props.code), [props.code]);

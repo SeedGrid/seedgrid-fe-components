@@ -5,7 +5,7 @@ import Link from "next/link";
 import { SgGrid, SgInputCPFCNPJ } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import { t, useShowcaseI18n } from "../../../i18n";
-import CodeBlockBase from "../CodeBlockBase";
+import sgCodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 
@@ -23,7 +23,7 @@ function Section(props: { id?: string; title: string; description?: string; chil
 }
 
 function CodeBlock(props: { code: string }) {
-  return <CodeBlockBase code={props.code.trimStart()} />;
+  return <sgCodeBlockBase code={props.code.trimStart()} />;
 }
 
 const INPUT_CPFCNPJ_PLAYGROUND_CODE = `import * as React from "react";

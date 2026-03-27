@@ -4,7 +4,7 @@ import * as React from "react";
 import { Mail, ShieldCheck, TriangleAlert } from "lucide-react";
 import { SgAccordion, SgButton, type SgAccordionItem } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import CodeBlockBase from "../CodeBlockBase";
+import sgCodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
@@ -596,7 +596,7 @@ export default function SgAccordionPage() {
         description={texts.section1Description}
       >
         <SgAccordion items={VERTICAL_ITEMS} />
-        <CodeBlockBase code={BASIC_CODE} />
+        <sgCodeBlockBase code={BASIC_CODE} />
       </Section>
 
       <Section
@@ -616,7 +616,7 @@ export default function SgAccordionPage() {
           <SgButton size="sm" appearance="outline" onClick={() => setMultiControlled([0, 1, 2])}>Todos</SgButton>
           <SgButton size="sm" appearance="outline" onClick={() => setMultiControlled([])}>None</SgButton>
         </div>
-        <CodeBlockBase code={MULTIPLE_CODE} />
+        <sgCodeBlockBase code={MULTIPLE_CODE} />
       </Section>
 
       <Section
@@ -630,7 +630,7 @@ export default function SgAccordionPage() {
           horizontalHeaderWidth={56}
           horizontalMinHeight={220}
         />
-        <CodeBlockBase code={HORIZONTAL_CODE} />
+        <sgCodeBlockBase code={HORIZONTAL_CODE} />
       </Section>
 
       <Section
@@ -648,7 +648,7 @@ export default function SgAccordionPage() {
           <SgButton size="sm" appearance="outline" onClick={() => setControlled([2])}>Abrir 3</SgButton>
           <SgButton size="sm" appearance="outline" onClick={() => setControlled([])}>Fechar todos</SgButton>
         </div>
-        <CodeBlockBase code={CONTROLLED_CODE} />
+        <sgCodeBlockBase code={CONTROLLED_CODE} />
       </Section>
 
       <Section
@@ -660,7 +660,7 @@ export default function SgAccordionPage() {
           defaultActiveIndex={0}
           headerBackgroundColor="rgb(var(--sg-primary-50, 239 246 255))"
         />
-        <CodeBlockBase code={CUSTOM_CODE} />
+        <sgCodeBlockBase code={CUSTOM_CODE} />
       </Section>
 
       <Section
@@ -691,7 +691,7 @@ export default function SgAccordionPage() {
           defaultActiveIndex={0}
           headerBackgroundColor={headerColorExample}
         />
-        <CodeBlockBase code={COLOR_CUSTOMIZATION_CODE} />
+        <sgCodeBlockBase code={COLOR_CUSTOMIZATION_CODE} />
       </Section>
 
       <Section

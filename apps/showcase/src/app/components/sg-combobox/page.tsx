@@ -3,7 +3,7 @@
 import React from "react";
 import { SgButton, SgCombobox } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import CodeBlockBase from "../CodeBlockBase";
+import sgCodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
@@ -405,7 +405,7 @@ export default function SgComboboxPage() {
               {selectedCountry ? JSON.stringify(selectedCountry, null, 2) : "No item selected"}
             </div>
           </div>
-          <CodeBlockBase
+          <sgCodeBlockBase
             code={`const [selectedCountry, setSelectedCountry] = React.useState<Country | null>(null);
 
 <SgCombobox<Country>
@@ -472,7 +472,7 @@ export default function SgComboboxPage() {
               </div>
             </div>
           </div>
-          <CodeBlockBase
+          <sgCodeBlockBase
             code={`const [selectedId, setSelectedId] = React.useState<string | number | null>(null);
 const [selectedControlled, setSelectedControlled] = React.useState<Country | null>(null);
 const selectedByValue = COUNTRIES.find((item) => String(item.id) === String(selectedId ?? "")) ?? null;
@@ -546,7 +546,7 @@ const selectedByValue = COUNTRIES.find((item) => String(item.id) === String(sele
               {selectedAsync ? `Selected: ${selectedAsync.description} (${selectedAsync.code})` : "No item selected"}
             </div>
           </div>
-          <CodeBlockBase
+          <sgCodeBlockBase
             code={`const source = async () => {
   await new Promise((r) => setTimeout(r, 300));
   return COUNTRIES;
@@ -608,7 +608,7 @@ const [selectedAsync, setSelectedAsync] = React.useState<Country | null>(null);
               })}
             />
           </div>
-          <CodeBlockBase
+          <sgCodeBlockBase
             code={`import React from "react";
 import { SgButton, SgCombobox } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";

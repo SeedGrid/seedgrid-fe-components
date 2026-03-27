@@ -10,7 +10,7 @@ import {
   type SgSevenSegmentDigitPalette,
 } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import CodeBlockBase from "../../CodeBlockBase";
+import sgCodeBlockBase from "../../CodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
@@ -395,7 +395,7 @@ export default function SgSevenSegmentDigitShowcase() {
               </div>
             </div>
           </div>
-          <CodeBlockBase code={BASIC_CODE} />
+          <sgCodeBlockBase code={BASIC_CODE} />
         </Section>
 
         <Section title={texts.section2Title} description={texts.section2Description}>
@@ -408,7 +408,7 @@ export default function SgSevenSegmentDigitShowcase() {
             />
             <SgButton size="sm" onClick={nextHex}>Next char</SgButton>
           </div>
-          <CodeBlockBase code={HEX_CODE} />
+          <sgCodeBlockBase code={HEX_CODE} />
         </Section>
 
         <Section title={texts.section3Title} description={texts.section3Description}>
@@ -434,7 +434,7 @@ export default function SgSevenSegmentDigitShowcase() {
               <SgSevenSegmentDigit value="8" palette="white" />
             </div>
           </SgGrid>
-          <CodeBlockBase code={THEMES_CODE} />
+          <sgCodeBlockBase code={THEMES_CODE} />
         </Section>
 
         <Section title={texts.section4Title} description={texts.section4Description}>
@@ -452,7 +452,7 @@ export default function SgSevenSegmentDigitShowcase() {
               <SgSevenSegmentDigit value="5" size={148} thickness={18} />
             </div>
           </SgGrid>
-          <CodeBlockBase code={SIZE_CODE} />
+          <sgCodeBlockBase code={SIZE_CODE} />
         </Section>
 
         <Section title={texts.section5Title} description={texts.section5Description}>
@@ -469,7 +469,7 @@ export default function SgSevenSegmentDigitShowcase() {
             </div>
             <SgButton size="sm" onClick={() => setSeconds((prev) => prev + 1)}>+1 second</SgButton>
           </div>
-          <CodeBlockBase code={CLOCK_CODE} />
+          <sgCodeBlockBase code={CLOCK_CODE} />
         </Section>
 
         <Section title={texts.section6Title} description={texts.section6Description}>

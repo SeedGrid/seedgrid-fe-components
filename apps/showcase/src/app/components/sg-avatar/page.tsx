@@ -4,7 +4,7 @@ import React from "react";
 import { Camera, User, Users } from "lucide-react";
 import { SgAvatar, SgAvatarGroup } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import CodeBlockBase from "../CodeBlockBase";
+import sgCodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
@@ -119,7 +119,7 @@ function Row(props: { children: React.ReactNode }) {
 }
 
 function CodeBlock(props: { code: string }) {
-  return <CodeBlockBase code={props.code} />;
+  return <sgCodeBlockBase code={props.code} />;
 }
 
 const EXAMPLE_BASIC_CODE = `import React from "react";

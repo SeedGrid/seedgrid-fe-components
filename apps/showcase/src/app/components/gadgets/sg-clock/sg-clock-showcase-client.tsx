@@ -11,7 +11,7 @@ import {
 } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import { t, useShowcaseI18n } from "../../../../i18n";
-import CodeBlockBase from "../../CodeBlockBase";
+import sgCodeBlockBase from "../../CodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
@@ -60,7 +60,7 @@ function RollerShowcase(props: { timezone: string; initialServerTime: string }) 
         />
       </div>
 
-      <CodeBlockBase
+      <sgCodeBlockBase
         code={`import * as React from "react";
 import {
   SgClock,
@@ -134,7 +134,7 @@ function FlipShowcase(props: { timezone: string; initialServerTime: string }) {
         />
       </div>
 
-      <CodeBlockBase
+      <sgCodeBlockBase
         code={`import * as React from "react";
 import {
   SgClock,
@@ -313,7 +313,7 @@ function DigitalStyleShowcase(props: { initialServerTime: string; style: ExtraDi
         </div>
       </div>
 
-      <CodeBlockBase code={buildExtraStyleCode(props.style)} />
+      <sgCodeBlockBase code={buildExtraStyleCode(props.style)} />
     </div>
   );
 }
@@ -491,7 +491,7 @@ export function SgClockShowcaseClient({ initialServerTime }: { initialServerTime
             </div>
 
             <div className="mt-6">
-              <CodeBlockBase
+              <sgCodeBlockBase
                 code={`import * as React from "react";
 import {
   SgClock,
@@ -583,7 +583,7 @@ export function AnalogExample(props: { initialServerTime: string }) {
             </div>
 
             <div className="mt-6">
-              <CodeBlockBase
+              <sgCodeBlockBase
                 code={`import { SgClock } from "@seedgrid/fe-components";
 
 export function InlineThemeExample(props: { initialServerTime: string }) {
@@ -633,7 +633,7 @@ export function InlineThemeExample(props: { initialServerTime: string }) {
               <SgClock clockStyle="digital" size="lg" initialServerTime={initialServerTime} timezone={timezone} format={format} digitalStyle="default" />
             </div>
             <div className="mt-6">
-              <CodeBlockBase
+              <sgCodeBlockBase
                 code={`import * as React from "react";
 import {
   SgClock,
@@ -702,7 +702,7 @@ export function DigitalExample(props: { initialServerTime: string }) {
               <SgClock clockStyle="analog" size={220} initialServerTime={initialServerTime} themeId={themeId} timezone={timezone} showSeconds={false} />
             </div>
             <div className="mt-6">
-              <CodeBlockBase
+              <sgCodeBlockBase
                 code={`import * as React from "react";
 import {
   SgClock,

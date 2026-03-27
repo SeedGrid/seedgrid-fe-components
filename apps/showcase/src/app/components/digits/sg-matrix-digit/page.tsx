@@ -9,7 +9,7 @@ import {
   SgSlider,
 } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import CodeBlockBase from "../../CodeBlockBase";
+import sgCodeBlockBase from "../../CodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
@@ -291,7 +291,7 @@ export default function SgMatrixDigitShowcase() {
               <SgButton size="sm" severity="info" onClick={randomDigit}>Random</SgButton>
             </div>
           </div>
-          <CodeBlockBase code={BASIC_CODE} />
+          <sgCodeBlockBase code={BASIC_CODE} />
         </Section>
 
         <Section title={texts.section2Title} description={texts.section2Description}>
@@ -306,7 +306,7 @@ export default function SgMatrixDigitShowcase() {
             />
             <SgButton size="sm" onClick={nextMessage}>Change text</SgButton>
           </div>
-          <CodeBlockBase code={TEXT_CODE} />
+          <sgCodeBlockBase code={TEXT_CODE} />
         </Section>
 
         <Section title={texts.section3Title} description={texts.section3Description}>
@@ -324,7 +324,7 @@ export default function SgMatrixDigitShowcase() {
               <SgMatrixDigit value="SG" color="#fb923c" backgroundColor="#101826" />
             </div>
           </SgGrid>
-          <CodeBlockBase code={COLOR_CODE} />
+          <sgCodeBlockBase code={COLOR_CODE} />
         </Section>
 
         <Section title={texts.section4Title} description={texts.section4Description}>
@@ -342,7 +342,7 @@ export default function SgMatrixDigitShowcase() {
               <SgMatrixDigit value="123" dotSize={13} gap={4} charGap={10} />
             </div>
           </SgGrid>
-          <CodeBlockBase code={SIZE_CODE} />
+          <sgCodeBlockBase code={SIZE_CODE} />
         </Section>
 
         <Section title={texts.section5Title} description={texts.section5Description}>

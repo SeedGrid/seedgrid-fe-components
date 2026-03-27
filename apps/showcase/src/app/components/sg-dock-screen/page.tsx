@@ -4,7 +4,7 @@ import React from "react";
 import { SgDockScreen, SgDockZone, SgToolBar, SgToolbarIconButton } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import { ClipboardList, Home, LayoutGrid, Search, Settings, Users } from "lucide-react";
-import CodeBlockBase from "../CodeBlockBase";
+import sgCodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
@@ -259,7 +259,7 @@ export default function SgDockScreenPage() {
               <div className="pointer-events-none text-sm text-muted-foreground">Area central livre</div>
             </SgDockZone>
           </SgDockScreen>
-          <CodeBlockBase code={DOCK_SCREEN_BASIC_CODE} />
+          <sgCodeBlockBase code={DOCK_SCREEN_BASIC_CODE} />
         </Section>
 
         <Section title={texts.section2Title} description={texts.section2Description}>

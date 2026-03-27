@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { t, useShowcaseI18n } from "../i18n";
-import CodeBlockBase from "./components/CodeBlockBase";
+import SgCodeBlockBase from "./components/CodeBlockBase";
 
 const COMPONENTS = [
   {
@@ -137,7 +137,7 @@ export default function HomePage() {
             control: <code className="rounded bg-muted px-1">control</code>
           })}
         </p>
-        <CodeBlockBase code={`import { useForm } from "react-hook-form";
+        <SgCodeBlockBase code={`import { useForm } from "react-hook-form";
 import { SgInputText, SgInputEmail } from "@seedgrid/fe-components";
 
 const { register, handleSubmit } = useForm({
@@ -174,7 +174,7 @@ const { register, handleSubmit } = useForm({
         <p className="mt-2 text-sm text-muted-foreground">
           {t(i18n, "showcase.home.i18n.p2")}
         </p>
-        <CodeBlockBase code={`import { SgComponentsI18nProvider } from "@seedgrid/fe-components";
+        <SgCodeBlockBase code={`import { SgComponentsI18nProvider } from "@seedgrid/fe-components";
 
 const messagesEn = {
   "components.inputs.required": "Required field.",
@@ -195,7 +195,7 @@ export default function RootLayout({ children }) {
         <p className="mt-3 text-sm text-muted-foreground">
           {t(i18n, "showcase.home.i18n.p3")}
         </p>
-        <CodeBlockBase code={`import { setComponentsI18n } from "@seedgrid/fe-components";
+        <SgCodeBlockBase code={`import { setComponentsI18n } from "@seedgrid/fe-components";
 
 setComponentsI18n({
   locale: "en-US",

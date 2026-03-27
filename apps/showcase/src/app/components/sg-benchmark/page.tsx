@@ -3,7 +3,7 @@
 import React from "react";
 import { SgInputText } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import CodeBlockBase from "../CodeBlockBase";
+import sgCodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
@@ -190,7 +190,7 @@ function UncontrolledSgBenchmark() {
         <div>
           <div className="text-sm font-medium text-foreground/80">Fonte</div>
           <div className="mt-2">
-            <CodeBlockBase code={code} />
+            <sgCodeBlockBase code={code} />
           </div>
         </div>
       </div>
@@ -312,7 +312,7 @@ function UncontrolledNativeBenchmark() {
         <div>
           <div className="text-sm font-medium text-foreground/80">Fonte</div>
           <div className="mt-2">
-            <CodeBlockBase code={code} />
+            <sgCodeBlockBase code={code} />
           </div>
         </div>
       </div>

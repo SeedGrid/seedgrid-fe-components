@@ -10,7 +10,7 @@ import {
   type SgDiscardDigitHandle,
 } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import CodeBlockBase from "../../CodeBlockBase";
+import sgCodeBlockBase from "../../CodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
@@ -519,7 +519,7 @@ export default function SgDiscardDigitShowcase() {
               <SgButton size="sm" severity="secondary" onClick={removeSheet}>{texts.section1PreviousButton}</SgButton>
             </div>
           </div>
-          <CodeBlockBase code={BASIC_CODE} />
+          <sgCodeBlockBase code={BASIC_CODE} />
         </Section>
 
         <Section title={texts.section2Title} description={texts.section2Description}>
@@ -533,7 +533,7 @@ export default function SgDiscardDigitShowcase() {
             />
             <SgButton size="sm" onClick={nextPage}>{texts.section2DiscardButton}</SgButton>
           </div>
-          <CodeBlockBase code={PAGES_CODE} />
+          <sgCodeBlockBase code={PAGES_CODE} />
         </Section>
 
         <Section title={texts.section3Title} description={texts.section3Description}>
@@ -566,7 +566,7 @@ export default function SgDiscardDigitShowcase() {
               />
             </div>
           </SgGrid>
-          <CodeBlockBase code={THEMES_CODE} />
+          <sgCodeBlockBase code={THEMES_CODE} />
         </Section>
 
         <Section title={texts.section4Title} description={texts.section4Description}>
@@ -592,7 +592,7 @@ export default function SgDiscardDigitShowcase() {
               />
             </div>
           </SgGrid>
-          <CodeBlockBase code={FONT_CODE} />
+          <sgCodeBlockBase code={FONT_CODE} />
         </Section>
 
         <Section title={texts.section5Title} description={texts.section5Description}>
@@ -610,7 +610,7 @@ export default function SgDiscardDigitShowcase() {
               {running ? texts.section5StopButton : texts.section5StartButton}
             </SgButton>
           </div>
-          <CodeBlockBase code={AUTO_CODE} />
+          <sgCodeBlockBase code={AUTO_CODE} />
         </Section>
 
         <Section title={texts.section6Title} description={texts.section6Description}>
@@ -637,7 +637,7 @@ export default function SgDiscardDigitShowcase() {
               </div>
             </div>
           </div>
-          <CodeBlockBase code={PAGINATION_CODE} />
+          <sgCodeBlockBase code={PAGINATION_CODE} />
         </Section>
 
         <Section title={texts.section7Title} description={texts.section7Description}>

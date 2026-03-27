@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useSgTheme } from "@seedgrid/fe-theme";
-import CodeBlockBase from "../components/CodeBlockBase";
+import sgCodeBlockBase from "../components/CodeBlockBase";
 import I18NReady from "../components/I18NReady";
 import { useShowcaseI18n, type ShowcaseLocale } from "../../i18n";
 
@@ -221,7 +221,7 @@ function Section({ title, description, children }: { title: string; description?
 }
 
 function CodeBlock({ code }: { code: string }) {
-  return <CodeBlockBase code={code} />;
+  return <sgCodeBlockBase code={code} />;
 }
 
 function ColorSwatch({ varName, label }: { varName: string; label: string }) {

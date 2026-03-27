@@ -3,7 +3,7 @@
 import * as React from "react";
 import { SgButton, SgRoller3DDigit } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import CodeBlockBase from "../../CodeBlockBase";
+import sgCodeBlockBase from "../../CodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
@@ -361,7 +361,7 @@ export default function SgRoller3DDigitShowcase() {
               <SgButton onClick={prevDigit} size="sm" severity="secondary">Previous (-1)</SgButton>
             </div>
           </div>
-          <CodeBlockBase code={BASIC_CODE} />
+          <sgCodeBlockBase code={BASIC_CODE} />
         </Section>
 
         <Section title={texts.section2Title} description={texts.section2Description}>
@@ -369,7 +369,7 @@ export default function SgRoller3DDigitShowcase() {
             <SgRoller3DDigit value={minuteVal} items={MINUTES} fontSize={22} />
             <SgButton onClick={nextMinute} size="sm">+1 minuto</SgButton>
           </div>
-          <CodeBlockBase code={PADDED_CODE} />
+          <sgCodeBlockBase code={PADDED_CODE} />
         </Section>
 
         <Section title={texts.section3Title} description={texts.section3Description}>
@@ -377,7 +377,7 @@ export default function SgRoller3DDigitShowcase() {
             <SgRoller3DDigit value={letter} items={ALPHA} fontSize={32} />
             <SgButton onClick={nextLetter} size="sm">Proxima letra</SgButton>
           </div>
-          <CodeBlockBase code={ALPHA_CODE} />
+          <sgCodeBlockBase code={ALPHA_CODE} />
         </Section>
 
         <Section
@@ -385,7 +385,7 @@ export default function SgRoller3DDigitShowcase() {
           description={texts.section4Description}
         >
           <NameAnimator />
-          <CodeBlockBase code={NAME_CODE} />
+          <sgCodeBlockBase code={NAME_CODE} />
         </Section>
 
         <Section title={texts.section5Title} description={texts.section5Description}>
@@ -397,7 +397,7 @@ export default function SgRoller3DDigitShowcase() {
               </div>
             ))}
           </div>
-          <CodeBlockBase code={SIZE_CODE} />
+          <sgCodeBlockBase code={SIZE_CODE} />
         </Section>
 
         <Section title={texts.section6Title} description={texts.section6Description}>

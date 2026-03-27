@@ -4,7 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { SgCarousel, SgGrid } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import CodeBlockBase from "../CodeBlockBase";
+import sgCodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import { useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
@@ -28,7 +28,7 @@ function Section(props: {
 }
 
 function CodeBlock(props: { code: string }) {
-  return <CodeBlockBase code={props.code} />;
+  return <sgCodeBlockBase code={props.code} />;
 }
 
 // Sample items for the carousels (picsum.photos)

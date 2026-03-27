@@ -3,7 +3,7 @@
 import React from "react";
 import { SgGrid, SgMainPanel, SgPanel, SgStack } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import CodeBlockBase from "../CodeBlockBase";
+import sgCodeBlockBase from "../CodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
@@ -237,7 +237,7 @@ export default function SgPanelPage() {
         </SgPanel>
 
         <SgStack className="mt-6">
-          <CodeBlockBase
+          <sgCodeBlockBase
             code={`<SgPanel className="h-[430px] rounded-xl bg-muted/30" padding={12}>
   <SgMainPanel gap={8} className="h-full w-full rounded-lg bg-background p-3">
     <SgPanel align="top" height={12} padding={10} className="rounded-md">
@@ -300,7 +300,7 @@ export default function SgPanelPage() {
         </SgGrid>
 
         <SgStack className="mt-6">
-          <CodeBlockBase
+          <sgCodeBlockBase
             code={`<SgGrid columns={{ base: 1, md: 4 }} gap={8} rowHeight={90} dense>
   <SgPanel padding={10} className="rounded-md">Item 1</SgPanel>
   <SgPanel span={2} padding={10} className="rounded-md">
@@ -333,7 +333,7 @@ export default function SgPanelPage() {
         </SgGrid>
 
         <SgStack className="mt-6">
-          <CodeBlockBase
+          <sgCodeBlockBase
             code={`<SgGrid columns={{ base: 1, md: 3 }} gap={4}>
   <SgPanel borderStyle="none" padding={12} className="rounded-lg bg-muted/50">
     children + borderStyle="none"
@@ -400,7 +400,7 @@ export default function SgPanelPage() {
         </SgGrid>
 
         <SgStack className="mt-6">
-          <CodeBlockBase
+          <sgCodeBlockBase
             code={`<SgGrid columns={{ base: 1, md: 2 }} gap={4}>
   <SgPanel scrollable padding={10} className="h-48 rounded-lg">
     <SgStack gap={6}>
@@ -469,7 +469,7 @@ export default function SgPanelPage() {
         </SgStack>
 
         <SgStack className="mt-6">
-          <CodeBlockBase
+          <sgCodeBlockBase
             code={`<SgStack gap={10}>
   <SgPanel className="h-[260px] rounded-xl bg-muted/30" padding={10}>
     <SgMainPanel gap={8} className="h-full rounded-lg bg-background p-3">
