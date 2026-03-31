@@ -26,45 +26,9 @@ export function SgScreen(props: Readonly<SgScreenProps>) {
     children,
     ...rest
   } = props;
-  const ref = React.useRef<HTMLDivElement>(null);
-  const [measuredSize, setMeasuredSize] = React.useState<{
-    width?: number;
-    height?: number;
-  }>({});
-
-  React.useLayoutEffect(() => {
-    if (!fullscreen) {
-      setMeasuredSize({});
-      return;
-    }
-
-    const element = ref.current;
-    const parent = element?.parentElement;
-
-    if (!element || !parent) return;
-
-    const update = () => {
-      setMeasuredSize({
-        width: parent.clientWidth || undefined,
-        height: parent.clientHeight || undefined
-      });
-    };
-
-    update();
-
-    const observer = new ResizeObserver(update);
-    observer.observe(parent);
-    window.addEventListener("resize", update);
-
-    return () => {
-      observer.disconnect();
-      window.removeEventListener("resize", update);
-    };
-  }, [fullscreen]);
 
   return (
     <div
-      ref={ref}
       className={cn(
         "relative box-border flex flex-1 self-stretch min-h-0 min-w-0 max-h-full max-w-full overflow-hidden",
         className
@@ -73,13 +37,13 @@ export function SgScreen(props: Readonly<SgScreenProps>) {
         ...style,
         ...(width !== undefined
           ? { width: toCssSpace(width) }
-          : fullscreen && measuredSize.width !== undefined
-            ? { width: `${measuredSize.width}px` }
+          : fullscreen
+            ? { width: "100%" }
             : null),
         ...(height !== undefined
           ? { height: toCssSpace(height) }
-          : fullscreen && measuredSize.height !== undefined
-            ? { height: `${measuredSize.height}px` }
+          : fullscreen
+            ? { height: "100dvh" }
             : null),
         padding: toCssSpace(padding)
       }}
