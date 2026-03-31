@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import React from "react";
+import { createPortal } from "react-dom";
 import { ChevronDown } from "lucide-react";
 import { Controller } from "react-hook-form";
 import type { ControllerFieldState, ControllerRenderProps, FieldValues } from "react-hook-form";
@@ -30,6 +31,7 @@ export type SgComboboxProps<T = SgAutocompleteItem> = SgComboboxBaseProps & {
   openOnFocus?: boolean;
   onSelect?: (value: T) => void;
   renderItem?: (item: SgAutocompleteItem, isActive: boolean) => React.ReactNode;
+  renderValue?: (item: SgAutocompleteItem | null) => React.ReactNode;
   renderGroupHeader?: (group: string) => React.ReactNode;
   renderFooter?: (query: string, hasResults: boolean) => React.ReactNode;
   itemTooltip?: (item: SgAutocompleteItem) => React.ReactNode;
@@ -107,6 +109,7 @@ function SgComboboxBase<T = SgAutocompleteItem>(props: Readonly<SgComboboxProps<
     openOnFocus = false,
     onSelect,
     renderItem,
+    renderValue,
     renderGroupHeader,
     renderFooter,
     itemTooltip,
@@ -123,6 +126,8 @@ function SgComboboxBase<T = SgAutocompleteItem>(props: Readonly<SgComboboxProps<
   const isControlled = value !== undefined;
 
   const wrapperRef = React.useRef<HTMLDivElement | null>(null);
+  const inputRef = React.useRef<HTMLInputElement | null>(null);
+  const dropdownRef = React.useRef<HTMLDivElement | null>(null);
   const ignoreBlurRef = React.useRef(false);
   const requestIdRef = React.useRef(0);
   const typeAheadRef = React.useRef<{ buffer: string; ts: number }>({
@@ -136,6 +141,7 @@ function SgComboboxBase<T = SgAutocompleteItem>(props: Readonly<SgComboboxProps<
   const [activeIndex, setActiveIndex] = React.useState(-1);
   const [internalValue, setInternalValue] = React.useState<ComboboxValue>(null);
   const [lastSelectedLabel, setLastSelectedLabel] = React.useState("");
+  const [dropdownStyle, setDropdownStyle] = React.useState<React.CSSProperties>({});
   const resolvedBorderRadius = React.useMemo(() => {
     if (borderRadius === undefined) return undefined;
     return typeof borderRadius === "number" ? `${borderRadius}px` : borderRadius;
@@ -227,6 +233,16 @@ function SgComboboxBase<T = SgAutocompleteItem>(props: Readonly<SgComboboxProps<
     resolvedValue == null || resolvedValue === ""
       ? ""
       : selectedEntry?.item.label ?? lastSelectedLabel;
+  const selectedVisualItem = React.useMemo<SgAutocompleteItem | null>(() => {
+    if (selectedEntry?.item) return selectedEntry.item;
+    if (resolvedValue == null || resolvedValue === "") return null;
+    if (!lastSelectedLabel) return null;
+
+    return {
+      id: resolvedValue,
+      label: lastSelectedLabel
+    };
+  }, [lastSelectedLabel, resolvedValue, selectedEntry]);
 
   const setSelectedValue = React.useCallback(
     (nextValue: ComboboxValue) => {
@@ -249,6 +265,22 @@ function SgComboboxBase<T = SgAutocompleteItem>(props: Readonly<SgComboboxProps<
     setOpen(true);
     void refreshFromSource();
   }, [isDisabled, refreshFromSource]);
+
+  const syncDropdownPosition = React.useCallback(() => {
+    const anchor = wrapperRef.current?.querySelector("input") ?? inputRef.current ?? wrapperRef.current;
+    if (!anchor) return;
+
+    const rect = anchor.getBoundingClientRect();
+    setDropdownStyle({
+      position: "fixed",
+      top: rect.bottom + 4,
+      left: rect.left,
+      minWidth: rect.width,
+      width: "max-content",
+      maxWidth: "min(32rem, calc(100vw - 24px))",
+      borderRadius: resolvedBorderRadius
+    });
+  }, [resolvedBorderRadius]);
 
   const selectIndex = React.useCallback(
     (index: number) => {
@@ -313,12 +345,31 @@ function SgComboboxBase<T = SgAutocompleteItem>(props: Readonly<SgComboboxProps<
 
     const handleOutside = (event: MouseEvent) => {
       if (wrapperRef.current?.contains(event.target as Node)) return;
+      if (dropdownRef.current?.contains(event.target as Node)) return;
       closeDropdown();
     };
 
     document.addEventListener("mousedown", handleOutside);
     return () => document.removeEventListener("mousedown", handleOutside);
   }, [closeDropdown, open]);
+
+  React.useEffect(() => {
+    if (!open) return;
+
+    syncDropdownPosition();
+
+    const handleLayoutChange = () => {
+      syncDropdownPosition();
+    };
+
+    window.addEventListener("resize", handleLayoutChange);
+    window.addEventListener("scroll", handleLayoutChange, true);
+
+    return () => {
+      window.removeEventListener("resize", handleLayoutChange);
+      window.removeEventListener("scroll", handleLayoutChange, true);
+    };
+  }, [open, syncDropdownPosition]);
 
   React.useEffect(() => {
     if (!open) return;
@@ -382,7 +433,15 @@ function SgComboboxBase<T = SgAutocompleteItem>(props: Readonly<SgComboboxProps<
         iconButtons={[dropdownButton]}
         inputProps={{
           ...inputProps,
+          ref: inputRef,
           value: displayedValue,
+          style: renderValue && displayedValue
+            ? {
+              ...(inputProps?.style ?? {}),
+              color: "transparent",
+              textShadow: "none"
+            }
+            : inputProps?.style,
           onMouseDown: (event) => {
             inputProps?.onMouseDown?.(event);
             if (isDisabled) return;
@@ -464,79 +523,88 @@ function SgComboboxBase<T = SgAutocompleteItem>(props: Readonly<SgComboboxProps<
           }
         }}
       />
-
-      {open && !isDisabled ? (
-        <div
-          className="absolute left-0 z-[1100] mt-1 min-w-full max-w-[min(32rem,calc(100vw-24px))] overflow-hidden rounded-md border border-border bg-[rgb(var(--sg-surface,var(--sg-bg)))] text-[rgb(var(--sg-text,var(--sg-fg)))] shadow-lg"
-          style={resolvedBorderRadius ? { borderRadius: resolvedBorderRadius, width: "max-content" } : { width: "max-content" }}
-        >
-          <div className="max-h-64 overflow-auto">
-            {loading ? (
-              <div className="px-3 py-2 text-sm text-muted-foreground">{loadingText}</div>
-            ) : entries.length === 0 ? (
-              <div className="px-3 py-2 text-sm text-muted-foreground">{emptyText}</div>
-            ) : groupedEntries ? (
-              groupedEntries.map(({ group, list }) => (
-                <div key={group || "default"} className="border-b border-border last:border-b-0">
-                  <div className="px-3 py-1 text-xs font-semibold text-muted-foreground">
-                    {renderGroupHeader ? renderGroupHeader(group) : group || " "}
-                  </div>
-                  {list.map(({ entry, index }) => {
-                    const isActive = activeIndex === index;
-                    return (
-                      <div
-                        key={entry.item.id}
-                        className={`group relative cursor-pointer px-3 py-2 text-sm ${isActive ? "bg-muted/60" : ""} ${entry.item.disabled ? "cursor-not-allowed opacity-50" : "hover:bg-muted/40"}`}
-                        onMouseEnter={() => setActiveIndex(index)}
-                        onMouseDown={(event) => {
-                          event.preventDefault();
-                          ignoreBlurRef.current = true;
-                        }}
-                        onClick={() => selectIndex(index)}
-                      >
-                        {renderItem ? renderItem(entry.item, isActive) : entry.item.label}
-                        {itemTooltip ? (
-                          <div className="pointer-events-none absolute left-full top-1/2 z-20 ml-2 -translate-y-1/2 rounded border border-border bg-[rgb(var(--sg-surface,var(--sg-bg)))] px-2 py-1 text-xs text-[rgb(var(--sg-text,var(--sg-fg)))] shadow-md opacity-0 transition-opacity group-hover:opacity-100">
-                            {itemTooltip(entry.item)}
-                          </div>
-                        ) : null}
-                      </div>
-                    );
-                  })}
-                </div>
-              ))
-            ) : (
-              entries.map((entry, index) => {
-                const isActive = activeIndex === index;
-                return (
-                  <div
-                    key={entry.item.id}
-                    className={`group relative cursor-pointer px-3 py-2 text-sm ${isActive ? "bg-muted/60" : ""} ${entry.item.disabled ? "cursor-not-allowed opacity-50" : "hover:bg-muted/40"}`}
-                    onMouseEnter={() => setActiveIndex(index)}
-                    onMouseDown={(event) => {
-                      event.preventDefault();
-                      ignoreBlurRef.current = true;
-                    }}
-                    onClick={() => selectIndex(index)}
-                  >
-                    {renderItem ? renderItem(entry.item, isActive) : entry.item.label}
-                    {itemTooltip ? (
-                      <div className="pointer-events-none absolute left-full top-1/2 z-20 ml-2 -translate-y-1/2 rounded border border-border bg-[rgb(var(--sg-surface,var(--sg-bg)))] px-2 py-1 text-xs text-[rgb(var(--sg-text,var(--sg-fg)))] shadow-md opacity-0 transition-opacity group-hover:opacity-100">
-                        {itemTooltip(entry.item)}
-                      </div>
-                    ) : null}
-                  </div>
-                );
-              })
-            )}
-          </div>
-          {renderFooter ? (
-            <div className="border-t border-border bg-[rgb(var(--sg-surface,var(--sg-bg)))] px-3 py-2">
-              {renderFooter("", entries.length > 0)}
-            </div>
-          ) : null}
+      {renderValue && displayedValue ? (
+        <div className="pointer-events-none absolute inset-y-0 left-3 right-10 z-10 flex items-center overflow-hidden">
+          {renderValue(selectedVisualItem)}
         </div>
       ) : null}
+
+      {open && !isDisabled && typeof document !== "undefined"
+        ? createPortal(
+          <div
+            ref={dropdownRef}
+            className="z-[1100] overflow-hidden rounded-md border border-border bg-[rgb(var(--sg-surface,var(--sg-bg)))] text-[rgb(var(--sg-text,var(--sg-fg)))] shadow-lg"
+            style={dropdownStyle}
+          >
+            <div className="max-h-64 overflow-auto">
+              {loading ? (
+                <div className="px-3 py-2 text-sm text-muted-foreground">{loadingText}</div>
+              ) : entries.length === 0 ? (
+                <div className="px-3 py-2 text-sm text-muted-foreground">{emptyText}</div>
+              ) : groupedEntries ? (
+                groupedEntries.map(({ group, list }) => (
+                  <div key={group || "default"} className="border-b border-border last:border-b-0">
+                    <div className="px-3 py-1 text-xs font-semibold text-muted-foreground">
+                      {renderGroupHeader ? renderGroupHeader(group) : group || " "}
+                    </div>
+                    {list.map(({ entry, index }) => {
+                      const isActive = activeIndex === index;
+                      return (
+                        <div
+                          key={entry.item.id}
+                          className={`group relative cursor-pointer px-3 py-2 text-sm ${isActive ? "bg-muted/60" : ""} ${entry.item.disabled ? "cursor-not-allowed opacity-50" : "hover:bg-muted/40"}`}
+                          onMouseEnter={() => setActiveIndex(index)}
+                          onMouseDown={(event) => {
+                            event.preventDefault();
+                            ignoreBlurRef.current = true;
+                          }}
+                          onClick={() => selectIndex(index)}
+                        >
+                          {renderItem ? renderItem(entry.item, isActive) : entry.item.label}
+                          {itemTooltip ? (
+                            <div className="pointer-events-none absolute left-full top-1/2 z-20 ml-2 -translate-y-1/2 rounded border border-border bg-[rgb(var(--sg-surface,var(--sg-bg)))] px-2 py-1 text-xs text-[rgb(var(--sg-text,var(--sg-fg)))] shadow-md opacity-0 transition-opacity group-hover:opacity-100">
+                              {itemTooltip(entry.item)}
+                            </div>
+                          ) : null}
+                        </div>
+                      );
+                    })}
+                  </div>
+                ))
+              ) : (
+                entries.map((entry, index) => {
+                  const isActive = activeIndex === index;
+                  return (
+                    <div
+                      key={entry.item.id}
+                      className={`group relative cursor-pointer px-3 py-2 text-sm ${isActive ? "bg-muted/60" : ""} ${entry.item.disabled ? "cursor-not-allowed opacity-50" : "hover:bg-muted/40"}`}
+                      onMouseEnter={() => setActiveIndex(index)}
+                      onMouseDown={(event) => {
+                        event.preventDefault();
+                        ignoreBlurRef.current = true;
+                      }}
+                      onClick={() => selectIndex(index)}
+                    >
+                      {renderItem ? renderItem(entry.item, isActive) : entry.item.label}
+                      {itemTooltip ? (
+                        <div className="pointer-events-none absolute left-full top-1/2 z-20 ml-2 -translate-y-1/2 rounded border border-border bg-[rgb(var(--sg-surface,var(--sg-bg)))] px-2 py-1 text-xs text-[rgb(var(--sg-text,var(--sg-fg)))] shadow-md opacity-0 transition-opacity group-hover:opacity-100">
+                          {itemTooltip(entry.item)}
+                        </div>
+                      ) : null}
+                    </div>
+                  );
+                })
+              )}
+            </div>
+            {renderFooter ? (
+              <div className="border-t border-border bg-[rgb(var(--sg-surface,var(--sg-bg)))] px-3 py-2">
+                {renderFooter("", entries.length > 0)}
+              </div>
+            ) : null}
+          </div>,
+          document.body
+        )
+        : null}
     </div>
   );
 }

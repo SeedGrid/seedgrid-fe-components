@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import React from "react";
+import { createPortal } from "react-dom";
 import { ChevronDown } from "lucide-react";
 import { Controller } from "react-hook-form";
 import type { ControllerFieldState, ControllerRenderProps, FieldValues } from "react-hook-form";
@@ -45,6 +46,7 @@ export type SgAutocompleteProps<T = SgAutocompleteItem> = Omit<SgInputTextProps,
   renderFooter?: (query: string, hasResults: boolean) => React.ReactNode;
   renderEmpty?: (query: string) => React.ReactNode;
   formatSelection?: (item: SgAutocompleteItem) => string;
+  renderValue?: (item: SgAutocompleteItem | null) => React.ReactNode;
   itemTooltip?: (item: SgAutocompleteItem) => React.ReactNode;
 } & RhfFieldProps;
 
@@ -124,6 +126,7 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
     renderFooter,
     renderEmpty,
     formatSelection,
+    renderValue,
     itemTooltip,
     inputProps,
     iconButtons,
@@ -142,9 +145,13 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
   const [loading, setLoading] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const wrapperRef = React.useRef<HTMLDivElement | null>(null);
+  const inputRef = React.useRef<HTMLInputElement | null>(null);
+  const dropdownRef = React.useRef<HTMLDivElement | null>(null);
   const ignoreBlurRef = React.useRef(false);
   const [activeIndex, setActiveIndex] = React.useState(-1);
   const [lastSelected, setLastSelected] = React.useState<string>("");
+  const [selectedItem, setSelectedItem] = React.useState<SgAutocompleteItem | null>(null);
+  const [dropdownStyle, setDropdownStyle] = React.useState<React.CSSProperties>({});
   const cacheRef = React.useRef<Map<string, { ts: number; items: SgAutocompleteItem[] }>>(new Map());
   const requestIdRef = React.useRef(0);
   const openRef = React.useRef(false);
@@ -158,6 +165,20 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
     if (value === undefined) return;
     setInputValue(value);
     setLastSelected(value);
+  }, [value]);
+
+  React.useEffect(() => {
+    if (!value) {
+      setSelectedItem(null);
+      return;
+    }
+
+    setSelectedItem((current) => {
+      if (current && (current.value === value || current.label === value)) {
+        return current;
+      }
+      return current;
+    });
   }, [value]);
 
   const toItem = React.useCallback(
@@ -232,6 +253,7 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
   const selectItem = (item: SgAutocompleteItem) => {
     if (item.disabled) return;
     const selection = formatSelection ? formatSelection(item) : item.label;
+    setSelectedItem(item);
     setInputValue(selection);
     onChange?.(selection);
     setLastSelected(selection);
@@ -245,6 +267,9 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
   };
 
   const handleInputChange = (next: string) => {
+    if (selectedItem && next !== (formatSelection ? formatSelection(selectedItem) : selectedItem.label)) {
+      setSelectedItem(null);
+    }
     setInputValue(next);
     onChange?.(next);
     if (next.length === 0) {
@@ -280,6 +305,10 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
   };
 
   const handleFocus = () => {
+    if (renderValue && selectedItem) {
+      const selection = formatSelection ? formatSelection(selectedItem) : selectedItem.label;
+      setInputValue(selection);
+    }
     if (openOnFocus) {
       setOpen(true);
       onOpenChange?.(true);
@@ -304,6 +333,22 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
       onOpenChange?.(false);
     }
   };
+
+  const syncDropdownPosition = React.useCallback(() => {
+    const anchor = wrapperRef.current?.querySelector("input") ?? inputRef.current ?? wrapperRef.current;
+    if (!anchor) return;
+
+    const rect = anchor.getBoundingClientRect();
+    setDropdownStyle({
+      position: "fixed",
+      top: rect.bottom + 4,
+      left: rect.left,
+      minWidth: rect.width,
+      width: "max-content",
+      maxWidth: "min(32rem, calc(100vw - 24px))",
+      borderRadius: resolvedBorderRadius
+    });
+  }, [resolvedBorderRadius]);
 
   const dropdownButton = showDropDownButton ? (
     <button
@@ -405,6 +450,42 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
     });
   };
 
+  React.useEffect(() => {
+    if (!open) return;
+
+    const handleOutside = (event: MouseEvent) => {
+      if (wrapperRef.current?.contains(event.target as Node)) return;
+      if (dropdownRef.current?.contains(event.target as Node)) return;
+      if (!allowCustomValue && lastSelected && inputValue !== lastSelected) {
+        setInputValue(lastSelected);
+        onChange?.(lastSelected);
+      }
+      setOpen(false);
+      onOpenChange?.(false);
+    };
+
+    document.addEventListener("mousedown", handleOutside);
+    return () => document.removeEventListener("mousedown", handleOutside);
+  }, [allowCustomValue, inputValue, lastSelected, onChange, onOpenChange, open]);
+
+  React.useEffect(() => {
+    if (!open) return;
+
+    syncDropdownPosition();
+
+    const handleLayoutChange = () => {
+      syncDropdownPosition();
+    };
+
+    window.addEventListener("resize", handleLayoutChange);
+    window.addEventListener("scroll", handleLayoutChange, true);
+
+    return () => {
+      window.removeEventListener("resize", handleLayoutChange);
+      window.removeEventListener("scroll", handleLayoutChange, true);
+    };
+  }, [open, syncDropdownPosition]);
+
   return (
     <div className="relative" ref={wrapperRef}>
       <SgInputText
@@ -415,11 +496,19 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
         iconButtons={mergedIconButtons}
         inputProps={{
           ...inputProps,
+          ref: inputRef,
           autoComplete: "off",
           autoCorrect: "off",
           autoCapitalize: "off",
           spellCheck: false,
           value: inputValue,
+          style: renderValue && selectedItem && !open
+            ? {
+              ...(inputProps?.style ?? {}),
+              color: "transparent",
+              textShadow: "none"
+            }
+            : inputProps?.style,
           onChange: (event) => handleInputChange(event.currentTarget.value),
           onBlur: (event) => {
             inputProps?.onBlur?.(event);
@@ -435,21 +524,30 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
           }
         }}
       />
-      {open && !(enabled === false || readOnly) ? (
-        <div
-          className="absolute left-0 right-0 z-30 mt-1 overflow-hidden rounded-md border border-border bg-[rgb(var(--sg-surface,var(--sg-bg)))] text-[rgb(var(--sg-text,var(--sg-fg)))] shadow-lg"
-          style={resolvedBorderRadius ? { borderRadius: resolvedBorderRadius } : undefined}
-        >
-          <div className="max-h-64 overflow-auto">
-            {listContent()}
-          </div>
-          {renderFooter ? (
-            <div className="border-t border-border bg-[rgb(var(--sg-surface,var(--sg-bg)))] px-3 py-2">
-              {renderFooter(inputValue, items.length > 0)}
-            </div>
-          ) : null}
+      {renderValue && selectedItem && !open ? (
+        <div className="pointer-events-none absolute inset-y-0 left-3 right-10 z-10 flex items-center overflow-hidden">
+          {renderValue(selectedItem)}
         </div>
       ) : null}
+      {open && !(enabled === false || readOnly) && typeof document !== "undefined"
+        ? createPortal(
+          <div
+            ref={dropdownRef}
+            className="z-[1100] overflow-hidden rounded-md border border-border bg-[rgb(var(--sg-surface,var(--sg-bg)))] text-[rgb(var(--sg-text,var(--sg-fg)))] shadow-lg"
+            style={dropdownStyle}
+          >
+            <div className="max-h-64 overflow-auto">
+              {listContent()}
+            </div>
+            {renderFooter ? (
+              <div className="border-t border-border bg-[rgb(var(--sg-surface,var(--sg-bg)))] px-3 py-2">
+                {renderFooter(inputValue, items.length > 0)}
+              </div>
+            ) : null}
+          </div>,
+          document.body
+        )
+        : null}
     </div>
   );
 }
