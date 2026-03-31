@@ -372,7 +372,7 @@ function SgComboboxBase<T = SgAutocompleteItem>(props: Readonly<SgComboboxProps<
   );
 
   return (
-    <div className="relative" ref={wrapperRef}>
+    <div className={open ? "relative z-[1100]" : "relative"} ref={wrapperRef}>
       <SgInputText
         {...rest}
         enabled={enabled}
@@ -467,8 +467,8 @@ function SgComboboxBase<T = SgAutocompleteItem>(props: Readonly<SgComboboxProps<
 
       {open && !isDisabled ? (
         <div
-          className="absolute left-0 right-0 z-30 mt-1 overflow-hidden rounded-md border border-border bg-[rgb(var(--sg-surface,var(--sg-bg)))] text-[rgb(var(--sg-text,var(--sg-fg)))] shadow-lg"
-          style={resolvedBorderRadius ? { borderRadius: resolvedBorderRadius } : undefined}
+          className="absolute left-0 z-[1100] mt-1 min-w-full max-w-[min(32rem,calc(100vw-24px))] overflow-hidden rounded-md border border-border bg-[rgb(var(--sg-surface,var(--sg-bg)))] text-[rgb(var(--sg-text,var(--sg-fg)))] shadow-lg"
+          style={resolvedBorderRadius ? { borderRadius: resolvedBorderRadius, width: "max-content" } : { width: "max-content" }}
         >
           <div className="max-h-64 overflow-auto">
             {loading ? (
