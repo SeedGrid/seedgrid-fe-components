@@ -14,9 +14,9 @@ const ROWS = [
 ];
 
 const COLUMNS = [
-  { field: "code", header: "Code", sortable: true },
-  { field: "name", header: "Name", sortable: true },
-  { field: "category", header: "Category", sortable: true },
+  { field: "code", header: "Code", sortable: true, hideable: false, reorderable: false, width: 110 },
+  { field: "name", header: "Name", sortable: true, minWidth: 180 },
+  { field: "category", header: "Category", sortable: true, hidden: true },
   { field: "price", header: "Price", sortable: true, align: "right" },
   { field: "stock", header: "Stock", sortable: true, align: "right" }
 ];
@@ -29,6 +29,9 @@ export default function App() {
   const [columnFilters, setColumnFilters] = React.useState(false);
   const [stripedRows, setStripedRows] = React.useState(true);
   const [showGridlines, setShowGridlines] = React.useState(true);
+  const [hoverableRows, setHoverableRows] = React.useState(true);
+  const [showColumnManager, setShowColumnManager] = React.useState(true);
+  const [removableSort, setRemovableSort] = React.useState(true);
   const [loading, setLoading] = React.useState(false);
   const [data, setData] = React.useState(ROWS);
 
@@ -46,6 +49,9 @@ export default function App() {
         <label className="inline-flex items-center gap-2"><input type="checkbox" checked={columnFilters} onChange={(event) => setColumnFilters(event.target.checked)} /> showColumnFilters</label>
         <label className="inline-flex items-center gap-2"><input type="checkbox" checked={stripedRows} onChange={(event) => setStripedRows(event.target.checked)} /> stripedRows</label>
         <label className="inline-flex items-center gap-2"><input type="checkbox" checked={showGridlines} onChange={(event) => setShowGridlines(event.target.checked)} /> showGridlines</label>
+        <label className="inline-flex items-center gap-2"><input type="checkbox" checked={hoverableRows} onChange={(event) => setHoverableRows(event.target.checked)} /> hoverableRows</label>
+        <label className="inline-flex items-center gap-2"><input type="checkbox" checked={showColumnManager} onChange={(event) => setShowColumnManager(event.target.checked)} /> showColumnManager</label>
+        <label className="inline-flex items-center gap-2"><input type="checkbox" checked={removableSort} onChange={(event) => setRemovableSort(event.target.checked)} /> removableSort</label>
         <label className="inline-flex items-center gap-2"><input type="checkbox" checked={loading} onChange={(event) => setLoading(event.target.checked)} /> loading</label>
       </div>
 
@@ -70,6 +76,10 @@ export default function App() {
             showColumnFilters={columnFilters}
             stripedRows={stripedRows}
             showGridlines={showGridlines}
+            hoverableRows={hoverableRows}
+            showColumnManager={showColumnManager}
+            columnManagerLabel="Manage columns"
+            removableSort={removableSort}
             loading={loading}
             showClearFiltersButton
           />

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { Check, GripVertical, SlidersHorizontal } from "lucide-react";
 import { SgButton } from "../buttons/SgButton";
 import { SgGroupBox, type SgGroupBoxProps } from "../layout/SgGroupBox";
 import { t, useComponentsI18n } from "../i18n";
@@ -39,6 +40,7 @@ export type SgDatatableCellMeta<T extends SgDatatableRow> = {
 };
 
 export type SgDatatableColumn<T extends SgDatatableRow = SgDatatableRow> = {
+  columnId?: string;
   field?: string;
   header: React.ReactNode;
   body?: (rowData: T, meta: SgDatatableCellMeta<T>) => React.ReactNode;
@@ -55,6 +57,8 @@ export type SgDatatableColumn<T extends SgDatatableRow = SgDatatableRow> = {
   width?: number | string;
   minWidth?: number | string;
   hidden?: boolean;
+  hideable?: boolean;
+  reorderable?: boolean;
   className?: string;
   headerClassName?: string;
   bodyClassName?: string | ((rowData: T, rowIndex: number) => string | undefined);
@@ -110,6 +114,9 @@ export type SgDatatableProps<T extends SgDatatableRow = SgDatatableRow> = {
   tableClassName?: string;
   rowClassName?: string | ((rowData: T, rowIndex: number) => string | undefined);
   groupBoxProps?: Omit<Partial<SgGroupBoxProps>, "children" | "title"> & { title?: string };
+  showColumnManager?: boolean;
+  columnManagerLabel?: string;
+  columnManagerMaxHeight?: number | string;
 };
 
 function cn(...parts: Array<string | undefined | null | false>) {
@@ -216,6 +223,25 @@ function rowsAreEqual<T extends SgDatatableRow>(
   return getRowIdentity(rowA, dataKey) === getRowIdentity(rowB, dataKey);
 }
 
+function getColumnKey<T extends SgDatatableRow>(column: SgDatatableColumn<T>, index: number): string {
+  if (column.columnId?.trim()) return `columnId:${column.columnId.trim()}`;
+  if (column.field?.trim()) return `field:${column.field.trim()}`;
+  return `index:${index}`;
+}
+
+function moveItem<T>(list: T[], fromIndex: number, toIndex: number): T[] {
+  if (fromIndex === toIndex) return list;
+  if (fromIndex < 0 || fromIndex >= list.length) return list;
+  if (toIndex < 0 || toIndex >= list.length) return list;
+
+  const next = [...list];
+  const item = next[fromIndex];
+  if (item === undefined) return list;
+  next.splice(fromIndex, 1);
+  next.splice(toIndex, 0, item);
+  return next;
+}
+
 function resolveAlignmentClass(align: SgDatatableColumnAlign | undefined): string {
   if (align === "center") return "text-center";
   if (align === "right") return "text-right";
@@ -264,7 +290,10 @@ function SgDatatableBase<T extends SgDatatableRow>(
     style,
     tableClassName = "",
     rowClassName,
-    groupBoxProps = {}
+    groupBoxProps = {},
+    showColumnManager = true,
+    columnManagerLabel,
+    columnManagerMaxHeight = 320
   } = props;
 
   const isFirstControlled = first !== undefined;
@@ -281,6 +310,31 @@ function SgDatatableBase<T extends SgDatatableRow>(
   const [internalSelection, setInternalSelection] = React.useState<SgDatatableSelection<T>>(null);
   const [internalGlobalFilter, setInternalGlobalFilter] = React.useState<string>(globalFilter ?? "");
   const [internalFilters, setInternalFilters] = React.useState<Record<string, string>>(() => normalizeFilters(filters));
+
+  const columnManagerRef = React.useRef<HTMLDivElement | null>(null);
+  const [isColumnManagerOpen, setIsColumnManagerOpen] = React.useState(false);
+  const [draggingColumnKey, setDraggingColumnKey] = React.useState<string | null>(null);
+
+  const columnDescriptors = React.useMemo(
+    () =>
+      columns.map((column, index) => ({
+        key: getColumnKey(column, index),
+        column,
+        originalIndex: index
+      })),
+    [columns]
+  );
+
+  const [columnOrder, setColumnOrder] = React.useState<string[]>(() =>
+    columnDescriptors.map((item) => item.key)
+  );
+
+  const [hiddenColumnsMap, setHiddenColumnsMap] = React.useState<Record<string, boolean>>(() =>
+    columnDescriptors.reduce<Record<string, boolean>>((acc, item) => {
+      acc[item.key] = Boolean(item.column.hidden);
+      return acc;
+    }, {})
+  );
 
   React.useEffect(() => {
     if (!isFirstControlled) return;
@@ -316,9 +370,52 @@ function SgDatatableBase<T extends SgDatatableRow>(
     setInternalFilters(normalizeFilters(filters));
   }, [isFiltersControlled, filters]);
 
+  React.useEffect(() => {
+    const availableKeys = columnDescriptors.map((item) => item.key);
+
+    setColumnOrder((prev) => {
+      const kept = prev.filter((key) => availableKeys.includes(key));
+      const missing = availableKeys.filter((key) => !kept.includes(key));
+      return [...kept, ...missing];
+    });
+
+    setHiddenColumnsMap((prev) => {
+      const next: Record<string, boolean> = {};
+      for (const item of columnDescriptors) {
+        next[item.key] = prev[item.key] ?? Boolean(item.column.hidden);
+      }
+      return next;
+    });
+  }, [columnDescriptors]);
+
+  React.useEffect(() => {
+    if (!isColumnManagerOpen) return;
+
+    const handlePointerDown = (event: MouseEvent) => {
+      if (!columnManagerRef.current) return;
+      if (columnManagerRef.current.contains(event.target as Node)) return;
+      setIsColumnManagerOpen(false);
+    };
+
+    document.addEventListener("mousedown", handlePointerDown);
+    return () => document.removeEventListener("mousedown", handlePointerDown);
+  }, [isColumnManagerOpen]);
+
+  const orderedColumns = React.useMemo(() => {
+    const map = new Map(columnDescriptors.map((item) => [item.key, item] as const));
+    return columnOrder
+      .map((key) => map.get(key))
+      .filter((item): item is (typeof columnDescriptors)[number] => Boolean(item));
+  }, [columnDescriptors, columnOrder]);
+
   const visibleColumns = React.useMemo(
-    () => columns.filter((column) => !column.hidden),
-    [columns]
+    () => orderedColumns.filter((item) => !hiddenColumnsMap[item.key]).map((item) => item.column),
+    [orderedColumns, hiddenColumnsMap]
+  );
+
+  const visibleColumnCount = React.useMemo(
+    () => orderedColumns.filter((item) => !hiddenColumnsMap[item.key]).length,
+    [orderedColumns, hiddenColumnsMap]
   );
 
   const currentFirst = isFirstControlled ? Math.max(0, first ?? 0) : internalFirst;
@@ -590,6 +687,76 @@ function SgDatatableBase<T extends SgDatatableRow>(
     [selectionMode, currentSelection, dataKey, commitSelection]
   );
 
+  const resolvedColumnManagerLabel =
+    columnManagerLabel ??
+    resolveMessage(t(i18n, "components.datatable.columns"), "components.datatable.columns", "Colunas");
+
+  const restoreColumnsLabel = resolveMessage(
+    t(i18n, "components.datatable.restoreColumns"),
+    "components.datatable.restoreColumns",
+    "Restaurar padrão"
+  );
+
+  const showAllColumnsLabel = resolveMessage(
+    t(i18n, "components.datatable.showAllColumns"),
+    "components.datatable.showAllColumns",
+    "Mostrar todas"
+  );
+
+  const dragHandleLabel = resolveMessage(
+    t(i18n, "components.datatable.dragToReorder"),
+    "components.datatable.dragToReorder",
+    "Arrastar para reordenar"
+  );
+
+  const toggleColumnVisibility = React.useCallback(
+    (columnKey: string, forceVisible?: boolean) => {
+      setHiddenColumnsMap((prev) => {
+        const isCurrentlyHidden = Boolean(prev[columnKey]);
+        const willHide = forceVisible === undefined ? !isCurrentlyHidden : !forceVisible;
+
+        if (willHide && visibleColumnCount <= 1) {
+          return prev;
+        }
+
+        return {
+          ...prev,
+          [columnKey]: willHide
+        };
+      });
+    },
+    [visibleColumnCount]
+  );
+
+  const handleReorderColumn = React.useCallback((fromKey: string, toKey: string) => {
+    setColumnOrder((prev) => {
+      const fromIndex = prev.indexOf(fromKey);
+      const toIndex = prev.indexOf(toKey);
+      if (fromIndex < 0 || toIndex < 0) return prev;
+      return moveItem(prev, fromIndex, toIndex);
+    });
+  }, []);
+
+  const restoreDefaultColumns = React.useCallback(() => {
+    setColumnOrder(columnDescriptors.map((item) => item.key));
+    setHiddenColumnsMap(
+      columnDescriptors.reduce<Record<string, boolean>>((acc, item) => {
+        acc[item.key] = Boolean(item.column.hidden);
+        return acc;
+      }, {})
+    );
+  }, [columnDescriptors]);
+
+  const showAllColumns = React.useCallback(() => {
+    setHiddenColumnsMap((prev) => {
+      const next = { ...prev };
+      for (const item of columnDescriptors) {
+        next[item.key] = false;
+      }
+      return next;
+    });
+  }, [columnDescriptors]);
+
   const resolvedTitle = (groupBoxProps.title ?? title ?? "").trim() || " ";
 
   return (
@@ -615,7 +782,122 @@ function SgDatatableBase<T extends SgDatatableRow>(
             </div>
           ) : null}
 
-          <div className="relative">
+          <div className="relative" ref={columnManagerRef}>
+            {showColumnManager ? (
+              <div className="mb-2 flex items-center justify-start">
+                <button
+                  type="button"
+                  aria-label={resolvedColumnManagerLabel}
+                  title={resolvedColumnManagerLabel}
+                  onClick={() => setIsColumnManagerOpen((prev) => !prev)}
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-[rgb(var(--sg-border))] bg-[rgb(var(--sg-surface))] text-[rgb(var(--sg-primary-600))] shadow-sm transition hover:bg-[rgb(var(--sg-primary-50))] hover:text-[rgb(var(--sg-primary-700))]"
+                >
+                  <SlidersHorizontal size={18} />
+                </button>
+              </div>
+            ) : null}
+
+            {showColumnManager && isColumnManagerOpen ? (
+              <div className="absolute left-0 top-11 z-30 w-[300px] rounded-xl border border-[rgb(var(--sg-border))] bg-[rgb(var(--sg-surface))] shadow-xl">
+                <div className="flex items-center gap-2 border-b border-[rgb(var(--sg-border))] px-4 py-3">
+                  <SlidersHorizontal size={18} className="text-[rgb(var(--sg-primary-600))]" />
+                  <span className="text-sm font-semibold text-[rgb(var(--sg-text))]">{resolvedColumnManagerLabel}</span>
+                </div>
+
+                <div
+                  className="overflow-y-auto px-2 py-2"
+                  style={{ maxHeight: toCssSize(columnManagerMaxHeight) }}
+                >
+                  <div className="space-y-1">
+                    {orderedColumns.map((item) => {
+                      const isHidden = Boolean(hiddenColumnsMap[item.key]);
+                      const isHideable = item.column.hideable !== false;
+                      const isReorderable = item.column.reorderable !== false;
+                      const canHideThisColumn = isHideable && (!isHidden ? visibleColumnCount > 1 : true);
+                      const columnLabel =
+                        typeof item.column.header === "string" || typeof item.column.header === "number"
+                          ? String(item.column.header)
+                          : item.column.field ?? item.key;
+
+                      return (
+                        <div
+                          key={`manager-${item.key}`}
+                          draggable={isReorderable}
+                          onDragStart={() => setDraggingColumnKey(item.key)}
+                          onDragOver={(event) => {
+                            if (!isReorderable) return;
+                            event.preventDefault();
+                          }}
+                          onDrop={(event) => {
+                            event.preventDefault();
+                            if (!isReorderable) return;
+                            if (!draggingColumnKey || draggingColumnKey === item.key) return;
+                            handleReorderColumn(draggingColumnKey, item.key);
+                            setDraggingColumnKey(null);
+                          }}
+                          onDragEnd={() => setDraggingColumnKey(null)}
+                          className={cn(
+                            "flex items-center gap-3 rounded-md px-2 py-2",
+                            draggingColumnKey === item.key ? "opacity-60" : "",
+                            "hover:bg-[rgb(var(--sg-primary-50))]"
+                          )}
+                        >
+                          <button
+                            type="button"
+                            disabled={!canHideThisColumn}
+                            onClick={() => toggleColumnVisibility(item.key)}
+                            className={cn(
+                              "inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md border transition",
+                              !isHidden
+                                ? "border-[rgb(var(--sg-primary-600))] bg-[rgb(var(--sg-primary-600))] text-white"
+                                : "border-[rgb(var(--sg-border))] bg-[rgb(var(--sg-surface))] text-transparent",
+                              !canHideThisColumn ? "cursor-not-allowed opacity-50" : "hover:scale-[1.02]"
+                            )}
+                          >
+                            <Check size={14} />
+                          </button>
+
+                          <button
+                            type="button"
+                            disabled={!canHideThisColumn}
+                            onClick={() => toggleColumnVisibility(item.key)}
+                            className={cn(
+                              "flex-1 truncate text-left text-sm",
+                              isHidden
+                                ? "text-[rgb(var(--sg-muted))]"
+                                : "text-[rgb(var(--sg-text))]",
+                              !canHideThisColumn ? "cursor-not-allowed" : ""
+                            )}
+                          >
+                            {columnLabel}
+                          </button>
+
+                          <div
+                            className={cn(
+                              "inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-[rgb(var(--sg-muted))]",
+                              isReorderable ? "cursor-grab active:cursor-grabbing" : "opacity-40"
+                            )}
+                            title={dragHandleLabel}
+                          >
+                            <GripVertical size={16} />
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 border-t border-[rgb(var(--sg-border))] px-3 py-3">
+                  <SgButton size="sm" appearance="outline" onClick={restoreDefaultColumns}>
+                    {restoreColumnsLabel}
+                  </SgButton>
+                  <SgButton size="sm" appearance="outline" onClick={showAllColumns}>
+                    {showAllColumnsLabel}
+                  </SgButton>
+                </div>
+              </div>
+            ) : null}
+
             <div className="overflow-x-auto rounded-lg border border-[rgb(var(--sg-border))] bg-[rgb(var(--sg-surface))]">
               <table id={id} className={cn("min-w-full border-collapse text-sm", tableClassName)}>
                 <thead>
@@ -635,7 +917,7 @@ function SgDatatableBase<T extends SgDatatableRow>(
 
                       return (
                         <th
-                          key={`head-${column.field ?? columnIndex}`}
+                          key={`head-${column.columnId ?? column.field ?? columnIndex}`}
                           className={cn(
                             "px-3 py-2 font-semibold text-[rgb(var(--sg-text))]",
                             resolveAlignmentClass(column.align),
@@ -674,7 +956,7 @@ function SgDatatableBase<T extends SgDatatableRow>(
 
                         return (
                           <th
-                            key={`filter-${column.field ?? columnIndex}`}
+                            key={`filter-${column.columnId ?? column.field ?? columnIndex}`}
                             className={cn(
                               "px-3 py-2 align-top",
                               showGridlines ? "border-b border-r border-[rgb(var(--sg-border))] last:border-r-0" : "border-b border-[rgb(var(--sg-border))]"
@@ -768,7 +1050,7 @@ function SgDatatableBase<T extends SgDatatableRow>(
 
                             return (
                               <td
-                                key={`cell-${cellField ?? columnIndex}-${absoluteRowIndex}`}
+                                key={`cell-${column.columnId ?? cellField ?? columnIndex}-${absoluteRowIndex}`}
                                 className={cn(
                                   "px-3 py-2 text-[rgb(var(--sg-text))]",
                                   resolveAlignmentClass(column.align),
@@ -797,7 +1079,7 @@ function SgDatatableBase<T extends SgDatatableRow>(
 
                         return (
                           <td
-                            key={`foot-${column.field ?? columnIndex}`}
+                            key={`foot-${column.columnId ?? column.field ?? columnIndex}`}
                             className={cn(
                               "px-3 py-2 font-semibold text-[rgb(var(--sg-text))]",
                               resolveAlignmentClass(column.align),

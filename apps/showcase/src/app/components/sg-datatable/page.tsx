@@ -172,6 +172,66 @@ const TEMPLATE_COLUMNS: SgDatatableColumn<ProductRow>[] = [
   }
 ];
 
+const MANAGER_COLUMNS: SgDatatableColumn<ProductRow>[] = [
+  {
+    field: "code",
+    header: "Code",
+    sortable: true,
+    hideable: false,
+    reorderable: false,
+    width: 120,
+    headerClassName: "uppercase tracking-[0.18em] text-[11px]"
+  },
+  {
+    field: "name",
+    header: "Product",
+    sortable: true,
+    minWidth: 220,
+    body: (row) => (
+      <div className="space-y-0.5">
+        <div className="font-medium">{row.name}</div>
+        <div className="text-xs text-muted-foreground">{row.category}</div>
+      </div>
+    ),
+    bodyClassName: (row) => (row.status === "OUTOFSTOCK" ? "opacity-70" : undefined)
+  },
+  {
+    field: "category",
+    header: "Category",
+    sortable: true,
+    filter: true,
+    filterPlaceholder: "Filter category",
+    hidden: true
+  },
+  {
+    field: "status",
+    header: "Status",
+    sortable: true,
+    filter: true,
+    filterPlaceholder: "Filter status",
+    body: (row) => (
+      <span
+        className={
+          row.status === "INSTOCK"
+            ? "rounded px-2 py-1 text-xs font-semibold bg-emerald-100 text-emerald-700"
+            : row.status === "LOWSTOCK"
+              ? "rounded px-2 py-1 text-xs font-semibold bg-amber-100 text-amber-700"
+              : "rounded px-2 py-1 text-xs font-semibold bg-rose-100 text-rose-700"
+        }
+      >
+        {row.status}
+      </span>
+    )
+  },
+  {
+    field: "stock",
+    header: "Stock",
+    sortable: true,
+    align: "right",
+    bodyClassName: (row) => (row.stock < 10 ? "font-semibold text-amber-700" : undefined)
+  }
+];
+
 function buildDatatableProps(i18n: ShowcaseI18n): ShowcasePropRow[] {
   return [
     { prop: "id", type: "string", defaultValue: "-", description: t(i18n, "showcase.component.datatable.props.rows.id") },
@@ -189,18 +249,28 @@ function buildDatatableProps(i18n: ShowcaseI18n): ShowcasePropRow[] {
     { prop: "sortField", type: "string | null", defaultValue: "-", description: t(i18n, "showcase.component.datatable.props.rows.sortField") },
     { prop: "sortOrder", type: "1 | -1 | 0", defaultValue: "0", description: t(i18n, "showcase.component.datatable.props.rows.sortOrder") },
     { prop: "onSort", type: "(event) => void", defaultValue: "-", description: t(i18n, "showcase.component.datatable.props.rows.onSort") },
+    { prop: "removableSort", type: "boolean", defaultValue: "true", description: "Allows cycling back to unsorted state when clicking sortable headers repeatedly." },
     { prop: "selectionMode", type: "\"single\" | \"multiple\"", defaultValue: "-", description: t(i18n, "showcase.component.datatable.props.rows.selectionMode") },
     { prop: "selection", type: "T | T[] | null", defaultValue: "-", description: t(i18n, "showcase.component.datatable.props.rows.selection") },
     { prop: "onSelectionChange", type: "(selection) => void", defaultValue: "-", description: t(i18n, "showcase.component.datatable.props.rows.onSelectionChange") },
     { prop: "showGlobalFilter", type: "boolean", defaultValue: "false", description: t(i18n, "showcase.component.datatable.props.rows.showGlobalFilter") },
+    { prop: "globalFilter / onGlobalFilterChange / globalFilterPlaceholder", type: "string / callback / string", defaultValue: "- / - / i18n", description: "Controlled global search value and placeholder override." },
     { prop: "showColumnFilters", type: "boolean", defaultValue: "false", description: t(i18n, "showcase.component.datatable.props.rows.showColumnFilters") },
     { prop: "filters", type: "Record<string, string>", defaultValue: "-", description: t(i18n, "showcase.component.datatable.props.rows.filters") },
     { prop: "onFilter", type: "(event) => void", defaultValue: "-", description: t(i18n, "showcase.component.datatable.props.rows.onFilter") },
+    { prop: "showClearFiltersButton", type: "boolean", defaultValue: "false", description: "Shows a shared clear-filters action above the table." },
     { prop: "stripedRows", type: "boolean", defaultValue: "false", description: t(i18n, "showcase.component.datatable.props.rows.stripedRows") },
     { prop: "showGridlines", type: "boolean", defaultValue: "false", description: t(i18n, "showcase.component.datatable.props.rows.showGridlines") },
+    { prop: "hoverableRows", type: "boolean", defaultValue: "true", description: "Enables or disables row hover feedback." },
     { prop: "loading", type: "boolean", defaultValue: "false", description: t(i18n, "showcase.component.datatable.props.rows.loading") },
     { prop: "emptyMessage", type: "string", defaultValue: "i18n", description: t(i18n, "showcase.component.datatable.props.rows.emptyMessage") },
+    { prop: "className / style / tableClassName / rowClassName", type: "styling props", defaultValue: "-", description: "Styles the wrapper, table element and rows globally or per-row." },
     { prop: "groupBoxProps", type: "Partial<SgGroupBoxProps>", defaultValue: "-", description: t(i18n, "showcase.component.datatable.props.rows.groupBoxProps") },
+    { prop: "showColumnManager / columnManagerLabel / columnManagerMaxHeight", type: "boolean / string / number|string", defaultValue: "true / i18n / 320", description: "Controls the built-in column visibility and reorder panel." },
+    { prop: "column.columnId / hidden / hideable / reorderable", type: "column props", defaultValue: "- / false / true / true", description: "Stable key and visibility/reordering rules per column." },
+    { prop: "column.headerClassName / bodyClassName / className", type: "string | callback", defaultValue: "-", description: "Custom classes for header, body cells and shared column styling." },
+    { prop: "column.sortField / sortFunction / filterField / filterMatchMode / excludeGlobalFilter", type: "advanced column props", defaultValue: "-", description: "Custom sorting/filtering strategy per column." },
+    { prop: "column.width / minWidth / footer", type: "number|string / number|string / ReactNode|callback", defaultValue: "- / - / -", description: "Sizing and footer rendering controls." },
     { prop: "ref", type: "SgDatatableRef", defaultValue: "-", description: t(i18n, "showcase.component.datatable.props.rows.ref") }
   ];
 }
@@ -1294,6 +1364,37 @@ export default function SgDatatableShowcase() {
             showGridlines
           />
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-datatable/samples/templates.tsx.sample" />
+        </Section>
+
+        <Section
+          title="Column manager, visibility and styles"
+          description="Shows the built-in column manager plus the new per-column visibility, reorder and styling props."
+        >
+          <SgDatatable
+            id="datatable-column-manager"
+            title="Column manager and styled rows"
+            value={PRODUCT_ROWS}
+            columns={MANAGER_COLUMNS}
+            dataKey="id"
+            paginator
+            rows={5}
+            rowsPerPageOptions={[5, 10]}
+            showGlobalFilter
+            showColumnFilters
+            showClearFiltersButton
+            showColumnManager
+            columnManagerLabel="Manage columns"
+            columnManagerMaxHeight={220}
+            removableSort={false}
+            rowClassName={(row) =>
+              row.status === "OUTOFSTOCK"
+                ? "bg-rose-50/70"
+                : row.status === "LOWSTOCK"
+                  ? "bg-amber-50/60"
+                  : undefined
+            }
+          />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-datatable/samples/colunas-e-estilos.tsx.sample" />
         </Section>
 
         <Section title={sectionTitles[4] ?? ""}>
