@@ -1318,7 +1318,6 @@ export default function SgPlayground(props: Readonly<SgPlaygroundProps>) {
 
   const seedgridDefaultImports = defaultImports ?? `import {
   SgScreen,
-  SgMainPanel,
   SgPanel,
   SgGrid,
   SgStack,

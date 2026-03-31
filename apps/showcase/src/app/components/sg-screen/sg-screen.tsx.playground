@@ -1,7 +1,6 @@
 import * as React from "react";
 import {
   SgScreen,
-  SgMainPanel,
   SgPanel,
   SgStack,
 } from "@seedgrid/fe-components";
@@ -9,7 +8,7 @@ import {
 export default function App() {
   return (
     <SgScreen fullscreen={false} height={360} padding={12} className="rounded-xl bg-zinc-100">
-      <SgMainPanel gap={8} padding={8}>
+      <SgPanel className="h-full w-full" contentPadding={8} contentGap={8}>
         <SgPanel align="top" height={12} padding={10} className="rounded-md">Top</SgPanel>
         <SgPanel align="left" width={20} padding={10} className="rounded-md">Left</SgPanel>
         <SgPanel align="right" width={20} padding={10} className="rounded-md">Right</SgPanel>
@@ -20,7 +19,7 @@ export default function App() {
             <SgPanel borderStyle="solid" className="h-20 rounded bg-muted/20" />
           </SgStack>
         </SgPanel>
-      </SgMainPanel>
+      </SgPanel>
     </SgScreen>
   );
 }

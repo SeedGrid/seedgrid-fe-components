@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import React from "react";
-import { SgGrid, SgMainPanel, SgPanel, SgStack } from "@seedgrid/fe-components";
+import { SgGrid, SgPanel, SgStack } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
@@ -32,7 +32,6 @@ function Section(props: { title: string; description?: string; children: React.R
 const PANEL_PLAYGROUND_CODE = `import * as React from "react";
 import {
   SgGrid,
-  SgMainPanel,
   SgPanel,
   SgStack,
 } from "@seedgrid/fe-components";
@@ -52,24 +51,25 @@ export default function App() {
       </div>
 
       <div className="h-[360px] rounded-xl bg-muted/30 p-3">
-        <SgMainPanel gap={8} className="h-full rounded-lg bg-background p-3">
+        <SgPanel className="h-full rounded-lg bg-background p-3" contentGap={8}>
           <SgPanel align="top" height={12} className="rounded-md p-3">Top</SgPanel>
           <SgPanel align="left" width={leftWidth} className="rounded-md p-3">Left</SgPanel>
           <SgPanel align="right" width={rightWidth} className="rounded-md p-3">Right</SgPanel>
           <SgPanel align="bottom" height={bottomHeight} className="rounded-md p-3">Bottom</SgPanel>
           <SgPanel align="client" className="rounded-md p-3">Client</SgPanel>
-        </SgMainPanel>
+        </SgPanel>
       </div>
     </div>
   );
 }`;
 
 const PANEL_PROPS: ShowcasePropRow[] = [
-  { prop: "align", type: "\"top\" | \"left\" | \"right\" | \"bottom\" | \"client\"", defaultValue: "-", description: "Posicionamento dentro do SgMainPanel." },
+  { prop: "align", type: "\"top\" | \"left\" | \"right\" | \"bottom\" | \"client\"", defaultValue: "\"client\"", description: "Dock relativo ao painel pai." },
   { prop: "width / height", type: "number | string", defaultValue: "-", description: "DimensÃ£o do painel (nÃºmero vira %)." },
   { prop: "span / rowSpan", type: "number", defaultValue: "-", description: "Span de colunas/linhas dentro do SgGrid." },
-  { prop: "borderStyle", type: "\"none\" | \"solid\" | \"dashed\"", defaultValue: "solid", description: "Estilo da borda do panel." },
-  { prop: "padding", type: "number", defaultValue: "0", description: "EspaÃ§amento interno." },
+  { prop: "borderStyle", type: "\"none\" | \"solid\" | \"dashed\"", defaultValue: "dashed", description: "Estilo da borda do panel." },
+  { prop: "padding", type: "number", defaultValue: "0", description: "EspaÃ§amento externo em relaÃ§Ã£o ao pai." },
+  { prop: "contentPadding", type: "number", defaultValue: "0", description: "EspaÃ§amento interno entre o panel e seus filhos." },
   { prop: "scrollable", type: "boolean | \"auto\" | \"x\" | \"y\"", defaultValue: "false", description: "Comportamento de rolagem." },
   { prop: "scrollbarGutter", type: "boolean", defaultValue: "false", description: "Reserva espaÃ§o para scrollbar." },
   { prop: "children", type: "ReactNode", defaultValue: "-", description: "ConteÃºdo do painel." },
@@ -97,7 +97,7 @@ const PANEL_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", PanelTexts> = {
   "pt-BR": {
     subtitle: "Showcase with examples of all SgPanel props.",
     section1Title: "1) align + width + height",
-    section1Description: "`align` so faz sentido dentro do `SgMainPanel`. `width`/`height` em numero sao tratados como porcentagem.",
+    section1Description: "`align` faz dock em relacao ao panel pai. `width`/`height` em numero sao tratados como porcentagem.",
     section2Title: "2) span + rowSpan",
     section2Description: "`span` e `rowSpan` fazem sentido dentro do `SgGrid`.",
     section3Title: "3) borderStyle + padding + children",
@@ -113,7 +113,7 @@ const PANEL_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", PanelTexts> = {
   "pt-PT": {
     subtitle: "Showcase with examples of all SgPanel props.",
     section1Title: "1) align + width + height",
-    section1Description: "`align` so faz sentido dentro do `SgMainPanel`. `width`/`height` em numero sao tratados como percentagem.",
+    section1Description: "`align` faz dock em relacao ao panel pai. `width`/`height` em numero sao tratados como percentagem.",
     section2Title: "2) span + rowSpan",
     section2Description: "`span` e `rowSpan` fazem sentido dentro do `SgGrid`.",
     section3Title: "3) borderStyle + padding + children",
@@ -129,7 +129,7 @@ const PANEL_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", PanelTexts> = {
   "en-US": {
     subtitle: "Showcase with examples covering all SgPanel props.",
     section1Title: "1) align + width + height",
-    section1Description: "`align` only makes sense inside `SgMainPanel`. Numeric `width`/`height` values are treated as percentages.",
+    section1Description: "`align` docks relative to the parent panel. Numeric `width`/`height` values are treated as percentages.",
     section2Title: "2) span + rowSpan",
     section2Description: "`span` and `rowSpan` are used inside `SgGrid`.",
     section3Title: "3) borderStyle + padding + children",
@@ -145,7 +145,7 @@ const PANEL_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", PanelTexts> = {
   es: {
     subtitle: "Showcase con ejemplos de todas las props de SgPanel.",
     section1Title: "1) align + width + height",
-    section1Description: "`align` solo tiene sentido dentro de `SgMainPanel`. `width`/`height` numericos se tratan como porcentaje.",
+    section1Description: "`align` hace dock respecto al panel padre. `width`/`height` numericos se tratan como porcentaje.",
     section2Title: "2) span + rowSpan",
     section2Description: "`span` y `rowSpan` se usan dentro de `SgGrid`.",
     section3Title: "3) borderStyle + padding + children",
@@ -192,7 +192,7 @@ export default function SgPanelPage() {
         description={texts.section1Description}
       >
         <SgPanel className="h-[430px] rounded-xl bg-muted/30" padding={12}>
-          <SgMainPanel gap={8} className="h-full w-full rounded-lg bg-background p-3">
+          <SgPanel className="h-full w-full rounded-lg bg-background p-3" contentGap={8}>
             <SgPanel align="top" height={12} padding={10} className="rounded-md">
               <SgStack direction="row" justify="between" align="center">
                 <span className="text-sm font-medium">Header</span>
@@ -233,7 +233,7 @@ export default function SgPanelPage() {
                 <span className="text-xs text-muted-foreground">client ocupa o restante automaticamente.</span>
               </SgStack>
             </SgPanel>
-          </SgMainPanel>
+          </SgPanel>
         </SgPanel>
 
         <SgStack className="mt-6">
@@ -335,7 +335,7 @@ export default function SgPanelPage() {
       <Section title={texts.section5Title} description={texts.section5Description}>
         <SgStack gap={10}>
           <SgPanel className="h-[260px] rounded-xl bg-muted/30" padding={10}>
-            <SgMainPanel gap={8} className="h-full rounded-lg bg-background p-3">
+            <SgPanel className="h-full rounded-lg bg-background p-3" contentGap={8}>
               <SgPanel align="top" height={10} borderStyle="solid" padding={12}>
                 header
               </SgPanel>
@@ -345,7 +345,7 @@ export default function SgPanelPage() {
               <SgPanel align="client" borderStyle="none" padding={10} scrollable="auto" scrollbarGutter>
                 conteudo
               </SgPanel>
-            </SgMainPanel>
+            </SgPanel>
           </SgPanel>
 
           <SgGrid columns={{ base: 1, md: 3 }} gap={8}>

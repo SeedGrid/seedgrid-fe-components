@@ -1109,10 +1109,10 @@
     "en": "Overlay positioning.",
     "es": "Posicionamiento de superposición."
   },
-  "Posicionamento dentro do SgMainPanel.": {
-    "pt": "Posicionamento dentro do SgMainPanel.",
-    "en": "Positioning within the SgMainPanel.",
-    "es": "Posicionamiento dentro del SgMainPanel."
+  "Dock relativo ao painel pai.": {
+    "pt": "Dock relativo ao painel pai.",
+    "en": "Dock relative to the parent panel.",
+    "es": "Dock relativo al panel padre."
   },
   "Posicionamento e alinhamento do popup.": {
     "pt": "Posicionamento e alinhamento do popup.",

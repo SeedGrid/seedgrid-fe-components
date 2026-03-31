@@ -1,5 +1,5 @@
 import * as React from "react";
-import { SgMainPanel, SgPanel } from "@seedgrid/fe-components";
+import { SgPanel } from "@seedgrid/fe-components";
 
 export default function App() {
   const [leftWidth, setLeftWidth] = React.useState(20);
@@ -14,13 +14,13 @@ export default function App() {
         <button className="rounded border border-border bg-background px-2 py-1 text-xs" onClick={() => setBottomHeight((prev) => (prev === 10 ? 14 : 10))}>bottom: {bottomHeight}%</button>
       </div>
       <div className="h-[360px] rounded-xl bg-muted/30 p-3">
-        <SgMainPanel gap={8} className="h-full rounded-lg bg-background p-3">
+        <SgPanel className="h-full rounded-lg bg-background p-3" contentGap={8}>
           <SgPanel align="top" height={12} className="rounded-md p-3">Top</SgPanel>
           <SgPanel align="left" width={leftWidth} className="rounded-md p-3">Left</SgPanel>
           <SgPanel align="right" width={rightWidth} className="rounded-md p-3">Right</SgPanel>
           <SgPanel align="bottom" height={bottomHeight} className="rounded-md p-3">Bottom</SgPanel>
           <SgPanel align="client" className="rounded-md p-3">Client</SgPanel>
-        </SgMainPanel>
+        </SgPanel>
       </div>
     </div>
   );

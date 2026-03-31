@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import React from "react";
-import { SgScreen, SgMainPanel, SgPanel, SgStack } from "@seedgrid/fe-components";
+import { SgScreen, SgPanel, SgStack } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
@@ -32,14 +32,14 @@ function Section(props: { title: string; description?: string; children: React.R
 const fullExampleCode = `"use client";
 
 import React from "react";
-import { SgScreen, SgMainPanel, SgPanel, SgStack } from "@seedgrid/fe-components";
+import { SgScreen, SgPanel, SgStack } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 export default function ExampleSgScreenPage() {
   return (
     <SgPanel className="h-[420px] rounded-xl bg-muted/30" padding={12}>
       <SgScreen fullscreen={false} padding={10} className="rounded-lg bg-zinc-100">
-        <SgMainPanel gap={8} padding={8}>
+        <SgPanel className="h-full w-full" contentPadding={8} contentGap={8}>
           <SgPanel align="top" height={12} padding={10} className="rounded-md">
             <SgStack direction="row" justify="between" align="center">
               <span className="text-sm font-medium">Header</span>
@@ -80,7 +80,7 @@ export default function ExampleSgScreenPage() {
               </span>
             </SgStack>
           </SgPanel>
-        </SgMainPanel>
+        </SgPanel>
       </SgScreen>
     </SgPanel>
   );
@@ -89,7 +89,6 @@ export default function ExampleSgScreenPage() {
 const SCREEN_PLAYGROUND_CODE = `import * as React from "react";
 import {
   SgScreen,
-  SgMainPanel,
   SgPanel,
   SgStack,
 } from "@seedgrid/fe-components";
@@ -98,7 +97,7 @@ import { SgPlayground } from "@seedgrid/fe-playground";
 export default function App() {
   return (
     <SgScreen fullscreen={false} height={360} padding={12} className="rounded-xl bg-zinc-100">
-      <SgMainPanel gap={8} padding={8}>
+      <SgPanel className="h-full w-full" contentPadding={8} contentGap={8}>
         <SgPanel align="top" height={12} padding={10} className="rounded-md">Top</SgPanel>
         <SgPanel align="left" width={20} padding={10} className="rounded-md">Left</SgPanel>
         <SgPanel align="right" width={20} padding={10} className="rounded-md">Right</SgPanel>
@@ -109,7 +108,7 @@ export default function App() {
             <SgPanel borderStyle="solid" className="h-20 rounded bg-muted/20" />
           </SgStack>
         </SgPanel>
-      </SgMainPanel>
+      </SgPanel>
     </SgScreen>
   );
 }`;
@@ -196,7 +195,7 @@ export default function SgScreenPage() {
         <Section title={texts.section1Title} description={texts.section1Description}>
           <SgPanel className="h-[420px] rounded-xl bg-muted/30" padding={12}>
             <SgScreen fullscreen={false} padding={10} className="rounded-lg bg-zinc-100">
-              <SgMainPanel gap={8} padding={8}>
+              <SgPanel className="h-full w-full" contentPadding={8} contentGap={8}>
                 <SgPanel align="top" height={12} padding={10} className="rounded-md">
                   <SgStack direction="row" justify="between" align="center">
                     <span className="text-sm font-medium">Header</span>
@@ -237,7 +236,7 @@ export default function SgScreenPage() {
                     </span>
                   </SgStack>
                 </SgPanel>
-              </SgMainPanel>
+              </SgPanel>
             </SgScreen>
           </SgPanel>
 

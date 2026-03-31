@@ -189,8 +189,6 @@ export { SgGroupBox } from "./layout/SgGroupBox";
 export type { SgGroupBoxProps } from "./layout/SgGroupBox";
 export { SgScreen } from "./layout/SgScreen";
 export type { SgScreenProps } from "./layout/SgScreen";
-export { SgMainPanel } from "./layout/SgMainPanel";
-export type { SgMainPanelProps } from "./layout/SgMainPanel";
 export { SgPanel } from "./layout/SgPanel";
 export type {
   SgPanelProps,

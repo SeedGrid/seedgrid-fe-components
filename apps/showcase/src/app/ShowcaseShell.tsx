@@ -164,7 +164,6 @@ const COMPONENTS = [
   { group: "Layout", slug: "sg-skeleton", label: "SgSkeleton", icon: <Ghost className="size-4" /> },
   { group: "Layout", slug: "sg-screen", label: "SgScreen", icon: <Monitor className="size-4" /> },
   { group: "Layout", slug: "sg-dock-screen", label: "SgDockScreen", icon: <AppWindow className="size-4" /> },
-  { group: "Layout", slug: "sg-main-panel", label: "SgMainPanel", icon: <LayoutDashboard className="size-4" /> },
   { group: "Layout", slug: "sg-panel", label: "SgPanel", icon: <PanelTop className="size-4" /> },
   { group: "Layout", slug: "sg-grid", label: "SgGrid", icon: <LayoutGrid className="size-4" /> },
   { group: "Layout", slug: "sg-stack", label: "SgStack", icon: <Layers className="size-4" /> },
@@ -399,12 +398,6 @@ const COMPONENT_HINT_TEXTS_BY_SLUG: Record<string, Partial<Record<ShowcaseLocale
     "pt-PT": "Input OTP com digitos separados, suporte a colagem e mascara configuravel.",
     "en-US": "OTP input with separated digits, paste support, and configurable mask.",
     es: "Input OTP con digitos separados, soporte de pegado y mascara configurable."
-  },
-  "sg-main-panel": {
-    "pt-BR": "Layout estilo Delphi com align=\"top|left|bottom|right|client\". width e height numericos viram porcentagem.",
-    "pt-PT": "Layout estilo Delphi com align=\"top|left|bottom|right|client\". width e height numericos viram percentagem.",
-    "en-US": "Delphi-style layout with align=\"top|left|bottom|right|client\". Numeric width and height are treated as percentages.",
-    es: "Layout estilo Delphi con align=\"top|left|bottom|right|client\". width y height numericos se tratan como porcentaje."
   },
   "sg-menu": {
     "pt-BR": "Menu hierarquico para sidebar, drawer, inline e hibrido, com busca e multiplos estilos.",
@@ -919,8 +912,8 @@ export default function ShowcaseShell(props: {
             <div className="h-full w-14" />
           </SgDockZone>
 
-          <SgDockZone zone="free" className="col-start-2 row-start-2 !p-0 !items-stretch !justify-start">
-            <main className="h-full w-full overflow-y-auto p-2">{props.children}</main>
+          <SgDockZone zone="free" className="col-start-2 row-start-2 !p-0 !items-stretch !justify-start overflow-hidden">
+            <main className="box-border h-full w-full min-h-0 min-w-0 overflow-y-auto p-2">{props.children}</main>
           </SgDockZone>
         </SgDockScreen>
         <SgToaster />
