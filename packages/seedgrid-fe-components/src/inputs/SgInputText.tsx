@@ -239,10 +239,13 @@ function SgInputTextBase(props: SgInputTextBaseProps) {
     }
   }, [prefixText, suffixText, prefixWidth, suffixWidth]);
 
+  const forwardedRefRef = React.useRef<React.Ref<HTMLInputElement> | undefined>(undefined);
+  forwardedRefRef.current = (resolvedInputProps as { ref?: React.Ref<HTMLInputElement> }).ref;
+
   const setRefs = React.useCallback(
     (node: HTMLInputElement | null) => {
       inputRef.current = node;
-      const ref = (resolvedInputProps as { ref?: React.Ref<HTMLInputElement> }).ref;
+      const ref = forwardedRefRef.current;
       if (!ref) return;
       if (typeof ref === "function") {
         ref(node);
@@ -250,7 +253,7 @@ function SgInputTextBase(props: SgInputTextBaseProps) {
         (ref as { current: HTMLInputElement | null }).current = node;
       }
     },
-    [inputProps]
+    []
   );
 
   const runValidation = React.useCallback(

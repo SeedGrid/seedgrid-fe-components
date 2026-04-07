@@ -407,6 +407,7 @@ export function SgMenu(props: Readonly<SgMenuProps>) {
   const closeOnNavigateResolved = closeOnNavigate ?? true;
   const searchEnabled = search?.enabled ?? false;
   const [searchValue, setSearchValue] = React.useState("");
+  const deferredSearchValue = React.useDeferredValue(searchValue);
   const menuRootRef = React.useRef<HTMLDivElement | null>(null);
   const sidebarShellRef = React.useRef<HTMLElement | null>(null);
   const menuHintAnchorRef = React.useRef<MenuHintAnchor | null>(null);
@@ -422,10 +423,10 @@ export function SgMenu(props: Readonly<SgMenuProps>) {
     [searchEntries]
   );
   const filteredMenu = React.useMemo(
-    () => (searchEnabled ? filterMenuNodes(menu, searchValue) : menu),
-    [menu, searchEnabled, searchValue]
+    () => (searchEnabled ? filterMenuNodes(menu, deferredSearchValue) : menu),
+    [menu, searchEnabled, deferredSearchValue]
   );
-  const hasSearch = searchEnabled && searchValue.trim().length > 0;
+  const hasSearch = searchEnabled && deferredSearchValue.trim().length > 0;
   const effectiveMenuStyle = isCollapsed || hasSearch ? "panel" : resolvedMenuStyle;
   const layoutState = React.useMemo(
     () =>

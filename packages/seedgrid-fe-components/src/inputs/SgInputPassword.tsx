@@ -283,16 +283,19 @@ export function SgInputPassword(props: Readonly<SgInputPasswordProps>) {
     ref: undefined
   };
 
-  const setRef = (node: HTMLInputElement | null) => {
+  const inputPropsExternalRefRef = React.useRef<React.Ref<HTMLInputElement> | undefined>(undefined);
+  inputPropsExternalRefRef.current = (inputProps as { ref?: React.Ref<HTMLInputElement> })?.ref;
+
+  const setRef = React.useCallback((node: HTMLInputElement | null) => {
     inputRef.current = node;
-    const ref = (inputProps as { ref?: React.Ref<HTMLInputElement> })?.ref;
+    const ref = inputPropsExternalRefRef.current;
     if (!ref) return;
     if (typeof ref === "function") {
       ref(node);
     } else if (ref && typeof ref === "object" && "current" in ref) {
       (ref as { current: HTMLInputElement | null }).current = node;
     }
-  };
+  }, []);
 
   const applyValue = (value: string) => {
     if (inputRef.current) {
