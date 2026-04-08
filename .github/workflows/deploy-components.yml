@@ -39,11 +39,12 @@ jobs:
           registry-url: https://registry.npmjs.org
           scope: '@seedgrid'
 
-      - name: Show Node and npm versions
+      - name: Upgrade npm for Trusted Publishing
         shell: bash
         run: |
-          node --version
-          npm --version
+          npm install -g npm@^11.5.1
+          echo "Node: $(node --version)"
+          echo "npm: $(npm --version)"
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
