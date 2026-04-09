@@ -96,10 +96,11 @@ function mergeInputPropsWithField(
     ...inputProps,
     value: resolvedValue,
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
+      const rawValue = event.currentTarget.value;
       if (options?.toFieldValue) {
-        field.onChange(options.toFieldValue(event.currentTarget.value));
+        field.onChange(options.toFieldValue(rawValue));
       } else {
-        field.onChange(event);
+        field.onChange(rawValue);
       }
       inputProps?.onChange?.(event);
     },
@@ -200,6 +201,8 @@ function SgInputTextBase(props: SgInputTextBaseProps) {
   }, [inputProps.value, stripAffixes]);
 
   React.useEffect(() => {
+    if (inputProps.value !== undefined) return;
+
     const node = inputRef.current;
     if (!node) return;
 
@@ -222,7 +225,7 @@ function SgInputTextBase(props: SgInputTextBaseProps) {
       node.removeEventListener("input", sync);
       node.removeEventListener("change", sync);
     };
-  }, [syncFilledStateFromDom]);
+  }, [inputProps.value, syncFilledStateFromDom]);
 
   React.useLayoutEffect(() => {
     if (prefixRef.current) {

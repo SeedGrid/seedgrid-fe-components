@@ -847,6 +847,36 @@ test("SgMenu filters the rendered navigation tree from the search field", async 
   }
 });
 
+test("SgMenu search preserves sequential typing in the autocomplete input", async () => {
+  const harness = setupDomHarness();
+  try {
+    await harness.render(buildSearchMenu());
+    await flushDom();
+
+    const searchInput = harness.document.querySelector('input[placeholder="Find menu"]');
+    assert.ok(searchInput);
+
+    const word = "Abacaxi";
+    for (let index = 1; index <= word.length; index += 1) {
+      const partial = word.slice(0, index);
+      await dispatchInput(searchInput, partial);
+      await flushDom();
+      assert.equal(searchInput.value, partial);
+    }
+
+    await dispatchInput(searchInput, "Settings");
+    await flushDom();
+    await flushDom();
+
+    const navigation = harness.document.querySelector('[role="navigation"]');
+    assert.ok(navigation);
+    assert.match(navigation.textContent ?? "", /Settings/i);
+    assert.doesNotMatch(navigation.textContent ?? "", /Dashboard/i);
+  } finally {
+    harness.restore();
+  }
+});
+
 test("SgExpandablePanel resizes the rendered inline panel through the handle", async () => {
   const harness = setupDomHarness();
   try {
