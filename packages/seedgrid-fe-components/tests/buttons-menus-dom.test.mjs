@@ -92,6 +92,29 @@ function buildKeyboardMenu(props = {}) {
   });
 }
 
+function buildTieredMenu(props = {}) {
+  return React.createElement(SgMenu, {
+    id: "main-menu-tiered",
+    menuStyle: "inline",
+    menuVariantStyle: "Tiered",
+    menu: [
+      {
+        id: "customers",
+        label: "Customers",
+        children: [
+          {
+            id: "new",
+            label: "New",
+            children: [{ id: "customer", label: "Customer", url: "/customers/new/customer" }]
+          },
+          { id: "reports", label: "Reports", url: "/customers/reports" }
+        ]
+      }
+    ],
+    ...props
+  });
+}
+
 
 
 function buildRightDockedMenu(props = {}) {

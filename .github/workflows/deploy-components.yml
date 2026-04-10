@@ -49,14 +49,13 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Resolve shared CalVer base
+      - name: Resolve shared monthly SemVer base
         id: calver
         shell: bash
         run: |
           YEAR=$(date +%Y)
           MONTH=$((10#$(date +%m)))
-          DAY=$((10#$(date +%d)))
-          BASE="${YEAR}.${MONTH}.${DAY}"
+          BASE="${YEAR}.${MONTH}"
 
           echo "base=${BASE}" >> "$GITHUB_OUTPUT"
 
@@ -72,10 +71,6 @@ jobs:
             echo "tag=latest" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Function - resolve version
-        id: version_fn
-        run: echo "helper"
-
       # ------------------------------------------------------------
       # fe-core
       # ------------------------------------------------------------
@@ -86,17 +81,11 @@ jobs:
           PKG_DIR="packages/seedgrid-fe-core"
           NAME=$(node -p "require('./${PKG_DIR}/package.json').name")
           BASE="${{ steps.calver.outputs.base }}"
-          VERSION="$BASE"
-          N=1
-
-          while npm view "${NAME}@${VERSION}" version >/dev/null 2>&1; do
-            if [[ "${{ steps.mode.outputs.is_rc }}" == "true" ]]; then
-              VERSION="${BASE}-rc.${N}"
-            else
-              VERSION="${BASE}-${N}"
-            fi
-            N=$((N + 1))
-          done
+          MODE="stable"
+          if [[ "${{ steps.mode.outputs.is_rc }}" == "true" ]]; then
+            MODE="rc"
+          fi
+          VERSION=$(node .github/scripts/resolve-npm-monthly-version.mjs "${NAME}" "${BASE}" "${MODE}")
 
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
 
@@ -123,17 +112,11 @@ jobs:
           PKG_DIR="packages/seedgrid-fe-commons"
           NAME=$(node -p "require('./${PKG_DIR}/package.json').name")
           BASE="${{ steps.calver.outputs.base }}"
-          VERSION="$BASE"
-          N=1
-
-          while npm view "${NAME}@${VERSION}" version >/dev/null 2>&1; do
-            if [[ "${{ steps.mode.outputs.is_rc }}" == "true" ]]; then
-              VERSION="${BASE}-rc.${N}"
-            else
-              VERSION="${BASE}-${N}"
-            fi
-            N=$((N + 1))
-          done
+          MODE="stable"
+          if [[ "${{ steps.mode.outputs.is_rc }}" == "true" ]]; then
+            MODE="rc"
+          fi
+          VERSION=$(node .github/scripts/resolve-npm-monthly-version.mjs "${NAME}" "${BASE}" "${MODE}")
 
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
 
@@ -160,17 +143,11 @@ jobs:
           PKG_DIR="packages/seedgrid-fe-theme"
           NAME=$(node -p "require('./${PKG_DIR}/package.json').name")
           BASE="${{ steps.calver.outputs.base }}"
-          VERSION="$BASE"
-          N=1
-
-          while npm view "${NAME}@${VERSION}" version >/dev/null 2>&1; do
-            if [[ "${{ steps.mode.outputs.is_rc }}" == "true" ]]; then
-              VERSION="${BASE}-rc.${N}"
-            else
-              VERSION="${BASE}-${N}"
-            fi
-            N=$((N + 1))
-          done
+          MODE="stable"
+          if [[ "${{ steps.mode.outputs.is_rc }}" == "true" ]]; then
+            MODE="rc"
+          fi
+          VERSION=$(node .github/scripts/resolve-npm-monthly-version.mjs "${NAME}" "${BASE}" "${MODE}")
 
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
 
@@ -197,17 +174,11 @@ jobs:
           PKG_DIR="packages/seedgrid-fe-components"
           NAME=$(node -p "require('./${PKG_DIR}/package.json').name")
           BASE="${{ steps.calver.outputs.base }}"
-          VERSION="$BASE"
-          N=1
-
-          while npm view "${NAME}@${VERSION}" version >/dev/null 2>&1; do
-            if [[ "${{ steps.mode.outputs.is_rc }}" == "true" ]]; then
-              VERSION="${BASE}-rc.${N}"
-            else
-              VERSION="${BASE}-${N}"
-            fi
-            N=$((N + 1))
-          done
+          MODE="stable"
+          if [[ "${{ steps.mode.outputs.is_rc }}" == "true" ]]; then
+            MODE="rc"
+          fi
+          VERSION=$(node .github/scripts/resolve-npm-monthly-version.mjs "${NAME}" "${BASE}" "${MODE}")
 
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
 
@@ -234,17 +205,11 @@ jobs:
           PKG_DIR="packages/seedgrid-fe-playground"
           NAME=$(node -p "require('./${PKG_DIR}/package.json').name")
           BASE="${{ steps.calver.outputs.base }}"
-          VERSION="$BASE"
-          N=1
-
-          while npm view "${NAME}@${VERSION}" version >/dev/null 2>&1; do
-            if [[ "${{ steps.mode.outputs.is_rc }}" == "true" ]]; then
-              VERSION="${BASE}-rc.${N}"
-            else
-              VERSION="${BASE}-${N}"
-            fi
-            N=$((N + 1))
-          done
+          MODE="stable"
+          if [[ "${{ steps.mode.outputs.is_rc }}" == "true" ]]; then
+            MODE="rc"
+          fi
+          VERSION=$(node .github/scripts/resolve-npm-monthly-version.mjs "${NAME}" "${BASE}" "${MODE}")
 
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
 

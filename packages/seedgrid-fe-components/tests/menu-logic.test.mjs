@@ -703,6 +703,13 @@ test("SgMenu consome o helper compartilhado de clique tiered", () => {
   assert.match(source, /resolveTieredNodeClickIntent\(\{/);
 });
 
+test("SgMenu fecha o tiered ao ativar um item folha", () => {
+  const source = readFileSync(new URL("../src/layout/SgMenu.tsx", import.meta.url), "utf8");
+
+  assert.match(source, /skipNextTieredActiveSyncRef\.current = true;/);
+  assert.match(source, /setTieredPath\(\[\]\);/);
+});
+
 test("resolveMenuNodeActionIntent distinguishes panel toggle, flat noop and activation", () => {
   assert.equal(
     resolveMenuNodeActionIntent({

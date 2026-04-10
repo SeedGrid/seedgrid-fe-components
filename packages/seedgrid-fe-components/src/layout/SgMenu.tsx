@@ -505,6 +505,7 @@ export function SgMenu(props: Readonly<SgMenuProps>) {
   const [localActiveId, setLocalActiveId] = React.useState<string | undefined>(selection?.activeId);
   const [tieredPath, setTieredPath] = React.useState<string[]>([]);
   const [megaActiveId, setMegaActiveId] = React.useState<string | undefined>(menu[0]?.id);
+  const skipNextTieredActiveSyncRef = React.useRef(false);
 
   React.useEffect(() => {
     if (selection?.activeId) setLocalActiveId(selection.activeId);
@@ -601,9 +602,14 @@ export function SgMenu(props: Readonly<SgMenuProps>) {
       menu,
       rootParentId: ROOT_PARENT_ID
     });
+    if (effectiveMenuStyle === "tiered" && skipNextTieredActiveSyncRef.current) {
+      skipNextTieredActiveSyncRef.current = false;
+      setMegaActiveId(nextState.megaActiveId);
+      return;
+    }
     setTieredPath(nextState.tieredPath);
     setMegaActiveId(nextState.megaActiveId);
-  }, [effectiveActiveId, maps, menu]);
+  }, [effectiveActiveId, effectiveMenuStyle, maps, menu]);
 
   React.useEffect(() => {
     if (effectiveMenuStyle !== "tiered") return;
@@ -1087,6 +1093,10 @@ export function SgMenu(props: Readonly<SgMenuProps>) {
                       setTieredPath(nextState.nextPath);
                     }
                     if (!nextState.shouldActivateNode) return;
+                    if (!hasChildren) {
+                      skipNextTieredActiveSyncRef.current = true;
+                      setTieredPath([]);
+                    }
                     activateNode(node);
                   }}
                   className={cn(
