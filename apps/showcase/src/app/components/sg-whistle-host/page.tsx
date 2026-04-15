@@ -9,6 +9,9 @@ import {
   type SgWhistleSeverity
 } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -77,6 +80,7 @@ function fireSeverity(severity: SgWhistleSeverity) {
 }
 
 export default function SgWhistleHostPage() {
+  const aiComponent = useAiManifestComponent("SgWhistleHost");
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors();
   const [max, setMax] = React.useState(4);
   const [gap, setGap] = React.useState(12);
@@ -231,6 +235,7 @@ export default function SgWhistleHostPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
         <section className="rounded-xl border border-border bg-muted/20 p-5">
           <div className="flex flex-wrap items-center justify-between gap-3">
@@ -371,6 +376,7 @@ export default function SgWhistleHostPage() {
         </Section>
 
         <ShowcasePropsReference rows={WHISTLE_PROPS} />
+        {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

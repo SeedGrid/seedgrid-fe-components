@@ -8,6 +8,9 @@ import { SgButton, SgGrid, SgRating } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcasePropsReference from "../ShowcasePropsReference";
 import { useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
 
@@ -465,6 +468,7 @@ function RequiredExample() {
 
 export default function SgRatingPage() {
   const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgRating");
   const locale: keyof typeof RATING_TEXTS = isSupportedLocale(i18n.locale) ? i18n.locale : "en-US";
   const texts = RATING_TEXTS[locale];
   const exampleLinks = React.useMemo(() => texts.sectionTitles.map((label, index) => ({ id: `exemplo-${index + 1}`, label })), [texts]);
@@ -590,6 +594,7 @@ export default function SgRatingPage() {
           <div className="rounded-lg border border-border bg-background p-4 shadow-sm">
             <h1 className="text-3xl font-bold">SgRating</h1>
             <p className="mt-2 text-muted-foreground">{texts.subtitle}</p>
+            {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
             <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">{texts.examplesLabel}</p>
             <SgGrid columns={{ base: 1, sm: 2, lg: 3 }} gap={8} className="mt-2">
               {exampleLinks.map((example) => (
@@ -663,7 +668,8 @@ export default function SgRatingPage() {
         </Section>
 
         <ShowcasePropsReference id="props-reference" title={texts.propsTitle} rows={RATING_PROPS} />
-        <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
+        {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+      <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>
   );

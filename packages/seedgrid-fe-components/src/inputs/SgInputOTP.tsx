@@ -641,7 +641,7 @@ const SgInputOTPBase = React.forwardRef<SgInputOTPRef, SgInputOTPBaseProps>(func
       ) : null}
 
       <div
-        className={groupClassName ?? "inline-flex items-center gap-2"}
+        className={groupClassName ? `inline-flex items-center gap-2 ${groupClassName}` : "inline-flex items-center gap-2"}
         onFocusCapture={handleGroupFocusCapture}
         onBlurCapture={handleGroupBlurCapture}
         role="group"

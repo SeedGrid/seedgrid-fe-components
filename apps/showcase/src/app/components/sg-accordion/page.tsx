@@ -6,6 +6,9 @@ import { SgAccordion, SgButton, type SgAccordionItem } from "@seedgrid/fe-compon
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
@@ -569,6 +572,7 @@ const ACCORDION_PROPS: ShowcasePropRow[] = [
 
 export default function SgAccordionPage() {
   const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgAccordion");
   const texts = React.useMemo(() => getAccordionTexts(i18n.locale), [i18n.locale]);
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
@@ -590,6 +594,7 @@ export default function SgAccordionPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
       <Section
         title={texts.section1Title}
@@ -709,6 +714,7 @@ export default function SgAccordionPage() {
       </Section>
 
         <ShowcasePropsReference rows={ACCORDION_PROPS} title={texts.propsReferenceTitle} />
+        {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

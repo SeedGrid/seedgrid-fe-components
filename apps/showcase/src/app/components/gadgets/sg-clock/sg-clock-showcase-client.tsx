@@ -11,6 +11,9 @@ import {
 } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import { t, useShowcaseI18n } from "../../../../i18n";
+import ComponentAiPropsTable from "../../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../../ai/useAiManifestComponent";
 import SgCodeBlockBase from "../../sgCodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
@@ -206,6 +209,7 @@ const CLOCK_PROPS: ShowcasePropRow[] = [
 ];
 export function SgClockShowcaseClient({ initialServerTime }: { initialServerTime: string }) {
   const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgClock");
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors();
   const [themeId, setThemeId] = React.useState("seedgrid");
   const [secondMode, setSecondMode] = React.useState<"step" | "smooth">("step");
@@ -238,6 +242,7 @@ export function SgClockShowcaseClient({ initialServerTime }: { initialServerTime
               exampleLinks={exampleLinks}
               onAnchorClick={handleAnchorClick}
             />
+            {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
             <Section
               title={t(i18n, "showcase.component.clock.sections.analog.title")}
@@ -389,6 +394,7 @@ export function SgClockShowcaseClient({ initialServerTime }: { initialServerTime
             </Section>
 
             <ShowcasePropsReference rows={CLOCK_PROPS} />
+            {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
             <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
           </div>
       </SgClockThemeProvider>

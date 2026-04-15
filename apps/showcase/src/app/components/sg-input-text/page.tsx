@@ -5,8 +5,11 @@ import Link from "next/link";
 import { useForm, type FieldValues } from "react-hook-form";
 import { SgGrid, SgInputText } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
+import { loadAiManifestComponent, type AiManifestComponent } from "../../lib/ai-manifest";
 import { t, useShowcaseI18n } from "../../../i18n";
 
 function Section(props: {
@@ -33,6 +36,7 @@ function CodeBlock(props: { sampleFile: string }) {
 
 export default function SgInputTextPage() {
   const i18n = useShowcaseI18n();
+  const [aiComponent, setAiComponent] = React.useState<AiManifestComponent | null>(null);
   const [validationMsg, setValidationMsg] = React.useState<string | null>(null);
   const [eventLog, setEventLog] = React.useState<string[]>([]);
 
@@ -199,6 +203,23 @@ export default function SgInputTextPage() {
     return () => window.clearTimeout(timer);
   }, [navigateToAnchor]);
 
+  React.useEffect(() => {
+    let active = true;
+
+    const loadAiData = async () => {
+      const component = await loadAiManifestComponent("SgInputText");
+      if (active) {
+        setAiComponent(component);
+      }
+    };
+
+    void loadAiData();
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
   const exampleLinks = React.useMemo(
     () => [
       { id: "exemplo-1", label: `1) ${t(i18n, "showcase.component.inputText.sections.basic.title")}` },
@@ -237,6 +258,7 @@ export default function SgInputTextPage() {
             <p className="mt-2 text-muted-foreground">
               {t(i18n, "showcase.component.inputText.subtitle")}
             </p>
+            {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
             <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
               {t(i18n, "showcase.common.examples")}
             </p>
@@ -908,6 +930,7 @@ export default function SgInputTextPage() {
           </table>
         </div>
       </section>
+      {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
       <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

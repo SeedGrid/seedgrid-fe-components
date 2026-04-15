@@ -4,6 +4,9 @@ import * as React from "react";
 import Link from "next/link";
 import { SgCarousel, SgGrid } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -319,7 +322,7 @@ const CAROUSEL_PLAYGROUND_APP_FILE = `import * as React from "react";
 import {
   SgCarousel,
   SgGrid,
-  SgInputSelect,
+  SgCombobox,
   SgToggleSwitch,
   SgButton,
 } from "@seedgrid/fe-components";
@@ -374,54 +377,44 @@ export default function App() {
   return (
     <div className="space-y-4 p-2">
       <SgGrid columns={{ base: 1, sm: 2, lg: 3 }} gap={12}>
-        <SgInputSelect
+        <SgCombobox
           id="pg-num-visible"
           label={"numVisible (" + numVisible + ")"}
-          options={visibleOptions}
-          selectProps={{
-            value: String(numVisible),
-            onChange: (event) => setNumVisible(Number(event.target.value))
-          }}
+          source={visibleOptions}
+          value={String(numVisible)}
+          onValueChange={(value) => setNumVisible(Number(value))}
         />
 
-        <SgInputSelect
+        <SgCombobox
           id="pg-num-scroll"
           label={"numScroll (" + numScroll + ")"}
-          options={scrollOptions}
-          selectProps={{
-            value: String(numScroll),
-            onChange: (event) => setNumScroll(Number(event.target.value))
-          }}
+          source={scrollOptions}
+          value={String(numScroll)}
+          onValueChange={(value) => setNumScroll(Number(value))}
         />
 
-        <SgInputSelect
+        <SgCombobox
           id="pg-orientation"
           label="orientation"
-          options={orientationOptions}
-          selectProps={{
-            value: orientation,
-            onChange: (event) => setOrientation(event.target.value as "horizontal" | "vertical")
-          }}
+          source={orientationOptions}
+          value={orientation}
+          onValueChange={(value) => setOrientation((value as "horizontal" | "vertical") ?? "horizontal")}
         />
 
-        <SgInputSelect
+        <SgCombobox
           id="pg-autoplay-interval"
           label={"autoPlayInterval (" + autoPlayInterval + " ms)"}
-          options={autoPlayOptions}
-          selectProps={{
-            value: String(autoPlayInterval),
-            onChange: (event) => setAutoPlayInterval(Number(event.target.value))
-          }}
+          source={autoPlayOptions}
+          value={String(autoPlayInterval)}
+          onValueChange={(value) => setAutoPlayInterval(Number(value))}
         />
 
-        <SgInputSelect
+        <SgCombobox
           id="pg-gap"
           label={"gap (" + gap + " px)"}
-          options={gapOptions}
-          selectProps={{
-            value: String(gap),
-            onChange: (event) => setGap(Number(event.target.value))
-          }}
+          source={gapOptions}
+          value={String(gap)}
+          onValueChange={(value) => setGap(Number(value))}
         />
       </SgGrid>
 
@@ -539,6 +532,7 @@ const CAROUSEL_PROPS: ShowcasePropRow[] = [
 
 export default function SgCarouselPage() {
   const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgCarousel");
   const texts = React.useMemo(() => getCarouselTexts(i18n.locale), [i18n.locale]);
   const [activeIndex1, setActiveIndex1] = React.useState(0);
   const [eventLog, setEventLog] = React.useState<string[]>([]);
@@ -676,6 +670,7 @@ export default function SgCarouselPage() {
             <p className="mt-2 text-muted-foreground">
               {texts.headerSubtitle}
             </p>
+            {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
             <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
               {texts.examplesLabel}
             </p>
@@ -962,6 +957,7 @@ export default function SgCarouselPage() {
       </Section>
 
       <ShowcasePropsReference id="props-reference" title={texts.propsTitle} rows={CAROUSEL_PROPS} />
+      {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
       <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

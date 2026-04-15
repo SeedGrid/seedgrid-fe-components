@@ -6,6 +6,9 @@ import { SgGrid, SgInputPhone } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import { t, useShowcaseI18n } from "../../../i18n";
 
@@ -28,6 +31,7 @@ function CodeBlock(props: { sampleFile: string }) {
 
 export default function SgInputPhonePage() {
   const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgInputPhone");
   const [basicValue, setBasicValue] = React.useState("");
   const [validationMsg, setValidationMsg] = React.useState<string | null>(null);
   const [eventLog, setEventLog] = React.useState<string[]>([]);
@@ -195,6 +199,7 @@ export default function SgInputPhonePage() {
             <p className="mt-2 text-muted-foreground">
               {t(i18n, "showcase.component.inputPhone.subtitle")}
             </p>
+            {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
             <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">{t(i18n, "showcase.common.examples")}</p>
             <SgGrid columns={{ base: 1, sm: 2, lg: 3 }} gap={8} className="mt-2">
               {exampleLinks.map((example) => (
@@ -451,6 +456,7 @@ export default function SgInputPhonePage() {
       </Section>
 
       <ShowcasePropsReference rows={inputPhonePropsRows} />
+      {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
       <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

@@ -4,6 +4,9 @@ import React from "react";
 import { SgDockScreen, SgDockZone, SgToolBar, SgToolbarIconButton } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import { ClipboardList, Home, LayoutGrid, Search, Settings, Users } from "lucide-react";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -199,6 +202,7 @@ function isSupportedLocale(locale: ShowcaseLocale): locale is keyof typeof DOCK_
 
 export default function SgDockScreenPage() {
   const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgDockScreen");
   const locale: keyof typeof DOCK_SCREEN_TEXTS = isSupportedLocale(i18n.locale) ? i18n.locale : "en-US";
   const texts = DOCK_SCREEN_TEXTS[locale];
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({
@@ -219,6 +223,7 @@ export default function SgDockScreenPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
         <Section title={texts.section1Title} description={texts.section1Description}>
           <SgDockScreen
@@ -278,6 +283,7 @@ export default function SgDockScreenPage() {
           title={texts.propsTitle}
           rows={DOCK_SCREEN_PROPS}
         />
+        {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

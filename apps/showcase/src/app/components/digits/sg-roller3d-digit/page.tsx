@@ -3,10 +3,13 @@
 import * as React from "react";
 import { SgButton, SgRoller3DDigit } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
+import ComponentAiPropsTable from "../../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../../ai/ComponentAiSummary";
 import SgCodeBlockBase from "../../sgCodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
+import { useAiManifestComponent } from "../../ai/useAiManifestComponent";
 import { useShowcaseAnchors } from "../../useShowcaseAnchors";
 import { useShowcaseI18n, type ShowcaseLocale } from "../../../../i18n";
 
@@ -324,6 +327,7 @@ export default function SgRoller3DDigitShowcase() {
   const texts = React.useMemo(() => getRollerTexts(i18n.locale), [i18n.locale]);
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
+  const aiComponent = useAiManifestComponent("SgRoller3DDigit");
 
   const [digit, setDigit] = React.useState("0");
   const [minuteVal, setMinuteVal] = React.useState("00");
@@ -352,6 +356,7 @@ export default function SgRoller3DDigitShowcase() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
         <Section title={texts.section1Title} description={texts.section1Description}>
           <div className="flex items-center gap-4">
@@ -412,6 +417,7 @@ export default function SgRoller3DDigitShowcase() {
         </Section>
 
         <ShowcasePropsReference rows={PROPS} title={texts.propsReferenceTitle} />
+        {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

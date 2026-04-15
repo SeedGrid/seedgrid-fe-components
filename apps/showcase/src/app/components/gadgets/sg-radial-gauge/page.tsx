@@ -8,6 +8,9 @@ import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../../useShowcaseAnchors";
+import ComponentAiPropsTable from "../../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../../ai/useAiManifestComponent";
 
 function Section(props: { title: string; description?: string; children: React.ReactNode }) {
   return (
@@ -452,6 +455,7 @@ export default function SgRadialGaugePage() {
   const [target, setTarget] = React.useState(70);
   const [consumption, setConsumption] = React.useState(44);
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors();
+  const aiComponent = useAiManifestComponent("SgRadialGauge");
 
   const extraPointers = React.useMemo<SgRadialGaugePointer[]>(
     () => [
@@ -491,6 +495,7 @@ export default function SgRadialGaugePage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
         <Section title="1) Speedometer Style" description="Primary needle pointer with warning ranges.">
           <div className="flex flex-wrap items-center gap-4 rounded-lg border border-border p-4">
@@ -796,6 +801,7 @@ export default function SgRadialGaugePage() {
         </Section>
 
         <ShowcasePropsReference rows={RADIAL_GAUGE_PROPS} />
+        {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

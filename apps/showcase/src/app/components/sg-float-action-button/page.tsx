@@ -6,6 +6,9 @@ import { SgFloatActionButton, SgGrid, type SgFABAction } from "@seedgrid/fe-comp
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import { t, useShowcaseI18n } from "../../../i18n";
 
@@ -78,6 +81,7 @@ const FAB_EXAMPLE_LINKS = [
 
 export default function SgFloatActionButtonPage() {
   const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgFloatActionButton");
 
   const actions: SgFABAction[] = [
     { icon: <UserPlusIcon />, label: t(i18n, "showcase.component.fab.labels.newUser"), onClick: () => console.log("new user") },
@@ -227,6 +231,7 @@ export default function SgFloatActionButtonPage() {
           <div className="rounded-lg border border-border bg-background p-4 shadow-sm">
             <h1 className="text-3xl font-bold">{t(i18n, "showcase.component.fab.title")}</h1>
             <p className="mt-2 text-muted-foreground">{t(i18n, "showcase.component.fab.subtitle")}</p>
+            {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
             <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">{t(i18n, "showcase.common.examples")}</p>
             <SgGrid columns={{ base: 1, sm: 2, lg: 3 }} gap={8} className="mt-2">
               {FAB_EXAMPLE_LINKS.map((example) => (
@@ -643,6 +648,7 @@ export default function SgFloatActionButtonPage() {
         title={t(i18n, "showcase.component.fab.props.title")}
         rows={fabPropsRows}
       />
+      {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
 
       <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>

@@ -5,6 +5,9 @@ import { SgButton, SgStepperInput } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
@@ -197,6 +200,7 @@ function isSupportedLocale(locale: ShowcaseLocale): locale is keyof typeof STEPP
 
 export default function SgStepperInputPage() {
   const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgStepperInput");
   const locale: keyof typeof STEPPER_TEXTS = isSupportedLocale(i18n.locale) ? i18n.locale : "en-US";
   const texts = STEPPER_TEXTS[locale];
   const [basicValue, setBasicValue] = React.useState(12);
@@ -281,7 +285,8 @@ export default function SgStepperInputPage() {
         </Section>
 
         <ShowcasePropsReference rows={STEPPER_PROPS} />
-        <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
+        {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+      <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>
   );

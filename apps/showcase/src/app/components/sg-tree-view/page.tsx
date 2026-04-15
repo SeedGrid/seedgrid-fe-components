@@ -10,6 +10,9 @@ import {
 } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import { Shield, Users, FileText, BarChart3 } from "lucide-react";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -158,6 +161,7 @@ const TREE_VIEW_PROPS: ShowcasePropRow[] = [
 
 export default function SgTreeViewPage() {
   const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgTreeView");
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({
     deps: [i18n.locale]
   });
@@ -182,6 +186,7 @@ export default function SgTreeViewPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
       <Section
         title={`1) ${t(i18n, "showcase.component.treeView.sections.basic.title")}`}
@@ -332,6 +337,7 @@ export default function SgTreeViewPage() {
       </Section>
 
       <ShowcasePropsReference rows={TREE_VIEW_PROPS} />
+      {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
       <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

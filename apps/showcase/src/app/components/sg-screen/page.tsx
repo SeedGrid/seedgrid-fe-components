@@ -3,6 +3,9 @@
 import React from "react";
 import { SgScreen, SgPanel, SgStack } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -171,6 +174,7 @@ function isSupportedLocale(locale: ShowcaseLocale): locale is keyof typeof SCREE
 
 export default function SgScreenPage() {
   const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgScreen");
   const locale: keyof typeof SCREEN_TEXTS = isSupportedLocale(i18n.locale) ? i18n.locale : "en-US";
   const texts = SCREEN_TEXTS[locale];
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({
@@ -191,6 +195,7 @@ export default function SgScreenPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
         <Section title={texts.section1Title} description={texts.section1Description}>
           <SgPanel className="h-[420px] rounded-xl bg-muted/30" padding={12}>
@@ -257,6 +262,7 @@ export default function SgScreenPage() {
         </Section>
 
         <ShowcasePropsReference rows={SCREEN_PROPS} />
+        {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

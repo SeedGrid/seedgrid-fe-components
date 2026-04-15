@@ -8,6 +8,9 @@ import { SgButton, SgGrid, SgInputNumber } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import { t, useShowcaseI18n } from "../../../i18n";
 
 function Section(props: { id?: string; title: string; description?: string; children: React.ReactNode }) {
@@ -123,6 +126,7 @@ export default function App() {
 
 export default function SgInputNumberPage() {
   const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgInputNumber");
   const watchValueSnippet = `"{watch("valor")}"`;
   const { register, control, handleSubmit, watch, setValue } = useForm<FieldValues>({
     defaultValues: {
@@ -353,6 +357,7 @@ export default function SgInputNumberPage() {
             <p className="mt-2 text-muted-foreground">
               {t(i18n, "showcase.component.inputNumber.subtitle")}
             </p>
+            {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
             <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
               {t(i18n, "showcase.common.examples")}
             </p>
@@ -899,6 +904,7 @@ export default function SgInputNumberPage() {
           </table>
         </div>
       </section>
+      {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
       <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

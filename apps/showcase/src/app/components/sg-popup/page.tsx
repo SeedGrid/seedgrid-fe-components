@@ -6,6 +6,9 @@ import { SgButton, SgPopup, type SgPopupAction } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
@@ -86,6 +89,7 @@ const POPUP_PROPS: ShowcasePropRow[] = [
 
 export default function SgPopupPage() {
   const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgPopup");
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({
     deps: [i18n.locale]
   });
@@ -133,6 +137,7 @@ export default function SgPopupPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
       <Section
         title={`1) ${t(i18n, "showcase.component.popup.sections.basic.title")}`}
@@ -200,6 +205,7 @@ export default function SgPopupPage() {
         </Section>
 
         <ShowcasePropsReference rows={POPUP_PROPS} />
+        {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

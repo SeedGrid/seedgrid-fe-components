@@ -24,6 +24,9 @@ import {
 } from "lucide-react";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import { t, useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
 
 type PropDef = {
@@ -401,6 +404,7 @@ const PRIORITY_OPTIONS: SgRadioGroupOption[] = [
 
 export default function SgRadioGroupShowcase() {
   const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgRadioGroup");
   const locale: keyof typeof RADIO_GROUP_TEXTS = isSupportedRadioLocale(i18n.locale) ? i18n.locale : "en-US";
   const texts = RADIO_GROUP_TEXTS[locale];
   const [selectedBasic, setSelectedBasic] = React.useState<string | number | null>("option1");
@@ -642,6 +646,7 @@ export default function SgRadioGroupShowcase() {
           <div className="rounded-lg border border-border bg-background p-4 shadow-sm">
             <h1 className="text-3xl font-bold">SgRadioGroup</h1>
             <p className="mt-2 text-muted-foreground">{texts.subtitle}</p>
+            {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
             <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">{texts.examplesLabel}</p>
             <SgGrid columns={{ base: 1, sm: 2, lg: 3 }} gap={8} className="mt-2">
               {texts.sectionTitles.map((label, index) => ({ id: `exemplo-${index + 1}`, label })).map((example) => (
@@ -861,6 +866,7 @@ export default function SgRadioGroupShowcase() {
         />
       </Section>
       <PropsTable id="props-reference" props={propDefs} title={texts.propsTitle} colProp={texts.propsColProp} colType={texts.propsColType} colDefault={texts.propsColDefault} colDescription={texts.propsColDescription} />
+      {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
       <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

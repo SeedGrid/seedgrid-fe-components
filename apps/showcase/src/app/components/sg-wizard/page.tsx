@@ -10,6 +10,9 @@ import {
   SgWizardPage,
 } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -50,6 +53,8 @@ const WIZARD_PROPS: ShowcasePropRow[] = [
 
 export default function SgWizardPageDemo() {
   const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgWizard");
+  const aiWizardPageComponent = useAiManifestComponent("SgWizardPage");
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors();
   const [submitted, setSubmitted] = React.useState<Record<string, string> | null>(null);
   const [step, setStep] = React.useState(0);
@@ -73,6 +78,8 @@ export default function SgWizardPageDemo() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
+        {aiWizardPageComponent ? <ComponentAiSummary component={aiWizardPageComponent} /> : null}
 
       <Section
         title={t(i18n, "showcase.component.wizard.sections.autoValidation.title")}
@@ -378,6 +385,8 @@ export default function SgWizardPageDemo() {
       </Section>
 
       <ShowcasePropsReference rows={WIZARD_PROPS} />
+      {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+      {aiWizardPageComponent ? <ComponentAiPropsTable component={aiWizardPageComponent} /> : null}
       <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
     </div>
   </I18NReady>

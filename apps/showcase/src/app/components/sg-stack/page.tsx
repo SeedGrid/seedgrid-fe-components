@@ -5,6 +5,9 @@ import { SgGrid, SgPanel, SgStack, SgButton } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
@@ -119,6 +122,7 @@ function isSupportedLocale(locale: ShowcaseLocale): locale is keyof typeof STACK
 
 export default function SgStackPage() {
   const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgStack");
   const locale: keyof typeof STACK_TEXTS = isSupportedLocale(i18n.locale) ? i18n.locale : "en-US";
   const texts = STACK_TEXTS[locale];
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({
@@ -139,6 +143,7 @@ export default function SgStackPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
         <Section title={texts.section1Title} description={texts.section1Description}>
           <SgGrid columns={{ base: 1, md: 2 }} gap={16}>
@@ -179,6 +184,7 @@ export default function SgStackPage() {
         </Section>
 
         <ShowcasePropsReference rows={STACK_PROPS} />
+        {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

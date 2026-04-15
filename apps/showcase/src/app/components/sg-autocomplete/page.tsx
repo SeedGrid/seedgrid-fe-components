@@ -5,6 +5,9 @@ import { SgAutocomplete, type SgAutocompleteItem } from "@seedgrid/fe-components
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
@@ -190,6 +193,7 @@ const source = async (query: string) => {
 
 export default function SgAutocompletePage() {
   const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgAutocomplete");
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({ deps: [i18n.locale] });
   const [selectedId, setSelectedId] = React.useState<number | null>(null);
   const [selectedLabel, setSelectedLabel] = React.useState("");
@@ -399,6 +403,7 @@ export default function SgAutocompletePage() {
         rows={autocompletePropsRows}
       />
 
+      {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
       <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
     </div>
     </I18NReady>

@@ -14,6 +14,9 @@ import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../../useShowcaseAnchors";
+import ComponentAiPropsTable from "../../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../../ai/useAiManifestComponent";
 import { t, useShowcaseI18n } from "../../../../i18n";
 
 function Section(props: { title: string; description?: string; children: React.ReactNode }) {
@@ -59,6 +62,7 @@ const CLOCK_THEME_PROVIDER_PROPS: ShowcasePropRow[] = [
 export default function SgClockThemeProviderPage() {
   const i18n = useShowcaseI18n();
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors();
+  const aiComponent = useAiManifestComponent("SgClockThemeProvider");
 
   return (
     <I18NReady>
@@ -74,6 +78,7 @@ export default function SgClockThemeProviderPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
         <Section
           title={t(i18n, "showcase.component.clockThemeProvider.sections.basic.title")}
@@ -98,6 +103,7 @@ export default function SgClockThemeProviderPage() {
         </Section>
 
         <ShowcasePropsReference rows={CLOCK_THEME_PROVIDER_PROPS} />
+        {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

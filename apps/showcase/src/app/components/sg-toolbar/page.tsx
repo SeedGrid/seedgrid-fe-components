@@ -13,6 +13,9 @@ import { SgPlayground } from "@seedgrid/fe-playground";
 import { Filter, Home, Pencil, Plus, RefreshCcw, Settings, Trash2, Users } from "lucide-react";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
@@ -380,6 +383,8 @@ const TOOLBAR_PROPS: ShowcasePropRow[] = [
 
 export default function SgToolBarPage() {
   const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgToolBar");
+  const aiToolbarIconButtonComponent = useAiManifestComponent("SgToolbarIconButton");
   const locale: keyof typeof TOOLBAR_TEXTS = isSupportedLocale(i18n.locale) ? i18n.locale : "en-US";
   const texts = TOOLBAR_TEXTS[locale];
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({
@@ -400,6 +405,8 @@ export default function SgToolBarPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
+        {aiToolbarIconButtonComponent ? <ComponentAiSummary component={aiToolbarIconButtonComponent} /> : null}
 
         <Section id="exemplo-1" title={texts.sectionTitles[0] ?? ""} description={texts.sectionDescriptions[0] ?? ""}>
           <div className="w-full">
@@ -535,6 +542,8 @@ export default function SgToolBarPage() {
         </Section>
 
         <ShowcasePropsReference id="props-reference" title={texts.propsTitle} rows={TOOLBAR_PROPS} />
+        {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+        {aiToolbarIconButtonComponent ? <ComponentAiPropsTable component={aiToolbarIconButtonComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

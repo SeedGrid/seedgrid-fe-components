@@ -3,6 +3,9 @@
 import React from "react";
 import { SgBadge, SgBadgeOverlay } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -66,6 +69,7 @@ const BADGE_OVERLAY_PROPS: ShowcasePropRow[] = [
 
 export default function SgBadgeOverlayPage() {
   const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgBadgeOverlay");
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({
     deps: [i18n.locale]
   });
@@ -84,6 +88,7 @@ export default function SgBadgeOverlayPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
         <Section
           title={`1) ${t(i18n, "showcase.component.badgeOverlay.sections.basic.title")}`}
@@ -129,6 +134,7 @@ export default function SgBadgeOverlayPage() {
         </Section>
 
         <ShowcasePropsReference rows={BADGE_OVERLAY_PROPS} />
+        {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

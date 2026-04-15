@@ -9,6 +9,9 @@ import { SgGrid, SgToggleSwitch } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import { t, useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
 
 function Section(props: { id?: string; title: string; description?: string; children: React.ReactNode }) {
@@ -464,6 +467,7 @@ function isSupportedToggleLocale(locale: ShowcaseLocale): locale is keyof typeof
 }
 export default function SgToggleSwitchPage() {
   const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgToggleSwitch");
   const locale: keyof typeof TOGGLE_TEXTS = isSupportedToggleLocale(i18n.locale) ? i18n.locale : "en-US";
   const texts = TOGGLE_TEXTS[locale];
   const [basicValue, setBasicValue] = React.useState(false);
@@ -624,6 +628,7 @@ export default function SgToggleSwitchPage() {
           <div className="rounded-lg border border-border bg-background p-4 shadow-sm">
             <h1 className="text-3xl font-bold">SgToggleSwitch</h1>
             <p className="mt-2 text-muted-foreground">{texts.subtitle}</p>
+            {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
             <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">{texts.examplesLabel}</p>
             <SgGrid columns={{ base: 1, sm: 2, lg: 3 }} gap={8} className="mt-2">
               {exampleLinks.map((example) => (
@@ -874,6 +879,7 @@ export default function SgToggleSwitchPage() {
           </table>
         </div>
       </section>
+      {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
       <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

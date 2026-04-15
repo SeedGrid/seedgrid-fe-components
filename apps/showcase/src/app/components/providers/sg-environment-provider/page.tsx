@@ -8,6 +8,9 @@ import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../../useShowcaseAnchors";
+import ComponentAiPropsTable from "../../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../../ai/useAiManifestComponent";
 import { t, useShowcaseI18n } from "../../../../i18n";
 
 function Section(props: { title: string; description?: string; children: React.ReactNode }) {
@@ -64,6 +67,7 @@ export default function SgEnvironmentProviderPage() {
   const i18n = useShowcaseI18n();
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors();
   const [namespace, setNamespace] = React.useState("u:123");
+  const aiComponent = useAiManifestComponent("SgEnvironmentProvider");
 
   return (
     <I18NReady>
@@ -79,6 +83,7 @@ export default function SgEnvironmentProviderPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
       <Section
         title={t(i18n, "showcase.component.environment.sections.default.title")}
@@ -145,6 +150,7 @@ export default function SgEnvironmentProviderPage() {
       </Section>
 
       <ShowcasePropsReference rows={ENVIRONMENT_PROVIDER_PROPS} />
+      {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
       <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
     </div>
   </I18NReady>

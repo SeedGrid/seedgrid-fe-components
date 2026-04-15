@@ -6,6 +6,9 @@ import { SgGrid, SgInputCPF } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import { t, useShowcaseI18n } from "../../../i18n";
 
 function Section(props: { id?: string; title: string; description?: string; children: React.ReactNode }) {
@@ -27,6 +30,7 @@ function CodeBlock(props: { sampleFile: string }) {
 
 export default function SgInputCPFPage() {
   const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgInputCPF");
   const [basicValue, setBasicValue] = React.useState("");
   const [validationMsg, setValidationMsg] = React.useState<string | null>(null);
   const [eventLog, setEventLog] = React.useState<string[]>([]);
@@ -173,6 +177,7 @@ export default function SgInputCPFPage() {
             <p className="mt-2 text-muted-foreground">
               {t(i18n, "showcase.component.cpf.subtitle")}
             </p>
+            {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
             <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">{t(i18n, "showcase.common.examples")}</p>
             <SgGrid columns={{ base: 1, sm: 2, lg: 3 }} gap={8} className="mt-2">
               {exampleLinks.map((example) => (
@@ -488,6 +493,7 @@ export default function SgInputCPFPage() {
           </table>
         </div>
       </section>
+      {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
       <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

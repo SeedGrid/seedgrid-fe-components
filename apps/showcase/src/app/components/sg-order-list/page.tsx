@@ -12,6 +12,9 @@ import { SgPlayground } from "@seedgrid/fe-playground";
 import { Bell, Heart, Landmark, RefreshCw, Star } from "lucide-react";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
@@ -277,6 +280,7 @@ const BACKLOG_ITEMS: SgOrderListItem[] = [
 
 export default function SgOrderListShowcase() {
   const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgOrderList");
   const locale: keyof typeof ORDER_LIST_TEXTS = isSupportedOrderListLocale(i18n.locale) ? i18n.locale : "en-US";
   const texts = ORDER_LIST_TEXTS[locale];
   const propDescriptions = ORDER_LIST_PROP_DESCRIPTIONS[locale];
@@ -422,7 +426,8 @@ export default function SgOrderListShowcase() {
         </Section>
 
         <ShowcasePropsReference rows={orderListProps} title={texts.propsReferenceTitle} />
-        <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
+        {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+      <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>
   );

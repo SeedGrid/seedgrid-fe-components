@@ -9,6 +9,9 @@ import {
   type SgToastOptions,
 } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -76,6 +79,7 @@ const TOASTER_PROPS: ShowcasePropRow[] = [
 
 export default function SgToasterPage() {
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors();
+  const aiComponent = useAiManifestComponent("SgToaster");
   const [loadingId, setLoadingId] = React.useState<SgToastId | null>(null);
 
   const startLoading = React.useCallback(() => {
@@ -218,6 +222,7 @@ export default function SgToasterPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
       <Section
         title="1) Base setup"
@@ -364,6 +369,7 @@ export default function SgToasterPage() {
       </Section>
 
         <ShowcasePropsReference rows={TOASTER_PROPS} />
+        {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

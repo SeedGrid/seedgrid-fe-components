@@ -6,6 +6,9 @@ import { SgButton, SgDialog } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
@@ -87,6 +90,7 @@ const DIALOG_PROPS: ShowcasePropRow[] = [
 
 export default function SgDialogPage() {
   const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgDialog");
   const { currentMode } = useSgTheme();
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({
     deps: [i18n.locale]
@@ -119,6 +123,7 @@ export default function SgDialogPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
       <Section
         title={`1) ${t(i18n, "showcase.component.dialog.sections.basic.title")}`}
@@ -288,6 +293,7 @@ export default function SgDialogPage() {
         </Section>
 
         <ShowcasePropsReference rows={DIALOG_PROPS} />
+        {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

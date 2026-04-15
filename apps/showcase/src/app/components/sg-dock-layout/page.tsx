@@ -4,6 +4,9 @@ import React from "react";
 import { SgDockLayout, SgDockZone, SgToolBar, SgToolbarIconButton } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import { ClipboardList, Home, LayoutGrid, Search, Settings, Users } from "lucide-react";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -150,6 +153,8 @@ function isSupportedDockLayoutLocale(locale: string): locale is keyof typeof DOC
 
 export default function SgDockLayoutPage() {
   const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgDockLayout");
+  const aiDockZoneComponent = useAiManifestComponent("SgDockZone");
   const locale: keyof typeof DOCK_LAYOUT_PAGE_TEXTS = isSupportedDockLayoutLocale(i18n.locale) ? i18n.locale : "en-US";
   const texts = DOCK_LAYOUT_PAGE_TEXTS[locale];
   const topLabel = t(i18n, "showcase.component.dockLayout.labels.top");
@@ -171,6 +176,8 @@ export default function SgDockLayoutPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
+        {aiDockZoneComponent ? <ComponentAiSummary component={aiDockZoneComponent} /> : null}
 
       <Section
         title={`1) ${t(i18n, "showcase.component.dockLayout.sections.basic.title")}`}
@@ -247,6 +254,8 @@ export default function SgDockLayoutPage() {
           title={texts.propsTitleZone}
           rows={DOCK_ZONE_PROPS}
         />
+        {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+        {aiDockZoneComponent ? <ComponentAiPropsTable component={aiDockZoneComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

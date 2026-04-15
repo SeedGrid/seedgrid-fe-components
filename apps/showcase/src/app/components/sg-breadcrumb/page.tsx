@@ -6,6 +6,9 @@ import { SgBreadcrumb, SgButton, type SgBreadcrumbItem } from "@seedgrid/fe-comp
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
@@ -276,6 +279,7 @@ export default function SgBreadcrumbPage() {
   const [lastNavigate, setLastNavigate] = React.useState("-");
   const routeItems = ROUTES[routeKey];
   const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgBreadcrumb");
   const texts = React.useMemo(() => getBreadcrumbTexts(i18n.locale), [i18n.locale]);
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
@@ -294,6 +298,7 @@ export default function SgBreadcrumbPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
         <Section title={texts.section1Title} description={texts.section1Description}>
           <SgBreadcrumb items={BASIC_ITEMS} separator="chevron" showHomeIcon />
@@ -349,6 +354,7 @@ export default function SgBreadcrumbPage() {
         </Section>
 
         <ShowcasePropsReference rows={BREADCRUMB_PROPS} title={texts.propsReferenceTitle} />
+        {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

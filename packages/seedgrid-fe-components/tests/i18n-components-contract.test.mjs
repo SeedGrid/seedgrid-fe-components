@@ -71,7 +71,6 @@ test("components use translation helpers instead of hardcoded labels for patched
   const expectations = [
     ["inputs/SgAutocomplete.tsx", 't(i18n, "components.actions.openList")'],
     ["inputs/SgCombobox.tsx", 't(i18n, "components.actions.openList")'],
-    ["inputs/SgInputSelect.tsx", 't(i18n, "components.inputs.select.placeholder")'],
     ["inputs/SgStepperInput.tsx", 't(i18n, "components.inputs.stepper.increase")'],
     ["inputs/SgStepperInput.tsx", 't(i18n, "components.inputs.stepper.decrease")'],
     ["inputs/SgTextEditor.tsx", 't(i18n, "components.textEditor.toolbar.bold")'],
@@ -129,7 +128,6 @@ test("patched components no longer contain the previous hardcoded labels", () =>
   const forbidden = [
     ["inputs/SgAutocomplete.tsx", "Abrir lista"],
     ["inputs/SgCombobox.tsx", "Abrir lista"],
-    ["inputs/SgInputSelect.tsx", "Selecione"],
     ["inputs/SgStepperInput.tsx", "Increase value"],
     ["inputs/SgStepperInput.tsx", "Decrease value"],
     ["commons/SgToaster.tsx", "Close toast"],

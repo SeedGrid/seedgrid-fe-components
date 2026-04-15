@@ -17,6 +17,9 @@ import { SgPlayground } from "@seedgrid/fe-playground";
 import { BarChart2, ClipboardList, CreditCard, DollarSign, Download, Home, LayoutGrid, Plus, Printer, Save, Search, Settings, ShoppingCart, Trash2, Users, Wallet } from "lucide-react";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
@@ -1176,6 +1179,7 @@ function getMenuShowcaseTexts(locale: ShowcaseLocale): MenuShowcaseTexts {
 
 export default function SgMenuPage() {
   const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgMenu");
   const texts = React.useMemo(() => getMenuShowcaseTexts(i18n.locale), [i18n.locale]);
   const [activeId, setActiveId] = React.useState("dashboard");
   const [tieredActiveId, setTieredActiveId] = React.useState("dashboard");
@@ -1201,6 +1205,7 @@ export default function SgMenuPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
         <Section title={texts.section1Title} description={texts.section1Description}>
           <div className="h-[460px] overflow-hidden rounded-lg border border-border">
@@ -1387,6 +1392,7 @@ export default function SgMenuPage() {
         <ShowcasePropsReference id="props-reference-menu-selection" title={texts.propsSelectionTitle} rows={MENU_SELECTION_PROPS} />
         <ShowcasePropsReference id="props-reference-menu-brand" title={texts.propsBrandTitle} rows={MENU_BRAND_PROPS} />
         <ShowcasePropsReference id="props-reference-menu-user" title={texts.propsUserTitle} rows={MENU_USER_PROPS} />
+        {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
 
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>

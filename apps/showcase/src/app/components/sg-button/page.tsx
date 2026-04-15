@@ -5,9 +5,12 @@ import Link from "next/link";
 import { Check, X, Bookmark, Search, Users, Bell, Heart } from "lucide-react";
 import { SgButton, SgGrid } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
+import { loadAiManifestComponent, type AiManifestComponent } from "../../lib/ai-manifest";
 import { useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
 
 const SEVERITIES = ["primary", "secondary", "success", "info", "warning", "help", "danger"] as const;
@@ -390,6 +393,7 @@ const BUTTON_PROPS: ShowcasePropRow[] = [
 export default function SgButtonShowcase() {
   const submit = useFakeProcess(2000);
   const i18n = useShowcaseI18n();
+  const [aiComponent, setAiComponent] = React.useState<AiManifestComponent | null>(null);
   const texts = React.useMemo(() => getButtonTexts(i18n.locale), [i18n.locale]);
   const stickyHeaderRef = React.useRef<HTMLDivElement | null>(null);
   const [anchorOffset, setAnchorOffset] = React.useState(320);
@@ -399,6 +403,23 @@ export default function SgButtonShowcase() {
     (index: number) => texts.sectionDescriptions[index - 1] ?? "",
     [texts]
   );
+
+  React.useEffect(() => {
+    let active = true;
+
+    const loadAiData = async () => {
+      const component = await loadAiManifestComponent("SgButton");
+      if (active) {
+        setAiComponent(component);
+      }
+    };
+
+    void loadAiData();
+
+    return () => {
+      active = false;
+    };
+  }, []);
 
   React.useEffect(() => {
     const updateAnchorOffset = () => {
@@ -519,6 +540,7 @@ export default function SgButtonShowcase() {
             <p className="mt-2 text-muted-foreground">
               {texts.headerSubtitle}
             </p>
+            {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
             <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">{texts.examplesLabel}</p>
             <SgGrid columns={{ base: 1, sm: 2, lg: 3 }} gap={8} className="mt-2">
               {BUTTON_EXAMPLE_IDS.map((exampleId, index) => (
@@ -780,6 +802,7 @@ export default function SgButtonShowcase() {
       </Section>
 
       <ShowcasePropsReference id="props-reference" title={texts.propsTitle} rows={BUTTON_PROPS} />
+      {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
       <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

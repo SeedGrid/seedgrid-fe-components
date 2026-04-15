@@ -3,6 +3,9 @@
 import * as React from "react";
 import { SgButton, SgCalendar, SgEnvironmentProvider, SgGrid } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
+import ComponentAiPropsTable from "../../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../../ai/useAiManifestComponent";
 import SgCodeBlockBase from "../../sgCodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
@@ -238,6 +241,7 @@ function LocaleCalendarExample() {
 
 export default function SgCalendarPage() {
   const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgCalendar");
   const locale: keyof typeof CALENDAR_TEXTS = isSupportedLocale(i18n.locale) ? i18n.locale : "en-US";
   const texts = CALENDAR_TEXTS[locale];
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors();
@@ -282,6 +286,7 @@ export default function SgCalendarPage() {
             exampleLinks={exampleLinks}
             onAnchorClick={handleAnchorClick}
           />
+          {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
           <Section title={texts.section1Title} description={texts.section1Description}>
             <BasicCalendarExample />
@@ -310,6 +315,7 @@ export default function SgCalendarPage() {
           </Section>
 
           <ShowcasePropsReference rows={calendarProps} />
+          {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
           <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
         </div>
       </SgEnvironmentProvider>

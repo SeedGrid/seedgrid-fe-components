@@ -4,6 +4,9 @@ import React from "react";
 import { FolderKanban, Receipt, ShieldCheck, UserRound, Wrench } from "lucide-react";
 import { SgButton, SgPageControl, SgPageControlPage } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -288,6 +291,8 @@ function isSupportedPageControlLocale(locale: ShowcaseLocale): locale is keyof t
 }
 export default function SgPageControlShowcasePage() {
   const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgPageControl");
+  const aiPageComponent = useAiManifestComponent("SgPageControlPage");
   const locale: keyof typeof PAGE_CONTROL_TEXTS = isSupportedPageControlLocale(i18n.locale) ? i18n.locale : "en-US";
   const texts = PAGE_CONTROL_TEXTS[locale];
   const [activePageId, setActivePageId] = React.useState<string>("registration");
@@ -312,6 +317,8 @@ export default function SgPageControlShowcasePage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
+        {aiPageComponent ? <ComponentAiSummary component={aiPageComponent} /> : null}
 
         <Section title={texts.sectionTitles[0] ?? ""} description={texts.sectionDescriptions[0] ?? ""}>
           <SgPageControl
@@ -439,6 +446,8 @@ export default function SgPageControlShowcasePage() {
         </Section>
 
         <ShowcasePropsReference rows={PAGE_CONTROL_PROPS} />
+        {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+        {aiPageComponent ? <ComponentAiPropsTable component={aiPageComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

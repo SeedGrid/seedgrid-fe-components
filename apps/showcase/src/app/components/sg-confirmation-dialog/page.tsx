@@ -6,6 +6,9 @@ import { SgPlayground } from "@seedgrid/fe-playground";
 import { AlertTriangle, ShieldAlert, Trash2, X } from "lucide-react";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
@@ -210,6 +213,7 @@ export default function App() {
 
 export default function SgConfirmationDialogShowcase() {
   const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgConfirmationDialog");
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({
     deps: [i18n.locale]
   });
@@ -259,6 +263,7 @@ export default function SgConfirmationDialogShowcase() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
         <Section title={sectionTitles[0] ?? ""}>
           <SgButton onClick={() => setOpenBasic(true)}>delete permission</SgButton>
@@ -346,6 +351,7 @@ export default function SgConfirmationDialogShowcase() {
         </Section>
 
         <ShowcasePropsReference rows={confirmationProps} />
+        {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

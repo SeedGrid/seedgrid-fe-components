@@ -9,6 +9,9 @@ import {
   type SgDockMenuItem,
 } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -669,6 +672,7 @@ function getDockMenuProps(texts: DockMenuTexts): ShowcasePropRow[] {
 
 export default function SgDockMenuPage() {
   const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgDockMenu");
   const texts = React.useMemo(() => getDockMenuTexts(i18n.locale), [i18n.locale]);
   const dockMenuProps = React.useMemo(() => getDockMenuProps(texts), [texts]);
   const [eventLog, setEventLog] = React.useState<string[]>([]);
@@ -729,6 +733,7 @@ export default function SgDockMenuPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
       <Section
         title={texts.section1Title}
@@ -918,6 +923,7 @@ export default function SgDockMenuPage() {
             </table>
           </div>
         </section>
+        {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

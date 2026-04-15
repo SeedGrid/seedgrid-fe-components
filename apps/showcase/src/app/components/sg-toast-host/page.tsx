@@ -10,6 +10,9 @@ import {
   type SgToastOptions,
 } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -76,6 +79,7 @@ const PROP_ROWS: ShowcasePropRow[] = [
 
 export default function SgToastHostShowcase() {
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors();
+  const aiComponent = useAiManifestComponent("SgToastHost");
   const [loadingId, setLoadingId] = React.useState<SgToastId | null>(null);
 
   const startLoading = React.useCallback(() => {
@@ -192,6 +196,7 @@ export default function SgToastHostShowcase() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
         {/* 1 */}
         <Section
@@ -371,6 +376,7 @@ export default function SgToastHostShowcase() {
         </Section>
 
         <ShowcasePropsReference rows={PROP_ROWS} />
+        {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

@@ -8,6 +8,9 @@ import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../../useShowcaseAnchors";
+import ComponentAiPropsTable from "../../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../../ai/useAiManifestComponent";
 
 function Section(props: { title: string; description?: string; children: React.ReactNode }) {
   return (
@@ -164,6 +167,7 @@ export default function SgLinearGaugePage() {
   const [temperature, setTemperature] = React.useState(28);
   const [target, setTarget] = React.useState(72);
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors();
+  const aiComponent = useAiManifestComponent("SgLinearGauge");
 
   const pointers = React.useMemo<SgLinearGaugePointer[]>(
     () => [
@@ -187,6 +191,7 @@ export default function SgLinearGaugePage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
         <Section title="1) Default (Horizontal)" description="Colored ranges with a controllable primary pointer.">
           <div className="space-y-4 rounded-lg border border-border p-4">
@@ -296,6 +301,7 @@ export default function SgLinearGaugePage() {
         </Section>
 
         <ShowcasePropsReference rows={LINEAR_GAUGE_PROPS} />
+        {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

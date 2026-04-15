@@ -3,11 +3,14 @@
 import React from "react";
 import { SgButton, SgGrid, SgPanel, SgScreen, SgStack } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
+import { loadAiManifestComponent, type AiManifestComponent } from "../../lib/ai-manifest";
 import { useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
 
 function Section(props: { title: string; description?: string; children: React.ReactNode }) {
@@ -144,11 +147,29 @@ function isSupportedLocale(locale: ShowcaseLocale): locale is keyof typeof PANEL
 
 export default function SgPanelPage() {
   const i18n = useShowcaseI18n();
+  const [aiComponent, setAiComponent] = React.useState<AiManifestComponent | null>(null);
   const locale: keyof typeof PANEL_TEXTS = isSupportedLocale(i18n.locale) ? i18n.locale : "en-US";
   const texts = PANEL_TEXTS[locale];
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({
     deps: [i18n.locale]
   });
+
+  React.useEffect(() => {
+    let active = true;
+
+    const loadAiData = async () => {
+      const component = await loadAiManifestComponent("SgPanel");
+      if (active) {
+        setAiComponent(component);
+      }
+    };
+
+    void loadAiData();
+
+    return () => {
+      active = false;
+    };
+  }, []);
 
   return (
     <I18NReady>
@@ -164,6 +185,7 @@ export default function SgPanelPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
         <Section title={texts.section1Title} description={texts.section1Description}>
           <SgPanel className="h-[430px] rounded-xl bg-muted/30" padding={12}>
@@ -385,6 +407,7 @@ export default function SgPanelPage() {
         </Section>
 
         <ShowcasePropsReference rows={PANEL_PROPS} />
+        {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

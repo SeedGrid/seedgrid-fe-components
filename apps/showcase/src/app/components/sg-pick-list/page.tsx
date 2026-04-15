@@ -12,6 +12,9 @@ import { SgPlayground } from "@seedgrid/fe-playground";
 import { Bell, Landmark, RefreshCw, Star } from "lucide-react";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
@@ -339,6 +342,7 @@ const ROADMAP_SOURCE: SgPickListItem[] = [
 
 export default function SgPickListShowcase() {
   const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgPickList");
   const locale: keyof typeof PICK_LIST_TEXTS = isSupportedPickListLocale(i18n.locale) ? i18n.locale : "en-US";
   const texts = PICK_LIST_TEXTS[locale];
   const propDescriptions = PICK_LIST_PROP_DESCRIPTIONS[locale];
@@ -544,7 +548,8 @@ export default function SgPickListShowcase() {
         </Section>
 
         <ShowcasePropsReference rows={propRows} title={texts.propsTitle} />
-        <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
+        {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+      <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>
   );

@@ -23,14 +23,6 @@ test("SgInputTextArea preserves register and control integration paths", () => {
   assert.match(source, /name=\{name\}/);
 });
 
-test("SgInputSelect preserves register and control integration paths", () => {
-  const source = read("SgInputSelect.tsx");
-  assert.match(source, /register\(name, rules\)/);
-  assert.match(source, /rules=\{rules\}/);
-  assert.match(source, /name=\{name\}/);
-});
-
-
 test("SgSlider preserves register and control integration paths", () => {
   const source = read("SgSlider.tsx");
   assert.match(source, /register\(name, rules\)/);

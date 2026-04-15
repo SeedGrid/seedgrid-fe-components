@@ -5,6 +5,9 @@ import { SgButton, SgCombobox } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
 import { useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
@@ -354,6 +357,7 @@ function getComboboxTexts(locale: ShowcaseLocale): ComboboxTexts {
 
 export default function SgComboboxPage() {
   const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgCombobox");
   const texts = React.useMemo(() => getComboboxTexts(i18n.locale), [i18n.locale]);
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
@@ -569,7 +573,8 @@ export default function SgComboboxPage() {
             </table>
           </div>
         </section>
-        <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
+        {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+      <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>
   );

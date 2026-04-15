@@ -7,6 +7,9 @@ import { SgPlayground } from "@seedgrid/fe-playground";
 import { t, useShowcaseI18n } from "../../../i18n";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 
 function Section(props: { id?: string; title: string; description?: string; children: React.ReactNode }) {
@@ -28,6 +31,7 @@ function CodeBlock(props: { sampleFile: string }) {
 
 export default function SgInputCpfCnpjPage() {
   const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgInputCPFCNPJ");
   const [basicValue, setBasicValue] = React.useState("");
   const [validationMsg, setValidationMsg] = React.useState<string | null>(null);
   const [eventLog, setEventLog] = React.useState<string[]>([]);
@@ -190,6 +194,7 @@ export default function SgInputCpfCnpjPage() {
             <p className="mt-2 text-muted-foreground">
               {t(i18n, "showcase.component.cpfcnpj.subtitle")}
             </p>
+            {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
             <p className="mt-2 text-sm text-muted-foreground">
               {t(i18n, "showcase.component.cpfcnpj.i18nNote").split("\n").map((part, idx, arr) => (
                 <span key={idx}>
@@ -488,6 +493,7 @@ export default function SgInputCpfCnpjPage() {
       </Section>
 
       <ShowcasePropsReference rows={inputCpfCnpjPropsRows} />
+      {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
       <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

@@ -3,10 +3,13 @@
 import * as React from "react";
 import { SgButton, SgFadeDigit } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
+import ComponentAiPropsTable from "../../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../../ai/ComponentAiSummary";
 import SgCodeBlockBase from "../../sgCodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
+import { useAiManifestComponent } from "../../ai/useAiManifestComponent";
 import { useShowcaseAnchors } from "../../useShowcaseAnchors";
 import { useShowcaseI18n, type ShowcaseLocale } from "../../../../i18n";
 
@@ -584,6 +587,7 @@ export default function SgFadeDigitShowcase() {
   const texts = React.useMemo(() => getFadeTexts(i18n.locale), [i18n.locale]);
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
+  const aiComponent = useAiManifestComponent("SgFadeDigit");
 
   return (
     <I18NReady>
@@ -601,6 +605,7 @@ export default function SgFadeDigitShowcase() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
         {/* 1 */}
         <Section title={texts.section1Title} description={texts.section1Description}>
@@ -651,6 +656,7 @@ export default function SgFadeDigitShowcase() {
         </Section>
 
         <ShowcasePropsReference rows={PROPS} title={texts.propsReferenceTitle} />
+        {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         <div
           aria-hidden="true"
           className="pointer-events-none"

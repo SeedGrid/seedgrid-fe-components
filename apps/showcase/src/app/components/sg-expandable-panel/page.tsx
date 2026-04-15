@@ -3,6 +3,9 @@
 import React from "react";
 import { SgButton, SgExpandablePanel } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
@@ -463,6 +466,7 @@ function isSupportedExpandableLocale(locale: ShowcaseLocale): locale is keyof ty
 
 export default function SgExpandablePanelPage() {
   const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgExpandablePanel");
   const locale: keyof typeof EXPANDABLE_PANEL_TEXTS = isSupportedExpandableLocale(i18n.locale) ? i18n.locale : "en-US";
   const texts = EXPANDABLE_PANEL_TEXTS[locale];
   const [inlineOpen, setInlineOpen] = React.useState(true);
@@ -494,6 +498,7 @@ export default function SgExpandablePanelPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
         <Section title={texts.sectionTitles[0] ?? ""} description={texts.sectionDescriptions[0] ?? ""}>
           <div className="h-[360px] overflow-hidden rounded-lg border border-border">
@@ -679,6 +684,7 @@ export default function SgExpandablePanelPage() {
         </Section>
 
         <ShowcasePropsReference rows={EXPANDABLE_PANEL_PROPS} title={texts.propsTitle} />
+        {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

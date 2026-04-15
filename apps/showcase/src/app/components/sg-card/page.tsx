@@ -5,6 +5,9 @@ import { SgButton, SgCard, SgEnvironmentProvider } from "@seedgrid/fe-components
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
@@ -95,6 +98,7 @@ const CARD_PROPS: ShowcasePropRow[] = [
 
 export default function SgCardPage() {
   const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgCard");
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({
     deps: [i18n.locale]
   });
@@ -113,6 +117,7 @@ export default function SgCardPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
       <Section
         title={`1) ${t(i18n, "showcase.component.card.sections.basic.title")}`}
@@ -334,6 +339,7 @@ export default function SgCardPage() {
         </Section>
 
         <ShowcasePropsReference rows={CARD_PROPS} />
+        {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

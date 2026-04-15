@@ -30,6 +30,9 @@ import {
 } from "lucide-react";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 
 function Section(props: { id?: string; title: string; description?: string; children: React.ReactNode }) {
   return (
@@ -248,6 +251,7 @@ export default function App() {
 `;
 
 export default function SgCheckboxGroupShowcase() {
+  const aiComponent = useAiManifestComponent("SgCheckboxGroup");
   const [selectedBasic, setSelectedBasic] = React.useState<(string | number)[]>(["option1"]);
   const [selectedFruit, setSelectedFruit] = React.useState<(string | number)[]>([]);
   const [selectedControlled, setSelectedControlled] = React.useState<(string | number)[]>(["option2"]);
@@ -391,6 +395,7 @@ export default function SgCheckboxGroupShowcase() {
           <div className="rounded-lg border border-border bg-background p-4 shadow-sm">
             <h1 className="text-3xl font-bold">SgCheckboxGroup</h1>
             <p className="mt-2 text-muted-foreground">Checkbox group with multi-selection, horizontal/vertical orientation, icons, check all, and React Hook Form integration.</p>
+            {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
             <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Examples</p>
             <SgGrid columns={{ base: 1, sm: 2, lg: 3 }} gap={8} className="mt-2">
               {SECTION_TITLES.map((label, index) => ({ id: `exemplo-${index + 1}`, label })).map((example) => (
@@ -743,7 +748,8 @@ export default function SgCheckboxGroupShowcase() {
           </div>
         </section>
 
-        <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
+        {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+      <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>
   );
