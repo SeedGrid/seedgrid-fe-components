@@ -4,6 +4,7 @@ import React from "react";
 import { createPortal } from "react-dom";
 import { Check, GripVertical, SlidersHorizontal } from "lucide-react";
 import { SgButton } from "../buttons/SgButton";
+import { useHasSgEnvironmentProvider, useSgPersistence } from "../environment/SgEnvironmentProvider";
 import { SgGroupBox, type SgGroupBoxProps } from "../layout/SgGroupBox";
 import { t, useComponentsI18n } from "../i18n";
 
@@ -230,6 +231,29 @@ function getColumnKey<T extends SgDatatableRow>(column: SgDatatableColumn<T>, in
   return `index:${index}`;
 }
 
+type SgDatatablePersistedColumnsState = {
+  version: 1;
+  columnOrder: string[];
+  hiddenColumnsMap: Record<string, boolean>;
+};
+
+function buildDatatableColumnsPersistenceKey(id: string | undefined) {
+  const normalizedId = id?.trim();
+  if (!normalizedId) return null;
+  return `datatable:${normalizedId}:columns`;
+}
+
+function isPersistedColumnsState(value: unknown): value is SgDatatablePersistedColumnsState {
+  if (!value || typeof value !== "object") return false;
+  const candidate = value as Partial<SgDatatablePersistedColumnsState>;
+  return (
+    candidate.version === 1 &&
+    Array.isArray(candidate.columnOrder) &&
+    candidate.hiddenColumnsMap !== null &&
+    typeof candidate.hiddenColumnsMap === "object"
+  );
+}
+
 function moveItem<T>(list: T[], fromIndex: number, toIndex: number): T[] {
   if (fromIndex === toIndex) return list;
   if (fromIndex < 0 || fromIndex >= list.length) return list;
@@ -254,6 +278,8 @@ function SgDatatableBase<T extends SgDatatableRow>(
   imperativeRef?: React.ForwardedRef<SgDatatableRef<T>>
 ) {
   const i18n = useComponentsI18n();
+  const hasEnvironmentProvider = useHasSgEnvironmentProvider();
+  const persistence = useSgPersistence();
   const {
     id,
     title,
@@ -339,6 +365,8 @@ function SgDatatableBase<T extends SgDatatableRow>(
       return acc;
     }, {})
   );
+  const [columnsStateHydrated, setColumnsStateHydrated] = React.useState(false);
+  const columnsPersistenceKey = React.useMemo(() => buildDatatableColumnsPersistenceKey(id), [id]);
 
   React.useEffect(() => {
     if (!isFirstControlled) return;
@@ -391,6 +419,62 @@ function SgDatatableBase<T extends SgDatatableRow>(
       return next;
     });
   }, [columnDescriptors]);
+
+  React.useEffect(() => {
+    if (!hasEnvironmentProvider || !columnsPersistenceKey) {
+      setColumnsStateHydrated(true);
+      return;
+    }
+
+    let alive = true;
+    setColumnsStateHydrated(false);
+
+    void (async () => {
+      try {
+        const loaded = await persistence.load(columnsPersistenceKey);
+        if (!alive) return;
+        if (isPersistedColumnsState(loaded)) {
+          const availableKeys = columnDescriptors.map((item) => item.key);
+          const persistedOrder = loaded.columnOrder.filter((key) => availableKeys.includes(key));
+          const missingKeys = availableKeys.filter((key) => !persistedOrder.includes(key));
+
+          setColumnOrder([...persistedOrder, ...missingKeys]);
+          setHiddenColumnsMap(() => {
+            const next: Record<string, boolean> = {};
+            for (const item of columnDescriptors) {
+              next[item.key] = loaded.hiddenColumnsMap[item.key] ?? Boolean(item.column.hidden);
+            }
+            return next;
+          });
+        }
+      } catch {
+        // ignore persistence errors and keep current in-memory state
+      } finally {
+        if (alive) setColumnsStateHydrated(true);
+      }
+    })();
+
+    return () => {
+      alive = false;
+    };
+  }, [hasEnvironmentProvider, columnsPersistenceKey, persistence.load, columnDescriptors]);
+
+  React.useEffect(() => {
+    if (!hasEnvironmentProvider || !columnsPersistenceKey || !columnsStateHydrated) return;
+
+    void persistence.save(columnsPersistenceKey, {
+      version: 1,
+      columnOrder,
+      hiddenColumnsMap
+    } satisfies SgDatatablePersistedColumnsState);
+  }, [
+    hasEnvironmentProvider,
+    columnsPersistenceKey,
+    columnsStateHydrated,
+    persistence.save,
+    columnOrder,
+    hiddenColumnsMap
+  ]);
 
   React.useEffect(() => {
     if (!isColumnManagerOpen) return;
