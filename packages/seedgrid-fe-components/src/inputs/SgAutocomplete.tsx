@@ -141,6 +141,7 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
   const loadingText = loadingTextProp ?? t(i18n, "components.autocomplete.loading");
   const effectiveGrouped = grouped ?? groupped ?? false;
   const [inputValue, setInputValue] = React.useState(value ?? "");
+  const [internalError, setInternalError] = React.useState<string | null>(null);
   const [items, setItems] = React.useState<SgAutocompleteItem[]>([]);
   const [loading, setLoading] = React.useState(false);
   const [open, setOpen] = React.useState(false);
@@ -167,10 +168,13 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
 
   React.useEffect(() => {
     if (value === undefined) return;
-    setLastSelected(value);
     // Never clobber what the user is actively typing.
     if (isFocusedRef.current) return;
+    setLastSelected(value);
     setInputValue(value);
+    if (!value) {
+      setInternalError(null);
+    }
   }, [value]);
 
   React.useEffect(() => {
@@ -261,6 +265,7 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
     const selection = formatSelection ? formatSelection(item) : item.label;
     setSelectedItem(item);
     setInputValue(selection);
+    setInternalError(null);
     onChange?.(selection);
     setLastSelected(selection);
     onSelect?.(item);
@@ -276,8 +281,13 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
     if (selectedItem && next !== (formatSelection ? formatSelection(selectedItem) : selectedItem.label)) {
       setSelectedItem(null);
     }
+    setInternalError(null);
     setInputValue(next);
-    onChange?.(next);
+    if (allowCustomValue || next.length === 0) {
+      onChange?.(next);
+    } else {
+      onChange?.("");
+    }
     if (next.length === 0) {
       setItems([]);
       setOpen(false);
@@ -303,9 +313,21 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
       return;
     }
     isFocusedRef.current = false;
-    if (!allowCustomValue && lastSelected && inputValue !== lastSelected) {
-      setInputValue(lastSelected);
-      onChange?.(lastSelected);
+    if (!allowCustomValue && inputValue !== lastSelected) {
+      if (lastSelected) {
+        setInputValue(lastSelected);
+        setInternalError(null);
+        onChange?.(lastSelected);
+      } else {
+        setInputValue("");
+        setSelectedItem(null);
+        setInternalError(
+          props.required
+            ? props.requiredMessage ?? t(i18n, "components.inputs.required")
+            : null
+        );
+        onChange?.("");
+      }
     }
     setOpen(false);
     onOpenChange?.(false);
@@ -464,9 +486,21 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
     const handleOutside = (event: MouseEvent) => {
       if (wrapperRef.current?.contains(event.target as Node)) return;
       if (dropdownRef.current?.contains(event.target as Node)) return;
-      if (!allowCustomValue && lastSelected && inputValue !== lastSelected) {
-        setInputValue(lastSelected);
-        onChange?.(lastSelected);
+      if (!allowCustomValue && inputValue !== lastSelected) {
+        if (lastSelected) {
+          setInputValue(lastSelected);
+          setInternalError(null);
+          onChange?.(lastSelected);
+        } else {
+          setInputValue("");
+          setSelectedItem(null);
+          setInternalError(
+            props.required
+              ? props.requiredMessage ?? t(i18n, "components.inputs.required")
+              : null
+          );
+          onChange?.("");
+        }
       }
       setOpen(false);
       onOpenChange?.(false);
@@ -498,6 +532,7 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
     <div className="relative" ref={wrapperRef}>
       <SgInputText
         {...rest}
+        error={resolveFieldError(rest.error, internalError ?? undefined)}
         enabled={enabled}
         readOnly={readOnly}
         borderRadius={borderRadius}

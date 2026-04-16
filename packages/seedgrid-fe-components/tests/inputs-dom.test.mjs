@@ -50,6 +50,51 @@ function ControlledAutocomplete(props = {}) {
   });
 }
 
+function RequiredAutocomplete(props = {}) {
+  const [value, setValue] = React.useState("");
+
+  return React.createElement(SgAutocomplete, {
+    id: "autocomplete-required-input",
+    label: "Autocomplete",
+    required: true,
+    value,
+    onChange: setValue,
+    source: (query) => [
+      { id: "abacaxi", label: "Abacaxi", value: "Abacaxi" },
+      { id: "banana", label: "Banana", value: "Banana" }
+    ],
+    minLengthForSearch: 0,
+    openOnFocus: true,
+    showDropDownButton: true,
+    ...props
+  });
+}
+
+function RequiredAutocompleteWithCommittedValue(props = {}) {
+  const [value, setValue] = React.useState("");
+
+  return React.createElement(
+    React.Fragment,
+    null,
+    React.createElement(SgAutocomplete, {
+      id: "autocomplete-required-input",
+      label: "Autocomplete",
+      required: true,
+      value,
+      onChange: setValue,
+      source: () => [
+        { id: "abacaxi", label: "Abacaxi", value: "Abacaxi" },
+        { id: "banana", label: "Banana", value: "Banana" }
+      ],
+      minLengthForSearch: 0,
+      openOnFocus: true,
+      showDropDownButton: true,
+      ...props
+    }),
+    React.createElement("div", { "data-committed-value": value }, value)
+  );
+}
+
 function ControlledInputText(props = {}) {
   const [value, setValue] = React.useState("");
 
@@ -266,6 +311,59 @@ test("SgInputPhone shows the required asterisk when required is true", async () 
     const label = harness.document.querySelector('label[for="input-phone-native-input"]');
     assert.ok(label);
     assert.match(label.textContent ?? "", /Phone\s*\*/);
+  } finally {
+    harness.restore();
+  }
+});
+
+test("SgAutocomplete does not commit arbitrary typed text when custom values are not allowed", async () => {
+  const harness = setupDomHarness();
+
+  try {
+    await harness.render(React.createElement(RequiredAutocompleteWithCommittedValue));
+    await flushDom();
+
+    const input = harness.document.querySelector('input#autocomplete-required-input');
+    assert.ok(input);
+
+    await act(async () => {
+      input.focus();
+    });
+    await flushDom();
+
+    const descriptor = Object.getOwnPropertyDescriptor(globalThis.HTMLInputElement.prototype, "value");
+    assert.ok(descriptor?.set);
+
+    await act(async () => {
+      const previous = input.value;
+      input.dispatchEvent(new harness.window.KeyboardEvent("keydown", { key: "X", bubbles: true, cancelable: true }));
+      input.dispatchEvent(
+        new harness.window.InputEvent("beforeinput", {
+          data: "X",
+          inputType: "insertText",
+          bubbles: true,
+          cancelable: true
+        })
+      );
+      descriptor.set.call(input, previous + "X");
+      input._valueTracker?.setValue?.(previous);
+      input.dispatchEvent(
+        new harness.window.InputEvent("input", {
+          data: "X",
+          inputType: "insertText",
+          bubbles: true,
+          cancelable: true
+        })
+      );
+      input.dispatchEvent(new harness.window.KeyboardEvent("keyup", { key: "X", bubbles: true, cancelable: true }));
+    });
+    await flushDom();
+
+    assert.equal(input.value, "X");
+
+    const committedValue = harness.document.querySelector("[data-committed-value]");
+    assert.ok(committedValue);
+    assert.equal(committedValue.textContent ?? "", "");
   } finally {
     harness.restore();
   }
