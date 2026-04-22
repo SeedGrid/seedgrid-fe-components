@@ -129,6 +129,13 @@ export const sgMeta: SgMetaV0 = {
     route: "/components/providers/seed-theme-provider",
     hasPlayground: true,
     hasPropsTable: true
+  },
+  sdui: {
+    rendererType: "provider.seed-theme",
+    acceptsDataBinding: true,
+    defaultProps: {
+      applyTo: "html"
+    }
   }
 };
 

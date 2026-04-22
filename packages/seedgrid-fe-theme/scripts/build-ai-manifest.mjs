@@ -30,8 +30,14 @@ async function loadComponentMeta(relativeModulePath) {
 async function main() {
   const packageVersion = await loadPackageVersion();
   const components = await Promise.all([
+    loadComponentMeta(path.join("ui", "AppShell.meta.js")),
     loadComponentMeta(path.join("theme", "SeedThemeProvider.meta.js")),
-    loadComponentMeta(path.join("theme", "useSgTheme.meta.js"))
+    loadComponentMeta(path.join("theme", "ThemeProvider.meta.js")),
+    loadComponentMeta(path.join("theme", "buildScaleFromHex.meta.js")),
+    loadComponentMeta(path.join("theme", "clamp.meta.js")),
+    loadComponentMeta(path.join("theme", "getSystemMode.meta.js")),
+    loadComponentMeta(path.join("theme", "useSgTheme.meta.js")),
+    loadComponentMeta(path.join("theme", "useTheme.meta.js"))
   ]);
 
   const manifest = {

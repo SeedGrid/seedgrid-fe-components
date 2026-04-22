@@ -9,7 +9,8 @@
       "Bash(timeout 5 node dist/server.js)",
       "Bash(cat)",
       "Bash(chmod +x /tmp/test-mcp.sh)",
-      "Bash(bash /tmp/test-mcp.sh)"
+      "Bash(bash /tmp/test-mcp.sh)",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\('scripts',{}\\), indent=2\\)\\)\")"
     ],
     "additionalDirectories": [
       "c:\\empreendedorismo\\seedgrid\\seedgrid-components-mcp"

@@ -135,6 +135,11 @@ export const sgMeta: SgMetaV0 = {
     route: "/components/hooks/use-sg-theme",
     hasPlayground: true,
     hasPropsTable: true
+  },
+  sdui: {
+    rendererType: "hook.use-sg-theme",
+    acceptsDataBinding: false,
+    defaultProps: {}
   }
 };
 
