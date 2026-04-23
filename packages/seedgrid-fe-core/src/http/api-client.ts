@@ -342,8 +342,20 @@ function mergeHeaders(target: Headers, source?: HeadersInit) {
   });
 }
 
+function resolveAbsoluteBase(baseUrl: string): string {
+  if (baseUrl.startsWith("http://") || baseUrl.startsWith("https://")) {
+    return baseUrl;
+  }
+  const origin =
+    globalThis.window === undefined
+      ? "http://localhost:3000"
+      : globalThis.window.location.origin;
+  return `${origin}${baseUrl}`;
+}
+
 function buildUrl(baseUrl: string, path: string, query?: QueryParams) {
-  const base = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
+  const resolved = resolveAbsoluteBase(baseUrl);
+  const base = resolved.endsWith("/") ? resolved : `${resolved}/`;
   const normalizedPath = path.startsWith("/") ? path.slice(1) : path;
   const url = new URL(normalizedPath, base);
 
