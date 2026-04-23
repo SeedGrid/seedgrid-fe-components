@@ -91,9 +91,11 @@ export function createApiClient(config: ApiClientConfig) {
             const url = buildUrl(config.baseUrl, path, options.query);
             const requestInit = buildRequestInit(config, options, latestAccessToken);
 
-            if (process.env.NODE_ENV !== "production") {
-              console.debug(formatCurlCommand(url, requestInit));
-            }
+            console.log("[API Request] Curl:", formatCurlCommand(url, requestInit));
+            console.log("[API Request] URL:", url);
+            console.log("[API Request] Method:", requestInit.method);
+            console.log("[API Request] Body:", requestInit.body);
+            console.log("[API Request] Headers:", requestInit.headers);
 
             const response = await fetch(url, requestInit);
 
