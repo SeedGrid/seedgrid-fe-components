@@ -419,12 +419,22 @@ async function readAccessToken(
 
 async function readResponseBody(response: Response) {
   const contentType = response.headers.get("Content-Type") ?? "";
+  console.log("[readResponseBody] contentType:", contentType);
+  console.log("[readResponseBody] response.status:", response.status);
 
   if (isJsonContentType(contentType)) {
-    return response.json();
+    const cloned = response.clone();
+    const text = await cloned.text();
+    console.log("[readResponseBody] response text:", text);
+
+    const json = await response.json();
+    console.log("[readResponseBody] parsed json:", json);
+    return json;
   }
 
-  return response.text();
+  const text = await response.text();
+  console.log("[readResponseBody] response text (not json):", text);
+  return text;
 }
 
 function isJsonContentType(contentType: string) {
