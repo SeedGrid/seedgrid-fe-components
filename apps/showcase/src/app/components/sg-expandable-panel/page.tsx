@@ -498,7 +498,6 @@ export default function SgExpandablePanelPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
-        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
         <Section title={texts.sectionTitles[0] ?? ""} description={texts.sectionDescriptions[0] ?? ""}>
           <div className="h-[360px] overflow-hidden rounded-lg border border-border">
@@ -685,6 +684,7 @@ export default function SgExpandablePanelPage() {
 
         <ShowcasePropsReference rows={EXPANDABLE_PANEL_PROPS} title={texts.propsTitle} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

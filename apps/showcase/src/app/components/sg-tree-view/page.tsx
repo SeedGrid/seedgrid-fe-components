@@ -186,7 +186,6 @@ export default function SgTreeViewPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
-        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
       <Section
         title={`1) ${t(i18n, "showcase.component.treeView.sections.basic.title")}`}
@@ -338,6 +337,7 @@ export default function SgTreeViewPage() {
 
       <ShowcasePropsReference rows={TREE_VIEW_PROPS} />
       {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+      {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
       <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

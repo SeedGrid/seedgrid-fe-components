@@ -123,7 +123,6 @@ export default function SgDialogPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
-        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
       <Section
         title={`1) ${t(i18n, "showcase.component.dialog.sections.basic.title")}`}
@@ -294,6 +293,7 @@ export default function SgDialogPage() {
 
         <ShowcasePropsReference rows={DIALOG_PROPS} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

@@ -76,7 +76,6 @@ export default function SgClockThemePickerPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
-        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
         <Section
           title="1) Basic usage"
@@ -87,6 +86,7 @@ export default function SgClockThemePickerPage() {
 
         <ShowcasePropsReference rows={CLOCK_THEME_PICKER_PROPS} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

@@ -137,7 +137,6 @@ export default function SgPopupPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
-        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
       <Section
         title={`1) ${t(i18n, "showcase.component.popup.sections.basic.title")}`}
@@ -206,6 +205,7 @@ export default function SgPopupPage() {
 
         <ShowcasePropsReference rows={POPUP_PROPS} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

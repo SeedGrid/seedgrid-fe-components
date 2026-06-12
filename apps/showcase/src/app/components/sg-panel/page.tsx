@@ -185,7 +185,6 @@ export default function SgPanelPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
-        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
         <Section title={texts.section1Title} description={texts.section1Description}>
           <SgPanel className="h-[430px] rounded-xl bg-muted/30" padding={12}>
@@ -408,6 +407,7 @@ export default function SgPanelPage() {
 
         <ShowcasePropsReference rows={PANEL_PROPS} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

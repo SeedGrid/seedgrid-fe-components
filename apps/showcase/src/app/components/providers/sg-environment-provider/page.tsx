@@ -83,7 +83,6 @@ export default function SgEnvironmentProviderPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
-        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
       <Section
         title={t(i18n, "showcase.component.environment.sections.default.title")}
@@ -151,6 +150,7 @@ export default function SgEnvironmentProviderPage() {
 
       <ShowcasePropsReference rows={ENVIRONMENT_PROVIDER_PROPS} />
       {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+      {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
       <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
     </div>
   </I18NReady>

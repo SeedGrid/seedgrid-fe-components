@@ -317,8 +317,6 @@ export default function SgPageControlShowcasePage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
-        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
-        {aiPageComponent ? <ComponentAiSummary component={aiPageComponent} /> : null}
 
         <Section title={texts.sectionTitles[0] ?? ""} description={texts.sectionDescriptions[0] ?? ""}>
           <SgPageControl
@@ -447,7 +445,9 @@ export default function SgPageControlShowcasePage() {
 
         <ShowcasePropsReference rows={PAGE_CONTROL_PROPS} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         {aiPageComponent ? <ComponentAiPropsTable component={aiPageComponent} /> : null}
+        {aiPageComponent ? <ComponentAiSummary component={aiPageComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

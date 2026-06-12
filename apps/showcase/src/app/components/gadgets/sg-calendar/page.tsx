@@ -286,7 +286,6 @@ export default function SgCalendarPage() {
             exampleLinks={exampleLinks}
             onAnchorClick={handleAnchorClick}
           />
-          {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
           <Section title={texts.section1Title} description={texts.section1Description}>
             <BasicCalendarExample />
@@ -316,6 +315,7 @@ export default function SgCalendarPage() {
 
           <ShowcasePropsReference rows={calendarProps} />
           {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+          {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
           <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
         </div>
       </SgEnvironmentProvider>

@@ -195,7 +195,6 @@ export default function SgScreenPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
-        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
         <Section title={texts.section1Title} description={texts.section1Description}>
           <SgPanel className="h-[420px] rounded-xl bg-muted/30" padding={12}>
@@ -263,6 +262,7 @@ export default function SgScreenPage() {
 
         <ShowcasePropsReference rows={SCREEN_PROPS} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

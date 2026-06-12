@@ -273,6 +273,10 @@ export function SgInputPassword(props: Readonly<SgInputPasswordProps>) {
       setHasInteracted(true);
       runValidation(event.currentTarget.value);
       inputProps?.onChange?.(event);
+      // Propaga a prop top-level `onChange(value)` no fluxo de digitacao. Sem isto, ela
+      // so era chamada via applyValue (botao de gerar senha), entao consumidores que usam
+      // `onChange={setSenha}` nunca recebiam o valor digitado (estado ficava vazio).
+      onChange?.(event.currentTarget.value);
     },
     onBlur: (event) => {
       if ((validateOnBlur ?? true) || hasInteracted) {
@@ -305,8 +309,8 @@ export function SgInputPassword(props: Readonly<SgInputPasswordProps>) {
       target: inputRef.current ?? { value },
       currentTarget: inputRef.current ?? { value }
     } as React.ChangeEvent<HTMLInputElement>;
+    // mergedInputProps.onChange ja propaga a prop top-level `onChange(value)`.
     mergedInputProps.onChange?.(event);
-    onChange?.(value);
   };
 
   const toggleIcon = (

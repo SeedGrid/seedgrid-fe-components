@@ -176,8 +176,6 @@ export default function SgDockLayoutPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
-        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
-        {aiDockZoneComponent ? <ComponentAiSummary component={aiDockZoneComponent} /> : null}
 
       <Section
         title={`1) ${t(i18n, "showcase.component.dockLayout.sections.basic.title")}`}
@@ -255,7 +253,9 @@ export default function SgDockLayoutPage() {
           rows={DOCK_ZONE_PROPS}
         />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         {aiDockZoneComponent ? <ComponentAiPropsTable component={aiDockZoneComponent} /> : null}
+        {aiDockZoneComponent ? <ComponentAiSummary component={aiDockZoneComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

@@ -78,8 +78,6 @@ export default function SgWizardPageDemo() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
-        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
-        {aiWizardPageComponent ? <ComponentAiSummary component={aiWizardPageComponent} /> : null}
 
       <Section
         title={t(i18n, "showcase.component.wizard.sections.autoValidation.title")}
@@ -386,7 +384,9 @@ export default function SgWizardPageDemo() {
 
       <ShowcasePropsReference rows={WIZARD_PROPS} />
       {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+      {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
       {aiWizardPageComponent ? <ComponentAiPropsTable component={aiWizardPageComponent} /> : null}
+      {aiWizardPageComponent ? <ComponentAiSummary component={aiWizardPageComponent} /> : null}
       <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
     </div>
   </I18NReady>

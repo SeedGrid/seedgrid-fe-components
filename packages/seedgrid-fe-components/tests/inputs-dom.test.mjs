@@ -26,7 +26,7 @@ Module._load = function patchedLoad(request, parent, isMain) {
   return originalLoad.call(this, request, parent, isMain);
 };
 
-const { SgAutocomplete, SgInputPhone, SgInputText } = require("../dist/sandbox.cjs");
+const { SgAutocomplete, SgInputPassword, SgInputPhone, SgInputText } = require("../dist/sandbox.cjs");
 
 Module._load = originalLoad;
 
@@ -108,6 +108,26 @@ function ControlledInputText(props = {}) {
     },
     ...props
   });
+}
+
+function OnChangeControlledInputPassword(props = {}) {
+  const [value, setValue] = React.useState("");
+
+  return React.createElement(
+    React.Fragment,
+    null,
+    React.createElement(SgInputPassword, {
+      id: "input-password-native-input",
+      label: "Password",
+      // Forma usada por consumidores (ex.: admin-web login): a prop top-level
+      // `onChange(value)` precisa disparar a cada tecla, nao so no botao de gerar senha.
+      onChange: setValue,
+      showStrengthBar: false,
+      commonPasswordCheck: false,
+      ...props
+    }),
+    React.createElement("div", { "data-committed-value": value }, value)
+  );
 }
 
 function RhfControlledInputText(props = {}) {
@@ -243,6 +263,54 @@ test("SgInputText keeps the typed value when controlled through inputProps.value
     }
 
     assert.equal(input.value, word);
+  } finally {
+    harness.restore();
+  }
+});
+
+test("SgInputPassword calls the top-level onChange(value) while typing", async () => {
+  const harness = setupDomHarness();
+
+  try {
+    await harness.render(React.createElement(OnChangeControlledInputPassword));
+    await flushDom();
+
+    const input = harness.document.querySelector('input#input-password-native-input');
+    assert.ok(input);
+
+    await act(async () => {
+      input.focus();
+    });
+    await flushDom();
+
+    const descriptor = Object.getOwnPropertyDescriptor(globalThis.HTMLInputElement.prototype, "value");
+    assert.ok(descriptor?.set);
+
+    const word = "Abacaxi";
+    for (const ch of word) {
+      await act(async () => {
+        const previous = input.value;
+        input.dispatchEvent(new harness.window.KeyboardEvent("keydown", { key: ch, bubbles: true, cancelable: true }));
+        descriptor.set.call(input, previous + ch);
+        input._valueTracker?.setValue?.(previous);
+        input.dispatchEvent(
+          new harness.window.InputEvent("input", {
+            data: ch,
+            inputType: "insertText",
+            bubbles: true,
+            cancelable: true
+          })
+        );
+        input.dispatchEvent(new harness.window.KeyboardEvent("keyup", { key: ch, bubbles: true, cancelable: true }));
+      });
+
+      await flushDom();
+    }
+
+    // O estado do consumidor (alimentado pela prop top-level onChange) deve refletir o
+    // texto digitado. Antes do fix, ficava vazio porque onChange so disparava no botao de gerar.
+    const committed = harness.document.querySelector('[data-committed-value]');
+    assert.equal(committed?.dataset.committedValue, word);
   } finally {
     harness.restore();
   }

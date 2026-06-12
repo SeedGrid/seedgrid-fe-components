@@ -395,7 +395,6 @@ export default function SgCheckboxGroupShowcase() {
           <div className="rounded-lg border border-border bg-background p-4 shadow-sm">
             <h1 className="text-3xl font-bold">SgCheckboxGroup</h1>
             <p className="mt-2 text-muted-foreground">Checkbox group with multi-selection, horizontal/vertical orientation, icons, check all, and React Hook Form integration.</p>
-            {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
             <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Examples</p>
             <SgGrid columns={{ base: 1, sm: 2, lg: 3 }} gap={8} className="mt-2">
               {SECTION_TITLES.map((label, index) => ({ id: `exemplo-${index + 1}`, label })).map((example) => (
@@ -749,6 +748,7 @@ export default function SgCheckboxGroupShowcase() {
         </section>
 
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
       <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

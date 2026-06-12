@@ -1205,7 +1205,6 @@ export default function SgMenuPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
-        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
         <Section title={texts.section1Title} description={texts.section1Description}>
           <div className="h-[460px] overflow-hidden rounded-lg border border-border">
@@ -1393,6 +1392,7 @@ export default function SgMenuPage() {
         <ShowcasePropsReference id="props-reference-menu-brand" title={texts.propsBrandTitle} rows={MENU_BRAND_PROPS} />
         <ShowcasePropsReference id="props-reference-menu-user" title={texts.propsUserTitle} rows={MENU_USER_PROPS} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>

@@ -197,7 +197,6 @@ export default function SgInputEmailPage() {
             <p className="mt-2 text-muted-foreground">
               {t(i18n, "showcase.component.inputEmail.subtitle")}
             </p>
-            {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
             <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">{t(i18n, "showcase.common.examples")}</p>
             <SgGrid columns={{ base: 1, sm: 2, lg: 3 }} gap={8} className="mt-2">
               {exampleLinks.map((example) => (
@@ -496,6 +495,7 @@ export default function SgInputEmailPage() {
 
       <ShowcasePropsReference rows={inputEmailPropsRows} />
       {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+      {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
       <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

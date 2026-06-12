@@ -285,8 +285,6 @@ export default function SgAvatarPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
-        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
-        {aiAvatarGroupComponent ? <ComponentAiSummary component={aiAvatarGroupComponent} /> : null}
 
         <Section title={texts.section1Title} description={texts.section1Description}>
           <Row>
@@ -362,7 +360,9 @@ export default function SgAvatarPage() {
 
         <ShowcasePropsReference rows={AVATAR_PROPS} title={texts.propsReferenceTitle} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         {aiAvatarGroupComponent ? <ComponentAiPropsTable component={aiAvatarGroupComponent} /> : null}
+        {aiAvatarGroupComponent ? <ComponentAiSummary component={aiAvatarGroupComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

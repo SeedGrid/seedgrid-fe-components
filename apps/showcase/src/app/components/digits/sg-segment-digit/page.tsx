@@ -275,7 +275,6 @@ export default function SgSegmentDigitShowcase() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
-        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
         <Section title={texts.section1Title} description={texts.section1Description}>
           <div className="flex items-center gap-4">
@@ -365,6 +364,7 @@ export default function SgSegmentDigitShowcase() {
 
         <ShowcasePropsReference rows={PROPS} title={texts.propsReferenceTitle} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

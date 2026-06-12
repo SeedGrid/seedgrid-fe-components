@@ -495,7 +495,6 @@ export default function SgRadialGaugePage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
-        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
         <Section title="1) Speedometer Style" description="Primary needle pointer with warning ranges.">
           <div className="flex flex-wrap items-center gap-4 rounded-lg border border-border p-4">
@@ -802,6 +801,7 @@ export default function SgRadialGaugePage() {
 
         <ShowcasePropsReference rows={RADIAL_GAUGE_PROPS} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

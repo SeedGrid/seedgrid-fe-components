@@ -235,7 +235,6 @@ export default function SgWhistleHostPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
-        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
         <section className="rounded-xl border border-border bg-muted/20 p-5">
           <div className="flex flex-wrap items-center justify-between gap-3">
@@ -377,6 +376,7 @@ export default function SgWhistleHostPage() {
 
         <ShowcasePropsReference rows={WHISTLE_PROPS} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

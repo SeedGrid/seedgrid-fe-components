@@ -12,6 +12,12 @@ export const metadata: Metadata = {
   }
 };
 
+function RootContent({ children }: { children: React.ReactNode }) {
+  return (
+    <ShowcaseShell initialLocale="pt-BR">{children}</ShowcaseShell>
+  );
+}
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR">
@@ -25,7 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
           applyTo="html"
         >
-          <ShowcaseShell initialLocale="pt-BR">{children}</ShowcaseShell>
+          <RootContent>{children}</RootContent>
         </SeedThemeProvider>
       </body>
     </html>

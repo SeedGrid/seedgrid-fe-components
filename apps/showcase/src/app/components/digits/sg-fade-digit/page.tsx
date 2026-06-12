@@ -605,7 +605,6 @@ export default function SgFadeDigitShowcase() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
-        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
         {/* 1 */}
         <Section title={texts.section1Title} description={texts.section1Description}>
@@ -657,6 +656,7 @@ export default function SgFadeDigitShowcase() {
 
         <ShowcasePropsReference rows={PROPS} title={texts.propsReferenceTitle} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         <div
           aria-hidden="true"
           className="pointer-events-none"

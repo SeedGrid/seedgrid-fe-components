@@ -263,7 +263,6 @@ export default function SgConfirmationDialogShowcase() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
-        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
         <Section title={sectionTitles[0] ?? ""}>
           <SgButton onClick={() => setOpenBasic(true)}>delete permission</SgButton>
@@ -352,6 +351,7 @@ export default function SgConfirmationDialogShowcase() {
 
         <ShowcasePropsReference rows={confirmationProps} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

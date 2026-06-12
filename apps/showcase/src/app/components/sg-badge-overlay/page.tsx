@@ -88,7 +88,6 @@ export default function SgBadgeOverlayPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
-        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
         <Section
           title={`1) ${t(i18n, "showcase.component.badgeOverlay.sections.basic.title")}`}
@@ -135,6 +134,7 @@ export default function SgBadgeOverlayPage() {
 
         <ShowcasePropsReference rows={BADGE_OVERLAY_PROPS} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

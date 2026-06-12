@@ -670,7 +670,6 @@ export default function SgCarouselPage() {
             <p className="mt-2 text-muted-foreground">
               {texts.headerSubtitle}
             </p>
-            {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
             <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
               {texts.examplesLabel}
             </p>
@@ -958,6 +957,7 @@ export default function SgCarouselPage() {
 
       <ShowcasePropsReference id="props-reference" title={texts.propsTitle} rows={CAROUSEL_PROPS} />
       {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+      {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
       <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

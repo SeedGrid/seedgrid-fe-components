@@ -540,7 +540,6 @@ export default function SgButtonShowcase() {
             <p className="mt-2 text-muted-foreground">
               {texts.headerSubtitle}
             </p>
-            {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
             <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">{texts.examplesLabel}</p>
             <SgGrid columns={{ base: 1, sm: 2, lg: 3 }} gap={8} className="mt-2">
               {BUTTON_EXAMPLE_IDS.map((exampleId, index) => (
@@ -803,6 +802,7 @@ export default function SgButtonShowcase() {
 
       <ShowcasePropsReference id="props-reference" title={texts.propsTitle} rows={BUTTON_PROPS} />
       {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+      {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
       <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

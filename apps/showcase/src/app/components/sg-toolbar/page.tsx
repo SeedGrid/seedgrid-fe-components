@@ -405,8 +405,6 @@ export default function SgToolBarPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
-        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
-        {aiToolbarIconButtonComponent ? <ComponentAiSummary component={aiToolbarIconButtonComponent} /> : null}
 
         <Section id="exemplo-1" title={texts.sectionTitles[0] ?? ""} description={texts.sectionDescriptions[0] ?? ""}>
           <div className="w-full">
@@ -543,7 +541,9 @@ export default function SgToolBarPage() {
 
         <ShowcasePropsReference id="props-reference" title={texts.propsTitle} rows={TOOLBAR_PROPS} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         {aiToolbarIconButtonComponent ? <ComponentAiPropsTable component={aiToolbarIconButtonComponent} /> : null}
+        {aiToolbarIconButtonComponent ? <ComponentAiSummary component={aiToolbarIconButtonComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

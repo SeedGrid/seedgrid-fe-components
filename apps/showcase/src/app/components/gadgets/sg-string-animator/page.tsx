@@ -872,7 +872,6 @@ export default function SgStringAnimatorShowcase() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
-        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
         {/* 1 */}
         <Section
@@ -972,6 +971,7 @@ export default function SgStringAnimatorShowcase() {
 
         <ShowcasePropsReference rows={PROPS} title={texts.propsReferenceTitle} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         <div
           aria-hidden="true"
           className="pointer-events-none"

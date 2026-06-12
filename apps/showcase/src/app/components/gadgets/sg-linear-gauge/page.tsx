@@ -191,7 +191,6 @@ export default function SgLinearGaugePage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
-        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
         <Section title="1) Default (Horizontal)" description="Colored ranges with a controllable primary pointer.">
           <div className="space-y-4 rounded-lg border border-border p-4">
@@ -302,6 +301,7 @@ export default function SgLinearGaugePage() {
 
         <ShowcasePropsReference rows={LINEAR_GAUGE_PROPS} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

@@ -75,7 +75,6 @@ export default function SgTimeProviderPage() {
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
-        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
 
         <Section
           title={t(i18n, "showcase.component.timeProvider.sections.basic.title")}
@@ -102,6 +101,7 @@ export default function SgTimeProviderPage() {
 
         <ShowcasePropsReference rows={TIME_PROVIDER_PROPS} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>
