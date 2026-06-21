@@ -1,0 +1,51 @@
+{
+  "projectId": "6d325470-9cda-47dd-88c8-482cb43d4c68",
+  "pkg": "@seedgrid/fe-components",
+  "globalName": "SeedGrid",
+  "shape": "package",
+  "buildCmd": "pnpm -F \"@seedgrid/fe-components...\" build && pnpm -C apps/showcase exec node node_modules/tailwindcss/lib/cli.js -c tailwind.config.ts -i src/app/globals.css -o ../../packages/seedgrid-fe-components/.ds-assets/seedgrid-tailwind.css --minify",
+  "extraEntries": [
+    "@seedgrid/fe-theme"
+  ],
+  "provider": {
+    "component": "SeedThemeProvider"
+  },
+  "readmeHeader": ".design-sync/conventions.md",
+  "cssEntry": ".ds-assets/seedgrid-tailwind.css",
+  "docsDir": "../../.design-sync/docs",
+  "componentSrcMap": {
+    "SgClockThemeProvider": null,
+    "SgClockThemePreview": null,
+    "SgComponentsI18nProvider": null,
+    "SgEnvironmentProvider": null,
+    "SgTimeProvider": null,
+    "ThemeLayer": null,
+    "SgToastHost": null,
+    "SgWhistleHost": null,
+    "SgPageControlPage": null,
+    "SgWizardPage": null
+  },
+  "overrides": {
+    "SgDialog": {
+      "cardMode": "single",
+      "viewport": "680x460"
+    },
+    "SgConfirmationDialog": {
+      "cardMode": "single",
+      "viewport": "560x360"
+    },
+    "SgPopup": {
+      "cardMode": "single",
+      "viewport": "560x400"
+    },
+    "SgDockLayout": { "cardMode": "single", "viewport": "780x480" },
+    "SgDockScreen": { "cardMode": "single", "viewport": "780x480" },
+    "SgDockZone": { "cardMode": "single", "viewport": "640x420" },
+    "SgScreen": { "cardMode": "single", "viewport": "720x480" },
+    "SgDockMenu": { "cardMode": "single", "viewport": "560x260" },
+    "SgToolBar": { "cardMode": "single", "viewport": "420x360" },
+    "SgToolbarIconButton": { "cardMode": "single", "viewport": "420x320" },
+    "SgToaster": { "cardMode": "single", "viewport": "480x300" },
+    "SgClock": { "cardMode": "column" }
+  }
+}

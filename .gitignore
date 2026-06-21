@@ -8,3 +8,9 @@ dist/
 # Build output in app templates
 .next/
 .turbo/
+.ds-sync/
+ds-bundle/
+.design-sync/.cache/
+.design-sync/learnings/
+.design-sync/node_modules
+packages/seedgrid-fe-components/.ds-assets/
