@@ -629,6 +629,16 @@ function SgDatatableBase<T extends SgDatatableRow>(
     [currentPage, pageCount]
   );
 
+  // `resolvedTotalRecords` and `onPage` change on every parent render (new fetch
+  // result / inline callback). Read them through refs so `commitPage` stays
+  // stable; otherwise the reconciliation effect below re-runs in a loop and
+  // React throws "Maximum update depth exceeded" (notably when changing
+  // rows-per-page while `first` is controlled).
+  const resolvedTotalRecordsRef = React.useRef(resolvedTotalRecords);
+  resolvedTotalRecordsRef.current = resolvedTotalRecords;
+  const onPageRef = React.useRef(onPage);
+  onPageRef.current = onPage;
+
   const commitPage = React.useCallback(
     (nextFirst: number, nextRows: number) => {
       const normalizedRows = Math.max(1, nextRows);
@@ -636,21 +646,32 @@ function SgDatatableBase<T extends SgDatatableRow>(
       if (!isFirstControlled) setInternalFirst(normalizedFirst);
       setInternalRows(normalizedRows);
 
-      const nextPageCount = Math.max(1, Math.ceil(Math.max(resolvedTotalRecords, 1) / normalizedRows));
+      const total = resolvedTotalRecordsRef.current;
+      const nextPageCount = Math.max(1, Math.ceil(Math.max(total, 1) / normalizedRows));
       const page = Math.floor(normalizedFirst / normalizedRows) + 1;
-      onPage?.({
+      onPageRef.current?.({
         first: normalizedFirst,
         rows: normalizedRows,
         page,
         pageCount: nextPageCount,
-        totalRecords: resolvedTotalRecords
+        totalRecords: total
       });
     },
-    [isFirstControlled, onPage, resolvedTotalRecords]
+    [isFirstControlled]
   );
 
+  // When the current page falls out of range (e.g. rows-per-page grew and the
+  // old offset no longer exists), clamp back into range. Guard against firing
+  // for the same offset twice in a row so a controlled parent that lags one
+  // render behind cannot drive an update loop.
+  const lastReconciledFirstRef = React.useRef<number | null>(null);
   React.useEffect(() => {
-    if (safeFirst === currentFirst) return;
+    if (safeFirst === currentFirst) {
+      lastReconciledFirstRef.current = null;
+      return;
+    }
+    if (lastReconciledFirstRef.current === safeFirst) return;
+    lastReconciledFirstRef.current = safeFirst;
     commitPage(safeFirst, currentRows);
   }, [safeFirst, currentFirst, commitPage, currentRows]);
 
