@@ -226,6 +226,37 @@ jobs:
           export NPM_TAG="${NPM_TAG}"
           ./publish-playground.sh none
 
+      # ------------------------------------------------------------
+      # fe-security (módulo) — packages/modules/seedgrid-fe-security
+      # ------------------------------------------------------------
+      - name: Resolve version for fe-security
+        id: security_version
+        shell: bash
+        run: |
+          PKG_DIR="packages/modules/seedgrid-fe-security"
+          NAME=$(node -p "require('./${PKG_DIR}/package.json').name")
+          BASE="${{ steps.calver.outputs.base }}"
+          MODE="stable"
+          if [[ "${{ steps.mode.outputs.is_rc }}" == "true" ]]; then
+            MODE="rc"
+          fi
+          VERSION=$(node .github/scripts/resolve-npm-monthly-version.mjs "${NAME}" "${BASE}" "${MODE}")
+
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+
+      - name: Build fe-security
+        run: pnpm -C packages/modules/seedgrid-fe-security build
+
+      - name: Publish fe-security
+        shell: bash
+        env:
+          PUBLISH_VERSION: ${{ steps.security_version.outputs.version }}
+          NPM_TAG: ${{ steps.mode.outputs.tag }}
+        run: |
+          npm config set registry https://registry.npmjs.org/
+          export NPM_TAG="${NPM_TAG}"
+          ./publish-security.sh none
+
   build-and-deploy-showcase:
     name: Build & Push Showcase Docker Image + Deploy EasyPanel
     runs-on: ubuntu-latest
