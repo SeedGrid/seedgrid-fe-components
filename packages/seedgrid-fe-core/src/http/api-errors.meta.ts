@@ -58,14 +58,16 @@ export const sgMeta: SgMetaV0 = {
   category: "utility",
   subcategory: "http",
   description:
-    "Reads API problem payloads and extracts the best user-facing message, prioritizing RFC7807 violations before generic detail/title fields.",
+    "Reads API problem payloads and extracts the best user-facing message, prioritizing RFC7807 violations before userMessage/detail/title. Walks the whole error chain (responseBody/cause/error/data/body) so it works even when the problem payload is nested, rewrapped, or has crossed a bundle boundary.",
   tags: ["api", "http", "error", "rfc7807", "validation"],
   capabilities: [
     "api-client-error",
     "rfc7807",
     "violations",
+    "user-message",
     "error-message",
     "json-string-body",
+    "nested-error-chain",
   ],
   fieldSemantics: ["error", "validation", "problem-details", "http"],
   props: [

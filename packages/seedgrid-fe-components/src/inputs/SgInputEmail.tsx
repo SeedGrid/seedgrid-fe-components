@@ -15,6 +15,8 @@ export type SgInputEmailProps = Omit<SgInputTextProps, "type" | "error"> & {
   validation?: (value: string) => string | null;
   validateOnBlur?: boolean;
   onValidation?: (message: string | null) => void;
+  /** Disparado quando o campo perde o foco (apos a validacao) — padrao seedgrid. */
+  onExit?: () => void;
   iconButtons?: React.ReactNode[];
 };
 
@@ -33,6 +35,7 @@ export function SgInputEmail(props: Readonly<SgInputEmailProps>) {
     iconButtons,
     validation,
     onClear,
+    onExit,
     ...rest
   } = props;
   const [internalError, setInternalError] = React.useState<string | null>(null);
@@ -113,6 +116,7 @@ export function SgInputEmail(props: Readonly<SgInputEmailProps>) {
         onValidation?.(null);
         onClear?.();
       }}
+      onExit={onExit}
       inputProps={mergedInputProps}
       iconButtons={iconButtons}
     />

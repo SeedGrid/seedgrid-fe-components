@@ -8,6 +8,10 @@ import { isValidCpf } from "../validators";
 import { t, useComponentsI18n } from "../i18n";
 
 export type SgInputCPFProps = Omit<SgInputTextProps, "inputProps" | "error"> & {
+  /** Disparado ao receber foco — padrao seedgrid. */
+  onEnter?: () => void;
+  /** Disparado ao perder o foco (apos validacao) — padrao seedgrid. */
+  onExit?: () => void;
   inputProps?: React.InputHTMLAttributes<HTMLInputElement> & {
     ref?: React.Ref<HTMLInputElement>;
   };

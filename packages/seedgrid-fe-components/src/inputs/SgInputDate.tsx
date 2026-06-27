@@ -6,6 +6,10 @@ import { resolveFieldError } from "../rhf";
 import { t, useComponentsI18n } from "../i18n";
 
 export type SgInputDateProps = Omit<SgInputTextProps, "type"> & {
+  /** Disparado ao receber foco — padrao seedgrid. */
+  onEnter?: () => void;
+  /** Disparado ao perder o foco (apos validacao) — padrao seedgrid. */
+  onExit?: () => void;
   minDate?: string | Date;
   maxDate?: string | Date;
   alwaysFloat?: boolean;

@@ -8,6 +8,10 @@ import { t, useComponentsI18n } from "../i18n";
 
 export type SgInputBirthDateProps = Omit<SgInputDateProps, "maxDate" | "minDate"> &
   BirthDatePolicy & {
+    /** Disparado ao receber foco — padrao seedgrid. */
+    onEnter?: () => void;
+    /** Disparado ao perder o foco (apos validacao) — padrao seedgrid. */
+    onExit?: () => void;
     maxDate?: string | Date;
     minDate?: string | Date;
     onValidation?: (message: string | null) => void;

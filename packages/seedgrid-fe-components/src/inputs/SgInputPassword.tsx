@@ -9,6 +9,10 @@ export type SgInputPasswordProps = Omit<
   SgInputTextProps,
   "type" | "error" | "validation" | "required" | "requiredMessage" | "validateOnBlur"
 > & {
+  /** Disparado ao receber foco — padrao seedgrid. */
+  onEnter?: () => void;
+  /** Disparado ao perder o foco (apos validacao) — padrao seedgrid. */
+  onExit?: () => void;
   error?: string;
   onValidation?: (message: string | null) => void;
   required?: boolean;
