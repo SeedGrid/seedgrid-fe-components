@@ -8,6 +8,7 @@ import {
   extractApiErrorMessage,
   readApiErrorMessage,
   isApiClientErrorLike,
+  messageForHttpStatus,
 } from "../dist/http/api-errors.js";
 
 // Helper: simula o ApiClientError do createApiClient (Error + responseBody/status).
@@ -68,11 +69,28 @@ test("extractApiErrorMessage: objeto sem sinais de problema -> null (nunca JSON 
   assert.equal(extractApiErrorMessage({ foo: 1, bar: true }), null);
 });
 
-test("extractApiErrorMessage: ApiClientError sem mensagem útil -> null (fallback do chamador vence)", () => {
+test("extractApiErrorMessage: erro com status mas sem corpo útil -> mensagem do status", () => {
   // O `.message` genérico ("API request failed with status N") NÃO deve vazar:
-  // como o erro tem `responseBody`, retorna null pra o fallback por-ação prevalecer.
-  const error = apiError("API request failed with status 500", { foo: 1 }, 500);
-  assert.equal(extractApiErrorMessage(error), null);
+  // como o erro tem status, devolve a mensagem amigável do status (não o texto técnico).
+  assert.equal(
+    extractApiErrorMessage(apiError("API request failed with status 403", null, 403)),
+    "Acesso negado."
+  );
+  assert.equal(
+    extractApiErrorMessage(apiError("API request failed with status 401", null, 401)),
+    "Sessão expirada. Faça login novamente."
+  );
+  assert.equal(
+    extractApiErrorMessage(apiError("API request failed with status 500", { foo: 1 }, 500)),
+    "Erro no servidor. Tente novamente."
+  );
+});
+
+test("messageForHttpStatus: mapeamento direto", () => {
+  assert.equal(messageForHttpStatus(403), "Acesso negado.");
+  assert.equal(messageForHttpStatus(404), "Recurso não encontrado.");
+  assert.equal(messageForHttpStatus(418), "Não foi possível concluir a operação.");
+  assert.equal(messageForHttpStatus(502), "Erro no servidor. Tente novamente.");
 });
 
 test("extractApiErrorMessage: nulos/primitivos -> null", () => {

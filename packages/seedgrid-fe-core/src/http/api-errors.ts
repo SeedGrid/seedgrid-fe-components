@@ -62,14 +62,56 @@ export function extractApiErrorMessage(error: unknown): string | null {
   if (fromProblem) {
     return fromProblem;
   }
-  // Sem payload de problema útil: cai no `.message` do erro APENAS quando não é um
-  // erro do httpclient. O ApiClientError carrega `responseBody` e tem `.message`
-  // genérico ("API request failed with status N") — devolver isso vazaria texto
-  // técnico e impediria o fallback amigável por-ação do chamador; então retorna null.
-  if (isRecord(error) && "responseBody" in error) {
-    return null;
+  // Sem mensagem no corpo: muitos erros (401/403/404/5xx) vêm SEM corpo. Em vez de
+  // vazar o `.message` genérico do ApiClientError ("API request failed with status N"),
+  // devolve uma mensagem amigável do HTTP status (ex.: 403 -> "Acesso negado").
+  const status = httpStatusOf(error);
+  if (status != null) {
+    return messageForHttpStatus(status);
   }
+  // Erro sem status (rede / hand-thrown): cai no próprio `.message`.
   return pickString(readErrorMessage(error));
+}
+
+/**
+ * Mensagem amigável (pt-BR) para um HTTP status, usada quando o corpo do erro não
+ * traz mensagem própria. Exposta para fluxos `fetch` crus (que têm o
+ * `response.status` mas não um `ApiClientError`).
+ */
+export function messageForHttpStatus(status: number): string {
+  switch (status) {
+    case 400:
+      return "Requisição inválida.";
+    case 401:
+      return "Sessão expirada. Faça login novamente.";
+    case 403:
+      return "Acesso negado.";
+    case 404:
+      return "Recurso não encontrado.";
+    case 408:
+    case 504:
+      return "Tempo de resposta esgotado. Tente novamente.";
+    case 409:
+      return "Conflito com o estado atual do recurso.";
+    case 422:
+      return "Não foi possível processar os dados enviados.";
+    case 429:
+      return "Muitas requisições. Aguarde um momento e tente novamente.";
+    case 503:
+      return "Serviço temporariamente indisponível. Tente novamente.";
+    default:
+      if (status >= 500) {
+        return "Erro no servidor. Tente novamente.";
+      }
+      return "Não foi possível concluir a operação.";
+  }
+}
+
+function httpStatusOf(error: unknown): number | null {
+  if (isRecord(error) && typeof error.status === "number") {
+    return error.status;
+  }
+  return null;
 }
 
 /**
