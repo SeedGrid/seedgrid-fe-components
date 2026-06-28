@@ -51,6 +51,20 @@ test("SgCombobox preserves control integration path", () => {
   assert.match(source, /resolveFieldError/);
 });
 
+test("SgMultiSelect preserves control integration path", () => {
+  const source = read("SgMultiSelect.tsx");
+  assert.match(source, /control && name/);
+  assert.match(source, /rules=\{rules\}/);
+  assert.match(source, /resolveFieldError/);
+});
+
+test("SgMultiSelectChips preserves control integration path", () => {
+  const source = read("SgMultiSelectChips.tsx");
+  assert.match(source, /control && name/);
+  assert.match(source, /rules=\{rules\}/);
+  assert.match(source, /resolveFieldError/);
+});
+
 test("SgOrderList preserves control integration path", () => {
   const source = read("SgOrderList.tsx");
   assert.match(source, /control && name/);

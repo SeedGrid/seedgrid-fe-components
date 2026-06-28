@@ -1,5 +1,7 @@
 export { SgInputText } from "./inputs/SgInputText";
 export type { SgInputTextProps } from "./inputs/SgInputText";
+export { SgInputTextSearch } from "./inputs/SgInputTextSearch";
+export type { SgInputTextSearchProps } from "./inputs/SgInputTextSearch";
 export { SgInputNumber } from "./inputs/SgInputNumber";
 export type { SgInputNumberProps } from "./inputs/SgInputNumber";
 export { SgInputCurrency } from "./inputs/SgInputCurrency";
@@ -32,6 +34,10 @@ export { SgAutocomplete } from "./inputs/SgAutocomplete";
 export type { SgAutocompleteItem, SgAutocompleteProps } from "./inputs/SgAutocomplete";
 export { SgCombobox } from "./inputs/SgCombobox";
 export type { SgComboboxProps, SgComboboxSource } from "./inputs/SgCombobox";
+export { SgMultiSelect } from "./inputs/SgMultiSelect";
+export type { SgMultiSelectProps, SgMultiSelectOption, SgMultiSelectOptionValue } from "./inputs/SgMultiSelect";
+export { SgMultiSelectChips } from "./inputs/SgMultiSelectChips";
+export type { SgMultiSelectChipsProps } from "./inputs/SgMultiSelectChips";
 export { SgTextEditor } from "./inputs/SgTextEditor";
 export type { SgTextEditorProps, SgTextEditorSaveMeta } from "./inputs/SgTextEditor";
 export { SgRating } from "./inputs/SgRating";

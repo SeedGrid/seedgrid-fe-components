@@ -19,8 +19,11 @@ function RootContent({ children }: { children: React.ReactNode }) {
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  // suppressHydrationWarning no <html>: o SeedThemeProvider (mode "auto" + persistMode, applyTo="html")
+  // resolve o tema no client (preferencia do sistema / localStorage), entao os estilos do <html>
+  // diferem do SSR ate o mount. Divergencia intencional — mesmo padrao do next-themes.
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" suppressHydrationWarning>
       <body className="bg-[rgb(var(--sg-bg))] text-[rgb(var(--sg-text))]">
         <SeedThemeProvider
           initialTheme={{

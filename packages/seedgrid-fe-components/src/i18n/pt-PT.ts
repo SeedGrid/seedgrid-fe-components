@@ -146,6 +146,8 @@ const ptPT: Record<string, string> = {
   "components.dialog.close": "Fechar",
   "components.popup.ariaLabel": "Popup",
   "components.inputs.select.placeholder": "Selecione",
+  "components.inputs.multiSelect.summary": "{count} selecionadas",
+  "components.inputs.multiSelect.removeChip": "Remover {label}",
   "components.inputs.stepper.increase": "Aumentar valor",
   "components.inputs.stepper.decrease": "Diminuir valor",
   "components.textEditor.placeholder": "Escreva aqui...",

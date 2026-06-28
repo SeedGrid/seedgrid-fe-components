@@ -146,6 +146,8 @@ const enUS: Record<string, string> = {
   "components.dialog.close": "Close",
   "components.popup.ariaLabel": "Popup",
   "components.inputs.select.placeholder": "Select",
+  "components.inputs.multiSelect.summary": "{count} selected",
+  "components.inputs.multiSelect.removeChip": "Remove {label}",
   "components.inputs.stepper.increase": "Increase value",
   "components.inputs.stepper.decrease": "Decrease value",
   "components.textEditor.placeholder": "Type here...",

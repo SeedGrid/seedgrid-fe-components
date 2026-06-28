@@ -1,0 +1,32 @@
+import * as React from "react";
+import { SgButton, SgMultiSelectChips, type SgMultiSelectOptionValue } from "@seedgrid/fe-components";
+
+const COMPANIES = [
+  { label: "Empresa 1", value: "e1" },
+  { label: "Empresa 2", value: "e2" },
+  { label: "Empresa 3", value: "e3" },
+  { label: "Empresa 4", value: "e4" },
+  { label: "Empresa 5", value: "e5" },
+  { label: "Empresa 6", value: "e6" }
+];
+
+export default function App() {
+  const [capped, setCapped] = React.useState<SgMultiSelectOptionValue[]>([]);
+  return (
+    <>
+      <SgMultiSelectChips
+        id="msc-capped"
+        label="Empresas (max 3)"
+        placeholder="Selecione ate 3 empresas"
+        options={COMPANIES}
+        value={capped}
+        onChange={setCapped}
+        clearable
+        maxSelected={3}
+      />
+      <SgButton size="sm" appearance="outline" onClick={() => setCapped([])}>
+        Clear
+      </SgButton>
+    </>
+  );
+}

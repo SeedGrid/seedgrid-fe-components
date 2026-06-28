@@ -1,0 +1,22 @@
+import * as React from "react";
+import { SgInputTextSearch } from "@seedgrid/fe-components";
+
+export default function App() {
+  const [immediate, setImmediate] = React.useState("");
+  const [searchTerm, setSearchTerm] = React.useState("");
+  return (
+    <>
+      <SgInputTextSearch
+        id="search-tuned"
+        label="Busca"
+        placeholder="Digite para buscar"
+        minChars={1}
+        debounceMs={800}
+        onChange={setImmediate}
+        onSearchChange={setSearchTerm}
+      />
+      <p>Valor imediato (onChange): {immediate}</p>
+      <p>Termo de busca (onSearchChange): {searchTerm}</p>
+    </>
+  );
+}

@@ -45,6 +45,7 @@ import {
   Cake,
   Calendar,
   CalendarDays,
+  CheckCheck,
   ChevronsRight,
   ChevronsUpDown,
   CircleAlert,
@@ -105,6 +106,7 @@ import {
   Square,
   Star,
   Table2,
+  Tags,
   TextCursorInput,
   Timer,
   ToggleLeft,
@@ -120,6 +122,7 @@ const COMPONENTS = [
   { group: "Inputs", slug: "sg-input-number", label: "SgInputNumber", icon: <Hash className="size-4" /> },
   { group: "Inputs", slug: "sg-input-currency", label: "SgInputCurrency", icon: <DollarSign className="size-4" /> },
   { group: "Inputs", slug: "sg-input-text-area", label: "SgInputTextArea", icon: <AlignLeft className="size-4" /> },
+  { group: "Inputs", slug: "sg-input-text-search", label: "SgInputTextSearch", icon: <Search className="size-4" /> },
   { group: "Inputs", slug: "sg-input-password", label: "SgInputPassword", icon: <Lock className="size-4" /> },
   { group: "Inputs", slug: "sg-input-otp", label: "SgInputOTP", icon: <KeyRound className="size-4" /> },
   { group: "Inputs", slug: "sg-input-date", label: "SgInputDate", icon: <CalendarDays className="size-4" /> },
@@ -133,6 +136,8 @@ const COMPONENTS = [
   { group: "Inputs", slug: "sg-input-phone", label: "SgInputPhone", icon: <Phone className="size-4" /> },
   { group: "Inputs", slug: "sg-autocomplete", label: "SgAutocomplete", icon: <Search className="size-4" /> },
   { group: "Inputs", slug: "sg-combobox", label: "SgCombobox", icon: <ChevronsUpDown className="size-4" /> },
+  { group: "Inputs", slug: "sg-multi-select", label: "SgMultiSelect", icon: <CheckCheck className="size-4" /> },
+  { group: "Inputs", slug: "sg-multi-select-chips", label: "SgMultiSelectChips", icon: <Tags className="size-4" /> },
   { group: "Inputs", slug: "sg-slider", label: "SgSlider", icon: <SlidersHorizontal className="size-4" /> },
   { group: "Inputs", slug: "sg-stepper-input", label: "SgStepperInput", icon: <ArrowUpDown className="size-4" /> },
   { group: "Inputs", slug: "sg-text-editor", label: "SgTextEditor", icon: <PenLine className="size-4" /> },
@@ -369,6 +374,24 @@ const COMPONENT_HINT_TEXTS_BY_SLUG: Record<string, Partial<Record<ShowcaseLocale
     "pt-PT": "Combobox no estilo select, sem digitacao livre. O item selecionado vem de source e o evento onSelect devolve o objeto selecionado.",
     "en-US": "Select-style combobox, no free typing. The selected item comes from source and onSelect returns the selected object.",
     es: "Combobox estilo select, sin escritura libre. El item seleccionado viene de source y onSelect devuelve el objeto seleccionado."
+  },
+  "sg-multi-select": {
+    "pt-BR": "Selecao multipla estilo select: trigger com chevron que vira check ao abrir e dropdown com checkboxes que mantem a lista aberta.",
+    "pt-PT": "Selecao multipla estilo select: trigger com chevron que vira check ao abrir e dropdown com checkboxes que mantem a lista aberta.",
+    "en-US": "Multi-select in select style: trigger chevron turns into a check when open, and the checkbox dropdown stays open while toggling.",
+    es: "Seleccion multiple estilo select: el chevron del trigger se vuelve un check al abrir y el dropdown con checkboxes permanece abierto."
+  },
+  "sg-multi-select-chips": {
+    "pt-BR": "Variante do multi-select com chips removiveis no trigger; reusa o dropdown com checkboxes e a busca do SgMultiSelect.",
+    "pt-PT": "Variante do multi-select com chips removiveis no trigger; reusa o dropdown com checkboxes e a pesquisa do SgMultiSelect.",
+    "en-US": "Multi-select variant with removable chips in the trigger; reuses the SgMultiSelect checkbox dropdown and search.",
+    es: "Variante del multi-select con chips removibles en el trigger; reutiliza el dropdown con checkboxes y la busqueda de SgMultiSelect."
+  },
+  "sg-input-text-search": {
+    "pt-BR": "Campo de busca que embrulha o SgInputText com debounce (sem rxjs): onChange imediato e onSearchChange apos o debounce, com trim e gate por minChars.",
+    "pt-PT": "Campo de pesquisa que embrulha o SgInputText com debounce (sem rxjs): onChange imediato e onSearchChange apos o debounce, com trim e gate por minChars.",
+    "en-US": "Search field wrapping SgInputText with debounce (no rxjs): immediate onChange and debounced onSearchChange, with trim and a minChars gate.",
+    es: "Campo de busqueda que envuelve SgInputText con debounce (sin rxjs): onChange inmediato y onSearchChange tras el debounce, con trim y gate por minChars."
   },
   "sg-dock-menu": {
     "pt-BR": "Dock estilo macOS com posicoes, drag and drop, badges, labels e magnify.",
