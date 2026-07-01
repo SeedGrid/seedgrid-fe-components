@@ -1,0 +1,89 @@
+import * as React from "react";
+import * as SeedGrid from "@seedgrid/fe-components";
+
+const SgPeriodSelectorFromLib = (SeedGrid as Record<string, unknown>).SgPeriodSelector as
+  | React.ComponentType<any>
+  | undefined;
+
+type ResolvedPeriod = {
+  preset: string;
+  label: string;
+  startDate: Date | null;
+  endDate: Date | null;
+};
+
+function fmt(date: Date | null): string {
+  if (!date) return "null";
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, "0");
+  const d = String(date.getDate()).padStart(2, "0");
+  return `${y}-${m}-${d}`;
+}
+
+export default function App() {
+  const hasComponent = typeof SgPeriodSelectorFromLib === "function";
+
+  const [permitCurrent, setPermitCurrent] = React.useState(true);
+  const [permitPast, setPermitPast] = React.useState(true);
+  const [permitFuture, setPermitFuture] = React.useState(true);
+  const [permitAll, setPermitAll] = React.useState(true);
+  const [allowCustomPeriod, setAllowCustomPeriod] = React.useState(true);
+  const [disabled, setDisabled] = React.useState(false);
+  const [period, setPeriod] = React.useState<ResolvedPeriod | null>(null);
+
+  const toggle = (label: string, value: boolean, set: (v: boolean) => void) => (
+    <label className="text-sm inline-flex items-center gap-1">
+      <input className="mr-1" type="checkbox" checked={value} onChange={(e) => set(e.target.checked)} />
+      {label}
+    </label>
+  );
+
+  return (
+    <div className="space-y-4 p-2">
+      {!hasComponent ? (
+        <div className="rounded border border-amber-200 bg-amber-50 p-2 text-xs text-amber-800">
+          SgPeriodSelector is not available in the published Sandpack version yet.
+        </div>
+      ) : null}
+
+      <div className="flex flex-wrap items-center gap-3">
+        {toggle("permitCurrent", permitCurrent, setPermitCurrent)}
+        {toggle("permitPast", permitPast, setPermitPast)}
+        {toggle("permitFuture", permitFuture, setPermitFuture)}
+        {toggle("permitAll", permitAll, setPermitAll)}
+        {toggle("allowCustomPeriod", allowCustomPeriod, setAllowCustomPeriod)}
+        {toggle("disabled", disabled, setDisabled)}
+      </div>
+
+      <div className="w-96">
+        {hasComponent ? (
+          <SgPeriodSelectorFromLib
+            id="ps-playground"
+            label="Periodo"
+            locale="pt-BR"
+            permitCurrent={permitCurrent}
+            permitPast={permitPast}
+            permitFuture={permitFuture}
+            permitAll={permitAll}
+            allowCustomPeriod={allowCustomPeriod}
+            disabled={disabled}
+            onChange={(p: ResolvedPeriod) => setPeriod(p)}
+          />
+        ) : (
+          <select className="h-11 w-full rounded-md border border-border bg-background px-3 text-sm">
+            <option>THIS_MONTH</option>
+            <option>LAST_MONTH</option>
+            <option>THIS_YEAR</option>
+          </select>
+        )}
+      </div>
+
+      <div className="rounded border border-border bg-muted/40 p-3 text-xs font-mono">
+        <div><strong>preset:</strong> {period ? period.preset : "(none)"}</div>
+        <div><strong>label:</strong> {period ? period.label : "(none)"}</div>
+        <div><strong>start:</strong> {period ? fmt(period.startDate) : "(none)"}</div>
+        <div><strong>end:</strong> {period ? fmt(period.endDate) : "(none)"}</div>
+      </div>
+    </div>
+  );
+}

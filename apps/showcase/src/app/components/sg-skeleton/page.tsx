@@ -11,6 +11,9 @@ import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
+import { t, useShowcaseI18n } from "../../../i18n";
+
+const K = "showcase.component.skeleton";
 
 function Section(props: { title: string; description?: string; children: React.ReactNode }) {
   return (
@@ -248,17 +251,23 @@ export default function App() {
   );
 }`;
 
-const SKELETON_PROPS: ShowcasePropRow[] = [
-  { prop: "shape", type: "\"text\" | \"rectangle\" | \"rounded\" | \"square\" | \"circle\"", defaultValue: "text", description: "Base placeholder shape." },
-  { prop: "animation", type: "\"wave\" | \"pulse\" | \"none\"", defaultValue: "wave", description: "Visual animation type." },
-  { prop: "width / height", type: "number | string", defaultValue: "100% / 1rem", description: "Main skeleton dimensions." },
-  { prop: "size", type: "number | string", defaultValue: "-", description: "Width/height shortcut for symmetric shapes." },
-  { prop: "borderRadius", type: "number | string", defaultValue: "auto", description: "Custom border radius." }
-];
+function getSkeletonProps(i18n: ReturnType<typeof useShowcaseI18n>): ShowcasePropRow[] {
+  return [
+    { prop: "shape", type: "\"text\" | \"rectangle\" | \"rounded\" | \"square\" | \"circle\"", defaultValue: "text", description: t(i18n, `${K}.propShapeDesc`) },
+    { prop: "animation", type: "\"wave\" | \"pulse\" | \"none\"", defaultValue: "wave", description: t(i18n, `${K}.propAnimationDesc`) },
+    { prop: "width / height", type: "number | string", defaultValue: "100% / 1rem", description: t(i18n, `${K}.propDimensionsDesc`) },
+    { prop: "size", type: "number | string", defaultValue: "-", description: t(i18n, `${K}.propSizeDesc`) },
+    { prop: "borderRadius", type: "number | string", defaultValue: "auto", description: t(i18n, `${K}.propBorderRadiusDesc`) }
+  ];
+}
 
 export default function SgSkeletonPage() {
+  const i18n = useShowcaseI18n();
   const aiComponent = useAiManifestComponent("SgSkeleton");
-  const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors();
+  const skeletonProps = React.useMemo(() => getSkeletonProps(i18n), [i18n]);
+  const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({
+    deps: [i18n.locale]
+  });
 
   return (
     <I18NReady>
@@ -270,14 +279,14 @@ export default function SgSkeletonPage() {
         <ShowcaseStickyHeader
           stickyHeaderRef={stickyHeaderRef}
           title="SgSkeleton"
-          subtitle="Visual placeholder for loading states with shape, size, and animation support."
+          subtitle={t(i18n, `${K}.subtitle`)}
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
 
       <Section
-        title="1) Basic shapes"
-        description='Main variants: "text", "rectangle", "rounded", "square" and "circle".'
+        title={t(i18n, `${K}.section1Title`)}
+        description={t(i18n, `${K}.section1Description`)}
       >
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
           <SgSkeleton shape="text" />
@@ -292,8 +301,8 @@ export default function SgSkeletonPage() {
       </Section>
 
       <Section
-        title="2) Text widths"
-        description="Use text shape with different widths to simulate real lines."
+        title={t(i18n, `${K}.section2Title`)}
+        description={t(i18n, `${K}.section2Description`)}
       >
         <div className="max-w-md space-y-2">
           <SgSkeleton shape="text" width="100%" />
@@ -307,8 +316,8 @@ export default function SgSkeletonPage() {
       </Section>
 
       <Section
-        title="3) Animation"
-        description='Choose between "wave", "pulse" or "none".'
+        title={t(i18n, `${K}.section3Title`)}
+        description={t(i18n, `${K}.section3Description`)}
       >
         <div className="grid gap-4 sm:grid-cols-3">
           <div className="space-y-2">
@@ -330,8 +339,8 @@ export default function SgSkeletonPage() {
       </Section>
 
       <Section
-        title="4) Card placeholder"
-        description="Loading example for a card (image + title + text)."
+        title={t(i18n, `${K}.section4Title`)}
+        description={t(i18n, `${K}.section4Description`)}
       >
         <div className="w-full max-w-sm rounded-xl border border-border p-4">
           <SgSkeleton shape="rounded" height={160} />
@@ -347,8 +356,8 @@ export default function SgSkeletonPage() {
       </Section>
 
       <Section
-        title="5) List and table"
-        description="Common placeholder compositions for data screens."
+        title={t(i18n, `${K}.section5Title`)}
+        description={t(i18n, `${K}.section5Description`)}
       >
         <div className="grid gap-6 lg:grid-cols-2">
           <div className="space-y-3">
@@ -384,11 +393,11 @@ export default function SgSkeletonPage() {
       </Section>
 
       <Section
-        title="6) Playground (SgPlayground)"
-        description="Playground to simulate shape, size, radius and animation in real time."
+        title={t(i18n, `${K}.section6Title`)}
+        description={t(i18n, `${K}.section6Description`)}
       >
         <SgPlayground
-          title="SgSkeleton Playground"
+          title={t(i18n, `${K}.playgroundTitle`)}
           interactive
           codeContract="appFile"
           playgroundFile="apps/showcase/src/app/components/sg-skeleton/sg-skeleton.tsx.playground"
@@ -397,7 +406,7 @@ export default function SgSkeletonPage() {
         />
       </Section>
 
-        <ShowcasePropsReference rows={SKELETON_PROPS} />
+        <ShowcasePropsReference rows={skeletonProps} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />

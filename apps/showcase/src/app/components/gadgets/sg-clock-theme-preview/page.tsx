@@ -12,6 +12,9 @@ import { useShowcaseAnchors } from "../../useShowcaseAnchors";
 import ComponentAiPropsTable from "../../ai/ComponentAiPropsTable";
 import ComponentAiSummary from "../../ai/ComponentAiSummary";
 import { useAiManifestComponent } from "../../ai/useAiManifestComponent";
+import { t, useShowcaseI18n } from "../../../../i18n";
+
+const K = "showcase.component.clockThemePreview";
 
 function Section(props: { title: string; description?: string; children: React.ReactNode }) {
   return (
@@ -26,11 +29,13 @@ function Section(props: { title: string; description?: string; children: React.R
   );
 }
 
-const CLOCK_THEME_PREVIEW_PROPS: ShowcasePropRow[] = [
-  { prop: "theme", type: "SgClockTheme", defaultValue: "-", description: "Tema visual usado na renderizacao do preview." },
-  { prop: "size", type: "number", defaultValue: "64", description: "Tamanho quadrado do preview." },
-  { prop: "className", type: "string", defaultValue: "-", description: "Classes adicionais aplicadas ao SVG." }
-];
+function getClockThemePreviewProps(i18n: ReturnType<typeof useShowcaseI18n>): ShowcasePropRow[] {
+  return [
+    { prop: "theme", type: "SgClockTheme", defaultValue: "-", description: t(i18n, `${K}.props.theme`) },
+    { prop: "size", type: "number", defaultValue: "64", description: t(i18n, `${K}.props.size`) },
+    { prop: "className", type: "string", defaultValue: "-", description: t(i18n, `${K}.props.className`) }
+  ];
+}
 
 function ThemeGallery() {
   const themes = React.useMemo(() => sgClockThemesBuiltIn.slice(0, 8), []);
@@ -51,8 +56,10 @@ function ThemeGallery() {
 }
 
 export default function SgClockThemePreviewPage() {
-  const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors();
+  const i18n = useShowcaseI18n();
+  const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({ deps: [i18n.locale] });
   const aiComponent = useAiManifestComponent("SgClockThemePreview");
+  const propRows = React.useMemo(() => getClockThemePreviewProps(i18n), [i18n]);
 
   return (
     <I18NReady>
@@ -64,19 +71,19 @@ export default function SgClockThemePreviewPage() {
         <ShowcaseStickyHeader
           stickyHeaderRef={stickyHeaderRef}
           title="SgClockThemePreview"
-          subtitle="Miniatura SVG para comparar estilos visuais de clock antes da selecao."
+          subtitle={t(i18n, `${K}.subtitle`)}
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
 
         <Section
-          title="1) Theme gallery"
-          description="Previews compactos de temas embutidos para comparacao visual."
+          title={t(i18n, `${K}.section1Title`)}
+          description={t(i18n, `${K}.section1Description`)}
         >
           <ThemeGallery />
         </Section>
 
-        <ShowcasePropsReference rows={CLOCK_THEME_PREVIEW_PROPS} />
+        <ShowcasePropsReference rows={propRows} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />

@@ -5,7 +5,10 @@ import ptBr from "./pt-BR.json";
 import ptPt from "./pt-PT.json";
 import enUs from "./en-US.json";
 import es from "./es.json";
+import fr from "./fr.json";
 
+// "fr" e um locale valido (aceito via `string & {}`); nao entra como literal para nao forcar
+// todos os Record<ShowcaseLocale, string> exaustivos (ex.: THEME_HINT_TEXTS_BY_SLUG) a exigir fr.
 export type ShowcaseLocale = "pt-BR" | "pt-PT" | "en-US" | "es" | (string & {});
 export type ShowcaseMessages = Record<string, string>;
 
@@ -89,3 +92,4 @@ export const showcaseMessagesPtBr = ptBr;
 export const showcaseMessagesPtPt = ptPt;
 export const showcaseMessagesEnUs = enUs;
 export const showcaseMessagesEs = es;
+export const showcaseMessagesFr = fr;

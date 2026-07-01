@@ -3,6 +3,7 @@ import React from "react";
 import type { Metadata } from "next";
 import ShowcaseShell from "./ShowcaseShell";
 import { SeedThemeProvider } from "@seedgrid/fe-theme";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "SeedGrid Components Showcase",
@@ -36,6 +37,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           <RootContent>{children}</RootContent>
         </SeedThemeProvider>
+
+        {/* Google Analytics (gtag.js) — carregado depois da hidratacao (nao afeta SSR). */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-4DSCTMD8MV"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-4DSCTMD8MV');
+          `}
+        </Script>
       </body>
     </html>
   );

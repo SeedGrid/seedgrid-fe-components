@@ -11,7 +11,9 @@ import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
-import { useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
+import { t, useShowcaseI18n } from "../../../i18n";
+
+const K = "showcase.component.stack";
 
 function Section(props: { title: string; description?: string; children: React.ReactNode }) {
   return (
@@ -72,59 +74,15 @@ const STACK_PROPS: ShowcasePropRow[] = [
   { prop: "className / style", type: "string / CSSProperties", defaultValue: "-", description: "Customizacao visual do stack." }
 ];
 
-type StackTexts = {
-  subtitle: string;
-  section1Title: string;
-  section1Description: string;
-  section2Title: string;
-  section2Description: string;
-  playgroundTitle: string;
-};
 
-const STACK_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", StackTexts> = {
-  "pt-BR": {
-    subtitle: "Wrapper flex declarativo para direcao, alinhamento, distribuicao e espacamento.",
-    section1Title: "1) Column + Row",
-    section1Description: "Common layout examples with stack.",
-    section2Title: "2) Playground (SgPlayground)",
-    section2Description: "Teste rapido das props principais do SgStack.",
-    playgroundTitle: "SgStack Playground"
-  },
-  "pt-PT": {
-    subtitle: "Wrapper flex declarativo para direcao, alinhamento, distribuicao e espacamento.",
-    section1Title: "1) Column + Row",
-    section1Description: "Common layout examples with stack.",
-    section2Title: "2) Playground (SgPlayground)",
-    section2Description: "Teste rapido das props principais do SgStack.",
-    playgroundTitle: "SgStack Playground"
-  },
-  "en-US": {
-    subtitle: "Declarative flex wrapper for direction, alignment, distribution and spacing.",
-    section1Title: "1) Column + Row",
-    section1Description: "Common layout examples with stack.",
-    section2Title: "2) Playground (SgPlayground)",
-    section2Description: "Quickly test the main SgStack props.",
-    playgroundTitle: "SgStack Playground"
-  },
-  es: {
-    subtitle: "Wrapper flex declarativo para direccion, alineacion, distribucion y espaciado.",
-    section1Title: "1) Column + Row",
-    section1Description: "Ejemplos comunes de layout con stack.",
-    section2Title: "2) Playground (SgPlayground)",
-    section2Description: "Prueba rapida de las props principales de SgStack.",
-    playgroundTitle: "SgStack Playground"
-  }
-};
 
-function isSupportedLocale(locale: ShowcaseLocale): locale is keyof typeof STACK_TEXTS {
-  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
-}
+
+
+
 
 export default function SgStackPage() {
   const i18n = useShowcaseI18n();
-  const aiComponent = useAiManifestComponent("SgStack");
-  const locale: keyof typeof STACK_TEXTS = isSupportedLocale(i18n.locale) ? i18n.locale : "en-US";
-  const texts = STACK_TEXTS[locale];
+  const aiComponent = useAiManifestComponent("SgStack");
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({
     deps: [i18n.locale]
   });
@@ -139,12 +97,12 @@ export default function SgStackPage() {
         <ShowcaseStickyHeader
           stickyHeaderRef={stickyHeaderRef}
           title="SgStack"
-          subtitle={texts.subtitle}
+          subtitle={t(i18n, `${K}.subtitle`)}
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
 
-        <Section title={texts.section1Title} description={texts.section1Description}>
+        <Section title={t(i18n, `${K}.section1Title`)} description={t(i18n, `${K}.section1Description`)}>
           <SgGrid columns={{ base: 1, md: 2 }} gap={16}>
             <SgPanel padding={12} className="rounded-lg">
               <SgStack gap={8}>
@@ -171,9 +129,9 @@ export default function SgStackPage() {
           </SgStack>
         </Section>
 
-        <Section title={texts.section2Title} description={texts.section2Description}>
+        <Section title={t(i18n, `${K}.section2Title`)} description={t(i18n, `${K}.section2Description`)}>
           <SgPlayground
-            title={texts.playgroundTitle}
+            title={t(i18n, `${K}.playgroundTitle`)}
             interactive
             codeContract="appFile"
             playgroundFile="apps/showcase/src/app/components/sg-stack/sg-stack.tsx.playground"

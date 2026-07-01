@@ -11,7 +11,9 @@ import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcaseProp
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
 import { useAiManifestComponent } from "../../ai/useAiManifestComponent";
 import { useShowcaseAnchors } from "../../useShowcaseAnchors";
-import { useShowcaseI18n, type ShowcaseLocale } from "../../../../i18n";
+import { t, useShowcaseI18n } from "../../../../i18n";
+
+const K = "showcase.component.flipDigit";
 
 function Section(props: { title: string; description?: string; children: React.ReactNode }) {
   return (
@@ -26,100 +28,14 @@ function Section(props: { title: string; description?: string; children: React.R
   );
 }
 
-type FlipDigitTexts = {
-  headerSubtitle: string;
-  section1Title: string;
-  section1Description: string;
-  section2Title: string;
-  section2Description: string;
-  section3Title: string;
-  section3Description: string;
-  section4Title: string;
-  section4Description: string;
-  section5Title: string;
-  section5Description: string;
-  section6Title: string;
-  section6Description: string;
-  propsReferenceTitle: string;
-};
 
-const FLIP_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", FlipDigitTexts> = {
-  "pt-BR": {
-    headerSubtitle: "Animated flip component for displaying digits and single characters.",
-    section1Title: "Basico (0-9)",
-    section1Description: "Increment, decrement, and random value.",
-    section2Title: "Letras (A-Z)",
-    section2Description: "Tambem aceita caracteres alfabeticos.",
-    section3Title: "Variacoes de tamanho",
-    section3Description: "Ajuste de width, height e fontSize.",
-    section4Title: "Sequencia estilo relogio",
-    section4Description: "Composition of multiple SgFlipDigit in a row.",
-    section5Title: "Auto increment",
-    section5Description: "Atualizacao automatica para validar transicao continua.",
-    section6Title: "Playground",
-    section6Description: "Teste as props principais em tempo real.",
-    propsReferenceTitle: "Referencia de Props",
-  },
-  "pt-PT": {
-    headerSubtitle: "Animated flip component for displaying digits and single characters.",
-    section1Title: "Basico (0-9)",
-    section1Description: "Increment, decrement, and random value.",
-    section2Title: "Letras (A-Z)",
-    section2Description: "Tambem aceita caracteres alfabeticos.",
-    section3Title: "Variacoes de tamanho",
-    section3Description: "Ajuste de width, height e fontSize.",
-    section4Title: "Sequencia estilo relogio",
-    section4Description: "Composition of multiple SgFlipDigit in a row.",
-    section5Title: "Auto increment",
-    section5Description: "Atualizacao automatica para validar transicao continua.",
-    section6Title: "Playground",
-    section6Description: "Teste as props principais em tempo real.",
-    propsReferenceTitle: "Referencia de Props",
-  },
-  "en-US": {
-    headerSubtitle: "Animated flip component for displaying digits and single characters.",
-    section1Title: "Basic (0-9)",
-    section1Description: "Increment, decrement, and random value.",
-    section2Title: "Letters (A-Z)",
-    section2Description: "Also accepts alphabetic characters.",
-    section3Title: "Size variations",
-    section3Description: "Adjust width, height, and fontSize.",
-    section4Title: "Clock-style sequence",
-    section4Description: "Compose multiple SgFlipDigit in a row.",
-    section5Title: "Auto increment",
-    section5Description: "Automatic updates to validate continuous transition.",
-    section6Title: "Playground",
-    section6Description: "Test the main props in real time.",
-    propsReferenceTitle: "Props Reference",
-  },
-  es: {
-    headerSubtitle: "Componente flip animado para mostrar digitos y caracteres unicos.",
-    section1Title: "Basico (0-9)",
-    section1Description: "Incremento, decremento y valor aleatorio.",
-    section2Title: "Letras (A-Z)",
-    section2Description: "Tambien acepta caracteres alfabeticos.",
-    section3Title: "Variaciones de tamano",
-    section3Description: "Ajuste de width, height y fontSize.",
-    section4Title: "Secuencia estilo reloj",
-    section4Description: "Composicion de varios SgFlipDigit en linea.",
-    section5Title: "Auto incremento",
-    section5Description: "Actualizacion automatica para validar transicion continua.",
-    section6Title: "Playground",
-    section6Description: "Prueba las props principales en tiempo real.",
-    propsReferenceTitle: "Referencia de Props",
-  },
-};
 
-type SupportedFlipLocale = keyof typeof FLIP_TEXTS;
 
-function isSupportedFlipLocale(locale: ShowcaseLocale): locale is SupportedFlipLocale {
-  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
-}
+
 
-function getFlipTexts(locale: ShowcaseLocale): FlipDigitTexts {
-  const normalized: SupportedFlipLocale = isSupportedFlipLocale(locale) ? locale : "en-US";
-  return FLIP_TEXTS[normalized];
-}
+
+
+
 
 const FLIP_DIGIT_PROPS: ShowcasePropRow[] = [
   { prop: "value", type: "string", defaultValue: "-", description: "Caractere exibido no card flip (1 char recomendado)." },
@@ -130,8 +46,7 @@ const FLIP_DIGIT_PROPS: ShowcasePropRow[] = [
 ];
 
 export default function SgFlipDigitShowcase() {
-  const i18n = useShowcaseI18n();
-  const texts = React.useMemo(() => getFlipTexts(i18n.locale), [i18n.locale]);
+  const i18n = useShowcaseI18n();
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
   const aiComponent = useAiManifestComponent("SgFlipDigit");
@@ -168,14 +83,14 @@ export default function SgFlipDigitShowcase() {
         <ShowcaseStickyHeader
           stickyHeaderRef={stickyHeaderRef}
           title="SgFlipDigit"
-          subtitle={texts.headerSubtitle}
+          subtitle={t(i18n, `${K}.headerSubtitle`)}
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
 
         <Section
-          title={texts.section1Title}
-          description={texts.section1Description}
+          title={t(i18n, `${K}.section1Title`)}
+          description={t(i18n, `${K}.section1Description`)}
         >
           <div className="flex items-center gap-4">
             <SgFlipDigit value={digit} />
@@ -189,8 +104,8 @@ export default function SgFlipDigitShowcase() {
         </Section>
 
         <Section
-          title={texts.section2Title}
-          description={texts.section2Description}
+          title={t(i18n, `${K}.section2Title`)}
+          description={t(i18n, `${K}.section2Description`)}
         >
           <div className="flex items-center gap-4">
             <SgFlipDigit value={letter} />
@@ -200,8 +115,8 @@ export default function SgFlipDigitShowcase() {
         </Section>
 
         <Section
-          title={texts.section3Title}
-          description={texts.section3Description}
+          title={t(i18n, `${K}.section3Title`)}
+          description={t(i18n, `${K}.section3Description`)}
         >
           <div className="flex items-center gap-6">
             <div className="text-center">
@@ -221,8 +136,8 @@ export default function SgFlipDigitShowcase() {
         </Section>
 
         <Section
-          title={texts.section4Title}
-          description={texts.section4Description}
+          title={t(i18n, `${K}.section4Title`)}
+          description={t(i18n, `${K}.section4Description`)}
         >
           <div className="flex items-center gap-2">
             <SgFlipDigit value={digit} />
@@ -235,8 +150,8 @@ export default function SgFlipDigitShowcase() {
         </Section>
 
         <Section
-          title={texts.section5Title}
-          description={texts.section5Description}
+          title={t(i18n, `${K}.section5Title`)}
+          description={t(i18n, `${K}.section5Description`)}
         >
           <div className="flex items-center gap-4">
             <SgFlipDigit value={autoDigit} />
@@ -248,8 +163,8 @@ export default function SgFlipDigitShowcase() {
         </Section>
 
         <Section
-          title={texts.section6Title}
-          description={texts.section6Description}
+          title={t(i18n, `${K}.section6Title`)}
+          description={t(i18n, `${K}.section6Description`)}
         >
           <SgPlayground
             title="SgFlipDigit Playground"
@@ -261,7 +176,7 @@ export default function SgFlipDigitShowcase() {
           />
         </Section>
 
-        <ShowcasePropsReference rows={FLIP_DIGIT_PROPS} title={texts.propsReferenceTitle} />
+        <ShowcasePropsReference rows={FLIP_DIGIT_PROPS} title={t(i18n, `${K}.propsReferenceTitle`)} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />

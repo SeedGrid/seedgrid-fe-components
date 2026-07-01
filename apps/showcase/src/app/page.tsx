@@ -24,6 +24,7 @@ const COMPONENTS = [
       { slug: "sg-input-phone", name: "SgInputPhone", desc: "Input de telefone brasileiro com mascara (XX) XXXXX-XXXX" },
       { slug: "sg-autocomplete", name: "SgAutocomplete", desc: "Autocomplete com busca, agrupamento e render custom" },
       { slug: "sg-combobox", name: "SgCombobox", desc: "Combobox estilo select com source de objetos e onSelect(value)" },
+      { slug: "sg-period-selector", name: "SgPeriodSelector", desc: "Seletor de periodos pre-definidos (Este mes, Ultimo trimestre) que resolve para intervalo de datas" },
       { slug: "sg-multi-select", name: "SgMultiSelect", desc: "Selecao multipla em dropdown com checkboxes, busca e resumo" },
       { slug: "sg-multi-select-chips", name: "SgMultiSelectChips", desc: "Selecao multipla com os selecionados como chips removiveis + dropdown" },
       { slug: "sg-input-text-search", name: "SgInputTextSearch", desc: "Input de busca com debounce (minChars, distinct) sobre o SgInputText" },

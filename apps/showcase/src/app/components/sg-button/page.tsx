@@ -11,7 +11,9 @@ import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import { loadAiManifestComponent, type AiManifestComponent } from "../../lib/ai-manifest";
-import { useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
+import { t, useShowcaseI18n } from "../../../i18n";
+
+const K = "showcase.component.button";
 
 const SEVERITIES = ["primary", "secondary", "success", "info", "warning", "help", "danger"] as const;
 
@@ -93,233 +95,10 @@ const BUTTON_EXAMPLE_IDS = [
   "exemplo-15",
 ] as const;
 
-type ButtonTexts = {
-  headerSubtitle: string;
-  examplesLabel: string;
-  propsLinkLabel: string;
-  sectionTitles: string[];
-  sectionDescriptions: string[];
-  iconsGroupElevated: string;
-  iconsGroupRounded: string;
-  iconsGroupGhost: string;
-  iconsGroupOutlinedElevation: string;
-  iconsGroupOutlined: string;
-  propsTitle: string;
-  propsColProp: string;
-  propsColType: string;
-  propsColDefault: string;
-  propsColDescription: string;
-};
 
-const BUTTON_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", ButtonTexts> = {
-  "pt-BR": {
-    headerSubtitle: "Botao com suporte a severity, appearance, shape, elevation, icons e loading.",
-    examplesLabel: "Examples",
-    propsLinkLabel: "Referência de Props",
-    sectionTitles: [
-      "1) Basico",
-      "2) Icones",
-      "3) Severities",
-      "4) Elevated Buttons",
-      "5) Rounded Buttons",
-      "6) Ghost Buttons (Flat)",
-      "7) Outlined + Elevation",
-      "8) Outlined Buttons",
-      "9) Rounded Icon Buttons",
-      "10) Rounded Text Icon Buttons",
-      "11) Rounded and Outlined Icon Buttons",
-      "12) Sizes",
-      "13) Loading",
-      "14) Custom Colors",
-      "15) Playground",
-    ],
-    sectionDescriptions: [
-      "Botao padrao com onClick e estado disabled.",
-      "Examples completos com icones para validar appearance/shape/elevation.",
-      'severity="primary" | "secondary" | "success" | "info" | "warning" | "help" | "danger"',
-      'appearance="solid" + elevation="sm".',
-      'shape="rounded" para formato pill.',
-      'appearance="ghost" - sem fundo, apenas texto colorido.',
-      'appearance="outline" + elevation="sm".',
-      'appearance="outline" - apenas bordas coloridas.',
-      'shape="rounded" + icon only - botoes circulares.',
-      'shape="rounded" + icon only + appearance="ghost"',
-      'shape="rounded" + icon only + appearance="outline"',
-      'size="sm" | "md" | "lg"',
-      "loading=true exibe spinner e desabilita o botao.",
-      "customColors permite qualquer cor via CSS.",
-      "Teste as principais props do SgButton em tempo real.",
-    ],
-    iconsGroupElevated: "Elevated Buttons",
-    iconsGroupRounded: "Rounded Buttons",
-    iconsGroupGhost: "Ghost Buttons (Flat)",
-    iconsGroupOutlinedElevation: "Outlined + Elevation",
-    iconsGroupOutlined: "Outlined Buttons",
-    propsTitle: "Referência de Props",
-    propsColProp: "Prop",
-    propsColType: "Tipo",
-    propsColDefault: "Default",
-    propsColDescription: "Description",
-  },
-  "pt-PT": {
-    headerSubtitle: "Botao com suporte a severity, appearance, shape, elevation, icons e loading.",
-    examplesLabel: "Examples",
-    propsLinkLabel: "Referência de Props",
-    sectionTitles: [
-      "1) Basico",
-      "2) Icones",
-      "3) Severities",
-      "4) Elevated Buttons",
-      "5) Rounded Buttons",
-      "6) Ghost Buttons (Flat)",
-      "7) Outlined + Elevation",
-      "8) Outlined Buttons",
-      "9) Rounded Icon Buttons",
-      "10) Rounded Text Icon Buttons",
-      "11) Rounded and Outlined Icon Buttons",
-      "12) Sizes",
-      "13) Loading",
-      "14) Custom Colors",
-      "15) Playground",
-    ],
-    sectionDescriptions: [
-      "Botao padrao com onClick e estado disabled.",
-      "Examples completos com icones para validar appearance/shape/elevation.",
-      'severity="primary" | "secondary" | "success" | "info" | "warning" | "help" | "danger"',
-      'appearance="solid" + elevation="sm".',
-      'shape="rounded" para formato pill.',
-      'appearance="ghost" - sem fundo, apenas texto colorido.',
-      'appearance="outline" + elevation="sm".',
-      'appearance="outline" - apenas bordas coloridas.',
-      'shape="rounded" + icon only - botoes circulares.',
-      'shape="rounded" + icon only + appearance="ghost"',
-      'shape="rounded" + icon only + appearance="outline"',
-      'size="sm" | "md" | "lg"',
-      "loading=true exibe spinner e desabilita o botao.",
-      "customColors permite qualquer cor via CSS.",
-      "Teste as principais props do SgButton em tempo real.",
-    ],
-    iconsGroupElevated: "Elevated Buttons",
-    iconsGroupRounded: "Rounded Buttons",
-    iconsGroupGhost: "Ghost Buttons (Flat)",
-    iconsGroupOutlinedElevation: "Outlined + Elevation",
-    iconsGroupOutlined: "Outlined Buttons",
-    propsTitle: "Referência de Props",
-    propsColProp: "Prop",
-    propsColType: "Tipo",
-    propsColDefault: "Default",
-    propsColDescription: "Description",
-  },
-  "en-US": {
-    headerSubtitle: "Button with support for severity, appearance, shape, elevation, icons, and loading.",
-    examplesLabel: "Examples",
-    propsLinkLabel: "Props Reference",
-    sectionTitles: [
-      "1) Basic",
-      "2) Icons",
-      "3) Severities",
-      "4) Elevated Buttons",
-      "5) Rounded Buttons",
-      "6) Ghost Buttons (Flat)",
-      "7) Outlined + Elevation",
-      "8) Outlined Buttons",
-      "9) Rounded Icon Buttons",
-      "10) Rounded Text Icon Buttons",
-      "11) Rounded and Outlined Icon Buttons",
-      "12) Sizes",
-      "13) Loading",
-      "14) Custom Colors",
-      "15) Playground",
-    ],
-    sectionDescriptions: [
-      "Default button with onClick and disabled state.",
-      "Full icon examples to validate appearance/shape/elevation.",
-      'severity="primary" | "secondary" | "success" | "info" | "warning" | "help" | "danger"',
-      'appearance="solid" + elevation="sm".',
-      'shape="rounded" for pill format.',
-      'appearance="ghost" - no background, text only.',
-      'appearance="outline" + elevation="sm".',
-      'appearance="outline" - outlined style only.',
-      'shape="rounded" + icon only - circular buttons.',
-      'shape="rounded" + icon only + appearance="ghost"',
-      'shape="rounded" + icon only + appearance="outline"',
-      'size="sm" | "md" | "lg"',
-      "loading=true shows spinner and disables the button.",
-      "customColors allows any CSS color.",
-      "Test the main SgButton props in real time.",
-    ],
-    iconsGroupElevated: "Elevated Buttons",
-    iconsGroupRounded: "Rounded Buttons",
-    iconsGroupGhost: "Ghost Buttons (Flat)",
-    iconsGroupOutlinedElevation: "Outlined + Elevation",
-    iconsGroupOutlined: "Outlined Buttons",
-    propsTitle: "Props Reference",
-    propsColProp: "Prop",
-    propsColType: "Type",
-    propsColDefault: "Default",
-    propsColDescription: "Description",
-  },
-  es: {
-    headerSubtitle: "Boton con soporte para severity, appearance, shape, elevation, iconos y loading.",
-    examplesLabel: "Ejemplos",
-    propsLinkLabel: "Referencia de Props",
-    sectionTitles: [
-      "1) Basico",
-      "2) Iconos",
-      "3) Severities",
-      "4) Elevated Buttons",
-      "5) Rounded Buttons",
-      "6) Ghost Buttons (Flat)",
-      "7) Outlined + Elevation",
-      "8) Outlined Buttons",
-      "9) Rounded Icon Buttons",
-      "10) Rounded Text Icon Buttons",
-      "11) Rounded and Outlined Icon Buttons",
-      "12) Sizes",
-      "13) Loading",
-      "14) Custom Colors",
-      "15) Playground",
-    ],
-    sectionDescriptions: [
-      "Boton estandar con onClick y estado disabled.",
-      "Ejemplos completos con iconos para validar appearance/shape/elevation.",
-      'severity="primary" | "secondary" | "success" | "info" | "warning" | "help" | "danger"',
-      'appearance="solid" + elevation="sm".',
-      'shape="rounded" para formato pill.',
-      'appearance="ghost" - sin fondo, solo texto.',
-      'appearance="outline" + elevation="sm".',
-      'appearance="outline" - solo bordes.',
-      'shape="rounded" + icon only - botones circulares.',
-      'shape="rounded" + icon only + appearance="ghost"',
-      'shape="rounded" + icon only + appearance="outline"',
-      'size="sm" | "md" | "lg"',
-      "loading=true muestra spinner y deshabilita el boton.",
-      "customColors permite cualquier color CSS.",
-      "Prueba las principales props de SgButton en tiempo real.",
-    ],
-    iconsGroupElevated: "Elevated Buttons",
-    iconsGroupRounded: "Rounded Buttons",
-    iconsGroupGhost: "Ghost Buttons (Flat)",
-    iconsGroupOutlinedElevation: "Outlined + Elevation",
-    iconsGroupOutlined: "Outlined Buttons",
-    propsTitle: "Referencia de Props",
-    propsColProp: "Prop",
-    propsColType: "Tipo",
-    propsColDefault: "Por defecto",
-    propsColDescription: "Descripcion",
-  },
-};
 
-type SupportedButtonLocale = keyof typeof BUTTON_TEXTS;
 
-function isSupportedButtonLocale(locale: ShowcaseLocale): locale is SupportedButtonLocale {
-  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
-}
 
-function getButtonTexts(locale: ShowcaseLocale): ButtonTexts {
-  const normalized: SupportedButtonLocale = isSupportedButtonLocale(locale) ? locale : "en-US";
-  return BUTTON_TEXTS[normalized];
-}
 
 const BUTTON_PROPS: ShowcasePropRow[] = [
   {
@@ -393,8 +172,56 @@ const BUTTON_PROPS: ShowcasePropRow[] = [
 export default function SgButtonShowcase() {
   const submit = useFakeProcess(2000);
   const i18n = useShowcaseI18n();
+  const texts = React.useMemo(() => ({
+    headerSubtitle: t(i18n, `${K}.headerSubtitle`),
+    examplesLabel: t(i18n, `${K}.examplesLabel`),
+    propsLinkLabel: t(i18n, `${K}.propsLinkLabel`),
+    sectionTitles: [
+      t(i18n, `${K}.sectionTitles.0`),
+      t(i18n, `${K}.sectionTitles.1`),
+      t(i18n, `${K}.sectionTitles.2`),
+      t(i18n, `${K}.sectionTitles.3`),
+      t(i18n, `${K}.sectionTitles.4`),
+      t(i18n, `${K}.sectionTitles.5`),
+      t(i18n, `${K}.sectionTitles.6`),
+      t(i18n, `${K}.sectionTitles.7`),
+      t(i18n, `${K}.sectionTitles.8`),
+      t(i18n, `${K}.sectionTitles.9`),
+      t(i18n, `${K}.sectionTitles.10`),
+      t(i18n, `${K}.sectionTitles.11`),
+      t(i18n, `${K}.sectionTitles.12`),
+      t(i18n, `${K}.sectionTitles.13`),
+      t(i18n, `${K}.sectionTitles.14`)
+    ],
+    sectionDescriptions: [
+      t(i18n, `${K}.sectionDescriptions.0`),
+      t(i18n, `${K}.sectionDescriptions.1`),
+      t(i18n, `${K}.sectionDescriptions.2`),
+      t(i18n, `${K}.sectionDescriptions.3`),
+      t(i18n, `${K}.sectionDescriptions.4`),
+      t(i18n, `${K}.sectionDescriptions.5`),
+      t(i18n, `${K}.sectionDescriptions.6`),
+      t(i18n, `${K}.sectionDescriptions.7`),
+      t(i18n, `${K}.sectionDescriptions.8`),
+      t(i18n, `${K}.sectionDescriptions.9`),
+      t(i18n, `${K}.sectionDescriptions.10`),
+      t(i18n, `${K}.sectionDescriptions.11`),
+      t(i18n, `${K}.sectionDescriptions.12`),
+      t(i18n, `${K}.sectionDescriptions.13`),
+      t(i18n, `${K}.sectionDescriptions.14`)
+    ],
+    iconsGroupElevated: t(i18n, `${K}.iconsGroupElevated`),
+    iconsGroupRounded: t(i18n, `${K}.iconsGroupRounded`),
+    iconsGroupGhost: t(i18n, `${K}.iconsGroupGhost`),
+    iconsGroupOutlinedElevation: t(i18n, `${K}.iconsGroupOutlinedElevation`),
+    iconsGroupOutlined: t(i18n, `${K}.iconsGroupOutlined`),
+    propsTitle: t(i18n, `${K}.propsTitle`),
+    propsColProp: t(i18n, `${K}.propsColProp`),
+    propsColType: t(i18n, `${K}.propsColType`),
+    propsColDefault: t(i18n, `${K}.propsColDefault`),
+    propsColDescription: t(i18n, `${K}.propsColDescription`)
+  }), [i18n]);
   const [aiComponent, setAiComponent] = React.useState<AiManifestComponent | null>(null);
-  const texts = React.useMemo(() => getButtonTexts(i18n.locale), [i18n.locale]);
   const stickyHeaderRef = React.useRef<HTMLDivElement | null>(null);
   const [anchorOffset, setAnchorOffset] = React.useState(320);
 

@@ -9,6 +9,7 @@ import {
   componentsMessagesPtPt,
   componentsMessagesEnUs,
   componentsMessagesEs,
+  componentsMessagesFr,
   SgDockScreen,
   SgDockZone,
   SgMenu,
@@ -22,6 +23,7 @@ import {
   t,
   showcaseMessagesEnUs,
   showcaseMessagesEs,
+  showcaseMessagesFr,
   showcaseMessagesPtBr,
   showcaseMessagesPtPt,
   type ShowcaseLocale
@@ -45,6 +47,7 @@ import {
   Cake,
   Calendar,
   CalendarDays,
+  CalendarRange,
   CheckCheck,
   ChevronsRight,
   ChevronsUpDown,
@@ -136,6 +139,7 @@ const COMPONENTS = [
   { group: "Inputs", slug: "sg-input-phone", label: "SgInputPhone", icon: <Phone className="size-4" /> },
   { group: "Inputs", slug: "sg-autocomplete", label: "SgAutocomplete", icon: <Search className="size-4" /> },
   { group: "Inputs", slug: "sg-combobox", label: "SgCombobox", icon: <ChevronsUpDown className="size-4" /> },
+  { group: "Inputs", slug: "sg-period-selector", label: "SgPeriodSelector", icon: <CalendarRange className="size-4" /> },
   { group: "Inputs", slug: "sg-multi-select", label: "SgMultiSelect", icon: <CheckCheck className="size-4" /> },
   { group: "Inputs", slug: "sg-multi-select-chips", label: "SgMultiSelectChips", icon: <Tags className="size-4" /> },
   { group: "Inputs", slug: "sg-slider", label: "SgSlider", icon: <SlidersHorizontal className="size-4" /> },
@@ -200,6 +204,7 @@ const COMPONENTS = [
   { group: "Wizard", slug: "sg-wizard", label: "SgWizard", icon: <Wand2 className="size-4" /> },
   { group: "Utils", slug: "sg-toaster", label: "SgToaster", icon: <BellRing className="size-4" /> },
   { group: "Utils", slug: "sg-toast-host", label: "SgToastHost", icon: <BellDot className="size-4" /> },
+  { group: "Utils", slug: "sg-whistler", label: "SgWhistler", icon: <BellRing className="size-4" /> },
   { group: "Utils", slug: "sg-whistle-host", label: "SgWhistleHost", icon: <BellDot className="size-4" /> },
   // { group: "Utils", slug: "sg-playground", label: "SgPlayground" },
   { group: "Utils", slug: "sg-benchmark", label: "Benchmark", icon: <Activity className="size-4" /> }
@@ -525,11 +530,17 @@ const COMPONENT_HINT_TEXTS_BY_SLUG: Record<string, Partial<Record<ShowcaseLocale
     "en-US": "Marks where toasts appear. When multiple hosts exist, the deepest in the tree takes priority.",
     es: "Marca donde aparecen los toasts. Cuando existen multiples hosts, el mas profundo en el arbol tiene prioridad."
   },
+  "sg-whistler": {
+    "pt-BR": "Renderizador de mensagens contextuais em pilha (rounded, severidades, dismiss). Cede a vez quando ha um SgWhistleHost.",
+    "pt-PT": "Renderizador de mensagens contextuais em pilha (rounded, severidades, dismiss). Cede a vez quando ha um SgWhistleHost.",
+    "en-US": "Stacked contextual message renderer (rounded, severities, dismiss). Yields when a SgWhistleHost is present.",
+    es: "Renderizador de mensajes contextuales en pila (rounded, severidades, dismiss). Cede el paso cuando hay un SgWhistleHost."
+  },
   "sg-whistle-host": {
-    "pt-BR": "Sistema de mensagens contextuais em fluxo, com host inline e API imperativa via sgWhistle.",
-    "pt-PT": "Sistema de mensagens contextuais em fluxo, com host inline e API imperativa via sgWhistle.",
-    "en-US": "Inline contextual messaging system with an in-flow host and an imperative sgWhistle API.",
-    es: "Sistema de mensajes contextuales en flujo, con host inline y API imperativa sgWhistle."
+    "pt-BR": "Marca o local onde os whistles aparecem. Varios hosts (ex.: topo e rodape) coexistem via registry: o ultimo montado fica ativo.",
+    "pt-PT": "Marca o local onde os whistles aparecem. Varios hosts (ex.: topo e rodape) coexistem via registry: o ultimo montado fica ativo.",
+    "en-US": "Marks where whistles appear. Multiple hosts (e.g. top and bottom) coexist via a registry: the last mounted stays active.",
+    es: "Marca donde aparecen los whistles. Varios hosts (ej.: arriba y abajo) coexisten via registry: el ultimo montado queda activo."
   },
   "sg-toggle-switch": {
     "pt-BR": "Toggle switch com suporte a icones, estados disabled/readonly e integracao com react-hook-form.",
@@ -707,6 +718,17 @@ function LocaleFlag(props: Readonly<{ locale: ShowcaseLocale }>) {
     );
   }
 
+  if (props.locale === "fr") {
+    return (
+      <svg viewBox="0 0 24 16" width="16" height="12" aria-hidden="true">
+        <rect width="24" height="16" fill="#ffffff" />
+        <rect width="8" height="16" fill="#0055a4" />
+        <rect x="16" width="8" height="16" fill="#ef4135" />
+      </svg>
+    );
+  }
+
+  // Fallback: bandeira da Espanha (es).
   return (
     <svg viewBox="0 0 24 16" width="16" height="12" aria-hidden="true">
       <rect width="24" height="16" fill="#c2332b" />
@@ -724,21 +746,24 @@ const LOCALES: LocaleOption[] = [
   { value: "pt-BR", label: "pt-BR (Portugues do Brasil)" },
   { value: "pt-PT", label: "pt-PT (Portugues de Portugal)" },
   { value: "en-US", label: "en-US (Ingles dos Estados Unidos)" },
-  { value: "es", label: "es (Espanhol)" }
+  { value: "es", label: "es (Espanhol)" },
+  { value: "fr", label: "fr (Frances)" }
 ];
 
 const MESSAGES_BY_LOCALE: Record<ShowcaseLocale, Record<string, string>> = {
   "pt-BR": showcaseMessagesPtBr,
   "pt-PT": showcaseMessagesPtPt,
   "en-US": showcaseMessagesEnUs,
-  es: showcaseMessagesEs
+  es: showcaseMessagesEs,
+  fr: showcaseMessagesFr
 };
 
 const COMPONENTS_MESSAGES_BY_LOCALE: Record<ShowcaseLocale, Record<string, string>> = {
   "pt-BR": componentsMessagesPtBr,
   "pt-PT": componentsMessagesPtPt,
   "en-US": componentsMessagesEnUs,
-  es: componentsMessagesEs
+  es: componentsMessagesEs,
+  fr: componentsMessagesFr
 };
 
 export default function ShowcaseShell(props: {

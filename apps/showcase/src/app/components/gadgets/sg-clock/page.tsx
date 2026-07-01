@@ -3,8 +3,11 @@
 import { SgClockShowcaseClient } from "./sg-clock-showcase-client";
 import I18NReady from "../../I18NReady";
 import { SgCard, SgEnvironmentProvider } from "@seedgrid/fe-components";
+import { t, useShowcaseI18n } from "../../../../i18n";
+const K = "showcase.component.clock";
 
 export default function SgClockPage() {
+  const i18n = useShowcaseI18n();
   const initialServerTime = new Date().toISOString();
   return (
     <I18NReady>
@@ -16,7 +19,7 @@ export default function SgClockPage() {
       >
         <SgCard
           id="gadget-clock"
-          title="Clock/Relógio"
+          title={t(i18n, `${K}.title`)}
           collapsible
           defaultOpen
           collapseToggleAlign="right"

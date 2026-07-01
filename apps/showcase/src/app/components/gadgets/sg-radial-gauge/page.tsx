@@ -11,6 +11,9 @@ import { useShowcaseAnchors } from "../../useShowcaseAnchors";
 import ComponentAiPropsTable from "../../ai/ComponentAiPropsTable";
 import ComponentAiSummary from "../../ai/ComponentAiSummary";
 import { useAiManifestComponent } from "../../ai/useAiManifestComponent";
+import { t, useShowcaseI18n } from "../../../../i18n";
+
+const K = "showcase.component.radialGauge";
 
 function Section(props: { title: string; description?: string; children: React.ReactNode }) {
   return (
@@ -429,33 +432,37 @@ export default function App() {
   );
 }`;
 
-const RADIAL_GAUGE_PROPS: ShowcasePropRow[] = [
-  { prop: "min / max", type: "number", defaultValue: "0 / 100", description: "Gauge value range." },
-  { prop: "value / defaultValue / onValueChange", type: "number / number / callback", defaultValue: "usage-defined", description: "Primary pointer value and change event." },
-  { prop: "pointers / onPointerValueChange", type: "SgRadialGaugePointer[] / callback", defaultValue: "[]", description: "Extra pointers and per-pointer callback." },
-  { prop: "ranges", type: "SgRadialGaugeRange[]", defaultValue: "[]", description: "Colored arc ranges." },
-  { prop: "annotations", type: "SgRadialGaugeAnnotation[]", defaultValue: "[]", description: "Annotations positioned by value/angle." },
-  { prop: "startAngle / endAngle / isAxisInversed", type: "number / number / boolean", defaultValue: "135 / 45 / false", description: "Arc configuration and scale direction." },
-  { prop: "showPrimaryPointer / primaryPointer*", type: "boolean + props", defaultValue: "true", description: "Primary pointer settings (needle/marker/range)." },
-  { prop: "showTicks / showLabels / majorTickCount / minorTicksPerInterval / labelFormatter", type: "tick/label props", defaultValue: "true / true / 5 / 1 / -", description: "Scale ticks and labels." },
-  { prop: "axisColor / axisWidth / ringThickness / radiusFactor / centerContent", type: "style props", defaultValue: "border / 14 / - / 0.9 / auto", description: "Main ring style, thickness and center content." },
-  { prop: "width / height", type: "number", defaultValue: "300 / 300", description: "SVG dimensions." },
-  { prop: "animate / animationDuration", type: "boolean / number", defaultValue: "true / 350", description: "Transition animation settings." },
-  { prop: "className / style / ariaLabel", type: "string / CSSProperties / string", defaultValue: "- / - / Radial gauge", description: "Styling and accessibility." },
-  { prop: "SgRadialGaugePointer.id / type / value / color / width / size / shape / draggable / onValueChange / label", type: "pointer props", defaultValue: "-", description: "Pointer configuration." },
-  { prop: "SgRadialGaugeRange.start / end / color / width / opacity", type: "range props", defaultValue: "-", description: "Range configuration." },
-  { prop: "SgRadialGaugeAnnotation.id / value / angle / radiusFactor / content", type: "annotation props", defaultValue: "-", description: "Annotation configuration." }
-];
+function getRadialGaugeProps(i18n: ReturnType<typeof useShowcaseI18n>): ShowcasePropRow[] {
+  return [
+    { prop: "min / max", type: "number", defaultValue: "0 / 100", description: t(i18n, `${K}.props.minMax`) },
+    { prop: "value / defaultValue / onValueChange", type: "number / number / callback", defaultValue: "usage-defined", description: t(i18n, `${K}.props.value`) },
+    { prop: "pointers / onPointerValueChange", type: "SgRadialGaugePointer[] / callback", defaultValue: "[]", description: t(i18n, `${K}.props.pointers`) },
+    { prop: "ranges", type: "SgRadialGaugeRange[]", defaultValue: "[]", description: t(i18n, `${K}.props.ranges`) },
+    { prop: "annotations", type: "SgRadialGaugeAnnotation[]", defaultValue: "[]", description: t(i18n, `${K}.props.annotations`) },
+    { prop: "startAngle / endAngle / isAxisInversed", type: "number / number / boolean", defaultValue: "135 / 45 / false", description: t(i18n, `${K}.props.angles`) },
+    { prop: "showPrimaryPointer / primaryPointer*", type: "boolean + props", defaultValue: "true", description: t(i18n, `${K}.props.primaryPointer`) },
+    { prop: "showTicks / showLabels / majorTickCount / minorTicksPerInterval / labelFormatter", type: "tick/label props", defaultValue: "true / true / 5 / 1 / -", description: t(i18n, `${K}.props.ticks`) },
+    { prop: "axisColor / axisWidth / ringThickness / radiusFactor / centerContent", type: "style props", defaultValue: "border / 14 / - / 0.9 / auto", description: t(i18n, `${K}.props.axisStyle`) },
+    { prop: "width / height", type: "number", defaultValue: "300 / 300", description: t(i18n, `${K}.props.size`) },
+    { prop: "animate / animationDuration", type: "boolean / number", defaultValue: "true / 350", description: t(i18n, `${K}.props.animate`) },
+    { prop: "className / style / ariaLabel", type: "string / CSSProperties / string", defaultValue: "- / - / Radial gauge", description: t(i18n, `${K}.props.styling`) },
+    { prop: "SgRadialGaugePointer.id / type / value / color / width / size / shape / draggable / onValueChange / label", type: "pointer props", defaultValue: "-", description: t(i18n, `${K}.props.pointerConfig`) },
+    { prop: "SgRadialGaugeRange.start / end / color / width / opacity", type: "range props", defaultValue: "-", description: t(i18n, `${K}.props.rangeConfig`) },
+    { prop: "SgRadialGaugeAnnotation.id / value / angle / radiusFactor / content", type: "annotation props", defaultValue: "-", description: t(i18n, `${K}.props.annotationConfig`) }
+  ];
+}
 
 export default function SgRadialGaugePage() {
+  const i18n = useShowcaseI18n();
   const [rpm, setRpm] = React.useState(62);
   const [thickValue, setThickValue] = React.useState(72);
   const [inversedValue, setInversedValue] = React.useState(24);
   const [otherPropsValue, setOtherPropsValue] = React.useState(35);
   const [target, setTarget] = React.useState(70);
   const [consumption, setConsumption] = React.useState(44);
-  const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors();
+  const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({ deps: [i18n.locale] });
   const aiComponent = useAiManifestComponent("SgRadialGauge");
+  const propRows = React.useMemo(() => getRadialGaugeProps(i18n), [i18n]);
 
   const extraPointers = React.useMemo<SgRadialGaugePointer[]>(
     () => [
@@ -491,12 +498,12 @@ export default function SgRadialGaugePage() {
         <ShowcaseStickyHeader
           stickyHeaderRef={stickyHeaderRef}
           title="SgRadialGauge"
-          subtitle="Radial gauge with ranges, pointers, and ring thickness control (ringThickness)."
+          subtitle={t(i18n, `${K}.subtitle`)}
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
 
-        <Section title="1) Speedometer Style" description="Primary needle pointer with warning ranges.">
+        <Section title={t(i18n, `${K}.section1Title`)} description={t(i18n, `${K}.section1Description`)}>
           <div className="flex flex-wrap items-center gap-4 rounded-lg border border-border p-4">
             <SgRadialGauge
               min={0}
@@ -519,14 +526,14 @@ export default function SgRadialGaugePage() {
               primaryPointerColor="#2563eb"
               centerContent={
                 <div className="text-center">
-                  <div className="text-xs uppercase text-muted-foreground">RPM</div>
+                  <div className="text-xs uppercase text-muted-foreground">{t(i18n, `${K}.section1CenterLabel`)}</div>
                   <div className="text-xl font-semibold">{Math.round(rpm)}</div>
                 </div>
               }
             />
             <div className="space-y-2 text-sm">
               <p>
-                Current value: <span className="font-semibold">{Math.round(rpm)}</span>
+                {t(i18n, `${K}.currentValue`)} <span className="font-semibold">{Math.round(rpm)}</span>
               </p>
               <input
                 type="range"
@@ -542,8 +549,8 @@ export default function SgRadialGaugePage() {
         </Section>
 
         <Section
-          title="2) Thicker Ring (ringThickness)"
-          description="Example with thick ring and no visual clipping using ringThickness={36}."
+          title={t(i18n, `${K}.section2Title`)}
+          description={t(i18n, `${K}.section2Description`)}
         >
           <div className="flex flex-wrap items-center gap-6 rounded-lg border border-border p-4">
             <SgRadialGauge
@@ -572,7 +579,7 @@ export default function SgRadialGaugePage() {
               primaryPointerDraggable
               centerContent={
                 <div className="text-center">
-                  <div className="text-xs uppercase text-muted-foreground">Ring 36px</div>
+                  <div className="text-xs uppercase text-muted-foreground">{t(i18n, `${K}.section2CenterLabel`)}</div>
                   <div className="text-2xl font-bold">{Math.round(thickValue)}</div>
                 </div>
               }
@@ -580,10 +587,10 @@ export default function SgRadialGaugePage() {
 
             <div className="space-y-2 text-sm">
               <p>
-                Ring thickness: <span className="font-semibold">36px</span>
+                {t(i18n, `${K}.section2RingThicknessLabel`)} <span className="font-semibold">36px</span>
               </p>
               <p>
-                Value: <span className="font-semibold">{Math.round(thickValue)}</span>
+                {t(i18n, `${K}.valueLabel`)} <span className="font-semibold">{Math.round(thickValue)}</span>
               </p>
               <input
                 type="range"
@@ -599,8 +606,8 @@ export default function SgRadialGaugePage() {
         </Section>
 
         <Section
-          title="3) Axis Inversed + Angulos Custom"
-          description="With isAxisInversed, custom angles, and animate={false}."
+          title={t(i18n, `${K}.section3Title`)}
+          description={t(i18n, `${K}.section3Description`)}
         >
           <div className="flex flex-wrap items-center gap-6 rounded-lg border border-border p-4">
             <SgRadialGauge
@@ -640,7 +647,7 @@ export default function SgRadialGaugePage() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/gadgets/sg-radial-gauge/samples/axis-inversed-angulos-custom.tsx.sample" />
         </Section>
 
-        <Section title="4) Multi Pointers + Annotation" description="Combines marker, range pointer, and value-based annotation.">
+        <Section title={t(i18n, `${K}.section4Title`)} description={t(i18n, `${K}.section4Description`)}>
           <div className="flex flex-wrap items-center gap-6 rounded-lg border border-border p-4">
             <SgRadialGauge
               min={0}
@@ -667,31 +674,31 @@ export default function SgRadialGaugePage() {
                   radiusFactor: 0.8,
                   content: (
                     <span className="rounded bg-violet-600 px-2 py-1 text-[10px] font-semibold text-white">
-                      target
+                      {t(i18n, `${K}.section4AnnotationTarget`)}
                     </span>
                   )
                 }
               ]}
               centerContent={
                 <div className="text-center">
-                  <div className="text-xs uppercase text-muted-foreground">Output</div>
+                  <div className="text-xs uppercase text-muted-foreground">{t(i18n, `${K}.section4OutputLabel`)}</div>
                   <div className="text-xl font-semibold">{Math.round(rpm)}</div>
-                  <div className="text-[11px] text-muted-foreground">consumo {Math.round(consumption)}%</div>
+                  <div className="text-[11px] text-muted-foreground">{t(i18n, `${K}.section4ConsumoLabel`)} {Math.round(consumption)}%</div>
                 </div>
               }
               primaryPointerDraggable
             />
 
             <div className="space-y-2 text-sm">
-          <p>Primary: <span className="font-semibold">{Math.round(rpm)}</span></p>
-              <p>Target marker: <span className="font-semibold">{Math.round(target)}</span></p>
-              <p>Range pointer: <span className="font-semibold">{Math.round(consumption)}</span></p>
+          <p>{t(i18n, `${K}.section4PrimaryLabel`)} <span className="font-semibold">{Math.round(rpm)}</span></p>
+              <p>{t(i18n, `${K}.section4TargetMarkerLabel`)} <span className="font-semibold">{Math.round(target)}</span></p>
+              <p>{t(i18n, `${K}.section4RangePointerLabel`)} <span className="font-semibold">{Math.round(consumption)}</span></p>
             </div>
           </div>
           <CodeBlock sampleFile="apps/showcase/src/app/components/gadgets/sg-radial-gauge/samples/multi-pointers-annotation.tsx.sample" />
         </Section>
 
-        <Section title="5) Range Pointer (Donut)" description="Visual tipo donut usando pointer do tipo range.">
+        <Section title={t(i18n, `${K}.section5Title`)} description={t(i18n, `${K}.section5Description`)}>
           <div className="rounded-lg border border-border p-4">
             <SgRadialGauge
               min={0}
@@ -719,8 +726,8 @@ export default function SgRadialGaugePage() {
         </Section>
 
         <Section
-          title="6) Other Props (size, labels and accessibility)"
-          description="Example with width/height, axisWidth, animationDuration, primaryPointerLabel, labelFormatter and ariaLabel."
+          title={t(i18n, `${K}.section6Title`)}
+          description={t(i18n, `${K}.section6Description`)}
         >
           <div className="space-y-4 rounded-lg border border-border p-4">
             <div className="grid gap-2 sm:grid-cols-4">
@@ -761,7 +768,7 @@ export default function SgRadialGaugePage() {
                 ]}
                 centerContent={
                   <div className="text-center">
-                    <div className="text-xs uppercase text-muted-foreground">Eficiencia</div>
+                    <div className="text-xs uppercase text-muted-foreground">{t(i18n, `${K}.section6CenterLabel`)}</div>
                     <div className="text-2xl font-bold">{Math.round(otherPropsValue)}%</div>
                   </div>
                 }
@@ -769,7 +776,7 @@ export default function SgRadialGaugePage() {
 
               <div className="space-y-2 text-sm">
                 <p>
-              Current value: <span className="font-semibold">{Math.round(otherPropsValue)}%</span>
+              {t(i18n, `${K}.currentValue`)} <span className="font-semibold">{Math.round(otherPropsValue)}%</span>
                 </p>
                 <input
                   type="range"
@@ -786,8 +793,8 @@ export default function SgRadialGaugePage() {
         </Section>
 
         <Section
-          title="7) Playground"
-          description="Try pointerType, ringThickness, inverted axis, and ticks/labels visibility."
+          title={t(i18n, `${K}.section7Title`)}
+          description={t(i18n, `${K}.section7Description`)}
         >
           <SgPlayground
             title="SgRadialGauge Playground"
@@ -799,7 +806,7 @@ export default function SgRadialGaugePage() {
           />
         </Section>
 
-        <ShowcasePropsReference rows={RADIAL_GAUGE_PROPS} />
+        <ShowcasePropsReference rows={propRows} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />

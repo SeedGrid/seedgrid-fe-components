@@ -34,6 +34,8 @@ export type SgToasterProps = Omit<React.HTMLAttributes<HTMLDivElement>, "childre
   closeButton?: boolean;
   richColors?: boolean;
   transparency?: number;
+  /** Arredonda os cantos de cada toast (rounded-md). Desligue para cantos retos. */
+  rounded?: boolean;
   customColors?: SgToasterCustomColors;
 };
 
@@ -144,6 +146,7 @@ export function SgToaster(props: SgToasterProps) {
     closeButton = true,
     richColors = true,
     transparency = 0,
+    rounded = true,
     customColors,
     className,
     style,
@@ -230,7 +233,8 @@ export function SgToaster(props: SgToasterProps) {
           <div
             key={toast.id}
             className={cn(
-              "pointer-events-auto flex min-w-[260px] max-w-[420px] items-start gap-3 rounded-md border px-3 py-2 shadow-lg",
+              "pointer-events-auto flex min-w-[260px] max-w-[420px] items-start gap-3 border px-3 py-2 shadow-lg",
+              rounded ? "rounded-md" : "rounded-none",
               toast.className
             )}
             style={{

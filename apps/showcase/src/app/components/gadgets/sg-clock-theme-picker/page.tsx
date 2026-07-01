@@ -14,6 +14,9 @@ import { useShowcaseAnchors } from "../../useShowcaseAnchors";
 import ComponentAiPropsTable from "../../ai/ComponentAiPropsTable";
 import ComponentAiSummary from "../../ai/ComponentAiSummary";
 import { useAiManifestComponent } from "../../ai/useAiManifestComponent";
+import { t, useShowcaseI18n } from "../../../../i18n";
+
+const K = "showcase.component.clockThemePicker";
 
 function Section(props: { title: string; description?: string; children: React.ReactNode }) {
   return (
@@ -28,17 +31,19 @@ function Section(props: { title: string; description?: string; children: React.R
   );
 }
 
-const CLOCK_THEME_PICKER_PROPS: ShowcasePropRow[] = [
-  { prop: "value", type: "string", defaultValue: "-", description: "ID do tema atualmente selecionado." },
-  { prop: "onChange", type: "(id: string) => void", defaultValue: "-", description: "Recebe o novo tema selecionado." },
-  { prop: "label", type: "string", defaultValue: 'tema', description: "Rotulo opcional do seletor." },
-  { prop: "placeholder", type: "string", defaultValue: "tema padrao", description: "Texto exibido quando nenhum tema foi resolvido." },
-  { prop: "filter", type: "(theme) => boolean", defaultValue: "-", description: "Filtro aplicado sobre os temas disponiveis." },
-  { prop: "previewSize", type: "number", defaultValue: "56", description: "Tamanho do preview de cada tema." },
-  { prop: "searchable", type: "boolean", defaultValue: "true", description: "Ativa busca textual de temas." },
-  { prop: "fallbackThemeId", type: "string", defaultValue: '"classic"', description: "Tema usado quando o valor atual nao existe." },
-  { prop: "defaultOpen", type: "boolean", defaultValue: "false", description: "Abre a lista no render inicial." }
-];
+function getClockThemePickerProps(i18n: ReturnType<typeof useShowcaseI18n>): ShowcasePropRow[] {
+  return [
+    { prop: "value", type: "string", defaultValue: "-", description: t(i18n, `${K}.props.value`) },
+    { prop: "onChange", type: "(id: string) => void", defaultValue: "-", description: t(i18n, `${K}.props.onChange`) },
+    { prop: "label", type: "string", defaultValue: 'tema', description: t(i18n, `${K}.props.label`) },
+    { prop: "placeholder", type: "string", defaultValue: "tema padrao", description: t(i18n, `${K}.props.placeholder`) },
+    { prop: "filter", type: "(theme) => boolean", defaultValue: "-", description: t(i18n, `${K}.props.filter`) },
+    { prop: "previewSize", type: "number", defaultValue: "56", description: t(i18n, `${K}.props.previewSize`) },
+    { prop: "searchable", type: "boolean", defaultValue: "true", description: t(i18n, `${K}.props.searchable`) },
+    { prop: "fallbackThemeId", type: "string", defaultValue: '"classic"', description: t(i18n, `${K}.props.fallbackThemeId`) },
+    { prop: "defaultOpen", type: "boolean", defaultValue: "false", description: t(i18n, `${K}.props.defaultOpen`) }
+  ];
+}
 
 function LiveThemePicker() {
   const [themeId, setThemeId] = React.useState("classic");
@@ -59,8 +64,10 @@ function LiveThemePicker() {
 }
 
 export default function SgClockThemePickerPage() {
-  const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors();
+  const i18n = useShowcaseI18n();
+  const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({ deps: [i18n.locale] });
   const aiComponent = useAiManifestComponent("SgClockThemePicker");
+  const propRows = React.useMemo(() => getClockThemePickerProps(i18n), [i18n]);
 
   return (
     <I18NReady>
@@ -72,19 +79,19 @@ export default function SgClockThemePickerPage() {
         <ShowcaseStickyHeader
           stickyHeaderRef={stickyHeaderRef}
           title="SgClockThemePicker"
-          subtitle="Seleciona temas de clock com preview visual e busca opcional."
+          subtitle={t(i18n, `${K}.subtitle`)}
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
 
         <Section
-          title="1) Basic usage"
-          description="Escolha de tema visual com preview imediato aplicado ao relogio."
+          title={t(i18n, `${K}.section1Title`)}
+          description={t(i18n, `${K}.section1Description`)}
         >
           <LiveThemePicker />
         </Section>
 
-        <ShowcasePropsReference rows={CLOCK_THEME_PICKER_PROPS} />
+        <ShowcasePropsReference rows={propRows} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />

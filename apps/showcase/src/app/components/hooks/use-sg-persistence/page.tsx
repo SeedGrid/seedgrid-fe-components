@@ -38,17 +38,17 @@ function ManualPersistenceDemo() {
   const handleSave = async () => {
     const payload = { ts: Date.now(), msg: "hello from showcase" };
     await persistence.save("demo:manual", payload);
-    addLog(`save â†’ demo:manual = ${JSON.stringify(payload)}`);
+    addLog(`save → demo:manual = ${JSON.stringify(payload)}`);
   };
 
   const handleLoad = async () => {
     const result = await persistence.load("demo:manual");
-    addLog(`load â†’ demo:manual = ${JSON.stringify(result)}`);
+    addLog(`load → demo:manual = ${JSON.stringify(result)}`);
   };
 
   const handleClear = async () => {
     await persistence.clear("demo:manual");
-    addLog("clear â†’ demo:manual");
+    addLog("clear → demo:manual");
   };
 
   return (
@@ -69,7 +69,7 @@ function ManualPersistenceDemo() {
       </div>
       <p className="text-xs text-muted-foreground">
         Namespace: <span className="font-mono">{persistence.namespace || "(vazio)"}</span>{" "}
-        Â· Scope: <span className="font-mono">{persistence.scope}</span>
+        · Scope: <span className="font-mono">{persistence.scope}</span>
       </p>
     </div>
   );

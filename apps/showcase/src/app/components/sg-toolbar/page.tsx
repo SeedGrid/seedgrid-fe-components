@@ -19,7 +19,9 @@ import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
-import { useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
+import { t, useShowcaseI18n } from "../../../i18n";
+
+const K = "showcase.component.toolbar";
 
 function Section(props: { id?: string; title: string; description?: string; children: React.ReactNode }) {
   return (
@@ -49,241 +51,8 @@ function ToolbarInlineHost(props: { layoutId: string; children: React.ReactNode 
   );
 }
 
-type ToolbarTexts = {
-  subtitle: string;
-  sectionTitles: string[];
-  sectionDescriptions: string[];
-  labels: {
-    navigation: string;
-    quickActions: string;
-    home: string;
-    users: string;
-    settings: string;
-    create: string;
-    edit: string;
-    delete: string;
-    filter: string;
-    refresh: string;
-    panelBody: string;
-    highlightedTitle: string;
-  };
-  hints: {
-    goHome: string;
-    openUsers: string;
-    openSettings: string;
-    createRecord: string;
-    editRecord: string;
-    deleteRecord: string;
-    filterResults: string;
-    refreshData: string;
-  };
-  toasts: {
-    createDone: string;
-    editDone: string;
-    deleteDone: string;
-  };
-  playgroundTitle: string;
-  propsTitle: string;
-};
 
-const TOOLBAR_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", ToolbarTexts> = {
-  "pt-BR": {
-    subtitle: "Toolbar reutilizavel com orientacao vertical/horizontal, acoes assincronas e customizacao visual.",
-    sectionTitles: [
-      "1) Basico",
-      "2) onClick assincrono com toast",
-      "3) Orientacao e quebra",
-      "4) Cores de fundo",
-      "5) Playground (SgPlayground)"
-    ],
-    sectionDescriptions: [
-      "Example vertical simples com botoes de navegacao.",
-      "Quando onClick retorna Promise, o botao mostra loading ate concluir.",
-      "Comparacao entre horizontal-left e vertical-down com buttonsPerDirection.",
-      "Uso de bgColor e bgColorTitle para destacar a toolbar.",
-      "Ajuste as principais props do SgToolBar em tempo real."
-    ],
-    labels: {
-      navigation: "Navegacao",
-      quickActions: "Acoes rapidas",
-      home: "Home",
-      users: "Usuarios",
-      settings: "Configuracoes",
-      create: "Criar",
-      edit: "Editar",
-      delete: "Delete",
-      filter: "Filtro",
-      refresh: "Update",
-      panelBody: "Cor no corpo",
-      highlightedTitle: "Highlighted title"
-    },
-    hints: {
-      goHome: "Go to Home",
-      openUsers: "Abrir lista de usuarios",
-      openSettings: "Abrir configuracoes",
-      createRecord: "Criar novo registro",
-      editRecord: "Edit selected record",
-      deleteRecord: "Delete selected record",
-      filterResults: "Filtrar resultados",
-      refreshData: "Refresh screen data"
-    },
-    toasts: {
-      createDone: "Acao Criar concluida",
-      editDone: "Acao Editar concluida",
-      deleteDone: "Delete action completed"
-    },
-    playgroundTitle: "SgToolBar Playground",
-    propsTitle: "Referencia de Props"
-  },
-  "pt-PT": {
-    subtitle: "Toolbar reutilizavel com orientacao vertical/horizontal, acoes assincronas e customizacao visual.",
-    sectionTitles: [
-      "1) Basico",
-      "2) onClick assincrono com toast",
-      "3) Orientacao e quebra",
-      "4) Cores de fundo",
-      "5) Playground (SgPlayground)"
-    ],
-    sectionDescriptions: [
-      "Example vertical simples com botoes de navegacao.",
-      "Quando onClick retorna Promise, o botao mostra loading ate concluir.",
-      "Comparacao entre horizontal-left e vertical-down com buttonsPerDirection.",
-      "Uso de bgColor e bgColorTitle para destacar a toolbar.",
-      "Ajuste as principais props do SgToolBar em tempo real."
-    ],
-    labels: {
-      navigation: "Navegacao",
-      quickActions: "Acoes rapidas",
-      home: "Home",
-      users: "Utilizadores",
-      settings: "Configuracoes",
-      create: "Criar",
-      edit: "Editar",
-      delete: "Delete",
-      filter: "Filtro",
-      refresh: "Update",
-      panelBody: "Cor no corpo",
-      highlightedTitle: "Highlighted title"
-    },
-    hints: {
-      goHome: "Go to Home",
-      openUsers: "Abrir lista de utilizadores",
-      openSettings: "Abrir configuracoes",
-      createRecord: "Criar novo registo",
-      editRecord: "Edit selected record",
-      deleteRecord: "Delete selected record",
-      filterResults: "Filtrar resultados",
-      refreshData: "Refresh screen data"
-    },
-    toasts: {
-      createDone: "Acao Criar concluida",
-      editDone: "Acao Editar concluida",
-      deleteDone: "Delete action completed"
-    },
-    playgroundTitle: "SgToolBar Playground",
-    propsTitle: "Referencia de Props"
-  },
-  "en-US": {
-    subtitle: "Reusable toolbar with vertical/horizontal orientation, async actions, and visual customization.",
-    sectionTitles: [
-      "1) Basic",
-      "2) Async onClick with toast",
-      "3) Orientation and wrapping",
-      "4) Background colors",
-      "5) Playground (SgPlayground)"
-    ],
-    sectionDescriptions: [
-      "Simple vertical example with navigation buttons.",
-      "When onClick returns Promise, the button shows loading until complete.",
-      "Comparison between horizontal-left and vertical-down with buttonsPerDirection.",
-      "Use bgColor and bgColorTitle to style toolbar areas.",
-      "Adjust the main SgToolBar props in real time."
-    ],
-    labels: {
-      navigation: "Navigation",
-      quickActions: "Quick actions",
-      home: "Home",
-      users: "Users",
-      settings: "Settings",
-      create: "Create",
-      edit: "Edit",
-      delete: "Delete",
-      filter: "Filter",
-      refresh: "Refresh",
-      panelBody: "Body color",
-      highlightedTitle: "Highlighted title"
-    },
-    hints: {
-      goHome: "Go to Home",
-      openUsers: "Open users list",
-      openSettings: "Open settings",
-      createRecord: "Create new record",
-      editRecord: "Edit selected record",
-      deleteRecord: "Delete selected record",
-      filterResults: "Filter results",
-      refreshData: "Refresh screen data"
-    },
-    toasts: {
-      createDone: "Create action completed",
-      editDone: "Edit action completed",
-      deleteDone: "Delete action completed"
-    },
-    playgroundTitle: "SgToolBar Playground",
-    propsTitle: "Props Reference"
-  },
-  es: {
-    subtitle: "Reusable toolbar with vertical/horizontal orientation, async actions, and visual customization.",
-    sectionTitles: [
-      "1) Basico",
-      "2) onClick asincrono con toast",
-      "3) Orientacion y ajuste",
-      "4) Colores de fondo",
-      "5) Playground (SgPlayground)"
-    ],
-    sectionDescriptions: [
-      "Ejemplo vertical simple con botones de navegacion.",
-      "Cuando onClick devuelve Promise, el boton muestra loading hasta completar.",
-      "Comparacion entre horizontal-left y vertical-down con buttonsPerDirection.",
-      "Uso de bgColor y bgColorTitle para destacar la toolbar.",
-      "Ajusta las principales props de SgToolBar en tiempo real."
-    ],
-    labels: {
-      navigation: "Navegacion",
-      quickActions: "Acciones rapidas",
-      home: "Home",
-      users: "Usuarios",
-      settings: "Configuraciones",
-      create: "Crear",
-      edit: "Editar",
-      delete: "Eliminar",
-      filter: "Filtro",
-      refresh: "Actualizar",
-      panelBody: "Color del cuerpo",
-      highlightedTitle: "Highlighted title"
-    },
-    hints: {
-      goHome: "Ir a Home",
-      openUsers: "Abrir lista de usuarios",
-      openSettings: "Abrir configuraciones",
-      createRecord: "Crear nuevo registro",
-      editRecord: "Editar registro seleccionado",
-      deleteRecord: "Eliminar registro seleccionado",
-      filterResults: "Filtrar resultados",
-      refreshData: "Actualizar datos de pantalla"
-    },
-    toasts: {
-      createDone: "Accion Crear completada",
-      editDone: "Accion Editar completada",
-      deleteDone: "Accion Eliminar completada"
-    },
-    playgroundTitle: "SgToolBar Playground",
-    propsTitle: "Referencia de Props"
-  }
-};
 
-function isSupportedLocale(locale: ShowcaseLocale): locale is keyof typeof TOOLBAR_TEXTS {
-  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
-}
 
 const TOOLBAR_PLAYGROUND_CODE = `import * as React from "react";
 import {
@@ -383,10 +152,56 @@ const TOOLBAR_PROPS: ShowcasePropRow[] = [
 
 export default function SgToolBarPage() {
   const i18n = useShowcaseI18n();
+  const texts = React.useMemo(() => ({
+    subtitle: t(i18n, `${K}.subtitle`),
+    sectionTitles: [
+      t(i18n, `${K}.sectionTitles.0`),
+      t(i18n, `${K}.sectionTitles.1`),
+      t(i18n, `${K}.sectionTitles.2`),
+      t(i18n, `${K}.sectionTitles.3`),
+      t(i18n, `${K}.sectionTitles.4`)
+    ],
+    sectionDescriptions: [
+      t(i18n, `${K}.sectionDescriptions.0`),
+      t(i18n, `${K}.sectionDescriptions.1`),
+      t(i18n, `${K}.sectionDescriptions.2`),
+      t(i18n, `${K}.sectionDescriptions.3`),
+      t(i18n, `${K}.sectionDescriptions.4`)
+    ],
+    labels: {
+      navigation: t(i18n, `${K}.labels.navigation`),
+      quickActions: t(i18n, `${K}.labels.quickActions`),
+      home: t(i18n, `${K}.labels.home`),
+      users: t(i18n, `${K}.labels.users`),
+      settings: t(i18n, `${K}.labels.settings`),
+      create: t(i18n, `${K}.labels.create`),
+      edit: t(i18n, `${K}.labels.edit`),
+      delete: t(i18n, `${K}.labels.delete`),
+      filter: t(i18n, `${K}.labels.filter`),
+      refresh: t(i18n, `${K}.labels.refresh`),
+      panelBody: t(i18n, `${K}.labels.panelBody`),
+      highlightedTitle: t(i18n, `${K}.labels.highlightedTitle`)
+    },
+    hints: {
+      goHome: t(i18n, `${K}.hints.goHome`),
+      openUsers: t(i18n, `${K}.hints.openUsers`),
+      openSettings: t(i18n, `${K}.hints.openSettings`),
+      createRecord: t(i18n, `${K}.hints.createRecord`),
+      editRecord: t(i18n, `${K}.hints.editRecord`),
+      deleteRecord: t(i18n, `${K}.hints.deleteRecord`),
+      filterResults: t(i18n, `${K}.hints.filterResults`),
+      refreshData: t(i18n, `${K}.hints.refreshData`)
+    },
+    toasts: {
+      createDone: t(i18n, `${K}.toasts.createDone`),
+      editDone: t(i18n, `${K}.toasts.editDone`),
+      deleteDone: t(i18n, `${K}.toasts.deleteDone`)
+    },
+    playgroundTitle: t(i18n, `${K}.playgroundTitle`),
+    propsTitle: t(i18n, `${K}.propsTitle`)
+  }), [i18n]);
   const aiComponent = useAiManifestComponent("SgToolBar");
   const aiToolbarIconButtonComponent = useAiManifestComponent("SgToolbarIconButton");
-  const locale: keyof typeof TOOLBAR_TEXTS = isSupportedLocale(i18n.locale) ? i18n.locale : "en-US";
-  const texts = TOOLBAR_TEXTS[locale];
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({
     deps: [i18n.locale]
   });

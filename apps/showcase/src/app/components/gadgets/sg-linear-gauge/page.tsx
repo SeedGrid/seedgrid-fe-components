@@ -11,6 +11,9 @@ import { useShowcaseAnchors } from "../../useShowcaseAnchors";
 import ComponentAiPropsTable from "../../ai/ComponentAiPropsTable";
 import ComponentAiSummary from "../../ai/ComponentAiSummary";
 import { useAiManifestComponent } from "../../ai/useAiManifestComponent";
+import { t, useShowcaseI18n } from "../../../../i18n";
+
+const K = "showcase.component.linearGauge";
 
 function Section(props: { title: string; description?: string; children: React.ReactNode }) {
   return (
@@ -93,7 +96,7 @@ export default function Example() {
       ]}
       majorTickCount={6}
       minorTicksPerInterval={1}
-      labelFormatter={(v) => \`\${Math.round(v)}Â°\`}
+      labelFormatter={(v) => \`\${Math.round(v)}°\`}
     />
   );
 }`;
@@ -145,29 +148,33 @@ export default function App() {
   );
 }`;
 
-const LINEAR_GAUGE_PROPS: ShowcasePropRow[] = [
-  { prop: "min / max", type: "number", defaultValue: "0 / 100", description: "Gauge value range." },
-  { prop: "value / defaultValue / onValueChange", type: "number / number / callback", defaultValue: "usage-defined", description: "Primary pointer value and change event." },
-  { prop: "pointers / onPointerValueChange", type: "SgLinearGaugePointer[] / callback", defaultValue: "[]", description: "Additional pointers and per-pointer callback." },
-  { prop: "ranges", type: "SgLinearGaugeRange[]", defaultValue: "[]", description: "Colored scale ranges." },
-  { prop: "orientation / isAxisInversed", type: "\"horizontal|vertical\" / boolean", defaultValue: "horizontal / false", description: "Axis orientation and direction." },
-  { prop: "showPrimaryPointer / primaryPointer*", type: "boolean + props", defaultValue: "true", description: "Primary pointer settings (shape, color, size, draggable)." },
-  { prop: "barPointer / barColor / barThickness", type: "boolean / string / number", defaultValue: "true / primary / 8", description: "Filled bar up to current value." },
-  { prop: "showTicks / showLabels / majorTickCount / minorTicksPerInterval / labelFormatter", type: "tick/label props", defaultValue: "true / true / 5 / 1 / -", description: "Tick and label configuration." },
-  { prop: "axisColor / axisThickness", type: "string / number", defaultValue: "border / 10", description: "Main axis style." },
-  { prop: "width / height", type: "number", defaultValue: "360x120 (horizontal)", description: "SVG dimensions." },
-  { prop: "animate / animationDuration", type: "boolean / number", defaultValue: "true / 350", description: "Transition animation settings." },
-  { prop: "className / style / ariaLabel", type: "string / CSSProperties / string", defaultValue: "- / - / Linear gauge", description: "Styling and accessibility." },
-  { prop: "SgLinearGaugeRange.start / end / color / thickness / opacity / label", type: "range props", defaultValue: "-", description: "Range configuration." },
-  { prop: "SgLinearGaugePointer.id / value / color / size / shape / draggable / onValueChange / label", type: "pointer props", defaultValue: "-", description: "Pointer configuration." }
-];
+function getLinearGaugeProps(i18n: ReturnType<typeof useShowcaseI18n>): ShowcasePropRow[] {
+  return [
+    { prop: "min / max", type: "number", defaultValue: "0 / 100", description: t(i18n, `${K}.props.minMax`) },
+    { prop: "value / defaultValue / onValueChange", type: "number / number / callback", defaultValue: "usage-defined", description: t(i18n, `${K}.props.value`) },
+    { prop: "pointers / onPointerValueChange", type: "SgLinearGaugePointer[] / callback", defaultValue: "[]", description: t(i18n, `${K}.props.pointers`) },
+    { prop: "ranges", type: "SgLinearGaugeRange[]", defaultValue: "[]", description: t(i18n, `${K}.props.ranges`) },
+    { prop: "orientation / isAxisInversed", type: "\"horizontal|vertical\" / boolean", defaultValue: "horizontal / false", description: t(i18n, `${K}.props.orientation`) },
+    { prop: "showPrimaryPointer / primaryPointer*", type: "boolean + props", defaultValue: "true", description: t(i18n, `${K}.props.primaryPointer`) },
+    { prop: "barPointer / barColor / barThickness", type: "boolean / string / number", defaultValue: "true / primary / 8", description: t(i18n, `${K}.props.barPointer`) },
+    { prop: "showTicks / showLabels / majorTickCount / minorTicksPerInterval / labelFormatter", type: "tick/label props", defaultValue: "true / true / 5 / 1 / -", description: t(i18n, `${K}.props.ticks`) },
+    { prop: "axisColor / axisThickness", type: "string / number", defaultValue: "border / 10", description: t(i18n, `${K}.props.axis`) },
+    { prop: "width / height", type: "number", defaultValue: "360x120 (horizontal)", description: t(i18n, `${K}.props.size`) },
+    { prop: "animate / animationDuration", type: "boolean / number", defaultValue: "true / 350", description: t(i18n, `${K}.props.animate`) },
+    { prop: "className / style / ariaLabel", type: "string / CSSProperties / string", defaultValue: "- / - / Linear gauge", description: t(i18n, `${K}.props.styling`) },
+    { prop: "SgLinearGaugeRange.start / end / color / thickness / opacity / label", type: "range props", defaultValue: "-", description: t(i18n, `${K}.props.rangeShape`) },
+    { prop: "SgLinearGaugePointer.id / value / color / size / shape / draggable / onValueChange / label", type: "pointer props", defaultValue: "-", description: t(i18n, `${K}.props.pointerShape`) }
+  ];
+}
 
 export default function SgLinearGaugePage() {
+  const i18n = useShowcaseI18n();
   const [value, setValue] = React.useState(64);
   const [temperature, setTemperature] = React.useState(28);
   const [target, setTarget] = React.useState(72);
-  const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors();
+  const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({ deps: [i18n.locale] });
   const aiComponent = useAiManifestComponent("SgLinearGauge");
+  const propRows = React.useMemo(() => getLinearGaugeProps(i18n), [i18n]);
 
   const pointers = React.useMemo<SgLinearGaugePointer[]>(
     () => [
@@ -187,12 +194,12 @@ export default function SgLinearGaugePage() {
         <ShowcaseStickyHeader
           stickyHeaderRef={stickyHeaderRef}
           title="SgLinearGauge"
-          subtitle="Linear gauge with axis, ranges, bar pointer, marker pointers, and drag support."
+          subtitle={t(i18n, `${K}.subtitle`)}
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
 
-        <Section title="1) Default (Horizontal)" description="Colored ranges with a controllable primary pointer.">
+        <Section title={t(i18n, `${K}.section1Title`)} description={t(i18n, `${K}.section1Description`)}>
           <div className="space-y-4 rounded-lg border border-border p-4">
             <SgLinearGauge
               min={0}
@@ -211,7 +218,7 @@ export default function SgLinearGaugePage() {
               primaryPointerDraggable
             />
             <label className="block text-sm text-muted-foreground">
-              Valor: <span className="font-semibold text-foreground">{Math.round(value)}</span>
+              {t(i18n, `${K}.valueLabel`)}: <span className="font-semibold text-foreground">{Math.round(value)}</span>
               <input
                 type="range"
                 min={0}
@@ -225,7 +232,7 @@ export default function SgLinearGaugePage() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/gadgets/sg-linear-gauge/samples/default-horizontal.tsx.sample" />
         </Section>
 
-        <Section title="2) Vertical + Multi Pointers" description="Vertical orientation with two draggable pointers.">
+        <Section title={t(i18n, `${K}.section2Title`)} description={t(i18n, `${K}.section2Description`)}>
           <div className="flex flex-wrap items-start gap-6 rounded-lg border border-border p-4">
             <SgLinearGauge
               min={-10}
@@ -251,18 +258,18 @@ export default function SgLinearGaugePage() {
               ]}
               majorTickCount={6}
               minorTicksPerInterval={1}
-              labelFormatter={(v) => `${Math.round(v)}Â°`}
+              labelFormatter={(v) => `${Math.round(v)}°`}
             />
 
             <div className="space-y-3 text-sm">
               <p>
-                Current temperature: <span className="font-semibold">{Math.round(temperature)}Â°C</span>
+                {t(i18n, `${K}.currentTemperature`)}: <span className="font-semibold">{Math.round(temperature)}°C</span>
               </p>
               <p>
-                Target: <span className="font-semibold">{Math.round(target)}Â°C</span>
+                {t(i18n, `${K}.target`)}: <span className="font-semibold">{Math.round(target)}°C</span>
               </p>
               <label className="block">
-                Current
+                {t(i18n, `${K}.currentInput`)}
                 <input
                   type="range"
                   min={-10}
@@ -273,7 +280,7 @@ export default function SgLinearGaugePage() {
                 />
               </label>
               <label className="block">
-                Target
+                {t(i18n, `${K}.targetInput`)}
                 <input
                   type="range"
                   min={-10}
@@ -288,9 +295,9 @@ export default function SgLinearGaugePage() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/gadgets/sg-linear-gauge/samples/vertical-multi-pointers.tsx.sample" />
         </Section>
 
-        <Section title="3) Playground" description="Try orientation, ticks, and labels.">
+        <Section title={t(i18n, `${K}.section3Title`)} description={t(i18n, `${K}.section3Description`)}>
           <SgPlayground
-            title="SgLinearGauge Playground"
+            title={t(i18n, `${K}.playgroundTitle`)}
             interactive
             codeContract="appFile"
             playgroundFile="apps/showcase/src/app/components/gadgets/sg-linear-gauge/sg-linear-gauge.tsx.playground"
@@ -299,7 +306,7 @@ export default function SgLinearGaugePage() {
           />
         </Section>
 
-        <ShowcasePropsReference rows={LINEAR_GAUGE_PROPS} />
+        <ShowcasePropsReference rows={propRows} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />

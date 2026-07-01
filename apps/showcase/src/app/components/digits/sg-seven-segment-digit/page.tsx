@@ -18,7 +18,9 @@ import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcaseProp
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
 import { useAiManifestComponent } from "../../ai/useAiManifestComponent";
 import { useShowcaseAnchors } from "../../useShowcaseAnchors";
-import { useShowcaseI18n, type ShowcaseLocale } from "../../../../i18n";
+import { t, useShowcaseI18n } from "../../../../i18n";
+
+const K = "showcase.component.sevenSegmentDigit";
 
 function Section(props: { title: string; description?: string; children: React.ReactNode }) {
   return (
@@ -33,100 +35,14 @@ function Section(props: { title: string; description?: string; children: React.R
   );
 }
 
-type SevenSegmentTexts = {
-  headerSubtitle: string;
-  section1Title: string;
-  section1Description: string;
-  section2Title: string;
-  section2Description: string;
-  section3Title: string;
-  section3Description: string;
-  section4Title: string;
-  section4Description: string;
-  section5Title: string;
-  section5Description: string;
-  section6Title: string;
-  section6Description: string;
-  propsReferenceTitle: string;
-};
 
-const TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", SevenSegmentTexts> = {
-  "pt-BR": {
-    headerSubtitle: "Display de sete segmentos para digitos e caracteres hexadecimais com cor, tamanho e glow customizaveis.",
-    section1Title: "1) Basico (0-9)",
-    section1Description: "Troca manual de digitos com controles.",
-    section2Title: "2) Hexadecimal (0-9 A-F)",
-    section2Description: "Suporte a caracteres comuns de display 7 segmentos.",
-    section3Title: "3) Temas de cor",
-    section3Description: "Exemplos com paletas red, blue, yellow, green e white.",
-    section4Title: "4) Tamanho e espessura",
-    section4Description: "Escala do display via size e thickness.",
-    section5Title: "5) Composicao estilo relogio",
-    section5Description: "Composicao de varios digitos para HH:MM:SS.",
-    section6Title: "6) Playground (SgPlayground)",
-    section6Description: "Ajuste de valor, cores e dimensoes em tempo real.",
-    propsReferenceTitle: "Referencia de Props"
-  },
-  "pt-PT": {
-    headerSubtitle: "Display de sete segmentos para digitos e caracteres hexadecimais com cor, tamanho e glow customizaveis.",
-    section1Title: "1) Basico (0-9)",
-    section1Description: "Troca manual de digitos com controlos.",
-    section2Title: "2) Hexadecimal (0-9 A-F)",
-    section2Description: "Suporte a caracteres comuns de display 7 segmentos.",
-    section3Title: "3) Temas de cor",
-    section3Description: "Exemplos com paletas red, blue, yellow, green e white.",
-    section4Title: "4) Tamanho e espessura",
-    section4Description: "Escala do display via size e thickness.",
-    section5Title: "5) Composicao estilo relogio",
-    section5Description: "Composicao de varios digitos para HH:MM:SS.",
-    section6Title: "6) Playground (SgPlayground)",
-    section6Description: "Ajuste de valor, cores e dimensoes em tempo real.",
-    propsReferenceTitle: "Referencia de Props"
-  },
-  "en-US": {
-    headerSubtitle: "Seven-segment display for digits and hex-style characters with customizable color, size, and glow.",
-    section1Title: "1) Basic (0-9)",
-    section1Description: "Manual digit switching with controls.",
-    section2Title: "2) Hexadecimal (0-9 A-F)",
-    section2Description: "Support for common seven-segment display characters.",
-    section3Title: "3) Color themes",
-    section3Description: "Examples using red, blue, yellow, green, and white palettes.",
-    section4Title: "4) Size and thickness",
-    section4Description: "Display scaling via size and thickness.",
-    section5Title: "5) Clock-style composition",
-    section5Description: "Composition with multiple digits for HH:MM:SS.",
-    section6Title: "6) Playground (SgPlayground)",
-    section6Description: "Adjust value, colors, and dimensions in real time.",
-    propsReferenceTitle: "Props Reference"
-  },
-  es: {
-    headerSubtitle: "Display de siete segmentos para digitos y caracteres hexadecimales con color, tamano y glow personalizables.",
-    section1Title: "1) Basico (0-9)",
-    section1Description: "Cambio manual de digitos con controles.",
-    section2Title: "2) Hexadecimal (0-9 A-F)",
-    section2Description: "Soporte para caracteres comunes de display de 7 segmentos.",
-    section3Title: "3) Temas de color",
-    section3Description: "Ejemplos con paletas red, blue, yellow, green y white.",
-    section4Title: "4) Tamano y espesor",
-    section4Description: "Escala del display via size y thickness.",
-    section5Title: "5) Composicion estilo reloj",
-    section5Description: "Composicion de varios digitos para HH:MM:SS.",
-    section6Title: "6) Playground (SgPlayground)",
-    section6Description: "Ajuste de valor, colores y dimensiones en tiempo real.",
-    propsReferenceTitle: "Referencia de Props"
-  }
-};
 
-type SupportedLocale = keyof typeof TEXTS;
 
-function isSupportedLocale(locale: ShowcaseLocale): locale is SupportedLocale {
-  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
-}
+
 
-function getTexts(locale: ShowcaseLocale): SevenSegmentTexts {
-  const normalized: SupportedLocale = isSupportedLocale(locale) ? locale : "en-US";
-  return TEXTS[normalized];
-}
+
+
+
 
 function ColonDots() {
   return (
@@ -337,8 +253,7 @@ const PROPS: ShowcasePropRow[] = [
 ];
 
 export default function SgSevenSegmentDigitShowcase() {
-  const i18n = useShowcaseI18n();
-  const texts = React.useMemo(() => getTexts(i18n.locale), [i18n.locale]);
+  const i18n = useShowcaseI18n();
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
   const aiComponent = useAiManifestComponent("SgSevenSegmentDigit");
@@ -373,12 +288,12 @@ export default function SgSevenSegmentDigitShowcase() {
         <ShowcaseStickyHeader
           stickyHeaderRef={stickyHeaderRef}
           title="SgSevenSegmentDigit"
-          subtitle={texts.headerSubtitle}
+          subtitle={t(i18n, `${K}.headerSubtitle`)}
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
 
-        <Section title={texts.section1Title} description={texts.section1Description}>
+        <Section title={t(i18n, `${K}.section1Title`)} description={t(i18n, `${K}.section1Description`)}>
           <div className="flex items-center gap-4">
             <SgSevenSegmentDigit value={digit} palette={palette} />
             <div className="flex flex-col gap-2">
@@ -402,7 +317,7 @@ export default function SgSevenSegmentDigitShowcase() {
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-seven-segment-digit/samples/basico-0-9.tsx.sample" />
         </Section>
 
-        <Section title={texts.section2Title} description={texts.section2Description}>
+        <Section title={t(i18n, `${K}.section2Title`)} description={t(i18n, `${K}.section2Description`)}>
           <div className="flex items-center gap-4">
             <SgSevenSegmentDigit
               value={hexValue}
@@ -415,7 +330,7 @@ export default function SgSevenSegmentDigitShowcase() {
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-seven-segment-digit/samples/hexadecimal-0-9-a-f.tsx.sample" />
         </Section>
 
-        <Section title={texts.section3Title} description={texts.section3Description}>
+        <Section title={t(i18n, `${K}.section3Title`)} description={t(i18n, `${K}.section3Description`)}>
           <SgGrid columns={{ base: 1, md: 5 }} gap={12}>
             <div className="space-y-2">
               <p className="text-xs text-muted-foreground">red</p>
@@ -441,7 +356,7 @@ export default function SgSevenSegmentDigitShowcase() {
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-seven-segment-digit/samples/temas-de-cor.tsx.sample" />
         </Section>
 
-        <Section title={texts.section4Title} description={texts.section4Description}>
+        <Section title={t(i18n, `${K}.section4Title`)} description={t(i18n, `${K}.section4Description`)}>
           <SgGrid columns={{ base: 1, md: 3 }} gap={12}>
             <div className="space-y-2">
               <p className="text-xs text-muted-foreground">Small</p>
@@ -459,7 +374,7 @@ export default function SgSevenSegmentDigitShowcase() {
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-seven-segment-digit/samples/tamanho-e-espessura.tsx.sample" />
         </Section>
 
-        <Section title={texts.section5Title} description={texts.section5Description}>
+        <Section title={t(i18n, `${K}.section5Title`)} description={t(i18n, `${K}.section5Description`)}>
           <div className="space-y-4">
             <div className="flex items-center gap-1">
               <SgSevenSegmentDigit value={hh[0] ?? "0"} size={86} />
@@ -476,7 +391,7 @@ export default function SgSevenSegmentDigitShowcase() {
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-seven-segment-digit/samples/composicao-estilo-relogio.tsx.sample" />
         </Section>
 
-        <Section title={texts.section6Title} description={texts.section6Description}>
+        <Section title={t(i18n, `${K}.section6Title`)} description={t(i18n, `${K}.section6Description`)}>
           <SgPlayground
             title="SgSevenSegmentDigit Playground"
             interactive
@@ -487,7 +402,7 @@ export default function SgSevenSegmentDigitShowcase() {
           />
         </Section>
 
-        <ShowcasePropsReference rows={PROPS} title={texts.propsReferenceTitle} />
+        <ShowcasePropsReference rows={PROPS} title={t(i18n, `${K}.propsReferenceTitle`)} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />

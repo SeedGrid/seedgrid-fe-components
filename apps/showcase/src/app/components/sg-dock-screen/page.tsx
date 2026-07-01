@@ -12,7 +12,9 @@ import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
-import { useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
+import { t, useShowcaseI18n } from "../../../i18n";
+
+const K = "showcase.component.dockScreen";
 
 function Section(props: { title: string; description?: string; children: React.ReactNode }) {
   return (
@@ -147,64 +149,15 @@ const DOCK_SCREEN_PROPS: ShowcasePropRow[] = [
   { prop: "children", type: "ReactNode", defaultValue: "-", description: "Conteudo interno (normalmente SgDockZone)." }
 ];
 
-type DockScreenTexts = {
-  subtitle: string;
-  section1Title: string;
-  section1Description: string;
-  section2Title: string;
-  section2Description: string;
-  playgroundTitle: string;
-  propsTitle: string;
-};
 
-const DOCK_SCREEN_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", DockScreenTexts> = {
-  "pt-BR": {
-    subtitle: "Componente de conveniencia que combina SgScreen + SgDockLayout no mesmo root.",
-    section1Title: "1) Basico",
-    section1Description: "Uso direto do SgDockScreen com quatro dock zones e area livre central, sem posicionamento manual.",
-    section2Title: "2) Playground (SgPlayground)",
-    section2Description: "Interactive example to test drag/drop between zones.",
-    playgroundTitle: "SgDockScreen Playground",
-    propsTitle: "Referencia de Props - SgDockScreen"
-  },
-  "pt-PT": {
-    subtitle: "Componente de conveniencia que combina SgScreen + SgDockLayout no mesmo root.",
-    section1Title: "1) Basico",
-    section1Description: "Uso direto do SgDockScreen com quatro dock zones e area livre central, sem posicionamento manual.",
-    section2Title: "2) Playground (SgPlayground)",
-    section2Description: "Interactive example to test drag/drop between zones.",
-    playgroundTitle: "SgDockScreen Playground",
-    propsTitle: "Referencia de Props - SgDockScreen"
-  },
-  "en-US": {
-    subtitle: "Convenience component that combines SgScreen + SgDockLayout in a single root.",
-    section1Title: "1) Basic",
-    section1Description: "Direct SgDockScreen usage with four dock zones and a central free area, without manual positioning.",
-    section2Title: "2) Playground (SgPlayground)",
-    section2Description: "Interactive example to test drag/drop across zones.",
-    playgroundTitle: "SgDockScreen Playground",
-    propsTitle: "Props Reference - SgDockScreen"
-  },
-  es: {
-    subtitle: "Componente de conveniencia que combina SgScreen + SgDockLayout en el mismo root.",
-    section1Title: "1) Basico",
-    section1Description: "Uso directo de SgDockScreen con cuatro dock zones y area central libre, sin posicionamiento manual.",
-    section2Title: "2) Playground (SgPlayground)",
-    section2Description: "Ejemplo interactivo para probar drag/drop entre zonas.",
-    playgroundTitle: "SgDockScreen Playground",
-    propsTitle: "Referencia de Props - SgDockScreen"
-  }
-};
 
-function isSupportedLocale(locale: ShowcaseLocale): locale is keyof typeof DOCK_SCREEN_TEXTS {
-  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
-}
+
+
+
 
 export default function SgDockScreenPage() {
   const i18n = useShowcaseI18n();
-  const aiComponent = useAiManifestComponent("SgDockScreen");
-  const locale: keyof typeof DOCK_SCREEN_TEXTS = isSupportedLocale(i18n.locale) ? i18n.locale : "en-US";
-  const texts = DOCK_SCREEN_TEXTS[locale];
+  const aiComponent = useAiManifestComponent("SgDockScreen");
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({
     deps: [i18n.locale]
   });
@@ -219,12 +172,12 @@ export default function SgDockScreenPage() {
         <ShowcaseStickyHeader
           stickyHeaderRef={stickyHeaderRef}
           title="SgDockScreen"
-          subtitle={texts.subtitle}
+          subtitle={t(i18n, `${K}.subtitle`)}
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
 
-        <Section title={texts.section1Title} description={texts.section1Description}>
+        <Section title={t(i18n, `${K}.section1Title`)} description={t(i18n, `${K}.section1Description`)}>
           <SgDockScreen
             id="showcase-dock-screen-basic-v1"
             fullscreen={false}
@@ -266,9 +219,9 @@ export default function SgDockScreenPage() {
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-dock-screen/samples/basico.tsx.sample" />
         </Section>
 
-        <Section title={texts.section2Title} description={texts.section2Description}>
+        <Section title={t(i18n, `${K}.section2Title`)} description={t(i18n, `${K}.section2Description`)}>
           <SgPlayground
-            title={texts.playgroundTitle}
+            title={t(i18n, `${K}.playgroundTitle`)}
             interactive
             codeContract="appFile"
             playgroundFile="apps/showcase/src/app/components/sg-dock-screen/sg-dock-screen.tsx.playground"
@@ -279,7 +232,7 @@ export default function SgDockScreenPage() {
 
         <ShowcasePropsReference
           id="props-reference"
-          title={texts.propsTitle}
+          title={t(i18n, `${K}.propsTitle`)}
           rows={DOCK_SCREEN_PROPS}
         />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}

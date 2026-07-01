@@ -12,7 +12,9 @@ import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
-import { useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
+import { t, useShowcaseI18n } from "../../../i18n";
+
+const K = "showcase.component.avatar";
 
 const IMG_AMY = "https://i.pravatar.cc/150?img=32";
 const IMG_ASIYA = "https://i.pravatar.cc/150?img=47";
@@ -32,90 +34,14 @@ function Section(props: { title: string; description?: string; children: React.R
   );
 }
 
-type AvatarTexts = {
-  headerSubtitle: string;
-  section1Title: string;
-  section1Description: string;
-  section2Title: string;
-  section2Description: string;
-  section3Title: string;
-  section3Description: string;
-  section4Title: string;
-  section4Description: string;
-  section5Title: string;
-  section5Description: string;
-  propsReferenceTitle: string;
-};
 
-const AVATAR_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", AvatarTexts> = {
-  "pt-BR": {
-    headerSubtitle: "Avatar com suporte a label, icone, imagem, severidade, tamanhos e agrupamento.",
-    section1Title: "1) Basico",
-    section1Description: "Uso basico com label, icone e imagem.",
-    section2Title: "2) Shape e Tamanho",
-    section2Description: "Combinacoes de shape e size.",
-    section3Title: "3) Severity e Cores Customizadas",
-    section3Description: "Preset por severity e override de cores.",
-    section4Title: "4) Avatar Group",
-    section4Description: "Grouping with overlap and automatic counter.",
-    section5Title: "5) Playground",
-    section5Description: "Ajuste shape, size, severity e borda em tempo real.",
-    propsReferenceTitle: "Referencia de Props",
-  },
-  "pt-PT": {
-    headerSubtitle: "Avatar com suporte a label, icone, imagem, severidade, tamanhos e agrupamento.",
-    section1Title: "1) Basico",
-    section1Description: "Uso basico com label, icone e imagem.",
-    section2Title: "2) Shape e Tamanho",
-    section2Description: "Combinacoes de shape e size.",
-    section3Title: "3) Severity e Cores Customizadas",
-    section3Description: "Preset por severity e override de cores.",
-    section4Title: "4) Avatar Group",
-    section4Description: "Grouping with overlap and automatic counter.",
-    section5Title: "5) Playground",
-    section5Description: "Ajuste shape, size, severity e borda em tempo real.",
-    propsReferenceTitle: "Referencia de Props",
-  },
-  "en-US": {
-    headerSubtitle: "Avatar with support for label, icon, image, severity, sizes, and grouping.",
-    section1Title: "1) Basic",
-    section1Description: "Basic usage with label, icon, and image.",
-    section2Title: "2) Shape and Size",
-    section2Description: "Shape and size combinations.",
-    section3Title: "3) Severity and Custom Colors",
-    section3Description: "Severity presets and color overrides.",
-    section4Title: "4) Avatar Group",
-    section4Description: "Grouping with overlap and automatic counter.",
-    section5Title: "5) Playground",
-    section5Description: "Adjust shape, size, severity, and border in real time.",
-    propsReferenceTitle: "Props Reference",
-  },
-  es: {
-    headerSubtitle: "Avatar con soporte para label, icono, imagen, severidad, tamanos y agrupacion.",
-    section1Title: "1) Basico",
-    section1Description: "Uso basico con label, icono e imagen.",
-    section2Title: "2) Shape y Tamano",
-    section2Description: "Combinaciones de shape y size.",
-    section3Title: "3) Severity y Colores Personalizados",
-    section3Description: "Preset por severity y override de colores.",
-    section4Title: "4) Avatar Group",
-    section4Description: "Agrupacion con superposicion y contador automatico.",
-    section5Title: "5) Playground",
-    section5Description: "Ajusta shape, size, severity y borde en tiempo real.",
-    propsReferenceTitle: "Referencia de Props",
-  },
-};
 
-type SupportedAvatarLocale = keyof typeof AVATAR_TEXTS;
 
-function isSupportedAvatarLocale(locale: ShowcaseLocale): locale is SupportedAvatarLocale {
-  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
-}
+
 
-function getAvatarTexts(locale: ShowcaseLocale): AvatarTexts {
-  const normalized: SupportedAvatarLocale = isSupportedAvatarLocale(locale) ? locale : "en-US";
-  return AVATAR_TEXTS[normalized];
-}
+
+
+
 
 function Row(props: { children: React.ReactNode }) {
   return <div className="flex flex-wrap items-center gap-4">{props.children}</div>;
@@ -266,8 +192,7 @@ const AVATAR_PROPS: ShowcasePropRow[] = [
 export default function SgAvatarPage() {
   const i18n = useShowcaseI18n();
   const aiComponent = useAiManifestComponent("SgAvatar");
-  const aiAvatarGroupComponent = useAiManifestComponent("SgAvatarGroup");
-  const texts = React.useMemo(() => getAvatarTexts(i18n.locale), [i18n.locale]);
+  const aiAvatarGroupComponent = useAiManifestComponent("SgAvatarGroup");
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
 
@@ -281,12 +206,12 @@ export default function SgAvatarPage() {
         <ShowcaseStickyHeader
           stickyHeaderRef={stickyHeaderRef}
           title="SgAvatar"
-          subtitle={texts.headerSubtitle}
+          subtitle={t(i18n, `${K}.headerSubtitle`)}
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
 
-        <Section title={texts.section1Title} description={texts.section1Description}>
+        <Section title={t(i18n, `${K}.section1Title`)} description={t(i18n, `${K}.section1Description`)}>
           <Row>
             <SgAvatar label="P" />
             <SgAvatar icon={<User />} severity="secondary" />
@@ -295,7 +220,7 @@ export default function SgAvatarPage() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-avatar/samples/basico.tsx.sample" />
         </Section>
 
-        <Section title={texts.section2Title} description={texts.section2Description}>
+        <Section title={t(i18n, `${K}.section2Title`)} description={t(i18n, `${K}.section2Description`)}>
           <Row>
             <SgAvatar label="C" shape="circle" />
             <SgAvatar label="S" shape="square" />
@@ -306,7 +231,7 @@ export default function SgAvatarPage() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-avatar/samples/shape-e-tamanho.tsx.sample" />
         </Section>
 
-        <Section title={texts.section3Title} description={texts.section3Description}>
+        <Section title={t(i18n, `${K}.section3Title`)} description={t(i18n, `${K}.section3Description`)}>
           <Row>
             <SgAvatar label="P" severity="primary" />
             <SgAvatar label="S" severity="success" />
@@ -325,7 +250,7 @@ export default function SgAvatarPage() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-avatar/samples/severity-e-cores-customizadas.tsx.sample" />
         </Section>
 
-        <Section title={texts.section4Title} description={texts.section4Description}>
+        <Section title={t(i18n, `${K}.section4Title`)} description={t(i18n, `${K}.section4Description`)}>
           <div className="space-y-4">
             <Row>
               <SgAvatarGroup>
@@ -347,7 +272,7 @@ export default function SgAvatarPage() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-avatar/samples/avatar-group.tsx.sample" />
         </Section>
 
-        <Section title={texts.section5Title} description={texts.section5Description}>
+        <Section title={t(i18n, `${K}.section5Title`)} description={t(i18n, `${K}.section5Description`)}>
           <SgPlayground
             title="SgAvatar Playground"
             interactive
@@ -358,7 +283,7 @@ export default function SgAvatarPage() {
           />
         </Section>
 
-        <ShowcasePropsReference rows={AVATAR_PROPS} title={texts.propsReferenceTitle} />
+        <ShowcasePropsReference rows={AVATAR_PROPS} title={t(i18n, `${K}.propsReferenceTitle`)} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         {aiAvatarGroupComponent ? <ComponentAiPropsTable component={aiAvatarGroupComponent} /> : null}

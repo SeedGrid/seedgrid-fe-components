@@ -10,7 +10,9 @@ import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
-import { useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
+import { t, useShowcaseI18n } from "../../../i18n";
+
+const K = "showcase.component.carousel";
 
 function Section(props: {
   id?: string;
@@ -135,188 +137,14 @@ const EXAMPLE_IDS = [
   "exemplo-12",
 ] as const;
 
-type CarouselTexts = {
-  headerSubtitle: string;
-  examplesLabel: string;
-  propsLinkLabel: string;
-  sectionTitles: string[];
-  sectionDescriptions: string[];
-  propsTitle: string;
-  propsColProp: string;
-  propsColType: string;
-  propsColDefault: string;
-  propsColDescription: string;
-};
 
-const CAROUSEL_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", CarouselTexts> = {
-  "pt-BR": {
-    headerSubtitle:
-      "Um componente de carrossel responsivo com navegacao horizontal/vertical, autoplay e indicadores.",
-    examplesLabel: "Examples",
-    propsLinkLabel: "ReferÃªncia de Props",
-    sectionTitles: [
-      "1) Basico - Horizontal",
-      "2) Multiplos Items Visiveis",
-      "3) Auto Play",
-      "4) Orientacao Vertical",
-      "5) Vertical - Multiplos Items",
-      "6) Sem Modo Circular",
-      "7) Sem Indicadores",
-      "8) Sem Navegadores",
-      "9) Gap Customizado",
-      "10) Com Callbacks",
-      "11) Example Responsivo",
-      "12) Playground Interativo",
-    ],
-    sectionDescriptions: [
-      "Carrossel horizontal simples com um item visivel por vez",
-      "Carrossel mostrando 3 items de uma vez",
-      "Carrossel com navegacao automatica (a cada 2 segundos)",
-      "Carrossel com navegacao vertical",
-      "Carrossel vertical mostrando 3 items de uma vez",
-      "Carrossel que para no final (sem loop infinito)",
-      "Carrossel sem os indicadores (dots) na parte inferior",
-      "Carrossel sem os botoes de navegacao (apenas indicadores)",
-      "Carrossel com espacamento personalizado entre items (gap: 32px)",
-      "Carrossel com evento de mudanca de indice",
-      "Carrossel que se adapta ao tamanho da tela mostrando diferentes quantidades de items",
-      "Brinque com as propriedades do carrossel e veja as mudancas em tempo real",
-    ],
-    propsTitle: "ReferÃªncia de Props",
-    propsColProp: "Prop",
-    propsColType: "Tipo",
-    propsColDefault: "Default",
-    propsColDescription: "Description",
-  },
-  "pt-PT": {
-    headerSubtitle:
-      "Um componente de carrossel responsivo com navegacao horizontal/vertical, autoplay e indicadores.",
-    examplesLabel: "Examples",
-    propsLinkLabel: "ReferÃªncia de Props",
-    sectionTitles: [
-      "1) Basico - Horizontal",
-      "2) Multiplos Items Visiveis",
-      "3) Auto Play",
-      "4) Orientacao Vertical",
-      "5) Vertical - Multiplos Items",
-      "6) Sem Modo Circular",
-      "7) Sem Indicadores",
-      "8) Sem Navegadores",
-      "9) Gap Customizado",
-      "10) Com Callbacks",
-      "11) Example Responsivo",
-      "12) Playground Interativo",
-    ],
-    sectionDescriptions: [
-      "Carrossel horizontal simples com um item visivel de cada vez",
-      "Carrossel a mostrar 3 items de uma vez",
-      "Carrossel com navegacao automatica (a cada 2 segundos)",
-      "Carrossel com navegacao vertical",
-      "Carrossel vertical a mostrar 3 items de uma vez",
-      "Carrossel que para no final (sem loop infinito)",
-      "Carrossel sem os indicadores (dots) na parte inferior",
-      "Carrossel sem os botoes de navegacao (apenas indicadores)",
-      "Carrossel com espacamento personalizado entre items (gap: 32px)",
-      "Carrossel com evento de mudanca de indice",
-      "Carrossel que se adapta ao tamanho do ecra mostrando diferentes quantidades de items",
-      "Brinque com as propriedades do carrossel e veja as mudancas em tempo real",
-    ],
-    propsTitle: "ReferÃªncia de Props",
-    propsColProp: "Prop",
-    propsColType: "Tipo",
-    propsColDefault: "Default",
-    propsColDescription: "Description",
-  },
-  "en-US": {
-    headerSubtitle:
-      "A responsive carousel component with horizontal/vertical navigation, autoplay, and indicators.",
-    examplesLabel: "Examples",
-    propsLinkLabel: "Props Reference",
-    sectionTitles: [
-      "1) Basic - Horizontal",
-      "2) Multiple Visible Items",
-      "3) Auto Play",
-      "4) Vertical Orientation",
-      "5) Vertical - Multiple Items",
-      "6) Without Circular Mode",
-      "7) Without Indicators",
-      "8) Without Navigators",
-      "9) Custom Gap",
-      "10) With Callbacks",
-      "11) Responsive Example",
-      "12) Interactive Playground",
-    ],
-    sectionDescriptions: [
-      "Simple horizontal carousel with one visible item at a time",
-      "Carousel showing 3 items at once",
-      "Carousel with automatic navigation (every 2 seconds)",
-      "Carousel with vertical navigation",
-      "Vertical carousel showing 3 items at once",
-      "Carousel that stops at the end (no infinite loop)",
-      "Carousel without bottom indicators (dots)",
-      "Carousel without navigation buttons (indicators only)",
-      "Carousel with custom spacing between items (gap: 32px)",
-      "Carousel with index change callback event",
-      "Carousel that adapts to screen size showing different item counts",
-      "Play with carousel props and see changes in real time",
-    ],
-    propsTitle: "Props Reference",
-    propsColProp: "Prop",
-    propsColType: "Type",
-    propsColDefault: "Default",
-    propsColDescription: "Description",
-  },
-  es: {
-    headerSubtitle:
-      "Un componente de carrusel responsivo con navegacion horizontal/vertical, autoplay e indicadores.",
-    examplesLabel: "Ejemplos",
-    propsLinkLabel: "Referencia de Props",
-    sectionTitles: [
-      "1) Basico - Horizontal",
-      "2) Multiples Items Visibles",
-      "3) Auto Play",
-      "4) Orientacion Vertical",
-      "5) Vertical - Multiples Items",
-      "6) Sin Modo Circular",
-      "7) Sin Indicadores",
-      "8) Sin Navegadores",
-      "9) Gap Personalizado",
-      "10) Con Callbacks",
-      "11) Ejemplo Responsivo",
-      "12) Playground Interactivo",
-    ],
-    sectionDescriptions: [
-      "Carrusel horizontal simple con un item visible por vez",
-      "Carrusel mostrando 3 items al mismo tiempo",
-      "Carrusel con navegacion automatica (cada 2 segundos)",
-      "Carrusel con navegacion vertical",
-      "Carrusel vertical mostrando 3 items al mismo tiempo",
-      "Carrusel que se detiene al final (sin loop infinito)",
-      "Carrusel sin indicadores (dots) en la parte inferior",
-      "Carrusel sin botones de navegacion (solo indicadores)",
-      "Carrusel con espaciado personalizado entre items (gap: 32px)",
-      "Carrusel con evento de cambio de indice",
-      "Carrusel que se adapta al tamano de pantalla mostrando distintas cantidades de items",
-      "Juega con las props del carrusel y ve los cambios en tiempo real",
-    ],
-    propsTitle: "Referencia de Props",
-    propsColProp: "Prop",
-    propsColType: "Tipo",
-    propsColDefault: "Por defecto",
-    propsColDescription: "Descripcion",
-  },
-};
 
-type SupportedCarouselLocale = keyof typeof CAROUSEL_TEXTS;
 
-function isSupportedCarouselLocale(locale: ShowcaseLocale): locale is SupportedCarouselLocale {
-  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
-}
+
 
-function getCarouselTexts(locale: ShowcaseLocale): CarouselTexts {
-  const normalized: SupportedCarouselLocale = isSupportedCarouselLocale(locale) ? locale : "en-US";
-  return CAROUSEL_TEXTS[normalized];
-}
+
+
+
 
 const CAROUSEL_PLAYGROUND_APP_FILE = `import * as React from "react";
 import {
@@ -532,8 +360,45 @@ const CAROUSEL_PROPS: ShowcasePropRow[] = [
 
 export default function SgCarouselPage() {
   const i18n = useShowcaseI18n();
-  const aiComponent = useAiManifestComponent("SgCarousel");
-  const texts = React.useMemo(() => getCarouselTexts(i18n.locale), [i18n.locale]);
+  const texts = React.useMemo(() => ({
+    headerSubtitle: t(i18n, `${K}.headerSubtitle`),
+    examplesLabel: t(i18n, `${K}.examplesLabel`),
+    propsLinkLabel: t(i18n, `${K}.propsLinkLabel`),
+    sectionTitles: [
+      t(i18n, `${K}.sectionTitles.0`),
+      t(i18n, `${K}.sectionTitles.1`),
+      t(i18n, `${K}.sectionTitles.2`),
+      t(i18n, `${K}.sectionTitles.3`),
+      t(i18n, `${K}.sectionTitles.4`),
+      t(i18n, `${K}.sectionTitles.5`),
+      t(i18n, `${K}.sectionTitles.6`),
+      t(i18n, `${K}.sectionTitles.7`),
+      t(i18n, `${K}.sectionTitles.8`),
+      t(i18n, `${K}.sectionTitles.9`),
+      t(i18n, `${K}.sectionTitles.10`),
+      t(i18n, `${K}.sectionTitles.11`)
+    ],
+    sectionDescriptions: [
+      t(i18n, `${K}.sectionDescriptions.0`),
+      t(i18n, `${K}.sectionDescriptions.1`),
+      t(i18n, `${K}.sectionDescriptions.2`),
+      t(i18n, `${K}.sectionDescriptions.3`),
+      t(i18n, `${K}.sectionDescriptions.4`),
+      t(i18n, `${K}.sectionDescriptions.5`),
+      t(i18n, `${K}.sectionDescriptions.6`),
+      t(i18n, `${K}.sectionDescriptions.7`),
+      t(i18n, `${K}.sectionDescriptions.8`),
+      t(i18n, `${K}.sectionDescriptions.9`),
+      t(i18n, `${K}.sectionDescriptions.10`),
+      t(i18n, `${K}.sectionDescriptions.11`)
+    ],
+    propsTitle: t(i18n, `${K}.propsTitle`),
+    propsColProp: t(i18n, `${K}.propsColProp`),
+    propsColType: t(i18n, `${K}.propsColType`),
+    propsColDefault: t(i18n, `${K}.propsColDefault`),
+    propsColDescription: t(i18n, `${K}.propsColDescription`)
+  }), [i18n]);
+  const aiComponent = useAiManifestComponent("SgCarousel");
   const [activeIndex1, setActiveIndex1] = React.useState(0);
   const [eventLog, setEventLog] = React.useState<string[]>([]);
   const stickyHeaderRef = React.useRef<HTMLDivElement | null>(null);
@@ -874,7 +739,7 @@ export default function SgCarouselPage() {
         <div className="space-y-4">
           <div className="rounded bg-muted/40 p-3">
             <p className="text-sm">
-              <span className="font-semibold">Ãndice Ativo:</span>{" "}
+              <span className="font-semibold">Índice Ativo:</span>{" "}
               <code className="rounded bg-background px-2 py-1">{activeIndex1}</code>
             </p>
           </div>
@@ -887,7 +752,7 @@ export default function SgCarouselPage() {
               height="100%"
               onIndexChange={(index) => {
                 setActiveIndex1(index);
-                log(`Ãndice mudou para: ${index}`);
+                log(`Índice mudou para: ${index}`);
               }}
             />
           </div>

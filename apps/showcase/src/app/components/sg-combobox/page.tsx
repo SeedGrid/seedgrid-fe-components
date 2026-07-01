@@ -10,7 +10,9 @@ import ComponentAiSummary from "../ai/ComponentAiSummary";
 import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
-import { useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
+import { t, useShowcaseI18n } from "../../../i18n";
+
+const K = "showcase.component.combobox";
 
 function Section(props: { id?: string; title: string; description?: string; children: React.ReactNode; example?: boolean }) {
   return (
@@ -237,128 +239,18 @@ export default function App() {
   );
 }`;
 
-type ComboboxTexts = {
-  headerSubtitle: string;
-  section1Title: string;
-  section1Description: string;
-  section2Title: string;
-  section2Description: string;
-  section3Title: string;
-  section3Description: string;
-  section4Title: string;
-  section4Description: string;
-  section5Title: string;
-  section5Description: string;
-  propsTitle: string;
-  propsDescription: string;
-  propsColProp: string;
-  propsColType: string;
-  propsColDefault: string;
-  propsColDescription: string;
-};
 
-const COMBOBOX_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", ComboboxTexts> = {
-  "pt-BR": {
-    headerSubtitle:
-      "Combobox no estilo select, sem digitacao livre. O item selecionado vem de source e o evento onSelect devolve o objeto selecionado.",
-    section1Title: "1) Basico com lista de objetos",
-    section1Description:
-      'Sem input livre: com foco no campo, digite letras e ele "pula" para o item correspondente.',
-    section2Title: "2) Controlado por value",
-    section2Description: "Use value/onValueChange to programmatically set a valid value.",
-    section3Title: "3) Source async + custom render",
-    section3Description: "Suporte a loadingText, renderItem, renderGroupHeader, renderFooter e itemTooltip.",
-    section4Title: "4) Border radius",
-    section4Description: "Aplica o raio no input e no dropdown.",
-    section5Title: "5) Playground (SgPlayground)",
-    section5Description: "Simule cenarios com source local/async, grouped, openOnFocus e eventos.",
-    propsTitle: "Referencia de Props",
-    propsDescription: "Public properties of SgCombobox.",
-    propsColProp: "Prop",
-    propsColType: "Tipo",
-    propsColDefault: "Default",
-    propsColDescription: "Description",
-  },
-  "pt-PT": {
-    headerSubtitle:
-      "Combobox no estilo select, sem digitacao livre. O item selecionado vem de source e o evento onSelect devolve o objeto selecionado.",
-    section1Title: "1) Basico com lista de objetos",
-    section1Description:
-      'Sem input livre: com foco no campo, digite letras e ele "pula" para o item correspondente.',
-    section2Title: "2) Controlado por value",
-    section2Description: "Use value/onValueChange to programmatically set a valid value.",
-    section3Title: "3) Source async + custom render",
-    section3Description: "Suporte a loadingText, renderItem, renderGroupHeader, renderFooter e itemTooltip.",
-    section4Title: "4) Border radius",
-    section4Description: "Aplica o raio no input e no dropdown.",
-    section5Title: "5) Playground (SgPlayground)",
-    section5Description: "Simule cenarios com source local/async, grouped, openOnFocus e eventos.",
-    propsTitle: "Referencia de Props",
-    propsDescription: "Public properties of SgCombobox.",
-    propsColProp: "Prop",
-    propsColType: "Tipo",
-    propsColDefault: "Default",
-    propsColDescription: "Description",
-  },
-  "en-US": {
-    headerSubtitle:
-      "Select-style combobox, no free typing. The selected item comes from source and onSelect returns the selected object.",
-    section1Title: "1) Basic with object list",
-    section1Description:
-      'No free input: focus the field, type letters, and it "jumps" to the matching item.',
-    section2Title: "2) Controlled by value",
-    section2Description: "Use value/onValueChange to set a valid value programmatically.",
-    section3Title: "3) Async source + custom render",
-    section3Description: "Supports loadingText, renderItem, renderGroupHeader, renderFooter, and itemTooltip.",
-    section4Title: "4) Border radius",
-    section4Description: "Applies border radius to input and dropdown.",
-    section5Title: "5) Playground (SgPlayground)",
-    section5Description: "Simulate scenarios with local/async source, grouped, openOnFocus, and events.",
-    propsTitle: "Props Reference",
-    propsDescription: "Public properties of SgCombobox.",
-    propsColProp: "Prop",
-    propsColType: "Type",
-    propsColDefault: "Default",
-    propsColDescription: "Description",
-  },
-  es: {
-    headerSubtitle:
-      "Combobox estilo select, sin escritura libre. El item seleccionado viene de source y onSelect devuelve el objeto seleccionado.",
-    section1Title: "1) Basico con lista de objetos",
-    section1Description:
-      'Sin input libre: con foco en el campo, escribe letras y "salta" al item correspondiente.',
-    section2Title: "2) Controlado por value",
-    section2Description: "Usa value/onValueChange para setear un valor valido programaticamente.",
-    section3Title: "3) Source async + custom render",
-    section3Description: "Soporta loadingText, renderItem, renderGroupHeader, renderFooter e itemTooltip.",
-    section4Title: "4) Border radius",
-    section4Description: "Aplica el radio en el input y en el dropdown.",
-    section5Title: "5) Playground (SgPlayground)",
-    section5Description: "Simula escenarios con source local/async, grouped, openOnFocus y eventos.",
-    propsTitle: "Referencia de Props",
-    propsDescription: "Propiedades publicas de SgCombobox.",
-    propsColProp: "Prop",
-    propsColType: "Tipo",
-    propsColDefault: "Por defecto",
-    propsColDescription: "Descripcion",
-  },
-};
 
-type SupportedComboboxLocale = keyof typeof COMBOBOX_TEXTS;
 
-function isSupportedComboboxLocale(locale: ShowcaseLocale): locale is SupportedComboboxLocale {
-  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
-}
+
 
-function getComboboxTexts(locale: ShowcaseLocale): ComboboxTexts {
-  const normalized: SupportedComboboxLocale = isSupportedComboboxLocale(locale) ? locale : "en-US";
-  return COMBOBOX_TEXTS[normalized];
-}
+
+
+
 
 export default function SgComboboxPage() {
   const i18n = useShowcaseI18n();
-  const aiComponent = useAiManifestComponent("SgCombobox");
-  const texts = React.useMemo(() => getComboboxTexts(i18n.locale), [i18n.locale]);
+  const aiComponent = useAiManifestComponent("SgCombobox");
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
   const [selectedCountry, setSelectedCountry] = React.useState<Country | null>(null);
@@ -385,14 +277,14 @@ export default function SgComboboxPage() {
         <ShowcaseStickyHeader
           stickyHeaderRef={stickyHeaderRef}
           title="SgCombobox"
-          subtitle={texts.headerSubtitle}
+          subtitle={t(i18n, `${K}.headerSubtitle`)}
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
 
         <Section
-          title={texts.section1Title}
-          description={texts.section1Description}
+          title={t(i18n, `${K}.section1Title`)}
+          description={t(i18n, `${K}.section1Description`)}
         >
           <div className="w-96">
             <SgCombobox<Country>
@@ -417,8 +309,8 @@ export default function SgComboboxPage() {
         </Section>
 
         <Section
-          title={texts.section2Title}
-          description={texts.section2Description}
+          title={t(i18n, `${K}.section2Title`)}
+          description={t(i18n, `${K}.section2Description`)}
         >
           <div className="w-96">
             <SgCombobox<Country>
@@ -463,8 +355,8 @@ export default function SgComboboxPage() {
         </Section>
 
         <Section
-          title={texts.section3Title}
-          description={texts.section3Description}
+          title={t(i18n, `${K}.section3Title`)}
+          description={t(i18n, `${K}.section3Description`)}
         >
           <div className="w-96">
             <SgCombobox<Country>
@@ -503,8 +395,8 @@ export default function SgComboboxPage() {
         </Section>
 
         <Section
-          title={texts.section4Title}
-          description={texts.section4Description}
+          title={t(i18n, `${K}.section4Title`)}
+          description={t(i18n, `${K}.section4Description`)}
         >
           <div className="w-96">
             <SgCombobox<Country>
@@ -526,8 +418,8 @@ export default function SgComboboxPage() {
         </Section>
 
         <Section
-          title={texts.section5Title}
-          description={texts.section5Description}
+          title={t(i18n, `${K}.section5Title`)}
+          description={t(i18n, `${K}.section5Description`)}
         >
           <SgPlayground
             title="SgCombobox Playground"
@@ -543,16 +435,16 @@ export default function SgComboboxPage() {
           id="props-reference"
           className="scroll-mt-[var(--showcase-anchor-offset,18rem)] rounded-lg border border-border p-6"
         >
-          <h2 data-anchor-title="true" className="text-lg font-semibold">{texts.propsTitle}</h2>
-          <p className="mt-1 text-sm text-muted-foreground">{texts.propsDescription}</p>
+          <h2 data-anchor-title="true" className="text-lg font-semibold">{t(i18n, `${K}.propsTitle`)}</h2>
+          <p className="mt-1 text-sm text-muted-foreground">{t(i18n, `${K}.propsDescription`)}</p>
           <div className="mt-4 w-full overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b text-left">
-                  <th className="pb-2 pr-4 font-semibold">{texts.propsColProp}</th>
-                  <th className="pb-2 pr-4 font-semibold">{texts.propsColType}</th>
-                  <th className="pb-2 pr-4 font-semibold">{texts.propsColDefault}</th>
-                  <th className="pb-2 font-semibold">{texts.propsColDescription}</th>
+                  <th className="pb-2 pr-4 font-semibold">{t(i18n, `${K}.propsColProp`)}</th>
+                  <th className="pb-2 pr-4 font-semibold">{t(i18n, `${K}.propsColType`)}</th>
+                  <th className="pb-2 pr-4 font-semibold">{t(i18n, `${K}.propsColDefault`)}</th>
+                  <th className="pb-2 font-semibold">{t(i18n, `${K}.propsColDescription`)}</th>
                 </tr>
               </thead>
               <tbody className="divide-y">

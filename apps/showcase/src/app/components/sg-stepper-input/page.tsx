@@ -11,7 +11,9 @@ import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
-import { useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
+import { t, useShowcaseI18n } from "../../../i18n";
+
+const K = "showcase.component.stepperInput";
 
 function Section(props: { title: string; description?: string; children: React.ReactNode }) {
   return (
@@ -130,79 +132,15 @@ const STEPPER_PROPS: ShowcasePropRow[] = [
   { prop: "inputProps", type: "InputHTMLAttributes (parcial)", defaultValue: "-", description: "Props extras para o input numerico." }
 ];
 
-type StepperTexts = {
-  subtitle: string;
-  section1Title: string;
-  section1Description: string;
-  section2Title: string;
-  section2Description: string;
-  section3Title: string;
-  section3Description: string;
-  section4Title: string;
-  section4Description: string;
-  playgroundTitle: string;
-};
 
-const STEPPER_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", StepperTexts> = {
-  "pt-BR": {
-    subtitle: "Input numerico com setas de incremento/decremento, limites min/max e callback onChange.",
-    section1Title: "1) Basico",
-    section1Description: "Ajuste por setas com minValue, maxValue e step.",
-    section2Title: "2) Controle Externo",
-    section2Description: "Value controlled via value prop.",
-    section3Title: "3) Read-only and disabled",
-    section3Description: "Demonstra estados readOnly e disabled.",
-    section4Title: "4) Playground",
-    section4Description: "Teste faixas e passo em tempo real.",
-    playgroundTitle: "SgStepperInput Playground"
-  },
-  "pt-PT": {
-    subtitle: "Input numerico com setas de incremento/decremento, limites min/max e callback onChange.",
-    section1Title: "1) Basico",
-    section1Description: "Ajuste por setas com minValue, maxValue e step.",
-    section2Title: "2) Controlo Externo",
-    section2Description: "Value controlled via value prop.",
-    section3Title: "3) Read-only and disabled",
-    section3Description: "Demonstra estados readOnly e disabled.",
-    section4Title: "4) Playground",
-    section4Description: "Teste faixas e passo em tempo real.",
-    playgroundTitle: "SgStepperInput Playground"
-  },
-  "en-US": {
-    subtitle: "Numeric input with increment/decrement controls, min/max limits and onChange callback.",
-    section1Title: "1) Basic",
-    section1Description: "Arrow adjustment with minValue, maxValue and step.",
-    section2Title: "2) External Control",
-    section2Description: "Controlled value through the value prop.",
-    section3Title: "3) Read-Only and Disabled",
-    section3Description: "Demonstrates readOnly and disabled states.",
-    section4Title: "4) Playground",
-    section4Description: "Test ranges and step in real time.",
-    playgroundTitle: "SgStepperInput Playground"
-  },
-  es: {
-    subtitle: "Input numerico con flechas de incremento/decremento, limites min/max y callback onChange.",
-    section1Title: "1) Basico",
-    section1Description: "Ajuste por flechas con minValue, maxValue y step.",
-    section2Title: "2) Control Externo",
-    section2Description: "Valor controlado por la prop value.",
-    section3Title: "3) Solo Lectura y Deshabilitado",
-    section3Description: "Demuestra estados readOnly y disabled.",
-    section4Title: "4) Playground",
-    section4Description: "Prueba rangos y paso en tiempo real.",
-    playgroundTitle: "SgStepperInput Playground"
-  }
-};
 
-function isSupportedLocale(locale: ShowcaseLocale): locale is keyof typeof STEPPER_TEXTS {
-  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
-}
+
+
+
 
 export default function SgStepperInputPage() {
   const i18n = useShowcaseI18n();
-  const aiComponent = useAiManifestComponent("SgStepperInput");
-  const locale: keyof typeof STEPPER_TEXTS = isSupportedLocale(i18n.locale) ? i18n.locale : "en-US";
-  const texts = STEPPER_TEXTS[locale];
+  const aiComponent = useAiManifestComponent("SgStepperInput");
   const [basicValue, setBasicValue] = React.useState(12);
   const [controlledValue, setControlledValue] = React.useState(18);
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({
@@ -219,12 +157,12 @@ export default function SgStepperInputPage() {
         <ShowcaseStickyHeader
           stickyHeaderRef={stickyHeaderRef}
           title="SgStepperInput"
-          subtitle={texts.subtitle}
+          subtitle={t(i18n, `${K}.subtitle`)}
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
 
-        <Section title={texts.section1Title} description={texts.section1Description}>
+        <Section title={t(i18n, `${K}.section1Title`)} description={t(i18n, `${K}.section1Description`)}>
           <div className="space-y-2">
             <SgStepperInput
               id="stepper-basic"
@@ -242,7 +180,7 @@ export default function SgStepperInputPage() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-stepper-input/samples/basico.tsx.sample" />
         </Section>
 
-        <Section title={texts.section2Title} description={texts.section2Description}>
+        <Section title={t(i18n, `${K}.section2Title`)} description={t(i18n, `${K}.section2Description`)}>
           <div className="space-y-3">
             <SgStepperInput
               id="stepper-controlled"
@@ -265,7 +203,7 @@ export default function SgStepperInputPage() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-stepper-input/samples/controle-externo.tsx.sample" />
         </Section>
 
-        <Section title={texts.section3Title} description={texts.section3Description}>
+        <Section title={t(i18n, `${K}.section3Title`)} description={t(i18n, `${K}.section3Description`)}>
           <div className="flex flex-wrap items-center gap-4">
             <SgStepperInput id="stepper-readonly" minValue={0} maxValue={10} value={7} readOnly />
             <SgStepperInput id="stepper-disabled" minValue={0} maxValue={10} value={4} disabled />
@@ -273,9 +211,9 @@ export default function SgStepperInputPage() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-stepper-input/samples/read-only-e-disabled.tsx.sample" />
         </Section>
 
-        <Section title={texts.section4Title} description={texts.section4Description}>
+        <Section title={t(i18n, `${K}.section4Title`)} description={t(i18n, `${K}.section4Description`)}>
           <SgPlayground
-            title={texts.playgroundTitle}
+            title={t(i18n, `${K}.playgroundTitle`)}
             interactive
             codeContract="appFile"
             playgroundFile="apps/showcase/src/app/components/sg-stepper-input/sg-stepper-input.tsx.playground"

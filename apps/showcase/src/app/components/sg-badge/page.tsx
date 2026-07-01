@@ -93,16 +93,16 @@ export default function App() {
 }`;
 
 const BADGE_PROPS: ShowcasePropRow[] = [
-  { prop: "value", type: "ReactNode", defaultValue: "-", description: "ConteÃƒÂºdo principal exibido no badge." },
+  { prop: "value", type: "ReactNode", defaultValue: "-", description: "Conteúdo principal exibido no badge." },
   { prop: "severity", type: "token", defaultValue: "primary", description: "Tom visual (primary, success, danger etc.)." },
-  { prop: "badgeStyle", type: "\"solid\" | \"soft\" | \"outline\" | \"ghost\"", defaultValue: "solid", description: "VariaÃƒÂ§ÃƒÂ£o visual do badge." },
+  { prop: "badgeStyle", type: "\"solid\" | \"soft\" | \"outline\" | \"ghost\"", defaultValue: "solid", description: "Variação visual do badge." },
   { prop: "size", type: "\"xs\" | \"sm\" | \"md\" | \"lg\"", defaultValue: "md", description: "Tamanho do badge." },
-  { prop: "rounded / dot / pulse", type: "boolean", defaultValue: "false", description: "Formato pÃƒÂ­lula, ponto e animaÃƒÂ§ÃƒÂ£o." },
-  { prop: "max / showZero", type: "number / boolean", defaultValue: "99 / false", description: "Controle para badges numÃƒÂ©ricos." },
-  { prop: "leftIcon / rightIcon", type: "ReactNode", defaultValue: "-", description: "ÃƒÂcones opcionais." },
-  { prop: "removable / autoRemove / onRemove", type: "boolean / boolean / callback", defaultValue: "false / true / -", description: "Comportamento de remoÃƒÂ§ÃƒÂ£o." },
-  { prop: "onClick / disabled / title / hint", type: "event / boolean / string / string", defaultValue: "- / false / - / -", description: "InteraÃƒÂ§ÃƒÂ£o e metadados." },
-  { prop: "customColors / className / style / partsClassName", type: "objeto / string / CSSProperties / objeto", defaultValue: "-", description: "CustomizaÃƒÂ§ÃƒÂ£o visual avanÃƒÂ§ada." }
+  { prop: "rounded / dot / pulse", type: "boolean", defaultValue: "false", description: "Formato pílula, ponto e animação." },
+  { prop: "max / showZero", type: "number / boolean", defaultValue: "99 / false", description: "Controle para badges numéricos." },
+  { prop: "leftIcon / rightIcon", type: "ReactNode", defaultValue: "-", description: "Ícones opcionais." },
+  { prop: "removable / autoRemove / onRemove", type: "boolean / boolean / callback", defaultValue: "false / true / -", description: "Comportamento de remoção." },
+  { prop: "onClick / disabled / title / hint", type: "event / boolean / string / string", defaultValue: "- / false / - / -", description: "Interação e metadados." },
+  { prop: "customColors / className / style / partsClassName", type: "objeto / string / CSSProperties / objeto", defaultValue: "-", description: "Customização visual avançada." }
 ];
 
 export default function SgBadgePage() {

@@ -100,7 +100,7 @@ type RadioGroupTexts = {
   playgroundTitle: string;
 };
 
-const RADIO_GROUP_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", RadioGroupTexts> = {
+const RADIO_GROUP_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", RadioGroupTexts> = {
   "pt-BR": {
     subtitle: "Radio button group with horizontal/vertical orientation, icons, and React Hook Form integration.",
     examplesLabel: "Examples",
@@ -212,11 +212,39 @@ const RADIO_GROUP_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", RadioGroupTe
       "14) React Hook Form - Register",
       "15) Playground Interactivo"
     ]
-  }
+  },
+  fr: {
+    subtitle: "Groupe de boutons radio avec orientation horizontale/verticale, icones et integration React Hook Form.",
+    examplesLabel: "Exemples",
+    propsLinkLabel: "Reference des props",
+    propsTitle: "Reference des props",
+    propsColProp: "Prop",
+    propsColType: "Type",
+    propsColDefault: "Defaut",
+    propsColDescription: "Description",
+    playgroundTitle: "SgRadioGroup Playground",
+    sectionTitles: [
+      "1) Basique",
+      "2) Orientation horizontale",
+      "3) Avec icones",
+      "4) Icone seule",
+      "5) Selection controlee",
+      "6) Controle externe (setValue/getValue)",
+      "7) Avec option desactivee",
+      "8) Groupe desactive",
+      "9) Lecture seule",
+      "10) Obligatoire avec validation",
+      "11) Horizontal avec icones colorees",
+      "12) Mise en avant du style de selection (liste)",
+      "13) Avec GroupBox personnalise",
+      "14) React Hook Form - Register",
+      "15) Playground interactif",
+    ],
+  },
 };
 
 function isSupportedRadioLocale(locale: ShowcaseLocale): locale is keyof typeof RADIO_GROUP_TEXTS {
-  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
+  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es" || locale === "fr";
 }
 const RADIO_GROUP_PLAYGROUND_APP_FILE = `import * as React from "react";
 import * as SeedGrid from "@seedgrid/fe-components";

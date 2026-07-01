@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React from "react";
 import {
@@ -17,6 +17,7 @@ import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
+import { t, useShowcaseI18n, type ShowcaseI18n } from "../../../i18n";
 
 function Section(props: { title: string; description?: string; children: React.ReactNode }) {
   return (
@@ -35,17 +36,10 @@ function CodeBlock(props: { sampleFile: string }) {
   return <SgCodeBlockBase sampleFile={props.sampleFile} />;
 }
 
-const TOAST_TITLES_BY_TYPE: Record<SgToastType, string> = {
-  default: "Default message",
-  success: "All good!",
-  info: "Important info",
-  warning: "Attention!",
-  error: "Failed!",
-  loading: "Loading..."
-};
+const K = "showcase.component.toaster";
 
-function emitToastByType(type: SgToastType, options?: SgToastOptions) {
-  const title = TOAST_TITLES_BY_TYPE[type];
+function emitToastByType(i18n: ShowcaseI18n, type: SgToastType, options?: SgToastOptions) {
+  const title = t(i18n, `${K}.toastTitles.${type}`);
   if (type === "default") return toast.message(title, options);
   if (type === "success") return toast.success(title, options);
   if (type === "info") return toast.info(title, options);
@@ -57,63 +51,64 @@ function emitToastByType(type: SgToastType, options?: SgToastOptions) {
   });
 }
 
-const TOASTER_PROPS: ShowcasePropRow[] = [
-  {
-    prop: "position",
-    type: "\"top-right\" | \"top-left\" | \"top-center\" | \"bottom-right\" | \"bottom-left\" | \"bottom-center\"",
-    defaultValue: "\"top-right\"",
-    description: "Toast container position."
-  },
-  { prop: "duration", type: "number", defaultValue: "4000", description: "Default duration in ms for auto-close." },
-  { prop: "visibleToasts", type: "number", defaultValue: "6", description: "Maximum number visible simultaneously." },
-  { prop: "closeButton", type: "boolean", defaultValue: "true", description: "Shows close button on each toast." },
-  { prop: "richColors", type: "boolean", defaultValue: "true", description: "Uses strong palette by severity." },
-  { prop: "transparency", type: "number (0-100)", defaultValue: "0", description: "Transparency level applied to toasts." },
-  {
-    prop: "customColors",
-    type: "Partial<Record<SgToastType, SgToasterTypeColors>>",
-    defaultValue: "-",
-    description: "Overrides bg/fg/border by type."
-  }
-];
-
 export default function SgToasterPage() {
+  const i18n = useShowcaseI18n();
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors();
   const aiComponent = useAiManifestComponent("SgToaster");
   const [loadingId, setLoadingId] = React.useState<SgToastId | null>(null);
 
+  const toasterProps: ShowcasePropRow[] = [
+    {
+      prop: "position",
+      type: "\"top-right\" | \"top-left\" | \"top-center\" | \"bottom-right\" | \"bottom-left\" | \"bottom-center\"",
+      defaultValue: "\"top-right\"",
+      description: t(i18n, `${K}.props.position`)
+    },
+    { prop: "duration", type: "number", defaultValue: "4000", description: t(i18n, `${K}.props.duration`) },
+    { prop: "visibleToasts", type: "number", defaultValue: "6", description: t(i18n, `${K}.props.visibleToasts`) },
+    { prop: "closeButton", type: "boolean", defaultValue: "true", description: t(i18n, `${K}.props.closeButton`) },
+    { prop: "richColors", type: "boolean", defaultValue: "true", description: t(i18n, `${K}.props.richColors`) },
+    { prop: "transparency", type: "number (0-100)", defaultValue: "0", description: t(i18n, `${K}.props.transparency`) },
+    {
+      prop: "customColors",
+      type: "Partial<Record<SgToastType, SgToasterTypeColors>>",
+      defaultValue: "-",
+      description: t(i18n, `${K}.props.customColors`)
+    }
+  ];
+
   const startLoading = React.useCallback(() => {
-    const id = toast.loading("Processing batch...", {
-      description: "This toast stays open until you update or close it."
+    const id = toast.loading(t(i18n, `${K}.msg.loading.start`), {
+      description: t(i18n, `${K}.msg.loading.startDesc`)
     });
     setLoadingId(id);
-  }, []);
+  }, [i18n]);
 
   const finishLoadingSuccess = React.useCallback(() => {
     if (!loadingId) {
-      toast.warning("No active loading");
+      toast.warning(t(i18n, `${K}.msg.loading.noActive`));
       return;
     }
 
-    toast.success("Processamento concluido", {
+    toast.success(t(i18n, `${K}.msg.loading.success`), {
       id: loadingId,
-      description: "Update using the same id."
+      description: t(i18n, `${K}.msg.loading.successDesc`)
     });
     setLoadingId(null);
-  }, [loadingId]);
+  }, [loadingId, i18n]);
 
   const finishLoadingError = React.useCallback(() => {
     if (!loadingId) {
-      toast.warning("No active loading");
+      toast.warning(t(i18n, `${K}.msg.loading.noActive`));
       return;
     }
 
-    toast.error("Processing failed", {
+    toast.error(t(i18n, `${K}.msg.loading.fail`), {
       id: loadingId,
-      description: "Loading updated to error."
+      description: t(i18n, `${K}.msg.loading.failDesc`)
     });
     setLoadingId(null);
-  }, [loadingId]);
+  }, [loadingId, i18n]);
 
   const runPromiseDemo = React.useCallback(async () => {
     const task = async () => {
@@ -126,48 +121,48 @@ export default function SgToasterPage() {
 
     try {
       await toast.promise(task, {
-        loading: "Saving order...",
-        success: (value) => `Order saved: ${value.id}`,
-        error: (error) => `Failure: ${error instanceof Error ? error.message : "error"}`
+        loading: t(i18n, `${K}.msg.promise.loading`),
+        success: (value) => t(i18n, `${K}.msg.promise.success`, { id: value.id }),
+        error: (error) => t(i18n, `${K}.msg.promise.error`, { error: error instanceof Error ? error.message : "error" })
       });
     } catch {
       // error already handled by toast.promise
     }
-  }, []);
+  }, [i18n]);
 
   const runActionDemo = React.useCallback(() => {
-    toast.warning("Item archived", {
-      description: "Click undo to restore.",
+    toast.warning(t(i18n, `${K}.msg.action.title`), {
+      description: t(i18n, `${K}.msg.action.desc`),
       action: {
-        label: "Undo",
+        label: t(i18n, `${K}.buttons.undo`),
         onClick: () =>
-          toast.success("Action undone", {
-            description: "The item returned to the list."
+          toast.success(t(i18n, `${K}.msg.action.undoneTitle`), {
+            description: t(i18n, `${K}.msg.action.undoneDesc`)
           })
       }
     });
-  }, []);
+  }, [i18n]);
 
   const runCustomDemo = React.useCallback(() => {
     toast.custom(
       (id) => (
         <div className="w-full max-w-[280px] rounded-md border border-[#c56a2d]/50 bg-[#fff7f1] p-3">
-          <div className="text-sm font-semibold text-[#8f4b1f]">Custom toast</div>
-          <p className="mt-1 text-xs text-[#6b4b33]">Content rendered via toast.custom(...)</p>
+          <div className="text-sm font-semibold text-[#8f4b1f]">{t(i18n, `${K}.msg.custom.title`)}</div>
+          <p className="mt-1 text-xs text-[#6b4b33]">{t(i18n, `${K}.msg.custom.body`)}</p>
           <div className="mt-2 flex gap-2">
             <SgButton size="sm" onClick={() => toast.dismiss(id)}>
-              Close
+              {t(i18n, `${K}.buttons.close`)}
             </SgButton>
           </div>
         </div>
       ),
       { duration: 8000, closeButton: false }
     );
-  }, []);
+  }, [i18n]);
 
   const runOptionsDemo = React.useCallback(() => {
-    toast.info("Toast with custom options", {
-      description: "10s duration, no closeButton, custom style.",
+    toast.info(t(i18n, `${K}.msg.options.title`), {
+      description: t(i18n, `${K}.msg.options.desc`),
       duration: 10000,
       closeButton: false,
       className: "border-[#c56a2d]",
@@ -176,7 +171,7 @@ export default function SgToasterPage() {
         color: "#5b3b23"
       }
     });
-  }, []);
+  }, [i18n]);
 
   const transparencyLevel = 80;
   const transparencyOptions = React.useMemo<SgToastOptions>(
@@ -201,12 +196,12 @@ export default function SgToasterPage() {
   );
 
   const runTransparencyByType = React.useCallback((type: SgToastType) => {
-    emitToastByType(type, transparencyOptions);
-  }, [transparencyOptions]);
+    emitToastByType(i18n, type, transparencyOptions);
+  }, [transparencyOptions, i18n]);
 
   const runCustomColorsByType = React.useCallback((type: SgToastType) => {
-    emitToastByType(type, { style: customColorStyles[type] });
-  }, [customColorStyles]);
+    emitToastByType(i18n, type, { style: customColorStyles[type] });
+  }, [customColorStyles, i18n]);
 
   return (
     <I18NReady>
@@ -218,18 +213,18 @@ export default function SgToasterPage() {
         <ShowcaseStickyHeader
           stickyHeaderRef={stickyHeaderRef}
           title="SgToaster"
-          subtitle="Notification system with imperative API (toast) and renderer (SgToaster)."
+          subtitle={t(i18n, `${K}.subtitle`)}
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
 
       <Section
-        title="1) Base setup"
-        description="In this showcase, SgToaster is already mounted in layout. In a real app, mount it once at root."
+        title={t(i18n, `${K}.sections.baseSetup.title`)}
+        description={t(i18n, `${K}.sections.baseSetup.description`)}
       >
         <div className="flex flex-wrap gap-2">
-          <SgButton onClick={() => toast.message("Basic message")}>toast.message</SgButton>
-          <SgButton severity="success" onClick={() => toast.success("Success!")}>
+          <SgButton onClick={() => toast.message(t(i18n, `${K}.msg.basic`))}>toast.message</SgButton>
+          <SgButton severity="success" onClick={() => toast.success(t(i18n, `${K}.msg.types.success`))}>
             toast.success
           </SgButton>
           <SgButton appearance="outline" onClick={() => toast.dismiss()}>
@@ -240,24 +235,24 @@ export default function SgToasterPage() {
       </Section>
 
       <Section
-        title="2) Toast types"
-        description="Use type-specific methods by severity."
+        title={t(i18n, `${K}.sections.types.title`)}
+        description={t(i18n, `${K}.sections.types.description`)}
       >
         <div className="flex flex-wrap gap-2">
-          <SgButton onClick={() => toast.message("Neutral message")}>default</SgButton>
-          <SgButton severity="success" onClick={() => toast.success("Operation completed")}>
+          <SgButton onClick={() => toast.message(t(i18n, `${K}.msg.types.default`))}>default</SgButton>
+          <SgButton severity="success" onClick={() => toast.success(t(i18n, `${K}.msg.types.success`))}>
             success
           </SgButton>
-          <SgButton severity="info" onClick={() => toast.info("Important info")}>
+          <SgButton severity="info" onClick={() => toast.info(t(i18n, `${K}.msg.types.info`))}>
             info
           </SgButton>
-          <SgButton severity="warning" onClick={() => toast.warning("Attention in flow")}>
+          <SgButton severity="warning" onClick={() => toast.warning(t(i18n, `${K}.msg.types.warning`))}>
             warning
           </SgButton>
-          <SgButton severity="danger" onClick={() => toast.error("Failed to save")}>
+          <SgButton severity="danger" onClick={() => toast.error(t(i18n, `${K}.msg.types.error`))}>
             error
           </SgButton>
-          <SgButton appearance="outline" onClick={() => toast.loading("Processing...")}>
+          <SgButton appearance="outline" onClick={() => toast.loading(t(i18n, `${K}.msg.types.loading`))}>
             loading
           </SgButton>
         </div>
@@ -265,19 +260,19 @@ export default function SgToasterPage() {
       </Section>
 
       <Section
-        title="3) Loading by id (update same toast)"
-        description="Store returned id and reuse it to switch state without creating another toast."
+        title={t(i18n, `${K}.sections.loadingById.title`)}
+        description={t(i18n, `${K}.sections.loadingById.description`)}
       >
         <div className="flex flex-wrap items-center gap-2">
-          <SgButton onClick={startLoading}>Start loading</SgButton>
+          <SgButton onClick={startLoading}>{t(i18n, `${K}.buttons.startLoading`)}</SgButton>
           <SgButton severity="success" onClick={finishLoadingSuccess}>
-            Finish with success
+            {t(i18n, `${K}.buttons.finishSuccess`)}
           </SgButton>
           <SgButton severity="danger" onClick={finishLoadingError}>
-            Finish with error
+            {t(i18n, `${K}.buttons.finishError`)}
           </SgButton>
           <SgButton appearance="outline" onClick={() => toast.dismiss()}>
-            Clear all
+            {t(i18n, `${K}.buttons.clearAll`)}
           </SgButton>
           <span className="text-xs text-muted-foreground">
             loadingId: <code>{loadingId ?? "none"}</code>
@@ -287,43 +282,43 @@ export default function SgToasterPage() {
       </Section>
 
       <Section
-        title="4) toast.promise"
-        description="Convenience helper for loading/success/error lifecycle in promises."
+        title={t(i18n, `${K}.sections.promise.title`)}
+        description={t(i18n, `${K}.sections.promise.description`)}
       >
         <div className="flex flex-wrap gap-2">
-          <SgButton onClick={runPromiseDemo}>Run promise demo</SgButton>
+          <SgButton onClick={runPromiseDemo}>{t(i18n, `${K}.buttons.runPromise`)}</SgButton>
         </div>
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-toaster/samples/toast-promise.tsx.sample" />
       </Section>
 
       <Section
-        title="5) Actions and custom toast"
-        description="Use action for quick CTA and custom for free-form render."
+        title={t(i18n, `${K}.sections.actions.title`)}
+        description={t(i18n, `${K}.sections.actions.description`)}
       >
         <div className="flex flex-wrap gap-2">
           <SgButton severity="warning" onClick={runActionDemo}>
-            Toast with action
+            {t(i18n, `${K}.buttons.toastWithAction`)}
           </SgButton>
           <SgButton appearance="outline" onClick={runCustomDemo}>
-            Custom toast
+            {t(i18n, `${K}.buttons.customToast`)}
           </SgButton>
         </div>
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-toaster/samples/actions-and-custom-toast.tsx.sample" />
       </Section>
 
       <Section
-        title="6) Options per toast"
-        description="Each toast accepts duration, closeButton, className, and style."
+        title={t(i18n, `${K}.sections.options.title`)}
+        description={t(i18n, `${K}.sections.options.description`)}
       >
         <div className="flex flex-wrap gap-2">
-          <SgButton onClick={runOptionsDemo}>Trigger toast with options</SgButton>
+          <SgButton onClick={runOptionsDemo}>{t(i18n, `${K}.buttons.triggerOptions`)}</SgButton>
         </div>
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-toaster/samples/options-per-toast.tsx.sample" />
       </Section>
 
       <Section
-        title="7) Transparency"
-        description="Example focused only on transparency (80%)."
+        title={t(i18n, `${K}.sections.transparency.title`)}
+        description={t(i18n, `${K}.sections.transparency.description`)}
       >
         <div className="flex flex-wrap gap-2">
           <SgButton onClick={() => runTransparencyByType("default")}>default</SgButton>
@@ -332,14 +327,14 @@ export default function SgToasterPage() {
           <SgButton severity="warning" onClick={() => runTransparencyByType("warning")}>warning</SgButton>
           <SgButton severity="danger" onClick={() => runTransparencyByType("error")}>error</SgButton>
           <SgButton appearance="outline" onClick={() => runTransparencyByType("loading")}>loading</SgButton>
-          <SgButton appearance="outline" onClick={() => toast.dismiss()}>dismiss all</SgButton>
+          <SgButton appearance="outline" onClick={() => toast.dismiss()}>{t(i18n, `${K}.buttons.dismissAll`)}</SgButton>
         </div>
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-toaster/samples/transparency.tsx.sample" />
       </Section>
 
       <Section
-        title="8) Custom Colors"
-        description="Example focused only on custom colors per type."
+        title={t(i18n, `${K}.sections.customColors.title`)}
+        description={t(i18n, `${K}.sections.customColors.description`)}
       >
         <div className="flex flex-wrap gap-2">
           <SgButton onClick={() => runCustomColorsByType("default")}>default</SgButton>
@@ -348,14 +343,21 @@ export default function SgToasterPage() {
           <SgButton severity="warning" onClick={() => runCustomColorsByType("warning")}>warning</SgButton>
           <SgButton severity="danger" onClick={() => runCustomColorsByType("error")}>error</SgButton>
           <SgButton appearance="outline" onClick={() => runCustomColorsByType("loading")}>loading</SgButton>
-          <SgButton appearance="outline" onClick={() => toast.dismiss()}>dismiss all</SgButton>
+          <SgButton appearance="outline" onClick={() => toast.dismiss()}>{t(i18n, `${K}.buttons.dismissAll`)}</SgButton>
         </div>
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-toaster/samples/custom-colors.tsx.sample" />
       </Section>
 
       <Section
-        title="9) Isolated SgToaster Playground"
-        description="Here you can change all props in real time (position, duration, visibleToasts, closeButton, richColors, transparency and customColors)."
+        title={t(i18n, `${K}.sections.rounded.title`)}
+        description={t(i18n, `${K}.sections.rounded.description`)}
+      >
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-toaster/samples/rounded.tsx.sample" />
+      </Section>
+
+      <Section
+        title={t(i18n, `${K}.sections.playground.title`)}
+        description={t(i18n, `${K}.sections.playground.description`)}
       >
         <SgPlayground
           title="SgToaster Playground"
@@ -367,7 +369,7 @@ export default function SgToasterPage() {
         />
       </Section>
 
-        <ShowcasePropsReference rows={TOASTER_PROPS} />
+        <ShowcasePropsReference rows={toasterProps} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
@@ -375,6 +377,3 @@ export default function SgToasterPage() {
     </I18NReady>
   );
 }
-
-
-

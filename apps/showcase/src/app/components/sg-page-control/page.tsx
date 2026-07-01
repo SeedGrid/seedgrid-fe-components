@@ -12,7 +12,9 @@ import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
-import { useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
+import { t, useShowcaseI18n } from "../../../i18n";
+
+const K = "showcase.component.pageControl";
 
 const PAGE_IDS = ["registration", "fiscal", "access", "integrations"] as const;
 
@@ -204,97 +206,31 @@ const PAGE_CONTROL_PROPS: ShowcasePropRow[] = [
 ];
 
 
-type PageControlTexts = {
-  subtitle: string;
-  sectionTitles: string[];
-  sectionDescriptions: string[];
-  playgroundTitle: string;
-};
 
-const PAGE_CONTROL_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", PageControlTexts> = {
-  "pt-BR": {
-    subtitle: "TabView com controle externo de pagina ativa e ocultacao dinamica de tabs.",
-    sectionTitles: [
-      "1) Basico",
-      "2) Controle Externo",
-      "3) Ocultar Pagina Externamente",
-      "4) Com Hint nas Abas",
-      "5) Playground"
-    ],
-    sectionDescriptions: [
-      "Cada pagina define icon e title no SgPageControlPage.",
-      "Use activePageId + onActivePageIdChange para setar a aba ativa.",
-      "hiddenPageIds permite esconder tabs sem apagar a declaracao.",
-      "Passe o mouse sobre a aba para ver o hint.",
-      "Teste pageControlStyle, size e fullWidthTabs."
-    ],
-    playgroundTitle: "SgPageControl Playground"
-  },
-  "pt-PT": {
-    subtitle: "TabView com controlo externo da pagina ativa e ocultacao dinamica de tabs.",
-    sectionTitles: [
-      "1) Basico",
-      "2) Controlo Externo",
-      "3) Ocultar Pagina Externamente",
-      "4) Com Hint nos Tabs",
-      "5) Playground"
-    ],
-    sectionDescriptions: [
-      "Cada pagina define icon e title no SgPageControlPage.",
-      "Use activePageId + onActivePageIdChange para definir o tab ativo.",
-      "hiddenPageIds permite esconder tabs sem remover a declaracao.",
-      "Passe o rato no tab para ver o hint.",
-      "Teste pageControlStyle, size e fullWidthTabs."
-    ],
-    playgroundTitle: "SgPageControl Playground"
-  },
-  "en-US": {
-    subtitle: "TabView with external active-page control and dynamic tab hiding.",
-    sectionTitles: [
-      "1) Basic",
-      "2) External Control",
-      "3) Hide Page Externally",
-      "4) With Tab Hints",
-      "5) Playground"
-    ],
-    sectionDescriptions: [
-      "Each page defines icon and title in SgPageControlPage.",
-      "Use activePageId + onActivePageIdChange to set the active tab.",
-      "hiddenPageIds hides tabs without removing declarations.",
-      "Hover each tab to display its hint.",
-      "Try pageControlStyle, size and fullWidthTabs."
-    ],
-    playgroundTitle: "SgPageControl Playground"
-  },
-  es: {
-    subtitle: "TabView con control externo de pagina activa y ocultacion dinamica de tabs.",
-    sectionTitles: [
-      "1) Basico",
-      "2) Control Externo",
-      "3) Ocultar Pagina Externamente",
-      "4) Con Hint en Tabs",
-      "5) Playground"
-    ],
-    sectionDescriptions: [
-      "Cada pagina define icon y title en SgPageControlPage.",
-      "Usa activePageId + onActivePageIdChange para definir la tab activa.",
-      "hiddenPageIds oculta tabs sin remover declaraciones.",
-      "Pasa el cursor por la tab para ver el hint.",
-      "Prueba pageControlStyle, size y fullWidthTabs."
-    ],
-    playgroundTitle: "SgPageControl Playground"
-  }
-};
 
-function isSupportedPageControlLocale(locale: ShowcaseLocale): locale is keyof typeof PAGE_CONTROL_TEXTS {
-  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
-}
+
 export default function SgPageControlShowcasePage() {
   const i18n = useShowcaseI18n();
+  const texts = React.useMemo(() => ({
+    subtitle: t(i18n, `${K}.subtitle`),
+    sectionTitles: [
+      t(i18n, `${K}.sectionTitles.0`),
+      t(i18n, `${K}.sectionTitles.1`),
+      t(i18n, `${K}.sectionTitles.2`),
+      t(i18n, `${K}.sectionTitles.3`),
+      t(i18n, `${K}.sectionTitles.4`)
+    ],
+    sectionDescriptions: [
+      t(i18n, `${K}.sectionDescriptions.0`),
+      t(i18n, `${K}.sectionDescriptions.1`),
+      t(i18n, `${K}.sectionDescriptions.2`),
+      t(i18n, `${K}.sectionDescriptions.3`),
+      t(i18n, `${K}.sectionDescriptions.4`)
+    ],
+    playgroundTitle: t(i18n, `${K}.playgroundTitle`)
+  }), [i18n]);
   const aiComponent = useAiManifestComponent("SgPageControl");
   const aiPageComponent = useAiManifestComponent("SgPageControlPage");
-  const locale: keyof typeof PAGE_CONTROL_TEXTS = isSupportedPageControlLocale(i18n.locale) ? i18n.locale : "en-US";
-  const texts = PAGE_CONTROL_TEXTS[locale];
   const [activePageId, setActivePageId] = React.useState<string>("registration");
   const [hiddenPageIds, setHiddenPageIds] = React.useState<string[]>([]);
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({ deps: [i18n.locale] });

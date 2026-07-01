@@ -7,6 +7,45 @@ const __dirname = path.dirname(__filename);
 const packageRoot = path.resolve(__dirname, "..");
 const distRoot = path.join(packageRoot, "dist");
 const manifestOutputPath = path.join(distRoot, "ai", "seedgrid-components.manifest.json");
+const generatedPropsPath = path.join(packageRoot, "src", "ai-meta", "generated-props.json");
+
+// Props extraidos do TIPO `<Export>Props` (fonte da verdade), gerados por scripts/extract-props.mjs.
+async function loadGeneratedProps() {
+  try {
+    return JSON.parse(await readFile(generatedPropsPath, "utf8"));
+  } catch {
+    console.warn(`[build-ai-manifest] generated-props.json ausente em ${generatedPropsPath}; rode extract-props.mjs.`);
+    return {};
+  }
+}
+
+// Une a CURADORIA do .meta.ts (semanticRole/bindable/default/descricao curada) com os props
+// EXTRAIDOS do tipo. Curados vem primeiro (ordem/importancia autoral) e ganham nos campos que
+// possuem; os demais props reais do tipo entram em seguida — garantindo que nenhuma prop publica
+// fique de fora do manifesto (e, por tabela, do MCP e da tabela de props do showcase).
+function mergeProps(curated = [], generated = []) {
+  const generatedByName = new Map(generated.map((p) => [p.name, p]));
+  const seen = new Set();
+  const out = [];
+  for (const c of curated) {
+    const g = generatedByName.get(c.name);
+    seen.add(c.name);
+    out.push({
+      name: c.name,
+      type: c.type ?? g?.type,
+      required: c.required ?? g?.required ?? false,
+      ...(c.default !== undefined ? { default: c.default } : {}),
+      ...((c.description ?? g?.description) ? { description: c.description ?? g.description } : {}),
+      ...(c.semanticRole ? { semanticRole: c.semanticRole } : {}),
+      ...(c.bindable !== undefined ? { bindable: c.bindable } : {}),
+    });
+  }
+  for (const g of generated) {
+    if (seen.has(g.name)) continue;
+    out.push({ name: g.name, type: g.type, required: g.required, ...(g.description ? { description: g.description } : {}) });
+  }
+  return out;
+}
 
 async function loadPackageVersion() {
   const packageJsonPath = path.join(packageRoot, "package.json");
@@ -51,6 +90,7 @@ async function main() {
     loadComponentMeta(path.join("inputs", "SgInputPhone.meta.js")),
     loadComponentMeta(path.join("inputs", "SgInputPostalCode.meta.js")),
     loadComponentMeta(path.join("inputs", "SgOrderList.meta.js")),
+    loadComponentMeta(path.join("inputs", "SgPeriodSelector.meta.js")),
     loadComponentMeta(path.join("inputs", "SgPickList.meta.js")),
     loadComponentMeta(path.join("inputs", "SgRadioGroup.meta.js")),
     loadComponentMeta(path.join("inputs", "SgRating.meta.js")),
@@ -69,6 +109,7 @@ async function main() {
     loadComponentMeta(path.join("commons", "SgSkeleton.meta.js")),
     loadComponentMeta(path.join("commons", "SgToaster.meta.js")),
     loadComponentMeta(path.join("commons", "SgToastHost.meta.js")),
+    loadComponentMeta(path.join("commons", "SgWhistler.meta.js")),
     loadComponentMeta(path.join("commons", "SgWhistleHost.meta.js")),
     loadComponentMeta(path.join("commons", "toast.meta.js")),
     loadComponentMeta(path.join("commons", "dismissSgToast.meta.js")),
@@ -130,11 +171,25 @@ async function main() {
     loadComponentMeta(path.join("i18n", "useComponentsI18n.meta.js"))
   ]);
 
+  // Enriquece cada componente unindo a curadoria do meta com os props extraidos do tipo TS.
+  const generatedProps = await loadGeneratedProps();
+  let enrichedCount = 0;
+  const enrichedComponents = components.map((component) => {
+    const generated = generatedProps[component.exportName];
+    if (!generated) return component;
+    enrichedCount += 1;
+    return {
+      ...component,
+      sgMeta: { ...component.sgMeta, props: mergeProps(component.sgMeta.props ?? [], generated) }
+    };
+  });
+  console.log(`[build-ai-manifest] props enriquecidos a partir dos tipos em ${enrichedCount}/${components.length} componentes.`);
+
   const manifest = {
     schemaVersion: "0.1",
     package: "@seedgrid/fe-components",
     packageVersion,
-    components
+    components: enrichedComponents
   };
 
   await mkdir(path.dirname(manifestOutputPath), { recursive: true });

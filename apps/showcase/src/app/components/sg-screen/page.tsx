@@ -11,7 +11,9 @@ import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
-import { useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
+import { t, useShowcaseI18n } from "../../../i18n";
+
+const K = "showcase.component.screen";
 
 function Section(props: { title: string; description?: string; children: React.ReactNode }) {
   return (
@@ -124,59 +126,15 @@ const SCREEN_PROPS: ShowcasePropRow[] = [
   { prop: "className / style", type: "string / CSSProperties", defaultValue: "-", description: "Customizacao visual do container." }
 ];
 
-type ScreenTexts = {
-  subtitle: string;
-  section1Title: string;
-  section1Description: string;
-  section2Title: string;
-  section2Description: string;
-  playgroundTitle: string;
-};
 
-const SCREEN_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", ScreenTexts> = {
-  "pt-BR": {
-    subtitle: "Root container for screens. The example below is complete for copy/paste.",
-    section1Title: "1) Complete Example",
-    section1Description: "Uso com fullscreen=false em area controlada, incluindo layout top/left/right/bottom/client.",
-    section2Title: "2) Playground (SgPlayground)",
-    section2Description: "Simple and direct example with top, left, right, bottom, and client.",
-    playgroundTitle: "SgScreen Playground"
-  },
-  "pt-PT": {
-    subtitle: "Container raiz para ecras. O exemplo abaixo esta completo para copiar e colar.",
-    section1Title: "1) Complete Example",
-    section1Description: "Uso com fullscreen=false em area controlada, incluindo layout top/left/right/bottom/client.",
-    section2Title: "2) Playground (SgPlayground)",
-    section2Description: "Simple and direct example with top, left, right, bottom, and client.",
-    playgroundTitle: "SgScreen Playground"
-  },
-  "en-US": {
-    subtitle: "Root container for screens. The example below is complete and copy/paste ready.",
-    section1Title: "1) Full Example",
-    section1Description: "Usage with fullscreen=false in a constrained area including top/left/right/bottom/client layout.",
-    section2Title: "2) Playground (SgPlayground)",
-    section2Description: "Simple interactive example with top, left, right, bottom and client panels.",
-    playgroundTitle: "SgScreen Playground"
-  },
-  es: {
-    subtitle: "Contenedor raiz para pantallas. El ejemplo de abajo esta completo para copiar y pegar.",
-    section1Title: "1) Ejemplo Completo",
-    section1Description: "Uso con fullscreen=false en area controlada, incluyendo layout top/left/right/bottom/client.",
-    section2Title: "2) Playground (SgPlayground)",
-    section2Description: "Ejemplo simple y directo con top, left, right, bottom y client.",
-    playgroundTitle: "SgScreen Playground"
-  }
-};
 
-function isSupportedLocale(locale: ShowcaseLocale): locale is keyof typeof SCREEN_TEXTS {
-  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
-}
+
+
+
 
 export default function SgScreenPage() {
   const i18n = useShowcaseI18n();
-  const aiComponent = useAiManifestComponent("SgScreen");
-  const locale: keyof typeof SCREEN_TEXTS = isSupportedLocale(i18n.locale) ? i18n.locale : "en-US";
-  const texts = SCREEN_TEXTS[locale];
+  const aiComponent = useAiManifestComponent("SgScreen");
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({
     deps: [i18n.locale]
   });
@@ -191,12 +149,12 @@ export default function SgScreenPage() {
         <ShowcaseStickyHeader
           stickyHeaderRef={stickyHeaderRef}
           title="SgScreen"
-          subtitle={texts.subtitle}
+          subtitle={t(i18n, `${K}.subtitle`)}
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
 
-        <Section title={texts.section1Title} description={texts.section1Description}>
+        <Section title={t(i18n, `${K}.section1Title`)} description={t(i18n, `${K}.section1Description`)}>
           <SgPanel className="h-[420px] rounded-xl bg-muted/30" padding={12}>
             <SgScreen fullscreen={false} padding={10} className="rounded-lg bg-zinc-100">
               <SgPanel className="h-full w-full" contentPadding={8} contentGap={8}>
@@ -249,9 +207,9 @@ export default function SgScreenPage() {
           </SgStack>
         </Section>
 
-        <Section title={texts.section2Title} description={texts.section2Description}>
+        <Section title={t(i18n, `${K}.section2Title`)} description={t(i18n, `${K}.section2Description`)}>
           <SgPlayground
-            title={texts.playgroundTitle}
+            title={t(i18n, `${K}.playgroundTitle`)}
             interactive
             codeContract="appFile"
             playgroundFile="apps/showcase/src/app/components/sg-screen/sg-screen.tsx.playground"

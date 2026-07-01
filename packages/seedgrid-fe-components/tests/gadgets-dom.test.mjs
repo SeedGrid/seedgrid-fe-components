@@ -24,7 +24,7 @@ Module._load = function patchedLoad(request, parent, isMain) {
   return originalLoad.call(this, request, parent, isMain);
 };
 
-const { SgClockThemeProvider, SgClockThemePicker, SgLinearGauge, SgRadialGauge } = require("../dist/sandbox.cjs");
+const { SgClockThemeProvider, SgClockThemePicker, SgLinearGauge, SgRadialGauge, SgPeriodSelector } = require("../dist/sandbox.cjs");
 
 Module._load = originalLoad;
 
@@ -117,6 +117,34 @@ test("SgClockThemePicker filters rendered options through the search input", asy
     harness.restore();
   }
 });
+
+test("SgPeriodSelector renders preset groups (separators) in the open dropdown", async () => {
+  const harness = setupDomHarness();
+  try {
+    await harness.render(
+      React.createElement(SgPeriodSelector, { id: "ps-groups", label: "Periodo", locale: "pt-BR" })
+    );
+    await flushDom();
+
+    const input = harness.document.querySelector("input");
+    assert.ok(input);
+    input.focus();
+    input.dispatchEvent(new harness.window.FocusEvent("focus", { bubbles: true }));
+    input.dispatchEvent(new harness.window.MouseEvent("mousedown", { bubbles: true }));
+    input.dispatchEvent(new harness.window.MouseEvent("click", { bubbles: true }));
+    await flushDom();
+    await flushDom();
+
+    const text = harness.document.body.textContent ?? "";
+    // grupos distintos => campo group preservado pelo defaultMapItem => separadores por grupo
+    assert.match(text, /Atuais/i);
+    assert.match(text, /Futuros/i);
+    assert.match(text, /Passados/i);
+  } finally {
+    harness.restore();
+  }
+});
+
 function StatefulLinearGauge(props) {
   const [value, setValue] = React.useState(props.defaultValue ?? 20);
 

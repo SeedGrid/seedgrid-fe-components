@@ -18,7 +18,9 @@ import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
-import { useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
+import { t, useShowcaseI18n } from "../../../i18n";
+
+const K = "showcase.component.pickList";
 
 function Section(props: { title: string; description?: string; children: React.ReactNode; example?: boolean }) {
   return (
@@ -37,81 +39,9 @@ function CodeBlock(props: { sampleFile: string }) {
   return <SgCodeBlockBase sampleFile={props.sampleFile} />;
 }
 
-type PickListTexts = {
-  subtitle: string;
-  sectionTitles: [string, string, string, string, string, string, string];
-  propsTitle: string;
-  currentStateLabel: string;
-  transferOnlyHint: string;
-  dragHint: string;
-};
 
-const PICK_LIST_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", PickListTexts> = {
-  "pt-BR": {
-    subtitle: "PickList inspirado no PrimeFaces, com transferencia de itens entre listas, filtros e reordenacao.",
-    sectionTitles: [
-      "1) Basico",
-      "2) Com Filtros",
-      "3) Somente transferencia (sem ordenacao)",
-      "4) Reordenacao com controles de lista",
-      "5) Controles externos por ref",
-      "6) Item template customizado",
-      "7) Playground interativo"
-    ],
-    propsTitle: "Referencia de Props",
-    currentStateLabel: "Estado atual",
-    transferOnlyHint: "Exemplo para cenarios em que voce so precisa mover itens entre listas.",
-    dragHint: "Dica: arraste itens entre listas ou dentro da mesma lista para reordenar."
-  },
-  "pt-PT": {
-    subtitle: "PickList inspirado no PrimeFaces, com transferencia de itens entre listas, filtros e reordenacao.",
-    sectionTitles: [
-      "1) Basico",
-      "2) Com Filtros",
-      "3) Apenas transferencia (sem reordenacao)",
-      "4) Reordenacao com controlos de lista",
-      "5) Controlos externos por ref",
-      "6) Item template customizado",
-      "7) Playground interativo"
-    ],
-    propsTitle: "Referencia de Props",
-    currentStateLabel: "Estado atual",
-    transferOnlyHint: "Exemplo para cenarios em que so precisa mover itens entre listas.",
-    dragHint: "Dica: arraste itens entre listas ou dentro da mesma lista para reordenar."
-  },
-  "en-US": {
-    subtitle: "PrimeFaces-inspired PickList with item transfer between lists, filtering, and reordering.",
-    sectionTitles: [
-      "1) Basic",
-      "2) With Filters",
-      "3) Transfer only (no reordering)",
-      "4) Reordering with list controls",
-      "5) External controls through ref",
-      "6) Custom item template",
-      "7) Interactive playground"
-    ],
-    propsTitle: "Props Reference",
-    currentStateLabel: "Current state",
-    transferOnlyHint: "Example for scenarios where you only need to move items between lists.",
-    dragHint: "Tip: drag items between lists or inside the same list to reorder."
-  },
-  es: {
-    subtitle: "PickList inspirado en PrimeFaces, con transferencia de items entre listas, filtros y reordenacion.",
-    sectionTitles: [
-      "1) Basico",
-      "2) Con Filtros",
-      "3) Solo transferencia (sin reordenacion)",
-      "4) Reordenacion con controles de lista",
-      "5) Controles externos por ref",
-      "6) Item template personalizado",
-      "7) Playground interactivo"
-    ],
-    propsTitle: "Referencia de Props",
-    currentStateLabel: "Estado actual",
-    transferOnlyHint: "Ejemplo para escenarios donde solo necesitas mover items entre listas.",
-    dragHint: "Tip: arrastra items entre listas o dentro de la misma lista para reordenar."
-  }
-};
+
+
 
 type PropDescriptionKey =
   | "id"
@@ -189,148 +119,9 @@ const PICK_LIST_PROP_FIELDS: PropField[] = [
   { prop: "ref", type: "SgPickListRef", defaultValue: "-", descriptionKey: "ref" }
 ];
 
-const PICK_LIST_PROP_DESCRIPTIONS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", Record<PropDescriptionKey, string>> = {
-  "pt-BR": {
-    id: "Identificador base do componente.",
-    title: "Titulo exibido no GroupBox.",
-    source: "Lista de origem.",
-    target: "Lista de destino.",
-    value: "Valor controlado contendo source e target.",
-    onChange: "Callback disparado em transferencias, reordenacao e drag and drop.",
-    sourceSelection: "Selecao controlada da lista source.",
-    targetSelection: "Selecao controlada da lista target.",
-    onSourceSelectionChange: "Callback da mudanca de selecao na source.",
-    onTargetSelectionChange: "Callback da mudanca de selecao na target.",
-    selectionMode: "Define selecao unica ou multipla.",
-    sourceHeader: "Texto do cabecalho da lista source.",
-    targetHeader: "Texto do cabecalho da lista target.",
-    showTransferControls: "Exibe os botoes de transferencia entre listas.",
-    showSourceControls: "Exibe controles de reordenacao da source.",
-    showTargetControls: "Exibe controles de reordenacao da target.",
-    showSourceFilter: "Exibe filtro de busca da source.",
-    showTargetFilter: "Exibe filtro de busca da target.",
-    sourceFilterPlaceholder: "Placeholder do filtro da source.",
-    targetFilterPlaceholder: "Placeholder do filtro da target.",
-    filterMatchMode: "Modo de comparacao do filtro.",
-    draggable: "Permite arrastar para transferir/reordenar.",
-    disabled: "Desabilita interacao do componente.",
-    readOnly: "Mantem visualizacao sem alterar estado.",
-    emptyMessage: "Mensagem exibida quando lista estiver vazia.",
-    itemTemplate: "Template customizado para render de item.",
-    className: "Classe CSS adicional do container.",
-    style: "Estilo inline adicional do container.",
-    listClassName: "Classe CSS adicional das listas.",
-    itemClassName: "Classe CSS adicional de cada item.",
-    groupBoxProps: "Props extras repassadas ao SgGroupBox.",
-    ref: "Ref imperativo com transferencias e clearSelection."
-  },
-  "pt-PT": {
-    id: "Identificador base do componente.",
-    title: "Titulo exibido no GroupBox.",
-    source: "Lista de origem.",
-    target: "Lista de destino.",
-    value: "Valor controlado contendo source e target.",
-    onChange: "Callback disparado em transferencias, reordenacao e drag and drop.",
-    sourceSelection: "Selecao controlada da lista source.",
-    targetSelection: "Selecao controlada da lista target.",
-    onSourceSelectionChange: "Callback da mudanca de selecao na source.",
-    onTargetSelectionChange: "Callback da mudanca de selecao na target.",
-    selectionMode: "Define selecao unica ou multipla.",
-    sourceHeader: "Texto do cabecalho da lista source.",
-    targetHeader: "Texto do cabecalho da lista target.",
-    showTransferControls: "Exibe os botoes de transferencia entre listas.",
-    showSourceControls: "Exibe controlos de reordenacao da source.",
-    showTargetControls: "Exibe controlos de reordenacao da target.",
-    showSourceFilter: "Exibe filtro de pesquisa da source.",
-    showTargetFilter: "Exibe filtro de pesquisa da target.",
-    sourceFilterPlaceholder: "Placeholder do filtro da source.",
-    targetFilterPlaceholder: "Placeholder do filtro da target.",
-    filterMatchMode: "Modo de comparacao do filtro.",
-    draggable: "Permite arrastar para transferir/reordenar.",
-    disabled: "Desabilita interacao do componente.",
-    readOnly: "Mantem visualizacao sem alterar estado.",
-    emptyMessage: "Mensagem exibida quando lista estiver vazia.",
-    itemTemplate: "Template customizado para render de item.",
-    className: "Classe CSS adicional do container.",
-    style: "Estilo inline adicional do container.",
-    listClassName: "Classe CSS adicional das listas.",
-    itemClassName: "Classe CSS adicional de cada item.",
-    groupBoxProps: "Props extras repassadas ao SgGroupBox.",
-    ref: "Ref imperativo com transferencias e clearSelection."
-  },
-  "en-US": {
-    id: "Base identifier for the component.",
-    title: "Title displayed in the GroupBox.",
-    source: "Source list.",
-    target: "Target list.",
-    value: "Controlled value containing source and target.",
-    onChange: "Callback fired on transfer, reorder, and drag/drop.",
-    sourceSelection: "Controlled selection for source list.",
-    targetSelection: "Controlled selection for target list.",
-    onSourceSelectionChange: "Selection change callback for source.",
-    onTargetSelectionChange: "Selection change callback for target.",
-    selectionMode: "Defines single or multiple selection.",
-    sourceHeader: "Header text for source list.",
-    targetHeader: "Header text for target list.",
-    showTransferControls: "Shows transfer buttons between lists.",
-    showSourceControls: "Shows reorder controls for source.",
-    showTargetControls: "Shows reorder controls for target.",
-    showSourceFilter: "Shows source filter input.",
-    showTargetFilter: "Shows target filter input.",
-    sourceFilterPlaceholder: "Source filter placeholder.",
-    targetFilterPlaceholder: "Target filter placeholder.",
-    filterMatchMode: "Filter comparison mode.",
-    draggable: "Enables drag to transfer/reorder.",
-    disabled: "Disables component interaction.",
-    readOnly: "Keeps view mode without state changes.",
-    emptyMessage: "Message displayed when list is empty.",
-    itemTemplate: "Custom item render template.",
-    className: "Additional CSS class for container.",
-    style: "Additional inline style for container.",
-    listClassName: "Additional CSS class for lists.",
-    itemClassName: "Additional CSS class for each item.",
-    groupBoxProps: "Extra props forwarded to SgGroupBox.",
-    ref: "Imperative ref with transfer helpers and clearSelection."
-  },
-  es: {
-    id: "Identificador base del componente.",
-    title: "Titulo mostrado en GroupBox.",
-    source: "Lista de origen.",
-    target: "Lista de destino.",
-    value: "Valor controlado con source y target.",
-    onChange: "Callback disparado en transferencias, reordenacion y drag/drop.",
-    sourceSelection: "Seleccion controlada de source.",
-    targetSelection: "Seleccion controlada de target.",
-    onSourceSelectionChange: "Callback del cambio de seleccion en source.",
-    onTargetSelectionChange: "Callback del cambio de seleccion en target.",
-    selectionMode: "Define seleccion unica o multiple.",
-    sourceHeader: "Texto del encabezado de source.",
-    targetHeader: "Texto del encabezado de target.",
-    showTransferControls: "Muestra botones de transferencia entre listas.",
-    showSourceControls: "Muestra controles de reordenacion de source.",
-    showTargetControls: "Muestra controles de reordenacion de target.",
-    showSourceFilter: "Muestra filtro de source.",
-    showTargetFilter: "Muestra filtro de target.",
-    sourceFilterPlaceholder: "Placeholder del filtro de source.",
-    targetFilterPlaceholder: "Placeholder del filtro de target.",
-    filterMatchMode: "Modo de comparacion del filtro.",
-    draggable: "Permite arrastrar para transferir/reordenar.",
-    disabled: "Deshabilita interaccion del componente.",
-    readOnly: "Mantiene visualizacion sin alterar estado.",
-    emptyMessage: "Mensaje mostrado cuando la lista esta vacia.",
-    itemTemplate: "Template personalizado para render de item.",
-    className: "Clase CSS adicional del contenedor.",
-    style: "Estilo inline adicional del contenedor.",
-    listClassName: "Clase CSS adicional de las listas.",
-    itemClassName: "Clase CSS adicional de cada item.",
-    groupBoxProps: "Props adicionales reenviadas a SgGroupBox.",
-    ref: "Ref imperativo con transferencias y clearSelection."
-  }
-};
 
-function isSupportedPickListLocale(locale: ShowcaseLocale): locale is keyof typeof PICK_LIST_TEXTS {
-  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
-}
+
+
 
 const ROADMAP_SOURCE: SgPickListItem[] = [
   { label: "Authentication", value: "auth" },
@@ -342,10 +133,57 @@ const ROADMAP_SOURCE: SgPickListItem[] = [
 
 export default function SgPickListShowcase() {
   const i18n = useShowcaseI18n();
-  const aiComponent = useAiManifestComponent("SgPickList");
-  const locale: keyof typeof PICK_LIST_TEXTS = isSupportedPickListLocale(i18n.locale) ? i18n.locale : "en-US";
-  const texts = PICK_LIST_TEXTS[locale];
-  const propDescriptions = PICK_LIST_PROP_DESCRIPTIONS[locale];
+  const texts = React.useMemo(() => ({
+    subtitle: t(i18n, `${K}.subtitle`),
+    sectionTitles: [
+      t(i18n, `${K}.sectionTitles.0`),
+      t(i18n, `${K}.sectionTitles.1`),
+      t(i18n, `${K}.sectionTitles.2`),
+      t(i18n, `${K}.sectionTitles.3`),
+      t(i18n, `${K}.sectionTitles.4`),
+      t(i18n, `${K}.sectionTitles.5`),
+      t(i18n, `${K}.sectionTitles.6`)
+    ] as const,
+    propsTitle: t(i18n, `${K}.propsTitle`),
+    currentStateLabel: t(i18n, `${K}.currentStateLabel`),
+    transferOnlyHint: t(i18n, `${K}.transferOnlyHint`),
+    dragHint: t(i18n, `${K}.dragHint`)
+  }), [i18n]);
+  const propDescriptions = React.useMemo(() => ({
+    id: t(i18n, `${K}.propDescriptions.id`),
+    title: t(i18n, `${K}.propDescriptions.title`),
+    source: t(i18n, `${K}.propDescriptions.source`),
+    target: t(i18n, `${K}.propDescriptions.target`),
+    value: t(i18n, `${K}.propDescriptions.value`),
+    onChange: t(i18n, `${K}.propDescriptions.onChange`),
+    sourceSelection: t(i18n, `${K}.propDescriptions.sourceSelection`),
+    targetSelection: t(i18n, `${K}.propDescriptions.targetSelection`),
+    onSourceSelectionChange: t(i18n, `${K}.propDescriptions.onSourceSelectionChange`),
+    onTargetSelectionChange: t(i18n, `${K}.propDescriptions.onTargetSelectionChange`),
+    selectionMode: t(i18n, `${K}.propDescriptions.selectionMode`),
+    sourceHeader: t(i18n, `${K}.propDescriptions.sourceHeader`),
+    targetHeader: t(i18n, `${K}.propDescriptions.targetHeader`),
+    showTransferControls: t(i18n, `${K}.propDescriptions.showTransferControls`),
+    showSourceControls: t(i18n, `${K}.propDescriptions.showSourceControls`),
+    showTargetControls: t(i18n, `${K}.propDescriptions.showTargetControls`),
+    showSourceFilter: t(i18n, `${K}.propDescriptions.showSourceFilter`),
+    showTargetFilter: t(i18n, `${K}.propDescriptions.showTargetFilter`),
+    sourceFilterPlaceholder: t(i18n, `${K}.propDescriptions.sourceFilterPlaceholder`),
+    targetFilterPlaceholder: t(i18n, `${K}.propDescriptions.targetFilterPlaceholder`),
+    filterMatchMode: t(i18n, `${K}.propDescriptions.filterMatchMode`),
+    draggable: t(i18n, `${K}.propDescriptions.draggable`),
+    disabled: t(i18n, `${K}.propDescriptions.disabled`),
+    readOnly: t(i18n, `${K}.propDescriptions.readOnly`),
+    emptyMessage: t(i18n, `${K}.propDescriptions.emptyMessage`),
+    itemTemplate: t(i18n, `${K}.propDescriptions.itemTemplate`),
+    className: t(i18n, `${K}.propDescriptions.className`),
+    style: t(i18n, `${K}.propDescriptions.style`),
+    listClassName: t(i18n, `${K}.propDescriptions.listClassName`),
+    itemClassName: t(i18n, `${K}.propDescriptions.itemClassName`),
+    groupBoxProps: t(i18n, `${K}.propDescriptions.groupBoxProps`),
+    ref: t(i18n, `${K}.propDescriptions.ref`)
+  }), [i18n]);
+  const aiComponent = useAiManifestComponent("SgPickList");
   const propRows = React.useMemo<ShowcasePropRow[]>(
     () =>
       PICK_LIST_PROP_FIELDS.map((field) => ({

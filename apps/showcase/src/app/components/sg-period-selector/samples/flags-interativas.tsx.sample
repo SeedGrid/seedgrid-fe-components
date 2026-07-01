@@ -1,0 +1,47 @@
+import * as React from "react";
+import {
+  SgPeriodSelector,
+  SgToggleSwitch,
+  type ResolvedPeriod
+} from "@seedgrid/fe-components";
+
+// Os flags permitPast/permitCurrent/permitFuture/permitAll comecam TRUE por padrao.
+// Aqui usamos toggles para ligar/desligar cada grupo e o SgPeriodSelector recarrega
+// a lista de opcoes conforme a selecao muda.
+export default function Example() {
+  const [permitPast, setPermitPast] = React.useState(true);
+  const [permitCurrent, setPermitCurrent] = React.useState(true);
+  const [permitFuture, setPermitFuture] = React.useState(false);
+  const [period, setPeriod] = React.useState<ResolvedPeriod | null>(null);
+
+  return (
+    <div className="w-96 space-y-3">
+      <div className="flex flex-wrap gap-4">
+        <SgToggleSwitch id="tg-past" label="permitPast" checked={permitPast} onChange={setPermitPast} />
+        <SgToggleSwitch id="tg-current" label="permitCurrent" checked={permitCurrent} onChange={setPermitCurrent} />
+        <SgToggleSwitch id="tg-future" label="permitFuture" checked={permitFuture} onChange={setPermitFuture} />
+      </div>
+
+      <SgPeriodSelector
+        id="ps-flags"
+        label="Periodo"
+        locale="pt-BR"
+        permitPast={permitPast}
+        permitCurrent={permitCurrent}
+        permitFuture={permitFuture}
+        permitAll={false}
+        onChange={setPeriod}
+      />
+
+      <pre className="rounded border border-border bg-foreground/5 p-2 text-xs">
+        {period
+          ? JSON.stringify(
+              { preset: period.preset, start: period.startDate, end: period.endDate },
+              null,
+              2
+            )
+          : "Nenhum periodo selecionado"}
+      </pre>
+    </div>
+  );
+}

@@ -1,0 +1,22 @@
+"use client";
+
+import { SgButton, SgToaster, toast } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <div className="space-y-3">
+      {/* rounded is true by default (rounded-md); set false for square corners */}
+      <SgToaster rounded={false} />
+
+      <div className="flex flex-wrap gap-2">
+        <SgButton onClick={() => toast.message("Square toast")}>default</SgButton>
+        <SgButton severity="success" onClick={() => toast.success("Saved")}>
+          success
+        </SgButton>
+        <SgButton severity="danger" onClick={() => toast.error("Failed")}>
+          error
+        </SgButton>
+      </div>
+    </div>
+  );
+}

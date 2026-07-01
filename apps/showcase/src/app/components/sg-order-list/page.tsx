@@ -18,7 +18,9 @@ import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
-import { useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
+import { t, useShowcaseI18n } from "../../../i18n";
+
+const K = "showcase.component.orderList";
 
 function Section(props: { title: string; description?: string; children: React.ReactNode; example?: boolean }) {
   return (
@@ -37,62 +39,9 @@ function CodeBlock(props: { sampleFile: string }) {
   return <SgCodeBlockBase sampleFile={props.sampleFile} />;
 }
 
-type OrderListTexts = {
-  subtitle: string;
-  sectionTitles: [string, string, string, string, string, string];
-  propsReferenceTitle: string;
-};
 
-const ORDER_LIST_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", OrderListTexts> = {
-  "pt-BR": {
-    subtitle: "Lista ordenavel inspirada no PrimeFaces OrderList, com selecao, controles de reordenacao e drag and drop.",
-    sectionTitles: [
-      "1) Basico (controles internos)",
-      "2) Selecao multipla + controles externos (ref)",
-      "3) Drag and drop sem botoes",
-      "4) Item template customizado e item desabilitado",
-      "5) Ordem controlada por estado externo",
-      "6) Playground interativo"
-    ],
-    propsReferenceTitle: "Referencia de Props"
-  },
-  "pt-PT": {
-    subtitle: "Lista ordenavel inspirada no PrimeFaces OrderList, com selecao, controlos de reordenacao e drag and drop.",
-    sectionTitles: [
-      "1) Basico (controlos internos)",
-      "2) Selecao multipla + controlos externos (ref)",
-      "3) Drag and drop sem botoes",
-      "4) Item template customizado e item desabilitado",
-      "5) Ordem controlada por estado externo",
-      "6) Playground interativo"
-    ],
-    propsReferenceTitle: "Referencia de Props"
-  },
-  "en-US": {
-    subtitle: "Sortable list inspired by PrimeFaces OrderList, with selection, reordering controls, and drag and drop.",
-    sectionTitles: [
-      "1) Basic (built-in controls)",
-      "2) Multiple selection + external controls (ref)",
-      "3) Drag and drop without buttons",
-      "4) Custom item template and disabled item",
-      "5) Order controlled by external state",
-      "6) Interactive playground"
-    ],
-    propsReferenceTitle: "Props Reference"
-  },
-  es: {
-    subtitle: "Lista ordenable inspirada en PrimeFaces OrderList, con seleccion, controles de reordenacion y drag and drop.",
-    sectionTitles: [
-      "1) Basico (controles internos)",
-      "2) Seleccion multiple + controles externos (ref)",
-      "3) Drag and drop sin botones",
-      "4) Item template personalizado e item deshabilitado",
-      "5) Orden controlada por estado externo",
-      "6) Playground interactivo"
-    ],
-    propsReferenceTitle: "Referencia de Props"
-  }
-};
+
+
 
 type PropDescriptionKey =
   | "id"
@@ -148,104 +97,9 @@ const ORDER_LIST_PROP_FIELDS: PropField[] = [
   { prop: "ref", type: "SgOrderListRef", defaultValue: "-", descriptionKey: "ref" }
 ];
 
-const ORDER_LIST_PROP_DESCRIPTIONS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", Record<PropDescriptionKey, string>> = {
-  "pt-BR": {
-    id: "Identificador do listbox interno.",
-    title: "Titulo exibido no GroupBox do componente.",
-    source: "Lista base de itens para modo nao controlado.",
-    value: "Lista ordenada em modo controlado.",
-    onChange: "Callback chamado apos qualquer reordenacao.",
-    selectedValues: "Selecao controlada dos itens.",
-    onSelectionChange: "Callback da mudanca de selecao.",
-    selectionMode: "Define se permite selecionar um ou varios itens.",
-    showControls: "Mostra a coluna com botoes Top, Up, Down e Bottom.",
-    controlsPosition: "Posicao da coluna de controles.",
-    draggable: "Ativa reordenacao por drag and drop.",
-    disabled: "Desabilita interacao do componente inteiro.",
-    readOnly: "Permite visualizacao sem alterar ordem/selecao.",
-    emptyMessage: "Texto exibido quando a lista estiver vazia.",
-    itemTemplate: "Template customizado para renderizar cada item.",
-    className: "Classe CSS adicional do container raiz.",
-    style: "Estilo inline do container raiz.",
-    listClassName: "Classe CSS extra para o listbox.",
-    itemClassName: "Classe CSS extra para cada item.",
-    groupBoxProps: "Props extras repassadas para o SgGroupBox.",
-    ref: "Ref imperativo com moveTop/moveUp/moveDown/moveBottom e APIs de selecao."
-  },
-  "pt-PT": {
-    id: "Identificador do listbox interno.",
-    title: "Titulo exibido no GroupBox do componente.",
-    source: "Lista base de itens para modo nao controlado.",
-    value: "Lista ordenada em modo controlado.",
-    onChange: "Callback chamado apos qualquer reordenacao.",
-    selectedValues: "Selecao controlada dos itens.",
-    onSelectionChange: "Callback da mudanca de selecao.",
-    selectionMode: "Define se permite selecionar um ou varios itens.",
-    showControls: "Mostra a coluna com botoes Top, Up, Down e Bottom.",
-    controlsPosition: "Posicao da coluna de controlos.",
-    draggable: "Ativa reordenacao por drag and drop.",
-    disabled: "Desabilita interacao do componente inteiro.",
-    readOnly: "Permite visualizacao sem alterar ordem/selecao.",
-    emptyMessage: "Texto exibido quando a lista estiver vazia.",
-    itemTemplate: "Template customizado para renderizar cada item.",
-    className: "Classe CSS adicional do container raiz.",
-    style: "Estilo inline do container raiz.",
-    listClassName: "Classe CSS extra para o listbox.",
-    itemClassName: "Classe CSS extra para cada item.",
-    groupBoxProps: "Props extras repassadas para o SgGroupBox.",
-    ref: "Ref imperativo com moveTop/moveUp/moveDown/moveBottom e APIs de selecao."
-  },
-  "en-US": {
-    id: "Internal listbox identifier.",
-    title: "Title shown in the component GroupBox.",
-    source: "Base list used in uncontrolled mode.",
-    value: "Ordered list in controlled mode.",
-    onChange: "Callback fired after any reordering action.",
-    selectedValues: "Controlled selected item values.",
-    onSelectionChange: "Selection change callback.",
-    selectionMode: "Defines if one or multiple items can be selected.",
-    showControls: "Shows the Top, Up, Down and Bottom control column.",
-    controlsPosition: "Position of the controls column.",
-    draggable: "Enables drag-and-drop reordering.",
-    disabled: "Disables interaction for the whole component.",
-    readOnly: "Allows visualization without changing order/selection.",
-    emptyMessage: "Text shown when the list is empty.",
-    itemTemplate: "Custom template to render each item.",
-    className: "Additional CSS class for the root container.",
-    style: "Inline style for the root container.",
-    listClassName: "Additional CSS class for the listbox.",
-    itemClassName: "Additional CSS class for each item.",
-    groupBoxProps: "Additional props forwarded to SgGroupBox.",
-    ref: "Imperative ref with moveTop/moveUp/moveDown/moveBottom and selection APIs."
-  },
-  es: {
-    id: "Identificador interno del listbox.",
-    title: "Titulo mostrado en el GroupBox del componente.",
-    source: "Lista base para modo no controlado.",
-    value: "Lista ordenada en modo controlado.",
-    onChange: "Callback disparado despues de cualquier reordenacion.",
-    selectedValues: "Seleccion controlada de los items.",
-    onSelectionChange: "Callback del cambio de seleccion.",
-    selectionMode: "Define si permite seleccionar uno o varios items.",
-    showControls: "Muestra la columna con botones Top, Up, Down y Bottom.",
-    controlsPosition: "Posicion de la columna de controles.",
-    draggable: "Activa reordenacion por drag and drop.",
-    disabled: "Deshabilita la interaccion del componente completo.",
-    readOnly: "Permite visualizacion sin cambiar orden/seleccion.",
-    emptyMessage: "Texto mostrado cuando la lista esta vacia.",
-    itemTemplate: "Template personalizado para renderizar cada item.",
-    className: "Clase CSS adicional del contenedor raiz.",
-    style: "Estilo inline del contenedor raiz.",
-    listClassName: "Clase CSS extra para el listbox.",
-    itemClassName: "Clase CSS extra para cada item.",
-    groupBoxProps: "Props adicionales reenviadas a SgGroupBox.",
-    ref: "Ref imperativo con moveTop/moveUp/moveDown/moveBottom y APIs de seleccion."
-  }
-};
 
-function isSupportedOrderListLocale(locale: ShowcaseLocale): locale is keyof typeof ORDER_LIST_TEXTS {
-  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
-}
+
+
 
 const PRODUCT_ITEMS: SgOrderListItem[] = [
   { label: "Notebook", value: "notebook", icon: <Landmark className="h-4 w-4" /> },
@@ -280,10 +134,42 @@ const BACKLOG_ITEMS: SgOrderListItem[] = [
 
 export default function SgOrderListShowcase() {
   const i18n = useShowcaseI18n();
-  const aiComponent = useAiManifestComponent("SgOrderList");
-  const locale: keyof typeof ORDER_LIST_TEXTS = isSupportedOrderListLocale(i18n.locale) ? i18n.locale : "en-US";
-  const texts = ORDER_LIST_TEXTS[locale];
-  const propDescriptions = ORDER_LIST_PROP_DESCRIPTIONS[locale];
+  const texts = React.useMemo(() => ({
+    subtitle: t(i18n, `${K}.subtitle`),
+    sectionTitles: [
+      t(i18n, `${K}.sectionTitles.0`),
+      t(i18n, `${K}.sectionTitles.1`),
+      t(i18n, `${K}.sectionTitles.2`),
+      t(i18n, `${K}.sectionTitles.3`),
+      t(i18n, `${K}.sectionTitles.4`),
+      t(i18n, `${K}.sectionTitles.5`)
+    ] as const,
+    propsReferenceTitle: t(i18n, `${K}.propsReferenceTitle`)
+  }), [i18n]);
+  const propDescriptions = React.useMemo(() => ({
+    id: t(i18n, `${K}.propDescriptions.id`),
+    title: t(i18n, `${K}.propDescriptions.title`),
+    source: t(i18n, `${K}.propDescriptions.source`),
+    value: t(i18n, `${K}.propDescriptions.value`),
+    onChange: t(i18n, `${K}.propDescriptions.onChange`),
+    selectedValues: t(i18n, `${K}.propDescriptions.selectedValues`),
+    onSelectionChange: t(i18n, `${K}.propDescriptions.onSelectionChange`),
+    selectionMode: t(i18n, `${K}.propDescriptions.selectionMode`),
+    showControls: t(i18n, `${K}.propDescriptions.showControls`),
+    controlsPosition: t(i18n, `${K}.propDescriptions.controlsPosition`),
+    draggable: t(i18n, `${K}.propDescriptions.draggable`),
+    disabled: t(i18n, `${K}.propDescriptions.disabled`),
+    readOnly: t(i18n, `${K}.propDescriptions.readOnly`),
+    emptyMessage: t(i18n, `${K}.propDescriptions.emptyMessage`),
+    itemTemplate: t(i18n, `${K}.propDescriptions.itemTemplate`),
+    className: t(i18n, `${K}.propDescriptions.className`),
+    style: t(i18n, `${K}.propDescriptions.style`),
+    listClassName: t(i18n, `${K}.propDescriptions.listClassName`),
+    itemClassName: t(i18n, `${K}.propDescriptions.itemClassName`),
+    groupBoxProps: t(i18n, `${K}.propDescriptions.groupBoxProps`),
+    ref: t(i18n, `${K}.propDescriptions.ref`)
+  }), [i18n]);
+  const aiComponent = useAiManifestComponent("SgOrderList");
   const orderListProps = React.useMemo<ShowcasePropRow[]>(
     () =>
       ORDER_LIST_PROP_FIELDS.map((field) => ({

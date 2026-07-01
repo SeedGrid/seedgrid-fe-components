@@ -124,6 +124,7 @@ export function SgClockThemePicker({
               <SgAutocomplete<SgAutocompleteItem>
                 value={q}
                 onChange={setQ}
+                allowCustomValue
                 id="sg-clock-theme-search"
                 label={t(i18n, "components.gadgets.clock.searchTheme")}
                 placeholder={t(i18n, "components.gadgets.clock.searchThemePlaceholder")}

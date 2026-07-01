@@ -1,0 +1,8940 @@
+{
+  "SgAccordion": [
+    {
+      "name": "activeIndex",
+      "type": "number | number[]",
+      "required": false
+    },
+    {
+      "name": "animationDuration",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "collapsible",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "contentClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "defaultActiveIndex",
+      "type": "number | number[]",
+      "required": false
+    },
+    {
+      "name": "defaultOpenFirst",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "headerBackgroundColor",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "headerClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "horizontalHeaderWidth",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "horizontalMinHeight",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "items",
+      "type": "SgAccordionItem[]",
+      "required": true
+    },
+    {
+      "name": "keepMounted",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "multiple",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onActiveIndexChange",
+      "type": "((indexes: number[]) => void)",
+      "required": false
+    },
+    {
+      "name": "onItemToggle",
+      "type": "((index: number, isOpen: boolean) => void)",
+      "required": false
+    },
+    {
+      "name": "orientation",
+      "type": "SgAccordionOrientation",
+      "required": false
+    },
+    {
+      "name": "panelClassName",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "SgAutocomplete": [
+    {
+      "name": "allowCustomValue",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "cacheEnabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "cacheTTL",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "clearButton",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "clearOnSelect",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "delay",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "enabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "filled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "formatSelection",
+      "type": "((item: SgAutocompleteItem) => string)",
+      "required": false
+    },
+    {
+      "name": "grouped",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "groupped",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "hintText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "iconButtons",
+      "type": "ReactNode[]",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "itemTooltip",
+      "type": "((item: SgAutocompleteItem) => ReactNode)",
+      "required": false
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelAlign",
+      "type": "\"start\" | \"center\" | \"end\"",
+      "required": false
+    },
+    {
+      "name": "labelPosition",
+      "type": "\"top\" | \"left\" | \"float\"",
+      "required": false
+    },
+    {
+      "name": "labelText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelWidth",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "loadingText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "mapItem",
+      "type": "((raw: T) => SgAutocompleteItem)",
+      "required": false
+    },
+    {
+      "name": "maxLength",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "maxLengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "maxResult",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minLength",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minLengthForSearch",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minLengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "minNumberOfWords",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minNumberOfWordsMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "((value: string) => void)",
+      "required": false
+    },
+    {
+      "name": "onClear",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onEnter",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onExit",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onOpenChange",
+      "type": "((open: boolean) => void)",
+      "required": false
+    },
+    {
+      "name": "onSearch",
+      "type": "((query: string) => void)",
+      "required": false
+    },
+    {
+      "name": "onSelect",
+      "type": "((item: SgAutocompleteItem) => void)",
+      "required": false
+    },
+    {
+      "name": "onValidation",
+      "type": "((message: string | null) => void)",
+      "required": false
+    },
+    {
+      "name": "openOnFocus",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "placeholderEmpty",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "prefixIcon",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "prefixText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "renderEmpty",
+      "type": "((query: string) => ReactNode)",
+      "required": false
+    },
+    {
+      "name": "renderFooter",
+      "type": "((query: string, hasResults: boolean) => ReactNode)",
+      "required": false
+    },
+    {
+      "name": "renderGroupHeader",
+      "type": "((group: string) => ReactNode)",
+      "required": false
+    },
+    {
+      "name": "renderItem",
+      "type": "((item: SgAutocompleteItem, isActive: boolean) => ReactNode)",
+      "required": false
+    },
+    {
+      "name": "renderValue",
+      "type": "((item: SgAutocompleteItem | null) => ReactNode)",
+      "required": false
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "requiredMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "showCharCounter",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "showDropDownButton",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "source",
+      "type": "SgAutocompleteSource<T>",
+      "required": true
+    },
+    {
+      "name": "suffixText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "textInputType",
+      "type": "\"none\" | \"text\" | \"email\" | \"search\" | \"tel\" | \"url\" | \"numeric\" | \"decimal\"",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "HTMLInputTypeAttribute",
+      "required": false
+    },
+    {
+      "name": "validateOnBlur",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "validation",
+      "type": "((value: string) => string | null)",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "withBorder",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "SgAvatar": [
+    {
+      "name": "alt",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "bordered",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "customColors",
+      "type": "SgAvatarCustomColors",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "fallback",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "icon",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "imageClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "label",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "onImageError",
+      "type": "((event: SyntheticEvent<HTMLImageElement, Event>) => void)",
+      "required": false
+    },
+    {
+      "name": "severity",
+      "type": "SgAvatarSeverity",
+      "required": false
+    },
+    {
+      "name": "shape",
+      "type": "SgAvatarShape",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "SgAvatarSize",
+      "required": false
+    },
+    {
+      "name": "src",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "SgAvatarGroup": [
+    {
+      "name": "bordered",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "required": true
+    },
+    {
+      "name": "max",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "moreLabel",
+      "type": "((remaining: number) => ReactNode)",
+      "required": false
+    },
+    {
+      "name": "moreSeverity",
+      "type": "SgAvatarSeverity",
+      "required": false
+    },
+    {
+      "name": "overlap",
+      "type": "SgAvatarGroupOverlap",
+      "required": false
+    },
+    {
+      "name": "shape",
+      "type": "SgAvatarShape",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "SgAvatarSize",
+      "required": false
+    },
+    {
+      "name": "total",
+      "type": "number",
+      "required": false
+    }
+  ],
+  "SgBadge": [
+    {
+      "name": "autoRemove",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "badgeStyle",
+      "type": "SgBadgeVariant",
+      "required": false
+    },
+    {
+      "name": "customColors",
+      "type": "SgBadgeCustomColors",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "dot",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "hint",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "leftIcon",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "max",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "onClick",
+      "type": "((e: MouseEvent<Element, MouseEvent>) => void)",
+      "required": false
+    },
+    {
+      "name": "onRemove",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "partsClassName",
+      "type": "SgBadgePartsClassName",
+      "required": false
+    },
+    {
+      "name": "pulse",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "removable",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "removeAriaLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "rightIcon",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "rounded",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "severity",
+      "type": "SgBadgeSeverity",
+      "required": false
+    },
+    {
+      "name": "showZero",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "SgBadgeSize",
+      "required": false
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "ReactNode",
+      "required": false
+    }
+  ],
+  "SgBadgeOverlay": [
+    {
+      "name": "badge",
+      "type": "ReactNode",
+      "required": true
+    },
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "required": true
+    },
+    {
+      "name": "placement",
+      "type": "SgBadgeOverlayPlacement",
+      "required": false
+    }
+  ],
+  "SgBreadcrumb": [
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "homeHref",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "homeLabel",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "itemClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "items",
+      "type": "SgBreadcrumbItem[]",
+      "required": true
+    },
+    {
+      "name": "maxItems",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "onNavigate",
+      "type": "((item: SgBreadcrumbItem, index: number) => void)",
+      "required": false
+    },
+    {
+      "name": "overflowBehavior",
+      "type": "\"collapse\" | \"scroll\"",
+      "required": false
+    },
+    {
+      "name": "overflowLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "separator",
+      "type": "string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<...> | null",
+      "required": false
+    },
+    {
+      "name": "showHomeIcon",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "\"sm\" | \"md\" | \"lg\"",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "\"primary\" | \"default\" | \"subtle\"",
+      "required": false
+    }
+  ],
+  "SgButton": [
+    {
+      "name": "appearance",
+      "type": "Appearance",
+      "required": false
+    },
+    {
+      "name": "customColors",
+      "type": "SgButtonCustomColors",
+      "required": false
+    },
+    {
+      "name": "iconOnly",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "label",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "leftIcon",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "loading",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "rightIcon",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "severity",
+      "type": "Severity",
+      "required": false
+    },
+    {
+      "name": "shape",
+      "type": "Shape",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "Size",
+      "required": false
+    }
+  ],
+  "SgCalendar": [
+    {
+      "name": "cardProps",
+      "type": "Omit<SgCardProps, \"title\" | \"children\">",
+      "required": false
+    },
+    {
+      "name": "cardTitle",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "defaultValue",
+      "type": "((string | number | readonly string[]) & (string | Date))",
+      "required": false
+    },
+    {
+      "name": "defaultViewDate",
+      "type": "string | Date",
+      "required": false
+    },
+    {
+      "name": "isDateDisabled",
+      "type": "((date: Date) => boolean)",
+      "required": false
+    },
+    {
+      "name": "locale",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "maxDate",
+      "type": "string | Date",
+      "required": false
+    },
+    {
+      "name": "minDate",
+      "type": "string | Date",
+      "required": false
+    },
+    {
+      "name": "monthMinWidth",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "monthsPerLine",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "numberOfMonths",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "onValueChange",
+      "type": "((date: Date) => void)",
+      "required": false
+    },
+    {
+      "name": "onViewDateChange",
+      "type": "((viewDate: Date) => void)",
+      "required": false
+    },
+    {
+      "name": "showAdjacentMonths",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "showTodayShortcut",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "string | Date",
+      "required": false
+    },
+    {
+      "name": "viewDate",
+      "type": "string | Date",
+      "required": false
+    },
+    {
+      "name": "weekdayFormat",
+      "type": "SgCalendarWeekdayFormat",
+      "required": false
+    },
+    {
+      "name": "weekStartsOn",
+      "type": "0 | 1 | 2 | 3 | 4 | 5 | 6",
+      "required": false
+    }
+  ],
+  "SgCard": [
+    {
+      "name": "actions",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "bgColor",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "bgColorFooter",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "bgColorTitle",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "bodyClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "cardStyle",
+      "type": "SgCardVariant",
+      "required": false
+    },
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "clickable",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "collapseIcon",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "collapseIconSize",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "collapseToggleAlign",
+      "type": "\"right\" | \"left\"",
+      "required": false
+    },
+    {
+      "name": "collapsible",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "defaultOpen",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "defaultPosition",
+      "type": "SgCardPosition",
+      "required": false
+    },
+    {
+      "name": "description",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "draggable",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "dragPersistKey",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "footer",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "footerClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "header",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "headerClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "leading",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "onClick",
+      "type": "MouseEventHandler<HTMLElement>",
+      "required": false
+    },
+    {
+      "name": "onOpenChange",
+      "type": "((open: boolean) => void)",
+      "required": false
+    },
+    {
+      "name": "onPositionChange",
+      "type": "((position: SgCardPosition) => void)",
+      "required": false
+    },
+    {
+      "name": "open",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "SgCardSize",
+      "required": false
+    },
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "toggleOnHeaderClick",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "trailer",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "trailing",
+      "type": "ReactNode",
+      "required": false
+    }
+  ],
+  "SgCarousel": [
+    {
+      "name": "autoPlay",
+      "type": "boolean",
+      "required": false,
+      "description": "Enable auto play"
+    },
+    {
+      "name": "autoPlayInterval",
+      "type": "number",
+      "required": false,
+      "description": "Auto play interval in milliseconds"
+    },
+    {
+      "name": "circular",
+      "type": "boolean",
+      "required": false,
+      "description": "Enable circular mode (infinite loop)"
+    },
+    {
+      "name": "customNavigators",
+      "type": "{ prev?: ReactNode; next?: ReactNode; }",
+      "required": false,
+      "description": "Custom render for navigation buttons"
+    },
+    {
+      "name": "gap",
+      "type": "number",
+      "required": false,
+      "description": "Gap between items in pixels"
+    },
+    {
+      "name": "height",
+      "type": "string | number",
+      "required": false,
+      "description": "Height of the carousel container"
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": false,
+      "description": "Unique identifier for the carousel"
+    },
+    {
+      "name": "itemClassName",
+      "type": "string",
+      "required": false,
+      "description": "Custom class name for items"
+    },
+    {
+      "name": "items",
+      "type": "ReactNode[]",
+      "required": true,
+      "description": "Items to display in the carousel"
+    },
+    {
+      "name": "numScroll",
+      "type": "number",
+      "required": false,
+      "description": "Number of items to scroll at a time"
+    },
+    {
+      "name": "numVisible",
+      "type": "number",
+      "required": false,
+      "description": "Number of items to display at once"
+    },
+    {
+      "name": "onIndexChange",
+      "type": "((index: number) => void)",
+      "required": false,
+      "description": "Callback when active index changes"
+    },
+    {
+      "name": "orientation",
+      "type": "SgCarouselOrientation",
+      "required": false,
+      "description": "Orientation of the carousel"
+    },
+    {
+      "name": "showIndicators",
+      "type": "boolean",
+      "required": false,
+      "description": "Show indicators (dots)"
+    },
+    {
+      "name": "showNavigators",
+      "type": "boolean",
+      "required": false,
+      "description": "Show navigation buttons"
+    },
+    {
+      "name": "width",
+      "type": "string | number",
+      "required": false,
+      "description": "Width of the carousel container"
+    }
+  ],
+  "SgCheckboxGroup": [
+    {
+      "name": "checkAllIcon",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "checkAllLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "groupBoxProps",
+      "type": "(Omit<Partial<SgGroupBoxProps>, \"title\" | \"children\"> & { title?: string; })",
+      "required": false
+    },
+    {
+      "name": "iconOnly",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "((value: (string | number)[]) => void)",
+      "required": false
+    },
+    {
+      "name": "optionClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "orientation",
+      "type": "SgCheckboxGroupOrientation",
+      "required": false
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "selectionStyle",
+      "type": "SgCheckboxGroupSelectionStyle",
+      "required": false
+    },
+    {
+      "name": "showCheckAll",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "source",
+      "type": "SgCheckboxGroupOption[]",
+      "required": true
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "(string | number)[]",
+      "required": false
+    }
+  ],
+  "SgClock": [
+    {
+      "name": "cardProps",
+      "type": "Omit<SgCardProps, \"title\" | \"children\">",
+      "required": false
+    },
+    {
+      "name": "cardTitle",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "centerOverlay",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "clockStyle",
+      "type": "\"digital\" | \"analog\"",
+      "required": false
+    },
+    {
+      "name": "digitalStyle",
+      "type": "SgClockDigitalStyle",
+      "required": false
+    },
+    {
+      "name": "format",
+      "type": "\"12h\" | \"24h\"",
+      "required": false
+    },
+    {
+      "name": "initialServerTime",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "locale",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "secondHandMode",
+      "type": "\"step\" | \"smooth\"",
+      "required": false
+    },
+    {
+      "name": "showSeconds",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "number | \"sm\" | \"md\" | \"lg\"",
+      "required": false
+    },
+    {
+      "name": "theme",
+      "type": "SgClockTheme",
+      "required": false
+    },
+    {
+      "name": "themeId",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "timezone",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "SgClockThemePicker": [
+    {
+      "name": "defaultOpen",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "fallbackThemeId",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "filter",
+      "type": "((theme: SgClockTheme) => boolean)",
+      "required": false
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "(id: string) => void",
+      "required": true
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "previewSize",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "searchable",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "required": true
+    }
+  ],
+  "SgCombobox": [
+    {
+      "name": "emptyText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "enabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "filled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "grouped",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "groupped",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "hintText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "itemTooltip",
+      "type": "((item: SgAutocompleteItem) => ReactNode)",
+      "required": false
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelAlign",
+      "type": "\"start\" | \"center\" | \"end\"",
+      "required": false
+    },
+    {
+      "name": "labelPosition",
+      "type": "\"top\" | \"left\" | \"float\"",
+      "required": false
+    },
+    {
+      "name": "labelText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelWidth",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "loadingText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "mapItem",
+      "type": "((raw: T) => SgAutocompleteItem)",
+      "required": false
+    },
+    {
+      "name": "maxLength",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "maxLengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "minLength",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minLengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "minNumberOfWords",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minNumberOfWordsMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onClear",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onEnter",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onExit",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onSelect",
+      "type": "((value: T) => void)",
+      "required": false
+    },
+    {
+      "name": "onValidation",
+      "type": "((message: string | null) => void)",
+      "required": false
+    },
+    {
+      "name": "onValueChange",
+      "type": "((value: ComboboxValue) => void)",
+      "required": false
+    },
+    {
+      "name": "openOnFocus",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "prefixIcon",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "prefixText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "renderFooter",
+      "type": "((query: string, hasResults: boolean) => ReactNode)",
+      "required": false
+    },
+    {
+      "name": "renderGroupHeader",
+      "type": "((group: string) => ReactNode)",
+      "required": false
+    },
+    {
+      "name": "renderItem",
+      "type": "((item: SgAutocompleteItem, isActive: boolean) => ReactNode)",
+      "required": false
+    },
+    {
+      "name": "renderValue",
+      "type": "((item: SgAutocompleteItem | null) => ReactNode)",
+      "required": false
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "requiredMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "showCharCounter",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "source",
+      "type": "SgComboboxSource<T>",
+      "required": true
+    },
+    {
+      "name": "suffixText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "textInputType",
+      "type": "\"none\" | \"text\" | \"email\" | \"search\" | \"tel\" | \"url\" | \"numeric\" | \"decimal\"",
+      "required": false
+    },
+    {
+      "name": "validateOnBlur",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "validation",
+      "type": "((value: string) => string | null)",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "ComboboxValue",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "withBorder",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "SgConfirmationDialog": [
+    {
+      "name": "animation",
+      "type": "SgDialogAnimation",
+      "required": false
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "autoCloseMs",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "bodyClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "cancelButton",
+      "type": "SgConfirmationDialogButtonConfig",
+      "required": false
+    },
+    {
+      "name": "closeable",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "closeOnCancel",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "closeOnConfirm",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "closeOnEsc",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "closeOnOverlayClick",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "confirmButton",
+      "type": "SgConfirmationDialogButtonConfig",
+      "required": false
+    },
+    {
+      "name": "contentClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "customColor",
+      "type": "BackgroundColor",
+      "required": false
+    },
+    {
+      "name": "defaultOpen",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "footerClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "headerClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "icon",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "iconPlacement",
+      "type": "\"top\" | \"left\"",
+      "required": false
+    },
+    {
+      "name": "initialFocusRef",
+      "type": "RefObject<HTMLElement>",
+      "required": false
+    },
+    {
+      "name": "leading",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "lockBodyScroll",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "message",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "onCancel",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onClose",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onConfirm",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onOpenChange",
+      "type": "((open: boolean) => void)",
+      "required": false
+    },
+    {
+      "name": "open",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "overlayClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "restoreFocus",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "severity",
+      "type": "SgDialogSeverity",
+      "required": false
+    },
+    {
+      "name": "showSeverityAccent",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "SgDialogSize",
+      "required": false
+    },
+    {
+      "name": "subtitle",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "trailing",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "transitionMs",
+      "type": "number",
+      "required": false
+    }
+  ],
+  "SgDatatable": [
+    {
+      "name": "columnManagerLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "columnManagerMaxHeight",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "columns",
+      "type": "SgDatatableColumn<T>[]",
+      "required": true
+    },
+    {
+      "name": "dataKey",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "emptyMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "filters",
+      "type": "Record<string, string>",
+      "required": false
+    },
+    {
+      "name": "first",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "globalFilter",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "globalFilterPlaceholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "groupBoxProps",
+      "type": "(Omit<Partial<SgGroupBoxProps>, \"title\" | \"children\"> & { title?: string; })",
+      "required": false
+    },
+    {
+      "name": "hoverableRows",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "lazy",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "loading",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onFilter",
+      "type": "((event: SgDatatableFilterEvent) => void)",
+      "required": false
+    },
+    {
+      "name": "onGlobalFilterChange",
+      "type": "((value: string) => void)",
+      "required": false
+    },
+    {
+      "name": "onPage",
+      "type": "((event: SgDatatablePageEvent) => void)",
+      "required": false
+    },
+    {
+      "name": "onSelectionChange",
+      "type": "((selection: SgDatatableSelection<T>) => void)",
+      "required": false
+    },
+    {
+      "name": "onSort",
+      "type": "((event: SgDatatableSortEvent) => void)",
+      "required": false
+    },
+    {
+      "name": "paginator",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "removableSort",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "rowClassName",
+      "type": "string | ((rowData: T, rowIndex: number) => string)",
+      "required": false
+    },
+    {
+      "name": "rows",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "rowsPerPageOptions",
+      "type": "number[]",
+      "required": false
+    },
+    {
+      "name": "selection",
+      "type": "SgDatatableSelection<T>",
+      "required": false
+    },
+    {
+      "name": "selectionMode",
+      "type": "SgDatatableSelectionMode",
+      "required": false
+    },
+    {
+      "name": "showClearFiltersButton",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "showColumnFilters",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "showColumnManager",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "showGlobalFilter",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "showGridlines",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "sortField",
+      "type": "string | null",
+      "required": false
+    },
+    {
+      "name": "sortOrder",
+      "type": "SgDatatableSortOrder",
+      "required": false
+    },
+    {
+      "name": "stripedRows",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "tableClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "totalRecords",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "T[]",
+      "required": true
+    }
+  ],
+  "SgDialog": [
+    {
+      "name": "animation",
+      "type": "SgDialogAnimation",
+      "required": false
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "autoCloseMs",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "bodyClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "closeable",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "closeOnEsc",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "closeOnOverlayClick",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "contentClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "customColor",
+      "type": "BackgroundColor",
+      "required": false
+    },
+    {
+      "name": "defaultOpen",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "footer",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "footerClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "headerClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "initialFocusRef",
+      "type": "RefObject<HTMLElement>",
+      "required": false
+    },
+    {
+      "name": "leading",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "lockBodyScroll",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onClose",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onOpenChange",
+      "type": "((open: boolean) => void)",
+      "required": false
+    },
+    {
+      "name": "open",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "overlayClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "restoreFocus",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "severity",
+      "type": "SgDialogSeverity",
+      "required": false
+    },
+    {
+      "name": "shadow",
+      "type": "BoxShadow",
+      "required": false
+    },
+    {
+      "name": "showTopAccent",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "SgDialogSize",
+      "required": false
+    },
+    {
+      "name": "subtitle",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "trailing",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "transitionMs",
+      "type": "number",
+      "required": false
+    }
+  ],
+  "SgDiscardDigit": [
+    {
+      "name": "animateOnChange",
+      "type": "boolean",
+      "required": false,
+      "description": "Ativa animacao de descarte quando o valor muda."
+    },
+    {
+      "name": "backgroundColor",
+      "type": "string",
+      "required": false,
+      "description": "Cor de fundo das folhas."
+    },
+    {
+      "name": "changeAnimationMode",
+      "type": "\"discard\" | \"incoming\"",
+      "required": false,
+      "description": "Estrategia de animacao para mudancas por prop `value`."
+    },
+    {
+      "name": "color",
+      "type": "string",
+      "required": false,
+      "description": "Cor do texto principal."
+    },
+    {
+      "name": "font",
+      "type": "string",
+      "required": false,
+      "description": "Fonte (font-family) usada no texto."
+    },
+    {
+      "name": "fontSize",
+      "type": "number",
+      "required": false,
+      "description": "Tamanho da fonte em px (escala geral do bloco)."
+    },
+    {
+      "name": "fontWeight",
+      "type": "string | number",
+      "required": false,
+      "description": "Peso da fonte."
+    },
+    {
+      "name": "stackDepth",
+      "type": "number",
+      "required": false,
+      "description": "Quantidade de folhas visiveis na pilha (min 2, max 30). Ignorado se totalNumberPages for definido."
+    },
+    {
+      "name": "totalNumberPages",
+      "type": "number",
+      "required": false,
+      "description": "Total de paginas do monte. Quando definido, a pilha visual encolhe a cada increasePage()."
+    },
+    {
+      "name": "transitionMs",
+      "type": "number",
+      "required": false,
+      "description": "Duracao total da animacao em ms."
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "required": true,
+      "description": "Texto/valor exibido na folha do topo."
+    }
+  ],
+  "SgDockLayout": [
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "required": true
+    },
+    {
+      "name": "defaultState",
+      "type": "SgDockLayoutState",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    }
+  ],
+  "SgDockMenu": [
+    {
+      "name": "backgroundColor",
+      "type": "string",
+      "required": false,
+      "description": "Background color"
+    },
+    {
+      "name": "dragId",
+      "type": "string",
+      "required": false,
+      "description": "ID for persisting drag position"
+    },
+    {
+      "name": "enableDragDrop",
+      "type": "boolean",
+      "required": false,
+      "description": "Enable drag and drop repositioning"
+    },
+    {
+      "name": "gap",
+      "type": "number",
+      "required": false,
+      "description": "Gap between items in pixels"
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": false,
+      "description": "Unique identifier for the dock"
+    },
+    {
+      "name": "itemClassName",
+      "type": "string",
+      "required": false,
+      "description": "Custom class name for items"
+    },
+    {
+      "name": "items",
+      "type": "SgDockMenuItem[]",
+      "required": true,
+      "description": "Items to display in the dock"
+    },
+    {
+      "name": "itemSize",
+      "type": "number",
+      "required": false,
+      "description": "Item size in pixels"
+    },
+    {
+      "name": "magnify",
+      "type": "boolean",
+      "required": false,
+      "description": "Magnification effect on hover"
+    },
+    {
+      "name": "magnifyScale",
+      "type": "number",
+      "required": false,
+      "description": "Magnification scale"
+    },
+    {
+      "name": "offset",
+      "type": "{ x?: number; y?: number; }",
+      "required": false,
+      "description": "Offset from the edge"
+    },
+    {
+      "name": "position",
+      "type": "SgDockMenuPosition",
+      "required": false,
+      "description": "Position of the dock"
+    },
+    {
+      "name": "showLabels",
+      "type": "boolean",
+      "required": false,
+      "description": "Show labels on hover"
+    },
+    {
+      "name": "zIndex",
+      "type": "number",
+      "required": false,
+      "description": "Z-index"
+    }
+  ],
+  "SgDockScreen": [
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "defaultState",
+      "type": "SgDockLayoutState",
+      "required": false
+    },
+    {
+      "name": "fullscreen",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "height",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "layoutClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "padding",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "screenId",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "string | number",
+      "required": false
+    }
+  ],
+  "SgDockZone": [
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "zone",
+      "type": "SgDockZoneId",
+      "required": true
+    }
+  ],
+  "SgExpandablePanel": [
+    {
+      "name": "animation",
+      "type": "SgExpandablePanelAnimation",
+      "required": false
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "bodyClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "border",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "required": true
+    },
+    {
+      "name": "closeOnEsc",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "closeOnOutsideClick",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "contentClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "defaultOpen",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "expandTo",
+      "type": "SgExpandablePanelDirection",
+      "required": true
+    },
+    {
+      "name": "footer",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "footerClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "handle",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "header",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "headerClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "mode",
+      "type": "SgExpandablePanelMode",
+      "required": false
+    },
+    {
+      "name": "onOpenChange",
+      "type": "((open: boolean) => void)",
+      "required": false
+    },
+    {
+      "name": "onSizeChange",
+      "type": "((size: string | number) => void)",
+      "required": false
+    },
+    {
+      "name": "open",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "overlayClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "placement",
+      "type": "SgExpandablePanelPlacement",
+      "required": false
+    },
+    {
+      "name": "resizable",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "role",
+      "type": "SgExpandablePanelRole",
+      "required": false
+    },
+    {
+      "name": "rounded",
+      "type": "SgExpandablePanelRounded",
+      "required": false
+    },
+    {
+      "name": "showBackdrop",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "SgExpandablePanelSize",
+      "required": false
+    },
+    {
+      "name": "trapFocus",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "SgFadeDigit": [
+    {
+      "name": "backgroundColor",
+      "type": "string",
+      "required": false,
+      "description": "Card background color."
+    },
+    {
+      "name": "color",
+      "type": "string",
+      "required": false,
+      "description": "Text color of the digit."
+    },
+    {
+      "name": "font",
+      "type": "string",
+      "required": false,
+      "description": "CSS font-family for the digit."
+    },
+    {
+      "name": "fontSize",
+      "type": "number",
+      "required": false,
+      "description": "Font size in pixels — controls overall card scale."
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "required": true,
+      "description": "Character to display. When changed, the current digit fades out and the new one fades in."
+    }
+  ],
+  "SgFlipDigit": [
+    {
+      "name": "fontSize",
+      "type": "number",
+      "required": false,
+      "description": "Font size in pixels — controls overall scale"
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "required": true,
+      "description": "The character to display (single char)"
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "required": false
+    }
+  ],
+  "SgFloatActionButton": [
+    {
+      "name": "absolute",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "actions",
+      "type": "SgFABAction[]",
+      "required": false
+    },
+    {
+      "name": "activeIcon",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "animation",
+      "type": "FABAnimation",
+      "required": false
+    },
+    {
+      "name": "animationDuration",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "animationOn",
+      "type": "FABAnimationTrigger",
+      "required": false
+    },
+    {
+      "name": "autoHideOnScroll",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "color",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "direction",
+      "type": "\"right\" | \"left\" | \"down\" | \"up\"",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "dragId",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "enableDragDrop",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "floatActionButtonStyle",
+      "type": "FABSeverity",
+      "required": false
+    },
+    {
+      "name": "hideDirection",
+      "type": "\"down\" | \"up\"",
+      "required": false
+    },
+    {
+      "name": "hint",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "hintDelay",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "hintPosition",
+      "type": "\"top\" | \"right\" | \"bottom\" | \"left\"",
+      "required": false
+    },
+    {
+      "name": "icon",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "loading",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "offset",
+      "type": "{ x?: number; y?: number; }",
+      "required": false
+    },
+    {
+      "name": "onClick",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "position",
+      "type": "FABPosition",
+      "required": false
+    },
+    {
+      "name": "radius",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "severity",
+      "type": "FABSeverity",
+      "required": false
+    },
+    {
+      "name": "shape",
+      "type": "FABShape",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "FABSize",
+      "required": false
+    },
+    {
+      "name": "transitionDelay",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "FABLayoutType",
+      "required": false
+    },
+    {
+      "name": "zIndex",
+      "type": "number",
+      "required": false
+    }
+  ],
+  "SgGrid": [
+    {
+      "name": "align",
+      "type": "\"start\" | \"center\" | \"end\" | \"stretch\"",
+      "required": false
+    },
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "columns",
+      "type": "SgGridColumns",
+      "required": false
+    },
+    {
+      "name": "dense",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "gap",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "justify",
+      "type": "\"start\" | \"center\" | \"end\" | \"stretch\" | \"between\" | \"around\" | \"evenly\"",
+      "required": false
+    },
+    {
+      "name": "minItemWidth",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "padding",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "rowHeight",
+      "type": "string | number",
+      "required": false
+    }
+  ],
+  "SgGroupBox": [
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "required": true
+    },
+    {
+      "name": "height",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "width",
+      "type": "string | number",
+      "required": false
+    }
+  ],
+  "SgInputBirthDate": [
+    {
+      "name": "alwaysFloat",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "clearButton",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "enabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "filled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "hintText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "iconButtons",
+      "type": "ReactNode[]",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelAlign",
+      "type": "\"start\" | \"center\" | \"end\"",
+      "required": false
+    },
+    {
+      "name": "labelPosition",
+      "type": "\"top\" | \"left\" | \"float\"",
+      "required": false
+    },
+    {
+      "name": "labelText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelWidth",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "maxAge",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "maxDate",
+      "type": "string | Date",
+      "required": false
+    },
+    {
+      "name": "maxLength",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "maxLengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "minAge",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minDate",
+      "type": "string | Date",
+      "required": false
+    },
+    {
+      "name": "minLength",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minLengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "minNumberOfWords",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minNumberOfWordsMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "((value: string) => void)",
+      "required": false
+    },
+    {
+      "name": "onClear",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onEnter",
+      "type": "((() => void) & (() => void) & (() => void))",
+      "required": false,
+      "description": "Disparado ao receber foco — padrao seedgrid."
+    },
+    {
+      "name": "onExit",
+      "type": "((() => void) & (() => void) & (() => void))",
+      "required": false,
+      "description": "Disparado ao perder o foco (apos validacao) — padrao seedgrid."
+    },
+    {
+      "name": "onValidation",
+      "type": "(((message: string | null) => void) & ((message: string | null) => void))",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "prefixIcon",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "prefixText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "requiredMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "showCharCounter",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "suffixText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "textInputType",
+      "type": "\"none\" | \"text\" | \"email\" | \"search\" | \"tel\" | \"url\" | \"numeric\" | \"decimal\"",
+      "required": false
+    },
+    {
+      "name": "validateOnBlur",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "validation",
+      "type": "((value: string) => string | null)",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "withBorder",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "SgInputCNPJ": [
+    {
+      "name": "clearButton",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "enabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "filled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "hintText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "iconButtons",
+      "type": "ReactNode[]",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "invalidMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelAlign",
+      "type": "\"start\" | \"center\" | \"end\"",
+      "required": false
+    },
+    {
+      "name": "labelPosition",
+      "type": "\"top\" | \"left\" | \"float\"",
+      "required": false
+    },
+    {
+      "name": "labelText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelWidth",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "lengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "maxLength",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "maxLengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "minLength",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minLengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "minNumberOfWords",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minNumberOfWordsMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "((value: string) => void)",
+      "required": false
+    },
+    {
+      "name": "onClear",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onEnter",
+      "type": "((() => void) & (() => void))",
+      "required": false,
+      "description": "Disparado ao receber foco — padrao seedgrid."
+    },
+    {
+      "name": "onExit",
+      "type": "((() => void) & (() => void))",
+      "required": false,
+      "description": "Disparado ao perder o foco (apos validacao) — padrao seedgrid."
+    },
+    {
+      "name": "onPublicaCnpjError",
+      "type": "((error: unknown) => void)",
+      "required": false
+    },
+    {
+      "name": "onPublicaCnpjResult",
+      "type": "((data: unknown) => void)",
+      "required": false
+    },
+    {
+      "name": "onValidation",
+      "type": "(((message: string | null) => void) & ((message: string | null) => void))",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "prefixIcon",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "prefixText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "publicaCnpjErrorMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "publicaCnpjFetch",
+      "type": "((cnpj: string) => Promise<unknown>)",
+      "required": false
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "requiredMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "showCharCounter",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "suffixText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "textInputType",
+      "type": "\"none\" | \"text\" | \"email\" | \"search\" | \"tel\" | \"url\" | \"numeric\" | \"decimal\"",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "HTMLInputTypeAttribute",
+      "required": false
+    },
+    {
+      "name": "validateOnBlur",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "validateWithPublicaCnpj",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "validation",
+      "type": "(((value: string) => string | null) & ((value: string) => string | null))",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "withBorder",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "SgInputCPF": [
+    {
+      "name": "clearButton",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "enabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "filled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "hintText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "iconButtons",
+      "type": "ReactNode[]",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "invalidMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelAlign",
+      "type": "\"start\" | \"center\" | \"end\"",
+      "required": false
+    },
+    {
+      "name": "labelPosition",
+      "type": "\"top\" | \"left\" | \"float\"",
+      "required": false
+    },
+    {
+      "name": "labelText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelWidth",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "lengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "maxLength",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "maxLengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "minLength",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minLengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "minNumberOfWords",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minNumberOfWordsMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "((value: string) => void)",
+      "required": false
+    },
+    {
+      "name": "onClear",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onEnter",
+      "type": "((() => void) & (() => void))",
+      "required": false,
+      "description": "Disparado ao receber foco — padrao seedgrid."
+    },
+    {
+      "name": "onExit",
+      "type": "((() => void) & (() => void))",
+      "required": false,
+      "description": "Disparado ao perder o foco (apos validacao) — padrao seedgrid."
+    },
+    {
+      "name": "onValidation",
+      "type": "(((message: string | null) => void) & ((message: string | null) => void))",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "prefixIcon",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "prefixText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "requiredMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "showCharCounter",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "suffixText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "textInputType",
+      "type": "\"none\" | \"text\" | \"email\" | \"search\" | \"tel\" | \"url\" | \"numeric\" | \"decimal\"",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "HTMLInputTypeAttribute",
+      "required": false
+    },
+    {
+      "name": "validateOnBlur",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "validation",
+      "type": "(((value: string) => string | null) & ((value: string) => string | null))",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "withBorder",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "SgInputCPFCNPJ": [
+    {
+      "name": "clearButton",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "enabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "filled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "hintText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "iconButtons",
+      "type": "ReactNode[]",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "invalidMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelAlign",
+      "type": "\"start\" | \"center\" | \"end\"",
+      "required": false
+    },
+    {
+      "name": "labelPosition",
+      "type": "\"top\" | \"left\" | \"float\"",
+      "required": false
+    },
+    {
+      "name": "labelText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelWidth",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "lengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "maxLength",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "maxLengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "minLength",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minLengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "minNumberOfWords",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minNumberOfWordsMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "((value: string) => void)",
+      "required": false
+    },
+    {
+      "name": "onClear",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onEnter",
+      "type": "((() => void) & (() => void))",
+      "required": false,
+      "description": "Disparado ao receber foco — padrao seedgrid."
+    },
+    {
+      "name": "onExit",
+      "type": "((() => void) & (() => void))",
+      "required": false,
+      "description": "Disparado ao perder o foco (apos validacao) — padrao seedgrid."
+    },
+    {
+      "name": "onValidation",
+      "type": "(((message: string | null) => void) & ((message: string | null) => void))",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "prefixIcon",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "prefixText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "requiredMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "showCharCounter",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "suffixText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "textInputType",
+      "type": "\"none\" | \"text\" | \"email\" | \"search\" | \"tel\" | \"url\" | \"numeric\" | \"decimal\"",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "HTMLInputTypeAttribute",
+      "required": false
+    },
+    {
+      "name": "validateOnBlur",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "validation",
+      "type": "(((value: string) => string | null) & ((value: string) => string | null))",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "withBorder",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "SgInputCurrency": [
+    {
+      "name": "allowNegative",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "clearButton",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "currency",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "currencyDisplay",
+      "type": "\"symbol\" | \"name\" | \"narrowSymbol\" | \"code\"",
+      "required": false
+    },
+    {
+      "name": "currencySymbolOverride",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "currencySymbolPlacement",
+      "type": "\"prefix\" | \"auto\" | \"suffix\"",
+      "required": false
+    },
+    {
+      "name": "decimals",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "emptyValue",
+      "type": "\"null\" | \"zero\"",
+      "required": false
+    },
+    {
+      "name": "enabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "filled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "hintText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "iconButtons",
+      "type": "ReactNode[]",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "locale",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "maxValue",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "maxValueMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "minValue",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minValueMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "((value: string) => void)",
+      "required": false
+    },
+    {
+      "name": "onClear",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onEnter",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onExit",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onValidation",
+      "type": "((message: string | null) => void)",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "prefixIcon",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "prefixText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "requiredMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "showCurrencySymbol",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "suffixText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "textInputType",
+      "type": "\"none\" | \"text\" | \"email\" | \"search\" | \"tel\" | \"url\" | \"numeric\" | \"decimal\"",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "HTMLInputTypeAttribute",
+      "required": false
+    },
+    {
+      "name": "useGrouping",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "validateOnBlur",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "validation",
+      "type": "((value: string) => string | null)",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "withBorder",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "SgInputDate": [
+    {
+      "name": "alwaysFloat",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "clearButton",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "enabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "filled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "hintText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "iconButtons",
+      "type": "ReactNode[]",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelAlign",
+      "type": "\"start\" | \"center\" | \"end\"",
+      "required": false
+    },
+    {
+      "name": "labelPosition",
+      "type": "\"top\" | \"left\" | \"float\"",
+      "required": false
+    },
+    {
+      "name": "labelText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelWidth",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "maxDate",
+      "type": "string | Date",
+      "required": false
+    },
+    {
+      "name": "maxLength",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "maxLengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "minDate",
+      "type": "string | Date",
+      "required": false
+    },
+    {
+      "name": "minLength",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minLengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "minNumberOfWords",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minNumberOfWordsMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "((value: string) => void)",
+      "required": false
+    },
+    {
+      "name": "onClear",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onEnter",
+      "type": "((() => void) & (() => void))",
+      "required": false,
+      "description": "Disparado ao receber foco — padrao seedgrid."
+    },
+    {
+      "name": "onExit",
+      "type": "((() => void) & (() => void))",
+      "required": false,
+      "description": "Disparado ao perder o foco (apos validacao) — padrao seedgrid."
+    },
+    {
+      "name": "onValidation",
+      "type": "((message: string | null) => void)",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "prefixIcon",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "prefixText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "requiredMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "showCharCounter",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "suffixText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "textInputType",
+      "type": "\"none\" | \"text\" | \"email\" | \"search\" | \"tel\" | \"url\" | \"numeric\" | \"decimal\"",
+      "required": false
+    },
+    {
+      "name": "validateOnBlur",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "validation",
+      "type": "((value: string) => string | null)",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "withBorder",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "SgInputEmail": [
+    {
+      "name": "blockedEmailDomains",
+      "type": "string[]",
+      "required": false
+    },
+    {
+      "name": "blockFakeMail",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "clearButton",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "enabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "filled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "hintText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "iconButtons",
+      "type": "ReactNode[]",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "invalidMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelAlign",
+      "type": "\"start\" | \"center\" | \"end\"",
+      "required": false
+    },
+    {
+      "name": "labelPosition",
+      "type": "\"top\" | \"left\" | \"float\"",
+      "required": false
+    },
+    {
+      "name": "labelText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelWidth",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "maxLength",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "maxLengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "minLength",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minLengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "minNumberOfWords",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minNumberOfWordsMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "((value: string) => void)",
+      "required": false
+    },
+    {
+      "name": "onClear",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onEnter",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onExit",
+      "type": "((() => void) & (() => void))",
+      "required": false,
+      "description": "Disparado quando o campo perde o foco (apos a validacao) — padrao seedgrid."
+    },
+    {
+      "name": "onValidation",
+      "type": "(((message: string | null) => void) & ((message: string | null) => void))",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "prefixIcon",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "prefixText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "requiredMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "showCharCounter",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "suffixText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "textInputType",
+      "type": "\"none\" | \"text\" | \"email\" | \"search\" | \"tel\" | \"url\" | \"numeric\" | \"decimal\"",
+      "required": false
+    },
+    {
+      "name": "validateOnBlur",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "validation",
+      "type": "(((value: string) => string | null) & ((value: string) => string | null))",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "withBorder",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "SgInputNumber": [
+    {
+      "name": "allowNegative",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "clearButton",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "decimals",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "emptyValue",
+      "type": "\"null\" | \"zero\"",
+      "required": false
+    },
+    {
+      "name": "enabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "filled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "hintText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "iconButtons",
+      "type": "ReactNode[]",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelAlign",
+      "type": "\"start\" | \"center\" | \"end\"",
+      "required": false
+    },
+    {
+      "name": "labelPosition",
+      "type": "\"top\" | \"left\" | \"float\"",
+      "required": false
+    },
+    {
+      "name": "labelText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelWidth",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "maxValue",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "maxValueMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "minValue",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minValueMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "((value: string) => void)",
+      "required": false
+    },
+    {
+      "name": "onClear",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onEnter",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onExit",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onValidation",
+      "type": "((message: string | null) => void)",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "prefixIcon",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "prefixText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "requiredMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "suffixText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "textInputType",
+      "type": "\"none\" | \"text\" | \"email\" | \"search\" | \"tel\" | \"url\" | \"numeric\" | \"decimal\"",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "HTMLInputTypeAttribute",
+      "required": false
+    },
+    {
+      "name": "validateOnBlur",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "validation",
+      "type": "((value: string) => string | null)",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "withBorder",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "SgInputOTP": [
+    {
+      "name": "defaultValue",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "enabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "groupClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "hintText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "mask",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "((maskedValue: string) => void)",
+      "required": false
+    },
+    {
+      "name": "onClear",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onComplete",
+      "type": "((value: string) => void)",
+      "required": false
+    },
+    {
+      "name": "onEnter",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onExit",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onRawChange",
+      "type": "((rawValue: string) => void)",
+      "required": false
+    },
+    {
+      "name": "onValidation",
+      "type": "((message: string | null) => void)",
+      "required": false
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "requiredMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "separatorClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "slotClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "validateOnBlur",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "validation",
+      "type": "((rawValue: string, maskedValue: string) => string | null)",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "string | number",
+      "required": false
+    }
+  ],
+  "SgInputPassword": [
+    {
+      "name": "clearButton",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "commonPasswordCheck",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "commonPasswordList",
+      "type": "string[]",
+      "required": false
+    },
+    {
+      "name": "commonPasswordMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "createNewPasswordButton",
+      "type": "boolean",
+      "required": false,
+      "description": "Exibe um botao para gerar automaticamente uma senha forte aleatoria (respeita as regras de politica)."
+    },
+    {
+      "name": "enabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "filled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "hidePassword",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "hintText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "iconButtons",
+      "type": "ReactNode[]",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelAlign",
+      "type": "\"start\" | \"center\" | \"end\"",
+      "required": false
+    },
+    {
+      "name": "labelPosition",
+      "type": "\"top\" | \"left\" | \"float\"",
+      "required": false
+    },
+    {
+      "name": "labelText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelWidth",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "lowerRequired",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "maxLength",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "maxLengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "minLength",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minLengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "minNumberOfWords",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minNumberOfWordsMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "minSize",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "numberRequired",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "((value: string) => void)",
+      "required": false
+    },
+    {
+      "name": "onClear",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onEnter",
+      "type": "((() => void) & (() => void))",
+      "required": false,
+      "description": "Disparado ao receber foco — padrao seedgrid."
+    },
+    {
+      "name": "onExit",
+      "type": "((() => void) & (() => void))",
+      "required": false,
+      "description": "Disparado ao perder o foco (apos validacao) — padrao seedgrid."
+    },
+    {
+      "name": "onValidation",
+      "type": "(((message: string | null) => void) & ((message: string | null) => void))",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "prefixIcon",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "prefixText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "prohibitsRepeatedCharactersInSequence",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "prohibitsSequentialAscCharacters",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "prohibitsSequentialDescCharacters",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "requiredMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "showCharCounter",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "showStrengthBar",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "specialCharacterRequired",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "suffixText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "textInputType",
+      "type": "\"none\" | \"text\" | \"email\" | \"search\" | \"tel\" | \"url\" | \"numeric\" | \"decimal\"",
+      "required": false
+    },
+    {
+      "name": "upperRequired",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "validateOnBlur",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "validation",
+      "type": "((value: string) => string | null)",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "withBorder",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "SgInputPhone": [
+    {
+      "name": "clearButton",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "enabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "filled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "hintText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "iconButtons",
+      "type": "ReactNode[]",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "invalidMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelAlign",
+      "type": "\"start\" | \"center\" | \"end\"",
+      "required": false
+    },
+    {
+      "name": "labelPosition",
+      "type": "\"top\" | \"left\" | \"float\"",
+      "required": false
+    },
+    {
+      "name": "labelText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelWidth",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "lengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "maxLength",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "maxLengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "minLength",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minLengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "minNumberOfWords",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minNumberOfWordsMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "((value: string) => void)",
+      "required": false
+    },
+    {
+      "name": "onClear",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onEnter",
+      "type": "((() => void) & (() => void))",
+      "required": false,
+      "description": "Disparado ao receber foco — padrao seedgrid."
+    },
+    {
+      "name": "onExit",
+      "type": "((() => void) & (() => void))",
+      "required": false,
+      "description": "Disparado ao perder o foco (apos validacao) — padrao seedgrid."
+    },
+    {
+      "name": "onValidation",
+      "type": "(((message: string | null) => void) & ((message: string | null) => void))",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "prefixIcon",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "prefixText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "requiredMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "showCharCounter",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "suffixText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "textInputType",
+      "type": "\"none\" | \"text\" | \"email\" | \"search\" | \"tel\" | \"url\" | \"numeric\" | \"decimal\"",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "HTMLInputTypeAttribute",
+      "required": false
+    },
+    {
+      "name": "validateOnBlur",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "validation",
+      "type": "(((value: string) => string | null) & ((value: string) => string | null))",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "withBorder",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "SgInputPostalCode": [
+    {
+      "name": "clearButton",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "country",
+      "type": "PostalCodeCountry",
+      "required": false
+    },
+    {
+      "name": "enabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "filled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "hintText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "iconButtons",
+      "type": "ReactNode[]",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "invalidMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelAlign",
+      "type": "\"start\" | \"center\" | \"end\"",
+      "required": false
+    },
+    {
+      "name": "labelPosition",
+      "type": "\"top\" | \"left\" | \"float\"",
+      "required": false
+    },
+    {
+      "name": "labelText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelWidth",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "lengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "maxLength",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "maxLengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "minLength",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minLengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "minNumberOfWords",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minNumberOfWordsMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "((value: string) => void)",
+      "required": false
+    },
+    {
+      "name": "onClear",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onEnter",
+      "type": "((() => void) & (() => void))",
+      "required": false,
+      "description": "Disparado ao receber foco — padrao seedgrid."
+    },
+    {
+      "name": "onExit",
+      "type": "((() => void) & (() => void))",
+      "required": false,
+      "description": "Disparado ao perder o foco (apos validacao) — padrao seedgrid."
+    },
+    {
+      "name": "onValidation",
+      "type": "(((message: string | null) => void) & ((message: string | null) => void))",
+      "required": false
+    },
+    {
+      "name": "onViaCepError",
+      "type": "((error: unknown) => void)",
+      "required": false
+    },
+    {
+      "name": "onViaCepResult",
+      "type": "((data: ViaCepResponse) => void)",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "prefixIcon",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "prefixText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "requiredMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "showCharCounter",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "suffixText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "textInputType",
+      "type": "\"none\" | \"text\" | \"email\" | \"search\" | \"tel\" | \"url\" | \"numeric\" | \"decimal\"",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "HTMLInputTypeAttribute",
+      "required": false
+    },
+    {
+      "name": "validateOnBlur",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "validateWithViaCep",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "validation",
+      "type": "(((value: string) => string | null) & ((value: string) => string | null))",
+      "required": false
+    },
+    {
+      "name": "viaCepErrorMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "viaCepFetch",
+      "type": "((cep: string) => Promise<ViaCepResponse>)",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "withBorder",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "SgInputText": [
+    {
+      "name": "clearButton",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "enabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "filled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "hintText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "iconButtons",
+      "type": "ReactNode[]",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelAlign",
+      "type": "\"start\" | \"center\" | \"end\"",
+      "required": false
+    },
+    {
+      "name": "labelPosition",
+      "type": "\"top\" | \"left\" | \"float\"",
+      "required": false
+    },
+    {
+      "name": "labelText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelWidth",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "maxLength",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "maxLengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "minLength",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minLengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "minNumberOfWords",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minNumberOfWordsMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "((value: string) => void)",
+      "required": false
+    },
+    {
+      "name": "onClear",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onEnter",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onExit",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onValidation",
+      "type": "((message: string | null) => void)",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "prefixIcon",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "prefixText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "requiredMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "showCharCounter",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "suffixText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "textInputType",
+      "type": "\"none\" | \"text\" | \"email\" | \"search\" | \"tel\" | \"url\" | \"numeric\" | \"decimal\"",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "HTMLInputTypeAttribute",
+      "required": false
+    },
+    {
+      "name": "validateOnBlur",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "validation",
+      "type": "((value: string) => string | null)",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "withBorder",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "SgInputTextArea": [
+    {
+      "name": "clearButton",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "enabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "filled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "height",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "hintText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelAlign",
+      "type": "\"start\" | \"center\" | \"end\"",
+      "required": false
+    },
+    {
+      "name": "labelPosition",
+      "type": "\"top\" | \"left\" | \"float\"",
+      "required": false
+    },
+    {
+      "name": "labelText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelWidth",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "maxLength",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "maxLengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "maxLines",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minLength",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minLengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "minLines",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minLinesMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "minNumberOfWords",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minNumberOfWordsMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "((value: string) => void)",
+      "required": false
+    },
+    {
+      "name": "onClear",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onEnter",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onExit",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onValidation",
+      "type": "((message: string | null) => void)",
+      "required": false
+    },
+    {
+      "name": "prefixIcon",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "requiredMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "showCharCounter",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "textareaProps",
+      "type": "(TextareaHTMLAttributes<HTMLTextAreaElement> & { ref?: Ref<HTMLTextAreaElement>; })",
+      "required": false
+    },
+    {
+      "name": "validateOnBlur",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "validation",
+      "type": "((value: string) => string | null)",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "withBorder",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "SgInputTextSearch": [
+    {
+      "name": "clearButton",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "debounceMs",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "enabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "filled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "hintText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "iconButtons",
+      "type": "ReactNode[]",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelAlign",
+      "type": "\"start\" | \"center\" | \"end\"",
+      "required": false
+    },
+    {
+      "name": "labelPosition",
+      "type": "\"top\" | \"left\" | \"float\"",
+      "required": false
+    },
+    {
+      "name": "labelText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelWidth",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "maxLength",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "maxLengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "minChars",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minLength",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minLengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "minNumberOfWords",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minNumberOfWordsMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "((value: string) => void)",
+      "required": false,
+      "description": "Disparado imediatamente a cada digitacao, com o valor cru."
+    },
+    {
+      "name": "onClear",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onEnter",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onExit",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onSearchChange",
+      "type": "(value: string) => void",
+      "required": true,
+      "description": "Disparado apos o debounce, com o valor normalizado (trim + gate por minChars)."
+    },
+    {
+      "name": "onValidation",
+      "type": "((message: string | null) => void)",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "prefixIcon",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "prefixText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "requiredMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "showCharCounter",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "suffixText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "textInputType",
+      "type": "\"none\" | \"text\" | \"email\" | \"search\" | \"tel\" | \"url\" | \"numeric\" | \"decimal\"",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "HTMLInputTypeAttribute",
+      "required": false
+    },
+    {
+      "name": "validateOnBlur",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "validation",
+      "type": "((value: string) => string | null)",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "withBorder",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "SgLinearGauge": [
+    {
+      "name": "animate",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "animationDuration",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "axisColor",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "axisThickness",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "barColor",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "barPointer",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "barThickness",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "defaultValue",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "isAxisInversed",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "labelFormatter",
+      "type": "((value: number) => ReactNode)",
+      "required": false
+    },
+    {
+      "name": "majorTickCount",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "max",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "min",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minorTicksPerInterval",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "onPointerValueChange",
+      "type": "((pointerId: string, value: number, pointer: SgLinearGaugePointer) => void)",
+      "required": false
+    },
+    {
+      "name": "onValueChange",
+      "type": "((value: number) => void)",
+      "required": false
+    },
+    {
+      "name": "orientation",
+      "type": "\"horizontal\" | \"vertical\"",
+      "required": false
+    },
+    {
+      "name": "pointers",
+      "type": "SgLinearGaugePointer[]",
+      "required": false
+    },
+    {
+      "name": "primaryPointerColor",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "primaryPointerDraggable",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "primaryPointerShape",
+      "type": "SgLinearGaugePointerShape",
+      "required": false
+    },
+    {
+      "name": "primaryPointerSize",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "ranges",
+      "type": "SgLinearGaugeRange[]",
+      "required": false
+    },
+    {
+      "name": "showLabels",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "showPrimaryPointer",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "showTicks",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "required": false
+    }
+  ],
+  "SgMatrixDigit": [
+    {
+      "name": "backgroundColor",
+      "type": "string",
+      "required": false,
+      "description": "Background color of the matrix container."
+    },
+    {
+      "name": "charGap",
+      "type": "number",
+      "required": false,
+      "description": "Gap between characters in pixels."
+    },
+    {
+      "name": "color",
+      "type": "string",
+      "required": false,
+      "description": "Color of active dots."
+    },
+    {
+      "name": "dotSize",
+      "type": "number",
+      "required": false,
+      "description": "Dot size in pixels."
+    },
+    {
+      "name": "gap",
+      "type": "number",
+      "required": false,
+      "description": "Gap between dots in pixels."
+    },
+    {
+      "name": "glow",
+      "type": "boolean",
+      "required": false,
+      "description": "Add a subtle glow around active dots."
+    },
+    {
+      "name": "offColor",
+      "type": "string",
+      "required": false,
+      "description": "Color of inactive dots."
+    },
+    {
+      "name": "padding",
+      "type": "number",
+      "required": false,
+      "description": "Internal padding in pixels."
+    },
+    {
+      "name": "rounded",
+      "type": "number",
+      "required": false,
+      "description": "Border radius of the matrix container in pixels."
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "required": true,
+      "description": "Text to render using matrix dots.\nSupports letters, numbers and common symbols."
+    }
+  ],
+  "SgMenu": [
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "border",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "brand",
+      "type": "SgMenuBrand",
+      "required": false
+    },
+    {
+      "name": "closeOnNavigate",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "collapsed",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "collapsedWidth",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "defaultCollapsed",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "defaultExpandedIds",
+      "type": "string[]",
+      "required": false
+    },
+    {
+      "name": "defaultOpen",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "defaultPinned",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "density",
+      "type": "\"compact\" | \"comfortable\"",
+      "required": false
+    },
+    {
+      "name": "dockable",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "dockZone",
+      "type": "SgDockZoneId",
+      "required": false
+    },
+    {
+      "name": "draggable",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "expandedIds",
+      "type": "string[]",
+      "required": false
+    },
+    {
+      "name": "expandedWidth",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "footer",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "indent",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "keyboardNavigation",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "menu",
+      "type": "SgMenuNode[]",
+      "required": true
+    },
+    {
+      "name": "menuStyle",
+      "type": "\"inline\" | \"sidebar\" | \"drawer\" | \"hybrid\"",
+      "required": false
+    },
+    {
+      "name": "menuVariantStyle",
+      "type": "SgMenuStyle",
+      "required": false
+    },
+    {
+      "name": "mode",
+      "type": "\"multiple\" | \"accordion\"",
+      "required": false
+    },
+    {
+      "name": "onAction",
+      "type": "((node: SgMenuNode) => void)",
+      "required": false
+    },
+    {
+      "name": "onCollapsedChange",
+      "type": "((value: boolean) => void)",
+      "required": false
+    },
+    {
+      "name": "onExpandedIdsChange",
+      "type": "((ids: string[]) => void)",
+      "required": false
+    },
+    {
+      "name": "onItemClick",
+      "type": "((node: SgMenuNode) => void)",
+      "required": false
+    },
+    {
+      "name": "onNavigate",
+      "type": "((node: SgMenuNode) => void)",
+      "required": false
+    },
+    {
+      "name": "onOpenChange",
+      "type": "((value: boolean) => void)",
+      "required": false
+    },
+    {
+      "name": "onPinnedChange",
+      "type": "((value: boolean) => void)",
+      "required": false
+    },
+    {
+      "name": "open",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "openSubmenuOnHover",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "orientationDirection",
+      "type": "SgMenuOrientationDirection",
+      "required": false
+    },
+    {
+      "name": "overlayBackdrop",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "overlaySize",
+      "type": "SgExpandablePanelSize",
+      "required": false
+    },
+    {
+      "name": "pinned",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "position",
+      "type": "\"right\" | \"left\"",
+      "required": false
+    },
+    {
+      "name": "search",
+      "type": "{ enabled: boolean; placeholder?: string; }",
+      "required": false
+    },
+    {
+      "name": "selection",
+      "type": "SgMenuSelection",
+      "required": false
+    },
+    {
+      "name": "showCollapseButton",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "showPinButton",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "user",
+      "type": "SgMenuUser",
+      "required": false
+    },
+    {
+      "name": "userMenu",
+      "type": "SgMenuNode[]",
+      "required": false
+    },
+    {
+      "name": "userSectionClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "userSectionStyle",
+      "type": "CSSProperties",
+      "required": false
+    }
+  ],
+  "SgMultiSelect": [
+    {
+      "name": "clearable",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "emptyText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "enabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "filled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "hintText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelAlign",
+      "type": "\"start\" | \"center\" | \"end\"",
+      "required": false
+    },
+    {
+      "name": "labelPosition",
+      "type": "\"top\" | \"left\" | \"float\"",
+      "required": false
+    },
+    {
+      "name": "labelText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelWidth",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "maxLengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "maxSelected",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minLengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "minNumberOfWords",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minNumberOfWordsMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "((value: SgMultiSelectOptionValue[]) => void)",
+      "required": false
+    },
+    {
+      "name": "onClear",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onEnter",
+      "type": "((() => void) & (() => void))",
+      "required": false
+    },
+    {
+      "name": "onExit",
+      "type": "((() => void) & (() => void))",
+      "required": false
+    },
+    {
+      "name": "onValidation",
+      "type": "((message: string | null) => void)",
+      "required": false
+    },
+    {
+      "name": "options",
+      "type": "SgMultiSelectOption[]",
+      "required": true
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "prefixIcon",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "prefixText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "requiredMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "searchable",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "searchPlaceholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "suffixText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "summaryThreshold",
+      "type": "number",
+      "required": false,
+      "description": "Quantos rotulos exibir antes de cair no resumo \"N selecionadas\"."
+    },
+    {
+      "name": "textInputType",
+      "type": "\"none\" | \"text\" | \"email\" | \"search\" | \"tel\" | \"url\" | \"numeric\" | \"decimal\"",
+      "required": false
+    },
+    {
+      "name": "validateOnBlur",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "validation",
+      "type": "((value: string) => string | null)",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "SgMultiSelectOptionValue[]",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "withBorder",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "SgMultiSelectChips": [
+    {
+      "name": "clearable",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "emptyText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "enabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "maxSelected",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "((value: SgMultiSelectOptionValue[]) => void)",
+      "required": false
+    },
+    {
+      "name": "onEnter",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onExit",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "options",
+      "type": "SgMultiSelectOption[]",
+      "required": true
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "searchable",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "searchPlaceholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "SgMultiSelectOptionValue[]",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "string | number",
+      "required": false
+    }
+  ],
+  "SgNeonDigit": [
+    {
+      "name": "animateOnChange",
+      "type": "boolean",
+      "required": false,
+      "description": "Enables fade-out/fade-in animation when value changes."
+    },
+    {
+      "name": "backgroundColor",
+      "type": "string",
+      "required": false,
+      "description": "Background color of the component surface."
+    },
+    {
+      "name": "color",
+      "type": "string",
+      "required": false,
+      "description": "Main text color."
+    },
+    {
+      "name": "font",
+      "type": "string",
+      "required": false,
+      "description": "Font family alias (same effect as fontFamily)."
+    },
+    {
+      "name": "fontFamily",
+      "type": "string",
+      "required": false,
+      "description": "Custom font family."
+    },
+    {
+      "name": "fontSize",
+      "type": "number",
+      "required": false,
+      "description": "Font size in pixels."
+    },
+    {
+      "name": "fontWeight",
+      "type": "string | number",
+      "required": false,
+      "description": "Font weight of the text."
+    },
+    {
+      "name": "letterSpacing",
+      "type": "number",
+      "required": false,
+      "description": "Letter spacing in pixels."
+    },
+    {
+      "name": "padding",
+      "type": "number",
+      "required": false,
+      "description": "Internal padding in pixels."
+    },
+    {
+      "name": "rounded",
+      "type": "number",
+      "required": false,
+      "description": "Border radius in pixels."
+    },
+    {
+      "name": "shadowColor",
+      "type": "string",
+      "required": false,
+      "description": "Glow/shadow color around the text."
+    },
+    {
+      "name": "shadowStrength",
+      "type": "number",
+      "required": false,
+      "description": "Extra intensity factor for the glow effect."
+    },
+    {
+      "name": "transitionMs",
+      "type": "number",
+      "required": false,
+      "description": "Total animation time in milliseconds when value changes."
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "required": true,
+      "description": "Text/character rendered with neon style."
+    }
+  ],
+  "SgOrderList": [
+    {
+      "name": "controlsPosition",
+      "type": "SgOrderListControlsPosition",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "draggable",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "emptyMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "groupBoxProps",
+      "type": "(Omit<Partial<SgGroupBoxProps>, \"title\" | \"children\"> & { title?: string; })",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "itemClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "itemTemplate",
+      "type": "((item: SgOrderListItem, state: { index: number; selected: boolean; disabled: boolean; }) => ReactNode)",
+      "required": false
+    },
+    {
+      "name": "listClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "((items: SgOrderListItem[]) => void)",
+      "required": false
+    },
+    {
+      "name": "onSelectionChange",
+      "type": "((values: (string | number)[]) => void)",
+      "required": false
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "selectedValues",
+      "type": "(string | number)[]",
+      "required": false
+    },
+    {
+      "name": "selectionMode",
+      "type": "SgOrderListSelectionMode",
+      "required": false
+    },
+    {
+      "name": "showControls",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "source",
+      "type": "SgOrderListItem[]",
+      "required": true
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "SgOrderListItem[]",
+      "required": false
+    }
+  ],
+  "SgPageControl": [
+    {
+      "name": "activeIndex",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "activePageId",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "required": true
+    },
+    {
+      "name": "defaultActiveIndex",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "defaultActivePageId",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "emptyMessage",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "fullWidthTabs",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "hiddenPageIds",
+      "type": "string[]",
+      "required": false
+    },
+    {
+      "name": "keepMounted",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "keyboardNavigation",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onActiveIndexChange",
+      "type": "((index: number, context: { pageId: string; page: SgPageControlPageProps; }) => void)",
+      "required": false
+    },
+    {
+      "name": "onActivePageIdChange",
+      "type": "((pageId: string, context: { index: number; page: SgPageControlPageProps; }) => void)",
+      "required": false
+    },
+    {
+      "name": "pageControlStyle",
+      "type": "\"underline\" | \"pills\"",
+      "required": false
+    },
+    {
+      "name": "panelClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "\"sm\" | \"md\" | \"lg\"",
+      "required": false
+    },
+    {
+      "name": "tabClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "tabListClassName",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "SgPageControlPage": [
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "required": true
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "hidden",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "hint",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "icon",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "keepMounted",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "tabClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "required": true
+    }
+  ],
+  "SgPanel": [
+    {
+      "name": "align",
+      "type": "SgDockAlign",
+      "required": false
+    },
+    {
+      "name": "borderStyle",
+      "type": "SgPanelBorderStyle",
+      "required": false
+    },
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "contentAlign",
+      "type": "SgDockContentAlign",
+      "required": false
+    },
+    {
+      "name": "contentClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "contentDirection",
+      "type": "SgDockContentDirection",
+      "required": false
+    },
+    {
+      "name": "contentGap",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "contentJustify",
+      "type": "SgDockContentJustify",
+      "required": false
+    },
+    {
+      "name": "contentPadding",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "contentStyle",
+      "type": "CSSProperties",
+      "required": false
+    },
+    {
+      "name": "contentWrap",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "height",
+      "type": "SgDockPercent",
+      "required": false
+    },
+    {
+      "name": "minHeightPx",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minWidthPx",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "padding",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "rowSpan",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "scrollable",
+      "type": "SgPanelScrollable",
+      "required": false
+    },
+    {
+      "name": "scrollbarGutter",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "span",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "SgDockPercent",
+      "required": false
+    }
+  ],
+  "SgPeriodSelector": [
+    {
+      "name": "allowCustomPeriod",
+      "type": "boolean",
+      "required": false,
+      "description": "Habilita a opcao \"Periodo\" (intervalo customizado). Default true."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "locale",
+      "type": "string",
+      "required": false,
+      "description": "Locale para labels e formatacao. Default \"pt-BR\"."
+    },
+    {
+      "name": "maxDate",
+      "type": "Date",
+      "required": false
+    },
+    {
+      "name": "minDate",
+      "type": "Date",
+      "required": false
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "((period: ResolvedPeriod) => void)",
+      "required": false
+    },
+    {
+      "name": "permitAll",
+      "type": "boolean",
+      "required": false,
+      "description": "Habilita a opcao \"Todos\" (sem limites de data). Default true."
+    },
+    {
+      "name": "permitCurrent",
+      "type": "boolean",
+      "required": false,
+      "description": "Habilita o grupo de periodos atuais (THIS_*, TODAY, YESTERDAY). Default true."
+    },
+    {
+      "name": "permitFuture",
+      "type": "boolean",
+      "required": false,
+      "description": "Habilita o grupo de periodos futuros (TOMORROW, NEXT_*). Default true."
+    },
+    {
+      "name": "permitPast",
+      "type": "boolean",
+      "required": false,
+      "description": "Habilita o grupo de periodos passados (LAST_*). Default true."
+    },
+    {
+      "name": "referenceDate",
+      "type": "Date",
+      "required": false,
+      "description": "Data de referencia para resolver os presets (default: agora). Util em testes."
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "PeriodPreset",
+      "required": false
+    }
+  ],
+  "SgPickList": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "draggable",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "emptyMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "filterMatchMode",
+      "type": "SgPickListFilterMatchMode",
+      "required": false
+    },
+    {
+      "name": "groupBoxProps",
+      "type": "(Omit<Partial<SgGroupBoxProps>, \"title\" | \"children\"> & { title?: string; })",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "itemClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "itemTemplate",
+      "type": "((item: SgPickListItem, state: { index: number; selected: boolean; disabled: boolean; list: SgPickListListName; }) => ReactNode)",
+      "required": false
+    },
+    {
+      "name": "listClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "((event: SgPickListChangeEvent) => void)",
+      "required": false
+    },
+    {
+      "name": "onSourceSelectionChange",
+      "type": "((values: (string | number)[]) => void)",
+      "required": false
+    },
+    {
+      "name": "onTargetSelectionChange",
+      "type": "((values: (string | number)[]) => void)",
+      "required": false
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "selectionMode",
+      "type": "SgPickListSelectionMode",
+      "required": false
+    },
+    {
+      "name": "showSourceControls",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "showSourceFilter",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "showTargetControls",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "showTargetFilter",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "showTransferControls",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "source",
+      "type": "SgPickListItem[]",
+      "required": true
+    },
+    {
+      "name": "sourceFilterPlaceholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "sourceHeader",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "sourceSelection",
+      "type": "(string | number)[]",
+      "required": false
+    },
+    {
+      "name": "target",
+      "type": "SgPickListItem[]",
+      "required": true
+    },
+    {
+      "name": "targetFilterPlaceholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "targetHeader",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "targetSelection",
+      "type": "(string | number)[]",
+      "required": false
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "SgPickListValue",
+      "required": false
+    }
+  ],
+  "SgPopup": [
+    {
+      "name": "actions",
+      "type": "SgPopupAction[]",
+      "required": false
+    },
+    {
+      "name": "align",
+      "type": "SgPopupAlign",
+      "required": false
+    },
+    {
+      "name": "anchorRef",
+      "type": "RefObject<HTMLElement>",
+      "required": true
+    },
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "closeOnEscape",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "closeOnOutsideClick",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "defaultOpen",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "minWidth",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "offset",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "onClose",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onOpen",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onOpenChange",
+      "type": "((open: boolean) => void)",
+      "required": false
+    },
+    {
+      "name": "open",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "padding",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "placement",
+      "type": "SgPopupPlacement",
+      "required": false
+    },
+    {
+      "name": "preferPlacement",
+      "type": "SgPopupPreferPlacement",
+      "required": false
+    },
+    {
+      "name": "subtitle",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "zIndex",
+      "type": "number",
+      "required": false
+    }
+  ],
+  "SgQRCode": [
+    {
+      "name": "bgColor",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "emptyFallback",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "errorCorrectionLevel",
+      "type": "SgQRCodeErrorCorrectionLevel",
+      "required": false
+    },
+    {
+      "name": "fgColor",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "imageClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "logoAlt",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "logoBackgroundColor",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "logoBorderRadius",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "logoClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "logoPadding",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "logoSize",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "logoSrc",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "margin",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "onGenerateError",
+      "type": "((error: Error) => void)",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "SgRadialGauge": [
+    {
+      "name": "animate",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "animationDuration",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "annotations",
+      "type": "SgRadialGaugeAnnotation[]",
+      "required": false
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "axisColor",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "axisWidth",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "centerContent",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "defaultValue",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "endAngle",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "isAxisInversed",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "labelFormatter",
+      "type": "((value: number) => ReactNode)",
+      "required": false
+    },
+    {
+      "name": "majorTickCount",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "max",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "min",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minorTicksPerInterval",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "onPointerValueChange",
+      "type": "((pointerId: string, value: number, pointer: SgRadialGaugePointer) => void)",
+      "required": false
+    },
+    {
+      "name": "onValueChange",
+      "type": "((value: number) => void)",
+      "required": false
+    },
+    {
+      "name": "pointers",
+      "type": "SgRadialGaugePointer[]",
+      "required": false
+    },
+    {
+      "name": "primaryPointerColor",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "primaryPointerDraggable",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "primaryPointerLabel",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "primaryPointerShape",
+      "type": "SgRadialGaugeMarkerShape",
+      "required": false
+    },
+    {
+      "name": "primaryPointerSize",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "primaryPointerType",
+      "type": "SgRadialGaugePointerType",
+      "required": false
+    },
+    {
+      "name": "primaryPointerWidth",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "radiusFactor",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "ranges",
+      "type": "SgRadialGaugeRange[]",
+      "required": false
+    },
+    {
+      "name": "ringThickness",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "showLabels",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "showPrimaryPointer",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "showTicks",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "startAngle",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "required": false
+    }
+  ],
+  "SgRadioGroup": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "groupBoxProps",
+      "type": "(Omit<Partial<SgGroupBoxProps>, \"title\" | \"children\"> & { title?: string; })",
+      "required": false
+    },
+    {
+      "name": "iconOnly",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "((value: string | number | null) => void)",
+      "required": false
+    },
+    {
+      "name": "optionClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "orientation",
+      "type": "SgRadioGroupOrientation",
+      "required": false
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "selectionStyle",
+      "type": "SgRadioGroupSelectionStyle",
+      "required": false
+    },
+    {
+      "name": "source",
+      "type": "SgRadioGroupOption[]",
+      "required": true
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "string | number",
+      "required": false
+    }
+  ],
+  "SgRating": [
+    {
+      "name": "allowHalf",
+      "type": "boolean",
+      "required": false,
+      "description": "Enable half stars"
+    },
+    {
+      "name": "cancel",
+      "type": "boolean",
+      "required": false,
+      "description": "Show cancel button"
+    },
+    {
+      "name": "cancelIcon",
+      "type": "ReactNode",
+      "required": false,
+      "description": "Custom icon for cancel button"
+    },
+    {
+      "name": "color",
+      "type": "string",
+      "required": false,
+      "description": "Color for filled stars"
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false,
+      "description": "Disabled state"
+    },
+    {
+      "name": "emptyColor",
+      "type": "string",
+      "required": false,
+      "description": "Color for empty stars"
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": false,
+      "description": "Unique identifier"
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false,
+      "description": "Label text"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "offIcon",
+      "type": "ReactNode",
+      "required": false,
+      "description": "Custom icon for empty state"
+    },
+    {
+      "name": "onChange",
+      "type": "((value: number) => void)",
+      "required": false,
+      "description": "Callback when value changes"
+    },
+    {
+      "name": "onHover",
+      "type": "((value: number | null) => void)",
+      "required": false,
+      "description": "Callback when hovering over stars"
+    },
+    {
+      "name": "onIcon",
+      "type": "ReactNode",
+      "required": false,
+      "description": "Custom icon for filled state"
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "required": false,
+      "description": "Read only mode"
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "required": false,
+      "description": "Required field"
+    },
+    {
+      "name": "requiredMessage",
+      "type": "string",
+      "required": false,
+      "description": "Required message"
+    },
+    {
+      "name": "showTooltip",
+      "type": "boolean",
+      "required": false,
+      "description": "Show tooltips with value"
+    },
+    {
+      "name": "size",
+      "type": "SgRatingSize",
+      "required": false,
+      "description": "Size of the stars"
+    },
+    {
+      "name": "stars",
+      "type": "number",
+      "required": false,
+      "description": "Number of stars"
+    },
+    {
+      "name": "value",
+      "type": "number",
+      "required": false,
+      "description": "Current rating value"
+    }
+  ],
+  "SgRoller3DDigit": [
+    {
+      "name": "fontSize",
+      "type": "number",
+      "required": false,
+      "description": "Font size in pixels â€” controls overall scale"
+    },
+    {
+      "name": "items",
+      "type": "string[]",
+      "required": false,
+      "description": "Ordered list of all possible values this roller can show.\r\nThe drum scrolls to the position of `value` in this list."
+    },
+    {
+      "name": "transitionMs",
+      "type": "number",
+      "required": false,
+      "description": "Transition duration in milliseconds"
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "required": true,
+      "description": "Current value to display â€” must be present in `items`"
+    }
+  ],
+  "SgScreen": [
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "fullscreen",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "height",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "padding",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "string | number",
+      "required": false
+    }
+  ],
+  "SgSegmentDigit": [
+    {
+      "name": "color",
+      "type": "string",
+      "required": false,
+      "description": "Color of active segments."
+    },
+    {
+      "name": "size",
+      "type": "number",
+      "required": false,
+      "description": "Display height in pixels."
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "required": true,
+      "description": "Character rendered by the component (first character is used)."
+    }
+  ],
+  "SgSevenSegmentDigit": [
+    {
+      "name": "backgroundColor",
+      "type": "string",
+      "required": false,
+      "description": "Background color of the component panel."
+    },
+    {
+      "name": "color",
+      "type": "string",
+      "required": false,
+      "description": "Color of active segments."
+    },
+    {
+      "name": "glow",
+      "type": "boolean",
+      "required": false,
+      "description": "Enables glow effect on active segments."
+    },
+    {
+      "name": "offColor",
+      "type": "string",
+      "required": false,
+      "description": "Color of inactive segments."
+    },
+    {
+      "name": "padding",
+      "type": "number",
+      "required": false,
+      "description": "Internal panel padding in pixels."
+    },
+    {
+      "name": "palette",
+      "type": "SgSevenSegmentDigitPalette",
+      "required": false,
+      "description": "Preset visual palette for active, inactive and background colors."
+    },
+    {
+      "name": "rounded",
+      "type": "number",
+      "required": false,
+      "description": "Border radius of the panel in pixels."
+    },
+    {
+      "name": "size",
+      "type": "number",
+      "required": false,
+      "description": "Component height in pixels."
+    },
+    {
+      "name": "skew",
+      "type": "number",
+      "required": false,
+      "description": "Applies a subtle skew to mimic classic LED displays."
+    },
+    {
+      "name": "thickness",
+      "type": "number",
+      "required": false,
+      "description": "Segment thickness in pixels."
+    },
+    {
+      "name": "transitionMs",
+      "type": "number",
+      "required": false,
+      "description": "Segment transition duration in milliseconds."
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "required": true,
+      "description": "Character rendered by the component (first character is used)."
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "required": false,
+      "description": "Component width in pixels. By default, derived from `size`."
+    }
+  ],
+  "SgSkeleton": [
+    {
+      "name": "animation",
+      "type": "SgSkeletonAnimation",
+      "required": false
+    },
+    {
+      "name": "height",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "shape",
+      "type": "SgSkeletonShape",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "string | number",
+      "required": false
+    }
+  ],
+  "SgSlider": [
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "defaultValue",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "maxValue",
+      "type": "number",
+      "required": true
+    },
+    {
+      "name": "minValue",
+      "type": "number",
+      "required": true
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "((value: number) => void)",
+      "required": false
+    },
+    {
+      "name": "step",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "string | number",
+      "required": false
+    }
+  ],
+  "SgSplitButton": [
+    {
+      "name": "appearance",
+      "type": "Appearance",
+      "required": false
+    },
+    {
+      "name": "customColors",
+      "type": "SgButtonCustomColors",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "items",
+      "type": "SgSplitButtonItem[]",
+      "required": true
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "leftIcon",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "loading",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onClick",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "severity",
+      "type": "Severity",
+      "required": false
+    },
+    {
+      "name": "shape",
+      "type": "Shape",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "Size",
+      "required": false
+    }
+  ],
+  "SgStack": [
+    {
+      "name": "align",
+      "type": "\"start\" | \"center\" | \"end\" | \"stretch\"",
+      "required": false
+    },
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "direction",
+      "type": "\"row\" | \"column\"",
+      "required": false
+    },
+    {
+      "name": "gap",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "grow",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "justify",
+      "type": "\"start\" | \"center\" | \"end\" | \"between\" | \"around\" | \"evenly\"",
+      "required": false
+    },
+    {
+      "name": "wrap",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "SgStepperInput": [
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "defaultValue",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "inputClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "maxValue",
+      "type": "number",
+      "required": true
+    },
+    {
+      "name": "minValue",
+      "type": "number",
+      "required": true
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "((value: number) => void)",
+      "required": false
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "step",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "string | number",
+      "required": false
+    }
+  ],
+  "SgStringAnimator": [
+    {
+      "name": "alignTo",
+      "type": "SgStringAnimatorAlign",
+      "required": false,
+      "description": "Alinhamento das strings:\r\n- \"left\"  — preenche a direita com emptyChar (ideal para texto/nomes)\r\n- \"right\" — preenche a esquerda com emptyChar (ideal para numeros)"
+    },
+    {
+      "name": "autoStart",
+      "type": "boolean",
+      "required": false,
+      "description": "Se true, inicia a animacao automaticamente quando o componente\r\nmonta e sempre que targetString mudar."
+    },
+    {
+      "name": "backgroundColor",
+      "type": "string",
+      "required": false,
+      "description": "Cor de fundo — aplicada nos estilos \"neon\", \"fade\", \"discard\" e \"matrix\"."
+    },
+    {
+      "name": "charset",
+      "type": "string[]",
+      "required": false,
+      "description": "Conjunto de caracteres validos para o SgRoller3DDigit.\r\nDeve conter todos os caracteres que podem aparecer em sourceString,\r\ntargetString e emptyChar. Ignorado quando style != \"roller3d\"."
+    },
+    {
+      "name": "color",
+      "type": "string",
+      "required": false,
+      "description": "Cor principal do texto/ponto — aplicada nos estilos \"neon\", \"fade\",\r\n\"discard\" e \"matrix\"."
+    },
+    {
+      "name": "emptyChar",
+      "type": "string",
+      "required": false,
+      "description": "Caractere utilizado para preencher as posicoes extras quando\r\nsourceString e targetString possuem comprimentos diferentes."
+    },
+    {
+      "name": "fontSize",
+      "type": "number",
+      "required": false,
+      "description": "Tamanho da fonte em pixels — controla a escala de cada digito."
+    },
+    {
+      "name": "sourceString",
+      "type": "string",
+      "required": true,
+      "description": "String exibida antes da animacao"
+    },
+    {
+      "name": "stringAnimatorStyle",
+      "type": "SgStringAnimatorStyle",
+      "required": false,
+      "description": "Estilo de animacao por caractere.\r\n- \"roller3d\": tambor vertical (SgRoller3DDigit)\r\n- \"flip\": vira o card (SgFlipDigit)\r\n- \"neon\": brilho neon com fade (SgNeonDigit)\r\n- \"fade\": apaga e acende (SgFadeDigit)\r\n- \"discard\": folha descartada voando (SgDiscardDigit)\r\n- \"matrix\": pontos em matriz LED (SgMatrixDigit)"
+    },
+    {
+      "name": "targetString",
+      "type": "string",
+      "required": true,
+      "description": "String de destino — o componente anima ate ela"
+    },
+    {
+      "name": "velocity",
+      "type": "number",
+      "required": false,
+      "description": "Velocidade de 1 (muito lento) a 100 (muito rapido).\r\nControla o intervalo de tempo entre a troca de cada caractere."
+    }
+  ],
+  "SgTextEditor": [
+    {
+      "name": "cssEditorLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "cssText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "defaultValueHtml",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "fileName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onChangeHtml",
+      "type": "((htmlBody: string) => void)",
+      "required": false
+    },
+    {
+      "name": "onCssTextChange",
+      "type": "((cssText: string) => void)",
+      "required": false
+    },
+    {
+      "name": "onLoad",
+      "type": "((meta: SgTextEditorSaveMeta) => void)",
+      "required": false
+    },
+    {
+      "name": "onSave",
+      "type": "((file: File, meta: SgTextEditorSaveMeta) => void)",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "showCssEditor",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "valueHtml",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "SgToastHost": [
+    {
+      "name": "closeButton",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "customColors",
+      "type": "Partial<Record<SgToastType, SgToasterTypeColors>>",
+      "required": false
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "position",
+      "type": "SgToasterPosition",
+      "required": false
+    },
+    {
+      "name": "richColors",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "rounded",
+      "type": "boolean",
+      "required": false,
+      "description": "Arredonda os cantos de cada toast (rounded-md). Desligue para cantos retos."
+    },
+    {
+      "name": "transparency",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "visibleToasts",
+      "type": "number",
+      "required": false
+    }
+  ],
+  "SgToaster": [
+    {
+      "name": "closeButton",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "customColors",
+      "type": "Partial<Record<SgToastType, SgToasterTypeColors>>",
+      "required": false
+    },
+    {
+      "name": "duration",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "position",
+      "type": "SgToasterPosition",
+      "required": false
+    },
+    {
+      "name": "richColors",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "rounded",
+      "type": "boolean",
+      "required": false,
+      "description": "Arredonda os cantos de cada toast (rounded-md). Desligue para cantos retos."
+    },
+    {
+      "name": "transparency",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "visibleToasts",
+      "type": "number",
+      "required": false
+    }
+  ],
+  "SgToggleSwitch": [
+    {
+      "name": "checked",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "defaultChecked",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "enabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "offIcon",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "((checked: boolean) => void)",
+      "required": false
+    },
+    {
+      "name": "onIcon",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "onValidation",
+      "type": "((message: string | null) => void)",
+      "required": false
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "requiredMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "switchClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "thumbClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "trackClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "validateOnBlur",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "validation",
+      "type": "((checked: boolean) => string | null)",
+      "required": false
+    },
+    {
+      "name": "width",
+      "type": "string | number",
+      "required": false
+    }
+  ],
+  "SgToolBar": [
+    {
+      "name": "bgColor",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "bgColorTitle",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "buttonsPerDirection",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "collapsed",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "collapsible",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "defaultCollapsed",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "defaultPosition",
+      "type": "{ x: number; y: number; }",
+      "required": false
+    },
+    {
+      "name": "dockZone",
+      "type": "\"top\" | \"right\" | \"bottom\" | \"left\" | \"free\"",
+      "required": false
+    },
+    {
+      "name": "draggable",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "freeDrag",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "onCollapsedChange",
+      "type": "((collapsed: boolean) => void)",
+      "required": false
+    },
+    {
+      "name": "orientationDirection",
+      "type": "SgToolBarOrientationDirection",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "SgToolBarSize",
+      "required": false
+    },
+    {
+      "name": "title",
+      "type": "ReactNode",
+      "required": false
+    }
+  ],
+  "SgToolbarIconButton": [
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "hint",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "icon",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "loading",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "onClick",
+      "type": "(() => void | Promise<void>)",
+      "required": false
+    },
+    {
+      "name": "severity",
+      "type": "SgToolBarSeverity",
+      "required": false
+    },
+    {
+      "name": "showLabel",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "SgTreeView": [
+    {
+      "name": "branchLabelBehavior",
+      "type": "\"none\" | \"toggle\"",
+      "required": false
+    },
+    {
+      "name": "checkable",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "checkedIds",
+      "type": "string[]",
+      "required": false
+    },
+    {
+      "name": "checkMode",
+      "type": "\"live\" | \"confirm\"",
+      "required": false
+    },
+    {
+      "name": "confirmBar",
+      "type": "SgTreeConfirmBar",
+      "required": false
+    },
+    {
+      "name": "confirmSelection",
+      "type": "\"all\" | \"leafOnly\"",
+      "required": false
+    },
+    {
+      "name": "defaultCheckedIds",
+      "type": "string[]",
+      "required": false
+    },
+    {
+      "name": "defaultExpandedIds",
+      "type": "string[]",
+      "required": false
+    },
+    {
+      "name": "defaultSearchValue",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "density",
+      "type": "SgDensity",
+      "required": false
+    },
+    {
+      "name": "emptyText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "expandedIds",
+      "type": "string[]",
+      "required": false
+    },
+    {
+      "name": "expandMatchesOnSearch",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "iconTone",
+      "type": "\"primary\" | \"default\"",
+      "required": false
+    },
+    {
+      "name": "maxHeightClassName",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "nodes",
+      "type": "SgTreeNode[]",
+      "required": true
+    },
+    {
+      "name": "onCheckedChange",
+      "type": "((ids: string[]) => void)",
+      "required": false
+    },
+    {
+      "name": "onCollapse",
+      "type": "((node: SgTreeNode) => void)",
+      "required": false
+    },
+    {
+      "name": "onExpand",
+      "type": "((node: SgTreeNode) => void)",
+      "required": false
+    },
+    {
+      "name": "onExpandedChange",
+      "type": "((ids: string[]) => void)",
+      "required": false
+    },
+    {
+      "name": "onLeafClick",
+      "type": "((id: string) => void)",
+      "required": false
+    },
+    {
+      "name": "onSearchChange",
+      "type": "((v: string) => void)",
+      "required": false
+    },
+    {
+      "name": "searchable",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "searchPlaceholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "searchValue",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "SgSize",
+      "required": false
+    },
+    {
+      "name": "tone",
+      "type": "SgTone",
+      "required": false
+    }
+  ],
+  "SgWhistleHost": [
+    {
+      "name": "customColors",
+      "type": "Partial<Record<SgWhistleSeverity, SgWhistleColors>>",
+      "required": false
+    },
+    {
+      "name": "gap",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "max",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "newestOnTop",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "rounded",
+      "type": "boolean",
+      "required": false,
+      "description": "Arredonda os cantos de cada whistle (rounded-lg). Desligue para cantos retos."
+    }
+  ],
+  "SgWhistler": [
+    {
+      "name": "customColors",
+      "type": "Partial<Record<SgWhistleSeverity, SgWhistleColors>>",
+      "required": false
+    },
+    {
+      "name": "gap",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "max",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "newestOnTop",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "rounded",
+      "type": "boolean",
+      "required": false,
+      "description": "Arredonda os cantos de cada whistle (rounded-lg). Desligue para cantos retos."
+    }
+  ],
+  "SgWizard": [
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "required": true
+    },
+    {
+      "name": "initialStep",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "labels",
+      "type": "Partial<SgWizardLabels>",
+      "required": false
+    },
+    {
+      "name": "onBeforeFinish",
+      "type": "((index: number) => boolean | Promise<boolean>)",
+      "required": false
+    },
+    {
+      "name": "onBeforeNext",
+      "type": "((index: number) => boolean | Promise<boolean>)",
+      "required": false
+    },
+    {
+      "name": "onFinish",
+      "type": "() => void | Promise<void>",
+      "required": true
+    },
+    {
+      "name": "onStepChange",
+      "type": "((index: number) => void)",
+      "required": false
+    },
+    {
+      "name": "stepNavigation",
+      "type": "WizardStepNavigation",
+      "required": false
+    },
+    {
+      "name": "stepper",
+      "type": "SgWizardStepper",
+      "required": false
+    },
+    {
+      "name": "validateStep",
+      "type": "((index: number) => boolean | Promise<boolean>)",
+      "required": false
+    }
+  ],
+  "SgWizardPage": [
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "required": true
+    },
+    {
+      "name": "icon",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": false
+    }
+  ]
+}

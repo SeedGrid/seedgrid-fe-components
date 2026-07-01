@@ -18,7 +18,9 @@ import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcaseProp
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
 import { useAiManifestComponent } from "../../ai/useAiManifestComponent";
 import { useShowcaseAnchors } from "../../useShowcaseAnchors";
-import { useShowcaseI18n, type ShowcaseLocale } from "../../../../i18n";
+import { t, useShowcaseI18n } from "../../../../i18n";
+
+const K = "showcase.component.discardDigit";
 
 function Section(props: { title: string; description?: string; children: React.ReactNode }) {
   return (
@@ -33,163 +35,14 @@ function Section(props: { title: string; description?: string; children: React.R
   );
 }
 
-type DiscardDigitTexts = {
-  headerSubtitle: string;
-  section1Title: string;
-  section1Description: string;
-  section1NextButton: string;
-  section1PreviousButton: string;
-  section2Title: string;
-  section2Description: string;
-  section2DiscardButton: string;
-  section3Title: string;
-  section3Description: string;
-  section4Title: string;
-  section4Description: string;
-  section5Title: string;
-  section5Description: string;
-  section5StartButton: string;
-  section5StopButton: string;
-  section6Title: string;
-  section6Description: string;
-  section6PageLabelPrefix: string;
-  section6PageLabelConnector: string;
-  section6PreviousButton: string;
-  section6NextButton: string;
-  section7Title: string;
-  section7Description: string;
-  propsReferenceTitle: string;
-};
 
-const DISCARD_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", DiscardDigitTexts> = {
-  "pt-BR": {
-    headerSubtitle:
-      "Bloco de folhas com animacao 3D de descarte: a folha do topo sai e revela a proxima.",
-    section1Title: "1) Basico",
-    section1Description: "Click Next to add one card and Previous to remove one card.",
-    section1NextButton: "Next (+1 folha)",
-    section1PreviousButton: "Previous (-1 folha)",
-    section2Title: "2) Folhas sequenciais",
-    section2Description: "Cada clique descarta uma folha e revela a seguinte.",
-    section2DiscardButton: "Descartar folha",
-    section3Title: "3) Variacoes de papel",
-    section3Description: "Examples with different color + backgroundColor.",
-    section4Title: "4) Fontes",
-    section4Description: "Comparacao de fontes no mesmo efeito de pilha.",
-    section5Title: "5) Auto descarte",
-    section5Description: "Atualizacao continua para observar a direcao aleatoria da folha descartada.",
-    section5StartButton: "Iniciar",
-    section5StopButton: "Parar",
-    section6Title: "6) Paginacao imperativa (ref)",
-    section6Description:
-      "totalNumberPages define o total de folhas. O ref expoe increasePage(), decreasePage() e page().",
-    section6PageLabelPrefix: "Pagina",
-    section6PageLabelConnector: "de",
-    section6PreviousButton: "Previous",
-    section6NextButton: "Proxima",
-    section7Title: "7) Playground (SgPlayground)",
-    section7Description: "Ajuste em tempo real de color, font, backgroundColor e animacao.",
-    propsReferenceTitle: "Referência de Props"
-  },
-  "pt-PT": {
-    headerSubtitle:
-      "Bloco de folhas com animacao 3D de descarte: a folha no topo sai e revela a seguinte.",
-    section1Title: "1) Basico",
-    section1Description: "Click Next to add one card and Previous to remove one card.",
-    section1NextButton: "Next (+1 folha)",
-    section1PreviousButton: "Previous (-1 folha)",
-    section2Title: "2) Folhas sequenciais",
-    section2Description: "Cada clique descarta uma folha e revela a seguinte.",
-    section2DiscardButton: "Descartar folha",
-    section3Title: "3) Variacoes de papel",
-    section3Description: "Examples with different color + backgroundColor.",
-    section4Title: "4) Fontes",
-    section4Description: "Comparacao de fontes no mesmo efeito de pilha.",
-    section5Title: "5) Auto descarte",
-    section5Description: "Atualizacao continua para observar a direcao aleatoria da folha descartada.",
-    section5StartButton: "Iniciar",
-    section5StopButton: "Parar",
-    section6Title: "6) Paginacao imperativa (ref)",
-    section6Description:
-      "totalNumberPages define o total de folhas. O ref expoe increasePage(), decreasePage() e page().",
-    section6PageLabelPrefix: "Pagina",
-    section6PageLabelConnector: "de",
-    section6PreviousButton: "Previous",
-    section6NextButton: "Proxima",
-    section7Title: "7) Playground (SgPlayground)",
-    section7Description: "Ajuste em tempo real de color, font, backgroundColor e animacao.",
-    propsReferenceTitle: "Referência de Props"
-  },
-  "en-US": {
-    headerSubtitle:
-      "Stacked paper-style digit with a 3D discard animation: the top sheet leaves and reveals the next one.",
-    section1Title: "1) Basic",
-    section1Description: "Click Next to add one sheet and Previous to remove one sheet.",
-    section1NextButton: "Next (+1 sheet)",
-    section1PreviousButton: "Previous (-1 sheet)",
-    section2Title: "2) Sequential sheets",
-    section2Description: "Each click discards one sheet and reveals the next.",
-    section2DiscardButton: "Discard sheet",
-    section3Title: "3) Paper variants",
-    section3Description: "Examples with different color + backgroundColor combinations.",
-    section4Title: "4) Fonts",
-    section4Description: "Font comparison using the same stack effect.",
-    section5Title: "5) Auto discard",
-    section5Description: "Continuous updates to observe random discard direction.",
-    section5StartButton: "Start",
-    section5StopButton: "Stop",
-    section6Title: "6) Imperative pagination (ref)",
-    section6Description:
-      "totalNumberPages defines the sheet count. The ref exposes increasePage(), decreasePage(), and page().",
-    section6PageLabelPrefix: "Page",
-    section6PageLabelConnector: "of",
-    section6PreviousButton: "Previous",
-    section6NextButton: "Next",
-    section7Title: "7) Playground (SgPlayground)",
-    section7Description: "Real-time tuning of color, font, backgroundColor, and animation.",
-    propsReferenceTitle: "Props Reference"
-  },
-  es: {
-    headerSubtitle:
-      "Bloque de hojas con animacion 3D de descarte: la hoja superior sale y revela la siguiente.",
-    section1Title: "1) Basico",
-    section1Description: "Haz clic en Siguiente para agregar una hoja y en Previous para quitar una hoja.",
-    section1NextButton: "Siguiente (+1 hoja)",
-    section1PreviousButton: "Previous (-1 hoja)",
-    section2Title: "2) Hojas secuenciales",
-    section2Description: "Cada clic descarta una hoja y revela la siguiente.",
-    section2DiscardButton: "Descartar hoja",
-    section3Title: "3) Variaciones de papel",
-    section3Description: "Ejemplos con distintas combinaciones de color + backgroundColor.",
-    section4Title: "4) Fuentes",
-    section4Description: "Comparacion de fuentes con el mismo efecto de pila.",
-    section5Title: "5) Auto descarte",
-    section5Description: "Actualizacion continua para observar la direccion aleatoria del descarte.",
-    section5StartButton: "Iniciar",
-    section5StopButton: "Detener",
-    section6Title: "6) Paginacion imperativa (ref)",
-    section6Description:
-      "totalNumberPages define el total de hojas. El ref expone increasePage(), decreasePage() y page().",
-    section6PageLabelPrefix: "Pagina",
-    section6PageLabelConnector: "de",
-    section6PreviousButton: "Previous",
-    section6NextButton: "Siguiente",
-    section7Title: "7) Playground (SgPlayground)",
-    section7Description: "Ajuste en tiempo real de color, font, backgroundColor y animacion.",
-    propsReferenceTitle: "Referencia de Props"
-  }
-};
 
-type SupportedDiscardLocale = keyof typeof DISCARD_TEXTS;
 
-function isSupportedDiscardLocale(locale: ShowcaseLocale): locale is SupportedDiscardLocale {
-  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
-}
+
 
-function getDiscardTexts(locale: ShowcaseLocale): DiscardDigitTexts {
-  const normalized: SupportedDiscardLocale = isSupportedDiscardLocale(locale) ? locale : "en-US";
-  return DISCARD_TEXTS[normalized];
-}
+
+
+
 
 const PAGE_VALUES = ["001", "002", "003", "004", "005"] as const;
 
@@ -451,8 +304,7 @@ const PROPS: ShowcasePropRow[] = [
 ];
 
 export default function SgDiscardDigitShowcase() {
-  const i18n = useShowcaseI18n();
-  const texts = React.useMemo(() => getDiscardTexts(i18n.locale), [i18n.locale]);
+  const i18n = useShowcaseI18n();
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
   const aiComponent = useAiManifestComponent("SgDiscardDigit");
@@ -504,12 +356,12 @@ export default function SgDiscardDigitShowcase() {
         <ShowcaseStickyHeader
           stickyHeaderRef={stickyHeaderRef}
           title="SgDiscardDigit"
-          subtitle={texts.headerSubtitle}
+          subtitle={t(i18n, `${K}.headerSubtitle`)}
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
 
-        <Section title={texts.section1Title} description={texts.section1Description}>
+        <Section title={t(i18n, `${K}.section1Title`)} description={t(i18n, `${K}.section1Description`)}>
           <div className="flex items-center gap-4">
             <SgDiscardDigit
               value="7"
@@ -519,14 +371,14 @@ export default function SgDiscardDigitShowcase() {
               stackDepth={sheetCount}
             />
             <div className="flex flex-col gap-2">
-              <SgButton size="sm" onClick={addSheet}>{texts.section1NextButton}</SgButton>
-              <SgButton size="sm" severity="secondary" onClick={removeSheet}>{texts.section1PreviousButton}</SgButton>
+              <SgButton size="sm" onClick={addSheet}>{t(i18n, `${K}.section1NextButton`)}</SgButton>
+              <SgButton size="sm" severity="secondary" onClick={removeSheet}>{t(i18n, `${K}.section1PreviousButton`)}</SgButton>
             </div>
           </div>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-discard-digit/samples/basico.tsx.sample" />
         </Section>
 
-        <Section title={texts.section2Title} description={texts.section2Description}>
+        <Section title={t(i18n, `${K}.section2Title`)} description={t(i18n, `${K}.section2Description`)}>
           <div className="space-y-3">
             <SgDiscardDigit
               value={currentPage}
@@ -535,12 +387,12 @@ export default function SgDiscardDigitShowcase() {
               backgroundColor="#fffef7"
               fontSize={58}
             />
-            <SgButton size="sm" onClick={nextPage}>{texts.section2DiscardButton}</SgButton>
+            <SgButton size="sm" onClick={nextPage}>{t(i18n, `${K}.section2DiscardButton`)}</SgButton>
           </div>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-discard-digit/samples/folhas-sequenciais.tsx.sample" />
         </Section>
 
-        <Section title={texts.section3Title} description={texts.section3Description}>
+        <Section title={t(i18n, `${K}.section3Title`)} description={t(i18n, `${K}.section3Description`)}>
           <SgGrid columns={{ base: 1, md: 3 }} gap={12}>
             <div className="space-y-2">
               <p className="text-xs text-muted-foreground">Papel branco</p>
@@ -573,7 +425,7 @@ export default function SgDiscardDigitShowcase() {
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-discard-digit/samples/variacoes-de-papel.tsx.sample" />
         </Section>
 
-        <Section title={texts.section4Title} description={texts.section4Description}>
+        <Section title={t(i18n, `${K}.section4Title`)} description={t(i18n, `${K}.section4Description`)}>
           <SgGrid columns={{ base: 1, md: 2 }} gap={12}>
             <div className="space-y-2">
               <p className="text-xs text-muted-foreground">Sans</p>
@@ -599,7 +451,7 @@ export default function SgDiscardDigitShowcase() {
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-discard-digit/samples/fontes.tsx.sample" />
         </Section>
 
-        <Section title={texts.section5Title} description={texts.section5Description}>
+        <Section title={t(i18n, `${K}.section5Title`)} description={t(i18n, `${K}.section5Description`)}>
           <div className="space-y-3">
             <SgDiscardDigit
               value={counter}
@@ -611,13 +463,13 @@ export default function SgDiscardDigitShowcase() {
               stackDepth={15}
             />
             <SgButton size="sm" onClick={() => setRunning((prev) => !prev)}>
-              {running ? texts.section5StopButton : texts.section5StartButton}
+              {running ? t(i18n, `${K}.section5StopButton`) : t(i18n, `${K}.section5StartButton`)}
             </SgButton>
           </div>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-discard-digit/samples/auto-descarte.tsx.sample" />
         </Section>
 
-        <Section title={texts.section6Title} description={texts.section6Description}>
+        <Section title={t(i18n, `${K}.section6Title`)} description={t(i18n, `${K}.section6Description`)}>
           <div className="flex flex-wrap items-end gap-8">
             <SgDiscardDigit
               ref={discardRef}
@@ -627,16 +479,16 @@ export default function SgDiscardDigitShowcase() {
             />
             <div className="space-y-3">
               <p className="text-sm text-muted-foreground">
-                {texts.section6PageLabelPrefix}{" "}
+                {t(i18n, `${K}.section6PageLabelPrefix`)}{" "}
                 <span className="font-semibold text-foreground">{paginaAtual}</span>{" "}
-                {texts.section6PageLabelConnector} {TOTAL_PAGES}
+                {t(i18n, `${K}.section6PageLabelConnector`)} {TOTAL_PAGES}
               </p>
               <div className="flex gap-2">
                 <SgButton size="sm" onClick={handlePrevious} disabled={paginaAtual <= 1}>
-                  {texts.section6PreviousButton}
+                  {t(i18n, `${K}.section6PreviousButton`)}
                 </SgButton>
                 <SgButton size="sm" onClick={handleProxima} disabled={paginaAtual >= TOTAL_PAGES}>
-                  {texts.section6NextButton}
+                  {t(i18n, `${K}.section6NextButton`)}
                 </SgButton>
               </div>
             </div>
@@ -644,7 +496,7 @@ export default function SgDiscardDigitShowcase() {
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-discard-digit/samples/paginacao-imperativa-ref.tsx.sample" />
         </Section>
 
-        <Section title={texts.section7Title} description={texts.section7Description}>
+        <Section title={t(i18n, `${K}.section7Title`)} description={t(i18n, `${K}.section7Description`)}>
           <SgPlayground
             title="SgDiscardDigit Playground"
             interactive
@@ -655,7 +507,7 @@ export default function SgDiscardDigitShowcase() {
           />
         </Section>
 
-        <ShowcasePropsReference rows={PROPS} title={texts.propsReferenceTitle} />
+        <ShowcasePropsReference rows={PROPS} title={t(i18n, `${K}.propsReferenceTitle`)} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />

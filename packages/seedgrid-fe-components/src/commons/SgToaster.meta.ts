@@ -19,7 +19,8 @@ export const sgMeta: SgMetaV0 = {
     { name: "duration", type: "number", default: 4000, description: "Duracao padrao dos toasts em milissegundos.", semanticRole: "behavior", bindable: true },
     { name: "visibleToasts", type: "number", default: 6, description: "Quantidade maxima de toasts visiveis simultaneamente.", semanticRole: "behavior", bindable: true },
     { name: "closeButton", type: "boolean", default: true, description: "Exibe botao de fechar em cada toast.", semanticRole: "appearance", bindable: true },
-    { name: "richColors", type: "boolean", default: true, description: "Ativa paleta visual rica por tipo de toast.", semanticRole: "appearance", bindable: true }
+    { name: "richColors", type: "boolean", default: true, description: "Ativa paleta visual rica por tipo de toast.", semanticRole: "appearance", bindable: true },
+    { name: "rounded", type: "boolean", default: true, description: "Arredonda os cantos de cada toast (desligue para cantos retos).", semanticRole: "appearance", bindable: true }
   ],
   states: ["idle", "showing-toasts"],
   examples: [

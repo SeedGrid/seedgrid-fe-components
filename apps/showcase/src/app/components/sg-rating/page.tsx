@@ -12,7 +12,9 @@ import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
 import ComponentAiSummary from "../ai/ComponentAiSummary";
 import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcasePropsReference from "../ShowcasePropsReference";
-import { useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
+import { t, useShowcaseI18n } from "../../../i18n";
+
+const K = "showcase.component.rating";
 
 function Section(props: {
   id?: string;
@@ -70,158 +72,9 @@ const RATING_PROPS: PropRow[] = [
 ];
 
 
-type RatingTexts = {
-  subtitle: string;
-  examplesLabel: string;
-  propsLinkLabel: string;
-  propsTitle: string;
-  propsColProp: string;
-  propsColType: string;
-  propsColDefault: string;
-  propsColDescription: string;
-  sectionTitles: string[];
-  sectionDescriptions: string[];
-  playgroundTitle: string;
-};
 
-const RATING_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", RatingTexts> = {
-  "pt-BR": {
-    subtitle: "Rating component with half-star support, visual states, icon customization and React Hook Form integration.",
-    examplesLabel: "Examples",
-    propsLinkLabel: "Referência de Props",
-    propsTitle: "Referência de Props",
-    propsColProp: "Prop",
-    propsColType: "Tipo",
-    propsColDefault: "Default",
-    propsColDescription: "Description",
-    sectionTitles: [
-      "1) Basico",
-      "2) Meia estrela + tooltip",
-      "3) Read-only e desabilitado",
-      "4) Tamanhos e quantidade de estrelas",
-      "5) Cores e icones customizados",
-      "6) Callbacks",
-      "7) React Hook Form",
-      "8) Campo obrigatorio",
-      "9) Playground (SgPlayground)"
-    ],
-    sectionDescriptions: [
-      "Example controlado com estado React.",
-      "Permite clicar nas metades e exibir valor no hover.",
-      "Visualizacao sem interacao e estado disabled.",
-      "Controle de size e stars.",
-      "Troca de cores e icones de preenchido/vazio.",
-      "Example com onChange e onHover + log de eventos.",
-      "Uso com control/name e submit.",
-      "Example com required e requiredMessage.",
-      "Simule as props principais em tempo real."
-    ],
-    playgroundTitle: "SgRating Playground"
-  },
-  "pt-PT": {
-    subtitle: "Rating component with half-star support, visual states, icon customization and React Hook Form integration.",
-    examplesLabel: "Examples",
-    propsLinkLabel: "Referência de Props",
-    propsTitle: "Referência de Props",
-    propsColProp: "Prop",
-    propsColType: "Tipo",
-    propsColDefault: "Default",
-    propsColDescription: "Description",
-    sectionTitles: [
-      "1) Basico",
-      "2) Meia estrela + tooltip",
-      "3) Read-only e desabilitado",
-      "4) Tamanhos e quantidade de estrelas",
-      "5) Cores e icones customizados",
-      "6) Callbacks",
-      "7) React Hook Form",
-      "8) Campo obrigatorio",
-      "9) Playground (SgPlayground)"
-    ],
-    sectionDescriptions: [
-      "Example controlado com estado React.",
-      "Permite clicar nas metades e exibir valor no hover.",
-      "Visualizacao sem interacao e estado disabled.",
-      "Controle de size e stars.",
-      "Troca de cores e icones de preenchido/vazio.",
-      "Example com onChange e onHover + log de eventos.",
-      "Uso com control/name e submit.",
-      "Example com required e requiredMessage.",
-      "Simule as props principais em tempo real."
-    ],
-    playgroundTitle: "SgRating Playground"
-  },
-  "en-US": {
-    subtitle: "Rating component with half-star support, visual states, icon customization and React Hook Form integration.",
-    examplesLabel: "Examples",
-    propsLinkLabel: "Props Reference",
-    propsTitle: "Props Reference",
-    propsColProp: "Prop",
-    propsColType: "Type",
-    propsColDefault: "Default",
-    propsColDescription: "Description",
-    sectionTitles: [
-      "1) Basic",
-      "2) Half star + tooltip",
-      "3) Read-only and disabled",
-      "4) Sizes and number of stars",
-      "5) Colors and custom icons",
-      "6) Callbacks",
-      "7) React Hook Form",
-      "8) Required field",
-      "9) Playground (SgPlayground)"
-    ],
-    sectionDescriptions: [
-      "Controlled example with React state.",
-      "Allows half-click selection and hover value tooltip.",
-      "View-only and disabled state.",
-      "Control of size and stars.",
-      "Switch filled/empty colors and icons.",
-      "Example with onChange and onHover + event log.",
-      "Usage with control/name and submit.",
-      "Example using required and requiredMessage.",
-      "Simulate main props in real time."
-    ],
-    playgroundTitle: "SgRating Playground"
-  },
-  es: {
-    subtitle: "Rating component with half-star support, visual states, icon customization, and React Hook Form integration.",
-    examplesLabel: "Ejemplos",
-    propsLinkLabel: "Referencia de Props",
-    propsTitle: "Referencia de Props",
-    propsColProp: "Prop",
-    propsColType: "Tipo",
-    propsColDefault: "Predeterminado",
-    propsColDescription: "Descripcion",
-    sectionTitles: [
-      "1) Basico",
-      "2) Media estrella + tooltip",
-      "3) Solo lectura y deshabilitado",
-      "4) Tamanhos y cantidad de estrellas",
-      "5) Colores e iconos personalizados",
-      "6) Callbacks",
-      "7) React Hook Form",
-      "8) Campo obligatorio",
-      "9) Playground (SgPlayground)"
-    ],
-    sectionDescriptions: [
-      "Ejemplo controlado con estado React.",
-      "Permite clicar mitades y mostrar valor en hover.",
-      "Visualizacion sin interaccion y estado disabled.",
-      "Control de size y stars.",
-      "Cambio de colores e iconos llenos/vacios.",
-      "Ejemplo con onChange y onHover + log de eventos.",
-      "Uso con control/name y submit.",
-      "Ejemplo con required y requiredMessage.",
-      "Simula las props principales en tiempo real."
-    ],
-    playgroundTitle: "SgRating Playground"
-  }
-};
 
-function isSupportedLocale(locale: ShowcaseLocale): locale is keyof typeof RATING_TEXTS {
-  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
-}
+
 function BasicExample() {
   const [value, setValue] = React.useState(0);
 
@@ -468,9 +321,40 @@ function RequiredExample() {
 
 export default function SgRatingPage() {
   const i18n = useShowcaseI18n();
+  const texts = React.useMemo(() => ({
+    subtitle: t(i18n, `${K}.subtitle`),
+    examplesLabel: t(i18n, `${K}.examplesLabel`),
+    propsLinkLabel: t(i18n, `${K}.propsLinkLabel`),
+    propsTitle: t(i18n, `${K}.propsTitle`),
+    propsColProp: t(i18n, `${K}.propsColProp`),
+    propsColType: t(i18n, `${K}.propsColType`),
+    propsColDefault: t(i18n, `${K}.propsColDefault`),
+    propsColDescription: t(i18n, `${K}.propsColDescription`),
+    sectionTitles: [
+      t(i18n, `${K}.sectionTitles.0`),
+      t(i18n, `${K}.sectionTitles.1`),
+      t(i18n, `${K}.sectionTitles.2`),
+      t(i18n, `${K}.sectionTitles.3`),
+      t(i18n, `${K}.sectionTitles.4`),
+      t(i18n, `${K}.sectionTitles.5`),
+      t(i18n, `${K}.sectionTitles.6`),
+      t(i18n, `${K}.sectionTitles.7`),
+      t(i18n, `${K}.sectionTitles.8`)
+    ],
+    sectionDescriptions: [
+      t(i18n, `${K}.sectionDescriptions.0`),
+      t(i18n, `${K}.sectionDescriptions.1`),
+      t(i18n, `${K}.sectionDescriptions.2`),
+      t(i18n, `${K}.sectionDescriptions.3`),
+      t(i18n, `${K}.sectionDescriptions.4`),
+      t(i18n, `${K}.sectionDescriptions.5`),
+      t(i18n, `${K}.sectionDescriptions.6`),
+      t(i18n, `${K}.sectionDescriptions.7`),
+      t(i18n, `${K}.sectionDescriptions.8`)
+    ],
+    playgroundTitle: t(i18n, `${K}.playgroundTitle`)
+  }), [i18n]);
   const aiComponent = useAiManifestComponent("SgRating");
-  const locale: keyof typeof RATING_TEXTS = isSupportedLocale(i18n.locale) ? i18n.locale : "en-US";
-  const texts = RATING_TEXTS[locale];
   const exampleLinks = React.useMemo(() => texts.sectionTitles.map((label, index) => ({ id: `exemplo-${index + 1}`, label })), [texts]);
   const stickyHeaderRef = React.useRef<HTMLDivElement | null>(null);
   const [anchorOffset, setAnchorOffset] = React.useState(320);

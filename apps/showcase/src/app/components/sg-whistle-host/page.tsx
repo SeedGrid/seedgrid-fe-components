@@ -17,6 +17,7 @@ import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
+import { t, useShowcaseI18n, type ShowcaseI18n } from "../../../i18n";
 
 function Section(props: Readonly<{ title: string; description?: string; children: React.ReactNode }>) {
   return (
@@ -35,14 +36,6 @@ function CodeBlock(props: Readonly<{ sampleFile: string }>) {
   return <SgCodeBlockBase sampleFile={props.sampleFile} />;
 }
 
-const WHISTLE_PROPS: ShowcasePropRow[] = [
-  { prop: "max", type: "number", defaultValue: "4", description: "Maximum visible whistles rendered by the host." },
-  { prop: "newestOnTop", type: "boolean", defaultValue: "false", description: "Reverses the visual order of the visible stack." },
-  { prop: "gap", type: "number", defaultValue: "12", description: "Vertical spacing between whistle items." },
-  { prop: "className / style", type: "string / CSSProperties", defaultValue: "-", description: "Styles the host container in the page flow." },
-  { prop: "customColors", type: "Partial<Record<SgWhistleSeverity, { bg; fg; border }>>", defaultValue: "-", description: "Overrides contextual colors by severity." }
-];
-
 const WARM_COLORS = {
   default: { bg: "#fff7ed", fg: "#7c2d12", border: "#fdba74" },
   success: { bg: "#ecfdf5", fg: "#065f46", border: "#34d399" },
@@ -52,34 +45,19 @@ const WARM_COLORS = {
   loading: { bg: "#f5f3ff", fg: "#6d28d9", border: "#a78bfa" }
 } satisfies Partial<Record<SgWhistleSeverity, { bg: string; fg: string; border: string }>>;
 
-const TITLES_BY_SEVERITY: Record<SgWhistleSeverity, string> = {
-  default: "Context note",
-  success: "Saved",
-  info: "Heads up",
-  warning: "Pending review",
-  error: "Action failed",
-  loading: "Working..."
-};
+const K = "showcase.component.whistleHost";
 
-function fireSeverity(severity: SgWhistleSeverity) {
-  const messageBySeverity: Record<SgWhistleSeverity, string> = {
-    default: "Inline feedback rendered inside the layout flow.",
-    success: "The record was persisted successfully.",
-    info: "This section can show contextual progress or hints.",
-    warning: "The action needs confirmation before continuing.",
-    error: "The request returned an error and needs attention.",
-    loading: "Processing without blocking the page layout."
-  };
-
+function fireSeverity(i18n: ShowcaseI18n, severity: SgWhistleSeverity) {
   return sgWhistle.show({
     severity,
-    title: TITLES_BY_SEVERITY[severity],
-    message: messageBySeverity[severity],
+    title: t(i18n, `${K}.msg.severity.${severity}.title`),
+    message: t(i18n, `${K}.msg.severity.${severity}.message`),
     duration: severity === "loading" ? 0 : 5000
   });
 }
 
 export default function SgWhistleHostPage() {
+  const i18n = useShowcaseI18n();
   const aiComponent = useAiManifestComponent("SgWhistleHost");
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors();
   const [max, setMax] = React.useState(4);
@@ -87,6 +65,14 @@ export default function SgWhistleHostPage() {
   const [newestOnTop, setNewestOnTop] = React.useState(false);
   const [warmPalette, setWarmPalette] = React.useState(false);
   const [activeId, setActiveId] = React.useState<SgWhistleId | null>(null);
+
+  const whistleProps: ShowcasePropRow[] = [
+    { prop: "max", type: "number", defaultValue: "4", description: t(i18n, `${K}.props.max`) },
+    { prop: "newestOnTop", type: "boolean", defaultValue: "false", description: t(i18n, `${K}.props.newestOnTop`) },
+    { prop: "gap", type: "number", defaultValue: "12", description: t(i18n, `${K}.props.gap`) },
+    { prop: "className / style", type: "string / CSSProperties", defaultValue: "-", description: t(i18n, `${K}.props.classNameStyle`) },
+    { prop: "customColors", type: "Partial<Record<SgWhistleSeverity, { bg; fg; border }>>", defaultValue: "-", description: t(i18n, `${K}.props.customColors`) }
+  ];
 
   React.useEffect(() => {
     sgWhistle.dismiss();
@@ -97,35 +83,32 @@ export default function SgWhistleHostPage() {
 
   const startLoading = React.useCallback(() => {
     const id = sgWhistle.loading({
-      title: "Synchronizing",
-      message: "The same whistle id will be updated when the request finishes.",
+      title: t(i18n, `${K}.msg.loading.title`),
+      message: t(i18n, `${K}.msg.loading.message`),
       borderStyle: "left-accent",
       dismissible: false
     });
     setActiveId(id);
-  }, []);
+  }, [i18n]);
 
   const finishLoading = React.useCallback((severity: "success" | "error") => {
     if (!activeId) {
       sgWhistle.warning({
-        title: "No active loading",
-        message: "Start a loading whistle before trying to update it."
+        title: t(i18n, `${K}.msg.noActive.title`),
+        message: t(i18n, `${K}.msg.noActive.message`)
       });
       return;
     }
 
     sgWhistle.update(activeId, {
       severity,
-      title: severity === "success" ? "Sync complete" : "Sync failed",
-      message:
-        severity === "success"
-          ? "The loading whistle was updated in place."
-          : "The same whistle id now renders the error state.",
+      title: severity === "success" ? t(i18n, `${K}.msg.syncOk.title`) : t(i18n, `${K}.msg.syncFail.title`),
+      message: severity === "success" ? t(i18n, `${K}.msg.syncOk.message`) : t(i18n, `${K}.msg.syncFail.message`),
       dismissible: true,
       duration: 5000
     });
     setActiveId(null);
-  }, [activeId]);
+  }, [activeId, i18n]);
 
   const runPromiseDemo = React.useCallback(async () => {
     try {
@@ -139,17 +122,17 @@ export default function SgWhistleHostPage() {
         },
         {
           loading: {
-            title: "Submitting report",
-            message: "Waiting for the server..."
+            title: t(i18n, `${K}.msg.promise.loading.title`),
+            message: t(i18n, `${K}.msg.promise.loading.message`)
           },
           success: (value) => ({
-            title: "Report sent",
-            message: `Protocol ${value.protocol} generated successfully.`,
+            title: t(i18n, `${K}.msg.promise.success.title`),
+            message: t(i18n, `${K}.msg.promise.success.message`, { protocol: value.protocol }),
             borderStyle: "soft"
           }),
           error: (error) => ({
-            title: "Submission failed",
-            message: error instanceof Error ? error.message : "Unknown error",
+            title: t(i18n, `${K}.msg.promise.error.title`),
+            message: error instanceof Error ? error.message : t(i18n, `${K}.msg.promise.error.message`),
             borderStyle: "full-accent"
           })
         }
@@ -157,57 +140,55 @@ export default function SgWhistleHostPage() {
     } catch {
       // already represented by sgWhistle.promise
     }
-  }, []);
+  }, [i18n]);
 
   const runActionDemo = React.useCallback(() => {
     sgWhistle.warning({
-      title: "Archived section",
-      message: "The action is reversible for a few seconds.",
+      title: t(i18n, `${K}.msg.action.title`),
+      message: t(i18n, `${K}.msg.action.message`),
       borderStyle: "left-accent",
       opacity: 0.96,
       action: {
-        label: "Undo",
+        label: t(i18n, `${K}.buttons.undo`),
         onClick: () =>
           sgWhistle.success({
-            title: "Undo applied",
-            message: "The archived section returned to the active list.",
+            title: t(i18n, `${K}.msg.undo.title`),
+            message: t(i18n, `${K}.msg.undo.message`),
             borderStyle: "soft"
           })
       }
     });
-  }, []);
+  }, [i18n]);
 
   const runBorderDemo = React.useCallback((borderStyle: "solid" | "soft" | "left-accent" | "full-accent" | "none") => {
     sgWhistle.info({
-      title: `Border style: ${borderStyle}`,
-      message: "Use borderStyle and opacity for contextual emphasis without leaving the layout flow.",
+      title: t(i18n, `${K}.msg.border.title`, { style: borderStyle }),
+      message: t(i18n, `${K}.msg.border.message`),
       borderStyle,
       opacity: borderStyle === "none" ? 0.88 : 1
     });
-  }, []);
+  }, [i18n]);
 
   const runCustomDemo = React.useCallback(() => {
     sgWhistle.custom(
       (id) => (
         <div className="min-w-0 flex-1 space-y-2">
-          <div className="text-sm font-semibold">Custom renderer</div>
-          <p className="text-sm opacity-90">
-            This whistle renders arbitrary JSX and still uses the same imperative lifecycle.
-          </p>
+          <div className="text-sm font-semibold">{t(i18n, `${K}.msg.custom.title`)}</div>
+          <p className="text-sm opacity-90">{t(i18n, `${K}.msg.custom.body`)}</p>
           <div className="flex flex-wrap gap-2">
-            <SgButton size="sm" onClick={() => sgWhistle.dismiss(id)}>Close</SgButton>
+            <SgButton size="sm" onClick={() => sgWhistle.dismiss(id)}>{t(i18n, `${K}.buttons.close`)}</SgButton>
             <SgButton
               size="sm"
               appearance="outline"
               onClick={() => {
                 sgWhistle.dismiss(id);
                 sgWhistle.success({
-                  title: "Escalated",
-                  message: "The custom whistle triggered a follow-up action."
+                  title: t(i18n, `${K}.msg.escalated.title`),
+                  message: t(i18n, `${K}.msg.escalated.message`)
                 });
               }}
             >
-              Escalate
+              {t(i18n, `${K}.buttons.escalate`)}
             </SgButton>
           </div>
         </div>
@@ -219,7 +200,7 @@ export default function SgWhistleHostPage() {
         borderStyle: "full-accent"
       }
     );
-  }, []);
+  }, [i18n]);
 
   return (
     <I18NReady>
@@ -231,7 +212,7 @@ export default function SgWhistleHostPage() {
         <ShowcaseStickyHeader
           stickyHeaderRef={stickyHeaderRef}
           title="SgWhistleHost"
-          subtitle="Contextual inline messaging with an imperative API (sgWhistle) and a host that stays inside the layout flow."
+          subtitle={t(i18n, `${K}.subtitle`)}
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
@@ -239,10 +220,8 @@ export default function SgWhistleHostPage() {
         <section className="rounded-xl border border-border bg-muted/20 p-5">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
-              <h2 className="text-base font-semibold">Live Host Preview</h2>
-              <p className="text-sm text-muted-foreground">
-                All examples below dispatch into this host, so the feedback stays contextual and pushes content instead of overlaying it.
-              </p>
+              <h2 className="text-base font-semibold">{t(i18n, `${K}.livePreview.title`)}</h2>
+              <p className="text-sm text-muted-foreground">{t(i18n, `${K}.livePreview.description`)}</p>
             </div>
             <div className="flex flex-wrap gap-2">
               <SgButton size="sm" appearance="outline" onClick={() => setNewestOnTop((value) => !value)}>
@@ -258,7 +237,7 @@ export default function SgWhistleHostPage() {
                 palette: {warmPalette ? "warm" : "default"}
               </SgButton>
               <SgButton size="sm" appearance="ghost" onClick={() => sgWhistle.dismiss()}>
-                Clear
+                {t(i18n, `${K}.buttons.clear`)}
               </SgButton>
             </div>
           </div>
@@ -274,14 +253,14 @@ export default function SgWhistleHostPage() {
         </section>
 
         <Section
-          title="1) Base setup"
-          description="Mount one SgWhistleHost where the layout should reveal contextual messages. Then dispatch whistles from anywhere in the page."
+          title={t(i18n, `${K}.sections.baseSetup.title`)}
+          description={t(i18n, `${K}.sections.baseSetup.description`)}
         >
           <div className="flex flex-wrap gap-2">
-            <SgButton onClick={() => sgWhistle.show({ title: "Base example", message: "A default whistle appeared in the host above." })}>
+            <SgButton onClick={() => sgWhistle.show({ title: t(i18n, `${K}.msg.base.title`), message: t(i18n, `${K}.msg.base.message`) })}>
               sgWhistle.show
             </SgButton>
-            <SgButton severity="success" onClick={() => sgWhistle.success({ title: "Saved", message: "This message stayed in the document flow." })}>
+            <SgButton severity="success" onClick={() => sgWhistle.success({ title: t(i18n, `${K}.msg.saved.title`), message: t(i18n, `${K}.msg.saved.message`) })}>
               sgWhistle.success
             </SgButton>
             <SgButton appearance="outline" onClick={() => sgWhistle.dismiss()}>
@@ -292,26 +271,26 @@ export default function SgWhistleHostPage() {
         </Section>
 
         <Section
-          title="2) Severities and stack behavior"
-          description="The service exposes convenience methods by severity, while host props such as max, newestOnTop and gap control the stack."
+          title={t(i18n, `${K}.sections.severities.title`)}
+          description={t(i18n, `${K}.sections.severities.description`)}
         >
           <div className="flex flex-wrap gap-2">
-            <SgButton onClick={() => fireSeverity("default")}>default</SgButton>
-            <SgButton severity="success" onClick={() => fireSeverity("success")}>success</SgButton>
-            <SgButton severity="info" onClick={() => fireSeverity("info")}>info</SgButton>
-            <SgButton severity="warning" onClick={() => fireSeverity("warning")}>warning</SgButton>
-            <SgButton severity="danger" onClick={() => fireSeverity("error")}>error</SgButton>
-            <SgButton appearance="outline" onClick={() => fireSeverity("loading")}>loading</SgButton>
+            <SgButton onClick={() => fireSeverity(i18n, "default")}>default</SgButton>
+            <SgButton severity="success" onClick={() => fireSeverity(i18n, "success")}>success</SgButton>
+            <SgButton severity="info" onClick={() => fireSeverity(i18n, "info")}>info</SgButton>
+            <SgButton severity="warning" onClick={() => fireSeverity(i18n, "warning")}>warning</SgButton>
+            <SgButton severity="danger" onClick={() => fireSeverity(i18n, "error")}>error</SgButton>
+            <SgButton appearance="outline" onClick={() => fireSeverity(i18n, "loading")}>loading</SgButton>
           </div>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-whistle-host/samples/severities-and-stack.tsx.sample" />
         </Section>
 
         <Section
-          title="3) Actions, border styles and opacity"
-          description="Whistles can expose quick CTAs and lightweight visual emphasis without needing overlay positioning."
+          title={t(i18n, `${K}.sections.actions.title`)}
+          description={t(i18n, `${K}.sections.actions.description`)}
         >
           <div className="flex flex-wrap gap-2">
-            <SgButton severity="warning" onClick={runActionDemo}>Action + undo</SgButton>
+            <SgButton severity="warning" onClick={runActionDemo}>{t(i18n, `${K}.buttons.actionUndo`)}</SgButton>
             <SgButton appearance="outline" onClick={() => runBorderDemo("solid")}>solid</SgButton>
             <SgButton appearance="outline" onClick={() => runBorderDemo("soft")}>soft</SgButton>
             <SgButton appearance="outline" onClick={() => runBorderDemo("left-accent")}>left-accent</SgButton>
@@ -322,15 +301,15 @@ export default function SgWhistleHostPage() {
         </Section>
 
         <Section
-          title="4) Update by id"
-          description="Loading flows are usually created once and then updated in place as the task resolves or fails."
+          title={t(i18n, `${K}.sections.updateById.title`)}
+          description={t(i18n, `${K}.sections.updateById.description`)}
         >
           <div className="flex flex-wrap items-center gap-2">
-            <SgButton onClick={startLoading}>Start loading</SgButton>
-            <SgButton severity="success" onClick={() => finishLoading("success")}>Finish success</SgButton>
-            <SgButton severity="danger" onClick={() => finishLoading("error")}>Finish error</SgButton>
+            <SgButton onClick={startLoading}>{t(i18n, `${K}.buttons.startLoading`)}</SgButton>
+            <SgButton severity="success" onClick={() => finishLoading("success")}>{t(i18n, `${K}.buttons.finishSuccess`)}</SgButton>
+            <SgButton severity="danger" onClick={() => finishLoading("error")}>{t(i18n, `${K}.buttons.finishError`)}</SgButton>
             <SgButton appearance="outline" onClick={() => activeId && sgWhistle.dismiss(activeId)}>
-              Dismiss active
+              {t(i18n, `${K}.buttons.dismissActive`)}
             </SgButton>
             <span className="text-xs text-muted-foreground">activeId: <code>{activeId ?? "none"}</code></span>
           </div>
@@ -338,31 +317,31 @@ export default function SgWhistleHostPage() {
         </Section>
 
         <Section
-          title="5) sgWhistle.promise"
-          description="The helper centralizes loading, success and error state transitions for async flows."
+          title={t(i18n, `${K}.sections.promise.title`)}
+          description={t(i18n, `${K}.sections.promise.description`)}
         >
           <div className="flex flex-wrap gap-2">
-            <SgButton onClick={runPromiseDemo}>Run promise demo</SgButton>
+            <SgButton onClick={runPromiseDemo}>{t(i18n, `${K}.buttons.runPromise`)}</SgButton>
           </div>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-whistle-host/samples/promise.tsx.sample" />
         </Section>
 
         <Section
-          title="6) Custom renderer and host colors"
-          description="Use sgWhistle.custom for arbitrary JSX and customColors on the host to align the stack with the surrounding context."
+          title={t(i18n, `${K}.sections.custom.title`)}
+          description={t(i18n, `${K}.sections.custom.description`)}
         >
           <div className="flex flex-wrap gap-2">
-            <SgButton onClick={runCustomDemo}>Custom whistle</SgButton>
+            <SgButton onClick={runCustomDemo}>{t(i18n, `${K}.buttons.customWhistle`)}</SgButton>
             <SgButton appearance="outline" onClick={() => setWarmPalette((value) => !value)}>
-              Toggle host palette
+              {t(i18n, `${K}.buttons.togglePalette`)}
             </SgButton>
           </div>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-whistle-host/samples/custom-renderer-and-colors.tsx.sample" />
         </Section>
 
         <Section
-          title="7) Playground"
-          description="Interactive sandbox for host props and common whistle flows."
+          title={t(i18n, `${K}.sections.playground.title`)}
+          description={t(i18n, `${K}.sections.playground.description`)}
         >
           <SgPlayground
             title="SgWhistleHost Playground"
@@ -374,7 +353,7 @@ export default function SgWhistleHostPage() {
           />
         </Section>
 
-        <ShowcasePropsReference rows={WHISTLE_PROPS} />
+        <ShowcasePropsReference rows={whistleProps} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />

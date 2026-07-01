@@ -170,6 +170,8 @@ export default function SgInputPasswordPage() {
     { prop: "maxLength / minSize", type: "number", defaultValue: "- / 8", description: t(i18n, "showcase.component.inputPassword.props.rows.lengthRules") },
     { prop: "showStrengthBar", type: "boolean", defaultValue: "true", description: t(i18n, "showcase.component.inputPassword.props.rows.showStrengthBar") },
     { prop: "commonPasswordCheck", type: "boolean", defaultValue: "true", description: t(i18n, "showcase.component.inputPassword.props.rows.commonPasswordCheck") },
+    { prop: "createNewPasswordButton", type: "boolean", defaultValue: "false", description: "Exibe um botão para gerar automaticamente uma senha forte aleatória (respeita a política)." },
+    { prop: "upperRequired / lowerRequired / numberRequired / specialCharacterRequired / prohibits*", type: "boolean", defaultValue: "varies", description: "Regras de política de senha aplicadas à validação e à geração da senha." },
     { prop: "clearButton / withBorder / filled / enabled / readOnly", type: "boolean", defaultValue: "varies", description: t(i18n, "showcase.component.inputPassword.props.rows.visualFlags") },
     { prop: "labelPosition", type: '"float" | "top" | "left"', defaultValue: '"float"', description: t(i18n, "showcase.common.props.rows.labelPosition") },
     { prop: "labelWidth", type: "number | string", defaultValue: '"11rem"', description: t(i18n, "showcase.common.props.rows.labelWidth") },

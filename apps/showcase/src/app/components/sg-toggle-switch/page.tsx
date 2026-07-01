@@ -343,7 +343,7 @@ type ToggleTexts = {
   playgroundTitle: string;
 };
 
-const TOGGLE_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", ToggleTexts> = {
+const TOGGLE_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", ToggleTexts> = {
   "pt-BR": {
     subtitle: "Toggle switch com suporte a icones, estados disabled/readonly e integracao com react-hook-form.",
     examplesLabel: "Examples",
@@ -459,11 +459,40 @@ const TOGGLE_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", ToggleTexts> = {
       "Ajusta las props principales de SgToggleSwitch."
     ],
     playgroundTitle: "SgToggleSwitch Playground"
-  }
+  },
+  fr: {
+    subtitle: "Interrupteur a bascule avec prise en charge des icones, etats desactive/lecture seule et integration react-hook-form.",
+    examplesLabel: "Exemples",
+    propsLinkLabel: "Reference des props",
+    propsTitle: "Reference des props",
+    propsColProp: "Prop",
+    propsColType: "Type",
+    propsColDefault: "Defaut",
+    propsColDescription: "Description",
+    sectionTitles: [
+      "1) Basique",
+      "2) Avec icones (on/off)",
+      "3) Distant (simulation de mise a jour)",
+      "4) Controle en externe + valeur capturee",
+      "5) React Hook Form",
+      "6) Etats desactive / lecture seule",
+      "7) Playground (SgPlayground)",
+    ],
+    sectionDescriptions: [
+      "Exemple simple controle avec l'etat React.",
+      "Variation visuelle avec des icones dans le pouce pour indiquer on/off.",
+      "Lors de la bascule, simule une mise a jour distante pour representer un flux de persistance courant.",
+      "Exemple avec valeur controlee en externe et capture via onChange.",
+      "Prise en charge native de register et control.",
+      "Demontre les etats desactive et lecture seule.",
+      "Ajustez les principales props de SgToggleSwitch.",
+    ],
+    playgroundTitle: "SgToggleSwitch Playground",
+  },
 };
 
 function isSupportedToggleLocale(locale: ShowcaseLocale): locale is keyof typeof TOGGLE_TEXTS {
-  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
+  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es" || locale === "fr";
 }
 export default function SgToggleSwitchPage() {
   const i18n = useShowcaseI18n();

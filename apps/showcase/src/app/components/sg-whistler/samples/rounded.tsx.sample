@@ -1,0 +1,25 @@
+"use client";
+
+import { SgButton, SgWhistler, sgWhistle } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <div className="space-y-3">
+      <div className="flex gap-2">
+        <SgButton onClick={() => sgWhistle.info({ title: "Rounded", message: "Compare the corners below." })}>
+          whistle
+        </SgButton>
+        <SgButton appearance="outline" onClick={() => sgWhistle.dismiss()}>
+          clear
+        </SgButton>
+      </div>
+
+      <div className="grid gap-4 sm:grid-cols-2">
+        {/* rounded is true by default */}
+        <SgWhistler max={3} />
+        {/* set rounded={false} for square corners */}
+        <SgWhistler max={3} rounded={false} />
+      </div>
+    </div>
+  );
+}

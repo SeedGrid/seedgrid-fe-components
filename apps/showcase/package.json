@@ -8,7 +8,7 @@
                     "build":  "node scripts/validate-showcase-snippets.mjs \u0026\u0026 next build",
                     "start":  "next start",
                     "typecheck":  "tsc --noEmit",
-                    "test:playground-snippets":  "node --test tests/playground-app-file-imports.test.mjs tests/showcase-contracts.test.mjs"
+                    "test:playground-snippets":  "node --test tests/playground-app-file-imports.test.mjs tests/showcase-contracts.test.mjs tests/i18n-parity.test.mjs"
                 },
     "dependencies":  {
                          "lucide-react":  "^1.18.0",

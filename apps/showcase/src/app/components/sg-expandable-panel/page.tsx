@@ -11,7 +11,9 @@ import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
-import { useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
+import { t, useShowcaseI18n } from "../../../i18n";
+
+const K = "showcase.component.expandablePanel";
 
 function Section(props: { title: string; description?: string; children: React.ReactNode }) {
   return (
@@ -365,110 +367,33 @@ const EXPANDABLE_PANEL_PROPS: ShowcasePropRow[] = [
   { prop: "style", type: "React.CSSProperties", defaultValue: "-", description: "Estilo inline do container do painel." }
 ];
 
-type ExpandablePanelTexts = {
-  subtitle: string;
-  sectionTitles: string[];
-  sectionDescriptions: string[];
-  playgroundTitle: string;
-  propsTitle: string;
-};
 
-const EXPANDABLE_PANEL_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", ExpandablePanelTexts> = {
-  "pt-BR": {
-    subtitle: "More examples covering the main properties in inline and overlay modes.",
-    sectionTitles: [
-      "1) Inline Controlado + Resize",
-      "2) Overlay + Comportamento",
-      "3) defaultOpen + Estilizacao",
-      "4) Acessibilidade + Fade",
-      "5) Sem Backdrop + Animation none",
-      "6) Playground"
-    ],
-    sectionDescriptions: [
-      "Demonstra open/onOpenChange, size, resizable e onSizeChange.",
-      "Demonstra placement, closeOnEsc, closeOnOutsideClick, trapFocus, showBackdrop e handle.",
-      "Demonstra defaultOpen, elevation, border, rounded, classes por area e style.",
-      "Demonstra role, ariaLabel, overlayClassName, animation fade e closeOnOutsideClick=false.",
-      "Demonstra showBackdrop=false, closeOnOutsideClick=false, closeOnEsc e animation none.",
-      "Teste modo, direcao, placement, animacao e controles de interacao."
-    ],
-    playgroundTitle: "SgExpandablePanel Playground",
-    propsTitle: "Referencia de Props"
-  },
-  "pt-PT": {
-    subtitle: "More examples covering the main properties in inline and overlay modes.",
-    sectionTitles: [
-      "1) Inline Controlado + Resize",
-      "2) Overlay + Comportamento",
-      "3) defaultOpen + Estilizacao",
-      "4) Acessibilidade + Fade",
-      "5) Sem Backdrop + Animation none",
-      "6) Playground"
-    ],
-    sectionDescriptions: [
-      "Demonstra open/onOpenChange, size, resizable e onSizeChange.",
-      "Demonstra placement, closeOnEsc, closeOnOutsideClick, trapFocus, showBackdrop e handle.",
-      "Demonstra defaultOpen, elevation, border, rounded, classes por area e style.",
-      "Demonstra role, ariaLabel, overlayClassName, animation fade e closeOnOutsideClick=false.",
-      "Demonstra showBackdrop=false, closeOnOutsideClick=false, closeOnEsc e animation none.",
-      "Teste modo, direcao, placement, animacao e controles de interacao."
-    ],
-    playgroundTitle: "SgExpandablePanel Playground",
-    propsTitle: "Referencia de Props"
-  },
-  "en-US": {
-    subtitle: "More examples covering the main props in inline and overlay modes.",
-    sectionTitles: [
-      "1) Controlled Inline + Resize",
-      "2) Overlay + Behavior",
-      "3) defaultOpen + Styling",
-      "4) Accessibility + Fade",
-      "5) No Backdrop + Animation none",
-      "6) Playground"
-    ],
-    sectionDescriptions: [
-      "Demonstrates open/onOpenChange, size, resizable and onSizeChange.",
-      "Demonstrates placement, closeOnEsc, closeOnOutsideClick, trapFocus, showBackdrop and handle.",
-      "Demonstrates defaultOpen, elevation, border, rounded, per-area classes and style.",
-      "Demonstrates role, ariaLabel, overlayClassName, fade animation and closeOnOutsideClick=false.",
-      "Demonstrates showBackdrop=false, closeOnOutsideClick=false, closeOnEsc and animation none.",
-      "Test mode, direction, placement, animation and interaction controls."
-    ],
-    playgroundTitle: "SgExpandablePanel Playground",
-    propsTitle: "Props Reference"
-  },
-  es: {
-    subtitle: "Mas ejemplos cubriendo las principales props en modo inline y overlay.",
-    sectionTitles: [
-      "1) Inline Controlado + Resize",
-      "2) Overlay + Comportamiento",
-      "3) defaultOpen + Estilos",
-      "4) Accesibilidad + Fade",
-      "5) Sin Backdrop + Animation none",
-      "6) Playground"
-    ],
-    sectionDescriptions: [
-      "Demuestra open/onOpenChange, size, resizable y onSizeChange.",
-      "Demuestra placement, closeOnEsc, closeOnOutsideClick, trapFocus, showBackdrop y handle.",
-      "Demuestra defaultOpen, elevation, border, rounded, clases por area y style.",
-      "Demuestra role, ariaLabel, overlayClassName, animacion fade y closeOnOutsideClick=false.",
-      "Demuestra showBackdrop=false, closeOnOutsideClick=false, closeOnEsc y animation none.",
-      "Prueba modo, direccion, placement, animacion y controles de interaccion."
-    ],
-    playgroundTitle: "SgExpandablePanel Playground",
-    propsTitle: "Referencia de Props"
-  }
-};
 
-function isSupportedExpandableLocale(locale: ShowcaseLocale): locale is keyof typeof EXPANDABLE_PANEL_TEXTS {
-  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
-}
 
 export default function SgExpandablePanelPage() {
   const i18n = useShowcaseI18n();
+  const texts = React.useMemo(() => ({
+    subtitle: t(i18n, `${K}.subtitle`),
+    sectionTitles: [
+      t(i18n, `${K}.sectionTitles.0`),
+      t(i18n, `${K}.sectionTitles.1`),
+      t(i18n, `${K}.sectionTitles.2`),
+      t(i18n, `${K}.sectionTitles.3`),
+      t(i18n, `${K}.sectionTitles.4`),
+      t(i18n, `${K}.sectionTitles.5`)
+    ],
+    sectionDescriptions: [
+      t(i18n, `${K}.sectionDescriptions.0`),
+      t(i18n, `${K}.sectionDescriptions.1`),
+      t(i18n, `${K}.sectionDescriptions.2`),
+      t(i18n, `${K}.sectionDescriptions.3`),
+      t(i18n, `${K}.sectionDescriptions.4`),
+      t(i18n, `${K}.sectionDescriptions.5`)
+    ],
+    playgroundTitle: t(i18n, `${K}.playgroundTitle`),
+    propsTitle: t(i18n, `${K}.propsTitle`)
+  }), [i18n]);
   const aiComponent = useAiManifestComponent("SgExpandablePanel");
-  const locale: keyof typeof EXPANDABLE_PANEL_TEXTS = isSupportedExpandableLocale(i18n.locale) ? i18n.locale : "en-US";
-  const texts = EXPANDABLE_PANEL_TEXTS[locale];
   const [inlineOpen, setInlineOpen] = React.useState(true);
   const [inlineSize, setInlineSize] = React.useState<number | string>(320);
 

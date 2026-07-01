@@ -11,7 +11,9 @@ import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
-import { useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
+import { t, useShowcaseI18n } from "../../../i18n";
+
+const K = "showcase.component.grid";
 
 function Section(props: { title: string; description?: string; children: React.ReactNode }) {
   return (
@@ -80,69 +82,15 @@ const GRID_PROPS: ShowcasePropRow[] = [
   { prop: "children", type: "ReactNode", defaultValue: "-", description: "Itens do grid (ex.: SgPanel)." }
 ];
 
-type GridTexts = {
-  subtitle: string;
-  section1Title: string;
-  section1Description: string;
-  section2Title: string;
-  section2Description: string;
-  section3Title: string;
-  section3Description: string;
-  playgroundTitle: string;
-};
 
-const GRID_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", GridTexts> = {
-  "pt-BR": {
-    subtitle: "Grid com colunas responsivas, auto-fit, span, rowSpan, dense e rowHeight.",
-    section1Title: "1) Columns Responsivo",
-    section1Description: "`columns` com breakpoints e `span` por item.",
-    section2Title: "2) Auto-Fit + RowSpan",
-    section2Description: "Grid fluido com `minItemWidth`, `dense` e `rowHeight`.",
-    section3Title: "3) Playground (SgPlayground)",
-    section3Description: "Teste das props principais do SgGrid.",
-    playgroundTitle: "SgGrid Playground"
-  },
-  "pt-PT": {
-    subtitle: "Grid com colunas responsivas, auto-fit, span, rowSpan, dense e rowHeight.",
-    section1Title: "1) Columns Responsivo",
-    section1Description: "`columns` com breakpoints e `span` por item.",
-    section2Title: "2) Auto-Fit + RowSpan",
-    section2Description: "Grid fluido com `minItemWidth`, `dense` e `rowHeight`.",
-    section3Title: "3) Playground (SgPlayground)",
-    section3Description: "Teste das props principais do SgGrid.",
-    playgroundTitle: "SgGrid Playground"
-  },
-  "en-US": {
-    subtitle: "Grid with responsive columns, auto-fit, span, rowSpan, dense mode and rowHeight.",
-    section1Title: "1) Responsive Columns",
-    section1Description: "`columns` with breakpoints and per-item `span`.",
-    section2Title: "2) Auto-Fit + RowSpan",
-    section2Description: "Fluid grid with `minItemWidth`, `dense`, and `rowHeight`.",
-    section3Title: "3) Playground (SgPlayground)",
-    section3Description: "Try the main SgGrid props.",
-    playgroundTitle: "SgGrid Playground"
-  },
-  es: {
-    subtitle: "Grid con columnas responsivas, auto-fit, span, rowSpan, dense y rowHeight.",
-    section1Title: "1) Columnas Responsivas",
-    section1Description: "`columns` con breakpoints y `span` por item.",
-    section2Title: "2) Auto-Fit + RowSpan",
-    section2Description: "Grid fluido con `minItemWidth`, `dense` y `rowHeight`.",
-    section3Title: "3) Playground (SgPlayground)",
-    section3Description: "Prueba las props principales de SgGrid.",
-    playgroundTitle: "SgGrid Playground"
-  }
-};
 
-function isSupportedLocale(locale: ShowcaseLocale): locale is keyof typeof GRID_TEXTS {
-  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
-}
+
+
+
 
 export default function SgGridPage() {
   const i18n = useShowcaseI18n();
-  const aiComponent = useAiManifestComponent("SgGrid");
-  const locale: keyof typeof GRID_TEXTS = isSupportedLocale(i18n.locale) ? i18n.locale : "en-US";
-  const texts = GRID_TEXTS[locale];
+  const aiComponent = useAiManifestComponent("SgGrid");
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({
     deps: [i18n.locale]
   });
@@ -157,12 +105,12 @@ export default function SgGridPage() {
         <ShowcaseStickyHeader
           stickyHeaderRef={stickyHeaderRef}
           title="SgGrid"
-          subtitle={texts.subtitle}
+          subtitle={t(i18n, `${K}.subtitle`)}
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
 
-        <Section title={texts.section1Title} description={texts.section1Description}>
+        <Section title={t(i18n, `${K}.section1Title`)} description={t(i18n, `${K}.section1Description`)}>
           <SgGrid columns={{ base: 1, sm: 2, lg: 3, xl: 4 }} gap={12}>
             <Card title="Card 1" />
             <Card title="Card 2" />
@@ -182,7 +130,7 @@ export default function SgGridPage() {
           </SgStack>
         </Section>
 
-        <Section title={texts.section2Title} description={texts.section2Description}>
+        <Section title={t(i18n, `${K}.section2Title`)} description={t(i18n, `${K}.section2Description`)}>
           <SgGrid minItemWidth="16rem" gap={12} rowHeight={120} dense>
             <Card title="Card A" />
             <SgPanel rowSpan={2} padding={12} className="rounded-lg">
@@ -207,9 +155,9 @@ export default function SgGridPage() {
           </SgStack>
         </Section>
 
-        <Section title={texts.section3Title} description={texts.section3Description}>
+        <Section title={t(i18n, `${K}.section3Title`)} description={t(i18n, `${K}.section3Description`)}>
           <SgPlayground
-            title={texts.playgroundTitle}
+            title={t(i18n, `${K}.playgroundTitle`)}
             interactive
             codeContract="appFile"
             playgroundFile="apps/showcase/src/app/components/sg-grid/sg-grid.tsx.playground"

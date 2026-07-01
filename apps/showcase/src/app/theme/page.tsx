@@ -45,7 +45,7 @@ type ThemeTexts = {
   semanticError: string;
 };
 
-const THEME_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", ThemeTexts> = {
+const THEME_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", ThemeTexts> = {
   "pt-BR": {
     title: "SeedThemeProvider",
     subtitle: "Sistema de temas baseado em uma cor seed que gera paletas harmoniosas automaticamente.",
@@ -201,11 +201,50 @@ const THEME_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", ThemeTexts> = {
     semanticInfo: "Info (azul fijo)",
     semanticWarning: "Warning (amarillo fijo)",
     semanticError: "Error (rojo fijo)"
+  },
+  fr: {
+    title: "SeedThemeProvider",
+    subtitle: "Systeme de themes base sur une couleur seed qui genere automatiquement des palettes harmonieuses.",
+    installTitle: "Installation",
+    installDescription: "Ajoutez le paquet a votre projet.",
+    setupTitle: "Configuration de base",
+    setupDescription: "Configurez le provider dans le layout racine de l'application.",
+    hookTitle: "Hook useSgTheme",
+    hookDescription: "Accedez et modifiez le theme depuis n'importe quel composant.",
+    cssVarsTitle: "Utilisation des CSS Variables",
+    cssVarsDescription: "Toutes les couleurs sont disponibles en tant que CSS variables.",
+    paletteTitle: "Palettes de couleurs",
+    paletteDescription: "Chaque couleur a une echelle de 50 a 900.",
+    semanticTitle: "Couleurs semantiques",
+    semanticDescription: "Couleurs fixes pour les conventions universelles UI/UX.",
+    neutralTitle: "Couleurs neutres",
+    neutralDescription: "Couleurs neutres harmonisees avec la seed.",
+    tokensTitle: "Tokens de composants",
+    tokensDescription: "Variables semantiques pour des composants specifiques.",
+    tailwindTitle: "Configuration de Tailwind",
+    tailwindDescription: "Configurez Tailwind pour consommer les CSS variables.",
+    statusTitle: "Etat actuel du theme",
+    currentModeLabel: "Mode actuel",
+    seedLabel: "Couleur seed",
+    persistenceTitle: "Persistance dans localStorage",
+    persistenceDescription: "Le theme est enregistre automatiquement.",
+    persistenceSavedTitle: "Theme enregistre automatiquement",
+    persistenceSavedDescription:
+      "Quand vous changez la seed ou le mode (light/dark), les preferences sont stockees dans localStorage et restaurees au rechargement de la page.",
+    persistenceConfigKeyDescription: "Cle localStorage pour la configuration du theme",
+    persistenceModeKeyDescription: "Cle localStorage pour le mode light/dark",
+    palettePrimary: "Primary (change avec la seed)",
+    paletteSecondary: "Secondary (change avec la seed)",
+    paletteTertiary: "Tertiary (change avec la seed)",
+    semanticSuccess: "Success (vert fixe)",
+    semanticInfo: "Info (bleu fixe)",
+    semanticWarning: "Warning (jaune fixe)",
+    semanticError: "Error (rouge fixe)"
   }
 };
 
 function isSupportedLocale(locale: ShowcaseLocale): locale is keyof typeof THEME_TEXTS {
-  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
+  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es" || locale === "fr";
 }
 
 function Section({ title, description, children }: { title: string; description?: string; children: React.ReactNode }) {

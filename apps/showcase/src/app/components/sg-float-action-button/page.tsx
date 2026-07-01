@@ -29,7 +29,7 @@ function CodeBlock(props: { sampleFile: string }) {
   return <SgCodeBlockBase sampleFile={props.sampleFile} />;
 }
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ icons Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── icons ── */
 const UserPlusIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/></svg>
 );
@@ -52,7 +52,7 @@ const SettingsIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
 );
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ demo container for absolute positioning Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── demo container for absolute positioning ── */
 function DemoBox(props: { children: React.ReactNode; className?: string; height?: string }) {
   return (
     <div className={`relative w-full rounded-md border border-dashed border-border bg-muted/20 pt-10 ${props.height ?? "h-48"} ${props.className ?? ""}`}>
@@ -254,7 +254,7 @@ export default function SgFloatActionButtonPage() {
           </div>
         </div>
 
-      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Positions Ã¢â€â‚¬Ã¢â€â‚¬ */}
+      {/* ── Positions ── */}
       <Section
         id="exemplo-1"
         title={`1) ${t(i18n, "showcase.component.fab.sections.positions.title")}`}
@@ -276,7 +276,7 @@ export default function SgFloatActionButtonPage() {
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-float-action-button/samples/positions.tsx.sample" />
       </Section>
 
-      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Variants Ã¢â€â‚¬Ã¢â€â‚¬ */}
+      {/* ── Variants ── */}
       <Section
         id="exemplo-2"
         title={`2) ${t(i18n, "showcase.component.fab.sections.variants.title")}`}
@@ -293,7 +293,7 @@ export default function SgFloatActionButtonPage() {
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-float-action-button/samples/variants.tsx.sample" />
       </Section>
 
-      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Shapes & Sizes Ã¢â€â‚¬Ã¢â€â‚¬ */}
+      {/* ── Shapes & Sizes ── */}
       <Section
         id="exemplo-3"
         title={`3) ${t(i18n, "showcase.component.fab.sections.shapesAndSizes.title")}`}
@@ -320,7 +320,7 @@ export default function SgFloatActionButtonPage() {
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-float-action-button/samples/shapes-sizes.tsx.sample" />
       </Section>
 
-      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Elevation Ã¢â€â‚¬Ã¢â€â‚¬ */}
+      {/* ── Elevation ── */}
       <Section
         id="exemplo-4"
         title={`4) ${t(i18n, "showcase.component.fab.sections.elevation.title")}`}
@@ -337,7 +337,7 @@ export default function SgFloatActionButtonPage() {
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-float-action-button/samples/elevation.tsx.sample" />
       </Section>
 
-      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Hint Ã¢â€â‚¬Ã¢â€â‚¬ */}
+      {/* ── Hint ── */}
       <Section
         id="exemplo-5"
         title={`5) ${t(i18n, "showcase.component.fab.sections.hint.title")}`}
@@ -360,7 +360,7 @@ export default function SgFloatActionButtonPage() {
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-float-action-button/samples/hint.tsx.sample" />
       </Section>
 
-      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Actions - Linear Layout Ã¢â€â‚¬Ã¢â€â‚¬ */}
+      {/* ── Actions - Linear Layout ── */}
       <Section
         id="exemplo-6"
         title={`6) ${t(i18n, "showcase.component.fab.sections.actions.title")}`}
@@ -387,7 +387,7 @@ export default function SgFloatActionButtonPage() {
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-float-action-button/samples/actions-linear-layout.tsx.sample" />
       </Section>
 
-      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Circle Layout Ã¢â€â‚¬Ã¢â€â‚¬ */}
+      {/* ── Circle Layout ── */}
       <Section
         id="exemplo-7"
         title="7) Circle Layout"
@@ -407,11 +407,11 @@ export default function SgFloatActionButtonPage() {
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-float-action-button/samples/circle-layout.tsx.sample" />
       </Section>
 
-      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Semi-Circle Layout Ã¢â€â‚¬Ã¢â€â‚¬ */}
+      {/* ── Semi-Circle Layout ── */}
       <Section
         id="exemplo-8"
         title="8) Semi-Circle Layout"
-        description="Actions arranged in a semi-circle (180Ã‚Â°) in different directions"
+        description="Actions arranged in a semi-circle (180°) in different directions"
       >
         <div className="grid grid-cols-2 gap-8 w-full">
           <DemoBox height="h-72" className="flex items-end justify-center">
@@ -461,11 +461,11 @@ export default function SgFloatActionButtonPage() {
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-float-action-button/samples/semi-circle-layout.tsx.sample" />
       </Section>
 
-      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Quarter-Circle Layout Ã¢â€â‚¬Ã¢â€â‚¬ */}
+      {/* ── Quarter-Circle Layout ── */}
       <Section
         id="exemplo-9"
         title="9) Quarter-Circle Layout"
-        description="Actions arranged in a quarter circle (90Ã‚Â°) in different directions"
+        description="Actions arranged in a quarter circle (90°) in different directions"
       >
         <div className="grid grid-cols-2 gap-8 w-full">
           <DemoBox height="h-64" className="flex items-end justify-center">
@@ -516,7 +516,7 @@ export default function SgFloatActionButtonPage() {
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-float-action-button/samples/quarter-circle-layout.tsx.sample" />
       </Section>
 
-      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Active Icon Ã¢â€â‚¬Ã¢â€â‚¬ */}
+      {/* ── Active Icon ── */}
       <Section
         id="exemplo-10"
         title="10) Active Icon"
@@ -537,7 +537,7 @@ export default function SgFloatActionButtonPage() {
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-float-action-button/samples/active-icon.tsx.sample" />
       </Section>
 
-      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Animations Ã¢â€â‚¬Ã¢â€â‚¬ */}
+      {/* ── Animations ── */}
       <Section
         id="exemplo-11"
         title={`11) ${t(i18n, "showcase.component.fab.sections.animations.title")}`}
@@ -564,7 +564,7 @@ export default function SgFloatActionButtonPage() {
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-float-action-button/samples/animations.tsx.sample" />
       </Section>
 
-      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Custom Color Ã¢â€â‚¬Ã¢â€â‚¬ */}
+      {/* ── Custom Color ── */}
       <Section
         id="exemplo-12"
         title={`12) ${t(i18n, "showcase.component.fab.sections.customColor.title")}`}
@@ -587,7 +587,7 @@ export default function SgFloatActionButtonPage() {
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-float-action-button/samples/custom-color.tsx.sample" />
       </Section>
 
-      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Disabled & Loading Ã¢â€â‚¬Ã¢â€â‚¬ */}
+      {/* ── Disabled & Loading ── */}
       <Section
         id="exemplo-13"
         title={`13) ${t(i18n, "showcase.component.fab.sections.disabled.title")}`}
@@ -606,7 +606,7 @@ export default function SgFloatActionButtonPage() {
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-float-action-button/samples/disabled-loading.tsx.sample" />
       </Section>
 
-      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Drag & Drop Ã¢â€â‚¬Ã¢â€â‚¬ */}
+      {/* ── Drag & Drop ── */}
       <Section
         id="exemplo-14"
         title={`14) ${t(i18n, "showcase.component.fab.sections.dragDrop.title")}`}

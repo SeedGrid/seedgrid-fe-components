@@ -18,6 +18,7 @@ export default function App() {
   const [visibleToasts, setVisibleToasts] = React.useState(4);
   const [closeButton, setCloseButton] = React.useState(true);
   const [richColors, setRichColors] = React.useState(true);
+  const [rounded, setRounded] = React.useState(true);
   const [transparency, setTransparency] = React.useState(0);
   const [customPalette, setCustomPalette] = React.useState(false);
 
@@ -40,6 +41,7 @@ export default function App() {
         visibleToasts={visibleToasts}
         closeButton={closeButton}
         richColors={richColors}
+        rounded={rounded}
         transparency={transparency}
         customColors={customColors}
       />
@@ -115,6 +117,16 @@ export default function App() {
             onChange={(event) => setRichColors(event.target.checked)}
           />
           richColors
+        </label>
+
+        <label className="text-sm">
+          <input
+            className="mr-1"
+            type="checkbox"
+            checked={rounded}
+            onChange={(event) => setRounded(event.target.checked)}
+          />
+          rounded
         </label>
 
         <label className="text-sm">

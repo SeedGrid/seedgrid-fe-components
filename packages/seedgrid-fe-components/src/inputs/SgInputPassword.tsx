@@ -21,6 +21,7 @@ export type SgInputPasswordProps = Omit<
   hidePassword?: boolean;
   maxLength?: number;
   validation?: (value: string) => string | null;
+  /** Exibe um botao para gerar automaticamente uma senha forte aleatoria (respeita as regras de politica). */
   createNewPasswordButton?: boolean;
   showStrengthBar?: boolean;
   commonPasswordCheck?: boolean;

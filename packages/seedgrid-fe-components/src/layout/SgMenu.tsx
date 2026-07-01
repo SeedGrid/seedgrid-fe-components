@@ -1445,6 +1445,7 @@ export function SgMenu(props: Readonly<SgMenuProps>) {
             value={searchValue}
             onChange={setSearchValue}
             source={autocompleteSource}
+            allowCustomValue
             minLengthForSearch={0}
             openOnFocus
             showDropDownButton

@@ -60,7 +60,11 @@ function defaultMapItem<T>(raw: T): SgAutocompleteItem {
 
     return {
       id: typeof id === "string" || typeof id === "number" ? id : String(id ?? ""),
-      label: String(label ?? "")
+      label: String(label ?? ""),
+      ...(typeof asRecord.value === "string" ? { value: asRecord.value } : {}),
+      ...(typeof asRecord.group === "string" ? { group: asRecord.group } : {}),
+      ...(typeof asRecord.disabled === "boolean" ? { disabled: asRecord.disabled } : {}),
+      ...(asRecord.data !== undefined ? { data: asRecord.data } : {})
     };
   }
 
@@ -544,9 +548,11 @@ function SgComboboxBase<T = SgAutocompleteItem>(props: Readonly<SgComboboxProps<
               ) : groupedEntries ? (
                 groupedEntries.map(({ group, list }) => (
                   <div key={group || "default"} className="border-b border-border last:border-b-0">
-                    <div className="px-3 py-1 text-xs font-semibold text-muted-foreground">
-                      {renderGroupHeader ? renderGroupHeader(group) : group || " "}
-                    </div>
+                    {(renderGroupHeader ? renderGroupHeader(group) : (group || null)) ? (
+                      <div className="px-3 py-1 text-xs font-semibold text-muted-foreground">
+                        {renderGroupHeader ? renderGroupHeader(group) : group}
+                      </div>
+                    ) : null}
                     {list.map(({ entry, index }) => {
                       const isActive = activeIndex === index;
                       return (

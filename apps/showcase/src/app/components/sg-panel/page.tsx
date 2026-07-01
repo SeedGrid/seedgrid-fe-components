@@ -11,7 +11,9 @@ import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsRe
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
 import { loadAiManifestComponent, type AiManifestComponent } from "../../lib/ai-manifest";
-import { useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
+import { t, useShowcaseI18n } from "../../../i18n";
+
+const K = "showcase.component.panel";
 
 function Section(props: { title: string; description?: string; children: React.ReactNode }) {
   return (
@@ -47,109 +49,15 @@ const PANEL_PROPS: ShowcasePropRow[] = [
   { prop: "className / style", type: "string / CSSProperties", defaultValue: "-", description: "Customizacao visual." }
 ];
 
-type PanelTexts = {
-  subtitle: string;
-  section1Title: string;
-  section1Description: string;
-  section2Title: string;
-  section2Description: string;
-  section3Title: string;
-  section3Description: string;
-  section4Title: string;
-  section4Description: string;
-  section5Title: string;
-  section5Description: string;
-  section6Title: string;
-  section6Description: string;
-  section7Title: string;
-  section7Description: string;
-  playgroundTitle: string;
-};
 
-const PANEL_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", PanelTexts> = {
-  "pt-BR": {
-    subtitle: "Showcase atualizado com o novo comportamento de dock e composicao do SgPanel.",
-    section1Title: "1) Dock basico em SgPanel",
-    section1Description: "`align` faz dock em relacao ao pai e `width`/`height` em numero viram porcentagem.",
-    section2Title: "2) Composicao dentro de SgScreen",
-    section2Description: "Este bloco reproduz o exemplo do `teste/page.tsx`, agora dentro do showcase oficial do componente.",
-    section3Title: "3) span + rowSpan",
-    section3Description: "`span` e `rowSpan` continuam valendo apenas dentro do `SgGrid`.",
-    section4Title: "4) borderStyle + padding + contentPadding",
-    section4Description: "Diferenca entre espacamento externo do panel e espacamento interno do conteudo.",
-    section5Title: "5) scrollable + scrollbarGutter",
-    section5Description: "Scroll explicito apenas quando necessario.",
-    section6Title: "6) Combined example",
-    section6Description: "Exemplo unico misturando dock, minimos em pixel e grid.",
-    section7Title: "7) Playground (SgPlayground)",
-    section7Description: "Teste rapido das principais props do SgPanel.",
-    playgroundTitle: "SgPanel Playground"
-  },
-  "pt-PT": {
-    subtitle: "Showcase atualizado com o novo comportamento de dock e composicao do SgPanel.",
-    section1Title: "1) Dock basico em SgPanel",
-    section1Description: "`align` faz dock em relacao ao pai e `width`/`height` em numero viram percentagem.",
-    section2Title: "2) Composicao dentro de SgScreen",
-    section2Description: "Este bloco reproduz o exemplo do `teste/page.tsx`, agora dentro do showcase oficial do componente.",
-    section3Title: "3) span + rowSpan",
-    section3Description: "`span` e `rowSpan` continuam a valer apenas dentro do `SgGrid`.",
-    section4Title: "4) borderStyle + padding + contentPadding",
-    section4Description: "Diferenca entre espacamento externo do panel e espacamento interno do conteudo.",
-    section5Title: "5) scrollable + scrollbarGutter",
-    section5Description: "Scroll explicito apenas quando necessario.",
-    section6Title: "6) Combined example",
-    section6Description: "Exemplo unico a misturar dock, minimos em pixel e grid.",
-    section7Title: "7) Playground (SgPlayground)",
-    section7Description: "Teste rapido das principais props do SgPanel.",
-    playgroundTitle: "SgPanel Playground"
-  },
-  "en-US": {
-    subtitle: "Updated showcase reflecting the new docking behavior and SgPanel composition model.",
-    section1Title: "1) Basic docking in SgPanel",
-    section1Description: "`align` docks relative to the parent and numeric `width`/`height` values are treated as percentages.",
-    section2Title: "2) Composition inside SgScreen",
-    section2Description: "This section reproduces the current `teste/page.tsx` example inside the official component showcase.",
-    section3Title: "3) span + rowSpan",
-    section3Description: "`span` and `rowSpan` still only apply inside `SgGrid`.",
-    section4Title: "4) borderStyle + padding + contentPadding",
-    section4Description: "Difference between panel external spacing and internal content spacing.",
-    section5Title: "5) scrollable + scrollbarGutter",
-    section5Description: "Scrolling stays explicit instead of happening by default.",
-    section6Title: "6) Combined example",
-    section6Description: "Single example mixing docking, pixel minimums, and grid usage.",
-    section7Title: "7) Playground (SgPlayground)",
-    section7Description: "Quick test for the main SgPanel props.",
-    playgroundTitle: "SgPanel Playground"
-  },
-  es: {
-    subtitle: "Showcase actualizado con el nuevo comportamiento de dock y composicion de SgPanel.",
-    section1Title: "1) Dock basico en SgPanel",
-    section1Description: "`align` hace dock respecto al padre y `width`/`height` numericos se tratan como porcentaje.",
-    section2Title: "2) Composicion dentro de SgScreen",
-    section2Description: "Este bloque reproduce el ejemplo actual de `teste/page.tsx` dentro del showcase oficial del componente.",
-    section3Title: "3) span + rowSpan",
-    section3Description: "`span` y `rowSpan` siguen aplicando solo dentro de `SgGrid`.",
-    section4Title: "4) borderStyle + padding + contentPadding",
-    section4Description: "Diferencia entre espaciado externo del panel y espaciado interno del contenido.",
-    section5Title: "5) scrollable + scrollbarGutter",
-    section5Description: "El scroll queda explicito en vez de ocurrir por defecto.",
-    section6Title: "6) Ejemplo combinado",
-    section6Description: "Ejemplo unico mezclando dock, minimos en pixel y grid.",
-    section7Title: "7) Playground (SgPlayground)",
-    section7Description: "Prueba rapida de las props principales de SgPanel.",
-    playgroundTitle: "SgPanel Playground"
-  }
-};
 
-function isSupportedLocale(locale: ShowcaseLocale): locale is keyof typeof PANEL_TEXTS {
-  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
-}
+
+
+
 
 export default function SgPanelPage() {
   const i18n = useShowcaseI18n();
-  const [aiComponent, setAiComponent] = React.useState<AiManifestComponent | null>(null);
-  const locale: keyof typeof PANEL_TEXTS = isSupportedLocale(i18n.locale) ? i18n.locale : "en-US";
-  const texts = PANEL_TEXTS[locale];
+  const [aiComponent, setAiComponent] = React.useState<AiManifestComponent | null>(null);
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({
     deps: [i18n.locale]
   });
@@ -181,12 +89,12 @@ export default function SgPanelPage() {
         <ShowcaseStickyHeader
           stickyHeaderRef={stickyHeaderRef}
           title="SgPanel"
-          subtitle={texts.subtitle}
+          subtitle={t(i18n, `${K}.subtitle`)}
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
 
-        <Section title={texts.section1Title} description={texts.section1Description}>
+        <Section title={t(i18n, `${K}.section1Title`)} description={t(i18n, `${K}.section1Description`)}>
           <SgPanel className="h-[430px] rounded-xl bg-muted/30" padding={12}>
             <SgPanel className="h-full w-full rounded-lg bg-background" contentPadding={12} contentGap={8}>
               <SgPanel align="top" height={12} contentPadding={10} className="rounded-md">
@@ -241,7 +149,7 @@ export default function SgPanelPage() {
           </SgStack>
         </Section>
 
-        <Section title={texts.section2Title} description={texts.section2Description}>
+        <Section title={t(i18n, `${K}.section2Title`)} description={t(i18n, `${K}.section2Description`)}>
           <SgPanel className="h-[420px] rounded-xl bg-muted/30" padding={12}>
             <SgScreen fullscreen={false} className="rounded-lg bg-background">
               <SgPanel align="top" height={5} contentPadding={8} minHeightPx={100}>
@@ -282,7 +190,7 @@ export default function SgPanelPage() {
           </SgStack>
         </Section>
 
-        <Section title={texts.section3Title} description={texts.section3Description}>
+        <Section title={t(i18n, `${K}.section3Title`)} description={t(i18n, `${K}.section3Description`)}>
           <SgGrid columns={{ base: 1, md: 4 }} gap={8} rowHeight={90} dense>
             <SgPanel contentPadding={10} className="rounded-md">Item 1</SgPanel>
             <SgPanel span={2} contentPadding={10} className="rounded-md">span=2</SgPanel>
@@ -297,7 +205,7 @@ export default function SgPanelPage() {
           </SgStack>
         </Section>
 
-        <Section title={texts.section4Title} description={texts.section4Description}>
+        <Section title={t(i18n, `${K}.section4Title`)} description={t(i18n, `${K}.section4Description`)}>
           <SgGrid columns={{ base: 1, md: 3 }} gap={4}>
             <SgPanel borderStyle="none" contentPadding={12} className="rounded-lg bg-muted/50">
               contentPadding + borderStyle="none"
@@ -315,7 +223,7 @@ export default function SgPanelPage() {
           </SgStack>
         </Section>
 
-        <Section title={texts.section5Title} description={texts.section5Description}>
+        <Section title={t(i18n, `${K}.section5Title`)} description={t(i18n, `${K}.section5Description`)}>
           <SgGrid columns={{ base: 1, md: 2 }} gap={4}>
             <SgPanel scrollable contentPadding={10} className="h-48 rounded-lg">
               <SgStack gap={6}>
@@ -367,7 +275,7 @@ export default function SgPanelPage() {
           </SgStack>
         </Section>
 
-        <Section title={texts.section6Title} description={texts.section6Description}>
+        <Section title={t(i18n, `${K}.section6Title`)} description={t(i18n, `${K}.section6Description`)}>
           <SgStack gap={10}>
             <SgPanel className="h-[260px] rounded-xl bg-muted/30" padding={10}>
               <SgPanel className="h-full rounded-lg bg-background" contentPadding={8} contentGap={8}>
@@ -394,9 +302,9 @@ export default function SgPanelPage() {
           </SgStack>
         </Section>
 
-        <Section title={texts.section7Title} description={texts.section7Description}>
+        <Section title={t(i18n, `${K}.section7Title`)} description={t(i18n, `${K}.section7Description`)}>
           <SgPlayground
-            title={texts.playgroundTitle}
+            title={t(i18n, `${K}.playgroundTitle`)}
             interactive
             codeContract="appFile"
             playgroundFile="apps/showcase/src/app/components/sg-panel/sg-panel.tsx.playground"

@@ -58,7 +58,7 @@ type OtpTexts = {
   propsColDescription: string;
 };
 
-const OTP_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", OtpTexts> = {
+const OTP_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", OtpTexts> = {
   "pt-BR": {
     subtitle: "Input OTP com digitos separados, suporte a colagem e mascara configuravel.",
     examplesLabel: "Examples",
@@ -158,11 +158,36 @@ const OTP_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", OtpTexts> = {
     propsColType: "Tipo",
     propsColDefault: "Predeterminado",
     propsColDescription: "Descripcion"
-  }
+  },
+  fr: {
+    subtitle: "Champ OTP avec chiffres separes, prise en charge du collage et masque configurable.",
+    examplesLabel: "Exemples",
+    propsLinkLabel: "Reference des props",
+    sectionTitles: [
+      "1) Basique",
+      "2) Masque personnalise",
+      "3) Collage + onComplete",
+      "4) Acces via ref",
+      "5) Playground",
+    ],
+    sectionDescriptions: [
+      "Masque par defaut : 999999.",
+      'Exemple : "###-###-99".',
+      "Collez un OTP et recevez le callback a la fin.",
+      "Focus, effacement et lecture des valeurs via l'API ref.",
+      "Simulez les principales props en temps reel.",
+    ],
+    playgroundTitle: "SgInputOTP Playground",
+    propsTitle: "Reference des props",
+    propsColProp: "Prop",
+    propsColType: "Type",
+    propsColDefault: "Defaut",
+    propsColDescription: "Description",
+  },
 };
 
 function isSupportedOtpLocale(locale: ShowcaseLocale): locale is keyof typeof OTP_TEXTS {
-  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
+  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es" || locale === "fr";
 }
 export default function SgInputOTPPage() {
   const i18n = useShowcaseI18n();

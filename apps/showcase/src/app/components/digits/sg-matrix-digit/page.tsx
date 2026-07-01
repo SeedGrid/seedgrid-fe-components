@@ -17,7 +17,9 @@ import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcaseProp
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
 import { useAiManifestComponent } from "../../ai/useAiManifestComponent";
 import { useShowcaseAnchors } from "../../useShowcaseAnchors";
-import { useShowcaseI18n, type ShowcaseLocale } from "../../../../i18n";
+import { t, useShowcaseI18n } from "../../../../i18n";
+
+const K = "showcase.component.matrixDigit";
 
 function Section(props: { title: string; description?: string; children: React.ReactNode }) {
   return (
@@ -32,90 +34,14 @@ function Section(props: { title: string; description?: string; children: React.R
   );
 }
 
-type MatrixDigitTexts = {
-  headerSubtitle: string;
-  section1Title: string;
-  section1Description: string;
-  section2Title: string;
-  section2Description: string;
-  section3Title: string;
-  section3Description: string;
-  section4Title: string;
-  section4Description: string;
-  section5Title: string;
-  section5Description: string;
-  propsReferenceTitle: string;
-};
 
-const MATRIX_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", MatrixDigitTexts> = {
-  "pt-BR": {
-    headerSubtitle: "Componente de caracteres matriciais em pontos, com suporte a color e backgroundColor.",
-    section1Title: "1) Basico (0-9)",
-    section1Description: "Troca de digitos com botoes de controle.",
-    section2Title: "2) Texto matricial",
-    section2Description: "Exibicao de texto com letras, numeros e simbolos.",
-    section3Title: "3) Variacoes de color/backgroundColor",
-    section3Description: "Visual theme examples.",
-    section4Title: "4) Escala da matriz",
-    section4Description: "Ajuste de dotSize, gap e charGap.",
-    section5Title: "5) Playground (SgPlayground)",
-    section5Description: "Teste em tempo real as props principais.",
-    propsReferenceTitle: "Referencia de Props",
-  },
-  "pt-PT": {
-    headerSubtitle: "Componente de caracteres matriciais em pontos, com suporte a color e backgroundColor.",
-    section1Title: "1) Basico (0-9)",
-    section1Description: "Troca de digitos com botoes de controlo.",
-    section2Title: "2) Texto matricial",
-    section2Description: "Exibicao de texto com letras, numeros e simbolos.",
-    section3Title: "3) Variacoes de color/backgroundColor",
-    section3Description: "Visual theme examples.",
-    section4Title: "4) Escala da matriz",
-    section4Description: "Ajuste de dotSize, gap e charGap.",
-    section5Title: "5) Playground (SgPlayground)",
-    section5Description: "Teste em tempo real as props principais.",
-    propsReferenceTitle: "Referencia de Props",
-  },
-  "en-US": {
-    headerSubtitle: "Dot-matrix character component with support for color and backgroundColor.",
-    section1Title: "1) Basic (0-9)",
-    section1Description: "Digit switching with control buttons.",
-    section2Title: "2) Matrix text",
-    section2Description: "Text rendering with letters, numbers, and symbols.",
-    section3Title: "3) color/backgroundColor variants",
-    section3Description: "Visual theme examples.",
-    section4Title: "4) Matrix scale",
-    section4Description: "Adjust dotSize, gap, and charGap.",
-    section5Title: "5) Playground (SgPlayground)",
-    section5Description: "Test the main props in real time.",
-    propsReferenceTitle: "Props Reference",
-  },
-  es: {
-    headerSubtitle: "Componente de caracteres matriciales por puntos, con soporte para color y backgroundColor.",
-    section1Title: "1) Basico (0-9)",
-    section1Description: "Cambio de digitos con botones de control.",
-    section2Title: "2) Texto matricial",
-    section2Description: "Visualizacion de texto con letras, numeros y simbolos.",
-    section3Title: "3) Variaciones de color/backgroundColor",
-    section3Description: "Ejemplos de temas visuales.",
-    section4Title: "4) Escala de la matriz",
-    section4Description: "Ajuste de dotSize, gap y charGap.",
-    section5Title: "5) Playground (SgPlayground)",
-    section5Description: "Prueba en tiempo real las props principales.",
-    propsReferenceTitle: "Referencia de Props",
-  },
-};
 
-type SupportedMatrixLocale = keyof typeof MATRIX_TEXTS;
 
-function isSupportedMatrixLocale(locale: ShowcaseLocale): locale is SupportedMatrixLocale {
-  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
-}
+
 
-function getMatrixTexts(locale: ShowcaseLocale): MatrixDigitTexts {
-  const normalized: SupportedMatrixLocale = isSupportedMatrixLocale(locale) ? locale : "en-US";
-  return MATRIX_TEXTS[normalized];
-}
+
+
+
 
 const MESSAGES = ["SEEDGRID", "MATRIX 2026", "ABC-123"] as const;
 
@@ -254,8 +180,7 @@ const MATRIX_PROPS: ShowcasePropRow[] = [
 ];
 
 export default function SgMatrixDigitShowcase() {
-  const i18n = useShowcaseI18n();
-  const texts = React.useMemo(() => getMatrixTexts(i18n.locale), [i18n.locale]);
+  const i18n = useShowcaseI18n();
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
   const aiComponent = useAiManifestComponent("SgMatrixDigit");
@@ -281,12 +206,12 @@ export default function SgMatrixDigitShowcase() {
         <ShowcaseStickyHeader
           stickyHeaderRef={stickyHeaderRef}
           title="SgMatrixDigit"
-          subtitle={texts.headerSubtitle}
+          subtitle={t(i18n, `${K}.headerSubtitle`)}
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
 
-        <Section title={texts.section1Title} description={texts.section1Description}>
+        <Section title={t(i18n, `${K}.section1Title`)} description={t(i18n, `${K}.section1Description`)}>
           <div className="flex items-center gap-4">
             <SgMatrixDigit value={digit} color="#22d3ee" backgroundColor="#0b1220" />
             <div className="flex flex-col gap-2">
@@ -298,7 +223,7 @@ export default function SgMatrixDigitShowcase() {
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-matrix-digit/samples/basico-0-9.tsx.sample" />
         </Section>
 
-        <Section title={texts.section2Title} description={texts.section2Description}>
+        <Section title={t(i18n, `${K}.section2Title`)} description={t(i18n, `${K}.section2Description`)}>
           <div className="space-y-3">
             <SgMatrixDigit
               value={message}
@@ -313,7 +238,7 @@ export default function SgMatrixDigitShowcase() {
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-matrix-digit/samples/texto-matricial.tsx.sample" />
         </Section>
 
-        <Section title={texts.section3Title} description={texts.section3Description}>
+        <Section title={t(i18n, `${K}.section3Title`)} description={t(i18n, `${K}.section3Description`)}>
           <SgGrid columns={{ base: 1, md: 3 }} gap={12}>
             <div className="space-y-2">
               <p className="text-xs text-muted-foreground">Ciano</p>
@@ -331,7 +256,7 @@ export default function SgMatrixDigitShowcase() {
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-matrix-digit/samples/variacoes-de-color-backgroundcolor.tsx.sample" />
         </Section>
 
-        <Section title={texts.section4Title} description={texts.section4Description}>
+        <Section title={t(i18n, `${K}.section4Title`)} description={t(i18n, `${K}.section4Description`)}>
           <SgGrid columns={{ base: 1, md: 3 }} gap={12}>
             <div className="space-y-2">
               <p className="text-xs text-muted-foreground">Small</p>
@@ -349,7 +274,7 @@ export default function SgMatrixDigitShowcase() {
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-matrix-digit/samples/escala-da-matriz.tsx.sample" />
         </Section>
 
-        <Section title={texts.section5Title} description={texts.section5Description}>
+        <Section title={t(i18n, `${K}.section5Title`)} description={t(i18n, `${K}.section5Description`)}>
           <SgPlayground
             title="SgMatrixDigit Playground"
             interactive
@@ -360,7 +285,7 @@ export default function SgMatrixDigitShowcase() {
           />
         </Section>
 
-        <ShowcasePropsReference rows={MATRIX_PROPS} title={texts.propsReferenceTitle} />
+        <ShowcasePropsReference rows={MATRIX_PROPS} title={t(i18n, `${K}.propsReferenceTitle`)} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />

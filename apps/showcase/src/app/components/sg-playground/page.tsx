@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React from "react";
 import { SgPlayground } from "@seedgrid/fe-playground";
@@ -7,6 +7,9 @@ import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
+import { t, useShowcaseI18n } from "../../../i18n";
+
+const K = "showcase.component.playground";
 
 function Section(props: { title: string; description?: string; children: React.ReactNode }) {
   return (
@@ -69,62 +72,28 @@ export default function App() {
   );
 }`;
 
-const READONLY_EXAMPLE_IMPL = `<SgPlayground
-  title="Read-only snippet"
-  description="Ideal for simple documentation."
-  code={READONLY_CODE}
-  defaultOpen={false}
-  style={{ border: "1px solid rgba(59, 130, 246, 0.25)" }}
-/>;
-`;
-
-const RENDER_BODY_EXAMPLE_IMPL = `<SgPlayground
-  title="Editor + real-time preview"
-  description="Use Run to refresh the preview."
-  interactive
-  code={RENDER_BODY_CODE}
-  defaultImports={'import { SgButton, SgInputText, SgStack } from "@seedgrid/fe-components";'}
-  height={380}
-/>;
-`;
-
-const APP_FILE_EXAMPLE_IMPL = `<SgPlayground
-  title="Complete App.tsx"
-  interactive
-  codeContract="appFile"
-  code={APP_FILE_CODE}
-  height={420}
-/>;
-`;
-
-const VISUAL_VARIANTS_EXAMPLE_IMPL = `<SgPlayground
-  interactive
-  code={RENDER_BODY_CODE}
-  defaultImports={'import { SgButton, SgInputText, SgStack } from "@seedgrid/fe-components";'}
-  withCard={false}
-  expandable={false}
-  resizable={false}
-  height={300}
-  previewPadding={16}
-/>;
-`;
-
-const SG_PLAYGROUND_PROPS: ShowcasePropRow[] = [
-  { prop: "title / description", type: "string", defaultValue: "- / -", description: "Header shown in the playground card." },
-  { prop: "interactive", type: "boolean", defaultValue: "false", description: "Enables executable editor + preview." },
-  { prop: "code", type: "string", defaultValue: "-", description: "Initial code shown in editor/block." },
-  { prop: "codeContract", type: "\"renderBody\" | \"appFile\"", defaultValue: "\"renderBody\"", description: "Code contract interpreted by sandbox." },
-  { prop: "defaultImports", type: "string", defaultValue: "-", description: "Imports injected automatically in renderBody mode." },
-  { prop: "defaultOpen", type: "boolean", defaultValue: "false", description: "Sets initial expanded state." },
-  { prop: "height", type: "number", defaultValue: "420", description: "Preview/editor area height." },
-  { prop: "withCard", type: "boolean", defaultValue: "true", description: "Renders external card wrapper." },
-  { prop: "className / style", type: "string / React.CSSProperties", defaultValue: "-", description: "Visual customization of root/card wrapper." },
-  { prop: "expandable / resizable", type: "boolean / boolean", defaultValue: "true / true", description: "Controls expand and resize behavior." },
-  { prop: "previewPadding", type: "number", defaultValue: "24", description: "Padding applied to iframe/preview." }
-];
+function getPlaygroundProps(i18n: ReturnType<typeof useShowcaseI18n>): ShowcasePropRow[] {
+  return [
+    { prop: "title / description", type: "string", defaultValue: "- / -", description: t(i18n, `${K}.propHeaderDesc`) },
+    { prop: "interactive", type: "boolean", defaultValue: "false", description: t(i18n, `${K}.propInteractiveDesc`) },
+    { prop: "code", type: "string", defaultValue: "-", description: t(i18n, `${K}.propCodeDesc`) },
+    { prop: "codeContract", type: "\"renderBody\" | \"appFile\"", defaultValue: "\"renderBody\"", description: t(i18n, `${K}.propCodeContractDesc`) },
+    { prop: "defaultImports", type: "string", defaultValue: "-", description: t(i18n, `${K}.propDefaultImportsDesc`) },
+    { prop: "defaultOpen", type: "boolean", defaultValue: "false", description: t(i18n, `${K}.propDefaultOpenDesc`) },
+    { prop: "height", type: "number", defaultValue: "420", description: t(i18n, `${K}.propHeightDesc`) },
+    { prop: "withCard", type: "boolean", defaultValue: "true", description: t(i18n, `${K}.propWithCardDesc`) },
+    { prop: "className / style", type: "string / React.CSSProperties", defaultValue: "-", description: t(i18n, `${K}.propClassNameStyleDesc`) },
+    { prop: "expandable / resizable", type: "boolean / boolean", defaultValue: "true / true", description: t(i18n, `${K}.propExpandableResizableDesc`) },
+    { prop: "previewPadding", type: "number", defaultValue: "24", description: t(i18n, `${K}.propPreviewPaddingDesc`) }
+  ];
+}
 
 export default function SgPlaygroundPage() {
-  const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors();
+  const i18n = useShowcaseI18n();
+  const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({
+    deps: [i18n.locale]
+  });
+  const sgPlaygroundProps = React.useMemo(() => getPlaygroundProps(i18n), [i18n]);
 
   return (
     <I18NReady>
@@ -136,19 +105,19 @@ export default function SgPlaygroundPage() {
         <ShowcaseStickyHeader
           stickyHeaderRef={stickyHeaderRef}
           title="SgPlayground"
-          subtitle="Playground with code editor + preview, supporting renderBody and appFile."
+          subtitle={t(i18n, `${K}.subtitle`)}
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
 
       <Section
-        title="1) Read-only mode (code only)"
-        description="When interactive=false, it works as a collapsible code block."
+        title={t(i18n, `${K}.section1Title`)}
+        description={t(i18n, `${K}.section1Description`)}
       >
         <div className="space-y-4">
           <SgPlayground
-            title="Read-only snippet"
-            description="Ideal for simple documentation."
+            title={t(i18n, `${K}.example1Title`)}
+            description={t(i18n, `${K}.example1Description`)}
             code={READONLY_CODE}
             defaultOpen={false}
             style={{ border: "1px solid rgba(59, 130, 246, 0.25)" }}
@@ -158,13 +127,13 @@ export default function SgPlaygroundPage() {
       </Section>
 
       <Section
-        title="2) Interactive mode (renderBody)"
-        description="Receives only JSX body and auto-builds an example App."
+        title={t(i18n, `${K}.section2Title`)}
+        description={t(i18n, `${K}.section2Description`)}
       >
         <div className="space-y-4">
           <SgPlayground
-            title="Editor + real-time preview"
-            description="Use Run to refresh the preview."
+            title={t(i18n, `${K}.example2Title`)}
+            description={t(i18n, `${K}.example2Description`)}
             interactive
             code={RENDER_BODY_CODE}
             defaultImports={`import { SgButton, SgInputText, SgStack } from "@seedgrid/fe-components";`}
@@ -175,12 +144,12 @@ export default function SgPlaygroundPage() {
       </Section>
 
       <Section
-        title="3) appFile mode"
-        description="When codeContract=appFile, you control the full App.tsx file."
+        title={t(i18n, `${K}.section3Title`)}
+        description={t(i18n, `${K}.section3Description`)}
       >
         <div className="space-y-4">
           <SgPlayground
-            title="Complete App.tsx"
+            title={t(i18n, `${K}.example3Title`)}
             interactive
             codeContract="appFile"
             code={APP_FILE_CODE}
@@ -191,8 +160,8 @@ export default function SgPlaygroundPage() {
       </Section>
 
       <Section
-        title="4) Visual variations"
-        description="Example without external card and without resize/expand."
+        title={t(i18n, `${K}.section4Title`)}
+        description={t(i18n, `${K}.section4Description`)}
       >
         <div className="space-y-4">
           <SgPlayground
@@ -209,10 +178,9 @@ export default function SgPlaygroundPage() {
         </div>
       </Section>
 
-      <ShowcasePropsReference rows={SG_PLAYGROUND_PROPS} />
+      <ShowcasePropsReference rows={sgPlaygroundProps} />
       <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
     </div>
   </I18NReady>
   );
 }
-

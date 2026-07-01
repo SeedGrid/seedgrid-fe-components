@@ -11,7 +11,9 @@ import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcaseProp
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
 import { useAiManifestComponent } from "../../ai/useAiManifestComponent";
 import { useShowcaseAnchors } from "../../useShowcaseAnchors";
-import { useShowcaseI18n, type ShowcaseLocale } from "../../../../i18n";
+import { t, useShowcaseI18n } from "../../../../i18n";
+
+const K = "showcase.component.roller3dDigit";
 
 function Section(props: { title: string; description?: string; children: React.ReactNode }) {
   return (
@@ -26,104 +28,14 @@ function Section(props: { title: string; description?: string; children: React.R
   );
 }
 
-type RollerTexts = {
-  headerSubtitle: string;
-  section1Title: string;
-  section1Description: string;
-  section2Title: string;
-  section2Description: string;
-  section3Title: string;
-  section3Description: string;
-  section4Title: string;
-  section4Description: string;
-  section5Title: string;
-  section5Description: string;
-  section6Title: string;
-  section6Description: string;
-  propsReferenceTitle: string;
-};
 
-const ROLLER_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", RollerTexts> = {
-  "pt-BR": {
-    headerSubtitle: "Animated vertical drum - displays any value from a list with smooth CSS transition.",
-    section1Title: "Basico (0-9)",
-    section1Description: "Rola entre digitos simples.",
-    section2Title: "2-digit padded value",
-    section2Description: "Items customizados: 00 a 59 (minutos/segundos).",
-    section3Title: "Letras (A-Z)",
-    section3Description: "Qualquer conjunto de caracteres pode ser usado.",
-    section4Title: "Animacao de nomes",
-    section4Description:
-      'Composicao de varios SgRoller3DDigit para animar texto - exemplo: "LUCIANO" -> "MARTA".',
-    section5Title: "Variacoes de tamanho",
-    section5Description: "Ajuste de escala via prop fontSize.",
-    section6Title: "Playground",
-    section6Description: "Animacao de nomes interativa.",
-    propsReferenceTitle: "Referência de Props",
-  },
-  "pt-PT": {
-    headerSubtitle: "Animated vertical drum - displays any value from a list with smooth CSS transition.",
-    section1Title: "Basico (0-9)",
-    section1Description: "Rola entre digitos simples.",
-    section2Title: "2-digit padded value",
-    section2Description: "Items customizados: 00 a 59 (minutos/segundos).",
-    section3Title: "Letras (A-Z)",
-    section3Description: "Qualquer conjunto de caracteres pode ser usado.",
-    section4Title: "Animacao de nomes",
-    section4Description:
-      'Composicao de varios SgRoller3DDigit para animar texto - exemplo: "LUCIANO" -> "MARTA".',
-    section5Title: "Variacoes de tamanho",
-    section5Description: "Ajuste de escala via prop fontSize.",
-    section6Title: "Playground",
-    section6Description: "Animacao de nomes interativa.",
-    propsReferenceTitle: "Referência de Props",
-  },
-  "en-US": {
-    headerSubtitle: "Animated vertical drum - displays any value from a list with smooth CSS transition.",
-    section1Title: "Basic (0-9)",
-    section1Description: "Rolls through simple digits.",
-    section2Title: "2-digit padded value",
-    section2Description: "Custom items: 00 to 59 (minutes/seconds).",
-    section3Title: "Letters (A-Z)",
-    section3Description: "Any character set can be used.",
-    section4Title: "Name animation",
-    section4Description:
-      'Composition with multiple SgRoller3DDigit to animate text - example: "LUCIANO" -> "MARTA".',
-    section5Title: "Size variations",
-    section5Description: "Scale adjustment via fontSize prop.",
-    section6Title: "Playground",
-    section6Description: "Interactive name animation.",
-    propsReferenceTitle: "Props Reference",
-  },
-  es: {
-    headerSubtitle: "Tambor vertical animado - muestra cualquier valor de una lista con transicion CSS suave.",
-    section1Title: "Basico (0-9)",
-    section1Description: "Rota entre digitos simples.",
-    section2Title: "2-digit padded value",
-    section2Description: "Custom items: 00 to 59 (minutes/seconds).",
-    section3Title: "Letras (A-Z)",
-    section3Description: "Se puede usar cualquier conjunto de caracteres.",
-    section4Title: "Animacion de nombres",
-    section4Description:
-      'Composicion de varios SgRoller3DDigit para animar texto - ejemplo: "LUCIANO" -> "MARTA".',
-    section5Title: "Variaciones de tamano",
-    section5Description: "Ajuste de escala mediante la prop fontSize.",
-    section6Title: "Playground",
-    section6Description: "Animacion de nombres interactiva.",
-    propsReferenceTitle: "Referencia de Props",
-  },
-};
 
-type SupportedRollerLocale = keyof typeof ROLLER_TEXTS;
 
-function isSupportedRollerLocale(locale: ShowcaseLocale): locale is SupportedRollerLocale {
-  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
-}
+
 
-function getRollerTexts(locale: ShowcaseLocale): RollerTexts {
-  const normalized: SupportedRollerLocale = isSupportedRollerLocale(locale) ? locale : "en-US";
-  return ROLLER_TEXTS[normalized];
-}
+
+
+
 
 const MINUTES = Array.from({ length: 60 }, (_, i) => String(i).padStart(2, "0"));
 const ALPHA = Array.from("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
@@ -323,8 +235,7 @@ function NameAnimator() {
 }
 
 export default function SgRoller3DDigitShowcase() {
-  const i18n = useShowcaseI18n();
-  const texts = React.useMemo(() => getRollerTexts(i18n.locale), [i18n.locale]);
+  const i18n = useShowcaseI18n();
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
   const aiComponent = useAiManifestComponent("SgRoller3DDigit");
@@ -352,12 +263,12 @@ export default function SgRoller3DDigitShowcase() {
         <ShowcaseStickyHeader
           stickyHeaderRef={stickyHeaderRef}
           title="SgRoller3DDigit"
-          subtitle={texts.headerSubtitle}
+          subtitle={t(i18n, `${K}.headerSubtitle`)}
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
 
-        <Section title={texts.section1Title} description={texts.section1Description}>
+        <Section title={t(i18n, `${K}.section1Title`)} description={t(i18n, `${K}.section1Description`)}>
           <div className="flex items-center gap-4">
             <SgRoller3DDigit value={digit} fontSize={32} />
             <div className="flex flex-col gap-2">
@@ -368,7 +279,7 @@ export default function SgRoller3DDigitShowcase() {
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-roller3d-digit/samples/basico-0-9.tsx.sample" />
         </Section>
 
-        <Section title={texts.section2Title} description={texts.section2Description}>
+        <Section title={t(i18n, `${K}.section2Title`)} description={t(i18n, `${K}.section2Description`)}>
           <div className="flex items-center gap-4">
             <SgRoller3DDigit value={minuteVal} items={MINUTES} fontSize={22} />
             <SgButton onClick={nextMinute} size="sm">+1 minuto</SgButton>
@@ -376,7 +287,7 @@ export default function SgRoller3DDigitShowcase() {
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-roller3d-digit/samples/2-digit-padded-value.tsx.sample" />
         </Section>
 
-        <Section title={texts.section3Title} description={texts.section3Description}>
+        <Section title={t(i18n, `${K}.section3Title`)} description={t(i18n, `${K}.section3Description`)}>
           <div className="flex items-center gap-4">
             <SgRoller3DDigit value={letter} items={ALPHA} fontSize={32} />
             <SgButton onClick={nextLetter} size="sm">Proxima letra</SgButton>
@@ -385,14 +296,14 @@ export default function SgRoller3DDigitShowcase() {
         </Section>
 
         <Section
-          title={texts.section4Title}
-          description={texts.section4Description}
+          title={t(i18n, `${K}.section4Title`)}
+          description={t(i18n, `${K}.section4Description`)}
         >
           <NameAnimator />
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-roller3d-digit/samples/animacao-de-nomes.tsx.sample" />
         </Section>
 
-        <Section title={texts.section5Title} description={texts.section5Description}>
+        <Section title={t(i18n, `${K}.section5Title`)} description={t(i18n, `${K}.section5Description`)}>
           <div className="flex items-end gap-4">
             {([16, 32, 56] as const).map((fs) => (
               <div key={fs} className="text-center">
@@ -404,7 +315,7 @@ export default function SgRoller3DDigitShowcase() {
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-roller3d-digit/samples/variacoes-de-tamanho.tsx.sample" />
         </Section>
 
-        <Section title={texts.section6Title} description={texts.section6Description}>
+        <Section title={t(i18n, `${K}.section6Title`)} description={t(i18n, `${K}.section6Description`)}>
           <SgPlayground
             title="SgRoller3DDigit Playground"
             interactive
@@ -415,7 +326,7 @@ export default function SgRoller3DDigitShowcase() {
           />
         </Section>
 
-        <ShowcasePropsReference rows={PROPS} title={texts.propsReferenceTitle} />
+        <ShowcasePropsReference rows={PROPS} title={t(i18n, `${K}.propsReferenceTitle`)} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />

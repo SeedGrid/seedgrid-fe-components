@@ -21,7 +21,7 @@ type CreditsTexts = {
   usedInShowcase: string;
 };
 
-const CREDITS_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", CreditsTexts> = {
+const CREDITS_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", CreditsTexts> = {
   "pt-BR": {
     title: "Creditos e Bibliotecas de Terceiros",
     subtitle:
@@ -57,11 +57,20 @@ const CREDITS_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", CreditsTexts> = 
       "Todas las bibliotecas listadas arriba se distribuyen con licencias compatibles con uso open-source y comercial. Los creditos se muestran segun lo exigido por cada licencia.",
     usedInVarious: "Varios componentes",
     usedInShowcase: "App showcase"
+  },
+  fr: {
+    title: "Credits et bibliotheques tierces",
+    subtitle:
+      "Liste de toutes les bibliotheques open-source utilisees par les composants SeedGrid, avec leurs licences et leurs liens de reference.",
+    compliance:
+      "Toutes les bibliotheques listees ci-dessus sont distribuees sous des licences compatibles avec un usage open-source et commercial. Les credits sont fournis comme exige par chaque licence.",
+    usedInVarious: "Divers composants",
+    usedInShowcase: "Application vitrine"
   }
 };
 
 function isSupportedLocale(locale: ShowcaseLocale): locale is keyof typeof CREDITS_TEXTS {
-  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
+  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es" || locale === "fr";
 }
 
 const LICENSE_COLORS: Record<string, string> = {

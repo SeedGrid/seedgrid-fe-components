@@ -11,7 +11,9 @@ import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcaseProp
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
 import { useAiManifestComponent } from "../../ai/useAiManifestComponent";
 import { useShowcaseAnchors } from "../../useShowcaseAnchors";
-import { useShowcaseI18n, type ShowcaseLocale } from "../../../../i18n";
+import { t, useShowcaseI18n } from "../../../../i18n";
+
+const K = "showcase.component.fadeDigit";
 
 function Section(props: { title: string; description?: string; children: React.ReactNode }) {
   return (
@@ -33,119 +35,14 @@ function Section(props: { title: string; description?: string; children: React.R
 // ---------------------------------------------------------------------------
 // Colon helper â€” matches the flip/fade clock aesthetic
 // ---------------------------------------------------------------------------
-type FadeDigitTexts = {
-  headerSubtitle: string;
-  section1Title: string;
-  section1Description: string;
-  section2Title: string;
-  section2Description: string;
-  section3Title: string;
-  section3Description: string;
-  section4Title: string;
-  section4Description: string;
-  section5Title: string;
-  section5Description: string;
-  section6Title: string;
-  section6Description: string;
-  section7Title: string;
-  section7Description: string;
-  propsReferenceTitle: string;
-};
 
-const FADE_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", FadeDigitTexts> = {
-  "pt-BR": {
-    headerSubtitle:
-      'Card animado que "apaga" o digito atual e "acende" o novo - efeito de lampada ou tubo nixie. Sem bibliotecas externas; animacao 100% CSS + React.',
-    section1Title: "Basico (0-9)",
-    section1Description: "Troca manual entre digitos numericos.",
-    section2Title: "Letras (A-Z)",
-    section2Description: "Aceita qualquer caractere - letras, simbolos, espacos.",
-    section3Title: "Cores customizadas",
-    section3Description: "color e backgroundColor sao totalmente livres - qualquer paleta funciona.",
-    section4Title: "Auto increment",
-    section4Description: "Incremento automatico para validar transicoes continuas e rapidas.",
-    section5Title: "Sequencia estilo relogio",
-    section5Description:
-      "Composicao de varios SgFadeDigit em linha - cada digito atualiza de forma independente.",
-    section6Title: "Tamanhos",
-    section6Description: "Scale adjustment via fontSize prop - card width and height are proportional.",
-    section7Title: "Playground",
-    section7Description: "Interactive clock with color palette and configurable fontSize.",
-    propsReferenceTitle: "Referência de Props",
-  },
-  "pt-PT": {
-    headerSubtitle:
-      'Card animado que "apaga" o digito atual e "acende" o novo - efeito de lampada ou tubo nixie. Sem bibliotecas externas; animacao 100% CSS + React.',
-    section1Title: "Basico (0-9)",
-    section1Description: "Troca manual entre digitos numericos.",
-    section2Title: "Letras (A-Z)",
-    section2Description: "Aceita qualquer caractere - letras, simbolos, espacos.",
-    section3Title: "Cores customizadas",
-    section3Description: "color e backgroundColor sao totalmente livres - qualquer paleta funciona.",
-    section4Title: "Auto increment",
-    section4Description: "Incremento automatico para validar transicoes continuas e rapidas.",
-    section5Title: "Sequencia estilo relogio",
-    section5Description:
-      "Composicao de varios SgFadeDigit em linha - cada digito atualiza de forma independente.",
-    section6Title: "Tamanhos",
-    section6Description: "Scale adjustment via fontSize prop - card width and height are proportional.",
-    section7Title: "Playground",
-    section7Description: "Interactive clock with color palette and configurable fontSize.",
-    propsReferenceTitle: "Referência de Props",
-  },
-  "en-US": {
-    headerSubtitle:
-      'Animated card that "turns off" the current digit and "turns on" the new one - lamp or nixie-tube style effect. No external libraries; animation is 100% CSS + React.',
-    section1Title: "Basic (0-9)",
-    section1Description: "Manual switching between numeric digits.",
-    section2Title: "Letters (A-Z)",
-    section2Description: "Accepts any character - letters, symbols, and spaces.",
-    section3Title: "Custom colors",
-    section3Description: "color and backgroundColor are fully customizable - any palette works.",
-    section4Title: "Auto increment",
-    section4Description: "Automatic increment to validate fast and continuous transitions.",
-    section5Title: "Clock-style sequence",
-    section5Description:
-      "Composition with multiple SgFadeDigit in a row - each digit updates independently.",
-    section6Title: "Sizes",
-    section6Description: "Scale control via fontSize prop - card width and height stay proportional.",
-    section7Title: "Playground",
-    section7Description: "Interactive clock with configurable color palette and fontSize.",
-    propsReferenceTitle: "Props Reference",
-  },
-  es: {
-    headerSubtitle:
-      'Tarjeta animada que "apaga" el digito actual y "enciende" el nuevo - efecto tipo lampara o tubo nixie. Sin librerias externas; animacion 100% CSS + React.',
-    section1Title: "Basico (0-9)",
-    section1Description: "Cambio manual entre digitos numericos.",
-    section2Title: "Letras (A-Z)",
-    section2Description: "Acepta cualquier caracter - letras, simbolos y espacios.",
-    section3Title: "Colores personalizados",
-    section3Description: "color y backgroundColor son totalmente libres - cualquier paleta funciona.",
-    section4Title: "Auto incremento",
-    section4Description: "Incremento automatico para validar transiciones continuas y rapidas.",
-    section5Title: "Secuencia estilo reloj",
-    section5Description:
-      "Composicion de varios SgFadeDigit en linea - cada digito se actualiza de forma independiente.",
-    section6Title: "Tamanos",
-    section6Description:
-      "Ajuste de escala mediante la prop fontSize - ancho y alto de la tarjeta proporcionales.",
-    section7Title: "Playground",
-    section7Description: "Reloj interactivo con paleta de colores y fontSize configurable.",
-    propsReferenceTitle: "Referencia de Props",
-  },
-};
 
-type SupportedFadeLocale = keyof typeof FADE_TEXTS;
 
-function isSupportedFadeLocale(locale: ShowcaseLocale): locale is SupportedFadeLocale {
-  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
-}
+
 
-function getFadeTexts(locale: ShowcaseLocale): FadeDigitTexts {
-  const normalized: SupportedFadeLocale = isSupportedFadeLocale(locale) ? locale : "en-US";
-  return FADE_TEXTS[normalized];
-}
+
+
+
 
 function Colon({ height }: { height: number }) {
   return (
@@ -583,8 +480,7 @@ const PROPS: ShowcasePropRow[] = [
 // Page
 // ---------------------------------------------------------------------------
 export default function SgFadeDigitShowcase() {
-  const i18n = useShowcaseI18n();
-  const texts = React.useMemo(() => getFadeTexts(i18n.locale), [i18n.locale]);
+  const i18n = useShowcaseI18n();
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
   const aiComponent = useAiManifestComponent("SgFadeDigit");
@@ -601,49 +497,49 @@ export default function SgFadeDigitShowcase() {
         <ShowcaseStickyHeader
           stickyHeaderRef={stickyHeaderRef}
           title="SgFadeDigit"
-          subtitle={texts.headerSubtitle}
+          subtitle={t(i18n, `${K}.headerSubtitle`)}
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
 
         {/* 1 */}
-        <Section title={texts.section1Title} description={texts.section1Description}>
+        <Section title={t(i18n, `${K}.section1Title`)} description={t(i18n, `${K}.section1Description`)}>
           <Ex1 />
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-fade-digit/samples/basico-0-9.tsx.sample" />
         </Section>
 
         {/* 2 */}
-        <Section title={texts.section2Title} description={texts.section2Description}>
+        <Section title={t(i18n, `${K}.section2Title`)} description={t(i18n, `${K}.section2Description`)}>
           <Ex2 />
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-fade-digit/samples/letras-a-z.tsx.sample" />
         </Section>
 
         {/* 3 */}
-        <Section title={texts.section3Title} description={texts.section3Description}>
+        <Section title={t(i18n, `${K}.section3Title`)} description={t(i18n, `${K}.section3Description`)}>
           <Ex3 />
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-fade-digit/samples/cores-customizadas.tsx.sample" />
         </Section>
 
         {/* 4 */}
-        <Section title={texts.section4Title} description={texts.section4Description}>
+        <Section title={t(i18n, `${K}.section4Title`)} description={t(i18n, `${K}.section4Description`)}>
           <Ex4 />
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-fade-digit/samples/auto-increment.tsx.sample" />
         </Section>
 
         {/* 5 */}
-        <Section title={texts.section5Title} description={texts.section5Description}>
+        <Section title={t(i18n, `${K}.section5Title`)} description={t(i18n, `${K}.section5Description`)}>
           <Ex5 />
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-fade-digit/samples/sequencia-estilo-relogio.tsx.sample" />
         </Section>
 
         {/* 6 */}
-        <Section title={texts.section6Title} description={texts.section6Description}>
+        <Section title={t(i18n, `${K}.section6Title`)} description={t(i18n, `${K}.section6Description`)}>
           <Ex6 />
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-fade-digit/samples/tamanhos.tsx.sample" />
         </Section>
 
         {/* Playground */}
-        <Section title={texts.section7Title} description={texts.section7Description}>
+        <Section title={t(i18n, `${K}.section7Title`)} description={t(i18n, `${K}.section7Description`)}>
           <SgPlayground
             title="SgFadeDigit Playground"
             interactive
@@ -654,7 +550,7 @@ export default function SgFadeDigitShowcase() {
           />
         </Section>
 
-        <ShowcasePropsReference rows={PROPS} title={texts.propsReferenceTitle} />
+        <ShowcasePropsReference rows={PROPS} title={t(i18n, `${K}.propsReferenceTitle`)} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         <div

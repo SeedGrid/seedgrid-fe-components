@@ -112,7 +112,7 @@ type DockLayoutPageTexts = {
   propsTitleZone: string;
 };
 
-const DOCK_LAYOUT_PAGE_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", DockLayoutPageTexts> = {
+const DOCK_LAYOUT_PAGE_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", DockLayoutPageTexts> = {
   "pt-BR": {
     sectionBasicDescription: "Four zones (top/bottom/left/right) and six draggable toolbars.",
     sectionPlaygroundTitle: "2) Playground (SgPlayground)",
@@ -144,11 +144,19 @@ const DOCK_LAYOUT_PAGE_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", DockLay
     playgroundTitle: "SgDockLayout Playground",
     propsTitleLayout: "Referencia de Props - SgDockLayout",
     propsTitleZone: "Referencia de Props - SgDockZone"
-  }
+  },
+  fr: {
+    sectionBasicDescription: "Quatre zones (haut/bas/gauche/droite) et six barres d'outils deplacables.",
+    sectionPlaygroundTitle: "2) Playground (SgPlayground)",
+    sectionPlaygroundDescription: "Exemple interactif avec zones de dock et barres d'outils.",
+    playgroundTitle: "SgDockLayout Playground",
+    propsTitleLayout: "Reference des props - SgDockLayout",
+    propsTitleZone: "Reference des props - SgDockZone",
+  },
 };
 
 function isSupportedDockLayoutLocale(locale: string): locale is keyof typeof DOCK_LAYOUT_PAGE_TEXTS {
-  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
+  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es" || locale === "fr";
 }
 
 export default function SgDockLayoutPage() {

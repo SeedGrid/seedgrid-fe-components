@@ -17,7 +17,9 @@ import I18NReady from "../I18NReady";
 import { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
-import { useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
+import { t, useShowcaseI18n } from "../../../i18n";
+
+const K = "showcase.component.dockMenu";
 import {
   Bell,
   Bookmark,
@@ -427,245 +429,50 @@ export default function App() {
   );
 }`;
 
-type DockMenuTexts = {
-  headerSubtitle: string;
-  section1Title: string;
-  section1Description: string;
-  section2Title: string;
-  section2Description: string;
-  section3Title: string;
-  section3Description: string;
-  section4Title: string;
-  section4Description: string;
-  section5Title: string;
-  section5Description: string;
-  section6Title: string;
-  section6Description: string;
-  section7Title: string;
-  section7Description: string;
-  section8Title: string;
-  section8Description: string;
-  section9Title: string;
-  section9Description: string;
-  logsEmpty: string;
-  clickSuffix: string;
-  propsTitle: string;
-  propsColProp: string;
-  propsColType: string;
-  propsColDefault: string;
-  propsColDescription: string;
-  propDescId: string;
-  propDescItems: string;
-  propDescPosition: string;
-  propDescDrag: string;
-  propDescSizeGap: string;
-  propDescLabels: string;
-  propDescStyle: string;
-  propDescOffset: string;
-  propDescClassName: string;
-};
 
-const DOCK_MENU_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", DockMenuTexts> = {
-  "pt-BR": {
-    headerSubtitle: "Dock estilo macOS com posicoes, drag and drop, badges, labels e magnify.",
-    section1Title: "1) Como prender dentro da area",
-    section1Description:
-      'Para ficar dentro do preview, use container com "relative" e no dock passe style={{ position: "absolute" }}.',
-    section2Title: "2) Basico",
-    section2Description: "Default dock at bottom center with clickable items.",
-    section3Title: "3) Badge externo",
-    section3Description: "Atualize o badge por estado externo e reflita no dock em tempo real.",
-    section4Title: "4) Todas as posicoes",
-    section4Description: "Exibe as 8 posicoes suportadas em uma grade.",
-    section5Title: "5) Drag and drop",
-    section5Description: "Allows dragging and saving dock position.",
-    section6Title: "6) Variantes visuais",
-    section6Description: "Sem magnify, sem labels e com estilo customizado.",
-    section7Title: "7) Muitos itens",
-    section7Description: "Example with a larger item list.",
-    section8Title: "8) Callbacks e disabled",
-    section8Description: "Click logs and disabled item in the same example.",
-    section9Title: "9) Playground (SgPlayground)",
-    section9Description: "Simulacao interativa das props principais.",
-    logsEmpty: "Clique em um item para gerar logs...",
-    clickSuffix: "clicked",
-    propsTitle: "Referencia de Props",
-    propsColProp: "Prop",
-    propsColType: "Tipo",
-    propsColDefault: "Default",
-    propsColDescription: "Description",
-    propDescId: "Identificador do dock.",
-    propDescItems: "Itens exibidos no menu.",
-    propDescPosition: "Dock position in container.",
-    propDescDrag: "Enables drag and drop with persistence.",
-    propDescSizeGap: "Tamanho dos itens e espaco entre eles.",
-    propDescLabels: "Controla rotulos e efeito de ampliacao.",
-    propDescStyle: "Ajustes visuais do dock.",
-    propDescOffset: "Distancia da borda e camada de empilhamento.",
-    propDescClassName: "Customizacao de estilos."
-  },
-  "pt-PT": {
-    headerSubtitle: "Dock estilo macOS com posicoes, drag and drop, badges, labels e magnify.",
-    section1Title: "1) Como prender dentro da area",
-    section1Description:
-      'Para ficar dentro do preview, use container com "relative" e no dock passe style={{ position: "absolute" }}.',
-    section2Title: "2) Basico",
-    section2Description: "Default dock at bottom center with clickable items.",
-    section3Title: "3) Badge externo",
-    section3Description: "Atualize o badge por estado externo e reflita no dock em tempo real.",
-    section4Title: "4) Todas as posicoes",
-    section4Description: "Exibe as 8 posicoes suportadas em uma grade.",
-    section5Title: "5) Drag and drop",
-    section5Description: "Allows dragging and saving dock position.",
-    section6Title: "6) Variantes visuais",
-    section6Description: "Sem magnify, sem labels e com estilo customizado.",
-    section7Title: "7) Muitos itens",
-    section7Description: "Example with a larger item list.",
-    section8Title: "8) Callbacks e disabled",
-    section8Description: "Click logs and disabled item in the same example.",
-    section9Title: "9) Playground (SgPlayground)",
-    section9Description: "Simulacao interativa das props principais.",
-    logsEmpty: "Clique em um item para gerar logs...",
-    clickSuffix: "clicked",
-    propsTitle: "Referencia de Props",
-    propsColProp: "Prop",
-    propsColType: "Tipo",
-    propsColDefault: "Default",
-    propsColDescription: "Description",
-    propDescId: "Identificador do dock.",
-    propDescItems: "Itens exibidos no menu.",
-    propDescPosition: "Dock position in container.",
-    propDescDrag: "Enables drag and drop with persistence.",
-    propDescSizeGap: "Tamanho dos itens e espaco entre eles.",
-    propDescLabels: "Controla rotulos e efeito de ampliacao.",
-    propDescStyle: "Ajustes visuais do dock.",
-    propDescOffset: "Distancia da borda e camada de empilhamento.",
-    propDescClassName: "Customizacao de estilos."
-  },
-  "en-US": {
-    headerSubtitle: "macOS-style dock with positions, drag and drop, badges, labels, and magnify.",
-    section1Title: "1) How to keep it inside the area",
-    section1Description:
-      'To keep it inside preview, use a "relative" container and pass style={{ position: "absolute" }} to the dock.',
-    section2Title: "2) Basic",
-    section2Description: "Default dock at bottom-center with clickable items.",
-    section3Title: "3) External badge",
-    section3Description: "Update badge from external state and reflect it in real time.",
-    section4Title: "4) All positions",
-    section4Description: "Shows the 8 supported positions in a grid.",
-    section5Title: "5) Drag and drop",
-    section5Description: "Allows dragging and persisting dock position.",
-    section6Title: "6) Visual variants",
-    section6Description: "No magnify, no labels, and a custom style.",
-    section7Title: "7) Many items",
-    section7Description: "Example with a larger list of items.",
-    section8Title: "8) Callbacks and disabled",
-    section8Description: "Click logs and a disabled item in the same example.",
-    section9Title: "9) Playground (SgPlayground)",
-    section9Description: "Interactive simulation of main props.",
-    logsEmpty: "Click an item to generate logs...",
-    clickSuffix: "clicked",
-    propsTitle: "Props Reference",
-    propsColProp: "Prop",
-    propsColType: "Type",
-    propsColDefault: "Default",
-    propsColDescription: "Description",
-    propDescId: "Dock identifier.",
-    propDescItems: "Items rendered in the menu.",
-    propDescPosition: "Dock position inside the container.",
-    propDescDrag: "Enables drag and drop with persistence.",
-    propDescSizeGap: "Item size and spacing between items.",
-    propDescLabels: "Controls labels and magnify effect.",
-    propDescStyle: "Dock visual style settings.",
-    propDescOffset: "Distance from edge and stacking layer.",
-    propDescClassName: "Style customization hooks."
-  },
-  es: {
-    headerSubtitle: "Dock estilo macOS con posiciones, drag and drop, badges, labels y magnify.",
-    section1Title: "1) Como fijarlo dentro del area",
-    section1Description:
-      'Para mantenerlo dentro del preview, usa contenedor con "relative" y en el dock pasa style={{ position: "absolute" }}.',
-    section2Title: "2) Basico",
-    section2Description: "Dock por defecto en el centro inferior con items clicables.",
-    section3Title: "3) Badge externo",
-    section3Description: "Actualiza el badge por estado externo y reflejalo en tiempo real.",
-    section4Title: "4) Todas las posiciones",
-    section4Description: "Muestra las 8 posiciones soportadas en una grilla.",
-    section5Title: "5) Drag and drop",
-    section5Description: "Permite arrastrar y guardar la posicion del dock.",
-    section6Title: "6) Variantes visuales",
-    section6Description: "No magnify, no labels, and custom style.",
-    section7Title: "7) Muchos items",
-    section7Description: "Ejemplo con lista mayor de items.",
-    section8Title: "8) Callbacks y disabled",
-    section8Description: "Logs de click e item deshabilitado en el mismo ejemplo.",
-    section9Title: "9) Playground (SgPlayground)",
-    section9Description: "Simulacion interactiva de las props principales.",
-    logsEmpty: "Haz click en un item para generar logs...",
-    clickSuffix: "clicked",
-    propsTitle: "Referencia de Props",
-    propsColProp: "Prop",
-    propsColType: "Tipo",
-    propsColDefault: "Por defecto",
-    propsColDescription: "Descripcion",
-    propDescId: "Identificador del dock.",
-    propDescItems: "Items mostrados en el menu.",
-    propDescPosition: "Posicion del dock en el contenedor.",
-    propDescDrag: "Activa drag and drop con persistencia.",
-    propDescSizeGap: "Tamano de items y espacio entre ellos.",
-    propDescLabels: "Controla labels y efecto de ampliacion.",
-    propDescStyle: "Ajustes visuales del dock.",
-    propDescOffset: "Distancia al borde y capa de apilamiento.",
-    propDescClassName: "Style customization."
-  }
-};
 
-type SupportedDockMenuLocale = keyof typeof DOCK_MENU_TEXTS;
 
-function isSupportedDockMenuLocale(locale: ShowcaseLocale): locale is SupportedDockMenuLocale {
-  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
-}
 
-function getDockMenuTexts(locale: ShowcaseLocale): DockMenuTexts {
-  const normalized: SupportedDockMenuLocale = isSupportedDockMenuLocale(locale) ? locale : "en-US";
-  return DOCK_MENU_TEXTS[normalized];
-}
 
-function getDockMenuProps(texts: DockMenuTexts): ShowcasePropRow[] {
+
+
+
+
+function getDockMenuProps(i18n: ReturnType<typeof useShowcaseI18n>): ShowcasePropRow[] {
   return [
-    { prop: "id", type: "string", defaultValue: "-", description: texts.propDescId },
-    { prop: "items", type: "SgDockMenuItem[]", defaultValue: "[]", description: texts.propDescItems },
+    { prop: "id", type: "string", defaultValue: "-", description: t(i18n, `${K}.propDescId`) },
+    { prop: "items", type: "SgDockMenuItem[]", defaultValue: "[]", description: t(i18n, `${K}.propDescItems`) },
     {
       prop: "position",
       type: "SgDockMenuPosition",
       defaultValue: "center-bottom",
-      description: texts.propDescPosition
+      description: t(i18n, `${K}.propDescPosition`)
     },
     {
       prop: "enableDragDrop / dragId",
       type: "boolean / string",
       defaultValue: "false / -",
-      description: texts.propDescDrag
+      description: t(i18n, `${K}.propDescDrag`)
     },
-    { prop: "itemSize / gap", type: "number", defaultValue: "48 / 12", description: texts.propDescSizeGap },
+    { prop: "itemSize / gap", type: "number", defaultValue: "48 / 12", description: t(i18n, `${K}.propDescSizeGap`) },
     {
       prop: "showLabels / magnify / magnifyScale",
       type: "boolean / boolean / number",
       defaultValue: "true / true / 1.35",
-      description: texts.propDescLabels
+      description: t(i18n, `${K}.propDescLabels`)
     },
     {
       prop: "backgroundColor / borderRadius / elevation",
       type: "string / number / token",
       defaultValue: "- / auto / md",
-      description: texts.propDescStyle
+      description: t(i18n, `${K}.propDescStyle`)
     },
-    { prop: "offset / zIndex", type: "number / number", defaultValue: "16 / 10", description: texts.propDescOffset },
+    { prop: "offset / zIndex", type: "number / number", defaultValue: "16 / 10", description: t(i18n, `${K}.propDescOffset`) },
     {
       prop: "className / itemClassName / style",
       type: "string / string / CSSProperties",
       defaultValue: "- / - / -",
-      description: texts.propDescClassName
+      description: t(i18n, `${K}.propDescClassName`)
     }
   ];
 }
@@ -673,8 +480,7 @@ function getDockMenuProps(texts: DockMenuTexts): ShowcasePropRow[] {
 export default function SgDockMenuPage() {
   const i18n = useShowcaseI18n();
   const aiComponent = useAiManifestComponent("SgDockMenu");
-  const texts = React.useMemo(() => getDockMenuTexts(i18n.locale), [i18n.locale]);
-  const dockMenuProps = React.useMemo(() => getDockMenuProps(texts), [texts]);
+  const dockMenuProps = React.useMemo(() => getDockMenuProps(i18n), [i18n]);
   const [eventLog, setEventLog] = React.useState<string[]>([]);
   const [externalBadges, setExternalBadges] = React.useState({ mail: 5, notifications: 12 });
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
@@ -704,7 +510,7 @@ export default function SgDockMenuPage() {
   const callbackItems: SgDockMenuItem[] = manyItems.slice(0, 6).map((item) => ({
     ...item,
     onClick: () =>
-      setEventLog((prev) => [`[${new Date().toLocaleTimeString(i18n.locale)}] ${item.label} ${texts.clickSuffix}`, ...prev].slice(0, 10))
+      setEventLog((prev) => [`[${new Date().toLocaleTimeString(i18n.locale)}] ${item.label} ${t(i18n, `${K}.clickSuffix`)}`, ...prev].slice(0, 10))
   }));
 
   const disabledItems: SgDockMenuItem[] = basicItems.map((item, index) =>
@@ -729,14 +535,14 @@ export default function SgDockMenuPage() {
         <ShowcaseStickyHeader
           stickyHeaderRef={stickyHeaderRef}
           title="SgDockMenu"
-          subtitle={texts.headerSubtitle}
+          subtitle={t(i18n, `${K}.headerSubtitle`)}
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
 
       <Section
-        title={texts.section1Title}
-        description={texts.section1Description}
+        title={t(i18n, `${K}.section1Title`)}
+        description={t(i18n, `${K}.section1Description`)}
       >
         <div className="relative h-56 rounded-lg border-2 border-dashed border-border bg-muted/20">
           <SgDockMenu
@@ -750,14 +556,14 @@ export default function SgDockMenuPage() {
         <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-dock-menu/samples/como-fixar-dentro-da-area.tsx.sample" />
       </Section>
 
-      <Section title={texts.section2Title} description={texts.section2Description}>
+      <Section title={t(i18n, `${K}.section2Title`)} description={t(i18n, `${K}.section2Description`)}>
         <div className="relative h-64 rounded-lg border-2 border-dashed border-border bg-muted/20">
           <SgDockMenu id="basic-dock" items={basicItems} position="center-bottom" zIndex={10} style={{ position: "absolute" }} />
         </div>
         <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-dock-menu/samples/basico.tsx.sample" />
       </Section>
 
-      <Section title={texts.section3Title} description={texts.section3Description}>
+      <Section title={t(i18n, `${K}.section3Title`)} description={t(i18n, `${K}.section3Description`)}>
         <SgGrid columns={{ base: 2, sm: 4 }} gap={8}>
           <SgButton
             type="button"
@@ -804,7 +610,7 @@ export default function SgDockMenuPage() {
         <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-dock-menu/samples/badge-externo.tsx.sample" />
       </Section>
 
-      <Section title={texts.section4Title} description={texts.section4Description}>
+      <Section title={t(i18n, `${K}.section4Title`)} description={t(i18n, `${K}.section4Description`)}>
         <div className="grid grid-cols-3 gap-4">
           <div className="relative h-40 rounded-lg border-2 border-dashed border-border bg-muted/20"><SgDockMenu id="dock-left-top" items={positionItems} position="left-top" itemSize={36} gap={8} zIndex={10} style={{ position: "absolute" }} /></div>
           <div className="relative h-40 rounded-lg border-2 border-dashed border-border bg-muted/20"><SgDockMenu id="dock-center-top" items={positionItems} position="center-top" itemSize={36} gap={8} zIndex={10} style={{ position: "absolute" }} /></div>
@@ -819,7 +625,7 @@ export default function SgDockMenuPage() {
         <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-dock-menu/samples/todas-as-posicoes.tsx.sample" />
       </Section>
 
-      <Section title={texts.section5Title} description={texts.section5Description}>
+      <Section title={t(i18n, `${K}.section5Title`)} description={t(i18n, `${K}.section5Description`)}>
         <div className="relative h-80 rounded-lg border-2 border-dashed border-border bg-muted/20">
           <SgDockMenu
             id="draggable-dock"
@@ -833,7 +639,7 @@ export default function SgDockMenuPage() {
         <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-dock-menu/samples/drag-and-drop.tsx.sample" />
       </Section>
 
-      <Section title={texts.section6Title} description={texts.section6Description}>
+      <Section title={t(i18n, `${K}.section6Title`)} description={t(i18n, `${K}.section6Description`)}>
         <div className="space-y-4">
           <div className="relative h-48 rounded-lg border-2 border-dashed border-border bg-muted/20">
             <SgDockMenu id="dock-no-magnify" items={basicItems.slice(0, 4)} position="center-bottom" magnify={false} zIndex={10} style={{ position: "absolute" }} />
@@ -857,21 +663,21 @@ export default function SgDockMenuPage() {
         <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-dock-menu/samples/variantes-visuais.tsx.sample" />
       </Section>
 
-      <Section title={texts.section7Title} description={texts.section7Description}>
+      <Section title={t(i18n, `${K}.section7Title`)} description={t(i18n, `${K}.section7Description`)}>
         <div className="relative h-64 rounded-lg border-2 border-dashed border-border bg-muted/20">
           <SgDockMenu id="many-items-dock" items={manyItems} position="center-bottom" itemSize={44} gap={10} zIndex={10} style={{ position: "absolute" }} />
         </div>
         <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-dock-menu/samples/muitos-items.tsx.sample" />
       </Section>
 
-      <Section title={texts.section8Title} description={texts.section8Description}>
+      <Section title={t(i18n, `${K}.section8Title`)} description={t(i18n, `${K}.section8Description`)}>
         <div className="space-y-4">
           <div className="relative h-64 rounded-lg border-2 border-dashed border-border bg-muted/20">
             <SgDockMenu id="callback-dock" items={callbackItems} position="center-bottom" zIndex={10} style={{ position: "absolute" }} />
           </div>
           <div className="h-32 overflow-y-auto rounded border border-border bg-foreground/5 p-2 font-mono text-xs">
             {eventLog.length === 0 ? (
-              <span className="text-muted-foreground">{texts.logsEmpty}</span>
+              <span className="text-muted-foreground">{t(i18n, `${K}.logsEmpty`)}</span>
             ) : (
               eventLog.map((entry, idx) => <div key={idx}>{entry}</div>)
             )}
@@ -883,7 +689,7 @@ export default function SgDockMenuPage() {
         <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-dock-menu/samples/callbacks-e-disabled.tsx.sample" />
       </Section>
 
-      <Section title={texts.section9Title} description={texts.section9Description}>
+      <Section title={t(i18n, `${K}.section9Title`)} description={t(i18n, `${K}.section9Description`)}>
         <SgPlayground
           title="SgDockMenu Playground"
           interactive
@@ -898,15 +704,15 @@ export default function SgDockMenuPage() {
           id="props-reference"
           className="scroll-mt-[var(--showcase-anchor-offset,18rem)] rounded-lg border border-border p-6"
         >
-          <h2 data-anchor-title="true" className="text-lg font-semibold">{texts.propsTitle}</h2>
+          <h2 data-anchor-title="true" className="text-lg font-semibold">{t(i18n, `${K}.propsTitle`)}</h2>
           <div className="mt-4 overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b text-left">
-                  <th className="pb-2 pr-4 font-semibold">{texts.propsColProp}</th>
-                  <th className="pb-2 pr-4 font-semibold">{texts.propsColType}</th>
-                  <th className="pb-2 pr-4 font-semibold">{texts.propsColDefault}</th>
-                  <th className="pb-2 font-semibold">{texts.propsColDescription}</th>
+                  <th className="pb-2 pr-4 font-semibold">{t(i18n, `${K}.propsColProp`)}</th>
+                  <th className="pb-2 pr-4 font-semibold">{t(i18n, `${K}.propsColType`)}</th>
+                  <th className="pb-2 pr-4 font-semibold">{t(i18n, `${K}.propsColDefault`)}</th>
+                  <th className="pb-2 font-semibold">{t(i18n, `${K}.propsColDescription`)}</th>
                 </tr>
               </thead>
               <tbody className="divide-y">

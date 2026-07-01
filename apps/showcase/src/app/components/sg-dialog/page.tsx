@@ -59,7 +59,7 @@ export default function App() {
         onOpenChange={setOpen}
         severity={severity}
         size={size}
-        title="ConfiguraÃ§Ã£o"
+        title="Configuração"
         subtitle="Exemplo interativo"
         footer={
           <>
@@ -68,7 +68,7 @@ export default function App() {
           </>
         }
       >
-        <div className="text-sm text-muted-foreground">ConteÃºdo do diÃ¡logo.</div>
+        <div className="text-sm text-muted-foreground">Conteúdo do diálogo.</div>
       </SgDialog>
     </div>
   );
@@ -76,16 +76,16 @@ export default function App() {
 
 const DIALOG_PROPS: ShowcasePropRow[] = [
   { prop: "open / defaultOpen / onOpenChange", type: "boolean / boolean / callback", defaultValue: "controlado / false / -", description: "Controle de abertura." },
-  { prop: "title / subtitle / children / footer", type: "ReactNode", defaultValue: "-", description: "Estrutura principal do conteÃºdo." },
-  { prop: "size", type: "\"sm\" | \"md\" | \"lg\" | \"xl\" | \"full\"", defaultValue: "md", description: "Largura do diÃ¡logo." },
-  { prop: "severity", type: "token", defaultValue: "plain", description: "Acento visual do diÃ¡logo." },
-  { prop: "animation / transitionMs", type: "token / number", defaultValue: "zoom / 160", description: "AnimaÃ§Ã£o e duraÃ§Ã£o da transiÃ§Ã£o." },
-  { prop: "autoCloseMs", type: "number", defaultValue: "-", description: "Fecha automaticamente apÃ³s o tempo informado." },
+  { prop: "title / subtitle / children / footer", type: "ReactNode", defaultValue: "-", description: "Estrutura principal do conteúdo." },
+  { prop: "size", type: "\"sm\" | \"md\" | \"lg\" | \"xl\" | \"full\"", defaultValue: "md", description: "Largura do diálogo." },
+  { prop: "severity", type: "token", defaultValue: "plain", description: "Acento visual do diálogo." },
+  { prop: "animation / transitionMs", type: "token / number", defaultValue: "zoom / 160", description: "Animação e duração da transição." },
+  { prop: "autoCloseMs", type: "number", defaultValue: "-", description: "Fecha automaticamente após o tempo informado." },
   { prop: "customColor / elevation", type: "CSSProperties[\"backgroundColor\"] / \"none\" | \"sm\" | \"md\" | \"lg\" | CSSProperties[\"boxShadow\"]", defaultValue: "- / -", description: "Customiza cor de fundo e elevacao do card do dialog." },
   { prop: "closeable / closeOnOverlayClick / closeOnEsc", type: "boolean", defaultValue: "true / true / true", description: "Regras de fechamento." },
   { prop: "lockBodyScroll / restoreFocus", type: "boolean", defaultValue: "true / true", description: "Acessibilidade e foco." },
-  { prop: "onClose / initialFocusRef / ariaLabel", type: "callback / ref / string", defaultValue: "-", description: "Controle avanÃ§ado de fechamento e foco." },
-  { prop: "className / style / overlayClassName / contentClassName / headerClassName / bodyClassName / footerClassName", type: "string / CSSProperties", defaultValue: "-", description: "CustomizaÃ§Ã£o de estilos por seÃ§Ã£o." }
+  { prop: "onClose / initialFocusRef / ariaLabel", type: "callback / ref / string", defaultValue: "-", description: "Controle avançado de fechamento e foco." },
+  { prop: "className / style / overlayClassName / contentClassName / headerClassName / bodyClassName / footerClassName", type: "string / CSSProperties", defaultValue: "-", description: "Customização de estilos por seção." }
 ];
 
 export default function SgDialogPage() {

@@ -8,52 +8,18 @@ import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
-import { useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
+import { t, useShowcaseI18n } from "../../../i18n";
 
-type BenchmarkTexts = {
-  headerSubtitle: string;
-  playgroundTitle: string;
-  playgroundDescription: string;
-  propsReferenceTitle: string;
-};
+const K = "showcase.component.benchmark";
 
-const BENCHMARK_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", BenchmarkTexts> = {
-  "pt-BR": {
-    headerSubtitle: "Comparativo de custo de updates em inputs uncontrolled (SgInputText vs input nativo).",
-    playgroundTitle: "Playground",
-    playgroundDescription: "Versao reduzida para testar benchmark rapido dentro do Sandpack.",
-    propsReferenceTitle: "Referencia de Props",
-  },
-  "pt-PT": {
-    headerSubtitle: "Comparativo de custo de updates em inputs uncontrolled (SgInputText vs input nativo).",
-    playgroundTitle: "Playground",
-    playgroundDescription: "Versao reduzida para testar benchmark rapido dentro do Sandpack.",
-    propsReferenceTitle: "Referencia de Props",
-  },
-  "en-US": {
-    headerSubtitle: "Update-cost comparison for uncontrolled inputs (SgInputText vs native input).",
-    playgroundTitle: "Playground",
-    playgroundDescription: "Reduced version for quick benchmark testing inside Sandpack.",
-    propsReferenceTitle: "Props Reference",
-  },
-  es: {
-    headerSubtitle: "Comparativo de costo de updates en inputs uncontrolled (SgInputText vs input nativo).",
-    playgroundTitle: "Playground",
-    playgroundDescription: "Version reducida para probar benchmark rapido dentro de Sandpack.",
-    propsReferenceTitle: "Referencia de Props",
-  },
-};
 
-type SupportedBenchmarkLocale = keyof typeof BENCHMARK_TEXTS;
 
-function isSupportedBenchmarkLocale(locale: ShowcaseLocale): locale is SupportedBenchmarkLocale {
-  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
-}
 
-function getBenchmarkTexts(locale: ShowcaseLocale): BenchmarkTexts {
-  const normalized: SupportedBenchmarkLocale = isSupportedBenchmarkLocale(locale) ? locale : "en-US";
-  return BENCHMARK_TEXTS[normalized];
-}
+
+
+
+
+
 
 const FIELD_COUNT = 60;
 const UPDATES = 200;
@@ -327,8 +293,7 @@ const BENCHMARK_PROPS: ShowcasePropRow[] = [
 ];
 
 export default function BenchmarkPage() {
-  const i18n = useShowcaseI18n();
-  const texts = React.useMemo(() => getBenchmarkTexts(i18n.locale), [i18n.locale]);
+  const i18n = useShowcaseI18n();
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
 
@@ -342,7 +307,7 @@ export default function BenchmarkPage() {
         <ShowcaseStickyHeader
           stickyHeaderRef={stickyHeaderRef}
           title="SgBenchmark"
-          subtitle={texts.headerSubtitle}
+          subtitle={t(i18n, `${K}.headerSubtitle`)}
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
@@ -354,9 +319,9 @@ export default function BenchmarkPage() {
           data-showcase-example="true"
           className="scroll-mt-[var(--showcase-anchor-offset,18rem)] rounded-lg border border-border p-6"
         >
-          <h2 data-anchor-title="true" className="text-lg font-semibold">{texts.playgroundTitle}</h2>
+          <h2 data-anchor-title="true" className="text-lg font-semibold">{t(i18n, `${K}.playgroundTitle`)}</h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            {texts.playgroundDescription}
+            {t(i18n, `${K}.playgroundDescription`)}
           </p>
           <div className="mt-4">
             <SgPlayground
@@ -370,7 +335,7 @@ export default function BenchmarkPage() {
           </div>
         </section>
 
-        <ShowcasePropsReference rows={BENCHMARK_PROPS} title={texts.propsReferenceTitle} />
+        <ShowcasePropsReference rows={BENCHMARK_PROPS} title={t(i18n, `${K}.propsReferenceTitle`)} />
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
       </div>
     </I18NReady>

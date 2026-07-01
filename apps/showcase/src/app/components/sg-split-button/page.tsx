@@ -25,7 +25,9 @@ import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
-import { useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
+import { t, useShowcaseI18n } from "../../../i18n";
+
+const K = "showcase.component.splitButton";
 
 const SEVERITIES = ["primary", "secondary", "success", "info", "warning", "help", "danger"] as const;
 
@@ -55,267 +57,8 @@ function capitalize(s: string) {
   return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
-type SplitButtonTexts = {
-  subtitle: string;
-  sectionTitles: string[];
-  sectionDescriptions: string[];
-  labels: {
-    save: string;
-    update: string;
-    delete: string;
-    homepage: string;
-    file: string;
-    copy: string;
-    print: string;
-    exportPdf: string;
-    shareEmail: string;
-    disabledOutline: string;
-    saving: string;
-    processing: string;
-    actions: string;
-    deleteDisabled: string;
-    newAction: string;
-    import: string;
-    downloadTemplate: string;
-    share: string;
-    small: string;
-    medium: string;
-    large: string;
-    propsTitle: string;
-    playgroundTitle: string;
-  };
-};
 
-const SPLIT_BUTTON_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", SplitButtonTexts> = {
-  "pt-BR": {
-    subtitle: "Botao dividido com acao principal e menu dropdown de opcoes adicionais.",
-    sectionTitles: [
-      "1) Basico",
-      "2) Severidades",
-      "3) Outlined",
-      "4) Ghost",
-      "5) Elevated",
-      "6) Tamanhos",
-      "7) Com icones",
-      "8) Separadores de menu",
-      "9) Disabled",
-      "10) Loading",
-      "11) Itens desabilitados",
-      "12) Playground (SgPlayground)"
-    ],
-    sectionDescriptions: [
-      "Split button com acao principal e dropdown de itens.",
-      'severity="primary" | "secondary" | "success" | "info" | "warning" | "help" | "danger".',
-      'appearance="outline": bordas coloridas sem preenchimento.',
-      'appearance="ghost": sem fundo, apenas texto colorido.',
-      'appearance="solid" + elevation="sm".',
-      'size="sm" | "md" | "lg".',
-      "leftIcon na acao principal e icon nos itens do menu.",
-      "separator=true para dividir grupos de itens no menu.",
-      "disabled=true desabilita o split button inteiro.",
-      "loading=true exibe spinner na acao principal e desabilita o menu.",
-      "Itens individuais do menu podem ser desabilitados.",
-      "Ajuste props principais do SgSplitButton."
-    ],
-    labels: {
-      save: "Save",
-      update: "Update",
-      delete: "Delete",
-      homepage: "Home",
-      file: "Arquivo",
-      copy: "Copiar",
-      print: "Imprimir",
-      exportPdf: "Exportar PDF",
-      shareEmail: "Compartilhar por e-mail",
-      disabledOutline: "Disabled outline",
-      saving: "Salvando...",
-      processing: "Processando...",
-      actions: "Acoes",
-      deleteDisabled: "Delete (disabled)",
-      newAction: "Novo",
-      import: "Importar",
-      downloadTemplate: "Baixar modelo",
-      share: "Compartilhar",
-      small: "Small",
-      medium: "Medium",
-      large: "Large",
-      propsTitle: "Referencia de Props",
-      playgroundTitle: "SgSplitButton Playground"
-    }
-  },
-  "pt-PT": {
-    subtitle: "Botao dividido com acao principal e menu dropdown de opcoes adicionais.",
-    sectionTitles: [
-      "1) Basico",
-      "2) Severidades",
-      "3) Outlined",
-      "4) Ghost",
-      "5) Elevated",
-      "6) Tamanhos",
-      "7) Com icones",
-      "8) Separadores de menu",
-      "9) Desativado",
-      "10) Loading",
-      "11) Itens desativados",
-      "12) Playground (SgPlayground)"
-    ],
-    sectionDescriptions: [
-      "Split button com acao principal e dropdown de itens.",
-      'severity="primary" | "secondary" | "success" | "info" | "warning" | "help" | "danger".',
-      'appearance="outline": bordas coloridas sem preenchimento.',
-      'appearance="ghost": sem fundo, apenas texto colorido.',
-      'appearance="solid" + elevation="sm".',
-      'size="sm" | "md" | "lg".',
-      "leftIcon na acao principal e icon nos itens do menu.",
-      "separator=true para dividir grupos de itens no menu.",
-      "disabled=true desativa o split button inteiro.",
-      "loading=true mostra spinner na acao principal e desativa o menu.",
-      "Itens individuais do menu podem ser desativados.",
-      "Ajuste props principais do SgSplitButton."
-    ],
-    labels: {
-      save: "Guardar",
-      update: "Update",
-      delete: "Eliminar",
-      homepage: "Home",
-      file: "Ficheiro",
-      copy: "Copiar",
-      print: "Imprimir",
-      exportPdf: "Exportar PDF",
-      shareEmail: "Partilhar por e-mail",
-      disabledOutline: "Outline desativado",
-      saving: "A guardar...",
-      processing: "A processar...",
-      actions: "Acoes",
-      deleteDisabled: "Eliminar (desativado)",
-      newAction: "Novo",
-      import: "Importar",
-      downloadTemplate: "Descarregar modelo",
-      share: "Partilhar",
-      small: "Small",
-      medium: "Medium",
-      large: "Large",
-      propsTitle: "Referencia de Props",
-      playgroundTitle: "SgSplitButton Playground"
-    }
-  },
-  "en-US": {
-    subtitle: "Split button with primary action and dropdown menu for additional options.",
-    sectionTitles: [
-      "1) Basic",
-      "2) Severities",
-      "3) Outlined",
-      "4) Ghost",
-      "5) Elevated",
-      "6) Sizes",
-      "7) With icons",
-      "8) Menu separators",
-      "9) Disabled",
-      "10) Loading",
-      "11) Disabled items",
-      "12) Playground (SgPlayground)"
-    ],
-    sectionDescriptions: [
-      "Split button with primary action and dropdown items.",
-      'severity="primary" | "secondary" | "success" | "info" | "warning" | "help" | "danger".',
-      'appearance="outline": colored borders without fill.',
-      'appearance="ghost": no background, colored text only.',
-      'appearance="solid" + elevation="sm".',
-      'size="sm" | "md" | "lg".',
-      "leftIcon in the main action and icon in menu items.",
-      "separator=true to split groups inside menu.",
-      "disabled=true disables the whole split button.",
-      "loading=true shows spinner in the main action and disables menu.",
-      "Individual menu items can be disabled.",
-      "Adjust main SgSplitButton props."
-    ],
-    labels: {
-      save: "Save",
-      update: "Update",
-      delete: "Delete",
-      homepage: "Homepage",
-      file: "File",
-      copy: "Copy",
-      print: "Print",
-      exportPdf: "Export as PDF",
-      shareEmail: "Share via email",
-      disabledOutline: "Disabled Outline",
-      saving: "Saving...",
-      processing: "Processing...",
-      actions: "Actions",
-      deleteDisabled: "Delete (disabled)",
-      newAction: "New",
-      import: "Import",
-      downloadTemplate: "Download template",
-      share: "Share",
-      small: "Small",
-      medium: "Medium",
-      large: "Large",
-      propsTitle: "Props Reference",
-      playgroundTitle: "SgSplitButton Playground"
-    }
-  },
-  es: {
-    subtitle: "Boton dividido con accion principal y menu desplegable de opciones adicionales.",
-    sectionTitles: [
-      "1) Basico",
-      "2) Severidades",
-      "3) Outlined",
-      "4) Ghost",
-      "5) Elevated",
-      "6) Sizes",
-      "7) Con iconos",
-      "8) Separadores de menu",
-      "9) Deshabilitado",
-      "10) Loading",
-      "11) Items deshabilitados",
-      "12) Playground (SgPlayground)"
-    ],
-    sectionDescriptions: [
-      "Split button con accion principal y menu de items.",
-      'severity="primary" | "secondary" | "success" | "info" | "warning" | "help" | "danger".',
-      'appearance="outline": bordes de color sin relleno.',
-      'appearance="ghost": sin fondo, solo texto de color.',
-      'appearance="solid" + elevation="sm".',
-      'size="sm" | "md" | "lg".',
-      "leftIcon en la accion principal e icono en los items del menu.",
-      "separator=true para dividir grupos en el menu.",
-      "disabled=true deshabilita todo el split button.",
-      "loading=true muestra spinner en la accion principal y deshabilita el menu.",
-      "Los items individuales del menu pueden deshabilitarse.",
-      "Ajusta las props principales de SgSplitButton."
-    ],
-    labels: {
-      save: "Guardar",
-      update: "Actualizar",
-      delete: "Eliminar",
-      homepage: "Home",
-      file: "Archivo",
-      copy: "Copiar",
-      print: "Imprimir",
-      exportPdf: "Exportar PDF",
-      shareEmail: "Compartir por correo",
-      disabledOutline: "Outline deshabilitado",
-      saving: "Guardando...",
-      processing: "Procesando...",
-      actions: "Acciones",
-      deleteDisabled: "Eliminar (deshabilitado)",
-      newAction: "Nuevo",
-      import: "Importar",
-      downloadTemplate: "Descargar plantilla",
-      share: "Compartir",
-      small: "Small",
-      medium: "Medium",
-      large: "Large",
-      propsTitle: "Referencia de Props",
-      playgroundTitle: "SgSplitButton Playground"
-    }
-  }
-};
 
-function isSupportedLocale(locale: ShowcaseLocale): locale is keyof typeof SPLIT_BUTTON_TEXTS {
-  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
-}
 
 const SPLIT_BUTTON_PLAYGROUND_CODE = `import * as React from "react";
 import {
@@ -393,9 +136,63 @@ const SPLIT_BUTTON_PROPS: ShowcasePropRow[] = [
 
 export default function SgSplitButtonShowcase() {
   const i18n = useShowcaseI18n();
+  const texts = React.useMemo(() => ({
+    subtitle: t(i18n, `${K}.subtitle`),
+    sectionTitles: [
+      t(i18n, `${K}.sectionTitles.0`),
+      t(i18n, `${K}.sectionTitles.1`),
+      t(i18n, `${K}.sectionTitles.2`),
+      t(i18n, `${K}.sectionTitles.3`),
+      t(i18n, `${K}.sectionTitles.4`),
+      t(i18n, `${K}.sectionTitles.5`),
+      t(i18n, `${K}.sectionTitles.6`),
+      t(i18n, `${K}.sectionTitles.7`),
+      t(i18n, `${K}.sectionTitles.8`),
+      t(i18n, `${K}.sectionTitles.9`),
+      t(i18n, `${K}.sectionTitles.10`),
+      t(i18n, `${K}.sectionTitles.11`)
+    ],
+    sectionDescriptions: [
+      t(i18n, `${K}.sectionDescriptions.0`),
+      t(i18n, `${K}.sectionDescriptions.1`),
+      t(i18n, `${K}.sectionDescriptions.2`),
+      t(i18n, `${K}.sectionDescriptions.3`),
+      t(i18n, `${K}.sectionDescriptions.4`),
+      t(i18n, `${K}.sectionDescriptions.5`),
+      t(i18n, `${K}.sectionDescriptions.6`),
+      t(i18n, `${K}.sectionDescriptions.7`),
+      t(i18n, `${K}.sectionDescriptions.8`),
+      t(i18n, `${K}.sectionDescriptions.9`),
+      t(i18n, `${K}.sectionDescriptions.10`),
+      t(i18n, `${K}.sectionDescriptions.11`)
+    ],
+    labels: {
+      save: t(i18n, `${K}.labels.save`),
+      update: t(i18n, `${K}.labels.update`),
+      delete: t(i18n, `${K}.labels.delete`),
+      homepage: t(i18n, `${K}.labels.homepage`),
+      file: t(i18n, `${K}.labels.file`),
+      copy: t(i18n, `${K}.labels.copy`),
+      print: t(i18n, `${K}.labels.print`),
+      exportPdf: t(i18n, `${K}.labels.exportPdf`),
+      shareEmail: t(i18n, `${K}.labels.shareEmail`),
+      disabledOutline: t(i18n, `${K}.labels.disabledOutline`),
+      saving: t(i18n, `${K}.labels.saving`),
+      processing: t(i18n, `${K}.labels.processing`),
+      actions: t(i18n, `${K}.labels.actions`),
+      deleteDisabled: t(i18n, `${K}.labels.deleteDisabled`),
+      newAction: t(i18n, `${K}.labels.newAction`),
+      import: t(i18n, `${K}.labels.import`),
+      downloadTemplate: t(i18n, `${K}.labels.downloadTemplate`),
+      share: t(i18n, `${K}.labels.share`),
+      small: t(i18n, `${K}.labels.small`),
+      medium: t(i18n, `${K}.labels.medium`),
+      large: t(i18n, `${K}.labels.large`),
+      propsTitle: t(i18n, `${K}.labels.propsTitle`),
+      playgroundTitle: t(i18n, `${K}.labels.playgroundTitle`)
+    }
+  }), [i18n]);
   const aiComponent = useAiManifestComponent("SgSplitButton");
-  const locale: keyof typeof SPLIT_BUTTON_TEXTS = isSupportedLocale(i18n.locale) ? i18n.locale : "en-US";
-  const texts = SPLIT_BUTTON_TEXTS[locale];
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({
     deps: [i18n.locale]
   });

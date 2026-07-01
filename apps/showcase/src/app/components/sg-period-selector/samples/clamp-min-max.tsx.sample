@@ -1,0 +1,25 @@
+import * as React from "react";
+import { SgPeriodSelector, type ResolvedPeriod } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [period, setPeriod] = React.useState<ResolvedPeriod | null>(null);
+  const now = new Date();
+  const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+  const monthEnd = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+
+  return (
+    <div className="w-96">
+      <SgPeriodSelector
+        id="ps-clamp"
+        label="Periodo"
+        locale="pt-BR"
+        permitPast
+        permitCurrent
+        permitFuture
+        minDate={monthStart}
+        maxDate={monthEnd}
+        onChange={setPeriod}
+      />
+    </div>
+  );
+}

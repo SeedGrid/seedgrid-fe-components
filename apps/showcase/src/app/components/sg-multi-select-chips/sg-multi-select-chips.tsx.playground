@@ -1,0 +1,81 @@
+import * as React from "react";
+import * as SeedGrid from "@seedgrid/fe-components";
+
+const SgMultiSelectChipsFromLib = (SeedGrid as Record<string, unknown>).SgMultiSelectChips as
+  | React.ComponentType<any>
+  | undefined;
+
+const COMPANIES = [
+  { label: "Empresa 1", value: "e1" },
+  { label: "Empresa 2", value: "e2" },
+  { label: "Empresa 3", value: "e3" },
+  { label: "Empresa 4", value: "e4" },
+  { label: "Empresa 5", value: "e5" },
+  { label: "Empresa 6", value: "e6" }
+];
+
+export default function App() {
+  const hasComponent = typeof SgMultiSelectChipsFromLib === "function";
+  const [value, setValue] = React.useState<(string | number)[]>(["e1"]);
+  const [searchable, setSearchable] = React.useState(true);
+  const [clearable, setClearable] = React.useState(true);
+  const [capped, setCapped] = React.useState(false);
+
+  const toggle = (label: string, val: boolean, set: (v: boolean) => void) => (
+    <label className="text-sm inline-flex items-center gap-1">
+      <input className="mr-1" type="checkbox" checked={val} onChange={(e) => set(e.target.checked)} />
+      {label}
+    </label>
+  );
+
+  return (
+    <div className="space-y-4 p-2">
+      {!hasComponent ? (
+        <div className="rounded border border-amber-200 bg-amber-50 p-2 text-xs text-amber-800">
+          SgMultiSelectChips is not available in the published Sandpack version. Showing local fallback.
+        </div>
+      ) : null}
+
+      <div className="flex flex-wrap items-center gap-3">
+        {toggle("searchable", searchable, setSearchable)}
+        {toggle("clearable", clearable, setClearable)}
+        {toggle("maxSelected=3", capped, setCapped)}
+      </div>
+
+      <div className="w-96">
+        {hasComponent ? (
+          <SgMultiSelectChipsFromLib
+            id="ms-playground"
+            label="Empresas"
+            placeholder="Selecione as empresas"
+            options={COMPANIES}
+            value={value}
+            searchable={searchable}
+            clearable={clearable}
+            maxSelected={capped ? 3 : undefined}
+            onChange={(next: (string | number)[]) => setValue(next)}
+          />
+        ) : (
+          <select
+            multiple
+            className="h-32 w-full rounded-md border border-border bg-background px-3 text-sm"
+            value={value.map(String)}
+            onChange={(e) =>
+              setValue(Array.from(e.target.selectedOptions).map((o) => o.value))
+            }
+          >
+            {COMPANIES.map((c) => (
+              <option key={c.value} value={c.value}>
+                {c.label}
+              </option>
+            ))}
+          </select>
+        )}
+      </div>
+
+      <div className="rounded border border-border bg-muted/40 p-3 text-xs">
+        <strong>value:</strong> {value.length ? value.join(", ") : "(vazio)"}
+      </div>
+    </div>
+  );
+}

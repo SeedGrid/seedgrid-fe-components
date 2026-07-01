@@ -1,0 +1,20 @@
+import * as React from "react";
+import { SgPeriodSelector, type ResolvedPeriod } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [period, setPeriod] = React.useState<ResolvedPeriod | null>(null);
+
+  return (
+    <div className="w-96">
+      <SgPeriodSelector
+        id="ps-custom"
+        label="Periodo"
+        locale="pt-BR"
+        allowCustomPeriod
+        permitCurrent={false}
+        permitPast={false}
+        onChange={setPeriod}
+      />
+    </div>
+  );
+}

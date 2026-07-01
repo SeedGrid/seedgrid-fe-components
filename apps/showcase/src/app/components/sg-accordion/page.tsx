@@ -12,7 +12,9 @@ import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
-import { useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
+import { t, useShowcaseI18n } from "../../../i18n";
+
+const K = "showcase.component.accordion";
 
 function Section(props: { title: string; description?: string; children: React.ReactNode }) {
   return (
@@ -27,129 +29,14 @@ function Section(props: { title: string; description?: string; children: React.R
   );
 }
 
-type AccordionTexts = {
-  headerSubtitle: string;
-  section1Title: string;
-  section1Description: string;
-  section2Title: string;
-  section2Description: string;
-  section3Title: string;
-  section3Description: string;
-  section4Title: string;
-  section4Description: string;
-  section5Title: string;
-  section5Description: string;
-  section6Title: string;
-  section6Description: string;
-  section7Title: string;
-  section7Description: string;
-  colorPickerLabel: string;
-  colorValueLabel: string;
-  propsReferenceTitle: string;
-};
 
-const ACCORDION_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", AccordionTexts> = {
-  "pt-BR": {
-    headerSubtitle: "Accordion com configuracao vertical/horizontal, modo single ou multiple e controle externo.",
-    section1Title: "1) Basico vertical (single)",
-    section1Description: "Default column behavior, opening one panel at a time.",
-    section2Title: "2) Multiple + collapsible",
-    section2Description: "Abra varios paineis ao mesmo tempo e controle estado ativo externamente.",
-    section3Title: "3) Horizontal",
-    section3Description: "Headers em trilho lateral e conteudo expandindo horizontalmente.",
-    section4Title: "4) Controlado por estado",
-    section4Description: "Use activeIndex/onActiveIndexChange para abrir/fechar via botoes externos.",
-    section5Title: "5) Custom items + header background",
-    section5Description:
-      "Fundo do titulo usa primary-50 por padrao e pode ser customizado globalmente ou por item.",
-    section6Title: "6) Color customization example",
-    section6Description: "Customize the global header color and see per-item override on the last panel.",
-    section7Title: "7) Playground (SgPlayground)",
-    section7Description:
-      "Playground para o dev testar orientacao, modo multiple, estado controlado e cores do titulo.",
-    colorPickerLabel: "Color picker",
-    colorValueLabel: "Color value",
-    propsReferenceTitle: "Referencia de Props",
-  },
-  "pt-PT": {
-    headerSubtitle: "Accordion com configuracao vertical/horizontal, modo single ou multiple e controlo externo.",
-    section1Title: "1) Basico vertical (single)",
-    section1Description: "Default column behavior, opening one panel at a time.",
-    section2Title: "2) Multiple + collapsible",
-    section2Description: "Abra varios paineis ao mesmo tempo e controle o estado ativo externamente.",
-    section3Title: "3) Horizontal",
-    section3Description: "Headers em trilho lateral e conteudo a expandir horizontalmente.",
-    section4Title: "4) Controlado por estado",
-    section4Description: "Use activeIndex/onActiveIndexChange para abrir/fechar via botoes externos.",
-    section5Title: "5) Custom items + header background",
-    section5Description:
-      "Fundo do titulo usa primary-50 por padrao e pode ser customizado globalmente ou por item.",
-    section6Title: "6) Color customization example",
-    section6Description: "Customize the global header color and see per-item override on the last panel.",
-    section7Title: "7) Playground (SgPlayground)",
-    section7Description:
-      "Playground para o dev testar orientacao, modo multiple, estado controlado e cores do titulo.",
-    colorPickerLabel: "Color picker",
-    colorValueLabel: "Color value",
-    propsReferenceTitle: "Referencia de Props",
-  },
-  "en-US": {
-    headerSubtitle: "Accordion with vertical/horizontal layout, single or multiple mode, and external state control.",
-    section1Title: "1) Basic vertical (single)",
-    section1Description: "Default column behavior, opening one panel at a time.",
-    section2Title: "2) Multiple + collapsible",
-    section2Description: "Open multiple panels at once and control active state externally.",
-    section3Title: "3) Horizontal",
-    section3Description: "Headers in a side rail with horizontally expanding content.",
-    section4Title: "4) Controlled state",
-    section4Description: "Use activeIndex/onActiveIndexChange to open/close via external buttons.",
-    section5Title: "5) Custom items + header background",
-    section5Description:
-      "Header background uses primary-50 by default and can be customized globally or per item.",
-    section6Title: "6) Color customization example",
-    section6Description: "Customize global header color and see per-item override on the last panel.",
-    section7Title: "7) Playground (SgPlayground)",
-    section7Description:
-      "Playground for testing orientation, multiple mode, controlled state, and header colors.",
-    colorPickerLabel: "Color picker",
-    colorValueLabel: "Color value",
-    propsReferenceTitle: "Props Reference",
-  },
-  es: {
-    headerSubtitle: "Accordion con configuracion vertical/horizontal, modo single o multiple y control externo.",
-    section1Title: "1) Basico vertical (single)",
-    section1Description: "Comportamiento por defecto en columna, abriendo un panel por vez.",
-    section2Title: "2) Multiple + collapsible",
-    section2Description: "Abra varios paneles al mismo tiempo y controle el estado activo externamente.",
-    section3Title: "3) Horizontal",
-    section3Description: "Headers en riel lateral y contenido expandiendo horizontalmente.",
-    section4Title: "4) Controlado por estado",
-    section4Description: "Use activeIndex/onActiveIndexChange para abrir/cerrar con botones externos.",
-    section5Title: "5) Items personalizados + fondo del titulo",
-    section5Description:
-      "El fondo del titulo usa primary-50 por defecto y puede personalizarse globalmente o por item.",
-    section6Title: "6) Ejemplo de personalizacion de color",
-    section6Description:
-      "Personalice el color global del titulo y vea el override por item en el ultimo panel.",
-    section7Title: "7) Playground (SgPlayground)",
-    section7Description:
-      "Playground para probar orientacion, modo multiple, estado controlado y colores del titulo.",
-    colorPickerLabel: "Color picker",
-    colorValueLabel: "Valor de color",
-    propsReferenceTitle: "Referencia de Props",
-  },
-};
 
-type SupportedAccordionLocale = keyof typeof ACCORDION_TEXTS;
 
-function isSupportedAccordionLocale(locale: ShowcaseLocale): locale is SupportedAccordionLocale {
-  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
-}
+
 
-function getAccordionTexts(locale: ShowcaseLocale): AccordionTexts {
-  const normalized: SupportedAccordionLocale = isSupportedAccordionLocale(locale) ? locale : "en-US";
-  return ACCORDION_TEXTS[normalized];
-}
+
+
+
 
 const VERTICAL_ITEMS: SgAccordionItem[] = [
   {
@@ -572,8 +459,7 @@ const ACCORDION_PROPS: ShowcasePropRow[] = [
 
 export default function SgAccordionPage() {
   const i18n = useShowcaseI18n();
-  const aiComponent = useAiManifestComponent("SgAccordion");
-  const texts = React.useMemo(() => getAccordionTexts(i18n.locale), [i18n.locale]);
+  const aiComponent = useAiManifestComponent("SgAccordion");
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
   const [controlled, setControlled] = React.useState<number[]>([0]);
@@ -590,22 +476,22 @@ export default function SgAccordionPage() {
         <ShowcaseStickyHeader
           stickyHeaderRef={stickyHeaderRef}
           title="SgAccordion"
-          subtitle={texts.headerSubtitle}
+          subtitle={t(i18n, `${K}.headerSubtitle`)}
           exampleLinks={exampleLinks}
           onAnchorClick={handleAnchorClick}
         />
 
       <Section
-        title={texts.section1Title}
-        description={texts.section1Description}
+        title={t(i18n, `${K}.section1Title`)}
+        description={t(i18n, `${K}.section1Description`)}
       >
         <SgAccordion items={VERTICAL_ITEMS} />
         <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-accordion/samples/basico-vertical-single.tsx.sample" />
       </Section>
 
       <Section
-        title={texts.section2Title}
-        description={texts.section2Description}
+        title={t(i18n, `${K}.section2Title`)}
+        description={t(i18n, `${K}.section2Description`)}
       >
         <SgAccordion
           items={VERTICAL_ITEMS}
@@ -624,8 +510,8 @@ export default function SgAccordionPage() {
       </Section>
 
       <Section
-        title={texts.section3Title}
-        description={texts.section3Description}
+        title={t(i18n, `${K}.section3Title`)}
+        description={t(i18n, `${K}.section3Description`)}
       >
         <SgAccordion
           items={HORIZONTAL_ITEMS}
@@ -638,8 +524,8 @@ export default function SgAccordionPage() {
       </Section>
 
       <Section
-        title={texts.section4Title}
-        description={texts.section4Description}
+        title={t(i18n, `${K}.section4Title`)}
+        description={t(i18n, `${K}.section4Description`)}
       >
         <SgAccordion
           items={VERTICAL_ITEMS}
@@ -656,8 +542,8 @@ export default function SgAccordionPage() {
       </Section>
 
       <Section
-        title={texts.section5Title}
-        description={texts.section5Description}
+        title={t(i18n, `${K}.section5Title`)}
+        description={t(i18n, `${K}.section5Description`)}
       >
         <SgAccordion
           items={CUSTOM_ITEMS}
@@ -668,12 +554,12 @@ export default function SgAccordionPage() {
       </Section>
 
       <Section
-        title={texts.section6Title}
-        description={texts.section6Description}
+        title={t(i18n, `${K}.section6Title`)}
+        description={t(i18n, `${K}.section6Description`)}
       >
         <div className="flex flex-wrap items-end gap-3">
           <label className="space-y-1">
-            <span className="block text-xs font-medium">{texts.colorPickerLabel}</span>
+            <span className="block text-xs font-medium">{t(i18n, `${K}.colorPickerLabel`)}</span>
             <input
               type="color"
               value={headerColorExample}
@@ -682,7 +568,7 @@ export default function SgAccordionPage() {
             />
           </label>
           <label className="min-w-[260px] flex-1 space-y-1">
-            <span className="block text-xs font-medium">{texts.colorValueLabel}</span>
+            <span className="block text-xs font-medium">{t(i18n, `${K}.colorValueLabel`)}</span>
             <input
               value={headerColorExample}
               onChange={(e) => setHeaderColorExample(e.target.value)}
@@ -699,8 +585,8 @@ export default function SgAccordionPage() {
       </Section>
 
       <Section
-        title={texts.section7Title}
-        description={texts.section7Description}
+        title={t(i18n, `${K}.section7Title`)}
+        description={t(i18n, `${K}.section7Description`)}
       >
         <SgPlayground
           title="SgAccordion Playground"
@@ -712,7 +598,7 @@ export default function SgAccordionPage() {
         />
       </Section>
 
-        <ShowcasePropsReference rows={ACCORDION_PROPS} title={texts.propsReferenceTitle} />
+        <ShowcasePropsReference rows={ACCORDION_PROPS} title={t(i18n, `${K}.propsReferenceTitle`)} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
