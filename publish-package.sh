@@ -111,7 +111,7 @@ if [[ -n "${PUBLISH_VERSION:-}" ]]; then
   echo "==> Setting version: ${PUBLISH_VERSION}"
   (
     cd "${ABS_PKG_DIR}"
-    "${NPM_BIN}" version "${PUBLISH_VERSION}" --no-git-tag-version
+    "${NPM_BIN}" version "${PUBLISH_VERSION}" --no-git-tag-version --allow-same-version
   )
 elif [[ "${BUMP_TYPE}" != "none" ]]; then
   echo "==> Bumping version: ${BUMP_TYPE}"
