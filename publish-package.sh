@@ -74,7 +74,8 @@ if [[ -z "${NODE_BIN}" ]]; then
   exit 1
 fi
 
-if ! ABS_PKG_DIR="$(cd "${PKG_DIR_RAW}" && pwd)"; then
+# pwd -W (git bash no Windows) devolve C:/... que o node entende; no Linux cai no pwd normal.
+if ! ABS_PKG_DIR="$(cd "${PKG_DIR_RAW}" && { pwd -W 2>/dev/null || pwd; })"; then
   echo "Cannot access package directory: ${PKG_DIR_RAW}"
   exit 1
 fi
