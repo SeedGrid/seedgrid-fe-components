@@ -232,6 +232,9 @@ jobs:
       #  fe-apikeys, fe-backup, fe-billing-platform, fe-billing-user,
       #  fe-self-enter e futuros)
       # ------------------------------------------------------------
+      - name: Build modules (ordem topológica)
+        run: pnpm -r --filter "./packages/modules/*" run build
+
       - name: Publish module packages
         shell: bash
         env:
