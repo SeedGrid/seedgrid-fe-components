@@ -227,35 +227,31 @@ jobs:
           ./publish-playground.sh none
 
       # ------------------------------------------------------------
-      # fe-security (módulo) — packages/modules/seedgrid-fe-security
+      # módulos — todos em packages/modules/seedgrid-fe-*
+      # (fe-security, fe-login-tenancy, fe-subdomain-tenancy, fe-audit,
+      #  fe-apikeys, fe-backup, fe-billing-platform, fe-billing-user,
+      #  fe-self-enter e futuros)
       # ------------------------------------------------------------
-      - name: Resolve version for fe-security
-        id: security_version
+      - name: Publish module packages
         shell: bash
+        env:
+          NPM_TAG: ${{ steps.mode.outputs.tag }}
         run: |
-          PKG_DIR="packages/modules/seedgrid-fe-security"
-          NAME=$(node -p "require('./${PKG_DIR}/package.json').name")
+          npm config set registry https://registry.npmjs.org/
+          export NPM_TAG="${NPM_TAG}"
+
           BASE="${{ steps.calver.outputs.base }}"
           MODE="stable"
           if [[ "${{ steps.mode.outputs.is_rc }}" == "true" ]]; then
             MODE="rc"
           fi
-          VERSION=$(node .github/scripts/resolve-npm-monthly-version.mjs "${NAME}" "${BASE}" "${MODE}")
 
-          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
-
-      - name: Build fe-security
-        run: pnpm -C packages/modules/seedgrid-fe-security build
-
-      - name: Publish fe-security
-        shell: bash
-        env:
-          PUBLISH_VERSION: ${{ steps.security_version.outputs.version }}
-          NPM_TAG: ${{ steps.mode.outputs.tag }}
-        run: |
-          npm config set registry https://registry.npmjs.org/
-          export NPM_TAG="${NPM_TAG}"
-          ./publish-security.sh none
+          for PKG_DIR in packages/modules/seedgrid-fe-*/; do
+            NAME=$(node -p "require('./${PKG_DIR}package.json').name")
+            VERSION=$(node .github/scripts/resolve-npm-monthly-version.mjs "${NAME}" "${BASE}" "${MODE}")
+            echo "==> Publishing module ${NAME}@${VERSION}"
+            PUBLISH_VERSION="${VERSION}" ./publish-package.sh "${PKG_DIR}" none
+          done
 
   build-and-deploy-showcase:
     name: Build & Push Showcase Docker Image + Deploy EasyPanel
