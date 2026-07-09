@@ -1,0 +1,322 @@
+﻿import { NextRequest, NextResponse } from "next/server";
+
+import { resolveApiBaseUrlForHostname } from "@/config/environment";
+import { ApiClientError, createApiClient } from "@seedgrid/fe-core";
+
+const REFRESH_COOKIE_NAME =
+  process.env.SEEDGRID_SECURITY_REFRESH_COOKIE_NAME?.trim() ||
+  "sg_{{project_slug}}_refresh_token";
+const ACCESS_COOKIE_NAME =
+  process.env.SEEDGRID_SECURITY_ACCESS_COOKIE_NAME?.trim() ||
+  "sg_{{project_slug}}_access_token";
+const REFRESH_COOKIE_MAX_AGE_SECONDS = resolveRefreshCookieMaxAge();
+
+export async function createLoginRouteResponse(request: NextRequest) {
+  const body = await request.json();
+
+  return forwardPublicAuthRequest(request, "/public/auth/login", {
+    body,
+  });
+}
+
+export async function createVerifyTwoFactorRouteResponse(request: NextRequest) {
+  const body = await request.json();
+
+  return forwardPublicAuthRequest(request, "/public/2f/verify", {
+    body,
+  });
+}
+
+export async function createResendTwoFactorRouteResponse(request: NextRequest) {
+  const body = await request.json();
+
+  return forwardPublicAuthRequest(request, "/public/2f/resend", {
+    body,
+  });
+}
+
+const pendingRefreshResponses = new Map<string, Promise<NextResponse>>();
+
+export async function createRefreshRouteResponse(request: NextRequest) {
+  const refreshToken = request.cookies.get(REFRESH_COOKIE_NAME)?.value?.trim();
+
+  if (!refreshToken) {
+    return createUnauthorizedRouteResponse();
+  }
+
+  const existing = pendingRefreshResponses.get(refreshToken);
+
+  if (existing) {
+    return existing;
+  }
+
+  const refreshPromise = (async () => {
+    try {
+      const authClient = createAuthClient(request);
+      const payload = await authClient.post<unknown>("/public/auth/refresh", {
+        body: {
+          refreshToken,
+        },
+        requireAuth: false,
+        retry: false,
+        cache: "no-store",
+      });
+
+      return createAuthSuccessResponse(payload);
+    } catch (error) {
+      return createAuthErrorResponse(error, true);
+    }
+  })().finally(() => {
+    pendingRefreshResponses.delete(refreshToken);
+  });
+
+  pendingRefreshResponses.set(refreshToken, refreshPromise);
+
+  return refreshPromise;
+}
+
+export function createLogoutRouteResponse() {
+  const response = NextResponse.json(
+    {
+      ok: true,
+    },
+    {
+      status: 200,
+    }
+  );
+
+  clearRefreshTokenCookie(response);
+  clearAccessTokenCookie(response);
+
+  return response;
+}
+
+async function forwardPublicAuthRequest(
+  request: NextRequest,
+  path: string,
+  options: {
+    body?: Record<string, unknown>;
+  }
+) {
+  try {
+    const authClient = createAuthClient(request);
+    const payload = await authClient.post<unknown>(path, {
+      body: options.body,
+      requireAuth: false,
+      retry: false,
+      cache: "no-store",
+    });
+
+    return createAuthSuccessResponse(payload);
+  } catch (error) {
+    return createAuthErrorResponse(error, false);
+  }
+}
+
+function createAuthClient(request: NextRequest) {
+  return createApiClient({
+    baseUrl: resolveApiBaseUrlForHostname(resolveRequestHostname(request)),
+    defaultCache: "no-store",
+  });
+}
+
+function resolveRequestHostname(request: NextRequest) {
+  const forwardedHost = request.headers.get("x-forwarded-host")?.trim();
+  const hostHeader = request.headers.get("host")?.trim();
+  const candidate = forwardedHost || hostHeader || request.nextUrl.hostname;
+
+  return candidate.replace(/:\d+$/, "");
+}
+
+function createAuthSuccessResponse(payload: unknown) {
+  const response = NextResponse.json(stripRefreshToken(payload), {
+    status: 200,
+  });
+  const refreshToken = pickString(payload, "refreshToken");
+  const accessToken = pickString(payload, "accessToken") ?? pickString(payload, "token");
+  const expiresIn = pickNumber(payload, "expiresIn");
+
+  if (refreshToken) {
+    setRefreshTokenCookie(response, refreshToken);
+  }
+
+  if (accessToken) {
+    setAccessTokenCookie(response, accessToken, expiresIn ?? undefined);
+  }
+
+  return response;
+}
+
+function createUnauthorizedRouteResponse() {
+  const response = NextResponse.json(
+    {
+      message: "Refresh token is missing or expired.",
+    },
+    {
+      status: 401,
+    }
+  );
+
+  clearRefreshTokenCookie(response);
+  clearAccessTokenCookie(response);
+
+  return response;
+}
+
+function createAuthErrorResponse(error: unknown, clearCookieOnUnauthorized: boolean) {
+  if (error instanceof ApiClientError) {
+    const response = NextResponse.json(
+      normalizeErrorBody(error.responseBody, error.message),
+      {
+        status: error.status,
+      }
+    );
+
+    if (clearCookieOnUnauthorized && error.status === 401) {
+      clearRefreshTokenCookie(response);
+      clearAccessTokenCookie(response);
+    }
+
+    return response;
+  }
+
+  const response = NextResponse.json(
+    {
+      message: error instanceof Error ? error.message : "Unexpected auth error.",
+    },
+    {
+      status: 500,
+    }
+  );
+
+  if (clearCookieOnUnauthorized) {
+    clearRefreshTokenCookie(response);
+    clearAccessTokenCookie(response);
+  }
+
+  return response;
+}
+
+function setRefreshTokenCookie(response: NextResponse, refreshToken: string) {
+  response.cookies.set({
+    name: REFRESH_COOKIE_NAME,
+    value: refreshToken,
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    path: "/",
+    maxAge: REFRESH_COOKIE_MAX_AGE_SECONDS,
+  });
+}
+
+function setAccessTokenCookie(
+  response: NextResponse,
+  accessToken: string,
+  expiresIn?: number
+) {
+  response.cookies.set({
+    name: ACCESS_COOKIE_NAME,
+    value: accessToken,
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    path: "/",
+    maxAge: expiresIn ?? 900,
+  });
+}
+
+function clearRefreshTokenCookie(response: NextResponse) {
+  response.cookies.set({
+    name: REFRESH_COOKIE_NAME,
+    value: "",
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    path: "/",
+    maxAge: 0,
+  });
+}
+
+function clearAccessTokenCookie(response: NextResponse) {
+  response.cookies.set({
+    name: ACCESS_COOKIE_NAME,
+    value: "",
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    path: "/",
+    maxAge: 0,
+  });
+}
+
+function stripRefreshToken(payload: unknown) {
+  if (!payload || typeof payload !== "object" || Array.isArray(payload)) {
+    return payload;
+  }
+
+  const record = payload as Record<string, unknown>;
+  const { refreshToken: _refreshToken, ...rest } = record;
+
+  return rest;
+}
+
+function normalizeErrorBody(body: unknown, fallbackMessage: string) {
+  if (!body) {
+    return {
+      message: fallbackMessage,
+    };
+  }
+
+  if (typeof body === "string") {
+    return {
+      message: body,
+    };
+  }
+
+  if (typeof body === "object") {
+    return body;
+  }
+
+  return {
+    message: fallbackMessage,
+  };
+}
+
+function pickString(value: unknown, key: string) {
+  if (!value || typeof value !== "object") {
+    return null;
+  }
+
+  const candidate = (value as Record<string, unknown>)[key];
+
+  return typeof candidate === "string" && candidate.trim().length > 0
+    ? candidate.trim()
+    : null;
+}
+
+function pickNumber(value: unknown, key: string) {
+  if (!value || typeof value !== "object") {
+    return null;
+  }
+
+  const candidate = (value as Record<string, unknown>)[key];
+
+  return typeof candidate === "number" && Number.isFinite(candidate)
+    ? candidate
+    : null;
+}
+
+function resolveRefreshCookieMaxAge() {
+  const configuredValue =
+    process.env.SEEDGRID_SECURITY_REFRESH_COOKIE_MAX_AGE_SECONDS?.trim() ?? "";
+
+  if (!configuredValue) {
+    return 60 * 60 * 24 * 30;
+  }
+
+  const parsedValue = Number.parseInt(configuredValue, 10);
+
+  return Number.isFinite(parsedValue) && parsedValue > 0
+    ? parsedValue
+    : 60 * 60 * 24 * 30;
+}

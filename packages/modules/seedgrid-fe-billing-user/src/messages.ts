@@ -1,0 +1,172 @@
+// Mensagens das telas de billing do usuário (scaffold/src/app/billing/**):
+// visão geral da assinatura, catálogo/checkout, troca/cancelamento, faturas.
+// Pacote novo, sem histórico — ver scaffold/README.md.
+
+const en = {
+  "billing.user.title": "Billing",
+  "billing.user.description": "Your subscription, plan, and usage for the current cycle.",
+  "billing.user.manage_action": "Manage billing",
+  "billing.user.view_plans": "View plans",
+  "billing.user.load_error": "Could not load your billing information.",
+  "billing.user.portal_error": "Could not open the billing portal.",
+
+  "billing.user.nav.group": "Billing",
+  "billing.user.nav.overview": "Overview",
+  "billing.user.nav.plans": "Plans",
+  "billing.user.nav.invoices": "Invoices",
+
+  "billing.user.no_subscription.title": "No active subscription",
+  "billing.user.no_subscription.description": "You don't have an active subscription yet.",
+  "billing.user.no_subscription.action": "Choose a plan",
+
+  "billing.user.plan.title": "Current plan",
+  "billing.user.plan.price": "{price} / month",
+  "billing.user.plan.pending_change": "Scheduled change to {planName} at the end of this cycle.",
+  "billing.user.plan.cancel_scheduled": "Your subscription is scheduled to cancel at the end of this cycle.",
+
+  "billing.user.usage.title": "Usage this cycle",
+  "billing.user.usage.summary": "{used} of {included} requests used",
+  "billing.user.usage.overage": "{overage} requests over your plan's quota",
+
+  "billing.user.actions.cancel": "Cancel subscription",
+  "billing.user.actions.cancel_title": "Cancel subscription",
+  "billing.user.actions.cancel_message":
+    "Your subscription will be cancelled at the end of the current cycle. You keep access until then.",
+  "billing.user.actions.cancel_success": "Cancellation scheduled for the end of the cycle.",
+  "billing.user.actions.cancel_error": "Could not cancel the subscription.",
+  "billing.user.actions.reactivate": "Reactivate",
+  "billing.user.actions.reactivate_success": "Subscription reactivated.",
+  "billing.user.actions.reactivate_error": "Could not reactivate the subscription.",
+  "billing.user.actions.cancel_scheduled_change": "Cancel scheduled change",
+  "billing.user.actions.cancel_scheduled_change_success": "Scheduled change cancelled.",
+  "billing.user.actions.cancel_scheduled_change_error": "Could not cancel the scheduled change.",
+
+  "billing.user.plans_catalog.title": "Plans",
+  "billing.user.plans_catalog.description": "Choose the plan that best fits your usage.",
+  "billing.user.plans_catalog.load_error": "Could not load the plans.",
+  "billing.user.plans_catalog.per_month": "/ month",
+  "billing.user.plans_catalog.requests": "{requests} requests / month",
+  "billing.user.plans_catalog.current": "Current plan",
+  "billing.user.plans_catalog.current_action": "Your current plan",
+  "billing.user.plans_catalog.subscribe_action": "Subscribe",
+  "billing.user.plans_catalog.change_action": "Switch to this plan",
+  "billing.user.plans_catalog.unavailable": "Not available",
+  "billing.user.plans_catalog.checkout_error": "Could not start the checkout.",
+  "billing.user.plans_catalog.preview_error": "Could not preview the plan change.",
+  "billing.user.plans_catalog.change_success": "Plan updated.",
+  "billing.user.plans_catalog.change_error": "Could not change the plan.",
+  "billing.user.plans_catalog.empty_title": "No plans available",
+  "billing.user.plans_catalog.empty": "There are no plans to subscribe to right now.",
+  "billing.user.plans_catalog.pending.title": "Scheduled change",
+  "billing.user.plans_catalog.pending.description":
+    "A change to {planName} is scheduled for the end of this cycle.",
+  "billing.user.plans_catalog.confirm.title": "Confirm plan change",
+  "billing.user.plans_catalog.confirm.immediate":
+    "This is an upgrade. You will be charged {amount} now (prorated).",
+  "billing.user.plans_catalog.confirm.upgrade": "This upgrade will take effect immediately.",
+  "billing.user.plans_catalog.confirm.downgrade":
+    "This downgrade will take effect at the end of the current cycle.",
+
+  "billing.user.invoices.title": "Invoices",
+  "billing.user.invoices.description": "Your upcoming invoice and payment history.",
+  "billing.user.invoices.load_error": "Could not load your invoices.",
+  "billing.user.invoices.refresh": "Refresh",
+  "billing.user.invoices.upcoming.title": "Upcoming invoice",
+  "billing.user.invoices.upcoming.none": "No upcoming invoice.",
+  "billing.user.invoices.upcoming.next_attempt": "Next charge on {date}.",
+  "billing.user.invoices.history.title": "Invoice history",
+  "billing.user.invoices.history.empty": "No invoices yet.",
+  "billing.user.invoices.history.view": "View",
+  "billing.user.invoices.history.column.number": "Invoice",
+  "billing.user.invoices.history.column.date": "Date",
+  "billing.user.invoices.history.column.amount": "Amount",
+  "billing.user.invoices.history.column.status": "Status",
+};
+
+const ptBr = {
+  "billing.user.title": "Cobrança",
+  "billing.user.description": "Sua assinatura, plano e uso do ciclo atual.",
+  "billing.user.manage_action": "Gerenciar cobrança",
+  "billing.user.load_error": "Não foi possível carregar suas informações de cobrança.",
+  "billing.user.portal_error": "Não foi possível abrir o portal de cobrança.",
+  "billing.user.no_subscription.title": "Nenhuma assinatura ativa",
+  "billing.user.no_subscription.description": "Você ainda não tem uma assinatura ativa.",
+  "billing.user.plan.title": "Plano atual",
+  "billing.user.plan.price": "{price} / mês",
+  "billing.user.plan.pending_change": "Troca agendada para {planName} no fim deste ciclo.",
+  "billing.user.plan.cancel_scheduled": "Sua assinatura está agendada pra cancelar no fim deste ciclo.",
+  "billing.user.usage.title": "Uso deste ciclo",
+  "billing.user.usage.summary": "{used} de {included} solicitações usadas",
+  "billing.user.usage.overage": "{overage} solicitações acima da franquia do plano",
+
+  "billing.user.view_plans": "Ver planos",
+
+  "billing.user.nav.group": "Cobrança",
+  "billing.user.nav.overview": "Visão geral",
+  "billing.user.nav.plans": "Planos",
+  "billing.user.nav.invoices": "Faturas",
+
+  "billing.user.no_subscription.action": "Escolher um plano",
+
+  "billing.user.actions.cancel": "Cancelar assinatura",
+  "billing.user.actions.cancel_title": "Cancelar assinatura",
+  "billing.user.actions.cancel_message":
+    "Sua assinatura será cancelada no fim do ciclo atual. Você mantém o acesso até lá.",
+  "billing.user.actions.cancel_success": "Cancelamento agendado para o fim do ciclo.",
+  "billing.user.actions.cancel_error": "Não foi possível cancelar a assinatura.",
+  "billing.user.actions.reactivate": "Reativar",
+  "billing.user.actions.reactivate_success": "Assinatura reativada.",
+  "billing.user.actions.reactivate_error": "Não foi possível reativar a assinatura.",
+  "billing.user.actions.cancel_scheduled_change": "Cancelar troca agendada",
+  "billing.user.actions.cancel_scheduled_change_success": "Troca agendada cancelada.",
+  "billing.user.actions.cancel_scheduled_change_error": "Não foi possível cancelar a troca agendada.",
+
+  "billing.user.plans_catalog.title": "Planos",
+  "billing.user.plans_catalog.description": "Escolha o plano que melhor se encaixa no seu uso.",
+  "billing.user.plans_catalog.load_error": "Não foi possível carregar os planos.",
+  "billing.user.plans_catalog.per_month": "/ mês",
+  "billing.user.plans_catalog.requests": "{requests} requisições / mês",
+  "billing.user.plans_catalog.current": "Plano atual",
+  "billing.user.plans_catalog.current_action": "Seu plano atual",
+  "billing.user.plans_catalog.subscribe_action": "Assinar",
+  "billing.user.plans_catalog.change_action": "Trocar para este plano",
+  "billing.user.plans_catalog.unavailable": "Indisponível",
+  "billing.user.plans_catalog.checkout_error": "Não foi possível iniciar o checkout.",
+  "billing.user.plans_catalog.preview_error": "Não foi possível prever a troca de plano.",
+  "billing.user.plans_catalog.change_success": "Plano atualizado.",
+  "billing.user.plans_catalog.change_error": "Não foi possível trocar o plano.",
+  "billing.user.plans_catalog.empty_title": "Nenhum plano disponível",
+  "billing.user.plans_catalog.empty": "Não há planos para assinar no momento.",
+  "billing.user.plans_catalog.pending.title": "Troca agendada",
+  "billing.user.plans_catalog.pending.description":
+    "Uma troca para {planName} está agendada para o fim deste ciclo.",
+  "billing.user.plans_catalog.confirm.title": "Confirmar troca de plano",
+  "billing.user.plans_catalog.confirm.immediate":
+    "É um upgrade. Você será cobrado {amount} agora (rateado).",
+  "billing.user.plans_catalog.confirm.upgrade": "Este upgrade entra em vigor imediatamente.",
+  "billing.user.plans_catalog.confirm.downgrade":
+    "Este downgrade entra em vigor no fim do ciclo atual.",
+
+  "billing.user.invoices.title": "Faturas",
+  "billing.user.invoices.description": "Sua próxima fatura e o histórico de pagamentos.",
+  "billing.user.invoices.load_error": "Não foi possível carregar suas faturas.",
+  "billing.user.invoices.refresh": "Atualizar",
+  "billing.user.invoices.upcoming.title": "Próxima fatura",
+  "billing.user.invoices.upcoming.none": "Nenhuma fatura futura.",
+  "billing.user.invoices.upcoming.next_attempt": "Próxima cobrança em {date}.",
+  "billing.user.invoices.history.title": "Histórico de faturas",
+  "billing.user.invoices.history.empty": "Nenhuma fatura ainda.",
+  "billing.user.invoices.history.view": "Ver",
+  "billing.user.invoices.history.column.number": "Fatura",
+  "billing.user.invoices.history.column.date": "Data",
+  "billing.user.invoices.history.column.amount": "Valor",
+  "billing.user.invoices.history.column.status": "Status",
+};
+
+export const billingUserMessages = {
+  en,
+  es: { ...en },
+  fr: { ...en },
+  "pt-BR": { ...en, ...ptBr },
+  "pt-PT": { ...en, ...ptBr },
+} as const;

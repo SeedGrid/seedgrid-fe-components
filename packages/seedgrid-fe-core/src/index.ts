@@ -1,4 +1,5 @@
 ﻿export * from "./module";
+export * from "./cli-module-manifest";
 export * from "./registry";
 export * from "./i18n";
 export * from "./persistence";

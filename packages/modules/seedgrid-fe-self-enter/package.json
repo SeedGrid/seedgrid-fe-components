@@ -1,0 +1,43 @@
+{
+  "name": "@seedgrid/fe-self-enter",
+  "version": "2026.7.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SeedGrid/seedgrid-fe-components.git"
+  },
+  "homepage": "https://github.com/SeedGrid/seedgrid-fe-components",
+  "bugs": {
+    "url": "https://github.com/SeedGrid/seedgrid-fe-components/issues"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./server": {
+      "types": "./dist/server/index.d.ts",
+      "default": "./dist/server/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "scaffold"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "postbuild": "node scripts/emit-module-manifest.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "pnpm run build && node --test tests/module-manifest.test.mjs"
+  },
+  "peerDependencies": {
+    "@seedgrid/fe-core": "*",
+    "@seedgrid/fe-security": "*"
+  },
+  "devDependencies": {
+    "@seedgrid/fe-core": "workspace:*",
+    "@seedgrid/fe-security": "workspace:*"
+  }
+}

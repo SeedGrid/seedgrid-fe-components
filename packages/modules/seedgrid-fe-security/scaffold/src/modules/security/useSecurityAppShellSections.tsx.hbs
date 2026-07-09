@@ -1,0 +1,180 @@
+"use client";
+
+import { Building2, KeySquare, Mail, Shield, ShieldCheck, UserCog, Users } from "lucide-react";
+
+import type {
+  AppShellNavItem,
+  AppShellSection,
+} from "@/components/layout/app-shell-navigation";
+import { useI18n } from "@/i18n";
+
+import { securityConfig } from "./config";
+import { useCompanyManagementEnabledForCurrentHost } from "./host-access";
+import { useCrudPermission, usePermission } from "./hooks/usePermission";
+
+export function useSecurityAppShellSections(): AppShellSection[] {
+  const { t } = useI18n();
+  const companiesEnabled = useCompanyManagementEnabledForCurrentHost();
+  const userPermissions = useCrudPermission("USER");
+  const companyPermissions = useCrudPermission("COMPANY");
+  const rolePermissions = useCrudPermission("ROLE");
+{{#if security_api_keys_enabled}}
+  const canReadApiKeys = usePermission("APIKEY_READ");
+  const canCreateApiKeys = usePermission("APIKEY_CREATE");
+  const canRevokeApiKeys = usePermission("APIKEY_REVOKE");
+{{/if}}
+{{#if security_self_enter_enabled}}
+  const canApproveSelfEnter = usePermission("SELFENTER_APPROVE");
+  const canRejectSelfEnter = usePermission("SELFENTER_REJECT");
+  const canInviteSelfEnter = usePermission("SELFENTER_INVITE");
+{{/if}}
+
+  const accessItems: AppShellNavItem[] = [];
+{{#if security_self_enter_enabled}}
+  const selfEnterItems: AppShellNavItem[] = [];
+{{/if}}
+
+  if (userPermissions.canRead) {
+    accessItems.push({
+      id: "users",
+      label: t("security.users.list.title"),
+      href: securityConfig.routes.users,
+      badge: userPermissions.isReadOnly ? t("security.common.readonly") : undefined,
+      order: 10,
+    });
+  }
+
+  if (companiesEnabled && companyPermissions.canRead) {
+    accessItems.push({
+      id: "companies",
+      label: t("security.companies.list.title"),
+      href: securityConfig.routes.companies,
+      badge: companyPermissions.isReadOnly ? t("security.common.readonly") : undefined,
+      order: 20,
+    });
+  }
+
+  if (rolePermissions.canRead) {
+    accessItems.push({
+      id: "roles",
+      label: t("security.roles.list.title"),
+      href: securityConfig.routes.roles,
+      badge: rolePermissions.isReadOnly ? t("security.common.readonly") : undefined,
+      order: 30,
+    });
+  }
+
+{{#if security_api_keys_enabled}}
+  if (canReadApiKeys) {
+    accessItems.push({
+      id: "api-keys",
+      label: t("security.api_keys.title"),
+      href: securityConfig.routes.apiKeys,
+      badge:
+        !canCreateApiKeys && !canRevokeApiKeys
+          ? t("security.common.readonly")
+          : undefined,
+      order: 40,
+    });
+  }
+{{/if}}
+
+{{#if security_self_enter_enabled}}
+  if (canApproveSelfEnter || canRejectSelfEnter) {
+    selfEnterItems.push({
+      id: "self-enter-approval",
+      label: t("security.self_enter.approval.title"),
+      href: securityConfig.routes.selfEnterApproval,
+      badge:
+        !canApproveSelfEnter || !canRejectSelfEnter
+          ? t("security.common.readonly")
+          : undefined,
+      order: 50,
+    });
+  }
+
+  if (canInviteSelfEnter) {
+    selfEnterItems.push({
+      id: "self-enter-invitations",
+      label: t("security.self_enter.invitation_admin.nav_title"),
+      href: securityConfig.routes.selfEnterInvitations,
+      order: 60,
+    });
+  }
+{{/if}}
+
+  const sections: AppShellSection[] = [];
+
+  if (
+    accessItems.length
+{{#if security_self_enter_enabled}}
+      || selfEnterItems.length
+{{/if}}
+  ) {
+    sections.push({
+      id: "application",
+      label: t("security.dashboard.menu.group.access"),
+      order: 20,
+      items: [
+        {
+          id: "access-management",
+          label: t("security.dashboard.menu.group.access"),
+          icon: <Shield size={18} />,
+          order: 10,
+          children: accessItems.map((item) => {
+            if (item.id === "users") {
+              return { ...item, icon: <Users size={16} /> };
+            }
+
+            if (item.id === "companies") {
+              return { ...item, icon: <Building2 size={16} /> };
+            }
+
+            if (item.id === "roles") {
+              return { ...item, icon: <ShieldCheck size={16} /> };
+            }
+
+{{#if security_api_keys_enabled}}
+            if (item.id === "api-keys") {
+              return { ...item, icon: <KeySquare size={16} /> };
+            }
+{{/if}}
+
+{{#if security_self_enter_enabled}}
+            if (item.id === "self-enter-approval") {
+              return { ...item, icon: <UserCog size={16} /> };
+            }
+{{/if}}
+
+            return item;
+          }),
+        },
+{{#if security_self_enter_enabled}}
+        ...(selfEnterItems.length
+          ? [
+              {
+                id: "self-enter",
+                label: t("security.self_enter.menu.title"),
+                icon: <UserCog size={18} />,
+                order: 20,
+                children: selfEnterItems.map((item) => {
+                  if (item.id === "self-enter-approval") {
+                    return { ...item, icon: <ShieldCheck size={16} /> };
+                  }
+
+                  if (item.id === "self-enter-invitations") {
+                    return { ...item, icon: <Mail size={16} /> };
+                  }
+
+                  return item;
+                }),
+              },
+            ]
+          : []),
+{{/if}}
+      ],
+    });
+  }
+
+  return sections;
+}

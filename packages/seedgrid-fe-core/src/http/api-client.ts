@@ -27,7 +27,12 @@ export type ApiRetryOptions = {
 };
 
 export type ApiRequestOptions = Omit<RequestInit, "body" | "headers"> & {
-  body?: BodyInit | Record<string, unknown> | null;
+  // `object` (nao `Record<string, unknown>`): uma `interface` nomeada de DTO
+  // (ex.: ExportRequest) NAO e atribuivel a Record<string, unknown> (interfaces
+  // nao ganham index signature implicita), mas E a `object`. normalizeBody()
+  // faz JSON.stringify em qualquer objeto que nao seja BodyInit, entao aceitar
+  // `object` e seguro e destrava passar DTOs tipados como body.
+  body?: BodyInit | object | null;
   headers?: HeadersInit;
   next?: NextFetchOptions;
   parseAs?: ApiParseMode;

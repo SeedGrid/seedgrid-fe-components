@@ -1,0 +1,315 @@
+"use client";
+
+import type { ReactNode } from "react";
+
+import { SgBadge, SgButton, SgCard, SgGrid, SgStack } from "@seedgrid/fe-components";
+import {
+  ArrowRight,
+  Building2,
+  KeyRound,
+  LockKeyhole,
+  Shield,
+  ShieldCheck,
+  Users,
+} from "lucide-react";
+import { useRouter } from "next/navigation";
+
+import { useI18n } from "@/i18n";
+import { useSgTheme } from "@/theme";
+
+import { securityConfig } from "../config";
+import { useCompanyManagementEnabledForCurrentHost } from "../host-access";
+import { useAuth } from "../hooks/useAuth";
+import { useCrudPermission, usePermission } from "../hooks/usePermission";
+
+type DashboardModule = {
+  id: string;
+  title: string;
+  description: string;
+  route: string;
+  readOnly: boolean;
+  icon: ReactNode;
+};
+
+export function SecurityDashboard() {
+  const router = useRouter();
+  const { t } = useI18n();
+  const auth = useAuth();
+  const { currentMode } = useSgTheme();
+  const isDarkMode = currentMode === "dark";
+  const companiesEnabled = useCompanyManagementEnabledForCurrentHost();
+  const userPermissions = useCrudPermission("USER");
+  const companyPermissions = useCrudPermission("COMPANY");
+  const rolePermissions = useCrudPermission("ROLE");
+{{#if security_api_keys_enabled}}
+  const canReadApiKeys = usePermission("APIKEY_READ");
+  const canCreateApiKeys = usePermission("APIKEY_CREATE");
+  const canRevokeApiKeys = usePermission("APIKEY_REVOKE");
+{{/if}}
+  const canChangePassword = usePermission("USER_CHANGE_PASSWORD");
+  const currentUser = auth.session?.login?.trim() || t("common.brand");
+  const currentRole = auth.roles[0] || t("security.dashboard.user.subtitle");
+  const accessibleModules: DashboardModule[] = [];
+
+  if (userPermissions.canRead) {
+    accessibleModules.push({
+      id: "users",
+      title: t("security.users.list.title"),
+      description: t("security.users.list.description"),
+      route: securityConfig.routes.users,
+      readOnly: userPermissions.isReadOnly,
+      icon: <Users size={18} />,
+    });
+  }
+
+  if (companiesEnabled && companyPermissions.canRead) {
+    accessibleModules.push({
+      id: "companies",
+      title: t("security.companies.list.title"),
+      description: t("security.companies.list.description"),
+      route: securityConfig.routes.companies,
+      readOnly: companyPermissions.isReadOnly,
+      icon: <Building2 size={18} />,
+    });
+  }
+
+{{#if security_api_keys_enabled}}
+  if (canReadApiKeys) {
+    accessibleModules.push({
+      id: "api-keys",
+      title: t("security.api_keys.title"),
+      description: t("security.api_keys.description"),
+      route: securityConfig.routes.apiKeys,
+      readOnly: !canCreateApiKeys && !canRevokeApiKeys,
+      icon: <KeyRound size={18} />,
+    });
+  }
+{{/if}}
+
+  if (rolePermissions.canRead) {
+    accessibleModules.push({
+      id: "roles",
+      title: t("security.roles.list.title"),
+      description: t("security.roles.list.description"),
+      route: securityConfig.routes.roles,
+      readOnly: rolePermissions.isReadOnly,
+      icon: <Shield size={18} />,
+    });
+  }
+
+  const statCards = [
+    {
+      id: "modules",
+      label: "Modulos liberados",
+      value: String(accessibleModules.length),
+      icon: <ShieldCheck size={18} />,
+    },
+    {
+      id: "profile",
+      label: "Perfil atual",
+      value: currentRole,
+      icon: <LockKeyhole size={18} />,
+    },
+  ];
+
+  return (
+    <SgStack gap={24}>
+      <SgGrid
+        minItemWidth={360}
+        gap={16}
+      >
+        <SgCard
+          cardStyle="elevated"
+          size="lg"
+          className={`rounded-[2rem] border shadow-lg ${
+            isDarkMode
+              ? "border-slate-800 bg-slate-900 shadow-black/20"
+              : "border-slate-200 bg-white shadow-slate-900/5"
+          }`}
+          title={
+            <SgStack gap={12}>
+              <div className="text-xs font-semibold uppercase tracking-[0.24em] text-blue-500">
+                {t("security.dashboard.title")}
+              </div>
+              <div
+                className={`text-3xl font-semibold ${
+                  isDarkMode ? "text-slate-50" : "text-slate-950"
+                }`}
+              >
+                {currentUser}
+              </div>
+            </SgStack>
+          }
+          description={t("security.dashboard.description")}
+        >
+          <SgStack gap={24}>
+            <SgGrid columns={2} gap={12}>
+              {statCards.map((item) => (
+                <div
+                  key={item.id}
+                  className={`rounded-[1.5rem] border p-4 ${
+                    isDarkMode
+                      ? "border-slate-800 bg-slate-950/70"
+                      : "border-slate-200 bg-slate-50"
+                  }`}
+                >
+                  <div
+                    className={`flex items-center gap-3 ${
+                      isDarkMode ? "text-slate-400" : "text-slate-500"
+                    }`}
+                  >
+                    <span
+                      className={`flex size-10 items-center justify-center rounded-2xl text-blue-600 shadow-sm ${
+                        isDarkMode ? "bg-slate-900" : "bg-white"
+                      }`}
+                    >
+                      {item.icon}
+                    </span>
+                    <span className="text-sm font-medium">{item.label}</span>
+                  </div>
+                  <div
+                    className={`mt-4 text-xl font-semibold ${
+                      isDarkMode ? "text-slate-50" : "text-slate-950"
+                    }`}
+                  >
+                    {item.value}
+                  </div>
+                </div>
+              ))}
+            </SgGrid>
+
+            <SgStack direction="row" wrap gap={12}>
+              {canChangePassword ? (
+                <SgButton
+                  appearance="outline"
+                  severity="secondary"
+                  shape="rounded"
+                  label={t("security.change_password.title")}
+                  onClick={() => {
+                    router.push(securityConfig.routes.changePassword);
+                  }}
+                />
+              ) : null}
+
+              <SgButton
+                appearance="solid"
+                severity="primary"
+                shape="rounded"
+                label={t("security.two_factor.title")}
+                onClick={() => {
+                  router.push(securityConfig.routes.twoFactor);
+                }}
+              />
+            </SgStack>
+          </SgStack>
+        </SgCard>
+
+        <SgCard
+          cardStyle="elevated"
+          size="lg"
+          className={`rounded-[2rem] border shadow-lg ${
+            isDarkMode
+              ? "border-slate-800 bg-slate-900 shadow-black/20"
+              : "border-slate-200 bg-white shadow-slate-900/5"
+          }`}
+          title={
+            <SgStack direction="row" justify="between" align="center" gap={16}>
+              <div>
+                <div
+                  className={`text-lg font-semibold ${
+                    isDarkMode ? "text-slate-50" : "text-slate-950"
+                  }`}
+                >
+                  Atalhos de acesso
+                </div>
+                <div
+                  className={`text-sm ${
+                    isDarkMode ? "text-slate-400" : "text-slate-500"
+                  }`}
+                >
+                  Rotas disponiveis para o perfil autenticado.
+                </div>
+              </div>
+              <SgBadge
+                value={String(accessibleModules.length)}
+                severity="info"
+                badgeStyle="soft"
+                rounded
+              />
+            </SgStack>
+          }
+        >
+          <SgStack gap={12}>
+            {accessibleModules.length ? (
+              accessibleModules.map((moduleItem) => (
+                <SgButton
+                  key={moduleItem.id}
+                  appearance="ghost"
+                  severity="info"
+                  onClick={() => {
+                    router.push(moduleItem.route);
+                  }}
+                  className={`w-full rounded-[1.5rem] border px-4 py-4 text-left transition hover:-translate-y-0.5 ${
+                    isDarkMode
+                      ? "border-slate-800 bg-slate-950/70 hover:border-blue-700 hover:bg-slate-800"
+                      : "border-slate-200 bg-slate-50 hover:border-blue-200 hover:bg-blue-50"
+                  }`}
+                >
+                  <span className="flex w-full items-center gap-4">
+                    <span
+                      className={`flex size-11 items-center justify-center rounded-2xl text-blue-600 shadow-sm ${
+                        isDarkMode ? "bg-slate-900" : "bg-white"
+                      }`}
+                    >
+                      {moduleItem.icon}
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span
+                        className={`block truncate text-base font-semibold ${
+                          isDarkMode ? "text-slate-50" : "text-slate-950"
+                        }`}
+                      >
+                        {moduleItem.title}
+                      </span>
+                      <span
+                        className={`mt-1 block text-sm ${
+                          isDarkMode ? "text-slate-400" : "text-slate-500"
+                        }`}
+                      >
+                        {moduleItem.description}
+                      </span>
+                    </span>
+                    <span className="flex items-center gap-3">
+                      {moduleItem.readOnly ? (
+                        <SgBadge
+                          value={t("security.common.readonly")}
+                          severity="warning"
+                          badgeStyle="soft"
+                          rounded
+                        />
+                      ) : null}
+                      <ArrowRight
+                        size={18}
+                        className={isDarkMode ? "text-slate-500" : "text-slate-400"}
+                      />
+                    </span>
+                  </span>
+                </SgButton>
+              ))
+            ) : (
+              <div
+                className={`rounded-[1.5rem] border border-dashed px-4 py-5 text-sm ${
+                  isDarkMode
+                    ? "border-slate-700 bg-slate-950/70 text-slate-400"
+                    : "border-slate-300 bg-slate-50 text-slate-500"
+                }`}
+              >
+                Nenhum modulo administrativo foi liberado para o usuario atual.
+              </div>
+            )}
+          </SgStack>
+        </SgCard>
+      </SgGrid>
+    </SgStack>
+  );
+}

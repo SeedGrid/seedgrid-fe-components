@@ -56,6 +56,9 @@ export const SecurityPaths = {
   /** ME (/me) — escopo do usuário corrente pelo token. */
   me: {
     permissions: "/me/permissions",
+    // Empresas (memberships) do usuário, para o seletor de empresa (login-tenancy).
+    companies: "/me/companies",
+    // Troca a empresa corrente e re-emite o par de tokens escopado (login-tenancy).
     selectCompany: "/me/select-company",
   },
 

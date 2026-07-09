@@ -1,0 +1,889 @@
+"use client";
+
+import type { ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+
+import {
+  SgAvatar,
+  SgButton,
+  SgCombobox,
+  SgMenu,
+  type SgMenuNode,
+  SgStack,
+  SgToggleSwitch,
+} from "@seedgrid/fe-components";
+import {
+  Bell,
+  ChevronDown,
+  KeyRound,
+  LogOut,
+  Mail,
+  Menu,
+  Moon,
+  Palette,
+  PencilLine,
+  ShieldCheck,
+  Sun,
+  UserCog,
+} from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
+
+import { useAppShellSections } from "@/components/layout/app-shell-navigation";
+import { appEnvironment } from "@/config/environment";
+import { locales } from "@/config/i18n";
+import { useI18n } from "@/i18n";
+import { useSgTheme } from "@/theme";
+
+import { securityConfig } from "../config";
+import { useAuth } from "../hooks/useAuth";
+import { usePermission } from "../hooks/usePermission";
+import { securityService } from "../services/security-service";
+
+type LocaleOption = "pt-BR" | "pt-PT" | "en" | "es" | "fr";
+
+const languageOptions: Array<{
+  id: LocaleOption;
+  value: LocaleOption;
+  label: string;
+  flag: string;
+}> = [
+  {
+    id: "pt-BR",
+    value: "pt-BR",
+    label: "Portugues (Brasil)",
+    flag: "\uD83C\uDDE7\uD83C\uDDF7",
+  },
+  {
+    id: "pt-PT",
+    value: "pt-PT",
+    label: "Portugues (Portugal)",
+    flag: "\uD83C\uDDF5\uD83C\uDDF9",
+  },
+  { id: "en", value: "en", label: "English", flag: "\uD83C\uDDFA\uD83C\uDDF8" },
+  { id: "es", value: "es", label: "Espanol", flag: "\uD83C\uDDEA\uD83C\uDDF8" },
+  { id: "fr", value: "fr", label: "Francais", flag: "\uD83C\uDDEB\uD83C\uDDF7" },
+];
+
+// `locales` e uma tupla `as const` (so os idiomas configurados no projeto);
+// `option.id` percorre todos os LocaleOption. O check e de pertinencia de
+// string, entao alargamos `locales` pra `readonly string[]` (senao o TS
+// recusa comparar um LocaleOption fora da uniao configurada — TS2345).
+const enabledLanguageOptions = languageOptions.filter((option) =>
+  (locales as readonly string[]).includes(option.id)
+);
+
+function LocaleFlag({ locale }: { locale: LocaleOption }) {
+  if (locale === "pt-BR") {
+    return (
+      <svg viewBox="0 0 20 14" className="h-3.5 w-5 rounded-[3px] shadow-sm" aria-hidden="true">
+        <rect width="20" height="14" rx="2" fill="#1f8f4d" />
+        <path d="M10 2.1 16.3 7 10 11.9 3.7 7Z" fill="#f3c942" />
+        <circle cx="10" cy="7" r="2.15" fill="#21468b" />
+      </svg>
+    );
+  }
+
+  if (locale === "pt-PT") {
+    return (
+      <svg viewBox="0 0 20 14" className="h-3.5 w-5 rounded-[3px] shadow-sm" aria-hidden="true">
+        <rect width="8" height="14" fill="#1f8f4d" />
+        <rect x="8" width="12" height="14" fill="#d0392f" />
+        <circle cx="8" cy="7" r="2.2" fill="#f3c942" />
+      </svg>
+    );
+  }
+
+  if (locale === "en") {
+    return (
+      <svg viewBox="0 0 20 14" className="h-3.5 w-5 rounded-[3px] shadow-sm" aria-hidden="true">
+        <rect width="20" height="14" rx="2" fill="#fff" />
+        <rect width="20" height="2" y="0" fill="#c53030" />
+        <rect width="20" height="2" y="4" fill="#c53030" />
+        <rect width="20" height="2" y="8" fill="#c53030" />
+        <rect width="20" height="2" y="12" fill="#c53030" />
+        <rect width="9" height="7.5" fill="#21468b" />
+      </svg>
+    );
+  }
+
+  if (locale === "es") {
+    return (
+      <svg viewBox="0 0 20 14" className="h-3.5 w-5 rounded-[3px] shadow-sm" aria-hidden="true">
+        <rect width="20" height="14" rx="2" fill="#f0c419" />
+        <rect width="20" height="3" y="0" fill="#c53030" />
+        <rect width="20" height="3" y="11" fill="#c53030" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 20 14" className="h-3.5 w-5 rounded-[3px] shadow-sm" aria-hidden="true">
+      <rect width="20" height="14" rx="2" fill="#1f4aa8" />
+      <rect width="20" height="4.6" y="4.7" fill="#fff" />
+      <rect width="20" height="4.6" y="9.4" fill="#c53030" />
+    </svg>
+  );
+}
+
+function toMenuNodes(sections: ReturnType<typeof useAppShellSections>): SgMenuNode[] {
+  return sections.flatMap((section) =>
+    section.items.map(function mapItem(item): SgMenuNode {
+      return {
+        id: item.id,
+        label: item.label,
+        url: item.href,
+        icon: item.icon,
+        badge: item.badge,
+        disabled: item.disabled,
+        children: item.children?.map(mapItem),
+      };
+    })
+  );
+}
+
+const COLOR_PRESETS = [
+  { label: "Verde", value: "#16a34a" },
+  { label: "Azul", value: "#2563eb" },
+  { label: "Roxo", value: "#7c3aed" },
+  { label: "Vermelho", value: "#dc2626" },
+  { label: "Laranja", value: "#ea580c" },
+  { label: "Rosa", value: "#db2777" },
+  { label: "Ciano", value: "#0891b2" },
+  { label: "Ardósia", value: "#475569" },
+];
+
+export function AppShell({ children }: { children: ReactNode }) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const { locale, setLocale, t } = useI18n();
+  const { currentMode, currentTheme, setMode, setTheme } = useSgTheme();
+  const auth = useAuth();
+  const sections = useAppShellSections();
+  const canChangePassword = usePermission("USER_CHANGE_PASSWORD");
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
+  const [isDesktopViewport, setIsDesktopViewport] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const [isColorPickerOpen, setIsColorPickerOpen] = useState(false);
+  const [currentUserName, setCurrentUserName] = useState("");
+  const [currentUserAvatarStorageKey, setCurrentUserAvatarStorageKey] = useState("");
+  const [currentUserAvatarVersion, setCurrentUserAvatarVersion] = useState("");
+  const [currentUserAvatarObjectUrl, setCurrentUserAvatarObjectUrl] = useState("");
+  const [isTwoFactorEnabled, setIsTwoFactorEnabled] = useState(false);
+  const [profileRefreshToken, setProfileRefreshToken] = useState(0);
+  const userMenuRef = useRef<HTMLDivElement | null>(null);
+  const colorPickerRef = useRef<HTMLDivElement | null>(null);
+  const isDarkMode = currentMode === "dark";
+  const primaryColor = currentTheme.seed;
+  const selectedLanguage = enabledLanguageOptions.find(
+    (option) => option.id === locale
+  );
+
+  const currentUserLogin = auth.session?.login?.trim() ?? "";
+  const currentUserPublicId = auth.session?.publicId?.trim() ?? "";
+  const resolvedCurrentUserName =
+    currentUserName.trim() || auth.session?.name?.trim() || "";
+  const currentUser = resolvedCurrentUserName || currentUserLogin || t("common.brand");
+  const currentUserSubtitle =
+    resolvedCurrentUserName && currentUserLogin
+      ? currentUserLogin
+      : t("security.dashboard.user.subtitle");
+  const currentUserAvatarUrl =
+    currentUserAvatarObjectUrl ||
+    (currentUserPublicId
+      ? securityService.buildUserAvatarUrl(
+          currentUserPublicId,
+          currentUserAvatarVersion || currentUserAvatarStorageKey
+        )
+      : undefined);
+  const menuNodes = useMemo(() => toMenuNodes(sections), [sections]);
+  const menuSelection = {
+    activeUrl: pathname ?? undefined,
+  };
+  const menuBrand = {
+    title: appEnvironment.branding.productName.trim() || "SeedGrid CRM",
+    imageSrc: appEnvironment.branding.masterLogoPath.trim() || undefined,
+    onClick: () => handleNavigate(securityConfig.routes.dashboard),
+  };
+  const menuSearch = {
+    enabled: true,
+    placeholder: t("security.dashboard.menu.search_placeholder"),
+  };
+  const menuUser = {
+    name: currentUser,
+    subtitle: currentUserSubtitle,
+    avatarSrc: currentUserAvatarUrl,
+    avatar: (
+      <SgAvatar
+        src={currentUserAvatarUrl}
+        alt={currentUser}
+        label={currentUser.slice(0, 2).toUpperCase()}
+        onImageError={handleCurrentUserAvatarError}
+      />
+    ),
+  };
+  const shellUserMenu: SgMenuNode[] = [
+    {
+      id: "edit-profile",
+      label: t("security.profile.edit_account"),
+      url: securityConfig.routes.profile,
+      icon: <PencilLine size={16} />,
+    },
+    {
+      id: "change-password",
+      label: t("security.change_password.title"),
+      url: securityConfig.routes.changePassword,
+      icon: <KeyRound size={16} />,
+      disabled: !canChangePassword,
+    },
+    {
+      id: "toggle-two-factor",
+      label: t(
+        isTwoFactorEnabled
+          ? "security.profile.disable_two_factor"
+          : "security.profile.enable_two_factor"
+      ),
+      url: securityConfig.routes.twoFactor,
+      icon: <ShieldCheck size={16} />,
+    },
+  ];
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const mediaQuery = window.matchMedia("(min-width: 1024px)");
+    const syncViewport = () => setIsDesktopViewport(mediaQuery.matches);
+
+    syncViewport();
+    mediaQuery.addEventListener("change", syncViewport);
+
+    return () => {
+      mediaQuery.removeEventListener("change", syncViewport);
+    };
+  }, []);
+
+  useEffect(() => {
+    setCurrentUserAvatarObjectUrl((current) => {
+      if (current.startsWith("blob:")) {
+        URL.revokeObjectURL(current);
+      }
+
+      return "";
+    });
+  }, [currentUserAvatarStorageKey, currentUserAvatarVersion, currentUserPublicId]);
+
+  useEffect(() => {
+    return () => {
+      if (currentUserAvatarObjectUrl.startsWith("blob:")) {
+        URL.revokeObjectURL(currentUserAvatarObjectUrl);
+      }
+    };
+  }, [currentUserAvatarObjectUrl]);
+
+  useEffect(() => {
+    let active = true;
+
+    void (async () => {
+      if (auth.session?.name?.trim()) {
+        setCurrentUserName(auth.session.name.trim());
+      }
+
+      if (!currentUserPublicId && !currentUserLogin) {
+        setCurrentUserName("");
+        setCurrentUserAvatarStorageKey("");
+        setCurrentUserAvatarVersion("");
+        return;
+      }
+
+      try {
+        let resolvedName = "";
+
+        if (currentUserPublicId) {
+          const user = await securityService.getUser(currentUserPublicId);
+          resolvedName = user?.name?.trim() ?? "";
+          if (active) {
+            const nextAvatarStorageKey = user?.avatarStorageKey?.trim() ?? "";
+            setCurrentUserAvatarStorageKey(nextAvatarStorageKey);
+            setCurrentUserAvatarVersion(nextAvatarStorageKey);
+          }
+        } else {
+          const response = await securityService.listUsersPage({
+            page: 0,
+            size: 20,
+            search: currentUserLogin,
+            sort: {
+              sortField: "email",
+              sortOrder: 1,
+            },
+          });
+
+          const matchedUser =
+            response.items.find(
+              (user) => user.email?.toLowerCase() === currentUserLogin.toLowerCase()
+            ) ??
+            response.items.find(
+              (user) => user.name?.toLowerCase() === currentUserLogin.toLowerCase()
+            ) ??
+            null;
+
+          resolvedName = matchedUser?.name?.trim() ?? "";
+          if (active) {
+            const nextAvatarStorageKey =
+              matchedUser?.avatarStorageKey?.trim() ?? "";
+            setCurrentUserAvatarStorageKey(nextAvatarStorageKey);
+            setCurrentUserAvatarVersion(nextAvatarStorageKey);
+          }
+        }
+
+        if (!active) {
+          return;
+        }
+
+        setCurrentUserName(resolvedName);
+      } catch {
+        if (active) {
+          setCurrentUserName("");
+          setCurrentUserAvatarStorageKey("");
+          setCurrentUserAvatarVersion("");
+        }
+      }
+    })();
+
+    return () => {
+      active = false;
+    };
+  }, [auth.session?.name, currentUserLogin, currentUserPublicId, profileRefreshToken]);
+
+  async function handleCurrentUserAvatarError() {
+    if (!currentUserPublicId || currentUserAvatarObjectUrl) {
+      return;
+    }
+
+    const fallbackObjectUrl = await securityService.fetchUserAvatarObjectUrl(
+      currentUserPublicId,
+      currentUserAvatarVersion || currentUserAvatarStorageKey
+    );
+
+    if (!fallbackObjectUrl) {
+      return;
+    }
+
+    setCurrentUserAvatarObjectUrl((current) => {
+      if (current.startsWith("blob:")) {
+        URL.revokeObjectURL(current);
+      }
+
+      return fallbackObjectUrl;
+    });
+  }
+
+  useEffect(() => {
+    let active = true;
+
+    void (async () => {
+      try {
+        const status = await securityService.getTwoFactorStatus();
+
+        if (active) {
+          setIsTwoFactorEnabled(Boolean(status.enabled));
+        }
+      } catch {
+        if (active) {
+          setIsTwoFactorEnabled(false);
+        }
+      }
+    })();
+
+    return () => {
+      active = false;
+    };
+  }, [pathname]);
+
+  useEffect(() => {
+    function handlePointerDown(event: MouseEvent) {
+      if (!userMenuRef.current?.contains(event.target as Node)) {
+        setIsUserMenuOpen(false);
+      }
+      if (!colorPickerRef.current?.contains(event.target as Node)) {
+        setIsColorPickerOpen(false);
+      }
+    }
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setIsMobileSidebarOpen(false);
+        setIsUserMenuOpen(false);
+        setIsColorPickerOpen(false);
+      }
+    }
+
+    function handleProfileUpdated(event: Event) {
+      const detail =
+        event instanceof CustomEvent && event.detail && typeof event.detail === "object"
+          ? (event.detail as {
+              publicId?: string;
+              avatarStorageKey?: string;
+              avatarVersion?: string;
+              name?: string;
+            })
+          : null;
+
+      if (detail?.publicId && detail.publicId !== currentUserPublicId) {
+        return;
+      }
+
+      if (typeof detail?.name === "string") {
+        setCurrentUserName(detail.name.trim());
+      }
+
+      if (typeof detail?.avatarStorageKey === "string") {
+        setCurrentUserAvatarStorageKey(detail.avatarStorageKey.trim());
+      }
+
+      if (typeof detail?.avatarVersion === "string") {
+        setCurrentUserAvatarVersion(detail.avatarVersion.trim());
+      }
+
+      setProfileRefreshToken((current) => current + 1);
+    }
+
+    document.addEventListener("mousedown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("seedgrid:profile-updated", handleProfileUpdated);
+
+    return () => {
+      document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("seedgrid:profile-updated", handleProfileUpdated);
+    };
+  }, [currentUserPublicId]);
+
+  useEffect(() => {
+    setIsMobileSidebarOpen(false);
+    setIsUserMenuOpen(false);
+    setIsColorPickerOpen(false);
+  }, [pathname]);
+
+  async function handleSignOut() {
+    await auth.logout();
+    router.replace(securityConfig.routes.login);
+  }
+
+  function handleNavigate(href: string) {
+    setIsMobileSidebarOpen(false);
+    router.push(href);
+  }
+
+  function handleMenuNode(node: SgMenuNode) {
+    if (node.url) {
+      handleNavigate(node.url);
+    }
+
+    node.onClick?.();
+  }
+
+  return (
+    <div
+      className={`min-h-screen ${
+        isDarkMode ? "bg-slate-950 text-slate-100" : "bg-[#f4f7fb] text-slate-900"
+      }`}
+    >
+      <div className="lg:grid lg:min-h-screen lg:grid-cols-[18.5rem_minmax(0,1fr)]">
+        <div
+          className={`fixed inset-0 z-40 bg-slate-950/40 backdrop-blur-sm transition lg:hidden ${
+            isMobileSidebarOpen ? "opacity-100" : "pointer-events-none opacity-0"
+          }`}
+          onClick={() => setIsMobileSidebarOpen(false)}
+          aria-hidden="true"
+        />
+
+        {!isDesktopViewport ? (
+          <aside
+            className={`fixed inset-y-0 left-0 z-50 w-[18.5rem] max-w-[88vw] border-r shadow-2xl transition-transform lg:hidden ${
+              isDarkMode ? "border-slate-800 bg-slate-900" : "border-slate-200 bg-white"
+            } ${isMobileSidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
+          >
+            <SgMenu
+              id={`app-shell-mobile-menu-${pathname ?? "root"}`}
+              menu={menuNodes}
+              selection={menuSelection}
+              brand={menuBrand}
+              user={menuUser}
+              userMenu={shellUserMenu}
+              menuStyle="inline"
+              menuVariantStyle="tiered"
+              mode="multiple"
+              closeOnNavigate
+              search={menuSearch}
+              onNavigate={handleMenuNode}
+              onAction={handleMenuNode}
+              onItemClick={handleMenuNode}
+              className="h-full overflow-y-auto border-0"
+            />
+          </aside>
+        ) : null}
+
+        {isDesktopViewport ? (
+          <aside
+            className={`hidden border-r lg:block ${
+              isDarkMode ? "border-slate-800 bg-slate-900" : "border-slate-200 bg-white"
+            }`}
+          >
+            <SgMenu
+              id={`app-shell-sidebar-menu-${pathname ?? "root"}`}
+              menu={menuNodes}
+              selection={menuSelection}
+              brand={menuBrand}
+              user={menuUser}
+              userMenu={shellUserMenu}
+              menuStyle="sidebar"
+              menuVariantStyle="tiered"
+              mode="multiple"
+              showCollapseButton
+              closeOnNavigate
+              search={menuSearch}
+              onNavigate={handleMenuNode}
+              onAction={handleMenuNode}
+              onItemClick={handleMenuNode}
+              className="h-full border-0"
+            />
+          </aside>
+        ) : null}
+
+        <div className="flex min-h-screen min-w-0 flex-col">
+          <header
+            className={`sticky top-0 z-30 border-b backdrop-blur ${
+              isDarkMode
+                ? "border-slate-800 bg-slate-950/92"
+                : "border-slate-200 bg-white/92"
+            }`}
+          >
+            <div className="flex h-[4.5rem] items-center gap-3 px-4 sm:px-6 lg:px-8">
+              <SgButton
+                appearance="ghost"
+                severity="secondary"
+                iconOnly
+                leftIcon={<Menu size={20} />}
+                onClick={() => setIsMobileSidebarOpen(true)}
+                className={`border transition lg:hidden ${
+                  isDarkMode
+                    ? "border-slate-700 bg-slate-900 text-slate-300 hover:border-slate-600 hover:text-slate-50"
+                    : "border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-950"
+                }`}
+                aria-label="Abrir menu"
+              />
+
+              <div className="ml-auto flex items-center gap-2 sm:gap-3">
+                <div className="hidden sm:block">
+                  <SgCombobox
+                    id="shell-language"
+                    width={188}
+                    placeholder="Idioma"
+                    source={enabledLanguageOptions}
+                    value={selectedLanguage?.id ?? "pt-BR"}
+                    mapItem={(option) => ({
+                      id: option.id,
+                      value: option.value,
+                      label: option.label,
+                      data: {
+                        flag: option.flag,
+                        locale: option.id,
+                        label: option.label,
+                      },
+                    })}
+                    onValueChange={(value) =>
+                      setLocale((value as LocaleOption) ?? "pt-BR")
+                    }
+                    renderItem={(item) => {
+                      const itemData = item.data as
+                        | { flag?: string; label?: string; locale?: LocaleOption }
+                        | undefined;
+
+                      return (
+                        <div className="flex items-center gap-3">
+                          <LocaleFlag locale={itemData?.locale ?? "pt-BR"} />
+                          <span>{itemData?.label ?? item.label}</span>
+                        </div>
+                      );
+                    }}
+                    renderValue={(item) => {
+                      const itemData = item?.data as
+                        | { flag?: string; label?: string; locale?: LocaleOption }
+                        | undefined;
+
+                      if (!item) {
+                        return null;
+                      }
+
+                      return (
+                        <div className="flex items-center gap-2">
+                          <LocaleFlag locale={itemData?.locale ?? "pt-BR"} />
+                          <span className="truncate">{itemData?.label ?? item.label}</span>
+                        </div>
+                      );
+                    }}
+                  />
+                </div>
+
+                <div
+                  className={`rounded-full border px-1 py-1 ${
+                    isDarkMode
+                      ? "border-slate-700 bg-slate-900"
+                      : "border-slate-200 bg-slate-50"
+                  }`}
+                >
+                  <SgToggleSwitch
+                    id="shell-theme"
+                    checked={isDarkMode}
+                    onChange={(checked) => setMode(checked ? "dark" : "light")}
+                    onIcon={<Sun size={12} />}
+                    offIcon={<Moon size={12} />}
+                  />
+                </div>
+
+                <div className="relative" ref={colorPickerRef}>
+                  <SgButton
+                    appearance="ghost"
+                    severity="secondary"
+                    iconOnly
+                    leftIcon={<Palette size={18} />}
+                    onClick={() => setIsColorPickerOpen((current) => !current)}
+                    className={`size-11 flex items-center justify-center rounded-full border transition ${
+                      isDarkMode
+                        ? "border-slate-700 bg-slate-900 text-slate-400 hover:border-slate-600 hover:text-slate-50"
+                        : "border-slate-200 bg-white text-slate-500 hover:border-slate-300 hover:text-slate-950"
+                    }`}
+                    aria-label="Cor do tema"
+                  />
+
+                  {isColorPickerOpen ? (
+                    <div
+                      className={`absolute right-0 top-full z-20 mt-3 w-52 overflow-hidden rounded-3xl border p-3 shadow-2xl ${
+                        isDarkMode
+                          ? "border-slate-800 bg-slate-900 shadow-black/30"
+                          : "border-slate-200 bg-white shadow-slate-900/10"
+                      }`}
+                    >
+                      <p
+                        className={`mb-2.5 px-1 text-xs font-semibold uppercase tracking-wide ${
+                          isDarkMode ? "text-slate-400" : "text-slate-500"
+                        }`}
+                      >
+                        Cor do tema
+                      </p>
+                      <div className="grid grid-cols-4 gap-2">
+                        {COLOR_PRESETS.map((preset) => (
+                          <SgButton
+                            key={preset.value}
+                            appearance="ghost"
+                            severity="secondary"
+                            title={preset.label}
+                            onClick={() => {
+                              setTheme({ seed: preset.value });
+                              setIsColorPickerOpen(false);
+                            }}
+                            className="relative flex h-9 w-full items-center justify-center rounded-xl transition hover:scale-110"
+                            style=\{{ backgroundColor: preset.value, border: "none" }}
+                            aria-label={preset.label}
+                          >
+                            {primaryColor === preset.value ? (
+                              <span className="block h-2.5 w-2.5 rounded-full bg-white shadow" />
+                            ) : null}
+                          </SgButton>
+                        ))}
+                      </div>
+                    </div>
+                  ) : null}
+                </div>
+
+                <SgButton
+                  appearance="ghost"
+                  severity="secondary"
+                  iconOnly
+                  leftIcon={<Mail size={18} />}
+                  className={`hidden size-11 items-center justify-center rounded-full border transition sm:flex ${
+                    isDarkMode
+                      ? "border-slate-700 bg-slate-900 text-slate-400 hover:border-slate-600 hover:text-slate-50"
+                      : "border-slate-200 bg-white text-slate-500 hover:border-slate-300 hover:text-slate-950"
+                  }`}
+                  aria-label="Mensagens"
+                />
+
+                <SgButton
+                  appearance="ghost"
+                  severity="secondary"
+                  iconOnly
+                  leftIcon={<Bell size={18} />}
+                  className={`hidden size-11 items-center justify-center rounded-full border transition sm:flex ${
+                    isDarkMode
+                      ? "border-slate-700 bg-slate-900 text-slate-400 hover:border-slate-600 hover:text-slate-50"
+                      : "border-slate-200 bg-white text-slate-500 hover:border-slate-300 hover:text-slate-950"
+                  }`}
+                  aria-label="Notificacoes"
+                />
+
+                <div className="relative" ref={userMenuRef}>
+                  <SgButton
+                    appearance="ghost"
+                    severity="secondary"
+                    aria-haspopup="menu"
+                    aria-expanded={isUserMenuOpen}
+                    onClick={() => setIsUserMenuOpen((current) => !current)}
+                    className={`rounded-full border pl-2 pr-3 py-1.5 transition ${
+                      isDarkMode
+                        ? "border-slate-700 bg-slate-900 hover:border-slate-600"
+                        : "border-slate-200 bg-white hover:border-slate-300"
+                    }`}
+                  >
+                    <span className="flex items-center gap-3">
+                      <SgAvatar
+                        src={currentUserAvatarUrl}
+                        alt={currentUser}
+                        label={currentUser.slice(0, 2).toUpperCase()}
+                        onImageError={handleCurrentUserAvatarError}
+                      />
+                      <span className="hidden text-left sm:block">
+                        <span
+                          className={`block max-w-36 truncate text-sm font-semibold ${
+                            isDarkMode ? "text-slate-50" : "text-slate-950"
+                          }`}
+                        >
+                          {currentUser}
+                        </span>
+                        <span
+                          className={`block max-w-36 truncate text-xs ${
+                            isDarkMode ? "text-slate-400" : "text-slate-500"
+                          }`}
+                        >
+                          {currentUserSubtitle}
+                        </span>
+                      </span>
+                      <ChevronDown
+                        size={16}
+                        className={`hidden sm:block ${
+                          isDarkMode ? "text-slate-500" : "text-slate-400"
+                        }`}
+                      />
+                    </span>
+                  </SgButton>
+
+                  {isUserMenuOpen ? (
+                    <div
+                      className={`absolute right-0 top-full z-20 mt-3 w-64 overflow-hidden rounded-3xl border p-2 shadow-2xl ${
+                        isDarkMode
+                          ? "border-slate-800 bg-slate-900 shadow-black/30"
+                          : "border-slate-200 bg-white shadow-slate-900/10"
+                      }`}
+                    >
+                      <div
+                        className={`rounded-2xl px-4 py-3 ${
+                          isDarkMode ? "bg-slate-950/80" : "bg-slate-50"
+                        }`}
+                      >
+                        <div
+                          className={`text-sm font-semibold ${
+                            isDarkMode ? "text-slate-50" : "text-slate-950"
+                          }`}
+                        >
+                          {currentUser}
+                        </div>
+                        <div
+                          className={`text-xs ${
+                            isDarkMode ? "text-slate-400" : "text-slate-500"
+                          }`}
+                        >
+                          {currentUserSubtitle}
+                        </div>
+                      </div>
+
+                      <SgStack gap={4} className="mt-2">
+                        <SgButton
+                          appearance="ghost"
+                          severity="secondary"
+                          leftIcon={<UserCog size={16} />}
+                          onClick={() => {
+                            setIsUserMenuOpen(false);
+                            router.push(securityConfig.routes.profile);
+                          }}
+                          className={`w-full justify-start rounded-2xl px-4 py-3 text-left text-sm transition ${
+                            isDarkMode
+                              ? "text-slate-300 hover:bg-slate-800 hover:text-slate-50"
+                              : "text-slate-600 hover:bg-slate-100 hover:text-slate-950"
+                          }`}
+                        >
+                          {t("security.profile.edit_account")}
+                        </SgButton>
+
+                        {canChangePassword ? (
+                          <SgButton
+                            appearance="ghost"
+                            severity="secondary"
+                            leftIcon={<UserCog size={16} />}
+                            onClick={() => {
+                              setIsUserMenuOpen(false);
+                              router.push(securityConfig.routes.changePassword);
+                            }}
+                            className={`w-full justify-start rounded-2xl px-4 py-3 text-left text-sm transition ${
+                              isDarkMode
+                                ? "text-slate-300 hover:bg-slate-800 hover:text-slate-50"
+                                : "text-slate-600 hover:bg-slate-100 hover:text-slate-950"
+                            }`}
+                          >
+                            {t("security.change_password.title")}
+                          </SgButton>
+                        ) : null}
+
+                        <SgButton
+                          appearance="ghost"
+                          severity="secondary"
+                          leftIcon={<ShieldCheck size={16} />}
+                          onClick={() => {
+                            setIsUserMenuOpen(false);
+                            router.push(securityConfig.routes.twoFactor);
+                          }}
+                          className={`w-full justify-start rounded-2xl px-4 py-3 text-left text-sm transition ${
+                            isDarkMode
+                              ? "text-slate-300 hover:bg-slate-800 hover:text-slate-50"
+                              : "text-slate-600 hover:bg-slate-100 hover:text-slate-950"
+                          }`}
+                        >
+                          {t(
+                            isTwoFactorEnabled
+                              ? "security.profile.disable_two_factor"
+                              : "security.profile.enable_two_factor"
+                          )}
+                        </SgButton>
+
+                        <SgButton
+                          appearance="ghost"
+                          severity="danger"
+                          leftIcon={<LogOut size={16} />}
+                          onClick={() => {
+                            setIsUserMenuOpen(false);
+                            void handleSignOut();
+                          }}
+                          className={`w-full justify-start rounded-2xl px-4 py-3 text-left text-sm text-rose-600 transition ${
+                            isDarkMode ? "hover:bg-rose-950/40" : "hover:bg-rose-50"
+                          }`}
+                        >
+                          {t("security.login.signout")}
+                        </SgButton>
+                      </SgStack>
+                    </div>
+                  ) : null}
+                </div>
+              </div>
+            </div>
+          </header>
+
+          <main className="min-h-0 flex-1 overflow-x-hidden">
+            <div className="mx-auto flex min-h-full w-full max-w-[1600px] flex-col px-4 py-4 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
+              <div className="min-h-0 flex-1">{children}</div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+  );
+}

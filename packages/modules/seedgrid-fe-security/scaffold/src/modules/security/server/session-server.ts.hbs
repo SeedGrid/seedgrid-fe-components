@@ -1,0 +1,30 @@
+"use server";
+
+// Instância do motor de sessão do fe-security (createSecurityServer) com a
+// config de cookie do app. É o MESMO motor que os módulos compostos
+// (billing/tenancy/backup) usam via os seus `server.ts` — o próprio security
+// passa a usá-lo também (ex.: proxy de avatar), em vez do antigo
+// `createServerApiClient` (removido). Um motor só de fetch autenticado.
+
+import { createSecurityServer } from "@seedgrid/fe-security/server";
+
+import { resolvePublicApiBaseUrl } from "./public-api-base-url";
+
+const ACCESS_COOKIE_NAME =
+  process.env.SEEDGRID_SECURITY_ACCESS_COOKIE_NAME?.trim() ||
+  "sg_{{project_slug}}_access_token";
+const REFRESH_COOKIE_NAME =
+  process.env.SEEDGRID_SECURITY_REFRESH_COOKIE_NAME?.trim() ||
+  "sg_{{project_slug}}_refresh_token";
+const PASSWORD_CHANGE_REQUIRED_COOKIE_NAME = "sg_{{project_slug}}_password_change_required";
+
+export async function getSecuritySessionServer() {
+  return createSecurityServer({
+    apiBaseUrl: await resolvePublicApiBaseUrl(),
+    cookies: {
+      token: ACCESS_COOKIE_NAME,
+      refresh: REFRESH_COOKIE_NAME,
+      passwordChangeRequired: PASSWORD_CHANGE_REQUIRED_COOKIE_NAME,
+    },
+  });
+}

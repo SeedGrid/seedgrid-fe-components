@@ -1,0 +1,32 @@
+"use server";
+
+// Bootstrap do engine de cadastro de planos (backoffice): reaproveita o motor
+// de sessão do fe-security (createSecurityServer) e compõe
+// createBillingPlatformServer por cima. Mesma convenção de cookie de
+// modules/security/server/server-api.ts, pra usar a MESMA sessão.
+
+import { createSecurityServer } from "@seedgrid/fe-security/server";
+import { createBillingPlatformServer } from "@seedgrid/fe-billing-platform/server";
+
+import { resolvePublicApiBaseUrl } from "@/modules/security/server/public-api-base-url";
+
+const ACCESS_COOKIE_NAME =
+  process.env.SEEDGRID_SECURITY_ACCESS_COOKIE_NAME?.trim() ||
+  "sg_{{project_slug}}_access_token";
+const REFRESH_COOKIE_NAME =
+  process.env.SEEDGRID_SECURITY_REFRESH_COOKIE_NAME?.trim() ||
+  "sg_{{project_slug}}_refresh_token";
+const PASSWORD_CHANGE_REQUIRED_COOKIE_NAME = "sg_{{project_slug}}_password_change_required";
+
+export async function getBillingPlatformServer() {
+  const session = createSecurityServer({
+    apiBaseUrl: await resolvePublicApiBaseUrl(),
+    cookies: {
+      token: ACCESS_COOKIE_NAME,
+      refresh: REFRESH_COOKIE_NAME,
+      passwordChangeRequired: PASSWORD_CHANGE_REQUIRED_COOKIE_NAME,
+    },
+  });
+
+  return createBillingPlatformServer(session);
+}

@@ -1,0 +1,34 @@
+"use server";
+
+// Bootstrap do engine de billing do usuário: reaproveita o mesmo motor de
+// sessão do fe-security (createSecurityServer) e compõe com
+// createBillingUserServer por cima. Não existe uma fonte histórica pra essa
+// composição (pacote novo, sem tela anterior — ver scaffold/README.md), mas
+// os nomes de cookie seguem a mesma convenção já usada em
+// modules/security/server/server-api.ts, pra funcionar com a MESMA sessão.
+
+import { createSecurityServer } from "@seedgrid/fe-security/server";
+import { createBillingUserServer } from "@seedgrid/fe-billing-user/server";
+
+import { resolvePublicApiBaseUrl } from "@/modules/security/server/public-api-base-url";
+
+const ACCESS_COOKIE_NAME =
+  process.env.SEEDGRID_SECURITY_ACCESS_COOKIE_NAME?.trim() ||
+  "sg_{{project_slug}}_access_token";
+const REFRESH_COOKIE_NAME =
+  process.env.SEEDGRID_SECURITY_REFRESH_COOKIE_NAME?.trim() ||
+  "sg_{{project_slug}}_refresh_token";
+const PASSWORD_CHANGE_REQUIRED_COOKIE_NAME = "sg_{{project_slug}}_password_change_required";
+
+export async function getBillingUserServer() {
+  const session = createSecurityServer({
+    apiBaseUrl: await resolvePublicApiBaseUrl(),
+    cookies: {
+      token: ACCESS_COOKIE_NAME,
+      refresh: REFRESH_COOKIE_NAME,
+      passwordChangeRequired: PASSWORD_CHANGE_REQUIRED_COOKIE_NAME,
+    },
+  });
+
+  return createBillingUserServer(session);
+}

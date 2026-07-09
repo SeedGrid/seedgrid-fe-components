@@ -166,7 +166,110 @@ importers:
         specifier: ^5.5.4
         version: 5.9.3
 
-  packages/modules/seedgrid-fe-security: {}
+  packages/modules/seedgrid-fe-apikeys:
+    devDependencies:
+      '@seedgrid/fe-core':
+        specifier: workspace:*
+        version: link:../../seedgrid-fe-core
+      '@seedgrid/fe-security':
+        specifier: workspace:*
+        version: link:../seedgrid-fe-security
+
+  packages/modules/seedgrid-fe-audit:
+    devDependencies:
+      '@seedgrid/fe-core':
+        specifier: workspace:*
+        version: link:../../seedgrid-fe-core
+      '@seedgrid/fe-security':
+        specifier: workspace:*
+        version: link:../seedgrid-fe-security
+
+  packages/modules/seedgrid-fe-backup:
+    devDependencies:
+      '@seedgrid/fe-core':
+        specifier: workspace:*
+        version: link:../../seedgrid-fe-core
+      '@seedgrid/fe-security':
+        specifier: workspace:*
+        version: link:../seedgrid-fe-security
+
+  packages/modules/seedgrid-fe-billing-platform:
+    devDependencies:
+      '@seedgrid/fe-core':
+        specifier: workspace:*
+        version: link:../../seedgrid-fe-core
+      '@seedgrid/fe-security':
+        specifier: workspace:*
+        version: link:../seedgrid-fe-security
+
+  packages/modules/seedgrid-fe-billing-user:
+    devDependencies:
+      '@seedgrid/fe-core':
+        specifier: workspace:*
+        version: link:../../seedgrid-fe-core
+      '@seedgrid/fe-security':
+        specifier: workspace:*
+        version: link:../seedgrid-fe-security
+
+  packages/modules/seedgrid-fe-login-tenancy:
+    devDependencies:
+      '@seedgrid/fe-components':
+        specifier: workspace:*
+        version: link:../../seedgrid-fe-components
+      '@seedgrid/fe-core':
+        specifier: workspace:*
+        version: link:../../seedgrid-fe-core
+      '@seedgrid/fe-security':
+        specifier: workspace:*
+        version: link:../seedgrid-fe-security
+      '@types/react':
+        specifier: ^19.0.0
+        version: 19.2.10
+      react:
+        specifier: 19.0.0
+        version: 19.0.0
+
+  packages/modules/seedgrid-fe-security:
+    devDependencies:
+      '@seedgrid/fe-components':
+        specifier: workspace:*
+        version: link:../../seedgrid-fe-components
+      '@seedgrid/fe-core':
+        specifier: workspace:*
+        version: link:../../seedgrid-fe-core
+      '@types/react':
+        specifier: ^19.0.0
+        version: 19.2.10
+      next:
+        specifier: 15.0.7
+        version: 15.0.7(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react:
+        specifier: 19.0.0
+        version: 19.0.0
+
+  packages/modules/seedgrid-fe-self-enter:
+    devDependencies:
+      '@seedgrid/fe-core':
+        specifier: workspace:*
+        version: link:../../seedgrid-fe-core
+      '@seedgrid/fe-security':
+        specifier: workspace:*
+        version: link:../seedgrid-fe-security
+
+  packages/modules/seedgrid-fe-subdomain-tenancy:
+    devDependencies:
+      '@seedgrid/fe-core':
+        specifier: workspace:*
+        version: link:../../seedgrid-fe-core
+      '@seedgrid/fe-security':
+        specifier: workspace:*
+        version: link:../seedgrid-fe-security
+      '@types/react':
+        specifier: ^19.0.0
+        version: 19.2.10
+      react:
+        specifier: 19.0.0
+        version: 19.0.0
 
   packages/seedgrid-fe-commons:
     dependencies:
