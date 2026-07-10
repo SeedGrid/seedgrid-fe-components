@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 import { SgButton, SgPanel, SgStack } from "@seedgrid/fe-components";
 import { useSearchParams } from "next/navigation";
@@ -14,7 +14,7 @@ import {
   securityConfig,
 } from "@/modules/security";
 
-export default function WelcomePage() {
+function WelcomeContent() {
   const searchParams = useSearchParams();
   const { t } = useI18n();
   const [confirmed, setConfirmed] = useState(false);
@@ -86,5 +86,13 @@ export default function WelcomePage() {
         </SgStack>
       </SgPanel>
     </PageFrame>
+  );
+}
+
+export default function WelcomePage() {
+  return (
+    <Suspense fallback={null}>
+      <WelcomeContent />
+    </Suspense>
   );
 }

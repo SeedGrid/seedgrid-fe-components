@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 import { SgButton, SgPanel, SgStack } from "@seedgrid/fe-components";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -14,7 +14,7 @@ import {
   securityConfig,
 } from "@/modules/security";
 
-export default function ForgotPasswordConfirmPage() {
+function ForgotPasswordConfirmContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { t } = useI18n();
@@ -92,5 +92,13 @@ export default function ForgotPasswordConfirmPage() {
         </SgPanel>
       )}
     </PageFrame>
+  );
+}
+
+export default function ForgotPasswordConfirmPage() {
+  return (
+    <Suspense fallback={null}>
+      <ForgotPasswordConfirmContent />
+    </Suspense>
   );
 }

@@ -1,6 +1,6 @@
 {
   "name": "@seedgrid/fe-security",
-  "version": "2026.7.2",
+  "version": "2026.7.3",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
