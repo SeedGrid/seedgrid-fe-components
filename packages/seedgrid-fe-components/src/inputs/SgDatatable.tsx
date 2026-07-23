@@ -2,7 +2,16 @@
 
 import React from "react";
 import { createPortal } from "react-dom";
-import { Check, GripVertical, SlidersHorizontal } from "lucide-react";
+import {
+  Check,
+  ChevronFirst,
+  ChevronLast,
+  ChevronLeft,
+  ChevronRight,
+  GripVertical,
+  MoreHorizontal,
+  SlidersHorizontal
+} from "lucide-react";
 import { SgButton } from "../buttons/SgButton";
 import { useHasSgEnvironmentProvider, useSgPersistence } from "../environment/SgEnvironmentProvider";
 import { SgGroupBox, type SgGroupBoxProps } from "../layout/SgGroupBox";
@@ -192,23 +201,80 @@ function resolveMessage(translated: string, key: string, fallback: string) {
   return translated === key ? fallback : translated;
 }
 
-function buildPageWindow(currentPage: number, pageCount: number, maxButtons = 5): number[] {
-  if (pageCount <= 0) return [];
-  if (pageCount <= maxButtons) return Array.from({ length: pageCount }, (_, index) => index + 1);
+type SgDatatablePageToken =
+  | { type: "page"; page: number }
+  | { type: "ellipsis"; target: number; direction: "backward" | "forward" };
 
-  const half = Math.floor(maxButtons / 2);
-  let start = Math.max(1, currentPage - half);
-  let end = start + maxButtons - 1;
-  if (end > pageCount) {
-    end = pageCount;
-    start = end - maxButtons + 1;
-  }
-
-  const pages: number[] = [];
+function pageRange(start: number, end: number): SgDatatablePageToken[] {
+  const tokens: SgDatatablePageToken[] = [];
   for (let page = start; page <= end; page += 1) {
-    pages.push(page);
+    tokens.push({ type: "page", page });
   }
-  return pages;
+  return tokens;
+}
+
+// Builds a paginator sequence with the first and last pages always anchored and
+// clickable ellipsis tokens filling the gaps. `maxButtons` is the target number
+// of numeric slots (responsive: e.g. 15/10/5); ellipsis clicks jump a whole
+// window instead of a single page.
+function buildPageTokens(
+  currentPage: number,
+  pageCount: number,
+  maxButtons: number
+): SgDatatablePageToken[] {
+  if (pageCount <= 0) return [];
+
+  const totalSlots = Math.max(5, maxButtons);
+  if (pageCount <= totalSlots) return pageRange(1, pageCount);
+
+  const boundaryCount = 1;
+  const siblingCount = Math.max(1, Math.floor((totalSlots - 5) / 2));
+
+  const firstAnchor = boundaryCount; // page 1
+  const lastAnchor = pageCount - boundaryCount + 1; // last page
+
+  const siblingsStart = Math.max(
+    Math.min(currentPage - siblingCount, pageCount - boundaryCount - siblingCount * 2 - 1),
+    boundaryCount + 2
+  );
+  const siblingsEnd = Math.min(
+    Math.max(currentPage + siblingCount, boundaryCount + siblingCount * 2 + 2),
+    lastAnchor - 2
+  );
+
+  const tokens: SgDatatablePageToken[] = pageRange(1, firstAnchor);
+
+  if (siblingsStart > boundaryCount + 2) {
+    tokens.push({
+      type: "ellipsis",
+      direction: "backward",
+      target: Math.max(firstAnchor + 1, siblingsStart - 1)
+    });
+  } else if (boundaryCount + 1 < lastAnchor) {
+    tokens.push({ type: "page", page: boundaryCount + 1 });
+  }
+
+  tokens.push(...pageRange(siblingsStart, siblingsEnd));
+
+  if (siblingsEnd < lastAnchor - 2) {
+    tokens.push({
+      type: "ellipsis",
+      direction: "forward",
+      target: Math.min(lastAnchor - 1, siblingsEnd + 1)
+    });
+  } else if (lastAnchor - 1 > firstAnchor) {
+    tokens.push({ type: "page", page: lastAnchor - 1 });
+  }
+
+  tokens.push(...pageRange(lastAnchor, pageCount));
+
+  return tokens;
+}
+
+function resolveMaxPageButtons(width: number): number {
+  if (width >= 1024) return 15;
+  if (width >= 640) return 10;
+  return 5;
 }
 
 function getRowIdentity<T extends SgDatatableRow>(rowData: T, dataKey: string | undefined): unknown {
@@ -624,9 +690,29 @@ function SgDatatableBase<T extends SgDatatableRow>(
   }, [paginator, lazy, sortedRows, safeFirst, currentRows]);
 
   const currentPage = Math.floor(safeFirst / currentRows) + 1;
-  const pageWindow = React.useMemo(
-    () => buildPageWindow(currentPage, pageCount, 5),
-    [currentPage, pageCount]
+
+  const paginatorRef = React.useRef<HTMLDivElement | null>(null);
+  const [maxPageButtons, setMaxPageButtons] = React.useState(5);
+
+  React.useEffect(() => {
+    if (!paginator) return;
+    const element = paginatorRef.current;
+    if (!element || typeof ResizeObserver === "undefined") return;
+
+    const observer = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        const next = resolveMaxPageButtons(entry.contentRect.width);
+        setMaxPageButtons((prev) => (prev === next ? prev : next));
+      }
+    });
+
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [paginator]);
+
+  const pageTokens = React.useMemo(
+    () => buildPageTokens(currentPage, pageCount, maxPageButtons),
+    [currentPage, pageCount, maxPageButtons]
   );
 
   // `resolvedTotalRecords` and `onPage` change on every parent render (new fetch
@@ -756,9 +842,17 @@ function SgDatatableBase<T extends SgDatatableRow>(
 
   const clearFiltersLabel = t(i18n, "components.datatable.clearFilters");
 
+  const firstLabel = t(i18n, "components.datatable.first");
+
   const prevLabel = t(i18n, "components.datatable.prev");
 
   const nextLabel = t(i18n, "components.datatable.next");
+
+  const lastLabel = t(i18n, "components.datatable.last");
+
+  const jumpBackwardLabel = t(i18n, "components.datatable.jumpBackward");
+
+  const jumpForwardLabel = t(i18n, "components.datatable.jumpForward");
 
   const rowsPerPageLabel = t(i18n, "components.datatable.rowsPerPage");
 
@@ -1261,35 +1355,93 @@ function SgDatatableBase<T extends SgDatatableRow>(
           </div>
 
           {paginator ? (
-            <div className="flex flex-wrap items-center gap-2">
-              <SgButton
-                size="sm"
-                appearance="outline"
-                disabled={currentPage <= 1}
-                onClick={() => goToPage(currentPage - 1)}
+            <div ref={paginatorRef} className="flex flex-wrap items-center gap-1.5">
+              <nav
+                aria-label={t(i18n, "components.datatable.pagination")}
+                className="flex flex-wrap items-center gap-1.5"
               >
-                {prevLabel}
-              </SgButton>
-
-              {pageWindow.map((pageNumber) => (
                 <SgButton
-                  key={`page-${pageNumber}`}
                   size="sm"
-                  appearance={pageNumber === currentPage ? "solid" : "outline"}
-                  onClick={() => goToPage(pageNumber)}
-                >
-                  {String(pageNumber)}
-                </SgButton>
-              ))}
+                  appearance="outline"
+                  shape="default"
+                  iconOnly
+                  aria-label={firstLabel}
+                  title={firstLabel}
+                  disabled={currentPage <= 1}
+                  onClick={() => goToPage(1)}
+                  leftIcon={<ChevronFirst size={16} />}
+                />
 
-              <SgButton
-                size="sm"
-                appearance="outline"
-                disabled={currentPage >= pageCount}
-                onClick={() => goToPage(currentPage + 1)}
-              >
-                {nextLabel}
-              </SgButton>
+                <SgButton
+                  size="sm"
+                  appearance="outline"
+                  shape="default"
+                  iconOnly
+                  aria-label={prevLabel}
+                  title={prevLabel}
+                  disabled={currentPage <= 1}
+                  onClick={() => goToPage(currentPage - 1)}
+                  leftIcon={<ChevronLeft size={16} />}
+                />
+
+                {pageTokens.map((token, tokenIndex) => {
+                  if (token.type === "ellipsis") {
+                    const ellipsisLabel =
+                      token.direction === "backward" ? jumpBackwardLabel : jumpForwardLabel;
+                    return (
+                      <SgButton
+                        key={`ellipsis-${token.direction}-${tokenIndex}`}
+                        size="sm"
+                        appearance="ghost"
+                        shape="default"
+                        iconOnly
+                        aria-label={ellipsisLabel}
+                        title={ellipsisLabel}
+                        onClick={() => goToPage(token.target)}
+                        leftIcon={<MoreHorizontal size={16} />}
+                      />
+                    );
+                  }
+
+                  const isCurrent = token.page === currentPage;
+                  return (
+                    <SgButton
+                      key={`page-${token.page}`}
+                      size="sm"
+                      appearance={isCurrent ? "solid" : "outline"}
+                      aria-label={t(i18n, "components.datatable.page", { page: token.page })}
+                      aria-current={isCurrent ? "page" : undefined}
+                      onClick={() => goToPage(token.page)}
+                    >
+                      {String(token.page)}
+                    </SgButton>
+                  );
+                })}
+
+                <SgButton
+                  size="sm"
+                  appearance="outline"
+                  shape="default"
+                  iconOnly
+                  aria-label={nextLabel}
+                  title={nextLabel}
+                  disabled={currentPage >= pageCount}
+                  onClick={() => goToPage(currentPage + 1)}
+                  leftIcon={<ChevronRight size={16} />}
+                />
+
+                <SgButton
+                  size="sm"
+                  appearance="outline"
+                  shape="default"
+                  iconOnly
+                  aria-label={lastLabel}
+                  title={lastLabel}
+                  disabled={currentPage >= pageCount}
+                  onClick={() => goToPage(pageCount)}
+                  leftIcon={<ChevronLast size={16} />}
+                />
+              </nav>
 
               <span className="min-w-[180px] text-xs text-[rgb(var(--sg-muted))] md:ml-auto">
                 {pageReport}
