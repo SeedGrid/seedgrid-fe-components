@@ -40,6 +40,13 @@ export interface EntryRequestResponse {
 export interface CreateEntryInvitation {
   email: string;
   name: string;
+  /**
+   * publicIds das roles que o convidado recebe ao ser aprovado. Opcional:
+   * - omitido/vazio -> a aprovação usa a `default-role` do backend (se existir);
+   * - preenchido    -> essas roles sobrepõem a default-role.
+   * Na UI, selecionar via `SgMultiSelectChips` (options = roles do backend, value = publicId).
+   */
+  roles?: string[];
 }
 
 /** Convite (EntryInvitationDTORes). */
