@@ -2,7 +2,7 @@ name: Publish Components and Showcase
 
 on:
   push:
-    branches: [main, develop]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -13,7 +13,7 @@ jobs:
   publish-fe-packages:
     name: Publish FE Packages
     runs-on: ubuntu-latest
-    if: github.ref_name == 'main' || github.ref_name == 'develop'
+    if: github.ref_name == 'main'
     environment: npm
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -62,14 +62,7 @@ jobs:
       - name: Define publish mode
         id: mode
         shell: bash
-        run: |
-          if [[ "${GITHUB_REF_NAME}" == "develop" ]]; then
-            echo "is_rc=true" >> "$GITHUB_OUTPUT"
-            echo "tag=next" >> "$GITHUB_OUTPUT"
-          else
-            echo "is_rc=false" >> "$GITHUB_OUTPUT"
-            echo "tag=latest" >> "$GITHUB_OUTPUT"
-          fi
+        run: echo "tag=latest" >> "$GITHUB_OUTPUT"
 
       # ------------------------------------------------------------
       # fe-core
@@ -82,9 +75,6 @@ jobs:
           NAME=$(node -p "require('./${PKG_DIR}/package.json').name")
           BASE="${{ steps.calver.outputs.base }}"
           MODE="stable"
-          if [[ "${{ steps.mode.outputs.is_rc }}" == "true" ]]; then
-            MODE="rc"
-          fi
           VERSION=$(node .github/scripts/resolve-npm-monthly-version.mjs "${NAME}" "${BASE}" "${MODE}")
 
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
@@ -113,9 +103,6 @@ jobs:
           NAME=$(node -p "require('./${PKG_DIR}/package.json').name")
           BASE="${{ steps.calver.outputs.base }}"
           MODE="stable"
-          if [[ "${{ steps.mode.outputs.is_rc }}" == "true" ]]; then
-            MODE="rc"
-          fi
           VERSION=$(node .github/scripts/resolve-npm-monthly-version.mjs "${NAME}" "${BASE}" "${MODE}")
 
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
@@ -144,9 +131,6 @@ jobs:
           NAME=$(node -p "require('./${PKG_DIR}/package.json').name")
           BASE="${{ steps.calver.outputs.base }}"
           MODE="stable"
-          if [[ "${{ steps.mode.outputs.is_rc }}" == "true" ]]; then
-            MODE="rc"
-          fi
           VERSION=$(node .github/scripts/resolve-npm-monthly-version.mjs "${NAME}" "${BASE}" "${MODE}")
 
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
@@ -175,9 +159,6 @@ jobs:
           NAME=$(node -p "require('./${PKG_DIR}/package.json').name")
           BASE="${{ steps.calver.outputs.base }}"
           MODE="stable"
-          if [[ "${{ steps.mode.outputs.is_rc }}" == "true" ]]; then
-            MODE="rc"
-          fi
           VERSION=$(node .github/scripts/resolve-npm-monthly-version.mjs "${NAME}" "${BASE}" "${MODE}")
 
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
@@ -206,9 +187,6 @@ jobs:
           NAME=$(node -p "require('./${PKG_DIR}/package.json').name")
           BASE="${{ steps.calver.outputs.base }}"
           MODE="stable"
-          if [[ "${{ steps.mode.outputs.is_rc }}" == "true" ]]; then
-            MODE="rc"
-          fi
           VERSION=$(node .github/scripts/resolve-npm-monthly-version.mjs "${NAME}" "${BASE}" "${MODE}")
 
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
@@ -245,9 +223,6 @@ jobs:
 
           BASE="${{ steps.calver.outputs.base }}"
           MODE="stable"
-          if [[ "${{ steps.mode.outputs.is_rc }}" == "true" ]]; then
-            MODE="rc"
-          fi
 
           for PKG_DIR in packages/modules/seedgrid-fe-*/; do
             NAME=$(node -p "require('./${PKG_DIR}package.json').name")
@@ -274,17 +249,9 @@ jobs:
         id: vars
         shell: bash
         run: |
-          BASE=$(date +"%Y.%m.%d")
-
-          if [[ "${GITHUB_REF_NAME}" == "main" ]]; then
-            VERSION="${{ needs.publish-fe-packages.outputs.components_calver }}"
-            DEPLOY_URL="${{ secrets.EASYPANEL_DEPLOY_URL_PRD }}"
-            IMAGE="ghcr.io/seedgrid/seedgrid-showcase"
-          else
-            VERSION="${BASE}-RC-${GITHUB_SHA::7}"
-            DEPLOY_URL="${{ secrets.EASYPANEL_DEPLOY_URL_DEV }}"
-            IMAGE="ghcr.io/seedgrid/seedgrid-showcase-dev"
-          fi
+          VERSION="${{ needs.publish-fe-packages.outputs.components_calver }}"
+          DEPLOY_URL="${{ secrets.EASYPANEL_DEPLOY_URL_PRD }}"
+          IMAGE="ghcr.io/seedgrid/seedgrid-showcase"
 
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
           echo "deploy_url=${DEPLOY_URL}" >> "$GITHUB_OUTPUT"
