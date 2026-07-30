@@ -4,6 +4,7 @@ import React from "react";
 import { SgInputText, type SgInputTextProps } from "./SgInputText";
 import { resolveFieldError } from "../rhf";
 import { t, useComponentsI18n } from "../i18n";
+import { useDarkFlag } from "../gadgets/clock/themes/useDarkFlag";
 
 export type SgInputDateProps = Omit<SgInputTextProps, "type"> & {
   /** Disparado ao receber foco — padrao seedgrid. */
@@ -38,6 +39,7 @@ function parseDateValue(value: string) {
 
 export function SgInputDate(props: SgInputDateProps) {
   const i18n = useComponentsI18n();
+  const isDark = useDarkFlag();
   const {
     minDate,
     maxDate,
@@ -145,11 +147,22 @@ export function SgInputDate(props: SgInputDateProps) {
     return [baseClass, borderClass, elevationClass].filter(Boolean).join(" ");
   })();
 
+  const wrapperClassName = [
+    showStaticLabel ? "relative" : "",
+    isDark ? "sg-date-dark" : "sg-date-light"
+  ].filter(Boolean).join(" ");
+
   return (
-    <div className={showStaticLabel ? "relative" : undefined}>
+    <div className={wrapperClassName}>
       <style>{`
         input[type="date"]::-webkit-calendar-picker-indicator {
           cursor: pointer;
+        }
+        .sg-date-dark input[type="date"] {
+          color-scheme: dark;
+        }
+        .sg-date-light input[type="date"] {
+          color-scheme: light;
         }
       `}</style>
       {showStaticLabel && labelText ? (
