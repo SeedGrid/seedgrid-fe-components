@@ -78,8 +78,10 @@ export function isValidCnpj(value: string) {
   if (/[A-Z]/.test(raw.slice(12))) return false; // DV precisa ser numerico
 
   const toValue = (char: string) => {
-    if (char >= "0" && char <= "9") return char.charCodeAt(0) - 48;
-    if (char >= "A" && char <= "Z") return char.charCodeAt(0) - 55; // A=10..Z=35
+    if ((char >= "0" && char <= "9") || (char >= "A" && char <= "Z")) {
+      // Regra oficial do CNPJ alfanumerico: valor do caractere = codigo ASCII - 48.
+      return char.charCodeAt(0) - 48;
+    }
     return Number.NaN;
   };
 

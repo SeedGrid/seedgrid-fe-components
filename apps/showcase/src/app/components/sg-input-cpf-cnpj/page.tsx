@@ -322,7 +322,7 @@ export default function SgInputCpfCnpjPage() {
             id="demo-alnum"
             label={t(i18n, "showcase.component.cpfcnpj.labels.alnum")}
             hintText={t(i18n, "showcase.component.cpfcnpj.labels.alnumHint")}
-            inputProps={{ defaultValue: "AB.12C.345/0001-40" }}
+            inputProps={{ defaultValue: "00.000.000/E08G-12" }}
           />
         </div>
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-cpf-cnpj/samples/alfanumerico.tsx.sample" />
@@ -499,5 +499,4 @@ export default function SgInputCpfCnpjPage() {
     </I18NReady>
   );
 }
-
 

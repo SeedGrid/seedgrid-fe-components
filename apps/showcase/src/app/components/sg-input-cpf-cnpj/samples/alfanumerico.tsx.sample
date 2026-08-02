@@ -6,8 +6,8 @@ export default function App() {
     <SgInputCPFCNPJ
       id="doc"
       label="Documento alfanumerico"
-      hintText="CPF ou CNPJ"
-      inputProps={{ defaultValue: "AB.12C.345/0001-40" }}
+      hintText="00.000.000/E08G-12"
+      inputProps={{ defaultValue: "00.000.000/E08G-12" }}
     />
   );
 }

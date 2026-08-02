@@ -119,6 +119,7 @@ test("validators cover cpf, cnpj and email paths", () => {
   assert.equal(isValidCpf("529.982.247-25"), true);
   assert.equal(isValidCpf("111.111.111-11"), false);
   assert.equal(isValidCnpj("11.444.777/0001-61"), true);
+  assert.equal(isValidCnpj("00.000.000/E08G-12"), true);
   assert.equal(isValidCnpj("11.111.111/1111-11"), false);
   assert.equal(isValidEmail("dev@seedgrid.com"), true);
   assert.equal(isValidEmail("invalid-email"), false);
