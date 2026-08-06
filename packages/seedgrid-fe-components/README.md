@@ -52,7 +52,13 @@ yarn add @seedgrid/fe-components @seedgrid/fe-theme react-hook-form lucide-react
 
 ## Uso rapido
 
-### 1) Theme provider (recomendado)
+O pacote ja inclui um CSS pronto (`dist/style.css`) com o tema padrao aplicado — basta importar uma vez, sem precisar configurar Tailwind nem envolver a app com um provider:
+
+```tsx
+import "@seedgrid/fe-components/style.css";
+```
+
+### 1) Theme provider (opcional, para customizar marca/tema)
 
 ```tsx
 import { SeedThemeProvider } from "@seedgrid/fe-theme";

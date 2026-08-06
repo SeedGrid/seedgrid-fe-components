@@ -71,9 +71,12 @@ export function isValidCnpj(value: string) {
   const raw = onlyAlnumUpper(value);
   if (raw.length !== 14) return false;
 
-  // opcional: eu manteria so para CNPJ numerico.
-  // Para alfanumerico, isso pode bloquear casos "ok" (embora improvaveis).
-  // if (/^([0-9A-Z])\1+$/.test(raw)) return false;
+  // "00000000000000" fecha o modulo 11 (0 e o elemento neutro da soma
+  // ponderada: soma=0 -> DV1=0 -> DV2=0), entao passa matematicamente sem
+  // ser um CNPJ real. Bloqueado explicitamente aqui em vez de um
+  // /^(.)\1+$/ generico, que rejeitaria CNPJs alfanumericos legitimos com
+  // caracteres repetidos (esses ja falham no calculo de DV normalmente).
+  if (raw === "00000000000000") return false;
 
   if (/[A-Z]/.test(raw.slice(12))) return false; // DV precisa ser numerico
 

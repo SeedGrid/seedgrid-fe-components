@@ -18,15 +18,18 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
-    }
+    },
+    "./style.css": "./dist/style.css"
   },
-  "sideEffects": false,
+  "sideEffects": [
+    "./dist/style.css"
+  ],
   "files": [
     "dist"
   ],
   "scripts": {
     "clean": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\"",
-    "build": "pnpm run clean && tsc -p tsconfig.json && node scripts/extract-props.mjs && node scripts/build-ai-manifest.mjs && pnpm run build:sandbox",
+    "build": "pnpm run clean && tsc -p tsconfig.json && node scripts/extract-props.mjs && node scripts/build-ai-manifest.mjs && node scripts/build-style.mjs && pnpm run build:sandbox",
     "build:sandbox": "tsup --config tsup.sandbox.config.ts",
     "dev": "tsc -p tsconfig.json --watch --preserveWatchOutput",
     "typecheck": "tsc -p tsconfig.json --noEmit",
@@ -71,7 +74,12 @@
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-hook-form": "^7.0.0",
-    "tsup": "^8.4.0"
+    "tsup": "^8.4.0",
+    "@seedgrid/fe-theme": "workspace:*",
+    "tailwindcss": "^3.4.10",
+    "tailwindcss-animate": "^1.0.7",
+    "postcss": "^8.4.45",
+    "autoprefixer": "^10.4.20"
   },
   "dependencies": {
     "@pqina/flip": "^1.8.4",

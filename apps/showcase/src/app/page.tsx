@@ -2,8 +2,11 @@
 
 import React from "react";
 import Link from "next/link";
+import { Check, Copy } from "lucide-react";
 import { t, useShowcaseI18n } from "../i18n";
 import SgCodeBlockBase from "./components/sgCodeBlockBase";
+
+const INSTALL_COMMAND = "pnpm add @seedgrid/fe-components @seedgrid/fe-theme react-hook-form";
 
 const COMPONENTS = [
   {
@@ -93,6 +96,17 @@ const COMPONENTS = [
 
 export default function HomePage() {
   const i18n = useShowcaseI18n();
+  const [installCopied, setInstallCopied] = React.useState(false);
+
+  const onCopyInstall = async () => {
+    try {
+      await navigator.clipboard.writeText(INSTALL_COMMAND);
+      setInstallCopied(true);
+      setTimeout(() => setInstallCopied(false), 1500);
+    } catch {
+      setInstallCopied(false);
+    }
+  };
 
   const renderWithTokens = (text: string, tokens: Record<string, React.ReactNode>) => {
     const pattern = new RegExp(`(${Object.keys(tokens).map((k) => `\\{${k}\\}`).join("|")})`, "g");
@@ -113,9 +127,20 @@ export default function HomePage() {
 
       <section className="mt-6 rounded-lg border border-border bg-foreground/5 p-5">
         <h2 className="text-lg font-semibold">{t(i18n, "showcase.home.install.title")}</h2>
-        <pre className="mt-3 rounded-md bg-foreground/5 p-4 text-sm font-mono overflow-x-auto whitespace-pre-wrap">
-          pnpm add @seedgrid/fe-components @seedgrid/fe-theme react-hook-form
-        </pre>
+        <div className="relative mt-3">
+          <button
+            type="button"
+            onClick={onCopyInstall}
+            title={installCopied ? t(i18n, "showcase.common.code.copied") : t(i18n, "showcase.common.code.copy")}
+            aria-label={installCopied ? t(i18n, "showcase.common.code.copied") : t(i18n, "showcase.common.code.copy")}
+            className="absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-md border border-border bg-background/90 text-foreground/70 hover:text-foreground"
+          >
+            {installCopied ? <Check className="h-4 w-4 text-green-600" /> : <Copy className="h-4 w-4" />}
+          </button>
+          <pre className="rounded-md bg-foreground/5 p-4 text-sm font-mono overflow-x-auto whitespace-pre-wrap">
+            {INSTALL_COMMAND}
+          </pre>
+        </div>
       </section>
 
       <section className="mt-6 rounded-lg border border-border bg-foreground/5 p-5">

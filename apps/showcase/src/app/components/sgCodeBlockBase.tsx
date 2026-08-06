@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { Check, Copy } from "lucide-react";
 import { SgBadge, SgCard } from "@seedgrid/fe-components";
 import { t, useShowcaseI18n } from "../../i18n";
 
@@ -157,9 +158,11 @@ export default function sgCodeBlockBase(props: SgCodeBlockBaseProps) {
         <button
           type="button"
           onClick={onCopy}
-          className="absolute right-2 top-2 rounded border border-border bg-background/90 px-2 py-1 text-[11px] text-foreground/70 hover:text-foreground"
+          title={copied ? t(i18n, "showcase.common.code.copied") : t(i18n, "showcase.common.code.copy")}
+          aria-label={copied ? t(i18n, "showcase.common.code.copied") : t(i18n, "showcase.common.code.copy")}
+          className="absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-md border border-border bg-background/90 text-foreground/70 hover:text-foreground"
         >
-          {copied ? t(i18n, "showcase.common.code.copied") : t(i18n, "showcase.common.code.copy")}
+          {copied ? <Check className="h-4 w-4 text-green-600" /> : <Copy className="h-4 w-4" />}
         </button>
         <pre className="mt-3 rounded-md bg-foreground/5 p-4 text-sm font-mono overflow-x-auto whitespace-pre-wrap">
           {displayCode}

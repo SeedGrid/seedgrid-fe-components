@@ -293,6 +293,9 @@ importers:
         specifier: ^4.2.0
         version: 4.2.0(react@19.0.0)
     devDependencies:
+      '@seedgrid/fe-theme':
+        specifier: workspace:*
+        version: link:../seedgrid-fe-theme
       '@tiptap/core':
         specifier: ^2.9.1
         version: 2.27.2(@tiptap/pm@2.27.2)
@@ -335,12 +338,18 @@ importers:
       '@tiptap/starter-kit':
         specifier: ^2.9.1
         version: 2.27.2
+      autoprefixer:
+        specifier: ^10.4.20
+        version: 10.4.24(postcss@8.5.6)
       jsdom:
         specifier: ^29.0.1
         version: 29.0.1
       lucide-react:
         specifier: ^1.18.0
         version: 1.21.0(react@19.0.0)
+      postcss:
+        specifier: ^8.4.45
+        version: 8.5.6
       react:
         specifier: 19.0.0
         version: 19.0.0
@@ -350,6 +359,12 @@ importers:
       react-hook-form:
         specifier: ^7.0.0
         version: 7.71.1(react@19.0.0)
+      tailwindcss:
+        specifier: ^3.4.10
+        version: 3.4.19
+      tailwindcss-animate:
+        specifier: ^1.0.7
+        version: 1.0.7(tailwindcss@3.4.19)
       tsup:
         specifier: ^8.4.0
         version: 8.5.1(jiti@1.21.7)(postcss@8.5.6)(typescript@5.9.3)
