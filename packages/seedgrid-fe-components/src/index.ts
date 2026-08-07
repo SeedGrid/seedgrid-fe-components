@@ -1,3 +1,7 @@
+import { ensureSeedgridStylesInjected } from "./injectStyles";
+
+ensureSeedgridStylesInjected();
+
 export { SgInputText } from "./inputs/SgInputText";
 export type { SgInputTextProps } from "./inputs/SgInputText";
 export { SgInputTextSearch } from "./inputs/SgInputTextSearch";

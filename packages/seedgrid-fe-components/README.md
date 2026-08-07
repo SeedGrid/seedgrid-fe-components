@@ -52,7 +52,13 @@ yarn add @seedgrid/fe-components @seedgrid/fe-theme react-hook-form lucide-react
 
 ## Uso rapido
 
-O pacote ja inclui um CSS pronto (`dist/style.css`) com o tema padrao aplicado — basta importar uma vez, sem precisar configurar Tailwind nem envolver a app com um provider:
+Os componentes ja vem estilizados com o tema padrao assim que voce os importa — nao precisa configurar Tailwind, importar CSS separado nem envolver a app com um provider. Basta:
+
+```tsx
+import { SgInputText } from "@seedgrid/fe-components";
+```
+
+Se preferir um `<link>`/import de CSS estatico em vez da injecao automatica via JS (por exemplo para evitar qualquer flash antes da hidratacao), o pacote tambem expoe o mesmo CSS pronto:
 
 ```tsx
 import "@seedgrid/fe-components/style.css";

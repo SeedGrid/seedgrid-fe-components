@@ -50,6 +50,7 @@ function extractReactHookFormSymbols(code: string) {
 }
 
 function normalizeShowcaseCode(code: string) {
+  const hasUseClientDirective = /^["']use client["'];?/.test(code.trimStart());
   const hasAnyImport = /^\s*import\s/m.test(code);
   const hasReactImport = /from\s+["']react["']/.test(code);
   const seedGridSymbols = extractSeedGridSymbols(code);
@@ -77,8 +78,12 @@ function normalizeShowcaseCode(code: string) {
     prepend.push(`import { ${missingRhfSymbols.join(", ")} } from "react-hook-form";`);
   }
 
-  if (prepend.length === 0) return code;
-  return `${prepend.join("\n")}${hasAnyImport ? "\n" : "\n\n"}${code}`;
+  const withImports = prepend.length === 0
+    ? code
+    : `${prepend.join("\n")}${hasAnyImport ? "\n" : "\n\n"}${code}`;
+
+  if (hasUseClientDirective) return withImports;
+  return `"use client";\n\n${withImports}`;
 }
 
 function getInlineCode(props: SgCodeBlockBaseProps) {
