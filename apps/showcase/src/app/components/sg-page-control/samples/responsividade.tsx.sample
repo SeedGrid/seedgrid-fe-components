@@ -1,0 +1,61 @@
+import React from "react";
+import { Boxes, FolderKanban, Receipt, ShieldCheck, Truck, UserRound, Wrench } from "lucide-react";
+import { SgPageControl, SgPageControlPage } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <div className="space-y-6">
+      {/* Larguras iguais a partir do tablet. No celular as abas mantem a largura
+          natural e a lista rola — abas iguais numa tela estreita espremem os rotulos. */}
+      <SgPageControl fullWidthTabs>
+        <SgPageControlPage id="registration" title="Registration" icon={<UserRound className="size-4" />}>
+          Registration content
+        </SgPageControlPage>
+        <SgPageControlPage id="fiscal" title="Fiscal" icon={<Receipt className="size-4" />}>
+          Fiscal content
+        </SgPageControlPage>
+        <SgPageControlPage id="access" title="Access" icon={<ShieldCheck className="size-4" />}>
+          Access content
+        </SgPageControlPage>
+        <SgPageControlPage id="products" title="Products" icon={<Boxes className="size-4" />}>
+          Products content
+        </SgPageControlPage>
+        <SgPageControlPage id="shipping" title="Shipping" icon={<Truck className="size-4" />}>
+          Shipping content
+        </SgPageControlPage>
+        <SgPageControlPage id="integrations" title="Integrations" icon={<FolderKanban className="size-4" />}>
+          Integrations content
+        </SgPageControlPage>
+        <SgPageControlPage id="preferences" title="Preferences" icon={<Wrench className="size-4" />}>
+          Preferences content
+        </SgPageControlPage>
+      </SgPageControl>
+
+      {/* Alternativa do celular: abaixo de 768px as abas viram um select nativo.
+          Tablet e desktop continuam com as abas. */}
+      <SgPageControl mobilePageControl="select">
+        <SgPageControlPage id="registration" title="Registration" icon={<UserRound className="size-4" />}>
+          Registration content
+        </SgPageControlPage>
+        <SgPageControlPage id="fiscal" title="Fiscal" icon={<Receipt className="size-4" />}>
+          Fiscal content
+        </SgPageControlPage>
+        <SgPageControlPage id="access" title="Access" icon={<ShieldCheck className="size-4" />}>
+          Access content
+        </SgPageControlPage>
+        <SgPageControlPage id="products" title="Products" icon={<Boxes className="size-4" />}>
+          Products content
+        </SgPageControlPage>
+        <SgPageControlPage id="shipping" title="Shipping" icon={<Truck className="size-4" />}>
+          Shipping content
+        </SgPageControlPage>
+        <SgPageControlPage id="integrations" title="Integrations" icon={<FolderKanban className="size-4" />}>
+          Integrations content
+        </SgPageControlPage>
+        <SgPageControlPage id="preferences" title="Preferences" icon={<Wrench className="size-4" />}>
+          Preferences content
+        </SgPageControlPage>
+      </SgPageControl>
+    </div>
+  );
+}

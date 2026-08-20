@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import React from "react";
-import { FolderKanban, Receipt, ShieldCheck, UserRound, Wrench } from "lucide-react";
+import { Boxes, FolderKanban, Receipt, ShieldCheck, Truck, UserRound, Wrench } from "lucide-react";
 import { SgButton, SgPageControl, SgPageControlPage } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
@@ -199,7 +199,9 @@ const PAGE_CONTROL_PROPS: ShowcasePropRow[] = [
   { prop: "keepMounted", type: "boolean", defaultValue: "false", description: "Keep all panels mounted." },
   { prop: "pageControlStyle", type: "\"underline\" | \"pills\"", defaultValue: "underline", description: "Visual style of tabs." },
   { prop: "size", type: "\"sm\" | \"md\" | \"lg\"", defaultValue: "md", description: "Tab and panel size." },
-  { prop: "fullWidthTabs / keyboardNavigation", type: "boolean", defaultValue: "false / true", description: "Full-width tabs and keyboard navigation." },
+  { prop: "fullWidthTabs", type: "boolean", defaultValue: "false", description: "Equal-width tabs from tablet (md) up; on mobile tabs keep their natural width and the list scrolls." },
+  { prop: "mobilePageControl", type: "\"scroll\" | \"select\"", defaultValue: "scroll", description: "Mobile behaviour below 768px: horizontal scroll, or swap the tabs for a native select." },
+  { prop: "keyboardNavigation", type: "boolean", defaultValue: "true", description: "Arrow/Home/End navigation between tabs." },
   { prop: "ariaLabel / emptyMessage", type: "string / ReactNode", defaultValue: "Page control / No visible pages.", description: "Accessibility and empty state." },
   { prop: "className / tabListClassName / tabClassName / panelClassName / style", type: "visual customization", defaultValue: "-", description: "Classes and styles for wrappers." },
   { prop: "SgPageControlPage.id / title / hint / icon / hidden / disabled / keepMounted / className / style / tabClassName / children", type: "page props", defaultValue: "-", description: "Props available for each tab/page." }
@@ -218,15 +220,20 @@ export default function SgPageControlShowcasePage() {
       t(i18n, `${K}.sectionTitles.1`),
       t(i18n, `${K}.sectionTitles.2`),
       t(i18n, `${K}.sectionTitles.3`),
-      t(i18n, `${K}.sectionTitles.4`)
+      t(i18n, `${K}.sectionTitles.4`),
+      t(i18n, `${K}.sectionTitles.5`)
     ],
     sectionDescriptions: [
       t(i18n, `${K}.sectionDescriptions.0`),
       t(i18n, `${K}.sectionDescriptions.1`),
       t(i18n, `${K}.sectionDescriptions.2`),
       t(i18n, `${K}.sectionDescriptions.3`),
-      t(i18n, `${K}.sectionDescriptions.4`)
+      t(i18n, `${K}.sectionDescriptions.4`),
+      t(i18n, `${K}.sectionDescriptions.5`)
     ],
+    responsiveEqualWidths: t(i18n, `${K}.responsive.equalWidths`),
+    responsiveMobileSelect: t(i18n, `${K}.responsive.mobileSelect`),
+    responsiveHint: t(i18n, `${K}.responsive.hint`),
     playgroundTitle: t(i18n, `${K}.playgroundTitle`)
   }), [i18n]);
   const aiComponent = useAiManifestComponent("SgPageControl");
@@ -369,6 +376,61 @@ export default function SgPageControlShowcasePage() {
         </Section>
 
         <Section title={texts.sectionTitles[4] ?? ""} description={texts.sectionDescriptions[4] ?? ""}>
+          <p className="text-sm text-muted-foreground">{texts.responsiveHint}</p>
+
+          <p className="text-sm font-medium">{texts.responsiveEqualWidths}</p>
+          <SgPageControl fullWidthTabs>
+            <SgPageControlPage id="registration" title="Registration" icon={<UserRound className="size-4" />}>
+              Registration content
+            </SgPageControlPage>
+            <SgPageControlPage id="fiscal" title="Fiscal" icon={<Receipt className="size-4" />}>
+              Fiscal content
+            </SgPageControlPage>
+            <SgPageControlPage id="access" title="Access" icon={<ShieldCheck className="size-4" />}>
+              Access content
+            </SgPageControlPage>
+            <SgPageControlPage id="products" title="Products" icon={<Boxes className="size-4" />}>
+              Products content
+            </SgPageControlPage>
+            <SgPageControlPage id="shipping" title="Shipping" icon={<Truck className="size-4" />}>
+              Shipping content
+            </SgPageControlPage>
+            <SgPageControlPage id="integrations" title="Integrations" icon={<FolderKanban className="size-4" />}>
+              Integrations content
+            </SgPageControlPage>
+            <SgPageControlPage id="preferences" title="Preferences" icon={<Wrench className="size-4" />}>
+              Preferences content
+            </SgPageControlPage>
+          </SgPageControl>
+
+          <p className="text-sm font-medium">{texts.responsiveMobileSelect}</p>
+          <SgPageControl mobilePageControl="select">
+            <SgPageControlPage id="registration" title="Registration" icon={<UserRound className="size-4" />}>
+              Registration content
+            </SgPageControlPage>
+            <SgPageControlPage id="fiscal" title="Fiscal" icon={<Receipt className="size-4" />}>
+              Fiscal content
+            </SgPageControlPage>
+            <SgPageControlPage id="access" title="Access" icon={<ShieldCheck className="size-4" />}>
+              Access content
+            </SgPageControlPage>
+            <SgPageControlPage id="products" title="Products" icon={<Boxes className="size-4" />}>
+              Products content
+            </SgPageControlPage>
+            <SgPageControlPage id="shipping" title="Shipping" icon={<Truck className="size-4" />}>
+              Shipping content
+            </SgPageControlPage>
+            <SgPageControlPage id="integrations" title="Integrations" icon={<FolderKanban className="size-4" />}>
+              Integrations content
+            </SgPageControlPage>
+            <SgPageControlPage id="preferences" title="Preferences" icon={<Wrench className="size-4" />}>
+              Preferences content
+            </SgPageControlPage>
+          </SgPageControl>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-page-control/samples/responsividade.tsx.sample" />
+        </Section>
+
+        <Section title={texts.sectionTitles[5] ?? ""} description={texts.sectionDescriptions[5] ?? ""}>
           <SgPlayground
             title={texts.playgroundTitle}
             interactive
