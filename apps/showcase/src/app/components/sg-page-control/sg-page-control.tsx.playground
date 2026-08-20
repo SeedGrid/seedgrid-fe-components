@@ -1,11 +1,12 @@
 import * as React from "react";
-import { Receipt, ShieldCheck, UserRound } from "lucide-react";
+import { Boxes, FileText, Receipt, Settings, ShieldCheck, Truck, UserRound } from "lucide-react";
 import { SgButton, SgPageControl, SgPageControlPage } from "@seedgrid/fe-components";
 
 export default function App() {
   const [pageControlStyle, setPageControlStyle] = React.useState<"underline" | "pills">("underline");
   const [size, setSize] = React.useState<"sm" | "md" | "lg">("md");
   const [fullWidthTabs, setFullWidthTabs] = React.useState(false);
+  const [mobilePageControl, setMobilePageControl] = React.useState<"scroll" | "select">("scroll");
 
   return (
     <div className="space-y-4 p-2">
@@ -19,11 +20,24 @@ export default function App() {
         <SgButton size="sm" appearance="outline" onClick={() => setSize("md")}>md</SgButton>
         <SgButton size="sm" appearance="outline" onClick={() => setSize("lg")}>lg</SgButton>
       </div>
+      <div className="grid gap-2 sm:grid-cols-2">
+        <SgButton size="sm" appearance="outline" onClick={() => setMobilePageControl("scroll")}>celular: scroll</SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => setMobilePageControl("select")}>celular: select</SgButton>
+      </div>
 
-      <SgPageControl pageControlStyle={pageControlStyle} size={size} fullWidthTabs={fullWidthTabs}>
+      <SgPageControl
+        pageControlStyle={pageControlStyle}
+        size={size}
+        fullWidthTabs={fullWidthTabs}
+        mobilePageControl={mobilePageControl}
+      >
         <SgPageControlPage id="registration" title="Registration" icon={<UserRound className="size-4" />}>Registration content</SgPageControlPage>
         <SgPageControlPage id="fiscal" title="Fiscal" icon={<Receipt className="size-4" />}>Fiscal content</SgPageControlPage>
         <SgPageControlPage id="access" title="Access" icon={<ShieldCheck className="size-4" />}>Access content</SgPageControlPage>
+        <SgPageControlPage id="products" title="Products" icon={<Boxes className="size-4" />}>Products content</SgPageControlPage>
+        <SgPageControlPage id="shipping" title="Shipping" icon={<Truck className="size-4" />}>Shipping content</SgPageControlPage>
+        <SgPageControlPage id="documents" title="Documents" icon={<FileText className="size-4" />}>Documents content</SgPageControlPage>
+        <SgPageControlPage id="preferences" title="Preferences" icon={<Settings className="size-4" />}>Preferences content</SgPageControlPage>
       </SgPageControl>
     </div>
   );

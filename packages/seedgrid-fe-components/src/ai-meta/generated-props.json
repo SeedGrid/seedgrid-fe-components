@@ -6794,7 +6794,8 @@
     {
       "name": "fullWidthTabs",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "description": "Distribui as abas em larguras iguais a partir do tablet (`md`, 768px).\r\nNo celular as abas mantem a largura natural e a lista rola — abas iguais numa\r\ntela estreita espremem os rotulos ate ninguem conseguir ler."
     },
     {
       "name": "hiddenPageIds",
@@ -6810,6 +6811,12 @@
       "name": "keyboardNavigation",
       "type": "boolean",
       "required": false
+    },
+    {
+      "name": "mobilePageControl",
+      "type": "\"scroll\" | \"select\"",
+      "required": false,
+      "description": "Comportamento das abas no celular (abaixo de `md`, 768px).\r\n- `\"scroll\"` (default): continuam abas, com rolagem horizontal, e a aba ativa\r\n  e trazida para a area visivel sozinha.\r\n- `\"select\"`: viram um `<select>` nativo, util quando sao muitas abas ou os\r\n  rotulos sao longos. Tablet e desktop nao mudam."
     },
     {
       "name": "onActiveIndexChange",

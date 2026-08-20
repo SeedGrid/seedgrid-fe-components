@@ -42,7 +42,20 @@ export type SgPageControlProps = {
   keepMounted?: boolean;
   pageControlStyle?: "underline" | "pills";
   size?: "sm" | "md" | "lg";
+  /**
+   * Distribui as abas em larguras iguais a partir do tablet (`md`, 768px).
+   * No celular as abas mantem a largura natural e a lista rola — abas iguais numa
+   * tela estreita espremem os rotulos ate ninguem conseguir ler.
+   */
   fullWidthTabs?: boolean;
+  /**
+   * Comportamento das abas no celular (abaixo de `md`, 768px).
+   * - `"scroll"` (default): continuam abas, com rolagem horizontal, e a aba ativa
+   *   e trazida para a area visivel sozinha.
+   * - `"select"`: viram um `<select>` nativo, util quando sao muitas abas ou os
+   *   rotulos sao longos. Tablet e desktop nao mudam.
+   */
+  mobilePageControl?: "scroll" | "select";
   keyboardNavigation?: boolean;
 
   ariaLabel?: string;
@@ -80,6 +93,17 @@ function resolveRecords(
   });
 }
 
+// <option> so aceita texto. `title` e ReactNode (pode vir com icone/markup), entao
+// caimos para `hint` e, por ultimo, para o id — nunca para string vazia, que deixaria
+// a opcao invisivel no select do celular.
+function optionLabel(record: PageRecord) {
+  const { title, hint } = record.props;
+  if (typeof title === "string" && title.trim()) return title;
+  if (typeof title === "number") return String(title);
+  if (hint?.trim()) return hint;
+  return record.id;
+}
+
 function clampIndex(index: number, length: number) {
   if (length <= 0) return 0;
   if (!Number.isFinite(index)) return 0;
@@ -100,6 +124,7 @@ export function SgPageControl(props: Readonly<SgPageControlProps>) {
     pageControlStyle = "underline",
     size = "md",
     fullWidthTabs = false,
+    mobilePageControl = "scroll",
     keyboardNavigation = true,
     ariaLabel,
     emptyMessage,
@@ -183,25 +208,52 @@ export function SgPageControl(props: Readonly<SgPageControlProps>) {
   );
 
   const tabsRef = React.useRef<Array<HTMLButtonElement | null>>([]);
+  const tabListRef = React.useRef<HTMLDivElement | null>(null);
   const rootId = React.useId();
+
+  // Com rolagem horizontal a aba ativa pode estar fora da area visivel — ao trocar de
+  // pagina por teclado, por codigo (modo controlado) ou pelo select do celular, ela
+  // precisa aparecer. Mexemos em scrollLeft em vez de scrollIntoView de proposito:
+  // scrollIntoView sobe pelos ancestrais e rola a PAGINA junto.
+  React.useEffect(() => {
+    const list = tabListRef.current;
+    const tab = tabsRef.current[activeIndexResolved];
+    if (!list || !tab) return;
+    if (list.scrollWidth <= list.clientWidth) return;
+
+    const margin = 8;
+    const tabStart = tab.offsetLeft;
+    const tabEnd = tabStart + tab.offsetWidth;
+    const viewStart = list.scrollLeft;
+    const viewEnd = viewStart + list.clientWidth;
+
+    if (tabStart < viewStart) {
+      list.scrollLeft = Math.max(0, tabStart - margin);
+    } else if (tabEnd > viewEnd) {
+      list.scrollLeft = tabEnd - list.clientWidth + margin;
+    }
+  }, [activeIndexResolved]);
 
   const sizeClasses =
     size === "sm"
       ? {
           tab: "h-8 px-3 text-xs gap-1.5",
           icon: "size-4",
-          panel: "p-3"
+          panel: "p-3",
+          select: "h-8 text-xs"
         }
       : size === "lg"
       ? {
           tab: "h-11 px-4 text-sm gap-2.5",
           icon: "size-5",
-          panel: "p-5"
+          panel: "p-5",
+          select: "h-11 text-sm"
         }
       : {
           tab: "h-9 px-3.5 text-sm gap-2",
           icon: "size-4.5",
-          panel: "p-4"
+          panel: "p-4",
+          select: "h-9 text-sm"
         };
 
   const tabStyle =
@@ -225,12 +277,38 @@ export function SgPageControl(props: Readonly<SgPageControlProps>) {
 
   return (
     <div className={cn("w-full", className)} style={style}>
+      {mobilePageControl === "select" && visiblePages.length > 0 ? (
+        // Alternativa do celular: as abas viram um select nativo. Fica escondido a partir
+        // do tablet, e a troca e feita por CSS (nao por media query em JS) para nao
+        // depender do tamanho da janela na primeira renderizacao.
+        <div className="mb-2 md:hidden">
+          <select
+            aria-label={resolvedAriaLabel}
+            value={resolvedActiveId ?? ""}
+            onChange={(event) => selectPage(event.target.value)}
+            className={cn(
+              "w-full rounded-md border border-border bg-background px-3 font-medium text-foreground",
+              sizeClasses.select
+            )}
+          >
+            {visiblePages.map((record) => (
+              <option key={record.id} value={record.id} disabled={record.props.disabled}>
+                {optionLabel(record)}
+              </option>
+            ))}
+          </select>
+        </div>
+      ) : null}
       <div
         role="tablist"
+        ref={tabListRef}
         aria-label={resolvedAriaLabel}
         className={cn(
-          "flex min-h-0 items-end gap-1 overflow-x-auto border-b border-border pb-0.5",
-          fullWidthTabs ? "grid auto-cols-fr grid-flow-col" : "",
+          "min-h-0 items-end gap-1 overflow-x-auto border-b border-border pb-0.5",
+          // Um unico utilitario de display por breakpoint. Antes `flex` e `grid` saiam
+          // juntos no mesmo elemento e quem vencia dependia da ordem no CSS gerado.
+          mobilePageControl === "select" ? "hidden" : "flex",
+          fullWidthTabs ? "md:grid md:auto-cols-fr md:grid-flow-col" : "md:flex",
           tabListClassName
         )}
         onKeyDown={(event) => {
@@ -292,7 +370,9 @@ export function SgPageControl(props: Readonly<SgPageControlProps>) {
                 sizeClasses.tab,
                 tabStyle.base,
                 isActive ? tabStyle.active : tabStyle.inactive,
-                fullWidthTabs ? "w-full" : "",
+                // No celular a lista e flex com rolagem: `w-full` faria cada aba ocupar a
+                // largura toda do container.
+                fullWidthTabs ? "md:w-full" : "",
                 record.props.disabled ? "cursor-not-allowed opacity-45" : "",
                 tabClassName,
                 record.props.tabClassName

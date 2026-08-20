@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { createRequire } from "node:module";
 import React from "react";
+import { act } from "react";
 import { setupDomHarness, flushDom, dispatchMouse, dispatchPointer, dispatchKeyboard, dispatchInput, dispatchBlur, setElementRect } from "./dom-harness.mjs";
 
 const require = createRequire(import.meta.url);
@@ -1086,3 +1087,112 @@ test("SgTreeView expands, collapses and clears rendered checked nodes", async ()
 
 
 
+
+const { SgPageControl, SgPageControlPage } = require("../dist/sandbox.cjs");
+
+function buildPageControl(props = {}, count = 6) {
+  return React.createElement(
+    SgPageControl,
+    props,
+    ...Array.from({ length: count }, (_, index) =>
+      React.createElement(
+        SgPageControlPage,
+        { key: `p${index}`, id: `p${index}`, title: `Pagina ${index}` },
+        React.createElement("div", null, `conteudo ${index}`)
+      )
+    )
+  );
+}
+
+test("SgPageControl never applies flex and grid to the tab list at the same time", async () => {
+  const harness = setupDomHarness();
+
+  try {
+    await harness.render(buildPageControl({ fullWidthTabs: true }));
+    await flushDom();
+
+    const list = harness.document.querySelector('[role="tablist"]');
+    assert.ok(list);
+    const classes = list.className.split(/\s+/);
+
+    // Os dois saiam juntos sem prefixo: quem vencia dependia da ordem no CSS gerado.
+    // Larguras iguais valem a partir do tablet; no celular a lista continua flex+rolagem.
+    assert.ok(classes.includes("flex"));
+    assert.ok(!classes.includes("grid"));
+    assert.ok(classes.includes("md:grid"));
+  } finally {
+    harness.restore();
+  }
+});
+
+test("SgPageControl scrolls the active tab into view when the list overflows", async () => {
+  const harness = setupDomHarness();
+
+  try {
+    await harness.render(buildPageControl());
+    await flushDom();
+
+    const list = harness.document.querySelector('[role="tablist"]');
+    const tabs = Array.from(harness.document.querySelectorAll('[role="tab"]'));
+
+    // jsdom nao faz layout: simulamos uma lista estreita (200px) com 6 abas de 100px.
+    let scrollLeft = 0;
+    Object.defineProperty(list, "clientWidth", { configurable: true, value: 200 });
+    Object.defineProperty(list, "scrollWidth", { configurable: true, value: 600 });
+    Object.defineProperty(list, "scrollLeft", {
+      configurable: true,
+      get: () => scrollLeft,
+      set: (value) => {
+        scrollLeft = value;
+      }
+    });
+    tabs.forEach((tab, index) => {
+      Object.defineProperty(tab, "offsetLeft", { configurable: true, value: index * 100 });
+      Object.defineProperty(tab, "offsetWidth", { configurable: true, value: 100 });
+    });
+
+    await dispatchMouse(tabs[4], "click");
+    await flushDom();
+
+    // Aba 4 ocupa 400..500 e a area visivel e 0..200: rola ate encostar a direita + 8 de folga.
+    assert.equal(scrollLeft, 308);
+
+    await dispatchMouse(tabs[0], "click");
+    await flushDom();
+
+    // Voltando para a primeira, rola para o inicio (0 - 8 nao pode virar negativo).
+    assert.equal(scrollLeft, 0);
+  } finally {
+    harness.restore();
+  }
+});
+
+test("SgPageControl offers a native select as the mobile alternative", async () => {
+  const harness = setupDomHarness();
+
+  try {
+    await harness.render(buildPageControl({ mobilePageControl: "select" }, 3));
+    await flushDom();
+
+    const select = harness.document.querySelector("select");
+    assert.ok(select, "o select do celular deve existir");
+    assert.equal(select.options.length, 3);
+    assert.equal(select.value, "p0");
+
+    // A lista de abas continua no DOM (some so por CSS a partir do tablet).
+    const list = harness.document.querySelector('[role="tablist"]');
+    assert.ok(list.className.split(/\s+/).includes("hidden"));
+
+    // dispatchInput e' talhado para <input>; num <select> a troca e' o evento "change".
+    await act(async () => {
+      select.value = "p2";
+      select.dispatchEvent(new harness.window.Event("change", { bubbles: true }));
+    });
+    await flushDom();
+
+    const panel = harness.document.querySelector('[role="tabpanel"]');
+    assert.match(panel.textContent, /conteudo 2/);
+  } finally {
+    harness.restore();
+  }
+});

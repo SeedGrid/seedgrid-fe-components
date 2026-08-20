@@ -12,7 +12,7 @@ export const sgMeta: SgMetaV0 = {
   description:
     "Controle de paginas em abas para alternar entre paineis de conteudo relacionados em uma mesma area da tela.",
   tags: ["navigation", "tabs", "page-control", "panels"],
-  capabilities: ["tab-navigation", "controlled-active-page", "hidden-pages", "keyboard-navigation"],
+  capabilities: ["tab-navigation", "controlled-active-page", "hidden-pages", "keyboard-navigation", "responsive-tabs"],
   fieldSemantics: ["tabs", "pageTabs", "panelNavigation", "sectionSwitcher"],
   props: [
     { name: "children", type: "ReactNode", required: true, description: "Paginas filhas definidas por SgPageControlPage.", semanticRole: "data", bindable: false },
@@ -21,6 +21,8 @@ export const sgMeta: SgMetaV0 = {
     { name: "keepMounted", type: "boolean", default: false, description: "Mantem paineis inativos montados no DOM.", semanticRole: "behavior", bindable: true },
     { name: "pageControlStyle", type: '"underline" | "pills"', default: "underline", description: "Estilo visual da lista de abas.", semanticRole: "appearance", bindable: true },
     { name: "size", type: '"sm" | "md" | "lg"', default: "md", description: "Escala visual das abas.", semanticRole: "appearance", bindable: true },
+    { name: "fullWidthTabs", type: "boolean", default: false, description: "Distribui as abas em larguras iguais a partir do tablet; no celular elas mantem a largura natural e a lista rola.", semanticRole: "appearance", bindable: true },
+    { name: "mobilePageControl", type: '"scroll" | "select"', default: "scroll", description: "Comportamento no celular: rolagem horizontal das abas ou troca por um select nativo.", semanticRole: "behavior", bindable: true },
     { name: "onActivePageIdChange", type: "(pageId: string, context: object) => void", description: "Callback disparado quando a pagina ativa muda.", semanticRole: "event", bindable: false }
   ],
   states: ["default", "controlled", "keyboard-navigation"],
