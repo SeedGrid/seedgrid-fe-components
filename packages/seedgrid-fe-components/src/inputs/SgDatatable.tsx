@@ -320,6 +320,25 @@ function isPersistedColumnsState(value: unknown): value is SgDatatablePersistedC
   );
 }
 
+function sameStringList(a: string[], b: string[]): boolean {
+  if (a === b) return true;
+  if (a.length !== b.length) return false;
+  for (let index = 0; index < a.length; index += 1) {
+    if (a[index] !== b[index]) return false;
+  }
+  return true;
+}
+
+function sameBooleanMap(a: Record<string, boolean>, b: Record<string, boolean>): boolean {
+  if (a === b) return true;
+  const keysA = Object.keys(a);
+  if (keysA.length !== Object.keys(b).length) return false;
+  for (const key of keysA) {
+    if (a[key] !== b[key]) return false;
+  }
+  return true;
+}
+
 function moveItem<T>(list: T[], fromIndex: number, toIndex: number): T[] {
   if (fromIndex === toIndex) return list;
   if (fromIndex < 0 || fromIndex >= list.length) return list;
@@ -434,6 +453,16 @@ function SgDatatableBase<T extends SgDatatableRow>(
   const [columnsStateHydrated, setColumnsStateHydrated] = React.useState(false);
   const columnsPersistenceKey = React.useMemo(() => buildDatatableColumnsPersistenceKey(id), [id]);
 
+  // A hidratacao so' precisa reagir a QUAIS colunas existem, nao a uma nova
+  // identidade do array. A assinatura mantem o efeito estavel enquanto o conjunto
+  // de colunas for o mesmo; o conteudo corrente sai do ref.
+  const columnKeysSignature = React.useMemo(
+    () => columnDescriptors.map((item) => item.key).join(" "),
+    [columnDescriptors]
+  );
+  const columnDescriptorsRef = React.useRef(columnDescriptors);
+  columnDescriptorsRef.current = columnDescriptors;
+
   React.useEffect(() => {
     if (!isFirstControlled) return;
     setInternalFirst(Math.max(0, first ?? 0));
@@ -468,13 +497,18 @@ function SgDatatableBase<T extends SgDatatableRow>(
     setInternalFilters(normalizeFilters(filters));
   }, [isFiltersControlled, filters]);
 
+  // Consumidores costumam declarar `columns` como literal, entao `columnDescriptors`
+  // ganha identidade nova a cada render do pai e este efeito re-executa. Devolver
+  // `prev` quando o conteudo nao mudou evita um commit extra por render — e, em
+  // cascata, a releitura e a regravacao do layout de colunas na persistencia.
   React.useEffect(() => {
     const availableKeys = columnDescriptors.map((item) => item.key);
 
     setColumnOrder((prev) => {
       const kept = prev.filter((key) => availableKeys.includes(key));
       const missing = availableKeys.filter((key) => !kept.includes(key));
-      return [...kept, ...missing];
+      const next = [...kept, ...missing];
+      return sameStringList(prev, next) ? prev : next;
     });
 
     setHiddenColumnsMap((prev) => {
@@ -482,7 +516,7 @@ function SgDatatableBase<T extends SgDatatableRow>(
       for (const item of columnDescriptors) {
         next[item.key] = prev[item.key] ?? Boolean(item.column.hidden);
       }
-      return next;
+      return sameBooleanMap(prev, next) ? prev : next;
     });
   }, [columnDescriptors]);
 
@@ -500,17 +534,19 @@ function SgDatatableBase<T extends SgDatatableRow>(
         const loaded = await persistence.load(columnsPersistenceKey);
         if (!alive) return;
         if (isPersistedColumnsState(loaded)) {
-          const availableKeys = columnDescriptors.map((item) => item.key);
+          const descriptors = columnDescriptorsRef.current;
+          const availableKeys = descriptors.map((item) => item.key);
           const persistedOrder = loaded.columnOrder.filter((key) => availableKeys.includes(key));
           const missingKeys = availableKeys.filter((key) => !persistedOrder.includes(key));
 
-          setColumnOrder([...persistedOrder, ...missingKeys]);
-          setHiddenColumnsMap(() => {
+          const restoredOrder = [...persistedOrder, ...missingKeys];
+          setColumnOrder((prev) => (sameStringList(prev, restoredOrder) ? prev : restoredOrder));
+          setHiddenColumnsMap((prev) => {
             const next: Record<string, boolean> = {};
-            for (const item of columnDescriptors) {
+            for (const item of descriptors) {
               next[item.key] = loaded.hiddenColumnsMap[item.key] ?? Boolean(item.column.hidden);
             }
-            return next;
+            return sameBooleanMap(prev, next) ? prev : next;
           });
         }
       } catch {
@@ -523,7 +559,7 @@ function SgDatatableBase<T extends SgDatatableRow>(
     return () => {
       alive = false;
     };
-  }, [hasEnvironmentProvider, columnsPersistenceKey, persistence.load, columnDescriptors]);
+  }, [hasEnvironmentProvider, columnsPersistenceKey, persistence.load, columnKeysSignature]);
 
   React.useEffect(() => {
     if (!hasEnvironmentProvider || !columnsPersistenceKey || !columnsStateHydrated) return;
