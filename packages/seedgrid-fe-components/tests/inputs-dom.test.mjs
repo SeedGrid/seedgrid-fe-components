@@ -884,3 +884,70 @@ test("SgInputTextSearch debounces rapid typing into a single emission", async ()
     harness.restore();
   }
 });
+
+// O aria-label do botao vem do i18n, entao nao da pra fixar o texto em portugues.
+function findGenerateButton(harness) {
+  return Array.from(harness.document.querySelectorAll("button")).find((button) =>
+    /gerar senha|generate password/i.test(button.getAttribute("aria-label") ?? "")
+  );
+}
+
+test("SgInputPassword generates a password with minSize length, not maxLength", async () => {
+  const harness = setupDomHarness();
+
+  try {
+    // maxLength alto e' o caso real dos consumidores: existe para nao truncar frase-senha
+    // durante a digitacao. O botao de gerar senha NAO pode usar esse teto como alvo —
+    // gerava uma senha de 128 caracteres.
+    await harness.render(
+      React.createElement(OnChangeControlledInputPassword, {
+        createNewPasswordButton: true,
+        maxLength: 128,
+        minSize: 8
+      })
+    );
+    await flushDom();
+
+    const generate = findGenerateButton(harness);
+    assert.ok(generate, "botao de gerar senha deve existir com createNewPasswordButton");
+
+    await dispatchMouse(generate, "click");
+    await flushDom();
+
+    const input = harness.document.querySelector("input#input-password-native-input");
+    assert.ok(input);
+    assert.equal(input.value.length, 8);
+
+    const committed = harness.document.querySelector("[data-committed-value]");
+    assert.equal(committed.getAttribute("data-committed-value").length, 8);
+  } finally {
+    harness.restore();
+  }
+});
+
+test("SgInputPassword honours newPasswordLength for the generated password", async () => {
+  const harness = setupDomHarness();
+
+  try {
+    await harness.render(
+      React.createElement(OnChangeControlledInputPassword, {
+        createNewPasswordButton: true,
+        maxLength: 128,
+        minSize: 8,
+        newPasswordLength: 20
+      })
+    );
+    await flushDom();
+
+    const generate = findGenerateButton(harness);
+    assert.ok(generate);
+
+    await dispatchMouse(generate, "click");
+    await flushDom();
+
+    const input = harness.document.querySelector("input#input-password-native-input");
+    assert.equal(input.value.length, 20);
+  } finally {
+    harness.restore();
+  }
+});

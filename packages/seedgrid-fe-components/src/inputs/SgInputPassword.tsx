@@ -23,6 +23,14 @@ export type SgInputPasswordProps = Omit<
   validation?: (value: string) => string | null;
   /** Exibe um botao para gerar automaticamente uma senha forte aleatoria (respeita as regras de politica). */
   createNewPasswordButton?: boolean;
+  /**
+   * Comprimento da senha gerada pelo `createNewPasswordButton`. Default: `minSize`.
+   *
+   * NAO derive isto de `maxLength`: `maxLength` existe para nao truncar o que o usuario
+   * digita (frase-senha), e costuma ser folgado (128, 512). Usar o teto como alvo fazia o
+   * botao gerar uma senha de 128 caracteres.
+   */
+  newPasswordLength?: number;
   showStrengthBar?: boolean;
   commonPasswordCheck?: boolean;
   commonPasswordMessage?: string;
@@ -51,6 +59,7 @@ export function SgInputPassword(props: Readonly<SgInputPasswordProps>) {
     maxLength,
     validation,
     createNewPasswordButton = false,
+    newPasswordLength,
     showStrengthBar = true,
     commonPasswordCheck = true,
     commonPasswordMessage,
@@ -184,7 +193,14 @@ export function SgInputPassword(props: Readonly<SgInputPasswordProps>) {
       (specialCharacterRequired ? specials : "") ||
       upper + lower + numbers;
 
-    const targetLength = Math.max(minSize, maxLength ?? minSize);
+    // O alvo sai de `newPasswordLength`/`minSize`, nunca de `maxLength` — o teto so existe
+    // para nao truncar a digitacao. Piso em requiredGroups.length porque cada grupo
+    // obrigatorio ja contribui com um caractere; teto em maxLength para nunca gerar algo
+    // que o proprio campo recusaria.
+    const targetLength = Math.min(
+      Math.max(minSize, newPasswordLength ?? minSize, requiredGroups.length),
+      maxLength ?? Number.MAX_SAFE_INTEGER
+    );
     const randomInt = (max: number) => {
       const array = new Uint32Array(1);
       crypto.getRandomValues(array);
@@ -223,6 +239,7 @@ export function SgInputPassword(props: Readonly<SgInputPasswordProps>) {
     lowerRequired,
     maxLength,
     minSize,
+    newPasswordLength,
     numberRequired,
     specialCharacterRequired,
     upperRequired

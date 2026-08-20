@@ -4672,6 +4672,12 @@
       "required": false
     },
     {
+      "name": "newPasswordLength",
+      "type": "number",
+      "required": false,
+      "description": "Comprimento da senha gerada pelo `createNewPasswordButton`. Default: `minSize`.\r\n\r\nNAO derive isto de `maxLength`: `maxLength` existe para nao truncar o que o usuario\r\ndigita (frase-senha), e costuma ser folgado (128, 512). Usar o teto como alvo fazia o\r\nbotao gerar uma senha de 128 caracteres."
+    },
+    {
       "name": "numberRequired",
       "type": "boolean",
       "required": false
