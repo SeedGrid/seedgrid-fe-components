@@ -1,0 +1,21 @@
+import * as React from "react";
+import { SgYearPartSelector, type ResolvedYearPart } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [resolved, setResolved] = React.useState<ResolvedYearPart | null>(null);
+
+  return (
+    <div className="w-full max-w-xl space-y-2">
+      <SgYearPartSelector id="yps-basic" label="Recorte do ano" locale="pt-BR" onChange={setResolved} />
+      <pre className="rounded border border-border bg-foreground/5 p-2 text-xs">
+        {resolved
+          ? JSON.stringify(
+              { value: resolved.value, start: resolved.startDate, end: resolved.endDate },
+              null,
+              2
+            )
+          : "Nenhum recorte confirmado ainda"}
+      </pre>
+    </div>
+  );
+}

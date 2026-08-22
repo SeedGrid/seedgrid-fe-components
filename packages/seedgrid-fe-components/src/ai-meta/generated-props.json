@@ -8949,5 +8949,65 @@
       "type": "string",
       "required": false
     }
+  ],
+  "SgYearPartSelector": [
+    {
+      "name": "allowedKinds",
+      "type": "YearPartKind[]",
+      "required": false,
+      "description": "Recortes oferecidos. Com um unico item o combo de recorte some. Default: os tres."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": false,
+      "description": "Prefixo dos ids dos tres controles internos. Default \"sg-year-part-selector\"."
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false,
+      "description": "Rotulo do grupo, acima da linha. Cada controle ainda tem o seu proprio rotulo."
+    },
+    {
+      "name": "locale",
+      "type": "string",
+      "required": false,
+      "description": "Locale dos rotulos. Default \"pt-BR\"."
+    },
+    {
+      "name": "maxYear",
+      "type": "number",
+      "required": false,
+      "description": "Ultimo ano da lista. Default: ano corrente + 10."
+    },
+    {
+      "name": "minYear",
+      "type": "number",
+      "required": false,
+      "description": "Primeiro ano da lista. Default: ano corrente - 30."
+    },
+    {
+      "name": "onChange",
+      "type": "((resolved: ResolvedYearPart) => void)",
+      "required": false,
+      "description": "Recebe o recorte ja' resolvido, com startDate/endDate preenchidos."
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "YearPartValue",
+      "required": false,
+      "description": "Valor controlado. Ausente = o componente guarda o proprio estado."
+    }
   ]
 }

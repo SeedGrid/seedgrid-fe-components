@@ -40,6 +40,23 @@ export { SgCombobox } from "./inputs/SgCombobox";
 export type { SgComboboxProps, SgComboboxSource } from "./inputs/SgCombobox";
 export { SgPeriodSelector, resolvePeriod, periodPresetLabel, buildPeriodOptions, PeriodPreset } from "./inputs/SgPeriodSelector";
 export type { SgPeriodSelectorProps, ResolvedPeriod, ResolvePeriodOptions } from "./inputs/SgPeriodSelector";
+// Recorte de ano (semestre/trimestre/bimestre). A aritmetica sai do modulo puro yearPart; o
+// componente SgYearPartSelector so' orquestra os tres combos em cima dela.
+export {
+  YearPartKind,
+  resolveYearPart,
+  yearPartOptions,
+  yearPartLabel,
+  yearPartKindLabel,
+  yearPartCount,
+  yearPartMonths,
+  isValidYearPart,
+  clampYearPart,
+  yearPartOf
+} from "./inputs/yearPart";
+export type { YearPartValue, ResolvedYearPart } from "./inputs/yearPart";
+export { SgYearPartSelector } from "./inputs/SgYearPartSelector";
+export type { SgYearPartSelectorProps } from "./inputs/SgYearPartSelector";
 export { SgMultiSelect } from "./inputs/SgMultiSelect";
 export type { SgMultiSelectProps, SgMultiSelectOption, SgMultiSelectOptionValue } from "./inputs/SgMultiSelect";
 export { SgMultiSelectChips } from "./inputs/SgMultiSelectChips";

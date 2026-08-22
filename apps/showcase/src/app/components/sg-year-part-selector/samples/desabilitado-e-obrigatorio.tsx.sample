@@ -1,0 +1,13 @@
+import * as React from "react";
+import { SgYearPartSelector } from "@seedgrid/fe-components";
+
+// disabled e required valem para os tres controles de uma vez: o recorte e' um valor unico, nao
+// faria sentido ter o ano obrigatorio e a fatia opcional.
+export default function Example() {
+  return (
+    <div className="flex w-full max-w-xl flex-col gap-4">
+      <SgYearPartSelector id="yps-disabled" label="Recorte do ano" locale="pt-BR" disabled />
+      <SgYearPartSelector id="yps-required" label="Recorte do ano" locale="pt-BR" required />
+    </div>
+  );
+}

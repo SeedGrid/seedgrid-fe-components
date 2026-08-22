@@ -1,0 +1,27 @@
+import * as React from "react";
+import {
+  SgYearPartSelector,
+  YearPartKind,
+  type ResolvedYearPart
+} from "@seedgrid/fe-components";
+
+// Com um unico recorte permitido o combo do meio some: escolher entre uma opcao so' seria
+// controle morto na tela. Sobram ano + fatia, que e' o que o dominio realmente pergunta.
+export default function Example() {
+  const [resolved, setResolved] = React.useState<ResolvedYearPart | null>(null);
+
+  return (
+    <div className="w-full max-w-xl">
+      <SgYearPartSelector
+        id="yps-semester"
+        label="Semestre de apuracao"
+        locale="pt-BR"
+        allowedKinds={[YearPartKind.SEMESTER]}
+        onChange={setResolved}
+      />
+      <p className="mt-2 text-xs text-muted-foreground">
+        {resolved ? resolved.label : "Nenhum recorte confirmado ainda"}
+      </p>
+    </div>
+  );
+}

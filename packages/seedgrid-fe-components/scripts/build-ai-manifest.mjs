@@ -91,6 +91,7 @@ async function main() {
     loadComponentMeta(path.join("inputs", "SgInputPostalCode.meta.js")),
     loadComponentMeta(path.join("inputs", "SgOrderList.meta.js")),
     loadComponentMeta(path.join("inputs", "SgPeriodSelector.meta.js")),
+    loadComponentMeta(path.join("inputs", "SgYearPartSelector.meta.js")),
     loadComponentMeta(path.join("inputs", "SgPickList.meta.js")),
     loadComponentMeta(path.join("inputs", "SgRadioGroup.meta.js")),
     loadComponentMeta(path.join("inputs", "SgRating.meta.js")),

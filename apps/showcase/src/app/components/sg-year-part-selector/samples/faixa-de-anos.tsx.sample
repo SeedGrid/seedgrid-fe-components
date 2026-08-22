@@ -1,0 +1,25 @@
+import * as React from "react";
+import { SgYearPartSelector, type ResolvedYearPart } from "@seedgrid/fe-components";
+
+// A faixa padrao (ano corrente - 30 ate' ano corrente + 10) serve para filtro generico. Quando o
+// dado so' existe a partir de um ano — a empresa abriu em 2020, o ERP migrou em 2022 — vale
+// estreitar: ano que nao tem movimento nao deveria ser oferecido.
+export default function Example() {
+  const [resolved, setResolved] = React.useState<ResolvedYearPart | null>(null);
+
+  return (
+    <div className="w-full max-w-xl">
+      <SgYearPartSelector
+        id="yps-range"
+        label="Exercicio"
+        locale="pt-BR"
+        minYear={2020}
+        maxYear={2026}
+        onChange={setResolved}
+      />
+      <p className="mt-2 text-xs text-muted-foreground">
+        {resolved ? resolved.label : "Nenhum recorte confirmado ainda"}
+      </p>
+    </div>
+  );
+}

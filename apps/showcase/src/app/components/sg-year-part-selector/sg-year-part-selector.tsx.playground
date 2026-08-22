@@ -1,0 +1,156 @@
+import * as React from "react";
+import * as SeedGrid from "@seedgrid/fe-components";
+
+const SgYearPartSelectorFromLib = (SeedGrid as Record<string, unknown>).SgYearPartSelector as
+  | React.ComponentType<any>
+  | undefined;
+
+type YearPartValue = {
+  year: number;
+  kind: string;
+  part: number;
+};
+
+type ResolvedYearPart = {
+  value: YearPartValue;
+  label: string;
+  startDate: Date;
+  endDate: Date;
+};
+
+const KINDS = ["SEMESTER", "QUARTER", "BIMESTER"];
+const LOCALES = ["pt-BR", "pt-PT", "en-US", "es", "fr"];
+
+function fmt(date: Date | null | undefined): string {
+  if (!date) return "(none)";
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, "0");
+  const d = String(date.getDate()).padStart(2, "0");
+  return `${y}-${m}-${d}`;
+}
+
+export default function App() {
+  const hasComponent = typeof SgYearPartSelectorFromLib === "function";
+
+  const [allowedKinds, setAllowedKinds] = React.useState<string[]>(KINDS);
+  const [locale, setLocale] = React.useState("pt-BR");
+  const [minYear, setMinYear] = React.useState(2020);
+  const [maxYear, setMaxYear] = React.useState(2030);
+  const [disabled, setDisabled] = React.useState(false);
+  const [required, setRequired] = React.useState(false);
+  const [resolved, setResolved] = React.useState<ResolvedYearPart | null>(null);
+
+  // Lista vazia cai no default dentro do componente, entao desmarcar tudo nao "apaga" o combo:
+  // o playground mostra isso em vez de esconder.
+  const toggleKind = (kind: string) =>
+    setAllowedKinds((current) =>
+      current.includes(kind) ? current.filter((item) => item !== kind) : [...current, kind]
+    );
+
+  return (
+    <div className="space-y-4 p-2">
+      {!hasComponent ? (
+        <div className="rounded border border-amber-200 bg-amber-50 p-2 text-xs text-amber-800">
+          SgYearPartSelector is not available in the published Sandpack version yet.
+        </div>
+      ) : null}
+
+      <div className="flex flex-wrap items-center gap-3">
+        {KINDS.map((kind) => (
+          <label key={kind} className="text-sm inline-flex items-center gap-1">
+            <input
+              className="mr-1"
+              type="checkbox"
+              checked={allowedKinds.includes(kind)}
+              onChange={() => toggleKind(kind)}
+            />
+            {kind}
+          </label>
+        ))}
+        <label className="text-sm inline-flex items-center gap-1">
+          <input
+            className="mr-1"
+            type="checkbox"
+            checked={disabled}
+            onChange={(e) => setDisabled(e.target.checked)}
+          />
+          disabled
+        </label>
+        <label className="text-sm inline-flex items-center gap-1">
+          <input
+            className="mr-1"
+            type="checkbox"
+            checked={required}
+            onChange={(e) => setRequired(e.target.checked)}
+          />
+          required
+        </label>
+      </div>
+
+      <div className="flex flex-wrap items-center gap-3">
+        <label className="text-sm inline-flex items-center gap-2">
+          locale
+          <select
+            className="h-8 rounded-md border border-border bg-background px-2 text-sm"
+            value={locale}
+            onChange={(e) => setLocale(e.target.value)}
+          >
+            {LOCALES.map((item) => (
+              <option key={item} value={item}>
+                {item}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label className="text-sm inline-flex items-center gap-2">
+          minYear
+          <input
+            className="h-8 w-24 rounded-md border border-border bg-background px-2 text-sm"
+            type="number"
+            value={minYear}
+            onChange={(e) => setMinYear(Number(e.target.value))}
+          />
+        </label>
+        <label className="text-sm inline-flex items-center gap-2">
+          maxYear
+          <input
+            className="h-8 w-24 rounded-md border border-border bg-background px-2 text-sm"
+            type="number"
+            value={maxYear}
+            onChange={(e) => setMaxYear(Number(e.target.value))}
+          />
+        </label>
+      </div>
+
+      <div className="w-full max-w-xl">
+        {hasComponent ? (
+          <SgYearPartSelectorFromLib
+            id="yps-playground"
+            label="Recorte do ano"
+            locale={locale}
+            allowedKinds={allowedKinds}
+            minYear={minYear}
+            maxYear={maxYear}
+            disabled={disabled}
+            required={required}
+            onChange={(next: ResolvedYearPart) => setResolved(next)}
+          />
+        ) : (
+          <select className="h-11 w-full rounded-md border border-border bg-background px-3 text-sm">
+            <option>Semestre 1 (S1)</option>
+            <option>Semestre 2 (S2)</option>
+          </select>
+        )}
+      </div>
+
+      <div className="rounded border border-border bg-muted/40 p-3 text-xs font-mono">
+        <div><strong>year:</strong> {resolved ? resolved.value.year : "(none)"}</div>
+        <div><strong>kind:</strong> {resolved ? resolved.value.kind : "(none)"}</div>
+        <div><strong>part:</strong> {resolved ? resolved.value.part : "(none)"}</div>
+        <div><strong>label:</strong> {resolved ? resolved.label : "(none)"}</div>
+        <div><strong>start:</strong> {fmt(resolved?.startDate)}</div>
+        <div><strong>end:</strong> {fmt(resolved?.endDate)}</div>
+      </div>
+    </div>
+  );
+}
