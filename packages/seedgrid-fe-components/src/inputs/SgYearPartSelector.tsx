@@ -2,7 +2,7 @@
 
 import React from "react";
 import { cn } from "../layout/sgDocking";
-import { SgAutocomplete, type SgAutocompleteItem } from "./SgAutocomplete";
+import type { SgAutocompleteItem } from "./SgAutocomplete";
 import { SgCombobox } from "./SgCombobox";
 import {
   YearPartKind,
@@ -145,19 +145,6 @@ export function SgYearPartSelector(props: Readonly<SgYearPartSelectorProps>) {
     });
   }, [firstYear, lastYear]);
 
-  /*
-   * O SgAutocomplete pede uma FONTE (funcao da query), nao um array. Filtra por prefixo, que e' o
-   * unico casamento que faz sentido em ano: "202" oferece 2029..2020, e nao 1202.
-   */
-  const yearSource = React.useCallback(
-    (query: string) => {
-      const typed = query.trim();
-      if (!typed) return yearItems;
-      return yearItems.filter((item) => item.label.startsWith(typed));
-    },
-    [yearItems]
-  );
-
   const kindItems = React.useMemo<SgAutocompleteItem[]>(
     () => kinds.map((kind) => ({ id: kind, label: yearPartKindLabel(kind, locale) })),
     [kinds, locale]
@@ -187,25 +174,24 @@ export function SgYearPartSelector(props: Readonly<SgYearPartSelectorProps>) {
 
       <div className="flex w-full flex-col gap-2 sm:flex-row sm:items-start sm:gap-3">
         <div className="w-full sm:flex-1">
-          <SgAutocomplete
+          {/*
+            * Combobox e nao autocomplete: o autocomplete filtra a lista pelo texto que esta' no
+            * campo, entao com 2026 escolhido o botao de "mostrar todos" abria mostrando so' 2026 —
+            * justamente quando o usuario quer ver os outros anos. O combobox abre com a lista
+            * inteira e ainda filtra por digitacao, que e' o que se espera de um campo de ano.
+            */}
+          <SgCombobox<SgAutocompleteItem>
             id={`${id}-year`}
             label={pickLocale(FIELD_LABELS.year, locale)}
-            source={yearSource}
-            value={String(current.year)}
-            /*
-             * A lista e' local e finita: abre no foco sem exigir digitacao (minLengthForSearch 0),
-             * nao cacheia — nao ha' o que economizar, e o cache ficaria velho quando minYear/maxYear
-             * mudassem — e nao pode cair no maxResult padrao de 50, que cortaria uma faixa de anos
-             * larga sem avisar ninguem.
-             */
-            minLengthForSearch={0}
+            source={yearItems}
+            value={current.year}
             openOnFocus
-            showDropDownButton
-            cacheEnabled={false}
-            maxResult={yearItems.length}
             enabled={enabled}
             required={required}
-            onSelect={(item) => commit({ ...current, year: Number(item.id) })}
+            onValueChange={(value) => {
+              if (value === null || value === undefined) return;
+              commit({ ...current, year: Number(value) });
+            }}
           />
         </div>
 
