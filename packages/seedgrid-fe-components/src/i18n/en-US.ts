@@ -148,6 +148,7 @@ const enUS: Record<string, string> = {
   "components.badge.remove": "Remove badge",
   "components.toast.loading": "Loading...",
   "components.toaster.close": "Close toast",
+  "components.whistler.close": "Close alert",
   "components.dialog.ariaLabel": "Dialog",
   "components.dialog.close": "Close",
   "components.popup.ariaLabel": "Popup",

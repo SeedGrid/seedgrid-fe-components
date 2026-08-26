@@ -16,6 +16,7 @@ export const sgMeta: SgMetaV0 = {
   fieldSemantics: ["alertRenderer", "persistentFeedback", "stackedAlerts"],
   props: [
     { name: "max", type: "number", default: 4, description: "Quantidade maxima de whistle items visiveis.", semanticRole: "behavior", bindable: true },
+    { name: "duration", type: "number", default: 4000, description: "Duracao padrao dos whistles em milissegundos (mesmo default do SgToaster). Cada whistle sobrescreve com options.duration, que tem prioridade; use 0 (ou negativo) para que nada suma sozinho. Whistle 'loading' nunca expira.", semanticRole: "behavior", bindable: true },
     { name: "newestOnTop", type: "boolean", default: false, description: "Inverte a ordem visual para mostrar os mais novos primeiro.", semanticRole: "behavior", bindable: true },
     { name: "gap", type: "number", default: 12, description: "Espacamento entre os avisos renderizados.", semanticRole: "appearance", bindable: true },
     { name: "rounded", type: "boolean", default: true, description: "Arredonda os cantos de cada whistle (desligue para cantos retos).", semanticRole: "appearance", bindable: true }

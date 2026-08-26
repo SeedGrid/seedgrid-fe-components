@@ -68,6 +68,7 @@ export default function SgToasterPage() {
     { prop: "visibleToasts", type: "number", defaultValue: "6", description: t(i18n, `${K}.props.visibleToasts`) },
     { prop: "closeButton", type: "boolean", defaultValue: "true", description: t(i18n, `${K}.props.closeButton`) },
     { prop: "richColors", type: "boolean", defaultValue: "true", description: t(i18n, `${K}.props.richColors`) },
+    { prop: "rounded", type: "boolean", defaultValue: "true", description: t(i18n, `${K}.props.rounded`) },
     { prop: "transparency", type: "number (0-100)", defaultValue: "0", description: t(i18n, `${K}.props.transparency`) },
     {
       prop: "customColors",

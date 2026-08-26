@@ -148,6 +148,7 @@ const ptPT: Record<string, string> = {
   "components.badge.remove": "Remover badge",
   "components.toast.loading": "A carregar...",
   "components.toaster.close": "Fechar notificacao",
+  "components.whistler.close": "Fechar aviso",
   "components.dialog.ariaLabel": "Dialogo",
   "components.dialog.close": "Fechar",
   "components.popup.ariaLabel": "Popup",

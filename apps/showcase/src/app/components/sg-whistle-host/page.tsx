@@ -68,8 +68,10 @@ export default function SgWhistleHostPage() {
 
   const whistleProps: ShowcasePropRow[] = [
     { prop: "max", type: "number", defaultValue: "4", description: t(i18n, `${K}.props.max`) },
+    { prop: "duration", type: "number", defaultValue: "4000", description: t(i18n, `${K}.props.duration`) },
     { prop: "newestOnTop", type: "boolean", defaultValue: "false", description: t(i18n, `${K}.props.newestOnTop`) },
     { prop: "gap", type: "number", defaultValue: "12", description: t(i18n, `${K}.props.gap`) },
+    { prop: "rounded", type: "boolean", defaultValue: "true", description: t(i18n, `${K}.props.rounded`) },
     { prop: "className / style", type: "string / CSSProperties", defaultValue: "-", description: t(i18n, `${K}.props.classNameStyle`) },
     { prop: "customColors", type: "Partial<Record<SgWhistleSeverity, { bg; fg; border }>>", defaultValue: "-", description: t(i18n, `${K}.props.customColors`) }
   ];

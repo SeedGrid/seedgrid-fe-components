@@ -48,8 +48,11 @@ export const sgMeta: SgMetaV0 = {
     {
       name: "options.duration",
       type: "number",
-      default: 3000,
-      description: "Duracao em milissegundos antes de auto-fechar (0 = permanente).",
+      // SEM default de proposito: a opcao por toast nao tem valor proprio no codigo
+      // (`toast.duration ?? duration`), quem tem default e' o host. O antigo `default: 3000`
+      // era um terceiro numero que nao existe em lugar nenhum. Espelha `options.duration` do
+      // sgWhistle, que ja' era assim.
+      description: "Duracao em milissegundos deste toast; tem PRIORIDADE sobre o host. Omitir NAO significa permanente: cai no `duration` do SgToaster/SgToastHost, cujo default e' 4000 (4s), igual ao par whistle/SgWhistleHost. Use 0 (ou negativo) para permanente, ate' o usuario fechar. Toast do tipo 'loading' nunca fecha sozinho, qualquer que seja o valor.",
       semanticRole: "behavior",
       bindable: true
     },
@@ -86,21 +89,39 @@ export const sgMeta: SgMetaV0 = {
   states: ["success", "error", "warning", "info", "loading", "default"],
   examples: [
     {
-      id: "basic",
-      title: "Toast simples",
-      file: "apps/showcase/src/app/components/toasts/samples/basic.tsx.sample",
+      id: "base-setup",
+      title: "Setup basico (host + toast)",
+      file: "apps/showcase/src/app/components/sg-toaster/samples/base-setup.tsx.sample",
       kind: "sample"
     },
     {
-      id: "with-action",
-      title: "Toast com acao",
-      file: "apps/showcase/src/app/components/toasts/samples/with-action.tsx.sample",
+      id: "toast-types",
+      title: "Tipos de toast",
+      file: "apps/showcase/src/app/components/sg-toaster/samples/toast-types.tsx.sample",
       kind: "sample"
     },
     {
-      id: "promise",
+      id: "options-per-toast",
+      title: "Opcoes por toast (duration, etc.)",
+      file: "apps/showcase/src/app/components/sg-toaster/samples/options-per-toast.tsx.sample",
+      kind: "sample"
+    },
+    {
+      id: "actions-and-custom-toast",
+      title: "Acao e toast customizado",
+      file: "apps/showcase/src/app/components/sg-toaster/samples/actions-and-custom-toast.tsx.sample",
+      kind: "sample"
+    },
+    {
+      id: "loading-by-id-update-same-toast",
+      title: "Loading atualizado pelo id",
+      file: "apps/showcase/src/app/components/sg-toaster/samples/loading-by-id-update-same-toast.tsx.sample",
+      kind: "sample"
+    },
+    {
+      id: "toast-promise",
       title: "Toast com promise",
-      file: "apps/showcase/src/app/components/toasts/samples/promise.tsx.sample",
+      file: "apps/showcase/src/app/components/sg-toaster/samples/toast-promise.tsx.sample",
       kind: "sample"
     }
   ],

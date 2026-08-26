@@ -55,7 +55,7 @@ export const sgMeta: SgMetaV0 = {
     {
       name: "options.duration",
       type: "number",
-      description: "Duracao em milissegundos (0 = permanente, padrao = permanente).",
+      description: "Duracao em milissegundos deste whistle; tem PRIORIDADE sobre o host. Omitir NAO significa permanente: cai no `duration` do SgWhistler/SgWhistleHost, cujo default e' 4000 (4s), igual ao par toast/SgToastHost. Use 0 (ou negativo) para permanente, ate' o usuario fechar no x — obrigatorio quando o aviso bloqueia uma acao ou carrega um botao de acao, porque sumir leva embora a informacao e o caminho de saida junto. Severidade 'loading' nunca expira sozinha.",
       semanticRole: "behavior",
       bindable: true
     },
@@ -114,21 +114,39 @@ export const sgMeta: SgMetaV0 = {
   states: ["default", "success", "info", "warning", "error", "loading"],
   examples: [
     {
-      id: "basic",
-      title: "Whistle simples",
-      file: "apps/showcase/src/app/components/whistles/samples/basic.tsx.sample",
+      id: "base-setup",
+      title: "Setup basico (host + sgWhistle)",
+      file: "apps/showcase/src/app/components/sg-whistler/samples/base-setup.tsx.sample",
       kind: "sample"
     },
     {
-      id: "with-action",
-      title: "Whistle com acao",
-      file: "apps/showcase/src/app/components/whistles/samples/with-action.tsx.sample",
+      id: "severities-and-stack",
+      title: "Severidades e empilhamento",
+      file: "apps/showcase/src/app/components/sg-whistler/samples/severities-and-stack.tsx.sample",
+      kind: "sample"
+    },
+    {
+      id: "actions-border-opacity",
+      title: "Acao, borda e opacidade",
+      file: "apps/showcase/src/app/components/sg-whistler/samples/actions-border-opacity.tsx.sample",
+      kind: "sample"
+    },
+    {
+      id: "update-by-id",
+      title: "Substituir/atualizar pelo id",
+      file: "apps/showcase/src/app/components/sg-whistler/samples/update-by-id.tsx.sample",
+      kind: "sample"
+    },
+    {
+      id: "custom-renderer-and-colors",
+      title: "Renderer e cores customizados",
+      file: "apps/showcase/src/app/components/sg-whistler/samples/custom-renderer-and-colors.tsx.sample",
       kind: "sample"
     },
     {
       id: "promise",
       title: "Whistle com promise",
-      file: "apps/showcase/src/app/components/whistles/samples/promise.tsx.sample",
+      file: "apps/showcase/src/app/components/sg-whistler/samples/promise.tsx.sample",
       kind: "sample"
     }
   ],

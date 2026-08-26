@@ -25,6 +25,16 @@ export type SgWhistlerProps = Omit<React.HTMLAttributes<HTMLDivElement>, "childr
   max?: number;
   newestOnTop?: boolean;
   gap?: number;
+  /**
+   * Duracao padrao, em milissegundos, dos whistles deste host. Cada whistle pode sobrescrever
+   * com `options.duration`, que tem PRIORIDADE. Use 0 (ou negativo) para que nada suma sozinho
+   * por padrao. Whistle `loading` nunca expira, qualquer que seja o valor.
+   *
+   * Espelha o `duration` do SgToaster/SgToastHost — mesmo default e mesma precedencia. Antes o
+   * valor era fixo no codigo e nao havia como mudar o padrao sem repetir `duration` em toda
+   * chamada de sgWhistle.
+   */
+  duration?: number;
   /** Arredonda os cantos de cada whistle (rounded-lg). Desligue para cantos retos. */
   rounded?: boolean;
   customColors?: Partial<Record<SgWhistleSeverity, SgWhistleColors>>;
@@ -143,6 +153,10 @@ export function SgWhistler(props: SgWhistlerProps) {
 
   const {
     max = 4,
+    // Mesmo default do SgToaster: os dois pares (toast/host e whistle/host) expoem o mesmo
+    // contrato de duracao, entao o numero tambem tem que bater. O 5000 anterior era um valor
+    // cravado no efeito, sem prop e sem documentacao — nao uma escolha.
+    duration = 4000,
     newestOnTop = false,
     gap = 12,
     rounded = true,
@@ -189,7 +203,7 @@ export function SgWhistler(props: SgWhistlerProps) {
         return;
       }
 
-      const timeout = whistle.duration ?? 5000;
+      const timeout = whistle.duration ?? duration;
       if (timeout <= 0) {
         return;
       }
@@ -208,7 +222,7 @@ export function SgWhistler(props: SgWhistlerProps) {
       clearTimeout(timeoutRef);
       delete timersRef.current[id];
     });
-  }, [visible]);
+  }, [visible, duration]);
 
   React.useEffect(() => {
     return () => {
@@ -268,7 +282,7 @@ export function SgWhistler(props: SgWhistlerProps) {
               <button
                 type="button"
                 className="shrink-0 rounded px-1 py-0.5 text-sm leading-none opacity-80"
-                aria-label={t(i18n, "components.toaster.close")}
+                aria-label={t(i18n, "components.whistler.close")}
                 onClick={() => dismissSgWhistle(whistle.id)}
               >
                 x
