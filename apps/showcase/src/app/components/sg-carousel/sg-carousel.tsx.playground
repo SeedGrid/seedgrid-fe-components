@@ -1,0 +1,164 @@
+import * as React from "react";
+import {
+  SgCarousel,
+  SgGrid,
+  SgCombobox,
+  SgToggleSwitch,
+  SgButton,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
+
+const images = Array.from({ length: 6 }, (_, index) => ({
+  id: index + 1,
+  title: "Item " + (index + 1),
+  url: "https://picsum.photos/1200/700?random=" + (200 + index)
+}));
+
+const items = images.map((item) => (
+  <div key={item.id} className="relative h-full overflow-hidden rounded-lg text-white shadow-lg">
+    <img src={item.url} alt={item.title} loading="lazy" className="h-full w-full object-cover" />
+    <div className="pointer-events-none absolute inset-0 bg-black/35" />
+    <SgGrid columns={1} justify="center" align="center" className="absolute inset-0">
+      <div className="text-center">
+        <h3 className="text-3xl font-bold">{item.title}</h3>
+        <p className="mt-2 text-sm opacity-90">Slide {item.id}</p>
+      </div>
+    </SgGrid>
+  </div>
+));
+
+export default function App() {
+  const [numVisible, setNumVisible] = React.useState(1);
+  const [numScroll, setNumScroll] = React.useState(1);
+  const [orientation, setOrientation] = React.useState<"horizontal" | "vertical">("horizontal");
+  const [circular, setCircular] = React.useState(true);
+  const [autoPlay, setAutoPlay] = React.useState(false);
+  const [autoPlayInterval, setAutoPlayInterval] = React.useState(3000);
+  const [showNavigators, setShowNavigators] = React.useState(true);
+  const [showIndicators, setShowIndicators] = React.useState(true);
+  const [gap, setGap] = React.useState(16);
+
+  const isVertical = orientation === "vertical";
+  const visibleOptions = [1, 2, 3, 4, 5].map((value) => ({ value: String(value), label: String(value) }));
+  const scrollOptions = [1, 2, 3].map((value) => ({ value: String(value), label: String(value) }));
+  const orientationOptions = [
+    { value: "horizontal", label: "Horizontal" },
+    { value: "vertical", label: "Vertical" }
+  ];
+  const autoPlayOptions = [1000, 2000, 3000, 5000, 8000, 10000].map((value) => ({
+    value: String(value),
+    label: value + " ms"
+  }));
+  const gapOptions = [0, 8, 16, 24, 32, 48, 64].map((value) => ({
+    value: String(value),
+    label: value + " px"
+  }));
+
+  return (
+    <div className="space-y-4 p-2">
+      <SgGrid columns={{ base: 1, sm: 2, lg: 3 }} gap={12}>
+        <SgCombobox
+          id="pg-num-visible"
+          label={"numVisible (" + numVisible + ")"}
+          source={visibleOptions}
+          value={String(numVisible)}
+          onValueChange={(value) => setNumVisible(Number(value))}
+        />
+
+        <SgCombobox
+          id="pg-num-scroll"
+          label={"numScroll (" + numScroll + ")"}
+          source={scrollOptions}
+          value={String(numScroll)}
+          onValueChange={(value) => setNumScroll(Number(value))}
+        />
+
+        <SgCombobox
+          id="pg-orientation"
+          label="orientation"
+          source={orientationOptions}
+          value={orientation}
+          onValueChange={(value) => setOrientation((value as "horizontal" | "vertical") ?? "horizontal")}
+        />
+
+        <SgCombobox
+          id="pg-autoplay-interval"
+          label={"autoPlayInterval (" + autoPlayInterval + " ms)"}
+          source={autoPlayOptions}
+          value={String(autoPlayInterval)}
+          onValueChange={(value) => setAutoPlayInterval(Number(value))}
+        />
+
+        <SgCombobox
+          id="pg-gap"
+          label={"gap (" + gap + " px)"}
+          source={gapOptions}
+          value={String(gap)}
+          onValueChange={(value) => setGap(Number(value))}
+        />
+      </SgGrid>
+
+      <SgGrid columns={{ base: 1, sm: 2, lg: 4 }} gap={8}>
+        <SgToggleSwitch id="pg-circular" label="circular" checked={circular} onChange={setCircular} />
+        <SgToggleSwitch id="pg-autoplay" label="autoPlay" checked={autoPlay} onChange={setAutoPlay} />
+        <SgToggleSwitch
+          id="pg-show-navigators"
+          label="showNavigators"
+          checked={showNavigators}
+          onChange={setShowNavigators}
+        />
+        <SgToggleSwitch
+          id="pg-show-indicators"
+          label="showIndicators"
+          checked={showIndicators}
+          onChange={setShowIndicators}
+        />
+      </SgGrid>
+
+      <SgGrid columns={{ base: 1, sm: 2, lg: 4 }} gap={8}>
+        <SgButton
+          size="sm"
+          appearance="outline"
+          onClick={() => {
+            setNumVisible(1);
+            setNumScroll(1);
+            setOrientation("horizontal");
+            setCircular(true);
+            setAutoPlay(false);
+            setAutoPlayInterval(3000);
+            setShowNavigators(true);
+            setShowIndicators(true);
+            setGap(16);
+          }}
+        >
+          Resetar
+        </SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => setOrientation("vertical")}>
+          Vertical
+        </SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => setOrientation("horizontal")}>
+          Horizontal
+        </SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => setAutoPlay((prev) => !prev)}>
+          Toggle AutoPlay
+        </SgButton>
+      </SgGrid>
+
+      <div className={isVertical ? "mx-auto h-96 w-80" : "h-64 w-full"}>
+        <SgCarousel
+          items={items}
+          numVisible={numVisible}
+          numScroll={numScroll}
+          orientation={orientation}
+          circular={circular}
+          autoPlay={autoPlay}
+          autoPlayInterval={autoPlayInterval}
+          showNavigators={showNavigators}
+          showIndicators={showIndicators}
+          gap={gap}
+          height="100%"
+        />
+      </div>
+    </div>
+  );
+}

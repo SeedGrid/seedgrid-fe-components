@@ -1,0 +1,88 @@
+import * as React from "react";
+import {
+  Bell,
+  Home,
+  Mail,
+  Settings,
+  User,
+} from "lucide-react";
+import {
+  SgButton,
+  SgDockMenu,
+  SgGrid,
+  toast,
+  type SgDockMenuItem,
+  type SgDockMenuPosition,
+} from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
+
+export default function App() {
+  const [position, setPosition] = React.useState<SgDockMenuPosition>("center-bottom");
+  const [itemSize, setItemSize] = React.useState(48);
+  const [gap, setGap] = React.useState(12);
+  const [showLabels, setShowLabels] = React.useState(true);
+  const [magnify, setMagnify] = React.useState(true);
+  const [enableDragDrop, setEnableDragDrop] = React.useState(false);
+  const [lastAction, setLastAction] = React.useState("none");
+
+  const items = [
+    { id: "home", icon: <Home size={22} />, label: "Home", onClick: () => setLastAction("Home clicked") },
+    { id: "mail", icon: <Mail size={22} />, label: "Mail", badge: 5, onClick: () => setLastAction("Mail clicked") },
+    { id: "alerts", icon: <Bell size={22} />, label: "Alerts", badge: 2, onClick: () => setLastAction("Alerts clicked") },
+    { id: "settings", icon: <Settings size={22} />, label: "Settings", onClick: () => setLastAction("Settings clicked") },
+    { id: "profile", icon: <User size={22} />, label: "Profile", onClick: () => setLastAction("Profile clicked") }
+  ];
+
+  return (
+    <div className="space-y-4 p-2">
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <label className="text-xs">
+          <span className="mb-1 block font-medium">position</span>
+          <select value={position} onChange={(e) => setPosition(e.target.value as SgDockMenuPosition)} className="w-full rounded border border-border px-2 py-1">
+            <option value="left-top">left-top</option>
+            <option value="center-top">center-top</option>
+            <option value="right-top">right-top</option>
+            <option value="left-center">left-center</option>
+            <option value="right-center">right-center</option>
+            <option value="left-bottom">left-bottom</option>
+            <option value="center-bottom">center-bottom</option>
+            <option value="right-bottom">right-bottom</option>
+          </select>
+        </label>
+        <label className="text-xs">
+          <span className="mb-1 block font-medium">itemSize: {itemSize}px</span>
+          <input type="range" min={32} max={80} value={itemSize} onChange={(e) => setItemSize(Number(e.target.value))} className="w-full" />
+        </label>
+        <label className="text-xs">
+          <span className="mb-1 block font-medium">gap: {gap}px</span>
+          <input type="range" min={0} max={24} value={gap} onChange={(e) => setGap(Number(e.target.value))} className="w-full" />
+        </label>
+      </div>
+
+      <div className="grid gap-2 text-xs sm:grid-cols-3">
+        <label className="inline-flex items-center gap-2"><input type="checkbox" checked={showLabels} onChange={(e) => setShowLabels(e.target.checked)} />showLabels</label>
+        <label className="inline-flex items-center gap-2"><input type="checkbox" checked={magnify} onChange={(e) => setMagnify(e.target.checked)} />magnify</label>
+        <label className="inline-flex items-center gap-2"><input type="checkbox" checked={enableDragDrop} onChange={(e) => setEnableDragDrop(e.target.checked)} />enableDragDrop</label>
+      </div>
+
+      <div className="rounded border border-border bg-muted/30 px-3 py-2 text-xs">
+        Last action: <strong>{lastAction}</strong>
+      </div>
+
+      <div className="relative h-96 rounded-lg border-2 border-dashed border-border bg-muted/20">
+        <SgDockMenu
+          id="playground-dock"
+          dragId={enableDragDrop ? "playground-drag" : undefined}
+          items={items}
+          position={position}
+          itemSize={itemSize}
+          gap={gap}
+          showLabels={showLabels}
+          magnify={magnify}
+          enableDragDrop={enableDragDrop}
+          zIndex={10} style={{ position: "absolute" }}
+        />
+      </div>
+    </div>
+  );
+}

@@ -1,10 +1,6 @@
 {
   "_comentario": "Referencias de exemplo quebradas ja' existentes quando o check nasceu. O check reprova apenas referencias NOVAS; estas ficam como aviso ate' serem corrigidas. Esta lista so' deve encolher.",
   "knownBroken": [
-    "SgCarousel::apps/showcase/src/app/components/sg-carousel/sg-carousel.tsx.playground",
-    "SgDockMenu::apps/showcase/src/app/components/sg-dock-menu/sg-dock-menu.tsx.playground",
-    "SgExpandablePanel::apps/showcase/src/app/components/sg-expandable-panel/samples/basico.tsx.sample",
-    "SgMenu::apps/showcase/src/app/components/sg-menu/samples/basico.tsx.sample",
     "dismissSgToast::apps/showcase/src/app/components/toasts/samples/dismiss-all.tsx.sample",
     "dismissSgToast::apps/showcase/src/app/components/toasts/samples/dismiss-one.tsx.sample",
     "dismissSgWhistle::apps/showcase/src/app/components/whistles/samples/dismiss-all.tsx.sample",
@@ -14,8 +10,6 @@
     "subscribeSgWhistles::apps/showcase/src/app/components/whistles/samples/subscribe-effect.tsx.sample",
     "subscribeSgWhistles::apps/showcase/src/app/components/whistles/samples/subscribe.tsx.sample",
     "useSgClockThemeResolver::apps/showcase/src/app/components/hooks/use-sg-clock-theme-resolver/samples/basic.tsx.sample",
-    "useSgNamespaceProvider::apps/showcase/src/app/components/hooks/use-sg-namespace-provider/samples/basic.tsx.sample",
-    "useSgPersistence::apps/showcase/src/app/components/hooks/use-sg-persistence/samples/form-state.tsx.sample",
-    "useSgPersistentState::apps/showcase/src/app/components/hooks/use-sg-persistent-state/samples/form-state.tsx.sample"
+    "useSgNamespaceProvider::apps/showcase/src/app/components/hooks/use-sg-namespace-provider/samples/basic.tsx.sample"
   ]
 }

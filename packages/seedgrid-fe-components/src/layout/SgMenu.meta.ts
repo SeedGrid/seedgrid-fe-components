@@ -85,9 +85,45 @@ export const sgMeta: SgMetaV0 = {
   states: ["default", "collapsed", "expanded", "pinned", "searching", "docked"],
   examples: [
     {
-      id: "basic",
-      title: "Basico",
-      file: "apps/showcase/src/app/components/sg-menu/samples/basico.tsx.sample",
+      id: "sidebar-fixa",
+      title: "Sidebar fixa",
+      file: "apps/showcase/src/app/components/sg-menu/samples/sidebar-fixa.tsx.sample",
+      kind: "sample"
+    },
+    {
+      id: "drawer-mobile",
+      title: "Drawer mobile",
+      file: "apps/showcase/src/app/components/sg-menu/samples/drawer-mobile.tsx.sample",
+      kind: "sample"
+    },
+    {
+      id: "panel-menu",
+      title: "Panel menu",
+      file: "apps/showcase/src/app/components/sg-menu/samples/panel-menu.tsx.sample",
+      kind: "sample"
+    },
+    {
+      id: "tiered",
+      title: "Menu em niveis",
+      file: "apps/showcase/src/app/components/sg-menu/samples/tiered.tsx.sample",
+      kind: "sample"
+    },
+    {
+      id: "mega-menu-horizontal",
+      title: "Mega menu horizontal",
+      file: "apps/showcase/src/app/components/sg-menu/samples/mega-menu-horizontal.tsx.sample",
+      kind: "sample"
+    },
+    {
+      id: "mega-menu-vertical",
+      title: "Mega menu vertical",
+      file: "apps/showcase/src/app/components/sg-menu/samples/mega-menu-vertical.tsx.sample",
+      kind: "sample"
+    },
+    {
+      id: "sidebar-dockable",
+      title: "Sidebar dockable",
+      file: "apps/showcase/src/app/components/sg-menu/samples/sidebar-dockable.tsx.sample",
       kind: "sample"
     },
     {

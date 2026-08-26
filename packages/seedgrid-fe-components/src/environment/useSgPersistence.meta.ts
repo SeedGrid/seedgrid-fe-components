@@ -74,9 +74,9 @@ export const sgMeta: SgMetaV0 = {
       kind: "sample"
     },
     {
-      id: "form-state",
-      title: "Persistir estado de formulario",
-      file: "apps/showcase/src/app/components/hooks/use-sg-persistence/samples/form-state.tsx.sample",
+      id: "quando-usar-vs-persistent-state",
+      title: "Quando usar vs useSgPersistentState",
+      file: "apps/showcase/src/app/components/hooks/use-sg-persistence/samples/quando-usar-vs-persistent-state.tsx.sample",
       kind: "sample"
     }
   ],

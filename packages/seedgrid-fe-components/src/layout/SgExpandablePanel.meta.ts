@@ -25,7 +25,11 @@ export const sgMeta: SgMetaV0 = {
   ],
   states: ["closed", "open", "overlay", "inline", "resizing"],
   examples: [
-    { id: "basic", title: "Basico", file: "apps/showcase/src/app/components/sg-expandable-panel/samples/basico.tsx.sample", kind: "sample" },
+    { id: "inline-controlado-resize", title: "Inline controlado com resize", file: "apps/showcase/src/app/components/sg-expandable-panel/samples/inline-controlado-resize.tsx.sample", kind: "sample" },
+    { id: "overlay-comportamento", title: "Comportamento em overlay", file: "apps/showcase/src/app/components/sg-expandable-panel/samples/overlay-comportamento.tsx.sample", kind: "sample" },
+    { id: "default-open-estilizacao", title: "Aberto por padrao e estilizacao", file: "apps/showcase/src/app/components/sg-expandable-panel/samples/default-open-estilizacao.tsx.sample", kind: "sample" },
+    { id: "acessibilidade-fade", title: "Acessibilidade e fade", file: "apps/showcase/src/app/components/sg-expandable-panel/samples/acessibilidade-fade.tsx.sample", kind: "sample" },
+    { id: "sem-backdrop-animation-none", title: "Sem backdrop e sem animacao", file: "apps/showcase/src/app/components/sg-expandable-panel/samples/sem-backdrop-animation-none.tsx.sample", kind: "sample" },
     { id: "playground", title: "Playground", file: "apps/showcase/src/app/components/sg-expandable-panel/sg-expandable-panel.tsx.playground", kind: "playground" }
   ],
   showcase: { route: "/components/sg-expandable-panel", hasPlayground: true, hasPropsTable: true },

@@ -75,9 +75,15 @@ export const sgMeta: SgMetaV0 = {
       kind: "sample"
     },
     {
-      id: "form-state",
-      title: "Estado persistido de formulario",
-      file: "apps/showcase/src/app/components/hooks/use-sg-persistent-state/samples/form-state.tsx.sample",
+      id: "com-isolamento-por-namespace",
+      title: "Isolamento por namespace",
+      file: "apps/showcase/src/app/components/hooks/use-sg-persistent-state/samples/com-isolamento-por-namespace.tsx.sample",
+      kind: "sample"
+    },
+    {
+      id: "versionamento-de-estado",
+      title: "Versionamento de estado",
+      file: "apps/showcase/src/app/components/hooks/use-sg-persistent-state/samples/versionamento-de-estado.tsx.sample",
       kind: "sample"
     }
   ],
