@@ -37,6 +37,51 @@ function CodeBlock(props: { sampleFile: string }) {
   return <SgCodeBlockBase sampleFile={props.sampleFile} />;
 }
 
+/** Demo de `nextDisabled`: checagem assincrona que, ao terminar, mantem o avanco bloqueado. */
+function NextDisabledDemo() {
+  const [codigo, setCodigo] = React.useState("");
+  const [checando, setChecando] = React.useState(false);
+  const [jaUsado, setJaUsado] = React.useState(false);
+
+  async function verificarCodigo() {
+    if (!codigo.trim()) return;
+    setChecando(true);
+    await new Promise((resolve) => setTimeout(resolve, 600));
+    setJaUsado(codigo.trim().toUpperCase() === "SG-123");
+    setChecando(false);
+  }
+
+  return (
+    <SgWizard nextDisabled={jaUsado} onFinish={() => undefined}>
+      <SgWizardPage title="Convite">
+        <SgInputText
+          id="wizard-codigo-convite"
+          label="Codigo do convite"
+          error={jaUsado ? "Este codigo ja foi utilizado." : undefined}
+          onChange={(value) => {
+            setCodigo(value);
+            setJaUsado(false);
+          }}
+          onExit={() => void verificarCodigo()}
+        />
+        <p className="mt-2 text-sm text-muted-foreground">
+          {checando
+            ? "Verificando o codigo..."
+            : 'Digite "SG-123" e saia do campo: o botao Proximo fica desabilitado.'}
+        </p>
+      </SgWizardPage>
+      <SgWizardPage title="Conclusao">
+        <div className="rounded border border-border bg-foreground/5 p-4">
+          <div className="text-sm font-semibold">Codigo aceito</div>
+          <p className="mt-1 text-sm text-muted-foreground">
+            So se chega aqui com um codigo que a checagem liberou.
+          </p>
+        </div>
+      </SgWizardPage>
+    </SgWizard>
+  );
+}
+
 const WIZARD_PROPS: ShowcasePropRow[] = [
   { prop: "children", type: "ReactNode (SgWizardPage[])", defaultValue: "-", description: "Paginas renderizadas em ordem dentro do wizard." },
   { prop: "initialStep", type: "number", defaultValue: "0", description: "Indice inicial da etapa ativa." },
@@ -44,7 +89,9 @@ const WIZARD_PROPS: ShowcasePropRow[] = [
   { prop: "stepNavigation", type: "\"none\" | \"previous\" | \"previous-and-next\"", defaultValue: "\"previous-and-next\"", description: "Controla quais etapas do stepper podem ser clicadas." },
   { prop: "labels", type: "{ next, previous, finish }", defaultValue: "interno", description: "Override dos textos dos botoes de navegacao." },
   { prop: "validateStep", type: "(stepIndex) => boolean", defaultValue: "-", description: "Valida uma etapa antes de avancar." },
-  { prop: "onBeforeNext", type: "(stepIndex) => boolean | Promise<boolean>", defaultValue: "-", description: "Hook antes de avancar para a proxima etapa." },
+  { prop: "onBeforeNext", type: "(stepIndex) => boolean | Promise<boolean>", defaultValue: "-", description: "Hook antes de avancar para a proxima etapa. So age no clique; enquanto e aguardado, o botao fica desabilitado." },
+  { prop: "onBeforeFinish", type: "(stepIndex) => boolean | Promise<boolean>", defaultValue: "-", description: "Hook antes de concluir o wizard." },
+  { prop: "nextDisabled", type: "boolean", defaultValue: "false", description: "Desabilita o avanco de forma declarativa (botao Proximo + etapas seguintes no stepper). Use quando o bloqueio JA e conhecido, em vez de deixar o botao com aparencia de clicavel. Nao afeta o botao da ultima etapa." },
   { prop: "onStepChange", type: "(stepIndex) => void", defaultValue: "-", description: "Callback ao trocar de etapa." },
   { prop: "onFinish", type: "() => void | Promise<void>", defaultValue: "-", description: "Disparado quando o usuario conclui o wizard." },
   { prop: "className / style", type: "string / React.CSSProperties", defaultValue: "-", description: "Classes e estilo inline do container do wizard." },
@@ -367,6 +414,13 @@ export default function SgWizardPageDemo() {
           </SgWizardPage>
         </SgWizard>
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-wizard/samples/validatestep.tsx.sample" />
+      </Section>
+      <Section
+        title="Avanco bloqueado (nextDisabled)"
+        description="onBeforeNext so age no clique: o botao continua com aparencia de habilitado e, quando ele recusa, nada acontece na tela. Quando o bloqueio JA e conhecido — o resultado de uma checagem assincrona que ja terminou — nextDisabled deixa isso visivel."
+      >
+        <NextDisabledDemo />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-wizard/samples/nextdisabled.tsx.sample" />
       </Section>
       <Section
         title="Playground"

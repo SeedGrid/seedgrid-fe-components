@@ -142,3 +142,59 @@ test("SgWizard clamps negative initial steps to the first page", () => {
   assert.match(html, />Next</);
   assert.doesNotMatch(html, />Previous</);
 });
+
+test("SgWizard: nextDisabled desabilita o botao de avancar", () => {
+  const html = renderWithLocale(
+    "en",
+    React.createElement(
+      SgWizard,
+      { onFinish: () => {}, stepper: "numbered", nextDisabled: true },
+      React.createElement(SgWizardPage, { title: "Account" }, React.createElement("div", null, "A")),
+      React.createElement(SgWizardPage, { title: "Profile" }, React.createElement("div", null, "B"))
+    )
+  );
+
+  // Casa o ATRIBUTO (disabled=""), nao a palavra solta: o className do botao carrega
+  // "disabled:cursor-not-allowed", entao um regex frouxo passaria mesmo sem o atributo.
+  assert.match(html, /<button[^>]*\sdisabled=""[^>]*>Next<\/button>/);
+});
+
+test("SgWizard: sem nextDisabled o botao de avancar continua habilitado", () => {
+  const html = renderWithLocale(
+    "en",
+    React.createElement(
+      SgWizard,
+      { onFinish: () => {}, stepper: "numbered" },
+      React.createElement(SgWizardPage, { title: "Account" }, React.createElement("div", null, "A")),
+      React.createElement(SgWizardPage, { title: "Profile" }, React.createElement("div", null, "B"))
+    )
+  );
+
+  assert.doesNotMatch(html, /<button[^>]*\sdisabled=""[^>]*>Next<\/button>/);
+});
+
+test("SgWizard: nextDisabled tira as etapas seguintes do stepper", () => {
+  // Com o avanco bloqueado, o stepper nao pode continuar oferecendo atalho para frente:
+  // seria um botao com aparencia de habilitado que nao leva a lugar nenhum.
+  const bloqueado = renderWithLocale(
+    "en",
+    React.createElement(
+      SgWizard,
+      { onFinish: () => {}, stepper: "numbered", stepNavigation: "previous-and-next", nextDisabled: true },
+      React.createElement(SgWizardPage, { title: "Account" }, React.createElement("div", null, "A")),
+      React.createElement(SgWizardPage, { title: "Profile" }, React.createElement("div", null, "B"))
+    )
+  );
+  const liberado = renderWithLocale(
+    "en",
+    React.createElement(
+      SgWizard,
+      { onFinish: () => {}, stepper: "numbered", stepNavigation: "previous-and-next" },
+      React.createElement(SgWizardPage, { title: "Account" }, React.createElement("div", null, "A")),
+      React.createElement(SgWizardPage, { title: "Profile" }, React.createElement("div", null, "B"))
+    )
+  );
+
+  assert.match(liberado, /cursor-pointer/);
+  assert.doesNotMatch(bloqueado, /cursor-pointer/);
+});

@@ -36,6 +36,18 @@ export type SgWizardProps = {
   onBeforeNext?: (index: number) => boolean | Promise<boolean>;
   onBeforeFinish?: (index: number) => boolean | Promise<boolean>;
   validateStep?: (index: number) => boolean | Promise<boolean>;
+  /**
+   * Desabilita o avanco de forma declarativa: o botao "Proximo" fica desabilitado (opaco, com
+   * cursor de bloqueio) e o stepper para de oferecer as etapas seguintes.
+   *
+   * Complementa `onBeforeNext`/`validateStep`, que so' agem NO CLIQUE. Quando o consumidor ja
+   * sabe que a etapa nao pode avancar — tipicamente o resultado de uma checagem assincrona que
+   * ja' terminou, como "este CNPJ ja' tem cadastro" — o botao continuava com aparencia de
+   * clicavel e o clique nao fazia nada, sem explicar por que.
+   *
+   * Nao afeta o botao de conclusao da ultima etapa: para esse caso existe `onBeforeFinish`.
+   */
+  nextDisabled?: boolean;
   initialStep?: number;
   labels?: Partial<SgWizardLabels>;
   stepper?: SgWizardStepper;
@@ -151,6 +163,7 @@ export function SgWizard(props: SgWizardProps) {
 
   const stepper = props.stepper ?? "none";
   const stepNavigation = props.stepNavigation ?? "previous-and-next";
+  const nextDisabled = props.nextDisabled ?? false;
 
   const [step, setStep] = React.useState(() => clampWizardStep(props.initialStep, pages.length));
   const [isFinishing, setIsFinishing] = React.useState(false);
@@ -185,6 +198,9 @@ export function SgWizard(props: SgWizardProps) {
 
   const goNext = async () => {
     if (isLast) return;
+    // Guarda aqui, e nao so' no `disabled` do botao: o avanco pelo stepper cai neste mesmo
+    // caminho, entao um unico ponto cobre as duas formas de ir para frente.
+    if (nextDisabled) return;
     if (isValidating) return;
     setIsValidating(true);
     try {
@@ -202,13 +218,16 @@ export function SgWizard(props: SgWizardProps) {
   };
 
   const canNavigateStep = React.useCallback((targetStep: number) => {
+    // Com o avanco bloqueado, o stepper nao pode continuar oferecendo as etapas seguintes como
+    // clicaveis — seria um atalho com aparencia de habilitado que nao leva a lugar nenhum.
+    if (nextDisabled && targetStep > step) return false;
     return canNavigateToWizardStep({
       currentStep: step,
       targetStep,
       pageCount: pages.length,
       stepNavigation
     });
-  }, [pages.length, step, stepNavigation]);
+  }, [pages.length, step, stepNavigation, nextDisabled]);
 
   const goPrevious = () => {
     if (isFirst) return;
@@ -279,7 +298,7 @@ export function SgWizard(props: SgWizardProps) {
             <button
               type="button"
               onClick={goNext}
-              disabled={isValidating}
+              disabled={isValidating || nextDisabled}
               className="inline-flex h-10 items-center justify-center rounded-full bg-[hsl(var(--primary))] px-5 text-sm font-semibold text-white shadow-lg shadow-[hsl(var(--primary)/0.35)] transition hover:brightness-95 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {labels.next}

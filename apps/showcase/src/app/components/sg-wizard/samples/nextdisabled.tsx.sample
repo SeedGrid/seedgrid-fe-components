@@ -1,0 +1,60 @@
+import React from "react";
+import { SgInputText, SgWizard, SgWizardPage } from "@seedgrid/fe-components";
+
+/**
+ * `nextDisabled` — bloqueio JA conhecido.
+ *
+ * `onBeforeNext` e `validateStep` so agem no clique: o botao continua com aparencia de habilitado
+ * e, quando eles recusam, nada acontece na tela. Quando o consumidor JA sabe que a etapa nao pode
+ * avancar — tipicamente o resultado de uma checagem assincrona que ja terminou —, `nextDisabled`
+ * deixa isso visivel: botao opaco, cursor de bloqueio e stepper sem oferecer as proximas etapas.
+ */
+export default function Example() {
+  const [codigo, setCodigo] = React.useState("");
+  const [checando, setChecando] = React.useState(false);
+  const [jaUsado, setJaUsado] = React.useState(false);
+
+  // Simula a consulta ao servidor ao sair do campo.
+  async function verificarCodigo() {
+    if (!codigo.trim()) return;
+    setChecando(true);
+    await new Promise((resolve) => setTimeout(resolve, 600));
+    setJaUsado(codigo.trim().toUpperCase() === "SG-123");
+    setChecando(false);
+  }
+
+  return (
+    <SgWizard
+      // Durante a consulta o wizard ja desabilita sozinho enquanto aguarda onBeforeNext; aqui o
+      // bloqueio PERMANECE depois que a resposta chegou.
+      nextDisabled={jaUsado}
+      onFinish={() => undefined}
+    >
+      <SgWizardPage title="Convite">
+        <SgInputText
+          id="wizard-codigo-convite"
+          label="Codigo do convite"
+          error={jaUsado ? "Este codigo ja foi utilizado." : undefined}
+          onChange={(value) => {
+            setCodigo(value);
+            setJaUsado(false); // digitou de novo: reabre o avanco ate a proxima checagem
+          }}
+          onExit={() => void verificarCodigo()}
+        />
+        <p className="mt-2 text-sm text-muted-foreground">
+          {checando
+            ? "Verificando o codigo..."
+            : 'Digite "SG-123" e saia do campo: o botao Proximo fica desabilitado.'}
+        </p>
+      </SgWizardPage>
+      <SgWizardPage title="Conclusao">
+        <div className="rounded border border-border bg-foreground/5 p-4">
+          <div className="text-sm font-semibold">Codigo aceito</div>
+          <p className="mt-1 text-sm text-muted-foreground">
+            So se chega aqui com um codigo que a checagem liberou.
+          </p>
+        </div>
+      </SgWizardPage>
+    </SgWizard>
+  );
+}
