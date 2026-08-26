@@ -16,45 +16,55 @@ export const sgMeta: SgMetaV0 = {
   fieldSemantics: ["themeResolver", "clockTheme", "dynamicStyling"],
   props: [
     {
-      name: "returns.resolveMode",
-      type: "SgClockThemeResolveMode",
-      description: "Modo de resolucao do tema (auto, light, dark, custom).",
+      name: "returns",
+      type: "SgClockThemeResolver | null",
+      description:
+        "Resolvedor do SgClockThemeProvider mais proximo. Fora de um provider o hook devolve null — nao ha fallback implicito.",
+      semanticRole: "data",
+      bindable: false
+    },
+    {
+      name: "returns.resolve",
+      type: "(id: string) => SgClockTheme | null",
+      description:
+        "Resolve um tema pelo id. No modo fallback do provider, um id desconhecido cai no fallbackThemeId; no modo strict devolve null.",
+      semanticRole: "data",
+      bindable: false
+    },
+    {
+      name: "returns.list",
+      type: "() => SgClockTheme[]",
+      description:
+        "Temas visiveis para esta arvore: os globais do registry mais os locais do provider, ordenados por `order`.",
+      semanticRole: "data",
+      bindable: false
+    },
+    {
+      name: "returns.registerLocal",
+      type: "(theme: SgClockTheme) => void",
+      description: "Registra um tema apenas nesta arvore, sem tocar no registry global.",
       semanticRole: "behavior",
-      bindable: true
-    },
-    {
-      name: "returns.resolveTheme",
-      type: "(themeId: string) => SgClockTheme | null",
-      description: "Funcao para resolver um tema pelo ID.",
-      semanticRole: "data",
       bindable: false
     },
     {
-      name: "returns.currentTheme",
-      type: "SgClockTheme | null",
-      description: "Tema atualmente ativo.",
-      semanticRole: "data",
-      bindable: false
-    },
-    {
-      name: "returns.setResolveMode",
-      type: "(mode: SgClockThemeResolveMode) => void",
-      description: "Alterar modo de resolucao do tema.",
+      name: "returns.registerManyLocal",
+      type: "(themes: SgClockTheme[]) => void",
+      description: "Mesma coisa que registerLocal, para uma lista.",
       semanticRole: "behavior",
       bindable: false
     }
   ],
-  states: ["auto", "light", "dark", "custom"],
+  states: ["fallback", "strict", "sem-provider"],
   examples: [
     {
       id: "basic",
       title: "Resolver e alternar temas",
-      file: "apps/showcase/src/app/components/hooks/use-sg-clock-theme-resolver/samples/basic.tsx.sample",
+      file: "apps/showcase/src/app/components/providers/sg-clock-theme-provider/samples/resolver-hook.tsx.sample",
       kind: "sample"
     }
   ],
   showcase: {
-    route: "/components/hooks/use-sg-clock-theme-resolver",
+    route: "/components/providers/sg-clock-theme-provider",
     hasPlayground: true,
     hasPropsTable: true
   }

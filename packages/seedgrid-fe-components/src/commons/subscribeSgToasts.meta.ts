@@ -29,18 +29,18 @@ export const sgMeta: SgMetaV0 = {
     {
       id: "basic",
       title: "Monitorar mudancas de toasts",
-      file: "apps/showcase/src/app/components/toasts/samples/subscribe.tsx.sample",
+      file: "apps/showcase/src/app/components/sg-toaster/samples/subscribe.tsx.sample",
       kind: "sample"
     },
     {
       id: "in-effect",
       title: "Usar em useEffect",
-      file: "apps/showcase/src/app/components/toasts/samples/subscribe-effect.tsx.sample",
+      file: "apps/showcase/src/app/components/sg-toaster/samples/subscribe-effect.tsx.sample",
       kind: "sample"
     }
   ],
   showcase: {
-    route: "/components/toasts",
+    route: "/components/sg-toaster",
     hasPlayground: false,
     hasPropsTable: true
   }

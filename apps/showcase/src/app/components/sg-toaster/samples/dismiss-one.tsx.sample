@@ -1,0 +1,35 @@
+"use client";
+
+import * as React from "react";
+import { SgButton, SgToaster, dismissSgToast, toast, type SgToastId } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [id, setId] = React.useState<SgToastId | null>(null);
+
+  return (
+    <div className="space-y-3">
+      <SgToaster />
+      <div className="flex flex-wrap gap-2">
+        <SgButton
+          onClick={() => setId(toast.info("Fica aberto até alguém fechar", { duration: 0 }))}
+        >
+          Abrir toast
+        </SgButton>
+        <SgButton
+          appearance="outline"
+          onClick={() => {
+            if (!id) return;
+            dismissSgToast(id);
+            setId(null);
+          }}
+        >
+          dismissSgToast(id)
+        </SgButton>
+      </div>
+      <p className="text-sm text-muted-foreground">
+        Guarde o id devolvido por toast() para poder fechar aquele toast específico depois — é o
+        mesmo id que toast.update() usa.
+      </p>
+    </div>
+  );
+}

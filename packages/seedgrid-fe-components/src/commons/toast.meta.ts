@@ -126,7 +126,7 @@ export const sgMeta: SgMetaV0 = {
     }
   ],
   showcase: {
-    route: "/components/toasts",
+    route: "/components/sg-toaster",
     hasPlayground: true,
     hasPropsTable: true
   }

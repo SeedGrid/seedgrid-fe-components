@@ -29,18 +29,18 @@ export const sgMeta: SgMetaV0 = {
     {
       id: "basic",
       title: "Monitorar mudancas de whistles",
-      file: "apps/showcase/src/app/components/whistles/samples/subscribe.tsx.sample",
+      file: "apps/showcase/src/app/components/sg-whistler/samples/subscribe.tsx.sample",
       kind: "sample"
     },
     {
       id: "in-effect",
       title: "Usar em useEffect",
-      file: "apps/showcase/src/app/components/whistles/samples/subscribe-effect.tsx.sample",
+      file: "apps/showcase/src/app/components/sg-whistler/samples/subscribe-effect.tsx.sample",
       kind: "sample"
     }
   ],
   showcase: {
-    route: "/components/whistles",
+    route: "/components/sg-whistler",
     hasPlayground: false,
     hasPropsTable: true
   }

@@ -1,0 +1,39 @@
+"use client";
+
+import * as React from "react";
+import { SgButton, SgToaster, subscribeSgToasts, toast } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [total, setTotal] = React.useState(0);
+  const [ouvindo, setOuvindo] = React.useState(false);
+  const pararRef = React.useRef<(() => void) | null>(null);
+
+  function ouvir() {
+    if (pararRef.current) return;
+    // subscribeSgToasts devolve a funcao que cancela a inscricao, e ja chama o listener
+    // uma vez com a lista atual — nao e' preciso ler o estado inicial em outro lugar.
+    pararRef.current = subscribeSgToasts((toasts) => setTotal(toasts.length));
+    setOuvindo(true);
+  }
+
+  function parar() {
+    pararRef.current?.();
+    pararRef.current = null;
+    setOuvindo(false);
+  }
+
+  return (
+    <div className="space-y-3">
+      <SgToaster />
+      <div className="flex flex-wrap items-center gap-2">
+        <SgButton onClick={() => toast.message("Mais um", { duration: 0 })}>Abrir toast</SgButton>
+        <SgButton appearance="outline" onClick={ouvindo ? parar : ouvir}>
+          {ouvindo ? "Cancelar inscrição" : "subscribeSgToasts"}
+        </SgButton>
+        <span className="text-sm text-muted-foreground">
+          {ouvindo ? `${total} toast(s) abertos` : "sem inscrição ativa"}
+        </span>
+      </div>
+    </div>
+  );
+}

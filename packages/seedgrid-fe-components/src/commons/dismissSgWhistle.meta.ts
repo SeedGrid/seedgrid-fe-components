@@ -28,18 +28,18 @@ export const sgMeta: SgMetaV0 = {
     {
       id: "dismiss-one",
       title: "Fechar um whistle especifico",
-      file: "apps/showcase/src/app/components/whistles/samples/dismiss-one.tsx.sample",
+      file: "apps/showcase/src/app/components/sg-whistler/samples/dismiss-one.tsx.sample",
       kind: "sample"
     },
     {
       id: "dismiss-all",
       title: "Fechar todos os whistles",
-      file: "apps/showcase/src/app/components/whistles/samples/dismiss-all.tsx.sample",
+      file: "apps/showcase/src/app/components/sg-whistler/samples/dismiss-all.tsx.sample",
       kind: "sample"
     }
   ],
   showcase: {
-    route: "/components/whistles",
+    route: "/components/sg-whistler",
     hasPlayground: true,
     hasPropsTable: true
   }

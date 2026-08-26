@@ -151,7 +151,7 @@ export const sgMeta: SgMetaV0 = {
     }
   ],
   showcase: {
-    route: "/components/whistles",
+    route: "/components/sg-whistler",
     hasPlayground: true,
     hasPropsTable: true
   }

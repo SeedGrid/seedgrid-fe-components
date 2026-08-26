@@ -1,0 +1,30 @@
+"use client";
+
+import { SgClockThemeProvider, useSgClockThemeResolver } from "@seedgrid/fe-components";
+
+function TemasDisponiveis() {
+  // Fora de um SgClockThemeProvider o hook devolve null: sem provider nao ha
+  // resolvedor, e nao existe fallback implicito.
+  const resolver = useSgClockThemeResolver();
+  if (!resolver) return <div>Sem SgClockThemeProvider na arvore.</div>;
+
+  const classic = resolver.resolve("classic");
+  const inexistente = resolver.resolve("nao-existe");
+
+  return (
+    <div className="space-y-1 text-sm">
+      <div>temas visíveis: {resolver.list().map((theme) => theme.id).join(", ")}</div>
+      <div>resolve("classic"): {classic?.id ?? "null"}</div>
+      {/* modo "fallback" (padrão) cai no fallbackThemeId; em "strict" isto seria null */}
+      <div>resolve("nao-existe"): {inexistente?.id ?? "null"}</div>
+    </div>
+  );
+}
+
+export default function Example() {
+  return (
+    <SgClockThemeProvider value={{ mode: "fallback", fallbackThemeId: "classic" }}>
+      <TemasDisponiveis />
+    </SgClockThemeProvider>
+  );
+}

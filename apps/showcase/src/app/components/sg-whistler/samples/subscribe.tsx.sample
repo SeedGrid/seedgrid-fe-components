@@ -1,0 +1,43 @@
+"use client";
+
+import * as React from "react";
+import { SgButton, SgWhistler, sgWhistle, subscribeSgWhistles } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [total, setTotal] = React.useState(0);
+  const [ouvindo, setOuvindo] = React.useState(false);
+  const pararRef = React.useRef<(() => void) | null>(null);
+
+  function ouvir() {
+    if (pararRef.current) return;
+    // subscribeSgWhistles devolve a funcao que cancela a inscricao e ja chama o listener
+    // uma vez com a lista atual — nao e' preciso ler o estado inicial em outro lugar.
+    pararRef.current = subscribeSgWhistles((whistles) => setTotal(whistles.length));
+    setOuvindo(true);
+  }
+
+  function parar() {
+    pararRef.current?.();
+    pararRef.current = null;
+    setOuvindo(false);
+  }
+
+  return (
+    <div className="space-y-3">
+      <div className="flex flex-wrap items-center gap-2">
+        <SgButton onClick={() => sgWhistle.info({ title: "Mais um aviso", duration: 0 })}>
+          Abrir aviso
+        </SgButton>
+        <SgButton appearance="outline" onClick={ouvindo ? parar : ouvir}>
+          {ouvindo ? "Cancelar inscrição" : "subscribeSgWhistles"}
+        </SgButton>
+        <span className="text-sm text-muted-foreground">
+          {ouvindo ? `${total} aviso(s) no host` : "sem inscrição ativa"}
+        </span>
+      </div>
+      <div className="rounded-xl border border-dashed border-border p-4">
+        <SgWhistler />
+      </div>
+    </div>
+  );
+}

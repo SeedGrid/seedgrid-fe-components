@@ -1,0 +1,21 @@
+"use client";
+
+import { SgButton, SgToaster, dismissSgToast, toast } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <div className="space-y-3">
+      <SgToaster />
+      <div className="flex flex-wrap gap-2">
+        <SgButton onClick={() => toast.success("Salvo", { duration: 0 })}>Empilhar toast</SgButton>
+        <SgButton appearance="outline" onClick={() => dismissSgToast()}>
+          dismissSgToast()
+        </SgButton>
+      </div>
+      <p className="text-sm text-muted-foreground">
+        Sem id, fecha todos de uma vez. Útil ao trocar de rota ou de contexto, para não carregar
+        feedback de uma tela para a seguinte.
+      </p>
+    </div>
+  );
+}

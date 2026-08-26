@@ -28,18 +28,18 @@ export const sgMeta: SgMetaV0 = {
     {
       id: "dismiss-one",
       title: "Fechar um toast especifico",
-      file: "apps/showcase/src/app/components/toasts/samples/dismiss-one.tsx.sample",
+      file: "apps/showcase/src/app/components/sg-toaster/samples/dismiss-one.tsx.sample",
       kind: "sample"
     },
     {
       id: "dismiss-all",
       title: "Fechar todos os toasts",
-      file: "apps/showcase/src/app/components/toasts/samples/dismiss-all.tsx.sample",
+      file: "apps/showcase/src/app/components/sg-toaster/samples/dismiss-all.tsx.sample",
       kind: "sample"
     }
   ],
   showcase: {
-    route: "/components/toasts",
+    route: "/components/sg-toaster",
     hasPlayground: true,
     hasPropsTable: true
   }

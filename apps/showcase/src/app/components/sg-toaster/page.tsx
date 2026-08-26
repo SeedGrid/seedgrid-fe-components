@@ -357,6 +357,22 @@ export default function SgToasterPage() {
       </Section>
 
       <Section
+        title={t(i18n, `${K}.sections.dismiss.title`)}
+        description={t(i18n, `${K}.sections.dismiss.description`)}
+      >
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-toaster/samples/dismiss-one.tsx.sample" />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-toaster/samples/dismiss-all.tsx.sample" />
+      </Section>
+
+      <Section
+        title={t(i18n, `${K}.sections.subscribe.title`)}
+        description={t(i18n, `${K}.sections.subscribe.description`)}
+      >
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-toaster/samples/subscribe-effect.tsx.sample" />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-toaster/samples/subscribe.tsx.sample" />
+      </Section>
+
+      <Section
         title={t(i18n, `${K}.sections.playground.title`)}
         description={t(i18n, `${K}.sections.playground.description`)}
       >

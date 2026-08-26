@@ -15,13 +15,18 @@
  * ## Baseline
  *
  * Quando este check nasceu havia 44 referencias quebradas ja' no repositorio. Reprovar o build
- * por causa delas so' faria o time desligar o check. Entao:
+ * por causa delas so' faria o time desligar o check, entao elas entraram num baseline que so'
+ * encolhe. HOJE O BASELINE ESTA VAZIO: toda referencia quebrada reprova o build. Se voce chegou
+ * aqui por causa de um erro, o caminho e' corrigir o `file` no *.meta.ts ou criar o sample —
+ * reabrir o baseline nao e' opcao.
+ *
+ * A mecanica continua valendo:
  *
  *   - referencia quebrada QUE ESTA no baseline  -> aviso, nao reprova
  *   - referencia quebrada QUE NAO ESTA          -> ERRO, reprova o build
  *   - entrada do baseline que ja' foi corrigida -> aviso pedindo para remover do baseline
  *
- * O baseline so' encolhe. Para regerar do zero (por exemplo depois de um mutirao de limpeza):
+ * Para regerar do zero (por exemplo depois de um mutirao de limpeza):
  *   node scripts/validate-example-refs.mjs --write-baseline
  */
 import { access, readFile, writeFile } from "node:fs/promises";

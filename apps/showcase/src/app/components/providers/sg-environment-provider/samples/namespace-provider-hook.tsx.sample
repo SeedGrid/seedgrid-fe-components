@@ -1,0 +1,29 @@
+"use client";
+
+import {
+  SgEnvironmentProvider,
+  buildSgPersistenceKey,
+  useSgNamespaceProvider
+} from "@seedgrid/fe-components";
+
+function ChaveDoUsuario() {
+  // Atalho para env.namespaceProvider: quando so' o namespace importa, este hook
+  // evita carregar o objeto de ambiente inteiro.
+  const namespaceProvider = useSgNamespaceProvider();
+  const namespace = namespaceProvider.getNamespace();
+
+  return (
+    <div className="space-y-1 text-sm">
+      <div>namespace: {namespace || "(vazio)"}</div>
+      <div>chave: {buildSgPersistenceKey("fab:theme", namespace, "app:crm") ?? "null"}</div>
+    </div>
+  );
+}
+
+export default function Example() {
+  return (
+    <SgEnvironmentProvider value={{ namespaceProvider: { getNamespace: () => "u:123" } }}>
+      <ChaveDoUsuario />
+    </SgEnvironmentProvider>
+  );
+}

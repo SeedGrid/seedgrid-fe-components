@@ -1,0 +1,22 @@
+"use client";
+
+import * as React from "react";
+import { SgButton, SgToaster, subscribeSgToasts, toast } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [total, setTotal] = React.useState(0);
+
+  // O retorno de subscribeSgToasts e' a propria funcao de limpeza, entao ele pode ser
+  // devolvido direto do efeito: a inscricao morre junto com o componente.
+  React.useEffect(() => subscribeSgToasts((toasts) => setTotal(toasts.length)), []);
+
+  return (
+    <div className="space-y-3">
+      <SgToaster />
+      <div className="flex flex-wrap items-center gap-2">
+        <SgButton onClick={() => toast.message("Mais um", { duration: 0 })}>Abrir toast</SgButton>
+        <span className="text-sm text-muted-foreground">{total} toast(s) abertos</span>
+      </div>
+    </div>
+  );
+}

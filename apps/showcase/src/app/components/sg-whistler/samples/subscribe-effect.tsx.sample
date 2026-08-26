@@ -1,0 +1,26 @@
+"use client";
+
+import * as React from "react";
+import { SgButton, SgWhistler, sgWhistle, subscribeSgWhistles } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [total, setTotal] = React.useState(0);
+
+  // O retorno de subscribeSgWhistles e' a propria funcao de limpeza, entao ele pode ser
+  // devolvido direto do efeito: a inscricao morre junto com o componente.
+  React.useEffect(() => subscribeSgWhistles((whistles) => setTotal(whistles.length)), []);
+
+  return (
+    <div className="space-y-3">
+      <div className="flex flex-wrap items-center gap-2">
+        <SgButton onClick={() => sgWhistle.info({ title: "Mais um aviso", duration: 0 })}>
+          Abrir aviso
+        </SgButton>
+        <span className="text-sm text-muted-foreground">{total} aviso(s) no host</span>
+      </div>
+      <div className="rounded-xl border border-dashed border-border p-4">
+        <SgWhistler />
+      </div>
+    </div>
+  );
+}

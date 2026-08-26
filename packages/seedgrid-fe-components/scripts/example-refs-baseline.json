@@ -1,15 +1,4 @@
 {
   "_comentario": "Referencias de exemplo quebradas ja' existentes quando o check nasceu. O check reprova apenas referencias NOVAS; estas ficam como aviso ate' serem corrigidas. Esta lista so' deve encolher.",
-  "knownBroken": [
-    "dismissSgToast::apps/showcase/src/app/components/toasts/samples/dismiss-all.tsx.sample",
-    "dismissSgToast::apps/showcase/src/app/components/toasts/samples/dismiss-one.tsx.sample",
-    "dismissSgWhistle::apps/showcase/src/app/components/whistles/samples/dismiss-all.tsx.sample",
-    "dismissSgWhistle::apps/showcase/src/app/components/whistles/samples/dismiss-one.tsx.sample",
-    "subscribeSgToasts::apps/showcase/src/app/components/toasts/samples/subscribe-effect.tsx.sample",
-    "subscribeSgToasts::apps/showcase/src/app/components/toasts/samples/subscribe.tsx.sample",
-    "subscribeSgWhistles::apps/showcase/src/app/components/whistles/samples/subscribe-effect.tsx.sample",
-    "subscribeSgWhistles::apps/showcase/src/app/components/whistles/samples/subscribe.tsx.sample",
-    "useSgClockThemeResolver::apps/showcase/src/app/components/hooks/use-sg-clock-theme-resolver/samples/basic.tsx.sample",
-    "useSgNamespaceProvider::apps/showcase/src/app/components/hooks/use-sg-namespace-provider/samples/basic.tsx.sample"
-  ]
+  "knownBroken": []
 }

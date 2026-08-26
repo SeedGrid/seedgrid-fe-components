@@ -371,6 +371,22 @@ export default function SgWhistlerPage() {
         </Section>
 
         <Section
+          title={t(i18n, `${K}.sections.dismiss.title`)}
+          description={t(i18n, `${K}.sections.dismiss.description`)}
+        >
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-whistler/samples/dismiss-one.tsx.sample" />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-whistler/samples/dismiss-all.tsx.sample" />
+        </Section>
+
+        <Section
+          title={t(i18n, `${K}.sections.subscribe.title`)}
+          description={t(i18n, `${K}.sections.subscribe.description`)}
+        >
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-whistler/samples/subscribe-effect.tsx.sample" />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-whistler/samples/subscribe.tsx.sample" />
+        </Section>
+
+        <Section
           title={t(i18n, `${K}.sections.playground.title`)}
           description={t(i18n, `${K}.sections.playground.description`)}
         >

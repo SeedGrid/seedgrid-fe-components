@@ -1,0 +1,47 @@
+"use client";
+
+import * as React from "react";
+import {
+  SgButton,
+  SgWhistler,
+  dismissSgWhistle,
+  sgWhistle,
+  type SgWhistleId
+} from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [id, setId] = React.useState<SgWhistleId | null>(null);
+
+  return (
+    <div className="space-y-3">
+      <div className="flex flex-wrap gap-2">
+        <SgButton
+          onClick={() =>
+            setId(
+              sgWhistle.warning({
+                title: "Confira os dados",
+                message: "Este aviso não expira sozinho.",
+                duration: 0
+              })
+            )
+          }
+        >
+          Abrir aviso
+        </SgButton>
+        <SgButton
+          appearance="outline"
+          onClick={() => {
+            if (!id) return;
+            dismissSgWhistle(id);
+            setId(null);
+          }}
+        >
+          dismissSgWhistle(id)
+        </SgButton>
+      </div>
+      <div className="rounded-xl border border-dashed border-border p-4">
+        <SgWhistler />
+      </div>
+    </div>
+  );
+}

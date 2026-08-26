@@ -28,12 +28,12 @@ export const sgMeta: SgMetaV0 = {
     {
       id: "basic",
       title: "Obter namespace atual",
-      file: "apps/showcase/src/app/components/hooks/use-sg-namespace-provider/samples/basic.tsx.sample",
+      file: "apps/showcase/src/app/components/providers/sg-environment-provider/samples/namespace-provider-hook.tsx.sample",
       kind: "sample"
     }
   ],
   showcase: {
-    route: "/components/hooks/use-sg-namespace-provider",
+    route: "/components/providers/sg-environment-provider",
     hasPlayground: false,
     hasPropsTable: true
   }

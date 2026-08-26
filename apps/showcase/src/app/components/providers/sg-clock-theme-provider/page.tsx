@@ -101,6 +101,13 @@ export default function SgClockThemeProviderPage() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/providers/sg-clock-theme-provider/samples/registro-global.tsx.sample" />
         </Section>
 
+        <Section
+          title={t(i18n, "showcase.component.clockThemeProvider.sections.resolver.title")}
+          description={t(i18n, "showcase.component.clockThemeProvider.sections.resolver.description")}
+        >
+          <CodeBlock sampleFile="apps/showcase/src/app/components/providers/sg-clock-theme-provider/samples/resolver-hook.tsx.sample" />
+        </Section>
+
         <ShowcasePropsReference rows={CLOCK_THEME_PROVIDER_PROPS} />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}

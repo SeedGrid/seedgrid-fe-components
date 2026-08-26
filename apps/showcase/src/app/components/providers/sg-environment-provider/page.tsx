@@ -117,6 +117,13 @@ export default function SgEnvironmentProviderPage() {
       </Section>
 
       <Section
+        title={t(i18n, "showcase.component.environment.sections.namespaceHook.title")}
+        description={t(i18n, "showcase.component.environment.sections.namespaceHook.description")}
+      >
+        <CodeBlock sampleFile="apps/showcase/src/app/components/providers/sg-environment-provider/samples/namespace-provider-hook.tsx.sample" />
+      </Section>
+
+      <Section
         title={t(i18n, "showcase.component.environment.sections.rest.title")}
         description={t(i18n, "showcase.component.environment.sections.rest.description")}
       >
