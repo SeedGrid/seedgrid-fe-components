@@ -25,7 +25,7 @@ export const sgMeta: SgMetaV0 = {
   ],
   states: ["idle", "sliding", "autoplay"],
   examples: [
-    { id: "basic", title: "Basico", file: "apps/showcase/src/app/components/sg-carousel/samples/basico.tsx.sample", kind: "sample" },
+    { id: "basico-horizontal", title: "Basico horizontal", file: "apps/showcase/src/app/components/sg-carousel/samples/basico-horizontal.tsx.sample", kind: "sample" },
     { id: "playground", title: "Playground", file: "apps/showcase/src/app/components/sg-carousel/sg-carousel.tsx.playground", kind: "playground" }
   ],
   showcase: { route: "/components/sg-carousel", hasPlayground: true, hasPropsTable: true },

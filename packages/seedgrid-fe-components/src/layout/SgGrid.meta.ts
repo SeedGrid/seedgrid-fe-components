@@ -70,9 +70,9 @@ export const sgMeta: SgMetaV0 = {
   states: ["default", "dense", "responsive"],
   examples: [
     {
-      id: "basic",
-      title: "Basico",
-      file: "apps/showcase/src/app/components/sg-grid/samples/basico.tsx.sample",
+      id: "columns-responsivo",
+      title: "Columns responsivo",
+      file: "apps/showcase/src/app/components/sg-grid/samples/columns-responsivo.tsx.sample",
       kind: "sample"
     },
     {

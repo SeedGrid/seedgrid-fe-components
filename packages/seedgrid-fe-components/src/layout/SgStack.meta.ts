@@ -74,9 +74,9 @@ export const sgMeta: SgMetaV0 = {
   states: ["default", "row", "column", "wrapped", "growing"],
   examples: [
     {
-      id: "basic",
-      title: "Basico",
-      file: "apps/showcase/src/app/components/sg-stack/samples/basico.tsx.sample",
+      id: "column-row",
+      title: "Column e row",
+      file: "apps/showcase/src/app/components/sg-stack/samples/column-row.tsx.sample",
       kind: "sample"
     },
     {

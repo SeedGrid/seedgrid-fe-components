@@ -23,7 +23,7 @@ export const sgMeta: SgMetaV0 = {
   ],
   states: ["idle", "animating", "completed"],
   examples: [
-    { id: "roller3d", title: "Roller 3D", file: "apps/showcase/src/app/components/gadgets/sg-string-animator/samples/roller3d.tsx.sample", kind: "sample" },
+    { id: "roller-3d", title: "Roller 3D (numeros)", file: "apps/showcase/src/app/components/gadgets/sg-string-animator/samples/roller-3d-numeros-right-aligned.tsx.sample", kind: "sample" },
     { id: "playground", title: "Playground", file: "apps/showcase/src/app/components/gadgets/sg-string-animator/sg-string-animator.tsx.playground", kind: "playground" }
   ],
   showcase: { route: "/components/gadgets/sg-string-animator", hasPlayground: true, hasPropsTable: true },

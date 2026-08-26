@@ -21,7 +21,7 @@ export const sgMeta: SgMetaV0 = {
   ],
   states: ["inactive", "active-host"],
   examples: [
-    { id: "basic", title: "Basico", file: "apps/showcase/src/app/components/sg-toast-host/samples/basico.tsx.sample", kind: "sample" },
+    { id: "base-setup", title: "Setup basico", file: "apps/showcase/src/app/components/sg-toast-host/samples/base-setup.tsx.sample", kind: "sample" },
     { id: "playground", title: "Playground", file: "apps/showcase/src/app/components/sg-toast-host/sg-toast-host.tsx.playground", kind: "playground" }
   ],
   showcase: { route: "/components/sg-toast-host", hasPlayground: true, hasPropsTable: true },

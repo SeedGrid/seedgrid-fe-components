@@ -23,7 +23,7 @@ export const sgMeta: SgMetaV0 = {
   ],
   states: ["idle"],
   examples: [
-    { id: "basic", title: "Basico", file: "apps/showcase/src/app/components/digits/sg-segment-digit/samples/basico.tsx.sample", kind: "sample" },
+    { id: "basico-0-9", title: "Basico (0-9)", file: "apps/showcase/src/app/components/digits/sg-segment-digit/samples/basico-0-9.tsx.sample", kind: "sample" },
     { id: "playground", title: "Playground", file: "apps/showcase/src/app/components/digits/sg-segment-digit/sg-segment-digit.tsx.playground", kind: "playground" }
   ],
   showcase: { route: "/components/digits/sg-segment-digit", hasPlayground: true, hasPropsTable: true },

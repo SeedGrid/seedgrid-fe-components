@@ -63,15 +63,15 @@ export const sgMeta: SgMetaV0 = {
   states: ["loading", "loaded", "saving", "error"],
   examples: [
     {
-      id: "basic",
-      title: "Estado persistido simples",
-      file: "apps/showcase/src/app/components/hooks/use-sg-persistent-state/samples/basic.tsx.sample",
+      id: "uso-basico",
+      title: "Uso basico",
+      file: "apps/showcase/src/app/components/hooks/use-sg-persistent-state/samples/uso-basico.tsx.sample",
       kind: "sample"
     },
     {
-      id: "with-serialization",
-      title: "Com serializacao customizada",
-      file: "apps/showcase/src/app/components/hooks/use-sg-persistent-state/samples/with-serialization.tsx.sample",
+      id: "serializacao-customizada",
+      title: "Serializacao customizada",
+      file: "apps/showcase/src/app/components/hooks/use-sg-persistent-state/samples/serialize-e-deserialize-customizados.tsx.sample",
       kind: "sample"
     },
     {

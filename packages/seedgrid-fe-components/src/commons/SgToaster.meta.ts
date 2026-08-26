@@ -24,7 +24,7 @@ export const sgMeta: SgMetaV0 = {
   ],
   states: ["idle", "showing-toasts"],
   examples: [
-    { id: "basic", title: "Basico", file: "apps/showcase/src/app/components/sg-toaster/samples/basico.tsx.sample", kind: "sample" },
+    { id: "base-setup", title: "Setup basico", file: "apps/showcase/src/app/components/sg-toaster/samples/base-setup.tsx.sample", kind: "sample" },
     { id: "playground", title: "Playground", file: "apps/showcase/src/app/components/sg-toaster/sg-toaster.tsx.playground", kind: "playground" }
   ],
   showcase: { route: "/components/sg-toaster", hasPlayground: true, hasPropsTable: true },

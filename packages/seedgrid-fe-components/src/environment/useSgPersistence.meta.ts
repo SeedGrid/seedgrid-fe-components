@@ -68,9 +68,9 @@ export const sgMeta: SgMetaV0 = {
   states: ["idle", "loading", "saving", "error"],
   examples: [
     {
-      id: "basic",
-      title: "Carregar e salvar estado",
-      file: "apps/showcase/src/app/components/hooks/use-sg-persistence/samples/basic.tsx.sample",
+      id: "uso-basico",
+      title: "Uso basico",
+      file: "apps/showcase/src/app/components/hooks/use-sg-persistence/samples/uso-basico.tsx.sample",
       kind: "sample"
     },
     {

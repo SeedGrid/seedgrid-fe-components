@@ -26,7 +26,7 @@ export const sgMeta: SgMetaV0 = {
   ],
   states: ["default", "multi-month", "disabled-dates", "controlled"],
   examples: [
-    { id: "basic", title: "Basico", file: "apps/showcase/src/app/components/gadgets/sg-calendar/samples/basico.tsx.sample", kind: "sample" },
+    { id: "basico-mes-atual", title: "Basico (mes atual)", file: "apps/showcase/src/app/components/gadgets/sg-calendar/samples/basico-mes-atual.tsx.sample", kind: "sample" },
     { id: "playground", title: "Playground", file: "apps/showcase/src/app/components/gadgets/sg-calendar/sg-calendar.tsx.playground", kind: "playground" }
   ],
   showcase: { route: "/components/gadgets/sg-calendar", hasPlayground: true, hasPropsTable: true },

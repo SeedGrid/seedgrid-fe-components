@@ -33,15 +33,15 @@ export const sgMeta: SgMetaV0 = {
   states: ["pt-BR", "pt-PT", "en-US", "en", "es", "fr"],
   examples: [
     {
-      id: "basic",
-      title: "Acessar locale e mensagens",
-      file: "apps/showcase/src/app/components/hooks/use-components-i18n/samples/basic.tsx.sample",
+      id: "uso-basico",
+      title: "Uso basico",
+      file: "apps/showcase/src/app/components/hooks/use-components-i18n/samples/uso-basico.tsx.sample",
       kind: "sample"
     },
     {
-      id: "with-translation",
-      title: "Usar para traducao de mensagens",
-      file: "apps/showcase/src/app/components/hooks/use-components-i18n/samples/with-translation.tsx.sample",
+      id: "locale-aware",
+      title: "Componentes conscientes do locale",
+      file: "apps/showcase/src/app/components/hooks/use-components-i18n/samples/componentes-conscientes-do-locale.tsx.sample",
       kind: "sample"
     }
   ],

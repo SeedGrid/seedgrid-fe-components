@@ -21,7 +21,7 @@ export const sgMeta: SgMetaV0 = {
     { name: "className", type: "string", description: "Classes adicionais da etapa.", semanticRole: "appearance", bindable: true }
   ],
   states: ["default", "active", "completed"],
-  examples: [{ id: "auto-validation", title: "Auto validation", file: "apps/showcase/src/app/components/sg-wizard/samples/auto-validation.tsx.sample", kind: "sample" }],
+  examples: [{ id: "validacao-automatica", title: "Validacao automatica", file: "apps/showcase/src/app/components/sg-wizard/samples/validacao-automatica.tsx.sample", kind: "sample" }],
   showcase: { route: "/components/sg-wizard", hasPlayground: true, hasPropsTable: true },
   sdui: { rendererType: "navigation.wizard-page", acceptsDataBinding: true, defaultProps: {} }
 };

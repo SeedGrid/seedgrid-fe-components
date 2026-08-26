@@ -63,9 +63,9 @@ export const sgMeta: SgMetaV0 = {
   states: ["loading", "static"],
   examples: [
     {
-      id: "basic",
-      title: "Basico",
-      file: "apps/showcase/src/app/components/sg-skeleton/samples/basico.tsx.sample",
+      id: "basic-shapes",
+      title: "Formas basicas",
+      file: "apps/showcase/src/app/components/sg-skeleton/samples/basic-shapes.tsx.sample",
       kind: "sample"
     },
     {

@@ -27,7 +27,7 @@
   ],
   "scripts": {
     "clean": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\"",
-    "build": "pnpm run clean && node scripts/build-style.mjs && tsc -p tsconfig.json && node scripts/extract-props.mjs && node scripts/build-ai-manifest.mjs && pnpm run build:sandbox",
+    "build": "pnpm run clean && node scripts/build-style.mjs && tsc -p tsconfig.json && node scripts/extract-props.mjs && node scripts/build-ai-manifest.mjs && node scripts/validate-example-refs.mjs && pnpm run build:sandbox",
     "build:sandbox": "tsup --config tsup.sandbox.config.ts",
     "dev": "node scripts/build-style.mjs && tsc -p tsconfig.json --watch --preserveWatchOutput",
     "typecheck": "tsc -p tsconfig.json --noEmit",
@@ -84,4 +84,3 @@
     "qrcode.react": "^4.2.0"
   }
 }
-

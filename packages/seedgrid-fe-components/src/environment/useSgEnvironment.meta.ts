@@ -54,15 +54,15 @@ export const sgMeta: SgMetaV0 = {
   states: ["default", "custom", "persisted"],
   examples: [
     {
-      id: "basic",
-      title: "Acessar config de ambiente",
-      file: "apps/showcase/src/app/components/hooks/use-sg-environment/samples/basic.tsx.sample",
+      id: "default-sem-provider",
+      title: "Default sem provider",
+      file: "apps/showcase/src/app/components/hooks/use-sg-environment/samples/default-sem-provider.tsx.sample",
       kind: "sample"
     },
     {
-      id: "with-namespace",
-      title: "Com namespace customizado",
-      file: "apps/showcase/src/app/components/hooks/use-sg-environment/samples/with-namespace.tsx.sample",
+      id: "com-provider",
+      title: "Com provider",
+      file: "apps/showcase/src/app/components/hooks/use-sg-environment/samples/com-provider.tsx.sample",
       kind: "sample"
     }
   ],

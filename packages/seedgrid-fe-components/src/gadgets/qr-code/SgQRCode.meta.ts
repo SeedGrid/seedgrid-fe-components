@@ -23,7 +23,7 @@ export const sgMeta: SgMetaV0 = {
   ],
   states: ["idle", "empty", "rendered"],
   examples: [
-    { id: "interactive", title: "Interativo", file: "apps/showcase/src/app/components/gadgets/sg-qr-code/samples/interativo.tsx.sample", kind: "sample" },
+    { id: "interactive-example", title: "Exemplo interativo", file: "apps/showcase/src/app/components/gadgets/sg-qr-code/samples/interactive-example.tsx.sample", kind: "sample" },
     { id: "playground", title: "Playground", file: "apps/showcase/src/app/components/gadgets/sg-qr-code/sg-qr-code.tsx.playground", kind: "playground" }
   ],
   showcase: { route: "/components/gadgets/sg-qr-code", hasPlayground: true, hasPropsTable: true },
