@@ -76,6 +76,29 @@ export default function SgWhistlerPage() {
     { prop: "customColors", type: "Partial<Record<SgWhistleSeverity, { bg; fg; border }>>", defaultValue: "-", description: t(i18n, `${K}.props.customColors`) }
   ];
 
+  // Mesma situacao do sg-toaster: a tabela do manifesto acima e' do SgWhistler, entao os
+  // parametros das funcoes do servico so' aparecem aqui.
+  const serviceProps: ShowcasePropRow[] = [
+    {
+      prop: "sgWhistle.<severidade>(options)",
+      type: "(options: SgWhistleOptions) => SgWhistleId",
+      defaultValue: "-",
+      description: t(i18n, `${K}.props.whistleFn`)
+    },
+    {
+      prop: "dismissSgWhistle(id?)",
+      type: "(id?: SgWhistleId) => void",
+      defaultValue: "-",
+      description: t(i18n, `${K}.props.dismissFn`)
+    },
+    {
+      prop: "subscribeSgWhistles(listener)",
+      type: "(listener: (whistles: SgWhistleRecord[]) => void) => () => void",
+      defaultValue: "-",
+      description: t(i18n, `${K}.props.subscribeFn`)
+    }
+  ];
+
   React.useEffect(() => {
     sgWhistle.dismiss();
     return () => {
@@ -401,6 +424,11 @@ export default function SgWhistlerPage() {
         </Section>
 
         <ShowcasePropsReference rows={whistleProps} />
+        <ShowcasePropsReference
+          id="props-reference-services"
+          title={t(i18n, `${K}.propsTitles.services`)}
+          rows={serviceProps}
+        />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />

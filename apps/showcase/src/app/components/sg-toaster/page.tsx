@@ -78,6 +78,30 @@ export default function SgToasterPage() {
     }
   ];
 
+  // As funcoes do servico dividem esta pagina com o SgToaster, e a tabela do manifesto acima
+  // esta ligada so' ao componente — sem isto, os parametros delas nao aparecem em lugar nenhum
+  // da pagina.
+  const serviceProps: ShowcasePropRow[] = [
+    {
+      prop: "toast(title?, options?)",
+      type: "(title?: ReactNode, options?: SgToastOptions) => SgToastId",
+      defaultValue: "-",
+      description: t(i18n, `${K}.props.toastFn`)
+    },
+    {
+      prop: "dismissSgToast(id?)",
+      type: "(id?: SgToastId) => void",
+      defaultValue: "-",
+      description: t(i18n, `${K}.props.dismissFn`)
+    },
+    {
+      prop: "subscribeSgToasts(listener)",
+      type: "(listener: (toasts: SgToastRecord[]) => void) => () => void",
+      defaultValue: "-",
+      description: t(i18n, `${K}.props.subscribeFn`)
+    }
+  ];
+
   const startLoading = React.useCallback(() => {
     const id = toast.loading(t(i18n, `${K}.msg.loading.start`), {
       description: t(i18n, `${K}.msg.loading.startDesc`)
@@ -387,6 +411,11 @@ export default function SgToasterPage() {
       </Section>
 
         <ShowcasePropsReference rows={toasterProps} />
+        <ShowcasePropsReference
+          id="props-reference-services"
+          title={t(i18n, `${K}.propsTitles.services`)}
+          rows={serviceProps}
+        />
         {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
         {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
