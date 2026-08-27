@@ -951,3 +951,152 @@ test("SgInputPassword honours newPasswordLength for the generated password", asy
     harness.restore();
   }
 });
+
+const BROWSE_COUNTRIES = [
+  { id: 1, label: "Afghanistan" },
+  { id: 2, label: "Albania" },
+  { id: 3, label: "Brazil" },
+  { id: 4, label: "South Africa" }
+];
+
+// Fonte e callback ficam fora do componente: se mudassem de identidade a cada
+// render, o debounce interno seria reiniciado a cada render e o teste ficaria
+// dependente de timing.
+const browseQueries = [];
+const browseSource = (query) => {
+  const q = (query ?? "").toLowerCase();
+  return BROWSE_COUNTRIES.filter((c) => c.label.toLowerCase().includes(q));
+};
+const browseOnSearch = (query) => {
+  browseQueries.push(query);
+};
+
+function BrowseAutocomplete(props = {}) {
+  const [value, setValue] = React.useState("");
+
+  return React.createElement(SgAutocomplete, {
+    id: "autocomplete-browse",
+    label: "Country",
+    value,
+    onChange: setValue,
+    source: browseSource,
+    onSearch: browseOnSearch,
+    minLengthForSearch: 1,
+    delay: 0,
+    cacheEnabled: false,
+    showDropDownButton: true,
+    ...props
+  });
+}
+
+function getBrowseDropdownButton(harness) {
+  const wrapper = harness.document.querySelector("input#autocomplete-browse")?.closest("div.relative");
+  assert.ok(wrapper);
+  const buttons = wrapper.querySelectorAll("button");
+  assert.ok(buttons.length > 0);
+  return buttons[buttons.length - 1];
+}
+
+function listedLabels(harness) {
+  return Array.from(harness.document.querySelectorAll("[data-sg-index]")).map((node) => node.textContent ?? "");
+}
+
+const BROWSE_LABELS = BROWSE_COUNTRIES.map((c) => c.label);
+
+async function clickBrowseButton(button) {
+  await dispatchMouse(button, "mousedown");
+  await dispatchMouse(button, "click");
+  await flushDom();
+  await flushDom();
+}
+
+async function typeChar(harness, input, ch) {
+  const descriptor = Object.getOwnPropertyDescriptor(globalThis.HTMLInputElement.prototype, "value");
+  assert.ok(descriptor?.set);
+
+  await act(async () => {
+    const previous = input.value;
+    input.dispatchEvent(new harness.window.KeyboardEvent("keydown", { key: ch, bubbles: true, cancelable: true }));
+    input.dispatchEvent(
+      new harness.window.InputEvent("beforeinput", { data: ch, inputType: "insertText", bubbles: true, cancelable: true })
+    );
+    descriptor.set.call(input, previous + ch);
+    input._valueTracker?.setValue?.(previous);
+    input.dispatchEvent(
+      new harness.window.InputEvent("input", { data: ch, inputType: "insertText", bubbles: true, cancelable: true })
+    );
+    input.dispatchEvent(new harness.window.KeyboardEvent("keyup", { key: ch, bubbles: true, cancelable: true }));
+  });
+  await flushDom();
+  await flushDom();
+}
+
+test("SgAutocomplete dropdown button lists every option again after a selection", async () => {
+  const harness = setupDomHarness();
+  browseQueries.length = 0;
+
+  try {
+    await harness.render(React.createElement(BrowseAutocomplete));
+    await flushDom();
+
+    const input = harness.document.querySelector("input#autocomplete-browse");
+    assert.ok(input);
+
+    const button = getBrowseDropdownButton(harness);
+    await clickBrowseButton(button);
+
+    assert.deepEqual(listedLabels(harness), BROWSE_LABELS);
+
+    const albania = harness.document.querySelectorAll("[data-sg-index]")[1];
+    assert.equal(albania.textContent, "Albania");
+
+    await dispatchMouse(albania, "mousedown");
+    await dispatchMouse(albania, "click");
+    await flushDom();
+
+    assert.equal(input.value, "Albania");
+    assert.equal(listedLabels(harness).length, 0);
+
+    // Reabrir pelo botao deve mostrar a lista inteira, nao so o item selecionado.
+    await clickBrowseButton(button);
+
+    assert.equal(browseQueries.at(-1), "");
+    assert.deepEqual(listedLabels(harness), BROWSE_LABELS);
+  } finally {
+    harness.restore();
+  }
+});
+
+test("SgAutocomplete dropdown button keeps the typed filter when the text is not the selection", async () => {
+  const harness = setupDomHarness();
+  browseQueries.length = 0;
+
+  try {
+    await harness.render(React.createElement(BrowseAutocomplete, { allowCustomValue: true }));
+    await flushDom();
+
+    const input = harness.document.querySelector("input#autocomplete-browse");
+    assert.ok(input);
+
+    await act(async () => {
+      input.focus();
+    });
+    await flushDom();
+
+    await typeChar(harness, input, "z");
+    assert.equal(input.value, "z");
+
+    const button = getBrowseDropdownButton(harness);
+
+    // Fecha e reabre pelo botao: o filtro digitado tem de ser preservado.
+    await clickBrowseButton(button);
+    assert.equal(listedLabels(harness).length, 0);
+
+    await clickBrowseButton(button);
+
+    assert.equal(browseQueries.at(-1), "z");
+    assert.deepEqual(listedLabels(harness), ["Brazil"]);
+  } finally {
+    harness.restore();
+  }
+});

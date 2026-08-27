@@ -148,6 +148,7 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
   const wrapperRef = React.useRef<HTMLDivElement | null>(null);
   const inputRef = React.useRef<HTMLInputElement | null>(null);
   const dropdownRef = React.useRef<HTMLDivElement | null>(null);
+  const listRef = React.useRef<HTMLDivElement | null>(null);
   const ignoreBlurRef = React.useRef(false);
   const [activeIndex, setActiveIndex] = React.useState(-1);
   const [lastSelected, setLastSelected] = React.useState<string>("");
@@ -157,6 +158,16 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
   const requestIdRef = React.useRef(0);
   const openRef = React.useRef(false);
   openRef.current = open;
+  // Quando a lista abre pelo botao dropdown (ou por openOnFocus) com um item ja
+  // selecionado, ela deve listar o catalogo inteiro em vez de refiltrar pelo
+  // label do proprio item selecionado -- senao a lista volta com 1 item so.
+  const browseModeRef = React.useRef(false);
+  // true enquanto o texto do input for algo que o usuario digitou (e ainda nao
+  // virou selecao). Enquanto for false, o texto e uma selecao (ou esta vazio) e
+  // abrir a lista deve mostrar o catalogo inteiro, nao refiltrar por ele.
+  const typedRef = React.useRef(false);
+  const inputValueRef = React.useRef(inputValue);
+  inputValueRef.current = inputValue;
   // While the user is focused (typing), every incoming `value` prop change is
   // just the parent echoing back our own onChange. Overwriting inputValue in
   // that window drops characters typed faster than one render cycle.
@@ -170,6 +181,11 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
     if (value === undefined) return;
     // Never clobber what the user is actively typing.
     if (isFocusedRef.current) return;
+    // Valor identico ao que ja exibimos e apenas o pai ecoando nosso onChange:
+    // nao ha o que sincronizar, e trata-lo como valor externo apagaria o fato de
+    // o texto ter sido digitado pelo usuario.
+    if (value === inputValueRef.current) return;
+    typedRef.current = false;
     setLastSelected(value);
     setInputValue(value);
     if (!value) {
@@ -256,9 +272,32 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
 
   React.useEffect(() => {
     if (!openRef.current) return;
-    const handler = setTimeout(() => runSearch(inputValue), delay);
+    if (browseModeRef.current) return;
+    const handler = setTimeout(() => {
+      // A lista pode ter fechado (ou entrado em modo browse) enquanto o debounce
+      // estava pendente; disparar aqui reabriria/refiltraria a lista sozinha.
+      if (!openRef.current || browseModeRef.current) return;
+      runSearch(inputValue);
+    }, delay);
     return () => clearTimeout(handler);
   }, [delay, inputValue, runSearch]);
+
+  // Abre a lista em modo "browse" (catalogo completo) quando o texto do input
+  // nao foi digitado pelo usuario -- e uma selecao ou esta vazio. Se o usuario
+  // digitou algo, o filtro digitado e respeitado.
+  const openList = React.useCallback(() => {
+    const browse = !typedRef.current;
+    browseModeRef.current = browse;
+    setOpen(true);
+    onOpenChange?.(true);
+    runSearch(browse ? "" : inputValue, true);
+  }, [inputValue, onOpenChange, runSearch]);
+
+  const closeList = React.useCallback(() => {
+    browseModeRef.current = false;
+    setOpen(false);
+    onOpenChange?.(false);
+  }, [onOpenChange]);
 
   const selectItem = (item: SgAutocompleteItem) => {
     if (item.disabled) return;
@@ -269,6 +308,8 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
     onChange?.(selection);
     setLastSelected(selection);
     onSelect?.(item);
+    typedRef.current = false;
+    browseModeRef.current = false;
     setOpen(false);
     onOpenChange?.(false);
     if (clearOnSelect) {
@@ -281,6 +322,8 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
     if (selectedItem && next !== (formatSelection ? formatSelection(selectedItem) : selectedItem.label)) {
       setSelectedItem(null);
     }
+    browseModeRef.current = false;
+    typedRef.current = next.length > 0;
     setInternalError(null);
     setInputValue(next);
     if (allowCustomValue || next.length === 0) {
@@ -313,6 +356,9 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
       return;
     }
     isFocusedRef.current = false;
+    if (!allowCustomValue) {
+      typedRef.current = false;
+    }
     if (!allowCustomValue && inputValue !== lastSelected) {
       if (lastSelected) {
         setInputValue(lastSelected);
@@ -329,6 +375,7 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
         onChange?.("");
       }
     }
+    browseModeRef.current = false;
     setOpen(false);
     onOpenChange?.(false);
   };
@@ -340,9 +387,7 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
       setInputValue(selection);
     }
     if (openOnFocus) {
-      setOpen(true);
-      onOpenChange?.(true);
-      runSearch(inputValue, true);
+      openList();
     }
   };
 
@@ -359,8 +404,7 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
       const item = items[activeIndex];
       if (item) selectItem(item);
     } else if (event.key === "Escape") {
-      setOpen(false);
-      onOpenChange?.(false);
+      closeList();
     }
   };
 
@@ -390,13 +434,10 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
       }}
       onClick={() => {
         if (open) {
-          setOpen(false);
-          onOpenChange?.(false);
+          closeList();
           return;
         }
-        setOpen(true);
-        onOpenChange?.(true);
-        runSearch(inputValue, true);
+        openList();
       }}
       aria-label={t(i18n, "components.actions.openList")}
     >
@@ -436,6 +477,7 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
             return (
               <div
                 key={item.id}
+                data-sg-index={flatIndex}
                 className={`group relative cursor-pointer px-3 py-2 text-sm ${isActive ? "bg-muted/60" : ""} ${item.disabled ? "opacity-50 cursor-not-allowed" : "hover:bg-muted/40"}`}
                 onMouseEnter={() => setActiveIndex(flatIndex)}
                 onMouseDown={(event) => {
@@ -461,6 +503,7 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
       return (
         <div
           key={item.id}
+          data-sg-index={index}
           className={`group relative cursor-pointer px-3 py-2 text-sm ${isActive ? "bg-muted/60" : ""} ${item.disabled ? "opacity-50 cursor-not-allowed" : "hover:bg-muted/40"}`}
           onMouseEnter={() => setActiveIndex(index)}
           onMouseDown={(event) => {
@@ -479,6 +522,29 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
       );
     });
   };
+
+  // No modo browse a lista abre inteira: destaca o item ja selecionado para o
+  // usuario se situar dentro dela.
+  React.useEffect(() => {
+    if (!open || !browseModeRef.current || !selectedItem) return;
+    const index = items.findIndex((item) => item.id === selectedItem.id);
+    if (index >= 0) setActiveIndex(index);
+  }, [items, open, selectedItem]);
+
+  // Mantem o item ativo visivel (item destacado ao abrir e navegacao por teclado).
+  React.useEffect(() => {
+    if (!open || activeIndex < 0) return;
+    const container = listRef.current;
+    const node = container?.querySelector(`[data-sg-index="${activeIndex}"]`) as HTMLElement | null;
+    if (!container || !node) return;
+    const top = node.offsetTop - container.offsetTop;
+    const bottom = top + node.offsetHeight;
+    if (top < container.scrollTop) {
+      container.scrollTop = top;
+    } else if (bottom > container.scrollTop + container.clientHeight) {
+      container.scrollTop = bottom - container.clientHeight;
+    }
+  }, [activeIndex, items, open]);
 
   React.useEffect(() => {
     if (!open) return;
@@ -502,6 +568,7 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
           onChange?.("");
         }
       }
+      browseModeRef.current = false;
       setOpen(false);
       onOpenChange?.(false);
     };
@@ -579,7 +646,7 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
             className="z-[1100] overflow-hidden rounded-md border border-border bg-[rgb(var(--sg-surface,var(--sg-bg)))] text-[rgb(var(--sg-text,var(--sg-fg)))] shadow-lg"
             style={dropdownStyle}
           >
-            <div className="max-h-64 overflow-auto">
+            <div ref={listRef} className="max-h-64 overflow-auto">
               {listContent()}
             </div>
             {renderFooter ? (

@@ -22,7 +22,8 @@ export const sgMeta: SgMetaV0 = {
     { name: "delay", type: "number", description: "Debounce da pesquisa em milissegundos.", semanticRole: "behavior", bindable: true },
     { name: "maxResult", type: "number", description: "Limite de resultados exibidos.", semanticRole: "behavior", bindable: true },
     { name: "allowCustomValue", type: "boolean", default: false, description: "Permite valor fora da lista.", semanticRole: "behavior", bindable: true },
-    { name: "openOnFocus", type: "boolean", default: false, description: "Abre sugestoes ao focar.", semanticRole: "behavior", bindable: true },
+    { name: "openOnFocus", type: "boolean", default: false, description: "Abre a lista ao focar; com um item ja selecionado abre a lista completa.", semanticRole: "behavior", bindable: true },
+    { name: "showDropDownButton", type: "boolean", default: false, description: "Exibe o botao que abre/fecha a lista. Abre a lista completa quando o texto e uma selecao; preserva o filtro quando o usuario digitou.", semanticRole: "behavior", bindable: true },
     { name: "onSelect", type: "(item: SgAutocompleteItem) => void", description: "Callback disparado ao selecionar item.", semanticRole: "event", bindable: false }
   ],
   states: ["default", "focused", "open", "loading", "disabled", "error"],

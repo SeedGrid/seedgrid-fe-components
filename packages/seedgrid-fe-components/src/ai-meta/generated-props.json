@@ -8835,7 +8835,7 @@
       "name": "duration",
       "type": "number",
       "required": false,
-      "description": "Duracao padrao, em milissegundos, dos whistles deste host. Cada whistle pode sobrescrever\ncom `options.duration`, que tem PRIORIDADE. Use 0 (ou negativo) para que nada suma sozinho\npor padrao. Whistle `loading` nunca expira, qualquer que seja o valor.\n\nEspelha o `duration` do SgToaster/SgToastHost — mesmo default e mesma precedencia. Antes o\nvalor era fixo no codigo e nao havia como mudar o padrao sem repetir `duration` em toda\nchamada de sgWhistle."
+      "description": "Duracao padrao, em milissegundos, dos whistles deste host. Cada whistle pode sobrescrever\r\ncom `options.duration`, que tem PRIORIDADE. Use 0 (ou negativo) para que nada suma sozinho\r\npor padrao. Whistle `loading` nunca expira, qualquer que seja o valor.\r\n\r\nEspelha o `duration` do SgToaster/SgToastHost — mesmo default e mesma precedencia. Antes o\r\nvalor era fixo no codigo e nao havia como mudar o padrao sem repetir `duration` em toda\r\nchamada de sgWhistle."
     },
     {
       "name": "gap",
@@ -8869,7 +8869,7 @@
       "name": "duration",
       "type": "number",
       "required": false,
-      "description": "Duracao padrao, em milissegundos, dos whistles deste host. Cada whistle pode sobrescrever\ncom `options.duration`, que tem PRIORIDADE. Use 0 (ou negativo) para que nada suma sozinho\npor padrao. Whistle `loading` nunca expira, qualquer que seja o valor.\n\nEspelha o `duration` do SgToaster/SgToastHost — mesmo default e mesma precedencia. Antes o\nvalor era fixo no codigo e nao havia como mudar o padrao sem repetir `duration` em toda\nchamada de sgWhistle."
+      "description": "Duracao padrao, em milissegundos, dos whistles deste host. Cada whistle pode sobrescrever\r\ncom `options.duration`, que tem PRIORIDADE. Use 0 (ou negativo) para que nada suma sozinho\r\npor padrao. Whistle `loading` nunca expira, qualquer que seja o valor.\r\n\r\nEspelha o `duration` do SgToaster/SgToastHost — mesmo default e mesma precedencia. Antes o\r\nvalor era fixo no codigo e nao havia como mudar o padrao sem repetir `duration` em toda\r\nchamada de sgWhistle."
     },
     {
       "name": "gap",
@@ -8913,7 +8913,7 @@
       "name": "nextDisabled",
       "type": "boolean",
       "required": false,
-      "description": "Desabilita o avanco de forma declarativa: o botao \"Proximo\" fica desabilitado (opaco, com\ncursor de bloqueio) e o stepper para de oferecer as etapas seguintes.\n\nComplementa `onBeforeNext`/`validateStep`, que so' agem NO CLIQUE. Quando o consumidor ja\nsabe que a etapa nao pode avancar — tipicamente o resultado de uma checagem assincrona que\nja' terminou, como \"este CNPJ ja' tem cadastro\" — o botao continuava com aparencia de\nclicavel e o clique nao fazia nada, sem explicar por que.\n\nNao afeta o botao de conclusao da ultima etapa: para esse caso existe `onBeforeFinish`."
+      "description": "Desabilita o avanco de forma declarativa: o botao \"Proximo\" fica desabilitado (opaco, com\r\ncursor de bloqueio) e o stepper para de oferecer as etapas seguintes.\r\n\r\nComplementa `onBeforeNext`/`validateStep`, que so' agem NO CLIQUE. Quando o consumidor ja\r\nsabe que a etapa nao pode avancar — tipicamente o resultado de uma checagem assincrona que\r\nja' terminou, como \"este CNPJ ja' tem cadastro\" — o botao continuava com aparencia de\r\nclicavel e o clique nao fazia nada, sem explicar por que.\r\n\r\nNao afeta o botao de conclusao da ultima etapa: para esse caso existe `onBeforeFinish`."
     },
     {
       "name": "onBeforeFinish",
