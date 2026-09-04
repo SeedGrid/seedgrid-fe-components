@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import * as React from "react";
-import { ChevronDown, ChevronUp, Search } from "lucide-react";
+import { ChevronDown, ChevronUp, Search, Sparkles } from "lucide-react";
 import { SgInputText } from "../inputs/SgInputText";
 import { SgButton } from "../buttons/SgButton";
 import { t, useComponentsI18n } from "../i18n";
@@ -80,6 +80,46 @@ export function sgTreeFromJsonWithChecked(
 
   return { nodes, checkedIds: Array.from(expandedChecked) };
 }
+
+export type SgTreeTrackBoolean = {
+  id: string;
+  kind: "boolean";
+  /** Cabecalho da coluna -- some sem ele; com 2+ trilhas na mesma arvore, o usuario nao tem
+   * como saber o que cada checkbox/select significa so' pela posicao. */
+  label?: string;
+  checkedIds: string[];
+  onCheckedChange: (ids: string[]) => void;
+  disabled?: (node: SgTreeNode) => boolean;
+  ariaLabel?: string;
+  /** Ids marcados como sugestao (de IA ou outra fonte) nesta trilha -- ganham um indicador
+   * colado no PROPRIO controle desta coluna, nao na descricao do no' (uma sugestao pode acertar
+   * uma trilha e nao a outra, entao o indicador precisa ser por trilha). */
+  suggestedIds?: string[];
+  /** Substitui o icone padrao (Sparkles) do indicador de sugestao. */
+  suggestedIcon?: React.ReactNode;
+};
+
+export type SgTreeTrackEnum = {
+  id: string;
+  kind: "enum";
+  label?: string;
+  options: { value: string; label: string }[];
+  valueByNodeId: Record<string, string | undefined>;
+  onChange: (next: Record<string, string | undefined>) => void;
+  disabled?: (node: SgTreeNode) => boolean;
+  placeholder?: string;
+  mixedLabel?: string;
+  suggestedIds?: string[];
+  suggestedIcon?: React.ReactNode;
+};
+
+/**
+ * Uma trilha extra de selecao por linha, independente do `checkable`/`checkedIds` principal.
+ * Cada trilha tem sua propria cascata pai->filhos (boolean: check/uncheck; enum: propaga o
+ * valor escolhido). Controlada de fora (sem defaultValue) -- o estado mora em quem chama,
+ * igual ja acontece hoje com `checkedIds` nas telas que usam SgTreeView.
+ */
+export type SgTreeTrack = SgTreeTrackBoolean | SgTreeTrackEnum;
 
 type CheckedState = "unchecked" | "checked" | "indeterminate";
 
@@ -189,6 +229,43 @@ function setBranchChecked(
   }
 }
 
+// Mesma ideia de computeCheckedState/setBranchChecked, generalizada de "presente num Set" pra
+// "valor num Map" -- e' o que uma trilha `kind: "enum"` (ex.: tipo de conta) precisa: em vez de
+// checked/unchecked/indeterminate, e' valor-escolhido/sem-valor/misto (filhos com valores
+// diferentes entre si).
+type CascadeValueResult = { readonly mixed: true } | { readonly mixed: false; readonly value: string | undefined };
+
+function computeCascadeValue(
+  id: string,
+  childrenById: Map<string, string[]>,
+  valueById: Map<string, string | undefined>
+): CascadeValueResult {
+  const kids = childrenById.get(id) ?? [];
+  if (!kids.length) return { mixed: false, value: valueById.get(id) };
+
+  let acc: CascadeValueResult | null = null;
+  for (const k of kids) {
+    const r = computeCascadeValue(k, childrenById, valueById);
+    if (r.mixed) return { mixed: true };
+    if (acc === null) acc = r;
+    else if (acc.mixed || acc.value !== r.value) return { mixed: true };
+  }
+  return acc ?? { mixed: false, value: valueById.get(id) };
+}
+
+function setBranchValue(
+  id: string,
+  value: string | undefined,
+  childrenById: Map<string, string[]>,
+  valueById: Map<string, string | undefined>
+) {
+  const all = [id, ...collectDescendants(childrenById, id)];
+  for (const x of all) {
+    if (value === undefined) valueById.delete(x);
+    else valueById.set(x, value);
+  }
+}
+
 type Controlled<T> =
   | { value: T; defaultValue?: never; onChange: (v: T) => void }
   | { value?: never; defaultValue: T; onChange?: (v: T) => void }
@@ -236,6 +313,11 @@ const densityMap: Record<SgDensity, { rowPy: string; rowPx: string; gap: string;
   normal: { rowPy: "py-1", rowPx: "px-2", gap: "gap-2", caret: "h-6 w-6", indent: 16 },
   comfortable: { rowPy: "py-1.5", rowPx: "px-2.5", gap: "gap-2.5", caret: "h-7 w-7", indent: 18 }
 };
+
+// Largura fixa de cada coluna de trilha (checkbox ou select), usada tanto na linha quanto no
+// cabecalho -- e' o que deixa o texto do cabecalho ("Prioridade", "Tipo de conta") alinhado com
+// o controle por baixo dele, em vez de so' o controle estreito sem legenda nenhuma.
+const TRACK_CELL_CLASS = "w-[110px] shrink-0";
 
 function toneClasses(tone: SgTone) {
   if (tone === "muted") {
@@ -291,6 +373,12 @@ export type SgTreeViewProps = {
   checkedIds?: string[];
   defaultCheckedIds?: string[];
   onCheckedChange?: (ids: string[]) => void;
+  /** Cabecalho da coluna do checkbox principal -- so' e' desenhado quando `tracks` tambem esta'
+   * presente (e' o cabecalho de colunas como um todo que fica ambiguo com 2+ controles por linha,
+   * nao o checkbox sozinho). */
+  checkableLabel?: string;
+  /** Trilhas de selecao extras, uma por coluna de controle na linha -- ver SgTreeTrack. */
+  tracks?: SgTreeTrack[];
   expandedIds?: string[];
   defaultExpandedIds?: string[];
   onExpandedChange?: (ids: string[]) => void;
@@ -378,6 +466,20 @@ export const SgTreeView = React.forwardRef<SgTreeViewRef, SgTreeViewProps>(funct
 
   const expandedSet = React.useMemo(() => new Set<string>(expandedIds), [expandedIds]);
   const checkedSet = React.useMemo(() => new Set<string>(effectiveCheckedIds), [effectiveCheckedIds]);
+
+  // Um Set/Map por trilha, montado uma vez por render (nao por no) -- mesma logica de
+  // `checkedSet` acima, só que uma cópia por track em vez de uma única.
+  const tracks = props.tracks;
+  const hasTracks = !!tracks && tracks.length > 0;
+  const trackData = React.useMemo(
+    () =>
+      (tracks ?? []).map((track) =>
+        track.kind === "boolean"
+          ? { track, checkedSet: new Set(track.checkedIds) }
+          : { track, valueById: new Map(Object.entries(track.valueByNodeId)) }
+      ),
+    [tracks]
+  );
 
   const { filtered, matchIds } = React.useMemo(() => filterTreeByQuery(nodes, search), [nodes, search]);
 
@@ -521,22 +623,104 @@ export const SgTreeView = React.forwardRef<SgTreeViewRef, SgTreeViewProps>(funct
             <span className={cn("transition-transform", isOpen && "rotate-90")}>{">"}</span>
           </button>
 
-          {checkable && (
-            <input
-              type="checkbox"
-              className={cn(
-                SZ.checkbox,
-                "rounded border border-sg-border bg-sg-surface",
-                "focus:outline-none focus:ring-2 focus:ring-sg-focus/30"
-              )}
-              disabled={isDisabled}
-              checked={checkedState === "checked"}
-              ref={(el) => {
-                if (el) el.indeterminate = checkedState === "indeterminate";
-              }}
-              onChange={() => toggleCheck(node)}
-            />
-          )}
+          {checkable &&
+            (() => {
+              const checkboxEl = (
+                <input
+                  type="checkbox"
+                  className={cn(
+                    SZ.checkbox,
+                    "rounded border border-sg-border bg-sg-surface",
+                    "focus:outline-none focus:ring-2 focus:ring-sg-focus/30"
+                  )}
+                  disabled={isDisabled}
+                  checked={checkedState === "checked"}
+                  ref={(el) => {
+                    if (el) el.indeterminate = checkedState === "indeterminate";
+                  }}
+                  onChange={() => toggleCheck(node)}
+                />
+              );
+              // So' empacota (e reserva a largura da coluna) quando ha' cabecalho pra alinhar --
+              // sem `tracks`, o checkbox continua exatamente como sempre foi.
+              return hasTracks ? (
+                <div className={cn(TRACK_CELL_CLASS, "flex items-center")}>{checkboxEl}</div>
+              ) : (
+                checkboxEl
+              );
+            })()}
+
+          {trackData.map(({ track, ...data }) => {
+            const trackDisabled = isDisabled || !!track.disabled?.(node);
+            const suggested = !!track.suggestedIds?.includes(node.id);
+            const suggestedIndicator = suggested ? (
+              <span title={t(i18n, "components.tree.suggested")} className="shrink-0">
+                {track.suggestedIcon ?? (
+                  <Sparkles className={cn(SZ.icon, "text-[rgb(var(--sg-primary-600))]")} />
+                )}
+              </span>
+            ) : null;
+
+            if (track.kind === "boolean") {
+              const checkedSetTrack = (data as { checkedSet: Set<string> }).checkedSet;
+              const state = computeCheckedState(node.id, maps.childrenById, checkedSetTrack);
+              return (
+                <div key={track.id} className={cn(TRACK_CELL_CLASS, "flex items-center gap-1")}>
+                  <input
+                    type="checkbox"
+                    aria-label={track.ariaLabel}
+                    className={cn(
+                      SZ.checkbox,
+                      "shrink-0 rounded border border-sg-border bg-sg-surface",
+                      "focus:outline-none focus:ring-2 focus:ring-sg-focus/30"
+                    )}
+                    disabled={trackDisabled}
+                    checked={state === "checked"}
+                    ref={(el) => {
+                      if (el) el.indeterminate = state === "indeterminate";
+                    }}
+                    onChange={() => {
+                      const next = new Set(checkedSetTrack);
+                      setBranchChecked(node.id, state !== "checked", maps.childrenById, next);
+                      track.onCheckedChange(Array.from(next));
+                    }}
+                  />
+                  {suggestedIndicator}
+                </div>
+              );
+            }
+
+            const valueById = (data as { valueById: Map<string, string | undefined> }).valueById;
+            const result = computeCascadeValue(node.id, maps.childrenById, valueById);
+            return (
+              <div key={track.id} className={cn(TRACK_CELL_CLASS, "flex items-center gap-1")}>
+                <select
+                  aria-label={track.id}
+                  disabled={trackDisabled}
+                  value={result.mixed ? "" : (result.value ?? "")}
+                  className={cn(
+                    SZ.text,
+                    "w-full rounded-md border border-sg-border bg-sg-surface px-1 py-0.5",
+                    "focus:outline-none focus:ring-2 focus:ring-sg-focus/30"
+                  )}
+                  onChange={(e) => {
+                    const v = e.target.value === "" ? undefined : e.target.value;
+                    const nextValueById = new Map(valueById);
+                    setBranchValue(node.id, v, maps.childrenById, nextValueById);
+                    track.onChange(Object.fromEntries(nextValueById));
+                  }}
+                >
+                  <option value="">{result.mixed ? (track.mixedLabel ?? "— misto —") : (track.placeholder ?? "—")}</option>
+                  {track.options.map((opt) => (
+                    <option key={opt.value} value={opt.value}>
+                      {opt.label}
+                    </option>
+                  ))}
+                </select>
+                {suggestedIndicator}
+              </div>
+            );
+          })}
 
           {node.icon && (
             <div
@@ -634,6 +818,27 @@ export const SgTreeView = React.forwardRef<SgTreeViewRef, SgTreeViewProps>(funct
       </div>
 
       <div className={cn("rounded-sg border border-sg-border", T.panelBg, "text-sg-text")}>
+        {hasTracks && (
+          <div
+            className={cn(
+              "flex items-center border-b border-sg-border",
+              DY.rowPx, DY.rowPy, DY.gap,
+              SZ.text, "font-semibold text-sg-muted"
+            )}
+          >
+            <span className={cn(DY.caret, "shrink-0")} />
+            {checkable && (
+              <div className={cn(TRACK_CELL_CLASS, "truncate")} title={props.checkableLabel}>
+                {props.checkableLabel}
+              </div>
+            )}
+            {(tracks ?? []).map((track) => (
+              <div key={track.id} className={cn(TRACK_CELL_CLASS, "truncate")} title={track.label}>
+                {track.label}
+              </div>
+            ))}
+          </div>
+        )}
         <div className={cn("overflow-auto", maxHeightClassName)}>
           <div className="p-2">
             {!hasAny ? (

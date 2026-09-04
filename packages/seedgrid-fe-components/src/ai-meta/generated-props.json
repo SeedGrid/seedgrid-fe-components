@@ -8700,6 +8700,12 @@
       "required": false
     },
     {
+      "name": "checkableLabel",
+      "type": "string",
+      "required": false,
+      "description": "Cabecalho da coluna do checkbox principal -- so' e' desenhado quando `tracks` tambem esta'\npresente (e' o cabecalho de colunas como um todo que fica ambiguo com 2+ controles por linha,\nnao o checkbox sozinho)."
+    },
+    {
       "name": "checkedIds",
       "type": "string[]",
       "required": false
@@ -8823,6 +8829,12 @@
       "name": "tone",
       "type": "SgTone",
       "required": false
+    },
+    {
+      "name": "tracks",
+      "type": "SgTreeTrack[]",
+      "required": false,
+      "description": "Trilhas de selecao extras, uma por coluna de controle na linha -- ver SgTreeTrack."
     }
   ],
   "SgWhistleHost": [

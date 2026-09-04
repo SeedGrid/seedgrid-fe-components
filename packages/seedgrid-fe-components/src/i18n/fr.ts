@@ -198,6 +198,7 @@ const fr: Record<string, string> = {
   "components.tree.empty": "Aucun element.",
   "components.tree.selected": "Selectionnes : {count}",
   "components.tree.selectedLeafs": " (feuilles)",
+  "components.tree.suggested": "Suggestion",
   "components.menu.drag": "Deplacer le menu",
   "components.menu.ariaLabel": "Menu",
   "components.toolbar.toggle": "Basculer la barre d outils",

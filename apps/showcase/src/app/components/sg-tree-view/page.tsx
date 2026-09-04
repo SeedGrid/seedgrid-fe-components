@@ -150,6 +150,8 @@ const TREE_VIEW_PROPS: ShowcasePropRow[] = [
   { prop: "nodes", type: "SgTreeNode[]", defaultValue: "[]", description: "Estrutura hierárquica de nós." },
   { prop: "checkable / checkMode / confirmSelection", type: "boolean / token / token", defaultValue: "false / instant / all", description: "Comportamento de seleção com checkboxes." },
   { prop: "checkedIds / defaultCheckedIds / onCheckedChange", type: "string[] / string[] / callback", defaultValue: "controlado / [] / -", description: "Estado de seleção." },
+  { prop: "checkableLabel", type: "string", defaultValue: "-", description: "Cabeçalho da coluna do checkbox principal (só aparece com tracks)." },
+  { prop: "tracks", type: "SgTreeTrack[]", defaultValue: "-", description: "Colunas extras de seleção, cada uma com cascata pai→filhos independente (boolean ou enum), cabeçalho (label) e indicador de sugestão (suggestedIds) próprios." },
   { prop: "expandedIds / defaultExpandedIds / onExpandedChange", type: "string[] / string[] / callback", defaultValue: "controlado / [] / -", description: "Estado de expansão." },
   { prop: "searchable / searchPlaceholder / searchValue", type: "boolean / string / string", defaultValue: "false / Search... / controlado", description: "Busca e filtro da árvore." },
   { prop: "size / density / tone / iconTone", type: "tokens", defaultValue: "md / normal / default / default", description: "Ajustes visuais do componente." },
@@ -171,6 +173,11 @@ export default function SgTreeViewPage() {
   const [readAll, setReadAll] = React.useState<string[]>([]);
   const [readLeafs, setReadLeafs] = React.useState<string[]>([]);
   const [confirmed, setConfirmed] = React.useState<string[]>([]);
+  // Sandbox da prop `tracks`: uma trilha boolean ("prioridade") + uma enum ("tipo de conta") na
+  // MESMA arvore, cada uma com sua propria cascata pai->filhos, independente da outra e do
+  // checkable principal.
+  const [priorityIds, setPriorityIds] = React.useState<string[]>([]);
+  const [accountTypeByNode, setAccountTypeByNode] = React.useState<Record<string, string | undefined>>({});
 
   return (
     <I18NReady>
@@ -322,6 +329,68 @@ export default function SgTreeViewPage() {
           })()}
         </SgCard>
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-tree-view/samples/json-checked.tsx.sample" />
+      </Section>
+
+      <Section
+        title="8) Tracks (multi-coluna, cascata independente)"
+        description="checkable principal (Ativo) + trilha boolean (Prioridade) + trilha enum (Tipo de conta), cada uma com seu cabecalho, cascata pai->filhos independente, e indicador de sugestao (icone) proprio -- 'List users' e 'Sales report' simulam sugestoes de IA em trilhas diferentes."
+      >
+        <SgCard title="Ativo + Prioridade + Tipo de conta">
+          <SgTreeView
+            nodes={DATA}
+            checkable
+            checkableLabel="Ativo"
+            checkedIds={checkedIds}
+            onCheckedChange={setCheckedIds}
+            defaultExpandedIds={["root", "users", "reports"]}
+            tracks={[
+              {
+                id: "priority",
+                kind: "boolean",
+                label: "Prioridade",
+                ariaLabel: "Prioridade",
+                checkedIds: priorityIds,
+                onCheckedChange: setPriorityIds,
+                suggestedIds: ["users.list"]
+              },
+              {
+                id: "accountType",
+                kind: "enum",
+                label: "Tipo de conta",
+                placeholder: "—",
+                mixedLabel: "— misto —",
+                options: [
+                  { value: "fixo", label: "Custo fixo" },
+                  { value: "variavel", label: "Custo variável" },
+                  { value: "despesa", label: "Despesa variável" },
+                  { value: "investimento", label: "Investimento" }
+                ],
+                valueByNodeId: accountTypeByNode,
+                onChange: setAccountTypeByNode,
+                suggestedIds: ["reports.sales"]
+              }
+            ]}
+          />
+        </SgCard>
+        <div className="mt-3 grid gap-2 text-xs text-muted-foreground">
+          <div>
+            <span className="font-medium text-foreground">checkedIds (principal):</span>{" "}
+            {checkedIds.length ? checkedIds.join(", ") : "-"}
+          </div>
+          <div>
+            <span className="font-medium text-foreground">priorityIds (trilha boolean):</span>{" "}
+            {priorityIds.length ? priorityIds.join(", ") : "-"}
+          </div>
+          <div>
+            <span className="font-medium text-foreground">accountTypeByNode (trilha enum):</span>{" "}
+            {Object.keys(accountTypeByNode).length
+              ? Object.entries(accountTypeByNode)
+                  .map(([k, v]) => `${k}=${v}`)
+                  .join(", ")
+              : "-"}
+          </div>
+        </div>
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-tree-view/samples/tracks.tsx.sample" />
       </Section>
 
       <Section title="7) Playground (SgPlayground)" description="Teste interativo das principais props do SgTreeView.">

@@ -1,0 +1,78 @@
+import React from "react";
+import { BarChart3, FileText, Shield, Users } from "lucide-react";
+import { SgCard, SgTreeView, type SgTreeNode } from "@seedgrid/fe-components";
+
+const nodes: SgTreeNode[] = [
+  {
+    id: "root",
+    label: "Admin",
+    icon: <Shield className="h-4 w-4" />,
+    children: [
+      {
+        id: "users",
+        label: "Users",
+        icon: <Users className="h-4 w-4" />,
+        children: [
+          { id: "users.list", label: "List users", icon: <FileText className="h-4 w-4" /> },
+          { id: "users.create", label: "Create user", icon: <FileText className="h-4 w-4" /> }
+        ]
+      },
+      {
+        id: "reports",
+        label: "Reports",
+        icon: <BarChart3 className="h-4 w-4" />,
+        children: [
+          { id: "reports.sales", label: "Sales report", icon: <FileText className="h-4 w-4" /> },
+          { id: "reports.financial", label: "Financial report", icon: <FileText className="h-4 w-4" /> }
+        ]
+      }
+    ]
+  }
+];
+
+export default function Example() {
+  const [checkedIds, setCheckedIds] = React.useState<string[]>([]);
+  const [priorityIds, setPriorityIds] = React.useState<string[]>([]);
+  const [accountTypeByNode, setAccountTypeByNode] = React.useState<Record<string, string | undefined>>({});
+
+  return (
+    <SgCard title="Ativo + Prioridade + Tipo de conta">
+      <SgTreeView
+        nodes={nodes}
+        checkable
+        checkableLabel="Ativo"
+        checkedIds={checkedIds}
+        onCheckedChange={setCheckedIds}
+        defaultExpandedIds={["root", "users", "reports"]}
+        tracks={[
+          {
+            id: "priority",
+            kind: "boolean",
+            label: "Prioridade",
+            checkedIds: priorityIds,
+            onCheckedChange: setPriorityIds,
+            // Ids sugeridos (por IA ou outra fonte) NESTA trilha -- ganham um icone colado
+            // no proprio checkbox da coluna, nao na descricao do item.
+            suggestedIds: ["users.list"]
+          },
+          {
+            id: "accountType",
+            kind: "enum",
+            label: "Tipo de conta",
+            placeholder: "—",
+            mixedLabel: "— misto —",
+            options: [
+              { value: "fixo", label: "Custo fixo" },
+              { value: "variavel", label: "Custo variável" },
+              { value: "despesa", label: "Despesa variável" },
+              { value: "investimento", label: "Investimento" }
+            ],
+            valueByNodeId: accountTypeByNode,
+            onChange: setAccountTypeByNode,
+            suggestedIds: ["reports.sales"]
+          }
+        ]}
+      />
+    </SgCard>
+  );
+}
