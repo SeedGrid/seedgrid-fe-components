@@ -1,5 +1,5 @@
 import React from "react";
-import { BarChart3, FileText, Shield, Users } from "lucide-react";
+import { BarChart3, FileText, Shield, Star, Users } from "lucide-react";
 import { SgCard, SgTreeView, type SgTreeNode } from "@seedgrid/fe-components";
 
 const nodes: SgTreeNode[] = [
@@ -36,7 +36,7 @@ export default function Example() {
   const [accountTypeByNode, setAccountTypeByNode] = React.useState<Record<string, string | undefined>>({});
 
   return (
-    <SgCard title="Ativo + Prioridade + Tipo de conta">
+    <SgCard title="Ativo + Prioridade + Tipo + coluna livre">
       <SgTreeView
         nodes={nodes}
         checkable
@@ -51,14 +51,19 @@ export default function Example() {
             label: "Prioridade",
             checkedIds: priorityIds,
             onCheckedChange: setPriorityIds,
-            // Ids sugeridos (por IA ou outra fonte) NESTA trilha -- ganham um icone colado
-            // no proprio checkbox da coluna, nao na descricao do item.
-            suggestedIds: ["users.list"]
+            // Conteudo livre ao lado do controle DESTA coluna. O componente nao sabe o que ele
+            // significa -- icone, badge, contador: quem da' o significado e' a tela.
+            adornment: (node) =>
+              node.id === "users.list" ? (
+                <Star className="h-3.5 w-3.5 text-amber-500" aria-label="Destaque" />
+              ) : null
           },
           {
             id: "accountType",
             kind: "enum",
             label: "Tipo de conta",
+            // Rotulos longos precisam de coluna mais larga que o default (110px).
+            width: "150px",
             placeholder: "—",
             mixedLabel: "— misto —",
             options: [
@@ -68,8 +73,25 @@ export default function Example() {
               { value: "investimento", label: "Investimento" }
             ],
             valueByNodeId: accountTypeByNode,
-            onChange: setAccountTypeByNode,
-            suggestedIds: ["reports.sales"]
+            onChange: setAccountTypeByNode
+          },
+          {
+            id: "acao",
+            kind: "custom",
+            label: "Coluna livre",
+            width: "130px",
+            // Sem estado e sem cascata: a arvore so' cede a celula (largura, alinhamento,
+            // cabecalho) e a tela desenha o que precisar.
+            render: (node) =>
+              node.children?.length ? null : (
+                <button
+                  type="button"
+                  className="cursor-pointer border-none bg-transparent text-xs text-sg-muted underline"
+                  onClick={() => setAccountTypeByNode((prev) => ({ ...prev, [node.id]: "fixo" }))}
+                >
+                  marcar fixo
+                </button>
+              )
           }
         ]}
       />

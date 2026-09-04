@@ -198,7 +198,6 @@ const ptPT: Record<string, string> = {
   "components.tree.empty": "Nenhum item.",
   "components.tree.selected": "Selecionados: {count}",
   "components.tree.selectedLeafs": " (folhas)",
-  "components.tree.suggested": "Sugestão",
   "components.menu.drag": "Arrastar menu",
   "components.menu.ariaLabel": "Menu",
   "components.toolbar.toggle": "Alternar barra de ferramentas",

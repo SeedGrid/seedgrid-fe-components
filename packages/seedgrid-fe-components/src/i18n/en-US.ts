@@ -198,7 +198,6 @@ const enUS: Record<string, string> = {
   "components.tree.empty": "No items.",
   "components.tree.selected": "Selected: {count}",
   "components.tree.selectedLeafs": " (leafs)",
-  "components.tree.suggested": "Suggested",
   "components.menu.drag": "Drag menu",
   "components.menu.ariaLabel": "Menu",
   "components.toolbar.toggle": "Toggle toolbar",

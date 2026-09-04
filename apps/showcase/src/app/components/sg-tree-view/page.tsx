@@ -9,7 +9,7 @@ import {
   type SgTreeViewRef,
 } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import { Shield, Users, FileText, BarChart3 } from "lucide-react";
+import { Shield, Users, FileText, BarChart3, Star } from "lucide-react";
 import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
 import ComponentAiSummary from "../ai/ComponentAiSummary";
 import { useAiManifestComponent } from "../ai/useAiManifestComponent";
@@ -151,7 +151,7 @@ const TREE_VIEW_PROPS: ShowcasePropRow[] = [
   { prop: "checkable / checkMode / confirmSelection", type: "boolean / token / token", defaultValue: "false / instant / all", description: "Comportamento de seleção com checkboxes." },
   { prop: "checkedIds / defaultCheckedIds / onCheckedChange", type: "string[] / string[] / callback", defaultValue: "controlado / [] / -", description: "Estado de seleção." },
   { prop: "checkableLabel", type: "string", defaultValue: "-", description: "Cabeçalho da coluna do checkbox principal (só aparece com tracks)." },
-  { prop: "tracks", type: "SgTreeTrack[]", defaultValue: "-", description: "Colunas extras de seleção, cada uma com cascata pai→filhos independente (boolean ou enum), cabeçalho (label) e indicador de sugestão (suggestedIds) próprios." },
+  { prop: "tracks", type: "SgTreeTrack[]", defaultValue: "-", description: "Colunas extras por linha: boolean e enum têm cascata pai→filhos independente; custom não tem estado (a árvore cede a célula e você renderiza). Cada trilha tem label, width e — nas de seleção — adornment para conteúdo livre ao lado do controle." },
   { prop: "expandedIds / defaultExpandedIds / onExpandedChange", type: "string[] / string[] / callback", defaultValue: "controlado / [] / -", description: "Estado de expansão." },
   { prop: "searchable / searchPlaceholder / searchValue", type: "boolean / string / string", defaultValue: "false / Search... / controlado", description: "Busca e filtro da árvore." },
   { prop: "size / density / tone / iconTone", type: "tokens", defaultValue: "md / normal / default / default", description: "Ajustes visuais do componente." },
@@ -332,10 +332,10 @@ export default function SgTreeViewPage() {
       </Section>
 
       <Section
-        title="8) Tracks (multi-coluna, cascata independente)"
-        description="checkable principal (Ativo) + trilha boolean (Prioridade) + trilha enum (Tipo de conta), cada uma com seu cabecalho, cascata pai->filhos independente, e indicador de sugestao (icone) proprio -- 'List users' e 'Sales report' simulam sugestoes de IA em trilhas diferentes."
+        title="8) Tracks (colunas extras por linha)"
+        description="Uma coluna por trilha, cada uma com seu cabecalho (label) e largura (width). As trilhas boolean e enum tem cascata pai->filhos propria e independente; a trilha custom nao tem estado nenhum -- a arvore so' cede a celula e a tela desenha o que quiser. O adornment poe conteudo livre ao lado do controle (aqui, uma estrela em 'List users')."
       >
-        <SgCard title="Ativo + Prioridade + Tipo de conta">
+        <SgCard title="Ativo + Prioridade + Tipo + coluna livre">
           <SgTreeView
             nodes={DATA}
             checkable
@@ -351,12 +351,16 @@ export default function SgTreeViewPage() {
                 ariaLabel: "Prioridade",
                 checkedIds: priorityIds,
                 onCheckedChange: setPriorityIds,
-                suggestedIds: ["users.list"]
+                adornment: (node) =>
+                  node.id === "users.list" ? (
+                    <Star className="h-3.5 w-3.5 text-amber-500" aria-label="Destaque" />
+                  ) : null
               },
               {
                 id: "accountType",
                 kind: "enum",
                 label: "Tipo de conta",
+                width: "150px",
                 placeholder: "—",
                 mixedLabel: "— misto —",
                 options: [
@@ -366,8 +370,23 @@ export default function SgTreeViewPage() {
                   { value: "investimento", label: "Investimento" }
                 ],
                 valueByNodeId: accountTypeByNode,
-                onChange: setAccountTypeByNode,
-                suggestedIds: ["reports.sales"]
+                onChange: setAccountTypeByNode
+              },
+              {
+                id: "acao",
+                kind: "custom",
+                label: "Coluna livre",
+                width: "130px",
+                render: (node) =>
+                  node.children?.length ? null : (
+                    <button
+                      type="button"
+                      className="cursor-pointer border-none bg-transparent text-xs text-sg-muted underline"
+                      onClick={() => setAccountTypeByNode((prev) => ({ ...prev, [node.id]: "fixo" }))}
+                    >
+                      marcar fixo
+                    </button>
+                  )
               }
             ]}
           />

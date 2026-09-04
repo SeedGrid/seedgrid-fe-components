@@ -198,7 +198,6 @@ const es: Record<string, string> = {
   "components.tree.empty": "No hay elementos.",
   "components.tree.selected": "Seleccionados: {count}",
   "components.tree.selectedLeafs": " (hojas)",
-  "components.tree.suggested": "Sugerencia",
   "components.menu.drag": "Arrastrar menu",
   "components.menu.ariaLabel": "Menu",
   "components.toolbar.toggle": "Alternar barra de herramientas",
