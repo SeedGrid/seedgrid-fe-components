@@ -1165,3 +1165,31 @@ test("SgMultiSelectChips shows chipLabel in the chip, label in the title, and fa
     harness.restore();
   }
 });
+
+test("SgMultiSelectChips opens from the chevron button alone", async () => {
+  const harness = setupDomHarness();
+
+  try {
+    await harness.render(React.createElement(ControlledMultiSelectChips, { initialValue: ["e1"] }));
+    await flushDom();
+
+    // O chevron e' um botao de verdade (cursor de mao, tratador proprio): clicar SO nele tem de
+    // abrir, sem depender do mousedown da caixa inteira.
+    const chevron = Array.from(getChipsTrigger(harness).querySelectorAll("button")).find(
+      (botao) => !botao.hasAttribute("data-sg-chip-remove")
+    );
+    assert.ok(chevron);
+    assert.match(chevron.className, /cursor-pointer/);
+
+    await dispatchMouse(chevron, "mousedown");
+    await flushDom();
+    assert.equal(getDropdownOptions(harness).length, MULTI_OPTIONS.length);
+
+    // E fecha no clique seguinte, em vez de abrir e fechar no mesmo (propagacao contida).
+    await dispatchMouse(chevron, "mousedown");
+    await flushDom();
+    assert.equal(getDropdownOptions(harness).length, 0);
+  } finally {
+    harness.restore();
+  }
+});

@@ -88,7 +88,7 @@ function SgMultiSelectBase(props: Readonly<SgMultiSelectProps>) {
   const triggerIcon = (
     <button
       type="button"
-      className="text-foreground/60 hover:text-foreground"
+      className="cursor-pointer text-foreground/60 hover:text-foreground"
       tabIndex={-1}
       onMouseDown={(event) => {
         event.preventDefault();
@@ -113,7 +113,7 @@ function SgMultiSelectBase(props: Readonly<SgMultiSelectProps>) {
       <button
         key="clear"
         type="button"
-        className="text-foreground/60 hover:text-foreground"
+        className="cursor-pointer text-foreground/60 hover:text-foreground"
         tabIndex={-1}
         onMouseDown={(event) => {
           event.preventDefault();

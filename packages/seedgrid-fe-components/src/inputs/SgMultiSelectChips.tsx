@@ -210,7 +210,7 @@ function SgMultiSelectChipsBase(props: Readonly<SgMultiSelectChipsProps>) {
                       type="button"
                       data-sg-chip-remove="true"
                       tabIndex={-1}
-                      className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full text-foreground/60 hover:bg-foreground/10 hover:text-foreground"
+                      className="flex h-4 w-4 shrink-0 cursor-pointer items-center justify-center rounded-full text-foreground/60 hover:bg-foreground/10 hover:text-foreground"
                       onMouseDown={(event) => {
                         event.preventDefault();
                         event.stopPropagation();
@@ -237,7 +237,7 @@ function SgMultiSelectChipsBase(props: Readonly<SgMultiSelectChipsProps>) {
                 type="button"
                 data-sg-chip-remove="true"
                 tabIndex={-1}
-                className="text-foreground/60 hover:text-foreground"
+                className="cursor-pointer text-foreground/60 hover:text-foreground"
                 onMouseDown={(event) => {
                   event.preventDefault();
                   event.stopPropagation();
@@ -253,9 +253,27 @@ function SgMultiSelectChipsBase(props: Readonly<SgMultiSelectChipsProps>) {
                 <X size={16} />
               </button>
             ) : null}
-            <span className="text-foreground/60" aria-hidden="true">
+            {/* Botao de verdade, e nao um icone decorativo: o campo inteiro abre a lista, mas o
+                chevron e' o que a pessoa mira. Como botao ele tem cursor de mao (afordancia de
+                clique) e tratador proprio — sem depender do mousedown da caixa, que o conteudo
+                da celula de uma grade pode nao entregar. `stopPropagation` para o handler do
+                trigger nao abrir e fechar no mesmo clique. */}
+            <button
+              type="button"
+              tabIndex={-1}
+              className="cursor-pointer text-foreground/60 hover:text-foreground"
+              aria-label={t(i18n, "components.actions.openList")}
+              onMouseDown={(event) => {
+                if (isDisabled) return;
+                event.preventDefault();
+                event.stopPropagation();
+                ms.ignoreBlurRef.current = true;
+                openOrClose();
+                triggerRef.current?.focus();
+              }}
+            >
               {ms.open ? <Check size={16} /> : <ChevronDown size={16} />}
-            </span>
+            </button>
           </span>
         </div>
 
