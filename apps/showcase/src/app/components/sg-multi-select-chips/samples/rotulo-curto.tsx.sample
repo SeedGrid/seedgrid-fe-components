@@ -1,0 +1,27 @@
+import * as React from "react";
+import { SgMultiSelectChips, type SgMultiSelectOptionValue } from "@seedgrid/fe-components";
+
+// `label` aparece na lista (e e' o que a busca procura); `chipLabel` e' o texto curto do item
+// ja' selecionado. Sem `chipLabel`, vale o `label`.
+const BRANCHES = [
+  { label: "1 - Matriz Sao Paulo", chipLabel: "1", value: 1 },
+  { label: "2 - Filial Campinas", chipLabel: "2", value: 2 },
+  { label: "3 - Filial Centro", chipLabel: "3", value: 3 },
+  { label: "4 - Filial Ribeirao Preto", chipLabel: "4", value: 4 },
+  { label: "5 - Deposito Jundiai", chipLabel: "5", value: 5 }
+];
+
+export default function App() {
+  const [branches, setBranches] = React.useState<SgMultiSelectOptionValue[]>([1, 3]);
+  return (
+    <SgMultiSelectChips
+      id="msc-chip-label"
+      label="Filiais"
+      placeholder="Selecione as empresas"
+      options={BRANCHES}
+      value={branches}
+      onChange={setBranches}
+      searchable
+    />
+  );
+}

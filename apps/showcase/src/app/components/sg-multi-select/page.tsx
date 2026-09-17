@@ -40,6 +40,14 @@ const COMPANIES = [
   { label: "Empresa 6", value: "e6" }
 ];
 
+const BRANCHES = [
+  { label: "1 - Matriz Sao Paulo", chipLabel: "1", value: 1 },
+  { label: "2 - Filial Campinas", chipLabel: "2", value: 2 },
+  { label: "3 - Filial Centro", chipLabel: "3", value: 3 },
+  { label: "4 - Filial Ribeirao Preto", chipLabel: "4", value: 4 },
+  { label: "5 - Deposito Jundiai", chipLabel: "5", value: 5 }
+];
+
 function Selected(props: { label: string; none: string; value: SgMultiSelectOptionValue[] }) {
   return (
     <div className="mt-2 w-full rounded border border-border bg-foreground/5 p-2 text-xs">
@@ -58,6 +66,7 @@ export default function SgMultiSelectPage() {
   const [preselected, setPreselected] = React.useState<SgMultiSelectOptionValue[]>(["e1", "e2", "e4"]);
   const [searchable, setSearchable] = React.useState<SgMultiSelectOptionValue[]>(["e1"]);
   const [capped, setCapped] = React.useState<SgMultiSelectOptionValue[]>([]);
+  const [branches, setBranches] = React.useState<SgMultiSelectOptionValue[]>([1, 3]);
 
   const selectedLabel = t(i18n, `${K}.selectedLabel`);
   const noneLabel = t(i18n, `${K}.noneLabel`);
@@ -156,6 +165,22 @@ export default function SgMultiSelectPage() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-multi-select/samples/desabilitado.tsx.sample" />
         </Section>
 
+        <Section id="chip-label" title={t(i18n, `${K}.sections.chipLabel.title`)} description={t(i18n, `${K}.sections.chipLabel.description`)}>
+          <div className="w-96">
+            <SgMultiSelect
+              id="ms-chip-label"
+              label={t(i18n, `${K}.labels.branches`)}
+              placeholder={companiesPlaceholder}
+              options={BRANCHES}
+              value={branches}
+              onChange={setBranches}
+              searchable
+            />
+            <Selected label={selectedLabel} none={noneLabel} value={branches} />
+          </div>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-multi-select/samples/rotulo-curto.tsx.sample" />
+        </Section>
+
         <Section title={t(i18n, `${K}.sections.playground.title`)} description={t(i18n, `${K}.sections.playground.description`)}>
           <SgPlayground
             title="SgMultiSelect Playground"
@@ -184,7 +209,7 @@ export default function SgMultiSelectPage() {
                 </tr>
               </thead>
               <tbody className="divide-y">
-                <tr><td className="py-2 pr-4 font-mono text-xs">options</td><td className="py-2 pr-4">{`{ label, value, disabled? }[]`}</td><td className="py-2 pr-4">-</td><td className="py-2">{t(i18n, `${K}.rows.options`)}</td></tr>
+                <tr><td className="py-2 pr-4 font-mono text-xs">options</td><td className="py-2 pr-4">{`{ label, value, chipLabel?, disabled? }[]`}</td><td className="py-2 pr-4">-</td><td className="py-2">{t(i18n, `${K}.rows.options`)}</td></tr>
                 <tr><td className="py-2 pr-4 font-mono text-xs">value</td><td className="py-2 pr-4">(string | number)[]</td><td className="py-2 pr-4">[]</td><td className="py-2">{t(i18n, `${K}.rows.value`)}</td></tr>
                 <tr><td className="py-2 pr-4 font-mono text-xs">onChange</td><td className="py-2 pr-4">(value[]) =&gt; void</td><td className="py-2 pr-4">-</td><td className="py-2">{t(i18n, `${K}.rows.onChange`)}</td></tr>
                 <tr><td className="py-2 pr-4 font-mono text-xs">searchable</td><td className="py-2 pr-4">boolean</td><td className="py-2 pr-4">false</td><td className="py-2">{t(i18n, `${K}.rows.searchable`)}</td></tr>

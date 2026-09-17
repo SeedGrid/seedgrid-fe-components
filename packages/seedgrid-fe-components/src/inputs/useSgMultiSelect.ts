@@ -5,8 +5,14 @@ import React from "react";
 export type SgMultiSelectOptionValue = string | number;
 
 export type SgMultiSelectOption = {
+  /** Texto da lista (e o que a busca procura). */
   label: string;
   value: SgMultiSelectOptionValue;
+  /**
+   * Texto curto do item JA selecionado: o chip do SgMultiSelectChips e o resumo do SgMultiSelect.
+   * Sem ele, vale o `label`. Ex.: `label: "3 - Filial Centro"`, `chipLabel: "3"`.
+   */
+  chipLabel?: string;
   disabled?: boolean;
 };
 
@@ -68,7 +74,10 @@ export function useSgMultiSelect(params: UseSgMultiSelectParams) {
 
   const selectedLabels = React.useMemo(() => {
     return resolvedValue
-      .map((entry) => options.find((option) => valueEquals(option.value, entry))?.label)
+      .map((entry) => {
+        const option = options.find((candidate) => valueEquals(candidate.value, entry));
+        return option ? (option.chipLabel ?? option.label) : undefined;
+      })
       .filter((label): label is string => Boolean(label));
   }, [options, resolvedValue]);
 

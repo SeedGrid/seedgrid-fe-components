@@ -605,6 +605,38 @@ test("SgMultiSelect clears the whole selection with the clear button", async () 
   }
 });
 
+const SHORT_LABEL_OPTIONS = [
+  { label: "1 - Matriz", chipLabel: "1", value: 1 },
+  { label: "2 - Filial Centro", chipLabel: "2", value: 2 },
+  { label: "3 - Filial Norte", value: 3 }
+];
+
+test("SgMultiSelect summarizes the selection with chipLabel and keeps label in the list", async () => {
+  const harness = setupDomHarness();
+
+  try {
+    await harness.render(
+      React.createElement(ControlledMultiSelect, {
+        initialValue: [1, 2],
+        componentProps: { options: SHORT_LABEL_OPTIONS }
+      })
+    );
+    await flushDom();
+
+    const input = getMultiInput(harness);
+    assert.equal(input.value, "1, 2");
+
+    await dispatchMouse(input, "mousedown");
+    await flushDom();
+
+    const labels = getDropdownOptions(harness).map((option) => option.textContent);
+    assert.ok(labels.some((text) => text.includes("1 - Matriz")));
+    assert.ok(labels.some((text) => text.includes("2 - Filial Centro")));
+  } finally {
+    harness.restore();
+  }
+});
+
 function ControlledMultiSelectChips(props = {}) {
   const [value, setValue] = React.useState(props.initialValue ?? []);
 
@@ -1096,6 +1128,39 @@ test("SgAutocomplete dropdown button keeps the typed filter when the text is not
 
     assert.equal(browseQueries.at(-1), "z");
     assert.deepEqual(listedLabels(harness), ["Brazil"]);
+  } finally {
+    harness.restore();
+  }
+});
+
+test("SgMultiSelectChips shows chipLabel in the chip, label in the title, and falls back to label", async () => {
+  const harness = setupDomHarness();
+
+  try {
+    await harness.render(
+      React.createElement(ControlledMultiSelectChips, {
+        initialValue: [1, 3],
+        componentProps: { options: SHORT_LABEL_OPTIONS }
+      })
+    );
+    await flushDom();
+
+    const chips = Array.from(
+      getChipsTrigger(harness).querySelectorAll("span.rounded-full > span.truncate")
+    );
+    assert.deepEqual(chips.map((chip) => chip.textContent), ["1", "3 - Filial Norte"]);
+    assert.equal(chips[0].getAttribute("title"), "1 - Matriz");
+    // Sem chipLabel o chip ja' mostra o label inteiro: title repetido seria ruido.
+    assert.equal(chips[1].getAttribute("title"), null);
+
+    // O botao de remover continua anunciando o nome completo.
+    const removeButtons = harness.document.querySelectorAll('[data-sg-chip-remove="true"]');
+    assert.match(removeButtons[0].getAttribute("aria-label") ?? "", /1 - Matriz/);
+
+    await dispatchMouse(getChipsTrigger(harness), "mousedown");
+    await flushDom();
+    const labels = getDropdownOptions(harness).map((option) => option.textContent);
+    assert.ok(labels.some((text) => text.includes("1 - Matriz")));
   } finally {
     harness.restore();
   }

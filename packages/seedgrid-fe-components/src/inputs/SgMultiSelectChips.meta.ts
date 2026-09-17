@@ -17,7 +17,7 @@ export const sgMeta: SgMetaV0 = {
   props: [
     { name: "id", type: "string", required: true, description: "Identificador unico do campo.", semanticRole: "data", bindable: false },
     { name: "label", type: "string", description: "Rotulo exibido ao usuario.", semanticRole: "label", bindable: true },
-    { name: "options", type: "{ label: string; value: string | number; disabled?: boolean }[]", description: "Lista de opcoes disponiveis.", semanticRole: "data", bindable: false },
+    { name: "options", type: "{ label: string; value: string | number; chipLabel?: string; disabled?: boolean }[]", description: "Lista de opcoes disponiveis. `label` aparece na lista; `chipLabel` (opcional) e' o texto curto do item ja' selecionado (o chip), ex.: label \"3 - Filial Centro\" e chipLabel \"3\".", semanticRole: "data", bindable: false },
     { name: "value", type: "(string | number)[]", description: "Array de valores selecionados.", semanticRole: "value", bindable: true },
     { name: "onChange", type: "(value: (string | number)[]) => void", description: "Callback com o array atualizado de valores.", semanticRole: "event", bindable: false },
     { name: "searchable", type: "boolean", default: false, description: "Exibe campo de busca no topo do dropdown.", semanticRole: "behavior", bindable: true },

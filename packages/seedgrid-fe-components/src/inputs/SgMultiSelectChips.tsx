@@ -198,7 +198,13 @@ function SgMultiSelectChipsBase(props: Readonly<SgMultiSelectChipsProps>) {
                   key={String(option.value)}
                   className="inline-flex max-w-full items-center gap-1 rounded-full border border-border bg-muted/60 py-0.5 pl-2 pr-1 text-xs text-foreground"
                 >
-                  <span className="truncate">{option.label}</span>
+                  {/* title com o label completo: com chipLabel curto, e' o jeito de ver o nome sem abrir a lista. */}
+                  <span
+                    className="truncate"
+                    title={option.chipLabel !== undefined ? option.label : undefined}
+                  >
+                    {option.chipLabel ?? option.label}
+                  </span>
                   {!isDisabled ? (
                     <button
                       type="button"
