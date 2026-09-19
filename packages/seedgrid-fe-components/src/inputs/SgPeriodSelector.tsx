@@ -404,19 +404,24 @@ export function buildPeriodOptions(
 /* Componente                                                          */
 /* ------------------------------------------------------------------ */
 
-function toIsoDate(d: Date | null): string {
-  if (!d) return "";
-  const year = d.getFullYear();
-  const month = String(d.getMonth() + 1).padStart(2, "0");
-  const day = String(d.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
-}
-
+/**
+ * Converte o valor cru do <input type="date"> (ISO yyyy-MM-dd) em Date local.
+ *
+ * O input nativo emite um change a cada digito do ano, entao "2026" chega aqui
+ * antes como "0002", "0020" e "0202". Esses anos incompletos sao recusados, e o
+ * ano completo passa por setFullYear para escapar da regra legada do JS que
+ * mapeia ano 0..99 para 1900+ano (new Date(2, 8, 19) => 1902-09-19).
+ */
 function parseIsoDate(value: string): Date | null {
-  if (!value) return null;
-  const [y, m, d] = value.split("-").map((part) => Number(part));
-  if (!y || !m || !d) return null;
-  return new Date(y, m - 1, d);
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
+  if (!match) return null;
+  const year = Number(match[1]);
+  const month = Number(match[2]);
+  const day = Number(match[3]);
+  if (year < 1000 || month < 1 || month > 12 || day < 1 || day > 31) return null;
+  const date = new Date(year, month - 1, day);
+  date.setFullYear(year);
+  return Number.isNaN(date.getTime()) ? null : date;
 }
 
 type SgPeriodSelectorBaseProps = Omit<SgPeriodSelectorProps, "control" | "name" | "rules"> & {
@@ -448,8 +453,11 @@ function SgPeriodSelectorBase(props: Readonly<SgPeriodSelectorBaseProps>) {
   const [internalPreset, setInternalPreset] = React.useState<PeriodPreset | null>(value ?? null);
   const selectedPreset = isControlled ? value ?? null : internalPreset;
 
-  const [customStart, setCustomStart] = React.useState<Date | null>(null);
-  const [customEnd, setCustomEnd] = React.useState<Date | null>(null);
+  // Guardamos a string crua do input (ISO ou parcial), nunca um Date reformatado:
+  // devolver ao input um texto diferente do digitado reinicia o segmento em foco
+  // e impede o usuario de terminar de digitar o ano.
+  const [customStart, setCustomStart] = React.useState("");
+  const [customEnd, setCustomEnd] = React.useState("");
 
   const options = React.useMemo(
     () =>
@@ -466,12 +474,18 @@ function SgPeriodSelectorBase(props: Readonly<SgPeriodSelectorBaseProps>) {
   );
 
   const emitCustom = React.useCallback(
-    (start: Date | null, end: Date | null) => {
+    (startIso: string, endIso: string) => {
+      // Enquanto a data estiver incompleta o parse devolve null: melhor emitir
+      // "sem limite" do que uma data de ano 0002 no meio da digitacao.
+      const startDate = parseIsoDate(startIso);
+      const endDate = parseIsoDate(endIso);
+      startDate?.setHours(0, 0, 0, 0);
+      endDate?.setHours(23, 59, 59, 999);
       onChange?.({
         preset: PeriodPreset.CUSTOM,
         label: periodPresetLabel(PeriodPreset.CUSTOM, locale),
-        startDate: start ? new Date(start.getFullYear(), start.getMonth(), start.getDate(), 0, 0, 0, 0) : null,
-        endDate: end ? new Date(end.getFullYear(), end.getMonth(), end.getDate(), 23, 59, 59, 999) : null
+        startDate,
+        endDate
       });
     },
     [locale, onChange]
@@ -524,26 +538,24 @@ function SgPeriodSelectorBase(props: Readonly<SgPeriodSelectorBaseProps>) {
         <div className="mt-2 grid grid-cols-1 gap-2">
           <SgInputDate
             id={`${id}-custom-start`}
-            inputProps={{ value: toIsoDate(customStart) }}
+            inputProps={{ value: customStart }}
             minDate={minDate}
             maxDate={maxDate}
             enabled={disabled ? false : undefined}
             onChange={(next: string) => {
-              const parsed = parseIsoDate(next);
-              setCustomStart(parsed);
-              emitCustom(parsed, customEnd);
+              setCustomStart(next);
+              emitCustom(next, customEnd);
             }}
           />
           <SgInputDate
             id={`${id}-custom-end`}
-            inputProps={{ value: toIsoDate(customEnd) }}
+            inputProps={{ value: customEnd }}
             minDate={minDate}
             maxDate={maxDate}
             enabled={disabled ? false : undefined}
             onChange={(next: string) => {
-              const parsed = parseIsoDate(next);
-              setCustomEnd(parsed);
-              emitCustom(customStart, parsed);
+              setCustomEnd(next);
+              emitCustom(customStart, next);
             }}
           />
         </div>
