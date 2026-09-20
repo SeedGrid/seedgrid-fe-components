@@ -37,6 +37,19 @@ function parseDateValue(value: string) {
   return date;
 }
 
+/**
+ * Teto do widget quando o consumidor nao informa `maxDate`.
+ *
+ * O <input type="date"> aceita ano de ate 6 digitos (o calendario do HTML vai ate
+ * 275760), entao sem `max` o campo aceita "202699" no lugar de "2026". Com um `max`
+ * de ano de 4 digitos o navegador contem o segmento em 4.
+ *
+ * Vale so' para o atributo HTML: a validacao continua usando os limites que o
+ * consumidor pediu, para nenhuma mensagem de erro citar um 31/12/9999 que ninguem
+ * escolheu.
+ */
+const WIDGET_MAX_DATE = "9999-12-31";
+
 export function SgInputDate(props: SgInputDateProps) {
   const i18n = useComponentsI18n();
   const isDark = useDarkFlag();
@@ -112,7 +125,7 @@ export function SgInputDate(props: SgInputDateProps) {
     ...inputProps,
     placeholder: showStaticLabel ? " " : (inputProps?.placeholder ?? rest.hintText ?? labelText),
     min: minDateValue,
-    max: maxDateValue,
+    max: maxDateValue ?? WIDGET_MAX_DATE,
     readOnly: inputProps?.readOnly,
     onChange: (event) => {
       setHasInteracted(true);
