@@ -163,10 +163,13 @@ const COMPONENTS = [
   { group: "Providers", slug: "providers/sg-time-provider", label: "SgTimeProvider", icon: <Clock className="size-4" /> },
   { group: "Providers", slug: "providers/sg-components-i18n-provider", label: "SgComponentsI18nProvider", icon: <Globe className="size-4" /> },
   { group: "Providers", slug: "providers/sg-clock-theme-provider", label: "SgClockThemeProvider", icon: <Palette className="size-4" /> },
+  { group: "Providers", slug: "providers/sg-realtime-provider", label: "SgRealtimeProvider", icon: <BellRing className="size-4" /> },
   { group: "Hooks", slug: "hooks/use-sg-persistent-state", label: "useSgPersistentState", icon: <Save className="size-4" /> },
   { group: "Hooks", slug: "hooks/use-sg-persistence", label: "useSgPersistence", icon: <Database className="size-4" /> },
   { group: "Hooks", slug: "hooks/use-sg-environment", label: "useSgEnvironment", icon: <Layers className="size-4" /> },
   { group: "Hooks", slug: "hooks/use-sg-time", label: "useSgTime", icon: <Timer className="size-4" /> },
+  { group: "Hooks", slug: "hooks/use-sg-realtime-event", label: "useSgRealtimeEvent", icon: <Zap className="size-4" /> },
+  { group: "Hooks", slug: "hooks/use-sg-realtime-status", label: "useSgRealtimeStatus", icon: <Activity className="size-4" /> },
   { group: "Hooks", slug: "hooks/use-components-i18n", label: "useComponentsI18n", icon: <Languages className="size-4" /> },
   { group: "Layout", slug: "sg-group-box", label: "SgGroupBox", icon: <Square className="size-4" /> },
   { group: "Layout", slug: "sg-card", label: "SgCard", icon: <RectangleHorizontal className="size-4" /> },
@@ -591,6 +594,24 @@ const COMPONENT_HINT_TEXTS_BY_SLUG: Record<string, Partial<Record<ShowcaseLocale
     "pt-PT": "Lê o contexto de ambiente atual: namespace, scope, mode e stateVersion configurados no SgEnvironmentProvider.",
     "en-US": "Reads the current environment context: namespace, scope, mode, and stateVersion from SgEnvironmentProvider.",
     es: "Lee el contexto de entorno actual: namespace, scope, mode y stateVersion configurados en SgEnvironmentProvider."
+  },
+  "providers/sg-realtime-provider": {
+    "pt-BR": "Avisos em tempo real para o usuario logado, pelo SeedGrid Pulse, com polling de reserva quando a conexao cai.",
+    "pt-PT": "Avisos em tempo real para o utilizador autenticado, pelo SeedGrid Pulse, com polling de reserva quando a ligacao cai.",
+    "en-US": "Real-time notices for the signed-in user through SeedGrid Pulse, with fallback polling when the connection drops.",
+    es: "Avisos en tiempo real para el usuario autenticado, por SeedGrid Pulse, con polling de respaldo cuando la conexion cae."
+  },
+  "hooks/use-sg-realtime-event": {
+    "pt-BR": "Reage aos avisos de um channel do SgRealtimeProvider (nome, lista, prefixo.* ou *).",
+    "pt-PT": "Reage aos avisos de um channel do SgRealtimeProvider (nome, lista, prefixo.* ou *).",
+    "en-US": "Reacts to notices on a SgRealtimeProvider channel (name, list, prefix.* or *).",
+    es: "Reacciona a los avisos de un channel del SgRealtimeProvider (nombre, lista, prefijo.* o *)."
+  },
+  "hooks/use-sg-realtime-status": {
+    "pt-BR": "Estado da conexao com o Pulse: diz quando a tela deve usar o polling de reserva.",
+    "pt-PT": "Estado da ligacao ao Pulse: indica quando o ecra deve usar o polling de reserva.",
+    "en-US": "Pulse connection status: tells when the screen should use fallback polling.",
+    es: "Estado de la conexion con el Pulse: indica cuando la pantalla debe usar el polling de respaldo."
   },
   "hooks/use-sg-time": {
     "pt-BR": "Consome o SgTimeProvider e retorna o tempo atual sincronizado com o servidor, com tick a cada segundo.",

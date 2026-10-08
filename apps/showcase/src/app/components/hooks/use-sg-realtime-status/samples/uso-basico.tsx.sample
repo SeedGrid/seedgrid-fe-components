@@ -1,0 +1,8 @@
+import { useSgRealtimeStatus } from "@seedgrid/fe-components";
+
+export function RealtimeBadge() {
+  const { status, connected } = useSgRealtimeStatus();
+  // connected === false: desligado, Pulse fora, reconectando ou credencial revogada.
+  // E o sinal para a tela voltar ao polling de reserva.
+  return <span>{connected ? "Ao vivo" : `Polling (${status})`}</span>;
+}

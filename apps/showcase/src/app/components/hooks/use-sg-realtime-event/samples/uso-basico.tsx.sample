@@ -1,0 +1,12 @@
+import { useSgRealtimeEvent } from "@seedgrid/fe-components";
+
+// Dentro de um SgRealtimeProvider com channels={["backup"]}.
+export function ExportsNotices({ reload }: { reload: () => void }) {
+  // "backup.finished.*" casa backup.finished.success e backup.finished.error.
+  useSgRealtimeEvent("backup", "backup.finished.*", (event) => {
+    // event.data so traz identificadores ({ exportPublicId, status }):
+    // busque o registro pela API de sempre, onde a permissao e checada.
+    reload();
+  });
+  return null;
+}

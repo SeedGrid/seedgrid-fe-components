@@ -1,0 +1,21 @@
+// app/(private)/layout.tsx — monte UMA vez, onde ja ha usuario logado.
+"use client";
+
+import { SgRealtimeProvider } from "@seedgrid/fe-components";
+
+export default function PrivateLayout({ children }: { children: React.ReactNode }) {
+  // Pede o token a /api/realtime/connect (a BFF, mesma origem: vai o cookie da sessao),
+  // que repassa ao backend (POST /realtime/connect da seedgrid-quarkus-ext-realtime).
+  // O backend emite o token para o usuario DA SESSAO; o front conecta direto no Pulse.
+  return <SgRealtimeProvider channels={["backup"]}>{children}</SgRealtimeProvider>;
+}
+
+// app/api/realtime/connect/route.ts — a BFF so repassa, com o token da sessao.
+//
+// export async function POST() {
+//   const response = await backendFetch("/realtime/connect", { method: "POST" });
+//   return new Response(await response.text(), {
+//     status: response.status,
+//     headers: { "Content-Type": "application/json" },
+//   });
+// }
