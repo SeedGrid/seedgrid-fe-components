@@ -311,6 +311,18 @@ export { SgTimeProvider, useSgTime } from "./gadgets/clock/SgTimeProvider";
 export { SgClock } from "./gadgets/clock/SgClock";
 export { SgCalendar } from "./gadgets/calendar";
 export type { SgTimeContextValue } from "./gadgets/clock/SgTimeProvider";
+export {
+  SgRealtimeProvider,
+  useSgRealtimeEvent,
+  useSgRealtimeStatus,
+  matchesSgRealtimeEvent
+} from "./realtime/SgRealtimeProvider";
+export type {
+  SgRealtimeProviderProps,
+  SgRealtimeStatus,
+  SgRealtimeEvent,
+  SgRealtimeConnectResponse
+} from "./realtime/SgRealtimeProvider";
 export type { SgClockProps, SgClockDigitalStyle } from "./gadgets/clock/SgClock";
 export type { SgCalendarProps, SgCalendarWeekdayFormat } from "./gadgets/calendar";
 export { SgFlipDigit } from "./digits/flip-digit";

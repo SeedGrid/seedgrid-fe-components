@@ -289,6 +289,9 @@ importers:
       '@pqina/flip':
         specifier: ^1.8.4
         version: 1.8.4
+      '@seedgrid/pulse-subscriber-react':
+        specifier: ^3.0.0
+        version: 3.0.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       qrcode.react:
         specifier: ^4.2.0
         version: 4.2.0(react@19.0.0)
@@ -1032,6 +1035,18 @@ packages:
     resolution: {integrity: sha512-2HRCml6OztYXyJXAvdDXPKcawukWY2GpR5/nxKp4iBgiO3wcoEGkAaqctIbZcNB6KlUQBIqt8VYkNSj2397EfA==}
     cpu: [x64]
     os: [win32]
+
+  '@seedgrid/pulse-subscriber-react@3.0.0':
+    resolution: {integrity: sha512-zAynjSOaXVPmXlEFIn+f3f+G6xqzDV2lyW2zt9FU7AjsMf364fKORQdHxdvzUaHDFRiE8WzGF3K0eA5683PuZA==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      react: '>=18.0.0'
+      react-dom: '>=18.0.0'
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
 
   '@stitches/core@1.2.8':
     resolution: {integrity: sha512-Gfkvwk9o9kE9r9XNBmJRfV8zONvXThnm1tcuojL04Uy5uRyqg93DC83lDebl0rocZCfKSjUv+fWYtMQmEDJldg==}
@@ -2646,6 +2661,11 @@ snapshots:
 
   '@rollup/rollup-win32-x64-msvc@4.59.0':
     optional: true
+
+  '@seedgrid/pulse-subscriber-react@3.0.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+    optionalDependencies:
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
 
   '@stitches/core@1.2.8': {}
 

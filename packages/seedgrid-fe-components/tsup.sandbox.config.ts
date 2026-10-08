@@ -48,6 +48,8 @@ export default defineConfig({
     "react-hook-form",
     "qrcode.react",
     "@pqina/flip",
+    // SDK do SeedGrid Pulse (SgRealtimeProvider): pequeno, embutido como os de cima.
+    "@seedgrid/pulse-subscriber-react",
   ],
   dts: false,
   minify: true,

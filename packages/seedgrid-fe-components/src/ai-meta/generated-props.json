@@ -7813,6 +7813,55 @@
       "description": "Current rating value"
     }
   ],
+  "SgRealtimeProvider": [
+    {
+      "name": "channels",
+      "type": "string[]",
+      "required": true,
+      "description": "Channels que a tela quer ouvir (ex.: `[\"backup\"]`)."
+    },
+    {
+      "name": "children",
+      "type": "ReactNode",
+      "required": true
+    },
+    {
+      "name": "connectOptions",
+      "type": "Omit<ConnectInput, \"getToken\" | \"accountKey\" | \"baseUrl\">",
+      "required": false,
+      "description": "Opções avançadas do cliente do Pulse (reconexão, `webSocketImpl` em testes...)."
+    },
+    {
+      "name": "enabled",
+      "type": "boolean",
+      "required": false,
+      "description": "Liga/desliga (ex.: `false` enquanto não há usuário logado). Default: `true`."
+    },
+    {
+      "name": "fetchToken",
+      "type": "(() => Promise<SgRealtimeConnectResponse>)",
+      "required": false,
+      "description": "Substitui o pedido de token inteiro (apps sem BFF, testes)."
+    },
+    {
+      "name": "pulseUrl",
+      "type": "string",
+      "required": false,
+      "description": "Endereço do Pulse, usado quando o token não traz `connectUrl` (Pulse sem endereço público)."
+    },
+    {
+      "name": "tokenEndpoint",
+      "type": "string",
+      "required": false,
+      "description": "Rota que entrega o token de conexão do usuário logado. Default: `/api/realtime/connect` (a BFF, na\nmesma origem — o navegador manda o cookie da sessão)."
+    },
+    {
+      "name": "tokenRequestInit",
+      "type": "RequestInit",
+      "required": false,
+      "description": "Opções do `fetch` do token (ex.: `headers: { Authorization: ... }` quando não há cookie)."
+    }
+  ],
   "SgRoller3DDigit": [
     {
       "name": "fontSize",
