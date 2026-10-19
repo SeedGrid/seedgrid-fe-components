@@ -16,8 +16,8 @@ export const sgMeta: SgMetaV0 = {
   props: [
     { name: "id", type: "string", description: "Identificador unico do editor.", semanticRole: "data", bindable: false },
     { name: "placeholder", type: "string", description: "Texto de ajuda inicial.", semanticRole: "appearance", bindable: true },
-    { name: "height", type: "number | string", description: "Altura do editor.", semanticRole: "appearance", bindable: true },
-    { name: "onSave", type: "(meta: SgTextEditorSaveMeta) => void", description: "Callback de persistencia do conteudo.", semanticRole: "event", bindable: false }
+    { name: "height", type: "number", description: "Altura do editor.", semanticRole: "appearance", bindable: true },
+    { name: "onSave", type: "(file: File, meta: SgTextEditorSaveMeta) => void", description: "Callback de persistencia do conteudo.", semanticRole: "event", bindable: false }
   ],
   states: ["default", "readOnly", "disabled", "error"],
   showcase: { route: "/components/sg-text-editor", hasPlayground: true, hasPropsTable: true },

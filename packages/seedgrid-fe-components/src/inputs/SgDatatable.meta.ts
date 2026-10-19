@@ -16,8 +16,8 @@ export const sgMeta: SgMetaV0 = {
   props: [
     { name: "id", type: "string", description: "Identificador da tabela usado para DOM e persistencia do layout de colunas.", semanticRole: "data", bindable: true },
     { name: "columns", type: "SgDatatableColumn[]", description: "Definicao das colunas da tabela.", semanticRole: "data", bindable: true },
-    { name: "rows", type: "SgDatatableRow[]", description: "Linhas exibidas na tabela.", semanticRole: "value", bindable: true },
-    { name: "selectionMode", type: "string", description: "Modo de selecao de linhas.", semanticRole: "behavior", bindable: true },
+    { name: "rows", type: "number", description: "Linhas por pagina quando a paginacao esta ativa (os dados vao em value).", semanticRole: "behavior", bindable: true },
+    { name: "selectionMode", type: "\"single\" | \"multiple\"", description: "Modo de selecao de linhas.", semanticRole: "behavior", bindable: true },
     { name: "loading", type: "boolean", default: false, description: "Indica estado de carregamento.", semanticRole: "appearance", bindable: true },
     { name: "paginator", type: "boolean", default: false, description: "Ativa paginacao.", semanticRole: "behavior", bindable: true },
     { name: "onPage", type: "(event: SgDatatablePageEvent) => void", description: "Callback de paginacao.", semanticRole: "event", bindable: false },

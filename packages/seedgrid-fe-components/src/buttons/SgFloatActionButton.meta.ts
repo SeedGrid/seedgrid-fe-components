@@ -32,7 +32,7 @@ export const sgMeta: SgMetaV0 = {
     },
     {
       name: "position",
-      type: '"bottom-right" | "bottom-left" | "top-right" | "top-left"',
+      type: "\"left-top\" | \"left-center\" | \"left-bottom\" | \"center-top\" | \"center-bottom\" | \"right-top\" | \"right-center\" | \"right-bottom\"",
       default: "bottom-right",
       description: "Posicao do FAB na area visivel.",
       semanticRole: "behavior",
@@ -47,7 +47,7 @@ export const sgMeta: SgMetaV0 = {
     },
     {
       name: "severity",
-      type: '"primary" | "secondary" | "success" | "info" | "warning" | "help" | "danger"',
+      type: "\"primary\" | \"secondary\" | \"success\" | \"info\" | \"warning\" | \"help\" | \"danger\" | \"plain\"",
       default: "primary",
       description: "Peso visual da acao flutuante.",
       semanticRole: "appearance",

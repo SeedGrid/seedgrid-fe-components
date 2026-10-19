@@ -49,14 +49,14 @@ export const sgMeta: SgMetaV0 = {
     },
     {
       name: "activeIndex",
-      type: "number[]",
+      type: "number | number[]",
       description: "Estado controlado dos paineis abertos.",
       semanticRole: "value",
       bindable: true
     },
     {
       name: "defaultActiveIndex",
-      type: "number[]",
+      type: "number | number[]",
       description: "Estado inicial dos paineis abertos.",
       semanticRole: "behavior",
       bindable: true

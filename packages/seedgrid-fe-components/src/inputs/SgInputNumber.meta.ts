@@ -62,7 +62,7 @@ export const sgMeta: SgMetaV0 = {
     },
     {
       name: "onChange",
-      type: "(value: number | null) => void",
+      type: "(value: string) => void",
       description: "Callback com o valor numerico atual.",
       semanticRole: "event",
       bindable: false

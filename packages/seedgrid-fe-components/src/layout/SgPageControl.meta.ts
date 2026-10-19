@@ -23,7 +23,7 @@ export const sgMeta: SgMetaV0 = {
     { name: "size", type: '"sm" | "md" | "lg"', default: "md", description: "Escala visual das abas.", semanticRole: "appearance", bindable: true },
     { name: "fullWidthTabs", type: "boolean", default: false, description: "Distribui as abas em larguras iguais a partir do tablet; no celular elas mantem a largura natural e a lista rola.", semanticRole: "appearance", bindable: true },
     { name: "mobilePageControl", type: '"scroll" | "select"', default: "scroll", description: "Comportamento no celular: rolagem horizontal das abas ou troca por um select nativo.", semanticRole: "behavior", bindable: true },
-    { name: "onActivePageIdChange", type: "(pageId: string, context: object) => void", description: "Callback disparado quando a pagina ativa muda.", semanticRole: "event", bindable: false }
+    { name: "onActivePageIdChange", type: "(pageId: string, context: { index: number; page: SgPageControlPageProps }) => void", description: "Callback disparado quando a pagina ativa muda.", semanticRole: "event", bindable: false }
   ],
   states: ["default", "controlled", "keyboard-navigation"],
   examples: [

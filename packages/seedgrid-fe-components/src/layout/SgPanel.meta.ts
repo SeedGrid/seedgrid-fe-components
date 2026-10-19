@@ -25,14 +25,14 @@ export const sgMeta: SgMetaV0 = {
     },
     {
       name: "width",
-      type: "number | string",
+      type: "number | `${number}%`",
       description: "Largura do painel quando dockado ou usado em composicoes controladas.",
       semanticRole: "behavior",
       bindable: true
     },
     {
       name: "height",
-      type: "number | string",
+      type: "number | `${number}%`",
       description: "Altura do painel quando dockado ou usado em composicoes controladas.",
       semanticRole: "behavior",
       bindable: true

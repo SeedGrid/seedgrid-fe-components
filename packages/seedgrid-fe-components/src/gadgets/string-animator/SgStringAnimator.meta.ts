@@ -17,8 +17,8 @@ export const sgMeta: SgMetaV0 = {
   props: [
     { name: "sourceString", type: "string", required: true, description: "Texto inicial da animacao.", semanticRole: "value", bindable: true },
     { name: "targetString", type: "string", required: true, description: "Texto final da animacao.", semanticRole: "value", bindable: true },
-    { name: "stringAnimatorStyle", type: '"roller3d" | "flip" | "neon" | "fade" | "matrix" | "discard" | "segment" | "sevenSegment"', default: "roller3d", description: "Estilo visual usado na transicao.", semanticRole: "appearance", bindable: true },
-    { name: "alignTo", type: '"left" | "center" | "right"', default: "left", description: "Alinhamento do texto animado.", semanticRole: "appearance", bindable: true },
+    { name: "stringAnimatorStyle", type: "\"roller3d\" | \"flip\" | \"neon\" | \"fade\" | \"discard\" | \"matrix\"", default: "roller3d", description: "Estilo visual usado na transicao.", semanticRole: "appearance", bindable: true },
+    { name: "alignTo", type: "\"left\" | \"right\"", default: "left", description: "Alinhamento do texto animado.", semanticRole: "appearance", bindable: true },
     { name: "fontSize", type: "number", default: 28, description: "Escala visual do display.", semanticRole: "appearance", bindable: true }
   ],
   states: ["idle", "animating", "completed"],

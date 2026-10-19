@@ -40,7 +40,7 @@ export const sgMeta: SgMetaV0 = {
     },
     {
       name: "menuVariantStyle",
-      type: '"panel" | "tiered" | "mega-horizontal" | "mega-vertical"',
+      type: "\"panel\" | \"tiered\" | \"mega-horizontal\" | \"mega-vertical\" | \"PanelMenu\" | \"Tiered\" | \"MegaMenuHorizontal\" | \"MegaMenuVertical\"",
       default: "panel",
       description: "Variante visual e comportamental do menu.",
       semanticRole: "behavior",

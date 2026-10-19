@@ -54,7 +54,7 @@ export const sgMeta: SgMetaV0 = {
     },
     {
       name: "onChange",
-      type: "(value: number | null) => void",
+      type: "(value: string) => void",
       description: "Callback com o valor monetario normalizado.",
       semanticRole: "event",
       bindable: false

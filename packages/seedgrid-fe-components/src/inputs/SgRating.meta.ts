@@ -19,8 +19,8 @@ export const sgMeta: SgMetaV0 = {
     { name: "value", type: "number", description: "Nota atual.", semanticRole: "value", bindable: true },
     { name: "readOnly", type: "boolean", default: false, description: "Impede alteracao da nota.", semanticRole: "behavior", bindable: true },
     { name: "disabled", type: "boolean", default: false, description: "Desabilita interacao.", semanticRole: "behavior", bindable: true },
-    { name: "size", type: "string", description: "Tamanho visual do controle.", semanticRole: "appearance", bindable: true },
-    { name: "onChange", type: "(value: number | null) => void", description: "Callback de mudanca.", semanticRole: "event", bindable: false }
+    { name: "size", type: "\"sm\" | \"md\" | \"lg\" | \"xl\"", description: "Tamanho visual do controle.", semanticRole: "appearance", bindable: true },
+    { name: "onChange", type: "(value: number) => void", description: "Callback de mudanca.", semanticRole: "event", bindable: false }
   ],
   states: ["default", "disabled", "readOnly", "error"],
   showcase: { route: "/components/sg-rating", hasPlayground: true, hasPropsTable: true },

@@ -71,7 +71,7 @@ export const sgMeta: SgMetaV0 = {
     },
     {
       name: "onClick",
-      type: "() => void",
+      type: "React.MouseEventHandler<HTMLElement>",
       description: "Callback disparado quando o card e acionado.",
       semanticRole: "event",
       bindable: false

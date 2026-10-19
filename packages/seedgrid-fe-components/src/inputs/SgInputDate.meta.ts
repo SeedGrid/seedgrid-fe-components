@@ -76,7 +76,7 @@ export const sgMeta: SgMetaV0 = {
     },
     {
       name: "onChange",
-      type: "(value: string | null) => void",
+      type: "(value: string) => void",
       description: "Callback com a data selecionada ou digitada.",
       semanticRole: "event",
       bindable: false

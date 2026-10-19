@@ -17,7 +17,7 @@ export const sgMeta: SgMetaV0 = {
   props: [
     {
       name: "label",
-      type: "ReactNode",
+      type: "string",
       description: "Conteudo textual principal da acao.",
       semanticRole: "label",
       bindable: true
