@@ -16,10 +16,7 @@ export const sgMeta: SgMetaV0 = {
   props: [
     { name: "id", type: "string", description: "Identificador unico do componente.", semanticRole: "data", bindable: false },
     { name: "value", type: "SgPickListValue", description: "Estado atual das listas.", semanticRole: "value", bindable: true },
-    { name: "sourceLabel", type: "string", description: "Rotulo da lista de origem.", semanticRole: "label", bindable: true },
-    { name: "targetLabel", type: "string", description: "Rotulo da lista de destino.", semanticRole: "label", bindable: true },
     { name: "selectionMode", type: "string", description: "Modo de selecao nas listas.", semanticRole: "behavior", bindable: true },
-    { name: "showFilters", type: "boolean", default: true, description: "Exibe filtros nas listas.", semanticRole: "appearance", bindable: true },
     { name: "disabled", type: "boolean", default: false, description: "Desabilita interacao.", semanticRole: "behavior", bindable: true },
     { name: "onChange", type: "(event: SgPickListChangeEvent) => void", description: "Callback ao mover itens.", semanticRole: "event", bindable: false }
   ],

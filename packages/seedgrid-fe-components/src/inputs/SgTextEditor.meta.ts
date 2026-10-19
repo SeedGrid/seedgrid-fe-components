@@ -15,12 +15,8 @@ export const sgMeta: SgMetaV0 = {
   fieldSemantics: ["richText", "formattedDescription", "articleBody", "htmlContent"],
   props: [
     { name: "id", type: "string", description: "Identificador unico do editor.", semanticRole: "data", bindable: false },
-    { name: "label", type: "string", description: "Rotulo exibido ao usuario.", semanticRole: "label", bindable: true },
-    { name: "value", type: "string", description: "Conteudo atual do editor.", semanticRole: "value", bindable: true },
-    { name: "readOnly", type: "boolean", default: false, description: "Impede edicao do conteudo.", semanticRole: "behavior", bindable: true },
     { name: "placeholder", type: "string", description: "Texto de ajuda inicial.", semanticRole: "appearance", bindable: true },
     { name: "height", type: "number | string", description: "Altura do editor.", semanticRole: "appearance", bindable: true },
-    { name: "onChange", type: "(value: string) => void", description: "Callback de mudanca do conteudo.", semanticRole: "event", bindable: false },
     { name: "onSave", type: "(meta: SgTextEditorSaveMeta) => void", description: "Callback de persistencia do conteudo.", semanticRole: "event", bindable: false }
   ],
   states: ["default", "readOnly", "disabled", "error"],

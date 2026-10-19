@@ -46,20 +46,6 @@ export const sgMeta: SgMetaV0 = {
       bindable: true
     },
     {
-      name: "min",
-      type: "number",
-      description: "Valor minimo aceito.",
-      semanticRole: "validation",
-      bindable: true
-    },
-    {
-      name: "max",
-      type: "number",
-      description: "Valor maximo aceito.",
-      semanticRole: "validation",
-      bindable: true
-    },
-    {
       name: "decimals",
       type: "number",
       description: "Quantidade de casas decimais permitidas.",

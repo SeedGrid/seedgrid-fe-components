@@ -17,10 +17,7 @@ export const sgMeta: SgMetaV0 = {
     { name: "id", type: "string", required: true, description: "Identificador unico do componente.", semanticRole: "data", bindable: false },
     { name: "label", type: "string", description: "Rotulo exibido ao usuario.", semanticRole: "label", bindable: true },
     { name: "checked", type: "boolean", description: "Valor booleano atual.", semanticRole: "value", bindable: true },
-    { name: "disabled", type: "boolean", default: false, description: "Desabilita interacao.", semanticRole: "behavior", bindable: true },
     { name: "readOnly", type: "boolean", default: false, description: "Permite visualizacao sem alteracao.", semanticRole: "behavior", bindable: true },
-    { name: "checkedLabel", type: "string", description: "Texto exibido no estado ligado.", semanticRole: "appearance", bindable: true },
-    { name: "uncheckedLabel", type: "string", description: "Texto exibido no estado desligado.", semanticRole: "appearance", bindable: true },
     { name: "onChange", type: "(checked: boolean) => void", description: "Callback de mudanca.", semanticRole: "event", bindable: false }
   ],
   states: ["default", "checked", "unchecked", "disabled", "readOnly"],

@@ -16,7 +16,6 @@ export const sgMeta: SgMetaV0 = {
   fieldSemantics: ["digitDisplay", "sevenSegmentDigit", "clockDigit", "numericPanel"],
   props: [
     { name: "value", type: "string", required: true, description: "Caractere exibido no display.", semanticRole: "value", bindable: true },
-    { name: "fontSize", type: "number", default: 72, description: "Escala visual do digito.", semanticRole: "appearance", bindable: true },
     { name: "color", type: "string", description: "Cor dos segmentos ativos.", semanticRole: "appearance", bindable: true },
     { name: "backgroundColor", type: "string", description: "Cor do fundo do display.", semanticRole: "appearance", bindable: true },
     { name: "className", type: "string", description: "Classes CSS adicionais.", semanticRole: "appearance", bindable: true }

@@ -45,31 +45,10 @@ export const sgMeta: SgMetaV0 = {
       bindable: true
     },
     {
-      name: "symbol",
-      type: "string",
-      description: "Simbolo monetario exibido no campo.",
-      semanticRole: "appearance",
-      bindable: true
-    },
-    {
       name: "required",
       type: "boolean",
       default: false,
       description: "Marca o campo como obrigatorio.",
-      semanticRole: "validation",
-      bindable: true
-    },
-    {
-      name: "min",
-      type: "number",
-      description: "Valor monetario minimo aceito.",
-      semanticRole: "validation",
-      bindable: true
-    },
-    {
-      name: "max",
-      type: "number",
-      description: "Valor monetario maximo aceito.",
       semanticRole: "validation",
       bindable: true
     },

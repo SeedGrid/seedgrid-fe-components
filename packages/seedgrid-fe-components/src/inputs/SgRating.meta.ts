@@ -17,7 +17,6 @@ export const sgMeta: SgMetaV0 = {
     { name: "id", type: "string", description: "Identificador unico do componente.", semanticRole: "data", bindable: false },
     { name: "label", type: "string", description: "Rotulo do campo.", semanticRole: "label", bindable: true },
     { name: "value", type: "number", description: "Nota atual.", semanticRole: "value", bindable: true },
-    { name: "max", type: "number", description: "Quantidade maxima de itens de avaliacao.", semanticRole: "validation", bindable: true },
     { name: "readOnly", type: "boolean", default: false, description: "Impede alteracao da nota.", semanticRole: "behavior", bindable: true },
     { name: "disabled", type: "boolean", default: false, description: "Desabilita interacao.", semanticRole: "behavior", bindable: true },
     { name: "size", type: "string", description: "Tamanho visual do controle.", semanticRole: "appearance", bindable: true },

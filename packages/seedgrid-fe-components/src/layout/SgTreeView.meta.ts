@@ -24,21 +24,6 @@ export const sgMeta: SgMetaV0 = {
       bindable: true
     },
     {
-      name: "selectionMode",
-      type: '"single" | "multiple" | "checkbox"',
-      default: "single",
-      description: "Modo principal de selecao dos nos.",
-      semanticRole: "behavior",
-      bindable: true
-    },
-    {
-      name: "selectedIds",
-      type: "string[]",
-      description: "Nos selecionados de forma controlada.",
-      semanticRole: "value",
-      bindable: true
-    },
-    {
       name: "checkedIds",
       type: "string[]",
       description: "Nos marcados em cenarios de checkbox tree.",
@@ -54,14 +39,6 @@ export const sgMeta: SgMetaV0 = {
       bindable: true
     },
     {
-      name: "expandAllByDefault",
-      type: "boolean",
-      default: false,
-      description: "Expande a arvore inteira na montagem inicial.",
-      semanticRole: "behavior",
-      bindable: true
-    },
-    {
       name: "size",
       type: '"sm" | "md" | "lg"',
       default: "md",
@@ -69,13 +46,6 @@ export const sgMeta: SgMetaV0 = {
       semanticRole: "appearance",
       bindable: true
     },
-    {
-      name: "onSelectionChange",
-      type: "(ids: string[]) => void",
-      description: "Callback disparado quando a selecao muda.",
-      semanticRole: "event",
-      bindable: false
-    }
   ],
   states: ["default", "searching", "expanded", "collapsed", "selected", "checked"],
   examples: [

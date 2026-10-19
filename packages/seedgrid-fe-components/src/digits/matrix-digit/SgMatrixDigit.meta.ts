@@ -16,7 +16,6 @@ export const sgMeta: SgMetaV0 = {
   fieldSemantics: ["digitDisplay", "matrixDigit", "counterDigit", "panelDigit"],
   props: [
     { name: "value", type: "string", required: true, description: "Caractere exibido na matriz.", semanticRole: "value", bindable: true },
-    { name: "fontSize", type: "number", default: 72, description: "Escala visual do display.", semanticRole: "appearance", bindable: true },
     { name: "color", type: "string", description: "Cor principal do digito.", semanticRole: "appearance", bindable: true },
     { name: "backgroundColor", type: "string", description: "Cor do fundo do display.", semanticRole: "appearance", bindable: true },
     { name: "className", type: "string", description: "Classes CSS adicionais.", semanticRole: "appearance", bindable: true }

@@ -20,7 +20,6 @@ export const sgMeta: SgMetaV0 = {
     { name: "selectionMode", type: "string", description: "Modo de selecao de linhas.", semanticRole: "behavior", bindable: true },
     { name: "loading", type: "boolean", default: false, description: "Indica estado de carregamento.", semanticRole: "appearance", bindable: true },
     { name: "paginator", type: "boolean", default: false, description: "Ativa paginacao.", semanticRole: "behavior", bindable: true },
-    { name: "rowsPerPage", type: "number", description: "Quantidade de linhas por pagina.", semanticRole: "behavior", bindable: true },
     { name: "onPage", type: "(event: SgDatatablePageEvent) => void", description: "Callback de paginacao.", semanticRole: "event", bindable: false },
     { name: "onSort", type: "(event: SgDatatableSortEvent) => void", description: "Callback de ordenacao.", semanticRole: "event", bindable: false }
   ],

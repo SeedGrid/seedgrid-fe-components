@@ -38,25 +38,11 @@ export const sgMeta: SgMetaV0 = {
       bindable: true
     },
     {
-      name: "placeholder",
-      type: "string",
-      description: "Texto de apoio para orientar o conteudo esperado.",
-      semanticRole: "label",
-      bindable: true
-    },
-    {
       name: "required",
       type: "boolean",
       default: false,
       description: "Marca o campo como obrigatorio.",
       semanticRole: "validation",
-      bindable: true
-    },
-    {
-      name: "rows",
-      type: "number",
-      description: "Quantidade inicial de linhas visiveis.",
-      semanticRole: "appearance",
       bindable: true
     },
     {
