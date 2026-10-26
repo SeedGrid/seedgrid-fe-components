@@ -81,6 +81,8 @@ export function SgInputPassword(props: Readonly<SgInputPasswordProps>) {
   const [isHidden, setIsHidden] = React.useState(hidePassword ?? true);
   const [hasInteracted, setHasInteracted] = React.useState(false);
   const [unmetRequirements, setUnmetRequirements] = React.useState<string[]>([]);
+  // Barra de forca: sem texto digitado nao ha o que medir (antes ficava toda verde com o campo vazio).
+  const [hasText, setHasText] = React.useState(false);
   const inputRef = React.useRef<HTMLInputElement | null>(null);
   const commonPasswordSet = React.useMemo(() => {
     if (!commonPasswordCheck) return null;
@@ -153,10 +155,12 @@ export function SgInputPassword(props: Readonly<SgInputPasswordProps>) {
       prohibitsSequentialAscCharacters,
       prohibitsSequentialDescCharacters
     ];
+    if (!hasText) return 0;
     const activeChecks = totalChecks.filter((v) => v !== false).length;
     if (activeChecks === 0) return 0;
     return activeChecks - unmetRequirements.length;
   }, [
+    hasText,
     lowerRequired,
     minSize,
     numberRequired,
@@ -247,6 +251,7 @@ export function SgInputPassword(props: Readonly<SgInputPasswordProps>) {
 
   const runValidation = React.useCallback(
     (value: string) => {
+      setHasText(value.length > 0);
       if (!value && !required) {
         setInternalError(null);
         onValidation?.(null);

@@ -316,6 +316,40 @@ test("SgInputPassword calls the top-level onChange(value) while typing", async (
   }
 });
 
+test("SgInputPassword strength bar is empty (neutral) without text and colored once typing starts", async () => {
+  const harness = setupDomHarness();
+
+  try {
+    await harness.render(React.createElement(SgInputPassword, { id: "input-password-strength", label: "Password", commonPasswordCheck: false }));
+    await flushDom();
+
+    const input = harness.document.querySelector("input#input-password-strength");
+    assert.ok(input);
+    const segments = () => Array.from(harness.document.querySelectorAll("div.flex.h-1.w-full.gap-1 > span"));
+    assert.equal(segments().length, 5);
+    assert.ok(segments().every((el) => el.className.includes("bg-border")), "campo vazio: nenhum segmento aceso");
+
+    const descriptor = Object.getOwnPropertyDescriptor(globalThis.HTMLInputElement.prototype, "value");
+    await act(async () => {
+      input.focus();
+    });
+    await flushDom();
+    await act(async () => {
+      input.dispatchEvent(new harness.window.KeyboardEvent("keydown", { key: "a", bubbles: true, cancelable: true }));
+      descriptor.set.call(input, "a");
+      input._valueTracker?.setValue?.("");
+      input.dispatchEvent(new harness.window.InputEvent("input", { data: "a", inputType: "insertText", bubbles: true, cancelable: true }));
+      input.dispatchEvent(new harness.window.KeyboardEvent("keyup", { key: "a", bubbles: true, cancelable: true }));
+    });
+    await flushDom();
+
+    // "a" descumpre 4 de 8 criterios: 4 segmentos amarelos.
+    assert.equal(segments().filter((el) => el.className.includes("bg-yellow-400")).length, 4);
+  } finally {
+    harness.restore();
+  }
+});
+
 test("SgInputText keeps the typed value when controlled through react-hook-form", async () => {
   const harness = setupDomHarness();
 
