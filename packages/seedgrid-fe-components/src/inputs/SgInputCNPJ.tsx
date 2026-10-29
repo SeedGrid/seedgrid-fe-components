@@ -6,6 +6,7 @@ import { resolveFieldError } from "../rhf";
 import { maskCnpj } from "../masks";
 import { isValidCnpj } from "../validators";
 import { t, useComponentsI18n } from "../i18n";
+import { defaultPublicaCnpjFetch } from "./publicaCnpj";
 
 export type SgInputCNPJProps = Omit<SgInputTextProps, "inputProps" | "error"> & {
   /** Disparado ao receber foco — padrao seedgrid. */
@@ -37,12 +38,6 @@ function onlyAlnumUpper(value: string) {
 function onlyDigits(value: string) {
   return value.replace(/\D/g, "");
 }
-
-const defaultPublicaCnpjFetch = async (cnpj: string) => {
-  const response = await fetch(`https://publica.cnpj.ws/cnpj/${cnpj}`);
-  if (!response.ok) return null;
-  return response.json();
-};
 
 export function SgInputCNPJ(props: SgInputCNPJProps) {
   const i18n = useComponentsI18n();

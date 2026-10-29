@@ -6,6 +6,7 @@ import { resolveFieldError } from "../rhf";
 import { maskCpfCnpj } from "../masks";
 import { isValidCnpj, isValidCpf } from "../validators";
 import { t, useComponentsI18n } from "../i18n";
+import { defaultPublicaCnpjFetch } from "./publicaCnpj";
 
 export type SgInputCPFCNPJProps = Omit<SgInputTextProps, "inputProps" | "error"> & {
   /** Disparado ao receber foco — padrao seedgrid. */
@@ -23,6 +24,16 @@ export type SgInputCPFCNPJProps = Omit<SgInputTextProps, "inputProps" | "error">
   validation?: (value: string) => string | null;
   onValidation?: (message: string | null) => void;
   validateOnBlur?: boolean;
+  /** Quando o documento e um CNPJ numerico valido, confirma na base publica (publica.cnpj.ws) que ele existe. */
+  validateWithPublicaCnpj?: boolean;
+  /** Mensagem quando a base publica nao encontra o CNPJ. */
+  publicaCnpjErrorMessage?: string;
+  /** Consulta injetavel (testes sem rede). Padrao: https://publica.cnpj.ws. */
+  publicaCnpjFetch?: (cnpj: string) => Promise<unknown | null>;
+  /** Recebe o resultado da consulta (`null` quando nao achou). */
+  onPublicaCnpjResult?: (data: unknown | null) => void;
+  /** Chamado quando a consulta falha (rede ou limite da API); a validacao passa. */
+  onPublicaCnpjError?: (error: unknown) => void;
 };
 
 function onlyDigits(value: string) {
@@ -35,8 +46,24 @@ function onlyAlnumUpper(value: string) {
 
 export function SgInputCPFCNPJ(props: SgInputCPFCNPJProps) {
   const i18n = useComponentsI18n();
-  const { required, requiredMessage, lengthMessage, invalidMessage, validateOnBlur, error, validation, ...rest } = props;
+  const {
+    required,
+    requiredMessage,
+    lengthMessage,
+    invalidMessage,
+    validateOnBlur,
+    error,
+    validation,
+    validateWithPublicaCnpj,
+    publicaCnpjErrorMessage,
+    publicaCnpjFetch,
+    onPublicaCnpjResult,
+    onPublicaCnpjError,
+    ...rest
+  } = props;
   const [internalError, setInternalError] = React.useState<string | null>(null);
+  const lastValidatedCnpjRef = React.useRef<string | null>(null);
+  const lastPublicaFoundRef = React.useRef<boolean | null>(null);
 
   const runValidation = React.useCallback(
     (value: string) => {
@@ -91,10 +118,58 @@ export function SgInputCPFCNPJ(props: SgInputCPFCNPJProps) {
         props.onValidation?.(message);
         return;
       }
+      if (validateWithPublicaCnpj && !/[A-Z]/.test(raw)) {
+        const digits = onlyDigits(raw);
+        if (digits.length === 14) {
+          const message = publicaCnpjErrorMessage ?? invalidMessage ?? t(i18n, "components.inputs.cnpj.invalid");
+          if (lastValidatedCnpjRef.current === digits) {
+            if (lastPublicaFoundRef.current === false) {
+              setInternalError(message);
+              props.onValidation?.(message);
+            } else {
+              setInternalError(null);
+              props.onValidation?.(null);
+            }
+            return;
+          }
+          void (async () => {
+            try {
+              const checker = publicaCnpjFetch ?? defaultPublicaCnpjFetch;
+              const data = await checker(digits);
+              lastValidatedCnpjRef.current = digits;
+              lastPublicaFoundRef.current = Boolean(data);
+              onPublicaCnpjResult?.(data);
+              if (!data) {
+                setInternalError(message);
+                props.onValidation?.(message);
+                return;
+              }
+            } catch (err) {
+              onPublicaCnpjError?.(err);
+            }
+            setInternalError(null);
+            props.onValidation?.(null);
+          })();
+          return;
+        }
+      }
       setInternalError(null);
       props.onValidation?.(null);
     },
-    [i18n, required, requiredMessage, lengthMessage, invalidMessage, validation, props]
+    [
+      i18n,
+      required,
+      requiredMessage,
+      lengthMessage,
+      invalidMessage,
+      validation,
+      props,
+      validateWithPublicaCnpj,
+      publicaCnpjErrorMessage,
+      publicaCnpjFetch,
+      onPublicaCnpjResult,
+      onPublicaCnpjError
+    ]
   );
 
   const inputProps = {

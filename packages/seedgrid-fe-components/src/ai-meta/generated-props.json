@@ -3526,6 +3526,18 @@
       "description": "Disparado ao perder o foco (apos validacao) — padrao seedgrid."
     },
     {
+      "name": "onPublicaCnpjError",
+      "type": "((error: unknown) => void)",
+      "required": false,
+      "description": "Chamado quando a consulta falha (rede ou limite da API); a validacao passa."
+    },
+    {
+      "name": "onPublicaCnpjResult",
+      "type": "((data: unknown) => void)",
+      "required": false,
+      "description": "Recebe o resultado da consulta (`null` quando nao achou)."
+    },
+    {
       "name": "onValidation",
       "type": "(((message: string | null) => void) & ((message: string | null) => void))",
       "required": false
@@ -3544,6 +3556,18 @@
       "name": "prefixText",
       "type": "string",
       "required": false
+    },
+    {
+      "name": "publicaCnpjErrorMessage",
+      "type": "string",
+      "required": false,
+      "description": "Mensagem quando a base publica nao encontra o CNPJ."
+    },
+    {
+      "name": "publicaCnpjFetch",
+      "type": "((cnpj: string) => Promise<unknown>)",
+      "required": false,
+      "description": "Consulta injetavel (testes sem rede). Padrao: https://publica.cnpj.ws."
     },
     {
       "name": "readOnly",
@@ -3584,6 +3608,12 @@
       "name": "validateOnBlur",
       "type": "boolean",
       "required": false
+    },
+    {
+      "name": "validateWithPublicaCnpj",
+      "type": "boolean",
+      "required": false,
+      "description": "Quando o documento e um CNPJ numerico valido, confirma na base publica (publica.cnpj.ws) que ele existe."
     },
     {
       "name": "validation",

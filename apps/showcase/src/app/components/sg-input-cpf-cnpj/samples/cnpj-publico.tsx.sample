@@ -1,0 +1,21 @@
+import * as React from "react";
+import { SgInputCPFCNPJ } from "@seedgrid/fe-components";
+
+export default function App() {
+  const [result, setResult] = React.useState<unknown | null>(null);
+
+  return (
+    <>
+      <SgInputCPFCNPJ
+        id="documento"
+        label="Documento"
+        validateWithPublicaCnpj
+        publicaCnpjErrorMessage="CNPJ nao encontrado."
+        onPublicaCnpjResult={setResult}
+        onPublicaCnpjError={(error) => console.log(error)}
+        inputProps={{}}
+      />
+      {result ? <pre>{JSON.stringify(result, null, 2)}</pre> : null}
+    </>
+  );
+}

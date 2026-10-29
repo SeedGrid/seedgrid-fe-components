@@ -2,7 +2,10 @@
 
 import React from "react";
 import { useSgTheme } from "@seedgrid/fe-theme";
-import { SgButton, SgDialog } from "@seedgrid/fe-components";
+import { SgButton, SgDialog, type SgDialogProps } from "@seedgrid/fe-components";
+
+type SgDialogSeverity = Exclude<NonNullable<SgDialogProps["severity"]>, "plain">;
+const SEVERITIES: SgDialogSeverity[] = ["primary", "secondary", "success", "info", "warning", "help", "danger"];
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
@@ -97,6 +100,7 @@ export default function SgDialogPage() {
   });
   const [openBasic, setOpenBasic] = React.useState(false);
   const [openSeverity, setOpenSeverity] = React.useState(false);
+  const [dialogSeverity, setDialogSeverity] = React.useState<SgDialogSeverity>("primary");
   const [openNoClose, setOpenNoClose] = React.useState(false);
   const [openStrict, setOpenStrict] = React.useState(false);
   const [openAutoClose, setOpenAutoClose] = React.useState(false);
@@ -168,28 +172,38 @@ export default function SgDialogPage() {
         title={`2) ${t(i18n, "showcase.component.dialog.sections.severity.title")}`}
         description={t(i18n, "showcase.component.dialog.sections.severity.description")}
       >
-        <SgButton severity="danger" onClick={() => setOpenSeverity(true)}>
-          {t(i18n, "showcase.component.dialog.labels.openDanger")}
-        </SgButton>
+        <div className="flex flex-wrap gap-2">
+          {SEVERITIES.map((s) => (
+            <SgButton
+              key={s}
+              severity={s}
+              onClick={() => {
+                setDialogSeverity(s);
+                setOpenSeverity(true);
+              }}
+            >
+              {s}
+            </SgButton>
+          ))}
+        </div>
         <SgDialog
           open={openSeverity}
           onOpenChange={setOpenSeverity}
-          severity="danger"
-          title={t(i18n, "showcase.component.dialog.labels.dangerTitle")}
-          subtitle={t(i18n, "showcase.component.dialog.labels.dangerSubtitle")}
+          severity={dialogSeverity}
+          title={`${t(i18n, "showcase.component.dialog.labels.severityTitle")}: ${dialogSeverity}`}
           footer={
             <>
               <SgButton appearance="ghost" onClick={() => setOpenSeverity(false)}>
                 {t(i18n, "showcase.component.dialog.labels.cancel")}
               </SgButton>
-              <SgButton severity="danger" onClick={() => setOpenSeverity(false)}>
-                {t(i18n, "showcase.component.dialog.labels.delete")}
+              <SgButton severity={dialogSeverity} onClick={() => setOpenSeverity(false)}>
+                {t(i18n, "showcase.component.dialog.labels.confirm")}
               </SgButton>
             </>
           }
         >
           <div className="text-sm text-muted-foreground">
-            {t(i18n, "showcase.component.dialog.labels.dangerBody")}
+            {t(i18n, "showcase.component.dialog.labels.severityBody")}
           </div>
         </SgDialog>
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-dialog/samples/severity.tsx.sample" />

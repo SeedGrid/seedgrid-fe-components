@@ -1,26 +1,42 @@
 import React from "react";
-import { SgButton, SgDialog } from "@seedgrid/fe-components";
+import { SgButton, SgDialog, type SgDialogProps } from "@seedgrid/fe-components";
+
+type SgDialogSeverity = Exclude<NonNullable<SgDialogProps["severity"]>, "plain">;
+const SEVERITIES: SgDialogSeverity[] = ["primary", "secondary", "success", "info", "warning", "help", "danger"];
 
 export default function Example() {
   const [open, setOpen] = React.useState(false);
+  const [severity, setSeverity] = React.useState<SgDialogSeverity>("primary");
 
   return (
     <>
-      <SgButton severity="danger" onClick={() => setOpen(true)}>Abrir dialog danger</SgButton>
+      <div className="flex flex-wrap gap-2">
+        {SEVERITIES.map((s) => (
+          <SgButton
+            key={s}
+            severity={s}
+            onClick={() => {
+              setSeverity(s);
+              setOpen(true);
+            }}
+          >
+            {s}
+          </SgButton>
+        ))}
+      </div>
       <SgDialog
         open={open}
         onOpenChange={setOpen}
-        severity="danger"
-        title="Remover registro"
-        subtitle="Acao irreversivel"
+        severity={severity}
+        title={`Severidade: ${severity}`}
         footer={
           <>
             <SgButton appearance="ghost" onClick={() => setOpen(false)}>Cancelar</SgButton>
-            <SgButton severity="danger" onClick={() => setOpen(false)}>Excluir</SgButton>
+            <SgButton severity={severity} onClick={() => setOpen(false)}>Confirmar</SgButton>
           </>
         }
       >
-        <div className="text-sm text-muted-foreground">Este registro sera excluido permanentemente.</div>
+        <div className="text-sm text-muted-foreground">O fundo e a faixa do topo seguem a severidade escolhida.</div>
       </SgDialog>
     </>
   );

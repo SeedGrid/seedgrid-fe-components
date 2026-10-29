@@ -77,25 +77,25 @@ function sizeClass(size: SgDialogSize) {
   }
 }
 
-function severityClass(severity: SgDialogSeverity) {
+/** Cor do acento da severidade: a mesma do fundo do SgButton da severidade (var do tema com fallback). `null` em "plain". */
+function severityColor(severity: SgDialogSeverity): string | null {
   switch (severity) {
     case "primary":
-      return "border-t-[hsl(var(--primary))]";
+      return "var(--sg-btn-primary-bg, hsl(var(--primary)))";
     case "secondary":
-      return "border-t-[hsl(var(--secondary))]";
+      return "var(--sg-btn-secondary-bg, hsl(var(--secondary)))";
     case "success":
-      return "border-t-[hsl(var(--tertiary,var(--accent,var(--primary))))]";
+      return "var(--sg-btn-success-bg, hsl(var(--tertiary, var(--accent))))";
     case "info":
-      return "border-t-[hsl(var(--secondary,var(--primary)))]";
+      return "var(--sg-btn-info-bg, hsl(var(--secondary, var(--primary))))";
     case "warning":
-      return "border-t-[hsl(var(--accent,var(--secondary,var(--primary))))]";
+      return "var(--sg-btn-warning-bg, hsl(var(--secondary, var(--accent))))";
     case "help":
-      return "border-t-[hsl(var(--secondary,var(--primary)))]";
+      return "var(--sg-btn-help-bg, hsl(var(--secondary, var(--primary))))";
     case "danger":
-      return "border-t-[hsl(var(--destructive))]";
-    case "plain":
+      return "var(--sg-btn-danger-bg, hsl(var(--destructive)))";
     default:
-      return "border-t-[hsl(var(--border))]";
+      return null;
   }
 }
 
@@ -523,6 +523,10 @@ export function SgDialog(props: Readonly<SgDialogProps>) {
   const contentStyle: React.CSSProperties = {
     ...(dialogVars as unknown as React.CSSProperties),
     ...transitionStyle,
+    ...(customColor === undefined && severityColor(severity)
+      ? { backgroundColor: `color-mix(in srgb, ${severityColor(severity)} 12%, hsl(var(--background)))` }
+      : {}),
+    ...(showTopAccent ? { borderTopColor: severityColor(severity) ?? "hsl(var(--border))" } : {}),
     ...(customColor !== undefined ? { backgroundColor: customColor } : {}),
     ...(customPalette ? { color: customPalette.foreground, borderColor: customPalette.border } : {}),
     ...(resolvedShadow !== undefined ? { boxShadow: resolvedShadow } : {})
@@ -553,7 +557,6 @@ export function SgDialog(props: Readonly<SgDialogProps>) {
             contentBase,
             sizeClass(size),
             contentStateClass(animation, entered),
-            showTopAccent ? severityClass(severity) : false,
             contentClassName
           )}
           style={contentStyle}

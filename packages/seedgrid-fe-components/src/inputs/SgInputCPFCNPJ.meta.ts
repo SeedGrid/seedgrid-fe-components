@@ -22,6 +22,11 @@ export const sgMeta: SgMetaV0 = {
     { name: "lengthMessage", type: "string", description: "Mensagem para comprimento invalido.", semanticRole: "validation", bindable: true },
     { name: "invalidMessage", type: "string", description: "Mensagem para documento invalido.", semanticRole: "validation", bindable: true },
     { name: "validateOnBlur", type: "boolean", default: true, description: "Executa validacao no blur.", semanticRole: "behavior", bindable: true },
+    { name: "validateWithPublicaCnpj", type: "boolean", default: false, description: "Confirma na base publica que o CNPJ numerico existe.", semanticRole: "behavior", bindable: true },
+    { name: "publicaCnpjErrorMessage", type: "string", description: "Mensagem quando a base publica nao encontra o CNPJ.", semanticRole: "validation", bindable: true },
+    { name: "publicaCnpjFetch", type: "(cnpj: string) => Promise<unknown | null>", description: "Consulta injetavel (padrao publica.cnpj.ws).", semanticRole: "behavior", bindable: false },
+    { name: "onPublicaCnpjResult", type: "(data: unknown | null) => void", description: "Recebe o resultado da consulta.", semanticRole: "event", bindable: false },
+    { name: "onPublicaCnpjError", type: "(error: unknown) => void", description: "Chamado quando a consulta falha.", semanticRole: "event", bindable: false },
     { name: "validation", type: "(value: string) => string | null", description: "Validacao customizada adicional.", semanticRole: "validation", bindable: false },
     { name: "onValidation", type: "(message: string | null) => void", description: "Callback para estado de validacao.", semanticRole: "event", bindable: false }
   ],
@@ -31,6 +36,12 @@ export const sgMeta: SgMetaV0 = {
       id: "basic",
       title: "Basico",
       file: "apps/showcase/src/app/components/sg-input-cpf-cnpj/samples/basico.tsx.sample",
+      kind: "sample"
+    },
+    {
+      id: "publica-cnpj",
+      title: "Consulta na base publica",
+      file: "apps/showcase/src/app/components/sg-input-cpf-cnpj/samples/cnpj-publico.tsx.sample",
       kind: "sample"
     },
     {

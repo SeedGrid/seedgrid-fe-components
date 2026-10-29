@@ -26,7 +26,7 @@ Module._load = function patchedLoad(request, parent, isMain) {
   return originalLoad.call(this, request, parent, isMain);
 };
 
-const { SgAutocomplete, SgInputPassword, SgInputPhone, SgInputText, SgMultiSelect, SgMultiSelectChips, SgInputTextSearch } = require("../dist/sandbox.cjs");
+const { SgAutocomplete, SgInputCPFCNPJ, SgInputPassword, SgInputPhone, SgInputText, SgMultiSelect, SgMultiSelectChips, SgInputTextSearch } = require("../dist/sandbox.cjs");
 
 Module._load = originalLoad;
 
@@ -1223,6 +1223,93 @@ test("SgMultiSelectChips opens from the chevron button alone", async () => {
     await dispatchMouse(chevron, "mousedown");
     await flushDom();
     assert.equal(getDropdownOptions(harness).length, 0);
+  } finally {
+    harness.restore();
+  }
+});
+
+async function typeCpfCnpj(harness, value) {
+  const input = harness.document.querySelector("input#cpfcnpj-publica");
+  assert.ok(input);
+  await dispatchInput(input, value);
+  await flushDom();
+  await flushDom();
+  return input;
+}
+
+test("SgInputCPFCNPJ consults the public CNPJ base when validateWithPublicaCnpj is on and reports the result", async () => {
+  const harness = setupDomHarness();
+  const calls = [];
+  const results = [];
+  try {
+    await harness.render(
+      React.createElement(SgInputCPFCNPJ, {
+        id: "cpfcnpj-publica",
+        label: "Document",
+        validateWithPublicaCnpj: true,
+        publicaCnpjFetch: async (cnpj) => {
+          calls.push(cnpj);
+          return { razao_social: "ACME LTDA" };
+        },
+        onPublicaCnpjResult: (data) => results.push(data)
+      })
+    );
+    await flushDom();
+    await typeCpfCnpj(harness, "05952365000130");
+    assert.deepEqual(calls, ["05952365000130"]);
+    assert.deepEqual(results, [{ razao_social: "ACME LTDA" }]);
+    assert.equal(harness.document.body.textContent.includes("CNPJ not found"), false);
+  } finally {
+    harness.restore();
+  }
+});
+
+test("SgInputCPFCNPJ shows publicaCnpjErrorMessage when the public base does not find the CNPJ", async () => {
+  const harness = setupDomHarness();
+  const results = [];
+  try {
+    await harness.render(
+      React.createElement(SgInputCPFCNPJ, {
+        id: "cpfcnpj-publica",
+        label: "Document",
+        validateWithPublicaCnpj: true,
+        publicaCnpjErrorMessage: "CNPJ not found",
+        publicaCnpjFetch: async () => null,
+        onPublicaCnpjResult: (data) => results.push(data)
+      })
+    );
+    await flushDom();
+    await typeCpfCnpj(harness, "05952365000130");
+    assert.deepEqual(results, [null]);
+    assert.ok(harness.document.body.textContent.includes("CNPJ not found"));
+  } finally {
+    harness.restore();
+  }
+});
+
+test("SgInputCPFCNPJ does not consult the public base for a CPF, and ignores a failed lookup", async () => {
+  const harness = setupDomHarness();
+  const calls = [];
+  const errors = [];
+  try {
+    await harness.render(
+      React.createElement(SgInputCPFCNPJ, {
+        id: "cpfcnpj-publica",
+        label: "Document",
+        validateWithPublicaCnpj: true,
+        publicaCnpjFetch: async (cnpj) => {
+          calls.push(cnpj);
+          throw new Error("offline");
+        },
+        onPublicaCnpjError: (error) => errors.push(error.message)
+      })
+    );
+    await flushDom();
+    await typeCpfCnpj(harness, "52998224725");
+    assert.deepEqual(calls, []);
+    await typeCpfCnpj(harness, "05952365000130");
+    assert.deepEqual(calls, ["05952365000130"]);
+    assert.deepEqual(errors, ["offline"]);
   } finally {
     harness.restore();
   }

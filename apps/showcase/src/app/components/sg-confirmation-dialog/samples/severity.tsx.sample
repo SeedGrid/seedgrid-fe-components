@@ -1,0 +1,37 @@
+import React from "react";
+import { SgButton, SgConfirmationDialog, type SgConfirmationDialogProps } from "@seedgrid/fe-components";
+
+type SgDialogSeverity = Exclude<NonNullable<SgConfirmationDialogProps["severity"]>, "plain">;
+const SEVERITIES: SgDialogSeverity[] = ["primary", "secondary", "success", "info", "warning", "help", "danger"];
+
+export default function Example() {
+  const [open, setOpen] = React.useState(false);
+  const [severity, setSeverity] = React.useState<SgDialogSeverity>("primary");
+
+  return (
+    <>
+      <div className="flex flex-wrap gap-2">
+        {SEVERITIES.map((s) => (
+          <SgButton
+            key={s}
+            severity={s}
+            onClick={() => {
+              setSeverity(s);
+              setOpen(true);
+            }}
+          >
+            {s}
+          </SgButton>
+        ))}
+      </div>
+      <SgConfirmationDialog
+        open={open}
+        onOpenChange={setOpen}
+        title={`Severidade: ${severity}`}
+        message="Veja o ícone, o fundo e o botão de confirmar."
+        severity={severity}
+        showSeverityAccent
+      />
+    </>
+  );
+}

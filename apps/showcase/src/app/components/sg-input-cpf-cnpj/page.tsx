@@ -34,6 +34,8 @@ export default function SgInputCpfCnpjPage() {
   const aiComponent = useAiManifestComponent("SgInputCPFCNPJ");
   const [basicValue, setBasicValue] = React.useState("");
   const [validationMsg, setValidationMsg] = React.useState<string | null>(null);
+  const [publicaResult, setPublicaResult] = React.useState<unknown | null>(null);
+  const [publicaError, setPublicaError] = React.useState<string | null>(null);
   const [eventLog, setEventLog] = React.useState<string[]>([]);
   const stickyHeaderRef = React.useRef<HTMLDivElement | null>(null);
   const [anchorOffset, setAnchorOffset] = React.useState(320);
@@ -162,7 +164,8 @@ export default function SgInputCpfCnpjPage() {
       { id: "exemplo-10", label: `10) ${t(i18n, "showcase.common.sections.disabled.title")}` },
       { id: "exemplo-11", label: `11) ${t(i18n, "showcase.common.sections.events.title")}` },
       { id: "exemplo-12", label: `12) ${t(i18n, "showcase.common.sections.labelPosition.title")}` },
-      { id: "exemplo-13", label: "13) Playground" }
+      { id: "exemplo-13", label: `13) ${t(i18n, "showcase.component.cpfcnpj.sections.publica.title")}` },
+      { id: "exemplo-14", label: "14) Playground" }
     ],
     [i18n.locale]
   );
@@ -172,6 +175,7 @@ export default function SgInputCpfCnpjPage() {
     { prop: "required / requiredMessage", type: "boolean / string", defaultValue: "false / auto", description: t(i18n, "showcase.component.cpfcnpj.props.rows.required") },
     { prop: "invalidMessage", type: "string", defaultValue: "auto", description: t(i18n, "showcase.component.cpfcnpj.props.rows.invalid") },
     { prop: "validation / onValidation", type: "functions", defaultValue: "-", description: t(i18n, "showcase.component.cpfcnpj.props.rows.validation") },
+    { prop: "validateWithPublicaCnpj / publicaCnpjErrorMessage / publicaCnpjFetch / onPublicaCnpjResult / onPublicaCnpjError", type: "boolean / string / function / callbacks", defaultValue: "false / auto / publica.cnpj.ws / -", description: t(i18n, "showcase.component.cpfcnpj.props.rows.publica") },
     { prop: "onChange / onEnter / onExit / onClear", type: "callbacks", defaultValue: "-", description: t(i18n, "showcase.component.cpfcnpj.props.rows.events") },
     { prop: "withBorder / filled / enabled / readOnly / clearButton", type: "boolean", defaultValue: "varies", description: t(i18n, "showcase.component.cpfcnpj.props.rows.visualFlags") },
     { prop: "labelPosition", type: '"float" | "top" | "left"', defaultValue: '"float"', description: t(i18n, "showcase.common.props.rows.labelPosition") },
@@ -480,7 +484,37 @@ export default function SgInputCpfCnpjPage() {
   <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-cpf-cnpj/samples/posicao-do-rotulo.tsx.sample" />
 </Section>
 
-<Section id="exemplo-13" title="13) Playground" description={t(i18n, "showcase.common.playground.description")}>
+<Section
+        id="exemplo-13"
+        title={`13) ${t(i18n, "showcase.component.cpfcnpj.sections.publica.title")}`}
+        description={t(i18n, "showcase.component.cpfcnpj.sections.publica.description")}
+      >
+        <div className="w-80">
+          <SgInputCPFCNPJ
+            id="demo-publica"
+            label={t(i18n, "showcase.component.cpfcnpj.labels.document")}
+            hintText={t(i18n, "showcase.component.cpfcnpj.labels.documentHint")}
+            validateWithPublicaCnpj
+            publicaCnpjErrorMessage={t(i18n, "showcase.component.cpfcnpj.messages.publicaNotFound")}
+            onPublicaCnpjResult={(data) => {
+              setPublicaResult(data);
+              setPublicaError(null);
+            }}
+            onPublicaCnpjError={() => setPublicaError(t(i18n, "showcase.component.cpfcnpj.messages.publicaError"))}
+            inputProps={{}}
+          />
+          {publicaResult ? (
+            <div className="mt-3 rounded-md border border-border bg-muted/20 p-3 text-xs">
+              <div className="mb-2 text-sm font-semibold">{t(i18n, "showcase.component.cpfcnpj.labels.publicaResult")}</div>
+              <pre className="whitespace-pre-wrap">{JSON.stringify(publicaResult, null, 2)}</pre>
+            </div>
+          ) : null}
+          {publicaError ? <p className="mt-2 text-xs text-muted-foreground">{publicaError}</p> : null}
+        </div>
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-cpf-cnpj/samples/cnpj-publico.tsx.sample" />
+      </Section>
+
+<Section id="exemplo-14" title="14) Playground" description={t(i18n, "showcase.common.playground.description")}>
         <SgPlayground
           title="SgInputCPFCNPJ Playground"
           interactive

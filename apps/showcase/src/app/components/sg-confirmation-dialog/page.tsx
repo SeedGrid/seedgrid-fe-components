@@ -1,7 +1,10 @@
 ﻿"use client";
 
 import React from "react";
-import { SgButton, SgConfirmationDialog, type SgConfirmationDialogButtonConfig } from "@seedgrid/fe-components";
+import { SgButton, SgConfirmationDialog, type SgConfirmationDialogButtonConfig, type SgConfirmationDialogProps } from "@seedgrid/fe-components";
+
+type SgDialogSeverity = Exclude<NonNullable<SgConfirmationDialogProps["severity"]>, "plain">;
+const SEVERITIES: SgDialogSeverity[] = ["primary", "secondary", "success", "info", "warning", "help", "danger"];
 import { SgPlayground } from "@seedgrid/fe-playground";
 import { AlertTriangle, ShieldAlert, Trash2, X } from "lucide-react";
 import SgCodeBlockBase from "../sgCodeBlockBase";
@@ -33,6 +36,7 @@ function CodeBlock(props: { sampleFile: string }) {
 
 const SECTION_TITLE_KEYS = [
   "showcase.component.confirmation.sections.basic.title",
+  "showcase.component.confirmation.sections.severity.title",
   "showcase.component.confirmation.sections.leftIcon.title",
   "showcase.component.confirmation.sections.topIcon.title",
   "showcase.component.confirmation.sections.customButtons.title",
@@ -221,6 +225,8 @@ export default function SgConfirmationDialogShowcase() {
   const [openBasic, setOpenBasic] = React.useState(false);
   const [basicResult, setBasicResult] = React.useState("none");
 
+  const [openSeverity, setOpenSeverity] = React.useState(false);
+  const [dialogSeverity, setDialogSeverity] = React.useState<SgDialogSeverity>("primary");
   const [openLeftIcon, setOpenLeftIcon] = React.useState(false);
   const [openTopIcon, setOpenTopIcon] = React.useState(false);
 
@@ -280,6 +286,32 @@ export default function SgConfirmationDialogShowcase() {
         </Section>
 
         <Section title={sectionTitles[1] ?? ""}>
+          <div className="flex flex-wrap gap-2">
+            {SEVERITIES.map((s) => (
+              <SgButton
+                key={s}
+                severity={s}
+                onClick={() => {
+                  setDialogSeverity(s);
+                  setOpenSeverity(true);
+                }}
+              >
+                {s}
+              </SgButton>
+            ))}
+          </div>
+          <SgConfirmationDialog
+            open={openSeverity}
+            onOpenChange={setOpenSeverity}
+            title={`${t(i18n, "showcase.component.confirmation.labels.severityTitle")}: ${dialogSeverity}`}
+            message={t(i18n, "showcase.component.confirmation.labels.severityMessage")}
+            severity={dialogSeverity}
+            showSeverityAccent
+          />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-confirmation-dialog/samples/severity.tsx.sample" />
+        </Section>
+
+        <Section title={sectionTitles[2] ?? ""}>
           <SgButton appearance="outline" onClick={() => setOpenLeftIcon(true)}>open warning</SgButton>
           <SgConfirmationDialog
             open={openLeftIcon}
@@ -293,7 +325,7 @@ export default function SgConfirmationDialogShowcase() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-confirmation-dialog/samples/icone-a-esquerda.tsx.sample" />
         </Section>
 
-        <Section title={sectionTitles[2] ?? ""}>
+        <Section title={sectionTitles[3] ?? ""}>
           <SgButton appearance="outline" onClick={() => setOpenTopIcon(true)}>open top icon</SgButton>
           <SgConfirmationDialog
             open={openTopIcon}
@@ -307,7 +339,7 @@ export default function SgConfirmationDialogShowcase() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-confirmation-dialog/samples/icone-no-topo.tsx.sample" />
         </Section>
 
-        <Section title={sectionTitles[3] ?? ""}>
+        <Section title={sectionTitles[4] ?? ""}>
           <SgButton severity="danger" onClick={() => setOpenCustom(true)}>delete row</SgButton>
           <SgConfirmationDialog
             open={openCustom}
@@ -324,7 +356,7 @@ export default function SgConfirmationDialogShowcase() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-confirmation-dialog/samples/botoes-customizados.tsx.sample" />
         </Section>
 
-        <Section title={sectionTitles[4] ?? ""}>
+        <Section title={sectionTitles[5] ?? ""}>
           <SgButton appearance="outline" onClick={() => setOpenSurface(true)}>open custom surface</SgButton>
           <SgConfirmationDialog
             open={openSurface}
@@ -338,7 +370,7 @@ export default function SgConfirmationDialogShowcase() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-confirmation-dialog/samples/surface-customizada.tsx.sample" />
         </Section>
 
-        <Section title={sectionTitles[5] ?? ""}>
+        <Section title={sectionTitles[6] ?? ""}>
           <SgPlayground
             title={t(i18n, "showcase.component.confirmation.sections.playground.playgroundTitle")}
             interactive
