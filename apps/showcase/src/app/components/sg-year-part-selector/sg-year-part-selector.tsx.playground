@@ -30,7 +30,7 @@ function fmt(date: Date | null | undefined): string {
 }
 
 export default function App() {
-  const hasComponent = typeof SgYearPartSelectorFromLib === "function";
+  const hasComponent = SgYearPartSelectorFromLib != null;
 
   const [allowedKinds, setAllowedKinds] = React.useState<string[]>(KINDS);
   const [locale, setLocale] = React.useState("pt-BR");

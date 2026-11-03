@@ -110,6 +110,8 @@ const ptBR: Record<string, string> = {
   "components.gadgets.gauge.value": "Valor",
   "components.datatable.empty": "Nenhum registro encontrado.",
   "components.datatable.loading": "Carregando dados...",
+  "components.datatable.loadingMore": "Carregando mais...",
+  "components.datatable.endOfList": "Fim da lista.",
   "components.datatable.globalFilterPlaceholder": "Buscar em todas as colunas",
   "components.datatable.clearFilters": "Limpar filtros",
   "components.datatable.pagination": "Paginacao",

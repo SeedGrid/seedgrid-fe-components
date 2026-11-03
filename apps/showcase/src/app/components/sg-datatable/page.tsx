@@ -12,6 +12,7 @@ import {
   SgButton,
   SgConfirmationDialog,
   SgGrid,
+  SgRadioGroup,
 } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import { Pencil, Trash2 } from "lucide-react";
@@ -68,6 +69,7 @@ const SECTION_TITLE_KEYS = [
   "showcase.component.datatable.sections.server.title",
   "showcase.component.datatable.sections.loading.title",
   "showcase.component.datatable.sections.mobile.title",
+  "showcase.component.datatable.sections.infinite.title",
   "showcase.component.datatable.sections.playground.title"
 ] as const;
 
@@ -279,7 +281,9 @@ function buildDatatableProps(i18n: ShowcaseI18n): ShowcasePropRow[] {
     { prop: "emptyMessage", type: "string", defaultValue: "i18n", description: t(i18n, "showcase.component.datatable.props.rows.emptyMessage") },
     { prop: "className / style / tableClassName / rowClassName", type: "styling props", defaultValue: "-", description: "Styles the wrapper, table element and rows globally or per-row." },
     { prop: "groupBoxProps", type: "Partial<SgGroupBoxProps>", defaultValue: "-", description: t(i18n, "showcase.component.datatable.props.rows.groupBoxProps") },
-    { prop: "mobileMode", type: "\"scroll\" | \"cards\"", defaultValue: "scroll", description: "Behavior when the table container is narrower than 600 px: scroll keeps the horizontally scrollable table; cards shows each row as a 'column: value' card, keeping sorting (sort selector), selection, row actions, footer and pagination; column filters move to a panel opened by a button." },
+    { prop: "infiniteScroll", type: "boolean", defaultValue: "true in cards, false in table", description: "Infinite scroll: no paginator; when the end of the list gets close, advances to the next page (rows) and appends the records, with loading and end-of-list indicators. On by default when the list is shown as cards (below 600 px in automatic mode), off in the table. Requires paginator. With lazy, the parent appends the next page to value (first/rows/page arrive in onPage/onLoadMore)." },
+    { prop: "onLoadMore", type: "(event: SgDatatablePageEvent) => void", defaultValue: "-", description: "Called (besides onPage) when infinite scroll asks for the next page." },
+    { prop: "mobileMode", type: "\"scroll\" | \"cards\"", defaultValue: "- (automatic)", description: "Omitted (default): automatic - below 600 px of container width each row is shown as a 'column: value' card (keeping sorting selector, selection, row actions, footer and pagination; column filters move to a panel opened by a button), above it the regular table. cards forces cards and scroll forces the horizontally scrollable table, at any width." },
     { prop: "column.cardTitle / cardHidden", type: "boolean", defaultValue: "false / false", description: "Cards mode only: cardTitle shows the column value as the card title (no label, first marked column wins); cardHidden leaves the column out of the card." },
     { prop: "showColumnManager / columnManagerLabel / columnManagerMaxHeight", type: "boolean / string / number|string", defaultValue: "true / i18n / 320", description: "Controls the built-in column visibility and reorder panel." },
     { prop: "column.columnId / hidden / hideable / reorderable", type: "column props", defaultValue: "- / false / true / true", description: "Stable key and visibility/reordering rules per column." },
@@ -1175,6 +1179,8 @@ export default function SgDatatableShowcase() {
 
   const [selectionMode, setSelectionMode] = React.useState<"single" | "multiple">("single");
   const [selection, setSelection] = React.useState<SgDatatableSelection<ProductRow>>(null);
+  const [mobileMode, setMobileMode] = React.useState<"cards" | "scroll">("cards");
+  const [infiniteScroll, setInfiniteScroll] = React.useState(true);
 
   const [controlledSort, setControlledSort] = React.useState<{ sortField: string | null; sortOrder: SgDatatableSortOrder }>({
     sortField: "name",
@@ -1293,7 +1299,7 @@ export default function SgDatatableShowcase() {
           onAnchorClick={handleAnchorClick}
         />
 
-        <Section title={sectionTitles[0] ?? ""}>
+        <Section title={sectionTitles[0] ?? ""} description={t(i18n, "showcase.component.datatable.sections.basic.description")}>
           <SgDatatable
             id="datatable-basic"
             title="Product catalog"
@@ -1301,6 +1307,7 @@ export default function SgDatatableShowcase() {
             columns={BASE_COLUMNS}
             dataKey="id"
             paginator
+            infiniteScroll={false}
             rows={5}
             rowsPerPageOptions={[5, 10]}
             stripedRows
@@ -1575,24 +1582,67 @@ export default function SgDatatableShowcase() {
         </Section>
 
         <Section title={sectionTitles[8] ?? ""}>
-          <div className="mx-auto w-full max-w-[420px]">
+          <SgGrid columns={1} gap={12}>
+            <SgRadioGroup
+              id="datatable-cards-mode"
+              title="mobileMode"
+              orientation="horizontal"
+              source={[
+                { label: "cards", value: "cards" },
+                { label: "scroll", value: "scroll" }
+              ]}
+              value={mobileMode}
+              onChange={(next) => setMobileMode(next === "scroll" ? "scroll" : "cards")}
+            />
+            <div className="mx-auto w-full max-w-[420px]">
             <SgDatatable
               id="datatable-cards"
               title="Product catalog (cards)"
               value={PRODUCT_ROWS}
               columns={CARD_COLUMNS}
               dataKey="id"
-              mobileMode="cards"
+              mobileMode={mobileMode}
               selectionMode="single"
               showColumnFilters
               paginator
               rows={4}
             />
-          </div>
+            </div>
+          </SgGrid>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-datatable/samples/modo-cartoes.tsx.sample" />
         </Section>
 
         <Section title={sectionTitles[9] ?? ""}>
+          <SgGrid columns={1} gap={12}>
+            <SgRadioGroup
+              id="datatable-infinite-mode"
+              title="infiniteScroll"
+              orientation="horizontal"
+              source={[
+                { label: "true", value: "true" },
+                { label: "false", value: "false" }
+              ]}
+              value={String(infiniteScroll)}
+              onChange={(next) => setInfiniteScroll(next !== "false")}
+            />
+            <div className="mx-auto h-[360px] w-full max-w-[420px] overflow-auto rounded-md border border-border">
+              <SgDatatable
+                id="datatable-infinite"
+                title="Product catalog (infinite scroll)"
+                value={PRODUCT_ROWS}
+                columns={CARD_COLUMNS}
+                dataKey="id"
+                mobileMode="cards"
+                infiniteScroll={infiniteScroll}
+                paginator
+                rows={4}
+              />
+            </div>
+          </SgGrid>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-datatable/samples/rolagem-infinita.tsx.sample" />
+        </Section>
+
+        <Section title={sectionTitles[10] ?? ""}>
           <SgPlayground
             title="SgDatatable Playground"
             interactive

@@ -110,6 +110,8 @@ const fr: Record<string, string> = {
   "components.gadgets.gauge.value": "Valeur",
   "components.datatable.empty": "Aucun enregistrement trouvé.",
   "components.datatable.loading": "Chargement des données...",
+  "components.datatable.loadingMore": "Chargement de plus...",
+  "components.datatable.endOfList": "Fin de la liste.",
   "components.datatable.globalFilterPlaceholder": "Rechercher dans toutes les colonnes",
   "components.datatable.clearFilters": "Effacer les filtres",
   "components.datatable.pagination": "Pagination",

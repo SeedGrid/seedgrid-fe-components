@@ -35,7 +35,7 @@ function FallbackRadioGroup(props: {
 }
 
 export default function App() {
-  const hasComponent = typeof SgRadioGroupFromLib === "function";
+  const hasComponent = SgRadioGroupFromLib != null;
   const [title, setTitle] = React.useState("Choose an option");
   const [orientation, setOrientation] = React.useState<"vertical" | "horizontal">("vertical");
   const [iconOnly, setIconOnly] = React.useState(false);

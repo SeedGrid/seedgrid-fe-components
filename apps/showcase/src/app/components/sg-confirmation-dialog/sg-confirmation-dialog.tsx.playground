@@ -6,7 +6,7 @@ const SgConfirmationDialogFromLib = (SeedGrid as Record<string, unknown>).SgConf
 const SgButtonFromLib = (SeedGrid as Record<string, unknown>).SgButton as React.ComponentType<any> | undefined;
 
 export default function App() {
-  const hasComponent = typeof SgConfirmationDialogFromLib === "function" && typeof SgButtonFromLib === "function";
+  const hasComponent = SgConfirmationDialogFromLib != null && SgButtonFromLib != null;
   const [open, setOpen] = React.useState(false);
   const [severity, setSeverity] = React.useState<"primary" | "success" | "info" | "warning" | "danger" | "plain">("warning");
   const [iconPlacement, setIconPlacement] = React.useState<"left" | "top">("left");

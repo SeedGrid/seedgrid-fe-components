@@ -142,8 +142,16 @@ export type SgDatatableProps<T extends SgDatatableRow = SgDatatableRow> = {
   showColumnManager?: boolean;
   columnManagerLabel?: string;
   columnManagerMaxHeight?: number | string;
-  /** Comportamento quando o container fica abaixo de SG_DATATABLE_MOBILE_BREAKPOINT (600 px). Padrao: `scroll`. */
+  /** Omitido (padrao): automatico - cartoes quando o container fica abaixo de SG_DATATABLE_MOBILE_BREAKPOINT (600 px), tabela acima. `cards` forca cartoes e `scroll` forca a tabela (rolagem horizontal) em qualquer largura. */
   mobileMode?: SgDatatableMobileMode;
+  /**
+   * Rolagem infinita (P137): sem paginador, ao chegar perto do fim avanca a pagina do `rows` existente.
+   * Padrao: ligada quando a lista e' exibida como cartoes (abaixo de 600 px no modo automatico) e desligada na tabela.
+   * Exige `paginator` (e' o `rows` que define o tamanho de cada pagina). Com `lazy`, o pai acrescenta a proxima pagina a `value`.
+   */
+  infiniteScroll?: boolean;
+  /** Chamado (alem de `onPage`) quando a rolagem infinita pede a proxima pagina. */
+  onLoadMore?: (event: SgDatatablePageEvent) => void;
 };
 
 function cn(...parts: Array<string | undefined | null | false>) {
@@ -394,6 +402,8 @@ function SgDatatableBase<T extends SgDatatableRow>(
     first,
     rowsPerPageOptions,
     onPage,
+    infiniteScroll,
+    onLoadMore,
     sortField,
     sortOrder,
     onSort,
@@ -422,7 +432,7 @@ function SgDatatableBase<T extends SgDatatableRow>(
     showColumnManager = true,
     columnManagerLabel,
     columnManagerMaxHeight = 320,
-    mobileMode = "scroll"
+    mobileMode
   } = props;
 
   const isFirstControlled = first !== undefined;
@@ -441,9 +451,11 @@ function SgDatatableBase<T extends SgDatatableRow>(
   const [internalFilters, setInternalFilters] = React.useState<Record<string, string>>(() => normalizeFilters(filters));
 
   const rootRef = React.useRef<HTMLDivElement | null>(null);
-  const containerWidth = useSgContainerWidth(rootRef, mobileMode === "cards");
+  const containerWidth = useSgContainerWidth(rootRef, mobileMode === undefined);
   const cardsActive =
-    mobileMode === "cards" && containerWidth !== null && containerWidth < SG_DATATABLE_MOBILE_BREAKPOINT;
+    mobileMode === "cards" ||
+    (mobileMode === undefined && containerWidth !== null && containerWidth < SG_DATATABLE_MOBILE_BREAKPOINT);
+  const infiniteActive = paginator && (infiniteScroll ?? cardsActive);
   const [isCardFiltersOpen, setIsCardFiltersOpen] = React.useState(false);
 
   const columnManagerRef = React.useRef<HTMLDivElement | null>(null);
@@ -742,11 +754,19 @@ function SgDatatableBase<T extends SgDatatableRow>(
   const maxFirst = Math.max(0, (pageCount - 1) * currentRows);
   const safeFirst = Math.min(currentFirst, maxFirst);
 
+  const [loadedPages, setLoadedPages] = React.useState(1);
   const pagedRows = React.useMemo(() => {
     if (!paginator) return sortedRows;
     if (lazy) return sortedRows;
+    if (infiniteActive) return sortedRows.slice(0, loadedPages * currentRows);
     return sortedRows.slice(safeFirst, safeFirst + currentRows);
-  }, [paginator, lazy, sortedRows, safeFirst, currentRows]);
+  }, [paginator, lazy, infiniteActive, loadedPages, sortedRows, safeFirst, currentRows]);
+  const infiniteHasMore = infiniteActive && (lazy ? value.length < resolvedTotalRecords : sortedRows.length > loadedPages * currentRows);
+  // Ordenar/filtrar/mudar o tamanho da pagina recomeca a rolagem infinita na primeira pagina.
+  const infiniteResetKey = JSON.stringify([currentSortField, currentSortOrder, currentGlobalFilter, currentFilters, currentRows]);
+  React.useEffect(() => {
+    setLoadedPages(1);
+  }, [infiniteResetKey]);
 
   const currentPage = Math.floor(safeFirst / currentRows) + 1;
 
@@ -819,6 +839,47 @@ function SgDatatableBase<T extends SgDatatableRow>(
     lastReconciledFirstRef.current = safeFirst;
     commitPage(safeFirst, currentRows);
   }, [safeFirst, currentFirst, commitPage, currentRows]);
+
+  const sentinelRef = React.useRef<HTMLDivElement | null>(null);
+  const onLoadMoreRef = React.useRef(onLoadMore);
+  onLoadMoreRef.current = onLoadMore;
+  const requestedLengthRef = React.useRef(-1);
+  const loadMore = React.useCallback(() => {
+    if (!infiniteHasMore || loading) return;
+    const total = resolvedTotalRecordsRef.current;
+    const pageCountNow = Math.max(1, Math.ceil(Math.max(total, 1) / currentRows));
+    let nextFirst: number;
+    if (lazy) {
+      if (requestedLengthRef.current === value.length) return;
+      requestedLengthRef.current = value.length;
+      nextFirst = value.length;
+    } else {
+      nextFirst = loadedPages * currentRows;
+      setLoadedPages(loadedPages + 1);
+    }
+    const event: SgDatatablePageEvent = {
+      first: nextFirst,
+      rows: currentRows,
+      page: Math.floor(nextFirst / currentRows) + 1,
+      pageCount: pageCountNow,
+      totalRecords: total
+    };
+    onPageRef.current?.(event);
+    onLoadMoreRef.current?.(event);
+  }, [infiniteHasMore, loading, lazy, value.length, loadedPages, currentRows]);
+  React.useEffect(() => {
+    if (!infiniteHasMore) return;
+    const element = sentinelRef.current;
+    if (!element || typeof IntersectionObserver === "undefined") return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) loadMore();
+      },
+      { rootMargin: "200px" }
+    );
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [infiniteHasMore, loadMore, pagedRows.length]);
 
   const commitSort = React.useCallback(
     (nextSortField: string | null, nextSortOrder: SgDatatableSortOrder) => {
@@ -896,6 +957,8 @@ function SgDatatableBase<T extends SgDatatableRow>(
   const emptyLabel = emptyMessage ?? t(i18n, "components.datatable.empty");
 
   const loadingLabel = t(i18n, "components.datatable.loading");
+  const loadingMoreLabel = t(i18n, "components.datatable.loadingMore");
+  const endOfListLabel = t(i18n, "components.datatable.endOfList");
 
   const globalFilterLabel = globalFilterPlaceholder ?? t(i18n, "components.datatable.globalFilterPlaceholder");
 
@@ -1332,7 +1395,7 @@ function SgDatatableBase<T extends SgDatatableRow>(
                   </div>
                 ) : null}
 
-                {loading ? (
+                {loading && !(infiniteActive && pagedRows.length > 0) ? (
                   <p data-sg-card-state="loading" className="px-4 py-6 text-center text-sm text-[rgb(var(--sg-muted))]">
                     {loadingLabel}
                   </p>
@@ -1603,7 +1666,19 @@ function SgDatatableBase<T extends SgDatatableRow>(
             )}
           </div>
 
-          {paginator ? (
+          {infiniteActive ? (
+            <div
+              ref={sentinelRef}
+              data-sg-infinite-sentinel="true"
+              role="status"
+              aria-live="polite"
+              className="px-4 py-3 text-center text-xs text-[rgb(var(--sg-muted))]"
+            >
+              {infiniteHasMore ? (loading ? loadingMoreLabel : "") : pagedRows.length > 0 ? endOfListLabel : ""}
+            </div>
+          ) : null}
+
+          {paginator && !infiniteActive ? (
             <div ref={paginatorRef} className="flex flex-wrap items-center gap-1.5">
               <nav
                 aria-label={t(i18n, "components.datatable.pagination")}

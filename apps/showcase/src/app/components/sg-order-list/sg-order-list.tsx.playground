@@ -12,7 +12,7 @@ const ITEMS = [
 ];
 
 export default function App() {
-  const hasComponent = typeof SgOrderListFromLib === "function";
+  const hasComponent = SgOrderListFromLib != null;
   const [value, setValue] = React.useState(ITEMS);
   const [showControls, setShowControls] = React.useState(true);
   const [selectionMode, setSelectionMode] = React.useState<"single" | "multiple">("multiple");

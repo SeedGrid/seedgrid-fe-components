@@ -11,7 +11,7 @@ const SOURCE = [
 ];
 
 export default function App() {
-  const hasComponent = typeof SgPickListFromLib === "function";
+  const hasComponent = SgPickListFromLib != null;
   const [value, setValue] = React.useState({ source: SOURCE, target: [] });
   const [showSourceFilter, setShowSourceFilter] = React.useState(false);
   const [showTargetFilter, setShowTargetFilter] = React.useState(false);

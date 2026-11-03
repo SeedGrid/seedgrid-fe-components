@@ -22,7 +22,8 @@ const COLUMNS = [
 ];
 
 export default function App() {
-  const hasComponent = typeof SgDatatableFromLib === "function";
+  // forwardRef components are objects, not functions: do not test typeof === "function".
+  const hasComponent = SgDatatableFromLib != null;
   const [rows, setRows] = React.useState(5);
   const [paginator, setPaginator] = React.useState(true);
   const [globalFilter, setGlobalFilter] = React.useState(false);
@@ -33,6 +34,8 @@ export default function App() {
   const [showColumnManager, setShowColumnManager] = React.useState(true);
   const [removableSort, setRemovableSort] = React.useState(true);
   const [loading, setLoading] = React.useState(false);
+  const [mobileMode, setMobileMode] = React.useState<"" | "scroll" | "cards">("");
+  const [infiniteScroll, setInfiniteScroll] = React.useState<"" | "true" | "false">("");
   const [data, setData] = React.useState(ROWS);
 
   return (
@@ -53,6 +56,8 @@ export default function App() {
         <label className="inline-flex items-center gap-2"><input type="checkbox" checked={showColumnManager} onChange={(event) => setShowColumnManager(event.target.checked)} /> showColumnManager</label>
         <label className="inline-flex items-center gap-2"><input type="checkbox" checked={removableSort} onChange={(event) => setRemovableSort(event.target.checked)} /> removableSort</label>
         <label className="inline-flex items-center gap-2"><input type="checkbox" checked={loading} onChange={(event) => setLoading(event.target.checked)} /> loading</label>
+        <label className="inline-flex items-center gap-2">mobileMode <select className="rounded border border-border px-1 py-0.5" value={mobileMode} onChange={(event) => setMobileMode(event.target.value as "" | "scroll" | "cards")}><option value="">(auto)</option><option value="scroll">scroll</option><option value="cards">cards</option></select></label>
+        <label className="inline-flex items-center gap-2">infiniteScroll <select className="rounded border border-border px-1 py-0.5" value={infiniteScroll} onChange={(event) => setInfiniteScroll(event.target.value as "" | "true" | "false")}><option value="">(auto)</option><option value="true">true</option><option value="false">false</option></select></label>
       </div>
 
       <div className="grid gap-2 sm:grid-cols-3">
@@ -81,6 +86,8 @@ export default function App() {
             columnManagerLabel="Manage columns"
             removableSort={removableSort}
             loading={loading}
+            mobileMode={mobileMode === "" ? undefined : mobileMode}
+            infiniteScroll={infiniteScroll === "" ? undefined : infiniteScroll === "true"}
             showClearFiltersButton
           />
         ) : (

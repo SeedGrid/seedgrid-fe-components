@@ -43,6 +43,7 @@ export default function BasicDatatableExample() {
       columns={BASE_COLUMNS}
       dataKey="id"
       paginator
+      infiniteScroll={false}
       rows={5}
       rowsPerPageOptions={[5, 10]}
       stripedRows

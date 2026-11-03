@@ -14,7 +14,7 @@ function LocalFallback(props: { value: string; size: number }) {
 }
 
 export default function App() {
-  const hasQrCode = typeof SgQRCodeFromLib === "function";
+  const hasQrCode = SgQRCodeFromLib != null;
   const [value, setValue] = React.useState("https://seedgrid.com.br");
   const [logoSrc, setLogoSrc] = React.useState("/logo-seedgrid.svg");
   const [size, setSize] = React.useState(220);

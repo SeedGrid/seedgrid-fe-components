@@ -21,7 +21,7 @@ function fmt(date: Date | null): string {
 }
 
 export default function App() {
-  const hasComponent = typeof SgPeriodSelectorFromLib === "function";
+  const hasComponent = SgPeriodSelectorFromLib != null;
 
   const [permitCurrent, setPermitCurrent] = React.useState(true);
   const [permitPast, setPermitPast] = React.useState(true);

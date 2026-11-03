@@ -68,7 +68,7 @@ function LocalSelectFallback(props: {
 }
 
 export default function App() {
-  const hasCombobox = typeof SgComboboxFromLib === "function";
+  const hasCombobox = SgComboboxFromLib != null;
   const [selectedId, setSelectedId] = React.useState<string>("");
   const [grouped, setGrouped] = React.useState(true);
   const [openOnFocus, setOpenOnFocus] = React.useState(true);

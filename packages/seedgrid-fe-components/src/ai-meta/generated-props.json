@@ -1829,6 +1829,12 @@
       "required": false
     },
     {
+      "name": "infiniteScroll",
+      "type": "boolean",
+      "required": false,
+      "description": "Rolagem infinita (P137): sem paginador, ao chegar perto do fim avanca a pagina do `rows` existente.\r\nPadrao: ligada quando a lista e' exibida como cartoes (abaixo de 600 px no modo automatico) e desligada na tabela.\r\nExige `paginator` (e' o `rows` que define o tamanho de cada pagina). Com `lazy`, o pai acrescenta a proxima pagina a `value`."
+    },
+    {
       "name": "lazy",
       "type": "boolean",
       "required": false
@@ -1842,7 +1848,7 @@
       "name": "mobileMode",
       "type": "SgDatatableMobileMode",
       "required": false,
-      "description": "Comportamento quando o container fica abaixo de SG_DATATABLE_MOBILE_BREAKPOINT (600 px). Padrao: `scroll`."
+      "description": "Omitido (padrao): automatico - cartoes quando o container fica abaixo de SG_DATATABLE_MOBILE_BREAKPOINT (600 px), tabela acima. `cards` forca cartoes e `scroll` forca a tabela (rolagem horizontal) em qualquer largura."
     },
     {
       "name": "onFilter",
@@ -1853,6 +1859,12 @@
       "name": "onGlobalFilterChange",
       "type": "((value: string) => void)",
       "required": false
+    },
+    {
+      "name": "onLoadMore",
+      "type": "((event: SgDatatablePageEvent) => void)",
+      "required": false,
+      "description": "Chamado (alem de `onPage`) quando a rolagem infinita pede a proxima pagina."
     },
     {
       "name": "onPage",

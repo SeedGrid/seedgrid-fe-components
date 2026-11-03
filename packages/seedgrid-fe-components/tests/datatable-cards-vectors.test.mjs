@@ -105,6 +105,15 @@ if (available) {
   for (const c of vectors.cardCases ?? []) {
     test(`React x vetor: ${c.name}`, async () => {
       const harness = setupDomHarness();
+      // P137: IntersectionObserver falso; a acao "loadMore" faz o sentinela da rolagem infinita entrar na area visivel.
+      const observers = new Set();
+      const ioPrev = globalThis.IntersectionObserver;
+      globalThis.IntersectionObserver = class {
+        constructor(cb) { this.cb = cb; this.targets = new Set(); observers.add(this); }
+        observe(el) { this.targets.add(el); }
+        unobserve(el) { this.targets.delete(el); }
+        disconnect() { this.targets.clear(); observers.delete(this); }
+      };
       try {
         harness.window.HTMLElement.prototype.getBoundingClientRect = () => ({
           x: 0, y: 0, top: 0, left: 0, right: c.width, bottom: 0, width: c.width, height: 0
@@ -123,7 +132,16 @@ if (available) {
               button.click();
             });
           }
+          if (action === "loadMore") {
+            await act(async () => {
+              for (const o of [...observers]) if (o.targets.size) o.cb([{ isIntersecting: true, target: [...o.targets][0] }]);
+            });
+            await flushDom();
+          }
         }
+        const sentinelEl = container.querySelector("[data-sg-infinite-sentinel]");
+        assert.deepEqual(sentinelEl ? { text: txt(sentinelEl) } : null, c.expected.infinite, "sentinela da rolagem infinita");
+        assert.equal(container.querySelector("nav") === null, c.expected.pager === null, "paginador presente/ausente");
         const got = extract(container);
         const want = c.expected;
         assert.equal(got.mode, want.mode);
@@ -135,6 +153,8 @@ if (available) {
           assert.deepEqual(got.footer, want.footer);
         }
       } finally {
+        if (ioPrev === undefined) delete globalThis.IntersectionObserver;
+        else globalThis.IntersectionObserver = ioPrev;
         harness.restore();
       }
     });

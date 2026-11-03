@@ -9,7 +9,7 @@ export const sgMeta: SgMetaV0 = {
   displayName: "SgDatatable",
   category: "data",
   subcategory: "datatable",
-  description: "Tabela de dados interativa com colunas configuraveis, paginacao, ordenacao, filtro, selecao e persistencia de layout de colunas. Em celular pode virar lista de cartoes (mobileMode=\"cards\").",
+  description: "Tabela de dados interativa com colunas configuraveis, paginacao, ordenacao, filtro, selecao e persistencia de layout de colunas. Em celular vira lista de cartoes automaticamente (mobileMode omitido = automatico).",
   tags: ["data", "table", "grid", "listing", "interactive"],
   capabilities: ["pagination", "sorting", "filtering", "selection", "column-config", "column-layout-persistence", "row-actions", "mobile-cards"],
   fieldSemantics: ["tabularData", "dataGrid", "listing", "collectionView"],
@@ -19,7 +19,9 @@ export const sgMeta: SgMetaV0 = {
     { name: "rows", type: "number", description: "Linhas por pagina quando a paginacao esta ativa (os dados vao em value).", semanticRole: "behavior", bindable: true },
     { name: "selectionMode", type: "\"single\" | \"multiple\"", description: "Modo de selecao de linhas.", semanticRole: "behavior", bindable: true },
     { name: "loading", type: "boolean", default: false, description: "Indica estado de carregamento.", semanticRole: "appearance", bindable: true },
-    { name: "mobileMode", type: "\"scroll\" | \"cards\"", default: "scroll", description: "Comportamento em tela estreita (container abaixo de 600 px): scroll rola a tabela na horizontal; cards mostra cada linha como cartao 'coluna: valor' mantendo ordenacao, selecao, acoes, rodape e paginacao.", semanticRole: "behavior", bindable: true },
+    { name: "mobileMode", type: "\"scroll\" | \"cards\"", default: "(omitido = automatico)", description: "Comportamento em tela estreita. Omitido (padrao): cartoes quando o container fica abaixo de 600 px, tabela acima; cards: forca cartoes em qualquer largura; scroll: forca a tabela com rolagem horizontal. Nos cartoes mantem ordenacao, selecao, acoes, rodape e paginacao.", semanticRole: "behavior", bindable: true },
+    { name: "infiniteScroll", type: "boolean", default: "(true nos cartoes, false na tabela)", description: "Rolagem infinita: sem paginador, ao chegar perto do fim da lista avanca a pagina (rows) e acrescenta os proximos registros, com indicador de carregando e de fim da lista. Padrao ligado quando a lista e exibida como cartoes (abaixo de 600 px no modo automatico) e desligado na tabela. Exige paginator. Com lazy, o pai acrescenta a proxima pagina a value (first/rows/page vem em onPage/onLoadMore).", semanticRole: "behavior", bindable: true },
+    { name: "onLoadMore", type: "(event: SgDatatablePageEvent) => void", description: "Chamado (alem de onPage) quando a rolagem infinita pede a proxima pagina.", semanticRole: "event", bindable: false },
     { name: "paginator", type: "boolean", default: false, description: "Ativa paginacao.", semanticRole: "behavior", bindable: true },
     { name: "onPage", type: "(event: SgDatatablePageEvent) => void", description: "Callback de paginacao.", semanticRole: "event", bindable: false },
     { name: "onSort", type: "(event: SgDatatableSortEvent) => void", description: "Callback de ordenacao.", semanticRole: "event", bindable: false }
@@ -39,7 +41,7 @@ export const aiHints: SgAiHintsV0 = {
     "Exibicao de colecoes tabulares com interacao.",
     "Listagens administrativas com filtro, ordenacao e pagina.",
     "Tabelas com acoes por linha e selecao.",
-    "Listagens que precisam funcionar em celular: mobileMode=\"cards\" mostra cada linha como cartao (tabela que se adapta ao celular)."
+    "Listagens que precisam funcionar em celular: por padrao (mobileMode omitido) a tabela vira cartoes abaixo de 600 px; use \"scroll\" para forcar a tabela."
   ],
   avoidUseCases: [
     "Formularios de entrada simples.",

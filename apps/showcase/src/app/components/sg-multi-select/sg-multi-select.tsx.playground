@@ -15,7 +15,7 @@ const COMPANIES = [
 ];
 
 export default function App() {
-  const hasComponent = typeof SgMultiSelectFromLib === "function";
+  const hasComponent = SgMultiSelectFromLib != null;
   const [value, setValue] = React.useState<(string | number)[]>(["e1"]);
   const [searchable, setSearchable] = React.useState(true);
   const [clearable, setClearable] = React.useState(true);

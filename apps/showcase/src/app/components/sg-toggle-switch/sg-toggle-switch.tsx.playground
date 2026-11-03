@@ -29,7 +29,7 @@ function LocalFallback(props: {
 }
 
 export default function App() {
-  const hasToggle = typeof SgToggleSwitchFromLib === "function";
+  const hasToggle = SgToggleSwitchFromLib != null;
   const Toggle = (hasToggle ? SgToggleSwitchFromLib : LocalFallback) as React.ComponentType<any>;
   const [checked, setChecked] = React.useState(false);
   const [enabled, setEnabled] = React.useState(true);

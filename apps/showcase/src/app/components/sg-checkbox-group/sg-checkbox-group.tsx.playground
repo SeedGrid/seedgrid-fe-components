@@ -11,7 +11,7 @@ const OPTIONS = [
 ];
 
 export default function App() {
-  const hasComponent = typeof SgCheckboxGroupFromLib === "function";
+  const hasComponent = SgCheckboxGroupFromLib != null;
   const [title, setTitle] = React.useState("Choose options");
   const [orientation, setOrientation] = React.useState<"vertical" | "horizontal">("vertical");
   const [iconOnly, setIconOnly] = React.useState(false);

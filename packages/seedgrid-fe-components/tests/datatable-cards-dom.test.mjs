@@ -78,8 +78,30 @@ test("corte de 600 px, igual ao do Flutter", () => {
   assert.equal(SG_DATATABLE_MOBILE_BREAKPOINT, 600);
 });
 
-test("mobileMode padrao (scroll): continua tabela mesmo em container estreito", async () => {
+test("mobileMode omitido (automatico): vira cartoes em container estreito", async () => {
   const { harness } = setup(320);
+  try {
+    const { container } = await mount(harness, {});
+    assert.equal(container.querySelectorAll("table").length, 0);
+    assert.equal(container.querySelectorAll("[data-sg-datatable-cards]").length, 1);
+  } finally {
+    harness.restore();
+  }
+});
+
+test("mobileMode=scroll forca a tabela mesmo em container estreito", async () => {
+  const { harness } = setup(320);
+  try {
+    const { container } = await mount(harness, { mobileMode: "scroll" });
+    assert.equal(container.querySelectorAll("table").length, 1);
+    assert.equal(container.querySelector("[data-sg-datatable-cards]"), null);
+  } finally {
+    harness.restore();
+  }
+});
+
+test("mobileMode omitido: acima do corte continua tabela", async () => {
+  const { harness } = setup(800);
   try {
     const { container } = await mount(harness, {});
     assert.equal(container.querySelectorAll("table").length, 1);
@@ -89,21 +111,21 @@ test("mobileMode padrao (scroll): continua tabela mesmo em container estreito", 
   }
 });
 
-test("cards: acima do corte continua tabela", async () => {
-  const { harness } = setup(800);
+test("mobileMode=cards forca cartoes mesmo em container largo", async () => {
+  const { harness } = setup(900);
   try {
     const { container } = await mount(harness, { mobileMode: "cards" });
-    assert.equal(container.querySelectorAll("table").length, 1);
-    assert.equal(container.querySelector("[data-sg-datatable-cards]"), null);
+    assert.equal(container.querySelectorAll("table").length, 0);
+    assert.equal(container.querySelectorAll("[data-sg-datatable-cards]").length, 1);
   } finally {
     harness.restore();
   }
 });
 
-test("cards: exatamente no corte (600) ainda e tabela; 599 vira cartoes", async () => {
+test("automatico: exatamente no corte (600) ainda e tabela; 599 vira cartoes", async () => {
   const { harness, setWidth } = setup(600);
   try {
-    const { container } = await mount(harness, { mobileMode: "cards" });
+    const { container } = await mount(harness, {});
     assert.equal(container.querySelectorAll("table").length, 1);
     await setWidth(599);
     assert.equal(container.querySelectorAll("table").length, 0);
@@ -113,10 +135,10 @@ test("cards: exatamente no corte (600) ainda e tabela; 599 vira cartoes", async 
   }
 });
 
-test("cards: acompanha o redimensionamento nos dois sentidos", async () => {
+test("automatico: acompanha o redimensionamento nos dois sentidos", async () => {
   const { harness, setWidth } = setup(900);
   try {
-    const { container } = await mount(harness, { mobileMode: "cards" });
+    const { container } = await mount(harness, {});
     assert.equal(container.querySelectorAll("table").length, 1);
     await setWidth(400);
     assert.equal(container.querySelectorAll("table").length, 0);
@@ -304,7 +326,7 @@ test("cards: rodape vira bloco rotulo: valor com os totais", async () => {
 test("cards: paginacao continua e fatia os cartoes", async () => {
   const { harness } = setup(400);
   try {
-    const { container } = await mount(harness, { mobileMode: "cards", paginator: true, rows: 2 });
+    const { container } = await mount(harness, { mobileMode: "cards", paginator: true, rows: 2, infiniteScroll: false });
     assert.equal(container.querySelectorAll("li[data-sg-card]").length, 2);
     const next = container.querySelector('nav button[aria-label="Next page"]');
     assert.ok(next, "botao proxima pagina");

@@ -740,12 +740,30 @@ body {
 .size-5 { width: 1.25rem; height: 1.25rem; }
 `;
 
+// Responsive layout of the playground (code | preview). It lives here, not in Tailwind utilities, because
+// consumers' Tailwind builds only generate classes found in THEIR content globs: with `md:block` etc. missing,
+// the code panel hidden by Run on small screens never came back on desktop ("code disappears after Run").
 const SANDPACK_HOST_STYLES_CSS = `
 .sg-playground-preview .sp-cube-wrapper {
   top: 8px !important;
   right: 8px !important;
   bottom: auto !important;
   left: auto !important;
+}
+.sg-pg-tabs { display: flex; }
+.sg-pg-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  min-height: 260px;
+  overflow: auto;
+}
+.sg-pg-panel { min-width: 0; }
+.sg-pg-panel[data-mobile-hidden="true"] { display: none; }
+@media (min-width: 768px) {
+  .sg-pg-tabs { display: none; }
+  .sg-pg-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sg-pg-panel[data-mobile-hidden="true"] { display: block; }
+  .sg-pg-code { border-right-width: 1px; border-right-style: solid; }
 }
 `;
 
@@ -1144,6 +1162,27 @@ function CopyButton() {
   );
 }
 
+/**
+ * Pushes host theme/CSS changes into the sandbox without touching the user-edited files.
+ * SandpackProvider resets EVERY file to the `files` prop whenever that prop changes identity, so
+ * keeping the (host-dependent) stylesheet inside `files` made any theme/style mutation of <html>
+ * wipe the code the user had typed. The stylesheet is now seeded once and kept in sync via updateFile.
+ */
+function StylesSync({ css }: { css: string }) {
+  const { sandpack } = useSandpack();
+  const updateFileRef = React.useRef(sandpack.updateFile);
+  updateFileRef.current = sandpack.updateFile;
+  const lastCssRef = React.useRef(css);
+
+  React.useEffect(() => {
+    if (lastCssRef.current === css) return;
+    lastCssRef.current = css;
+    updateFileRef.current("/styles.css", css);
+  }, [css]);
+
+  return null;
+}
+
 function RunButton({ onRun }: { onRun?: () => void }) {
   const { sandpack } = useSandpack();
   const [running, setRunning] = React.useState(false);
@@ -1430,10 +1469,15 @@ export default function SgPlayground(props: Readonly<SgPlaygroundProps>) {
     };
   }, [shouldIncludeNodePolyfills]);
 
+  // Seed value only: later changes reach the sandbox through <StylesSync/> so they never reset the editor.
+  const initialStylesCssRef = React.useRef(sandpackStylesCss);
+
   const files = React.useMemo<SandpackFiles>(() => {
     const nextFiles: SandpackFiles = {
       "/App.tsx": { code: appTsx, active: true },
-      "/styles.css": { code: sandpackStylesCss || buildSandpackStylesCss({}, effectivePreviewPadding) }
+      "/styles.css": {
+        code: initialStylesCssRef.current || buildSandpackStylesCss({}, effectivePreviewPadding)
+      }
     };
 
     if (includeSeedgridDependency) {
@@ -1669,7 +1713,6 @@ export default function SgPlayground(props: Readonly<SgPlaygroundProps>) {
     appTsx,
     effectivePreviewPadding,
     includeSeedgridDependency,
-    sandpackStylesCss,
     shouldIncludeNodePolyfills,
     shouldShimLucide,
     shouldShimSandpackReact,
@@ -1742,6 +1785,7 @@ export default function SgPlayground(props: Readonly<SgPlaygroundProps>) {
         theme={sandpackTheme}
       >
         <style>{SANDPACK_HOST_STYLES_CSS}</style>
+        <StylesSync css={sandpackStylesCss} />
         <div className="flex items-center justify-between border-b border-border px-3 py-2">
           <div className="flex items-center gap-2">
             {withCard ? null : <span className="text-sm font-medium">{title ?? "Example"}</span>}
@@ -1763,7 +1807,7 @@ export default function SgPlayground(props: Readonly<SgPlaygroundProps>) {
           </div>
         </div>
 
-        <div className="flex md:hidden border-b border-border">
+        <div className="sg-pg-tabs border-b border-border">
           <button
             type="button"
             className={cn(
@@ -1792,13 +1836,12 @@ export default function SgPlayground(props: Readonly<SgPlaygroundProps>) {
 
         <div
           className={cn(
-            "grid overflow-auto min-h-[260px]",
-            "grid-cols-1 md:grid-cols-2",
+            "sg-pg-grid",
             resizeClass
           )}
           style={{ height: currentHeight }}
         >
-          <div className={cn("min-w-0 md:border-r border-border", activePanel !== "code" ? "hidden md:block" : "")}>
+          <div className="sg-pg-panel sg-pg-code border-border" data-mobile-hidden={activePanel !== "code" ? "true" : "false"}>
             <SandpackCodeEditor
               showLineNumbers
               wrapContent
@@ -1810,7 +1853,7 @@ export default function SgPlayground(props: Readonly<SgPlaygroundProps>) {
               <CopyButton />
             </div>
           </div>
-          <div className={cn("min-w-0", activePanel !== "preview" ? "hidden md:block" : "")}>
+          <div className="sg-pg-panel" data-mobile-hidden={activePanel !== "preview" ? "true" : "false"}>
             <SandpackPreview
               className="sg-playground-preview"
               style={{ height: "100%" }}

@@ -1,5 +1,5 @@
 import React from "react";
-import { SgDatatable, type SgDatatableColumn } from "@seedgrid/fe-components";
+import { SgDatatable, SgGrid, SgRadioGroup, type SgDatatableColumn } from "@seedgrid/fe-components";
 
 type ProductRow = {
   id: number;
@@ -36,20 +36,35 @@ const CARD_COLUMNS: SgDatatableColumn<ProductRow>[] = [
 ];
 
 export default function CardsDatatableExample() {
+  const [mobileMode, setMobileMode] = React.useState<"cards" | "scroll">("cards");
+
   return (
-    <div className="mx-auto w-full max-w-[420px]">
-      <SgDatatable
-        id="datatable-cards"
-        title="Product catalog (cards)"
-        value={PRODUCT_ROWS}
-        columns={CARD_COLUMNS}
-        dataKey="id"
-        mobileMode="cards"
-        selectionMode="single"
-        showColumnFilters
-        paginator
-        rows={4}
+    <SgGrid columns={1} gap={12}>
+      <SgRadioGroup
+        id="datatable-cards-mode"
+        title="mobileMode"
+        orientation="horizontal"
+        source={[
+          { label: "cards", value: "cards" },
+          { label: "scroll", value: "scroll" }
+        ]}
+        value={mobileMode}
+        onChange={(next) => setMobileMode(next === "scroll" ? "scroll" : "cards")}
       />
-    </div>
+      <div className="mx-auto w-full max-w-[420px]">
+        <SgDatatable
+          id="datatable-cards"
+          title="Product catalog (cards)"
+          value={PRODUCT_ROWS}
+          columns={CARD_COLUMNS}
+          dataKey="id"
+          mobileMode={mobileMode}
+          selectionMode="single"
+          showColumnFilters
+          paginator
+          rows={4}
+        />
+      </div>
+    </SgGrid>
   );
 }

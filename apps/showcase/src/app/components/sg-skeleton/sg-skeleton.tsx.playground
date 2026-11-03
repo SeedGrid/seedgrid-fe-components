@@ -25,7 +25,7 @@ function LocalSkeleton(props: {
 }
 
 export default function App() {
-  const hasSkeleton = typeof SgSkeletonFromLib === "function";
+  const hasSkeleton = SgSkeletonFromLib != null;
   const [shape, setShape] = React.useState<"text" | "rectangle" | "rounded" | "square" | "circle">("text");
   const [animation, setAnimation] = React.useState<"wave" | "pulse" | "none">("wave");
   const [width, setWidth] = React.useState("100%");
