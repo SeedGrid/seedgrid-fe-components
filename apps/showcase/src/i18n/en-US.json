@@ -1350,6 +1350,7 @@
   "showcase.component.datatable.sections.controlled.title": "External page and sort control",
   "showcase.component.datatable.sections.server.title": "Server-side paginator (lazy)",
   "showcase.component.datatable.sections.loading.title": "Loading and empty state",
+  "showcase.component.datatable.sections.mobile.title": "Cards mode on mobile (mobileMode)",
   "showcase.component.datatable.sections.playground.title": "Interactive playground",
   "showcase.component.datatable.props.rows.id": "Identifier of the table element.",
   "showcase.component.datatable.props.rows.title": "Title shown in the GroupBox.",

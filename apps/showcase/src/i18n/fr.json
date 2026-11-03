@@ -1350,6 +1350,7 @@
   "showcase.component.datatable.sections.controlled.title": "Controle externe de page et de tri",
   "showcase.component.datatable.sections.server.title": "Paginateur cote serveur (lazy)",
   "showcase.component.datatable.sections.loading.title": "Etat de chargement et etat vide",
+  "showcase.component.datatable.sections.mobile.title": "Mode cartes sur mobile (mobileMode)",
   "showcase.component.datatable.sections.playground.title": "Playground interactif",
   "showcase.component.datatable.props.rows.id": "Identifiant de l'element de table.",
   "showcase.component.datatable.props.rows.title": "Titre affiche dans le GroupBox.",

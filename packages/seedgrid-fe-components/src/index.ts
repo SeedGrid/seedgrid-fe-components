@@ -89,7 +89,7 @@ export type {
   SgPickListChangeEvent,
   SgPickListRef
 } from "./inputs/SgPickList";
-export { SgDatatable } from "./inputs/SgDatatable";
+export { SgDatatable, SG_DATATABLE_MOBILE_BREAKPOINT } from "./inputs/SgDatatable";
 export type {
   SgDatatableProps,
   SgDatatableRow,
@@ -98,6 +98,7 @@ export type {
   SgDatatableCellMeta,
   SgDatatableFilterEvent,
   SgDatatableFilterMatchMode,
+  SgDatatableMobileMode,
   SgDatatablePageEvent,
   SgDatatableRef,
   SgDatatableSelection,

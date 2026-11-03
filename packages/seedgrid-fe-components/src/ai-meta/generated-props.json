@@ -694,7 +694,7 @@
     },
     {
       "name": "overflowBehavior",
-      "type": "\"collapse\" | \"scroll\"",
+      "type": "\"scroll\" | \"collapse\"",
       "required": false
     },
     {
@@ -1837,6 +1837,12 @@
       "name": "loading",
       "type": "boolean",
       "required": false
+    },
+    {
+      "name": "mobileMode",
+      "type": "SgDatatableMobileMode",
+      "required": false,
+      "description": "Comportamento quando o container fica abaixo de SG_DATATABLE_MOBILE_BREAKPOINT (600 px). Padrao: `scroll`."
     },
     {
       "name": "onFilter",

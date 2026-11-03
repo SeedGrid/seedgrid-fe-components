@@ -19,6 +19,7 @@ import { SgButton } from "../buttons/SgButton";
 import { useHasSgEnvironmentProvider, useSgPersistence } from "../environment/SgEnvironmentProvider";
 import { SgGroupBox, type SgGroupBoxProps } from "../layout/SgGroupBox";
 import { t, useComponentsI18n } from "../i18n";
+import { useSgContainerWidth } from "./useSgContainerWidth";
 
 export type SgDatatableRow = Record<string, unknown>;
 
@@ -45,6 +46,12 @@ export type SgDatatableFilterEvent = {
 };
 
 export type SgDatatableColumnAlign = "left" | "center" | "right";
+
+/** Comportamento em tela estreita: `scroll` (padrao) rola a tabela na horizontal; `cards` mostra cada linha como cartao. */
+export type SgDatatableMobileMode = "scroll" | "cards";
+
+/** Largura (px) do container abaixo da qual o modo `cards` entra. Igual ao corte do Flutter. */
+export const SG_DATATABLE_MOBILE_BREAKPOINT = 600;
 
 export type SgDatatableCellMeta<T extends SgDatatableRow> = {
   rowIndex: number;
@@ -73,6 +80,10 @@ export type SgDatatableColumn<T extends SgDatatableRow = SgDatatableRow> = {
   hidden?: boolean;
   hideable?: boolean;
   reorderable?: boolean;
+  /** No modo cartoes, nao mostra esta coluna no cartao (continua na tabela). */
+  cardHidden?: boolean;
+  /** No modo cartoes, o valor desta coluna vira o titulo do cartao (sem rotulo). So a primeira marcada vale. */
+  cardTitle?: boolean;
   className?: string;
   headerClassName?: string;
   bodyClassName?: string | ((rowData: T, rowIndex: number) => string | undefined);
@@ -131,6 +142,8 @@ export type SgDatatableProps<T extends SgDatatableRow = SgDatatableRow> = {
   showColumnManager?: boolean;
   columnManagerLabel?: string;
   columnManagerMaxHeight?: number | string;
+  /** Comportamento quando o container fica abaixo de SG_DATATABLE_MOBILE_BREAKPOINT (600 px). Padrao: `scroll`. */
+  mobileMode?: SgDatatableMobileMode;
 };
 
 function cn(...parts: Array<string | undefined | null | false>) {
@@ -408,7 +421,8 @@ function SgDatatableBase<T extends SgDatatableRow>(
     groupBoxProps = {},
     showColumnManager = true,
     columnManagerLabel,
-    columnManagerMaxHeight = 320
+    columnManagerMaxHeight = 320,
+    mobileMode = "scroll"
   } = props;
 
   const isFirstControlled = first !== undefined;
@@ -425,6 +439,12 @@ function SgDatatableBase<T extends SgDatatableRow>(
   const [internalSelection, setInternalSelection] = React.useState<SgDatatableSelection<T>>(null);
   const [internalGlobalFilter, setInternalGlobalFilter] = React.useState<string>(globalFilter ?? "");
   const [internalFilters, setInternalFilters] = React.useState<Record<string, string>>(() => normalizeFilters(filters));
+
+  const rootRef = React.useRef<HTMLDivElement | null>(null);
+  const containerWidth = useSgContainerWidth(rootRef, mobileMode === "cards");
+  const cardsActive =
+    mobileMode === "cards" && containerWidth !== null && containerWidth < SG_DATATABLE_MOBILE_BREAKPOINT;
+  const [isCardFiltersOpen, setIsCardFiltersOpen] = React.useState(false);
 
   const columnManagerRef = React.useRef<HTMLDivElement | null>(null);
   const columnManagerButtonRef = React.useRef<HTMLButtonElement | null>(null);
@@ -1040,10 +1060,50 @@ function SgDatatableBase<T extends SgDatatableRow>(
     });
   }, [columnDescriptors]);
 
+  const renderCellContent = (column: SgDatatableColumn<T>, rowData: T, absoluteRowIndex: number) => {
+    const cellField = column.field;
+    const cellValue = getFieldValue(rowData, cellField);
+    return column.body ? (
+      column.body(rowData, {
+        rowData,
+        rowIndex: absoluteRowIndex,
+        field: cellField,
+        value: cellValue
+      })
+    ) : (
+      <span>{cellValue === null || cellValue === undefined ? "-" : String(cellValue)}</span>
+    );
+  };
+
+  // Modo cartoes: o titulo e' a primeira coluna marcada com cardTitle; as demais viram "rotulo: valor",
+  // exceto as marcadas com cardHidden.
+  const cardTitleColumn = cardsActive ? visibleColumns.find((column) => column.cardTitle) : undefined;
+  const cardBodyColumns = cardsActive
+    ? visibleColumns.filter((column) => column !== cardTitleColumn && !column.cardHidden)
+    : [];
+  const cardFilterColumns = cardsActive
+    ? visibleColumns.filter((column) => column.filter && (column.filterField ?? column.field))
+    : [];
+  const cardSortColumns = cardsActive
+    ? visibleColumns.filter((column) => column.sortable && (column.sortField ?? column.field))
+    : [];
+  const cardHeaderLabel = (column: SgDatatableColumn<T>) =>
+    typeof column.header === "string" || typeof column.header === "number"
+      ? String(column.header)
+      : column.field ?? "";
+  const sortByLabel = resolveMessage(t(i18n, "components.datatable.sortBy"), "components.datatable.sortBy", "Ordenar por");
+  const sortNoneLabel = resolveMessage(t(i18n, "components.datatable.sortNone"), "components.datatable.sortNone", "Sem ordem");
+  const sortDirectionLabel = resolveMessage(
+    t(i18n, "components.datatable.sortDirection"),
+    "components.datatable.sortDirection",
+    "Inverter ordem"
+  );
+  const filtersPanelLabel = resolveMessage(t(i18n, "components.datatable.filters"), "components.datatable.filters", "Filtros");
+
   const resolvedTitle = (groupBoxProps.title ?? title ?? "").trim() || " ";
 
   return (
-    <div className={className} style={style}>
+    <div ref={rootRef} className={className} style={style}>
       <SgGroupBox {...groupBoxProps} title={resolvedTitle}>
         <div className="space-y-3">
           {shouldShowToolbar ? (
@@ -1192,6 +1252,160 @@ function SgDatatableBase<T extends SgDatatableRow>(
                 )
               : null}
 
+            {cardsActive ? (
+              <div data-sg-datatable-cards="true" className="space-y-2">
+                {cardSortColumns.length > 0 || (showColumnFilters && cardFilterColumns.length > 0) ? (
+                  <div className="flex flex-wrap items-center gap-2">
+                    {cardSortColumns.length > 0 ? (
+                      <>
+                        <select
+                          aria-label={sortByLabel}
+                          value={currentSortOrder === 0 || !currentSortField ? "" : currentSortField}
+                          onChange={(event) => {
+                            const next = event.target.value;
+                            if (!next) commitSort(null, 0);
+                            else commitSort(next, 1);
+                          }}
+                          className="min-w-0 flex-1 rounded-md border border-[rgb(var(--sg-border))] bg-[rgb(var(--sg-input-bg,var(--sg-surface)))] px-2 py-2 text-sm text-[rgb(var(--sg-input-fg,var(--sg-text)))]"
+                        >
+                          <option value="">{sortNoneLabel}</option>
+                          {cardSortColumns.map((column, columnIndex) => {
+                            const key = (column.sortField ?? column.field) as string;
+                            return (
+                              <option key={`sort-${column.columnId ?? key}-${columnIndex}`} value={key}>
+                                {cardHeaderLabel(column)}
+                              </option>
+                            );
+                          })}
+                        </select>
+                        <SgButton
+                          size="sm"
+                          appearance="outline"
+                          iconOnly
+                          aria-label={sortDirectionLabel}
+                          title={sortDirectionLabel}
+                          disabled={!currentSortField || currentSortOrder === 0}
+                          onClick={() => {
+                            if (!currentSortField) return;
+                            commitSort(currentSortField, currentSortOrder === 1 ? -1 : 1);
+                          }}
+                          leftIcon={currentSortOrder === -1 ? <ArrowDown size={16} /> : <ArrowUp size={16} />}
+                        />
+                      </>
+                    ) : null}
+                    {showColumnFilters && cardFilterColumns.length > 0 ? (
+                      <SgButton
+                        size="sm"
+                        appearance="outline"
+                        aria-expanded={isCardFiltersOpen}
+                        onClick={() => setIsCardFiltersOpen((prev) => !prev)}
+                      >
+                        {filtersPanelLabel}
+                      </SgButton>
+                    ) : null}
+                  </div>
+                ) : null}
+
+                {showColumnFilters && isCardFiltersOpen && cardFilterColumns.length > 0 ? (
+                  <div
+                    data-sg-datatable-filters-panel="true"
+                    className="space-y-2 rounded-lg border border-[rgb(var(--sg-border))] bg-[rgb(var(--sg-surface))] p-3"
+                  >
+                    {cardFilterColumns.map((column, columnIndex) => {
+                      const filterField = (column.filterField ?? column.field) as string;
+                      const filterValue = currentFilters[filterField] ?? "";
+                      return (
+                        <label key={`cardfilter-${column.columnId ?? filterField}-${columnIndex}`} className="block space-y-1">
+                          <span className="text-xs font-semibold text-[rgb(var(--sg-muted))]">{column.header}</span>
+                          <input
+                            value={filterValue}
+                            onChange={(event) => {
+                              const normalized = normalizeFilters({ ...currentFilters, [filterField]: event.target.value });
+                              commitFilters(normalized, currentGlobalFilter);
+                            }}
+                            placeholder={column.filterPlaceholder ?? t(i18n, "components.datatable.columnFilterPlaceholder", { column: String(column.header ?? "") })}
+                            className="w-full rounded-md border border-[rgb(var(--sg-border))] bg-[rgb(var(--sg-input-bg,var(--sg-surface)))] px-3 py-2 text-sm text-[rgb(var(--sg-input-fg,var(--sg-text)))] placeholder:text-[rgb(var(--sg-input-placeholder,var(--sg-muted)))] outline-none focus:ring-2 focus:ring-[rgb(var(--sg-ring))]"
+                          />
+                        </label>
+                      );
+                    })}
+                  </div>
+                ) : null}
+
+                {loading ? (
+                  <p data-sg-card-state="loading" className="px-4 py-6 text-center text-sm text-[rgb(var(--sg-muted))]">
+                    {loadingLabel}
+                  </p>
+                ) : pagedRows.length === 0 ? (
+                  <p data-sg-card-state="empty" className="px-4 py-6 text-center text-sm text-[rgb(var(--sg-muted))]">
+                    {emptyLabel}
+                  </p>
+                ) : (
+                  <ul role="list" className="space-y-2">
+                    {pagedRows.map((rowData, rowIndex) => {
+                      const absoluteRowIndex = safeFirst + rowIndex;
+                      const selected = isRowSelected(rowData);
+                      const customRowClass =
+                        typeof rowClassName === "function" ? rowClassName(rowData, absoluteRowIndex) : rowClassName;
+
+                      return (
+                        <li
+                          key={String(getRowIdentity(rowData, dataKey) ?? absoluteRowIndex)}
+                          data-sg-card="true"
+                          aria-selected={selected || undefined}
+                          onClick={(event) => {
+                            const target = event.target as HTMLElement;
+                            if (target.closest("button,a,input,select,textarea,label,[data-sg-stop-row-select='true']")) {
+                              return;
+                            }
+                            handleRowSelection(rowData);
+                          }}
+                          className={cn(
+                            "rounded-lg border border-[rgb(var(--sg-border))] bg-[rgb(var(--sg-surface))] p-3",
+                            selectionMode ? "cursor-pointer" : "",
+                            stripedRows && absoluteRowIndex % 2 === 1 ? "bg-[rgb(var(--sg-primary-50))]" : "",
+                            selected ? "border-[rgb(var(--sg-primary-600))] bg-[rgb(var(--sg-primary-100))]" : "",
+                            customRowClass
+                          )}
+                        >
+                          {cardTitleColumn ? (
+                            <div data-sg-card-title="true" className="mb-2 text-base font-semibold text-[rgb(var(--sg-text))]">
+                              {renderCellContent(cardTitleColumn, rowData, absoluteRowIndex)}
+                            </div>
+                          ) : null}
+                          <dl className="grid grid-cols-[auto_minmax(0,1fr)] gap-x-3 gap-y-1 text-sm">
+                            {cardBodyColumns.map((column, columnIndex) => (
+                              <React.Fragment key={`card-${column.columnId ?? column.field ?? columnIndex}-${absoluteRowIndex}`}>
+                                <dt className="font-semibold text-[rgb(var(--sg-muted))]">{column.header}</dt>
+                                <dd className={cn("min-w-0 break-words text-[rgb(var(--sg-text))]", column.className)}>
+                                  {renderCellContent(column, rowData, absoluteRowIndex)}
+                                </dd>
+                              </React.Fragment>
+                            ))}
+                          </dl>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
+
+                {hasFooter ? (
+                  <dl
+                    data-sg-card-footer="true"
+                    className="grid grid-cols-[auto_minmax(0,1fr)] gap-x-3 gap-y-1 rounded-lg bg-[rgb(var(--sg-primary-50))] p-3 text-sm font-semibold text-[rgb(var(--sg-text))]"
+                  >
+                    {visibleColumns
+                      .filter((column) => column.footer !== undefined && !column.cardHidden)
+                      .map((column, columnIndex) => (
+                        <React.Fragment key={`cardfoot-${column.columnId ?? column.field ?? columnIndex}`}>
+                          <dt>{column.header}</dt>
+                          <dd>{typeof column.footer === "function" ? column.footer(sortedRows) : column.footer}</dd>
+                        </React.Fragment>
+                      ))}
+                  </dl>
+                ) : null}
+              </div>
+            ) : (
             <div className="overflow-x-auto rounded-lg border border-[rgb(var(--sg-border))] bg-[rgb(var(--sg-surface))]">
               <table id={id} className={cn("min-w-full border-collapse text-sm", tableClassName)}>
                 <thead>
@@ -1330,22 +1544,12 @@ function SgDatatableBase<T extends SgDatatableRow>(
                         >
                           {visibleColumns.map((column, columnIndex) => {
                             const cellField = column.field;
-                            const cellValue = getFieldValue(rowData, cellField);
                             const customCellClass =
                               typeof column.bodyClassName === "function"
                                 ? column.bodyClassName(rowData, absoluteRowIndex)
                                 : column.bodyClassName;
 
-                            const renderedValue = column.body
-                              ? column.body(rowData, {
-                                  rowData,
-                                  rowIndex: absoluteRowIndex,
-                                  field: cellField,
-                                  value: cellValue
-                                })
-                              : (
-                                  <span>{cellValue === null || cellValue === undefined ? "-" : String(cellValue)}</span>
-                                );
+                            const renderedValue = renderCellContent(column, rowData, absoluteRowIndex);
 
                             return (
                               <td
@@ -1396,6 +1600,7 @@ function SgDatatableBase<T extends SgDatatableRow>(
                 ) : null}
               </table>
             </div>
+            )}
           </div>
 
           {paginator ? (

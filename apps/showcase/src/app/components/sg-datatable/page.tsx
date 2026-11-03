@@ -67,6 +67,7 @@ const SECTION_TITLE_KEYS = [
   "showcase.component.datatable.sections.controlled.title",
   "showcase.component.datatable.sections.server.title",
   "showcase.component.datatable.sections.loading.title",
+  "showcase.component.datatable.sections.mobile.title",
   "showcase.component.datatable.sections.playground.title"
 ] as const;
 
@@ -112,6 +113,15 @@ const BASE_COLUMNS: SgDatatableColumn<ProductRow>[] = [
   { field: "category", header: "Category", sortable: true },
   { field: "price", header: "Price", sortable: true, align: "right" },
   { field: "stock", header: "Stock", sortable: true, align: "right" }
+];
+
+const CARD_COLUMNS: SgDatatableColumn<ProductRow>[] = [
+  { field: "name", header: "Name", sortable: true, filter: true, cardTitle: true },
+  { field: "code", header: "Code", sortable: true, filter: true },
+  { field: "category", header: "Category", sortable: true },
+  { field: "price", header: "Price", sortable: true, align: "right" },
+  { field: "stock", header: "Stock", sortable: true, align: "right", footer: (rows) => rows.reduce((total, row) => total + row.stock, 0) },
+  { field: "status", header: "Status", cardHidden: true }
 ];
 
 const FILTER_COLUMNS: SgDatatableColumn<ProductRow>[] = [
@@ -269,6 +279,8 @@ function buildDatatableProps(i18n: ShowcaseI18n): ShowcasePropRow[] {
     { prop: "emptyMessage", type: "string", defaultValue: "i18n", description: t(i18n, "showcase.component.datatable.props.rows.emptyMessage") },
     { prop: "className / style / tableClassName / rowClassName", type: "styling props", defaultValue: "-", description: "Styles the wrapper, table element and rows globally or per-row." },
     { prop: "groupBoxProps", type: "Partial<SgGroupBoxProps>", defaultValue: "-", description: t(i18n, "showcase.component.datatable.props.rows.groupBoxProps") },
+    { prop: "mobileMode", type: "\"scroll\" | \"cards\"", defaultValue: "scroll", description: "Behavior when the table container is narrower than 600 px: scroll keeps the horizontally scrollable table; cards shows each row as a 'column: value' card, keeping sorting (sort selector), selection, row actions, footer and pagination; column filters move to a panel opened by a button." },
+    { prop: "column.cardTitle / cardHidden", type: "boolean", defaultValue: "false / false", description: "Cards mode only: cardTitle shows the column value as the card title (no label, first marked column wins); cardHidden leaves the column out of the card." },
     { prop: "showColumnManager / columnManagerLabel / columnManagerMaxHeight", type: "boolean / string / number|string", defaultValue: "true / i18n / 320", description: "Controls the built-in column visibility and reorder panel." },
     { prop: "column.columnId / hidden / hideable / reorderable", type: "column props", defaultValue: "- / false / true / true", description: "Stable key and visibility/reordering rules per column." },
     { prop: "column.headerClassName / bodyClassName / className", type: "string | callback", defaultValue: "-", description: "Custom classes for header, body cells and shared column styling." },
@@ -1563,6 +1575,24 @@ export default function SgDatatableShowcase() {
         </Section>
 
         <Section title={sectionTitles[8] ?? ""}>
+          <div className="mx-auto w-full max-w-[420px]">
+            <SgDatatable
+              id="datatable-cards"
+              title="Product catalog (cards)"
+              value={PRODUCT_ROWS}
+              columns={CARD_COLUMNS}
+              dataKey="id"
+              mobileMode="cards"
+              selectionMode="single"
+              showColumnFilters
+              paginator
+              rows={4}
+            />
+          </div>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-datatable/samples/modo-cartoes.tsx.sample" />
+        </Section>
+
+        <Section title={sectionTitles[9] ?? ""}>
           <SgPlayground
             title="SgDatatable Playground"
             interactive

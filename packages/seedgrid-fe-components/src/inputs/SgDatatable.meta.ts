@@ -9,9 +9,9 @@ export const sgMeta: SgMetaV0 = {
   displayName: "SgDatatable",
   category: "data",
   subcategory: "datatable",
-  description: "Tabela de dados interativa com colunas configuraveis, paginacao, ordenacao, filtro, selecao e persistencia de layout de colunas.",
+  description: "Tabela de dados interativa com colunas configuraveis, paginacao, ordenacao, filtro, selecao e persistencia de layout de colunas. Em celular pode virar lista de cartoes (mobileMode=\"cards\").",
   tags: ["data", "table", "grid", "listing", "interactive"],
-  capabilities: ["pagination", "sorting", "filtering", "selection", "column-config", "column-layout-persistence", "row-actions"],
+  capabilities: ["pagination", "sorting", "filtering", "selection", "column-config", "column-layout-persistence", "row-actions", "mobile-cards"],
   fieldSemantics: ["tabularData", "dataGrid", "listing", "collectionView"],
   props: [
     { name: "id", type: "string", description: "Identificador da tabela usado para DOM e persistencia do layout de colunas.", semanticRole: "data", bindable: true },
@@ -19,6 +19,7 @@ export const sgMeta: SgMetaV0 = {
     { name: "rows", type: "number", description: "Linhas por pagina quando a paginacao esta ativa (os dados vao em value).", semanticRole: "behavior", bindable: true },
     { name: "selectionMode", type: "\"single\" | \"multiple\"", description: "Modo de selecao de linhas.", semanticRole: "behavior", bindable: true },
     { name: "loading", type: "boolean", default: false, description: "Indica estado de carregamento.", semanticRole: "appearance", bindable: true },
+    { name: "mobileMode", type: "\"scroll\" | \"cards\"", default: "scroll", description: "Comportamento em tela estreita (container abaixo de 600 px): scroll rola a tabela na horizontal; cards mostra cada linha como cartao 'coluna: valor' mantendo ordenacao, selecao, acoes, rodape e paginacao.", semanticRole: "behavior", bindable: true },
     { name: "paginator", type: "boolean", default: false, description: "Ativa paginacao.", semanticRole: "behavior", bindable: true },
     { name: "onPage", type: "(event: SgDatatablePageEvent) => void", description: "Callback de paginacao.", semanticRole: "event", bindable: false },
     { name: "onSort", type: "(event: SgDatatableSortEvent) => void", description: "Callback de ordenacao.", semanticRole: "event", bindable: false }
@@ -37,14 +38,15 @@ export const aiHints: SgAiHintsV0 = {
   preferredUseCases: [
     "Exibicao de colecoes tabulares com interacao.",
     "Listagens administrativas com filtro, ordenacao e pagina.",
-    "Tabelas com acoes por linha e selecao."
+    "Tabelas com acoes por linha e selecao.",
+    "Listagens que precisam funcionar em celular: mobileMode=\"cards\" mostra cada linha como cartao (tabela que se adapta ao celular)."
   ],
   avoidUseCases: [
     "Formularios de entrada simples.",
     "Colecoes muito visuais em formato de cards.",
     "Dados pequenos onde uma lista simples basta."
   ],
-  synonyms: ["datatable", "data grid", "table", "listing grid"],
+  synonyms: ["datatable", "tabela no celular", "tabela responsiva", "data grid", "table", "listing grid", "tabela mobile", "lista de cartoes", "cards no celular", "responsive table", "mobile table"],
   relatedEntityFields: ["rows", "records", "items", "results", "tableData"],
   compositionHints: [
     "Combinar com filtros acima da tabela usando inputs de busca e selecao.",
