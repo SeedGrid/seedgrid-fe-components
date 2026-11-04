@@ -161,7 +161,9 @@ export function SgCameraCapture(props: SgCameraCaptureProps) {
           muted
           playsInline
           autoPlay
-          className={["h-full w-full object-cover", facing === "user" ? "-scale-x-100" : "", status === "ready" ? "" : "invisible"].join(" ")}
+          // Camera frontal: a previa e espelhada (como um espelho, para enquadrar o rosto); a foto capturada NAO e espelhada.
+          style={facing === "user" ? { transform: "scaleX(-1)" } : undefined}
+          className={["h-full w-full object-cover", status === "ready" ? "" : "invisible"].join(" ")}
         />
         {status === "ready" && g ? (
           <div

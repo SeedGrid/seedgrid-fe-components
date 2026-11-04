@@ -129,3 +129,19 @@ test("SgCameraCapture com i18n em tempo de execucao abre a camera UMA vez (nao r
     try { harness.restore(); } catch { /* ja restaurado */ }
   }
 });
+
+test("SgCameraCapture espelha a previa da camera frontal (e nao a traseira)", async () => {
+  const harness = setupDomHarness();
+  try {
+    installMedia(harness, () => Promise.resolve({ getTracks: () => [fakeTrack([])] }));
+    await harness.render(React.createElement(SgCameraCapture, { id: "cam-user", label: "Frontal", facing: "user" }));
+    await harness.render(React.createElement(SgCameraCapture, { id: "cam-env", label: "Traseira", facing: "environment" }));
+    await flushDom();
+    const videos = [...harness.document.querySelectorAll("video")];
+    assert.equal(videos.length, 2);
+    assert.equal(videos[0].style.transform, "scaleX(-1)");
+    assert.equal(videos[1].style.transform, "");
+  } finally {
+    try { harness.restore(); } catch { /* ja restaurado */ }
+  }
+});
