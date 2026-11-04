@@ -77,6 +77,12 @@ export function SgInputDateTime(props: SgInputDateTimeProps) {
   const [internalError, setInternalError] = React.useState<string | null>(null);
   const hasError = Boolean(error ?? internalError);
   const [hasInteracted, setHasInteracted] = React.useState(false);
+  // Segmentos digitados pela metade: o <input type="datetime-local"> entrega "" (validity.badInput). Em modo controlado o
+  // React devolveria o `value` antigo e o campo voltaria ao valor anterior; enquanto parcial, o DOM segue sem ser reescrito.
+  const [partial, setPartial] = React.useState(false);
+  React.useEffect(() => {
+    setPartial(false);
+  }, [local]);
   const minLocal = minDate ? instantToWallClock(minDate, timeZone, showSeconds) : undefined;
   const maxLocal = maxDate ? instantToWallClock(maxDate, timeZone, showSeconds) : undefined;
   const effectiveStep = showSeconds ? 1 : minuteStep && minuteStep > 1 ? minuteStep * 60 : undefined;
@@ -119,10 +125,11 @@ export function SgInputDateTime(props: SgInputDateTimeProps) {
     min: minLocal,
     max: maxLocal ?? WIDGET_MAX,
     step: effectiveStep,
-    ...(rhfManaged ? {} : { value: local }),
+    ...(rhfManaged ? {} : { value: partial ? "" : local }),
     readOnly: inputProps?.readOnly,
     onChange: (event) => {
       const text = event.currentTarget.value;
+      setPartial(text === "" && Boolean(event.currentTarget.validity?.badInput));
       setHasInteracted(true);
       if (!controlled) setInnerLocal(text);
       if (validateOnBlur === false || internalError) runValidation(text);
@@ -190,6 +197,7 @@ export function SgInputDateTime(props: SgInputDateTimeProps) {
         onClear={() => {
           setInternalError(null);
           onValidation?.(null);
+          setPartial(false);
           if (!controlled) setInnerLocal("");
           emit("");
           rest.onClear?.();

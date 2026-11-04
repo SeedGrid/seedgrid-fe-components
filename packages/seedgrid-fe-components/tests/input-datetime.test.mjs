@@ -98,3 +98,36 @@ test("SgInputDateTime valida limite ao perder o foco e emite null ao limpar", as
     harness.restore();
   }
 });
+
+test("SgInputDateTime controlado: digitar por cima (parcial) nao volta ao value do pai", async () => {
+  const harness = setupDomHarness();
+  try {
+    const calls = [];
+    await harness.render(mount({ timeZone: "UTC", value: "2026-11-03T17:30:00Z", onChange: (v) => calls.push(v) }));
+    await flushDom();
+    const input = harness.document.querySelector("input#dt");
+    assert.equal(input.value, "2026-11-03T17:30");
+    // segmento apagado: o navegador entrega "" com badInput e o pai ignora o null (mantem o value)
+    Object.defineProperty(input, "validity", { configurable: true, value: { badInput: true } });
+    await dispatchInput(input, "");
+    await flushDom();
+    assert.equal(calls.at(-1), null);
+    assert.equal(input.value, "", "o campo parcial nao pode voltar ao value do pai");
+  } finally {
+    harness.restore();
+  }
+});
+
+test("SgInputDateTime controlado: limpar de verdade (sem badInput) segue o value do pai", async () => {
+  const harness = setupDomHarness();
+  try {
+    await harness.render(mount({ timeZone: "UTC", value: "2026-11-03T17:30:00Z" }));
+    await flushDom();
+    const input = harness.document.querySelector("input#dt");
+    await dispatchInput(input, "");
+    await flushDom();
+    assert.equal(input.value, "2026-11-03T17:30", "o pai manda: sem parcial, o React restaura o value");
+  } finally {
+    harness.restore();
+  }
+});

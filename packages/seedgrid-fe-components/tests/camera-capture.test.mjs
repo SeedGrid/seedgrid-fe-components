@@ -17,7 +17,7 @@ Module._load = function patchedLoad(request, parent, isMain) {
   }
   return originalLoad.call(this, request, parent, isMain);
 };
-const { SgCameraCapture } = require("../dist/sandbox.cjs");
+const { SgCameraCapture, setComponentsI18n } = require("../dist/sandbox.cjs");
 Module._load = originalLoad;
 const L = require("../dist/inputs/cameraLogic.js");
 
@@ -108,5 +108,24 @@ test("SgCameraCapture sem mediaDevices vira noCamera", async () => {
     assert.deepEqual(errors, ["noCamera"]);
   } finally {
     harness.restore();
+  }
+});
+
+test("SgCameraCapture com i18n em tempo de execucao abre a camera UMA vez (nao reabre a cada render)", async () => {
+  const harness = setupDomHarness();
+  try {
+    setComponentsI18n({ locale: "pt-BR" });
+    const calls = [];
+    installMedia(harness, () => {
+      calls.push(1);
+      return Promise.resolve({ getTracks: () => [fakeTrack([])] });
+    });
+    await harness.render(React.createElement(SgCameraCapture, { id: "cam", label: "Foto" }));
+    await flushDom();
+    await flushDom();
+    await flushDom();
+    assert.equal(calls.length, 1);
+  } finally {
+    try { harness.restore(); } catch { /* ja restaurado */ }
   }
 });

@@ -64,6 +64,10 @@ export function SgCameraCapture(props: SgCameraCaptureProps) {
   const frameRef = React.useRef<HTMLDivElement | null>(null);
   const onErrorRef = React.useRef(onError);
   onErrorRef.current = onError;
+  // `useComponentsI18n()` devolve um objeto NOVO a cada render quando ha i18n em tempo de execucao: como dependencia do
+  // efeito de abrir a camera, ela fechava e reabria a cada render (a camera "piscava"). Por isso vai por referencia.
+  const i18nRef = React.useRef(i18n);
+  i18nRef.current = i18n;
   const text = label ?? labelText ?? "";
 
   React.useEffect(() => setFacing(initialFacing), [initialFacing]);
@@ -89,7 +93,7 @@ export function SgCameraCapture(props: SgCameraCaptureProps) {
       if (cancelled) return;
       const code = classifyCameraError(name);
       setStatus(code);
-      onErrorRef.current?.(code, t(i18n, `components.inputs.camera.${code}`));
+      onErrorRef.current?.(code, t(i18nRef.current, `components.inputs.camera.${code}`));
     };
     if (typeof navigator === "undefined" || !navigator.mediaDevices?.getUserMedia) {
       fail("NotFoundError");
@@ -120,7 +124,7 @@ export function SgCameraCapture(props: SgCameraCaptureProps) {
       stream?.getTracks().forEach((track) => track.stop());
       if (videoRef.current) videoRef.current.srcObject = null;
     };
-  }, [disabled, facing, resolution, attempt, i18n]);
+  }, [disabled, facing, resolution, attempt]);
 
   const capture = () => {
     const video = videoRef.current;
