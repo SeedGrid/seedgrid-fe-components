@@ -1,0 +1,17 @@
+import * as React from "react";
+import { SgFileUpload } from "@seedgrid/fe-components";
+
+export default function App() {
+  const [names, setNames] = React.useState<string[]>([]);
+
+  return (
+    <div className="w-80">
+      <SgFileUpload
+        id="demo-basic"
+        label="Anexo"
+        onChange={(files) => setNames(files.map((file) => file.name))}
+      />
+      <p className="mt-2 text-xs text-muted-foreground">Valor atual: {names.length > 0 ? names.join(", ") : "-"}</p>
+    </div>
+  );
+}

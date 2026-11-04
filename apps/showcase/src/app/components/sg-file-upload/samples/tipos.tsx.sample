@@ -1,0 +1,10 @@
+import * as React from "react";
+import { SgFileUpload } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <div className="w-80">
+      <SgFileUpload id="demo-types" label="Planilha ou PDF" mediaType={["pdf", "xls", "xlsx"]} maxFiles={2} />
+    </div>
+  );
+}

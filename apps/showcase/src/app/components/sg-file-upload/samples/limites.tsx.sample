@@ -1,0 +1,17 @@
+import * as React from "react";
+import { SgFileUpload } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <div className="w-80">
+      <SgFileUpload
+        id="demo-limits"
+        label="Documentos"
+        maxFiles={5}
+        maxSizePerFile="2MB"
+        maxSizeTotal="5MB"
+        hintText="Até 5 arquivos, 2 MB cada e 5 MB no total."
+      />
+    </div>
+  );
+}

@@ -1,0 +1,21 @@
+import * as React from "react";
+import { SgImageUpload } from "@seedgrid/fe-components";
+
+export default function App() {
+  const [count, setCount] = React.useState(0);
+
+  return (
+    <div className="w-80">
+      <SgImageUpload
+        id="demo-gallery"
+        label="Galeria"
+        maxFiles={4}
+        maxSizePerFile="2MB"
+        maxSizeTotal="6MB"
+        hintText="Até 4 imagens, 2 MB cada e 6 MB no total."
+        onChange={(files) => setCount(files.length)}
+      />
+      <p className="mt-2 text-xs text-muted-foreground">Imagens: {count}</p>
+    </div>
+  );
+}

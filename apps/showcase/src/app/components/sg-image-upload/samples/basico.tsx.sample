@@ -2,16 +2,16 @@ import * as React from "react";
 import { SgImageUpload } from "@seedgrid/fe-components";
 
 export default function App() {
-  const [fileInfo, setFileInfo] = React.useState<string | null>(null);
+  const [info, setInfo] = React.useState<string | null>(null);
 
   return (
     <div className="w-80">
       <SgImageUpload
         id="demo-basic"
         label="Foto"
-        onChange={(file) => setFileInfo(file ? `${file.name} (${file.size} bytes)` : null)}
+        onChange={(files) => setInfo(files.length > 0 ? `${files[0].name} (${files[0].size} bytes)` : null)}
       />
-      <p className="mt-2 text-xs text-muted-foreground">Valor atual: {fileInfo ?? "-"}</p>
+      <p className="mt-2 text-xs text-muted-foreground">Valor atual: {info ?? "-"}</p>
     </div>
   );
 }

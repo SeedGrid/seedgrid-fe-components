@@ -2597,6 +2597,169 @@
       "description": "Character to display. When changed, the current digit fades out and the new one fades in."
     }
   ],
+  "SgFileUpload": [
+    {
+      "name": "accept",
+      "type": "string",
+      "required": false,
+      "description": "Tipos extras em texto livre (`.pdf`, `image/png`, `image/*`), separados por virgula; soma-se ao mediaType."
+    },
+    {
+      "name": "defaultValue",
+      "type": "SgFileValue[]",
+      "required": false,
+      "description": "Arquivos iniciais (campo nao controlado)."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "dropManyTextKey",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "dropTextKey",
+      "type": "string",
+      "required": false,
+      "description": "Chaves de i18n do texto da area vazia (um arquivo / varios)."
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "extraCheck",
+      "type": "((file: File, info: { mime: string; }) => Promise<SgFileRejection | null>)",
+      "required": false,
+      "description": "Regra extra, assincrona, por arquivo (depois da conferencia de tipo). E como o SgImageUpload confere dimensao."
+    },
+    {
+      "name": "hintText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "keyPrefix",
+      "type": "string",
+      "required": false,
+      "description": "Prefixo do `data-sg` dos elementos internos (`sg-file`, `sg-image`)."
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "maxFiles",
+      "type": "number",
+      "required": false,
+      "description": "Quantos arquivos o campo guarda (padrao 1). Com 1, escolher outro substitui; maior que 1 liga a selecao multipla."
+    },
+    {
+      "name": "maxSizePerFile",
+      "type": "SizeLimit",
+      "required": false,
+      "description": "Tamanho maximo de cada arquivo: bytes (numero) ou texto com unidade (\"500KB\", \"1.5MB\", \"1GB\")."
+    },
+    {
+      "name": "maxSizeTotal",
+      "type": "SizeLimit",
+      "required": false,
+      "description": "Tamanho maximo da soma dos arquivos (mesmo formato)."
+    },
+    {
+      "name": "mediaType",
+      "type": "MediaType[]",
+      "required": false,
+      "description": "Tipos aceitos (`image`, `pdf`, `xlsx`...). O tipo e conferido pelo conteudo do arquivo."
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "((files: SgFileValue[]) => void)",
+      "required": false,
+      "description": "Lista de arquivos validos apos escolher ou remover. O envio ao servidor e do host."
+    },
+    {
+      "name": "onEnter",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onError",
+      "type": "((code: FileErrorCode, message: string, fileName: string) => void)",
+      "required": false,
+      "description": "Arquivo recusado: codigo, mensagem ja traduzida e nome do arquivo. Os demais seguem validos."
+    },
+    {
+      "name": "onExit",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "pickerAccept",
+      "type": "string",
+      "required": false,
+      "description": "Valor do atributo `accept` do seletor do navegador (padrao: derivado de mediaType/accept)."
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "renderThumbnail",
+      "type": "((file: SgFileValue, size: number) => ReactNode)",
+      "required": false,
+      "description": "Miniatura de cada arquivo (sem ela, a lista usa o icone do tipo)."
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "requiredMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "thumbnailSize",
+      "type": "number",
+      "required": false,
+      "description": "Lado da miniatura em px (padrao 96)."
+    },
+    {
+      "name": "typeNames",
+      "type": "string",
+      "required": false,
+      "description": "Texto dos tipos aceitos na mensagem de tipo recusado (padrao: mediaType/accept)."
+    },
+    {
+      "name": "value",
+      "type": "SgFileValue[] | null",
+      "required": false,
+      "description": "Arquivos controlados (sempre lista; um arquivo = lista de um)."
+    }
+  ],
   "SgFlipDigit": [
     {
       "name": "fontSize",
@@ -2842,7 +3005,7 @@
       "name": "accept",
       "type": "string",
       "required": false,
-      "description": "Tipos aceitos: `image/*` (padrao), `image/png`, `.png`, separados por virgula."
+      "description": "Tipos extras em texto livre (`.pdf`, `image/png`, `image/*`), separados por virgula; soma-se ao mediaType.\nRestringe os formatos de imagem em texto livre (`.png`, `image/jpeg`), separados por virgula."
     },
     {
       "name": "aspect",
@@ -2852,9 +3015,9 @@
     },
     {
       "name": "defaultValue",
-      "type": "string | File | null",
+      "type": "SgFileValue[]",
       "required": false,
-      "description": "Imagem inicial (campo nao controlado)."
+      "description": "Arquivos iniciais (campo nao controlado)."
     },
     {
       "name": "disabled",
@@ -2887,10 +3050,22 @@
       "required": false
     },
     {
-      "name": "maxSizeBytes",
+      "name": "maxFiles",
       "type": "number",
       "required": false,
-      "description": "Tamanho maximo em bytes."
+      "description": "Quantos arquivos o campo guarda (padrao 1). Com 1, escolher outro substitui; maior que 1 liga a selecao multipla."
+    },
+    {
+      "name": "maxSizePerFile",
+      "type": "SizeLimit",
+      "required": false,
+      "description": "Tamanho maximo de cada arquivo: bytes (numero) ou texto com unidade (\"500KB\", \"1.5MB\", \"1GB\")."
+    },
+    {
+      "name": "maxSizeTotal",
+      "type": "SizeLimit",
+      "required": false,
+      "description": "Tamanho maximo da soma dos arquivos (mesmo formato)."
     },
     {
       "name": "minHeight",
@@ -2911,9 +3086,9 @@
     },
     {
       "name": "onChange",
-      "type": "((file: File | null) => void)",
+      "type": "((files: SgFileValue[]) => void)",
       "required": false,
-      "description": "Disparado ao escolher (arquivo valido) ou remover (`null`). O envio ao servidor e do host."
+      "description": "Lista de arquivos validos apos escolher ou remover. O envio ao servidor e do host."
     },
     {
       "name": "onEnter",
@@ -2922,9 +3097,9 @@
     },
     {
       "name": "onError",
-      "type": "((code: ImageErrorCode, message: string) => void)",
+      "type": "((code: FileErrorCode, message: string, fileName: string) => void)",
       "required": false,
-      "description": "Disparado quando o arquivo escolhido e recusado. `message` ja vem traduzida."
+      "description": "Arquivo recusado: codigo, mensagem ja traduzida e nome do arquivo. Os demais seguem validos."
     },
     {
       "name": "onExit",
@@ -2935,7 +3110,7 @@
       "name": "previewHeight",
       "type": "number",
       "required": false,
-      "description": "Altura da area de pre-visualizacao em px (padrao 160)."
+      "description": "Altura da miniatura em px (padrao 160; na grade, no maximo 120)."
     },
     {
       "name": "readOnly",
@@ -2954,9 +3129,9 @@
     },
     {
       "name": "value",
-      "type": "string | File | null",
+      "type": "SgFileValue[] | null",
       "required": false,
-      "description": "Imagem controlada: `File` escolhido, URL (`string`) de uma imagem ja salva, ou `null`."
+      "description": "Arquivos controlados (sempre lista; um arquivo = lista de um)."
     }
   ],
   "SgInputBirthDate": [

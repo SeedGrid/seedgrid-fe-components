@@ -1,0 +1,15 @@
+import * as React from "react";
+import { SgFileUpload } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <div className="w-80">
+      <SgFileUpload
+        id="demo-disabled"
+        label="Anexo"
+        disabled
+        defaultValue={[{ name: "contrato.pdf", url: "/contrato.pdf", size: 482304 }]}
+      />
+    </div>
+  );
+}

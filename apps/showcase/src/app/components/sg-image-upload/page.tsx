@@ -33,6 +33,7 @@ export default function SgImageUploadPage() {
   const i18n = useShowcaseI18n();
   const aiComponent = useAiManifestComponent("SgImageUpload");
   const [fileInfo, setFileInfo] = React.useState<string | null>(null);
+  const [galleryCount, setGalleryCount] = React.useState(0);
   const stickyHeaderRef = React.useRef<HTMLDivElement | null>(null);
   const [anchorOffset, setAnchorOffset] = React.useState(320);
 
@@ -145,21 +146,24 @@ export default function SgImageUploadPage() {
   const exampleLinks = React.useMemo(
     () => [
       { id: "exemplo-1", label: `1) ${t(i18n, "showcase.component.imageUpload.sections.basic.title")}` },
-      { id: "exemplo-2", label: `2) ${t(i18n, "showcase.component.imageUpload.sections.rules.title")}` },
-      { id: "exemplo-3", label: `3) ${t(i18n, "showcase.component.imageUpload.sections.saved.title")}` },
-      { id: "exemplo-4", label: `4) ${t(i18n, "showcase.component.imageUpload.sections.disabled.title")}` },
-      { id: "exemplo-5", label: "5) Playground" }
+      { id: "exemplo-2", label: `2) ${t(i18n, "showcase.component.imageUpload.sections.many.title")}` },
+      { id: "exemplo-3", label: `3) ${t(i18n, "showcase.component.imageUpload.sections.rules.title")}` },
+      { id: "exemplo-4", label: `4) ${t(i18n, "showcase.component.imageUpload.sections.saved.title")}` },
+      { id: "exemplo-5", label: `5) ${t(i18n, "showcase.component.imageUpload.sections.disabled.title")}` },
+      { id: "exemplo-6", label: "6) Playground" }
     ],
     [i18n.locale]
   );
   const rows: ShowcasePropRow[] = [
     { prop: "id", type: "string", defaultValue: "-", description: t(i18n, "showcase.component.imageUpload.props.rows.id") },
     { prop: "label", type: "string", defaultValue: "-", description: t(i18n, "showcase.component.imageUpload.props.rows.label") },
-    { prop: "value / defaultValue", type: "File | string | null", defaultValue: "-", description: t(i18n, "showcase.component.imageUpload.props.rows.value") },
-    { prop: "onChange", type: "(file: File | null) => void", defaultValue: "-", description: t(i18n, "showcase.component.imageUpload.props.rows.onChange") },
-    { prop: "onError", type: "(code: ImageErrorCode, message: string) => void", defaultValue: "-", description: t(i18n, "showcase.component.imageUpload.props.rows.onError") },
-    { prop: "accept", type: "string", defaultValue: '"image/*"', description: t(i18n, "showcase.component.imageUpload.props.rows.accept") },
-    { prop: "maxSizeBytes", type: "number", defaultValue: "-", description: t(i18n, "showcase.component.imageUpload.props.rows.maxSizeBytes") },
+    { prop: "value / defaultValue", type: "SgFileValue[]", defaultValue: "-", description: t(i18n, "showcase.component.imageUpload.props.rows.value") },
+    { prop: "onChange", type: "(files: SgFileValue[]) => void", defaultValue: "-", description: t(i18n, "showcase.component.imageUpload.props.rows.onChange") },
+    { prop: "onError", type: "(code: FileErrorCode, message: string, fileName: string) => void", defaultValue: "-", description: t(i18n, "showcase.component.imageUpload.props.rows.onError") },
+    { prop: "accept", type: "string", defaultValue: "-", description: t(i18n, "showcase.component.imageUpload.props.rows.accept") },
+    { prop: "maxFiles", type: "number", defaultValue: "1", description: t(i18n, "showcase.component.imageUpload.props.rows.maxFiles") },
+    { prop: "maxSizePerFile", type: "number | string", defaultValue: "-", description: t(i18n, "showcase.component.imageUpload.props.rows.maxSizePerFile") },
+    { prop: "maxSizeTotal", type: "number | string", defaultValue: "-", description: t(i18n, "showcase.component.imageUpload.props.rows.maxSizeTotal") },
     { prop: "minWidth / minHeight", type: "number", defaultValue: "-", description: t(i18n, "showcase.component.imageUpload.props.rows.minSize") },
     { prop: "aspect", type: "number", defaultValue: "-", description: t(i18n, "showcase.component.imageUpload.props.rows.aspect") },
     { prop: "previewHeight", type: "number", defaultValue: "160", description: t(i18n, "showcase.component.imageUpload.props.rows.previewHeight") },
@@ -211,7 +215,7 @@ export default function SgImageUploadPage() {
             <SgImageUpload
               id="demo-basic"
               label={t(i18n, "showcase.component.imageUpload.labels.photo")}
-              onChange={(file) => setFileInfo(file ? `${file.name} (${file.size} bytes)` : null)}
+              onChange={(files) => setFileInfo(files.length > 0 ? `${files[0]?.name} (${files[0]?.size ?? 0} bytes)` : null)}
             />
             <p className="mt-2 text-xs text-muted-foreground">
               {t(i18n, "showcase.common.labels.currentValue", { value: fileInfo ?? "-" })}
@@ -222,7 +226,29 @@ export default function SgImageUploadPage() {
 
         <Section
           id="exemplo-2"
-          title={`2) ${t(i18n, "showcase.component.imageUpload.sections.rules.title")}`}
+          title={`2) ${t(i18n, "showcase.component.imageUpload.sections.many.title")}`}
+          description={t(i18n, "showcase.component.imageUpload.sections.many.description")}
+        >
+          <div className="w-80">
+            <SgImageUpload
+              id="demo-gallery"
+              label={t(i18n, "showcase.component.imageUpload.labels.gallery")}
+              maxFiles={4}
+              maxSizePerFile="2MB"
+              maxSizeTotal="6MB"
+              hintText={t(i18n, "showcase.component.imageUpload.labels.galleryHint")}
+              onChange={(files) => setGalleryCount(files.length)}
+            />
+            <p className="mt-2 text-xs text-muted-foreground">
+              {t(i18n, "showcase.component.imageUpload.labels.imagesCount", { count: String(galleryCount) })}
+            </p>
+          </div>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-image-upload/samples/varias.tsx.sample" />
+        </Section>
+
+        <Section
+          id="exemplo-3"
+          title={`3) ${t(i18n, "showcase.component.imageUpload.sections.rules.title")}`}
           description={t(i18n, "showcase.component.imageUpload.sections.rules.description")}
         >
           <div className="w-80">
@@ -230,7 +256,7 @@ export default function SgImageUploadPage() {
               id="demo-rules"
               label={t(i18n, "showcase.component.imageUpload.labels.avatar")}
               accept="image/png,image/jpeg"
-              maxSizeBytes={2 * 1024 * 1024}
+              maxSizePerFile="2MB"
               minWidth={200}
               minHeight={200}
               aspect={1}
@@ -241,15 +267,15 @@ export default function SgImageUploadPage() {
         </Section>
 
         <Section
-          id="exemplo-3"
-          title={`3) ${t(i18n, "showcase.component.imageUpload.sections.saved.title")}`}
+          id="exemplo-4"
+          title={`4) ${t(i18n, "showcase.component.imageUpload.sections.saved.title")}`}
           description={t(i18n, "showcase.component.imageUpload.sections.saved.description")}
         >
           <div className="w-80">
             <SgImageUpload
               id="demo-saved"
               label={t(i18n, "showcase.component.imageUpload.labels.logo")}
-              defaultValue="/favicon.ico"
+              defaultValue={[{ name: "logo.ico", url: "/favicon.ico" }]}
               previewHeight={96}
             />
           </div>
@@ -257,8 +283,8 @@ export default function SgImageUploadPage() {
         </Section>
 
         <Section
-          id="exemplo-4"
-          title={`4) ${t(i18n, "showcase.component.imageUpload.sections.disabled.title")}`}
+          id="exemplo-5"
+          title={`5) ${t(i18n, "showcase.component.imageUpload.sections.disabled.title")}`}
           description={t(i18n, "showcase.component.imageUpload.sections.disabled.description")}
         >
           <div className="w-80">
@@ -267,13 +293,13 @@ export default function SgImageUploadPage() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-image-upload/samples/desabilitado.tsx.sample" />
         </Section>
 
-        <Section id="exemplo-5" title="5) Playground" description={t(i18n, "showcase.common.playground.description")}>
+        <Section id="exemplo-6" title="6) Playground" description={t(i18n, "showcase.common.playground.description")}>
           <SgPlayground
             title="SgImageUpload Playground"
             interactive
             codeContract="appFile"
             playgroundFile="apps/showcase/src/app/components/sg-image-upload/sg-image-upload.tsx.playground"
-            height={520}
+            height={560}
             defaultOpen
           />
         </Section>

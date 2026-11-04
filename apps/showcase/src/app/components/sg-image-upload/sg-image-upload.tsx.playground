@@ -3,6 +3,7 @@ import { SgButton, SgGrid, SgImageUpload } from "@seedgrid/fe-components";
 
 export default function App() {
   const [rules, setRules] = React.useState(false);
+  const [many, setMany] = React.useState(false);
   const [required, setRequired] = React.useState(false);
   const [disabled, setDisabled] = React.useState(false);
   const [info, setInfo] = React.useState<string | null>(null);
@@ -10,27 +11,30 @@ export default function App() {
 
   return (
     <div className="space-y-4 p-2">
-      <SgGrid columns={{ base: 3 }} gap={8}>
+      <SgGrid columns={{ base: 4 }} gap={8}>
         <SgButton size="sm" appearance={rules ? "solid" : "outline"} onClick={() => setRules((prev) => !prev)}>regras</SgButton>
+        <SgButton size="sm" appearance={many ? "solid" : "outline"} onClick={() => setMany((prev) => !prev)}>maxFiles 4</SgButton>
         <SgButton size="sm" appearance={required ? "solid" : "outline"} onClick={() => setRequired((prev) => !prev)}>required</SgButton>
         <SgButton size="sm" appearance={disabled ? "solid" : "outline"} onClick={() => setDisabled((prev) => !prev)}>disabled</SgButton>
       </SgGrid>
 
       <SgImageUpload
+        key={many ? "many" : "one"}
         id="playground-image-upload"
         label="SgImageUpload Playground"
         required={required}
         disabled={disabled}
+        maxFiles={many ? 4 : 1}
         accept={rules ? "image/png,image/jpeg" : undefined}
-        maxSizeBytes={rules ? 1024 * 1024 : undefined}
+        maxSizePerFile={rules ? "1MB" : undefined}
         minWidth={rules ? 200 : undefined}
         minHeight={rules ? 200 : undefined}
         aspect={rules ? 1 : undefined}
-        onChange={(file) => {
+        onChange={(files) => {
           setError(null);
-          setInfo(file ? `${file.name} (${file.size} bytes)` : null);
+          setInfo(files.length > 0 ? files.map((file) => `${file.name} (${file.size} bytes)`).join(", ") : null);
         }}
-        onError={(code, message) => setError(`${code}: ${message}`)}
+        onError={(code, message, fileName) => setError(`${fileName} - ${code}: ${message}`)}
       />
 
       <div className="rounded border border-border bg-muted/40 p-3 text-xs">

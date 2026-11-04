@@ -85,6 +85,7 @@ async function main() {
     loadComponentMeta(path.join("inputs", "SgInputCurrency.meta.js")),
     loadComponentMeta(path.join("inputs", "SgInputDate.meta.js")),
     loadComponentMeta(path.join("inputs", "SgInputDateTime.meta.js")),
+    loadComponentMeta(path.join("inputs", "SgFileUpload.meta.js")),
     loadComponentMeta(path.join("inputs", "SgImageUpload.meta.js")),
     loadComponentMeta(path.join("inputs", "SgCameraCapture.meta.js")),
     loadComponentMeta(path.join("inputs", "SgInputEmail.meta.js")),

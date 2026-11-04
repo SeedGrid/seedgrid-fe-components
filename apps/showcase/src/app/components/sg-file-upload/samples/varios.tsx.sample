@@ -1,0 +1,22 @@
+import * as React from "react";
+import { SgFileUpload } from "@seedgrid/fe-components";
+
+export default function App() {
+  const [count, setCount] = React.useState(0);
+  const [lastError, setLastError] = React.useState("-");
+
+  return (
+    <div className="w-80">
+      <SgFileUpload
+        id="demo-many"
+        label="Anexos"
+        maxFiles={3}
+        hintText="Até 3 arquivos."
+        onChange={(files) => setCount(files.length)}
+        onError={(code, message, fileName) => setLastError(`${fileName}: ${code}`)}
+      />
+      <p className="mt-2 text-xs text-muted-foreground">Arquivos: {count}</p>
+      <p className="text-xs text-muted-foreground">Última recusa: {lastError}</p>
+    </div>
+  );
+}

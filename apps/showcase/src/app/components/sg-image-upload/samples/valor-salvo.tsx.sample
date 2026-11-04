@@ -4,7 +4,12 @@ import { SgImageUpload } from "@seedgrid/fe-components";
 export default function App() {
   return (
     <div className="w-80">
-      <SgImageUpload id="demo-saved" label="Logotipo" defaultValue="/favicon.ico" previewHeight={96} />
+      <SgImageUpload
+        id="demo-saved"
+        label="Logotipo"
+        defaultValue={[{ name: "logo.ico", url: "/favicon.ico" }]}
+        previewHeight={96}
+      />
     </div>
   );
 }
