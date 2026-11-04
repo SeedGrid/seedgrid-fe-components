@@ -2962,7 +2962,7 @@
   "showcase.component.fileUpload.props.rows.locked": "Deshabilita la selección y la eliminación.",
   "showcase.component.fileUpload.props.rows.hintText": "Texto de ayuda bajo el área.",
   "showcase.component.fileUpload.props.rows.extraCheck": "Regla asíncrona por archivo, tras la comprobación de tipo (así SgImageUpload comprueba dimensión y proporción).",
-  "showcase.component.fileUpload.props.rows.thumbnail": "Miniatura de cada archivo y su lado en px (sin renderThumbnail, la lista usa el icono del tipo).",
+  "showcase.component.fileUpload.props.rows.thumbnail": "Miniatura de cada archivo y su lado en px (sin thumbnailBuilder, la lista usa el icono del tipo).",
   "showcase.component.fileUpload.props.rows.rhf": "Integración con react-hook-form (Controller); el valor del formulario es la lista de archivos (null cuando está vacía).",
   "showcase.component.cameraCapture.title": "SgCameraCapture",
   "showcase.component.cameraCapture.subtitle": "Vista previa de la cámara con guía de encuadre, cambio de cámara y captura. No envía nada: entrega la imagen al padre.",

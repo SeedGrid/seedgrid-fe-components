@@ -59,7 +59,7 @@ export type SgFileUploadProps = RhfFieldProps & {
   /** Regra extra, assincrona, por arquivo (depois da conferencia de tipo). E como o SgImageUpload confere dimensao. */
   extraCheck?: (file: File, info: { mime: string }) => Promise<SgFileRejection | null>;
   /** Miniatura de cada arquivo (sem ela, a lista usa o icone do tipo). */
-  renderThumbnail?: (file: SgFileValue, size: number) => React.ReactNode;
+  thumbnailBuilder?: (file: SgFileValue, size: number) => React.ReactNode;
   /** Lado da miniatura em px (padrao 96). */
   thumbnailSize?: number;
   /** Chaves de i18n do texto da area vazia (um arquivo / varios). */
@@ -163,7 +163,7 @@ function SgFileUploadBase(props: SgFileUploadProps) {
     onEnter,
     onExit,
     extraCheck,
-    renderThumbnail,
+    thumbnailBuilder,
     thumbnailSize = 96,
     dropTextKey,
     dropManyTextKey,
@@ -299,11 +299,11 @@ function SgFileUploadBase(props: SgFileUploadProps) {
         <X className="size-4" aria-hidden="true" />
       </button>
     );
-    if (renderThumbnail) {
+    if (thumbnailBuilder) {
       return (
         <div key={`${file.name}-${index}`} data-sg={`${keyPrefix}-item-${id}-${index}`} style={{ width: thumbnailSize }}>
           <div className="relative overflow-hidden rounded-md" style={{ width: thumbnailSize, height: thumbnailSize }}>
-            {renderThumbnail(file, thumbnailSize)}
+            {thumbnailBuilder(file, thumbnailSize)}
             {removeButton ? <span className="absolute right-0 top-0 rounded-full bg-background/85">{removeButton}</span> : null}
           </div>
           <div className="mt-1 truncate text-xs">{file.name}</div>
@@ -353,7 +353,7 @@ function SgFileUploadBase(props: SgFileUploadProps) {
       />
       {current.length > 0 ? (
         <div
-          className={["mb-2", renderThumbnail ? "flex flex-wrap gap-2" : "flex flex-col gap-1.5"].join(" ")}
+          className={["mb-2", thumbnailBuilder ? "flex flex-wrap gap-2" : "flex flex-col gap-1.5"].join(" ")}
           data-sg={`${keyPrefix}-list-${id}`}
         >
           {current.map(renderItem)}

@@ -14,7 +14,7 @@ import { SgFileUpload, type SgFileRejection, type SgFileUploadProps, type SgFile
  */
 export type SgImageUploadProps = Omit<
   SgFileUploadProps,
-  "mediaType" | "extraCheck" | "renderThumbnail" | "thumbnailSize" | "dropTextKey" | "dropManyTextKey" | "typeNames" | "pickerAccept" | "keyPrefix"
+  "mediaType" | "extraCheck" | "thumbnailBuilder" | "thumbnailSize" | "dropTextKey" | "dropManyTextKey" | "typeNames" | "pickerAccept" | "keyPrefix"
 > & {
   /** Restringe os formatos de imagem em texto livre (`.png`, `image/jpeg`), separados por virgula. */
   accept?: string;
@@ -123,7 +123,7 @@ export function SgImageUpload(props: SgImageUploadProps) {
       dropManyTextKey="components.inputs.imageupload.dropMany"
       pickerAccept={(accept ?? "").trim() ? (accept ?? "").trim() : "image/*"}
       extraCheck={check}
-      renderThumbnail={(file, size) => <Thumbnail file={file} id={id} side={size} />}
+      thumbnailBuilder={(file, size) => <Thumbnail file={file} id={id} side={size} />}
       thumbnailSize={side}
     />
   );

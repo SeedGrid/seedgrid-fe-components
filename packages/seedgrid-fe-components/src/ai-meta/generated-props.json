@@ -2726,12 +2726,6 @@
       "required": false
     },
     {
-      "name": "renderThumbnail",
-      "type": "((file: SgFileValue, size: number) => ReactNode)",
-      "required": false,
-      "description": "Miniatura de cada arquivo (sem ela, a lista usa o icone do tipo)."
-    },
-    {
       "name": "required",
       "type": "boolean",
       "required": false
@@ -2740,6 +2734,12 @@
       "name": "requiredMessage",
       "type": "string",
       "required": false
+    },
+    {
+      "name": "thumbnailBuilder",
+      "type": "((file: SgFileValue, size: number) => ReactNode)",
+      "required": false,
+      "description": "Miniatura de cada arquivo (sem ela, a lista usa o icone do tipo)."
     },
     {
       "name": "thumbnailSize",
