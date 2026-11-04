@@ -234,21 +234,21 @@ export default function SgInputDateTimePage() {
               label="UTC"
               timeZone="UTC"
               value={zoneInstant}
-              onChange={(value) => setZoneInstant(value ?? "")}
+              onChange={(value) => value !== null && setZoneInstant(value)}
             />
             <SgInputDateTime
               id="demo-zone-sp"
               label="-03:00"
               timeZone="-03:00"
               value={zoneInstant}
-              onChange={(value) => setZoneInstant(value ?? "")}
+              onChange={(value) => value !== null && setZoneInstant(value)}
             />
             <SgInputDateTime
               id="demo-zone-in"
               label="+05:30"
               timeZone="+05:30"
               value={zoneInstant}
-              onChange={(value) => setZoneInstant(value ?? "")}
+              onChange={(value) => value !== null && setZoneInstant(value)}
             />
             <p className="text-xs text-muted-foreground">
               {t(i18n, "showcase.common.labels.currentValue", { value: zoneInstant || "-" })}
