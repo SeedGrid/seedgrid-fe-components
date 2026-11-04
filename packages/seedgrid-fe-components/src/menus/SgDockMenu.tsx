@@ -380,6 +380,8 @@ export function SgDockMenu(props: Readonly<SgDockMenuProps>) {
         className={`sg-dock ${className} ${ELEV_CLS[elevation]}`}
         style={{
           ...containerStyleState.style,
+          // A sombra (ELEV_CLS) fica neste wrapper: sem o raio ela desenhava um retangulo quadrado atras do dock (P140).
+          borderRadius: `${borderRadius}px`,
           ...style,
           transform: containerStyleState.transform,
           cursor: enableDragDrop ? (isDragging ? "grabbing" : "grab") : "default",

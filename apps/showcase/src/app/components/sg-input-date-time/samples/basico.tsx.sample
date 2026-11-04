@@ -1,0 +1,13 @@
+import * as React from "react";
+import { SgInputDateTime } from "@seedgrid/fe-components";
+
+export default function App() {
+  const [instant, setInstant] = React.useState<string | null>(null);
+
+  return (
+    <div className="w-80">
+      <SgInputDateTime id="demo-basic" label="Quando" onChange={(value) => setInstant(value)} />
+      <p className="mt-2 text-xs text-muted-foreground">Valor atual: {instant ?? "-"}</p>
+    </div>
+  );
+}

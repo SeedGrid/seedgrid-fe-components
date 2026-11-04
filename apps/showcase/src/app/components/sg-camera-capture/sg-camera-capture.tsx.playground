@@ -1,0 +1,41 @@
+import * as React from "react";
+import { SgButton, SgCameraCapture, SgGrid } from "@seedgrid/fe-components";
+
+export default function App() {
+  const [guide, setGuide] = React.useState<"none" | "oval" | "rect">("oval");
+  const [facing, setFacing] = React.useState<"user" | "environment">("user");
+  const [resolution, setResolution] = React.useState<"low" | "medium" | "high">("medium");
+  const [info, setInfo] = React.useState<string | null>(null);
+
+  return (
+    <div className="space-y-4 p-2">
+      <SgGrid columns={{ base: 3 }} gap={8}>
+        {(["none", "oval", "rect"] as const).map((g) => (
+          <SgButton key={g} size="sm" appearance={guide === g ? "solid" : "outline"} onClick={() => setGuide(g)}>{g}</SgButton>
+        ))}
+      </SgGrid>
+      <SgGrid columns={{ base: 2 }} gap={8}>
+        {(["user", "environment"] as const).map((f) => (
+          <SgButton key={f} size="sm" appearance={facing === f ? "solid" : "outline"} onClick={() => setFacing(f)}>{f}</SgButton>
+        ))}
+      </SgGrid>
+      <SgGrid columns={{ base: 3 }} gap={8}>
+        {(["low", "medium", "high"] as const).map((r) => (
+          <SgButton key={r} size="sm" appearance={resolution === r ? "solid" : "outline"} onClick={() => setResolution(r)}>{r}</SgButton>
+        ))}
+      </SgGrid>
+
+      <SgCameraCapture
+        id="playground-camera"
+        label="SgCameraCapture Playground"
+        guide={guide}
+        facing={facing}
+        resolution={resolution}
+        previewHeight={260}
+        onCapture={(image) => setInfo(`${image.type} (${image.size} bytes)`)}
+      />
+
+      <div className="rounded border border-border bg-muted/40 p-3 text-xs">Valor atual: <strong>{info ?? "-"}</strong></div>
+    </div>
+  );
+}

@@ -872,6 +872,75 @@
       "required": false
     }
   ],
+  "SgCameraCapture": [
+    {
+      "name": "allowSwitch",
+      "type": "boolean",
+      "required": false,
+      "description": "Mostra o botao de alternar entre frontal e traseira (padrao `true`)."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "facing",
+      "type": "CameraFacing",
+      "required": false,
+      "description": "Camera inicial: `user` (frontal) ou `environment` (traseira). Padrao `user`."
+    },
+    {
+      "name": "guide",
+      "type": "CameraGuide",
+      "required": false,
+      "description": "Guia de enquadramento sobre a pre-visualizacao: `none` (padrao), `oval` ou `rect`."
+    },
+    {
+      "name": "hintText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onCapture",
+      "type": "((image: Blob) => void)",
+      "required": false,
+      "description": "Disparado ao capturar, com a imagem JPEG. O envio ao servidor e do host."
+    },
+    {
+      "name": "onError",
+      "type": "((code: CameraErrorCode, message: string) => void)",
+      "required": false,
+      "description": "Disparado quando a camera nao abre: `permission`, `noCamera` ou `failed`. `message` ja vem traduzida."
+    },
+    {
+      "name": "previewHeight",
+      "type": "number",
+      "required": false,
+      "description": "Altura da pre-visualizacao em px (padrao 320)."
+    },
+    {
+      "name": "resolution",
+      "type": "CameraResolution",
+      "required": false,
+      "description": "Resolucao pedida: `low` (640x480), `medium` (1280x720, padrao) ou `high` (1920x1080)."
+    }
+  ],
   "SgCard": [
     {
       "name": "actions",
@@ -2768,6 +2837,128 @@
       "required": false
     }
   ],
+  "SgImageUpload": [
+    {
+      "name": "accept",
+      "type": "string",
+      "required": false,
+      "description": "Tipos aceitos: `image/*` (padrao), `image/png`, `.png`, separados por virgula."
+    },
+    {
+      "name": "aspect",
+      "type": "number",
+      "required": false,
+      "description": "Proporcao largura/altura exigida (1 = quadrada, 16 / 9)."
+    },
+    {
+      "name": "defaultValue",
+      "type": "string | File | null",
+      "required": false,
+      "description": "Imagem inicial (campo nao controlado)."
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "hintText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "maxSizeBytes",
+      "type": "number",
+      "required": false,
+      "description": "Tamanho maximo em bytes."
+    },
+    {
+      "name": "minHeight",
+      "type": "number",
+      "required": false,
+      "description": "Altura minima em px."
+    },
+    {
+      "name": "minWidth",
+      "type": "number",
+      "required": false,
+      "description": "Largura minima em px."
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "((file: File | null) => void)",
+      "required": false,
+      "description": "Disparado ao escolher (arquivo valido) ou remover (`null`). O envio ao servidor e do host."
+    },
+    {
+      "name": "onEnter",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onError",
+      "type": "((code: ImageErrorCode, message: string) => void)",
+      "required": false,
+      "description": "Disparado quando o arquivo escolhido e recusado. `message` ja vem traduzida."
+    },
+    {
+      "name": "onExit",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "previewHeight",
+      "type": "number",
+      "required": false,
+      "description": "Altura da area de pre-visualizacao em px (padrao 160)."
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "requiredMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "string | File | null",
+      "required": false,
+      "description": "Imagem controlada: `File` escolhido, URL (`string`) de uma imagem ja salva, ou `null`."
+    }
+  ],
   "SgInputBirthDate": [
     {
       "name": "alwaysFloat",
@@ -4053,6 +4244,243 @@
       "name": "validation",
       "type": "((value: string) => string | null)",
       "required": false
+    },
+    {
+      "name": "width",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "withBorder",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "SgInputDateTime": [
+    {
+      "name": "alwaysFloat",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "clearButton",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "defaultValue",
+      "type": "string | Date | null",
+      "required": false,
+      "description": "Instante inicial (campo nao controlado)."
+    },
+    {
+      "name": "enabled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "error",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "filled",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "hintText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "iconButtons",
+      "type": "ReactNode[]",
+      "required": false
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelAlign",
+      "type": "\"start\" | \"center\" | \"end\"",
+      "required": false
+    },
+    {
+      "name": "labelPosition",
+      "type": "\"top\" | \"left\" | \"float\"",
+      "required": false
+    },
+    {
+      "name": "labelText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelWidth",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "maxDate",
+      "type": "string | Date",
+      "required": false,
+      "description": "Maior instante permitido (ISO 8601 ou `Date`)."
+    },
+    {
+      "name": "maxLength",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "maxLengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "minDate",
+      "type": "string | Date",
+      "required": false,
+      "description": "Menor instante permitido (ISO 8601 ou `Date`)."
+    },
+    {
+      "name": "minLength",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minLengthMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "minNumberOfWords",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "minNumberOfWordsMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "minuteStep",
+      "type": "number",
+      "required": false,
+      "description": "Passo dos minutos (1, 5, 10, 15, 30...). Ignorado com `showSeconds`."
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "((value: string | null, local: string) => void)",
+      "required": false,
+      "description": "Disparado a cada alteracao com o instante em ISO 8601 UTC (`2026-11-03T17:30:00.000Z`) ou `null` se o\ncampo ficou vazio/incompleto/invalido; `local` e o texto do campo (`2026-11-03T14:30`) no fuso do campo."
+    },
+    {
+      "name": "onClear",
+      "type": "(() => void)",
+      "required": false
+    },
+    {
+      "name": "onEnter",
+      "type": "((() => void) & (() => void))",
+      "required": false,
+      "description": "Disparado ao receber foco — padrao seedgrid."
+    },
+    {
+      "name": "onExit",
+      "type": "((() => void) & (() => void))",
+      "required": false,
+      "description": "Disparado ao perder o foco (apos validacao) — padrao seedgrid."
+    },
+    {
+      "name": "onValidation",
+      "type": "((message: string | null) => void)",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "prefixIcon",
+      "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "prefixText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "required",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "requiredMessage",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "showCharCounter",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "showSeconds",
+      "type": "boolean",
+      "required": false,
+      "description": "Mostra e aceita segundos."
+    },
+    {
+      "name": "suffixText",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "textInputType",
+      "type": "\"none\" | \"text\" | \"email\" | \"search\" | \"tel\" | \"url\" | \"numeric\" | \"decimal\"",
+      "required": false
+    },
+    {
+      "name": "timeZone",
+      "type": "string",
+      "required": false,
+      "description": "Fuso em que o campo mostra e interpreta a hora: \"local\" (padrao), \"UTC\", \"+03:00\" ou nome IANA."
+    },
+    {
+      "name": "validateOnBlur",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "validation",
+      "type": "((value: string) => string | null)",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "string | Date | null",
+      "required": false,
+      "description": "Instante controlado: ISO 8601 (com offset ou \"Z\") ou `Date`. `null`/\"\" limpa o campo."
     },
     {
       "name": "width",

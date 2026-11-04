@@ -1,0 +1,17 @@
+import * as React from "react";
+import { SgCameraCapture } from "@seedgrid/fe-components";
+
+export default function App() {
+  const [captured, setCaptured] = React.useState<string | null>(null);
+
+  return (
+    <div className="w-80">
+      <SgCameraCapture
+        id="demo-basic"
+        label="Foto"
+        onCapture={(image) => setCaptured(`${image.type} (${image.size} bytes)`)}
+      />
+      <p className="mt-2 text-xs text-muted-foreground">Valor atual: {captured ?? "-"}</p>
+    </div>
+  );
+}

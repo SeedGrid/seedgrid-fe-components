@@ -1,0 +1,42 @@
+import * as React from "react";
+import { SgButton, SgGrid, SgImageUpload } from "@seedgrid/fe-components";
+
+export default function App() {
+  const [rules, setRules] = React.useState(false);
+  const [required, setRequired] = React.useState(false);
+  const [disabled, setDisabled] = React.useState(false);
+  const [info, setInfo] = React.useState<string | null>(null);
+  const [error, setError] = React.useState<string | null>(null);
+
+  return (
+    <div className="space-y-4 p-2">
+      <SgGrid columns={{ base: 3 }} gap={8}>
+        <SgButton size="sm" appearance={rules ? "solid" : "outline"} onClick={() => setRules((prev) => !prev)}>regras</SgButton>
+        <SgButton size="sm" appearance={required ? "solid" : "outline"} onClick={() => setRequired((prev) => !prev)}>required</SgButton>
+        <SgButton size="sm" appearance={disabled ? "solid" : "outline"} onClick={() => setDisabled((prev) => !prev)}>disabled</SgButton>
+      </SgGrid>
+
+      <SgImageUpload
+        id="playground-image-upload"
+        label="SgImageUpload Playground"
+        required={required}
+        disabled={disabled}
+        accept={rules ? "image/png,image/jpeg" : undefined}
+        maxSizeBytes={rules ? 1024 * 1024 : undefined}
+        minWidth={rules ? 200 : undefined}
+        minHeight={rules ? 200 : undefined}
+        aspect={rules ? 1 : undefined}
+        onChange={(file) => {
+          setError(null);
+          setInfo(file ? `${file.name} (${file.size} bytes)` : null);
+        }}
+        onError={(code, message) => setError(`${code}: ${message}`)}
+      />
+
+      <div className="rounded border border-border bg-muted/40 p-3 text-xs">
+        Valor atual: <strong>{info ?? "-"}</strong>
+        {error ? <div className="mt-1 text-[hsl(var(--destructive))]">{error}</div> : null}
+      </div>
+    </div>
+  );
+}

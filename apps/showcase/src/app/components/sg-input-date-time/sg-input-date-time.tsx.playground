@@ -1,0 +1,41 @@
+import * as React from "react";
+import { SgButton, SgGrid, SgInputDateTime } from "@seedgrid/fe-components";
+
+export default function App() {
+  const [required, setRequired] = React.useState(false);
+  const [withLimits, setWithLimits] = React.useState(false);
+  const [seconds, setSeconds] = React.useState(false);
+  const [step, setStep] = React.useState(false);
+  const [zone, setZone] = React.useState("UTC");
+  const [instant, setInstant] = React.useState<string | null>(null);
+
+  return (
+    <div className="space-y-4 p-2">
+      <SgGrid columns={{ base: 2, md: 4 }} gap={8}>
+        <SgButton size="sm" appearance={required ? "solid" : "outline"} onClick={() => setRequired((prev) => !prev)}>required</SgButton>
+        <SgButton size="sm" appearance={withLimits ? "solid" : "outline"} onClick={() => setWithLimits((prev) => !prev)}>min/max</SgButton>
+        <SgButton size="sm" appearance={seconds ? "solid" : "outline"} onClick={() => setSeconds((prev) => !prev)}>showSeconds</SgButton>
+        <SgButton size="sm" appearance={step ? "solid" : "outline"} onClick={() => setStep((prev) => !prev)}>minuteStep 15</SgButton>
+      </SgGrid>
+      <SgGrid columns={{ base: 3 }} gap={8}>
+        {["UTC", "-03:00", "+05:30"].map((z) => (
+          <SgButton key={z} size="sm" appearance={zone === z ? "solid" : "outline"} onClick={() => setZone(z)}>{z}</SgButton>
+        ))}
+      </SgGrid>
+
+      <SgInputDateTime
+        id="playground-input-date-time"
+        label="SgInputDateTime Playground"
+        timeZone={zone}
+        required={required}
+        showSeconds={seconds}
+        minuteStep={step ? 15 : undefined}
+        minDate={withLimits ? "2026-11-01T08:00:00Z" : undefined}
+        maxDate={withLimits ? "2026-11-30T18:00:00Z" : undefined}
+        onChange={setInstant}
+      />
+
+      <div className="rounded border border-border bg-muted/40 p-3 text-xs">Valor atual: <strong>{instant ?? "-"}</strong></div>
+    </div>
+  );
+}

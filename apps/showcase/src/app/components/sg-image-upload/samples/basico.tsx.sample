@@ -1,0 +1,17 @@
+import * as React from "react";
+import { SgImageUpload } from "@seedgrid/fe-components";
+
+export default function App() {
+  const [fileInfo, setFileInfo] = React.useState<string | null>(null);
+
+  return (
+    <div className="w-80">
+      <SgImageUpload
+        id="demo-basic"
+        label="Foto"
+        onChange={(file) => setFileInfo(file ? `${file.name} (${file.size} bytes)` : null)}
+      />
+      <p className="mt-2 text-xs text-muted-foreground">Valor atual: {fileInfo ?? "-"}</p>
+    </div>
+  );
+}

@@ -1,0 +1,10 @@
+import * as React from "react";
+import { SgInputDateTime } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <div className="w-80">
+      <SgInputDateTime id="demo-seconds" label="Evento" timeZone="UTC" defaultValue="2026-11-03T17:30:45Z" showSeconds />
+    </div>
+  );
+}

@@ -1,0 +1,19 @@
+import * as React from "react";
+import { SgImageUpload } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <div className="w-80">
+      <SgImageUpload
+        id="demo-rules"
+        label="Avatar"
+        accept="image/png,image/jpeg"
+        maxSizeBytes={2 * 1024 * 1024}
+        minWidth={200}
+        minHeight={200}
+        aspect={1}
+        hintText="PNG ou JPEG, até 2 MB, quadrada, mínimo 200 × 200 px."
+      />
+    </div>
+  );
+}

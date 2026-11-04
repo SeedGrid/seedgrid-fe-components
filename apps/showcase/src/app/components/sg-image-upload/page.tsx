@@ -1,0 +1,288 @@
+"use client";
+
+import React from "react";
+import Link from "next/link";
+import { SgGrid, SgImageUpload } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
+import SgCodeBlockBase from "../sgCodeBlockBase";
+import I18NReady from "../I18NReady";
+import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
+import ComponentAiSummary from "../ai/ComponentAiSummary";
+import { useAiManifestComponent } from "../ai/useAiManifestComponent";
+import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
+import { t, useShowcaseI18n } from "../../../i18n";
+
+function Section(props: { id?: string; title: string; description?: string; children: React.ReactNode }) {
+  return (
+    <section
+      id={props.id}
+      className="scroll-mt-[var(--showcase-anchor-offset,18rem)] rounded-lg border border-border p-6"
+    >
+      <h2 data-anchor-title="true" className="text-lg font-semibold">{props.title}</h2>
+      {props.description ? <p className="mt-1 text-sm text-muted-foreground">{props.description}</p> : null}
+      <div className="mt-4 flex flex-wrap gap-4">{props.children}</div>
+    </section>
+  );
+}
+
+function CodeBlock(props: { sampleFile: string }) {
+  return <SgCodeBlockBase sampleFile={props.sampleFile} />;
+}
+
+export default function SgImageUploadPage() {
+  const i18n = useShowcaseI18n();
+  const aiComponent = useAiManifestComponent("SgImageUpload");
+  const [fileInfo, setFileInfo] = React.useState<string | null>(null);
+  const stickyHeaderRef = React.useRef<HTMLDivElement | null>(null);
+  const [anchorOffset, setAnchorOffset] = React.useState(320);
+
+  React.useEffect(() => {
+    const updateAnchorOffset = () => {
+      const headerHeight = stickyHeaderRef.current?.getBoundingClientRect().height ?? 0;
+      setAnchorOffset(Math.max(240, Math.ceil(headerHeight + 40)));
+    };
+
+    updateAnchorOffset();
+    const resizeObserver = typeof ResizeObserver !== "undefined" ? new ResizeObserver(updateAnchorOffset) : null;
+    if (resizeObserver && stickyHeaderRef.current) resizeObserver.observe(stickyHeaderRef.current);
+
+    window.addEventListener("resize", updateAnchorOffset);
+    return () => {
+      resizeObserver?.disconnect();
+      window.removeEventListener("resize", updateAnchorOffset);
+    };
+  }, [i18n.locale]);
+
+  const findScrollContainer = React.useCallback((element: HTMLElement | null): HTMLElement | Window => {
+    let current = element?.parentElement ?? null;
+    while (current) {
+      const style = window.getComputedStyle(current);
+      const overflowY = style.overflowY;
+      if ((overflowY === "auto" || overflowY === "scroll") && current.scrollHeight > current.clientHeight) {
+        return current;
+      }
+      current = current.parentElement;
+    }
+    return window;
+  }, []);
+
+  const navigateToAnchor = React.useCallback((anchorId: string) => {
+    const target = document.getElementById(anchorId);
+    if (!target) return;
+
+    const scrollContainer = findScrollContainer(target);
+    const extraTopGap = 12;
+    const titleEl = (target.querySelector("[data-anchor-title='true']") as HTMLElement | null) ?? target;
+
+    const correctIfNeeded = () => {
+      const stickyBottomNow = stickyHeaderRef.current?.getBoundingClientRect().bottom ?? 0;
+      const desiredTopNow = stickyBottomNow + extraTopGap;
+      const currentTop = titleEl.getBoundingClientRect().top;
+      const delta = currentTop - desiredTopNow;
+      if (Math.abs(delta) <= 1) return;
+
+      if (scrollContainer === window) {
+        const next = Math.max(0, window.scrollY + delta);
+        window.scrollTo({ top: next, behavior: "auto" });
+        return;
+      }
+
+      const container = scrollContainer as HTMLElement;
+      const next = Math.max(0, container.scrollTop + delta);
+      container.scrollTo({ top: next, behavior: "auto" });
+    };
+
+    if (scrollContainer === window) {
+      const stickyBottomNow = stickyHeaderRef.current?.getBoundingClientRect().bottom ?? 0;
+      const desiredTopNow = stickyBottomNow + extraTopGap;
+      const titleTop = window.scrollY + titleEl.getBoundingClientRect().top;
+      window.scrollTo({ top: Math.max(0, titleTop - desiredTopNow), behavior: "auto" });
+    } else {
+      const container = scrollContainer as HTMLElement;
+      const containerRect = container.getBoundingClientRect();
+      const stickyBottomNow = stickyHeaderRef.current?.getBoundingClientRect().bottom ?? 0;
+      const desiredTopInContainer = stickyBottomNow + extraTopGap - containerRect.top;
+      const titleRect = titleEl.getBoundingClientRect();
+      const titleTopInContainer = container.scrollTop + (titleRect.top - containerRect.top);
+      container.scrollTo({ top: Math.max(0, titleTopInContainer - desiredTopInContainer), behavior: "auto" });
+    }
+
+    window.history.replaceState(null, "", `#${anchorId}`);
+    requestAnimationFrame(() => {
+      correctIfNeeded();
+      requestAnimationFrame(correctIfNeeded);
+    });
+    window.setTimeout(correctIfNeeded, 120);
+    window.setTimeout(correctIfNeeded, 260);
+  }, [findScrollContainer]);
+
+  const handleAnchorClick = React.useCallback((event: React.MouseEvent<HTMLAnchorElement>, anchorId: string) => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+    event.preventDefault();
+    navigateToAnchor(anchorId);
+  }, [navigateToAnchor]);
+
+  const navigateToAnchorRef = React.useRef(navigateToAnchor);
+  React.useEffect(() => {
+    navigateToAnchorRef.current = navigateToAnchor;
+  }, [navigateToAnchor]);
+
+  React.useEffect(() => {
+    const applyHashNavigation = () => {
+      const hash = window.location.hash.replace(/^#/, "");
+      if (!hash) return;
+      navigateToAnchorRef.current(hash);
+    };
+
+    const timer = window.setTimeout(applyHashNavigation, 0);
+    window.addEventListener("hashchange", applyHashNavigation);
+    return () => {
+      window.clearTimeout(timer);
+      window.removeEventListener("hashchange", applyHashNavigation);
+    };
+  }, []);
+
+  const exampleLinks = React.useMemo(
+    () => [
+      { id: "exemplo-1", label: `1) ${t(i18n, "showcase.component.imageUpload.sections.basic.title")}` },
+      { id: "exemplo-2", label: `2) ${t(i18n, "showcase.component.imageUpload.sections.rules.title")}` },
+      { id: "exemplo-3", label: `3) ${t(i18n, "showcase.component.imageUpload.sections.saved.title")}` },
+      { id: "exemplo-4", label: `4) ${t(i18n, "showcase.component.imageUpload.sections.disabled.title")}` },
+      { id: "exemplo-5", label: "5) Playground" }
+    ],
+    [i18n.locale]
+  );
+  const rows: ShowcasePropRow[] = [
+    { prop: "id", type: "string", defaultValue: "-", description: t(i18n, "showcase.component.imageUpload.props.rows.id") },
+    { prop: "label", type: "string", defaultValue: "-", description: t(i18n, "showcase.component.imageUpload.props.rows.label") },
+    { prop: "value / defaultValue", type: "File | string | null", defaultValue: "-", description: t(i18n, "showcase.component.imageUpload.props.rows.value") },
+    { prop: "onChange", type: "(file: File | null) => void", defaultValue: "-", description: t(i18n, "showcase.component.imageUpload.props.rows.onChange") },
+    { prop: "onError", type: "(code: ImageErrorCode, message: string) => void", defaultValue: "-", description: t(i18n, "showcase.component.imageUpload.props.rows.onError") },
+    { prop: "accept", type: "string", defaultValue: '"image/*"', description: t(i18n, "showcase.component.imageUpload.props.rows.accept") },
+    { prop: "maxSizeBytes", type: "number", defaultValue: "-", description: t(i18n, "showcase.component.imageUpload.props.rows.maxSizeBytes") },
+    { prop: "minWidth / minHeight", type: "number", defaultValue: "-", description: t(i18n, "showcase.component.imageUpload.props.rows.minSize") },
+    { prop: "aspect", type: "number", defaultValue: "-", description: t(i18n, "showcase.component.imageUpload.props.rows.aspect") },
+    { prop: "previewHeight", type: "number", defaultValue: "160", description: t(i18n, "showcase.component.imageUpload.props.rows.previewHeight") },
+    { prop: "required / requiredMessage", type: "boolean / string", defaultValue: "false / auto", description: t(i18n, "showcase.component.imageUpload.props.rows.required") },
+    { prop: "disabled / readOnly", type: "boolean", defaultValue: "false", description: t(i18n, "showcase.component.imageUpload.props.rows.locked") },
+    { prop: "hintText", type: "string", defaultValue: "-", description: t(i18n, "showcase.component.imageUpload.props.rows.hintText") },
+    { prop: "name / control / rules", type: "react-hook-form", defaultValue: "-", description: t(i18n, "showcase.component.imageUpload.props.rows.rhf") }
+  ];
+
+  return (
+    <I18NReady>
+      <div
+        className="max-w-4xl space-y-8"
+        style={{ ["--showcase-anchor-offset" as string]: `${anchorOffset}px` } as React.CSSProperties}
+      >
+        <div ref={stickyHeaderRef} className="sticky top-0 z-50 isolate max-h-[52vh] overflow-y-auto bg-background pb-2 pt-2 md:-top-8 md:max-h-none md:overflow-visible md:pb-2 md:pt-8">
+          <div className="rounded-lg border border-border bg-background p-4 shadow-sm">
+            <h1 className="text-3xl font-bold">{t(i18n, "showcase.component.imageUpload.title")}</h1>
+            <p className="mt-2 text-muted-foreground">{t(i18n, "showcase.component.imageUpload.subtitle")}</p>
+            <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">{t(i18n, "showcase.common.examples")}</p>
+            <SgGrid columns={{ base: 1, sm: 2, lg: 3 }} gap={8} className="mt-2">
+              {exampleLinks.map((example) => (
+                <Link
+                  key={example.id}
+                  href={`#${example.id}`}
+                  onClick={(event) => handleAnchorClick(event, example.id)}
+                  className="rounded-md border border-border px-2 py-1 text-xs font-medium text-primary transition-colors hover:bg-muted/40"
+                >
+                  {example.label}
+                </Link>
+              ))}
+              <Link
+                href="#props-reference"
+                onClick={(event) => handleAnchorClick(event, "props-reference")}
+                className="rounded-md border border-border px-2 py-1 text-xs font-medium text-primary transition-colors hover:bg-muted/40"
+              >
+                Props Reference
+              </Link>
+            </SgGrid>
+          </div>
+        </div>
+
+        <Section
+          id="exemplo-1"
+          title={`1) ${t(i18n, "showcase.component.imageUpload.sections.basic.title")}`}
+          description={t(i18n, "showcase.component.imageUpload.sections.basic.description")}
+        >
+          <div className="w-80">
+            <SgImageUpload
+              id="demo-basic"
+              label={t(i18n, "showcase.component.imageUpload.labels.photo")}
+              onChange={(file) => setFileInfo(file ? `${file.name} (${file.size} bytes)` : null)}
+            />
+            <p className="mt-2 text-xs text-muted-foreground">
+              {t(i18n, "showcase.common.labels.currentValue", { value: fileInfo ?? "-" })}
+            </p>
+          </div>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-image-upload/samples/basico.tsx.sample" />
+        </Section>
+
+        <Section
+          id="exemplo-2"
+          title={`2) ${t(i18n, "showcase.component.imageUpload.sections.rules.title")}`}
+          description={t(i18n, "showcase.component.imageUpload.sections.rules.description")}
+        >
+          <div className="w-80">
+            <SgImageUpload
+              id="demo-rules"
+              label={t(i18n, "showcase.component.imageUpload.labels.avatar")}
+              accept="image/png,image/jpeg"
+              maxSizeBytes={2 * 1024 * 1024}
+              minWidth={200}
+              minHeight={200}
+              aspect={1}
+              hintText={t(i18n, "showcase.component.imageUpload.labels.rulesHint")}
+            />
+          </div>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-image-upload/samples/regras.tsx.sample" />
+        </Section>
+
+        <Section
+          id="exemplo-3"
+          title={`3) ${t(i18n, "showcase.component.imageUpload.sections.saved.title")}`}
+          description={t(i18n, "showcase.component.imageUpload.sections.saved.description")}
+        >
+          <div className="w-80">
+            <SgImageUpload
+              id="demo-saved"
+              label={t(i18n, "showcase.component.imageUpload.labels.logo")}
+              defaultValue="/favicon.ico"
+              previewHeight={96}
+            />
+          </div>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-image-upload/samples/valor-salvo.tsx.sample" />
+        </Section>
+
+        <Section
+          id="exemplo-4"
+          title={`4) ${t(i18n, "showcase.component.imageUpload.sections.disabled.title")}`}
+          description={t(i18n, "showcase.component.imageUpload.sections.disabled.description")}
+        >
+          <div className="w-80">
+            <SgImageUpload id="demo-disabled" label={t(i18n, "showcase.component.imageUpload.labels.photo")} disabled />
+          </div>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-image-upload/samples/desabilitado.tsx.sample" />
+        </Section>
+
+        <Section id="exemplo-5" title="5) Playground" description={t(i18n, "showcase.common.playground.description")}>
+          <SgPlayground
+            title="SgImageUpload Playground"
+            interactive
+            codeContract="appFile"
+            playgroundFile="apps/showcase/src/app/components/sg-image-upload/sg-image-upload.tsx.playground"
+            height={520}
+            defaultOpen
+          />
+        </Section>
+
+        <ShowcasePropsReference rows={rows} />
+        {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
+        {aiComponent ? <ComponentAiSummary component={aiComponent} /> : null}
+        <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
+      </div>
+    </I18NReady>
+  );
+}
