@@ -32,8 +32,12 @@ function CodeBlock(props: { sampleFile: string }) {
 export default function SgCameraCapturePage() {
   const i18n = useShowcaseI18n();
   const aiComponent = useAiManifestComponent("SgCameraCapture");
-  const [captured, setCaptured] = React.useState<string | null>(null);
+  const [photo, setPhoto] = React.useState<{ url: string; label: string } | null>(null);
+  const [selfie, setSelfie] = React.useState<string | null>(null);
   const [cameraError, setCameraError] = React.useState<string | null>(null);
+  // A foto capturada vira uma URL de objeto; ela e liberada ao trocar de foto e ao desmontar.
+  React.useEffect(() => () => { if (photo) URL.revokeObjectURL(photo.url); }, [photo]);
+  React.useEffect(() => () => { if (selfie) URL.revokeObjectURL(selfie); }, [selfie]);
   const stickyHeaderRef = React.useRef<HTMLDivElement | null>(null);
   const [anchorOffset, setAnchorOffset] = React.useState(320);
 
@@ -209,11 +213,14 @@ export default function SgCameraCapturePage() {
             <SgCameraCapture
               id="demo-basic"
               label={t(i18n, "showcase.component.cameraCapture.labels.photo")}
-              onCapture={(image) => setCaptured(`${image.type} (${image.size} bytes)`)}
+              onCapture={(image) => setPhoto({ url: URL.createObjectURL(image), label: `${image.type} (${image.size} bytes)` })}
             />
             <p className="mt-2 text-xs text-muted-foreground">
-              {t(i18n, "showcase.common.labels.currentValue", { value: captured ?? "-" })}
+              {t(i18n, "showcase.common.labels.currentValue", { value: photo?.label ?? "-" })}
             </p>
+            {photo ? (
+              <img src={photo.url} alt={t(i18n, "showcase.component.cameraCapture.labels.captured")} className="mt-2 h-40 rounded-md border border-border" />
+            ) : null}
           </div>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-camera-capture/samples/basico.tsx.sample" />
         </Section>
@@ -224,7 +231,16 @@ export default function SgCameraCapturePage() {
           description={t(i18n, "showcase.component.cameraCapture.sections.oval.description")}
         >
           <div className="w-80">
-            <SgCameraCapture id="demo-oval" label={t(i18n, "showcase.component.cameraCapture.labels.selfie")} facing="user" guide="oval" />
+            <SgCameraCapture
+              id="demo-oval"
+              label={t(i18n, "showcase.component.cameraCapture.labels.selfie")}
+              facing="user"
+              guide="oval"
+              onCapture={(image) => setSelfie(URL.createObjectURL(image))}
+            />
+            {selfie ? (
+              <img src={selfie} alt={t(i18n, "showcase.component.cameraCapture.labels.captured")} className="mt-2 h-40 rounded-md border border-border" />
+            ) : null}
           </div>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-camera-capture/samples/guia-oval.tsx.sample" />
         </Section>

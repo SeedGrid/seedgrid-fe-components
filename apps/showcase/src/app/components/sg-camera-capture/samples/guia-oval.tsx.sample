@@ -2,9 +2,21 @@ import * as React from "react";
 import { SgCameraCapture } from "@seedgrid/fe-components";
 
 export default function App() {
+  const [selfie, setSelfie] = React.useState<string | null>(null);
+
+  // A foto capturada vira uma URL de objeto; ela e liberada ao trocar de foto e ao desmontar.
+  React.useEffect(() => () => { if (selfie) URL.revokeObjectURL(selfie); }, [selfie]);
+
   return (
     <div className="w-80">
-      <SgCameraCapture id="demo-oval" label="Selfie" facing="user" guide="oval" />
+      <SgCameraCapture
+        id="demo-oval"
+        label="Selfie"
+        facing="user"
+        guide="oval"
+        onCapture={(image) => setSelfie(URL.createObjectURL(image))}
+      />
+      {selfie ? <img src={selfie} alt="Foto capturada" className="mt-2 h-40 rounded-md border border-border" /> : null}
     </div>
   );
 }

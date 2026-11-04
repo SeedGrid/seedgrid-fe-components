@@ -34,6 +34,7 @@ export default function SgInputDateTimePage() {
   const aiComponent = useAiManifestComponent("SgInputDateTime");
   const [instant, setInstant] = React.useState<string | null>(null);
   const [zoneInstant, setZoneInstant] = React.useState("2026-11-03T17:30:00.000Z");
+  const [lastEvent, setLastEvent] = React.useState("-");
   const stickyHeaderRef = React.useRef<HTMLDivElement | null>(null);
   const [anchorOffset, setAnchorOffset] = React.useState(320);
 
@@ -149,8 +150,9 @@ export default function SgInputDateTimePage() {
       { id: "exemplo-2", label: `2) ${t(i18n, "showcase.component.inputDateTime.sections.zone.title")}` },
       { id: "exemplo-3", label: `3) ${t(i18n, "showcase.component.inputDateTime.sections.limits.title")}` },
       { id: "exemplo-4", label: `4) ${t(i18n, "showcase.component.inputDateTime.sections.seconds.title")}` },
-      { id: "exemplo-5", label: `5) ${t(i18n, "showcase.common.sections.labelPosition.title")}` },
-      { id: "exemplo-6", label: "6) Playground" }
+      { id: "exemplo-5", label: `5) ${t(i18n, "showcase.component.inputDateTime.sections.events.title")}` },
+      { id: "exemplo-6", label: `6) ${t(i18n, "showcase.common.sections.labelPosition.title")}` },
+      { id: "exemplo-7", label: "7) Playground" }
     ],
     [i18n.locale]
   );
@@ -295,7 +297,27 @@ export default function SgInputDateTimePage() {
 
         <Section
           id="exemplo-5"
-          title={`5) ${t(i18n, "showcase.common.sections.labelPosition.title")}`}
+          title={`5) ${t(i18n, "showcase.component.inputDateTime.sections.events.title")}`}
+          description={t(i18n, "showcase.component.inputDateTime.sections.events.description")}
+        >
+          <div className="w-80">
+            <SgInputDateTime
+              id="demo-events"
+              label={t(i18n, "showcase.component.inputDateTime.labels.when")}
+              onChange={(value, local) => setLastEvent(`onChange: ${value ?? local}`)}
+              onEnter={() => setLastEvent("onEnter")}
+              onExit={() => setLastEvent("onExit")}
+            />
+            <p className="mt-2 text-xs text-muted-foreground">
+              {t(i18n, "showcase.component.inputDateTime.labels.lastEvent", { value: lastEvent })}
+            </p>
+          </div>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-date-time/samples/eventos.tsx.sample" />
+        </Section>
+
+        <Section
+          id="exemplo-6"
+          title={`6) ${t(i18n, "showcase.common.sections.labelPosition.title")}`}
           description={t(i18n, "showcase.common.sections.labelPosition.description")}
         >
           <SgGrid columns={{ base: 1, md: 3 }} gap={8} className="w-full">
@@ -320,7 +342,7 @@ export default function SgInputDateTimePage() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-date-time/samples/posicao-do-rotulo.tsx.sample" />
         </Section>
 
-        <Section id="exemplo-6" title="6) Playground" description={t(i18n, "showcase.common.playground.description")}>
+        <Section id="exemplo-7" title="7) Playground" description={t(i18n, "showcase.common.playground.description")}>
           <SgPlayground
             title="SgInputDateTime Playground"
             interactive

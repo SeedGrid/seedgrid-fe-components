@@ -2,16 +2,20 @@ import * as React from "react";
 import { SgCameraCapture } from "@seedgrid/fe-components";
 
 export default function App() {
-  const [captured, setCaptured] = React.useState<string | null>(null);
+  const [photo, setPhoto] = React.useState<{ url: string; label: string } | null>(null);
+
+  // A foto capturada vira uma URL de objeto; ela e liberada ao trocar de foto e ao desmontar.
+  React.useEffect(() => () => { if (photo) URL.revokeObjectURL(photo.url); }, [photo]);
 
   return (
     <div className="w-80">
       <SgCameraCapture
         id="demo-basic"
         label="Foto"
-        onCapture={(image) => setCaptured(`${image.type} (${image.size} bytes)`)}
+        onCapture={(image) => setPhoto({ url: URL.createObjectURL(image), label: `${image.type} (${image.size} bytes)` })}
       />
-      <p className="mt-2 text-xs text-muted-foreground">Valor atual: {captured ?? "-"}</p>
+      <p className="mt-2 text-xs text-muted-foreground">Valor atual: {photo?.label ?? "-"}</p>
+      {photo ? <img src={photo.url} alt="Foto capturada" className="mt-2 h-40 rounded-md border border-border" /> : null}
     </div>
   );
 }

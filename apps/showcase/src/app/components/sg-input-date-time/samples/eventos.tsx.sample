@@ -1,0 +1,19 @@
+import * as React from "react";
+import { SgInputDateTime } from "@seedgrid/fe-components";
+
+export default function App() {
+  const [lastEvent, setLastEvent] = React.useState("-");
+
+  return (
+    <div className="w-80">
+      <SgInputDateTime
+        id="demo-events"
+        label="Quando"
+        onChange={(value, local) => setLastEvent(`onChange: ${value ?? local}`)}
+        onEnter={() => setLastEvent("onEnter")}
+        onExit={() => setLastEvent("onExit")}
+      />
+      <p className="mt-2 text-xs text-muted-foreground">Último evento: {lastEvent}</p>
+    </div>
+  );
+}
