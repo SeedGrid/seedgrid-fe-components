@@ -1382,7 +1382,7 @@
   "showcase.component.datatable.props.rows.stripedRows": "Active le style de lignes zebrees.",
   "showcase.component.datatable.props.rows.showGridlines": "Affiche les lignes de grille entre les cellules.",
   "showcase.component.datatable.props.rows.loading": "Affiche l'etat de chargement.",
-  "showcase.component.datatable.props.rows.emptyMessage": "Message affiche quand il n'y a aucun enregistrement.",
+  "showcase.component.datatable.props.rows.emptyMessage": "Message affiché lorsqu'il n'y a aucun enregistrement. L'emporte sur le dictionnaire (components.datatable.empty).",
   "showcase.component.datatable.props.rows.groupBoxProps": "Props supplementaires transmises a SgGroupBox.",
   "showcase.component.datatable.props.rows.ref": "API imperative : clearFilters, clearSelection, resetSort, goToPage.",
   "showcase.common.playground.description": "Simulez les principales props en temps reel.",
@@ -3016,5 +3016,10 @@
   "showcase.component.notificationBell.props.rows.onNotification": "Une nouvelle notification est arrivée.",
   "showcase.component.notificationBell.props.rows.onNotificationDelete": "L'utilisateur a supprimé une notification.",
   "showcase.component.notificationBell.props.rows.onOpen": "L'utilisateur a ouvert une notification.",
-  "showcase.component.notificationBell.props.rows.onPollingTick": "Le polling a interrogé l'API : compteur, instant et motif."
+  "showcase.component.notificationBell.props.rows.onPollingTick": "Le polling a interrogé l'API : compteur, instant et motif.",
+  "showcase.common.sections.i18n.title": "Langue et textes (i18n)",
+  "showcase.common.sections.i18n.description": "Les textes internes proviennent du dictionnaire {keys}. Enveloppez le composant dans SgComponentsI18nProvider (ou appelez setComponentsI18n) pour changer la langue, et utilisez messages pour remplacer une clé.",
+  "showcase.component.datatable.i18n.precedence": "Les props de texte (emptyMessage, columnManagerLabel, globalFilterPlaceholder et column.filterPlaceholder) l'emportent sur le dictionnaire ; sans elles, components.datatable.* s'applique.",
+  "showcase.component.datatable.props.rows.globalFilterText": "Valeur contrôlée de la recherche globale et placeholder. globalFilterPlaceholder l'emporte sur le dictionnaire (components.datatable.globalFilterPlaceholder).",
+  "showcase.component.datatable.props.rows.columnManagerText": "Panneau intégré de visibilité et d'ordre des colonnes. columnManagerLabel l'emporte sur le dictionnaire (components.datatable.columns) ; column.filterPlaceholder l'emporte aussi sur components.datatable.columnFilterPlaceholder."
 }

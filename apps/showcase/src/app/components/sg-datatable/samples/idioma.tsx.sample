@@ -1,0 +1,28 @@
+import React from "react";
+import { SgDatatable, SgComponentsI18nProvider } from "@seedgrid/fe-components";
+
+const COLUMNS = [
+  { field: "code", header: "Código", filter: true, filterPlaceholder: "Digite o código" },
+  { field: "name", header: "Nome", filter: true }
+];
+
+export default function App() {
+  return (
+    <SgComponentsI18nProvider
+      locale="fr"
+      messages={{ "components.datatable.empty": "Texto do dicionário (não aparece)" }}
+    >
+      <SgDatatable
+        id="datatable-i18n"
+        title="Produtos"
+        value={[]}
+        columns={COLUMNS}
+        dataKey="code"
+        showGlobalFilter
+        showColumnFilters
+        globalFilterPlaceholder="Buscar produtos"
+        emptyMessage="Nenhum produto cadastrado."
+      />
+    </SgComponentsI18nProvider>
+  );
+}

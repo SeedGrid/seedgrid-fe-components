@@ -1,0 +1,15 @@
+import * as React from "react";
+import { SgFileUpload, SgComponentsI18nProvider } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <div className="w-80">
+      <SgComponentsI18nProvider locale="fr" messages={{ "components.inputs.fileupload.drop": "Arraste o contrato aqui" }}>
+        <SgFileUpload
+          id="demo-i18n"
+          label="Anexo"
+        />
+      </SgComponentsI18nProvider>
+    </div>
+  );
+}

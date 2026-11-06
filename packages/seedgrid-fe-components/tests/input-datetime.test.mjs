@@ -144,3 +144,38 @@ test("SgInputDateTime controlado: limpar de verdade (sem badInput) segue o value
     harness.restore();
   }
 });
+
+test("SgInputDateTime recalcula a mensagem de erro quando o idioma muda (sem nova validacao)", async () => {
+  const { SgComponentsI18nProvider } = require("../dist/sandbox.cjs");
+  const { act } = await import("react");
+  const harness = setupDomHarness();
+  try {
+    const msgs = [];
+    const tree = (locale) =>
+      React.createElement(SgComponentsI18nProvider, { locale }, mount({ timeZone: "UTC", minDate: "2026-11-01T08:00:00Z", maxDate: "2026-11-30T18:00:00Z", onValidation: (m) => msgs.push(m) }));
+    const { root } = await harness.render(tree("pt-BR"));
+    await flushDom();
+    const input = harness.document.querySelector("input#dt");
+    await dispatchInput(input, "2026-12-01T10:00");
+    await act(async () => { input.blur(); });
+    await flushDom();
+    assert.match(msgs.at(-1) ?? "", /^Data e hora devem estar entre 01\/11\/2026 08:00 e 30\/11\/2026 18:00\.$/);
+    await act(async () => { root.render(tree("en-US")); });
+    await flushDom();
+    assert.equal(msgs.at(-1), "Date and time must be between 11/1/2026 08:00 and 11/30/2026 18:00.");
+    await act(async () => { root.render(tree("fr")); });
+    await flushDom();
+    assert.match(msgs.at(-1) ?? "", /^La date et l.heure doivent .tre comprises entre 01\/11\/2026 08:00 et 30\/11\/2026 18:00\.$/);
+    // sem erro, trocar o idioma nao cria mensagem
+    await dispatchInput(input, "2026-11-10T10:00");
+    await act(async () => { input.blur(); });
+    await flushDom();
+    assert.equal(msgs.at(-1), null);
+    const n = msgs.length;
+    await act(async () => { root.render(tree("es")); });
+    await flushDom();
+    assert.ok(msgs.slice(n).every((m) => m === null), "sem erro nao deve aparecer mensagem ao trocar o idioma");
+  } finally {
+    harness.restore();
+  }
+});

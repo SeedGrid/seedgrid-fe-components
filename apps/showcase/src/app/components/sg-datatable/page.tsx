@@ -13,6 +13,7 @@ import {
   SgConfirmationDialog,
   SgGrid,
   SgRadioGroup,
+  SgComponentsI18nProvider
 } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import { Pencil, Trash2 } from "lucide-react";
@@ -70,8 +71,14 @@ const SECTION_TITLE_KEYS = [
   "showcase.component.datatable.sections.loading.title",
   "showcase.component.datatable.sections.mobile.title",
   "showcase.component.datatable.sections.infinite.title",
+  "showcase.common.sections.i18n.title",
   "showcase.component.datatable.sections.playground.title"
 ] as const;
+
+const I18N_COLUMNS = [
+  { field: "code", header: "Código", filter: true, filterPlaceholder: "Digite o código" },
+  { field: "name", header: "Nome", filter: true }
+];
 
 const PRODUCT_ROWS: ProductRow[] = [
   { id: 1, code: "P-1000", name: "Notebook Pro 14", category: "Computers", price: 1899, stock: 22, status: "INSTOCK" },
@@ -269,7 +276,7 @@ function buildDatatableProps(i18n: ShowcaseI18n): ShowcasePropRow[] {
     { prop: "selection", type: "T | T[] | null", defaultValue: "-", description: t(i18n, "showcase.component.datatable.props.rows.selection") },
     { prop: "onSelectionChange", type: "(selection) => void", defaultValue: "-", description: t(i18n, "showcase.component.datatable.props.rows.onSelectionChange") },
     { prop: "showGlobalFilter", type: "boolean", defaultValue: "false", description: t(i18n, "showcase.component.datatable.props.rows.showGlobalFilter") },
-    { prop: "globalFilter / onGlobalFilterChange / globalFilterPlaceholder", type: "string / callback / string", defaultValue: "- / - / i18n", description: "Controlled global search value and placeholder override." },
+    { prop: "globalFilter / onGlobalFilterChange / globalFilterPlaceholder", type: "string / callback / string", defaultValue: "- / - / i18n", description: t(i18n, "showcase.component.datatable.props.rows.globalFilterText") },
     { prop: "showColumnFilters", type: "boolean", defaultValue: "false", description: t(i18n, "showcase.component.datatable.props.rows.showColumnFilters") },
     { prop: "filters", type: "Record<string, string>", defaultValue: "-", description: t(i18n, "showcase.component.datatable.props.rows.filters") },
     { prop: "onFilter", type: "(event) => void", defaultValue: "-", description: t(i18n, "showcase.component.datatable.props.rows.onFilter") },
@@ -285,7 +292,7 @@ function buildDatatableProps(i18n: ShowcaseI18n): ShowcasePropRow[] {
     { prop: "onLoadMore", type: "(event: SgDatatablePageEvent) => void", defaultValue: "-", description: "Called (besides onPage) when infinite scroll asks for the next page." },
     { prop: "mobileMode", type: "\"scroll\" | \"cards\"", defaultValue: "- (automatic)", description: "Omitted (default): automatic - below 600 px of container width each row is shown as a 'column: value' card (keeping sorting selector, selection, row actions, footer and pagination; column filters move to a panel opened by a button), above it the regular table. cards forces cards and scroll forces the horizontally scrollable table, at any width." },
     { prop: "column.cardTitle / cardHidden", type: "boolean", defaultValue: "false / false", description: "Cards mode only: cardTitle shows the column value as the card title (no label, first marked column wins); cardHidden leaves the column out of the card." },
-    { prop: "showColumnManager / columnManagerLabel / columnManagerMaxHeight", type: "boolean / string / number|string", defaultValue: "true / i18n / 320", description: "Controls the built-in column visibility and reorder panel." },
+    { prop: "showColumnManager / columnManagerLabel / columnManagerMaxHeight", type: "boolean / string / number|string", defaultValue: "true / i18n / 320", description: t(i18n, "showcase.component.datatable.props.rows.columnManagerText") },
     { prop: "column.columnId / hidden / hideable / reorderable", type: "column props", defaultValue: "- / false / true / true", description: "Stable key and visibility/reordering rules per column." },
     { prop: "column.headerClassName / bodyClassName / className", type: "string | callback", defaultValue: "-", description: "Custom classes for header, body cells and shared column styling." },
     { prop: "column.sortField / sortFunction / filterField / filterMatchMode / excludeGlobalFilter", type: "advanced column props", defaultValue: "-", description: "Custom sorting/filtering strategy per column." },
@@ -1642,7 +1649,30 @@ export default function SgDatatableShowcase() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-datatable/samples/rolagem-infinita.tsx.sample" />
         </Section>
 
-        <Section title={sectionTitles[10] ?? ""}>
+        <Section
+          title={sectionTitles[10] ?? ""}
+          description={`${t(i18n, "showcase.common.sections.i18n.description", { keys: "components.datatable.*" })} ${t(i18n, "showcase.component.datatable.i18n.precedence")}`}
+        >
+          <SgComponentsI18nProvider
+            locale="fr"
+            messages={{ "components.datatable.empty": "Texto do dicionário (não aparece)" }}
+          >
+            <SgDatatable
+              id="datatable-i18n"
+              title="Produtos"
+              value={[]}
+              columns={I18N_COLUMNS}
+              dataKey="code"
+              showGlobalFilter
+              showColumnFilters
+              globalFilterPlaceholder="Buscar produtos"
+              emptyMessage="Nenhum produto cadastrado."
+            />
+          </SgComponentsI18nProvider>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-datatable/samples/idioma.tsx.sample" />
+        </Section>
+
+        <Section title={sectionTitles[11] ?? ""}>
           <SgPlayground
             title="SgDatatable Playground"
             interactive

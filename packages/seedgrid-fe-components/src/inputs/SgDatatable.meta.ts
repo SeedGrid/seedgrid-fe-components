@@ -15,7 +15,10 @@ export const sgMeta: SgMetaV0 = {
   fieldSemantics: ["tabularData", "dataGrid", "listing", "collectionView"],
   props: [
     { name: "id", type: "string", description: "Identificador da tabela usado para DOM e persistencia do layout de colunas.", semanticRole: "data", bindable: true },
-    { name: "columns", type: "SgDatatableColumn[]", description: "Definicao das colunas da tabela.", semanticRole: "data", bindable: true },
+    { name: "columns", type: "SgDatatableColumn[]", description: "Definicao das colunas da tabela. column.filterPlaceholder vence o dicionario (components.datatable.columnFilterPlaceholder).", semanticRole: "data", bindable: true },
+    { name: "emptyMessage", type: "string", default: "(dicionario)", description: "Mensagem exibida quando nao ha registros. Vence o dicionario (components.datatable.empty).", semanticRole: "appearance", bindable: true },
+    { name: "globalFilterPlaceholder", type: "string", default: "(dicionario)", description: "Placeholder da busca global. Vence o dicionario (components.datatable.globalFilterPlaceholder).", semanticRole: "appearance", bindable: true },
+    { name: "columnManagerLabel", type: "string", default: "(dicionario)", description: "Titulo do painel de colunas. Vence o dicionario (components.datatable.columns).", semanticRole: "appearance", bindable: true },
     { name: "rows", type: "number", description: "Linhas por pagina quando a paginacao esta ativa (os dados vao em value).", semanticRole: "behavior", bindable: true },
     { name: "selectionMode", type: "\"single\" | \"multiple\"", description: "Modo de selecao de linhas.", semanticRole: "behavior", bindable: true },
     { name: "loading", type: "boolean", default: false, description: "Indica estado de carregamento.", semanticRole: "appearance", bindable: true },

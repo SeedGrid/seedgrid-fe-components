@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { SgGrid, SgImageUpload } from "@seedgrid/fe-components";
+import { SgGrid, SgImageUpload, SgComponentsI18nProvider } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
@@ -150,7 +150,8 @@ export default function SgImageUploadPage() {
       { id: "exemplo-3", label: `3) ${t(i18n, "showcase.component.imageUpload.sections.rules.title")}` },
       { id: "exemplo-4", label: `4) ${t(i18n, "showcase.component.imageUpload.sections.saved.title")}` },
       { id: "exemplo-5", label: `5) ${t(i18n, "showcase.component.imageUpload.sections.disabled.title")}` },
-      { id: "exemplo-6", label: "6) Playground" }
+      { id: "exemplo-6", label: `6) ${t(i18n, "showcase.common.sections.i18n.title")}` },
+      { id: "exemplo-7", label: "7) Playground" }
     ],
     [i18n.locale]
   );
@@ -293,7 +294,23 @@ export default function SgImageUploadPage() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-image-upload/samples/desabilitado.tsx.sample" />
         </Section>
 
-        <Section id="exemplo-6" title="6) Playground" description={t(i18n, "showcase.common.playground.description")}>
+        <Section
+          id="exemplo-6"
+          title={`6) ${t(i18n, "showcase.common.sections.i18n.title")}`}
+          description={t(i18n, "showcase.common.sections.i18n.description", { keys: "components.inputs.imageupload.*" })}
+        >
+          <div className="w-80">
+            <SgComponentsI18nProvider locale="fr" messages={{ "components.inputs.imageupload.drop": "Arraste a foto aqui" }}>
+              <SgImageUpload
+                id="demo-i18n"
+                label={t(i18n, "showcase.component.imageUpload.labels.photo")}
+              />
+            </SgComponentsI18nProvider>
+          </div>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-image-upload/samples/idioma.tsx.sample" />
+        </Section>
+
+        <Section id="exemplo-7" title="7) Playground" description={t(i18n, "showcase.common.playground.description")}>
           <SgPlayground
             title="SgImageUpload Playground"
             interactive

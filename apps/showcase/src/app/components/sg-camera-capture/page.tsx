@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { SgGrid, SgCameraCapture } from "@seedgrid/fe-components";
+import { SgGrid, SgCameraCapture, SgComponentsI18nProvider } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
@@ -153,7 +153,8 @@ export default function SgCameraCapturePage() {
       { id: "exemplo-2", label: `2) ${t(i18n, "showcase.component.cameraCapture.sections.oval.title")}` },
       { id: "exemplo-3", label: `3) ${t(i18n, "showcase.component.cameraCapture.sections.rect.title")}` },
       { id: "exemplo-4", label: `4) ${t(i18n, "showcase.component.cameraCapture.sections.errors.title")}` },
-      { id: "exemplo-5", label: "5) Playground" }
+      { id: "exemplo-5", label: `5) ${t(i18n, "showcase.common.sections.i18n.title")}` },
+      { id: "exemplo-6", label: "6) Playground" }
     ],
     [i18n.locale]
   );
@@ -281,7 +282,23 @@ export default function SgCameraCapturePage() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-camera-capture/samples/erros.tsx.sample" />
         </Section>
 
-        <Section id="exemplo-5" title="5) Playground" description={t(i18n, "showcase.common.playground.description")}>
+        <Section
+          id="exemplo-5"
+          title={`5) ${t(i18n, "showcase.common.sections.i18n.title")}`}
+          description={t(i18n, "showcase.common.sections.i18n.description", { keys: "components.inputs.camera.*" })}
+        >
+          <div className="w-80">
+            <SgComponentsI18nProvider locale="fr" messages={{ "components.inputs.camera.capture": "Tirar foto agora" }}>
+              <SgCameraCapture
+                id="demo-i18n"
+                label={t(i18n, "showcase.component.cameraCapture.labels.photo")}
+              />
+            </SgComponentsI18nProvider>
+          </div>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-camera-capture/samples/idioma.tsx.sample" />
+        </Section>
+
+        <Section id="exemplo-6" title="6) Playground" description={t(i18n, "showcase.common.playground.description")}>
           <SgPlayground
             title="SgCameraCapture Playground"
             interactive

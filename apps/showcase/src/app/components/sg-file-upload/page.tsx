@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { SgFileUpload, SgGrid } from "@seedgrid/fe-components";
+import { SgFileUpload, SgGrid, SgComponentsI18nProvider } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
@@ -151,7 +151,8 @@ export default function SgFileUploadPage() {
       { id: "exemplo-3", label: `3) ${t(i18n, "showcase.component.fileUpload.sections.types.title")}` },
       { id: "exemplo-4", label: `4) ${t(i18n, "showcase.component.fileUpload.sections.limits.title")}` },
       { id: "exemplo-5", label: `5) ${t(i18n, "showcase.component.fileUpload.sections.disabled.title")}` },
-      { id: "exemplo-6", label: "6) Playground" }
+      { id: "exemplo-6", label: `6) ${t(i18n, "showcase.common.sections.i18n.title")}` },
+      { id: "exemplo-7", label: "7) Playground" }
     ],
     [i18n.locale]
   );
@@ -299,7 +300,23 @@ export default function SgFileUploadPage() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-file-upload/samples/desabilitado.tsx.sample" />
         </Section>
 
-        <Section id="exemplo-6" title="6) Playground" description={t(i18n, "showcase.common.playground.description")}>
+        <Section
+          id="exemplo-6"
+          title={`6) ${t(i18n, "showcase.common.sections.i18n.title")}`}
+          description={t(i18n, "showcase.common.sections.i18n.description", { keys: "components.inputs.fileupload.*" })}
+        >
+          <div className="w-80">
+            <SgComponentsI18nProvider locale="fr" messages={{ "components.inputs.fileupload.drop": "Arraste o contrato aqui" }}>
+              <SgFileUpload
+                id="demo-i18n"
+                label={t(i18n, "showcase.component.fileUpload.labels.attachment")}
+              />
+            </SgComponentsI18nProvider>
+          </div>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-file-upload/samples/idioma.tsx.sample" />
+        </Section>
+
+        <Section id="exemplo-7" title="7) Playground" description={t(i18n, "showcase.common.playground.description")}>
           <SgPlayground
             title="SgFileUpload Playground"
             interactive

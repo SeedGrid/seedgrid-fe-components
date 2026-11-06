@@ -1,0 +1,15 @@
+import * as React from "react";
+import { SgCameraCapture, SgComponentsI18nProvider } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <div className="w-80">
+      <SgComponentsI18nProvider locale="fr" messages={{ "components.inputs.camera.capture": "Tirar foto agora" }}>
+        <SgCameraCapture
+          id="demo-i18n"
+          label="Foto"
+        />
+      </SgComponentsI18nProvider>
+    </div>
+  );
+}

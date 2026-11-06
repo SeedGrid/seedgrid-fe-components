@@ -1382,7 +1382,7 @@
   "showcase.component.datatable.props.rows.stripedRows": "Enables striped row style.",
   "showcase.component.datatable.props.rows.showGridlines": "Shows grid lines between cells.",
   "showcase.component.datatable.props.rows.loading": "Displays loading state.",
-  "showcase.component.datatable.props.rows.emptyMessage": "Message displayed when there are no records.",
+  "showcase.component.datatable.props.rows.emptyMessage": "Message shown when there are no records. Wins over the dictionary (components.datatable.empty).",
   "showcase.component.datatable.props.rows.groupBoxProps": "Extra props forwarded to SgGroupBox.",
   "showcase.component.datatable.props.rows.ref": "Imperative API: clearFilters, clearSelection, resetSort, goToPage.",
   "showcase.common.playground.description": "Simulate the main props in real time.",
@@ -3016,5 +3016,10 @@
   "showcase.component.notificationBell.props.rows.onNotification": "A new notification arrived.",
   "showcase.component.notificationBell.props.rows.onNotificationDelete": "The user deleted a notification.",
   "showcase.component.notificationBell.props.rows.onOpen": "The user opened a notification.",
-  "showcase.component.notificationBell.props.rows.onPollingTick": "Polling queried the API: counter, instant and reason."
+  "showcase.component.notificationBell.props.rows.onPollingTick": "Polling queried the API: counter, instant and reason.",
+  "showcase.common.sections.i18n.title": "Language and texts (i18n)",
+  "showcase.common.sections.i18n.description": "Built-in texts come from the {keys} dictionary. Wrap the component in SgComponentsI18nProvider (or call setComponentsI18n) to change the language, and use messages to override a key.",
+  "showcase.component.datatable.i18n.precedence": "The text props (emptyMessage, columnManagerLabel, globalFilterPlaceholder and column.filterPlaceholder) win over the dictionary; without them, components.datatable.* applies.",
+  "showcase.component.datatable.props.rows.globalFilterText": "Controlled global search value and placeholder. globalFilterPlaceholder wins over the dictionary (components.datatable.globalFilterPlaceholder).",
+  "showcase.component.datatable.props.rows.columnManagerText": "Built-in column visibility and reorder panel. columnManagerLabel wins over the dictionary (components.datatable.columns); column.filterPlaceholder also wins over components.datatable.columnFilterPlaceholder."
 }

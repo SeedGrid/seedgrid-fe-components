@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { SgGrid, SgInputDateTime } from "@seedgrid/fe-components";
+import { SgGrid, SgInputDateTime, SgComponentsI18nProvider } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
@@ -152,7 +152,8 @@ export default function SgInputDateTimePage() {
       { id: "exemplo-4", label: `4) ${t(i18n, "showcase.component.inputDateTime.sections.seconds.title")}` },
       { id: "exemplo-5", label: `5) ${t(i18n, "showcase.component.inputDateTime.sections.events.title")}` },
       { id: "exemplo-6", label: `6) ${t(i18n, "showcase.common.sections.labelPosition.title")}` },
-      { id: "exemplo-7", label: "7) Playground" }
+      { id: "exemplo-7", label: `7) ${t(i18n, "showcase.common.sections.i18n.title")}` },
+      { id: "exemplo-8", label: "8) Playground" }
     ],
     [i18n.locale]
   );
@@ -342,7 +343,27 @@ export default function SgInputDateTimePage() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-date-time/samples/posicao-do-rotulo.tsx.sample" />
         </Section>
 
-        <Section id="exemplo-7" title="7) Playground" description={t(i18n, "showcase.common.playground.description")}>
+        <Section
+          id="exemplo-7"
+          title={`7) ${t(i18n, "showcase.common.sections.i18n.title")}`}
+          description={t(i18n, "showcase.common.sections.i18n.description", { keys: "components.inputs.datetime.*" })}
+        >
+          <div className="w-80">
+            <SgComponentsI18nProvider locale="fr" messages={{ "components.inputs.datetime.min": "Escolha uma data a partir de {min}." }}>
+              <SgInputDateTime
+                id="demo-i18n"
+                label={t(i18n, "showcase.component.inputDateTime.labels.appointment")}
+                timeZone="UTC"
+                minDate="2026-11-01T08:00:00Z"
+                defaultValue="2026-10-01T10:00:00Z"
+                required
+              />
+            </SgComponentsI18nProvider>
+          </div>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-date-time/samples/idioma.tsx.sample" />
+        </Section>
+
+        <Section id="exemplo-8" title="8) Playground" description={t(i18n, "showcase.common.playground.description")}>
           <SgPlayground
             title="SgInputDateTime Playground"
             interactive

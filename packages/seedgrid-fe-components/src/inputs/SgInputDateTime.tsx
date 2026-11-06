@@ -115,6 +115,16 @@ export function SgInputDateTime(props: SgInputDateTimeProps) {
     [i18n, maxDate, maxLocal, minDate, minLocal, onValidation, required, requiredMessage, showSeconds, timeZone, validation]
   );
 
+  // A mensagem de erro e texto pronto: ao trocar o idioma ela e recalculada com o valor atual (sem esperar nova validacao).
+  const lastLocaleRef = React.useRef(i18n.locale);
+  const runValidationRef = React.useRef(runValidation);
+  runValidationRef.current = runValidation;
+  React.useEffect(() => {
+    if (lastLocaleRef.current === i18n.locale) return;
+    lastLocaleRef.current = i18n.locale;
+    if (internalError !== null) runValidationRef.current(local);
+  }, [i18n.locale, internalError, local]);
+
   const emit = (text: string) => {
     onChange?.(text ? wallClockToInstant(text, timeZone) : null, text);
   };
