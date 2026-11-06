@@ -116,7 +116,7 @@ function NewExportScreen() {
             severity="secondary"
             label={t("backup.common.cancel")}
             onClick={() => router.push(backupConfig.routes.exports)}
-            disabled={submitting}
+            enabled={!submitting}
           />
           <SgButton
             appearance="solid"

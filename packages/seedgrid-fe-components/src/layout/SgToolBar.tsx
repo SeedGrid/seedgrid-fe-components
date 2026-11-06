@@ -64,7 +64,7 @@ export type SgToolbarIconButtonProps = {
   hint?: string;
   loading?: boolean;
   severity?: SgToolBarSeverity;
-  disabled?: boolean;
+  enabled?: boolean;
   onClick?: () => void | Promise<void>;
   className?: string;
   style?: React.CSSProperties;
@@ -726,7 +726,7 @@ export function SgToolbarIconButton(
     hint,
     loading = false,
     severity = "plain",
-    disabled,
+    enabled = true,
     onClick,
     hideLabel,
     className,
@@ -744,7 +744,7 @@ export function SgToolbarIconButton(
   const [isHintHovered, setIsHintHovered] = React.useState(false);
   const buttonRef = React.useRef<HTMLButtonElement>(null);
   const handleClick = React.useCallback(() => {
-    if (!onClick || disabled || isLoading) return;
+    if (!onClick || !enabled || isLoading) return;
 
     const result = onClick();
     if (!result || typeof (result as { then?: unknown }).then !== "function") return;
@@ -753,7 +753,7 @@ export function SgToolbarIconButton(
     void (result as Promise<void>).finally(() => {
       setIsPending(false);
     });
-  }, [disabled, isLoading, onClick]);
+  }, [enabled, isLoading, onClick]);
 
   const updateHintPosition = React.useCallback(() => {
     if (!buttonRef.current) return;
@@ -819,7 +819,7 @@ export function SgToolbarIconButton(
       <button
         ref={buttonRef}
         type="button"
-        disabled={disabled || isLoading}
+        disabled={!enabled || isLoading}
         onClick={handleClick}
         aria-busy={isLoading || undefined}
         onMouseEnter={showHintTooltip ? () => {

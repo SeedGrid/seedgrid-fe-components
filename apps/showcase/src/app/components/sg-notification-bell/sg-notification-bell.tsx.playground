@@ -1,0 +1,65 @@
+import * as React from "react";
+import { SgButton, SgGrid, SgNotificationBell } from "@seedgrid/fe-components";
+
+// Backend de mentira (em memoria) que responde as rotas da extension user-notifications.
+function createDemo(seed: boolean) {
+  let n = 0;
+  let items: any[] = seed
+    ? [
+        { publicId: "d1", type: "report.ready", title: "Relatório pronto", message: "Terminou de gerar.", read: false, createdAt: new Date(Date.now() - 120000).toISOString() },
+        { publicId: "d2", type: "backup.finished", title: "Backup concluído", message: "Sem erros.", read: true, createdAt: new Date(Date.now() - 3600000).toISOString() }
+      ]
+    : [];
+  const json = (body: unknown, status = 200) => new Response(JSON.stringify(body), { status });
+  const fetcher = async (input: string, init?: RequestInit) => {
+    const method = init?.method ?? "GET";
+    const path = input.split("?")[0];
+    if (path.endsWith("/realtime/connect")) return json({ enabled: false });
+    if (method === "GET") { const list = input.includes("unreadOnly=true") ? items.filter((i) => !i.read) : items; return json({ items: list, page: 0, size: 100, total: list.length }); }
+    if (method === "POST" && path.endsWith("/read-all")) { items = items.map((i) => ({ ...i, read: true })); return json({ updated: 1 }); }
+    if (method === "POST") { const id = path.split("/").at(-2); items = items.map((i) => (i.publicId === id ? { ...i, read: true } : i)); return new Response(null, { status: 204 }); }
+    if (path.endsWith("/user-notifications")) { items = []; return json({ deleted: 1 }); }
+    const id = path.split("/").at(-1);
+    items = items.filter((i) => i.publicId !== id);
+    return new Response(null, { status: 204 });
+  };
+  const notify = () => {
+    n += 1;
+    items = [{ publicId: "n" + n, type: "report.ready", title: "Novo aviso " + n, message: "Chegou agora.", read: false, createdAt: new Date().toISOString() }, ...items];
+  };
+  return { fetcher, notify };
+}
+
+export default function App() {
+  const [empty, setEmpty] = React.useState(false);
+  const [limited, setLimited] = React.useState(false);
+  const [noToggle, setNoToggle] = React.useState(false);
+  const [ticks, setTicks] = React.useState("-");
+  const demo = React.useMemo(() => createDemo(!empty), [empty]);
+
+  return (
+    <div className="space-y-4 p-2">
+      <SgGrid columns={{ base: 2, sm: 4 }} gap={8}>
+        <SgButton size="sm" appearance={empty ? "solid" : "outline"} onClick={() => setEmpty((prev) => !prev)}>caixa vazia</SgButton>
+        <SgButton size="sm" appearance={limited ? "solid" : "outline"} onClick={() => setLimited((prev) => !prev)}>maxVisible 2</SgButton>
+        <SgButton size="sm" appearance={noToggle ? "solid" : "outline"} onClick={() => setNoToggle((prev) => !prev)}>showUnreadToggle false</SgButton>
+        <SgButton size="sm" appearance="outline" onClick={demo.notify}>nova notificação</SgButton>
+      </SgGrid>
+
+      <div className="min-h-[28rem]">
+        <SgNotificationBell
+          key={`${empty}-${limited}-${noToggle}`}
+          fetcher={demo.fetcher}
+          maxVisible={limited ? 2 : 100}
+          showUnreadToggle={!noToggle}
+          pollIntervalMs={30000}
+          onPollingTick={(stats) => setTicks(`${stats.count} consulta(s), motivo ${stats.reason}`)}
+        />
+      </div>
+
+      <div className="rounded border border-border bg-muted/40 p-3 text-xs">
+        Polling: <strong>{ticks}</strong>
+      </div>
+    </div>
+  );
+}

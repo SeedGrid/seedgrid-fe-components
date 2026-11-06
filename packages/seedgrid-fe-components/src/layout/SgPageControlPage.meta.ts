@@ -20,13 +20,13 @@ export const sgMeta: SgMetaV0 = {
     { name: "hint", type: "string", description: "Descricao curta associada a aba.", semanticRole: "label", bindable: true },
     { name: "icon", type: "ReactNode", description: "Icone opcional da aba.", semanticRole: "label", bindable: true },
     { name: "hidden", type: "boolean", default: false, description: "Oculta a pagina sem remove-la da estrutura.", semanticRole: "behavior", bindable: true },
-    { name: "disabled", type: "boolean", default: false, description: "Desabilita a selecao da pagina.", semanticRole: "behavior", bindable: true },
+    { name: "enabled", type: "boolean", default: true, description: "Desabilita a selecao da pagina.", semanticRole: "behavior", bindable: true },
     { name: "children", type: "ReactNode", required: true, description: "Conteudo exibido no painel desta pagina.", semanticRole: "data", bindable: false }
   ],
   states: ["default", "active", "hidden", "disabled"],
   examples: [{ id: "basic", title: "Basico", file: "apps/showcase/src/app/components/sg-page-control/samples/basico.tsx.sample", kind: "sample" }],
   showcase: { route: "/components/sg-page-control", hasPlayground: true, hasPropsTable: true },
-  sdui: { rendererType: "navigation.page-control-page", acceptsDataBinding: true, defaultProps: { hidden: false, disabled: false } }
+  sdui: { rendererType: "navigation.page-control-page", acceptsDataBinding: true, defaultProps: { hidden: false, enabled: true } }
 };
 
 export const aiHints: SgAiHintsV0 = {

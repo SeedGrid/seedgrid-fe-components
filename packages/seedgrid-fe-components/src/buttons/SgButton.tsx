@@ -30,7 +30,9 @@ export type SgButtonCustomColors = {
   ring?: string; // ex: "rgba(37,99,235,.35)"
 };
 
-export type SgButtonProps = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "color"> & {
+export type SgButtonProps = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "color" | "disabled"> & {
+  /** Quando false, desabilita o botão. Padrão: true. */
+  enabled?: boolean;
   severity?: Severity;
   appearance?: Appearance;
   size?: Size;
@@ -192,7 +194,7 @@ export const SgButton = React.forwardRef<HTMLButtonElement, SgButtonProps>(
       leftIcon,
       rightIcon,
       loading = false,
-      disabled,
+      enabled = true,
       className,
       children,
       style,
@@ -203,7 +205,7 @@ export const SgButton = React.forwardRef<HTMLButtonElement, SgButtonProps>(
     ref
   ) => {
     const resolvedChildren = children ?? label;
-    const isDisabled = Boolean(disabled || loading);
+    const isDisabled = Boolean(!enabled || loading);
     const inferredIconOnly = !resolvedChildren && (leftIcon || rightIcon);
     const isIconOnly = iconOnly ?? inferredIconOnly;
     const resolvedSize = size ?? (isIconOnly ? "sm" : "md");

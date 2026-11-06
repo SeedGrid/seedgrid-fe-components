@@ -11,8 +11,8 @@ const items = [
 export default function Example() {
   return (
     <>
-      <SgSplitButton label="Save" leftIcon={<Save className="size-4" />} disabled onClick={() => {}} items={items} />
-      <SgSplitButton label="Disabled outline" severity="danger" appearance="outline" disabled onClick={() => {}} items={items} />
+      <SgSplitButton label="Save" leftIcon={<Save className="size-4" />} enabled={false} onClick={() => {}} items={items} />
+      <SgSplitButton label="Disabled outline" severity="danger" appearance="outline" enabled={false} onClick={() => {}} items={items} />
     </>
   );
 }

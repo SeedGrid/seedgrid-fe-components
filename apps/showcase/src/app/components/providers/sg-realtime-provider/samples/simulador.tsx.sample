@@ -84,10 +84,10 @@ function ExportsScreen() {
         Status: <code>{status}</code> {connected ? "(sem polling)" : "(polling de reserva)"}
       </div>
       <div className="flex gap-2">
-        <SgButton disabled={!connected} onClick={() => DemoPulseSocket.current?.backupFinished(true)}>
+        <SgButton enabled={connected} onClick={() => DemoPulseSocket.current?.backupFinished(true)}>
           Simular backup pronto
         </SgButton>
-        <SgButton severity="danger" disabled={!connected} onClick={() => DemoPulseSocket.current?.backupFinished(false)}>
+        <SgButton severity="danger" enabled={connected} onClick={() => DemoPulseSocket.current?.backupFinished(false)}>
           Simular backup com falha
         </SgButton>
       </div>

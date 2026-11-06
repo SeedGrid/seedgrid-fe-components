@@ -70,7 +70,7 @@ export default function App() {
         cssText={cssText}
         onCssTextChange={setCssText}
         showCssEditor={showCssEditor}
-        disabled={disabled}
+        enabled={!disabled}
         onSave={(file) => console.log(file.name)}
       />
     </div>
@@ -91,7 +91,7 @@ export default function SgTextEditorPage() {
       { prop: "valueHtml / onChangeHtml", type: "string / function", defaultValue: "-", description: t(i18n, "showcase.component.textEditor.props.rows.valueHtmlOnChangeHtml") },
       { prop: "cssText / onCssTextChange", type: "string / function", defaultValue: "\"\" / -", description: t(i18n, "showcase.component.textEditor.props.rows.cssTextOnCssTextChange") },
       { prop: "showCssEditor", type: "boolean", defaultValue: "false", description: t(i18n, "showcase.component.textEditor.props.rows.showCssEditor") },
-      { prop: "disabled", type: "boolean", defaultValue: "false", description: t(i18n, "showcase.component.textEditor.props.rows.disabled") },
+      { prop: "enabled", type: "boolean", defaultValue: "true", description: t(i18n, "showcase.component.textEditor.props.rows.disabled") },
       { prop: "borderRadius", type: "number | string", defaultValue: "-", description: t(i18n, "showcase.component.textEditor.props.rows.borderRadius") },
       { prop: "className / style", type: "string / React.CSSProperties", defaultValue: "-", description: "Customizacao visual do container externo." },
       { prop: "onSave", type: "(file, meta) => void", defaultValue: "-", description: t(i18n, "showcase.component.textEditor.props.rows.onSave") },
@@ -164,7 +164,7 @@ export default function SgTextEditorPage() {
           <SgTextEditor
             id="sg-text-editor-disabled"
             valueHtml="<p><strong>Locked content</strong></p>"
-            disabled
+            enabled={false}
             showCssEditor={false}
           />
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-text-editor/samples/desabilitado.tsx.sample" />

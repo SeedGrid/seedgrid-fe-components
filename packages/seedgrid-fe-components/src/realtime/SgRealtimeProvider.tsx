@@ -64,6 +64,8 @@ type Listener = (event: SgRealtimeEvent) => void;
 
 type SgRealtimeContextValue = {
   status: SgRealtimeStatus;
+  /** Channels que este provider assina. */
+  channels: string[];
   addListener: (listener: Listener) => () => void;
 };
 
@@ -90,7 +92,7 @@ function mapState(state: ConnectionState): SgRealtimeStatus {
 }
 
 async function requestToken(endpoint: string, init?: RequestInit): Promise<SgRealtimeConnectResponse> {
-  const response = await fetch(endpoint, { method: "POST", credentials: "same-origin", ...init });
+  const response = await fetch(endpoint, { credentials: "same-origin", ...init, method: "POST" });
   if (!response.ok) {
     throw new Error(`token de realtime indisponivel (HTTP ${response.status})`);
   }
@@ -131,6 +133,7 @@ export function SgRealtimeProvider({
     }
 
     let cancelled = false;
+    let retryTimer: ReturnType<typeof setTimeout> | undefined;
     const client = new PulseSubscriberClient();
     const getConnectResponse = () => {
       const { tokenEndpoint: endpoint, tokenRequestInit: init, fetchToken: custom } = optionsRef.current;
@@ -158,12 +161,21 @@ export function SgRealtimeProvider({
 
     void (async () => {
       setStatus("connecting");
-      let first: SgRealtimeConnectResponse;
-      try {
-        first = await getConnectResponse();
-      } catch {
-        if (!cancelled) setStatus("unavailable");
-        return;
+      // Falha temporaria (503, 429, rede) nao e definitiva: fica "unavailable" (a tela usa o polling) e tenta de novo
+      // com espera crescente (5 s ate 60 s). So `enabled:false` e definitivo.
+      let first: SgRealtimeConnectResponse | undefined;
+      for (let attempt = 0; !first; attempt += 1) {
+        try {
+          first = await getConnectResponse();
+        } catch {
+          if (cancelled) return;
+          setStatus("unavailable");
+          await new Promise<void>((resolve) => {
+            retryTimer = setTimeout(resolve, Math.min(60000, 5000 * 2 ** attempt));
+          });
+          if (cancelled) return;
+          setStatus("connecting");
+        }
       }
       if (cancelled) return;
       if (!first.enabled || !first.token) {
@@ -197,6 +209,7 @@ export function SgRealtimeProvider({
 
     return () => {
       cancelled = true;
+      if (retryTimer) clearTimeout(retryTimer);
       offState();
       offMessage();
       void client.disconnect().catch(() => undefined);
@@ -210,7 +223,7 @@ export function SgRealtimeProvider({
     };
   }, []);
 
-  const value = React.useMemo(() => ({ status, addListener }), [status, addListener]);
+  const value = React.useMemo(() => ({ status, channels, addListener }), [status, channelsKey, addListener]);
   return <SgRealtimeContext.Provider value={value}>{children}</SgRealtimeContext.Provider>;
 }
 
@@ -247,6 +260,16 @@ export function useSgRealtimeEvent(
       }
     });
   }, [context, channel, patterns]);
+}
+
+/**
+ * Ha um {@link SgRealtimeProvider} acima? Com `channel`, so conta se ele assina esse channel (o sino so reaproveita a
+ * conexao que ouve `user-notifications`; senao ficaria surdo e abre a propria).
+ */
+export function useHasSgRealtimeProvider(channel?: string): boolean {
+  const context = React.useContext(SgRealtimeContext);
+  if (!context) return false;
+  return channel === undefined || context.channels.includes(channel);
 }
 
 /** Estado do realtime. `connected` falso ⇒ a tela usa o polling de reserva. */

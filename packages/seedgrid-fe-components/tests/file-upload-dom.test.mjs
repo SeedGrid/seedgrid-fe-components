@@ -170,7 +170,7 @@ test("desabilitado: nao mostra remover nem trocar", async () => {
   const harness = setupDomHarness();
   try {
     prepare(harness);
-    await harness.render(React.createElement(SgFileUpload, { id: "f", disabled: true, defaultValue: [file(harness.window, "a.pdf")] }));
+    await harness.render(React.createElement(SgFileUpload, { id: "f", enabled: false, defaultValue: [file(harness.window, "a.pdf")] }));
     await flushDom();
     assert.equal(harness.document.querySelector("input#f").disabled, true);
     assert.equal(harness.document.querySelector(sel("remove", 0)), null);

@@ -11,7 +11,7 @@ import { t, useComponentsI18n } from "../i18n";
 export interface SgOrderListItem {
   label: string;
   value: string | number;
-  disabled?: boolean;
+  enabled?: boolean;
   icon?: React.ReactNode;
   data?: unknown;
 }
@@ -44,12 +44,12 @@ export interface SgOrderListProps extends RhfFieldProps {
   showControls?: boolean;
   controlsPosition?: SgOrderListControlsPosition;
   draggable?: boolean;
-  disabled?: boolean;
+  enabled?: boolean;
   readOnly?: boolean;
   emptyMessage?: string;
   itemTemplate?: (
     item: SgOrderListItem,
-    state: { index: number; selected: boolean; disabled: boolean }
+    state: { index: number; selected: boolean; enabled: boolean }
   ) => React.ReactNode;
   className?: string;
   style?: React.CSSProperties;
@@ -86,7 +86,7 @@ function getMovableSelection(items: SgOrderListItem[], selection: (string | numb
   const selectedValues = new Set(selection);
   return new Set(
     items
-      .filter((item) => selectedValues.has(item.value) && !item.disabled)
+      .filter((item) => selectedValues.has(item.value) && item.enabled !== false)
       .map((item) => item.value)
   );
 }
@@ -182,7 +182,7 @@ function SgOrderListBase(
     showControls = true,
     controlsPosition = "left",
     draggable = true,
-    disabled = false,
+    enabled = true,
     readOnly = false,
     emptyMessage,
     itemTemplate,
@@ -230,7 +230,7 @@ function SgOrderListBase(
     });
   }, [currentItems, isSelectionControlled]);
 
-  const canInteract = !disabled && !readOnly;
+  const canInteract = enabled && !readOnly;
   const allowDrag = draggable && canInteract;
   const movableSelection = React.useMemo(
     () => getMovableSelection(currentItems, currentSelection),
@@ -277,7 +277,7 @@ function SgOrderListBase(
     item: SgOrderListItem,
     index: number
   ) => {
-    if (!canInteract || item.disabled) return;
+    if (!canInteract || (item.enabled === false)) return;
 
     const itemValue = item.value;
     if (selectionMode === "single") {
@@ -293,7 +293,7 @@ function SgOrderListBase(
         const end = Math.max(anchorIndex, index);
         const rangeValues = currentItems
           .slice(start, end + 1)
-          .filter((entry) => !entry.disabled)
+          .filter((entry) => entry.enabled !== false)
           .map((entry) => entry.value);
         if (event.metaKey || event.ctrlKey) {
           commitSelection([...currentSelection, ...rangeValues]);
@@ -330,7 +330,7 @@ function SgOrderListBase(
     item: SgOrderListItem,
     index: number
   ) => {
-    if (!allowDrag || item.disabled) {
+    if (!allowDrag || (item.enabled === false)) {
       event.preventDefault();
       return;
     }
@@ -420,7 +420,7 @@ function SgOrderListBase(
       id={id}
       role="listbox"
       aria-multiselectable={selectionMode === "multiple" ? true : undefined}
-      aria-disabled={disabled || undefined}
+      aria-disabled={!enabled || undefined}
       aria-readonly={readOnly || undefined}
       className={cn(
         "w-full min-w-0 overflow-y-auto rounded-lg border border-[rgb(var(--sg-border))] bg-[rgb(var(--sg-surface))] p-1",
@@ -435,7 +435,7 @@ function SgOrderListBase(
       ) : (
         currentItems.map((item, index) => {
           const isItemSelected = selectedSet.has(item.value);
-          const isItemDisabled = disabled || Boolean(item.disabled);
+          const isItemDisabled = !enabled || Boolean((item.enabled === false));
           const isDropTarget = dropIndex === index && draggingIndex !== null && draggingIndex !== index;
           const isDragging = draggingIndex === index;
 
@@ -445,7 +445,7 @@ function SgOrderListBase(
                 type="button"
                 role="option"
                 aria-selected={isItemSelected}
-                draggable={allowDrag && !item.disabled}
+                draggable={allowDrag && item.enabled !== false}
                 disabled={isItemDisabled}
                 onClick={(event) => handleItemSelection(event, item, index)}
                 onKeyDown={(event) => handleItemKeyDown(event, item, index)}
@@ -459,7 +459,7 @@ function SgOrderListBase(
                     ? "bg-[rgb(var(--sg-primary-100))] text-[rgb(var(--sg-text))] ring-1 ring-[rgb(var(--sg-primary-300))]"
                     : "bg-[rgb(var(--sg-input-bg,var(--sg-surface)))] text-[rgb(var(--sg-text))] hover:bg-[rgb(var(--sg-primary-50))]",
                   isItemDisabled ? "cursor-not-allowed opacity-60" : "cursor-pointer",
-                  allowDrag && !item.disabled ? "active:cursor-grabbing" : "",
+                  allowDrag && item.enabled !== false ? "active:cursor-grabbing" : "",
                   isDropTarget ? "ring-2 ring-[rgb(var(--sg-primary-400))]" : "",
                   isDragging ? "opacity-50" : "",
                   itemClassName
@@ -470,7 +470,7 @@ function SgOrderListBase(
                     itemTemplate(item, {
                       index,
                       selected: isItemSelected,
-                      disabled: isItemDisabled
+                      enabled: !isItemDisabled
                     })
                   ) : (
                     <span className="flex items-center gap-2">
@@ -479,7 +479,7 @@ function SgOrderListBase(
                     </span>
                   )}
                 </span>
-                {allowDrag && !item.disabled ? (
+                {allowDrag && item.enabled !== false ? (
                   <span
                     aria-hidden="true"
                     className="shrink-0 text-xs tracking-wide text-[rgb(var(--sg-muted))]"
@@ -512,7 +512,7 @@ function SgOrderListBase(
       <SgButton
         size="sm"
         appearance="outline"
-        disabled={!canMoveTop}
+        enabled={canMoveTop}
         title={moveTopLabel}
         aria-label={moveTopLabel}
         onClick={() => applyMove("top")}
@@ -522,7 +522,7 @@ function SgOrderListBase(
       <SgButton
         size="sm"
         appearance="outline"
-        disabled={!canMoveUp}
+        enabled={canMoveUp}
         title={moveUpLabel}
         aria-label={moveUpLabel}
         onClick={() => applyMove("up")}
@@ -532,7 +532,7 @@ function SgOrderListBase(
       <SgButton
         size="sm"
         appearance="outline"
-        disabled={!canMoveDown}
+        enabled={canMoveDown}
         title={moveDownLabel}
         aria-label={moveDownLabel}
         onClick={() => applyMove("down")}
@@ -542,7 +542,7 @@ function SgOrderListBase(
       <SgButton
         size="sm"
         appearance="outline"
-        disabled={!canMoveBottom}
+        enabled={canMoveBottom}
         title={moveBottomLabel}
         aria-label={moveBottomLabel}
         onClick={() => applyMove("bottom")}

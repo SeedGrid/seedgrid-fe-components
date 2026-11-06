@@ -80,7 +80,7 @@ export type SgPeriodSelectorProps = {
   allowCustomPeriod?: boolean;
   /** Locale para labels e formatacao. Default "pt-BR". */
   locale?: string;
-  disabled?: boolean;
+  enabled?: boolean;
   required?: boolean;
   minDate?: Date;
   maxDate?: Date;
@@ -440,7 +440,7 @@ function SgPeriodSelectorBase(props: Readonly<SgPeriodSelectorBaseProps>) {
     permitAll = true,
     allowCustomPeriod = true,
     locale = "pt-BR",
-    disabled,
+    enabled = true,
     required,
     minDate,
     maxDate,
@@ -521,7 +521,7 @@ function SgPeriodSelectorBase(props: Readonly<SgPeriodSelectorBaseProps>) {
         value={selectedPreset ?? null}
         grouped
         openOnFocus
-        enabled={disabled ? false : undefined}
+        enabled={enabled}
         required={required}
         error={error}
         renderGroupHeader={(group) =>
@@ -541,7 +541,7 @@ function SgPeriodSelectorBase(props: Readonly<SgPeriodSelectorBaseProps>) {
             inputProps={{ value: customStart }}
             minDate={minDate}
             maxDate={maxDate}
-            enabled={disabled ? false : undefined}
+            enabled={enabled}
             onChange={(next: string) => {
               setCustomStart(next);
               emitCustom(next, customEnd);
@@ -552,7 +552,7 @@ function SgPeriodSelectorBase(props: Readonly<SgPeriodSelectorBaseProps>) {
             inputProps={{ value: customEnd }}
             minDate={minDate}
             maxDate={maxDate}
-            enabled={disabled ? false : undefined}
+            enabled={enabled}
             onChange={(next: string) => {
               setCustomEnd(next);
               emitCustom(customStart, next);

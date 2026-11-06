@@ -204,7 +204,7 @@ const PAGE_CONTROL_PROPS: ShowcasePropRow[] = [
   { prop: "keyboardNavigation", type: "boolean", defaultValue: "true", description: "Arrow/Home/End navigation between tabs." },
   { prop: "ariaLabel / emptyMessage", type: "string / ReactNode", defaultValue: "Page control / No visible pages.", description: "Accessibility and empty state." },
   { prop: "className / tabListClassName / tabClassName / panelClassName / style", type: "visual customization", defaultValue: "-", description: "Classes and styles for wrappers." },
-  { prop: "SgPageControlPage.id / title / hint / icon / hidden / disabled / keepMounted / className / style / tabClassName / children", type: "page props", defaultValue: "-", description: "Props available for each tab/page." }
+  { prop: "SgPageControlPage.id / title / hint / icon / hidden / enabled / keepMounted / className / style / tabClassName / children", type: "page props", defaultValue: "-", description: "Props available for each tab/page." }
 ];
 
 

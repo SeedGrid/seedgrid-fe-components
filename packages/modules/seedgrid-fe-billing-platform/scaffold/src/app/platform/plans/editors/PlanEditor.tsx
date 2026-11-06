@@ -247,7 +247,7 @@ export function PlanEditor({ publicId }: { publicId?: string }) {
                   : t("billing.platform.plan_editor.save")
               }
               loading={saving}
-              disabled={saving}
+              enabled={!saving}
               onClick={() => void handleSubmit()}
             />
             <SgButton
@@ -255,7 +255,7 @@ export function PlanEditor({ publicId }: { publicId?: string }) {
               severity="secondary"
               shape="rounded"
               label={t("billing.platform.common.cancel")}
-              disabled={saving}
+              enabled={!saving}
               onClick={() => router.push(billingPlatformConfig.routes.plans)}
             />
           </SgStack>

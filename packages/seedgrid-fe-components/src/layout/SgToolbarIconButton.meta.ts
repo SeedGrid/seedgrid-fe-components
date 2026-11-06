@@ -21,13 +21,13 @@ export const sgMeta: SgMetaV0 = {
     { name: "showLabel", type: "boolean", default: false, description: "Exibe o rotulo junto do icone quando suportado pela toolbar.", semanticRole: "appearance", bindable: true },
     { name: "loading", type: "boolean", default: false, description: "Indica processamento em andamento.", semanticRole: "behavior", bindable: true },
     { name: "severity", type: '"primary" | "secondary" | "success" | "info" | "warning" | "help" | "danger" | "plain"', default: "plain", description: "Tom visual do botao de toolbar.", semanticRole: "appearance", bindable: true },
-    { name: "disabled", type: "boolean", default: false, description: "Desabilita interacao.", semanticRole: "behavior", bindable: true },
+    { name: "enabled", type: "boolean", default: true, description: "Desabilita interacao.", semanticRole: "behavior", bindable: true },
     { name: "onClick", type: "() => void | Promise<void>", description: "Callback executado ao clicar no item.", semanticRole: "event", bindable: false }
   ],
   states: ["default", "disabled", "loading"],
   examples: [{ id: "basic", title: "Basico", file: "apps/showcase/src/app/components/sg-toolbar/samples/basico.tsx.sample", kind: "sample" }],
   showcase: { route: "/components/sg-toolbar", hasPlayground: true, hasPropsTable: true },
-  sdui: { rendererType: "action.toolbar-icon-button", acceptsDataBinding: true, defaultProps: { showLabel: false, severity: "plain", disabled: false } }
+  sdui: { rendererType: "action.toolbar-icon-button", acceptsDataBinding: true, defaultProps: { showLabel: false, severity: "plain", enabled: true } }
 };
 
 export const aiHints: SgAiHintsV0 = {

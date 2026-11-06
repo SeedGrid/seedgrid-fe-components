@@ -119,7 +119,7 @@ export function CompanyScopePicker({
         severity="primary"
         appearance="solid"
         loading={busy}
-        disabled={loading || !selected}
+        enabled={!(loading || !selected)}
         onClick={() => void handleConfirm()}
         className="mt-3 w-full"
       >

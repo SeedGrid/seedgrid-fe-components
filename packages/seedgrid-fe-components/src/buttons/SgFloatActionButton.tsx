@@ -41,7 +41,7 @@ export type SgFABAction = {
   onClick?: () => void;
   severity?: FABSeverity;
   floatActionButtonStyle?: FABSeverity;
-  disabled?: boolean;
+  enabled?: boolean;
 };
 
 export type SgFloatActionButtonProps = {
@@ -60,7 +60,7 @@ export type SgFloatActionButtonProps = {
   size?: FABSize;
   shape?: FABShape;
   elevation?: FABElevation;
-  disabled?: boolean;
+  enabled?: boolean;
   loading?: boolean;
   autoHideOnScroll?: boolean;
   hideDirection?: "down" | "up";
@@ -308,7 +308,7 @@ export function SgFloatActionButton(props: Readonly<SgFloatActionButtonProps>) {
     enableDragDrop = false, dragId,
     severity = "primary", floatActionButtonStyle, color,
     size = "md", shape = "circle", elevation = "md",
-    disabled = false, loading = false,
+    enabled = true, loading = false,
     autoHideOnScroll = false, hideDirection = "down",
     animation = "scale", animationOn = "mount", animationDuration = 200,
     type = "linear", radius, transitionDelay = 30,
@@ -497,7 +497,7 @@ export function SgFloatActionButton(props: Readonly<SgFloatActionButtonProps>) {
   }, []);
 
   const handleClick = React.useCallback(() => {
-    if (disabled || loading) return;
+    if (!enabled || loading) return;
     if (enableDragDrop && dragMoved.current) {
       dragMoved.current = false;
       return;
@@ -509,11 +509,11 @@ export function SgFloatActionButton(props: Readonly<SgFloatActionButtonProps>) {
     setClicked(true);
     if (actions && actions.length > 0) setOpen((p) => !p);
     else onClick?.();
-  }, [disabled, loading, actions, onClick, enableDragDrop, menuOpen]);
+  }, [enabled, loading, actions, onClick, enableDragDrop, menuOpen]);
 
   const handlePointerDown = React.useCallback((event: React.PointerEvent<HTMLButtonElement>) => {
     if (event.button !== 0) return;
-    if (!enableDragDrop || disabled || loading) return;
+    if (!enableDragDrop || !enabled || loading) return;
     if (!containerRef.current) return;
 
     dragCleanupRef.current?.();
@@ -588,7 +588,7 @@ export function SgFloatActionButton(props: Readonly<SgFloatActionButtonProps>) {
     view.addEventListener("pointercancel", handleUp);
     view.addEventListener("blur", handleUp);
     doc.addEventListener("visibilitychange", handleVisibilityChange);
-  }, [enableDragDrop, disabled, loading, actions, dragId, isAbsolute, saveStoredPosition]);
+  }, [enableDragDrop, enabled, loading, actions, dragId, isAbsolute, saveStoredPosition]);
 
   const handleContextMenu = React.useCallback((event: React.MouseEvent<HTMLButtonElement>) => {
     if (!enableDragDrop || !dragId) return;
@@ -683,7 +683,7 @@ export function SgFloatActionButton(props: Readonly<SgFloatActionButtonProps>) {
   /* action positions */
   const actPos = computeItemPositions((actions ?? []).length, type, dir, size, radius);
 
-  const isOff = disabled || loading;
+  const isOff = !enabled || loading;
   return (
     <div
       ref={containerRef}
@@ -722,7 +722,7 @@ export function SgFloatActionButton(props: Readonly<SgFloatActionButtonProps>) {
           >
             <div className="relative group">
               <button
-                disabled={a.disabled}
+                disabled={a.enabled === false}
                 className={cn(
                   "inline-flex items-center justify-center rounded-full",
                   "hover:brightness-90 active:brightness-[0.85]",

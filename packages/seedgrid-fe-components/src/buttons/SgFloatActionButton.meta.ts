@@ -54,9 +54,9 @@ export const sgMeta: SgMetaV0 = {
       bindable: true
     },
     {
-      name: "disabled",
+      name: "enabled",
       type: "boolean",
-      default: false,
+      default: true,
       description: "Desabilita a acao principal e as acoes derivadas.",
       semanticRole: "behavior",
       bindable: true

@@ -21,7 +21,7 @@ export default function Example() {
         minValue={0}
         maxValue={100}
         value={65}
-        disabled
+        enabled={false}
         ariaLabel="Slider desabilitado"
         width="20rem"
       />

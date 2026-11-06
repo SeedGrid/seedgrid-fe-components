@@ -39,7 +39,7 @@ export type SgPopupAction = {
   label: string;
   hint?: string;
   severity?: SgPopupSeverity;
-  disabled?: boolean;
+  enabled?: boolean;
   closeOnClick?: boolean;
   onClick?: () => void;
 };
@@ -353,7 +353,7 @@ export function SgPopup(props: Readonly<SgPopupProps>) {
               <button
                 key={idx}
                 type="button"
-                disabled={a.disabled}
+                disabled={a.enabled === false}
                 title={a.hint}
                 className={cn(
                   "w-full select-none rounded px-3 py-2 text-left text-sm",

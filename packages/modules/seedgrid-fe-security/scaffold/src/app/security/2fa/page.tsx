@@ -241,7 +241,7 @@ function TwoFactorSettingsScreen() {
                     shape="rounded"
                     label={t("security.two_factor.enable")}
                     loading={pending}
-                    disabled={pending}
+                    enabled={!pending}
                     onClick={handleEnable}
                   />
                 </SgGrid>
@@ -294,7 +294,7 @@ function TwoFactorSettingsScreen() {
                       shape="rounded"
                       label={t("security.two_factor.disable")}
                       loading={pending}
-                      disabled={pending}
+                      enabled={!pending}
                       onClick={handleDisable}
                     />
                   </SgStack>
@@ -324,7 +324,7 @@ function TwoFactorSettingsScreen() {
                         shape="rounded"
                         label={t("security.two_factor.confirm_totp")}
                         loading={pending}
-                        disabled={pending}
+                        enabled={!pending}
                         onClick={handleConfirmTotp}
                       />
                     </SgStack>

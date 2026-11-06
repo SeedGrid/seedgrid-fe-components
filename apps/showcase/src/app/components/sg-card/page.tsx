@@ -92,7 +92,7 @@ const CARD_PROPS: ShowcasePropRow[] = [
   { prop: "collapseIcon / collapseIconSize / collapseToggleAlign", type: "ReactNode / number / \"left\" | \"right\"", defaultValue: "- / 18 / \"left\"", description: "Customizacao do botao de colapso e posicao do icone." },
   { prop: "draggable / defaultPosition", type: "boolean / { x: number; y: number }", defaultValue: "false / {x:0,y:0}", description: "Arrasta o card ao segurar o cabecalho." },
   { prop: "dragPersistKey / onPositionChange", type: "string / (position) => void", defaultValue: "- / -", description: "Persistencia de posicao via EnvironmentProvider ou localStorage fallback." },
-  { prop: "clickable / disabled / onClick", type: "boolean / boolean / event", defaultValue: "false / false / -", description: "Modo clicavel e estado desabilitado." },
+  { prop: "clickable / enabled / onClick", type: "boolean / boolean / event", defaultValue: "false / true / -", description: "Modo clicavel e estado desabilitado." },
   { prop: "className / headerClassName / bodyClassName / footerClassName", type: "string", defaultValue: "-", description: "Customizacao de estilos por bloco." }
 ];
 

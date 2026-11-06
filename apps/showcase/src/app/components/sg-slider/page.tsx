@@ -140,7 +140,7 @@ export default function Example() {
         minValue={0}
         maxValue={100}
         value={65}
-        disabled
+        enabled={false}
         ariaLabel="Slider desabilitado"
         width="20rem"
       />
@@ -215,7 +215,7 @@ export default function App() {
         step={step}
         value={value}
         width={width}
-        disabled={disabled}
+        enabled={!disabled}
         ariaLabel="Slider playground"
         className="accent-[#c56a2d]"
         onChange={setValue}
@@ -236,7 +236,7 @@ const SLIDER_PROPS: ShowcasePropRow[] = [
   { prop: "value", type: "number", defaultValue: "-", description: "Valor atual no modo controlado." },
   { prop: "defaultValue", type: "number", defaultValue: "minValue", description: "Valor inicial no modo nao controlado." },
   { prop: "step", type: "number", defaultValue: "1", description: "Incremento entre posicoes." },
-  { prop: "disabled", type: "boolean", defaultValue: "false", description: "Desabilita interacao do slider." },
+  { prop: "enabled", type: "boolean", defaultValue: "true", description: "Desabilita interacao do slider." },
   { prop: "onChange", type: "(value: number) => void", defaultValue: "-", description: "Callback ao alterar o valor." },
   { prop: "ariaLabel", type: "string", defaultValue: "-", description: "Rotulo de acessibilidade para leitores de tela." },
   { prop: "className", type: "string", defaultValue: "-", description: "Classe CSS extra aplicada ao input range." },
@@ -363,7 +363,7 @@ export default function SgSliderPage() {
               minValue={0}
               maxValue={100}
               value={65}
-              disabled
+              enabled={false}
               ariaLabel="Slider desabilitado"
               width="20rem"
             />

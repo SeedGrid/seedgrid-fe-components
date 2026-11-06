@@ -46,7 +46,7 @@ export type SgYearPartSelectorProps = {
   maxYear?: number;
   /** Locale dos rotulos. Default "pt-BR". */
   locale?: string;
-  disabled?: boolean;
+  enabled?: boolean;
   required?: boolean;
   className?: string;
 };
@@ -86,7 +86,7 @@ export function SgYearPartSelector(props: Readonly<SgYearPartSelectorProps>) {
     minYear,
     maxYear,
     locale = "pt-BR",
-    disabled,
+    enabled = true,
     required,
     className
   } = props;
@@ -157,7 +157,6 @@ export function SgYearPartSelector(props: Readonly<SgYearPartSelectorProps>) {
   );
 
   const showKind = kinds.length > 1;
-  const enabled = disabled ? false : undefined;
 
   /*
    * Flex em vez de grid de 3 colunas: com o combo de recorte escondido a linha reflui para dois

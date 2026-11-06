@@ -63,7 +63,7 @@ function renderWithLocale(locale, element) {
 
 test("SgButton renders disabled state and visible label", () => {
   const html = renderToStaticMarkup(
-    React.createElement(SgButton, { label: "Save", disabled: true })
+    React.createElement(SgButton, { label: "Save", enabled: false })
   );
 
   assert.match(html, /<button/);
@@ -157,7 +157,7 @@ test("SgDockMenu exposes accessible item buttons with labels and disabled state"
     React.createElement(SgDockMenu, {
       items: [
         { id: "home", label: "Home", icon: React.createElement("span", null, "H") },
-        { id: "alerts", label: "Alerts", icon: React.createElement("span", null, "A"), disabled: true }
+        { id: "alerts", label: "Alerts", icon: React.createElement("span", null, "A"), enabled: false }
       ],
       showLabels: false
     })

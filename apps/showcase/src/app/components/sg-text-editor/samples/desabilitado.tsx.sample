@@ -5,7 +5,7 @@ export default function Example() {
     <SgTextEditor
       id="sg-text-editor-disabled"
       valueHtml="<p><strong>Locked content</strong></p>"
-      disabled
+      enabled={false}
       showCssEditor={false}
     />
   );

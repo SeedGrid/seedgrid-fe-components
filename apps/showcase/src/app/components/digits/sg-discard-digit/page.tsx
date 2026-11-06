@@ -166,8 +166,8 @@ const proxima = () => {
       {texts.section6PageLabelPrefix} <strong>{pagina}</strong> {texts.section6PageLabelConnector} {TOTAL_PAGES}
     </p>
     <div className="flex gap-2">
-      <SgButton size="sm" onClick={anterior} disabled={pagina <= 1}>{texts.section6PreviousButton}</SgButton>
-      <SgButton size="sm" onClick={proxima} disabled={pagina >= TOTAL_PAGES}>{texts.section6NextButton}</SgButton>
+      <SgButton size="sm" onClick={anterior} enabled={!(pagina <= 1)}>{texts.section6PreviousButton}</SgButton>
+      <SgButton size="sm" onClick={proxima} enabled={!(pagina >= TOTAL_PAGES)}>{texts.section6NextButton}</SgButton>
     </div>
   </div>
 </div>`;
@@ -278,8 +278,8 @@ export default function App() {
           <div className="space-y-2">
             <p className="text-xs text-muted-foreground">Pagina {pagina} de {totalNumberPages}</p>
             <div className="flex gap-2">
-              <SgButton size="sm" onClick={anterior} disabled={pagina <= 1}>Previous</SgButton>
-              <SgButton size="sm" onClick={proxima} disabled={pagina >= totalNumberPages}>Proxima</SgButton>
+              <SgButton size="sm" onClick={anterior} enabled={!(pagina <= 1)}>Previous</SgButton>
+              <SgButton size="sm" onClick={proxima} enabled={!(pagina >= totalNumberPages)}>Proxima</SgButton>
             </div>
           </div>
         </div>
@@ -484,10 +484,10 @@ export default function SgDiscardDigitShowcase() {
                 {t(i18n, `${K}.section6PageLabelConnector`)} {TOTAL_PAGES}
               </p>
               <div className="flex gap-2">
-                <SgButton size="sm" onClick={handlePrevious} disabled={paginaAtual <= 1}>
+                <SgButton size="sm" onClick={handlePrevious} enabled={!(paginaAtual <= 1)}>
                   {t(i18n, `${K}.section6PreviousButton`)}
                 </SgButton>
-                <SgButton size="sm" onClick={handleProxima} disabled={paginaAtual >= TOTAL_PAGES}>
+                <SgButton size="sm" onClick={handleProxima} enabled={!(paginaAtual >= TOTAL_PAGES)}>
                   {t(i18n, `${K}.section6NextButton`)}
                 </SgButton>
               </div>

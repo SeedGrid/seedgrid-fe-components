@@ -101,7 +101,7 @@ const BADGE_PROPS: ShowcasePropRow[] = [
   { prop: "max / showZero", type: "number / boolean", defaultValue: "99 / false", description: "Controle para badges numéricos." },
   { prop: "leftIcon / rightIcon", type: "ReactNode", defaultValue: "-", description: "Ícones opcionais." },
   { prop: "removable / autoRemove / onRemove", type: "boolean / boolean / callback", defaultValue: "false / true / -", description: "Comportamento de remoção." },
-  { prop: "onClick / disabled / title / hint", type: "event / boolean / string / string", defaultValue: "- / false / - / -", description: "Interação e metadados." },
+  { prop: "onClick / enabled / title / hint", type: "event / boolean / string / string", defaultValue: "- / true / - / -", description: "Interação e metadados." },
   { prop: "customColors / className / style / partsClassName", type: "objeto / string / CSSProperties / objeto", defaultValue: "-", description: "Customização visual avançada." }
 ];
 

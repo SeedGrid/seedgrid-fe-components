@@ -60,7 +60,7 @@ export type SgAccordionItem = {
   id?: string | number;
   title: React.ReactNode;
   content: React.ReactNode;
-  disabled?: boolean;
+  enabled?: boolean;
   icon?: React.ReactNode;
   end?: React.ReactNode;
   className?: string;
@@ -160,7 +160,7 @@ export function SgAccordion(props: Readonly<SgAccordionProps>) {
   const handleToggle = React.useCallback(
     (index: number) => {
       const item = items[index];
-      if (!item || item.disabled) return;
+      if (!item || (item.enabled === false)) return;
       const isOpen = openSet.has(index);
       if (isOpen && !collapsible) return;
 
@@ -197,7 +197,7 @@ export function SgAccordion(props: Readonly<SgAccordionProps>) {
         const sharedButtonClasses = cn(
           "inline-flex items-center gap-2 text-left font-medium transition-[filter,colors] duration-150",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
-          item.disabled ? "cursor-not-allowed opacity-55" : "cursor-pointer hover:brightness-95"
+          (item.enabled === false) ? "cursor-not-allowed opacity-55" : "cursor-pointer hover:brightness-95"
         );
 
         return (
@@ -223,7 +223,7 @@ export function SgAccordion(props: Readonly<SgAccordionProps>) {
             <button
               id={headerId}
               type="button"
-              disabled={item.disabled}
+              disabled={item.enabled === false}
               aria-controls={contentId}
               aria-expanded={isOpen}
               className={cn(

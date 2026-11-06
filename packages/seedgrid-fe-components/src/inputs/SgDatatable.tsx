@@ -1055,24 +1055,24 @@ function SgDatatableBase<T extends SgDatatableRow>(
 
   const resolvedColumnManagerLabel =
     columnManagerLabel ??
-    resolveMessage(t(i18n, "components.datatable.columns"), "components.datatable.columns", "Colunas");
+    resolveMessage(t(i18n, "components.datatable.columns"), "components.datatable.columns", "Columns");
 
   const restoreColumnsLabel = resolveMessage(
     t(i18n, "components.datatable.restoreColumns"),
     "components.datatable.restoreColumns",
-    "Restaurar padrão"
+    "Restore default"
   );
 
   const showAllColumnsLabel = resolveMessage(
     t(i18n, "components.datatable.showAllColumns"),
     "components.datatable.showAllColumns",
-    "Mostrar todas"
+    "Show all"
   );
 
   const dragHandleLabel = resolveMessage(
     t(i18n, "components.datatable.dragToReorder"),
     "components.datatable.dragToReorder",
-    "Arrastar para reordenar"
+    "Drag to reorder"
   );
 
   const toggleColumnVisibility = React.useCallback(
@@ -1154,14 +1154,14 @@ function SgDatatableBase<T extends SgDatatableRow>(
     typeof column.header === "string" || typeof column.header === "number"
       ? String(column.header)
       : column.field ?? "";
-  const sortByLabel = resolveMessage(t(i18n, "components.datatable.sortBy"), "components.datatable.sortBy", "Ordenar por");
-  const sortNoneLabel = resolveMessage(t(i18n, "components.datatable.sortNone"), "components.datatable.sortNone", "Sem ordem");
+  const sortByLabel = resolveMessage(t(i18n, "components.datatable.sortBy"), "components.datatable.sortBy", "Sort by");
+  const sortNoneLabel = resolveMessage(t(i18n, "components.datatable.sortNone"), "components.datatable.sortNone", "No order");
   const sortDirectionLabel = resolveMessage(
     t(i18n, "components.datatable.sortDirection"),
     "components.datatable.sortDirection",
-    "Inverter ordem"
+    "Reverse order"
   );
-  const filtersPanelLabel = resolveMessage(t(i18n, "components.datatable.filters"), "components.datatable.filters", "Filtros");
+  const filtersPanelLabel = resolveMessage(t(i18n, "components.datatable.filters"), "components.datatable.filters", "Filters");
 
   const resolvedTitle = (groupBoxProps.title ?? title ?? "").trim() || " ";
 
@@ -1347,7 +1347,7 @@ function SgDatatableBase<T extends SgDatatableRow>(
                           iconOnly
                           aria-label={sortDirectionLabel}
                           title={sortDirectionLabel}
-                          disabled={!currentSortField || currentSortOrder === 0}
+                          enabled={!(!currentSortField || currentSortOrder === 0)}
                           onClick={() => {
                             if (!currentSortField) return;
                             commitSort(currentSortField, currentSortOrder === 1 ? -1 : 1);
@@ -1691,7 +1691,7 @@ function SgDatatableBase<T extends SgDatatableRow>(
                   iconOnly
                   aria-label={firstLabel}
                   title={firstLabel}
-                  disabled={currentPage <= 1}
+                  enabled={!(currentPage <= 1)}
                   onClick={() => goToPage(1)}
                   leftIcon={<ChevronFirst size={16} />}
                 />
@@ -1703,7 +1703,7 @@ function SgDatatableBase<T extends SgDatatableRow>(
                   iconOnly
                   aria-label={prevLabel}
                   title={prevLabel}
-                  disabled={currentPage <= 1}
+                  enabled={!(currentPage <= 1)}
                   onClick={() => goToPage(currentPage - 1)}
                   leftIcon={<ChevronLeft size={16} />}
                 />
@@ -1749,7 +1749,7 @@ function SgDatatableBase<T extends SgDatatableRow>(
                   iconOnly
                   aria-label={nextLabel}
                   title={nextLabel}
-                  disabled={currentPage >= pageCount}
+                  enabled={!(currentPage >= pageCount)}
                   onClick={() => goToPage(currentPage + 1)}
                   leftIcon={<ChevronRight size={16} />}
                 />
@@ -1761,7 +1761,7 @@ function SgDatatableBase<T extends SgDatatableRow>(
                   iconOnly
                   aria-label={lastLabel}
                   title={lastLabel}
-                  disabled={currentPage >= pageCount}
+                  enabled={!(currentPage >= pageCount)}
                   onClick={() => goToPage(pageCount)}
                   leftIcon={<ChevronLast size={16} />}
                 />

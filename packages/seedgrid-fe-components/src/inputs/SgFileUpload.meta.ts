@@ -24,7 +24,7 @@ export const sgMeta: SgMetaV0 = {
     { name: "maxFiles", type: "number", default: 1, description: "Quantos arquivos o campo guarda. Com 1, escolher outro substitui; maior que 1 liga a selecao multipla.", semanticRole: "validation", bindable: true },
     { name: "maxSizePerFile", type: "SizeLimit", description: "Tamanho maximo de cada arquivo: bytes (numero) ou texto com unidade (\"500KB\", \"1.5MB\", \"1GB\").", semanticRole: "validation", bindable: true },
     { name: "maxSizeTotal", type: "SizeLimit", description: "Tamanho maximo da soma dos arquivos: bytes (numero) ou texto com unidade.", semanticRole: "validation", bindable: true },
-    { name: "disabled", type: "boolean", default: false, description: "Desabilita a escolha e a remocao.", semanticRole: "appearance", bindable: true },
+    { name: "enabled", type: "boolean", default: true, description: "Desabilita a escolha e a remocao.", semanticRole: "appearance", bindable: true },
     { name: "onChange", type: "(files: SgFileValue[]) => void", description: "Lista de arquivos validos apos escolher ou remover.", semanticRole: "event", bindable: false },
     { name: "onError", type: "(code: FileErrorCode, message: string, fileName: string) => void", description: "Arquivo recusado (type, size, total, count). Os demais seguem validos.", semanticRole: "event", bindable: false }
   ],

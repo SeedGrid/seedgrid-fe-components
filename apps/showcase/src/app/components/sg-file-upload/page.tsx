@@ -167,7 +167,7 @@ export default function SgFileUploadPage() {
     { prop: "maxSizePerFile", type: "number | string", defaultValue: "-", description: t(i18n, "showcase.component.fileUpload.props.rows.maxSizePerFile") },
     { prop: "maxSizeTotal", type: "number | string", defaultValue: "-", description: t(i18n, "showcase.component.fileUpload.props.rows.maxSizeTotal") },
     { prop: "required / requiredMessage", type: "boolean / string", defaultValue: "false / auto", description: t(i18n, "showcase.component.fileUpload.props.rows.required") },
-    { prop: "disabled / readOnly", type: "boolean", defaultValue: "false", description: t(i18n, "showcase.component.fileUpload.props.rows.locked") },
+    { prop: "enabled / readOnly", type: "boolean", defaultValue: "true / false", description: t(i18n, "showcase.component.fileUpload.props.rows.locked") },
     { prop: "hintText", type: "string", defaultValue: "-", description: t(i18n, "showcase.component.fileUpload.props.rows.hintText") },
     { prop: "extraCheck", type: "(file: File, info: { mime: string }) => Promise<SgFileRejection | null>", defaultValue: "-", description: t(i18n, "showcase.component.fileUpload.props.rows.extraCheck") },
     { prop: "thumbnailBuilder / thumbnailSize", type: "(file, size) => ReactNode / number", defaultValue: "- / 96", description: t(i18n, "showcase.component.fileUpload.props.rows.thumbnail") },
@@ -292,7 +292,7 @@ export default function SgFileUploadPage() {
             <SgFileUpload
               id="demo-disabled"
               label={t(i18n, "showcase.component.fileUpload.labels.attachment")}
-              disabled
+              enabled={false}
               defaultValue={[{ name: "contrato.pdf", url: "/contrato.pdf", size: 482304 }]}
             />
           </div>

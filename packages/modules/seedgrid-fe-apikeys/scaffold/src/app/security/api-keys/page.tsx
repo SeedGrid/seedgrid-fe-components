@@ -325,7 +325,7 @@ function ApiKeysScreen() {
               shape="rounded"
               label={t("security.api_keys.form.create")}
               loading={pendingCreate}
-              disabled={pendingCreate || !createRole.trim() || !createName.trim()}
+              enabled={!(pendingCreate || !createRole.trim() || !createName.trim())}
               onClick={handleCreate}
             />
           </div>

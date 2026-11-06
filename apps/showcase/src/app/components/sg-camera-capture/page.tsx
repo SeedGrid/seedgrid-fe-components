@@ -168,7 +168,7 @@ export default function SgCameraCapturePage() {
     { prop: "allowSwitch", type: "boolean", defaultValue: "true", description: t(i18n, "showcase.component.cameraCapture.props.rows.allowSwitch") },
     { prop: "previewHeight", type: "number", defaultValue: "320", description: t(i18n, "showcase.component.cameraCapture.props.rows.previewHeight") },
     { prop: "hintText", type: "string", defaultValue: "-", description: t(i18n, "showcase.component.cameraCapture.props.rows.hintText") },
-    { prop: "disabled", type: "boolean", defaultValue: "false", description: t(i18n, "showcase.component.cameraCapture.props.rows.disabled") }
+    { prop: "enabled", type: "boolean", defaultValue: "true", description: t(i18n, "showcase.component.cameraCapture.props.rows.disabled") }
   ];
 
   return (

@@ -20,7 +20,7 @@ export const sgMeta: SgMetaV0 = {
     { name: "step", type: "number", default: 1, description: "Incremento e decremento aplicados.", semanticRole: "behavior", bindable: true },
     { name: "value", type: "number", description: "Valor atual controlado.", semanticRole: "value", bindable: true },
     { name: "readOnly", type: "boolean", default: false, description: "Permite visualizacao sem edicao direta.", semanticRole: "behavior", bindable: true },
-    { name: "disabled", type: "boolean", default: false, description: "Desabilita interacao.", semanticRole: "behavior", bindable: true },
+    { name: "enabled", type: "boolean", default: true, description: "Desabilita interacao.", semanticRole: "behavior", bindable: true },
     { name: "onChange", type: "(value: number) => void", description: "Callback de mudanca.", semanticRole: "event", bindable: false }
   ],
   states: ["default", "disabled", "readOnly", "error"],

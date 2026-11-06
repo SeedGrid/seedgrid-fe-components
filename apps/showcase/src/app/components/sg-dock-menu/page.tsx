@@ -320,7 +320,7 @@ export default function Example() {
   const disabledItems: SgDockMenuItem[] = [
     { id: "home", icon: <Home size={24} />, label: "Home" },
     { id: "mail", icon: <Mail size={24} />, label: "Mail", badge: 5 },
-    { id: "notifications", icon: <Bell size={24} />, label: "Notifications", badge: 12, disabled: true },
+    { id: "notifications", icon: <Bell size={24} />, label: "Notifications", badge: 12, enabled: false },
     { id: "settings", icon: <Settings size={24} />, label: "Settings" },
     { id: "profile", icon: <User size={24} />, label: "Profile" }
   ];
@@ -426,7 +426,7 @@ export default function SgDockMenuPage() {
   }));
 
   const disabledItems: SgDockMenuItem[] = basicItems.map((item, index) =>
-    index === 2 ? { ...item, disabled: true } : item
+    index === 2 ? { ...item, enabled: false } : item
   );
 
   const externalBadgeItems: SgDockMenuItem[] = [

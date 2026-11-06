@@ -91,7 +91,7 @@ function findTypeAheadMatchIndex<T>(
   for (let offset = 1; offset <= entries.length; offset += 1) {
     const index = (startIndex + offset + entries.length) % entries.length;
     const entry = entries[index];
-    if (!entry || entry.item.disabled) continue;
+    if (!entry || (entry.item.enabled === false)) continue;
 
     const label = entry.item.label?.toLowerCase() ?? "";
     if (label.startsWith(normalized)) return index;
@@ -289,7 +289,7 @@ function SgComboboxBase<T = SgAutocompleteItem>(props: Readonly<SgComboboxProps<
   const selectIndex = React.useCallback(
     (index: number) => {
       const entry = entries[index];
-      if (!entry || entry.item.disabled) return;
+      if (!entry || (entry.item.enabled === false)) return;
       setSelectedValue(entry.item.id);
       setLastSelectedLabel(entry.item.label);
       onSelect?.(entry.raw);
@@ -332,7 +332,7 @@ function SgComboboxBase<T = SgAutocompleteItem>(props: Readonly<SgComboboxProps<
       if (nextIndex < 0) return;
 
       const nextEntry = availableEntries[nextIndex];
-      if (!nextEntry || nextEntry.item.disabled) return;
+      if (!nextEntry || (nextEntry.item.enabled === false)) return;
 
       setSelectedValue(nextEntry.item.id);
       setLastSelectedLabel(nextEntry.item.label);
@@ -558,7 +558,7 @@ function SgComboboxBase<T = SgAutocompleteItem>(props: Readonly<SgComboboxProps<
                       return (
                         <div
                           key={entry.item.id}
-                          className={`group relative cursor-pointer px-3 py-2 text-sm ${isActive ? "bg-muted/60" : ""} ${entry.item.disabled ? "cursor-not-allowed opacity-50" : "hover:bg-muted/40"}`}
+                          className={`group relative cursor-pointer px-3 py-2 text-sm ${isActive ? "bg-muted/60" : ""} ${(entry.item.enabled === false) ? "cursor-not-allowed opacity-50" : "hover:bg-muted/40"}`}
                           onMouseEnter={() => setActiveIndex(index)}
                           onMouseDown={(event) => {
                             event.preventDefault();
@@ -583,7 +583,7 @@ function SgComboboxBase<T = SgAutocompleteItem>(props: Readonly<SgComboboxProps<
                   return (
                     <div
                       key={entry.item.id}
-                      className={`group relative cursor-pointer px-3 py-2 text-sm ${isActive ? "bg-muted/60" : ""} ${entry.item.disabled ? "cursor-not-allowed opacity-50" : "hover:bg-muted/40"}`}
+                      className={`group relative cursor-pointer px-3 py-2 text-sm ${isActive ? "bg-muted/60" : ""} ${(entry.item.enabled === false) ? "cursor-not-allowed opacity-50" : "hover:bg-muted/40"}`}
                       onMouseEnter={() => setActiveIndex(index)}
                       onMouseDown={(event) => {
                         event.preventDefault();

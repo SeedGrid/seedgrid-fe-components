@@ -104,7 +104,7 @@ export default function SgFloatActionButtonPage() {
       { prop: "elevation", type: "\"none\" | \"sm\" | \"md\" | \"lg\"", defaultValue: "\"md\"", description: t(i18n, "showcase.component.fab.props.rows.elevation") },
       { prop: "hint / hintPosition / hintDelay", type: "string / token / number", defaultValue: "- / top / 300", description: t(i18n, "showcase.component.fab.props.rows.hint") },
       { prop: "animation / animationOn", type: "token / \"hover\" | \"always\"", defaultValue: "scale / hover", description: t(i18n, "showcase.component.fab.props.rows.animation") },
-      { prop: "disabled / loading", type: "boolean", defaultValue: "false", description: t(i18n, "showcase.component.fab.props.rows.disabledLoading") },
+      { prop: "enabled / loading", type: "boolean", defaultValue: "true / false", description: t(i18n, "showcase.component.fab.props.rows.disabledLoading") },
       { prop: "enableDragDrop / dragId", type: "boolean / string", defaultValue: "false / -", description: t(i18n, "showcase.component.fab.props.rows.enableDragDropDragId") },
       { prop: "onClick", type: "() => void", defaultValue: "-", description: t(i18n, "showcase.component.fab.props.rows.onClick") }
     ],
@@ -595,7 +595,7 @@ export default function SgFloatActionButtonPage() {
       >
         <div className="flex gap-6 items-center">
           <div className="flex flex-col items-center gap-2">
-            <SgFloatActionButton disabled onClick={() => {}} style={{ position: "relative" }} />
+            <SgFloatActionButton enabled={false} onClick={() => {}} style={{ position: "relative" }} />
             <span className="text-xs text-muted-foreground">disabled</span>
           </div>
           <div className="flex flex-col items-center gap-2">

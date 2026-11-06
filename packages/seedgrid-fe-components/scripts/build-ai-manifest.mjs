@@ -152,6 +152,7 @@ async function main() {
     loadComponentMeta(path.join("gadgets", "clock", "SgTimeProvider.meta.js")),
     loadComponentMeta(path.join("gadgets", "clock", "useSgTime.meta.js")),
     loadComponentMeta(path.join("realtime", "SgRealtimeProvider.meta.js")),
+    loadComponentMeta(path.join("notifications", "SgNotificationBell.meta.js")),
     loadComponentMeta(path.join("realtime", "useSgRealtimeEvent.meta.js")),
     loadComponentMeta(path.join("realtime", "useSgRealtimeStatus.meta.js")),
     loadComponentMeta(path.join("gadgets", "clock", "themes", "SgClockThemePicker.meta.js")),

@@ -51,7 +51,7 @@ export type SgFileUploadProps = RhfFieldProps & {
   hintText?: string;
   required?: boolean;
   requiredMessage?: string;
-  disabled?: boolean;
+  enabled?: boolean;
   readOnly?: boolean;
   className?: string;
   onEnter?: () => void;
@@ -157,7 +157,7 @@ function SgFileUploadBase(props: SgFileUploadProps) {
     maxSizeTotal,
     hintText,
     required,
-    disabled,
+    enabled = true,
     readOnly,
     className,
     onEnter,
@@ -183,7 +183,7 @@ function SgFileUploadBase(props: SgFileUploadProps) {
   const [loading, setLoading] = React.useState(false);
   const [dragging, setDragging] = React.useState(false);
   const inputRef = React.useRef<HTMLInputElement | null>(null);
-  const locked = Boolean(disabled || readOnly);
+  const locked = Boolean(!enabled || readOnly);
   const text = label ?? labelText ?? "";
 
   const typesText = () => {

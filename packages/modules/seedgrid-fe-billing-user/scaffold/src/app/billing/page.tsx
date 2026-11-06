@@ -119,7 +119,7 @@ function BillingScreen() {
             shape="rounded"
             label={t("billing.user.manage_action")}
             loading={openingPortal}
-            disabled={loading || !subscription}
+            enabled={!(loading || !subscription)}
             onClick={() => void handleOpenPortal()}
           />
         </SgStack>
@@ -178,7 +178,7 @@ function BillingScreen() {
                     shape="rounded"
                     label={t("billing.user.actions.cancel_scheduled_change")}
                     loading={busyAction}
-                    disabled={busyAction}
+                    enabled={!busyAction}
                     onClick={() =>
                       void runAction(
                         "/api/billing/cancel-scheduled-change",
@@ -196,7 +196,7 @@ function BillingScreen() {
                     shape="rounded"
                     label={t("billing.user.actions.reactivate")}
                     loading={busyAction}
-                    disabled={busyAction}
+                    enabled={!busyAction}
                     onClick={() =>
                       void runAction(
                         "/api/billing/reactivate",
@@ -211,7 +211,7 @@ function BillingScreen() {
                     severity="danger"
                     shape="rounded"
                     label={t("billing.user.actions.cancel")}
-                    disabled={busyAction}
+                    enabled={!busyAction}
                     onClick={() => setConfirmCancel(true)}
                   />
                 )}

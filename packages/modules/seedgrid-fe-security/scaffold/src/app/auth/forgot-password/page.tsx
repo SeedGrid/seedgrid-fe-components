@@ -153,7 +153,7 @@ export default function ForgotPasswordPage() {
                 shape="rounded"
                 label={t("security.forgot_password.submit")}
                 loading={pending}
-                disabled={pending}
+                enabled={!pending}
                 type="submit"
               />
             </SgStack>

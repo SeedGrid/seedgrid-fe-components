@@ -33,7 +33,7 @@ export type SgAvatarProps = Omit<React.HTMLAttributes<HTMLSpanElement>, "childre
   shape?: SgAvatarShape;
   severity?: SgAvatarSeverity;
   bordered?: boolean;
-  disabled?: boolean;
+  enabled?: boolean;
   customColors?: SgAvatarCustomColors;
   imageClassName?: string;
   children?: React.ReactNode;
@@ -174,7 +174,7 @@ export const SgAvatar = React.forwardRef<HTMLSpanElement, SgAvatarProps>(
       shape = "circle",
       severity = "primary",
       bordered = true,
-      disabled = false,
+      enabled = true,
       customColors,
       className,
       imageClassName,
@@ -214,7 +214,7 @@ export const SgAvatar = React.forwardRef<HTMLSpanElement, SgAvatarProps>(
         title={title}
         role={role}
         tabIndex={tabIndex}
-        onClick={disabled ? undefined : onClick}
+        onClick={!enabled ? undefined : onClick}
         aria-label={resolvedAriaLabel}
         style={{ ...buildVars(severity, customColors), ...style }}
         className={cn(
@@ -228,7 +228,7 @@ export const SgAvatar = React.forwardRef<HTMLSpanElement, SgAvatarProps>(
           interactive
             ? "cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--sg-avatar-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             : "",
-          disabled ? "pointer-events-none opacity-55" : "",
+          !enabled ? "pointer-events-none opacity-55" : "",
           className
         )}
         {...rest}

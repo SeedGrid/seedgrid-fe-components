@@ -10,7 +10,7 @@ export default function Example() {
       onClick={() => {}}
       items={[
         { label: "Update", icon: <RefreshCw className="size-4" />, onClick: () => {} },
-        { label: "Delete (disabled)", icon: <Trash2 className="size-4" />, onClick: () => {}, disabled: true },
+        { label: "Delete (disabled)", icon: <Trash2 className="size-4" />, onClick: () => {}, enabled: false },
         { label: "Homepage", icon: <Home className="size-4" />, onClick: () => {} }
       ]}
     />

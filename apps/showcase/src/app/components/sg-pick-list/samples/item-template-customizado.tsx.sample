@@ -6,7 +6,7 @@ export default function Example() {
     source: [
       { label: "Frontend", value: "frontend", data: { owner: "Ana", effort: "M" } },
       { label: "Backend", value: "backend", data: { owner: "Bruno", effort: "L" } },
-      { label: "QA", value: "qa", data: { owner: "Carla", effort: "S" }, disabled: true }
+      { label: "QA", value: "qa", data: { owner: "Carla", effort: "S" }, enabled: false }
     ] as SgPickListItem[],
     target: [] as SgPickListItem[]
   });

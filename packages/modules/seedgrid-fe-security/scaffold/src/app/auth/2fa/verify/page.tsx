@@ -269,7 +269,7 @@ export default function TwoFactorVerifyPage() {
                   shape="rounded"
                   label={translate("security.auth.two_factor.resend")}
                   loading={resending}
-                  disabled={resending || pending || !auth.pendingTwoFactor}
+                  enabled={!(resending || pending || !auth.pendingTwoFactor)}
                   onClick={() => {
                     void handleResendEmail();
                   }}

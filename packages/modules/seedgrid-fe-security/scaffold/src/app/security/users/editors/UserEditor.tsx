@@ -453,7 +453,7 @@ export function UserEditor({ publicId }: UserEditorProps) {
                   shape="rounded"
                   label={t("security.common.save")}
                   loading={saving}
-                  disabled={saving}
+                  enabled={!saving}
                   type="submit"
                 />
               </SgStack>

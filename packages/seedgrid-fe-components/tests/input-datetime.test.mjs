@@ -34,6 +34,19 @@ test("vetores compartilhados: React produz exatamente o que foi gravado", { skip
   for (const c of V.format) assert.equal(L.formatWallClock(c.local, c.locale, c.seconds), c.out, JSON.stringify(c));
 });
 
+test("formatWallClock por idioma (mesma entrada e saida do teste Dart)", () => {
+  const esperado = { "pt-BR": "05/11/2026 14:30", "pt-PT": "05/11/2026 14:30", "en-US": "11/5/2026 14:30", es: "5/11/2026 14:30", fr: "05/11/2026 14:30" };
+  for (const [locale, out] of Object.entries(esperado)) assert.equal(L.formatWallClock("2026-11-05T14:30", locale), out, locale);
+  assert.equal(L.formatWallClock("2026-11-05T14:30:09", "es", true), "5/11/2026 14:30:09");
+  assert.equal(L.formatWallClock("2026-11-05T14:30", "xx-YY"), "05/11/2026 14:30");
+});
+
+test("formatLocalizedDate por idioma (mensagens do SgInputDate; mesma entrada e saida do teste Dart)", () => {
+  const esperado = { "pt-BR": "05/11/2026", "pt-PT": "05/11/2026", "en-US": "11/5/2026", es: "5/11/2026", fr: "05/11/2026" };
+  for (const [locale, out] of Object.entries(esperado)) assert.equal(L.formatLocalizedDate(2026, 11, 5, locale), out, locale);
+  assert.equal(L.formatLocalizedDate(2026, 11, 5, "xx-YY"), "05/11/2026");
+});
+
 test("fuso IANA (so React): Sao Paulo e UTC-3 sem horario de verao", () => {
   assert.equal(L.instantToWallClock("2026-11-03T17:30:00.000Z", "America/Sao_Paulo"), "2026-11-03T14:30");
   assert.equal(L.wallClockToInstant("2026-11-03T14:30", "America/Sao_Paulo"), "2026-11-03T17:30:00.000Z");

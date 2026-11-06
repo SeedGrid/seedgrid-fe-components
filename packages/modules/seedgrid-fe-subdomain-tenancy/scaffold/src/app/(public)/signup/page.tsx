@@ -449,7 +449,7 @@ export default function TenantSignupPage() {
                       severity="primary"
                       shape="rounded"
                       label={t("multitenancy.signup.verification.resend")}
-                      disabled={isValidatingVerificationEmail}
+                      enabled={!isValidatingVerificationEmail}
                       loading={isResendingVerificationEmail}
                       type="button"
                       leftIcon={<RefreshCcw className="size-4" />}

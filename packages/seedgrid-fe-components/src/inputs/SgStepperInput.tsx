@@ -30,7 +30,6 @@ type StepperInputProps = Omit<
   | "step"
   | "value"
   | "defaultValue"
-  | "disabled"
   | "readOnly"
   | "aria-label"
 > & {
@@ -44,7 +43,7 @@ export type SgStepperInputProps = {
   step?: number;
   value?: number;
   defaultValue?: number;
-  disabled?: boolean;
+  enabled?: boolean;
   readOnly?: boolean;
   onChange?: (value: number) => void;
   ariaLabel?: string;
@@ -85,7 +84,7 @@ function SgStepperInputBase(props: Readonly<SgStepperInputBaseProps>) {
     step = 1,
     value,
     defaultValue,
-    disabled = false,
+    enabled = true,
     readOnly = false,
     onChange,
     ariaLabel,
@@ -126,15 +125,15 @@ function SgStepperInputBase(props: Readonly<SgStepperInputBaseProps>) {
     [isControlled, onChange, safeMax, safeMin]
   );
 
-  const canDecrease = !disabled && !readOnly && currentValue > safeMin;
-  const canIncrease = !disabled && !readOnly && currentValue < safeMax;
+  const canDecrease = enabled && !readOnly && currentValue > safeMin;
+  const canIncrease = enabled && !readOnly && currentValue < safeMax;
 
   return (
     <div style={{ width: toCssSize(width) }}>
       <div
         className={cn(
           "inline-flex h-10 w-full overflow-hidden rounded-md border border-border bg-background",
-          disabled ? "opacity-60" : "",
+          !enabled ? "opacity-60" : "",
           error ? "border-[hsl(var(--destructive))]" : "",
           className
         )}
@@ -146,7 +145,7 @@ function SgStepperInputBase(props: Readonly<SgStepperInputBaseProps>) {
           max={safeMax}
           step={safeStep}
           value={currentValue}
-          disabled={disabled}
+          disabled={!enabled}
           readOnly={readOnly}
           aria-label={ariaLabel}
           aria-invalid={error ? true : undefined}

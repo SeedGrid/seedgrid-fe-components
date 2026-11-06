@@ -13,7 +13,7 @@ export interface SgRadioGroupOption {
   label: string;
   value: string | number;
   icon?: React.ReactNode;
-  disabled?: boolean;
+  enabled?: boolean;
 }
 
 export interface SgRadioGroupProps extends RhfFieldProps {
@@ -24,7 +24,7 @@ export interface SgRadioGroupProps extends RhfFieldProps {
   orientation?: SgRadioGroupOrientation;
   selectionStyle?: SgRadioGroupSelectionStyle;
   iconOnly?: boolean;
-  disabled?: boolean;
+  enabled?: boolean;
   readOnly?: boolean;
   required?: boolean;
   onChange?: (value: string | number | null) => void;
@@ -47,7 +47,7 @@ export function SgRadioGroup(props: SgRadioGroupProps) {
     orientation = "vertical",
     selectionStyle = "radio",
     iconOnly = false,
-    disabled = false,
+    enabled = true,
     readOnly = false,
     required = false,
     onChange,
@@ -77,7 +77,7 @@ export function SgRadioGroup(props: SgRadioGroupProps) {
   const isHighlightSelection = selectionStyle === "highlight";
 
   const handleChange = (newValue: string | number | null) => {
-    if (disabled || readOnly) return;
+    if (!enabled || readOnly) return;
 
     if (!isControlled) {
       setInternalValue(newValue);
@@ -92,7 +92,7 @@ export function SgRadioGroup(props: SgRadioGroupProps) {
     registration?: { name?: string; onChange: (event: React.ChangeEvent<HTMLInputElement>) => void }
   ) => {
     const isSelected = currentValue === option.value;
-    const isDisabled = disabled || option.disabled;
+    const isDisabled = !enabled || (option.enabled === false);
     const inputClassName = isHighlightSelection
       ? "sr-only"
       : "w-4 h-4 text-[rgb(var(--sg-primary-500))] border-[rgb(var(--sg-border))] focus:ring-[rgb(var(--sg-ring))] focus:ring-2 cursor-pointer disabled:cursor-not-allowed";
@@ -204,7 +204,7 @@ export function SgRadioGroup(props: SgRadioGroupProps) {
             ${orientation === "vertical" ? "flex-col" : "flex-row flex-wrap"}
           `}
           role="radiogroup"
-          aria-disabled={disabled || undefined}
+          aria-disabled={!enabled || undefined}
           aria-readonly={readOnly || undefined}
           aria-required={required || undefined}
         >
@@ -261,7 +261,7 @@ export function SgRadioGroup(props: SgRadioGroupProps) {
               ${orientation === "vertical" ? "flex-col" : "flex-row flex-wrap"}
             `}
             role="radiogroup"
-            aria-disabled={disabled || undefined}
+            aria-disabled={!enabled || undefined}
             aria-readonly={readOnly || undefined}
             aria-required={required || undefined}
           >

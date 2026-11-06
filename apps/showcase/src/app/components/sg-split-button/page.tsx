@@ -112,7 +112,7 @@ export default function App() {
         appearance={appearance}
         size={size}
         loading={loading}
-        disabled={disabled}
+        enabled={!disabled}
         onClick={() => {}}
         items={items}
       />
@@ -129,7 +129,7 @@ const SPLIT_BUTTON_PROPS: ShowcasePropRow[] = [
   { prop: "size", type: '"sm" | "md" | "lg"', defaultValue: '"md"', description: "Component size." },
   { prop: "leftIcon", type: "ReactNode", defaultValue: "-", description: "Icon in the main button." },
   { prop: "elevation", type: '"none" | "sm" | "md" | "lg"', defaultValue: '"none"', description: "Shadow elevation level." },
-  { prop: "disabled", type: "boolean", defaultValue: "false", description: "Disables main action and menu." },
+  { prop: "enabled", type: "boolean", defaultValue: "true", description: "Disables main action and menu." },
   { prop: "loading", type: "boolean", defaultValue: "false", description: "Shows loading spinner in main action." },
   { prop: "className / style", type: "string / React.CSSProperties", defaultValue: "-", description: "Visual customization of the split button container." }
 ];
@@ -310,8 +310,8 @@ export default function SgSplitButtonShowcase() {
 
         <Section id="exemplo-9" title={texts.sectionTitles[8] ?? ""} description={texts.sectionDescriptions[8] ?? ""}>
           <Row>
-            <SgSplitButton label={texts.labels.save} leftIcon={<Save className="size-4" />} disabled onClick={() => {}} items={basicItems} />
-            <SgSplitButton label={texts.labels.disabledOutline} severity="danger" appearance="outline" disabled onClick={() => {}} items={basicItems} />
+            <SgSplitButton label={texts.labels.save} leftIcon={<Save className="size-4" />} enabled={false} onClick={() => {}} items={basicItems} />
+            <SgSplitButton label={texts.labels.disabledOutline} severity="danger" appearance="outline" enabled={false} onClick={() => {}} items={basicItems} />
           </Row>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-split-button/samples/disabled.tsx.sample" />
         </Section>
@@ -332,7 +332,7 @@ export default function SgSplitButtonShowcase() {
               onClick={() => console.log(texts.labels.actions)}
               items={[
                 { label: texts.labels.update, icon: <RefreshCw className="size-4" />, onClick: () => console.log(texts.labels.update) },
-                { label: texts.labels.deleteDisabled, icon: <Trash2 className="size-4" />, onClick: () => console.log(texts.labels.delete), disabled: true },
+                { label: texts.labels.deleteDisabled, icon: <Trash2 className="size-4" />, onClick: () => console.log(texts.labels.delete), enabled: false},
                 { label: texts.labels.homepage, icon: <Home className="size-4" />, onClick: () => console.log(texts.labels.homepage) }
               ]}
             />

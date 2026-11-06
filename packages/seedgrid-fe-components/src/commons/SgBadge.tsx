@@ -52,7 +52,7 @@ export type SgBadgeProps = {
   removeAriaLabel?: string;
   autoRemove?: boolean;
   onClick?: (e: React.MouseEvent) => void;
-  disabled?: boolean;
+  enabled?: boolean;
   title?: string;
   hint?: string;
   customColors?: SgBadgeCustomColors;
@@ -200,7 +200,7 @@ export function SgBadge(props: Readonly<SgBadgeProps>) {
     removeAriaLabel,
     autoRemove = false,
     onClick,
-    disabled,
+    enabled = true,
     title,
     hint,
     customColors,
@@ -257,7 +257,7 @@ export function SgBadge(props: Readonly<SgBadgeProps>) {
       ? cn(
           "cursor-pointer select-none",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--sg-badge-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-          disabled ? "pointer-events-none opacity-50" : ""
+          !enabled ? "pointer-events-none opacity-50" : ""
         )
       : "",
     className,
@@ -268,8 +268,8 @@ export function SgBadge(props: Readonly<SgBadgeProps>) {
     <Tag
       type={isButton ? "button" : undefined}
       title={hint ?? title}
-      onClick={disabled ? undefined : onClick}
-      disabled={isButton ? disabled : undefined}
+      onClick={!enabled ? undefined : onClick}
+      disabled={isButton ? !enabled : undefined}
       style={{ ...cssVars, ...style }}
       className={base}
       role={isButton ? undefined : "status"}

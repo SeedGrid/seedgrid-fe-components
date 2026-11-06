@@ -14,7 +14,7 @@ export interface SgCheckboxGroupOption {
   value: string | number;
   checked?: boolean;
   icon?: React.ReactNode;
-  disabled?: boolean;
+  enabled?: boolean;
 }
 
 export type SgCheckboxGroupRef = {
@@ -32,7 +32,7 @@ export interface SgCheckboxGroupProps extends RhfFieldProps {
   orientation?: SgCheckboxGroupOrientation;
   selectionStyle?: SgCheckboxGroupSelectionStyle;
   iconOnly?: boolean;
-  disabled?: boolean;
+  enabled?: boolean;
   readOnly?: boolean;
   required?: boolean;
   onChange?: (value: (string | number)[]) => void;
@@ -68,7 +68,7 @@ function SgCheckboxGroupBase(
     orientation = "vertical",
     selectionStyle = "checkbox",
     iconOnly = false,
-    disabled = false,
+    enabled = true,
     readOnly = false,
     required = false,
     onChange,
@@ -103,7 +103,7 @@ function SgCheckboxGroupBase(
   const isHighlightSelection = selectionStyle === "highlight";
 
   const handleChange = (optionValue: string | number) => {
-    if (disabled || readOnly) return;
+    if (!enabled || readOnly) return;
 
     const next = currentValue.includes(optionValue)
       ? currentValue.filter((v) => v !== optionValue)
@@ -114,8 +114,8 @@ function SgCheckboxGroupBase(
   };
 
   const handleCheckAll = () => {
-    if (disabled || readOnly) return;
-    const enabledValues = source.filter((opt) => !opt.disabled).map((opt) => opt.value);
+    if (!enabled || readOnly) return;
+    const enabledValues = source.filter((opt) => opt.enabled !== false).map((opt) => opt.value);
     const next = currentValue.length === enabledValues.length ? [] : enabledValues;
     if (!isControlled) setInternalValue(next);
     onChange?.(next);
@@ -128,7 +128,7 @@ function SgCheckboxGroupBase(
       onChange?.(values);
     },
     checkAll: () => {
-      const enabledValues = source.filter((opt) => !opt.disabled).map((opt) => opt.value);
+      const enabledValues = source.filter((opt) => opt.enabled !== false).map((opt) => opt.value);
       if (!isControlled) setInternalValue(enabledValues);
       onChange?.(enabledValues);
     },
@@ -139,7 +139,7 @@ function SgCheckboxGroupBase(
   }));
 
   // Check all state
-  const enabledValues = source.filter((opt) => !opt.disabled).map((opt) => opt.value);
+  const enabledValues = source.filter((opt) => opt.enabled !== false).map((opt) => opt.value);
   const checkedEnabledCount = enabledValues.filter((v) => currentValue.includes(v)).length;
   const allChecked = enabledValues.length > 0 && checkedEnabledCount === enabledValues.length;
   const someChecked = checkedEnabledCount > 0 && !allChecked;
@@ -153,7 +153,7 @@ function SgCheckboxGroupBase(
 
   const renderOption = (option: SgCheckboxGroupOption, index: number) => {
     const isSelected = currentValue.includes(option.value);
-    const isDisabled = disabled || option.disabled;
+    const isDisabled = !enabled || (option.enabled === false);
     const inputClassName = isHighlightSelection
       ? "sr-only"
       : "w-4 h-4 rounded text-[rgb(var(--sg-primary-500))] border-[rgb(var(--sg-border))] focus:ring-[rgb(var(--sg-ring))] focus:ring-2 cursor-pointer disabled:cursor-not-allowed";
@@ -251,14 +251,14 @@ function SgCheckboxGroupBase(
       <label
         className={`
           inline-flex items-center gap-2 select-none font-medium
-          ${disabled ? "opacity-50 cursor-not-allowed" : readOnly ? "cursor-default" : "cursor-pointer"}
+          ${!enabled ? "opacity-50 cursor-not-allowed" : readOnly ? "cursor-default" : "cursor-pointer"}
         `}
       >
         <input
           ref={checkAllRef}
           type="checkbox"
           checked={allChecked}
-          disabled={disabled || readOnly}
+          disabled={!enabled || readOnly}
           onChange={handleCheckAll}
           className="w-4 h-4 rounded text-[rgb(var(--sg-primary-500))] border-[rgb(var(--sg-border))] focus:ring-[rgb(var(--sg-ring))] focus:ring-2 cursor-pointer disabled:cursor-not-allowed"
         />
@@ -286,7 +286,7 @@ function SgCheckboxGroupBase(
           ${orientation === "vertical" ? "flex-col" : "flex-row flex-wrap"}
         `}
         role="group"
-        aria-disabled={disabled || undefined}
+        aria-disabled={!enabled || undefined}
         aria-readonly={readOnly || undefined}
         aria-required={required || undefined}
       >
@@ -336,13 +336,13 @@ function SgCheckboxGroupBase(
               ${showCheckAll && !isHighlightSelection ? "mt-1" : ""}
             `}
             role="group"
-            aria-disabled={disabled || undefined}
+            aria-disabled={!enabled || undefined}
             aria-readonly={readOnly || undefined}
             aria-required={required || undefined}
           >
             {source.map((option, index) => {
               const isSelected = currentValue.includes(option.value);
-              const isDisabled = disabled || option.disabled;
+              const isDisabled = !enabled || (option.enabled === false);
               return (
                 <label
                   key={`${option.value}-${index}`}

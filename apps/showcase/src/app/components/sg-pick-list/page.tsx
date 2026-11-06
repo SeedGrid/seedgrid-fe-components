@@ -107,7 +107,7 @@ const PICK_LIST_PROP_FIELDS: PropField[] = [
   { prop: "targetFilterPlaceholder", type: "string", defaultValue: "i18n", descriptionKey: "targetFilterPlaceholder" },
   { prop: "filterMatchMode", type: "\"contains\" | \"startsWith\" | \"endsWith\"", defaultValue: "\"contains\"", descriptionKey: "filterMatchMode" },
   { prop: "draggable", type: "boolean", defaultValue: "true", descriptionKey: "draggable" },
-  { prop: "disabled", type: "boolean", defaultValue: "false", descriptionKey: "disabled" },
+  { prop: "enabled", type: "boolean", defaultValue: "true", descriptionKey: "disabled" },
   { prop: "readOnly", type: "boolean", defaultValue: "false", descriptionKey: "readOnly" },
   { prop: "emptyMessage", type: "string", defaultValue: "i18n", descriptionKey: "emptyMessage" },
   { prop: "itemTemplate", type: "(item, state) => ReactNode", defaultValue: "-", descriptionKey: "itemTemplate" },
@@ -183,7 +183,7 @@ export default function SgPickListShowcase() {
     groupBoxProps: t(i18n, `${K}.propDescriptions.groupBoxProps`),
     ref: t(i18n, `${K}.propDescriptions.ref`)
   }), [i18n]);
-  const aiComponent = useAiManifestComponent("SgPickList");
+  const aiComponent = useAiManifestComponent("SgPickList");
   const propRows = React.useMemo<ShowcasePropRow[]>(
     () =>
       PICK_LIST_PROP_FIELDS.map((field) => ({
@@ -235,7 +235,7 @@ export default function SgPickListShowcase() {
     source: [
       { label: "Frontend", value: "frontend", data: { owner: "Ana", effort: "M" } },
       { label: "Backend", value: "backend", data: { owner: "Bruno", effort: "L" } },
-      { label: "QA", value: "qa", data: { owner: "Carla", effort: "S" }, disabled: true }
+      { label: "QA", value: "qa", data: { owner: "Carla", effort: "S" }, enabled: false }
     ] as SgPickListItem[],
     target: [] as SgPickListItem[]
   });

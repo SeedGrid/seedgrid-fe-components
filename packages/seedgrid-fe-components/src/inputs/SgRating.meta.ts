@@ -18,7 +18,7 @@ export const sgMeta: SgMetaV0 = {
     { name: "label", type: "string", description: "Rotulo do campo.", semanticRole: "label", bindable: true },
     { name: "value", type: "number", description: "Nota atual.", semanticRole: "value", bindable: true },
     { name: "readOnly", type: "boolean", default: false, description: "Impede alteracao da nota.", semanticRole: "behavior", bindable: true },
-    { name: "disabled", type: "boolean", default: false, description: "Desabilita interacao.", semanticRole: "behavior", bindable: true },
+    { name: "enabled", type: "boolean", default: true, description: "Desabilita interacao.", semanticRole: "behavior", bindable: true },
     { name: "size", type: "\"sm\" | \"md\" | \"lg\" | \"xl\"", description: "Tamanho visual do controle.", semanticRole: "appearance", bindable: true },
     { name: "onChange", type: "(value: number) => void", description: "Callback de mudanca.", semanticRole: "event", bindable: false }
   ],

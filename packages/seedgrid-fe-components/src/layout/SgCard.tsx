@@ -31,7 +31,7 @@ export type SgCardProps = Omit<React.HTMLAttributes<HTMLElement>, "title" | "onC
   footer?: React.ReactNode;
 
   clickable?: boolean;
-  disabled?: boolean;
+  enabled?: boolean;
 
   collapsible?: boolean;
   defaultOpen?: boolean;
@@ -136,7 +136,7 @@ export function SgCard(props: Readonly<SgCardProps>) {
     header,
     footer,
     clickable = false,
-    disabled = false,
+    enabled = true,
     collapsible = false,
     defaultOpen = true,
     open: controlledOpen,
@@ -326,12 +326,12 @@ export function SgCard(props: Readonly<SgCardProps>) {
         "transition-[box-shadow,transform] duration-150",
         "hover:shadow-md",
         "focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[hsl(var(--primary)/0.35)]",
-        disabled ? "" : "cursor-pointer",
-        disabled ? "" : "active:translate-y-[0.5px]"
+        !enabled ? "" : "cursor-pointer",
+        !enabled ? "" : "active:translate-y-[0.5px]"
       )
     : "";
 
-  const disabledClasses = disabled ? "opacity-60 pointer-events-none select-none" : "";
+  const disabledClasses = !enabled ? "opacity-60 pointer-events-none select-none" : "";
 
   const rootClasses = cn(
     "w-full",
@@ -352,13 +352,13 @@ export function SgCard(props: Readonly<SgCardProps>) {
     }
     if (!collapsible) return;
     if (!toggleOnHeaderClick) return;
-    if (disabled) return;
+    if (!enabled) return;
     toggle();
   };
 
   const onHeaderPointerDown = React.useCallback(
     (event: React.PointerEvent<HTMLDivElement>) => {
-      if (!draggable || disabled) return;
+      if (!draggable || !enabled) return;
       if (event.button !== 0) return;
       const target = event.target as HTMLElement | null;
       const interactiveAncestor = target?.closest(
@@ -380,7 +380,7 @@ export function SgCard(props: Readonly<SgCardProps>) {
       setDragging(true);
       event.preventDefault();
     },
-    [disabled, draggable]
+    [enabled, draggable]
   );
 
   const onHeaderPointerMove = React.useCallback((event: React.PointerEvent<HTMLDivElement>) => {
@@ -419,7 +419,7 @@ export function SgCard(props: Readonly<SgCardProps>) {
     }
   }, []);
 
-  const headerInteractionClasses = disabled
+  const headerInteractionClasses = !enabled
     ? ""
     : draggable
     ? dragging
@@ -444,7 +444,7 @@ export function SgCard(props: Readonly<SgCardProps>) {
       )}
       aria-label={isOpen ? t(i18n, "components.actions.collapse") : t(i18n, "components.actions.expand")}
       aria-expanded={isOpen}
-      disabled={disabled}
+      disabled={!enabled}
     >
       {collapseIcon ?? <DefaultCaret open={isOpen} size={collapseIconSize} />}
     </button>
@@ -475,9 +475,9 @@ export function SgCard(props: Readonly<SgCardProps>) {
       onPointerUp={endHeaderDrag}
       onPointerCancel={endHeaderDrag}
       role={collapsible && toggleOnHeaderClick ? "button" : undefined}
-      tabIndex={collapsible && toggleOnHeaderClick && !disabled ? 0 : undefined}
+      tabIndex={collapsible && toggleOnHeaderClick && enabled ? 0 : undefined}
       onKeyDown={(e) => {
-        if (!collapsible || !toggleOnHeaderClick || disabled) return;
+        if (!collapsible || !toggleOnHeaderClick || !enabled) return;
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
           toggle();
@@ -521,9 +521,9 @@ export function SgCard(props: Readonly<SgCardProps>) {
       onPointerUp={endHeaderDrag}
       onPointerCancel={endHeaderDrag}
       role={collapsible && toggleOnHeaderClick ? "button" : undefined}
-      tabIndex={collapsible && toggleOnHeaderClick && !disabled ? 0 : undefined}
+      tabIndex={collapsible && toggleOnHeaderClick && enabled ? 0 : undefined}
       onKeyDown={(e) => {
-        if (!collapsible || !toggleOnHeaderClick || disabled) return;
+        if (!collapsible || !toggleOnHeaderClick || !enabled) return;
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
           toggle();
@@ -570,9 +570,9 @@ export function SgCard(props: Readonly<SgCardProps>) {
   ) : null;
 
   const Component: any = isInteractive ? "button" : "section";
-  const buttonLikeProps = isInteractive ? { type: "button", onClick: disabled ? undefined : onClick, disabled } : {};
+  const buttonLikeProps = isInteractive ? { type: "button", onClick: !enabled ? undefined : onClick, disabled: !enabled } : {};
   const passiveOnClickProps =
-    !isInteractive && typeof onClick === "function" ? { onClick: disabled ? undefined : onClick } : {};
+    !isInteractive && typeof onClick === "function" ? { onClick: !enabled ? undefined : onClick } : {};
   const roundedDragX = Math.round(dragPosition.x);
   const roundedDragY = Math.round(dragPosition.y);
   const shouldApplyDragTransform = draggable && (dragging || roundedDragX !== 0 || roundedDragY !== 0);

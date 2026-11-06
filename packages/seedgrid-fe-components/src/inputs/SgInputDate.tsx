@@ -5,6 +5,7 @@ import { SgInputText, type SgInputTextProps } from "./SgInputText";
 import { resolveFieldError } from "../rhf";
 import { t, useComponentsI18n } from "../i18n";
 import { useDarkFlag } from "../gadgets/clock/themes/useDarkFlag";
+import { formatLocalizedDate } from "./dateTimeLogic";
 
 export type SgInputDateProps = Omit<SgInputTextProps, "type"> & {
   /** Disparado ao receber foco — padrao seedgrid. */
@@ -25,10 +26,9 @@ function toDateValue(value?: string | Date) {
 function formatDateDisplay(value: string | Date | undefined, locale: string) {
   const iso = toDateValue(value);
   if (!iso) return "";
-  if (locale === "en-US") return iso;
-  const [year, month, day] = iso.split("-");
+  const [year, month, day] = iso.slice(0, 10).split("-");
   if (!year || !month || !day) return iso;
-  return `${day}/${month}/${year}`;
+  return formatLocalizedDate(Number(year), Number(month), Number(day), locale);
 }
 
 function parseDateValue(value: string) {

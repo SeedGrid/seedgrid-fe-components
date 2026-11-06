@@ -245,8 +245,10 @@ function SgInputTextAreaBase(props: SgInputTextAreaBaseProps) {
   };
 
   const isDisabled = props.enabled === false || textareaProps.readOnly;
-  const canShowClear = (props.clearButton ?? true) && !isDisabled;
-  const hasSuffix = canShowClear;
+  // O X so aparece com texto, mas o espaco dele fica sempre reservado (o texto do campo nao anda).
+  const clearEnabled = (props.clearButton ?? true) && !isDisabled;
+  const canShowClear = clearEnabled && isFilled;
+  const hasSuffix = clearEnabled;
   const paddingLeft = props.prefixIcon ? "pl-10" : "px-3";
   const paddingRight = hasSuffix ? "pr-10" : "pr-3";
   const placeholderClass = isFloatLabel

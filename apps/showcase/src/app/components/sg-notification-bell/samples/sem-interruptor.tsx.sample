@@ -1,0 +1,14 @@
+import * as React from "react";
+import { SgNotificationBell } from "@seedgrid/fe-components";
+import { createDemoFetcher } from "./demo-fetcher";
+
+// showUnreadToggle={false} esconde só o interruptor: o sino continua, e o painel lista todas as notificações.
+const demo = createDemoFetcher();
+
+export default function App() {
+  return (
+    <div className="flex items-center gap-3">
+      <SgNotificationBell fetcher={demo} showUnreadToggle={false} />
+    </div>
+  );
+}

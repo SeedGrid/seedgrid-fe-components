@@ -13,7 +13,7 @@ export type SgMultiSelectOption = {
    * Sem ele, vale o `label`. Ex.: `label: "3 - Filial Centro"`, `chipLabel: "3"`.
    */
   chipLabel?: string;
-  disabled?: boolean;
+  enabled?: boolean;
 };
 
 export function valueEquals(left: SgMultiSelectOptionValue, right: SgMultiSelectOptionValue) {
@@ -110,7 +110,7 @@ export function useSgMultiSelect(params: UseSgMultiSelectParams) {
 
   const toggleOption = React.useCallback(
     (option: SgMultiSelectOption) => {
-      if (option.disabled) return;
+      if ((option.enabled === false)) return;
       const already = resolvedValue.some((entry) => valueEquals(entry, option.value));
       if (already) {
         setSelectedValue(resolvedValue.filter((entry) => !valueEquals(entry, option.value)));

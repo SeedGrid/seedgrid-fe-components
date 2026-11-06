@@ -166,7 +166,7 @@ function SelfEnterInvitationsScreen() {
               aria-label={t("security.self_enter.invitation_admin.resend")}
               title={t("security.self_enter.invitation_admin.resend")}
               loading={resendingId === item.id}
-              disabled={resendingId === item.id}
+              enabled={!(resendingId === item.id)}
               onClick={() => {
                 void handleResend(item.id);
               }}
@@ -277,7 +277,7 @@ function SelfEnterInvitationsScreen() {
                 shape="rounded"
                 label={t("security.self_enter.invitation_admin.submit")}
                 loading={invitePending}
-                disabled={invitePending}
+                enabled={!invitePending}
                 onClick={() => {
                   void handleInviteSubmit();
                 }}

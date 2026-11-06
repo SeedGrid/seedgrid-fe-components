@@ -37,7 +37,7 @@ function Section(props: { title: string; description?: string; children: React.R
 
 
 
-
+
 
 
 
@@ -178,7 +178,7 @@ const AVATAR_PROPS: ShowcasePropRow[] = [
   { prop: "size", type: "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\"", defaultValue: "md", description: "Tamanho do avatar." },
   { prop: "shape", type: "\"circle\" | \"square\"", defaultValue: "circle", description: "Formato do avatar." },
   { prop: "severity", type: "\"primary\" | \"secondary\" | \"success\" | \"warning\" | \"danger\" | \"info\" | \"neutral\" | \"custom\"", defaultValue: "primary", description: "Theme-based visual variant." },
-  { prop: "bordered / disabled", type: "boolean", defaultValue: "true / false", description: "Borda e estado desabilitado." },
+  { prop: "bordered / enabled", type: "boolean", defaultValue: "true / true", description: "Borda e estado desabilitado." },
   { prop: "customColors", type: "{ bg, fg, border, ring }", defaultValue: "-", description: "Color overrides when needed." },
   { prop: "imageClassName / className", type: "string", defaultValue: "-", description: "Classes CSS para imagem e container." },
   { prop: "onImageError", type: "(event) => void", defaultValue: "-", description: "Callback para falha ao carregar imagem." },
@@ -192,7 +192,7 @@ const AVATAR_PROPS: ShowcasePropRow[] = [
 export default function SgAvatarPage() {
   const i18n = useShowcaseI18n();
   const aiComponent = useAiManifestComponent("SgAvatar");
-  const aiAvatarGroupComponent = useAiManifestComponent("SgAvatarGroup");
+  const aiAvatarGroupComponent = useAiManifestComponent("SgAvatarGroup");
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
 

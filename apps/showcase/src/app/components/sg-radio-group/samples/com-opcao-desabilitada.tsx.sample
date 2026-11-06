@@ -5,7 +5,7 @@ const PRIORITY_OPTIONS: SgRadioGroupOption[] = [
   { label: "Low", value: "low" },
   { label: "Medium", value: "medium" },
   { label: "High", value: "high" },
-  { label: "Urgent", value: "urgent", disabled: true }
+  { label: "Urgent", value: "urgent", enabled: false }
 ];
 
 export default function Example() {

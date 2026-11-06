@@ -42,7 +42,7 @@ export type SgSliderProps = {
   value?: number;
   defaultValue?: number;
   step?: number;
-  disabled?: boolean;
+  enabled?: boolean;
   onChange?: (value: number) => void;
   ariaLabel?: string;
   className?: string;
@@ -80,7 +80,7 @@ function SgSliderBase(props: Readonly<SgSliderBaseProps>) {
     value,
     defaultValue,
     step = 1,
-    disabled = false,
+    enabled = true,
     onChange,
     ariaLabel,
     className,
@@ -119,7 +119,7 @@ function SgSliderBase(props: Readonly<SgSliderBaseProps>) {
         max={safeMax}
         step={safeStep}
         value={currentValue}
-        disabled={disabled}
+        disabled={!enabled}
         aria-label={ariaLabel}
         aria-invalid={error ? true : undefined}
         onChange={(event) => {
@@ -132,7 +132,7 @@ function SgSliderBase(props: Readonly<SgSliderBaseProps>) {
         onBlur={(event) => {
           inputProps?.onBlur?.(event);
         }}
-        className={cn("h-5 w-full cursor-pointer", disabled ? "cursor-not-allowed opacity-60" : "", className)}
+        className={cn("h-5 w-full cursor-pointer", !enabled ? "cursor-not-allowed opacity-60" : "", className)}
         {...inputProps}
       />
       {error ? <p className="mt-1 text-xs text-red-600">{error}</p> : null}

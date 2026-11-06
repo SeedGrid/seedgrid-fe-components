@@ -22,7 +22,7 @@ export const sgMeta: SgMetaV0 = {
     { name: "resolution", type: '"low" | "medium" | "high"', default: "medium", description: "Resolucao pedida (640x480, 1280x720, 1920x1080).", semanticRole: "appearance", bindable: true },
     { name: "allowSwitch", type: "boolean", default: true, description: "Mostra o botao de alternar entre frontal e traseira.", semanticRole: "appearance", bindable: true },
     { name: "previewHeight", type: "number", default: 320, description: "Altura da pre-visualizacao em px.", semanticRole: "appearance", bindable: true },
-    { name: "disabled", type: "boolean", default: false, description: "Nao abre a camera nem permite capturar.", semanticRole: "appearance", bindable: true },
+    { name: "enabled", type: "boolean", default: true, description: "Nao abre a camera nem permite capturar.", semanticRole: "appearance", bindable: true },
     { name: "onCapture", type: "(image: Blob) => void", description: "Imagem JPEG capturada.", semanticRole: "event", bindable: false },
     { name: "onError", type: "(code, message) => void", description: "Camera indisponivel (permission, noCamera, failed).", semanticRole: "event", bindable: false }
   ],

@@ -118,7 +118,7 @@ function getPriorityOptions(i18n: ShowcaseI18nValue): SgCheckboxGroupOption[] {
     { label: t(i18n, `${K}.optLow`), value: "low" },
     { label: t(i18n, `${K}.optMedium`), value: "medium" },
     { label: t(i18n, `${K}.optHigh`), value: "high" },
-    { label: t(i18n, `${K}.optUrgent`), value: "urgent", disabled: true }
+    { label: t(i18n, `${K}.optUrgent`), value: "urgent", enabled: false}
   ];
 }
 
@@ -168,7 +168,7 @@ export default function App() {
   const [title, setTitle] = React.useState("Choose options");
   const [orientation, setOrientation] = React.useState<"vertical" | "horizontal">("vertical");
   const [iconOnly, setIconOnly] = React.useState(false);
-  const [disabled, setDisabled] = React.useState(false);
+  const [enabled, setEnabled] = React.useState(true);
   const [readOnly, setReadOnly] = React.useState(false);
   const [required, setRequired] = React.useState(false);
   const [showCheckAll, setShowCheckAll] = React.useState(false);
@@ -210,8 +210,8 @@ export default function App() {
           iconOnly
         </label>
         <label className="inline-flex items-center gap-2">
-          <input type="checkbox" checked={disabled} onChange={(event) => setDisabled(event.target.checked)} />
-          disabled
+          <input type="checkbox" checked={enabled} onChange={(event) => setEnabled(event.target.checked)} />
+          enabled
         </label>
         <label className="inline-flex items-center gap-2">
           <input type="checkbox" checked={readOnly} onChange={(event) => setReadOnly(event.target.checked)} />
@@ -235,7 +235,7 @@ export default function App() {
             source={OPTIONS}
             orientation={orientation}
             iconOnly={iconOnly}
-            disabled={disabled}
+            enabled={enabled}
             readOnly={readOnly}
             required={required}
             showCheckAll={showCheckAll}
@@ -249,7 +249,7 @@ export default function App() {
                 <input
                   type="checkbox"
                   checked={value.includes(opt.value)}
-                  disabled={disabled || readOnly}
+                  disabled={!enabled || readOnly}
                   onChange={() =>
                     setValue((prev) =>
                       prev.includes(opt.value)
@@ -554,7 +554,7 @@ export default function SgCheckboxGroupShowcase() {
             title={t(i18n, `${K}.title8`)}
             source={basicOptions}
             value={["option2"]}
-            disabled
+            enabled={false}
           />
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-checkbox-group/samples/grupo-disabled.tsx.sample" />
         </Section>
@@ -752,7 +752,7 @@ export default function SgCheckboxGroupShowcase() {
                   ["orientation", '"horizontal" | "vertical"', '"vertical"', t(i18n, `${K}.descOrientation`)],
                   ["selectionStyle", '"checkbox" | "highlight"', '"checkbox"', t(i18n, `${K}.descSelectionStyle`)],
                   ["iconOnly", "boolean", "false", t(i18n, `${K}.descIconOnly`)],
-                  ["disabled", "boolean", "false", t(i18n, `${K}.descDisabled`)],
+                  ["enabled", "boolean", "true", t(i18n, `${K}.descDisabled`)],
                   ["readOnly", "boolean", "false", t(i18n, `${K}.descReadOnly`)],
                   ["required", "boolean", "false", t(i18n, `${K}.descRequired`)],
                   ["onChange", "(value: (string | number)[]) => void", "-", t(i18n, `${K}.descOnChange`)],

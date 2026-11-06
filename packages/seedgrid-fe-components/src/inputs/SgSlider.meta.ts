@@ -19,7 +19,7 @@ export const sgMeta: SgMetaV0 = {
     { name: "maxValue", type: "number", required: true, description: "Valor maximo do intervalo.", semanticRole: "validation", bindable: true },
     { name: "value", type: "number", description: "Valor atual controlado.", semanticRole: "value", bindable: true },
     { name: "step", type: "number", description: "Passo entre valores.", semanticRole: "behavior", bindable: true },
-    { name: "disabled", type: "boolean", default: false, description: "Desabilita interacao.", semanticRole: "behavior", bindable: true },
+    { name: "enabled", type: "boolean", default: true, description: "Desabilita interacao.", semanticRole: "behavior", bindable: true },
     { name: "width", type: "number | string", description: "Largura do componente.", semanticRole: "appearance", bindable: true },
     { name: "onChange", type: "(value: number) => void", description: "Callback de mudanca.", semanticRole: "event", bindable: false }
   ],

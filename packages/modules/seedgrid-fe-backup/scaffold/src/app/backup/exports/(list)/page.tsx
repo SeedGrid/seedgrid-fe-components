@@ -241,7 +241,7 @@ function ExportsListScreen() {
             severity="secondary"
             label={t("backup.common.refresh")}
             onClick={() => void loadExports()}
-            disabled={loading}
+            enabled={!loading}
           />
           <SgButton
             appearance="solid"

@@ -85,7 +85,7 @@ const ORDER_LIST_PROP_FIELDS: PropField[] = [
   { prop: "showControls", type: "boolean", defaultValue: "true", descriptionKey: "showControls" },
   { prop: "controlsPosition", type: "\"left\" | \"right\"", defaultValue: "\"left\"", descriptionKey: "controlsPosition" },
   { prop: "draggable", type: "boolean", defaultValue: "true", descriptionKey: "draggable" },
-  { prop: "disabled", type: "boolean", defaultValue: "false", descriptionKey: "disabled" },
+  { prop: "enabled", type: "boolean", defaultValue: "true", descriptionKey: "disabled" },
   { prop: "readOnly", type: "boolean", defaultValue: "false", descriptionKey: "readOnly" },
   { prop: "emptyMessage", type: "string", defaultValue: "i18n", descriptionKey: "emptyMessage" },
   { prop: "itemTemplate", type: "(item, state) => ReactNode", defaultValue: "-", descriptionKey: "itemTemplate" },
@@ -129,7 +129,7 @@ const BACKLOG_ITEMS: SgOrderListItem[] = [
   { label: "Implementar filtros", value: "filtros", data: { effort: "M", priority: "Alta" } },
   { label: "Ajustar layout mobile", value: "mobile", data: { effort: "S", priority: "Media" } },
   { label: "Refatorar API de pedidos", value: "api", data: { effort: "L", priority: "Alta" } },
-  { label: "Atualizar testes E2E", value: "e2e", data: { effort: "M", priority: "Baixa" }, disabled: true }
+  { label: "Atualizar testes E2E", value: "e2e", data: { effort: "M", priority: "Baixa" }, enabled: false}
 ];
 
 export default function SgOrderListShowcase() {

@@ -160,7 +160,7 @@ function ChangePasswordScreen() {
                 shape="rounded"
                 label={t("security.change_password.submit")}
                 loading={pending}
-                disabled={pending}
+                enabled={!pending}
                 type="submit"
               />
             </SgStack>

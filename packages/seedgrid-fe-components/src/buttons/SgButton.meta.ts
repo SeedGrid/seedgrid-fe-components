@@ -55,10 +55,10 @@ export const sgMeta: SgMetaV0 = {
       bindable: true
     },
     {
-      name: "disabled",
+      name: "enabled",
       type: "boolean",
-      default: false,
-      description: "Desabilita a interacao do botao.",
+      default: true,
+      description: "Quando false, desabilita a interacao do botao.",
       semanticRole: "behavior",
       bindable: true
     },

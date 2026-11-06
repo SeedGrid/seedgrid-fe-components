@@ -1,0 +1,20 @@
+import * as React from "react";
+import { FileText } from "lucide-react";
+import { SgNotificationBell } from "@seedgrid/fe-components";
+
+// Em produção: o BFF da sua app expõe as rotas da extension user-notifications (a apikey nunca vai para o navegador).
+export default function App() {
+  return (
+    <SgNotificationBell
+      apiUrl="/api/user-notifications"
+      tokenEndpoint="/api/realtime/connect"
+      types={{
+        "report.ready": {
+          icon: <FileText className="size-4" />,
+          onOpen: (n) => window.open(`/relatorios/${String(n.payload?.reportExecutionId)}`)
+        }
+      }}
+      onNotification={(n) => console.log("nova notificação", n.title)}
+    />
+  );
+}

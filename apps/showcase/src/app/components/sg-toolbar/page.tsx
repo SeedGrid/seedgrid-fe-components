@@ -145,7 +145,7 @@ const TOOLBAR_PROPS: ShowcasePropRow[] = [
   { prop: "SgToolbarIconButton.hint", type: "string", defaultValue: "-", description: "Hint/tooltip text." },
   { prop: "SgToolbarIconButton.loading", type: "boolean", defaultValue: "false", description: "Forces loading state with spinner and blocks click." },
   { prop: "SgToolbarIconButton.severity", type: '"primary" | "secondary" | "success" | "info" | "warning" | "help" | "danger" | "plain"', defaultValue: '"plain"', description: "Button color variant." },
-  { prop: "SgToolbarIconButton.disabled", type: "boolean", defaultValue: "false", description: "Disables interaction." },
+  { prop: "SgToolbarIconButton.enabled", type: "boolean", defaultValue: "true", description: "Disables interaction." },
   { prop: "SgToolbarIconButton.onClick", type: "() => void | Promise<void>", defaultValue: "-", description: "Action executed on click." },
   { prop: "SgToolbarIconButton.className / SgToolbarIconButton.style", type: "string / React.CSSProperties", defaultValue: "-", description: "Customizacao visual do botao de icone." }
 ];

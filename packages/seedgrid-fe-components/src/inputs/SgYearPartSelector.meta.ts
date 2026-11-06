@@ -31,7 +31,7 @@ export const sgMeta: SgMetaV0 = {
     { name: "minYear", type: "number", default: "ano corrente - 30", description: "Primeiro ano oferecido na lista de anos.", semanticRole: "behavior", bindable: true },
     { name: "maxYear", type: "number", default: "ano corrente + 10", description: "Ultimo ano oferecido na lista de anos.", semanticRole: "behavior", bindable: true },
     { name: "locale", type: "string", default: "pt-BR", description: "Locale dos rotulos de recorte e fatia. A sigla entre parenteses acompanha o idioma: Q1..Q4 em pt-BR e en-US, T1..T4 em es, fr e pt-PT; bimestre nao tem sigla e sai sem parenteses.", semanticRole: "behavior", bindable: true },
-    { name: "disabled", type: "boolean", default: false, description: "Desabilita os tres combos (ano, recorte e fatia).", semanticRole: "behavior", bindable: true },
+    { name: "enabled", type: "boolean", default: true, description: "Desabilita os tres combos (ano, recorte e fatia).", semanticRole: "behavior", bindable: true },
     { name: "required", type: "boolean", default: false, description: "Marca o campo como obrigatorio.", semanticRole: "validation", bindable: true },
     { name: "className", type: "string", description: "Classes extras aplicadas ao container do campo.", semanticRole: "appearance", bindable: false }
   ],
@@ -47,7 +47,7 @@ export const sgMeta: SgMetaV0 = {
     defaultProps: {
       allowedKinds: ["SEMESTER", "QUARTER", "BIMESTER"],
       locale: "pt-BR",
-      disabled: false,
+      enabled: true,
       required: false
     }
   }

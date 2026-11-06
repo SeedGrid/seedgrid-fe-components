@@ -94,10 +94,12 @@ import {
   MoreHorizontal,
   MousePointerClick,
   Package,
+  Moon,
   Palette,
   PanelBottomOpen,
   PanelLeft,
   PanelLeftOpen,
+  Sun,
   PanelTop,
   PenLine,
   Phone,
@@ -190,6 +192,7 @@ const COMPONENTS = [
   { group: "Layout", slug: "sg-stack", label: "SgStack", icon: <Layers className="size-4" /> },
   { group: "Layout", slug: "sg-badge", label: "SgBadge", icon: <BadgeCheck className="size-4" /> },
   { group: "Layout", slug: "sg-badge-overlay", label: "SgBadgeOverlay", icon: <BadgeAlert className="size-4" /> },
+  { group: "Layout", slug: "sg-notification-bell", label: "SgNotificationBell", icon: <BellRing className="size-4" /> },
   { group: "Layout", slug: "sg-popup", label: "SgPopup", icon: <MessageSquare className="size-4" /> },
   { group: "Layout", slug: "sg-dialog", label: "SgDialog", icon: <MessageSquareDot className="size-4" /> },
   { group: "Layout", slug: "sg-confirmation-dialog", label: "SgConfirmationDialog", icon: <CircleAlert className="size-4" /> },
@@ -219,7 +222,6 @@ const COMPONENTS = [
   { group: "Utils", slug: "sg-whistler", label: "SgWhistler", icon: <BellRing className="size-4" /> },
   { group: "Utils", slug: "sg-whistle-host", label: "SgWhistleHost", icon: <BellDot className="size-4" /> },
   // { group: "Utils", slug: "sg-playground", label: "SgPlayground" },
-  { group: "Utils", slug: "sg-benchmark", label: "Benchmark", icon: <Activity className="size-4" /> }
 ];
 
 const GROUP_ICONS: Record<string, React.ReactNode> = {
@@ -261,6 +263,7 @@ const COMPONENT_HINT_KEY_BY_SLUG: Record<string, string> = {
   "sg-card": "showcase.component.card.subtitle",
   "sg-badge": "showcase.component.badge.subtitle",
   "sg-badge-overlay": "showcase.component.badgeOverlay.subtitle",
+  "sg-notification-bell": "showcase.component.notificationBell.subtitle",
   "sg-popup": "showcase.component.popup.subtitle",
   "sg-dialog": "showcase.component.dialog.subtitle",
   "sg-dock-layout": "showcase.component.dockLayout.subtitle",
@@ -359,12 +362,6 @@ const COMPONENT_HINT_TEXTS_BY_SLUG: Record<string, Partial<Record<ShowcaseLocale
     "pt-PT": "Avatar com suporte a label, icone, imagem, severidade, tamanhos e agrupamento.",
     "en-US": "Avatar with support for label, icon, image, severity, sizes, and grouping.",
     es: "Avatar con soporte para label, icono, imagen, severidad, tamanos y agrupacion."
-  },
-  "sg-benchmark": {
-    "pt-BR": "Comparativo de custo de updates em inputs uncontrolled (SgInputText vs input nativo).",
-    "pt-PT": "Comparativo de custo de updates em inputs uncontrolled (SgInputText vs input nativo).",
-    "en-US": "Update-cost comparison for uncontrolled inputs (SgInputText vs native input).",
-    es: "Comparativo de costo de updates en inputs uncontrolled (SgInputText vs input nativo)."
   },
   "sg-breadcrumb": {
     "pt-BR": "Breadcrumb hierarquico com suporte a icones, navegacao e overflow.",
@@ -805,7 +802,7 @@ export default function ShowcaseShell(props: {
   initialLocale?: ShowcaseLocale;
   initialMessages?: Record<string, string>;
 }) {
-  const { currentMode } = useSgTheme();
+  const { currentMode, setMode } = useSgTheme();
   const router = useRouter();
   const pathname = usePathname();
   const initialLocale = props.initialLocale ?? "pt-BR";
@@ -816,6 +813,9 @@ export default function ShowcaseShell(props: {
   const isDarkMode = currentMode === "dark";
   const [sidebarCollapsed, setSidebarCollapsed] = React.useState(true);
   const [isMobileViewport, setIsMobileViewport] = React.useState(false);
+  // Abaixo de 800 px o menu vira Drawer (como no showcase Flutter).
+  const [isNarrow, setIsNarrow] = React.useState(false);
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
 
   const applyLocale = React.useCallback((next: ShowcaseLocale) => {
     const nextMessages = MESSAGES_BY_LOCALE[next] ?? showcaseMessagesEnUs;
@@ -869,6 +869,28 @@ export default function ShowcaseShell(props: {
     return () => media.removeEventListener("change", syncViewport);
   }, []);
 
+  React.useEffect(() => {
+    if (typeof window === "undefined") return;
+    const media = window.matchMedia("(max-width: 799px)");
+    const sync = () => {
+      setIsNarrow(media.matches);
+      if (!media.matches) setDrawerOpen(false);
+    };
+    sync();
+    media.addEventListener("change", sync);
+    return () => media.removeEventListener("change", sync);
+  }, []);
+
+  // Titulo da pagina atual no topo (como o AppBar do showcase Flutter).
+  const pageTitle = React.useMemo(() => {
+    const path = pathname ?? "/";
+    const theme = THEME_ITEMS.find((item) => path === `/${item.slug}`);
+    if (theme) return t({ locale, messages }, theme.labelKey);
+    const slug = path.startsWith("/components/") ? path.slice("/components/".length).replace(/\/$/, "") : null;
+    const component = slug ? COMPONENTS.find((item) => item.slug === slug) : null;
+    return component ? component.label : t({ locale, messages }, "showcase.nav.home");
+  }, [pathname, locale, messages]);
+
   const shellMenu = React.useMemo<SgMenuNode[]>(() => ([
     ...THEME_ITEMS.map((item) => ({
       id: `theme-${item.slug}`,
@@ -918,28 +940,106 @@ export default function ShowcaseShell(props: {
                 : "col-span-2 row-start-1 !p-0 border-b border-[#e2cebc] bg-[#f7f3ee] lg:col-span-3"
             }
           >
-            <div className="px-2 py-1">
-              <SgToolBar
-                id="showcase-locale-toolbar"
-                title={t({ locale, messages }, "showcase.toolbar.language")}
-                orientationDirection="horizontal-left"
-                collapsible={false}
-                dockZone="top"
-              >
-                {LOCALES.map((item) => (
-                  <SgToolbarIconButton
-                    key={item.value}
-                    icon={<LocaleFlag locale={item.value} />}
-                    label={item.value}
-                    hint={item.label}
-                    severity={locale === item.value ? "primary" : "plain"}
-                    onClick={() => applyLocale(item.value)}
-                  />
-                ))}
-              </SgToolBar>
+            <div
+              className={
+                isDarkMode
+                  ? "w-full border-b border-border px-4 py-2 text-lg font-semibold"
+                  : "w-full border-b border-[#e2cebc] px-4 py-2 text-lg font-semibold"
+              }
+              data-testid="showcase-page-title"
+            >
+              {pageTitle}
             </div>
+            <>
+            <SgToolBar
+              id="showcase-locale-toolbar"
+              title={t({ locale, messages }, "showcase.toolbar.language")}
+              orientationDirection="horizontal-left"
+              collapsible={false}
+            >
+              {isNarrow ? (
+                <SgToolbarIconButton
+                  icon={<Menu className="size-4" />}
+                  label={t({ locale, messages }, "showcase.toolbar.menu")}
+                  hint={t({ locale, messages }, "showcase.toolbar.menu")}
+                  severity="plain"
+                  onClick={() => setDrawerOpen(true)}
+                />
+              ) : null}
+              {LOCALES.map((item) => (
+                <SgToolbarIconButton
+                  key={item.value}
+                  icon={<LocaleFlag locale={item.value} />}
+                  label={item.value}
+                  hint={item.label}
+                  severity={locale === item.value ? "primary" : "plain"}
+                  onClick={() => applyLocale(item.value)}
+                />
+              ))}
+            </SgToolBar>
+            <SgToolBar
+              id="showcase-theme-toolbar"
+              className="ml-auto !border-transparent !bg-transparent !shadow-none"
+              orientationDirection="horizontal-right"
+              collapsible={false}
+            >
+              <SgToolbarIconButton
+                icon={<Palette className="size-4" />}
+                label={t({ locale, messages }, "showcase.themeEditor.hint")}
+                showLabel={false}
+                hint={t({ locale, messages }, "showcase.themeEditor.hint")}
+                severity="plain"
+                onClick={() => {
+                  window.dispatchEvent(new Event("showcase:toggle-theme-editor"));
+                }}
+              />
+              <SgToolbarIconButton
+                icon={isDarkMode ? <Sun className="size-4" /> : <Moon className="size-4" />}
+                label={t({ locale, messages }, "showcase.toolbar.toggleTheme")}
+                showLabel={false}
+                hint={t({ locale, messages }, "showcase.toolbar.toggleTheme")}
+                severity="plain"
+                onClick={() => setMode(isDarkMode ? "light" : "dark")}
+              />
+            </SgToolBar>
+            </>
           </SgDockZone>
 
+          {isNarrow ? (
+            <SgMenu
+              id="showcase-shell-menu-drawer"
+              menu={shellMenu}
+              selection={{ activeUrl: pathname ?? undefined }}
+              brand={{
+                image: (
+                  <div className="flex flex-col items-center gap-0.5 py-1">
+                    <div className={isDarkMode ? "rounded-md bg-white/90 px-1.5 py-1 shadow-sm ring-1 ring-white/25" : ""}>
+                      <img src="/logo-seedgrid-icon.svg" className="h-10 w-auto" alt="" />
+                    </div>
+                    <span className="text-xl font-black leading-none tracking-tight">
+                      <span className={isDarkMode ? "text-[#F3F6FA]" : "text-[#2b1f14]"}>Seed</span>
+                      <span className={isDarkMode ? "text-[#6EE7B7]" : "text-[#C56A2D]"}>Grid</span>
+                    </span>
+                  </div>
+                ),
+                title: "",
+                onClick: () => router.push("/")
+              }}
+              menuStyle="drawer"
+              menuVariantStyle="panel"
+              mode="multiple"
+              defaultExpandedIds={[]}
+              open={drawerOpen}
+              onOpenChange={setDrawerOpen}
+              search={{ enabled: true, placeholder: t({ locale, messages }, "showcase.nav.search.placeholder") }}
+              border
+              ariaLabel="Menu do showcase"
+              onNavigate={(node) => {
+                if (node.url) router.push(node.url);
+                setDrawerOpen(false);
+              }}
+            />
+          ) : (
           <SgDockZone
             zone="left"
             className={
@@ -989,6 +1089,7 @@ export default function ShowcaseShell(props: {
               }}
             />
           </SgDockZone>
+          )}
 
           <SgDockZone
             zone="right"

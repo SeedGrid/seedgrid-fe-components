@@ -33,7 +33,7 @@ export type SgCameraCaptureProps = {
   /** Altura da pre-visualizacao em px (padrao 320). */
   previewHeight?: number;
   hintText?: string;
-  disabled?: boolean;
+  enabled?: boolean;
   className?: string;
 };
 
@@ -53,7 +53,7 @@ export function SgCameraCapture(props: SgCameraCaptureProps) {
     allowSwitch = true,
     previewHeight = 320,
     hintText,
-    disabled,
+    enabled = true,
     className
   } = props;
   const [facing, setFacing] = React.useState<CameraFacing>(initialFacing);
@@ -85,7 +85,7 @@ export function SgCameraCapture(props: SgCameraCaptureProps) {
 
   // Abre a camera e libera a trilha ao trocar de camera/resolucao ou desmontar.
   React.useEffect(() => {
-    if (disabled) return undefined;
+    if (!enabled) return undefined;
     let cancelled = false;
     let stream: MediaStream | null = null;
     setStatus("starting");
@@ -124,7 +124,7 @@ export function SgCameraCapture(props: SgCameraCaptureProps) {
       stream?.getTracks().forEach((track) => track.stop());
       if (videoRef.current) videoRef.current.srcObject = null;
     };
-  }, [disabled, facing, resolution, attempt]);
+  }, [enabled, facing, resolution, attempt]);
 
   const capture = () => {
     const video = videoRef.current;
@@ -182,7 +182,7 @@ export function SgCameraCapture(props: SgCameraCaptureProps) {
             }}
           />
         ) : null}
-        {status === "starting" && !disabled ? (
+        {status === "starting" && enabled ? (
           <div className="absolute inset-0 flex items-center justify-center text-sm text-white/80">
             {t(i18n, "components.inputs.camera.starting")}
           </div>
@@ -205,7 +205,7 @@ export function SgCameraCapture(props: SgCameraCaptureProps) {
         <button
           type="button"
           onClick={capture}
-          disabled={disabled || status !== "ready"}
+          disabled={!enabled || status !== "ready"}
           aria-label={t(i18n, "components.inputs.camera.capture")}
           className="inline-flex items-center gap-2 rounded-md border border-border bg-[hsl(var(--primary))] px-3 py-2 text-sm font-medium text-[hsl(var(--primary-foreground))] disabled:cursor-not-allowed disabled:opacity-50"
         >
@@ -216,7 +216,7 @@ export function SgCameraCapture(props: SgCameraCaptureProps) {
           <button
             type="button"
             onClick={() => setFacing((f) => nextFacing(f))}
-            disabled={disabled}
+            disabled={!enabled}
             aria-label={t(i18n, "components.inputs.camera.switch")}
             className="inline-flex items-center gap-2 rounded-md border border-border px-3 py-2 text-sm hover:bg-muted/40 disabled:cursor-not-allowed disabled:opacity-50"
           >

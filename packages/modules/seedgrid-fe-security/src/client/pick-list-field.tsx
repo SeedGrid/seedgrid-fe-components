@@ -66,7 +66,7 @@ export function PickListField({
       showTargetFilter
       emptyMessage={emptyMessage}
       readOnly={readOnly}
-      disabled={readOnly}
+      enabled={!readOnly}
       onChange={(event) => {
         onChange(event.target.map((item) => item.value));
       }}

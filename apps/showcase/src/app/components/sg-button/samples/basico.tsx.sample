@@ -14,7 +14,7 @@ export default function Example() {
       <SgButton onClick={handleClick} loading={isLoading}>
         Submit
       </SgButton>
-      <SgButton disabled>Disabled</SgButton>
+      <SgButton enabled={false}>Disabled</SgButton>
     </div>
   );
 }

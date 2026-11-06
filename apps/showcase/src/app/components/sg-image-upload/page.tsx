@@ -168,7 +168,7 @@ export default function SgImageUploadPage() {
     { prop: "aspect", type: "number", defaultValue: "-", description: t(i18n, "showcase.component.imageUpload.props.rows.aspect") },
     { prop: "previewHeight", type: "number", defaultValue: "160", description: t(i18n, "showcase.component.imageUpload.props.rows.previewHeight") },
     { prop: "required / requiredMessage", type: "boolean / string", defaultValue: "false / auto", description: t(i18n, "showcase.component.imageUpload.props.rows.required") },
-    { prop: "disabled / readOnly", type: "boolean", defaultValue: "false", description: t(i18n, "showcase.component.imageUpload.props.rows.locked") },
+    { prop: "enabled / readOnly", type: "boolean", defaultValue: "true / false", description: t(i18n, "showcase.component.imageUpload.props.rows.locked") },
     { prop: "hintText", type: "string", defaultValue: "-", description: t(i18n, "showcase.component.imageUpload.props.rows.hintText") },
     { prop: "name / control / rules", type: "react-hook-form", defaultValue: "-", description: t(i18n, "showcase.component.imageUpload.props.rows.rhf") }
   ];
@@ -288,7 +288,7 @@ export default function SgImageUploadPage() {
           description={t(i18n, "showcase.component.imageUpload.sections.disabled.description")}
         >
           <div className="w-80">
-            <SgImageUpload id="demo-disabled" label={t(i18n, "showcase.component.imageUpload.labels.photo")} disabled />
+            <SgImageUpload id="demo-disabled" label={t(i18n, "showcase.component.imageUpload.labels.photo")} enabled={false} />
           </div>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-image-upload/samples/desabilitado.tsx.sample" />
         </Section>

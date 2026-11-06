@@ -13,7 +13,7 @@ export type SgPageControlPageProps = {
   hint?: string;
   icon?: React.ReactNode;
   hidden?: boolean;
-  disabled?: boolean;
+  enabled?: boolean;
   keepMounted?: boolean;
   className?: string;
   style?: React.CSSProperties;
@@ -200,7 +200,7 @@ export function SgPageControl(props: Readonly<SgPageControlProps>) {
   const selectPage = React.useCallback(
     (nextId: string) => {
       const next = visiblePages.find((record) => record.id === nextId);
-      if (!next || next.props.disabled) return;
+      if (!next || (next.props.enabled === false)) return;
       if (!isControlled) setInternalActiveId(nextId);
       fireOnChange(nextId);
     },
@@ -292,7 +292,7 @@ export function SgPageControl(props: Readonly<SgPageControlProps>) {
             )}
           >
             {visiblePages.map((record) => (
-              <option key={record.id} value={record.id} disabled={record.props.disabled}>
+              <option key={record.id} value={record.id} disabled={record.props.enabled === false}>
                 {optionLabel(record)}
               </option>
             ))}
@@ -363,7 +363,7 @@ export function SgPageControl(props: Readonly<SgPageControlProps>) {
               aria-selected={isActive}
               tabIndex={isActive ? 0 : -1}
               title={record.props.hint}
-              disabled={record.props.disabled}
+              disabled={record.props.enabled === false}
               onClick={() => selectPage(record.id)}
               className={cn(
                 "inline-flex shrink-0 items-center justify-center whitespace-nowrap font-medium transition-colors",
@@ -373,7 +373,7 @@ export function SgPageControl(props: Readonly<SgPageControlProps>) {
                 // No celular a lista e flex com rolagem: `w-full` faria cada aba ocupar a
                 // largura toda do container.
                 fullWidthTabs ? "md:w-full" : "",
-                record.props.disabled ? "cursor-not-allowed opacity-45" : "",
+                (record.props.enabled === false) ? "cursor-not-allowed opacity-45" : "",
                 tabClassName,
                 record.props.tabClassName
               )}

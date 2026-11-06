@@ -278,7 +278,7 @@ export function RoleEditor({ publicId }: RoleEditorProps) {
                   control={control}
                   orientation="vertical"
                   showCheckAll
-                  disabled={isReadOnly}
+                  enabled={!isReadOnly}
                   readOnly={isReadOnly}
                   required
                   rules={ {
@@ -303,7 +303,7 @@ export function RoleEditor({ publicId }: RoleEditorProps) {
                   shape="rounded"
                   label={t("security.common.save")}
                   loading={saving}
-                  disabled={saving}
+                  enabled={!saving}
                   type="submit"
                 />
               </SgStack>

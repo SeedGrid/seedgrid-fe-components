@@ -344,7 +344,7 @@ export default function LoginPage() {
                     : t("security.login.submit")
                 }
                 loading={pending}
-                disabled={pending}
+                enabled={!pending}
                 type="submit"
                 className="mt-2 w-full"
               />

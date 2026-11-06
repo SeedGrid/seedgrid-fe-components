@@ -163,7 +163,7 @@ test("mostra imagem salva ({ name, url }); desabilitado nao deixa remover nem tr
   const harness = setupDomHarness();
   try {
     await harness.render(
-      React.createElement(SgImageUpload, { id: "up", defaultValue: [{ name: "a.png", url: "https://x.test/a.png" }], disabled: true })
+      React.createElement(SgImageUpload, { id: "up", defaultValue: [{ name: "a.png", url: "https://x.test/a.png" }], enabled: false })
     );
     await flushDom();
     assert.equal(harness.document.querySelector("img").getAttribute("src"), "https://x.test/a.png");

@@ -435,7 +435,7 @@
       "required": false
     },
     {
-      "name": "disabled",
+      "name": "enabled",
       "type": "boolean",
       "required": false
     },
@@ -549,12 +549,12 @@
       "required": false
     },
     {
-      "name": "disabled",
+      "name": "dot",
       "type": "boolean",
       "required": false
     },
     {
-      "name": "dot",
+      "name": "enabled",
       "type": "boolean",
       "required": false
     },
@@ -735,6 +735,12 @@
       "required": false
     },
     {
+      "name": "enabled",
+      "type": "boolean",
+      "required": false,
+      "description": "Quando false, desabilita o botão. Padrão: true."
+    },
+    {
       "name": "iconOnly",
       "type": "boolean",
       "required": false
@@ -880,7 +886,7 @@
       "description": "Mostra o botao de alternar entre frontal e traseira (padrao `true`)."
     },
     {
-      "name": "disabled",
+      "name": "enabled",
       "type": "boolean",
       "required": false
     },
@@ -1018,11 +1024,6 @@
       "required": false
     },
     {
-      "name": "disabled",
-      "type": "boolean",
-      "required": false
-    },
-    {
       "name": "draggable",
       "type": "boolean",
       "required": false
@@ -1030,6 +1031,11 @@
     {
       "name": "dragPersistKey",
       "type": "string",
+      "required": false
+    },
+    {
+      "name": "enabled",
+      "type": "boolean",
       "required": false
     },
     {
@@ -1213,7 +1219,7 @@
       "required": false
     },
     {
-      "name": "disabled",
+      "name": "enabled",
       "type": "boolean",
       "required": false
     },
@@ -2611,11 +2617,6 @@
       "description": "Arquivos iniciais (campo nao controlado)."
     },
     {
-      "name": "disabled",
-      "type": "boolean",
-      "required": false
-    },
-    {
       "name": "dropManyTextKey",
       "type": "string",
       "required": false
@@ -2625,6 +2626,11 @@
       "type": "string",
       "required": false,
       "description": "Chaves de i18n do texto da area vazia (um arquivo / varios)."
+    },
+    {
+      "name": "enabled",
+      "type": "boolean",
+      "required": false
     },
     {
       "name": "error",
@@ -2831,13 +2837,13 @@
       "required": false
     },
     {
-      "name": "disabled",
-      "type": "boolean",
+      "name": "dragId",
+      "type": "string",
       "required": false
     },
     {
-      "name": "dragId",
-      "type": "string",
+      "name": "enabled",
+      "type": "boolean",
       "required": false
     },
     {
@@ -3020,7 +3026,7 @@
       "description": "Arquivos iniciais (campo nao controlado)."
     },
     {
-      "name": "disabled",
+      "name": "enabled",
       "type": "boolean",
       "required": false
     },
@@ -7304,15 +7310,102 @@
       "description": "Text/character rendered with neon style."
     }
   ],
+  "SgNotificationBell": [
+    {
+      "name": "apiUrl",
+      "type": "string",
+      "required": false,
+      "description": "Base das rotas da extension `user-notifications`. Default: `/api/user-notifications` (BFF, mesma origem)."
+    },
+    {
+      "name": "defaultUnreadOnly",
+      "type": "boolean",
+      "required": false,
+      "description": "O painel abre em \"Nao lidas\" (ainda nao clicadas). Ignorada com `showUnreadToggle=false`. Nao persiste entre recargas. Default: true."
+    },
+    {
+      "name": "eventPattern",
+      "type": "string",
+      "required": false,
+      "description": "Evento do Pulse que dispara a leitura. Default: `user-notification.*`."
+    },
+    {
+      "name": "fetcher",
+      "type": "((input: string, init?: RequestInit) => Promise<Response>)",
+      "required": false,
+      "description": "Substitui o `fetch` (apps sem BFF, testes, demonstracao). Default: `fetch` global."
+    },
+    {
+      "name": "maxVisible",
+      "type": "number",
+      "required": false,
+      "description": "Maximo de notificacoes na lista. Default e maximo: 100 (uma pagina da rota)."
+    },
+    {
+      "name": "onNotification",
+      "type": "((notification: SgNotification) => void)",
+      "required": false,
+      "description": "Chegou uma notificacao nova (aviso do Pulse)."
+    },
+    {
+      "name": "onNotificationDelete",
+      "type": "((notification: SgNotification) => void)",
+      "required": false,
+      "description": "O usuario excluiu uma notificacao."
+    },
+    {
+      "name": "onOpen",
+      "type": "((notification: SgNotification) => void)",
+      "required": false,
+      "description": "O usuario abriu uma notificacao (depois do `onOpen` do tipo)."
+    },
+    {
+      "name": "onPollingTick",
+      "type": "((stats: SgPollingStats) => void)",
+      "required": false,
+      "description": "O polling consultou a API: contador, instante e motivo. Para medir o custo."
+    },
+    {
+      "name": "placement",
+      "type": "SgNotificationPlacement",
+      "required": false,
+      "description": "De que lado do sino o painel abre (como o `placement` do SgPopup). `auto` escolhe o lado em que cabe. Default: `auto`."
+    },
+    {
+      "name": "pollIntervalMs",
+      "type": "number",
+      "required": false,
+      "description": "Intervalo do polling de reserva (so com o Pulse desligado ou fora do ar), preso entre 30 e 60 s. Default: 45000."
+    },
+    {
+      "name": "requestInit",
+      "type": "RequestInit",
+      "required": false,
+      "description": "Opcoes do `fetch` (ex.: `headers: { Authorization }` quando nao ha cookie)."
+    },
+    {
+      "name": "showUnreadToggle",
+      "type": "boolean",
+      "required": false,
+      "description": "Mostra o interruptor \"Nao lidas\" no topo do painel. `false` esconde so o interruptor (o sino fica) e o painel lista tudo. Default: true."
+    },
+    {
+      "name": "tokenEndpoint",
+      "type": "string",
+      "required": false,
+      "description": "Rota que entrega o token do Pulse (usada se nao houver `SgRealtimeProvider` acima). Default: `/api/realtime/connect`."
+    },
+    {
+      "name": "types",
+      "type": "Record<string, SgNotificationTypeConfig>",
+      "required": false,
+      "description": "Tipo -> icone e acao ao abrir. O sino nao conhece o negocio: relatorio e so um tipo."
+    }
+  ],
   "SgOrderList": [
     {
       "name": "controlsPosition",
       "type": "SgOrderListControlsPosition",
-      "required": false
-    },
-    {
-      "name": "disabled",
-      "type": "boolean",
       "required": false
     },
     {
@@ -7323,6 +7416,11 @@
     {
       "name": "emptyMessage",
       "type": "string",
+      "required": false
+    },
+    {
+      "name": "enabled",
+      "type": "boolean",
       "required": false
     },
     {
@@ -7347,7 +7445,7 @@
     },
     {
       "name": "itemTemplate",
-      "type": "((item: SgOrderListItem, state: { index: number; selected: boolean; disabled: boolean; }) => ReactNode)",
+      "type": "((item: SgOrderListItem, state: { index: number; selected: boolean; enabled: boolean; }) => ReactNode)",
       "required": false
     },
     {
@@ -7512,7 +7610,7 @@
       "required": true
     },
     {
-      "name": "disabled",
+      "name": "enabled",
       "type": "boolean",
       "required": false
     },
@@ -7662,7 +7760,7 @@
       "description": "Habilita a opcao \"Periodo\" (intervalo customizado). Default true."
     },
     {
-      "name": "disabled",
+      "name": "enabled",
       "type": "boolean",
       "required": false
     },
@@ -7750,11 +7848,6 @@
   ],
   "SgPickList": [
     {
-      "name": "disabled",
-      "type": "boolean",
-      "required": false
-    },
-    {
       "name": "draggable",
       "type": "boolean",
       "required": false
@@ -7762,6 +7855,11 @@
     {
       "name": "emptyMessage",
       "type": "string",
+      "required": false
+    },
+    {
+      "name": "enabled",
+      "type": "boolean",
       "required": false
     },
     {
@@ -7791,7 +7889,7 @@
     },
     {
       "name": "itemTemplate",
-      "type": "((item: SgPickListItem, state: { index: number; selected: boolean; disabled: boolean; list: SgPickListListName; }) => ReactNode)",
+      "type": "((item: SgPickListItem, state: { index: number; selected: boolean; enabled: boolean; list: SgPickListListName; }) => ReactNode)",
       "required": false
     },
     {
@@ -8263,7 +8361,7 @@
   ],
   "SgRadioGroup": [
     {
-      "name": "disabled",
+      "name": "enabled",
       "type": "boolean",
       "required": false
     },
@@ -8364,16 +8462,16 @@
       "description": "Color for filled stars"
     },
     {
-      "name": "disabled",
-      "type": "boolean",
-      "required": false,
-      "description": "Disabled state"
-    },
-    {
       "name": "emptyColor",
       "type": "string",
       "required": false,
       "description": "Color for empty stars"
+    },
+    {
+      "name": "enabled",
+      "type": "boolean",
+      "required": false,
+      "description": "Disabled state"
     },
     {
       "name": "error",
@@ -8705,7 +8803,7 @@
       "required": false
     },
     {
-      "name": "disabled",
+      "name": "enabled",
       "type": "boolean",
       "required": false
     },
@@ -8767,7 +8865,7 @@
       "required": false
     },
     {
-      "name": "disabled",
+      "name": "enabled",
       "type": "boolean",
       "required": false
     },
@@ -8861,7 +8959,7 @@
       "required": false
     },
     {
-      "name": "disabled",
+      "name": "enabled",
       "type": "boolean",
       "required": false
     },
@@ -9006,7 +9104,7 @@
       "required": false
     },
     {
-      "name": "disabled",
+      "name": "enabled",
       "type": "boolean",
       "required": false
     },
@@ -9348,7 +9446,7 @@
   ],
   "SgToolbarIconButton": [
     {
-      "name": "disabled",
+      "name": "enabled",
       "type": "boolean",
       "required": false
     },
@@ -9688,7 +9786,7 @@
       "description": "Recortes oferecidos. Com um unico item o combo de recorte some. Default: os tres."
     },
     {
-      "name": "disabled",
+      "name": "enabled",
       "type": "boolean",
       "required": false
     },

@@ -7,7 +7,7 @@ export default function App() {
       <SgFileUpload
         id="demo-disabled"
         label="Anexo"
-        disabled
+        enabled={false}
         defaultValue={[{ name: "contrato.pdf", url: "/contrato.pdf", size: 482304 }]}
       />
     </div>

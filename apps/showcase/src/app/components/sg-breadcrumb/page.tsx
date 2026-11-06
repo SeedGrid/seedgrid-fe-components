@@ -70,7 +70,7 @@ function CodeBlock(props: { sampleFile: string }) {
 
 
 
-
+
 
 
 
@@ -187,7 +187,7 @@ const BREADCRUMB_PROPS: ShowcasePropRow[] = [
   { prop: "overflowLabel", type: "string", defaultValue: "More paths", description: "Label for the overflow button." },
   { prop: "onNavigate", type: "(item, index) => void", defaultValue: "-", description: "Callback fired when navigating to an item." },
   { prop: "className / itemClassName / style", type: "string / string / CSSProperties", defaultValue: "-", description: "Layout and style customization." },
-  { prop: "SgBreadcrumbItem.id / label / href / icon / disabled / hidden / onClick", type: "item props", defaultValue: "-", description: "Structure of each breadcrumb item." }
+  { prop: "SgBreadcrumbItem.id / label / href / icon / enabled / hidden / onClick", type: "item props", defaultValue: "-", description: "Structure of each breadcrumb item." }
 ];
 
 export default function SgBreadcrumbPage() {
@@ -195,7 +195,7 @@ export default function SgBreadcrumbPage() {
   const [lastNavigate, setLastNavigate] = React.useState("-");
   const routeItems = ROUTES[routeKey];
   const i18n = useShowcaseI18n();
-  const aiComponent = useAiManifestComponent("SgBreadcrumb");
+  const aiComponent = useAiManifestComponent("SgBreadcrumb");
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
 

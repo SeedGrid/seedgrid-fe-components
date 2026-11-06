@@ -18,7 +18,7 @@ export type SgMenuNode = {
   hint?: string;
   url?: string;
   children?: SgMenuNode[];
-  disabled?: boolean;
+  enabled?: boolean;
   icon?: React.ReactNode;
   badge?: string | number;
   onClick?: () => void;
@@ -678,7 +678,7 @@ export function SgMenu(props: Readonly<SgMenuProps>) {
 
   const activateNode = React.useCallback(
     (node: SgMenuNode) => {
-      if (node.disabled) return;
+      if ((node.enabled === false)) return;
       hideMenuHint();
       onItemClick?.(node);
       setLocalActiveId(node.id);
@@ -863,7 +863,7 @@ export function SgMenu(props: Readonly<SgMenuProps>) {
       const openNow = hasSearch || expandedSet.has(node.id);
       const isExactActive = activeSets.exact.has(node.id);
       const isBranchActive = activeSets.branch.has(node.id);
-      const disabled = !!node.disabled;
+      const disabled = node.enabled === false;
       const iconNode = resolveIcon(node);
       const hideChildren = isCollapsed;
       const nodeHint = node.hint ?? (isCollapsed ? node.label : undefined);
@@ -995,12 +995,12 @@ export function SgMenu(props: Readonly<SgMenuProps>) {
         <button
           key={node.id}
           type="button"
-          disabled={node.disabled}
+          disabled={node.enabled === false}
           aria-current={isExactActive ? "page" : undefined}
           onMouseEnter={node.hint ? (event) => showMenuHint(event.currentTarget, node.hint) : undefined}
           onMouseLeave={node.hint ? hideMenuHint : undefined}
           onClick={() => {
-            if (node.disabled) return;
+            if ((node.enabled === false)) return;
             const intent = resolveMenuNodeActionIntent({
               variant: "flat",
               hasChildren,
@@ -1016,7 +1016,7 @@ export function SgMenu(props: Readonly<SgMenuProps>) {
               : isBranchActive
               ? "bg-muted/60 text-foreground"
               : "text-foreground hover:bg-muted/60",
-            node.disabled ? "cursor-not-allowed opacity-55" : "",
+            (node.enabled === false) ? "cursor-not-allowed opacity-55" : "",
             className
           )}
         >
@@ -1065,7 +1065,7 @@ export function SgMenu(props: Readonly<SgMenuProps>) {
                 <button
                   key={node.id}
                   type="button"
-                  disabled={node.disabled}
+                  disabled={node.enabled === false}
                   aria-current={isExactActive ? "page" : undefined}
                   onMouseEnter={(event) => {
                     if (node.hint) showMenuHint(event.currentTarget, node.hint);
@@ -1081,7 +1081,7 @@ export function SgMenu(props: Readonly<SgMenuProps>) {
                   }}
                   onMouseLeave={node.hint ? hideMenuHint : undefined}
                   onClick={() => {
-                    if (node.disabled) return;
+                    if ((node.enabled === false)) return;
                     const nextState = resolveTieredNodeClickIntent({
                       currentPath: tieredPath,
                       depth,
@@ -1102,7 +1102,7 @@ export function SgMenu(props: Readonly<SgMenuProps>) {
                   className={cn(
                     "flex w-full items-center gap-2 rounded-md px-2.5 py-2 text-left text-sm transition-colors",
                     isExactActive ? "bg-primary/15 text-primary" : isOpen ? "bg-muted/70" : "hover:bg-muted/60",
-                    node.disabled ? "cursor-not-allowed opacity-55" : ""
+                    (node.enabled === false) ? "cursor-not-allowed opacity-55" : ""
                   )}
                 >
                   <span
@@ -1211,7 +1211,7 @@ export function SgMenu(props: Readonly<SgMenuProps>) {
                 <button
                   key={node.id}
                   type="button"
-                  disabled={node.disabled}
+                  disabled={node.enabled === false}
                   onMouseEnter={(event) => {
                     if (node.hint) showMenuHint(event.currentTarget, node.hint);
                     const nextMegaActiveId = resolveMegaMenuHoverActiveId({
@@ -1222,7 +1222,7 @@ export function SgMenu(props: Readonly<SgMenuProps>) {
                   }}
                   onMouseLeave={node.hint ? hideMenuHint : undefined}
                   onClick={() => {
-                    if (node.disabled) return;
+                    if ((node.enabled === false)) return;
                     const nextState = resolveMegaMenuInteraction({
                       nodeId: node.id,
                       hasChildren
@@ -1236,7 +1236,7 @@ export function SgMenu(props: Readonly<SgMenuProps>) {
                   className={cn(
                     "inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm transition-colors",
                     active ? "bg-muted/80 text-foreground" : "hover:bg-muted/60",
-                    node.disabled ? "cursor-not-allowed opacity-55" : ""
+                    (node.enabled === false) ? "cursor-not-allowed opacity-55" : ""
                   )}
                 >
                   {iconNode ? (
@@ -1266,7 +1266,7 @@ export function SgMenu(props: Readonly<SgMenuProps>) {
               <button
                 key={node.id}
                 type="button"
-                disabled={node.disabled}
+                disabled={node.enabled === false}
                 onMouseEnter={(event) => {
                   if (node.hint) showMenuHint(event.currentTarget, node.hint);
                   const nextMegaActiveId = resolveMegaMenuHoverActiveId({
@@ -1277,7 +1277,7 @@ export function SgMenu(props: Readonly<SgMenuProps>) {
                 }}
                 onMouseLeave={node.hint ? hideMenuHint : undefined}
                 onClick={() => {
-                  if (node.disabled) return;
+                  if ((node.enabled === false)) return;
                   const nextState = resolveMegaMenuInteraction({
                     nodeId: node.id,
                     hasChildren
@@ -1291,7 +1291,7 @@ export function SgMenu(props: Readonly<SgMenuProps>) {
                 className={cn(
                   "flex w-full items-center gap-2 rounded-md px-2.5 py-2 text-left text-sm transition-colors",
                   active ? "bg-muted/80 text-foreground" : "hover:bg-muted/60",
-                  node.disabled ? "cursor-not-allowed opacity-55" : ""
+                  (node.enabled === false) ? "cursor-not-allowed opacity-55" : ""
                 )}
               >
                 {iconNode ? (
@@ -1455,7 +1455,7 @@ export function SgMenu(props: Readonly<SgMenuProps>) {
               const nodeId = (item.data as { nodeId?: string } | undefined)?.nodeId;
               if (!nodeId) return;
               const node = maps.nodeById.get(nodeId);
-              if (!node || node.disabled) return;
+              if (!node || (node.enabled === false)) return;
 
               const parentChain = collectParentChain(maps.parentById, node.id);
               const rootToParent = [...parentChain].reverse();

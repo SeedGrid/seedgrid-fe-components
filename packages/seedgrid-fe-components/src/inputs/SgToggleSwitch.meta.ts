@@ -25,7 +25,7 @@ export const sgMeta: SgMetaV0 = {
   sdui: {
     rendererType: "field.toggle",
     acceptsDataBinding: true,
-    defaultProps: { checked: false, disabled: false }
+    defaultProps: { checked: false, enabled: true }
   }
 };
 

@@ -32,7 +32,7 @@ function Section(props: { title: string; description?: string; children: React.R
 
 
 
-
+
 
 
 
@@ -123,7 +123,7 @@ const CUSTOM_ITEMS: SgAccordionItem[] = [
     id: "blocked",
     title: "Modulo indisponivel",
     icon: <TriangleAlert size={14} />,
-    disabled: true,
+    enabled: false,
     content: <p className="text-sm">Conteudo bloqueado.</p>
   }
 ];
@@ -308,7 +308,7 @@ const items: SgAccordionItem[] = [
     id: "blocked",
     title: "Modulo indisponivel",
     icon: <TriangleAlert size={14} />,
-    disabled: true,
+    enabled: false,
     content: <p className="text-sm">Conteudo bloqueado.</p>
   }
 ];
@@ -459,7 +459,7 @@ const ACCORDION_PROPS: ShowcasePropRow[] = [
 
 export default function SgAccordionPage() {
   const i18n = useShowcaseI18n();
-  const aiComponent = useAiManifestComponent("SgAccordion");
+  const aiComponent = useAiManifestComponent("SgAccordion");
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
   const [controlled, setControlled] = React.useState<number[]>([0]);

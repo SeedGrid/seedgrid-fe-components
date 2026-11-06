@@ -26,7 +26,7 @@ export const sgMeta: SgMetaV0 = {
     { name: "minWidth", type: "number", description: "Largura minima em px.", semanticRole: "validation", bindable: true },
     { name: "minHeight", type: "number", description: "Altura minima em px.", semanticRole: "validation", bindable: true },
     { name: "aspect", type: "number", description: "Proporcao largura/altura exigida (1 = quadrada).", semanticRole: "validation", bindable: true },
-    { name: "disabled", type: "boolean", default: false, description: "Desabilita a escolha e a remocao.", semanticRole: "appearance", bindable: true },
+    { name: "enabled", type: "boolean", default: true, description: "Desabilita a escolha e a remocao.", semanticRole: "appearance", bindable: true },
     { name: "onChange", type: "(files: SgFileValue[]) => void", description: "Lista de imagens validas apos escolher ou remover.", semanticRole: "event", bindable: false },
     { name: "onError", type: "(code: FileErrorCode, message: string, fileName: string) => void", description: "Imagem recusada (type, size, total, count, dimension, aspect). As demais seguem validas.", semanticRole: "event", bindable: false }
   ],

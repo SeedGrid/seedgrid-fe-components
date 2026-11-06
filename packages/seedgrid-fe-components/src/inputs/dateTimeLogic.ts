@@ -136,11 +136,27 @@ export function validateDateTime(local: string, input: DateTimeValidationInput =
   return belowMin ? "min" : "max";
 }
 
-/** Texto de exibicao de um relogio de parede: dd/mm/aaaa HH:mm (en-US: aaaa-mm-dd HH:mm). */
+/** Data no idioma (Intl.DateTimeFormat): pt-BR/pt-PT 05/11/2026, en-US 11/5/2026, es 5/11/2026, fr 05/11/2026. */
+export function formatLocalizedDate(year: number, month: number, day: number, locale: string): string {
+  try {
+    return new Intl.DateTimeFormat(locale, { timeZone: "UTC", year: "numeric", month: "numeric", day: "numeric" }).format(
+      new Date(Date.UTC(year, month - 1, day))
+    );
+  } catch {
+    const two = (v: number) => String(v).padStart(2, "0");
+    return `${two(day)}/${two(month)}/${year}`;
+  }
+}
+
+/**
+ * Texto de exibicao de um relogio de parede, no idioma ativo: a data vem do `Intl.DateTimeFormat` (pt-BR/pt-PT 05/11/2026,
+ * en-US 11/5/2026, es 5/11/2026, fr 05/11/2026) e a hora e sempre 24h (HH:mm[:ss]), separadas por um espaco. Assim a saida
+ * nao depende do separador que cada navegador usa entre data e hora, e o Flutter (`intl`) produz o mesmo texto.
+ */
 export function formatWallClock(local: string, locale: string, showSeconds = false): string {
   const m = LOCAL_RE.exec(local.trim());
   if (!m) return local;
   const time = `${m[4]}:${m[5]}${showSeconds ? `:${m[6] ?? "00"}` : ""}`;
-  if (locale === "en-US") return `${m[1]}-${m[2]}-${m[3]} ${time}`;
-  return `${m[3]}/${m[2]}/${m[1]} ${time}`;
+  const date = formatLocalizedDate(Number(m[1]), Number(m[2]), Number(m[3]), locale);
+  return `${date} ${time}`;
 }

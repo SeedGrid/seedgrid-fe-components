@@ -124,7 +124,7 @@ function TrialScreen() {
                       : t("billing.platform.trial.save")
                   }
                   loading={saving}
-                  disabled={saving}
+                  enabled={!saving}
                   onClick={() => void handleSave()}
                 />
               </div>

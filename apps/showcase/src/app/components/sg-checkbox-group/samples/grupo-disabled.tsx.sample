@@ -8,5 +8,5 @@ const BASIC_OPTIONS: SgCheckboxGroupOption[] = [
 ];
 
 export default function Example() {
-  return <SgCheckboxGroup id="disabled-group" title="Options desabilitadas" source={BASIC_OPTIONS} value={["option2"]} disabled />;
+  return <SgCheckboxGroup id="disabled-group" title="Options desabilitadas" source={BASIC_OPTIONS} value={["option2"]} enabled={false} />;
 }

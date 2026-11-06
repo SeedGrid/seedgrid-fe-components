@@ -236,7 +236,7 @@ export function TermsSection({ planPublicId }: { planPublicId: string }) {
                 shape="rounded"
                 label={t("billing.platform.terms.action.publish")}
                 loading={busyTermId === term.publicId}
-                disabled={busyTermId !== null}
+                enabled={!(busyTermId !== null)}
                 onClick={() => void runTermAction(term, "publish")}
               />
               <SgButton
@@ -244,7 +244,7 @@ export function TermsSection({ planPublicId }: { planPublicId: string }) {
                 severity="secondary"
                 shape="rounded"
                 label={t("billing.platform.terms.action.archive")}
-                disabled={busyTermId !== null}
+                enabled={!(busyTermId !== null)}
                 onClick={() => void runTermAction(term, "archive")}
               />
               {permissions.canDelete ? (
@@ -253,7 +253,7 @@ export function TermsSection({ planPublicId }: { planPublicId: string }) {
                   severity="danger"
                   shape="rounded"
                   label={t("billing.platform.common.delete")}
-                  disabled={busyTermId !== null}
+                  enabled={!(busyTermId !== null)}
                   onClick={() => setTermToDelete(term)}
                 />
               ) : null}
@@ -343,7 +343,7 @@ export function TermsSection({ planPublicId }: { planPublicId: string }) {
                     : t("billing.platform.terms.create")
                 }
                 loading={creating}
-                disabled={creating}
+                enabled={!creating}
                 onClick={() => void handleCreate()}
               />
             </SgStack>

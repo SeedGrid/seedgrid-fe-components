@@ -14,7 +14,7 @@ export type SgAutocompleteItem = {
   label: string;
   value?: string;
   group?: string;
-  disabled?: boolean;
+  enabled?: boolean;
   data?: unknown;
 };
 
@@ -300,7 +300,7 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
   }, [onOpenChange]);
 
   const selectItem = (item: SgAutocompleteItem) => {
-    if (item.disabled) return;
+    if ((item.enabled === false)) return;
     const selection = formatSelection ? formatSelection(item) : item.label;
     setSelectedItem(item);
     setInputValue(selection);
@@ -478,7 +478,7 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
               <div
                 key={item.id}
                 data-sg-index={flatIndex}
-                className={`group relative cursor-pointer px-3 py-2 text-sm ${isActive ? "bg-muted/60" : ""} ${item.disabled ? "opacity-50 cursor-not-allowed" : "hover:bg-muted/40"}`}
+                className={`group relative cursor-pointer px-3 py-2 text-sm ${isActive ? "bg-muted/60" : ""} ${(item.enabled === false) ? "opacity-50 cursor-not-allowed" : "hover:bg-muted/40"}`}
                 onMouseEnter={() => setActiveIndex(flatIndex)}
                 onMouseDown={(event) => {
                   event.preventDefault();
@@ -504,7 +504,7 @@ function SgAutocompleteBase<T>(props: SgAutocompleteBaseProps<T>) {
         <div
           key={item.id}
           data-sg-index={index}
-          className={`group relative cursor-pointer px-3 py-2 text-sm ${isActive ? "bg-muted/60" : ""} ${item.disabled ? "opacity-50 cursor-not-allowed" : "hover:bg-muted/40"}`}
+          className={`group relative cursor-pointer px-3 py-2 text-sm ${isActive ? "bg-muted/60" : ""} ${(item.enabled === false) ? "opacity-50 cursor-not-allowed" : "hover:bg-muted/40"}`}
           onMouseEnter={() => setActiveIndex(index)}
           onMouseDown={(event) => {
             event.preventDefault();

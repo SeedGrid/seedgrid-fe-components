@@ -91,7 +91,7 @@ export default function Example() {
   return (
     <div className="flex flex-wrap items-center gap-4">
       <SgStepperInput id="stepper-readonly" minValue={0} maxValue={10} value={7} readOnly />
-      <SgStepperInput id="stepper-disabled" minValue={0} maxValue={10} value={4} disabled />
+      <SgStepperInput id="stepper-disabled" minValue={0} maxValue={10} value={4} enabled={false} />
     </div>
   );
 }`;
@@ -124,7 +124,7 @@ const STEPPER_PROPS: ShowcasePropRow[] = [
   { prop: "minValue / maxValue", type: "number", defaultValue: "-", description: "Limites do valor permitido." },
   { prop: "step", type: "number", defaultValue: "1", description: "Incremento/decremento por clique." },
   { prop: "value / defaultValue", type: "number", defaultValue: "- / minValue", description: "Modo controlado ou valor inicial." },
-  { prop: "disabled / readOnly", type: "boolean", defaultValue: "false", description: "Bloqueia edicao total ou parcial." },
+  { prop: "enabled / readOnly", type: "boolean", defaultValue: "true / false", description: "Bloqueia edicao total ou parcial." },
   { prop: "onChange", type: "(value: number) => void", defaultValue: "-", description: "Callback com valor normalizado." },
   { prop: "ariaLabel", type: "string", defaultValue: "-", description: "Acessibilidade para o input." },
   { prop: "className / inputClassName", type: "string", defaultValue: "-", description: "Classes do container e do campo." },
@@ -140,7 +140,7 @@ const STEPPER_PROPS: ShowcasePropRow[] = [
 
 export default function SgStepperInputPage() {
   const i18n = useShowcaseI18n();
-  const aiComponent = useAiManifestComponent("SgStepperInput");
+  const aiComponent = useAiManifestComponent("SgStepperInput");
   const [basicValue, setBasicValue] = React.useState(12);
   const [controlledValue, setControlledValue] = React.useState(18);
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({
@@ -206,7 +206,7 @@ export default function SgStepperInputPage() {
         <Section title={t(i18n, `${K}.section3Title`)} description={t(i18n, `${K}.section3Description`)}>
           <div className="flex flex-wrap items-center gap-4">
             <SgStepperInput id="stepper-readonly" minValue={0} maxValue={10} value={7} readOnly />
-            <SgStepperInput id="stepper-disabled" minValue={0} maxValue={10} value={4} disabled />
+            <SgStepperInput id="stepper-disabled" minValue={0} maxValue={10} value={4} enabled={false} />
           </div>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-stepper-input/samples/read-only-e-disabled.tsx.sample" />
         </Section>

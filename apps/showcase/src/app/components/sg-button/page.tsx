@@ -144,9 +144,9 @@ const BUTTON_PROPS: ShowcasePropRow[] = [
     description: "Exibe spinner e bloqueia clique."
   },
   {
-    prop: "disabled",
+    prop: "enabled",
     type: "boolean",
-    defaultValue: "false",
+    defaultValue: "true",
     description: "Desabilita o botao."
   },
   {
@@ -396,7 +396,7 @@ export default function SgButtonShowcase() {
           <SgButton onClick={submit.run} loading={submit.loading}>
             Submit
           </SgButton>
-          <SgButton disabled>Disabled</SgButton>
+          <SgButton enabled={false}>Disabled</SgButton>
         </Row>
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-button/samples/basico.tsx.sample" />
       </Section>

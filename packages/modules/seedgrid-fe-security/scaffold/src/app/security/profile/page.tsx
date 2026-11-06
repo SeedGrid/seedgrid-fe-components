@@ -477,11 +477,9 @@ function ProfileScreen() {
                 label={t("security.common.save")}
                 onClick={handleSave}
                 loading={saving}
-                disabled={
-                  saving ||
+                enabled={!(saving ||
                   !formValues.email.trim() ||
-                  !hasAtLeastTwoWords(formValues.name)
-                }
+                  !hasAtLeastTwoWords(formValues.name))}
               />
             </SgStack>
           ) : null}

@@ -325,8 +325,16 @@ export {
   SgRealtimeProvider,
   useSgRealtimeEvent,
   useSgRealtimeStatus,
-  matchesSgRealtimeEvent
+  matchesSgRealtimeEvent,
+  useHasSgRealtimeProvider
 } from "./realtime/SgRealtimeProvider";
+export { SgNotificationBell } from "./notifications/SgNotificationBell";
+export type {
+  SgNotificationBellProps,
+  SgNotificationTypeConfig,
+  SgNotification,
+  SgPollingStats
+} from "./notifications/SgNotificationBell";
 export type {
   SgRealtimeProviderProps,
   SgRealtimeStatus,

@@ -6,7 +6,7 @@ import { SgYearPartSelector } from "@seedgrid/fe-components";
 export default function Example() {
   return (
     <div className="flex w-full max-w-xl flex-col gap-4">
-      <SgYearPartSelector id="yps-disabled" label="Recorte do ano" locale="pt-BR" disabled />
+      <SgYearPartSelector id="yps-disabled" label="Recorte do ano" locale="pt-BR" enabled={false} />
       <SgYearPartSelector id="yps-required" label="Recorte do ano" locale="pt-BR" required />
     </div>
   );

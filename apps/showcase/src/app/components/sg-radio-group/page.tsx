@@ -355,7 +355,7 @@ export default function App() {
             source={OPTIONS}
             orientation={orientation}
             iconOnly={iconOnly}
-            disabled={disabled}
+            enabled={!disabled}
             readOnly={readOnly}
             required={required}
             value={value}
@@ -427,7 +427,7 @@ const PRIORITY_OPTIONS: SgRadioGroupOption[] = [
   { label: "Low", value: "low" },
   { label: "Medium", value: "medium" },
   { label: "High", value: "high" },
-  { label: "Urgent", value: "urgent", disabled: true }
+  { label: "Urgent", value: "urgent", enabled: false}
 ];
 
 export default function SgRadioGroupShowcase() {
@@ -800,7 +800,7 @@ export default function SgRadioGroupShowcase() {
           title="Options desabilitadas"
           source={BASIC_OPTIONS}
           value="option2"
-          disabled
+          enabled={false}
         />
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-radio-group/samples/grupo-disabled.tsx.sample" />
       </Section>

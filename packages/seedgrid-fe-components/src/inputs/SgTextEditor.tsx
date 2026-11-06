@@ -53,7 +53,7 @@ export type SgTextEditorProps = {
 
   height?: number;
   placeholder?: string;
-  disabled?: boolean;
+  enabled?: boolean;
   borderRadius?: number | string;
 
   showCssEditor?: boolean;
@@ -133,7 +133,7 @@ function SgTextEditorBase(props: Readonly<SgTextEditorProps>) {
     onLoad,
     height = 320,
     placeholder: placeholderProp,
-    disabled,
+    enabled = true,
     borderRadius,
     showCssEditor = false,
     cssEditorLabel: cssEditorLabelProp,
@@ -154,7 +154,7 @@ function SgTextEditorBase(props: Readonly<SgTextEditorProps>) {
   const isControlled = typeof valueHtml === "string";
   const editor = useEditor({
     immediatelyRender: false,
-    editable: !disabled,
+    editable: enabled,
     extensions: [
       StarterKit.configure({ codeBlock: {} }),
       Underline,
@@ -173,7 +173,7 @@ function SgTextEditorBase(props: Readonly<SgTextEditorProps>) {
       attributes: {
         id,
         "aria-label": editorAriaLabel,
-        class: cn("prose max-w-none focus:outline-none min-h-[120px]", disabled ? "opacity-60" : ""),
+        class: cn("prose max-w-none focus:outline-none min-h-[120px]", !enabled ? "opacity-60" : ""),
         "data-placeholder": placeholder
       }
     },
@@ -245,7 +245,7 @@ function SgTextEditorBase(props: Readonly<SgTextEditorProps>) {
       >
         <select
           className="h-9 rounded-md border px-2 text-sm bg-background"
-          disabled={!editor || disabled}
+          disabled={!editor || !enabled}
           value={
             active("heading", { level: 1 })
               ? "h1"
@@ -273,7 +273,7 @@ function SgTextEditorBase(props: Readonly<SgTextEditorProps>) {
 
         <select
           className="h-9 rounded-md border px-2 text-sm bg-background"
-          disabled={!editor || disabled}
+          disabled={!editor || !enabled}
           onChange={(e) => {
             const v = e.target.value;
             if (!editor) return;
@@ -290,7 +290,7 @@ function SgTextEditorBase(props: Readonly<SgTextEditorProps>) {
 
         <select
           className="h-9 rounded-md border px-2 text-sm bg-background"
-          disabled={!editor || disabled}
+          disabled={!editor || !enabled}
           defaultValue="16px"
           onChange={(e) => {
             const size = e.target.value;
@@ -312,28 +312,28 @@ function SgTextEditorBase(props: Readonly<SgTextEditorProps>) {
           label={t(i18n, "components.textEditor.toolbar.bold")}
           icon={<span className="font-bold leading-none" aria-hidden="true">B</span>}
           active={active("bold")}
-          disabled={!canRun(editor, (ed) => ed.can().chain().focus().toggleBold().run()) || !!disabled}
+          enabled={!(!canRun(editor, (ed) => ed.can().chain().focus().toggleBold().run()) || !enabled)}
           onClick={() => exec(() => editor!.chain().toggleBold().run())}
         />
         <ToolbarButton
           label={t(i18n, "components.textEditor.toolbar.italic")}
           icon={<span className="italic leading-none" aria-hidden="true">I</span>}
           active={active("italic")}
-          disabled={!canRun(editor, (ed) => ed.can().chain().focus().toggleItalic().run()) || !!disabled}
+          enabled={!(!canRun(editor, (ed) => ed.can().chain().focus().toggleItalic().run()) || !enabled)}
           onClick={() => exec(() => editor!.chain().toggleItalic().run())}
         />
         <ToolbarButton
           label={t(i18n, "components.textEditor.toolbar.underline")}
           icon={<span className="underline leading-none" aria-hidden="true">U</span>}
           active={active("underline")}
-          disabled={!canRun(editor, (ed) => ed.can().chain().focus().toggleUnderline().run()) || !!disabled}
+          enabled={!(!canRun(editor, (ed) => ed.can().chain().focus().toggleUnderline().run()) || !enabled)}
           onClick={() => exec(() => editor!.chain().toggleUnderline().run())}
         />
         <ToolbarButton
           label={t(i18n, "components.textEditor.toolbar.strike")}
           icon={<span className="line-through leading-none" aria-hidden="true">S</span>}
           active={active("strike")}
-          disabled={!canRun(editor, (ed) => ed.can().chain().focus().toggleStrike().run()) || !!disabled}
+          enabled={!(!canRun(editor, (ed) => ed.can().chain().focus().toggleStrike().run()) || !enabled)}
           onClick={() => exec(() => editor!.chain().toggleStrike().run())}
         />
 
@@ -343,7 +343,7 @@ function SgTextEditorBase(props: Readonly<SgTextEditorProps>) {
           label={t(i18n, "components.textEditor.toolbar.textColor")}
           hint={t(i18n, "components.textEditor.toolbar.textColor")}
           icon={<Palette size={14} aria-hidden="true" />}
-          disabled={!editor || !!disabled}
+          enabled={!(!editor || !enabled)}
           onChange={(color) => editor?.chain().focus().setColor(color).run()}
         />
 
@@ -351,7 +351,7 @@ function SgTextEditorBase(props: Readonly<SgTextEditorProps>) {
           label={t(i18n, "components.textEditor.toolbar.highlightColor")}
           hint={t(i18n, "components.textEditor.toolbar.highlightColor")}
           icon={<Highlighter size={14} aria-hidden="true" />}
-          disabled={!editor || !!disabled}
+          enabled={!(!editor || !enabled)}
           onChange={(color) => editor?.chain().focus().toggleHighlight({ color }).run()}
         />
 
@@ -361,14 +361,14 @@ function SgTextEditorBase(props: Readonly<SgTextEditorProps>) {
           label={t(i18n, "components.textEditor.toolbar.subscript")}
           text="x2"
           active={active("subscript")}
-          disabled={!editor || !!disabled}
+          enabled={!(!editor || !enabled)}
           onClick={() => exec(() => editor!.chain().toggleSubscript().run())}
         />
         <ToolbarButton
           label={t(i18n, "components.textEditor.toolbar.superscript")}
           text="x^"
           active={active("superscript")}
-          disabled={!editor || !!disabled}
+          enabled={!(!editor || !enabled)}
           onClick={() => exec(() => editor!.chain().toggleSuperscript().run())}
         />
 
@@ -378,28 +378,28 @@ function SgTextEditorBase(props: Readonly<SgTextEditorProps>) {
           label={t(i18n, "components.textEditor.toolbar.bullets")}
           icon={<List size={14} aria-hidden="true" />}
           active={active("bulletList")}
-          disabled={!editor || !!disabled}
+          enabled={!(!editor || !enabled)}
           onClick={() => exec(() => editor!.chain().toggleBulletList().run())}
         />
         <ToolbarButton
           label={t(i18n, "components.textEditor.toolbar.numbered")}
           icon={<ListOrdered size={14} aria-hidden="true" />}
           active={active("orderedList")}
-          disabled={!editor || !!disabled}
+          enabled={!(!editor || !enabled)}
           onClick={() => exec(() => editor!.chain().toggleOrderedList().run())}
         />
         <ToolbarButton
           label={t(i18n, "components.textEditor.toolbar.outdent")}
           icon={<IndentDecrease size={14} aria-hidden="true" />}
           active={false}
-          disabled={!editor || !!disabled}
+          enabled={!(!editor || !enabled)}
           onClick={() => exec(() => editor!.chain().liftListItem("listItem").run())}
         />
         <ToolbarButton
           label={t(i18n, "components.textEditor.toolbar.indent")}
           icon={<IndentIncrease size={14} aria-hidden="true" />}
           active={false}
-          disabled={!editor || !!disabled}
+          enabled={!(!editor || !enabled)}
           onClick={() => exec(() => editor!.chain().sinkListItem("listItem").run())}
         />
 
@@ -409,28 +409,28 @@ function SgTextEditorBase(props: Readonly<SgTextEditorProps>) {
           label={t(i18n, "components.textEditor.toolbar.alignLeft")}
           icon={<AlignLeft size={14} aria-hidden="true" />}
           active={active("paragraph", { textAlign: "left" }) || active("heading", { textAlign: "left" })}
-          disabled={!editor || !!disabled}
+          enabled={!(!editor || !enabled)}
           onClick={() => exec(() => editor!.chain().setTextAlign("left").run())}
         />
         <ToolbarButton
           label={t(i18n, "components.textEditor.toolbar.alignCenter")}
           icon={<AlignCenter size={14} aria-hidden="true" />}
           active={active("paragraph", { textAlign: "center" }) || active("heading", { textAlign: "center" })}
-          disabled={!editor || !!disabled}
+          enabled={!(!editor || !enabled)}
           onClick={() => exec(() => editor!.chain().setTextAlign("center").run())}
         />
         <ToolbarButton
           label={t(i18n, "components.textEditor.toolbar.alignRight")}
           icon={<AlignRight size={14} aria-hidden="true" />}
           active={active("paragraph", { textAlign: "right" }) || active("heading", { textAlign: "right" })}
-          disabled={!editor || !!disabled}
+          enabled={!(!editor || !enabled)}
           onClick={() => exec(() => editor!.chain().setTextAlign("right").run())}
         />
         <ToolbarButton
           label={t(i18n, "components.textEditor.toolbar.justify")}
           icon={<AlignJustify size={14} aria-hidden="true" />}
           active={active("paragraph", { textAlign: "justify" }) || active("heading", { textAlign: "justify" })}
-          disabled={!editor || !!disabled}
+          enabled={!(!editor || !enabled)}
           onClick={() => exec(() => editor!.chain().setTextAlign("justify").run())}
         />
 
@@ -440,7 +440,7 @@ function SgTextEditorBase(props: Readonly<SgTextEditorProps>) {
           label={t(i18n, "components.textEditor.toolbar.link")}
           text={t(i18n, "components.textEditor.toolbar.link")}
           active={active("link")}
-          disabled={!editor || !!disabled}
+          enabled={!(!editor || !enabled)}
           onClick={() => {
             if (!editor) return;
             const prev = editor.getAttributes("link").href as string | undefined;
@@ -456,7 +456,7 @@ function SgTextEditorBase(props: Readonly<SgTextEditorProps>) {
           label={t(i18n, "components.textEditor.toolbar.image")}
           icon={<FileImage size={14} aria-hidden="true" />}
           active={false}
-          disabled={!editor || !!disabled}
+          enabled={!(!editor || !enabled)}
           onClick={() => {
             if (!editor) return;
             const src = window.prompt(t(i18n, "components.textEditor.prompt.imageUrl"));
@@ -471,7 +471,7 @@ function SgTextEditorBase(props: Readonly<SgTextEditorProps>) {
           label={t(i18n, "components.textEditor.toolbar.clear")}
           text="X"
           active={false}
-          disabled={!editor || !!disabled}
+          enabled={!(!editor || !enabled)}
           onClick={() => {
             if (!editor) return;
             editor.chain().focus().unsetAllMarks().clearNodes().run();
@@ -482,7 +482,7 @@ function SgTextEditorBase(props: Readonly<SgTextEditorProps>) {
           <button
             type="button"
             className="h-9 rounded-md border bg-muted px-3 text-sm hover:bg-muted/80 disabled:opacity-50"
-            disabled={!editor || !!disabled}
+            disabled={!editor || !enabled}
             onClick={doSave}
           >{t(i18n, "components.actions.save")}</button>
           <label className="h-9 cursor-pointer rounded-md border bg-muted px-3 text-sm leading-9 hover:bg-muted/80">{t(i18n, "components.actions.loadHtml")}<input
@@ -553,16 +553,16 @@ function ToolbarButton(props: {
   text?: string;
   icon?: React.ReactNode;
   active?: boolean;
-  disabled?: boolean;
+  enabled?: boolean;
   onClick: () => void;
 }) {
-  const { label, text, icon, active, disabled, onClick } = props;
+  const { label, text, icon, active, enabled = true, onClick } = props;
   return (
     <button
       type="button"
       title={label}
       aria-label={label}
-      disabled={disabled}
+      disabled={!enabled}
       onClick={onClick}
       className={cn(
         "inline-flex h-9 min-w-9 items-center justify-center rounded-md border px-2 text-sm",
@@ -579,10 +579,10 @@ function ColorPickerButton(props: {
   label: string;
   hint?: string;
   icon: React.ReactNode;
-  disabled?: boolean;
+  enabled?: boolean;
   onChange: (color: string) => void;
 }) {
-  const { label, hint, icon, disabled, onChange } = props;
+  const { label, hint, icon, enabled = true, onChange } = props;
   return (
     <label
       title={hint ?? label}
@@ -590,17 +590,17 @@ function ColorPickerButton(props: {
       className={cn(
         "relative inline-flex h-9 min-w-9 items-center justify-center rounded-md border px-2 text-sm",
         "bg-background hover:bg-muted/80",
-        disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer"
+        !enabled ? "cursor-not-allowed opacity-50" : "cursor-pointer"
       )}
     >
       {icon}
       <input
         type="color"
-        disabled={disabled}
+        disabled={!enabled}
         onChange={(e) => onChange(e.target.value)}
         className={cn(
           "absolute inset-0 h-full w-full opacity-0",
-          disabled ? "cursor-not-allowed" : "cursor-pointer"
+          !enabled ? "cursor-not-allowed" : "cursor-pointer"
         )}
         aria-label={label}
       />

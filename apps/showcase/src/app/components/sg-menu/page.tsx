@@ -919,7 +919,7 @@ const MENU_NODE_PROPS: ShowcasePropRow[] = [
   { prop: "label", type: "string", defaultValue: "-", description: "Text displayed on the item." },
   { prop: "url", type: "string", defaultValue: "-", description: "Navigation route for the item." },
   { prop: "children", type: "SgMenuNode[]", defaultValue: "-", description: "Child items of the current node." },
-  { prop: "disabled", type: "boolean", defaultValue: "false", description: "Disables item interaction." },
+  { prop: "enabled", type: "boolean", defaultValue: "true", description: "Disables item interaction." },
   { prop: "icon", type: "ReactNode", defaultValue: "-", description: "Direct item icon." },
   { prop: "badge", type: "string | number", defaultValue: "-", description: "Auxiliary badge next to the label." },
   { prop: "onClick", type: "() => void", defaultValue: "-", description: "Local item action." }

@@ -56,6 +56,7 @@ const COMPONENTS = [
       { slug: "sg-stack", name: "SgStack", desc: "Flex declarativo com direction, gap, justify, align e wrap" },
       { slug: "sg-badge", name: "SgBadge", desc: "Badge de status, contador e labels" },
       { slug: "sg-badge-overlay", name: "SgBadgeOverlay", desc: "Badge sobre icone/elemento" },
+      { slug: "sg-notification-bell", name: "SgNotificationBell", desc: "Sino de notificacoes do usuario com contador, lista, tempo real (Pulse) e polling de reserva" },
       { slug: "sg-avatar", name: "SgAvatar", desc: "Avatar com label, icon, image, shape, size e grupo" },
       { slug: "sg-breadcrumb", name: "SgBreadcrumb", desc: "Breadcrumb hierárquico com overflow e navegação" },
       { slug: "sg-menu", name: "SgMenu", desc: "Menu hierárquico para sidebar, drawer e inline" },

@@ -50,7 +50,7 @@ const RATING_PROPS: PropRow[] = [
   { prop: "stars", type: "number", defaultValue: "5", description: "Quantidade total de estrelas." },
   { prop: "allowHalf", type: "boolean", defaultValue: "false", description: "Permite selecao de meia estrela." },
   { prop: "cancel", type: "boolean", defaultValue: "true", description: "Shows a button to clear the rating." },
-  { prop: "disabled", type: "boolean", defaultValue: "false", description: "Desabilita a interacao com o componente." },
+  { prop: "enabled", type: "boolean", defaultValue: "true", description: "Desabilita a interacao com o componente." },
   { prop: "readOnly", type: "boolean", defaultValue: "false", description: "Mantem visualizacao sem permitir alteracao." },
   { prop: "size", type: "\"sm\" | \"md\" | \"lg\" | \"xl\"", defaultValue: "\"md\"", description: "Define o tamanho das estrelas." },
   { prop: "className", type: "string", defaultValue: "-", description: "Classe CSS customizada para o container." },
@@ -126,7 +126,7 @@ function ReadonlyDisabledExample() {
       <SgRating
         label="Desabilitado"
         value={2}
-        disabled
+        enabled={false}
       />
     </SgGrid>
   );

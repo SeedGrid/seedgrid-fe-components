@@ -1,0 +1,15 @@
+import * as React from "react";
+import { SgNotificationBell } from "@seedgrid/fe-components";
+import { createDemoFetcher } from "./demo-fetcher";
+
+// O painel traz o interruptor "Não lidas": ligado, clicar numa notificação a tira da lista e o contador cai na hora;
+// desligado, mostra todas. defaultUnreadOnly={false} faz o painel abrir em "Todas" (a escolha não persiste).
+const demo = createDemoFetcher();
+
+export default function App() {
+  return (
+    <div className="flex items-center gap-3">
+      <SgNotificationBell fetcher={demo} defaultUnreadOnly={false} />
+    </div>
+  );
+}

@@ -4,7 +4,7 @@ import { SgImageUpload } from "@seedgrid/fe-components";
 export default function App() {
   return (
     <div className="w-80">
-      <SgImageUpload id="demo-disabled" label="Foto" disabled />
+      <SgImageUpload id="demo-disabled" label="Foto" enabled={false} />
     </div>
   );
 }

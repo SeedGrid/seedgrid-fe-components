@@ -102,7 +102,7 @@ function getPeriodSelectorProps(i18n: ReturnType<typeof useShowcaseI18n>): Showc
     { prop: "locale", type: "string", defaultValue: "pt-BR", description: t(i18n, `${K}.props.locale`) },
     { prop: "minDate", type: "Date", defaultValue: "-", description: t(i18n, `${K}.props.minDate`) },
     { prop: "maxDate", type: "Date", defaultValue: "-", description: t(i18n, `${K}.props.maxDate`) },
-    { prop: "disabled", type: "boolean", defaultValue: "false", description: t(i18n, `${K}.props.disabled`) },
+    { prop: "enabled", type: "boolean", defaultValue: "true", description: t(i18n, `${K}.props.disabled`) },
     { prop: "required", type: "boolean", defaultValue: "false", description: t(i18n, `${K}.props.required`) }
   ];
 }
@@ -188,7 +188,7 @@ export default function SgPeriodSelectorPage() {
               id="ps-disabled"
               label={t(i18n, `${K}.fieldLabel`)}
               locale={i18n.locale}
-              disabled
+              enabled={false}
             />
           </div>
           <div className="w-96">

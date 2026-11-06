@@ -433,9 +433,11 @@ function SgInputNumberBase(props: SgInputNumberBaseProps) {
   }, [displayValue]);
 
   const isDisabled = props.enabled === false || props.readOnly || inputProps.readOnly;
-  const canShowClear = (props.clearButton ?? true) && !isDisabled;
+  // O X so aparece com texto, mas o espaco dele fica sempre reservado (o texto do campo nao anda).
+  const clearEnabled = (props.clearButton ?? true) && !isDisabled;
+  const canShowClear = clearEnabled && isFilled;
   const iconButtonsCount = props.iconButtons?.length ?? 0;
-  const hasSuffix = canShowClear || iconButtonsCount > 0;
+  const hasSuffix = clearEnabled || iconButtonsCount > 0;
   const paddingLeft = props.prefixIcon ? "pl-10" : "px-3";
   const paddingRight = hasSuffix ? "pr-10" : "pr-3";
   const placeholderClass = isFloatLabel
@@ -483,7 +485,7 @@ function SgInputNumberBase(props: SgInputNumberBaseProps) {
     : undefined;
   const labelLeftStyle = prefixPaddingStyle ?? (props.prefixIcon ? "2.5rem" : "0.75rem");
   const iconButtonsPadding = iconButtonsCount > 0 ? `${iconButtonsCount * 1.5}rem` : "0rem";
-  const baseRightPadding = canShowClear ? "2rem" : "0.75rem";
+  const baseRightPadding = clearEnabled ? "2rem" : "0.75rem";
   const suffixActionGap = props.suffixText && hasSuffix ? "0.375rem" : "0rem";
   const suffixPaddingStyle = props.suffixText
     ? `calc(${suffixWidth}px + ${baseRightPadding} + ${iconButtonsPadding} + ${suffixActionGap})`
@@ -591,7 +593,8 @@ function SgInputNumberBase(props: SgInputNumberBaseProps) {
             className="absolute right-2 top-1/2 z-20 flex -translate-y-1/2 items-center gap-1"
             style={clearRightStyle ? { right: clearRightStyle } : undefined}
           >
-            {canShowClear ? (
+            {clearEnabled ? (
+              isFilled ? (
               <button
                 type="button"
                 tabIndex={-1}
@@ -602,6 +605,9 @@ function SgInputNumberBase(props: SgInputNumberBaseProps) {
               >
                 <X size={16} />
               </button>
+              ) : (
+                <span aria-hidden="true" className="inline-block w-6" />
+              )
             ) : null}
             {props.iconButtons?.map((node, index) => (
               <span key={index}>{node}</span>

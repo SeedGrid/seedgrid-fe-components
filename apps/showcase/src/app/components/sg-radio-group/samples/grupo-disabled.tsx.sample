@@ -8,5 +8,5 @@ const BASIC_OPTIONS: SgRadioGroupOption[] = [
 ];
 
 export default function Example() {
-  return <SgRadioGroup id="disabled-group" title="Options desabilitadas" source={BASIC_OPTIONS} value="option2" disabled />;
+  return <SgRadioGroup id="disabled-group" title="Options desabilitadas" source={BASIC_OPTIONS} value="option2" enabled={false} />;
 }

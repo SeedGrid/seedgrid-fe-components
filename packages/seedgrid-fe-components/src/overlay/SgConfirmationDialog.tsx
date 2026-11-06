@@ -11,7 +11,7 @@ export type SgConfirmationDialogButtonConfig = {
   severity?: SgButtonProps["severity"];
   appearance?: SgButtonProps["appearance"];
   shape?: SgButtonProps["shape"];
-  disabled?: boolean;
+  enabled?: boolean;
   className?: string;
   onClick?: () => void;
 };
@@ -217,7 +217,7 @@ export function SgConfirmationDialog(props: Readonly<SgConfirmationDialogProps>)
             appearance={cancelButton?.appearance ?? "outline"}
             severity={cancelSeverity}
             shape={cancelButton?.shape ?? "rounded"}
-            disabled={cancelButton?.disabled}
+            enabled={!((cancelButton?.enabled === false))}
             className={cancelButton?.className}
             customColors={resolvedCancelCustomColors}
             leftIcon={cancelIcon}
@@ -230,7 +230,7 @@ export function SgConfirmationDialog(props: Readonly<SgConfirmationDialogProps>)
             appearance={confirmButton?.appearance ?? "solid"}
             severity={confirmSeverity}
             shape={confirmButton?.shape ?? "rounded"}
-            disabled={confirmButton?.disabled}
+            enabled={!((confirmButton?.enabled === false))}
             className={confirmButton?.className}
             leftIcon={confirmIcon}
             onClick={handleConfirm}

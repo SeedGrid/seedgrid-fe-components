@@ -19,7 +19,7 @@ export type SgTreeNode = {
   label: string;
   icon?: React.ReactNode;
   children?: SgTreeNode[];
-  disabled?: boolean;
+  enabled?: boolean;
   meta?: unknown;
 };
 
@@ -27,7 +27,7 @@ export type SgTreeNodeJson = {
   id: string;
   label: string;
   icon?: string;
-  disabled?: boolean;
+  enabled?: boolean;
   checked?: boolean;
   children?: SgTreeNodeJson[];
   meta?: unknown;
@@ -40,7 +40,7 @@ export function sgTreeFromJson(json: SgTreeNodeJson[], iconRegistry?: SgTreeIcon
     list.map((n) => ({
       id: n.id,
       label: n.label,
-      disabled: n.disabled,
+      disabled: n.enabled === false,
       icon: n.icon ? iconRegistry?.[n.icon] : undefined,
       children: n.children?.length ? walk(n.children) : undefined,
       meta: n.meta
@@ -60,7 +60,7 @@ export function sgTreeFromJsonWithChecked(
       return {
         id: n.id,
         label: n.label,
-        disabled: n.disabled,
+        disabled: n.enabled === false,
         icon: n.icon ? iconRegistry?.[n.icon] : undefined,
         children: n.children?.length ? walk(n.children) : undefined,
         meta: n.meta
@@ -97,7 +97,7 @@ export type SgTreeTrackBoolean = SgTreeTrackBase & {
   kind: "boolean";
   checkedIds: string[];
   onCheckedChange: (ids: string[]) => void;
-  disabled?: (node: SgTreeNode) => boolean;
+  enabled?: (node: SgTreeNode) => boolean;
   ariaLabel?: string;
   /** Conteudo livre ao lado do controle desta coluna, por no'. O componente nao sabe (nem
    * precisa saber) o que ele significa -- icone, badge, contador, o que a tela quiser. */
@@ -109,7 +109,7 @@ export type SgTreeTrackEnum = SgTreeTrackBase & {
   options: { value: string; label: string }[];
   valueByNodeId: Record<string, string | undefined>;
   onChange: (next: Record<string, string | undefined>) => void;
-  disabled?: (node: SgTreeNode) => boolean;
+  enabled?: (node: SgTreeNode) => boolean;
   ariaLabel?: string;
   placeholder?: string;
   mixedLabel?: string;
@@ -545,7 +545,7 @@ export const SgTreeView = React.forwardRef<SgTreeViewRef, SgTreeViewProps>(funct
 
   const toggleCheck = React.useCallback(
     (node: SgTreeNode) => {
-      if (!checkable || node.disabled) return;
+      if (!checkable || (node.enabled === false)) return;
       const next = new Set<string>(checkedSet);
       const st = computeCheckedState(node.id, maps.childrenById, checkedSet);
       const willCheck = st !== "checked";
@@ -613,7 +613,7 @@ export const SgTreeView = React.forwardRef<SgTreeViewRef, SgTreeViewProps>(funct
   const renderNode = (node: SgTreeNode, depth: number) => {
     const hasChildren = !!node.children?.length;
     const isOpen = expandedSet.has(node.id);
-    const isDisabled = !!node.disabled;
+    const isDisabled = node.enabled === false;
     const checkedState = checkable ? computeCheckedState(node.id, maps.childrenById, checkedSet) : "unchecked";
 
     return (
@@ -685,7 +685,7 @@ export const SgTreeView = React.forwardRef<SgTreeViewRef, SgTreeViewProps>(funct
               );
             }
 
-            const trackDisabled = isDisabled || !!track.disabled?.(node);
+            const trackDisabled = isDisabled || track.enabled?.(node) === false;
             const adornment = track.adornment?.(node) ?? null;
 
             if (track.kind === "boolean") {
@@ -933,7 +933,7 @@ export const SgTreeView = React.forwardRef<SgTreeViewRef, SgTreeViewProps>(funct
                   size="md"
                   shape="rounded"
                   onClick={clearChecked}
-                  disabled={!!confirmDisabled}
+                  enabled={!(!!confirmDisabled)}
                 >
                   {t(i18n, "components.actions.clear")}
                 </SgButton>
@@ -944,7 +944,7 @@ export const SgTreeView = React.forwardRef<SgTreeViewRef, SgTreeViewProps>(funct
                   elevation="sm"
                   size="md"
                   shape="rounded"
-                  disabled={!!confirmDisabled}
+                  enabled={!(!!confirmDisabled)}
                   onClick={onConfirm}
                 >
                   {confirmCfg.label ?? t(i18n, "components.actions.confirm")}

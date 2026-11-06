@@ -71,7 +71,7 @@ function getYearPartSelectorProps(i18n: ReturnType<typeof useShowcaseI18n>): Sho
     { prop: "minYear", type: "number", defaultValue: t(i18n, `${K}.defaults.minYear`), description: t(i18n, `${K}.props.minYear`) },
     { prop: "maxYear", type: "number", defaultValue: t(i18n, `${K}.defaults.maxYear`), description: t(i18n, `${K}.props.maxYear`) },
     { prop: "locale", type: "string", defaultValue: "pt-BR", description: t(i18n, `${K}.props.locale`) },
-    { prop: "disabled", type: "boolean", defaultValue: "false", description: t(i18n, `${K}.props.disabled`) },
+    { prop: "enabled", type: "boolean", defaultValue: "true", description: t(i18n, `${K}.props.disabled`) },
     { prop: "required", type: "boolean", defaultValue: "false", description: t(i18n, `${K}.props.required`) },
     { prop: "className", type: "string", defaultValue: "-", description: t(i18n, `${K}.props.className`) }
   ];
@@ -173,7 +173,7 @@ export default function SgYearPartSelectorPage() {
               id="yps-disabled"
               label={t(i18n, `${K}.fieldLabel`)}
               locale={i18n.locale}
-              disabled
+              enabled={false}
             />
             <SgYearPartSelector
               id="yps-required"

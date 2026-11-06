@@ -485,7 +485,7 @@ export default function InstitutionalSignupPage() {
                     severity="primary"
                     shape="rounded"
                     label={t("login_tenancy.signup.verification.resend")}
-                    disabled={isValidatingVerificationEmail}
+                    enabled={!isValidatingVerificationEmail}
                     loading={isResendingVerificationEmail}
                     type="button"
                     onClick={() => void handleResendVerificationEmail()}

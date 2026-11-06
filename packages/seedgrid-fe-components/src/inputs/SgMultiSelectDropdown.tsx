@@ -74,7 +74,7 @@ export function SgMultiSelectDropdown(props: Readonly<SgMultiSelectDropdownProps
               !checked &&
               props.maxSelected !== undefined &&
               props.resolvedValueLength >= props.maxSelected;
-            const optionDisabled = option.disabled || reachedMax;
+            const optionDisabled = (option.enabled === false) || reachedMax;
             return (
               <div
                 key={String(option.value)}

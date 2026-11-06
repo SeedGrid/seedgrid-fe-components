@@ -13,7 +13,7 @@ export type SgBreadcrumbItem = {
   label: React.ReactNode;
   href?: string;
   icon?: React.ReactNode;
-  disabled?: boolean;
+  enabled?: boolean;
   hidden?: boolean;
   onClick?: () => void;
 };
@@ -101,7 +101,7 @@ function renderActionItem(
     </>
   );
 
-  if (item.disabled) {
+  if ((item.enabled === false)) {
     return <span className={cn(className, "cursor-not-allowed opacity-45")}>{content}</span>;
   }
 

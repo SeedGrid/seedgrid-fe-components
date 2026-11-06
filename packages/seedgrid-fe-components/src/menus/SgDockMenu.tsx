@@ -25,7 +25,7 @@ export type SgDockMenuItem = {
   /** Click handler */
   onClick?: () => void;
   /** Disabled state */
-  disabled?: boolean;
+  enabled?: boolean;
   /** Badge content */
   badge?: string | number;
   /** Custom class name */
@@ -356,7 +356,7 @@ export function SgDockMenu(props: Readonly<SgDockMenuProps>) {
   }, [clearStoredPosition, dragId, enableDragDrop, storageKey]);
 
   const handleItemClick = React.useCallback((item: SgDockMenuItem) => {
-    if (item.disabled) return;
+    if ((item.enabled === false)) return;
     if (dragMoved.current) {
       dragMoved.current = false;
       return;
@@ -443,8 +443,8 @@ export function SgDockMenu(props: Readonly<SgDockMenuProps>) {
                   transformOrigin: motion.transformOrigin,
                   transition: "transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1)",
                   willChange: "transform",
-                  cursor: item.disabled ? "not-allowed" : "pointer",
-                  opacity: item.disabled ? 0.5 : 1,
+                  cursor: (item.enabled === false) ? "not-allowed" : "pointer",
+                  opacity: (item.enabled === false) ? 0.5 : 1,
                   zIndex: motion.zIndex,
                 }}
                 onMouseEnter={() => setHoveredIndex(index)}
@@ -473,7 +473,7 @@ export function SgDockMenu(props: Readonly<SgDockMenuProps>) {
                   onClick={() => handleItemClick(item)}
                   aria-label={item.label}
                   title={item.label}
-                  disabled={item.disabled}
+                  disabled={item.enabled === false}
                 >
                   {item.icon}
                 </button>

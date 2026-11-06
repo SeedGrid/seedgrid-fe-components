@@ -191,7 +191,7 @@ function PlansCatalogScreen() {
                       severity="secondary"
                       shape="rounded"
                       label={t("billing.user.plans_catalog.current_action")}
-                      disabled
+                      enabled={false}
                     />
                   ) : !item.checkoutEnabled ? (
                     <SgButton
@@ -199,7 +199,7 @@ function PlansCatalogScreen() {
                       severity="secondary"
                       shape="rounded"
                       label={t("billing.user.plans_catalog.unavailable")}
-                      disabled
+                      enabled={false}
                     />
                   ) : hasSubscription ? (
                     <SgButton
@@ -208,7 +208,7 @@ function PlansCatalogScreen() {
                       shape="rounded"
                       label={t("billing.user.plans_catalog.change_action")}
                       loading={busyPlanId === item.planId}
-                      disabled={busyPlanId !== null}
+                      enabled={!(busyPlanId !== null)}
                       onClick={() => void handleRequestChange(item)}
                     />
                   ) : (
@@ -218,7 +218,7 @@ function PlansCatalogScreen() {
                       shape="rounded"
                       label={t("billing.user.plans_catalog.subscribe_action")}
                       loading={busyPlanId === item.planId}
-                      disabled={busyPlanId !== null}
+                      enabled={!(busyPlanId !== null)}
                       onClick={() => void handleSubscribe(item)}
                     />
                   )}

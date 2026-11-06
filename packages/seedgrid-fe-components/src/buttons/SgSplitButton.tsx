@@ -26,7 +26,7 @@ export type SgSplitButtonItem = {
   label: string;
   icon?: React.ReactNode;
   onClick?: () => void;
-  disabled?: boolean;
+  enabled?: boolean;
   separator?: boolean;
 };
 
@@ -38,7 +38,7 @@ export type SgSplitButtonProps = {
   size?: Size;
   shape?: Shape;
   elevation?: Elevation;
-  disabled?: boolean;
+  enabled?: boolean;
   loading?: boolean;
   onClick?: () => void;
   items: SgSplitButtonItem[];
@@ -74,7 +74,7 @@ export const SgSplitButton = React.forwardRef<HTMLDivElement, SgSplitButtonProps
       size = "md",
       shape = "default",
       elevation = "none",
-      disabled = false,
+      enabled = true,
       loading = false,
       onClick,
       items,
@@ -110,11 +110,11 @@ export const SgSplitButton = React.forwardRef<HTMLDivElement, SgSplitButtonProps
     }, [open]);
 
     const toggle = () => {
-      if (!disabled && !loading) setOpen((prev) => !prev);
+      if (enabled && !loading) setOpen((prev) => !prev);
     };
 
     const handleItemClick = (item: SgSplitButtonItem) => {
-      if (item.disabled) return;
+      if (item.enabled === false) return;
       item.onClick?.();
       setOpen(false);
     };
@@ -142,7 +142,7 @@ export const SgSplitButton = React.forwardRef<HTMLDivElement, SgSplitButtonProps
           size={size}
           shape={shape}
           elevation={elevation}
-          disabled={disabled}
+          enabled={enabled}
           loading={loading}
           leftIcon={leftIcon}
           onClick={onClick}
@@ -158,7 +158,7 @@ export const SgSplitButton = React.forwardRef<HTMLDivElement, SgSplitButtonProps
           size={size}
           shape={shape}
           elevation={elevation}
-          disabled={disabled || loading}
+          enabled={!(!enabled || loading)}
           leftIcon={<ChevronDown className="size-4" />}
           onClick={toggle}
           customColors={customColors}
@@ -182,7 +182,7 @@ export const SgSplitButton = React.forwardRef<HTMLDivElement, SgSplitButtonProps
                 <button
                   role="menuitem"
                   type="button"
-                  disabled={item.disabled}
+                  disabled={item.enabled === false}
                   className={`flex w-full items-center gap-2 ${s.item} ${s.text} transition-colors hover:bg-muted/60 disabled:opacity-50 disabled:cursor-not-allowed`}
                   onClick={() => handleItemClick(item)}
                 >

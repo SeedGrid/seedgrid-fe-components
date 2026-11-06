@@ -20,7 +20,7 @@ export const sgMeta: SgMetaV0 = {
     { name: "selectionMode", type: "\"single\" | \"multiple\"", default: "single", description: "Modo de selecao.", semanticRole: "behavior", bindable: true },
     { name: "showControls", type: "boolean", default: true, description: "Exibe botoes de ordenacao.", semanticRole: "appearance", bindable: true },
     { name: "draggable", type: "boolean", default: false, description: "Permite arrastar itens.", semanticRole: "behavior", bindable: true },
-    { name: "disabled", type: "boolean", default: false, description: "Desabilita interacao.", semanticRole: "behavior", bindable: true },
+    { name: "enabled", type: "boolean", default: true, description: "Desabilita interacao.", semanticRole: "behavior", bindable: true },
     { name: "onChange", type: "(items: SgOrderListItem[]) => void", description: "Callback ao alterar a ordem.", semanticRole: "event", bindable: false }
   ],
   states: ["default", "disabled", "readOnly", "empty"],

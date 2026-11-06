@@ -11,7 +11,7 @@ import { t, useComponentsI18n } from "../i18n";
 export interface SgPickListItem {
   label: string;
   value: string | number;
-  disabled?: boolean;
+  enabled?: boolean;
   icon?: React.ReactNode;
   data?: unknown;
 }
@@ -76,13 +76,13 @@ export interface SgPickListProps extends RhfFieldProps {
   filterMatchMode?: SgPickListFilterMatchMode;
 
   draggable?: boolean;
-  disabled?: boolean;
+  enabled?: boolean;
   readOnly?: boolean;
   emptyMessage?: string;
 
   itemTemplate?: (
     item: SgPickListItem,
-    state: { index: number; selected: boolean; disabled: boolean; list: SgPickListListName }
+    state: { index: number; selected: boolean; enabled: boolean; list: SgPickListListName }
   ) => React.ReactNode;
 
   className?: string;
@@ -121,16 +121,16 @@ function moveSingleItem<T>(items: T[], fromIndex: number, toIndex: number) {
 }
 
 function moveSelectionTop(items: SgPickListItem[], selected: Set<string | number>) {
-  const picked = items.filter((item) => selected.has(item.value) && !item.disabled);
+  const picked = items.filter((item) => selected.has(item.value) && item.enabled !== false);
   if (picked.length === 0) return items;
-  const rest = items.filter((item) => !(selected.has(item.value) && !item.disabled));
+  const rest = items.filter((item) => !(selected.has(item.value) && item.enabled !== false));
   return [...picked, ...rest];
 }
 
 function moveSelectionBottom(items: SgPickListItem[], selected: Set<string | number>) {
-  const picked = items.filter((item) => selected.has(item.value) && !item.disabled);
+  const picked = items.filter((item) => selected.has(item.value) && item.enabled !== false);
   if (picked.length === 0) return items;
-  const rest = items.filter((item) => !(selected.has(item.value) && !item.disabled));
+  const rest = items.filter((item) => !(selected.has(item.value) && item.enabled !== false));
   return [...rest, ...picked];
 }
 
@@ -139,8 +139,8 @@ function moveSelectionUp(items: SgPickListItem[], selected: Set<string | number>
   for (let index = 1; index < next.length; index += 1) {
     const current = next[index]!;
     const prev = next[index - 1]!;
-    if (!(selected.has(current.value) && !current.disabled)) continue;
-    if (selected.has(prev.value) && !prev.disabled) continue;
+    if (!(selected.has(current.value) && current.enabled !== false)) continue;
+    if (selected.has(prev.value) && prev.enabled !== false) continue;
     next[index] = prev;
     next[index - 1] = current;
   }
@@ -152,8 +152,8 @@ function moveSelectionDown(items: SgPickListItem[], selected: Set<string | numbe
   for (let index = next.length - 2; index >= 0; index -= 1) {
     const current = next[index]!;
     const nextItem = next[index + 1]!;
-    if (!(selected.has(current.value) && !current.disabled)) continue;
-    if (selected.has(nextItem.value) && !nextItem.disabled) continue;
+    if (!(selected.has(current.value) && current.enabled !== false)) continue;
+    if (selected.has(nextItem.value) && nextItem.enabled !== false) continue;
     next[index] = nextItem;
     next[index + 1] = current;
   }
@@ -197,7 +197,7 @@ function SgPickListBase(props: SgPickListProps, imperativeRef?: React.ForwardedR
     targetFilterPlaceholder,
     filterMatchMode = "contains",
     draggable = true,
-    disabled = false,
+    enabled = true,
     readOnly = false,
     emptyMessage,
     itemTemplate,
@@ -240,7 +240,7 @@ function SgPickListBase(props: SgPickListProps, imperativeRef?: React.ForwardedR
 
   const sourceSelectedSet = new Set(sourceSelection);
   const targetSelectedSet = new Set(targetSelection);
-  const canInteract = !disabled && !readOnly;
+  const canInteract = enabled && !readOnly;
 
   const commitValue = React.useCallback((nextValue: SgPickListValue, type: SgPickListChangeType) => {
     if (!isValueControlled) setInternalValue(nextValue);
@@ -266,9 +266,9 @@ function SgPickListBase(props: SgPickListProps, imperativeRef?: React.ForwardedR
 
   const moveToTarget = React.useCallback(() => {
     if (!canInteract) return;
-    const picked = sourceItems.filter((item) => sourceSelectedSet.has(item.value) && !item.disabled);
+    const picked = sourceItems.filter((item) => sourceSelectedSet.has(item.value) && item.enabled !== false);
     if (picked.length === 0) return;
-    const nextSource = sourceItems.filter((item) => !(sourceSelectedSet.has(item.value) && !item.disabled));
+    const nextSource = sourceItems.filter((item) => !(sourceSelectedSet.has(item.value) && item.enabled !== false));
     const nextTarget = [...targetItems, ...picked];
     commitValue({ source: nextSource, target: nextTarget }, "moveToTarget");
     commitSourceSelection([]);
@@ -277,9 +277,9 @@ function SgPickListBase(props: SgPickListProps, imperativeRef?: React.ForwardedR
 
   const moveAllToTarget = React.useCallback(() => {
     if (!canInteract) return;
-    const picked = sourceItems.filter((item) => !item.disabled);
+    const picked = sourceItems.filter((item) => item.enabled !== false);
     if (picked.length === 0) return;
-    const nextSource = sourceItems.filter((item) => item.disabled);
+    const nextSource = sourceItems.filter((item) => (item.enabled === false));
     const nextTarget = [...targetItems, ...picked];
     commitValue({ source: nextSource, target: nextTarget }, "moveAllToTarget");
     commitSourceSelection([]);
@@ -288,9 +288,9 @@ function SgPickListBase(props: SgPickListProps, imperativeRef?: React.ForwardedR
 
   const moveToSource = React.useCallback(() => {
     if (!canInteract) return;
-    const picked = targetItems.filter((item) => targetSelectedSet.has(item.value) && !item.disabled);
+    const picked = targetItems.filter((item) => targetSelectedSet.has(item.value) && item.enabled !== false);
     if (picked.length === 0) return;
-    const nextTarget = targetItems.filter((item) => !(targetSelectedSet.has(item.value) && !item.disabled));
+    const nextTarget = targetItems.filter((item) => !(targetSelectedSet.has(item.value) && item.enabled !== false));
     const nextSource = [...sourceItems, ...picked];
     commitValue({ source: nextSource, target: nextTarget }, "moveToSource");
     commitTargetSelection([]);
@@ -299,9 +299,9 @@ function SgPickListBase(props: SgPickListProps, imperativeRef?: React.ForwardedR
 
   const moveAllToSource = React.useCallback(() => {
     if (!canInteract) return;
-    const picked = targetItems.filter((item) => !item.disabled);
+    const picked = targetItems.filter((item) => item.enabled !== false);
     if (picked.length === 0) return;
-    const nextTarget = targetItems.filter((item) => item.disabled);
+    const nextTarget = targetItems.filter((item) => (item.enabled === false));
     const nextSource = [...sourceItems, ...picked];
     commitValue({ source: nextSource, target: nextTarget }, "moveAllToSource");
     commitTargetSelection([]);
@@ -313,7 +313,7 @@ function SgPickListBase(props: SgPickListProps, imperativeRef?: React.ForwardedR
 
     if (from === "source") {
       const moving = sourceItems[fromIndex];
-      if (!moving || moving.disabled) return;
+      if (!moving || (moving.enabled === false)) return;
       const nextSource = sourceItems.filter((_, index) => index !== fromIndex);
       const nextTarget = [...targetItems, moving];
       commitValue({ source: nextSource, target: nextTarget }, "moveToTarget");
@@ -323,7 +323,7 @@ function SgPickListBase(props: SgPickListProps, imperativeRef?: React.ForwardedR
     }
 
     const moving = targetItems[fromIndex];
-    if (!moving || moving.disabled) return;
+    if (!moving || (moving.enabled === false)) return;
     const nextTarget = targetItems.filter((_, index) => index !== fromIndex);
     const nextSource = [...sourceItems, moving];
     commitValue({ source: nextSource, target: nextTarget }, "moveToSource");
@@ -370,7 +370,7 @@ function SgPickListBase(props: SgPickListProps, imperativeRef?: React.ForwardedR
     list: SgPickListListName,
     item: SgPickListItem
   ) => {
-    if (!canInteract || item.disabled) return;
+    if (!canInteract || (item.enabled === false)) return;
     const selected = list === "source" ? sourceSelectedSet : targetSelectedSet;
     const commit = list === "source" ? commitSourceSelection : commitTargetSelection;
     const current = list === "source" ? sourceSelection : targetSelection;
@@ -403,7 +403,7 @@ function SgPickListBase(props: SgPickListProps, imperativeRef?: React.ForwardedR
     const fromList = dragState.from === "source" ? sourceItems : targetItems;
     const toList = to === "source" ? sourceItems : targetItems;
     const moving = fromList[dragState.fromIndex];
-    if (!moving || moving.disabled) {
+    if (!moving || (moving.enabled === false)) {
       setDragState(null);
       return;
     }
@@ -465,7 +465,7 @@ function SgPickListBase(props: SgPickListProps, imperativeRef?: React.ForwardedR
       ) : (
         items.map(({ item, index }) => {
           const selectedItem = selected.has(item.value);
-          const itemDisabled = disabled || Boolean(item.disabled);
+          const itemDisabled = !enabled || Boolean((item.enabled === false));
           return (
             <li key={`${item.value}-${index}`} className="list-none">
               <button
@@ -473,7 +473,7 @@ function SgPickListBase(props: SgPickListProps, imperativeRef?: React.ForwardedR
                 role="option"
                 aria-selected={selectedItem}
                 disabled={itemDisabled}
-                draggable={dragEnabled && !item.disabled}
+                draggable={dragEnabled && item.enabled !== false}
                 onClick={(event) => {
                   if (event.detail >= 2) {
                     moveSingleByDoubleClick(list, index);
@@ -512,7 +512,7 @@ function SgPickListBase(props: SgPickListProps, imperativeRef?: React.ForwardedR
               >
                 <span className="min-w-0 flex-1 truncate">
                   {itemTemplate
-                    ? itemTemplate(item, { index, selected: selectedItem, disabled: itemDisabled, list })
+                    ? itemTemplate(item, { index, selected: selectedItem, enabled: !itemDisabled, list })
                     : (
                       <span className="flex items-center gap-2">
                         {item.icon ? <span className="shrink-0">{item.icon}</span> : null}
@@ -520,7 +520,7 @@ function SgPickListBase(props: SgPickListProps, imperativeRef?: React.ForwardedR
                       </span>
                     )}
                 </span>
-                {dragEnabled && !item.disabled ? (
+                {dragEnabled && item.enabled !== false ? (
                   <span aria-hidden="true" className="shrink-0 text-xs text-[rgb(var(--sg-muted))]">::</span>
                 ) : null}
               </button>
@@ -533,19 +533,19 @@ function SgPickListBase(props: SgPickListProps, imperativeRef?: React.ForwardedR
 
   const renderReorderControls = (list: SgPickListListName) => (
     <div className="flex shrink-0 flex-col gap-2">
-      <SgButton size="sm" appearance="outline" disabled={!canInteract} aria-label={moveTopLabel} title={moveTopLabel} onClick={() => applyReorder(list, "top")}>{t(i18n, "components.actions.top")}</SgButton>
-      <SgButton size="sm" appearance="outline" disabled={!canInteract} aria-label={moveUpLabel} title={moveUpLabel} onClick={() => applyReorder(list, "up")}>{t(i18n, "components.actions.up")}</SgButton>
-      <SgButton size="sm" appearance="outline" disabled={!canInteract} aria-label={moveDownLabel} title={moveDownLabel} onClick={() => applyReorder(list, "down")}>{t(i18n, "components.actions.down")}</SgButton>
-      <SgButton size="sm" appearance="outline" disabled={!canInteract} aria-label={moveBottomLabel} title={moveBottomLabel} onClick={() => applyReorder(list, "bottom")}>{t(i18n, "components.actions.bottom")}</SgButton>
+      <SgButton size="sm" appearance="outline" enabled={canInteract} aria-label={moveTopLabel} title={moveTopLabel} onClick={() => applyReorder(list, "top")}>{t(i18n, "components.actions.top")}</SgButton>
+      <SgButton size="sm" appearance="outline" enabled={canInteract} aria-label={moveUpLabel} title={moveUpLabel} onClick={() => applyReorder(list, "up")}>{t(i18n, "components.actions.up")}</SgButton>
+      <SgButton size="sm" appearance="outline" enabled={canInteract} aria-label={moveDownLabel} title={moveDownLabel} onClick={() => applyReorder(list, "down")}>{t(i18n, "components.actions.down")}</SgButton>
+      <SgButton size="sm" appearance="outline" enabled={canInteract} aria-label={moveBottomLabel} title={moveBottomLabel} onClick={() => applyReorder(list, "bottom")}>{t(i18n, "components.actions.bottom")}</SgButton>
     </div>
   );
 
   const transferControls = showTransferControls ? (
     <div className="flex shrink-0 flex-row gap-2 md:flex-col">
-      <SgButton size="sm" appearance="outline" disabled={!canInteract} aria-label={moveToTargetLabel} title={moveToTargetLabel} onClick={moveToTarget}>&gt;</SgButton>
-      <SgButton size="sm" appearance="outline" disabled={!canInteract} aria-label={moveAllToTargetLabel} title={moveAllToTargetLabel} onClick={moveAllToTarget}>&gt;&gt;</SgButton>
-      <SgButton size="sm" appearance="outline" disabled={!canInteract} aria-label={moveToSourceLabel} title={moveToSourceLabel} onClick={moveToSource}>&lt;</SgButton>
-      <SgButton size="sm" appearance="outline" disabled={!canInteract} aria-label={moveAllToSourceLabel} title={moveAllToSourceLabel} onClick={moveAllToSource}>&lt;&lt;</SgButton>
+      <SgButton size="sm" appearance="outline" enabled={canInteract} aria-label={moveToTargetLabel} title={moveToTargetLabel} onClick={moveToTarget}>&gt;</SgButton>
+      <SgButton size="sm" appearance="outline" enabled={canInteract} aria-label={moveAllToTargetLabel} title={moveAllToTargetLabel} onClick={moveAllToTarget}>&gt;&gt;</SgButton>
+      <SgButton size="sm" appearance="outline" enabled={canInteract} aria-label={moveToSourceLabel} title={moveToSourceLabel} onClick={moveToSource}>&lt;</SgButton>
+      <SgButton size="sm" appearance="outline" enabled={canInteract} aria-label={moveAllToSourceLabel} title={moveAllToSourceLabel} onClick={moveAllToSource}>&lt;&lt;</SgButton>
     </div>
   ) : null;
 

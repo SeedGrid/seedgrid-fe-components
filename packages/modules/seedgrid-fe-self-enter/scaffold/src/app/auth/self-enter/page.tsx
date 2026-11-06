@@ -339,7 +339,7 @@ export default function PublicSelfEnterRequestPage() {
                 onClick={() => {
                   void handleResendEmail();
                 }}
-                disabled={resendingCode || pending}
+                enabled={!(resendingCode || pending)}
                 loading={resendingCode}
                 type="button"
               />
@@ -349,7 +349,7 @@ export default function PublicSelfEnterRequestPage() {
                 shape="rounded"
                 label={t("security.self_enter.public.confirm.submit")}
                 loading={pending}
-                disabled={pending}
+                enabled={!pending}
                 type="submit"
               />
             </div>
@@ -413,7 +413,7 @@ export default function PublicSelfEnterRequestPage() {
               shape="rounded"
               label={submitLabel}
               loading={pending}
-              disabled={pending}
+              enabled={!pending}
               type="submit"
             />
           </div>

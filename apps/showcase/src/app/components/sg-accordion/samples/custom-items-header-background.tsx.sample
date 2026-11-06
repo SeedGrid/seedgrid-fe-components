@@ -21,7 +21,7 @@ const items: SgAccordionItem[] = [
     id: "blocked",
     title: "Modulo indisponivel",
     icon: <TriangleAlert size={14} />,
-    disabled: true,
+    enabled: false,
     content: <p className="text-sm">Conteudo bloqueado.</p>
   }
 ];

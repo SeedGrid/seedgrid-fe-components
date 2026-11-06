@@ -729,7 +729,7 @@ export function CompanyEditor({ publicId }: CompanyEditorProps) {
                 shape="rounded"
                 label={t("security.common.save")}
                 loading={saving}
-                disabled={saving}
+                enabled={!saving}
                 type="submit"
               />
             </SgStack>

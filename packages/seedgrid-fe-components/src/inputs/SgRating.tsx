@@ -22,7 +22,7 @@ export interface SgRatingProps extends RhfFieldProps {
   /** Show cancel button */
   cancel?: boolean;
   /** Disabled state */
-  disabled?: boolean;
+  enabled?: boolean;
   /** Read only mode */
   readOnly?: boolean;
   /** Size of the stars */
@@ -114,7 +114,7 @@ function SgRatingBase(props: SgRatingBaseProps) {
     stars = 5,
     allowHalf = false,
     cancel = true,
-    disabled = false,
+    enabled = true,
     readOnly = false,
     size = "md",
     className = "",
@@ -141,7 +141,7 @@ function SgRatingBase(props: SgRatingBaseProps) {
   }, [value]);
 
   const handleStarClick = (starIndex: number, isHalf: boolean) => {
-    if (disabled || readOnly) return;
+    if (!enabled || readOnly) return;
     const newValue = allowHalf && isHalf ? starIndex + 0.5 : starIndex + 1;
     setInternalValue(newValue);
     onChange?.(newValue);
@@ -156,7 +156,7 @@ function SgRatingBase(props: SgRatingBaseProps) {
   };
 
   const handleStarHover = (starIndex: number, isHalf: boolean) => {
-    if (disabled || readOnly) return;
+    if (!enabled || readOnly) return;
     const newHoverValue = allowHalf && isHalf ? starIndex + 0.5 : starIndex + 1;
     setHoverValue(newHoverValue);
     onHover?.(newHoverValue);
@@ -168,7 +168,7 @@ function SgRatingBase(props: SgRatingBaseProps) {
   };
 
   const handleCancel = () => {
-    if (disabled || readOnly) return;
+    if (!enabled || readOnly) return;
     setInternalValue(0);
     onChange?.(0);
 
@@ -182,7 +182,7 @@ function SgRatingBase(props: SgRatingBaseProps) {
 
   const displayValue = hoverValue ?? internalValue;
   const starSize = STAR_SIZES[size];
-  const isInteractive = !disabled && !readOnly;
+  const isInteractive = enabled && !readOnly;
 
   const getStarFillPercentage = (starIndex: number): number => {
     const starValue = starIndex + 1;
@@ -206,7 +206,7 @@ function SgRatingBase(props: SgRatingBaseProps) {
         className="flex items-center gap-1"
         onMouseLeave={handleMouseLeave}
         style={{
-          opacity: disabled ? 0.5 : 1,
+          opacity: !enabled ? 0.5 : 1,
           cursor: isInteractive ? "pointer" : "default"
         }}
       >
@@ -214,7 +214,7 @@ function SgRatingBase(props: SgRatingBaseProps) {
           <button
             type="button"
             onClick={handleCancel}
-            disabled={disabled || readOnly}
+            disabled={!enabled || readOnly}
             className="mr-1 transition-opacity hover:opacity-80"
             style={{
               color: emptyColor,
