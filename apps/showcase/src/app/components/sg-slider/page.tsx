@@ -402,6 +402,13 @@ export default function SgSliderPage() {
         </Section>
 
         <Section title={t(i18n, `${K}.section6Title`)} description={t(i18n, `${K}.section6Description`)}>
+          <div className="max-w-sm">
+            <SgSlider id="slider-error" minValue={0} maxValue={10} defaultValue={9} error="Valor alto demais" />
+          </div>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-slider/samples/mensagem-de-erro.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section7Title`)} description={t(i18n, `${K}.section7Description`)}>
           <SgPlayground
             title={t(i18n, `${K}.playgroundTitle`)}
             interactive

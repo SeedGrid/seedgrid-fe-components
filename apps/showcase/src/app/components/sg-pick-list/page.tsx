@@ -144,6 +144,14 @@ export default function SgPickListShowcase() {
       t(i18n, `${K}.sectionTitles.5`),
       t(i18n, `${K}.sectionTitles.6`)
     ] as const,
+    sectionDescriptions: [
+      t(i18n, `${K}.sectionDescriptions.0`),
+      t(i18n, `${K}.sectionDescriptions.1`),
+      t(i18n, `${K}.sectionDescriptions.2`),
+      t(i18n, `${K}.sectionDescriptions.3`),
+      t(i18n, `${K}.sectionDescriptions.4`),
+      t(i18n, `${K}.sectionDescriptions.5`)
+    ] as const,
     propsTitle: t(i18n, `${K}.propsTitle`),
     currentStateLabel: t(i18n, `${K}.currentStateLabel`),
     transferOnlyHint: t(i18n, `${K}.transferOnlyHint`),
@@ -265,7 +273,7 @@ export default function SgPickListShowcase() {
           onAnchorClick={handleAnchorClick}
         />
 
-        <Section title={texts.sectionTitles[0]}>
+        <Section title={texts.sectionTitles[0]} description={texts.sectionDescriptions[0]}>
           <SgPickList
             id="pick-basic"
             title="Roadmap planning"
@@ -280,7 +288,7 @@ export default function SgPickListShowcase() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-pick-list/samples/basico.tsx.sample" />
         </Section>
 
-        <Section title={texts.sectionTitles[1]}>
+        <Section title={texts.sectionTitles[1]} description={texts.sectionDescriptions[1]}>
           <SgPickList
             id="pick-filter"
             title="Cities"
@@ -296,7 +304,7 @@ export default function SgPickListShowcase() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-pick-list/samples/com-filtros.tsx.sample" />
         </Section>
 
-        <Section title={texts.sectionTitles[2]}>
+        <Section title={texts.sectionTitles[2]} description={texts.sectionDescriptions[2]}>
           <SgPickList
             id="pick-transfer-only"
             title="Transfer only"
@@ -314,7 +322,7 @@ export default function SgPickListShowcase() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-pick-list/samples/somente-transferencia-sem-ordenacao.tsx.sample" />
         </Section>
 
-        <Section title={texts.sectionTitles[3]}>
+        <Section title={texts.sectionTitles[3]} description={texts.sectionDescriptions[3]}>
           <p className="text-sm text-muted-foreground">{texts.dragHint}</p>
           <SgPickList
             id="pick-reorder"
@@ -330,7 +338,7 @@ export default function SgPickListShowcase() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-pick-list/samples/reordenacao-com-controles-de-lista.tsx.sample" />
         </Section>
 
-        <Section title={texts.sectionTitles[4]}>
+        <Section title={texts.sectionTitles[4]} description={texts.sectionDescriptions[4]}>
           <SgPickList
             ref={pickListRef}
             id="pick-ref"
@@ -351,7 +359,7 @@ export default function SgPickListShowcase() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-pick-list/samples/controles-externos-por-ref.tsx.sample" />
         </Section>
 
-        <Section title={texts.sectionTitles[5]}>
+        <Section title={texts.sectionTitles[5]} description={texts.sectionDescriptions[5]}>
           <SgPickList
             id="pick-template"
             title="Team capacity"

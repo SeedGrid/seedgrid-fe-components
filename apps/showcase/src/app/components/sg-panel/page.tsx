@@ -303,6 +303,21 @@ export default function SgPanelPage() {
         </Section>
 
         <Section title={t(i18n, `${K}.section7Title`)} description={t(i18n, `${K}.section7Description`)}>
+          <SgPanel
+            borderStyle="solid"
+            contentPadding={8}
+            contentDirection="row"
+            contentJustify="between"
+            contentAlign="center"
+          >
+            <span>Início</span>
+            <SgButton label="Ação" size="sm" />
+            <span>Fim</span>
+          </SgPanel>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-panel/samples/conteudo-em-linha.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section8Title`)} description={t(i18n, `${K}.section8Description`)}>
           <SgPlayground
             title={t(i18n, `${K}.playgroundTitle`)}
             interactive

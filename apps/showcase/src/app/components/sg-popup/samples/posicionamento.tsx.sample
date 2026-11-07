@@ -1,0 +1,36 @@
+import React from "react";
+import { SgButton, SgPopup, type SgPopupAlign, type SgPopupPlacement } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const btnRef = React.useRef<HTMLButtonElement>(null);
+  const [open, setOpen] = React.useState(false);
+  const [placement, setPlacement] = React.useState<SgPopupPlacement>("bottom");
+  const [align, setAlign] = React.useState<SgPopupAlign>("start");
+
+  return (
+    <div className="w-full space-y-3">
+      <div className="flex flex-wrap gap-2">
+        {(["auto", "top", "right", "bottom", "left"] as const).map((p) => (
+          <SgButton key={p} size="sm" appearance={placement === p ? "solid" : "outline"} onClick={() => setPlacement(p)}>
+            {p}
+          </SgButton>
+        ))}
+        {(["start", "center", "end"] as const).map((a) => (
+          <SgButton key={a} size="sm" appearance={align === a ? "solid" : "outline"} onClick={() => setAlign(a)}>
+            {`align ${a}`}
+          </SgButton>
+        ))}
+      </div>
+      <SgButton ref={btnRef} onClick={() => setOpen(true)}>Abrir</SgButton>
+      <SgPopup
+        open={open}
+        onOpenChange={setOpen}
+        anchorRef={btnRef as React.RefObject<HTMLElement>}
+        placement={placement}
+        align={align}
+      >
+        <span className="text-sm">{`${placement} / ${align}`}</span>
+      </SgPopup>
+    </div>
+  );
+}

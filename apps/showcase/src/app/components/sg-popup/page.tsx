@@ -1,8 +1,15 @@
 ﻿"use client";
 
 import React from "react";
-import { Check, X } from "lucide-react";
-import { SgButton, SgPopup, type SgPopupAction } from "@seedgrid/fe-components";
+import { Check, Copy, Pencil, Trash2, X } from "lucide-react";
+import {
+  SgButton,
+  SgInputText,
+  SgPopup,
+  type SgPopupAction,
+  type SgPopupAlign,
+  type SgPopupPlacement,
+} from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
@@ -97,6 +104,17 @@ export default function SgPopupPage() {
   const iconBtnRef = React.useRef<HTMLButtonElement>(null);
   const [open, setOpen] = React.useState(false);
   const [iconOpen, setIconOpen] = React.useState(false);
+  const customBtnRef = React.useRef<HTMLButtonElement>(null);
+  const [customOpen, setCustomOpen] = React.useState(false);
+  const actionsBtnRef = React.useRef<HTMLButtonElement>(null);
+  const [actionsOpen, setActionsOpen] = React.useState(false);
+  const [lastAction, setLastAction] = React.useState("");
+  const positionBtnRef = React.useRef<HTMLButtonElement>(null);
+  const [positionOpen, setPositionOpen] = React.useState(false);
+  const [placement, setPlacement] = React.useState<SgPopupPlacement>("bottom");
+  const [align, setAlign] = React.useState<SgPopupAlign>("start");
+  const fixedBtnRef = React.useRef<HTMLButtonElement>(null);
+  const [fixedOpen, setFixedOpen] = React.useState(false);
 
   const actions: SgPopupAction[] = [
     {
@@ -187,12 +205,102 @@ export default function SgPopupPage() {
         title={`3) ${t(i18n, "showcase.component.popup.sections.custom.title")}`}
         description={t(i18n, "showcase.component.popup.sections.custom.description")}
       >
-        <div className="w-full">
-          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-popup/samples/custom.tsx.sample" />
+        <div className="w-full flex items-center gap-3">
+          <SgButton ref={customBtnRef} onClick={() => setCustomOpen(true)}>
+            {t(i18n, "showcase.component.popup.labels.openCustom")}
+          </SgButton>
+          <SgPopup
+            title={t(i18n, "showcase.component.popup.labels.config")}
+            open={customOpen}
+            onOpenChange={setCustomOpen}
+            anchorRef={customBtnRef as React.RefObject<HTMLElement>}
+            placement="auto"
+          >
+            <SgInputText id="popup-mode" label={t(i18n, "showcase.component.popup.labels.mode")} />
+          </SgPopup>
         </div>
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-popup/samples/custom.tsx.sample" />
       </Section>
 
-        <Section title="4) Playground (SgPlayground)" description="Teste interativo das principais props do SgPopup.">
+      <Section
+        title={`4) ${t(i18n, "showcase.component.popup.sections.actions.title")}`}
+        description={t(i18n, "showcase.component.popup.sections.actions.description")}
+      >
+        <div className="w-full flex items-center gap-3">
+          <SgButton ref={actionsBtnRef} appearance="outline" onClick={() => setActionsOpen(true)}>
+            {t(i18n, "showcase.component.popup.sections.actions.title")}
+          </SgButton>
+          {lastAction ? <span className="text-sm">{t(i18n, "showcase.component.popup.labels.lastAction")}: {lastAction}</span> : null}
+          <SgPopup
+            open={actionsOpen}
+            onOpenChange={setActionsOpen}
+            anchorRef={actionsBtnRef as React.RefObject<HTMLElement>}
+            actions={[
+              { label: t(i18n, "showcase.component.popup.actions.edit"), icon: <Pencil className="h-4 w-4" />, hint: t(i18n, "showcase.component.popup.actions.editHint"), onClick: () => setLastAction("editar") },
+              { label: t(i18n, "showcase.component.popup.actions.duplicate"), icon: <Copy className="h-4 w-4" />, closeOnClick: false, onClick: () => setLastAction("duplicar") },
+              { label: t(i18n, "showcase.component.popup.actions.unavailable"), enabled: false },
+              { label: t(i18n, "showcase.component.popup.actions.delete"), icon: <Trash2 className="h-4 w-4" />, severity: "danger", onClick: () => setLastAction("excluir") }
+            ]}
+          />
+        </div>
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-popup/samples/acoes.tsx.sample" />
+      </Section>
+
+      <Section
+        title={`5) ${t(i18n, "showcase.component.popup.sections.positioning.title")}`}
+        description={t(i18n, "showcase.component.popup.sections.positioning.description")}
+      >
+        <div className="w-full space-y-3">
+          <div className="flex flex-wrap gap-2">
+            {(["auto", "top", "right", "bottom", "left"] as const).map((p) => (
+              <SgButton key={p} size="sm" appearance={placement === p ? "solid" : "outline"} onClick={() => setPlacement(p)}>
+                {p}
+              </SgButton>
+            ))}
+            {(["start", "center", "end"] as const).map((a) => (
+              <SgButton key={a} size="sm" appearance={align === a ? "solid" : "outline"} onClick={() => setAlign(a)}>
+                {`align ${a}`}
+              </SgButton>
+            ))}
+          </div>
+          <SgButton ref={positionBtnRef} onClick={() => setPositionOpen(true)}>
+            {t(i18n, "showcase.component.popup.labels.openPosition")}
+          </SgButton>
+          <SgPopup
+            open={positionOpen}
+            onOpenChange={setPositionOpen}
+            anchorRef={positionBtnRef as React.RefObject<HTMLElement>}
+            placement={placement}
+            align={align}
+          >
+            <span className="text-sm">{`${placement} / ${align}`}</span>
+          </SgPopup>
+        </div>
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-popup/samples/posicionamento.tsx.sample" />
+      </Section>
+
+      <Section
+        title={`6) ${t(i18n, "showcase.component.popup.sections.closing.title")}`}
+        description={t(i18n, "showcase.component.popup.sections.closing.description")}
+      >
+        <div className="w-full flex items-center gap-3">
+          <SgButton ref={fixedBtnRef} onClick={() => setFixedOpen(true)}>
+            {t(i18n, "showcase.component.popup.labels.openFixed")}
+          </SgButton>
+          <SgPopup
+            title={t(i18n, "showcase.component.popup.labels.fixed")}
+            open={fixedOpen}
+            onOpenChange={setFixedOpen}
+            anchorRef={fixedBtnRef as React.RefObject<HTMLElement>}
+            closeOnOutsideClick={false}
+            closeOnEscape={false}
+            actions={[{ label: t(i18n, "showcase.component.popup.labels.close") }]}
+          />
+        </div>
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-popup/samples/fechamento.tsx.sample" />
+      </Section>
+
+        <Section title="7) Playground (SgPlayground)" description="Teste interativo das principais props do SgPopup.">
           <SgPlayground
             title="SgPopup Playground"
             interactive

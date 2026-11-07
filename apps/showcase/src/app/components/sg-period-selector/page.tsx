@@ -110,6 +110,7 @@ function getPeriodSelectorProps(i18n: ReturnType<typeof useShowcaseI18n>): Showc
 export default function SgPeriodSelectorPage() {
   const i18n = useShowcaseI18n();
   const aiComponent = useAiManifestComponent("SgPeriodSelector");
+  const [english, setEnglish] = React.useState<ResolvedPeriod | null>(null);
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
 
@@ -223,9 +224,23 @@ export default function SgPeriodSelectorPage() {
           <CodeBlock sampleFile={`${SAMPLES}/clamp-min-max.tsx.sample`} />
         </Section>
 
+        <Section title={t(i18n, `${K}.section6Title`)} description={t(i18n, `${K}.section6Description`)}>
+          <div className="w-96">
+            <SgPeriodSelector
+              id="ps-english"
+              label="Period"
+              locale="en-US"
+              referenceDate={new Date(2024, 1, 29)}
+              onChange={setEnglish}
+            />
+            <ResolvedOutput i18n={i18n} period={english} />
+          </div>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-period-selector/samples/idioma-e-data-de-referencia.tsx.sample" />
+        </Section>
+
         <Section
-          title={t(i18n, `${K}.section6Title`)}
-          description={t(i18n, `${K}.section6Description`)}
+          title={t(i18n, `${K}.section7Title`)}
+          description={t(i18n, `${K}.section7Description`)}
         >
           <SgPlayground
             title="SgPeriodSelector Playground"

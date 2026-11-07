@@ -1,0 +1,12 @@
+"use client";
+
+import { SgScreen } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgScreen fullscreen={false} padding={12}>
+      <span>Altura do conteúdo</span>
+      <span>Segunda linha</span>
+    </SgScreen>
+  );
+}
