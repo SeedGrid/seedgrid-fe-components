@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import React from "react";
-import { SgGrid, SgPanel, SgStack, SgButton } from "@seedgrid/fe-components";
+import { SgGrid, SgPanel, SgStack, SgButton, SgBadge } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
@@ -130,6 +130,31 @@ export default function SgStackPage() {
         </Section>
 
         <Section title={t(i18n, `${K}.section2Title`)} description={t(i18n, `${K}.section2Description`)}>
+          <SgStack direction="row" wrap gap={8}>
+            {["Dart", "Flutter", "React", "Java", "Rust", "Quarkus", "TypeScript"].map((nome) => (
+              <SgBadge key={nome} value={nome} />
+            ))}
+          </SgStack>
+
+          <SgStack className="mt-6">
+            <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-stack/samples/quebra-de-linha.tsx.sample" />
+          </SgStack>
+        </Section>
+
+        <Section title={t(i18n, `${K}.section3Title`)} description={t(i18n, `${K}.section3Description`)}>
+          <SgStack direction="row" align="center">
+            <SgStack grow>
+              <p>Este bloco cresce e empurra o botão para a direita.</p>
+            </SgStack>
+            <SgButton>OK</SgButton>
+          </SgStack>
+
+          <SgStack className="mt-6">
+            <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-stack/samples/grow-em-linha.tsx.sample" />
+          </SgStack>
+        </Section>
+
+        <Section title={t(i18n, `${K}.section4Title`)} description={t(i18n, `${K}.section4Description`)}>
           <SgPlayground
             title={t(i18n, `${K}.playgroundTitle`)}
             interactive

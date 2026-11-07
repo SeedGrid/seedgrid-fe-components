@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Check, X } from "lucide-react";
-import { SgToggleSwitch } from "@seedgrid/fe-components";
+import { SgButton, SgToggleSwitch } from "@seedgrid/fe-components";
 
 export default function Example() {
   const [value, setValue] = React.useState(false);
@@ -20,10 +20,10 @@ export default function Example() {
         offIcon={<X size={12} />}
       />
 
-      <button onClick={() => setValue(true)}>Setar true</button>
-      <button onClick={() => setValue(false)}>Setar false</button>
-      <button onClick={() => setValue((prev) => !prev)}>Toggle externo</button>
-      <button onClick={() => setCaptured("captura manual -> " + String(value))}>Capturar agora</button>
+      <SgButton appearance="outline" size="sm" onClick={() => setValue(true)}>Setar true</SgButton>
+      <SgButton appearance="outline" size="sm" onClick={() => setValue(false)}>Setar false</SgButton>
+      <SgButton appearance="outline" size="sm" onClick={() => setValue((prev) => !prev)}>Toggle externo</SgButton>
+      <SgButton appearance="outline" size="sm" onClick={() => setCaptured("captura manual -> " + String(value))}>Capturar agora</SgButton>
 
       <p>capturado: {captured}</p>
     </div>

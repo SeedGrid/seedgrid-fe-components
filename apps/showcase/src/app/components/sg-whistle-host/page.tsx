@@ -4,6 +4,7 @@ import React from "react";
 import {
   SgButton,
   SgWhistleHost,
+  SgWhistler,
   sgWhistle,
   type SgWhistleId,
   type SgWhistleSeverity
@@ -64,6 +65,7 @@ export default function SgWhistleHostPage() {
   const [gap, setGap] = React.useState(12);
   const [newestOnTop, setNewestOnTop] = React.useState(false);
   const [warmPalette, setWarmPalette] = React.useState(false);
+  const [extraHost, setExtraHost] = React.useState(false);
   const [activeId, setActiveId] = React.useState<SgWhistleId | null>(null);
 
   const whistleProps: ShowcasePropRow[] = [
@@ -339,6 +341,37 @@ export default function SgWhistleHostPage() {
             </SgButton>
           </div>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-whistle-host/samples/custom-renderer-and-colors.tsx.sample" />
+        </Section>
+
+        <Section
+          title={t(i18n, `${K}.sections.precedence.title`)}
+          description={t(i18n, `${K}.sections.precedence.description`)}
+        >
+          <div className="flex flex-wrap items-start gap-4">
+            <SgButton onClick={() => sgWhistle.info({ message: "Só aparece no host" })}>Disparar</SgButton>
+            <div className="min-w-0 flex-1 rounded-xl border border-dashed border-border p-4">
+              <SgWhistler />
+            </div>
+          </div>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-whistle-host/samples/host-prevalece.tsx.sample" />
+        </Section>
+
+        <Section
+          title={t(i18n, `${K}.sections.multiple.title`)}
+          description={t(i18n, `${K}.sections.multiple.description`)}
+        >
+          <div className="flex flex-wrap items-center gap-2">
+            <SgButton appearance="outline" onClick={() => setExtraHost((value) => !value)}>
+              Segundo host (cantos retos): {String(extraHost)}
+            </SgButton>
+            <SgButton onClick={() => sgWhistle.warning({ message: "Quem está ativo?", duration: 3000 })}>Disparar</SgButton>
+          </div>
+          {extraHost ? (
+            <div className="rounded-xl border border-dashed border-border p-4">
+              <SgWhistleHost rounded={false} />
+            </div>
+          ) : null}
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-whistle-host/samples/varios-hosts.tsx.sample" />
         </Section>
 
         <Section

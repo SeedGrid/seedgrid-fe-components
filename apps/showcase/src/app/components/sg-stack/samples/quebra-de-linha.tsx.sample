@@ -1,0 +1,14 @@
+"use client";
+
+import React from "react";
+import { SgBadge, SgStack } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgStack direction="row" wrap gap={8}>
+      {["Dart", "Flutter", "React", "Java", "Rust", "Quarkus", "TypeScript"].map((nome) => (
+        <SgBadge key={nome} value={nome} />
+      ))}
+    </SgStack>
+  );
+}

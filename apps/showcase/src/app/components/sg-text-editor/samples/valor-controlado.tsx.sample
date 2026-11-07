@@ -1,0 +1,23 @@
+import React from "react";
+import { SgButton, SgStack, SgTextEditor } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [controlledBody, setControlledBody] = React.useState("<p>Valor controlado pelo estado da página</p>");
+
+  return (
+    <SgStack gap={8} align="start">
+      <SgTextEditor
+        id="sg-text-editor-controlled"
+        height={180}
+        valueHtml={controlledBody}
+        onChangeHtml={setControlledBody}
+      />
+      <SgButton
+        appearance="outline"
+        onClick={() => setControlledBody("<h2>Título</h2><ul><li><p>Item</p></li></ul>")}
+      >
+        Trocar o conteúdo
+      </SgButton>
+    </SgStack>
+  );
+}

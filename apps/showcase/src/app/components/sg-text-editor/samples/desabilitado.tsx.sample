@@ -1,12 +1,16 @@
-import { SgTextEditor } from "@seedgrid/fe-components";
+import { SgStack, SgTextEditor } from "@seedgrid/fe-components";
 
 export default function Example() {
   return (
-    <SgTextEditor
-      id="sg-text-editor-disabled"
-      valueHtml="<p><strong>Locked content</strong></p>"
-      enabled={false}
-      showCssEditor={false}
-    />
+    <SgStack gap={16}>
+      <SgTextEditor
+        id="sg-text-editor-disabled"
+        height={120}
+        valueHtml="<p><strong>Conteúdo bloqueado</strong></p>"
+        enabled={false}
+        showCssEditor={false}
+      />
+      <SgTextEditor id="sg-text-editor-error" height={120} error="Conteúdo obrigatório" />
+    </SgStack>
   );
 }

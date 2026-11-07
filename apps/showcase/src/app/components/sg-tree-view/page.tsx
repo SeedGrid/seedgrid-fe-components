@@ -243,7 +243,10 @@ export default function SgTreeViewPage() {
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-tree-view/samples/basico.tsx.sample" />
       </Section>
 
-      <Section title="2) Icon Tone" description="Altere a cor dos icones para primary.">
+      <Section
+        title={`2) ${t(i18n, "showcase.component.treeView.sections.iconTone.title")}`}
+        description={t(i18n, "showcase.component.treeView.sections.iconTone.description")}
+      >
         <SgCard title="Icons in Primary">
           <SgTreeView
             nodes={DATA}
@@ -332,8 +335,8 @@ export default function SgTreeViewPage() {
       </Section>
 
       <Section
-        title="8) Tracks (colunas extras por linha)"
-        description="Uma coluna por trilha, cada uma com seu cabecalho (label) e largura (width). As trilhas boolean e enum tem cascata pai->filhos propria e independente; a trilha custom nao tem estado nenhum -- a arvore so' cede a celula e a tela desenha o que quiser. O adornment poe conteudo livre ao lado do controle (aqui, uma estrela em 'List users')."
+        title={`7) ${t(i18n, "showcase.component.treeView.sections.tracks.title")}`}
+        description={t(i18n, "showcase.component.treeView.sections.tracks.description")}
       >
         <SgCard title="Ativo + Prioridade + Tipo + coluna livre">
           <SgTreeView
@@ -412,7 +415,7 @@ export default function SgTreeViewPage() {
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-tree-view/samples/tracks.tsx.sample" />
       </Section>
 
-      <Section title="7) Playground (SgPlayground)" description="Teste interativo das principais props do SgTreeView.">
+      <Section title="8) Playground (SgPlayground)" description="Teste interativo das principais props do SgTreeView.">
         <SgPlayground
           title="SgTreeView Playground"
           interactive

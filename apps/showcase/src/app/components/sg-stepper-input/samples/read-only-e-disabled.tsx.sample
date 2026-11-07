@@ -6,6 +6,7 @@ export default function Example() {
     <div className="flex flex-wrap items-center gap-4">
       <SgStepperInput id="stepper-readonly" minValue={0} maxValue={10} value={7} readOnly />
       <SgStepperInput id="stepper-disabled" minValue={0} maxValue={10} value={4} enabled={false} />
+      <SgStepperInput id="stepper-error" minValue={0} maxValue={10} error="Escolha ao menos 1" />
     </div>
   );
 }

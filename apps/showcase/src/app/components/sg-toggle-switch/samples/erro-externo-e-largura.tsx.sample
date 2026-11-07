@@ -1,0 +1,12 @@
+import { SgToggleSwitch } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgToggleSwitch
+      id="erro"
+      label="Aceito os termos"
+      error="Aceite os termos para continuar"
+      width={280}
+    />
+  );
+}

@@ -1,0 +1,20 @@
+import { SgStack, SgToggleSwitch } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgStack gap={12} align="start">
+      <SgToggleSwitch
+        id="termos"
+        label="Aceito os termos"
+        required
+        requiredMessage="Aceite os termos para continuar"
+      />
+      <SgToggleSwitch
+        id="regra"
+        label="Não pode ligar"
+        validateOnBlur={false}
+        validation={(checked) => (checked ? "Esta chave deve ficar desligada" : null)}
+      />
+    </SgStack>
+  );
+}
