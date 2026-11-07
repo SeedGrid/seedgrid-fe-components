@@ -1,0 +1,28 @@
+import * as React from "react";
+import { useForm } from "react-hook-form";
+import { SgButton, SgMultiSelectChips, type SgMultiSelectOptionValue } from "@seedgrid/fe-components";
+
+const FORM_OPTIONS = [
+  { label: "Vendas", value: "vendas" },
+  { label: "Compras", value: "compras" },
+  { label: "Estoque", value: "estoque" }
+];
+
+export default function App() {
+  const { control, handleSubmit } = useForm<{ areas: SgMultiSelectOptionValue[] }>({ defaultValues: { areas: [] } });
+  const [submitted, setSubmitted] = React.useState("");
+  return (
+    <form onSubmit={handleSubmit((values) => setSubmitted(values.areas.join(", ")))}>
+      <SgMultiSelectChips
+        id="msc-form"
+        name="areas"
+        control={control}
+        label="Áreas"
+        required
+        options={FORM_OPTIONS}
+      />
+      <SgButton type="submit">Enviar</SgButton>
+      {submitted ? <p>Enviado: {submitted}</p> : null}
+    </form>
+  );
+}

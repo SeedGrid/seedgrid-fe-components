@@ -1,0 +1,19 @@
+import { SgInputPassword } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <div className="w-80">
+      <SgInputPassword
+        id="demo-policy"
+        label="PIN alfanumérico"
+        minSize={6}
+        upperRequired={false}
+        specialCharacterRequired={false}
+        prohibitsSequentialAscCharacters={false}
+        prohibitsSequentialDescCharacters={false}
+        showStrengthBar={false}
+        commonPasswordCheck={false}
+      />
+    </div>
+  );
+}

@@ -1,4 +1,3 @@
-import * as React from "react";
 import { SgMultiSelectChips } from "@seedgrid/fe-components";
 
 const COMPANIES = [

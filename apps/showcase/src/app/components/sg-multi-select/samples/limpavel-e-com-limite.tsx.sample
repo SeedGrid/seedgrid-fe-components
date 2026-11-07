@@ -16,8 +16,8 @@ export default function App() {
     <>
       <SgMultiSelect
         id="ms-capped"
-        label="Empresas (max 2)"
-        placeholder="Selecione ate 2 empresas"
+        label="Empresas (máx. 2)"
+        placeholder="Selecione até 2 empresas"
         options={COMPANIES}
         value={capped}
         onChange={setCapped}
@@ -25,7 +25,7 @@ export default function App() {
         maxSelected={2}
       />
       <SgButton size="sm" appearance="outline" onClick={() => setCapped([])}>
-        Clear
+        Limpar
       </SgButton>
     </>
   );

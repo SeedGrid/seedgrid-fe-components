@@ -257,6 +257,36 @@ const DOCKABLE_USER_MENU: SgMenuNode[] = [
   { id: "dk-logout", label: "Sign out", onClick: () => {} }
 ];
 
+const ACCORDION_MENU: SgMenuNode[] = [
+  {
+    id: "relatorios",
+    label: "Relatórios",
+    children: [
+      { id: "relatorio-mensal", label: "Mensal" },
+      { id: "relatorio-anual", label: "Anual" }
+    ]
+  },
+  {
+    id: "cadastros",
+    label: "Cadastros",
+    children: [
+      { id: "produtos", label: "Produtos" },
+      { id: "fornecedores", label: "Fornecedores" }
+    ]
+  }
+];
+
+const SIMPLE_MENU: SgMenuNode[] = [
+  { id: "painel", label: "Painel", icon: <Home className="size-4" /> },
+  { id: "financeiro", label: "Financeiro", icon: <DollarSign className="size-4" /> }
+];
+
+const USER_ACTIONS_MENU: SgMenuNode[] = [
+  { id: "perfil", label: "Meu perfil" },
+  { id: "preferencias", label: "Preferências" },
+  { id: "sair", label: "Sair" }
+];
+
 const DOCKABLE_SHELL_STYLE = {
   "--primary": "27 62% 47%",
   "--primary-foreground": "0 0% 100%",
@@ -964,6 +994,7 @@ export default function SgMenuPage() {
   const [collapsed, setCollapsed] = React.useState(false);
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const [drawerPinned, setDrawerPinned] = React.useState(false);
+  const [userAction, setUserAction] = React.useState("-");
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
 
@@ -1152,6 +1183,45 @@ export default function SgMenuPage() {
         </Section>
 
         <Section title={t(i18n, `${K}.section8Title`)} description={t(i18n, `${K}.section8Description`)}>
+          <div className="rounded-lg border border-border p-3">
+            <div className="h-[360px] overflow-auto rounded-md border border-border">
+              <SgMenu
+                menu={ACCORDION_MENU}
+                selection={{ activeId: "relatorio-mensal" }}
+                menuStyle="inline"
+                mode="accordion"
+                indent={20}
+              />
+            </div>
+          </div>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-menu/samples/acordeao-selecao-e-expansao-inicial.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section9Title`)} description={t(i18n, `${K}.section9Description`)}>
+          <div className="space-y-3">
+            <div className="h-[460px] overflow-hidden rounded-lg border border-border">
+              <div className="flex h-full">
+                <SgMenu
+                  menu={SIMPLE_MENU}
+                  menuStyle="sidebar"
+                  brand={{ title: "SeedGrid ERP" }}
+                  user={{
+                    name: "Lúcia Souza",
+                    subtitle: t(i18n, `${K}.sidebarUserSubtitle`),
+                    onClick: () => setUserAction("user-block")
+                  }}
+                  userMenu={USER_ACTIONS_MENU.map((item) => ({ ...item, onClick: () => setUserAction(item.id) }))}
+                />
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              {t(i18n, `${K}.lastAction`)}: <span className="font-medium text-foreground">{userAction}</span>
+            </p>
+          </div>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-menu/samples/usuario-e-menu-do-usuario.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section10Title`)} description={t(i18n, `${K}.section10Description`)}>
           <SgPlayground
             title={t(i18n, `${K}.playgroundTitle`)}
             interactive

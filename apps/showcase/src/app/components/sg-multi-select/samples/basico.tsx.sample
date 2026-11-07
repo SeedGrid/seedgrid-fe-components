@@ -25,7 +25,7 @@ export default function App() {
       />
       <SgMultiSelect
         id="ms-preselected"
-        label="Empresas (com selecao)"
+        label="Empresas (com seleção)"
         placeholder="Selecione as empresas"
         options={COMPANIES}
         value={preselected}

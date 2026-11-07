@@ -1,0 +1,29 @@
+import * as React from "react";
+import { SgButton, SgMultiSelectChips, type SgMultiSelectOptionValue } from "@seedgrid/fe-components";
+
+const TOPICS = [
+  { label: "Flutter", value: "flutter" },
+  { label: "React", value: "react" },
+  { label: "Quarkus", value: "quarkus" }
+];
+
+export default function App() {
+  const [controlled, setControlled] = React.useState<SgMultiSelectOptionValue[]>(["flutter"]);
+  return (
+    <>
+      <SgMultiSelectChips
+        id="msc-controlled"
+        label="Frameworks"
+        options={TOPICS}
+        value={controlled}
+        onChange={setControlled}
+      />
+      <SgButton size="sm" appearance="outline" onClick={() => setControlled(TOPICS.map((o) => o.value))}>
+        Selecionar todas
+      </SgButton>
+      <SgButton size="sm" appearance="outline" onClick={() => setControlled([])}>
+        Limpar
+      </SgButton>
+    </>
+  );
+}

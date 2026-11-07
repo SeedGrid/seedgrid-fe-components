@@ -1,0 +1,15 @@
+import { SgInputTextSearch } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <SgInputTextSearch
+      id="search-appearance"
+      label="Cliente"
+      labelPosition="top"
+      placeholder="Nome ou CPF"
+      width={320}
+      filled
+      onSearchChange={() => {}}
+    />
+  );
+}

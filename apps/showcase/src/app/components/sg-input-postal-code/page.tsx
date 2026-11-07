@@ -222,7 +222,8 @@ export default function SgInputPostalCodePage() {
       { id: "exemplo-13", label: `13) ${t(i18n, "showcase.component.inputPostalCode.sections.standalone.title")}` },
       { id: "exemplo-14", label: `14) ${t(i18n, "showcase.common.sections.events.title")}` },
       { id: "exemplo-15", label: `15) ${t(i18n, "showcase.common.sections.labelPosition.title")}` },
-      { id: "exemplo-16", label: "16) Playground" }
+      { id: "exemplo-16", label: `16) ${t(i18n, "showcase.common.sections.noClear.title")}` },
+      { id: "exemplo-17", label: "17) Playground" }
     ],
     [i18n.locale]
   );
@@ -725,7 +726,25 @@ export default function SgInputPostalCodePage() {
   <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-postal-code/samples/posicao-do-rotulo.tsx.sample" />
 </Section>
 
-<Section id="exemplo-16" title="16) Playground" description={t(i18n, "showcase.common.playground.description")}>
+<Section
+  id="exemplo-16"
+  title={`16) ${t(i18n, "showcase.common.sections.noClear.title")}`}
+  description={t(i18n, "showcase.common.sections.noClear.description")}
+>
+  <div className="w-80">
+    <SgInputPostalCode
+      id="demo-noclear"
+      label={t(i18n, "showcase.common.labels.noClear")}
+      hintText="00000-000"
+      clearButton={false}
+      name="noclear"
+      register={register}
+    />
+  </div>
+  <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-postal-code/samples/sem-botao-limpar.tsx.sample" />
+</Section>
+
+<Section id="exemplo-17" title="17) Playground" description={t(i18n, "showcase.common.playground.description")}>
         <SgPlayground
           title="SgInputPostalCode Playground"
           interactive

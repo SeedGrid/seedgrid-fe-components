@@ -23,9 +23,7 @@ export default function Example() {
         showControls={false}
         draggable
       />
-      <p className="text-xs text-muted-foreground">
-        Dica: arraste os itens para reordenar, sem usar os botoes.
-      </p>
+      <p className="text-xs text-muted-foreground">Dica: arraste os itens para reordenar, sem usar os botões.</p>
     </>
   );
 }

@@ -2,6 +2,7 @@
 
 import React from "react";
 import { SgButton, SgMultiSelectChips, type SgMultiSelectOptionValue } from "@seedgrid/fe-components";
+import { useForm } from "react-hook-form";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import I18NReady from "../I18NReady";
 import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
@@ -41,11 +42,23 @@ const COMPANIES = [
 ];
 
 const BRANCHES = [
-  { label: "1 - Matriz Sao Paulo", chipLabel: "1", value: 1 },
+  { label: "1 - Matriz São Paulo", chipLabel: "1", value: 1 },
   { label: "2 - Filial Campinas", chipLabel: "2", value: 2 },
   { label: "3 - Filial Centro", chipLabel: "3", value: 3 },
-  { label: "4 - Filial Ribeirao Preto", chipLabel: "4", value: 4 },
-  { label: "5 - Deposito Jundiai", chipLabel: "5", value: 5 }
+  { label: "4 - Filial Ribeirão Preto", chipLabel: "4", value: 4 },
+  { label: "5 - Depósito Jundiaí", chipLabel: "5", value: 5 }
+];
+
+const TOPICS = [
+  { label: "Flutter", value: "flutter" },
+  { label: "React", value: "react" },
+  { label: "Quarkus", value: "quarkus" }
+];
+
+const FORM_OPTIONS = [
+  { label: "Vendas", value: "vendas" },
+  { label: "Compras", value: "compras" },
+  { label: "Estoque", value: "estoque" }
 ];
 
 function Selected(props: { label: string; none: string; value: SgMultiSelectOptionValue[] }) {
@@ -67,6 +80,9 @@ export default function SgMultiSelectChipsPage() {
   const [searchable, setSearchable] = React.useState<SgMultiSelectOptionValue[]>(["e1"]);
   const [capped, setCapped] = React.useState<SgMultiSelectOptionValue[]>([]);
   const [branches, setBranches] = React.useState<SgMultiSelectOptionValue[]>([1, 3]);
+  const [controlled, setControlled] = React.useState<SgMultiSelectOptionValue[]>(["flutter"]);
+  const { control, handleSubmit } = useForm<{ areas: SgMultiSelectOptionValue[] }>({ defaultValues: { areas: [] } });
+  const [submitted, setSubmitted] = React.useState("");
 
   const selectedLabel = t(i18n, `${K}.selectedLabel`);
   const noneLabel = t(i18n, `${K}.noneLabel`);
@@ -179,6 +195,50 @@ export default function SgMultiSelectChipsPage() {
             <Selected label={selectedLabel} none={noneLabel} value={branches} />
           </div>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-multi-select-chips/samples/rotulo-curto.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.sections.controlled.title`)} description={t(i18n, `${K}.sections.controlled.description`)}>
+          <div className="w-96">
+            <SgMultiSelectChips
+              id="msc-controlled"
+              label={t(i18n, `${K}.labels.controlledField`)}
+              options={TOPICS}
+              value={controlled}
+              onChange={setControlled}
+            />
+            <div className="mt-2 flex flex-wrap gap-2">
+              <SgButton size="sm" appearance="outline" onClick={() => setControlled(TOPICS.map((o) => o.value))}>
+                {t(i18n, `${K}.buttons.selectAll`)}
+              </SgButton>
+              <SgButton size="sm" appearance="outline" onClick={() => setControlled([])}>
+                {t(i18n, `${K}.buttons.clear`)}
+              </SgButton>
+            </div>
+            <Selected label={selectedLabel} none={noneLabel} value={controlled} />
+          </div>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-multi-select-chips/samples/valor-controlado.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.sections.form.title`)} description={t(i18n, `${K}.sections.form.description`)}>
+          <form className="w-96" onSubmit={handleSubmit((values) => setSubmitted(values.areas.join(", ")))}>
+            <SgMultiSelectChips
+              id="msc-form"
+              name="areas"
+              control={control}
+              label={t(i18n, `${K}.labels.formField`)}
+              required
+              options={FORM_OPTIONS}
+            />
+            <SgButton type="submit" className="mt-3">
+              {t(i18n, `${K}.buttons.submit`)}
+            </SgButton>
+            {submitted ? (
+              <div className="mt-2 w-full rounded border border-border bg-foreground/5 p-2 text-xs">
+                <strong>{t(i18n, `${K}.submittedLabel`)}:</strong> {submitted}
+              </div>
+            ) : null}
+          </form>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-multi-select-chips/samples/erro-e-formulario.tsx.sample" />
         </Section>
 
         <Section title={t(i18n, `${K}.sections.playground.title`)} description={t(i18n, `${K}.sections.playground.description`)}>
