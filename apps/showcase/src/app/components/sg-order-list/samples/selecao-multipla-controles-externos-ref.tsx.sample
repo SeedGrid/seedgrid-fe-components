@@ -2,10 +2,10 @@ import React from "react";
 import { SgOrderList, type SgOrderListItem, type SgOrderListRef, SgButton, SgGrid } from "@seedgrid/fe-components";
 
 const PIPELINE_STEPS: SgOrderListItem[] = [
-  { label: "Prospeccao", value: "lead" },
-  { label: "Qualificacao", value: "qualify" },
+  { label: "Prospecção", value: "lead" },
+  { label: "Qualificação", value: "qualify" },
   { label: "Proposta", value: "proposal" },
-  { label: "Negociacao", value: "negotiation" },
+  { label: "Negociação", value: "negotiation" },
   { label: "Fechamento", value: "close" }
 ];
 
@@ -26,11 +26,11 @@ export default function Example() {
         showControls={false}
       />
       <SgGrid columns={{ base: 2, md: 5 }} gap={8}>
-        <SgButton onClick={() => pipelineRef.current?.moveTop()}>Move Top</SgButton>
-        <SgButton onClick={() => pipelineRef.current?.moveUp()}>Move Up</SgButton>
-        <SgButton onClick={() => pipelineRef.current?.moveDown()}>Move Down</SgButton>
-        <SgButton onClick={() => pipelineRef.current?.moveBottom()}>Move Bottom</SgButton>
-        <SgButton onClick={() => pipelineRef.current?.clearSelection()}>Clear Selection</SgButton>
+        <SgButton onClick={() => pipelineRef.current?.moveTop()}>Mover para o topo</SgButton>
+        <SgButton onClick={() => pipelineRef.current?.moveUp()}>Subir</SgButton>
+        <SgButton onClick={() => pipelineRef.current?.moveDown()}>Descer</SgButton>
+        <SgButton onClick={() => pipelineRef.current?.moveBottom()}>Mover para a base</SgButton>
+        <SgButton onClick={() => pipelineRef.current?.clearSelection()}>Limpar seleção</SgButton>
       </SgGrid>
     </div>
   );

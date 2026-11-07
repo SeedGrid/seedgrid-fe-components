@@ -1,0 +1,12 @@
+import { SgGrid, SgInputTextArea } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <SgGrid columns={{ base: 1, md: 2 }} gap={8}>
+      <SgInputTextArea id="sg-input-text-area-elevation-none" label="Elevação none" elevation="none" />
+      <SgInputTextArea id="sg-input-text-area-elevation-sm" label="Elevação sm" elevation="sm" />
+      <SgInputTextArea id="sg-input-text-area-elevation-md" label="Elevação md" elevation="md" />
+      <SgInputTextArea id="sg-input-text-area-elevation-lg" label="Elevação lg" elevation="lg" />
+    </SgGrid>
+  );
+}

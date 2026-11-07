@@ -187,7 +187,8 @@ export default function SgInputTextAreaPage() {
       { id: "exemplo-15", label: `15) ${t(i18n, "showcase.component.inputTextArea.sections.externalError.title")}` },
       { id: "exemplo-16", label: `16) ${t(i18n, "showcase.common.sections.events.title")}` },
       { id: "exemplo-17", label: `17) ${t(i18n, "showcase.common.sections.labelPosition.title")}` },
-      { id: "exemplo-18", label: "18) Playground" }
+      { id: "exemplo-18", label: `18) ${t(i18n, "showcase.common.sections.elevation.title")}` },
+      { id: "exemplo-19", label: "19) Playground" }
     ],
     [i18n.locale]
   );
@@ -591,8 +592,38 @@ export default function SgInputTextAreaPage() {
 </Section>
 
 <Section
-        id="exemplo-18"
-        title="18) Playground"
+  id="exemplo-18"
+  title={`18) ${t(i18n, "showcase.common.sections.elevation.title")}`}
+  description={t(i18n, "showcase.common.sections.elevation.description")}
+>
+  <SgGrid columns={{ base: 1, md: 2 }} gap={8} className="w-full">
+    <SgInputTextArea
+      id="sg-input-text-area-elevation-none"
+      label={t(i18n, "showcase.common.labels.elevationNone")}
+      elevation="none"
+    />
+    <SgInputTextArea
+      id="sg-input-text-area-elevation-sm"
+      label={t(i18n, "showcase.common.labels.elevationSm")}
+      elevation="sm"
+    />
+    <SgInputTextArea
+      id="sg-input-text-area-elevation-md"
+      label={t(i18n, "showcase.common.labels.elevationMd")}
+      elevation="md"
+    />
+    <SgInputTextArea
+      id="sg-input-text-area-elevation-lg"
+      label={t(i18n, "showcase.common.labels.elevationLg")}
+      elevation="lg"
+    />
+  </SgGrid>
+  <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text-area/samples/elevacao.tsx.sample" />
+</Section>
+
+<Section
+        id="exemplo-19"
+        title="19) Playground"
         description={t(i18n, "showcase.common.playground.description.withComponent", { component: "SgInputTextArea" })}
       >
         <SgPlayground

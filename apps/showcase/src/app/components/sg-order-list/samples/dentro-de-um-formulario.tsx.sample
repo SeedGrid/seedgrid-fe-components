@@ -1,0 +1,37 @@
+import React from "react";
+import { SgButton, SgOrderList, type SgOrderListItem } from "@seedgrid/fe-components";
+
+const RANKING_ITEMS: SgOrderListItem[] = [
+  { label: "Ouro", value: "ouro" },
+  { label: "Prata", value: "prata" },
+  { label: "Bronze", value: "bronze" }
+];
+
+export default function Example() {
+  const [rankingItems, setRankingItems] = React.useState<SgOrderListItem[]>(RANKING_ITEMS);
+  const [submitted, setSubmitted] = React.useState("");
+
+  return (
+    <form
+      className="space-y-3"
+      onSubmit={(event) => {
+        event.preventDefault();
+        setSubmitted(rankingItems.map((item) => item.label).join(" > "));
+      }}
+    >
+      <SgOrderList
+        id="order-form"
+        title="Ranking"
+        source={RANKING_ITEMS}
+        value={rankingItems}
+        onChange={setRankingItems}
+      />
+      <SgButton type="submit">Enviar</SgButton>
+      {submitted ? (
+        <p className="text-sm">
+          Enviado: <strong>{submitted}</strong>
+        </p>
+      ) : null}
+    </form>
+  );
+}

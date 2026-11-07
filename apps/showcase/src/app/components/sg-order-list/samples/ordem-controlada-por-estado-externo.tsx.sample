@@ -16,10 +16,10 @@ export default function Example() {
   return (
     <div className="space-y-4">
       <SgGrid columns={{ base: 1, md: 3 }} gap={8}>
-        <SgButton onClick={() => setControlledItems(PRODUCT_ITEMS)}>Reset</SgButton>
-        <SgButton onClick={() => setControlledItems((prev) => [...prev].reverse())}>Reverse</SgButton>
+        <SgButton onClick={() => setControlledItems(PRODUCT_ITEMS)}>Restaurar</SgButton>
+        <SgButton onClick={() => setControlledItems((prev) => [...prev].reverse())}>Inverter</SgButton>
         <SgButton onClick={() => setControlledItems((prev) => [...prev].sort((a, b) => a.label.localeCompare(b.label)))}>
-          Sort A-Z
+          Ordenar A-Z
         </SgButton>
       </SgGrid>
       <SgOrderList

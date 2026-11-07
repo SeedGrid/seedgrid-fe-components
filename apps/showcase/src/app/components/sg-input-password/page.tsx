@@ -158,7 +158,9 @@ export default function SgInputPasswordPage() {
       { id: "exemplo-4", label: `4) ${t(i18n, "showcase.common.sections.visual.title")}` },
       { id: "exemplo-5", label: `5) ${t(i18n, "showcase.common.sections.events.title")}` },
       { id: "exemplo-6", label: `6) ${t(i18n, "showcase.common.sections.labelPosition.title")}` },
-      { id: "exemplo-7", label: "7) Playground" }
+      { id: "exemplo-7", label: `7) ${t(i18n, "showcase.component.inputPassword.sections.generate.title")}` },
+      { id: "exemplo-8", label: `8) ${t(i18n, "showcase.component.inputPassword.sections.policy.title")}` },
+      { id: "exemplo-9", label: "9) Playground" }
     ],
     [i18n.locale]
   );
@@ -341,7 +343,46 @@ export default function SgInputPasswordPage() {
   <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-password/samples/posicao-do-rotulo.tsx.sample" />
 </Section>
 
-<Section id="exemplo-7" title="7) Playground" description={t(i18n, "showcase.common.playground.description")}>
+<Section
+  id="exemplo-7"
+  title={`7) ${t(i18n, "showcase.component.inputPassword.sections.generate.title")}`}
+  description={t(i18n, "showcase.component.inputPassword.sections.generate.description")}
+>
+  <div className="w-80">
+    <SgInputPassword
+      id="demo-generate"
+      label={t(i18n, "showcase.component.inputPassword.labels.password")}
+      createNewPasswordButton
+      newPasswordLength={12}
+      maxLength={32}
+      hidePassword={false}
+    />
+  </div>
+  <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-password/samples/gerar-senha-forte.tsx.sample" />
+</Section>
+
+<Section
+  id="exemplo-8"
+  title={`8) ${t(i18n, "showcase.component.inputPassword.sections.policy.title")}`}
+  description={t(i18n, "showcase.component.inputPassword.sections.policy.description")}
+>
+  <div className="w-80">
+    <SgInputPassword
+      id="demo-policy"
+      label={t(i18n, "showcase.component.inputPassword.labels.pin")}
+      minSize={6}
+      upperRequired={false}
+      specialCharacterRequired={false}
+      prohibitsSequentialAscCharacters={false}
+      prohibitsSequentialDescCharacters={false}
+      showStrengthBar={false}
+      commonPasswordCheck={false}
+    />
+  </div>
+  <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-password/samples/politica-propria.tsx.sample" />
+</Section>
+
+<Section id="exemplo-9" title="9) Playground" description={t(i18n, "showcase.common.playground.description")}>
           <SgPlayground
             title="SgInputPassword Playground"
             interactive

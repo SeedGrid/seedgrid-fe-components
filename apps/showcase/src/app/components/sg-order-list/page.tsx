@@ -110,10 +110,10 @@ const PRODUCT_ITEMS: SgOrderListItem[] = [
 ];
 
 const PIPELINE_STEPS: SgOrderListItem[] = [
-  { label: "Prospeccao", value: "lead" },
-  { label: "Qualificacao", value: "qualify" },
+  { label: "Prospecção", value: "lead" },
+  { label: "Qualificação", value: "qualify" },
   { label: "Proposta", value: "proposal" },
-  { label: "Negociacao", value: "negotiation" },
+  { label: "Negociação", value: "negotiation" },
   { label: "Fechamento", value: "close" }
 ];
 
@@ -127,9 +127,23 @@ const TEAM_ITEMS: SgOrderListItem[] = [
 
 const BACKLOG_ITEMS: SgOrderListItem[] = [
   { label: "Implementar filtros", value: "filtros", data: { effort: "M", priority: "Alta" } },
-  { label: "Ajustar layout mobile", value: "mobile", data: { effort: "S", priority: "Media" } },
+  { label: "Ajustar layout mobile", value: "mobile", data: { effort: "S", priority: "Média" } },
   { label: "Refatorar API de pedidos", value: "api", data: { effort: "L", priority: "Alta" } },
   { label: "Atualizar testes E2E", value: "e2e", data: { effort: "M", priority: "Baixa" }, enabled: false}
+];
+
+const TASK_ITEMS: SgOrderListItem[] = [
+  { label: "Escrever o plano", value: 1 },
+  { label: "Revisar com o time", value: 2 },
+  { label: "Publicar", value: 3 },
+  { label: "Arquivado", value: 4, enabled: false },
+  { label: "Comemorar", value: 5 }
+];
+
+const RANKING_ITEMS: SgOrderListItem[] = [
+  { label: "Ouro", value: "ouro" },
+  { label: "Prata", value: "prata" },
+  { label: "Bronze", value: "bronze" }
 ];
 
 export default function SgOrderListShowcase() {
@@ -142,7 +156,18 @@ export default function SgOrderListShowcase() {
       t(i18n, `${K}.sectionTitles.2`),
       t(i18n, `${K}.sectionTitles.3`),
       t(i18n, `${K}.sectionTitles.4`),
-      t(i18n, `${K}.sectionTitles.5`)
+      t(i18n, `${K}.sectionTitles.5`),
+      t(i18n, `${K}.sectionTitles.6`),
+      t(i18n, `${K}.sectionTitles.7`)
+    ] as const,
+    sectionDescriptions: [
+      t(i18n, `${K}.sectionDescriptions.0`),
+      t(i18n, `${K}.sectionDescriptions.1`),
+      t(i18n, `${K}.sectionDescriptions.2`),
+      t(i18n, `${K}.sectionDescriptions.3`),
+      t(i18n, `${K}.sectionDescriptions.4`),
+      t(i18n, `${K}.sectionDescriptions.5`),
+      t(i18n, `${K}.sectionDescriptions.6`)
     ] as const,
     propsReferenceTitle: t(i18n, `${K}.propsReferenceTitle`)
   }), [i18n]);
@@ -191,6 +216,9 @@ export default function SgOrderListShowcase() {
   const [backlogItems, setBacklogItems] = React.useState<SgOrderListItem[]>(BACKLOG_ITEMS);
   const [controlledItems, setControlledItems] = React.useState<SgOrderListItem[]>(PRODUCT_ITEMS);
 
+  const [rankingItems, setRankingItems] = React.useState<SgOrderListItem[]>(RANKING_ITEMS);
+  const [submitted, setSubmitted] = React.useState("");
+
   const pipelineRef = React.useRef<SgOrderListRef>(null);
 
   return (
@@ -208,25 +236,25 @@ export default function SgOrderListShowcase() {
           onAnchorClick={handleAnchorClick}
         />
 
-        <Section title={texts.sectionTitles[0]}>
+        <Section title={texts.sectionTitles[0]} description={texts.sectionDescriptions[0]}>
           <SgOrderList
             id="order-basic"
-            title="Produtos"
+            title={t(i18n, `${K}.labels.products`)}
             source={PRODUCT_ITEMS}
             value={basicItems}
             onChange={setBasicItems}
           />
           <p className="text-sm text-[rgb(var(--sg-muted))]">
-            Ordem atual: <strong>{basicItems.map((item) => item.label).join(" > ")}</strong>
+            {t(i18n, `${K}.labels.currentOrder`)}: <strong>{basicItems.map((item) => item.label).join(" > ")}</strong>
           </p>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-order-list/samples/basico-controles-internos.tsx.sample" />
         </Section>
 
-        <Section title={texts.sectionTitles[1]}>
+        <Section title={texts.sectionTitles[1]} description={texts.sectionDescriptions[1]}>
           <SgOrderList
             ref={pipelineRef}
             id="order-ref"
-            title="Etapas do pipeline"
+            title={t(i18n, `${K}.labels.pipeline`)}
             source={PIPELINE_STEPS}
             value={pipelineItems}
             onChange={setPipelineItems}
@@ -234,19 +262,19 @@ export default function SgOrderListShowcase() {
             showControls={false}
           />
           <SgGrid columns={{ base: 2, md: 5 }} gap={8}>
-            <SgButton onClick={() => pipelineRef.current?.moveTop()}>Move Top</SgButton>
-            <SgButton onClick={() => pipelineRef.current?.moveUp()}>Move Up</SgButton>
-            <SgButton onClick={() => pipelineRef.current?.moveDown()}>Move Down</SgButton>
-            <SgButton onClick={() => pipelineRef.current?.moveBottom()}>Move Bottom</SgButton>
-            <SgButton onClick={() => pipelineRef.current?.clearSelection()}>Clear Selection</SgButton>
+            <SgButton onClick={() => pipelineRef.current?.moveTop()}>{t(i18n, `${K}.buttons.moveTop`)}</SgButton>
+            <SgButton onClick={() => pipelineRef.current?.moveUp()}>{t(i18n, `${K}.buttons.moveUp`)}</SgButton>
+            <SgButton onClick={() => pipelineRef.current?.moveDown()}>{t(i18n, `${K}.buttons.moveDown`)}</SgButton>
+            <SgButton onClick={() => pipelineRef.current?.moveBottom()}>{t(i18n, `${K}.buttons.moveBottom`)}</SgButton>
+            <SgButton onClick={() => pipelineRef.current?.clearSelection()}>{t(i18n, `${K}.buttons.clearSelection`)}</SgButton>
           </SgGrid>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-order-list/samples/selecao-multipla-controles-externos-ref.tsx.sample" />
         </Section>
 
-        <Section title={texts.sectionTitles[2]}>
+        <Section title={texts.sectionTitles[2]} description={texts.sectionDescriptions[2]}>
           <SgOrderList
             id="order-drag"
-            title="Time de atendimento"
+            title={t(i18n, `${K}.labels.team`)}
             source={TEAM_ITEMS}
             value={teamItems}
             onChange={setTeamItems}
@@ -254,15 +282,15 @@ export default function SgOrderListShowcase() {
             draggable
           />
           <p className="text-xs text-muted-foreground">
-            Dica: arraste os itens para reordenar, sem usar os botoes.
+            {t(i18n, `${K}.labels.dragHint`)}
           </p>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-order-list/samples/drag-and-drop-sem-botoes.tsx.sample" />
         </Section>
 
-        <Section title={texts.sectionTitles[3]}>
+        <Section title={texts.sectionTitles[3]} description={texts.sectionDescriptions[3]}>
           <SgOrderList
             id="order-template"
-            title="Backlog da sprint"
+            title={t(i18n, `${K}.labels.backlog`)}
             source={BACKLOG_ITEMS}
             value={backlogItems}
             onChange={setBacklogItems}
@@ -273,7 +301,7 @@ export default function SgOrderListShowcase() {
                 <SgGrid columns={{ base: 1, sm: 2 }} gap={8} className="w-full">
                   <span className="font-medium">{item.label}</span>
                   <span className="text-xs text-[rgb(var(--sg-muted))]">
-                    {"Prioridade: " + (meta?.priority ?? "-") + " | Esforco: " + (meta?.effort ?? "-")}
+                    {`${t(i18n, `${K}.labels.priority`)}: ${meta?.priority ?? "-"} | ${t(i18n, `${K}.labels.effort`)}: ${meta?.effort ?? "-"}`}
                   </span>
                 </SgGrid>
               );
@@ -282,17 +310,17 @@ export default function SgOrderListShowcase() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-order-list/samples/item-template-customizado-e-item-desabilitado.tsx.sample" />
         </Section>
 
-        <Section title={texts.sectionTitles[4]}>
+        <Section title={texts.sectionTitles[4]} description={texts.sectionDescriptions[4]}>
           <SgGrid columns={{ base: 1, md: 3 }} gap={8}>
-            <SgButton onClick={() => setControlledItems(PRODUCT_ITEMS)}>Reset</SgButton>
-            <SgButton onClick={() => setControlledItems((prev) => [...prev].reverse())}>Reverse</SgButton>
+            <SgButton onClick={() => setControlledItems(PRODUCT_ITEMS)}>{t(i18n, `${K}.buttons.reset`)}</SgButton>
+            <SgButton onClick={() => setControlledItems((prev) => [...prev].reverse())}>{t(i18n, `${K}.buttons.reverse`)}</SgButton>
             <SgButton onClick={() => setControlledItems((prev) => [...prev].sort((a, b) => a.label.localeCompare(b.label)))}>
-              Sort A-Z
+              {t(i18n, `${K}.buttons.sortAz`)}
             </SgButton>
           </SgGrid>
           <SgOrderList
             id="order-controlled"
-            title="Produtos (controlado)"
+            title={t(i18n, `${K}.labels.productsControlled`)}
             source={PRODUCT_ITEMS}
             value={controlledItems}
             onChange={setControlledItems}
@@ -300,7 +328,43 @@ export default function SgOrderListShowcase() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-order-list/samples/ordem-controlada-por-estado-externo.tsx.sample" />
         </Section>
 
-        <Section title={texts.sectionTitles[5]}>
+        <Section title={texts.sectionTitles[5]} description={texts.sectionDescriptions[5]}>
+          <SgOrderList
+            id="order-single"
+            title={t(i18n, `${K}.labels.priorities`)}
+            source={TASK_ITEMS}
+            selectionMode="single"
+            controlsPosition="right"
+          />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-order-list/samples/selecao-unica-e-controles-a-direita.tsx.sample" />
+        </Section>
+
+        <Section title={texts.sectionTitles[6]} description={texts.sectionDescriptions[6]}>
+          <form
+            className="space-y-3"
+            onSubmit={(event) => {
+              event.preventDefault();
+              setSubmitted(rankingItems.map((item) => item.label).join(" > "));
+            }}
+          >
+            <SgOrderList
+              id="order-form"
+              title={t(i18n, `${K}.labels.ranking`)}
+              source={RANKING_ITEMS}
+              value={rankingItems}
+              onChange={setRankingItems}
+            />
+            <SgButton type="submit">{t(i18n, `${K}.buttons.submit`)}</SgButton>
+            {submitted ? (
+              <p className="text-sm">
+                {t(i18n, `${K}.labels.submitted`)}: <strong>{submitted}</strong>
+              </p>
+            ) : null}
+          </form>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-order-list/samples/dentro-de-um-formulario.tsx.sample" />
+        </Section>
+
+        <Section title={texts.sectionTitles[7]}>
           <SgPlayground
             title="SgOrderList Playground"
             interactive

@@ -1,0 +1,16 @@
+import { SgInputPassword } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <div className="w-80">
+      <SgInputPassword
+        id="demo-generate"
+        label="Senha"
+        createNewPasswordButton
+        newPasswordLength={12}
+        maxLength={32}
+        hidePassword={false}
+      />
+    </div>
+  );
+}

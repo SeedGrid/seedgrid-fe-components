@@ -1,0 +1,21 @@
+import { SgOrderList, type SgOrderListItem } from "@seedgrid/fe-components";
+
+const TASK_ITEMS: SgOrderListItem[] = [
+  { label: "Escrever o plano", value: 1 },
+  { label: "Revisar com o time", value: 2 },
+  { label: "Publicar", value: 3 },
+  { label: "Arquivado", value: 4, enabled: false },
+  { label: "Comemorar", value: 5 }
+];
+
+export default function Example() {
+  return (
+    <SgOrderList
+      id="order-single"
+      title="Prioridades"
+      source={TASK_ITEMS}
+      selectionMode="single"
+      controlsPosition="right"
+    />
+  );
+}

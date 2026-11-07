@@ -59,6 +59,9 @@ export default function SgInputTextSearchPage() {
   const [immediate2, setImmediate2] = React.useState("");
   const [searchTerm2, setSearchTerm2] = React.useState("");
 
+  const [raw, setRaw] = React.useState("");
+  const [fired, setFired] = React.useState(0);
+
   return (
     <I18NReady>
       <div
@@ -78,8 +81,8 @@ export default function SgInputTextSearchPage() {
           <div className="w-96">
             <SgInputTextSearch
               id="search-basic"
-              label="Busca"
-              placeholder="Digite para buscar"
+              label={t(i18n, `${K}.labels.search`)}
+              placeholder={t(i18n, `${K}.labels.searchPlaceholder`)}
               onChange={setImmediate}
               onSearchChange={setSearchTerm}
             />
@@ -93,8 +96,8 @@ export default function SgInputTextSearchPage() {
           <div className="w-96">
             <SgInputTextSearch
               id="search-tuned"
-              label="Busca"
-              placeholder="Digite para buscar"
+              label={t(i18n, `${K}.labels.search`)}
+              placeholder={t(i18n, `${K}.labels.searchPlaceholder`)}
               minChars={1}
               debounceMs={800}
               onChange={setImmediate2}
@@ -104,6 +107,33 @@ export default function SgInputTextSearchPage() {
             <Echo label={t(i18n, `${K}.searchLabel`)} value={searchTerm2} none={t(i18n, `${K}.noneLabel`)} />
           </div>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text-search/samples/minchars-e-debounce.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section3Title`)} description={t(i18n, `${K}.section3Description`)}>
+          <div className="w-96">
+            <SgInputTextSearch
+              id="search-events"
+              label={t(i18n, `${K}.labels.typeAndWatch`)}
+              onChange={setRaw}
+              onSearchChange={() => setFired((n) => n + 1)}
+            />
+            <p className="mt-2 text-xs">{t(i18n, `${K}.labels.rawValue`)}: "{raw}"</p>
+            <p className="text-xs">{t(i18n, `${K}.labels.searchesFired`)}: {fired}</p>
+          </div>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text-search/samples/onchange-imediato-x-onsearchchange-com-debounce.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section4Title`)} description={t(i18n, `${K}.section4Description`)}>
+          <SgInputTextSearch
+            id="search-appearance"
+            label={t(i18n, `${K}.labels.customer`)}
+            labelPosition="top"
+            placeholder={t(i18n, `${K}.labels.customerPlaceholder`)}
+            width={320}
+            filled
+            onSearchChange={() => {}}
+          />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-text-search/samples/rotulo-largura-e-botao-de-limpar.tsx.sample" />
         </Section>
 
         <section

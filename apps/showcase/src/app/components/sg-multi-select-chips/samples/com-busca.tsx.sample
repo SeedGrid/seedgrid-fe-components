@@ -11,15 +11,15 @@ const COMPANIES = [
 ];
 
 export default function App() {
-  const [value, setValue] = React.useState<SgMultiSelectOptionValue[]>(["e1"]);
+  const [searchable, setSearchable] = React.useState<SgMultiSelectOptionValue[]>(["e1"]);
   return (
     <SgMultiSelectChips
       id="msc-searchable"
       label="Empresas"
       placeholder="Selecione as empresas"
       options={COMPANIES}
-      value={value}
-      onChange={setValue}
+      value={searchable}
+      onChange={setSearchable}
       searchable
     />
   );

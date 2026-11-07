@@ -1,0 +1,19 @@
+import * as React from "react";
+import { SgInputTextSearch } from "@seedgrid/fe-components";
+
+export default function App() {
+  const [raw, setRaw] = React.useState("");
+  const [fired, setFired] = React.useState(0);
+  return (
+    <>
+      <SgInputTextSearch
+        id="search-events"
+        label="Digite e veja os eventos"
+        onChange={setRaw}
+        onSearchChange={() => setFired((n) => n + 1)}
+      />
+      <p>onChange (cru): "{raw}"</p>
+      <p>Buscas disparadas: {fired}</p>
+    </>
+  );
+}
