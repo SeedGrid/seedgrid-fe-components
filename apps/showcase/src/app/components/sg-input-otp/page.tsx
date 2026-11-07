@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
 import { SgButton, SgGrid, SgInputOTP, type SgInputOTPRef } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
@@ -29,161 +30,56 @@ function CodeBlock(props: { sampleFile: string }) {
   return <SgCodeBlockBase sampleFile={props.sampleFile} />;
 }
 
-function ValuePanel(props: { masked: string; raw: string; expectedLength: number; completeValue?: string }) {
-  const complete = props.raw.length === props.expectedLength;
+function ValuePanel(props: { masked: string; raw: string; empty: string; completeValue?: string; waiting?: string }) {
   return (
-    <div className="rounded-md border border-border bg-foreground/5 p-3 text-xs">
-      <p><strong>masked:</strong> {props.masked || "(vazio)"}</p>
-      <p><strong>raw:</strong> {props.raw || "(vazio)"}</p>
-      <p><strong>completo:</strong> {complete ? "sim" : "nao"}</p>
-      {props.completeValue ? (
-        <p><strong>onComplete:</strong> {props.completeValue}</p>
+    <div className="rounded border border-border bg-muted/40 p-3 text-xs">
+      <div><strong>masked:</strong> {props.masked || props.empty}</div>
+      <div><strong>raw:</strong> {props.raw || props.empty}</div>
+      {props.completeValue !== undefined ? (
+        <div><strong>onComplete:</strong> {props.completeValue || props.waiting}</div>
       ) : null}
     </div>
   );
 }
 
-
 type OtpTexts = {
   subtitle: string;
   examplesLabel: string;
   propsLinkLabel: string;
-  sectionTitles: string[];
-  sectionDescriptions: string[];
-  playgroundTitle: string;
   propsTitle: string;
-  propsColProp: string;
-  propsColType: string;
-  propsColDefault: string;
-  propsColDescription: string;
 };
 
 const OTP_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", OtpTexts> = {
   "pt-BR": {
-    subtitle: "Input OTP com digitos separados, suporte a colagem e mascara configuravel.",
-    examplesLabel: "Examples",
-    propsLinkLabel: "Referencia de Props",
-    sectionTitles: [
-      "1) Basico",
-      "2) Mascara customizada",
-      "3) Colagem + onComplete",
-      "4) Acesso por ref",
-      "5) Playground"
-    ],
-    sectionDescriptions: [
-      "Mascara padrao: 999999.",
-      "Example: \"###-###-99\".",
-      "Cole um OTP e receba callback ao completar.",
-      "Focar, limpar e ler valores via API do ref.",
-      "Simule as principais props em tempo real."
-    ],
-    playgroundTitle: "SgInputOTP Playground",
-    propsTitle: "Referencia de Props",
-    propsColProp: "Prop",
-    propsColType: "Tipo",
-    propsColDefault: "Default",
-    propsColDescription: "Description"
+    subtitle: "Input OTP com dígitos separados, suporte a colagem e máscara configurável.",
+    examplesLabel: "Exemplos",
+    propsLinkLabel: "Referência de Props",
+    propsTitle: "Referência de Props"
   },
   "pt-PT": {
-    subtitle: "Input OTP com digitos separados, suporte a colagem e mascara configuravel.",
-    examplesLabel: "Examples",
-    propsLinkLabel: "Referencia de Props",
-    sectionTitles: [
-      "1) Basico",
-      "2) Mascara customizada",
-      "3) Colagem + onComplete",
-      "4) Acesso por ref",
-      "5) Playground"
-    ],
-    sectionDescriptions: [
-      "Mascara padrao: 999999.",
-      "Example: \"###-###-99\".",
-      "Cole um OTP e receba callback ao completar.",
-      "Focar, limpar e ler valores via API do ref.",
-      "Simule as principais props em tempo real."
-    ],
-    playgroundTitle: "SgInputOTP Playground",
-    propsTitle: "Referencia de Props",
-    propsColProp: "Prop",
-    propsColType: "Tipo",
-    propsColDefault: "Default",
-    propsColDescription: "Description"
+    subtitle: "Input OTP com dígitos separados, suporte a colagem e máscara configurável.",
+    examplesLabel: "Exemplos",
+    propsLinkLabel: "Referência de Props",
+    propsTitle: "Referência de Props"
   },
   "en-US": {
     subtitle: "OTP input with separated digits, paste support, and configurable mask.",
     examplesLabel: "Examples",
     propsLinkLabel: "Props Reference",
-    sectionTitles: [
-      "1) Basic",
-      "2) Custom mask",
-      "3) Paste + onComplete",
-      "4) Ref access",
-      "5) Playground"
-    ],
-    sectionDescriptions: [
-      "Default mask: 999999.",
-      "Example: \"###-###-99\".",
-      "Paste an OTP and receive callback on completion.",
-      "Focus, clear, and read values using ref API.",
-      "Simulate main props in real time."
-    ],
-    playgroundTitle: "SgInputOTP Playground",
-    propsTitle: "Props Reference",
-    propsColProp: "Prop",
-    propsColType: "Type",
-    propsColDefault: "Default",
-    propsColDescription: "Description"
+    propsTitle: "Props Reference"
   },
   es: {
-    subtitle: "Input OTP con digitos separados, soporte de pegado y mascara configurable.",
+    subtitle: "Input OTP con dígitos separados, soporte de pegado y máscara configurable.",
     examplesLabel: "Ejemplos",
     propsLinkLabel: "Referencia de Props",
-    sectionTitles: [
-      "1) Basico",
-      "2) Mascara personalizada",
-      "3) Pegado + onComplete",
-      "4) Acceso por ref",
-      "5) Playground"
-    ],
-    sectionDescriptions: [
-      "Mascara por defecto: 999999.",
-      "Ejemplo: \"###-###-99\".",
-      "Pega un OTP y recibe callback al completar.",
-      "Enfocar, limpiar y leer valores via API del ref.",
-      "Simula las props principales en tiempo real."
-    ],
-    playgroundTitle: "SgInputOTP Playground",
-    propsTitle: "Referencia de Props",
-    propsColProp: "Prop",
-    propsColType: "Tipo",
-    propsColDefault: "Predeterminado",
-    propsColDescription: "Descripcion"
+    propsTitle: "Referencia de Props"
   },
   fr: {
-    subtitle: "Champ OTP avec chiffres separes, prise en charge du collage et masque configurable.",
+    subtitle: "Champ OTP avec chiffres séparés, prise en charge du collage et masque configurable.",
     examplesLabel: "Exemples",
-    propsLinkLabel: "Reference des props",
-    sectionTitles: [
-      "1) Basique",
-      "2) Masque personnalise",
-      "3) Collage + onComplete",
-      "4) Acces via ref",
-      "5) Playground",
-    ],
-    sectionDescriptions: [
-      "Masque par defaut : 999999.",
-      'Exemple : "###-###-99".',
-      "Collez un OTP et recevez le callback a la fin.",
-      "Focus, effacement et lecture des valeurs via l'API ref.",
-      "Simulez les principales props en temps reel.",
-    ],
-    playgroundTitle: "SgInputOTP Playground",
-    propsTitle: "Reference des props",
-    propsColProp: "Prop",
-    propsColType: "Type",
-    propsColDefault: "Defaut",
-    propsColDescription: "Description",
-  },
+    propsLinkLabel: "Référence des props",
+    propsTitle: "Référence des props"
+  }
 };
 
 function isSupportedOtpLocale(locale: ShowcaseLocale): locale is keyof typeof OTP_TEXTS {
@@ -202,7 +98,9 @@ export default function SgInputOTPPage() {
   const [pasteMasked, setPasteMasked] = React.useState("");
   const [pasteRaw, setPasteRaw] = React.useState("");
   const [completeValue, setCompleteValue] = React.useState("");
-  const [refReadout, setRefReadout] = React.useState('Clique em "Ler conteudo".');
+  const [refReadout, setRefReadout] = React.useState(t(i18n, "showcase.component.inputOtp.labels.readHint"));
+  const [confirmed, setConfirmed] = React.useState("");
+  const { control, handleSubmit } = useForm<{ code: string }>({ defaultValues: { code: "" } });
   const stickyHeaderRef = React.useRef<HTMLDivElement | null>(null);
   const [anchorOffset, setAnchorOffset] = React.useState(320);
 
@@ -310,7 +208,19 @@ export default function SgInputOTPPage() {
     };
   }, []);
 
-  const exampleLinks = React.useMemo(() => texts.sectionTitles.map((label, index) => ({ id: `exemplo-${index + 1}`, label })), [texts]);
+  const exampleLinks = React.useMemo(
+    () => [
+      { id: "exemplo-1", label: `1) ${t(i18n, "showcase.component.inputOtp.sections.basic.title")}` },
+      { id: "exemplo-2", label: `2) ${t(i18n, "showcase.component.inputOtp.sections.mask.title")}` },
+      { id: "exemplo-3", label: `3) ${t(i18n, "showcase.component.inputOtp.sections.paste.title")}` },
+      { id: "exemplo-4", label: `4) ${t(i18n, "showcase.component.inputOtp.sections.ref.title")}` },
+      { id: "exemplo-5", label: `5) ${t(i18n, "showcase.component.inputOtp.sections.validation.title")}` },
+      { id: "exemplo-6", label: `6) ${t(i18n, "showcase.component.inputOtp.sections.form.title")}` },
+      { id: "exemplo-7", label: `7) ${t(i18n, "showcase.component.inputOtp.sections.states.title")}` },
+      { id: "exemplo-8", label: "8) Playground" }
+    ],
+    [i18n.locale]
+  );
   const inputOtpPropsRows: ShowcasePropRow[] = [
     { prop: "id", type: "string", defaultValue: "-", description: t(i18n, "showcase.component.inputOtp.props.rows.id") },
     { prop: "label / hintText", type: "string", defaultValue: "-", description: t(i18n, "showcase.component.inputOtp.props.rows.labelHintText") },
@@ -355,79 +265,170 @@ export default function SgInputOTPPage() {
           </div>
         </div>
 
-        <Section id="exemplo-1" title={texts.sectionTitles[0] ?? ""} description={texts.sectionDescriptions[0] ?? ""}>
+        <Section
+          id="exemplo-1"
+          title={`1) ${t(i18n, "showcase.component.inputOtp.sections.basic.title")}`}
+          description={t(i18n, "showcase.component.inputOtp.sections.basic.description")}
+        >
           <div className="w-full max-w-md space-y-3">
             <SgInputOTP
               id="otp-basic"
-              label="Codigo OTP"
-              hintText="Digite os 6 digitos"
+              label={t(i18n, "showcase.component.inputOtp.labels.code")}
+              hintText={t(i18n, "showcase.component.inputOtp.labels.codeHint")}
               onChange={setBasicMasked}
               onRawChange={setBasicRaw}
             />
-            <ValuePanel masked={basicMasked} raw={basicRaw} expectedLength={6} />
+            <ValuePanel masked={basicMasked} raw={basicRaw} empty={t(i18n, "showcase.component.inputOtp.labels.empty")} />
           </div>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-otp/samples/basico.tsx.sample" />
         </Section>
 
-        <Section id="exemplo-2" title={texts.sectionTitles[1] ?? ""} description={texts.sectionDescriptions[1] ?? ""}>
+        <Section
+          id="exemplo-2"
+          title={`2) ${t(i18n, "showcase.component.inputOtp.sections.mask.title")}`}
+          description={t(i18n, "showcase.component.inputOtp.sections.mask.description")}
+        >
           <div className="w-full max-w-md space-y-3">
             <SgInputOTP
               id="otp-mask"
-              label="Token de acesso"
-              hintText="Formato: ###-###-99"
+              label={t(i18n, "showcase.component.inputOtp.labels.accessToken")}
+              hintText={t(i18n, "showcase.component.inputOtp.labels.accessTokenHint")}
               mask="###-###-99"
               onChange={setMaskMasked}
               onRawChange={setMaskRaw}
             />
-            <ValuePanel masked={maskMasked} raw={maskRaw} expectedLength={8} />
+            <ValuePanel masked={maskMasked} raw={maskRaw} empty={t(i18n, "showcase.component.inputOtp.labels.empty")} />
           </div>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-otp/samples/mascara-customizada.tsx.sample" />
         </Section>
 
-        <Section id="exemplo-3" title={texts.sectionTitles[2] ?? ""} description={texts.sectionDescriptions[2] ?? ""}>
+        <Section
+          id="exemplo-3"
+          title={`3) ${t(i18n, "showcase.component.inputOtp.sections.paste.title")}`}
+          description={t(i18n, "showcase.component.inputOtp.sections.paste.description")}
+        >
           <div className="w-full max-w-md space-y-3">
             <SgInputOTP
               id="otp-paste"
-              label="Cole o codigo"
-              hintText='Teste colando: "AB1-CD2-34"'
+              label={t(i18n, "showcase.component.inputOtp.labels.pasteCode")}
+              hintText={t(i18n, "showcase.component.inputOtp.labels.pasteHint")}
               mask="###-###-99"
               onChange={setPasteMasked}
               onRawChange={setPasteRaw}
               onComplete={(value) => setCompleteValue(value)}
             />
-            <ValuePanel masked={pasteMasked} raw={pasteRaw} expectedLength={8} completeValue={completeValue} />
+            <ValuePanel
+              masked={pasteMasked}
+              raw={pasteRaw}
+              empty={t(i18n, "showcase.component.inputOtp.labels.empty")}
+              completeValue={completeValue}
+              waiting={t(i18n, "showcase.component.inputOtp.labels.waiting")}
+            />
           </div>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-otp/samples/colagem-on-complete.tsx.sample" />
         </Section>
 
-        <Section id="exemplo-4" title={texts.sectionTitles[3] ?? ""} description={texts.sectionDescriptions[3] ?? ""}>
+        <Section
+          id="exemplo-4"
+          title={`4) ${t(i18n, "showcase.component.inputOtp.sections.ref.title")}`}
+          description={t(i18n, "showcase.component.inputOtp.sections.ref.description")}
+        >
           <div className="w-full max-w-md space-y-3">
-            <SgInputOTP id="otp-ref" ref={otpRef} label="OTP por ref" hintText="Use os botoes abaixo" mask="###-###-99" />
+            <SgInputOTP
+              id="otp-ref"
+              ref={otpRef}
+              label={t(i18n, "showcase.component.inputOtp.labels.refLabel")}
+              hintText={t(i18n, "showcase.component.inputOtp.labels.refHint")}
+              mask="###-###-99"
+            />
             <SgGrid columns={{ base: 1, sm: 3 }} gap={8}>
-              <SgButton size="sm" appearance="outline" onClick={() => otpRef.current?.focus()}>Focar</SgButton>
-              <SgButton size="sm" appearance="outline" onClick={() => otpRef.current?.clear()}>Limpar</SgButton>
+              <SgButton size="sm" appearance="outline" onClick={() => otpRef.current?.focus()}>
+                {t(i18n, "showcase.component.inputOtp.labels.focus")}
+              </SgButton>
+              <SgButton size="sm" appearance="outline" onClick={() => otpRef.current?.clear()}>
+                {t(i18n, "showcase.component.inputOtp.labels.clear")}
+              </SgButton>
               <SgButton
                 size="sm"
                 appearance="outline"
                 onClick={() => {
                   const masked = otpRef.current?.getMaskedValue() ?? "";
                   const raw = otpRef.current?.getRawValue() ?? "";
-                  setRefReadout(`masked="${masked || "(vazio)"}" | raw="${raw || "(vazio)"}"`);
+                  const empty = t(i18n, "showcase.component.inputOtp.labels.empty");
+                  setRefReadout(`masked="${masked || empty}" | raw="${raw || empty}"`);
                 }}
               >
-                Ler conteudo
+                {t(i18n, "showcase.component.inputOtp.labels.read")}
               </SgButton>
             </SgGrid>
-            <div className="rounded-md border border-border bg-foreground/5 p-3 text-xs">
-              <strong>saida:</strong> {refReadout}
+            <div className="rounded border border-border bg-muted/40 p-3 text-xs">
+              <strong>{t(i18n, "showcase.component.inputOtp.labels.output")}:</strong> {refReadout}
             </div>
           </div>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-otp/samples/acesso-por-ref.tsx.sample" />
         </Section>
 
-        <Section id="exemplo-5" title={texts.sectionTitles[4] ?? ""} description={texts.sectionDescriptions[4] ?? ""}>
+        <Section
+          id="exemplo-5"
+          title={`5) ${t(i18n, "showcase.component.inputOtp.sections.validation.title")}`}
+          description={t(i18n, "showcase.component.inputOtp.sections.validation.description")}
+        >
+          <div className="w-full max-w-md">
+            <SgInputOTP
+              id="otp-validation"
+              label={t(i18n, "showcase.component.inputOtp.labels.inviteCode")}
+              mask="99-99"
+              required
+              requiredMessage={t(i18n, "showcase.component.inputOtp.messages.required")}
+              validation={(raw) => (raw.length < 4 ? t(i18n, "showcase.component.inputOtp.messages.length") : null)}
+            />
+          </div>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-otp/samples/validacao.tsx.sample" />
+        </Section>
+
+        <Section
+          id="exemplo-6"
+          title={`6) ${t(i18n, "showcase.component.inputOtp.sections.form.title")}`}
+          description={t(i18n, "showcase.component.inputOtp.sections.form.description")}
+        >
+          <form className="w-full max-w-md space-y-3" onSubmit={handleSubmit((values) => setConfirmed(values.code))}>
+            <SgInputOTP
+              id="otp-form"
+              name="code"
+              control={control}
+              label={t(i18n, "showcase.component.inputOtp.labels.codeField")}
+              mask="9999"
+              required
+              requiredMessage={t(i18n, "showcase.component.inputOtp.messages.required")}
+            />
+            <SgButton type="submit">{t(i18n, "showcase.component.inputOtp.labels.confirm")}</SgButton>
+            {confirmed ? <p className="text-sm">{t(i18n, "showcase.component.inputOtp.labels.confirmed", { value: confirmed })}</p> : null}
+          </form>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-otp/samples/dentro-de-um-formulario.tsx.sample" />
+        </Section>
+
+        <Section
+          id="exemplo-7"
+          title={`7) ${t(i18n, "showcase.component.inputOtp.sections.states.title")}`}
+          description={t(i18n, "showcase.component.inputOtp.sections.states.description")}
+        >
+          <div className="w-full max-w-md space-y-4">
+            <SgInputOTP
+              id="otp-error"
+              label={t(i18n, "showcase.component.inputOtp.labels.withError")}
+              mask="9999"
+              defaultValue="1234"
+              error={t(i18n, "showcase.component.inputOtp.messages.expired")}
+            />
+            <SgInputOTP id="otp-disabled" label={t(i18n, "showcase.component.inputOtp.labels.disabled")} mask="9999" defaultValue="12" enabled={false} />
+            <SgInputOTP id="otp-readonly" label={t(i18n, "showcase.component.inputOtp.labels.readOnly")} mask="9999" defaultValue="9876" readOnly />
+          </div>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-otp/samples/estados.tsx.sample" />
+        </Section>
+
+        <Section id="exemplo-8" title="8) Playground" description={t(i18n, "showcase.common.playground.description")}>
           <SgPlayground
-            title={texts.playgroundTitle}
+            title="SgInputOTP Playground"
             interactive
             codeContract="appFile"
             playgroundFile="apps/showcase/src/app/components/sg-input-otp/sg-input-otp.tsx.playground"

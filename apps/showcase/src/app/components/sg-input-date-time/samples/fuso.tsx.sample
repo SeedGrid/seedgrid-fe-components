@@ -9,7 +9,7 @@ export default function App() {
       <SgInputDateTime id="demo-zone-utc" label="UTC" timeZone="UTC" value={instant} onChange={(value) => value !== null && setInstant(value)} />
       <SgInputDateTime id="demo-zone-sp" label="-03:00" timeZone="-03:00" value={instant} onChange={(value) => value !== null && setInstant(value)} />
       <SgInputDateTime id="demo-zone-in" label="+05:30" timeZone="+05:30" value={instant} onChange={(value) => value !== null && setInstant(value)} />
-      <p className="text-xs text-muted-foreground">Valor atual: {instant || "-"}</p>
+      <p className="text-xs text-muted-foreground">Valor: {instant || "-"}</p>
     </div>
   );
 }

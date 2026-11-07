@@ -10,7 +10,7 @@ export default function App() {
     <div className="space-y-3">
       <SgInputOTP
         id="otp-paste"
-        label="Cole o codigo"
+        label="Cole o código"
         hintText='Teste colando: "AB1-CD2-34"'
         mask="###-###-99"
         onChange={setMasked}

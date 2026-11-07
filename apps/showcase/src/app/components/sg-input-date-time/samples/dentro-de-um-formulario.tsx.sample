@@ -1,0 +1,24 @@
+import * as React from "react";
+import { useForm } from "react-hook-form";
+import { SgButton, SgInputDateTime } from "@seedgrid/fe-components";
+
+export default function App() {
+  const [submitted, setSubmitted] = React.useState("");
+  const { control, handleSubmit } = useForm<{ appointment: string }>({ defaultValues: { appointment: "" } });
+
+  return (
+    <form className="w-80 space-y-3" onSubmit={handleSubmit((values) => setSubmitted(values.appointment))}>
+      <SgInputDateTime
+        id="demo-form"
+        name="appointment"
+        control={control}
+        label="Agendamento"
+        timeZone="-03:00"
+        required
+        requiredMessage="Informe a data e a hora"
+      />
+      <SgButton type="submit">Enviar</SgButton>
+      {submitted ? <p className="text-sm">Enviado: {submitted}</p> : null}
+    </form>
+  );
+}

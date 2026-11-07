@@ -1,0 +1,24 @@
+import * as React from "react";
+import { useForm } from "react-hook-form";
+import { SgButton, SgInputOTP } from "@seedgrid/fe-components";
+
+export default function App() {
+  const [confirmed, setConfirmed] = React.useState("");
+  const { control, handleSubmit } = useForm<{ code: string }>({ defaultValues: { code: "" } });
+
+  return (
+    <form className="space-y-3" onSubmit={handleSubmit((values) => setConfirmed(values.code))}>
+      <SgInputOTP
+        id="otp-form"
+        name="code"
+        control={control}
+        label="Código"
+        mask="9999"
+        required
+        requiredMessage="Informe o código."
+      />
+      <SgButton type="submit">Confirmar</SgButton>
+      {confirmed ? <p className="text-sm">Confirmado: {confirmed}</p> : null}
+    </form>
+  );
+}

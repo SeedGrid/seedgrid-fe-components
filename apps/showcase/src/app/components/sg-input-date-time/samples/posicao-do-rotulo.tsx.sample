@@ -4,9 +4,15 @@ import { SgGrid, SgInputDateTime } from "@seedgrid/fe-components";
 export default function App() {
   return (
     <SgGrid columns={{ base: 1, md: 3 }} gap={8} className="w-full">
-      <SgInputDateTime id="sg-input-date-time-label-float" label="Label float" labelPosition="float" />
-      <SgInputDateTime id="sg-input-date-time-label-top" label="Label top" labelPosition="top" />
-      <SgInputDateTime id="sg-input-date-time-label-left" label="Label left" labelPosition="left" labelWidth={140} labelAlign="end" />
+      <SgInputDateTime id="sg-input-date-time-label-float" label="Flutuante" labelPosition="float" />
+      <SgInputDateTime id="sg-input-date-time-label-top" label="Acima" labelPosition="top" />
+      <SgInputDateTime
+        id="sg-input-date-time-label-left"
+        label="Esquerda"
+        labelPosition="left"
+        labelWidth={140}
+        labelAlign="end"
+      />
     </SgGrid>
   );
 }

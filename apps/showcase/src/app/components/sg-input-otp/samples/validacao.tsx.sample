@@ -1,0 +1,15 @@
+import * as React from "react";
+import { SgInputOTP } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <SgInputOTP
+      id="otp-validation"
+      label="Código de convite"
+      mask="99-99"
+      required
+      requiredMessage="Informe o código."
+      validation={(raw) => (raw.length < 4 ? "O código tem 4 dígitos." : null)}
+    />
+  );
+}

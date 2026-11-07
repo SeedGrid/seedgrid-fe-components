@@ -1,0 +1,12 @@
+import * as React from "react";
+import { SgInputOTP } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <div className="space-y-4">
+      <SgInputOTP id="otp-error" label="Com erro" mask="9999" defaultValue="1234" error="Código expirado." />
+      <SgInputOTP id="otp-disabled" label="Desabilitado" mask="9999" defaultValue="12" enabled={false} />
+      <SgInputOTP id="otp-readonly" label="Somente leitura" mask="9999" defaultValue="9876" readOnly />
+    </div>
+  );
+}

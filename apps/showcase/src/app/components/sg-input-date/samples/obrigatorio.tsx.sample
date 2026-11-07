@@ -4,7 +4,7 @@ import { SgInputDate } from "@seedgrid/fe-components";
 export default function App() {
   return (
     <div className="w-80">
-      <SgInputDate id="demo-fixed" label="Data do evento" />
+      <SgInputDate id="demo-required" label="Data da consulta" required requiredMessage="Escolha uma data" />
     </div>
   );
 }

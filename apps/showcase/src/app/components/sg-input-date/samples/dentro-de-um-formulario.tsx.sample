@@ -1,0 +1,23 @@
+import * as React from "react";
+import { useForm } from "react-hook-form";
+import { SgButton, SgInputDate } from "@seedgrid/fe-components";
+
+export default function App() {
+  const [submitted, setSubmitted] = React.useState("");
+  const { control, handleSubmit } = useForm<{ date: string }>({ defaultValues: { date: "" } });
+
+  return (
+    <form className="w-80 space-y-3" onSubmit={handleSubmit((values) => setSubmitted(values.date))}>
+      <SgInputDate
+        id="demo-form"
+        name="date"
+        control={control}
+        label="Data"
+        required
+        requiredMessage="Escolha uma data"
+      />
+      <SgButton type="submit">Enviar</SgButton>
+      {submitted ? <p className="text-sm">Enviado: {submitted}</p> : null}
+    </form>
+  );
+}

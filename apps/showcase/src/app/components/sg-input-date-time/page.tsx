@@ -2,7 +2,8 @@
 
 import React from "react";
 import Link from "next/link";
-import { SgGrid, SgInputDateTime, SgComponentsI18nProvider } from "@seedgrid/fe-components";
+import { useForm } from "react-hook-form";
+import { SgButton, SgGrid, SgInputDateTime, SgComponentsI18nProvider } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
@@ -35,6 +36,8 @@ export default function SgInputDateTimePage() {
   const [instant, setInstant] = React.useState<string | null>(null);
   const [zoneInstant, setZoneInstant] = React.useState("2026-11-03T17:30:00.000Z");
   const [lastEvent, setLastEvent] = React.useState("-");
+  const [submitted, setSubmitted] = React.useState("");
+  const { control, handleSubmit } = useForm<{ appointment: string }>({ defaultValues: { appointment: "" } });
   const stickyHeaderRef = React.useRef<HTMLDivElement | null>(null);
   const [anchorOffset, setAnchorOffset] = React.useState(320);
 
@@ -151,9 +154,10 @@ export default function SgInputDateTimePage() {
       { id: "exemplo-3", label: `3) ${t(i18n, "showcase.component.inputDateTime.sections.limits.title")}` },
       { id: "exemplo-4", label: `4) ${t(i18n, "showcase.component.inputDateTime.sections.seconds.title")}` },
       { id: "exemplo-5", label: `5) ${t(i18n, "showcase.component.inputDateTime.sections.events.title")}` },
-      { id: "exemplo-6", label: `6) ${t(i18n, "showcase.common.sections.labelPosition.title")}` },
-      { id: "exemplo-7", label: `7) ${t(i18n, "showcase.common.sections.i18n.title")}` },
-      { id: "exemplo-8", label: "8) Playground" }
+      { id: "exemplo-6", label: `6) ${t(i18n, "showcase.component.inputDateTime.sections.form.title")}` },
+      { id: "exemplo-7", label: `7) ${t(i18n, "showcase.common.sections.labelPosition.title")}` },
+      { id: "exemplo-8", label: `8) ${t(i18n, "showcase.common.sections.i18n.title")}` },
+      { id: "exemplo-9", label: "9) Playground" }
     ],
     [i18n.locale]
   );
@@ -318,7 +322,28 @@ export default function SgInputDateTimePage() {
 
         <Section
           id="exemplo-6"
-          title={`6) ${t(i18n, "showcase.common.sections.labelPosition.title")}`}
+          title={`6) ${t(i18n, "showcase.component.inputDateTime.sections.form.title")}`}
+          description={t(i18n, "showcase.component.inputDateTime.sections.form.description")}
+        >
+          <form className="w-80 space-y-3" onSubmit={handleSubmit((values) => setSubmitted(values.appointment))}>
+            <SgInputDateTime
+              id="demo-form"
+              name="appointment"
+              control={control}
+              label={t(i18n, "showcase.component.inputDateTime.labels.appointment")}
+              timeZone="-03:00"
+              required
+              requiredMessage={t(i18n, "showcase.component.inputDateTime.messages.required")}
+            />
+            <SgButton type="submit">{t(i18n, "showcase.component.inputDateTime.labels.send")}</SgButton>
+            {submitted ? <p className="text-sm">{t(i18n, "showcase.component.inputDateTime.labels.sent", { value: submitted })}</p> : null}
+          </form>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-date-time/samples/dentro-de-um-formulario.tsx.sample" />
+        </Section>
+
+        <Section
+          id="exemplo-7"
+          title={`7) ${t(i18n, "showcase.common.sections.labelPosition.title")}`}
           description={t(i18n, "showcase.common.sections.labelPosition.description")}
         >
           <SgGrid columns={{ base: 1, md: 3 }} gap={8} className="w-full">
@@ -344,12 +369,12 @@ export default function SgInputDateTimePage() {
         </Section>
 
         <Section
-          id="exemplo-7"
-          title={`7) ${t(i18n, "showcase.common.sections.i18n.title")}`}
+          id="exemplo-8"
+          title={`8) ${t(i18n, "showcase.common.sections.i18n.title")}`}
           description={t(i18n, "showcase.common.sections.i18n.description", { keys: "components.inputs.datetime.*" })}
         >
           <div className="w-80">
-            <SgComponentsI18nProvider locale="fr" messages={{ "components.inputs.datetime.min": "Escolha uma data a partir de {min}." }}>
+            <SgComponentsI18nProvider locale="fr" messages={{ "components.inputs.datetime.min": t(i18n, "showcase.component.inputDateTime.messages.min") }}>
               <SgInputDateTime
                 id="demo-i18n"
                 label={t(i18n, "showcase.component.inputDateTime.labels.appointment")}
@@ -363,7 +388,7 @@ export default function SgInputDateTimePage() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-date-time/samples/idioma.tsx.sample" />
         </Section>
 
-        <Section id="exemplo-8" title="8) Playground" description={t(i18n, "showcase.common.playground.description")}>
+        <Section id="exemplo-9" title="9) Playground" description={t(i18n, "showcase.common.playground.description")}>
           <SgPlayground
             title="SgInputDateTime Playground"
             interactive

@@ -9,8 +9,8 @@ export default function App() {
     <div className="space-y-3">
       <SgInputOTP
         id="otp-basic"
-        label="Codigo OTP"
-        hintText="Digite os 6 digitos"
+        label="Código OTP"
+        hintText="Digite os 6 dígitos"
         onChange={setMasked}
         onRawChange={setRaw}
       />

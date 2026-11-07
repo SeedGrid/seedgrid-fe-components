@@ -2,7 +2,8 @@
 
 import React from "react";
 import Link from "next/link";
-import { SgGrid, SgInputDate } from "@seedgrid/fe-components";
+import { useForm } from "react-hook-form";
+import { SgButton, SgGrid, SgInputDate } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
@@ -33,6 +34,8 @@ export default function SgInputDatePage() {
   const i18n = useShowcaseI18n();
   const aiComponent = useAiManifestComponent("SgInputDate");
   const [basicValue, setBasicValue] = React.useState("");
+  const [submitted, setSubmitted] = React.useState("");
+  const { control, handleSubmit } = useForm<{ date: string }>({ defaultValues: { date: "" } });
   const stickyHeaderRef = React.useRef<HTMLDivElement | null>(null);
   const [anchorOffset, setAnchorOffset] = React.useState(320);
 
@@ -146,9 +149,10 @@ export default function SgInputDatePage() {
     () => [
       { id: "exemplo-1", label: `1) ${t(i18n, "showcase.component.inputDate.sections.basic.title")}` },
       { id: "exemplo-2", label: `2) ${t(i18n, "showcase.component.inputDate.sections.range.title")}` },
-      { id: "exemplo-3", label: `3) ${t(i18n, "showcase.component.inputDate.sections.fixed.title")}` },
+      { id: "exemplo-3", label: `3) ${t(i18n, "showcase.component.inputDate.sections.required.title")}` },
       { id: "exemplo-4", label: `4) ${t(i18n, "showcase.common.sections.labelPosition.title")}` },
-      { id: "exemplo-5", label: "5) Playground" }
+      { id: "exemplo-5", label: `5) ${t(i18n, "showcase.component.inputDate.sections.form.title")}` },
+      { id: "exemplo-6", label: "6) Playground" }
     ],
     [i18n.locale]
   );
@@ -237,16 +241,18 @@ export default function SgInputDatePage() {
 
         <Section
           id="exemplo-3"
-          title={`3) ${t(i18n, "showcase.component.inputDate.sections.fixed.title")}`}
-          description={t(i18n, "showcase.component.inputDate.sections.fixed.description")}
+          title={`3) ${t(i18n, "showcase.component.inputDate.sections.required.title")}`}
+          description={t(i18n, "showcase.component.inputDate.sections.required.description")}
         >
           <div className="w-80">
             <SgInputDate
-              id="demo-float"
-              label={t(i18n, "showcase.component.inputDate.labels.eventDate")}
+              id="demo-required"
+              label={t(i18n, "showcase.component.inputDate.labels.appointmentDate")}
+              required
+              requiredMessage={t(i18n, "showcase.component.inputDate.messages.required")}
             />
           </div>
-          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-date/samples/data-fixa.tsx.sample" />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-date/samples/obrigatorio.tsx.sample" />
         </Section>
 
         <Section
@@ -276,7 +282,27 @@ export default function SgInputDatePage() {
   <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-date/samples/posicao-do-rotulo.tsx.sample" />
 </Section>
 
-<Section id="exemplo-5" title="5) Playground" description={t(i18n, "showcase.common.playground.description")}>
+<Section
+          id="exemplo-5"
+          title={`5) ${t(i18n, "showcase.component.inputDate.sections.form.title")}`}
+          description={t(i18n, "showcase.component.inputDate.sections.form.description")}
+        >
+          <form className="w-80 space-y-3" onSubmit={handleSubmit((values) => setSubmitted(values.date))}>
+            <SgInputDate
+              id="demo-form"
+              name="date"
+              control={control}
+              label={t(i18n, "showcase.component.inputDate.labels.date")}
+              required
+              requiredMessage={t(i18n, "showcase.component.inputDate.messages.required")}
+            />
+            <SgButton type="submit">{t(i18n, "showcase.component.inputDate.labels.send")}</SgButton>
+            {submitted ? <p className="text-sm">{t(i18n, "showcase.component.inputDate.labels.sent", { value: submitted })}</p> : null}
+          </form>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-date/samples/dentro-de-um-formulario.tsx.sample" />
+        </Section>
+
+<Section id="exemplo-6" title="6) Playground" description={t(i18n, "showcase.common.playground.description")}>
           <SgPlayground
             title="SgInputDate Playground"
             interactive

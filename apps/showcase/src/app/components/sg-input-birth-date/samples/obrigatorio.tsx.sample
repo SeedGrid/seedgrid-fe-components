@@ -9,7 +9,7 @@ export default function App() {
         label="Data de nascimento"
         minAge={18}
         required
-        requiredMessage="Informe a data de nascimento"
+        requiredMessage="Informe a data de nascimento."
       />
     </div>
   );

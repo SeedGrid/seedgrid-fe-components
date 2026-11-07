@@ -7,7 +7,7 @@ export default function App() {
   return (
     <div className="w-80">
       <SgInputDateTime id="demo-basic" label="Quando" onChange={(value) => setInstant(value)} />
-      <p className="mt-2 text-xs text-muted-foreground">Valor atual: {instant ?? "-"}</p>
+      <p className="mt-2 text-xs text-muted-foreground">Valor: {instant ?? "-"}</p>
     </div>
   );
 }

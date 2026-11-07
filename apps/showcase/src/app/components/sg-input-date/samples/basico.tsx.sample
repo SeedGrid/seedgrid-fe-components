@@ -6,8 +6,8 @@ export default function App() {
 
   return (
     <div className="w-80">
-      <SgInputDate id="demo-basic" label="Data" hintText="YYYY-MM-DD" onChange={(value) => setBasicValue(value)} />
-      <p className="mt-2 text-xs text-muted-foreground">Valor atual: {basicValue}</p>
+      <SgInputDate id="demo-basic" label="Data" hintText="Selecione uma data" onChange={(value) => setBasicValue(value)} />
+      <p className="mt-2 text-xs text-muted-foreground">Valor: {basicValue}</p>
     </div>
   );
 }

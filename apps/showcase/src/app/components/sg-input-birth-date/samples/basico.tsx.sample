@@ -7,7 +7,7 @@ export default function App() {
   return (
     <div className="w-80">
       <SgInputBirthDate id="demo-basic" label="Data de nascimento" minAge={18} onValidation={(msg) => setValidationMsg(msg)} />
-      <p className="mt-2 text-xs text-muted-foreground">onValidation: {validationMsg ?? "valid"}</p>
+      <p className="mt-2 text-xs text-muted-foreground">onValidation: {validationMsg ?? "válido"}</p>
     </div>
   );
 }
