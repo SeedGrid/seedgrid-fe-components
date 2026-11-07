@@ -259,8 +259,8 @@ export default function SgWizardPageDemo() {
       </Section>
 
       <Section
-        title="Stepper com Icones"
-        description='stepper="icons" + icon em cada SgWizardPage - exibe icone no circulo em vez de numero.'
+        title={t(i18n, "showcase.component.wizard.sections.stepperIcons.title")}
+        description={t(i18n, "showcase.component.wizard.sections.stepperIcons.description")}
       >
         <SgWizard
           stepper="icons"
@@ -294,8 +294,8 @@ export default function SgWizardPageDemo() {
       </Section>
 
       <Section
-        title="Stepper Numerado"
-        description='stepper="numbered" - circulos numerados com titulo de cada passo.'
+        title={t(i18n, "showcase.component.wizard.sections.stepperNumbered.title")}
+        description={t(i18n, "showcase.component.wizard.sections.stepperNumbered.description")}
       >
         <SgWizard
           stepper="numbered"
@@ -417,8 +417,8 @@ export default function SgWizardPageDemo() {
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-wizard/samples/validatestep.tsx.sample" />
       </Section>
       <Section
-        title="Avanco bloqueado (nextDisabled)"
-        description="onBeforeNext so age no clique: o botao continua com aparencia de habilitado e, quando ele recusa, nada acontece na tela. Quando o bloqueio JA e conhecido — o resultado de uma checagem assincrona que ja terminou — nextDisabled deixa isso visivel."
+        title={t(i18n, "showcase.component.wizard.sections.nextDisabled.title")}
+        description={t(i18n, "showcase.component.wizard.sections.nextDisabled.description")}
       >
         <NextDisabledDemo />
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-wizard/samples/nextdisabled.tsx.sample" />

@@ -3441,6 +3441,12 @@
   "showcase.component.datatable.props.rows.columnManagerText": "Built-in column visibility and reorder panel. columnManagerLabel wins over the dictionary (components.datatable.columns); column.filterPlaceholder also wins over components.datatable.columnFilterPlaceholder.",
   "showcase.common.sections.enabled.title": "Disabled (enabled)",
   "showcase.component.wizard.sections.enabled.description": "With enabled={false} the whole wizard is disabled: Previous, Next, Finish and the stepper steps do not respond; the current step stays visible.",
+  "showcase.component.wizard.sections.stepperIcons.title": "Stepper with icons",
+  "showcase.component.wizard.sections.stepperIcons.description": "stepper=\"icons\" + icon on each SgWizardPage: shows the icon inside the circle instead of the number.",
+  "showcase.component.wizard.sections.stepperNumbered.title": "Numbered stepper",
+  "showcase.component.wizard.sections.stepperNumbered.description": "stepper=\"numbered\": numbered circles with the title of each step.",
+  "showcase.component.wizard.sections.nextDisabled.title": "Blocked advance (nextDisabled)",
+  "showcase.component.wizard.sections.nextDisabled.description": "onBeforeNext only acts on click: the button still looks enabled and, when it refuses, nothing happens on screen. When the block is already known (the result of an async check that has already finished), nextDisabled makes it visible.",
   "showcase.component.calendar.sections.enabled.description": "With enabled={false} the days and the month and today buttons are disabled; the current date and month stay readable.",
   "showcase.component.datatable.sections.enabled.description": "With enabled={false} sorting, row selection, filters and the column manager are blocked; pagination and scrolling keep working."
 }
