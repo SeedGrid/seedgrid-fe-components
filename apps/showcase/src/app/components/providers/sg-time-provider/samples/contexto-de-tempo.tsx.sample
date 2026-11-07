@@ -1,0 +1,18 @@
+import { SgTimeProvider, useSgTime } from "@seedgrid/fe-components";
+
+function TimeInfo() {
+  const time = useSgTime();
+  return (
+    <span>
+      tick {time.tick}, agora (UTC) {new Date(time.nowMs()).toISOString()}
+    </span>
+  );
+}
+
+export default function App() {
+  return (
+    <SgTimeProvider initialServerTime="2026-06-15T09:41:07Z">
+      <TimeInfo />
+    </SgTimeProvider>
+  );
+}

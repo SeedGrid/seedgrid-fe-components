@@ -1,0 +1,17 @@
+import { Leaf } from "lucide-react";
+import { SgClock } from "@seedgrid/fe-components";
+
+export default function Example(props: { initialServerTime?: string }) {
+  return (
+    <div className="flex items-center justify-center rounded-xl border border-border bg-background p-6">
+      <SgClock
+        clockStyle="analog"
+        size={220}
+        initialServerTime={props.initialServerTime ?? new Date().toISOString()}
+        themeId="seedgrid"
+        showSeconds={false}
+        centerOverlay={<Leaf size={20} />}
+      />
+    </div>
+  );
+}

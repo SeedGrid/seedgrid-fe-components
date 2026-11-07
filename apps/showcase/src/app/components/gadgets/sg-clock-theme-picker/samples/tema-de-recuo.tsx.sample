@@ -1,0 +1,18 @@
+"use client";
+
+import { SgClockThemePicker, SgClockThemeProvider } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <div className="flex flex-wrap gap-4">
+      <div className="w-72">
+        <SgClockThemeProvider>
+          <SgClockThemePicker value="nao-existe" onChange={() => {}} fallbackThemeId="dark" />
+        </SgClockThemeProvider>
+      </div>
+      <div className="w-72">
+        <SgClockThemePicker value="classic" onChange={() => {}} placeholder="Nenhum tema registrado" />
+      </div>
+    </div>
+  );
+}

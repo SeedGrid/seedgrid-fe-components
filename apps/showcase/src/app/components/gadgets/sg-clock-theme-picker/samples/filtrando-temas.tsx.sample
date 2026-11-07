@@ -1,0 +1,21 @@
+"use client";
+
+import * as React from "react";
+import { SgClockThemePicker, SgClockThemeProvider } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [themeId, setThemeId] = React.useState("roman-classic");
+
+  return (
+    <SgClockThemeProvider>
+      <div className="w-full max-w-md">
+        <SgClockThemePicker
+          value={themeId}
+          onChange={setThemeId}
+          label="Tema romano"
+          filter={(theme) => theme.id.startsWith("roman") || theme.id === "classic"}
+        />
+      </div>
+    </SgClockThemeProvider>
+  );
+}

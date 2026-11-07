@@ -1,0 +1,13 @@
+"use client";
+
+import { SgClockThemePicker, SgClockThemeProvider } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgClockThemeProvider>
+      <div className="h-[440px] w-full max-w-md">
+        <SgClockThemePicker value="music" onChange={() => {}} searchable={false} defaultOpen previewSize={72} />
+      </div>
+    </SgClockThemeProvider>
+  );
+}

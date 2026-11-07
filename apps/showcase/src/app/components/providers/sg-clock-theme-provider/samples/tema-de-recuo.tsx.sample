@@ -1,0 +1,13 @@
+"use client";
+
+import { SgClock, SgClockThemeProvider, SgTimeProvider } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgTimeProvider initialServerTime={new Date().toISOString()}>
+      <SgClockThemeProvider value={{ mode: "fallback", fallbackThemeId: "roman-classic" }}>
+        <SgClock clockStyle="analog" size={160} themeId="nao-existe" />
+      </SgClockThemeProvider>
+    </SgTimeProvider>
+  );
+}

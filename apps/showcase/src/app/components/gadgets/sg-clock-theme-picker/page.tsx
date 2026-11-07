@@ -7,6 +7,7 @@ import {
   SgClockThemeProvider,
   SgTimeProvider
 } from "@seedgrid/fe-components";
+import SgCodeBlockBase from "../../sgCodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
@@ -63,6 +64,55 @@ function LiveThemePicker() {
   );
 }
 
+function FilteredThemePicker() {
+  const i18n = useShowcaseI18n();
+  const [themeId, setThemeId] = React.useState("roman-classic");
+
+  return (
+    <SgClockThemeProvider>
+      <div className="w-full max-w-md">
+        <SgClockThemePicker
+          value={themeId}
+          onChange={setThemeId}
+          label={t(i18n, `${K}.examples.romanLabel`)}
+          filter={(theme) => theme.id.startsWith("roman") || theme.id === "classic"}
+        />
+      </div>
+    </SgClockThemeProvider>
+  );
+}
+
+function OpenThemePicker() {
+  return (
+    <SgClockThemeProvider>
+      <div className="h-[440px] w-full max-w-md">
+        <SgClockThemePicker value="music" onChange={() => {}} searchable={false} defaultOpen previewSize={72} />
+      </div>
+    </SgClockThemeProvider>
+  );
+}
+
+function FallbackThemePickers() {
+  const i18n = useShowcaseI18n();
+
+  return (
+    <div className="flex flex-wrap gap-4">
+      <div className="w-72">
+        <SgClockThemeProvider>
+          <SgClockThemePicker value="nao-existe" onChange={() => {}} fallbackThemeId="dark" />
+        </SgClockThemeProvider>
+      </div>
+      <div className="w-72">
+        <SgClockThemePicker
+          value="classic"
+          onChange={() => {}}
+          placeholder={t(i18n, `${K}.examples.noThemePlaceholder`)}
+        />
+      </div>
+    </div>
+  );
+}
+
 export default function SgClockThemePickerPage() {
   const i18n = useShowcaseI18n();
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({ deps: [i18n.locale] });
@@ -89,6 +139,31 @@ export default function SgClockThemePickerPage() {
           description={t(i18n, `${K}.section1Description`)}
         >
           <LiveThemePicker />
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-clock-theme-picker/samples/uso-basico.tsx.sample" />
+        </Section>
+
+        <Section
+          title={t(i18n, `${K}.section2Title`)}
+          description={t(i18n, `${K}.section2Description`)}
+        >
+          <FilteredThemePicker />
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-clock-theme-picker/samples/filtrando-temas.tsx.sample" />
+        </Section>
+
+        <Section
+          title={t(i18n, `${K}.section3Title`)}
+          description={t(i18n, `${K}.section3Description`)}
+        >
+          <OpenThemePicker />
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-clock-theme-picker/samples/sem-busca-aberto.tsx.sample" />
+        </Section>
+
+        <Section
+          title={t(i18n, `${K}.section4Title`)}
+          description={t(i18n, `${K}.section4Description`)}
+        >
+          <FallbackThemePickers />
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-clock-theme-picker/samples/tema-de-recuo.tsx.sample" />
         </Section>
 
         <ShowcasePropsReference rows={propRows} />

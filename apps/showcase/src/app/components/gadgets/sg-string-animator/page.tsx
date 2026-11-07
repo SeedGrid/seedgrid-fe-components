@@ -329,7 +329,7 @@ const next = () => {
     velocity={60}
   />
   <SgButton size="sm" onClick={next}>
-    Next name
+    Próximo nome
   </SgButton>
 </div>`;
 
@@ -358,7 +358,7 @@ function Ex8() {
         velocity={60}
       />
       <SgButton size="sm" onClick={next}>
-        Next name
+        Próximo nome
       </SgButton>
     </div>
   );
@@ -369,8 +369,8 @@ function Ex8() {
 // ---------------------------------------------------------------------------
 const EX9_CODE = `{[
   { label: "Lento (velocity=10)",  velocity: 10 },
-  { label: "Medium (velocity=50)",  velocity: 50 },
-  { label: "Rapido (velocity=90)", velocity: 90 },
+  { label: "Médio (velocity=50)",  velocity: 50 },
+  { label: "Rápido (velocity=90)", velocity: 90 },
 ].map(({ label, velocity }) => {
   const r = React.useRef<SgStringAnimatorRef>(null);
   return (
@@ -394,8 +394,8 @@ const EX9_CODE = `{[
 
 const VELOCITY_CASES = [
   { label: "Lento (velocity=10)", velocity: 10 },
-  { label: "Medium (velocity=50)", velocity: 50 },
-  { label: "Rapido (velocity=90)", velocity: 90 },
+  { label: "Médio (velocity=50)", velocity: 50 },
+  { label: "Rápido (velocity=90)", velocity: 90 },
 ] as const;
 
 function Ex9() {

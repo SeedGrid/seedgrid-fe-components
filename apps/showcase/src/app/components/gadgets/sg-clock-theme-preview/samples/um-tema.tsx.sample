@@ -1,0 +1,11 @@
+"use client";
+
+import { SgClockThemePreview, sgClockThemesBuiltIn } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <div className="flex items-center rounded-md bg-foreground/5 p-4 text-foreground">
+      <SgClockThemePreview theme={sgClockThemesBuiltIn[0]!} />
+    </div>
+  );
+}

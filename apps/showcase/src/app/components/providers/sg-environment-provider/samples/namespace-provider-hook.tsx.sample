@@ -7,7 +7,7 @@ import {
 } from "@seedgrid/fe-components";
 
 function ChaveDoUsuario() {
-  // Atalho para env.namespaceProvider: quando so' o namespace importa, este hook
+  // Atalho para env.namespaceProvider: quando só o namespace importa, este hook
   // evita carregar o objeto de ambiente inteiro.
   const namespaceProvider = useSgNamespaceProvider();
   const namespace = namespaceProvider.getNamespace();

@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import * as React from "react";
+import { Leaf } from "lucide-react";
 import {
   SgClock,
   SgClockThemePicker,
@@ -106,15 +107,6 @@ function FlipShowcase(props: { timezone: string; initialServerTime: string }) {
 
 type ExtraDigitalStyle = "segment" | "sevenSegment" | "fade" | "matrix" | "neon" | "discard";
 
-const EXTRA_DIGITAL_STYLE_SECTIONS: Array<{ title: string; description: string; style: ExtraDigitalStyle }> = [
-  { title: "Segment", description: "Estilo segmentado com leitura limpa.", style: "segment" },
-  { title: "Seven Segment", description: "Digitos de sete segmentos com visual retro.", style: "sevenSegment" },
-  { title: "Fade", description: "Transicao suave entre os digitos.", style: "fade" },
-  { title: "Matrix", description: "Estilo matriz de pontos para alta densidade visual.", style: "matrix" },
-  { title: "Neon", description: "Tema com brilho de painel neon.", style: "neon" },
-  { title: "Discard", description: "Cartoes empilhados com virada de digito.", style: "discard" }
-];
-
 function getExtraStyleSize(style: ExtraDigitalStyle): "sm" | "md" | "lg" {
   if (style === "matrix" || style === "sevenSegment") return "sm";
   if (style === "discard") return "lg";
@@ -204,7 +196,7 @@ const CLOCK_PROPS: ShowcasePropRow[] = [
   { prop: "className", type: "string", defaultValue: "-", description: "Classe extra no container do relogio." },
   { prop: "style", type: "React.CSSProperties", defaultValue: "-", description: "Inline style extra no container do relogio." },
   { prop: "centerOverlay", type: "ReactNode", defaultValue: "-", description: "Conteudo opcional sobreposto ao centro do relogio analogico." },
-  { prop: "cardTitle", type: "ReactNode", defaultValue: '"Clock/RelÃ³gio"', description: "Titulo do SgCard usado pelo gadget." },
+  { prop: "cardTitle", type: "ReactNode", defaultValue: '"Clock/Relógio"', description: "Titulo do SgCard usado pelo gadget." },
   { prop: "cardProps", type: 'Omit<SgCardProps, "children" | "title">', defaultValue: "-", description: "Sobrescreve configuracoes padrao do SgCard do gadget." }
 ];
 export function SgClockShowcaseClient({ initialServerTime }: { initialServerTime: string }) {
@@ -342,19 +334,61 @@ export function SgClockShowcaseClient({ initialServerTime }: { initialServerTime
             </div>
             </Section>
 
-            <Section title="Roller 3D" description="Rolos 3D com AM/PM opcional e segundos sob demanda.">
+            <Section
+              title={t(i18n, "showcase.component.clock.sections.roller3d.title")}
+              description={t(i18n, "showcase.component.clock.sections.roller3d.description")}
+            >
               <RollerShowcase timezone={timezone} initialServerTime={initialServerTime} />
             </Section>
 
-            <Section title="Flip" description="Flip clock em duas folhas, com segundos e 12/24h.">
+            <Section
+              title={t(i18n, "showcase.component.clock.sections.flip.title")}
+              description={t(i18n, "showcase.component.clock.sections.flip.description")}
+            >
               <FlipShowcase timezone={timezone} initialServerTime={initialServerTime} />
             </Section>
 
-            {EXTRA_DIGITAL_STYLE_SECTIONS.map((item) => (
-              <Section key={item.style} title={item.title} description={item.description}>
-                <DigitalStyleShowcase initialServerTime={initialServerTime} style={item.style} />
-              </Section>
-            ))}
+            <Section
+              title={t(i18n, "showcase.component.clock.sections.segment.title")}
+              description={t(i18n, "showcase.component.clock.sections.segment.description")}
+            >
+              <DigitalStyleShowcase initialServerTime={initialServerTime} style="segment" />
+            </Section>
+
+            <Section
+              title={t(i18n, "showcase.component.clock.sections.sevenSegment.title")}
+              description={t(i18n, "showcase.component.clock.sections.sevenSegment.description")}
+            >
+              <DigitalStyleShowcase initialServerTime={initialServerTime} style="sevenSegment" />
+            </Section>
+
+            <Section
+              title={t(i18n, "showcase.component.clock.sections.fade.title")}
+              description={t(i18n, "showcase.component.clock.sections.fade.description")}
+            >
+              <DigitalStyleShowcase initialServerTime={initialServerTime} style="fade" />
+            </Section>
+
+            <Section
+              title={t(i18n, "showcase.component.clock.sections.matrix.title")}
+              description={t(i18n, "showcase.component.clock.sections.matrix.description")}
+            >
+              <DigitalStyleShowcase initialServerTime={initialServerTime} style="matrix" />
+            </Section>
+
+            <Section
+              title={t(i18n, "showcase.component.clock.sections.neon.title")}
+              description={t(i18n, "showcase.component.clock.sections.neon.description")}
+            >
+              <DigitalStyleShowcase initialServerTime={initialServerTime} style="neon" />
+            </Section>
+
+            <Section
+              title={t(i18n, "showcase.component.clock.sections.discard.title")}
+              description={t(i18n, "showcase.component.clock.sections.discard.description")}
+            >
+              <DigitalStyleShowcase initialServerTime={initialServerTime} style="discard" />
+            </Section>
 
             <Section
               title={t(i18n, "showcase.component.clock.sections.timezone.title")}
@@ -376,6 +410,41 @@ export function SgClockShowcaseClient({ initialServerTime }: { initialServerTime
             </div>
             <div className="mt-6">
               <CodeBlock sampleFile="apps/showcase/src/app/components/gadgets/sg-clock/samples/timezone.tsx.sample" />
+            </div>
+            </Section>
+
+            <Section
+              title={t(i18n, "showcase.component.clock.sections.center.title")}
+              description={t(i18n, "showcase.component.clock.sections.center.description")}
+            >
+            <div className="flex items-center justify-center rounded-xl border border-border bg-background p-6">
+              <SgClock
+                clockStyle="analog"
+                size={220}
+                initialServerTime={initialServerTime}
+                themeId="seedgrid"
+                showSeconds={false}
+                centerOverlay={<Leaf size={20} />}
+              />
+            </div>
+            <div className="mt-6">
+              <CodeBlock sampleFile="apps/showcase/src/app/components/gadgets/sg-clock/samples/conteudo-no-centro.tsx.sample" />
+            </div>
+            </Section>
+
+            <Section
+              title={t(i18n, "showcase.component.clock.sections.card.title")}
+              description={t(i18n, "showcase.component.clock.sections.card.description")}
+            >
+            <SgClock
+              clockStyle="digital"
+              initialServerTime={initialServerTime}
+              timezone="America/Sao_Paulo"
+              cardTitle={t(i18n, "showcase.component.clock.labels.brasiliaTime")}
+              cardProps={{ id: "brasilia", draggable: false, collapsible: false }}
+            />
+            <div className="mt-6">
+              <CodeBlock sampleFile="apps/showcase/src/app/components/gadgets/sg-clock/samples/cartao.tsx.sample" />
             </div>
             </Section>
 

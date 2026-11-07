@@ -1,7 +1,12 @@
 ﻿"use client";
 
 import React from "react";
-import { SgButton, SgRadialGauge, type SgRadialGaugePointer } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgGrid,
+  SgRadialGauge,
+  type SgRadialGaugePointer,
+} from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../../sgCodeBlockBase";
 import I18NReady from "../../I18NReady";
@@ -341,7 +346,7 @@ export default function Example() {
           labelFormatter={(v) => \`\${Math.round(v)}%\`}
           majorTickCount={5}
           minorTicksPerInterval={0}
-          ariaLabel="Gauge de eficiencia"
+          ariaLabel="Gauge de eficiência"
           style={{ filter: "drop-shadow(0 4px 10px rgb(0 0 0 / 0.12))" }}
           ranges={[
             { start: 0, end: 40, color: "#22c55e", width: 12 },
@@ -462,6 +467,7 @@ export default function SgRadialGaugePage() {
   const [consumption, setConsumption] = React.useState(44);
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({ deps: [i18n.locale] });
   const aiComponent = useAiManifestComponent("SgRadialGauge");
+  const [velocidade, setVelocidade] = React.useState(40);
   const propRows = React.useMemo(() => getRadialGaugeProps(i18n), [i18n]);
 
   const extraPointers = React.useMemo<SgRadialGaugePointer[]>(
@@ -759,7 +765,7 @@ export default function SgRadialGaugePage() {
                 labelFormatter={(v) => `${Math.round(v)}%`}
                 majorTickCount={5}
                 minorTicksPerInterval={0}
-                ariaLabel="Gauge de eficiencia"
+                ariaLabel="Gauge de eficiência"
                 style={{ filter: "drop-shadow(0 4px 10px rgb(0 0 0 / 0.12))" }}
                 ranges={[
                   { start: 0, end: 40, color: "#22c55e", width: 12 },
@@ -792,9 +798,69 @@ export default function SgRadialGaugePage() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/gadgets/sg-radial-gauge/samples/other-props-size-labels-accessibility.tsx.sample" />
         </Section>
 
+        <Section title={t(i18n, `${K}.section7Title`)} description={t(i18n, `${K}.section7Description`)}>
+          <SgRadialGauge value={62} />
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-radial-gauge/samples/ponteiro-simples.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section8Title`)} description={t(i18n, `${K}.section8Description`)}>
+          <SgRadialGauge
+            value={72}
+            width={280}
+            height={280}
+            ranges={[
+              { start: 0, end: 40, color: "#22c55e" },
+              { start: 40, end: 75, color: "#eab308" },
+              { start: 75, end: 100, color: "#ef4444" }
+            ]}
+            annotations={[{ value: 50, radiusFactor: 0.55, content: <span>{t(i18n, `${K}.annotationAverage`)}</span> }]}
+            centerContent={<span className="text-[28px] font-bold">72%</span>}
+          />
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-radial-gauge/samples/faixas-coloridas-e-anotacao.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section9Title`)} description={t(i18n, `${K}.section9Description`)}>
+          <SgRadialGauge
+            value={55}
+            primaryPointerType="range"
+            ringThickness={16}
+            pointers={[
+              { id: "meta", type: "marker", value: 80, shape: "diamond", color: "#ef4444", label: t(i18n, `${K}.goalLabel`) }
+            ]}
+          />
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-radial-gauge/samples/anel-de-progresso-e-ponteiros-extras.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section10Title`)} description={t(i18n, `${K}.section10Description`)}>
+          <SgGrid columns={{ base: 1 }} gap={8}>
+            <SgRadialGauge
+              value={velocidade}
+              primaryPointerDraggable
+              onValueChange={setVelocidade}
+              labelFormatter={(v) => String(Math.round(v))}
+            />
+            <p className="text-sm">{t(i18n, `${K}.speedLabel`)}: {Math.round(velocidade)} km/h</p>
+          </SgGrid>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-radial-gauge/samples/arrastar-o-ponteiro.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section11Title`)} description={t(i18n, `${K}.section11Description`)}>
+          <SgRadialGauge
+            value={30}
+            startAngle={180}
+            endAngle={0}
+            isAxisInversed
+            width={300}
+            height={180}
+            showLabels={false}
+            animate={false}
+          />
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-radial-gauge/samples/meio-arco-invertido.tsx.sample" />
+        </Section>
+
         <Section
-          title={t(i18n, `${K}.section7Title`)}
-          description={t(i18n, `${K}.section7Description`)}
+          title={t(i18n, `${K}.section12Title`)}
+          description={t(i18n, `${K}.section12Description`)}
         >
           <SgPlayground
             title="SgRadialGauge Playground"

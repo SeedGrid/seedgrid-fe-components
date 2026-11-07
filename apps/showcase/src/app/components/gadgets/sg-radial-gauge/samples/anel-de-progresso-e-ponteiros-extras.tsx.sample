@@ -1,0 +1,17 @@
+"use client";
+
+import * as React from "react";
+import { SgRadialGauge } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgRadialGauge
+      value={55}
+      primaryPointerType="range"
+      ringThickness={16}
+      pointers={[
+        { id: "meta", type: "marker", value: 80, shape: "diamond", color: "#ef4444", label: "meta" }
+      ]}
+    />
+  );
+}

@@ -1,0 +1,16 @@
+"use client";
+
+import { SgQRCode } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgQRCode
+      value="seedgrid"
+      size={160}
+      margin={1}
+      fgColor="#1d4ed8"
+      bgColor="#e0f2fe"
+      errorCorrectionLevel="M"
+    />
+  );
+}

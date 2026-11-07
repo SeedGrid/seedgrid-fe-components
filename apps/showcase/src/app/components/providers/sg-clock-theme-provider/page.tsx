@@ -52,6 +52,18 @@ function ClockWithPicker() {
   );
 }
 
+function FallbackThemeClock() {
+  const now = new Date().toISOString();
+
+  return (
+    <SgTimeProvider initialServerTime={now}>
+      <SgClockThemeProvider value={{ mode: "fallback", fallbackThemeId: "roman-classic" }}>
+        <SgClock clockStyle="analog" size={160} themeId="nao-existe" />
+      </SgClockThemeProvider>
+    </SgTimeProvider>
+  );
+}
+
 const CLOCK_THEME_PROVIDER_PROPS: ShowcasePropRow[] = [
   { prop: "value.mode", type: '"fallback" | "strict"', defaultValue: '"fallback"', description: 'Em "fallback", temas nao encontrados usam o fallbackThemeId. Em "strict", retornam null.' },
   { prop: "value.fallbackThemeId", type: "string", defaultValue: '"classic"', description: "ID do tema usado quando o tema solicitado nao existe (apenas no modo fallback)." },
@@ -106,6 +118,14 @@ export default function SgClockThemeProviderPage() {
           description={t(i18n, "showcase.component.clockThemeProvider.sections.resolver.description")}
         >
           <CodeBlock sampleFile="apps/showcase/src/app/components/providers/sg-clock-theme-provider/samples/resolver-hook.tsx.sample" />
+        </Section>
+
+        <Section
+          title={t(i18n, "showcase.component.clockThemeProvider.sections.fallback.title")}
+          description={t(i18n, "showcase.component.clockThemeProvider.sections.fallback.description")}
+        >
+          <FallbackThemeClock />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/providers/sg-clock-theme-provider/samples/tema-de-recuo.tsx.sample" />
         </Section>
 
         <ShowcasePropsReference rows={CLOCK_THEME_PROVIDER_PROPS} />

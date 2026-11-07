@@ -144,9 +144,47 @@ export default function SgQRCodePage() {
         </div>
       </Section>
 
+        <Section title={t(i18n, `${K}.section2Title`)} description={t(i18n, `${K}.section2Description`)}>
+          <SgQRCode value="https://seedgrid.com.br" />
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-qr-code/samples/qr-code-basico.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section3Title`)} description={t(i18n, `${K}.section3Description`)}>
+          <SgQRCode
+            value="seedgrid"
+            size={160}
+            margin={1}
+            fgColor="#1d4ed8"
+            bgColor="#e0f2fe"
+            errorCorrectionLevel="M"
+          />
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-qr-code/samples/cores-tamanho-e-margem.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section4Title`)} description={t(i18n, `${K}.section4Description`)}>
+          <SgQRCode
+            value="https://seedgrid.com.br/logo"
+            size={200}
+            logoSrc="/logo-seedgrid.svg"
+            logoSize={56}
+            logoPadding={4}
+            logoBorderRadius={8}
+          />
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-qr-code/samples/logo-no-centro.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section5Title`)} description={t(i18n, `${K}.section5Description`)}>
+          <SgQRCode
+            value=""
+            size={120}
+            emptyFallback={<span className="text-sm text-muted-foreground">Informe um texto</span>}
+          />
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-qr-code/samples/vazio-e-erro.tsx.sample" />
+        </Section>
+
       <Section
-        title={t(i18n, `${K}.section2Title`)}
-        description={t(i18n, `${K}.section2Description`)}
+        title={t(i18n, `${K}.section6Title`)}
+        description={t(i18n, `${K}.section6Description`)}
       >
         <SgPlayground
           title={t(i18n, `${K}.playgroundTitle`)}

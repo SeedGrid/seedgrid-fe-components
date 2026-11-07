@@ -1,0 +1,9 @@
+"use client";
+
+import { SgRadialGauge } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgRadialGauge value={62} />
+  );
+}

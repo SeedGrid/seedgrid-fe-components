@@ -1,0 +1,13 @@
+import { SgClock } from "@seedgrid/fe-components";
+
+export default function Example(props: { initialServerTime?: string }) {
+  return (
+    <SgClock
+      clockStyle="digital"
+      initialServerTime={props.initialServerTime ?? new Date().toISOString()}
+      timezone="America/Sao_Paulo"
+      cardTitle="Hora de Brasília"
+      cardProps={{ id: "brasilia", draggable: false, collapsible: false }}
+    />
+  );
+}

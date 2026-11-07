@@ -1,0 +1,13 @@
+"use client";
+
+import { SgQRCode } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgQRCode
+      value=""
+      size={120}
+      emptyFallback={<span className="text-sm text-muted-foreground">Informe um texto</span>}
+    />
+  );
+}

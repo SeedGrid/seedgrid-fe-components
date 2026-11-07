@@ -1,0 +1,20 @@
+"use client";
+
+import * as React from "react";
+import { SgGrid, SgLinearGauge } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [volume, setVolume] = React.useState(35);
+
+  return (
+    <SgGrid columns={{ base: 1 }} gap={8}>
+      <SgLinearGauge
+        value={volume}
+        primaryPointerDraggable
+        onValueChange={setVolume}
+        labelFormatter={(v) => `${Math.round(v)}%`}
+      />
+      <p>Volume: {Math.round(volume)}%</p>
+    </SgGrid>
+  );
+}

@@ -1,0 +1,18 @@
+"use client";
+
+import { SgClockThemePreview, type SgClockTheme } from "@seedgrid/fe-components";
+
+const dotTheme: SgClockTheme = {
+  id: "ponto",
+  label: "Ponto",
+  render: () => (
+    <>
+      <circle cx="50" cy="50" r="48" fill="#FFF7ED" stroke="#F97316" strokeWidth="2" />
+      <circle cx="50" cy="12" r="3" fill="#F97316" />
+    </>
+  )
+};
+
+export default function Example() {
+  return <SgClockThemePreview theme={dotTheme} size={96} />;
+}

@@ -23,6 +23,10 @@ export default function Example() {
       orientation="vertical"
       width={140}
       height={360}
+      primaryPointerColor="#2563eb"
+      primaryPointerShape="triangle"
+      primaryPointerSize={12}
+      primaryPointerDraggable
       pointers={pointers}
       onPointerValueChange={(pointerId, next) => {
         if (pointerId === "target") setTarget(next);

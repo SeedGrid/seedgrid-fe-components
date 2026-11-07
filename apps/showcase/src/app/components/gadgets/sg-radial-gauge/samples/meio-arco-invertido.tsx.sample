@@ -1,0 +1,18 @@
+"use client";
+
+import { SgRadialGauge } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgRadialGauge
+      value={30}
+      startAngle={180}
+      endAngle={0}
+      isAxisInversed
+      width={300}
+      height={180}
+      showLabels={false}
+      animate={false}
+    />
+  );
+}

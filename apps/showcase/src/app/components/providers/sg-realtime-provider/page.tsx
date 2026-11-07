@@ -11,6 +11,8 @@ import ComponentAiPropsTable from "../../ai/ComponentAiPropsTable";
 import ComponentAiSummary from "../../ai/ComponentAiSummary";
 import { useAiManifestComponent } from "../../ai/useAiManifestComponent";
 import { t, useShowcaseI18n } from "../../../../i18n";
+import RealtimeDisabled from "./RealtimeDisabled";
+import RealtimePatterns from "./RealtimePatterns";
 import RealtimeSimulator from "./RealtimeSimulator";
 
 const BASE = "apps/showcase/src/app/components/providers/sg-realtime-provider";
@@ -79,6 +81,22 @@ export default function SgRealtimeProviderPage() {
           description={t(i18n, "showcase.component.realtimeProvider.sections.polling.description")}
         >
           <SgCodeBlockBase sampleFile={`${BASE}/samples/polling-de-reserva.tsx.sample`} />
+        </Section>
+
+        <Section
+          title={t(i18n, "showcase.component.realtimeProvider.sections.patterns.title")}
+          description={t(i18n, "showcase.component.realtimeProvider.sections.patterns.description")}
+        >
+          <RealtimePatterns />
+          <SgCodeBlockBase sampleFile={`${BASE}/samples/canais-e-padroes.tsx.sample`} />
+        </Section>
+
+        <Section
+          title={t(i18n, "showcase.component.realtimeProvider.sections.disabled.title")}
+          description={t(i18n, "showcase.component.realtimeProvider.sections.disabled.description")}
+        >
+          <RealtimeDisabled />
+          <SgCodeBlockBase sampleFile={`${BASE}/samples/desligado.tsx.sample`} />
         </Section>
 
         <Section

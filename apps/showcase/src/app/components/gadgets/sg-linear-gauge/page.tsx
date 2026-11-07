@@ -1,7 +1,11 @@
 ﻿"use client";
 
 import React from "react";
-import { SgLinearGauge, type SgLinearGaugePointer } from "@seedgrid/fe-components";
+import {
+  SgGrid,
+  SgLinearGauge,
+  type SgLinearGaugePointer,
+} from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../../sgCodeBlockBase";
 import I18NReady from "../../I18NReady";
@@ -174,6 +178,7 @@ export default function SgLinearGaugePage() {
   const [target, setTarget] = React.useState(72);
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({ deps: [i18n.locale] });
   const aiComponent = useAiManifestComponent("SgLinearGauge");
+  const [volume, setVolume] = React.useState(35);
   const propRows = React.useMemo(() => getLinearGaugeProps(i18n), [i18n]);
 
   const pointers = React.useMemo<SgLinearGaugePointer[]>(
@@ -296,6 +301,45 @@ export default function SgLinearGaugePage() {
         </Section>
 
         <Section title={t(i18n, `${K}.section3Title`)} description={t(i18n, `${K}.section3Description`)}>
+          <SgLinearGauge value={62} />
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-linear-gauge/samples/barra-horizontal.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section4Title`)} description={t(i18n, `${K}.section4Description`)}>
+          <SgLinearGauge
+            value={35}
+            ranges={[
+              { start: 0, end: 40, color: "#22c55e" },
+              { start: 40, end: 100, color: "#ef4444" }
+            ]}
+            pointers={[{ value: 80, shape: "diamond", label: t(i18n, `${K}.goalLabel`) }]}
+            primaryPointerShape="inverted-triangle"
+          />
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-linear-gauge/samples/faixas-e-ponteiro-extra.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section5Title`)} description={t(i18n, `${K}.section5Description`)}>
+          <SgGrid columns={{ base: 2 }} gap={24}>
+            <SgLinearGauge value={70} orientation="vertical" />
+            <SgLinearGauge value={70} orientation="vertical" isAxisInversed barColor="#8b5cf6" />
+          </SgGrid>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-linear-gauge/samples/vertical.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section6Title`)} description={t(i18n, `${K}.section6Description`)}>
+          <SgGrid columns={{ base: 1 }} gap={8}>
+            <SgLinearGauge
+              value={volume}
+              primaryPointerDraggable
+              onValueChange={setVolume}
+              labelFormatter={(v) => `${Math.round(v)}%`}
+            />
+            <p className="text-sm">{t(i18n, `${K}.volumeLabel`)}: {Math.round(volume)}%</p>
+          </SgGrid>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-linear-gauge/samples/arrastar-o-ponteiro.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section7Title`)} description={t(i18n, `${K}.section7Description`)}>
           <SgPlayground
             title={t(i18n, `${K}.playgroundTitle`)}
             interactive

@@ -3,8 +3,10 @@
 import React from "react";
 import {
   SgClockThemePreview,
-  sgClockThemesBuiltIn
+  sgClockThemesBuiltIn,
+  type SgClockTheme
 } from "@seedgrid/fe-components";
+import SgCodeBlockBase from "../../sgCodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
@@ -55,6 +57,39 @@ function ThemeGallery() {
   );
 }
 
+function SingleThemePreview() {
+  return (
+    <div className="flex items-center rounded-md bg-foreground/5 p-4 text-foreground">
+      <SgClockThemePreview theme={sgClockThemesBuiltIn[0]!} />
+    </div>
+  );
+}
+
+function ThemePreviewSizes() {
+  return (
+    <div className="flex flex-wrap items-center gap-3 text-foreground">
+      <SgClockThemePreview theme={sgClockThemesBuiltIn[7]!} size={32} />
+      <SgClockThemePreview theme={sgClockThemesBuiltIn[7]!} />
+      <SgClockThemePreview theme={sgClockThemesBuiltIn[7]!} size={128} />
+    </div>
+  );
+}
+
+const dotTheme: SgClockTheme = {
+  id: "ponto",
+  label: "Ponto",
+  render: () => (
+    <>
+      <circle cx="50" cy="50" r="48" fill="#FFF7ED" stroke="#F97316" strokeWidth="2" />
+      <circle cx="50" cy="12" r="3" fill="#F97316" />
+    </>
+  )
+};
+
+function OwnThemePreview() {
+  return <SgClockThemePreview theme={dotTheme} size={96} />;
+}
+
 export default function SgClockThemePreviewPage() {
   const i18n = useShowcaseI18n();
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({ deps: [i18n.locale] });
@@ -81,6 +116,31 @@ export default function SgClockThemePreviewPage() {
           description={t(i18n, `${K}.section1Description`)}
         >
           <ThemeGallery />
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-clock-theme-preview/samples/galeria-de-temas.tsx.sample" />
+        </Section>
+
+        <Section
+          title={t(i18n, `${K}.section2Title`)}
+          description={t(i18n, `${K}.section2Description`)}
+        >
+          <SingleThemePreview />
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-clock-theme-preview/samples/um-tema.tsx.sample" />
+        </Section>
+
+        <Section
+          title={t(i18n, `${K}.section3Title`)}
+          description={t(i18n, `${K}.section3Description`)}
+        >
+          <ThemePreviewSizes />
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-clock-theme-preview/samples/tamanhos.tsx.sample" />
+        </Section>
+
+        <Section
+          title={t(i18n, `${K}.section4Title`)}
+          description={t(i18n, `${K}.section4Description`)}
+        >
+          <OwnThemePreview />
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-clock-theme-preview/samples/tema-proprio.tsx.sample" />
         </Section>
 
         <ShowcasePropsReference rows={propRows} />

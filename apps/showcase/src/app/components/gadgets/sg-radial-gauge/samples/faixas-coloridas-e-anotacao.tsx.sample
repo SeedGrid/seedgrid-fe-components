@@ -1,0 +1,21 @@
+"use client";
+
+import * as React from "react";
+import { SgRadialGauge } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgRadialGauge
+      value={72}
+      width={280}
+      height={280}
+      ranges={[
+        { start: 0, end: 40, color: "#22c55e" },
+        { start: 40, end: 75, color: "#eab308" },
+        { start: 75, end: 100, color: "#ef4444" }
+      ]}
+      annotations={[{ value: 50, radiusFactor: 0.55, content: <span>média</span> }]}
+      centerContent={<span className="text-[28px] font-bold">72%</span>}
+    />
+  );
+}

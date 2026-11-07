@@ -1,0 +1,9 @@
+"use client";
+
+import { SgLinearGauge } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgLinearGauge value={62} />
+  );
+}

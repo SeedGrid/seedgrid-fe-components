@@ -1,0 +1,22 @@
+"use client";
+
+import * as React from "react";
+import { SgClock, SgClockThemePicker, SgClockThemeProvider, SgTimeProvider } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [themeId, setThemeId] = React.useState("classic");
+  const now = new Date().toISOString();
+
+  return (
+    <SgTimeProvider initialServerTime={now}>
+      <SgClockThemeProvider>
+        <div className="flex flex-col items-center gap-4 rounded-lg border border-border p-4">
+          <SgClock themeId={themeId} />
+          <div className="w-full max-w-md">
+            <SgClockThemePicker value={themeId} onChange={setThemeId} />
+          </div>
+        </div>
+      </SgClockThemeProvider>
+    </SgTimeProvider>
+  );
+}

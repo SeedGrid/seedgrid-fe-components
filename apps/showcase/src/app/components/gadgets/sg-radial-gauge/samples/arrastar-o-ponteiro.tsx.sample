@@ -1,0 +1,20 @@
+"use client";
+
+import * as React from "react";
+import { SgGrid, SgRadialGauge } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [velocidade, setVelocidade] = React.useState(40);
+
+  return (
+    <SgGrid columns={{ base: 1 }} gap={8}>
+      <SgRadialGauge
+        value={velocidade}
+        primaryPointerDraggable
+        onValueChange={setVelocidade}
+        labelFormatter={(v) => String(Math.round(v))}
+      />
+      <p>Velocidade: {Math.round(velocidade)} km/h</p>
+    </SgGrid>
+  );
+}

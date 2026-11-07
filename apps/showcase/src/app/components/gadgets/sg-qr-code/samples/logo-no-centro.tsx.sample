@@ -1,0 +1,16 @@
+"use client";
+
+import { SgQRCode } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgQRCode
+      value="https://seedgrid.com.br/logo"
+      size={200}
+      logoSrc="/logo-seedgrid.svg"
+      logoSize={56}
+      logoPadding={4}
+      logoBorderRadius={8}
+    />
+  );
+}

@@ -1,0 +1,9 @@
+import { SgClock, SgTimeProvider } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <SgTimeProvider initialServerTime="2030-01-01T23:59:55Z">
+      <SgClock timezone="UTC" cardTitle="Hora do servidor" />
+    </SgTimeProvider>
+  );
+}

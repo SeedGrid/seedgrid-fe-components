@@ -1,0 +1,12 @@
+"use client";
+
+import { SgGrid, SgLinearGauge } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgGrid columns={{ base: 2 }} gap={24}>
+      <SgLinearGauge value={70} orientation="vertical" />
+      <SgLinearGauge value={70} orientation="vertical" isAxisInversed barColor="#8b5cf6" />
+    </SgGrid>
+  );
+}
