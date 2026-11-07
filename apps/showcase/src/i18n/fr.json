@@ -3252,6 +3252,12 @@
   "showcase.component.datatable.props.rows.columnManagerText": "Panneau intégré de visibilité et d'ordre des colonnes. columnManagerLabel l'emporte sur le dictionnaire (components.datatable.columns) ; column.filterPlaceholder l'emporte aussi sur components.datatable.columnFilterPlaceholder.",
   "showcase.common.sections.enabled.title": "Désactivé (enabled)",
   "showcase.component.wizard.sections.enabled.description": "Avec enabled={false} l'assistant entier est désactivé : Précédent, Suivant, Terminer et les étapes du stepper ne répondent pas ; l'étape actuelle reste visible.",
+  "showcase.component.wizard.sections.stepperIcons.title": "Stepper avec icônes",
+  "showcase.component.wizard.sections.stepperIcons.description": "stepper=\"icons\" + icon sur chaque SgWizardPage : affiche l'icône dans le cercle au lieu du numéro.",
+  "showcase.component.wizard.sections.stepperNumbered.title": "Stepper numéroté",
+  "showcase.component.wizard.sections.stepperNumbered.description": "stepper=\"numbered\" : cercles numérotés avec le titre de chaque étape.",
+  "showcase.component.wizard.sections.nextDisabled.title": "Avancement bloqué (nextDisabled)",
+  "showcase.component.wizard.sections.nextDisabled.description": "onBeforeNext n'agit qu'au clic : le bouton garde l'apparence d'un bouton actif et, quand il refuse, rien ne se passe à l'écran. Quand le blocage est déjà connu (le résultat d'une vérification asynchrone déjà terminée), nextDisabled le rend visible.",
   "showcase.component.calendar.sections.enabled.description": "Avec enabled={false} les jours et les boutons de mois et d'aujourd'hui sont désactivés ; la date et le mois actuels restent lisibles.",
   "showcase.component.datatable.sections.enabled.description": "Avec enabled={false} le tri, la sélection des lignes, les filtres et le gestionnaire de colonnes sont bloqués ; la pagination et le défilement continuent de fonctionner."
 }
