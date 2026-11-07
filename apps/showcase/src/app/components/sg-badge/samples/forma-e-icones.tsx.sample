@@ -1,0 +1,12 @@
+import { ArrowRight, Star } from "lucide-react";
+import { SgBadge } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <div className="flex flex-wrap items-center gap-3">
+      <SgBadge value="quadrado" rounded={false} />
+      <SgBadge value="favorito" leftIcon={<Star size={12} />} />
+      <SgBadge value="próximo" rightIcon={<ArrowRight size={12} />} />
+    </div>
+  );
+}

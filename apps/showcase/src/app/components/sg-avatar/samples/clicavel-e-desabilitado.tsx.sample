@@ -1,0 +1,23 @@
+"use client";
+
+import * as React from "react";
+import { SgAvatar } from "@seedgrid/fe-components";
+
+import * as React from "react";
+import { SgAvatar } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [clicks, setClicks] = React.useState(0);
+
+  return (
+    <div className="flex flex-wrap items-center gap-4">
+      <SgAvatar
+        label="Ana Lima"
+        title="Abrir perfil"
+        onClick={() => setClicks((c) => c + 1)}
+      />
+      <SgAvatar label="Bia Souza" enabled={false} onClick={() => {}} />
+      <span className="text-sm">Cliques: {clicks}</span>
+    </div>
+  );
+}

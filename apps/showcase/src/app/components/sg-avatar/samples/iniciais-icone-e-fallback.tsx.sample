@@ -1,0 +1,19 @@
+"use client";
+
+import * as React from "react";
+import { SgAvatar } from "@seedgrid/fe-components";
+
+import { CircleHelp, User } from "lucide-react";
+import { SgAvatar } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <div className="flex flex-wrap items-center gap-4">
+      <SgAvatar label="Maria Silva" />
+      <SgAvatar label="joao" />
+      <SgAvatar icon={<User />} severity="info" />
+      <SgAvatar />
+      <SgAvatar fallback={<CircleHelp />} severity="neutral" />
+    </div>
+  );
+}

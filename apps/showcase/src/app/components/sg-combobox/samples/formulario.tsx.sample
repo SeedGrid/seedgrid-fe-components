@@ -1,0 +1,24 @@
+import React from "react";
+import { useForm } from "react-hook-form";
+import { SgButton, SgCombobox } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const { control, handleSubmit } = useForm<{ pagamento: string }>({ defaultValues: { pagamento: "" } });
+  const [submitted, setSubmitted] = React.useState("");
+
+  return (
+    <form className="w-96 space-y-3" onSubmit={handleSubmit((values) => setSubmitted(values.pagamento))}>
+      <SgCombobox<string>
+        id="pagamento"
+        name="pagamento"
+        control={control}
+        label="Forma de pagamento"
+        required
+        requiredMessage="Escolha uma forma"
+        source={["Boleto", "Cartão", "Pix"]}
+      />
+      <SgButton type="submit">Enviar</SgButton>
+      {submitted ? <div className="text-sm">Enviado: {submitted}</div> : null}
+    </form>
+  );
+}

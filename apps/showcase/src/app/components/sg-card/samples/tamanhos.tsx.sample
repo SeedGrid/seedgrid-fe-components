@@ -1,0 +1,22 @@
+import React from "react";
+import { SgCard } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [clicks, setClicks] = React.useState(0);
+
+  return (
+    <div className="grid gap-2">
+      {(["sm", "md", "lg"] as const).map((size) => (
+        <SgCard
+          key={size}
+          size={size}
+          clickable
+          onClick={() => setClicks((prev) => prev + 1)}
+          title={`Tamanho ${size} (cliques: ${clicks})`}
+        >
+          <div className="text-sm text-muted-foreground">Cartão clicável</div>
+        </SgCard>
+      ))}
+    </div>
+  );
+}

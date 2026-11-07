@@ -1,0 +1,21 @@
+import React from "react";
+import { SgBreadcrumb, type SgBreadcrumbItem } from "@seedgrid/fe-components";
+
+const longItems: SgBreadcrumbItem[] = [
+  { id: "home", label: "Home", href: "/" },
+  { id: "admin", label: "Admin", href: "/admin" },
+  { id: "tenant", label: "Multi Tenancy", href: "/admin/tenant" },
+  { id: "billing", label: "Billing", href: "/admin/tenant/billing" },
+  { id: "plans", label: "Subscription", href: "/admin/tenant/billing/subscription" },
+  { id: "edit", label: "Edit plan" }
+];
+
+export default function Example() {
+  return (
+    <div className="space-y-2">
+      <SgBreadcrumb items={longItems.slice(0, 3)} size="sm" />
+      <SgBreadcrumb items={longItems.slice(0, 3)} variant="subtle" />
+      <SgBreadcrumb items={longItems.slice(0, 3)} variant="primary" size="lg" />
+    </div>
+  );
+}

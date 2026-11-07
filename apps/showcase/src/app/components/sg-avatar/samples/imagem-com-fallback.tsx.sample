@@ -1,0 +1,18 @@
+"use client";
+
+import * as React from "react";
+import { SgAvatar } from "@seedgrid/fe-components";
+
+import { SgAvatar } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <div className="flex flex-wrap items-center gap-4">
+      <SgAvatar
+        src="https://endereco.invalido.exemplo/foto.png"
+        label="Carlos Dias"
+        onImageError={() => console.log("Imagem indisponível")}
+      />
+    </div>
+  );
+}

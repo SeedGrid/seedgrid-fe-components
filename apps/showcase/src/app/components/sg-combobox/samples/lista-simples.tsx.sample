@@ -1,0 +1,10 @@
+import React from "react";
+import { SgCombobox } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <div className="w-96">
+      <SgCombobox<string> id="fruta" label="Fruta" source={["Abacate", "Abacaxi", "Banana", "Laranja", "Uva"]} />
+    </div>
+  );
+}

@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import React from "react";
-import { Camera, User, Users } from "lucide-react";
+import { Camera, CircleHelp, User, Users } from "lucide-react";
 import { SgAvatar, SgAvatarGroup } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
@@ -192,6 +192,7 @@ const AVATAR_PROPS: ShowcasePropRow[] = [
 export default function SgAvatarPage() {
   const i18n = useShowcaseI18n();
   const aiComponent = useAiManifestComponent("SgAvatar");
+  const [clicks, setClicks] = React.useState(0);
   const aiAvatarGroupComponent = useAiManifestComponent("SgAvatarGroup");
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
@@ -273,6 +274,41 @@ export default function SgAvatarPage() {
         </Section>
 
         <Section title={t(i18n, `${K}.section5Title`)} description={t(i18n, `${K}.section5Description`)}>
+          <Row>
+            <SgAvatar label="Maria Silva" />
+            <SgAvatar label="joao" />
+            <SgAvatar icon={<User />} severity="info" />
+            <SgAvatar />
+            <SgAvatar fallback={<CircleHelp />} severity="neutral" />
+          </Row>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-avatar/samples/iniciais-icone-e-fallback.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section6Title`)} description={t(i18n, `${K}.section6Description`)}>
+          <Row>
+            <SgAvatar
+              src="https://endereco.invalido.exemplo/foto.png"
+              label="Carlos Dias"
+              onImageError={() => console.log("Imagem indisponível")}
+            />
+          </Row>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-avatar/samples/imagem-com-fallback.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section7Title`)} description={t(i18n, `${K}.section7Description`)}>
+          <Row>
+            <SgAvatar
+              label="Ana Lima"
+              title={t(i18n, `${K}.openProfile`)}
+              onClick={() => setClicks((c) => c + 1)}
+            />
+            <SgAvatar label="Bia Souza" enabled={false} onClick={() => {}} />
+            <span className="text-sm">{t(i18n, `${K}.clicks`, { count: clicks })}</span>
+          </Row>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-avatar/samples/clicavel-e-desabilitado.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section8Title`)} description={t(i18n, `${K}.section8Description`)}>
           <SgPlayground
             title="SgAvatar Playground"
             interactive

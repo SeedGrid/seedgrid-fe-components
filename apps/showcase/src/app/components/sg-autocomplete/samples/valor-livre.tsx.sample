@@ -1,0 +1,28 @@
+import { SgAutocomplete } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <div className="w-80 space-y-3">
+      <SgAutocomplete
+        id="ac-free"
+        label="Aceita texto livre"
+        allowCustomValue
+        source={(query: string) =>
+          ["Alpha", "Beta", "Gamma"].filter((item) =>
+            item.toLowerCase().includes(query.toLowerCase())
+          )
+        }
+      />
+      <SgAutocomplete
+        id="ac-add"
+        label="Limpa ao escolher"
+        clearOnSelect
+        source={(query: string) =>
+          ["Item A", "Item B", "Item C"].filter((item) =>
+            item.toLowerCase().includes(query.toLowerCase())
+          )
+        }
+      />
+    </div>
+  );
+}

@@ -1,0 +1,10 @@
+import React from "react";
+import { SgBadge, SgBadgeOverlay, SgButton } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgBadgeOverlay badge={<SgBadge value={12} max={9} size="xs" severity="danger" />}>
+      <SgButton appearance="outline">Mensagens</SgButton>
+    </SgBadgeOverlay>
+  );
+}

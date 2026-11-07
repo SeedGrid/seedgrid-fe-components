@@ -4,25 +4,25 @@ import { SgCard } from "@seedgrid/fe-components";
 export default function Example() {
   return (
     <SgCard
-      title="Custom background areas"
-      description="Header and footer can have independent background colors."
+      title="Áreas com fundo próprio"
+      description="Cabeçalho e rodapé com cores independentes."
       bgColor="#f8fafc"
       bgColorTitle="#dbeafe"
       bgColorFooter="#e2e8f0"
       footer={
         <div className="flex items-center justify-between text-xs text-slate-600">
-          <span>Updated now</span>
-          <span>Footer area</span>
+          <span>Atualizado agora</span>
+          <span>Área do rodapé</span>
         </div>
       }
     >
       <div className="space-y-2 text-sm text-slate-700">
         <div className="flex items-center justify-between">
-          <span>Revenue</span>
+          <span>Receita</span>
           <span className="font-semibold">R$ 24.980</span>
         </div>
         <div className="flex items-center justify-between">
-          <span>Orders</span>
+          <span>Pedidos</span>
           <span className="font-semibold">162</span>
         </div>
       </div>

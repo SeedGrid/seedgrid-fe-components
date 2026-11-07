@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import React from "react";
-import { SgBadge, SgBadgeOverlay } from "@seedgrid/fe-components";
+import { SgAvatar, SgBadge, SgBadgeOverlay, SgButton } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
 import ComponentAiSummary from "../ai/ComponentAiSummary";
@@ -12,6 +12,8 @@ import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsRe
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
 import { t, useShowcaseI18n } from "../../../i18n";
+
+const PLACEMENTS = ["top-left", "top-right", "bottom-left", "bottom-right", "left", "right", "top", "bottom"] as const;
 
 function Section(props: { title: string; description?: string; children: React.ReactNode }) {
   return (
@@ -106,22 +108,48 @@ export default function SgBadgeOverlayPage() {
           title={`2) ${t(i18n, "showcase.component.badgeOverlay.sections.placements.title")}`}
           description={t(i18n, "showcase.component.badgeOverlay.sections.placements.description")}
         >
-          <SgBadgeOverlay placement="top-left" badge={<SgBadge value="TL" size="xs" badgeStyle="soft" />}>
-            <span className="inline-flex size-12 items-center justify-center rounded-lg border border-border bg-background text-xs">TL</span>
-          </SgBadgeOverlay>
-          <SgBadgeOverlay placement="top-right" badge={<SgBadge value="TR" size="xs" badgeStyle="soft" />}>
-            <span className="inline-flex size-12 items-center justify-center rounded-lg border border-border bg-background text-xs">TR</span>
-          </SgBadgeOverlay>
-          <SgBadgeOverlay placement="bottom-left" badge={<SgBadge value="BL" size="xs" badgeStyle="soft" />}>
-            <span className="inline-flex size-12 items-center justify-center rounded-lg border border-border bg-background text-xs">BL</span>
-          </SgBadgeOverlay>
-          <SgBadgeOverlay placement="bottom-right" badge={<SgBadge value="BR" size="xs" badgeStyle="soft" />}>
-            <span className="inline-flex size-12 items-center justify-center rounded-lg border border-border bg-background text-xs">BR</span>
-          </SgBadgeOverlay>
+          {PLACEMENTS.map((placement) => (
+            <SgBadgeOverlay key={placement} placement={placement} badge={<SgBadge value={placement} size="xs" />}>
+              <span className="inline-flex h-10 w-16 items-center justify-center rounded-lg border border-border bg-background text-xs" />
+            </SgBadgeOverlay>
+          ))}
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-badge-overlay/samples/placements.tsx.sample" />
         </Section>
 
-        <Section title="3) Playground (SgPlayground)" description="Ajuste a posicao e o valor do badge sobreposto.">
+        <Section
+          title={`3) ${t(i18n, "showcase.component.badgeOverlay.sections.avatar.title")}`}
+          description={t(i18n, "showcase.component.badgeOverlay.sections.avatar.description")}
+        >
+          <SgBadgeOverlay badge={<SgBadge value={3} size="sm" severity="danger" />}>
+            <SgAvatar label="Ana Lima" />
+          </SgBadgeOverlay>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-badge-overlay/samples/avatar.tsx.sample" />
+        </Section>
+
+        <Section
+          title={`4) ${t(i18n, "showcase.component.badgeOverlay.sections.status.title")}`}
+          description={t(i18n, "showcase.component.badgeOverlay.sections.status.description")}
+        >
+          <SgBadgeOverlay placement="bottom-right" badge={<SgBadge dot severity="success" />}>
+            <SgAvatar label="Bia Souza" severity="info" />
+          </SgBadgeOverlay>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-badge-overlay/samples/status.tsx.sample" />
+        </Section>
+
+        <Section
+          title={`5) ${t(i18n, "showcase.component.badgeOverlay.sections.button.title")}`}
+          description={t(i18n, "showcase.component.badgeOverlay.sections.button.description")}
+        >
+          <SgBadgeOverlay badge={<SgBadge value={12} max={9} size="xs" severity="danger" />}>
+            <SgButton appearance="outline">Mensagens</SgButton>
+          </SgBadgeOverlay>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-badge-overlay/samples/botao.tsx.sample" />
+        </Section>
+
+        <Section
+          title={`6) ${t(i18n, "showcase.component.badgeOverlay.sections.playground.title")}`}
+          description={t(i18n, "showcase.component.badgeOverlay.sections.playground.description")}
+        >
           <SgPlayground
             title="SgBadgeOverlay Playground"
             interactive

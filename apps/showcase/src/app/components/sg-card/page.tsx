@@ -99,6 +99,8 @@ const CARD_PROPS: ShowcasePropRow[] = [
 export default function SgCardPage() {
   const i18n = useShowcaseI18n();
   const aiComponent = useAiManifestComponent("SgCard");
+  const [clicks, setClicks] = React.useState(0);
+  const [dragPos, setDragPos] = React.useState({ x: 16, y: 16 });
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({
     deps: [i18n.locale]
   });
@@ -256,29 +258,29 @@ export default function SgCardPage() {
       </Section>
 
       <Section
-        title="5) Surface colors"
-        description="Use bgColor, bgColorTitle and bgColorFooter for custom surfaces."
+        title={`5) ${t(i18n, "showcase.component.card.sections.surface.title")}`}
+        description={t(i18n, "showcase.component.card.sections.surface.description")}
       >
         <SgCard
-          title="Custom background areas"
-          description="Header and footer can have independent background colors."
+          title={t(i18n, "showcase.component.card.labels.surfaceTitle")}
+          description={t(i18n, "showcase.component.card.labels.surfaceDescription")}
           bgColor="#f8fafc"
           bgColorTitle="#dbeafe"
           bgColorFooter="#e2e8f0"
           footer={
             <div className="flex items-center justify-between text-xs text-slate-600">
-              <span>Updated now</span>
-              <span>Footer area</span>
+              <span>{t(i18n, "showcase.component.card.labels.surfaceFooterLeft")}</span>
+              <span>{t(i18n, "showcase.component.card.labels.surfaceFooterRight")}</span>
             </div>
           }
         >
           <div className="space-y-2 text-sm text-slate-700">
             <div className="flex items-center justify-between">
-              <span>Revenue</span>
+              <span>{t(i18n, "showcase.component.card.labels.surfaceLine1")}</span>
               <span className="font-semibold">R$ 24.980</span>
             </div>
             <div className="flex items-center justify-between">
-              <span>Orders</span>
+              <span>{t(i18n, "showcase.component.card.labels.surfaceLine2")}</span>
               <span className="font-semibold">162</span>
             </div>
           </div>
@@ -287,8 +289,8 @@ export default function SgCardPage() {
       </Section>
 
       <Section
-        title="6) Draggable + persistence"
-        description="Drag by the title bar. Position persists through SgEnvironmentProvider (or localStorage fallback)."
+        title={`6) ${t(i18n, "showcase.component.card.sections.draggable.title")}`}
+        description={t(i18n, "showcase.component.card.sections.draggable.description")}
       >
         <SgEnvironmentProvider
           value={{
@@ -302,22 +304,23 @@ export default function SgCardPage() {
               draggable
               defaultPosition={{ x: 16, y: 16 }}
               dragPersistKey="sg-card-draggable-demo"
-              title="Drag me by the title bar"
-              description="Try moving and refreshing this page."
+              title={t(i18n, "showcase.component.card.labels.dragTitle")}
+              onPositionChange={(position) => setDragPos(position)}
+              description={`x: ${Math.round(dragPos.x)}  y: ${Math.round(dragPos.y)}`}
               collapsible
               collapseToggleAlign="right"
               collapseIconSize={20}
               bgColor="#ffffff"
-              footer={<div className="text-xs text-muted-foreground">Persisted drag position.</div>}
+              footer={<div className="text-xs text-muted-foreground">{t(i18n, "showcase.component.card.labels.dragFooter")}</div>}
             >
               <div className="space-y-2 text-sm">
                 <div className="flex items-center justify-between">
-                  <span className="text-muted-foreground">Status</span>
-                  <span className="font-semibold text-emerald-600">Online</span>
+                  <span className="text-muted-foreground">{t(i18n, "showcase.component.card.labels.dragStatus")}</span>
+                  <span className="font-semibold text-emerald-600">{t(i18n, "showcase.component.card.labels.dragOnline")}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-muted-foreground">Region</span>
-                  <span className="font-semibold">Sao Paulo</span>
+                  <span className="text-muted-foreground">{t(i18n, "showcase.component.card.labels.dragRegion")}</span>
+                  <span className="font-semibold">{t(i18n, "showcase.component.card.labels.dragCity")}</span>
                 </div>
               </div>
             </SgCard>
@@ -326,7 +329,30 @@ export default function SgCardPage() {
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-card/samples/draggable-persistence.tsx.sample" />
       </Section>
 
-        <Section title="7) Playground (SgPlayground)" description="Ajuste as principais props do SgCard.">
+      <Section
+        title={`7) ${t(i18n, "showcase.component.card.sections.sizes.title")}`}
+        description={t(i18n, "showcase.component.card.sections.sizes.description")}
+      >
+        <div className="grid gap-2">
+          {(["sm", "md", "lg"] as const).map((size) => (
+            <SgCard
+              key={size}
+              size={size}
+              clickable
+              onClick={() => setClicks((prev) => prev + 1)}
+              title={`Tamanho ${size} (cliques: ${clicks})`}
+            >
+              <div className="text-sm text-muted-foreground">Cartão clicável</div>
+            </SgCard>
+          ))}
+        </div>
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-card/samples/tamanhos.tsx.sample" />
+      </Section>
+
+        <Section
+          title={`8) ${t(i18n, "showcase.component.card.sections.playground.title")}`}
+          description={t(i18n, "showcase.component.card.sections.playground.description")}
+        >
           <SgPlayground
             title="SgCard Playground"
             interactive

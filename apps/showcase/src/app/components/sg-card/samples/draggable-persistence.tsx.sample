@@ -2,6 +2,8 @@ import React from "react";
 import { SgCard, SgEnvironmentProvider } from "@seedgrid/fe-components";
 
 export default function Example() {
+  const [dragPos, setDragPos] = React.useState({ x: 16, y: 16 });
+
   return (
     <SgEnvironmentProvider
       value={{
@@ -15,13 +17,14 @@ export default function Example() {
           draggable
           defaultPosition={{ x: 16, y: 16 }}
           dragPersistKey="sg-card-draggable-demo"
-          title="Drag me by the title bar"
-          description="Try moving and refreshing this page."
+          title="Arraste-me pelo cabeçalho"
+          onPositionChange={(position) => setDragPos(position)}
+          description={`x: ${Math.round(dragPos.x)}  y: ${Math.round(dragPos.y)}`}
           collapsible
           collapseToggleAlign="right"
           collapseIconSize={20}
           bgColor="#ffffff"
-          footer={<div className="text-xs text-muted-foreground">Persisted drag position.</div>}
+          footer={<div className="text-xs text-muted-foreground">Posição persistida.</div>}
         >
           <div className="space-y-2 text-sm">
             <div className="flex items-center justify-between">
@@ -29,8 +32,8 @@ export default function Example() {
               <span className="font-semibold text-emerald-600">Online</span>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-muted-foreground">Region</span>
-              <span className="font-semibold">Sao Paulo</span>
+              <span className="text-muted-foreground">Região</span>
+              <span className="font-semibold">São Paulo</span>
             </div>
           </div>
         </SgCard>

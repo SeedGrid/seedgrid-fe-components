@@ -1,0 +1,17 @@
+import { SgBadge } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <div className="flex flex-wrap items-center gap-3">
+      <SgBadge value="Clique" badgeStyle="outline" onClick={() => alert("onClick")} />
+      <SgBadge value="Desabilitado" badgeStyle="outline" enabled={false} onClick={() => {}} />
+      <SgBadge
+        value="tag"
+        badgeStyle="soft"
+        removable
+        autoRemove
+        onRemove={() => alert("onRemove")}
+      />
+    </div>
+  );
+}

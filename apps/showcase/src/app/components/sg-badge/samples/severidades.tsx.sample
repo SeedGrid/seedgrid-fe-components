@@ -1,0 +1,14 @@
+import { SgBadge } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <div className="flex flex-wrap items-center gap-3">
+      {(["primary", "secondary", "success", "warning", "danger", "info", "neutral", "custom"] as const).map((severity) => (
+        <SgBadge key={severity} value={severity} severity={severity} />
+      ))}
+      {(["solid", "soft", "outline", "ghost"] as const).map((badgeStyle) => (
+        <SgBadge key={badgeStyle} value={badgeStyle} badgeStyle={badgeStyle} severity="danger" />
+      ))}
+    </div>
+  );
+}

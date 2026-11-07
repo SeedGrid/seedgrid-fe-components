@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import React from "react";
+import { ArrowRight, Star } from "lucide-react";
 import { SgBadge } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
@@ -179,7 +180,57 @@ export default function SgBadgePage() {
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-badge/samples/actions.tsx.sample" />
       </Section>
 
-        <Section title="6) Playground (SgPlayground)" description="Ajuste as props principais do SgBadge.">
+      <Section
+        title={`6) ${t(i18n, "showcase.component.badge.sections.severities.title")}`}
+        description={t(i18n, "showcase.component.badge.sections.severities.description")}
+      >
+        {(["primary", "secondary", "success", "warning", "danger", "info", "neutral", "custom"] as const).map((severity) => (
+          <SgBadge key={severity} value={severity} severity={severity} />
+        ))}
+        {(["solid", "soft", "outline", "ghost"] as const).map((badgeStyle) => (
+          <SgBadge key={badgeStyle} value={badgeStyle} badgeStyle={badgeStyle} severity="danger" />
+        ))}
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-badge/samples/severidades.tsx.sample" />
+      </Section>
+
+      <Section
+        title={`7) ${t(i18n, "showcase.component.badge.sections.shape.title")}`}
+        description={t(i18n, "showcase.component.badge.sections.shape.description")}
+      >
+        <SgBadge value={t(i18n, "showcase.component.badge.labels.square")} rounded={false} />
+        <SgBadge value={t(i18n, "showcase.component.badge.labels.favorite")} leftIcon={<Star size={12} />} />
+        <SgBadge value={t(i18n, "showcase.component.badge.labels.next")} rightIcon={<ArrowRight size={12} />} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-badge/samples/forma-e-icones.tsx.sample" />
+      </Section>
+
+      <Section
+        title={`8) ${t(i18n, "showcase.component.badge.sections.interactive.title")}`}
+        description={t(i18n, "showcase.component.badge.sections.interactive.description")}
+      >
+        <SgBadge value={t(i18n, "showcase.component.badge.labels.click")} badgeStyle="outline" onClick={() => alert("onClick")} />
+        <SgBadge value={t(i18n, "showcase.component.badge.labels.disabled")} badgeStyle="outline" enabled={false} onClick={() => {}} />
+        <SgBadge
+          value={t(i18n, "showcase.component.badge.labels.tag")}
+          badgeStyle="soft"
+          removable
+          autoRemove
+          onRemove={() => alert("onRemove")}
+        />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-badge/samples/clicavel-e-removivel.tsx.sample" />
+      </Section>
+
+      <Section
+        title={`9) ${t(i18n, "showcase.component.badge.sections.colors.title")}`}
+        description={t(i18n, "showcase.component.badge.sections.colors.description")}
+      >
+        <SgBadge
+          value={t(i18n, "showcase.component.badge.labels.purple")}
+          customColors={{ bg: "#7c3aed", fg: "#ffffff", border: "#6d28d9" }}
+        />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-badge/samples/cores-personalizadas.tsx.sample" />
+      </Section>
+
+        <Section title="10) Playground (SgPlayground)" description="Ajuste as props principais do SgBadge.">
           <SgPlayground
             title="SgBadge Playground"
             interactive

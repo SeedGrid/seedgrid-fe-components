@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import React from "react";
+import { useForm } from "react-hook-form";
 import { SgButton, SgCombobox } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
@@ -251,6 +252,8 @@ export default function App() {
 export default function SgComboboxPage() {
   const i18n = useShowcaseI18n();
   const aiComponent = useAiManifestComponent("SgCombobox");
+  const { control, handleSubmit } = useForm<{ pagamento: string }>({ defaultValues: { pagamento: "" } });
+    const [submitted, setSubmitted] = React.useState("");
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
   const [selectedCountry, setSelectedCountry] = React.useState<Country | null>(null);
@@ -330,24 +333,24 @@ export default function SgComboboxPage() {
             />
             <div className="mt-2 flex flex-wrap gap-2">
               <SgButton size="sm" appearance="outline" onClick={() => setSelectedId(5)}>
-                Set Germany (id 5)
+                {t(i18n, `${K}.labels.setGermany`)}
               </SgButton>
               <SgButton size="sm" appearance="outline" onClick={() => setSelectedId(9)}>
-                Set Japan (id 9)
+                {t(i18n, `${K}.labels.setJapan`)}
               </SgButton>
               <SgButton size="sm" appearance="outline" onClick={() => setSelectedId(null)}>
-                Clear value
+                {t(i18n, `${K}.labels.clearValue`)}
               </SgButton>
             </div>
             <div className="mt-2 rounded border border-border bg-foreground/5 p-2 text-xs">
-              <div>value: {selectedId == null || selectedId === "" ? "(empty)" : String(selectedId)}</div>
+              <div>{t(i18n, `${K}.labels.value`)}: {selectedId == null || selectedId === "" ? t(i18n, `${K}.labels.empty`) : String(selectedId)}</div>
               <div>
-                resolved by value:{" "}
-                {selectedByValue ? `${selectedByValue.description} (${selectedByValue.code})` : "(none)"}
+                {t(i18n, `${K}.labels.resolved`)}:{" "}
+                {selectedByValue ? `${selectedByValue.description} (${selectedByValue.code})` : t(i18n, `${K}.labels.none`)}
               </div>
               <div>
-                last onSelect:{" "}
-                {selectedControlled ? `${selectedControlled.description} (${selectedControlled.code})` : "(none)"}
+                {t(i18n, `${K}.labels.lastSelect`)}:{" "}
+                {selectedControlled ? `${selectedControlled.description} (${selectedControlled.code})` : t(i18n, `${K}.labels.none`)}
               </div>
             </div>
           </div>
@@ -417,9 +420,33 @@ export default function SgComboboxPage() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-combobox/samples/border-radius.tsx.sample" />
         </Section>
 
+        <Section title={t(i18n, `${K}.section5Title`)} description={t(i18n, `${K}.section5Description`)}>
+          <div className="w-96">
+            <SgCombobox<string> id="fruta" label="Fruta" source={["Abacate", "Abacaxi", "Banana", "Laranja", "Uva"]} />
+          </div>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-combobox/samples/lista-simples.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section6Title`)} description={t(i18n, `${K}.section6Description`)}>
+          <form className="w-96 space-y-3" onSubmit={handleSubmit((values) => setSubmitted(values.pagamento))}>
+            <SgCombobox<string>
+              id="pagamento"
+              name="pagamento"
+              control={control}
+              label="Forma de pagamento"
+              required
+              requiredMessage="Escolha uma forma"
+              source={["Boleto", "Cartão", "Pix"]}
+            />
+            <SgButton type="submit">Enviar</SgButton>
+            {submitted ? <div className="text-sm">Enviado: {submitted}</div> : null}
+          </form>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-combobox/samples/formulario.tsx.sample" />
+        </Section>
+
         <Section
-          title={t(i18n, `${K}.section5Title`)}
-          description={t(i18n, `${K}.section5Description`)}
+          title={t(i18n, `${K}.section7Title`)}
+          description={t(i18n, `${K}.section7Description`)}
         >
           <SgPlayground
             title="SgCombobox Playground"

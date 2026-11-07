@@ -1,0 +1,10 @@
+import React from "react";
+import { SgAvatar, SgBadge, SgBadgeOverlay } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgBadgeOverlay badge={<SgBadge value={3} size="sm" severity="danger" />}>
+      <SgAvatar label="Ana Lima" />
+    </SgBadgeOverlay>
+  );
+}

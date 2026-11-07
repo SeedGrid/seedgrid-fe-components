@@ -1,0 +1,18 @@
+import { SgAutocomplete } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <div className="w-80">
+      <SgAutocomplete
+        id="ac-limit"
+        label="Máximo de 2 resultados"
+        maxResult={2}
+        source={(query: string) =>
+          ["Rio Branco", "Rio Claro", "Rio Grande", "Rio Verde"].filter((item) =>
+            item.toLowerCase().includes(query.toLowerCase())
+          )
+        }
+      />
+    </div>
+  );
+}

@@ -1,0 +1,21 @@
+import React from "react";
+import { Folder } from "lucide-react";
+import { SgBreadcrumb } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <div className="space-y-2">
+      {(["slash", "chevron", "dot", "arrow"] as const).map((separator) => (
+        <SgBreadcrumb
+          key={separator}
+          showHomeIcon
+          separator={separator}
+          items={[
+            { id: "a", label: "Pasta", href: "/p", icon: <Folder className="size-4" /> },
+            { id: "b", label: separator }
+          ]}
+        />
+      ))}
+    </div>
+  );
+}

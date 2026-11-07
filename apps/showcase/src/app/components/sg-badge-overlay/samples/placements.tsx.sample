@@ -4,10 +4,11 @@ import { SgBadge, SgBadgeOverlay } from "@seedgrid/fe-components";
 export default function Example() {
   return (
     <>
-      <SgBadgeOverlay placement="top-left" badge={<SgBadge value="TL" size="xs" badgeStyle="soft" />}><span>TL</span></SgBadgeOverlay>
-      <SgBadgeOverlay placement="top-right" badge={<SgBadge value="TR" size="xs" badgeStyle="soft" />}><span>TR</span></SgBadgeOverlay>
-      <SgBadgeOverlay placement="bottom-left" badge={<SgBadge value="BL" size="xs" badgeStyle="soft" />}><span>BL</span></SgBadgeOverlay>
-      <SgBadgeOverlay placement="bottom-right" badge={<SgBadge value="BR" size="xs" badgeStyle="soft" />}><span>BR</span></SgBadgeOverlay>
+      {(["top-left", "top-right", "bottom-left", "bottom-right", "left", "right", "top", "bottom"] as const).map((placement) => (
+        <SgBadgeOverlay key={placement} placement={placement} badge={<SgBadge value={placement} size="xs" />}>
+          <span className="inline-flex h-10 w-16 items-center justify-center rounded-lg border border-border bg-background text-xs" />
+        </SgBadgeOverlay>
+      ))}
     </>
   );
 }

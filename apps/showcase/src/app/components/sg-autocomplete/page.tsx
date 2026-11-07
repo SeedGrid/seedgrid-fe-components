@@ -1,7 +1,8 @@
 ﻿"use client";
 
 import React from "react";
-import { SgAutocomplete, type SgAutocompleteItem } from "@seedgrid/fe-components";
+import { useForm } from "react-hook-form";
+import { SgAutocomplete, SgButton, type SgAutocompleteItem } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
@@ -198,6 +199,8 @@ export default function SgAutocompletePage() {
   const [selectedId, setSelectedId] = React.useState<number | null>(null);
   const [selectedLabel, setSelectedLabel] = React.useState("");
   const [selectedItem, setSelectedItem] = React.useState<SgAutocompleteItem | null>(null);
+  const [submitted, setSubmitted] = React.useState("");
+  const { control, handleSubmit } = useForm<{ fruit: string }>({ defaultValues: { fruit: "" } });
 
   const mapItem = (raw: Country): SgAutocompleteItem => ({
     id: raw.id,
@@ -365,13 +368,13 @@ export default function SgAutocompletePage() {
       </Section>
 
       <Section
-        title={`7) ${t(i18n, "showcase.component.autocomplete.sections.radius.title")}`}
+        title={t(i18n, "showcase.component.autocomplete.sections.radius.title")}
         description={t(i18n, "showcase.component.autocomplete.sections.radius.description")}
       >
         <div className="w-80">
           <SgAutocomplete
             id="ac-radius"
-            label="Country"
+            label={t(i18n, "showcase.component.autocomplete.labels.country")}
             source={source}
             mapItem={mapItem}
             minLengthForSearch={1}
@@ -384,7 +387,100 @@ export default function SgAutocompletePage() {
       </Section>
 
       <Section
-        title={`8) ${t(i18n, "showcase.component.autocomplete.sections.playground.title")}`}
+        title={t(i18n, "showcase.component.autocomplete.sections.async.title")}
+        description={t(i18n, "showcase.component.autocomplete.sections.async.description")}
+      >
+        <div className="w-80">
+          <SgAutocomplete
+            id="ac-async"
+            label={t(i18n, "showcase.component.autocomplete.labels.city")}
+            delay={200}
+            loadingText={t(i18n, "showcase.component.autocomplete.labels.loadingCities")}
+            source={async (query: string) => {
+              await new Promise((resolve) => setTimeout(resolve, 600));
+              return ["Curitiba", "Cuiabá", "Campinas", "Cascavel"].filter((c) =>
+                c.toLowerCase().includes(query.toLowerCase())
+              );
+            }}
+          />
+        </div>
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-autocomplete/samples/fonte-assincrona.tsx.sample" />
+      </Section>
+
+      <Section
+        title={t(i18n, "showcase.component.autocomplete.sections.freeValue.title")}
+        description={t(i18n, "showcase.component.autocomplete.sections.freeValue.description")}
+      >
+        <div className="w-80 space-y-3">
+          <SgAutocomplete
+            id="ac-free"
+            label={t(i18n, "showcase.component.autocomplete.labels.freeText")}
+            allowCustomValue
+            source={(query: string) =>
+              ["Alpha", "Beta", "Gamma"].filter((item) =>
+                item.toLowerCase().includes(query.toLowerCase())
+              )
+            }
+          />
+          <SgAutocomplete
+            id="ac-add"
+            label={t(i18n, "showcase.component.autocomplete.labels.clearOnSelect")}
+            clearOnSelect
+            source={(query: string) =>
+              ["Item A", "Item B", "Item C"].filter((item) =>
+                item.toLowerCase().includes(query.toLowerCase())
+              )
+            }
+          />
+        </div>
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-autocomplete/samples/valor-livre.tsx.sample" />
+      </Section>
+
+      <Section
+        title={t(i18n, "showcase.component.autocomplete.sections.maxResult.title")}
+        description={t(i18n, "showcase.component.autocomplete.sections.maxResult.description")}
+      >
+        <div className="w-80">
+          <SgAutocomplete
+            id="ac-limit"
+            label={t(i18n, "showcase.component.autocomplete.labels.maxTwo")}
+            maxResult={2}
+            source={(query: string) =>
+              ["Rio Branco", "Rio Claro", "Rio Grande", "Rio Verde"].filter((item) =>
+                item.toLowerCase().includes(query.toLowerCase())
+              )
+            }
+          />
+        </div>
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-autocomplete/samples/limite-de-resultados.tsx.sample" />
+      </Section>
+
+      <Section
+        title={t(i18n, "showcase.component.autocomplete.sections.form.title")}
+        description={t(i18n, "showcase.component.autocomplete.sections.form.description")}
+      >
+        <form className="w-80 space-y-3" onSubmit={handleSubmit((values) => setSubmitted(values.fruit))}>
+          <SgAutocomplete
+            id="fruit"
+            name="fruit"
+            control={control}
+            label={t(i18n, "showcase.component.autocomplete.labels.fruit")}
+            required
+            requiredMessage={t(i18n, "showcase.component.autocomplete.labels.chooseFruit")}
+            source={(query: string) =>
+              ["Banana", "Laranja", "Uva"].filter((item) =>
+                item.toLowerCase().includes(query.toLowerCase())
+              )
+            }
+          />
+          <SgButton type="submit">{t(i18n, "showcase.component.autocomplete.labels.send")}</SgButton>
+          {submitted ? <p className="text-sm">{t(i18n, "showcase.component.autocomplete.labels.sent", { value: submitted })}</p> : null}
+        </form>
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-autocomplete/samples/dentro-de-um-formulario.tsx.sample" />
+      </Section>
+
+      <Section
+        title={t(i18n, "showcase.component.autocomplete.sections.playground.title")}
         description={t(i18n, "showcase.common.playground.description.withComponent", { component: "SgAutocomplete" })}
       >
         <SgPlayground

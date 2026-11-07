@@ -584,9 +584,14 @@ export default function SgAccordionPage() {
         <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-accordion/samples/color-customization-example.tsx.sample" />
       </Section>
 
+        <Section title={t(i18n, `${K}.section7Title`)} description={t(i18n, `${K}.section7Description`)}>
+          <SgAccordion items={VERTICAL_ITEMS} collapsible={false} />
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-accordion/samples/sempre-um-aberto.tsx.sample" />
+        </Section>
+
       <Section
-        title={t(i18n, `${K}.section7Title`)}
-        description={t(i18n, `${K}.section7Description`)}
+        title={t(i18n, `${K}.section8Title`)}
+        description={t(i18n, `${K}.section8Description`)}
       >
         <SgPlayground
           title="SgAccordion Playground"

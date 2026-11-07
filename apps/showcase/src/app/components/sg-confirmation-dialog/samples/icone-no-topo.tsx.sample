@@ -16,6 +16,7 @@ export default function Example() {
         icon={<ShieldAlert className="size-6 text-rose-600" />}
         iconPlacement="top"
         severity="danger"
+        closeable
       />
     </>
   );

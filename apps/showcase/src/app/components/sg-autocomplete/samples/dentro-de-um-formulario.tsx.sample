@@ -1,0 +1,28 @@
+import * as React from "react";
+import { useForm } from "react-hook-form";
+import { SgAutocomplete, SgButton } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [submitted, setSubmitted] = React.useState("");
+  const { control, handleSubmit } = useForm<{ fruit: string }>({ defaultValues: { fruit: "" } });
+
+  return (
+    <form className="w-80 space-y-3" onSubmit={handleSubmit((values) => setSubmitted(values.fruit))}>
+      <SgAutocomplete
+        id="fruit"
+        name="fruit"
+        control={control}
+        label="Fruta"
+        required
+        requiredMessage="Escolha uma fruta"
+        source={(query: string) =>
+          ["Banana", "Laranja", "Uva"].filter((item) =>
+            item.toLowerCase().includes(query.toLowerCase())
+          )
+        }
+      />
+      <SgButton type="submit">Enviar</SgButton>
+      {submitted ? <p className="text-sm">Enviado: {submitted}</p> : null}
+    </form>
+  );
+}

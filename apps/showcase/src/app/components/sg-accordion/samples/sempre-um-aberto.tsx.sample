@@ -1,0 +1,14 @@
+"use client";
+
+import * as React from "react";
+import { SgAccordion } from "@seedgrid/fe-components";
+
+const items: SgAccordionItem[] = [
+  { id: "personal", title: "Dados pessoais", content: <p className="text-sm">Conteudo 1</p> },
+  { id: "address", title: "Endereco", content: <p className="text-sm">Conteudo 2</p> },
+  { id: "billing", title: "Faturamento", content: <p className="text-sm">Conteudo 3</p> }
+];
+
+export default function Example() {
+  return <SgAccordion items={items} collapsible={false} />;
+}

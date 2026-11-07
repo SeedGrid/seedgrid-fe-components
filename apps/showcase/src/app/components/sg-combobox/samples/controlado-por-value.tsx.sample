@@ -44,17 +44,17 @@ export default function Example() {
         onSelect={setSelectedControlled}
       />
 
-      <SgButton onClick={() => setSelectedId(5)}>Set Germany (id 5)</SgButton>
-      <SgButton onClick={() => setSelectedId(9)}>Set Japan (id 9)</SgButton>
-      <SgButton onClick={() => setSelectedId(null)}>Clear value</SgButton>
+      <SgButton onClick={() => setSelectedId(5)}>Definir Alemanha (id 5)</SgButton>
+      <SgButton onClick={() => setSelectedId(9)}>Definir Japão (id 9)</SgButton>
+      <SgButton onClick={() => setSelectedId(null)}>Limpar valor</SgButton>
 
       <div>
-        <div>value: {selectedId == null || selectedId === "" ? "(empty)" : String(selectedId)}</div>
+        <div>valor: {selectedId == null || selectedId === "" ? "(vazio)" : String(selectedId)}</div>
         <div>
-          resolved by value: {selectedByValue ? `${selectedByValue.description} (${selectedByValue.code})` : "(none)"}
+          resolvido por value: {selectedByValue ? `${selectedByValue.description} (${selectedByValue.code})` : "(nenhum)"}
         </div>
         <div>
-          last onSelect: {selectedControlled ? `${selectedControlled.description} (${selectedControlled.code})` : "(none)"}
+          último onSelect: {selectedControlled ? `${selectedControlled.description} (${selectedControlled.code})` : "(nenhum)"}
         </div>
       </div>
     </>

@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import React from "react";
-import { Box, Building2, FilePenLine, Layers3, Receipt, Settings } from "lucide-react";
+import { Box, Building2, FilePenLine, Folder, Layers3, Receipt, Settings } from "lucide-react";
 import { SgBreadcrumb, SgButton, type SgBreadcrumbItem } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
@@ -257,6 +257,32 @@ export default function SgBreadcrumbPage() {
         </Section>
 
         <Section title={t(i18n, `${K}.section4Title`)} description={t(i18n, `${K}.section4Description`)}>
+          <div className="space-y-2">
+            {(["slash", "chevron", "dot", "arrow"] as const).map((separator) => (
+              <SgBreadcrumb
+                key={separator}
+                showHomeIcon
+                separator={separator}
+                items={[
+                  { id: "a", label: "Pasta", href: "/p", icon: <Folder className="size-4" /> },
+                  { id: "b", label: separator }
+                ]}
+              />
+            ))}
+          </div>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-breadcrumb/samples/separadores.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section5Title`)} description={t(i18n, `${K}.section5Description`)}>
+          <div className="space-y-2">
+            <SgBreadcrumb items={LONG_ITEMS.slice(0, 3)} size="sm" />
+            <SgBreadcrumb items={LONG_ITEMS.slice(0, 3)} variant="subtle" />
+            <SgBreadcrumb items={LONG_ITEMS.slice(0, 3)} variant="primary" size="lg" />
+          </div>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-breadcrumb/samples/variantes.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section6Title`)} description={t(i18n, `${K}.section6Description`)}>
           <SgPlayground
             title="SgBreadcrumb Playground"
             interactive
