@@ -1,0 +1,24 @@
+import * as React from "react";
+import { useForm } from "react-hook-form";
+import { SgButton, SgFileUpload } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [submitted, setSubmitted] = React.useState("");
+  const { control, handleSubmit } = useForm<{ comprovantes: Array<{ name: string }> }>({ defaultValues: { comprovantes: [] } });
+
+  return (
+    <form className="w-80 space-y-3" onSubmit={handleSubmit((values) => setSubmitted(`${values.comprovantes.length} arquivo(s)`))}>
+      <SgFileUpload
+        id="comprovantes"
+        name="comprovantes"
+        control={control}
+        label="Comprovantes"
+        maxFiles={3}
+        required
+        requiredMessage="Anexe ao menos um arquivo"
+      />
+      <SgButton type="submit">Enviar</SgButton>
+      {submitted ? <p className="text-sm">Enviado: {submitted}</p> : null}
+    </form>
+  );
+}

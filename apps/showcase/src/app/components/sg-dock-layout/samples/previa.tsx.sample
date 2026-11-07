@@ -1,0 +1,27 @@
+import React from "react";
+import { SgDockLayout, SgDockZone, SgToolBar, SgToolbarIconButton } from "@seedgrid/fe-components";
+import { ClipboardList, LayoutGrid } from "lucide-react";
+
+export default function Example() {
+  return (
+    <div className="relative h-[260px] overflow-hidden rounded-xl border border-border bg-black">
+      <SgDockLayout
+        id="showcase-dock-preview-v1"
+        className="grid h-full grid-cols-[1fr_1fr] grid-rows-[auto_1fr]"
+      >
+        <SgDockZone zone="top" className="col-span-2 row-start-1 items-start border-b border-white/20">
+          <SgToolBar id="ferramentas-previa" dockZone="top" orientationDirection="horizontal-left" title="Ferramentas" draggable>
+            <SgToolbarIconButton icon={<LayoutGrid className="size-4" />} label="Painel" hint="Abrir painel" />
+            <SgToolbarIconButton icon={<ClipboardList className="size-4" />} label="Relatorio" hint="Abrir relatorios" />
+          </SgToolBar>
+        </SgDockZone>
+        <SgDockZone zone="left" className="col-start-1 row-start-2 items-start border-r border-white/20">
+          <div className="pointer-events-none text-sm text-white/60">Arraste as toolbars entre as zonas.</div>
+        </SgDockZone>
+        <SgDockZone zone="free" className="col-start-2 row-start-2 items-center justify-center">
+          <div className="pointer-events-none text-sm text-white/60">Zona livre</div>
+        </SgDockZone>
+      </SgDockLayout>
+    </div>
+  );
+}

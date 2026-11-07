@@ -1,0 +1,23 @@
+import * as React from "react";
+import { useForm } from "react-hook-form";
+import { SgButton, SgImageUpload } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [submitted, setSubmitted] = React.useState("");
+  const { control, handleSubmit } = useForm<{ documento: Array<{ name: string }> }>({ defaultValues: { documento: [] } });
+
+  return (
+    <form className="w-80 space-y-3" onSubmit={handleSubmit((values) => setSubmitted(values.documento[0]?.name ?? "-"))}>
+      <SgImageUpload
+        id="documento"
+        name="documento"
+        control={control}
+        label="Foto do documento"
+        required
+        requiredMessage="Escolha uma imagem"
+      />
+      <SgButton type="submit">Enviar</SgButton>
+      {submitted ? <p className="text-sm">Enviado: {submitted}</p> : null}
+    </form>
+  );
+}

@@ -114,44 +114,44 @@ type DockLayoutPageTexts = {
 
 const DOCK_LAYOUT_PAGE_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", DockLayoutPageTexts> = {
   "pt-BR": {
-    sectionBasicDescription: "Four zones (top/bottom/left/right) and six draggable toolbars.",
-    sectionPlaygroundTitle: "2) Playground (SgPlayground)",
+    sectionBasicDescription: "Quatro zonas (top/bottom/left/right) com toolbars arrastáveis.",
+    sectionPlaygroundTitle: "4) Playground (SgPlayground)",
     sectionPlaygroundDescription: "Interactive example with dock zones and toolbars.",
     playgroundTitle: "SgDockLayout Playground",
-    propsTitleLayout: "Referencia de Props - SgDockLayout",
-    propsTitleZone: "Referencia de Props - SgDockZone"
+    propsTitleLayout: "Referência de Props - SgDockLayout",
+    propsTitleZone: "Referência de Props - SgDockZone"
   },
   "pt-PT": {
-    sectionBasicDescription: "Four zones (top/bottom/left/right) and six draggable toolbars.",
-    sectionPlaygroundTitle: "2) Playground (SgPlayground)",
+    sectionBasicDescription: "Quatro zonas (top/bottom/left/right) com toolbars arrastáveis.",
+    sectionPlaygroundTitle: "4) Playground (SgPlayground)",
     sectionPlaygroundDescription: "Interactive example with dock zones and toolbars.",
     playgroundTitle: "SgDockLayout Playground",
-    propsTitleLayout: "Referencia de Props - SgDockLayout",
-    propsTitleZone: "Referencia de Props - SgDockZone"
+    propsTitleLayout: "Referência de Props - SgDockLayout",
+    propsTitleZone: "Referência de Props - SgDockZone"
   },
   "en-US": {
-    sectionBasicDescription: "Four zones (top/bottom/left/right) and six draggable toolbars.",
-    sectionPlaygroundTitle: "2) Playground (SgPlayground)",
+    sectionBasicDescription: "Four zones (top/bottom/left/right) with draggable toolbars.",
+    sectionPlaygroundTitle: "4) Playground (SgPlayground)",
     sectionPlaygroundDescription: "Interactive example with dock zones and toolbars.",
     playgroundTitle: "SgDockLayout Playground",
     propsTitleLayout: "Props Reference - SgDockLayout",
     propsTitleZone: "Props Reference - SgDockZone"
   },
   es: {
-    sectionBasicDescription: "Four zones (top/bottom/left/right) and six draggable toolbars.",
-    sectionPlaygroundTitle: "2) Playground (SgPlayground)",
+    sectionBasicDescription: "Cuatro zonas (top/bottom/left/right) con toolbars arrastrables.",
+    sectionPlaygroundTitle: "4) Playground (SgPlayground)",
     sectionPlaygroundDescription: "Interactive example with dock zones and toolbars.",
     playgroundTitle: "SgDockLayout Playground",
-    propsTitleLayout: "Referencia de Props - SgDockLayout",
-    propsTitleZone: "Referencia de Props - SgDockZone"
+    propsTitleLayout: "Referência de Props - SgDockLayout",
+    propsTitleZone: "Referência de Props - SgDockZone"
   },
   fr: {
-    sectionBasicDescription: "Quatre zones (haut/bas/gauche/droite) et six barres d'outils deplacables.",
-    sectionPlaygroundTitle: "2) Playground (SgPlayground)",
+    sectionBasicDescription: "Quatre zones (haut/bas/gauche/droite) avec des barres d'outils déplaçables.",
+    sectionPlaygroundTitle: "4) Playground (SgPlayground)",
     sectionPlaygroundDescription: "Exemple interactif avec zones de dock et barres d'outils.",
     playgroundTitle: "SgDockLayout Playground",
-    propsTitleLayout: "Reference des props - SgDockLayout",
-    propsTitleZone: "Reference des props - SgDockZone",
+    propsTitleLayout: "Référence des props - SgDockLayout",
+    propsTitleZone: "Référence des props - SgDockZone",
   },
 };
 
@@ -237,6 +237,68 @@ export default function SgDockLayoutPage() {
           </SgDockLayout>
         </div>
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-dock-layout/samples/basico.tsx.sample" />
+      </Section>
+
+      <Section
+        title={`2) ${t(i18n, "showcase.component.dockLayout.sections.state.title")}`}
+        description={t(i18n, "showcase.component.dockLayout.sections.state.description")}
+      >
+        <div className="relative h-[260px] overflow-hidden rounded-xl border border-border bg-black">
+          <SgDockLayout
+            id="showcase-dock-state-v1"
+            className="grid h-full grid-cols-[9rem_1fr] grid-rows-[auto_1fr]"
+            defaultState={{
+              version: 1,
+              toolbars: {
+                ferramentas: { id: "ferramentas", zone: "top", order: 0 },
+                navegacao: { id: "navegacao", zone: "left", order: 0 }
+              }
+            }}
+          >
+            <SgDockZone zone="top" className="col-span-2 row-start-1 items-start border-b border-white/20">
+              <SgToolBar id="ferramentas" dockZone="top" orientationDirection="horizontal-left" title={t(i18n, "showcase.component.dockLayout.labels.tools")} draggable>
+                <SgToolbarIconButton icon={<Home className="size-4" />} label="Home" hint="Ir para inicio" />
+                <SgToolbarIconButton icon={<Search className="size-4" />} label="Buscar" hint="Pesquisar registros" />
+              </SgToolBar>
+            </SgDockZone>
+            <SgDockZone zone="left" className="col-start-1 row-start-2 items-start border-r border-white/20">
+              <SgToolBar id="navegacao" dockZone="left" orientationDirection="vertical-down" title={t(i18n, "showcase.component.dockLayout.labels.navigation")} collapsible draggable>
+                <SgToolbarIconButton icon={<Users className="size-4" />} label="Clientes" hint="Abrir clientes" />
+                <SgToolbarIconButton icon={<Settings className="size-4" />} label="Config" hint="Abrir configuracoes" />
+              </SgToolBar>
+            </SgDockZone>
+            <SgDockZone zone="free" className="col-start-2 row-start-2 items-center justify-center">
+              <div className="pointer-events-none text-sm text-white/60">{t(i18n, "showcase.component.dockLayout.labels.freeZone")}</div>
+            </SgDockZone>
+          </SgDockLayout>
+        </div>
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-dock-layout/samples/estado.tsx.sample" />
+      </Section>
+
+      <Section
+        title={`3) ${t(i18n, "showcase.component.dockLayout.sections.preview.title")}`}
+        description={t(i18n, "showcase.component.dockLayout.sections.preview.description")}
+      >
+        <div className="relative h-[260px] overflow-hidden rounded-xl border border-border bg-black">
+          <SgDockLayout
+            id="showcase-dock-preview-v1"
+            className="grid h-full grid-cols-[1fr_1fr] grid-rows-[auto_1fr]"
+          >
+            <SgDockZone zone="top" className="col-span-2 row-start-1 items-start border-b border-white/20">
+              <SgToolBar id="ferramentas-previa" dockZone="top" orientationDirection="horizontal-left" title={t(i18n, "showcase.component.dockLayout.labels.tools")} draggable>
+                <SgToolbarIconButton icon={<LayoutGrid className="size-4" />} label="Painel" hint="Abrir painel" />
+                <SgToolbarIconButton icon={<ClipboardList className="size-4" />} label="Relatorio" hint="Abrir relatorios" />
+              </SgToolBar>
+            </SgDockZone>
+            <SgDockZone zone="left" className="col-start-1 row-start-2 items-start border-r border-white/20">
+              <div className="pointer-events-none text-sm text-white/60">{t(i18n, "showcase.component.dockLayout.labels.dragHint")}</div>
+            </SgDockZone>
+            <SgDockZone zone="free" className="col-start-2 row-start-2 items-center justify-center">
+              <div className="pointer-events-none text-sm text-white/60">{t(i18n, "showcase.component.dockLayout.labels.freeZone")}</div>
+            </SgDockZone>
+          </SgDockLayout>
+        </div>
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-dock-layout/samples/previa.tsx.sample" />
       </Section>
 
         <Section title={texts.sectionPlaygroundTitle} description={texts.sectionPlaygroundDescription}>

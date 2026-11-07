@@ -1,0 +1,13 @@
+import { SgGrid, SgPanel } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgGrid columns={3} gap={8}>
+      {[1, 2, 3, 4, 5, 6].map((i) => (
+        <SgPanel key={i} padding={12} className="rounded-lg">
+          <p className="text-sm">Célula {i}</p>
+        </SgPanel>
+      ))}
+    </SgGrid>
+  );
+}

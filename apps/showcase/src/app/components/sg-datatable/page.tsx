@@ -65,6 +65,7 @@ const SECTION_TITLE_KEYS = [
   "showcase.component.datatable.sections.filters.title",
   "showcase.component.datatable.sections.selection.title",
   "showcase.component.datatable.sections.template.title",
+  "showcase.component.datatable.sections.columnManager.title",
   "showcase.component.datatable.sections.actions.title",
   "showcase.component.datatable.sections.controlled.title",
   "showcase.component.datatable.sections.server.title",
@@ -1334,7 +1335,7 @@ export default function SgDatatableShowcase() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-datatable/samples/basico.tsx.sample" />
         </Section>
 
-        <Section title={sectionTitles[1] ?? ""}>
+        <Section title={sectionTitles[1] ?? ""} description={t(i18n, "showcase.component.datatable.sections.filters.description")}>
           <SgDatatable
             id="datatable-filter"
             title="Search and filter"
@@ -1350,7 +1351,7 @@ export default function SgDatatableShowcase() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-datatable/samples/filtros.tsx.sample" />
         </Section>
 
-        <Section title={sectionTitles[2] ?? ""}>
+        <Section title={sectionTitles[2] ?? ""} description={t(i18n, "showcase.component.datatable.sections.selection.description")}>
           <SgGrid columns={{ base: 2, md: 4 }} gap={8}>
             <SgButton
               appearance={selectionMode === "single" ? "solid" : "outline"}
@@ -1393,7 +1394,7 @@ export default function SgDatatableShowcase() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-datatable/samples/selecao.tsx.sample" />
         </Section>
 
-        <Section title={sectionTitles[3] ?? ""}>
+        <Section title={sectionTitles[3] ?? ""} description={t(i18n, "showcase.component.datatable.sections.template.description")}>
           <SgDatatable
             id="datatable-template"
             title="Custom body and footer"
@@ -1407,10 +1408,7 @@ export default function SgDatatableShowcase() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-datatable/samples/templates.tsx.sample" />
         </Section>
 
-        <Section
-          title="Column manager, visibility and styles"
-          description="Shows the built-in column manager plus the new per-column visibility, reorder and styling props."
-        >
+        <Section title={sectionTitles[4] ?? ""} description={t(i18n, "showcase.component.datatable.sections.columnManager.description")}>
           <SgDatatable
             id="datatable-column-manager"
             title="Column manager and styled rows"
@@ -1438,7 +1436,7 @@ export default function SgDatatableShowcase() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-datatable/samples/colunas-e-estilos.tsx.sample" />
         </Section>
 
-        <Section title={sectionTitles[4] ?? ""}>
+        <Section title={sectionTitles[5] ?? ""} description={t(i18n, "showcase.component.datatable.sections.actions.description")}>
           <SgDatatable
             id="datatable-actions"
             title="Permissions with row actions"
@@ -1476,7 +1474,7 @@ export default function SgDatatableShowcase() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-datatable/samples/acoes.tsx.sample" />
         </Section>
 
-        <Section title={sectionTitles[5] ?? ""}>
+        <Section title={sectionTitles[6] ?? ""} description={t(i18n, "showcase.component.datatable.sections.controlled.description")}>
           <SgGrid columns={{ base: 2, md: 4 }} gap={8}>
             <SgButton
               onClick={() => {
@@ -1524,7 +1522,7 @@ export default function SgDatatableShowcase() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-datatable/samples/controlado.tsx.sample" />
         </Section>
 
-        <Section title={sectionTitles[6] ?? ""}>
+        <Section title={sectionTitles[7] ?? ""} description={t(i18n, "showcase.component.datatable.sections.server.description")}>
           <SgDatatable
             id="datatable-server"
             title="Server-side pagination"
@@ -1577,7 +1575,7 @@ export default function SgDatatableShowcase() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-datatable/samples/server-side.tsx.sample" />
         </Section>
 
-        <Section title={sectionTitles[7] ?? ""}>
+        <Section title={sectionTitles[8] ?? ""} description={t(i18n, "showcase.component.datatable.sections.loading.description")}>
           <SgGrid columns={{ base: 2, md: 4 }} gap={8}>
             <SgButton appearance={loading ? "solid" : "outline"} onClick={() => setLoading((value) => !value)}>
               toggle loading
@@ -1599,7 +1597,7 @@ export default function SgDatatableShowcase() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-datatable/samples/loading-e-vazio.tsx.sample" />
         </Section>
 
-        <Section title={sectionTitles[8] ?? ""}>
+        <Section title={sectionTitles[9] ?? ""} description={t(i18n, "showcase.component.datatable.sections.mobile.description")}>
           <SgGrid columns={1} gap={12}>
             <SgRadioGroup
               id="datatable-cards-mode"
@@ -1630,7 +1628,7 @@ export default function SgDatatableShowcase() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-datatable/samples/modo-cartoes.tsx.sample" />
         </Section>
 
-        <Section title={sectionTitles[9] ?? ""}>
+        <Section title={sectionTitles[10] ?? ""} description={t(i18n, "showcase.component.datatable.sections.infinite.description")}>
           <SgGrid columns={1} gap={12}>
             <SgRadioGroup
               id="datatable-infinite-mode"
@@ -1661,7 +1659,7 @@ export default function SgDatatableShowcase() {
         </Section>
 
         <Section
-          title={sectionTitles[10] ?? ""}
+          title={sectionTitles[11] ?? ""}
           description={`${t(i18n, "showcase.common.sections.i18n.description", { keys: "components.datatable.*" })} ${t(i18n, "showcase.component.datatable.i18n.precedence")}`}
         >
           <SgComponentsI18nProvider
@@ -1701,7 +1699,7 @@ export default function SgDatatableShowcase() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-datatable/samples/enabled.tsx.sample" />
         </Section>
 
-        <Section title={sectionTitles[11] ?? ""}>
+        <Section title={sectionTitles[12] ?? ""}>
           <SgPlayground
             title="SgDatatable Playground"
             interactive

@@ -1,0 +1,15 @@
+import { SgGrid, SgPanel } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgGrid columns={3} rowHeight={56} gap={8} dense align="center">
+      <SgPanel span={2} padding={12} className="rounded-lg">
+        <p className="text-sm">largo</p>
+      </SgPanel>
+      <SgPanel span={2} padding={12} className="rounded-lg">
+        <p className="text-sm">largo</p>
+      </SgPanel>
+      <p className="text-sm">preenche o buraco</p>
+    </SgGrid>
+  );
+}

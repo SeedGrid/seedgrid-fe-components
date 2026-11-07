@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
+import { useForm } from "react-hook-form";
 import Link from "next/link";
-import { SgFileUpload, SgGrid, SgComponentsI18nProvider } from "@seedgrid/fe-components";
+import { SgButton, SgFileUpload, SgGrid, SgComponentsI18nProvider } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
@@ -32,6 +33,8 @@ function CodeBlock(props: { sampleFile: string }) {
 export default function SgFileUploadPage() {
   const i18n = useShowcaseI18n();
   const aiComponent = useAiManifestComponent("SgFileUpload");
+  const [submitted, setSubmitted] = React.useState("");
+  const { control, handleSubmit } = useForm<{ comprovantes: Array<{ name: string }> }>({ defaultValues: { comprovantes: [] } });
   const [names, setNames] = React.useState<string[]>([]);
   const [count, setCount] = React.useState(0);
   const [lastError, setLastError] = React.useState("-");
@@ -152,7 +155,8 @@ export default function SgFileUploadPage() {
       { id: "exemplo-4", label: `4) ${t(i18n, "showcase.component.fileUpload.sections.limits.title")}` },
       { id: "exemplo-5", label: `5) ${t(i18n, "showcase.component.fileUpload.sections.disabled.title")}` },
       { id: "exemplo-6", label: `6) ${t(i18n, "showcase.common.sections.i18n.title")}` },
-      { id: "exemplo-7", label: "7) Playground" }
+      { id: "exemplo-7", label: `7) ${t(i18n, "showcase.component.fileUpload.sections.form.title")}` },
+      { id: "exemplo-8", label: "8) Playground" }
     ],
     [i18n.locale]
   );
@@ -316,7 +320,28 @@ export default function SgFileUploadPage() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-file-upload/samples/idioma.tsx.sample" />
         </Section>
 
-        <Section id="exemplo-7" title="7) Playground" description={t(i18n, "showcase.common.playground.description")}>
+        <Section
+          id="exemplo-7"
+          title={`7) ${t(i18n, "showcase.component.fileUpload.sections.form.title")}`}
+          description={t(i18n, "showcase.component.fileUpload.sections.form.description")}
+        >
+          <form className="w-80 space-y-3" onSubmit={handleSubmit((values) => setSubmitted(`${values.comprovantes.length} arquivo(s)`))}>
+            <SgFileUpload
+              id="comprovantes"
+              name="comprovantes"
+              control={control}
+              label={t(i18n, "showcase.component.fileUpload.labels.receipts")}
+              maxFiles={3}
+              required
+              requiredMessage={t(i18n, "showcase.component.fileUpload.labels.receiptsRequired")}
+            />
+            <SgButton type="submit">{t(i18n, "showcase.component.fileUpload.labels.send")}</SgButton>
+            {submitted ? <p className="text-sm">{t(i18n, "showcase.component.fileUpload.labels.sent", { value: submitted })}</p> : null}
+          </form>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-file-upload/samples/dentro-de-um-formulario.tsx.sample" />
+        </Section>
+
+        <Section id="exemplo-8" title="8) Playground" description={t(i18n, "showcase.common.playground.description")}>
           <SgPlayground
             title="SgFileUpload Playground"
             interactive

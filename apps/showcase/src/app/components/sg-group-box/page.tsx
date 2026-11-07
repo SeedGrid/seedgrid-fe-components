@@ -3,6 +3,7 @@
 import React from "react";
 import { useForm, type FieldValues } from "react-hook-form";
 import {
+  SgGrid,
   SgGroupBox,
   SgInputPostalCode,
   SgInputEmail,
@@ -219,8 +220,25 @@ export default function SgGroupBoxPage() {
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-group-box/samples/class-name.tsx.sample" />
       </Section>
 
+      <Section
+        title={`5) ${t(i18n, "showcase.component.groupBox.sections.sideBySide.title")}`}
+        description={t(i18n, "showcase.component.groupBox.sections.sideBySide.description")}
+      >
+        <div className="w-full">
+          <SgGrid minItemWidth={200} gap={12}>
+            <SgGroupBox title={t(i18n, "showcase.component.groupBox.labels.delivery")}>
+              <p className="text-sm">{t(i18n, "showcase.component.groupBox.labels.deliveryAddress")}</p>
+            </SgGroupBox>
+            <SgGroupBox title={t(i18n, "showcase.component.groupBox.labels.billing")}>
+              <p className="text-sm">{t(i18n, "showcase.component.groupBox.labels.sameAddress")}</p>
+            </SgGroupBox>
+          </SgGrid>
+        </div>
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-group-box/samples/lado-a-lado.tsx.sample" />
+      </Section>
+
         <Section
-          title="5) Playground (SgPlayground)"
+          title="6) Playground (SgPlayground)"
           description={t(i18n, "showcase.common.playground.description.withComponent", { component: "SgGroupBox" })}
         >
           <SgPlayground
