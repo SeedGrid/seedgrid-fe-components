@@ -277,6 +277,15 @@ export default function SgSegmentDigitShowcase() {
         </Section>
 
         <Section title={t(i18n, `${K}.section5Title`)} description={t(i18n, `${K}.section5Description`)}>
+          <SgGrid columns={{ base: 6, md: 12 }} gap={8}>
+            {"0123456789-:".split("").map((c) => (
+              <SgSegmentDigit key={c} value={c} size={48} />
+            ))}
+          </SgGrid>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-segment-digit/samples/algarismos-sinal-e-dois-pontos.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section6Title`)} description={t(i18n, `${K}.section6Description`)}>
           <SgPlayground
             title="SgSegmentDigit Playground"
             interactive

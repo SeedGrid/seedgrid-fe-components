@@ -1,0 +1,15 @@
+"use client";
+
+import { SgSevenSegmentDigit } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <div className="flex flex-wrap items-end gap-2">
+      <SgSevenSegmentDigit value="4" size={48} thickness={5} />
+      <SgSevenSegmentDigit value="2" size={108} />
+      <SgSevenSegmentDigit value="7" size={108} thickness={8} width={80} />
+      <SgSevenSegmentDigit value="5" size={108} thickness={8} skew={0} rounded={0} />
+      <SgSevenSegmentDigit value="3" size={108} thickness={8} skew={15} glow={false} />
+    </div>
+  );
+}

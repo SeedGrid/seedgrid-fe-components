@@ -1,0 +1,22 @@
+"use client";
+
+import { SgSevenSegmentDigit } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <div className="flex flex-wrap gap-2">
+      {(["red", "blue", "yellow", "green", "white"] as const).map((p) => (
+        <SgSevenSegmentDigit key={p} value="8" palette={p} size={72} thickness={8} padding={8} />
+      ))}
+      <SgSevenSegmentDigit
+        value="8"
+        size={72}
+        thickness={8}
+        padding={8}
+        color="#ff00aa"
+        offColor="rgba(255, 0, 170, 0.15)"
+        backgroundColor="#14000d"
+      />
+    </div>
+  );
+}

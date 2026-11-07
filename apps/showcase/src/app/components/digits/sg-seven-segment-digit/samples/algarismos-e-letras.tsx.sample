@@ -1,0 +1,13 @@
+"use client";
+
+import { SgSevenSegmentDigit } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <div className="flex flex-wrap gap-2">
+      {"0123456789-AbCdEFHJLPUY".split("").map((c) => (
+        <SgSevenSegmentDigit key={c} value={c} size={72} thickness={8} padding={8} />
+      ))}
+    </div>
+  );
+}

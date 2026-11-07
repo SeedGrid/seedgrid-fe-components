@@ -1,0 +1,27 @@
+import React from "react";
+import { SgDatatable } from "@seedgrid/fe-components";
+
+const ROWS = [
+  { id: 1, name: "Ana" },
+  { id: 2, name: "Bruno" },
+  { id: 3, name: "Carla" }
+];
+
+export default function App() {
+  return (
+    <SgDatatable
+      id="datatable-enabled"
+      title="Pessoas"
+      value={ROWS}
+      columns={[
+        { field: "id", header: "ID", sortable: true },
+        { field: "name", header: "Nome", sortable: true, filter: true }
+      ]}
+      dataKey="id"
+      selectionMode="single"
+      showGlobalFilter
+      showColumnFilters
+      enabled={false}
+    />
+  );
+}

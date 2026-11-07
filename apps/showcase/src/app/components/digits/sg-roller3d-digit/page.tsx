@@ -239,6 +239,7 @@ export default function SgRoller3DDigitShowcase() {
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
   const aiComponent = useAiManifestComponent("SgRoller3DDigit");
+  const [slowMode, setSlowMode] = React.useState(false);
 
   const [digit, setDigit] = React.useState("0");
   const [minuteVal, setMinuteVal] = React.useState("00");
@@ -316,6 +317,15 @@ export default function SgRoller3DDigitShowcase() {
         </Section>
 
         <Section title={t(i18n, `${K}.section6Title`)} description={t(i18n, `${K}.section6Description`)}>
+          <div className="flex flex-wrap items-center gap-4">
+            <SgRoller3DDigit value={slowMode ? "9" : "0"} transitionMs={150} fontSize={28} />
+            <SgRoller3DDigit value={slowMode ? "9" : "0"} transitionMs={1500} fontSize={28} />
+            <SgButton size="sm" onClick={() => setSlowMode((v) => !v)}>Alternar 0 e 9</SgButton>
+          </div>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-roller3d-digit/samples/duracao-da-transicao.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section7Title`)} description={t(i18n, `${K}.section7Description`)}>
           <SgPlayground
             title="SgRoller3DDigit Playground"
             interactive

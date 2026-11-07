@@ -1,0 +1,16 @@
+"use client";
+
+import * as React from "react";
+import { SgButton, SgRoller3DDigit } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [slowMode, setSlowMode] = React.useState(false);
+
+  return (
+    <div className="flex flex-wrap items-center gap-4">
+      <SgRoller3DDigit value={slowMode ? "9" : "0"} transitionMs={150} fontSize={28} />
+      <SgRoller3DDigit value={slowMode ? "9" : "0"} transitionMs={1500} fontSize={28} />
+      <SgButton size="sm" onClick={() => setSlowMode((v) => !v)}>Alternar 0 e 9</SgButton>
+    </div>
+  );
+}

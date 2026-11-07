@@ -257,6 +257,7 @@ export default function SgSevenSegmentDigitShowcase() {
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
   const aiComponent = useAiManifestComponent("SgSevenSegmentDigit");
+  const [contador, setContador] = React.useState(0);
 
   const [digit, setDigit] = React.useState("0");
   const [palette, setPalette] = React.useState<SgSevenSegmentDigitPalette>("red");
@@ -392,6 +393,52 @@ export default function SgSevenSegmentDigitShowcase() {
         </Section>
 
         <Section title={t(i18n, `${K}.section6Title`)} description={t(i18n, `${K}.section6Description`)}>
+          <div className="flex flex-wrap gap-2">
+            {"0123456789-AbCdEFHJLPUY".split("").map((c) => (
+              <SgSevenSegmentDigit key={c} value={c} size={72} thickness={8} padding={8} />
+            ))}
+          </div>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-seven-segment-digit/samples/algarismos-e-letras.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section7Title`)} description={t(i18n, `${K}.section7Description`)}>
+          <div className="flex flex-wrap gap-2">
+            {(["red", "blue", "yellow", "green", "white"] as const).map((p) => (
+              <SgSevenSegmentDigit key={p} value="8" palette={p} size={72} thickness={8} padding={8} />
+            ))}
+            <SgSevenSegmentDigit
+              value="8"
+              size={72}
+              thickness={8}
+              padding={8}
+              color="#ff00aa"
+              offColor="rgba(255, 0, 170, 0.15)"
+              backgroundColor="#14000d"
+            />
+          </div>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-seven-segment-digit/samples/paletas.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section8Title`)} description={t(i18n, `${K}.section8Description`)}>
+          <div className="flex flex-wrap items-end gap-2">
+            <SgSevenSegmentDigit value="4" size={48} thickness={5} />
+            <SgSevenSegmentDigit value="2" size={108} />
+            <SgSevenSegmentDigit value="7" size={108} thickness={8} width={80} />
+            <SgSevenSegmentDigit value="5" size={108} thickness={8} skew={0} rounded={0} />
+            <SgSevenSegmentDigit value="3" size={108} thickness={8} skew={15} glow={false} />
+          </div>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-seven-segment-digit/samples/tamanho-espessura-inclinacao-e-brilho.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section9Title`)} description={t(i18n, `${K}.section9Description`)}>
+          <div className="flex items-center gap-4">
+            <SgSevenSegmentDigit value={String(contador)} size={72} thickness={8} padding={8} transitionMs={200} />
+            <SgButton onClick={() => setContador((v) => (v + 1) % 10)}>Próximo</SgButton>
+          </div>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-seven-segment-digit/samples/contador-com-transicao.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section10Title`)} description={t(i18n, `${K}.section10Description`)}>
           <SgPlayground
             title="SgSevenSegmentDigit Playground"
             interactive

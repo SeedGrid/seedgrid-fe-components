@@ -1,0 +1,15 @@
+"use client";
+
+import * as React from "react";
+import { SgButton, SgDiscardDigit } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [n, setN] = React.useState(1);
+
+  return (
+    <div className="flex flex-wrap items-center gap-4">
+      <SgDiscardDigit value={String(n)} />
+      <SgButton onClick={() => setN((v) => (v % 9) + 1)}>Próximo</SgButton>
+    </div>
+  );
+}

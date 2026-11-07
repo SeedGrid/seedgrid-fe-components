@@ -38,7 +38,7 @@ function Section(props: { title: string; description?: string; children: React.R
 
 
 
-
+
 
 
 
@@ -304,10 +304,13 @@ const PROPS: ShowcasePropRow[] = [
 ];
 
 export default function SgDiscardDigitShowcase() {
-  const i18n = useShowcaseI18n();
+  const i18n = useShowcaseI18n();
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
   const aiComponent = useAiManifestComponent("SgDiscardDigit");
+  const [n, setN] = React.useState(1);
+  const montoRef = React.useRef<SgDiscardDigitHandle>(null);
+  const [montoPagina, setMontoPagina] = React.useState(1);
 
   const [sheetCount, setSheetCount] = React.useState(8);
   const [pageIndex, setPageIndex] = React.useState(0);
@@ -497,6 +500,67 @@ export default function SgDiscardDigitShowcase() {
         </Section>
 
         <Section title={t(i18n, `${K}.section7Title`)} description={t(i18n, `${K}.section7Description`)}>
+          <div className="flex flex-wrap items-center gap-4">
+            <SgDiscardDigit value={String(n)} />
+            <SgButton onClick={() => setN((v) => (v % 9) + 1)}>Próximo</SgButton>
+          </div>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-discard-digit/samples/descarte-padrao.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section8Title`)} description={t(i18n, `${K}.section8Description`)}>
+          <div className="flex flex-wrap items-center gap-4">
+            <SgDiscardDigit value={String(n)} changeAnimationMode="incoming" />
+            <SgButton onClick={() => setN((v) => (v % 9) + 1)}>Próximo</SgButton>
+          </div>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-discard-digit/samples/entrando-por-baixo.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section9Title`)} description={t(i18n, `${K}.section9Description`)}>
+          <div className="flex flex-wrap items-center gap-4">
+            <SgDiscardDigit ref={montoRef} value={String(montoPagina)} totalNumberPages={8} stackDepth={8} />
+            <div>
+              <p>Página {montoPagina} de 8</p>
+              <div className="mt-2 flex flex-wrap gap-4">
+                <SgButton
+                  severity="secondary"
+                  onClick={() => {
+                    montoRef.current?.decreasePage();
+                    setMontoPagina((p) => Math.max(1, p - 1));
+                  }}
+                >
+                  Anterior
+                </SgButton>
+                <SgButton
+                  onClick={() => {
+                    montoRef.current?.increasePage();
+                    setMontoPagina((p) => Math.min(8, p + 1));
+                  }}
+                >
+                  Próxima
+                </SgButton>
+              </div>
+            </div>
+          </div>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-discard-digit/samples/paginas-de-um-monte.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section10Title`)} description={t(i18n, `${K}.section10Description`)}>
+          <div className="flex flex-wrap items-center gap-4">
+            <SgDiscardDigit value={String(n)} animateOnChange={false} />
+            <SgButton onClick={() => setN((v) => (v % 9) + 1)}>Próximo</SgButton>
+          </div>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-discard-digit/samples/sem-animacao.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section11Title`)} description={t(i18n, `${K}.section11Description`)}>
+          <div className="flex flex-wrap items-center gap-4">
+            <SgDiscardDigit value={String(n)} fontSize={48} color="#7c2d12" backgroundColor="#ffedd5" fontWeight="bold" transitionMs={900} stackDepth={10} />
+            <SgButton onClick={() => setN((v) => (v % 9) + 1)}>Próximo</SgButton>
+          </div>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-discard-digit/samples/aparencia.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section12Title`)} description={t(i18n, `${K}.section12Description`)}>
           <SgPlayground
             title="SgDiscardDigit Playground"
             interactive

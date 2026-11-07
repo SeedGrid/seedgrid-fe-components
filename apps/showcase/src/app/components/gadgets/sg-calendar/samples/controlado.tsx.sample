@@ -1,0 +1,23 @@
+"use client";
+
+import * as React from "react";
+import { SgCalendar } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [escolhida, setEscolhida] = React.useState(new Date(2026, 2, 18));
+  const [mes, setMes] = React.useState(new Date(2026, 2, 1));
+
+  return (
+    <div className="space-y-2">
+      <SgCalendar
+        value={escolhida}
+        viewDate={mes}
+        onValueChange={setEscolhida}
+        onViewDateChange={setMes}
+      />
+      <p className="text-sm text-muted-foreground">
+        Escolhida: {escolhida.getDate()}/{escolhida.getMonth() + 1}/{escolhida.getFullYear()}
+      </p>
+    </div>
+  );
+}

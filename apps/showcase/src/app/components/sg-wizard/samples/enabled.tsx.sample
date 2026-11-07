@@ -1,0 +1,18 @@
+import * as React from "react";
+import { SgWizard, SgWizardPage } from "@seedgrid/fe-components";
+
+export default function App() {
+  return (
+    <SgWizard stepper="numbered" initialStep={1} enabled={false} onFinish={() => {}}>
+      <SgWizardPage title="Dados">
+        <div className="rounded border border-border bg-foreground/5 p-4">Primeira etapa</div>
+      </SgWizardPage>
+      <SgWizardPage title="Revisão">
+        <div className="rounded border border-border bg-foreground/5 p-4">Segunda etapa</div>
+      </SgWizardPage>
+      <SgWizardPage title="Confirmação">
+        <div className="rounded border border-border bg-foreground/5 p-4">Terceira etapa</div>
+      </SgWizardPage>
+    </SgWizard>
+  );
+}

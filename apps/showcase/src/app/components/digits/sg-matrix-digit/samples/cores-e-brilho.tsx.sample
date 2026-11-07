@@ -1,0 +1,23 @@
+"use client";
+
+import { SgGrid, SgMatrixDigit } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgGrid columns={{ base: 1, md: 3 }} gap={12}>
+      <SgMatrixDigit
+        value="12:34"
+        color="#22c55e"
+        backgroundColor="#04120a"
+        offColor="rgba(34, 197, 94, 0.15)"
+      />
+      <SgMatrixDigit
+        value="OK"
+        color="#f97316"
+        backgroundColor="#1a0b02"
+        offColor="rgba(249, 115, 22, 0.15)"
+      />
+      <SgMatrixDigit value="OFF" glow={false} />
+    </SgGrid>
+  );
+}

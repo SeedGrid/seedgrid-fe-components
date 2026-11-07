@@ -75,6 +75,16 @@ const SECTION_TITLE_KEYS = [
   "showcase.component.datatable.sections.playground.title"
 ] as const;
 
+const ENABLED_ROWS = [
+  { id: 1, name: "Ana" },
+  { id: 2, name: "Bruno" },
+  { id: 3, name: "Carla" }
+];
+const ENABLED_COLUMNS = [
+  { field: "id", header: "ID", sortable: true },
+  { field: "name", header: "Nome", sortable: true, filter: true }
+];
+
 const I18N_COLUMNS = [
   { field: "code", header: "Código", filter: true, filterPlaceholder: "Digite o código" },
   { field: "name", header: "Nome", filter: true }
@@ -290,6 +300,7 @@ function buildDatatableProps(i18n: ShowcaseI18n): ShowcasePropRow[] {
     { prop: "groupBoxProps", type: "Partial<SgGroupBoxProps>", defaultValue: "-", description: t(i18n, "showcase.component.datatable.props.rows.groupBoxProps") },
     { prop: "infiniteScroll", type: "boolean", defaultValue: "true in cards, false in table", description: "Infinite scroll: no paginator; when the end of the list gets close, advances to the next page (rows) and appends the records, with loading and end-of-list indicators. On by default when the list is shown as cards (below 600 px in automatic mode), off in the table. Requires paginator. With lazy, the parent appends the next page to value (first/rows/page arrive in onPage/onLoadMore)." },
     { prop: "onLoadMore", type: "(event: SgDatatablePageEvent) => void", defaultValue: "-", description: "Called (besides onPage) when infinite scroll asks for the next page." },
+    { prop: "enabled", type: "boolean", defaultValue: "true", description: t(i18n, "showcase.component.datatable.sections.enabled.description") },
     { prop: "mobileMode", type: "\"scroll\" | \"cards\"", defaultValue: "- (automatic)", description: "Omitted (default): automatic - below 600 px of container width each row is shown as a 'column: value' card (keeping sorting selector, selection, row actions, footer and pagination; column filters move to a panel opened by a button), above it the regular table. cards forces cards and scroll forces the horizontally scrollable table, at any width." },
     { prop: "column.cardTitle / cardHidden", type: "boolean", defaultValue: "false / false", description: "Cards mode only: cardTitle shows the column value as the card title (no label, first marked column wins); cardHidden leaves the column out of the card." },
     { prop: "showColumnManager / columnManagerLabel / columnManagerMaxHeight", type: "boolean / string / number|string", defaultValue: "true / i18n / 320", description: t(i18n, "showcase.component.datatable.props.rows.columnManagerText") },
@@ -1670,6 +1681,24 @@ export default function SgDatatableShowcase() {
             />
           </SgComponentsI18nProvider>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-datatable/samples/idioma.tsx.sample" />
+        </Section>
+
+        <Section
+          title={t(i18n, "showcase.common.sections.enabled.title")}
+          description={t(i18n, "showcase.component.datatable.sections.enabled.description")}
+        >
+          <SgDatatable
+            id="datatable-enabled"
+            title="Pessoas"
+            value={ENABLED_ROWS}
+            columns={ENABLED_COLUMNS}
+            dataKey="id"
+            selectionMode="single"
+            showGlobalFilter
+            showColumnFilters
+            enabled={false}
+          />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-datatable/samples/enabled.tsx.sample" />
         </Section>
 
         <Section title={sectionTitles[11] ?? ""}>

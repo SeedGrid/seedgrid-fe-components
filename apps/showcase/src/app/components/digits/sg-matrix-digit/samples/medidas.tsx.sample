@@ -1,0 +1,14 @@
+"use client";
+
+import { SgGrid, SgMatrixDigit } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgGrid columns={{ base: 1, md: 4 }} gap={12}>
+      <SgMatrixDigit value="AB" dotSize={5} gap={1} charGap={4} />
+      <SgMatrixDigit value="AB" />
+      <SgMatrixDigit value="AB" dotSize={13} gap={4} charGap={12} padding={14} rounded={24} />
+      <SgMatrixDigit value="AB" gap={0} padding={0} rounded={0} />
+    </SgGrid>
+  );
+}

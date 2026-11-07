@@ -1,0 +1,9 @@
+"use client";
+
+import { SgMatrixDigit } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgMatrixDigit value="Seed Grid 2026" />
+  );
+}

@@ -1,0 +1,16 @@
+"use client";
+
+import * as React from "react";
+import { SgFlipDigit } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [counter, setCounter] = React.useState(0);
+
+  return (
+    <div className="flex flex-wrap items-end gap-6">
+      <SgFlipDigit value={String(counter % 10)} fontSize={28} />
+      <SgFlipDigit value={String(counter % 10)} fontSize={48} />
+      <SgFlipDigit value={String(counter % 10)} fontSize={72} />
+    </div>
+  );
+}

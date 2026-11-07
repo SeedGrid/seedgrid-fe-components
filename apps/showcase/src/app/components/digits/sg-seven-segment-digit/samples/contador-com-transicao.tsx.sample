@@ -1,0 +1,15 @@
+"use client";
+
+import * as React from "react";
+import { SgButton, SgSevenSegmentDigit } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [contador, setContador] = React.useState(0);
+
+  return (
+    <div className="flex items-center gap-4">
+      <SgSevenSegmentDigit value={String(contador)} size={72} thickness={8} padding={8} transitionMs={200} />
+      <SgButton onClick={() => setContador((v) => (v + 1) % 10)}>Próximo</SgButton>
+    </div>
+  );
+}

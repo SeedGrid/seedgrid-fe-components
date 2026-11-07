@@ -484,6 +484,7 @@ export default function SgFadeDigitShowcase() {
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
   const aiComponent = useAiManifestComponent("SgFadeDigit");
+  const [valor, setValor] = React.useState(0);
 
   return (
     <I18NReady>
@@ -540,6 +541,34 @@ export default function SgFadeDigitShowcase() {
 
         {/* Playground */}
         <Section title={t(i18n, `${K}.section7Title`)} description={t(i18n, `${K}.section7Description`)}>
+          <div className="flex items-center gap-2">
+            <SgFadeDigit value="1" />
+            <SgFadeDigit value="4" />
+            <SgFadeDigit value="0" />
+            <SgFadeDigit value="7" />
+          </div>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-fade-digit/samples/cartao-com-fade.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section8Title`)} description={t(i18n, `${K}.section8Description`)}>
+          <div className="flex flex-wrap items-end gap-3">
+            <SgFadeDigit value="2" color="#111827" backgroundColor="#fde68a" />
+            <SgFadeDigit value="9" fontSize={40} color="#22c55e" backgroundColor="#052e16" />
+            <SgFadeDigit value="0" fontSize={100} />
+            <SgFadeDigit value="1" fontSize={24} font="monospace" />
+          </div>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-fade-digit/samples/cores-e-tamanhos.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section9Title`)} description={t(i18n, `${K}.section9Description`)}>
+          <div className="flex items-center gap-6">
+            <SgFadeDigit value={String(valor)} />
+            <SgButton onClick={() => setValor((v) => (v + 1) % 10)}>Próximo</SgButton>
+          </div>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-fade-digit/samples/troca-de-valor.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section10Title`)} description={t(i18n, `${K}.section10Description`)}>
           <SgPlayground
             title="SgFadeDigit Playground"
             interactive

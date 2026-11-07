@@ -1,0 +1,17 @@
+"use client";
+
+import * as React from "react";
+import { SgButton, SgFlipDigit } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [clockValue, setClockValue] = React.useState(1234);
+
+  return (
+    <div className="flex flex-wrap items-center gap-4">
+      {String(clockValue).padStart(4, "0").split("").map((ch, index) => (
+        <SgFlipDigit key={index} value={ch} fontSize={44} />
+      ))}
+      <SgButton size="sm" onClick={() => setClockValue((v) => (v + 111) % 10000)}>Somar 111</SgButton>
+    </div>
+  );
+}

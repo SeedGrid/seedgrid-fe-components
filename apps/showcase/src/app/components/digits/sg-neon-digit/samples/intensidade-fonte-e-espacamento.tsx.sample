@@ -1,0 +1,14 @@
+"use client";
+
+import { SgNeonDigit } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <div className="flex flex-wrap items-center gap-8">
+      <SgNeonDigit value="8" shadowStrength={0.3} fontSize={36} />
+      <SgNeonDigit value="8" shadowStrength={2} fontSize={36} />
+      <SgNeonDigit value="OK" fontWeight="bold" letterSpacing={6} padding={20} rounded={28} />
+      <SgNeonDigit value="7" fontWeight={300} fontSize={64} />
+    </div>
+  );
+}

@@ -108,6 +108,33 @@ const SIZE_CODE = `<SgGrid columns={{ base: 1, md: 3 }} gap={12}>
   </div>
 </SgGrid>`;
 
+const TEXT_DOTS_CODE = `<SgMatrixDigit value="Seed Grid 2026" />`;
+
+const COLORS_GLOW_CODE = `<SgGrid columns={{ base: 1, md: 3 }} gap={12}>
+  <SgMatrixDigit
+    value="12:34"
+    color="#22c55e"
+    backgroundColor="#04120a"
+    offColor="rgba(34, 197, 94, 0.15)"
+  />
+  <SgMatrixDigit
+    value="OK"
+    color="#f97316"
+    backgroundColor="#1a0b02"
+    offColor="rgba(249, 115, 22, 0.15)"
+  />
+  <SgMatrixDigit value="OFF" glow={false} />
+</SgGrid>`;
+
+const MEASURES_CODE = `<SgGrid columns={{ base: 1, md: 4 }} gap={12}>
+  <SgMatrixDigit value="AB" dotSize={5} gap={1} charGap={4} />
+  <SgMatrixDigit value="AB" />
+  <SgMatrixDigit value="AB" dotSize={13} gap={4} charGap={12} padding={14} rounded={24} />
+  <SgMatrixDigit value="AB" gap={0} padding={0} rounded={0} />
+</SgGrid>`;
+
+const SYMBOLS_CODE = `<SgMatrixDigit value="-_.:/?! @#" />`;
+
 const PLAYGROUND_CODE = `import * as React from "react";
 import {
   SgButton,
@@ -275,6 +302,45 @@ export default function SgMatrixDigitShowcase() {
         </Section>
 
         <Section title={t(i18n, `${K}.section5Title`)} description={t(i18n, `${K}.section5Description`)}>
+          <SgMatrixDigit value="Seed Grid 2026" />
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-matrix-digit/samples/texto-em-matriz-de-pontos.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section6Title`)} description={t(i18n, `${K}.section6Description`)}>
+          <SgGrid columns={{ base: 1, md: 3 }} gap={12}>
+            <SgMatrixDigit
+              value="12:34"
+              color="#22c55e"
+              backgroundColor="#04120a"
+              offColor="rgba(34, 197, 94, 0.15)"
+            />
+            <SgMatrixDigit
+              value="OK"
+              color="#f97316"
+              backgroundColor="#1a0b02"
+              offColor="rgba(249, 115, 22, 0.15)"
+            />
+            <SgMatrixDigit value="OFF" glow={false} />
+          </SgGrid>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-matrix-digit/samples/cores-e-brilho.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section7Title`)} description={t(i18n, `${K}.section7Description`)}>
+          <SgGrid columns={{ base: 1, md: 4 }} gap={12}>
+            <SgMatrixDigit value="AB" dotSize={5} gap={1} charGap={4} />
+            <SgMatrixDigit value="AB" />
+            <SgMatrixDigit value="AB" dotSize={13} gap={4} charGap={12} padding={14} rounded={24} />
+            <SgMatrixDigit value="AB" gap={0} padding={0} rounded={0} />
+          </SgGrid>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-matrix-digit/samples/medidas.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section8Title`)} description={t(i18n, `${K}.section8Description`)}>
+          <SgMatrixDigit value="-_.:/?! @#" />
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-matrix-digit/samples/simbolos-e-caractere-desconhecido.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section9Title`)} description={t(i18n, `${K}.section9Description`)}>
           <SgPlayground
             title="SgMatrixDigit Playground"
             interactive

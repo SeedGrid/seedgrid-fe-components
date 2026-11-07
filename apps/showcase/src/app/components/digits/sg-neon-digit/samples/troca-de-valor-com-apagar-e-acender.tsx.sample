@@ -1,0 +1,15 @@
+"use client";
+
+import * as React from "react";
+import { SgButton, SgNeonDigit } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [swapValue, setSwapValue] = React.useState(1);
+
+  return (
+    <div className="flex items-center gap-6">
+      <SgNeonDigit value={String(swapValue)} transitionMs={400} />
+      <SgButton size="sm" onClick={() => setSwapValue((v) => (v % 9) + 1)}>Próximo</SgButton>
+    </div>
+  );
+}

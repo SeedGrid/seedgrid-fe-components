@@ -112,6 +112,8 @@ function LocaleCalendarExample() {
 export default function SgCalendarPage() {
   const i18n = useShowcaseI18n();
   const aiComponent = useAiManifestComponent("SgCalendar");
+  const [escolhida, setEscolhida] = React.useState(new Date(2026, 2, 18));
+  const [mes, setMes] = React.useState(new Date(2026, 2, 1));
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors();
 
   const calendarProps: ShowcasePropRow[] = React.useMemo(
@@ -127,6 +129,7 @@ export default function SgCalendarPage() {
       { prop: "showAdjacentMonths", type: "boolean", defaultValue: "true", description: t(i18n, `${K}.propsAdjacent`) },
       { prop: "minDate / maxDate", type: "Date | string", defaultValue: "-", description: t(i18n, `${K}.propsMinMax`) },
       { prop: "isDateDisabled", type: "(date: Date) => boolean", defaultValue: "-", description: t(i18n, `${K}.propsDisabled`) },
+      { prop: "enabled", type: "boolean", defaultValue: "true", description: t(i18n, "showcase.component.calendar.sections.enabled.description") },
       { prop: "showTodayShortcut", type: "boolean", defaultValue: "true", description: t(i18n, `${K}.propsTodayShortcut`) },
       { prop: "className / style", type: "string / CSSProperties", defaultValue: "-", description: t(i18n, `${K}.propsClassStyle`) },
       { prop: "cardTitle / cardProps", type: 'ReactNode / Omit<SgCardProps, "children" | "title">', defaultValue: '"Calendar/Calendario" / -', description: t(i18n, `${K}.propsCard`) }
@@ -170,7 +173,55 @@ export default function SgCalendarPage() {
             <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-calendar/samples/locale-multiplos-meses.tsx.sample" />
           </Section>
 
+          <Section
+            title={t(i18n, "showcase.common.sections.enabled.title")}
+            description={t(i18n, "showcase.component.calendar.sections.enabled.description")}
+          >
+            <SgCalendar defaultValue="2026-11-10" defaultViewDate="2026-11-01" enabled={false} />
+            <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-calendar/samples/desabilitado-enabled.tsx.sample" />
+          </Section>
+
           <Section title={t(i18n, `${K}.section4Title`)} description={t(i18n, `${K}.section4Description`)}>
+          <SgCalendar onValueChange={(data) => console.log("Escolheu", data)} />
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-calendar/samples/basico.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section5Title`)} description={t(i18n, `${K}.section5Description`)}>
+          <SgCalendar locale="en-US" weekStartsOn={1} weekdayFormat="short" defaultValue="2026-07-04" />
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-calendar/samples/idioma-e-inicio-da-semana.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section6Title`)} description={t(i18n, `${K}.section6Description`)}>
+          <SgCalendar
+            defaultValue="2026-03-16"
+            minDate="2026-03-10"
+            maxDate="2026-03-27"
+            isDateDisabled={(data) => data.getDay() === 0 || data.getDay() === 6}
+          />
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-calendar/samples/limites-e-dias-bloqueados.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section7Title`)} description={t(i18n, `${K}.section7Description`)}>
+          <SgCalendar numberOfMonths={3} monthsPerLine={2} showAdjacentMonths={false} defaultViewDate="2026-03-01" />
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-calendar/samples/varios-meses.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section8Title`)} description={t(i18n, `${K}.section8Description`)}>
+          <div className="space-y-2">
+            <SgCalendar
+              value={escolhida}
+              viewDate={mes}
+              onValueChange={setEscolhida}
+              onViewDateChange={setMes}
+            />
+            <p className="text-sm text-muted-foreground">
+              Escolhida: {escolhida.getDate()}/{escolhida.getMonth() + 1}/{escolhida.getFullYear()}
+            </p>
+          </div>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-calendar/samples/controlado.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section9Title`)} description={t(i18n, `${K}.section9Description`)}>
             <SgPlayground
               title={t(i18n, `${K}.playgroundTitle`)}
               interactive

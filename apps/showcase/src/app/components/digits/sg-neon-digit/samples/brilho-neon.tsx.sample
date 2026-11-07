@@ -1,0 +1,13 @@
+"use client";
+
+import { SgNeonDigit } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <div className="flex flex-wrap items-center gap-8">
+      <SgNeonDigit value="24" />
+      <SgNeonDigit value="59" color="#ff7ad9" shadowColor="#ff00aa" backgroundColor="#1a0612" />
+      <SgNeonDigit value="GO" color="#7dd3fc" shadowColor="#0ea5e9" backgroundColor="#04121c" />
+    </div>
+  );
+}

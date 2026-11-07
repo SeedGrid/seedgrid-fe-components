@@ -1,0 +1,7 @@
+"use client";
+
+import { SgCalendar } from "@seedgrid/fe-components";
+
+export default function App() {
+  return <SgCalendar defaultValue="2026-11-10" defaultViewDate="2026-11-01" enabled={false} />;
+}

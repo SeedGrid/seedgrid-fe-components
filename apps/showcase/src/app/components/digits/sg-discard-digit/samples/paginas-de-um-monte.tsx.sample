@@ -1,0 +1,37 @@
+"use client";
+
+import * as React from "react";
+import { SgButton, SgDiscardDigit, type SgDiscardDigitHandle } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const montoRef = React.useRef<SgDiscardDigitHandle>(null);
+  const [montoPagina, setMontoPagina] = React.useState(1);
+
+  return (
+    <div className="flex flex-wrap items-center gap-4">
+      <SgDiscardDigit ref={montoRef} value={String(montoPagina)} totalNumberPages={8} stackDepth={8} />
+      <div>
+        <p>Página {montoPagina} de 8</p>
+        <div className="mt-2 flex flex-wrap gap-4">
+          <SgButton
+            severity="secondary"
+            onClick={() => {
+              montoRef.current?.decreasePage();
+              setMontoPagina((p) => Math.max(1, p - 1));
+            }}
+          >
+            Anterior
+          </SgButton>
+          <SgButton
+            onClick={() => {
+              montoRef.current?.increasePage();
+              setMontoPagina((p) => Math.min(8, p + 1));
+            }}
+          >
+            Próxima
+          </SgButton>
+        </div>
+      </div>
+    </div>
+  );
+}

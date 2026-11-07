@@ -50,6 +50,8 @@ export default function SgFlipDigitShowcase() {
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
   const aiComponent = useAiManifestComponent("SgFlipDigit");
+  const [counter, setCounter] = React.useState(0);
+  const [clockValue, setClockValue] = React.useState(1234);
   const [digit, setDigit] = React.useState("0");
   const [letter, setLetter] = React.useState("A");
   const [running, setRunning] = React.useState(false);
@@ -162,9 +164,37 @@ export default function SgFlipDigitShowcase() {
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-flip-digit/samples/auto-increment.tsx.sample" />
         </Section>
 
+        <Section title={t(i18n, `${K}.section6Title`)} description={t(i18n, `${K}.section6Description`)}>
+          <div className="flex flex-wrap items-center gap-4">
+            <SgFlipDigit value={String(counter % 10)} fontSize={56} />
+            <SgButton size="sm" onClick={() => setCounter((v) => v + 1)}>+1</SgButton>
+            <SgButton size="sm" severity="secondary" onClick={() => setCounter(0)}>Zerar</SgButton>
+          </div>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-flip-digit/samples/contador.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section7Title`)} description={t(i18n, `${K}.section7Description`)}>
+          <div className="flex flex-wrap items-end gap-6">
+            <SgFlipDigit value={String(counter % 10)} fontSize={28} />
+            <SgFlipDigit value={String(counter % 10)} fontSize={48} />
+            <SgFlipDigit value={String(counter % 10)} fontSize={72} />
+          </div>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-flip-digit/samples/tamanhos-fontsize.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section8Title`)} description={t(i18n, `${K}.section8Description`)}>
+          <div className="flex flex-wrap items-center gap-4">
+            {String(clockValue).padStart(4, "0").split("").map((ch, index) => (
+              <SgFlipDigit key={index} value={ch} fontSize={44} />
+            ))}
+            <SgButton size="sm" onClick={() => setClockValue((v) => (v + 111) % 10000)}>Somar 111</SgButton>
+          </div>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-flip-digit/samples/varios-digitos.tsx.sample" />
+        </Section>
+
         <Section
-          title={t(i18n, `${K}.section6Title`)}
-          description={t(i18n, `${K}.section6Description`)}
+          title={t(i18n, `${K}.section9Title`)}
+          description={t(i18n, `${K}.section9Description`)}
         >
           <SgPlayground
             title="SgFlipDigit Playground"

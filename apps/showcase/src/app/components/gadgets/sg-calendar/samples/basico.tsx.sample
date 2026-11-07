@@ -1,0 +1,9 @@
+"use client";
+
+import { SgCalendar } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgCalendar onValueChange={(data) => console.log("Escolheu", data)} />
+  );
+}

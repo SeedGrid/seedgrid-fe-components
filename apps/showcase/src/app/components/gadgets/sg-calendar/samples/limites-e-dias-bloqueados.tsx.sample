@@ -1,0 +1,14 @@
+"use client";
+
+import { SgCalendar } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgCalendar
+      defaultValue="2026-03-16"
+      minDate="2026-03-10"
+      maxDate="2026-03-27"
+      isDateDisabled={(data) => data.getDay() === 0 || data.getDay() === 6}
+    />
+  );
+}

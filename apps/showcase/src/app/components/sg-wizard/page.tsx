@@ -91,6 +91,7 @@ const WIZARD_PROPS: ShowcasePropRow[] = [
   { prop: "validateStep", type: "(stepIndex) => boolean", defaultValue: "-", description: "Valida uma etapa antes de avancar." },
   { prop: "onBeforeNext", type: "(stepIndex) => boolean | Promise<boolean>", defaultValue: "-", description: "Hook antes de avancar para a proxima etapa. So age no clique; enquanto e aguardado, o botao fica desabilitado." },
   { prop: "onBeforeFinish", type: "(stepIndex) => boolean | Promise<boolean>", defaultValue: "-", description: "Hook antes de concluir o wizard." },
+  { prop: "enabled", type: "boolean", defaultValue: "true", description: "Habilita o wizard como um todo. Com false, Anterior, Proximo, Concluir e os passos do stepper nao respondem; a etapa atual segue visivel." },
   { prop: "nextDisabled", type: "boolean", defaultValue: "false", description: "Desabilita o avanco de forma declarativa (botao Proximo + etapas seguintes no stepper). Use quando o bloqueio JA e conhecido, em vez de deixar o botao com aparencia de clicavel. Nao afeta o botao da ultima etapa." },
   { prop: "onStepChange", type: "(stepIndex) => void", defaultValue: "-", description: "Callback ao trocar de etapa." },
   { prop: "onFinish", type: "() => void | Promise<void>", defaultValue: "-", description: "Disparado quando o usuario conclui o wizard." },
@@ -421,6 +422,23 @@ export default function SgWizardPageDemo() {
       >
         <NextDisabledDemo />
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-wizard/samples/nextdisabled.tsx.sample" />
+      </Section>
+      <Section
+        title={t(i18n, "showcase.common.sections.enabled.title")}
+        description={t(i18n, "showcase.component.wizard.sections.enabled.description")}
+      >
+        <SgWizard stepper="numbered" initialStep={1} enabled={false} onFinish={() => {}}>
+          <SgWizardPage title="Dados">
+            <div className="rounded border border-border bg-foreground/5 p-4">Primeira etapa</div>
+          </SgWizardPage>
+          <SgWizardPage title="Revisão">
+            <div className="rounded border border-border bg-foreground/5 p-4">Segunda etapa</div>
+          </SgWizardPage>
+          <SgWizardPage title="Confirmação">
+            <div className="rounded border border-border bg-foreground/5 p-4">Terceira etapa</div>
+          </SgWizardPage>
+        </SgWizard>
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-wizard/samples/enabled.tsx.sample" />
       </Section>
       <Section
         title="Playground"

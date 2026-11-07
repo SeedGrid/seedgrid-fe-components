@@ -244,6 +244,8 @@ export default function SgNeonDigitShowcase() {
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
   const aiComponent = useAiManifestComponent("SgNeonDigit");
+  const [swapValue, setSwapValue] = React.useState(1);
+  const [staticValue, setStaticValue] = React.useState(1);
 
   const [digit, setDigit] = React.useState("0");
   const [wordIndex, setWordIndex] = React.useState(0);
@@ -358,6 +360,41 @@ export default function SgNeonDigitShowcase() {
         </Section>
 
         <Section title={t(i18n, `${K}.section6Title`)} description={t(i18n, `${K}.section6Description`)}>
+          <div className="flex flex-wrap items-center gap-8">
+            <SgNeonDigit value="24" />
+            <SgNeonDigit value="59" color="#ff7ad9" shadowColor="#ff00aa" backgroundColor="#1a0612" />
+            <SgNeonDigit value="GO" color="#7dd3fc" shadowColor="#0ea5e9" backgroundColor="#04121c" />
+          </div>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-neon-digit/samples/brilho-neon.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section7Title`)} description={t(i18n, `${K}.section7Description`)}>
+          <div className="flex flex-wrap items-center gap-8">
+            <SgNeonDigit value="8" shadowStrength={0.3} fontSize={36} />
+            <SgNeonDigit value="8" shadowStrength={2} fontSize={36} />
+            <SgNeonDigit value="OK" fontWeight="bold" letterSpacing={6} padding={20} rounded={28} />
+            <SgNeonDigit value="7" fontWeight={300} fontSize={64} />
+          </div>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-neon-digit/samples/intensidade-fonte-e-espacamento.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section8Title`)} description={t(i18n, `${K}.section8Description`)}>
+          <div className="flex items-center gap-6">
+            <SgNeonDigit value={String(swapValue)} transitionMs={400} />
+            <SgButton size="sm" onClick={() => setSwapValue((v) => (v % 9) + 1)}>Próximo</SgButton>
+          </div>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-neon-digit/samples/troca-de-valor-com-apagar-e-acender.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section9Title`)} description={t(i18n, `${K}.section9Description`)}>
+          <div className="flex items-center gap-6">
+            <SgNeonDigit value={String(staticValue)} animateOnChange={false} />
+            <SgButton size="sm" onClick={() => setStaticValue((v) => (v % 9) + 1)}>Próximo</SgButton>
+          </div>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-neon-digit/samples/sem-animacao.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section10Title`)} description={t(i18n, `${K}.section10Description`)}>
           <SgPlayground
             title="SgNeonDigit Playground"
             interactive
