@@ -1,0 +1,27 @@
+import React from "react";
+import { Copy, Pencil, Trash2 } from "lucide-react";
+import { SgButton, SgPopup } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const btnRef = React.useRef<HTMLButtonElement>(null);
+  const [open, setOpen] = React.useState(false);
+  const [lastAction, setLastAction] = React.useState("");
+
+  return (
+    <>
+      <SgButton ref={btnRef} appearance="outline" onClick={() => setOpen(true)}>Ações</SgButton>
+      {lastAction ? <span className="text-sm">Última ação: {lastAction}</span> : null}
+      <SgPopup
+        open={open}
+        onOpenChange={setOpen}
+        anchorRef={btnRef as React.RefObject<HTMLElement>}
+        actions={[
+          { label: "Editar", icon: <Pencil className="h-4 w-4" />, hint: "Abre o editor", onClick: () => setLastAction("editar") },
+          { label: "Duplicar (não fecha)", icon: <Copy className="h-4 w-4" />, closeOnClick: false, onClick: () => setLastAction("duplicar") },
+          { label: "Indisponível", enabled: false },
+          { label: "Excluir", icon: <Trash2 className="h-4 w-4" />, severity: "danger", onClick: () => setLastAction("excluir") }
+        ]}
+      />
+    </>
+  );
+}

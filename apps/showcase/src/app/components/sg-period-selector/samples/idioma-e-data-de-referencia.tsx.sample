@@ -1,0 +1,25 @@
+"use client";
+
+import * as React from "react";
+import { SgPeriodSelector } from "@seedgrid/fe-components";
+
+import type { ResolvedPeriod } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [period, setPeriod] = React.useState<ResolvedPeriod | null>(null);
+
+  return (
+    <div className="w-96">
+      <SgPeriodSelector
+        id="ps-english"
+        label="Period"
+        locale="en-US"
+        referenceDate={new Date(2024, 1, 29)}
+        onChange={setPeriod}
+      />
+      <pre className="mt-2 rounded border border-border bg-foreground/5 p-2 text-xs">
+        {period ? `${period.label}: ${period.startDate} to ${period.endDate}` : "No period chosen"}
+      </pre>
+    </div>
+  );
+}

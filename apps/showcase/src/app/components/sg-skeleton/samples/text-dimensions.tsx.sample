@@ -1,0 +1,13 @@
+"use client";
+
+import { SgSkeleton } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <div className="space-y-2">
+      <SgSkeleton width="50%" height="2rem" />
+      <SgSkeleton size="3rem" shape="circle" />
+      <SgSkeleton width={200} height={24} borderRadius={4} />
+    </div>
+  );
+}

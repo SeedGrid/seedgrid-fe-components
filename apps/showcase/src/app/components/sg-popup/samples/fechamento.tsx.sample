@@ -1,0 +1,22 @@
+import React from "react";
+import { SgButton, SgPopup } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const btnRef = React.useRef<HTMLButtonElement>(null);
+  const [open, setOpen] = React.useState(false);
+
+  return (
+    <>
+      <SgButton ref={btnRef} onClick={() => setOpen(true)}>Abrir fixo</SgButton>
+      <SgPopup
+        title="Fixo"
+        open={open}
+        onOpenChange={setOpen}
+        anchorRef={btnRef as React.RefObject<HTMLElement>}
+        closeOnOutsideClick={false}
+        closeOnEscape={false}
+        actions={[{ label: "Fechar" }]}
+      />
+    </>
+  );
+}

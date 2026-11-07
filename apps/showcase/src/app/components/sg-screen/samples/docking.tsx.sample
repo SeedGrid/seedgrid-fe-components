@@ -1,0 +1,15 @@
+"use client";
+
+import { SgPanel, SgScreen } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgScreen fullscreen={false} height={240} padding={8}>
+      <SgPanel className="h-full w-full" contentPadding={8} contentGap={8}>
+        <SgPanel align="top" height={20} borderStyle="solid">Cabeçalho</SgPanel>
+        <SgPanel align="left" width={25} borderStyle="solid">Menu</SgPanel>
+        <SgPanel align="client" borderStyle="solid">Conteúdo</SgPanel>
+      </SgPanel>
+    </SgScreen>
+  );
+}

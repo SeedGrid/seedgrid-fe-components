@@ -392,9 +392,18 @@ export default function SgSkeletonPage() {
         </div>
       </Section>
 
+        <Section title={t(i18n, `${K}.section6Title`)} description={t(i18n, `${K}.section6Description`)}>
+          <div className="space-y-2">
+            <SgSkeleton width="50%" height="2rem" />
+            <SgSkeleton size="3rem" shape="circle" />
+            <SgSkeleton width={200} height={24} borderRadius={4} />
+          </div>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-skeleton/samples/text-dimensions.tsx.sample" />
+        </Section>
+
       <Section
-        title={t(i18n, `${K}.section6Title`)}
-        description={t(i18n, `${K}.section6Description`)}
+        title={t(i18n, `${K}.section7Title`)}
+        description={t(i18n, `${K}.section7Description`)}
       >
         <SgPlayground
           title={t(i18n, `${K}.playgroundTitle`)}

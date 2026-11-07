@@ -1,0 +1,11 @@
+"use client";
+
+import { SgSlider } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <div className="max-w-sm">
+      <SgSlider id="slider-error" minValue={0} maxValue={10} defaultValue={9} error="Valor alto demais" />
+    </div>
+  );
+}

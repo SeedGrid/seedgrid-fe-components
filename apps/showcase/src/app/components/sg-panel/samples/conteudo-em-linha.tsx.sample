@@ -1,0 +1,19 @@
+"use client";
+
+import { SgButton, SgPanel } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgPanel
+      borderStyle="solid"
+      contentPadding={8}
+      contentDirection="row"
+      contentJustify="between"
+      contentAlign="center"
+    >
+      <span>Início</span>
+      <SgButton label="Ação" size="sm" />
+      <span>Fim</span>
+    </SgPanel>
+  );
+}
