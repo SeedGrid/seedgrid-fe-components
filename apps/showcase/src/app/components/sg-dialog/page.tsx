@@ -6,6 +6,7 @@ import { SgButton, SgDialog, type SgDialogProps } from "@seedgrid/fe-components"
 
 type SgDialogSeverity = Exclude<NonNullable<SgDialogProps["severity"]>, "plain">;
 const SEVERITIES: SgDialogSeverity[] = ["primary", "secondary", "success", "info", "warning", "help", "danger"];
+const ANIMATIONS: NonNullable<SgDialogProps["animation"]>[] = ["fade", "zoom", "slideUp"];
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
@@ -104,6 +105,8 @@ export default function SgDialogPage() {
   const [openNoClose, setOpenNoClose] = React.useState(false);
   const [openStrict, setOpenStrict] = React.useState(false);
   const [openAutoClose, setOpenAutoClose] = React.useState(false);
+  const [openAnimation, setOpenAnimation] = React.useState(false);
+  const [dialogAnimation, setDialogAnimation] = React.useState<NonNullable<SgDialogProps["animation"]>>("zoom");
   const isDarkMode = currentMode === "dark";
   const basicCustomColor = isDarkMode ? "rgb(17 24 21)" : "#fff7ed";
   const basicCustomShadow = isDarkMode
@@ -294,7 +297,40 @@ export default function SgDialogPage() {
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-dialog/samples/auto-close.tsx.sample" />
       </Section>
 
-        <Section title="6) Playground (SgPlayground)" description="Teste interativo das principais props do SgDialog.">
+      <Section
+        title={`6) ${t(i18n, "showcase.component.dialog.sections.animation.title")}`}
+        description={t(i18n, "showcase.component.dialog.sections.animation.description")}
+      >
+        <div className="flex flex-wrap gap-2">
+          {ANIMATIONS.map((a) => (
+            <SgButton
+              key={a}
+              appearance="outline"
+              size="sm"
+              onClick={() => {
+                setDialogAnimation(a);
+                setOpenAnimation(true);
+              }}
+            >
+              {a}
+            </SgButton>
+          ))}
+        </div>
+        <SgDialog
+          open={openAnimation}
+          onOpenChange={setOpenAnimation}
+          animation={dialogAnimation}
+          transitionMs={300}
+          title={`${t(i18n, "showcase.component.dialog.labels.animationTitle")} ${dialogAnimation}`}
+        >
+          <div className="text-sm text-muted-foreground">
+            {t(i18n, "showcase.component.dialog.labels.animationBody")}
+          </div>
+        </SgDialog>
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-dialog/samples/animation.tsx.sample" />
+      </Section>
+
+        <Section title="7) Playground (SgPlayground)" description="Teste interativo das principais props do SgDialog.">
           <SgPlayground
             title="SgDialog Playground"
             interactive

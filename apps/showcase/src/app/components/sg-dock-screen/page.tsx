@@ -220,6 +220,32 @@ export default function SgDockScreenPage() {
         </Section>
 
         <Section title={t(i18n, `${K}.section2Title`)} description={t(i18n, `${K}.section2Description`)}>
+          <SgDockScreen
+            id="showcase-dock-screen-size-v1"
+            fullscreen={false}
+            width="520px"
+            height={220}
+            padding={12}
+            className="overflow-hidden rounded-xl border border-border bg-background"
+          >
+            <SgDockZone zone="top">
+              <SgToolBar id="tb-top-dock-screen-size-v1" dockZone="top" orientationDirection="horizontal-left" title={t(i18n, `${K}.top`)} draggable>
+                <SgToolbarIconButton icon={<Home className="size-4" />} label="Home" hint="Ir para inicio" />
+              </SgToolBar>
+            </SgDockZone>
+            <SgDockZone zone="left">
+              <SgToolBar id="tb-left-dock-screen-size-v1" dockZone="left" orientationDirection="vertical-down" title={t(i18n, `${K}.left`)} draggable>
+                <SgToolbarIconButton icon={<Users className="size-4" />} label="Clientes" hint="Abrir clientes" />
+              </SgToolBar>
+            </SgDockZone>
+            <SgDockZone zone="free">
+              <div className="pointer-events-none text-sm text-muted-foreground">{t(i18n, `${K}.center`)}</div>
+            </SgDockZone>
+          </SgDockScreen>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-dock-screen/samples/tamanho.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section3Title`)} description={t(i18n, `${K}.section3Description`)}>
           <SgPlayground
             title={t(i18n, `${K}.playgroundTitle`)}
             interactive

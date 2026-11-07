@@ -1,0 +1,37 @@
+import React from "react";
+import { SgDockLayout, SgDockZone, SgToolBar, SgToolbarIconButton } from "@seedgrid/fe-components";
+import { Home, Search, Settings, Users } from "lucide-react";
+
+export default function Example() {
+  return (
+    <div className="relative h-[260px] overflow-hidden rounded-xl border border-border bg-black">
+      <SgDockLayout
+        id="showcase-dock-state-v1"
+        className="grid h-full grid-cols-[9rem_1fr] grid-rows-[auto_1fr]"
+        defaultState={{
+          version: 1,
+          toolbars: {
+            ferramentas: { id: "ferramentas", zone: "top", order: 0 },
+            navegacao: { id: "navegacao", zone: "left", order: 0 }
+          }
+        }}
+      >
+        <SgDockZone zone="top" className="col-span-2 row-start-1 items-start border-b border-white/20">
+          <SgToolBar id="ferramentas" dockZone="top" orientationDirection="horizontal-left" title="Ferramentas" draggable>
+            <SgToolbarIconButton icon={<Home className="size-4" />} label="Home" hint="Ir para inicio" />
+            <SgToolbarIconButton icon={<Search className="size-4" />} label="Buscar" hint="Pesquisar registros" />
+          </SgToolBar>
+        </SgDockZone>
+        <SgDockZone zone="left" className="col-start-1 row-start-2 items-start border-r border-white/20">
+          <SgToolBar id="navegacao" dockZone="left" orientationDirection="vertical-down" title="Navegação" collapsible draggable>
+            <SgToolbarIconButton icon={<Users className="size-4" />} label="Clientes" hint="Abrir clientes" />
+            <SgToolbarIconButton icon={<Settings className="size-4" />} label="Config" hint="Abrir configuracoes" />
+          </SgToolBar>
+        </SgDockZone>
+        <SgDockZone zone="free" className="col-start-2 row-start-2 items-center justify-center">
+          <div className="pointer-events-none text-sm text-white/60">Zona livre</div>
+        </SgDockZone>
+      </SgDockLayout>
+    </div>
+  );
+}

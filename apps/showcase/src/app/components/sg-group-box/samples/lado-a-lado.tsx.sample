@@ -1,0 +1,14 @@
+import { SgGrid, SgGroupBox } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgGrid minItemWidth={200} gap={12}>
+      <SgGroupBox title="Entrega">
+        <p className="text-sm">Rua das Flores, 100</p>
+      </SgGroupBox>
+      <SgGroupBox title="Cobrança">
+        <p className="text-sm">Mesmo endereço</p>
+      </SgGroupBox>
+    </SgGrid>
+  );
+}

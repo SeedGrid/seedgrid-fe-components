@@ -156,6 +156,36 @@ export default function SgGridPage() {
         </Section>
 
         <Section title={t(i18n, `${K}.section3Title`)} description={t(i18n, `${K}.section3Description`)}>
+          <SgGrid columns={3} gap={8}>
+            {[1, 2, 3, 4, 5, 6].map((i) => (
+              <SgPanel key={i} padding={12} className="rounded-lg">
+                <p className="text-sm">{t(i18n, `${K}.cell`)} {i}</p>
+              </SgPanel>
+            ))}
+          </SgGrid>
+
+          <SgStack className="mt-6">
+            <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-grid/samples/colunas-fixas.tsx.sample" />
+          </SgStack>
+        </Section>
+
+        <Section title={t(i18n, `${K}.section4Title`)} description={t(i18n, `${K}.section4Description`)}>
+          <SgGrid columns={3} rowHeight={56} gap={8} dense align="center">
+            <SgPanel span={2} padding={12} className="rounded-lg">
+              <p className="text-sm">{t(i18n, `${K}.wide`)}</p>
+            </SgPanel>
+            <SgPanel span={2} padding={12} className="rounded-lg">
+              <p className="text-sm">{t(i18n, `${K}.wide`)}</p>
+            </SgPanel>
+            <p className="text-sm">{t(i18n, `${K}.fillsGap`)}</p>
+          </SgGrid>
+
+          <SgStack className="mt-6">
+            <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-grid/samples/linhas-align-dense.tsx.sample" />
+          </SgStack>
+        </Section>
+
+        <Section title={t(i18n, `${K}.section5Title`)} description={t(i18n, `${K}.section5Description`)}>
           <SgPlayground
             title={t(i18n, `${K}.playgroundTitle`)}
             interactive

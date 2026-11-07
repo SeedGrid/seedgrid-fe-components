@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
+import { useForm } from "react-hook-form";
 import Link from "next/link";
-import { SgGrid, SgImageUpload, SgComponentsI18nProvider } from "@seedgrid/fe-components";
+import { SgButton, SgGrid, SgImageUpload, SgComponentsI18nProvider } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
@@ -32,6 +33,8 @@ function CodeBlock(props: { sampleFile: string }) {
 export default function SgImageUploadPage() {
   const i18n = useShowcaseI18n();
   const aiComponent = useAiManifestComponent("SgImageUpload");
+  const [submitted, setSubmitted] = React.useState("");
+  const { control, handleSubmit } = useForm<{ documento: Array<{ name: string }> }>({ defaultValues: { documento: [] } });
   const [fileInfo, setFileInfo] = React.useState<string | null>(null);
   const [galleryCount, setGalleryCount] = React.useState(0);
   const stickyHeaderRef = React.useRef<HTMLDivElement | null>(null);
@@ -151,7 +154,8 @@ export default function SgImageUploadPage() {
       { id: "exemplo-4", label: `4) ${t(i18n, "showcase.component.imageUpload.sections.saved.title")}` },
       { id: "exemplo-5", label: `5) ${t(i18n, "showcase.component.imageUpload.sections.disabled.title")}` },
       { id: "exemplo-6", label: `6) ${t(i18n, "showcase.common.sections.i18n.title")}` },
-      { id: "exemplo-7", label: "7) Playground" }
+      { id: "exemplo-7", label: `7) ${t(i18n, "showcase.component.imageUpload.sections.form.title")}` },
+      { id: "exemplo-8", label: "8) Playground" }
     ],
     [i18n.locale]
   );
@@ -310,7 +314,27 @@ export default function SgImageUploadPage() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-image-upload/samples/idioma.tsx.sample" />
         </Section>
 
-        <Section id="exemplo-7" title="7) Playground" description={t(i18n, "showcase.common.playground.description")}>
+        <Section
+          id="exemplo-7"
+          title={`7) ${t(i18n, "showcase.component.imageUpload.sections.form.title")}`}
+          description={t(i18n, "showcase.component.imageUpload.sections.form.description")}
+        >
+          <form className="w-80 space-y-3" onSubmit={handleSubmit((values) => setSubmitted(values.documento[0]?.name ?? "-"))}>
+            <SgImageUpload
+              id="documento"
+              name="documento"
+              control={control}
+              label={t(i18n, "showcase.component.imageUpload.labels.documentPhoto")}
+              required
+              requiredMessage={t(i18n, "showcase.component.imageUpload.labels.documentPhotoRequired")}
+            />
+            <SgButton type="submit">{t(i18n, "showcase.component.imageUpload.labels.send")}</SgButton>
+            {submitted ? <p className="text-sm">{t(i18n, "showcase.component.imageUpload.labels.sent", { value: submitted })}</p> : null}
+          </form>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-image-upload/samples/dentro-de-um-formulario.tsx.sample" />
+        </Section>
+
+        <Section id="exemplo-8" title="8) Playground" description={t(i18n, "showcase.common.playground.description")}>
           <SgPlayground
             title="SgImageUpload Playground"
             interactive

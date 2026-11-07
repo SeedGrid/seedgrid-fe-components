@@ -1,0 +1,40 @@
+import React from "react";
+import { SgButton, SgDialog, type SgDialogProps } from "@seedgrid/fe-components";
+
+const ANIMATIONS: NonNullable<SgDialogProps["animation"]>[] = ["fade", "zoom", "slideUp"];
+
+export default function Example() {
+  const [open, setOpen] = React.useState(false);
+  const [animation, setAnimation] = React.useState<NonNullable<SgDialogProps["animation"]>>("zoom");
+
+  return (
+    <>
+      <div className="flex flex-wrap gap-2">
+        {ANIMATIONS.map((a) => (
+          <SgButton
+            key={a}
+            appearance="outline"
+            size="sm"
+            onClick={() => {
+              setAnimation(a);
+              setOpen(true);
+            }}
+          >
+            {a}
+          </SgButton>
+        ))}
+      </div>
+      <SgDialog
+        open={open}
+        onOpenChange={setOpen}
+        animation={animation}
+        transitionMs={300}
+        title={`Animação ${animation}`}
+      >
+        <div className="text-sm text-muted-foreground">
+          A animação define como o diálogo entra e sai.
+        </div>
+      </SgDialog>
+    </>
+  );
+}
