@@ -140,6 +140,13 @@ export type SgDatatableProps<T extends SgDatatableRow = SgDatatableRow> = {
   rowClassName?: string | ((rowData: T, rowIndex: number) => string | undefined);
   groupBoxProps?: Omit<Partial<SgGroupBoxProps>, "children" | "title"> & { title?: string };
   showColumnManager?: boolean;
+  /**
+   * Habilita a tabela (padrao `true`). Com `false` as acoes que mudam estado ficam bloqueadas:
+   * ordenacao, selecao de linhas, filtros (global e por coluna), limpar filtros e o gerenciador de
+   * colunas. A leitura continua: paginacao, rolagem e carga de mais linhas seguem funcionando.
+   * O componente fica com aparencia de desabilitado e `aria-disabled`.
+   */
+  enabled?: boolean;
   columnManagerLabel?: string;
   columnManagerMaxHeight?: number | string;
   /** Omitido (padrao): automatico - cartoes quando o container fica abaixo de SG_DATATABLE_MOBILE_BREAKPOINT (600 px), tabela acima. `cards` forca cartoes e `scroll` forca a tabela (rolagem horizontal) em qualquer largura. */
@@ -408,6 +415,7 @@ function SgDatatableBase<T extends SgDatatableRow>(
     sortOrder,
     onSort,
     removableSort = true,
+    enabled = true,
     selectionMode,
     selection,
     onSelectionChange,
@@ -883,23 +891,26 @@ function SgDatatableBase<T extends SgDatatableRow>(
 
   const commitSort = React.useCallback(
     (nextSortField: string | null, nextSortOrder: SgDatatableSortOrder) => {
+      if (!enabled) return;
       if (!isSortFieldControlled) setInternalSortField(nextSortField);
       if (!isSortOrderControlled) setInternalSortOrder(nextSortOrder);
       onSort?.({ sortField: nextSortField, sortOrder: nextSortOrder });
     },
-    [isSortFieldControlled, isSortOrderControlled, onSort]
+    [enabled, isSortFieldControlled, isSortOrderControlled, onSort]
   );
 
   const commitSelection = React.useCallback(
     (nextSelection: SgDatatableSelection<T>) => {
+      if (!enabled) return;
       if (!isSelectionControlled) setInternalSelection(nextSelection);
       onSelectionChange?.(nextSelection);
     },
-    [isSelectionControlled, onSelectionChange]
+    [enabled, isSelectionControlled, onSelectionChange]
   );
 
   const commitFilters = React.useCallback(
     (nextFilters: Record<string, string>, nextGlobalFilter: string) => {
+      if (!enabled) return;
       if (!isFiltersControlled) setInternalFilters(nextFilters);
       if (!isGlobalFilterControlled) setInternalGlobalFilter(nextGlobalFilter);
       onGlobalFilterChange?.(nextGlobalFilter);
@@ -1077,6 +1088,7 @@ function SgDatatableBase<T extends SgDatatableRow>(
 
   const toggleColumnVisibility = React.useCallback(
     (columnKey: string, forceVisible?: boolean) => {
+      if (!enabled) return;
       setHiddenColumnsMap((prev) => {
         const isCurrentlyHidden = Boolean(prev[columnKey]);
         const willHide = forceVisible === undefined ? !isCurrentlyHidden : !forceVisible;
@@ -1104,6 +1116,7 @@ function SgDatatableBase<T extends SgDatatableRow>(
   }, []);
 
   const restoreDefaultColumns = React.useCallback(() => {
+    if (!enabled) return;
     setColumnOrder(columnDescriptors.map((item) => item.key));
     setHiddenColumnsMap(
       columnDescriptors.reduce<Record<string, boolean>>((acc, item) => {
@@ -1114,6 +1127,7 @@ function SgDatatableBase<T extends SgDatatableRow>(
   }, [columnDescriptors]);
 
   const showAllColumns = React.useCallback(() => {
+    if (!enabled) return;
     setHiddenColumnsMap((prev) => {
       const next = { ...prev };
       for (const item of columnDescriptors) {
@@ -1166,7 +1180,13 @@ function SgDatatableBase<T extends SgDatatableRow>(
   const resolvedTitle = (groupBoxProps.title ?? title ?? "").trim() || " ";
 
   return (
-    <div ref={rootRef} className={className} style={style}>
+    <div
+      ref={rootRef}
+      className={enabled ? className : cn(className, "opacity-60")}
+      style={style}
+      aria-disabled={enabled ? undefined : true}
+      data-sg-enabled={enabled ? undefined : "false"}
+    >
       <SgGroupBox {...groupBoxProps} title={resolvedTitle}>
         <div className="space-y-3">
           {shouldShowToolbar ? (
@@ -1174,6 +1194,7 @@ function SgDatatableBase<T extends SgDatatableRow>(
               {showGlobalFilter ? (
                 <input
                   value={currentGlobalFilter}
+                  disabled={!enabled}
                   onChange={(event) => commitFilters(currentFilters, event.target.value)}
                   placeholder={globalFilterLabel}
                   className="min-w-[220px] flex-1 rounded-md border border-[rgb(var(--sg-border))] bg-[rgb(var(--sg-input-bg,var(--sg-surface)))] px-3 py-2 text-sm text-[rgb(var(--sg-input-fg,var(--sg-text)))] placeholder:text-[rgb(var(--sg-input-placeholder,var(--sg-muted)))] outline-none focus:ring-2 focus:ring-[rgb(var(--sg-ring))]"
@@ -1181,7 +1202,7 @@ function SgDatatableBase<T extends SgDatatableRow>(
               ) : null}
 
               {showClearFiltersButton ? (
-                <SgButton size="sm" appearance="outline" onClick={clearFilters}>
+                <SgButton size="sm" appearance="outline" enabled={enabled} onClick={clearFilters}>
                   {clearFiltersLabel}
                 </SgButton>
               ) : null}
@@ -1196,7 +1217,8 @@ function SgDatatableBase<T extends SgDatatableRow>(
                   type="button"
                   aria-label={resolvedColumnManagerLabel}
                   title={resolvedColumnManagerLabel}
-                  onClick={() => setIsColumnManagerOpen((prev) => !prev)}
+                  disabled={!enabled}
+                  onClick={() => enabled && setIsColumnManagerOpen((prev) => !prev)}
                   className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-[rgb(var(--sg-border))] bg-[rgb(var(--sg-surface))] text-[rgb(var(--sg-primary-600))] shadow-sm transition hover:bg-[rgb(var(--sg-primary-50))] hover:text-[rgb(var(--sg-primary-700))]"
                 >
                   <SlidersHorizontal size={18} />
@@ -1323,6 +1345,7 @@ function SgDatatableBase<T extends SgDatatableRow>(
                       <>
                         <select
                           aria-label={sortByLabel}
+                          disabled={!enabled}
                           value={currentSortOrder === 0 || !currentSortField ? "" : currentSortField}
                           onChange={(event) => {
                             const next = event.target.value;
@@ -1347,7 +1370,7 @@ function SgDatatableBase<T extends SgDatatableRow>(
                           iconOnly
                           aria-label={sortDirectionLabel}
                           title={sortDirectionLabel}
-                          enabled={!(!currentSortField || currentSortOrder === 0)}
+                          enabled={enabled && !(!currentSortField || currentSortOrder === 0)}
                           onClick={() => {
                             if (!currentSortField) return;
                             commitSort(currentSortField, currentSortOrder === 1 ? -1 : 1);
@@ -1382,6 +1405,7 @@ function SgDatatableBase<T extends SgDatatableRow>(
                           <span className="text-xs font-semibold text-[rgb(var(--sg-muted))]">{column.header}</span>
                           <input
                             value={filterValue}
+                            disabled={!enabled}
                             onChange={(event) => {
                               const normalized = normalizeFilters({ ...currentFilters, [filterField]: event.target.value });
                               commitFilters(normalized, currentGlobalFilter);
@@ -1425,7 +1449,7 @@ function SgDatatableBase<T extends SgDatatableRow>(
                           }}
                           className={cn(
                             "rounded-lg border border-[rgb(var(--sg-border))] bg-[rgb(var(--sg-surface))] p-3",
-                            selectionMode ? "cursor-pointer" : "",
+                            selectionMode && enabled ? "cursor-pointer" : "",
                             stripedRows && absoluteRowIndex % 2 === 1 ? "bg-[rgb(var(--sg-primary-50))]" : "",
                             selected ? "border-[rgb(var(--sg-primary-600))] bg-[rgb(var(--sg-primary-100))]" : "",
                             customRowClass
@@ -1504,6 +1528,7 @@ function SgDatatableBase<T extends SgDatatableRow>(
                           {column.sortable ? (
                             <button
                               type="button"
+                              disabled={!enabled}
                               onClick={() => handleHeaderSort(column)}
                               className={cn(
                                 "inline-flex items-center gap-1 font-semibold",
@@ -1541,6 +1566,7 @@ function SgDatatableBase<T extends SgDatatableRow>(
                             {column.filter && filterField ? (
                               <input
                                 value={filterValue}
+                                disabled={!enabled}
                                 onChange={(event) => {
                                   const nextFilters = {
                                     ...currentFilters,
@@ -1598,7 +1624,7 @@ function SgDatatableBase<T extends SgDatatableRow>(
                             handleRowSelection(rowData);
                           }}
                           className={cn(
-                            selectionMode ? "cursor-pointer" : "",
+                            selectionMode && enabled ? "cursor-pointer" : "",
                             stripedRows && absoluteRowIndex % 2 === 1 ? "bg-[rgb(var(--sg-primary-50))]" : "",
                             hoverableRows ? "hover:bg-[rgb(var(--sg-primary-100))]" : "",
                             selected ? "bg-[rgb(var(--sg-primary-100))]" : "",

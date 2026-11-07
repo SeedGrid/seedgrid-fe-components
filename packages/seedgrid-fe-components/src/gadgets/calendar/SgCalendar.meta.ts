@@ -22,6 +22,7 @@ export const sgMeta: SgMetaV0 = {
     { name: "numberOfMonths", type: "number", default: 1, description: "Quantidade de meses visiveis ao mesmo tempo.", semanticRole: "appearance", bindable: true },
     { name: "minDate", type: "Date | string", description: "Limite minimo de selecao.", semanticRole: "validation", bindable: true },
     { name: "maxDate", type: "Date | string", description: "Limite maximo de selecao.", semanticRole: "validation", bindable: true },
+    { name: "enabled", type: "boolean", default: true, description: "Quando false, os dias, os botoes de mes anterior/proximo e o atalho hoje ficam desabilitados (nao focaveis); a data e o mes atuais continuam legiveis.", semanticRole: "behavior", bindable: true },
     { name: "onValueChange", type: "(date: Date) => void", description: "Callback disparado ao selecionar uma data.", semanticRole: "event", bindable: false }
   ],
   states: ["default", "multi-month", "disabled-dates", "controlled"],

@@ -123,6 +123,12 @@ export type SgCalendarProps = Omit<React.HTMLAttributes<HTMLDivElement>, "childr
   minDate?: Date | string;
   maxDate?: Date | string;
   isDateDisabled?: (date: Date) => boolean;
+  /**
+   * Habilita o calendario (padrao `true`). Com `false` os dias, os botoes de mes anterior/proximo
+   * e o atalho "hoje" ficam desabilitados (nao focaveis, sem clique); a data e o mes atuais seguem
+   * legiveis.
+   */
+  enabled?: boolean;
   showTodayShortcut?: boolean;
   cardTitle?: React.ReactNode;
   cardProps?: Omit<SgCardProps, "children" | "title">;
@@ -147,6 +153,7 @@ export function SgCalendar(props: Readonly<SgCalendarProps>) {
     minDate,
     maxDate,
     isDateDisabled,
+    enabled = true,
     showTodayShortcut = true,
     className,
     style,
@@ -261,6 +268,7 @@ export function SgCalendar(props: Readonly<SgCalendarProps>) {
 
   const handleSelectDate = React.useCallback(
     (date: Date) => {
+      if (!enabled) return;
       if (isCellDisabled(date)) return;
       if (!valueControlled) {
         setInternalValue(date);
@@ -271,10 +279,11 @@ export function SgCalendar(props: Readonly<SgCalendarProps>) {
         setMonthViewDate(date);
       }
     },
-    [isCellDisabled, monthViewDate, onValueChange, setMonthViewDate, valueControlled]
+    [enabled, isCellDisabled, monthViewDate, onValueChange, setMonthViewDate, valueControlled]
   );
 
   const handleGoToday = React.useCallback(() => {
+    if (!enabled) return;
     const now = normalizeDate(new Date());
     if (!isCellDisabled(now)) {
       if (!valueControlled) {
@@ -283,7 +292,7 @@ export function SgCalendar(props: Readonly<SgCalendarProps>) {
       onValueChange?.(new Date(now));
     }
     setMonthViewDate(now);
-  }, [isCellDisabled, onValueChange, setMonthViewDate, valueControlled]);
+  }, [enabled, isCellDisabled, onValueChange, setMonthViewDate, valueControlled]);
 
   const monthDates = React.useMemo(
     () => Array.from({ length: safeNumberOfMonths }, (_, index) => addMonths(monthViewDate, index)),
@@ -326,9 +335,11 @@ export function SgCalendar(props: Readonly<SgCalendarProps>) {
       <div
         className={cn(
           "inline-flex max-w-full select-none flex-col gap-3",
+          !enabled && "opacity-60",
           className
         )}
         style={style}
+        aria-disabled={enabled ? undefined : true}
         {...rest}
       >
         <div className="flex items-center justify-between gap-3 rounded-lg border border-border/70 bg-background px-4 py-3">
@@ -336,8 +347,9 @@ export function SgCalendar(props: Readonly<SgCalendarProps>) {
           <div className="flex items-center gap-1">
             <button
               type="button"
-              onClick={() => setMonthViewDate(addMonths(monthViewDate, -1))}
-              className="inline-flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              onClick={() => enabled && setMonthViewDate(addMonths(monthViewDate, -1))}
+              disabled={!enabled}
+              className="inline-flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground disabled:cursor-not-allowed disabled:hover:bg-transparent"
               aria-label={uiLabels.previousMonth}
               title={uiLabels.previousMonth}
             >
@@ -347,7 +359,8 @@ export function SgCalendar(props: Readonly<SgCalendarProps>) {
             </button>
             <button
               type="button"
-              onClick={() => setMonthViewDate(addMonths(monthViewDate, 1))}
+              onClick={() => enabled && setMonthViewDate(addMonths(monthViewDate, 1))}
+              disabled={!enabled}
               className="inline-flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
               aria-label={uiLabels.nextMonth}
               title={uiLabels.nextMonth}
@@ -360,6 +373,7 @@ export function SgCalendar(props: Readonly<SgCalendarProps>) {
               <button
                 type="button"
                 onClick={handleGoToday}
+                disabled={!enabled}
                 className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-border/70 bg-muted/40 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                 aria-label={uiLabels.goToday}
                 title={uiLabels.goToday}
@@ -403,7 +417,7 @@ export function SgCalendar(props: Readonly<SgCalendarProps>) {
                       {days.map((day) => {
                         const inCurrentMonth = isSameMonth(day, monthDate);
                         const hiddenAdjacentDay = !showAdjacentMonths && !inCurrentMonth;
-                        const disabled = isCellDisabled(day);
+                        const disabled = !enabled || isCellDisabled(day);
                         const selected = isSameDay(day, selectedDate) && inCurrentMonth;
                         const isToday = isSameDay(day, today) && inCurrentMonth;
 

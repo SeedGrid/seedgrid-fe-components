@@ -48,6 +48,13 @@ export type SgWizardProps = {
    * Nao afeta o botao de conclusao da ultima etapa: para esse caso existe `onBeforeFinish`.
    */
   nextDisabled?: boolean;
+  /**
+   * Habilita o wizard como um todo (padrao `true`). Com `false` nada muda por interacao: os botoes
+   * "Anterior", "Proximo" e "Concluir" ficam desabilitados e as etapas do stepper deixam de ser
+   * clicaveis; a etapa atual continua visivel. O conteudo da pagina e' do consumidor (use `enabled`
+   * nos campos). Nao confundir com `nextDisabled`, que so' bloqueia o avanco.
+   */
+  enabled?: boolean;
   initialStep?: number;
   labels?: Partial<SgWizardLabels>;
   stepper?: SgWizardStepper;
@@ -164,6 +171,7 @@ export function SgWizard(props: SgWizardProps) {
   const stepper = props.stepper ?? "none";
   const stepNavigation = props.stepNavigation ?? "previous-and-next";
   const nextDisabled = props.nextDisabled ?? false;
+  const enabled = props.enabled ?? true;
 
   const [step, setStep] = React.useState(() => clampWizardStep(props.initialStep, pages.length));
   const [isFinishing, setIsFinishing] = React.useState(false);
@@ -197,6 +205,7 @@ export function SgWizard(props: SgWizardProps) {
   };
 
   const goNext = async () => {
+    if (!enabled) return;
     if (isLast) return;
     // Guarda aqui, e nao so' no `disabled` do botao: o avanco pelo stepper cai neste mesmo
     // caminho, entao um unico ponto cobre as duas formas de ir para frente.
@@ -218,6 +227,7 @@ export function SgWizard(props: SgWizardProps) {
   };
 
   const canNavigateStep = React.useCallback((targetStep: number) => {
+    if (!enabled) return false;
     // Com o avanco bloqueado, o stepper nao pode continuar oferecendo as etapas seguintes como
     // clicaveis — seria um atalho com aparencia de habilitado que nao leva a lugar nenhum.
     if (nextDisabled && targetStep > step) return false;
@@ -227,9 +237,10 @@ export function SgWizard(props: SgWizardProps) {
       pageCount: pages.length,
       stepNavigation
     });
-  }, [pages.length, step, stepNavigation, nextDisabled]);
+  }, [enabled, pages.length, step, stepNavigation, nextDisabled]);
 
   const goPrevious = () => {
+    if (!enabled) return;
     if (isFirst) return;
     setStep((prev) => Math.max(prev - 1, 0));
   };
@@ -246,6 +257,7 @@ export function SgWizard(props: SgWizardProps) {
   };
 
   const handleFinish = async () => {
+    if (!enabled) return;
     if (isFinishing) return;
     if (isValidating) return;
     setIsValidating(true);
@@ -269,7 +281,12 @@ export function SgWizard(props: SgWizardProps) {
   };
 
   return (
-    <div className={props.className} style={props.style}>
+    <div
+      className={props.className}
+      style={props.style}
+      aria-disabled={enabled ? undefined : true}
+      data-sg-enabled={enabled ? undefined : "false"}
+    >
       {stepper !== "none" ? (
         <StepperBar
           pages={pages}
@@ -287,7 +304,8 @@ export function SgWizard(props: SgWizardProps) {
             <button
               type="button"
               onClick={goPrevious}
-              className="inline-flex h-10 items-center justify-center rounded-full border border-border px-5 text-sm font-semibold text-foreground/80 transition hover:bg-muted/60"
+              disabled={!enabled}
+              className="inline-flex h-10 items-center justify-center rounded-full border border-border px-5 text-sm font-semibold text-foreground/80 transition hover:bg-muted/60 disabled:cursor-not-allowed"
             >
               {labels.previous}
             </button>
@@ -298,7 +316,7 @@ export function SgWizard(props: SgWizardProps) {
             <button
               type="button"
               onClick={goNext}
-              disabled={isValidating || nextDisabled}
+              disabled={!enabled || isValidating || nextDisabled}
               className="inline-flex h-10 items-center justify-center rounded-full bg-[hsl(var(--primary))] px-5 text-sm font-semibold text-white shadow-lg shadow-[hsl(var(--primary)/0.35)] transition hover:brightness-95 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {labels.next}
@@ -307,7 +325,7 @@ export function SgWizard(props: SgWizardProps) {
             <button
               type="button"
               onClick={handleFinish}
-              disabled={isFinishing || isValidating}
+              disabled={!enabled || isFinishing || isValidating}
               className="inline-flex h-10 items-center justify-center rounded-full bg-[hsl(var(--primary))] px-5 text-sm font-semibold text-white shadow-lg shadow-[hsl(var(--primary)/0.35)] transition hover:brightness-95 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {labels.finish}
