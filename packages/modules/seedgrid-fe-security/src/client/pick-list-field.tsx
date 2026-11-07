@@ -79,7 +79,7 @@ function toItem(option: PickListOption): SgPickListItem {
   return {
     label: option.label,
     value: option.value,
-    disabled: option.disabled,
+    enabled: option.disabled === undefined ? undefined : !option.disabled,
     data: option.data,
   };
 }
