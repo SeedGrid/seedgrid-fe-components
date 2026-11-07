@@ -37,7 +37,7 @@ export default function App() {
         appearance={appearance}
         size={size}
         loading={loading}
-        disabled={disabled}
+        enabled={!disabled}
         onClick={() => {}}
         items={items}
       />

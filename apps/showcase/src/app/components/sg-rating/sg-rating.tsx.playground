@@ -54,7 +54,7 @@ export default function App() {
           size={size}
           allowHalf={allowHalf}
           cancel={cancel}
-          disabled={disabled}
+          enabled={!disabled}
           readOnly={readOnly}
           showTooltip={showTooltip}
           required={required}

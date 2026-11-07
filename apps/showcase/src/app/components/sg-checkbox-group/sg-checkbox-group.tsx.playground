@@ -52,7 +52,7 @@ export default function App() {
             source={OPTIONS}
             orientation={orientation}
             iconOnly={iconOnly}
-            disabled={disabled}
+            enabled={!disabled}
             readOnly={readOnly}
             required={required}
             showCheckAll={showCheckAll}

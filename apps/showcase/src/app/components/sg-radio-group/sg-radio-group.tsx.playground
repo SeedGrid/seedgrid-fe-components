@@ -24,7 +24,7 @@ function FallbackRadioGroup(props: {
           <input
             type="radio"
             checked={props.value === option.value}
-            disabled={props.disabled || props.readOnly}
+            enabled={!(props.disabled || props.readOnly)}
             onChange={() => props.onChange(option.value)}
           />
           <span>{option.label}</span>
@@ -74,7 +74,7 @@ export default function App() {
             source={OPTIONS}
             orientation={orientation}
             iconOnly={iconOnly}
-            disabled={disabled}
+            enabled={!disabled}
             readOnly={readOnly}
             required={required}
             value={value}
@@ -85,7 +85,7 @@ export default function App() {
             value={value}
             onChange={setValue}
             orientation={orientation}
-            disabled={disabled}
+            enabled={!disabled}
             readOnly={readOnly}
           />
         )}

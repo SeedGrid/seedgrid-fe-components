@@ -66,7 +66,7 @@ export default function App() {
             permitFuture={permitFuture}
             permitAll={permitAll}
             allowCustomPeriod={allowCustomPeriod}
-            disabled={disabled}
+            enabled={!disabled}
             onChange={(p: ResolvedPeriod) => setPeriod(p)}
           />
         ) : (

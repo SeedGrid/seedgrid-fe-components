@@ -25,7 +25,7 @@ export default function App() {
         id="playground-file-upload"
         label="SgFileUpload Playground"
         required={required}
-        disabled={disabled}
+        enabled={!disabled}
         maxFiles={many ? 3 : 1}
         mediaType={onlyDocs ? ["pdf", "xlsx"] : undefined}
         maxSizePerFile={limits ? "1MB" : undefined}

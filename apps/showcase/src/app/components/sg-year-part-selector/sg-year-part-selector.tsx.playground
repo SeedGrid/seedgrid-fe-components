@@ -131,7 +131,7 @@ export default function App() {
             allowedKinds={allowedKinds}
             minYear={minYear}
             maxYear={maxYear}
-            disabled={disabled}
+            enabled={!disabled}
             required={required}
             onChange={(next: ResolvedYearPart) => setResolved(next)}
           />

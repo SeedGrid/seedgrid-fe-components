@@ -37,7 +37,7 @@ export default function App() {
         cssText={cssText}
         onCssTextChange={setCssText}
         showCssEditor={showCssEditor}
-        disabled={disabled}
+        enabled={!disabled}
         onSave={(file) => console.log(file.name)}
       />
     </div>

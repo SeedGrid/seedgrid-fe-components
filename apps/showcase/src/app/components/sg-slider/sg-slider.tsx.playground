@@ -26,7 +26,7 @@ export default function App() {
         step={step}
         value={value}
         width={width}
-        disabled={disabled}
+        enabled={!disabled}
         ariaLabel="Slider playground"
         className="accent-[#c56a2d]"
         onChange={setValue}

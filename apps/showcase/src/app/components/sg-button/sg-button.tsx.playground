@@ -34,7 +34,7 @@ export default function App() {
         appearance={appearance}
         shape={rounded ? "rounded" : "default"}
         loading={loading}
-        disabled={disabled}
+        enabled={!disabled}
         leftIcon={<Check className="size-4" />}
       >
         Preview Button

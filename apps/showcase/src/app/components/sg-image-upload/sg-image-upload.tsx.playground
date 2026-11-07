@@ -23,7 +23,7 @@ export default function App() {
         id="playground-image-upload"
         label="SgImageUpload Playground"
         required={required}
-        disabled={disabled}
+        enabled={!disabled}
         maxFiles={many ? 4 : 1}
         accept={rules ? "image/png,image/jpeg" : undefined}
         maxSizePerFile={rules ? "1MB" : undefined}
