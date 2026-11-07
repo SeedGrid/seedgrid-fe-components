@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Check, X } from "lucide-react";
 import { useForm } from "react-hook-form";
 import type { FieldValues } from "react-hook-form";
-import { SgGrid, SgToggleSwitch } from "@seedgrid/fe-components";
+import { SgButton, SgGrid, SgStack, SgToggleSwitch } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
@@ -345,60 +345,68 @@ type ToggleTexts = {
 
 const TOGGLE_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", ToggleTexts> = {
   "pt-BR": {
-    subtitle: "Toggle switch com suporte a icones, estados disabled/readonly e integracao com react-hook-form.",
-    examplesLabel: "Examples",
-    propsLinkLabel: "Referencia de Props",
-    propsTitle: "Referencia de Props",
+    subtitle: "Toggle switch com suporte a ícones, estados disabled/readonly e integração com react-hook-form.",
+    examplesLabel: "Exemplos",
+    propsLinkLabel: "Referência de Props",
+    propsTitle: "Referência de Props",
     propsColProp: "Prop",
     propsColType: "Tipo",
-    propsColDefault: "Default",
-    propsColDescription: "Description",
+    propsColDefault: "Padrão",
+    propsColDescription: "Descrição",
     sectionTitles: [
-      "1) Basico",
-      "2) Com icones (on/off)",
-      "3) Remote (simulacao de update)",
+      "1) Básico",
+      "2) Com ícones (on/off)",
+      "3) Atualização remota",
       "4) Controlado externamente + captura do valor",
-      "5) React Hook Form",
-      "6) Estados Disabled / ReadOnly",
-      "7) Playground (SgPlayground)" 
+      "5) Dentro de um formulário",
+      "6) Desabilitado e somente leitura",
+      "7) Validação",
+      "8) Erro externo e largura",
+      "9) Playground (SgPlayground)"
     ],
     sectionDescriptions: [
-      "Example simples controlado por estado React.",
-      "Variacao visual com icones dentro do thumb para indicar on/off.",
-      "Ao alterar o switch, simulamos uma atualizacao remota para representar um fluxo comum de persistencia.",
-      "Example de value controlado por estado externo e captura via onChange.",
-      "Suporte nativo para register e control.",
-      "Demonstracao de estados disabled e readOnly.",
-      "Ajuste as principais props do SgToolBar."
+      "Exemplo simples controlado por estado; clique no rótulo ou na chave (Tab foca e Espaço alterna).",
+      "Variação visual com ícones dentro do thumb para indicar ligado e desligado.",
+      "Ao alterar a chave, simulamos uma atualização remota para representar um fluxo comum de persistência.",
+      "Valor controlado por estado externo e captura via onChange.",
+      "Ligado ao formulário por name + control; o valor sai no envio.",
+      "Demonstra os estados enabled: false e readOnly.",
+      "required valida ao sair do campo (validateOnBlur) ou a cada mudança (validateOnBlur: false).",
+      "error mostra uma mensagem vinda de fora; width limita a largura do componente.",
+      "Ajuste as principais props do SgToggleSwitch."
     ],
     playgroundTitle: "SgToggleSwitch Playground"
   },
   "pt-PT": {
-    subtitle: "Toggle switch com suporte a icones, estados disabled/readonly e integracao com react-hook-form.",
-    examplesLabel: "Examples",
-    propsLinkLabel: "Referencia de Props",
-    propsTitle: "Referencia de Props",
+    subtitle: "Toggle switch com suporte a ícones, estados disabled/readonly e integração com react-hook-form.",
+    examplesLabel: "Exemplos",
+    propsLinkLabel: "Referência de Props",
+    propsTitle: "Referência de Props",
     propsColProp: "Prop",
     propsColType: "Tipo",
-    propsColDefault: "Default",
-    propsColDescription: "Description",
+    propsColDefault: "Padrão",
+    propsColDescription: "Descrição",
     sectionTitles: [
-      "1) Basico",
-      "2) Com icones (on/off)",
-      "3) Remote (simulacao de update)",
+      "1) Básico",
+      "2) Com ícones (on/off)",
+      "3) Atualização remota",
       "4) Controlado externamente + captura do valor",
-      "5) React Hook Form",
-      "6) Estados Disabled / ReadOnly",
-      "7) Playground (SgPlayground)"
+      "5) Dentro de um formulário",
+      "6) Desabilitado e somente leitura",
+      "7) Validação",
+      "8) Erro externo e largura",
+      "9) Playground (SgPlayground)"
     ],
     sectionDescriptions: [
-      "Example simples controlado por estado React.",
-      "Variacao visual com icones dentro do thumb para indicar on/off.",
-      "Ao alterar o switch, simulamos uma atualizacao remota para representar um fluxo comum de persistencia.",
-      "Example de value controlado por estado externo e captura via onChange.",
-      "Suporte nativo para register e control.",
-      "Demonstracao de estados disabled e readOnly.",
-      "Ajuste as principais props do SgToolBar."
+      "Exemplo simples controlado por estado; clique no rótulo ou no interruptor (Tab foca e Espaço alterna).",
+      "Variação visual com ícones dentro do thumb para indicar ligado e desligado.",
+      "Ao alterar o interruptor, simulamos uma atualização remota para representar um fluxo comum de persistência.",
+      "Valor controlado por estado externo e captura via onChange.",
+      "Ligado ao formulário por name + control; o valor sai no envio.",
+      "Demonstra os estados enabled: false e readOnly.",
+      "required valida ao sair do campo (validateOnBlur) ou a cada alteração (validateOnBlur: false).",
+      "error mostra uma mensagem vinda de fora; width limita a largura do componente.",
+      "Ajuste as principais props do SgToggleSwitch."
     ],
     playgroundTitle: "SgToggleSwitch Playground"
   },
@@ -414,19 +422,23 @@ const TOGGLE_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", ToggleText
     sectionTitles: [
       "1) Basic",
       "2) With icons (on/off)",
-      "3) Remote (update simulation)",
+      "3) Remote update",
       "4) Externally controlled + captured value",
-      "5) React Hook Form",
-      "6) Disabled / ReadOnly states",
-      "7) Playground (SgPlayground)"
+      "5) Inside a form",
+      "6) Disabled and read-only",
+      "7) Validation",
+      "8) External error and width",
+      "9) Playground (SgPlayground)"
     ],
     sectionDescriptions: [
-      "Simple example controlled with React state.",
-      "Visual variation with icons inside the thumb to indicate on/off.",
+      "Simple example controlled by state; click the label or the switch (Tab focuses and Space toggles).",
+      "Visual variation with icons inside the thumb to indicate on and off.",
       "When toggled, simulates a remote update to represent a common persistence flow.",
-      "Example with externally controlled value and onChange capture.",
-      "Native support for register and control.",
-      "Demonstrates disabled and readOnly states.",
+      "Value controlled by external state and captured via onChange.",
+      "Connected to the form through name + control; the value comes out on submit.",
+      "Shows the enabled: false and readOnly states.",
+      "required validates on blur (validateOnBlur) or on every change (validateOnBlur: false).",
+      "error shows a message that comes from outside; width limits the component width.",
       "Adjust the main SgToggleSwitch props."
     ],
     playgroundTitle: "SgToggleSwitch Playground"
@@ -441,21 +453,25 @@ const TOGGLE_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", ToggleText
     propsColDefault: "Predeterminado",
     propsColDescription: "Descripcion",
     sectionTitles: [
-      "1) Basico",
+      "1) Básico",
       "2) Con iconos (on/off)",
-      "3) Remote (simulacion de update)",
+      "3) Actualización remota",
       "4) Controlado externamente + captura de valor",
-      "5) React Hook Form",
-      "6) Estados Disabled / ReadOnly",
-      "7) Playground (SgPlayground)"
+      "5) Dentro de un formulario",
+      "6) Deshabilitado y solo lectura",
+      "7) Validación",
+      "8) Error externo y ancho",
+      "9) Playground (SgPlayground)"
     ],
     sectionDescriptions: [
-      "Ejemplo simple controlado con estado React.",
-      "Variacion visual con iconos dentro del thumb para indicar on/off.",
-      "Al cambiar el switch, simulamos una actualizacion remota para representar un flujo comun de persistencia.",
-      "Ejemplo de value controlado externamente y captura via onChange.",
-      "Soporte nativo para register y control.",
-      "Demostracion de estados disabled y readOnly.",
+      "Ejemplo simple controlado por estado; haz clic en la etiqueta o en el interruptor (Tab enfoca y Espacio alterna).",
+      "Variación visual con iconos dentro del thumb para indicar encendido y apagado.",
+      "Al cambiar el interruptor, simulamos una actualización remota para representar un flujo común de persistencia.",
+      "Valor controlado por estado externo y captura mediante onChange.",
+      "Conectado al formulario con name + control; el valor sale al enviar.",
+      "Muestra los estados enabled: false y readOnly.",
+      "required valida al salir del campo (validateOnBlur) o en cada cambio (validateOnBlur: false).",
+      "error muestra un mensaje que viene de fuera; width limita el ancho del componente.",
       "Ajusta las props principales de SgToggleSwitch."
     ],
     playgroundTitle: "SgToggleSwitch Playground"
@@ -471,21 +487,25 @@ const TOGGLE_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", ToggleText
     propsColDescription: "Description",
     sectionTitles: [
       "1) Basique",
-      "2) Avec icones (on/off)",
-      "3) Distant (simulation de mise a jour)",
-      "4) Controle en externe + valeur capturee",
-      "5) React Hook Form",
-      "6) Etats desactive / lecture seule",
-      "7) Playground (SgPlayground)",
+      "2) Avec icônes (on/off)",
+      "3) Mise à jour distante",
+      "4) Contrôlé en externe + valeur capturée",
+      "5) Dans un formulaire",
+      "6) Désactivé et lecture seule",
+      "7) Validation",
+      "8) Erreur externe et largeur",
+      "9) Playground (SgPlayground)"
     ],
     sectionDescriptions: [
-      "Exemple simple controle avec l'etat React.",
-      "Variation visuelle avec des icones dans le pouce pour indiquer on/off.",
-      "Lors de la bascule, simule une mise a jour distante pour representer un flux de persistance courant.",
-      "Exemple avec valeur controlee en externe et capture via onChange.",
-      "Prise en charge native de register et control.",
-      "Demontre les etats desactive et lecture seule.",
-      "Ajustez les principales props de SgToggleSwitch.",
+      "Exemple simple contrôlé par l'état ; cliquez sur le libellé ou l'interrupteur (Tab met le focus et Espace bascule).",
+      "Variation visuelle avec des icônes dans le pouce pour indiquer activé et désactivé.",
+      "Lors de la bascule, simule une mise à jour distante pour représenter un flux de persistance courant.",
+      "Valeur contrôlée par un état externe et capturée via onChange.",
+      "Relié au formulaire par name + control ; la valeur sort à l'envoi.",
+      "Montre les états enabled: false et readOnly.",
+      "required valide à la sortie du champ (validateOnBlur) ou à chaque changement (validateOnBlur: false).",
+      "error affiche un message venu de l'extérieur ; width limite la largeur du composant.",
+      "Ajustez les principales props de SgToggleSwitch."
     ],
     playgroundTitle: "SgToggleSwitch Playground",
   },
@@ -761,34 +781,18 @@ export default function SgToggleSwitchPage() {
             offIcon={<X size={12} />}
           />
           <div className="flex flex-wrap gap-2">
-            <button
-              type="button"
-              className="rounded border border-border px-3 py-1.5 text-sm hover:bg-foreground/5"
-              onClick={() => setExternalValue(true)}
-            >
+            <SgButton appearance="outline" size="sm" onClick={() => setExternalValue(true)}>
               Setar true
-            </button>
-            <button
-              type="button"
-              className="rounded border border-border px-3 py-1.5 text-sm hover:bg-foreground/5"
-              onClick={() => setExternalValue(false)}
-            >
+            </SgButton>
+            <SgButton appearance="outline" size="sm" onClick={() => setExternalValue(false)}>
               Setar false
-            </button>
-            <button
-              type="button"
-              className="rounded border border-border px-3 py-1.5 text-sm hover:bg-foreground/5"
-              onClick={() => setExternalValue((prev) => !prev)}
-            >
+            </SgButton>
+            <SgButton appearance="outline" size="sm" onClick={() => setExternalValue((prev) => !prev)}>
               Toggle externo
-            </button>
-            <button
-              type="button"
-              className="rounded border border-border px-3 py-1.5 text-sm hover:bg-foreground/5"
-              onClick={() => setCapturedValue(`captura manual -> ${String(externalValue)}`)}
-            >
+            </SgButton>
+            <SgButton appearance="outline" size="sm" onClick={() => setCapturedValue(`captura manual -> ${String(externalValue)}`)}>
               Capturar agora
-            </button>
+            </SgButton>
           </div>
           <div className="rounded border border-border bg-foreground/5 p-2 text-xs">
             <div>value externo: <code className="rounded bg-muted px-1">{String(externalValue)}</code></div>
@@ -868,6 +872,42 @@ export default function SgToggleSwitchPage() {
         id="exemplo-7"
         title={texts.sectionTitles[6] ?? ""}
         description={texts.sectionDescriptions[6] ?? ""}
+      >
+        <SgStack gap={12} align="start">
+          <SgToggleSwitch
+            id="termos"
+            label="Aceito os termos"
+            required
+            requiredMessage="Aceite os termos para continuar"
+          />
+          <SgToggleSwitch
+            id="regra"
+            label="Não pode ligar"
+            validateOnBlur={false}
+            validation={(checked) => (checked ? "Esta chave deve ficar desligada" : null)}
+          />
+        </SgStack>
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-toggle-switch/samples/validacao.tsx.sample" />
+      </Section>
+
+      <Section
+        id="exemplo-8"
+        title={texts.sectionTitles[7] ?? ""}
+        description={texts.sectionDescriptions[7] ?? ""}
+      >
+        <SgToggleSwitch
+          id="erro"
+          label="Aceito os termos"
+          error="Aceite os termos para continuar"
+          width={280}
+        />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-toggle-switch/samples/erro-externo-e-largura.tsx.sample" />
+      </Section>
+
+      <Section
+        id="exemplo-9"
+        title={texts.sectionTitles[8] ?? ""}
+        description={texts.sectionDescriptions[8] ?? ""}
       >
         <SgPlayground
           title={texts.playgroundTitle}

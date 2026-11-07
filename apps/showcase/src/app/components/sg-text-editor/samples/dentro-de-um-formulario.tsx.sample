@@ -1,0 +1,18 @@
+import React from "react";
+import { useForm } from "react-hook-form";
+import { SgButton, SgStack, SgTextEditor } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [sent, setSent] = React.useState("");
+  const { control, handleSubmit } = useForm<{ descricao: string }>({ defaultValues: { descricao: "" } });
+
+  return (
+    <form onSubmit={handleSubmit((values) => setSent(values.descricao))}>
+      <SgStack gap={12} align="start">
+        <SgTextEditor id="sg-text-editor-form" name="descricao" control={control} height={180} />
+        <SgButton type="submit">Enviar</SgButton>
+        {sent ? <p className="text-sm">Enviado: {sent}</p> : null}
+      </SgStack>
+    </form>
+  );
+}

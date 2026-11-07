@@ -1,0 +1,26 @@
+import React from "react";
+import { SgStack, SgTextEditor } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [fileCss, setFileCss] = React.useState("p { line-height: 1.5; }");
+  const [fileInfo, setFileInfo] = React.useState("");
+
+  return (
+    <SgStack gap={8} align="start">
+      <SgTextEditor
+        id="sg-text-editor-file"
+        height={200}
+        fileName="nota.html"
+        showCssEditor
+        cssEditorLabel="CSS do documento"
+        cssText={fileCss}
+        onCssTextChange={setFileCss}
+        onSave={(file, meta) =>
+          setFileInfo(`${file.name}: ${file.size} bytes, ${meta.cssText.length} caracteres de CSS`)
+        }
+        onLoad={(meta) => setFileInfo(`Carregado: ${meta.contentHtml.length} caracteres`)}
+      />
+      {fileInfo ? <p className="text-sm">{fileInfo}</p> : null}
+    </SgStack>
+  );
+}

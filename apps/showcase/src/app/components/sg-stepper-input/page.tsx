@@ -1,7 +1,12 @@
 ﻿"use client";
 
 import React from "react";
-import { SgButton, SgStepperInput } from "@seedgrid/fe-components";
+import { useForm } from "react-hook-form";
+import {
+  SgButton,
+  SgStepperInput,
+  SgStack,
+} from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
@@ -141,6 +146,8 @@ const STEPPER_PROPS: ShowcasePropRow[] = [
 export default function SgStepperInputPage() {
   const i18n = useShowcaseI18n();
   const aiComponent = useAiManifestComponent("SgStepperInput");
+  const [enviado, setEnviado] = React.useState("");
+  const { control, handleSubmit } = useForm<{ qtd: number }>({ defaultValues: { qtd: 0 } });
   const [basicValue, setBasicValue] = React.useState(12);
   const [controlledValue, setControlledValue] = React.useState(18);
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({
@@ -207,11 +214,31 @@ export default function SgStepperInputPage() {
           <div className="flex flex-wrap items-center gap-4">
             <SgStepperInput id="stepper-readonly" minValue={0} maxValue={10} value={7} readOnly />
             <SgStepperInput id="stepper-disabled" minValue={0} maxValue={10} value={4} enabled={false} />
+            <SgStepperInput id="stepper-error" minValue={0} maxValue={10} error="Escolha ao menos 1" />
           </div>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-stepper-input/samples/read-only-e-disabled.tsx.sample" />
         </Section>
 
         <Section title={t(i18n, `${K}.section4Title`)} description={t(i18n, `${K}.section4Description`)}>
+          <SgStack gap={12} align="start">
+            <SgStepperInput id="de-cinco" minValue={0} maxValue={50} step={5} width={160} />
+            <SgStepperInput id="meio" minValue={0} maxValue={5} step={0.5} defaultValue={2.5} width={160} />
+          </SgStack>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-stepper-input/samples/passo-e-limites.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section5Title`)} description={t(i18n, `${K}.section5Description`)}>
+          <form onSubmit={handleSubmit((values) => setEnviado(String(values.qtd)))}>
+            <SgStack gap={12} align="start">
+              <SgStepperInput id="qtd" name="qtd" control={control} minValue={0} maxValue={9} width={160} />
+              <SgButton type="submit">Enviar</SgButton>
+              {enviado ? <p className="text-sm">Enviado: {enviado}</p> : null}
+            </SgStack>
+          </form>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-stepper-input/samples/dentro-de-um-formulario.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section6Title`)} description={t(i18n, `${K}.section6Description`)}>
           <SgPlayground
             title={t(i18n, `${K}.playgroundTitle`)}
             interactive

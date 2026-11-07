@@ -10,7 +10,7 @@ import {
   toast,
 } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import { Filter, Home, Pencil, Plus, RefreshCcw, Settings, Trash2, Users } from "lucide-react";
+import { Filter, Home, Pencil, Plus, RefreshCcw, Settings, Share2, Star, Trash2, Users } from "lucide-react";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
@@ -159,14 +159,16 @@ export default function SgToolBarPage() {
       t(i18n, `${K}.sectionTitles.1`),
       t(i18n, `${K}.sectionTitles.2`),
       t(i18n, `${K}.sectionTitles.3`),
-      t(i18n, `${K}.sectionTitles.4`)
+      t(i18n, `${K}.sectionTitles.4`),
+      t(i18n, `${K}.sectionTitles.5`)
     ],
     sectionDescriptions: [
       t(i18n, `${K}.sectionDescriptions.0`),
       t(i18n, `${K}.sectionDescriptions.1`),
       t(i18n, `${K}.sectionDescriptions.2`),
       t(i18n, `${K}.sectionDescriptions.3`),
-      t(i18n, `${K}.sectionDescriptions.4`)
+      t(i18n, `${K}.sectionDescriptions.4`),
+      t(i18n, `${K}.sectionDescriptions.5`)
     ],
     labels: {
       navigation: t(i18n, `${K}.labels.navigation`),
@@ -180,7 +182,10 @@ export default function SgToolBarPage() {
       filter: t(i18n, `${K}.labels.filter`),
       refresh: t(i18n, `${K}.labels.refresh`),
       panelBody: t(i18n, `${K}.labels.panelBody`),
-      highlightedTitle: t(i18n, `${K}.labels.highlightedTitle`)
+      highlightedTitle: t(i18n, `${K}.labels.highlightedTitle`),
+      dragMe: t(i18n, `${K}.labels.dragMe`),
+      favorite: t(i18n, `${K}.labels.favorite`),
+      share: t(i18n, `${K}.labels.share`)
     },
     hints: {
       goHome: t(i18n, `${K}.hints.goHome`),
@@ -342,6 +347,20 @@ export default function SgToolBarPage() {
         </Section>
 
         <Section id="exemplo-5" title={texts.sectionTitles[4] ?? ""} description={texts.sectionDescriptions[4] ?? ""}>
+          <div className="w-full">
+            <SgDockLayout id="tb-layout-drag" className="grid h-[220px] grid-cols-1 grid-rows-1">
+              <SgDockZone zone="free" className="col-start-1 row-start-1 !items-start !justify-start !p-0">
+                <SgToolBar id="tb-drag" title={texts.labels.dragMe} freeDrag draggable defaultPosition={{ x: 24, y: 24 }}>
+                  <SgToolbarIconButton icon={<Star className="size-4" />} label={texts.labels.favorite} />
+                  <SgToolbarIconButton icon={<Share2 className="size-4" />} label={texts.labels.share} />
+                </SgToolBar>
+              </SgDockZone>
+            </SgDockLayout>
+          </div>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-toolbar/samples/arrastar-livremente.tsx.sample" />
+        </Section>
+
+        <Section id="exemplo-6" title={texts.sectionTitles[5] ?? ""} description={texts.sectionDescriptions[5] ?? ""}>
           <div className="w-full">
             <SgPlayground
               title={texts.playgroundTitle}

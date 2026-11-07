@@ -1,0 +1,23 @@
+import React from "react";
+import { SgButton, SgWhistleHost, sgWhistle } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [extraHost, setExtraHost] = React.useState(false);
+
+  return (
+    <>
+      <SgWhistleHost />
+      <div className="flex flex-wrap items-center gap-2">
+        <SgButton appearance="outline" onClick={() => setExtraHost((value) => !value)}>
+          Segundo host (cantos retos): {String(extraHost)}
+        </SgButton>
+        <SgButton onClick={() => sgWhistle.warning({ message: "Quem está ativo?", duration: 3000 })}>Disparar</SgButton>
+      </div>
+      {extraHost ? (
+        <div className="rounded-xl border border-dashed border-border p-4">
+          <SgWhistleHost rounded={false} />
+        </div>
+      ) : null}
+    </>
+  );
+}

@@ -1,0 +1,15 @@
+"use client";
+
+import React from "react";
+import { SgButton, SgStack } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgStack direction="row" align="center">
+      <SgStack grow>
+        <p>Este bloco cresce e empurra o botão para a direita.</p>
+      </SgStack>
+      <SgButton>OK</SgButton>
+    </SgStack>
+  );
+}

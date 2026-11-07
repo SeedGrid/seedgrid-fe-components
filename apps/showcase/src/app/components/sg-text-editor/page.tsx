@@ -1,7 +1,8 @@
 ﻿"use client";
 
 import React from "react";
-import { SgTextEditor } from "@seedgrid/fe-components";
+import { useForm } from "react-hook-form";
+import { SgButton, SgStack, SgTextEditor } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
@@ -85,6 +86,11 @@ export default function SgTextEditorPage() {
   const [cssText, setCssText] = React.useState<string>("body { font-family: Arial; }");
   const [minimalBody, setMinimalBody] = React.useState<string>("<p>Editor without CSS</p>");
   const [radiusBody, setRadiusBody] = React.useState<string>("<p>Editor with custom border radius</p>");
+  const [controlledBody, setControlledBody] = React.useState<string>("<p>Valor controlado pelo estado da página</p>");
+  const [fileCss, setFileCss] = React.useState<string>("p { line-height: 1.5; }");
+  const [fileInfo, setFileInfo] = React.useState<string>("");
+  const [sent, setSent] = React.useState<string>("");
+  const { control, handleSubmit } = useForm<{ descricao: string }>({ defaultValues: { descricao: "" } });
   const textEditorPropsRows = React.useMemo<ShowcasePropRow[]>(
     () => [
       { prop: "id", type: "string", defaultValue: "-", description: t(i18n, "showcase.component.textEditor.props.rows.id") },
@@ -161,12 +167,16 @@ export default function SgTextEditorPage() {
           title={`3) ${t(i18n, "showcase.component.textEditor.sections.disabled.title")}`}
           description={t(i18n, "showcase.component.textEditor.sections.disabled.description")}
         >
-          <SgTextEditor
-            id="sg-text-editor-disabled"
-            valueHtml="<p><strong>Locked content</strong></p>"
-            enabled={false}
-            showCssEditor={false}
-          />
+          <SgStack gap={16}>
+            <SgTextEditor
+              id="sg-text-editor-disabled"
+              height={120}
+              valueHtml="<p><strong>Conteúdo bloqueado</strong></p>"
+              enabled={false}
+              showCssEditor={false}
+            />
+            <SgTextEditor id="sg-text-editor-error" height={120} error="Conteúdo obrigatório" />
+          </SgStack>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-text-editor/samples/desabilitado.tsx.sample" />
         </Section>
 
@@ -188,7 +198,65 @@ export default function SgTextEditorPage() {
         </Section>
 
         <Section
-          title={`5) ${t(i18n, "showcase.component.textEditor.sections.playground.title")}`}
+          title={`5) ${t(i18n, "showcase.component.textEditor.sections.controlled.title")}`}
+          description={t(i18n, "showcase.component.textEditor.sections.controlled.description")}
+        >
+          <SgStack gap={8} align="start">
+            <SgTextEditor
+              id="sg-text-editor-controlled"
+              height={180}
+              valueHtml={controlledBody}
+              onChangeHtml={setControlledBody}
+            />
+            <SgButton
+              appearance="outline"
+              onClick={() => setControlledBody("<h2>Título</h2><ul><li><p>Item</p></li></ul>")}
+            >
+              Trocar o conteúdo
+            </SgButton>
+          </SgStack>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-text-editor/samples/valor-controlado.tsx.sample" />
+        </Section>
+
+        <Section
+          title={`6) ${t(i18n, "showcase.component.textEditor.sections.file.title")}`}
+          description={t(i18n, "showcase.component.textEditor.sections.file.description")}
+        >
+          <SgStack gap={8} align="start">
+            <SgTextEditor
+              id="sg-text-editor-file"
+              height={200}
+              fileName="nota.html"
+              showCssEditor
+              cssEditorLabel="CSS do documento"
+              cssText={fileCss}
+              onCssTextChange={setFileCss}
+              onSave={(file, meta) =>
+                setFileInfo(`${file.name}: ${file.size} bytes, ${meta.cssText.length} caracteres de CSS`)
+              }
+              onLoad={(meta) => setFileInfo(`Carregado: ${meta.contentHtml.length} caracteres`)}
+            />
+            {fileInfo ? <p className="text-sm">{fileInfo}</p> : null}
+          </SgStack>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-text-editor/samples/salvar-e-carregar.tsx.sample" />
+        </Section>
+
+        <Section
+          title={`7) ${t(i18n, "showcase.component.textEditor.sections.form.title")}`}
+          description={t(i18n, "showcase.component.textEditor.sections.form.description")}
+        >
+          <form onSubmit={handleSubmit((values) => setSent(values.descricao))}>
+            <SgStack gap={12} align="start">
+              <SgTextEditor id="sg-text-editor-form" name="descricao" control={control} height={180} />
+              <SgButton type="submit">Enviar</SgButton>
+              {sent ? <p className="text-sm">Enviado: {sent}</p> : null}
+            </SgStack>
+          </form>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-text-editor/samples/dentro-de-um-formulario.tsx.sample" />
+        </Section>
+
+        <Section
+          title={`8) ${t(i18n, "showcase.component.textEditor.sections.playground.title")}`}
           description={t(i18n, "showcase.common.playground.description.withComponent", { component: "SgTextEditor" })}
         >
           <SgPlayground

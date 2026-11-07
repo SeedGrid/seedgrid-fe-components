@@ -1,0 +1,18 @@
+import * as React from "react";
+import { useForm } from "react-hook-form";
+import { SgButton, SgStack, SgStepperInput } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [enviado, setEnviado] = React.useState("");
+  const { control, handleSubmit } = useForm<{ qtd: number }>({ defaultValues: { qtd: 0 } });
+
+  return (
+    <form onSubmit={handleSubmit((values) => setEnviado(String(values.qtd)))}>
+      <SgStack gap={12} align="start">
+        <SgStepperInput id="qtd" name="qtd" control={control} minValue={0} maxValue={9} width={160} />
+        <SgButton type="submit">Enviar</SgButton>
+        {enviado ? <p className="text-sm">Enviado: {enviado}</p> : null}
+      </SgStack>
+    </form>
+  );
+}
