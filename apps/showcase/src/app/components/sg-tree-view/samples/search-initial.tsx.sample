@@ -1,0 +1,29 @@
+import { SgTreeView, type SgTreeNode } from "@seedgrid/fe-components";
+
+const nodes: SgTreeNode[] = [
+  {
+    id: "vegetables",
+    label: "Vegetables",
+    children: [
+      { id: "lettuce", label: "Lettuce" },
+      { id: "kale", label: "Kale" }
+    ]
+  },
+  {
+    id: "roots",
+    label: "Roots",
+    children: [{ id: "carrot", label: "Carrot" }]
+  }
+];
+
+export default function Example() {
+  return (
+    <SgTreeView
+      nodes={nodes}
+      searchable
+      searchPlaceholder="Search..."
+      defaultSearchValue="kale"
+      expandMatchesOnSearch
+    />
+  );
+}

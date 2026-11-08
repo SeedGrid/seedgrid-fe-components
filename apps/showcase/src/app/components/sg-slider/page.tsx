@@ -1,7 +1,12 @@
 ﻿"use client";
 
 import React from "react";
-import { SgButton, SgSlider } from "@seedgrid/fe-components";
+import { useForm } from "react-hook-form";
+import {
+  SgButton,
+  SgSlider,
+  SgStack,
+} from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
@@ -258,10 +263,11 @@ const SLIDER_PROPS: ShowcasePropRow[] = [
 export default function SgSliderPage() {
   const i18n = useShowcaseI18n();
   const aiComponent = useAiManifestComponent("SgSlider");
+  const [enviado, setEnviado] = React.useState("");
+  const { control, handleSubmit } = useForm<{ brilho: number }>({ defaultValues: { brilho: 40 } });
   const [basicValue, setBasicValue] = React.useState(50);
   const [controlledValue, setControlledValue] = React.useState(35);
   const [stepWidthValue, setStepWidthValue] = React.useState(25);
-  const [accessibilityValue, setAccessibilityValue] = React.useState(40);
   const [inputPropsValue, setInputPropsValue] = React.useState(70);
   const [inputFocusCount, setInputFocusCount] = React.useState(0);
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({
@@ -352,11 +358,9 @@ export default function SgSliderPage() {
               id="slider-aria-class"
               minValue={0}
               maxValue={100}
-              value={accessibilityValue}
+              defaultValue={40}
               width="20rem"
               ariaLabel="Nivel de prioridade"
-              className="accent-[#c56a2d]"
-              onChange={setAccessibilityValue}
             />
             <SgSlider
               id="slider-disabled"
@@ -367,11 +371,8 @@ export default function SgSliderPage() {
               ariaLabel="Slider desabilitado"
               width="20rem"
             />
-            <p className="text-sm text-muted-foreground">
-              Nivel de prioridade: <span className="font-semibold text-foreground">{accessibilityValue}</span>
-            </p>
           </div>
-          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-slider/samples/class-name-aria-label-e-disabled.tsx.sample" />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-slider/samples/aria-label-e-desabilitado.tsx.sample" />
         </Section>
 
         <Section title={t(i18n, `${K}.section5Title`)} description={t(i18n, `${K}.section5Description`)}>
@@ -385,6 +386,7 @@ export default function SgSliderPage() {
               maxValue={100}
               value={inputPropsValue}
               ariaLabel="Volume de notificacoes"
+              className="accent-[#c56a2d]"
               onChange={setInputPropsValue}
               inputProps={{
                 name: "notificationVolume",
@@ -398,7 +400,7 @@ export default function SgSliderPage() {
               <span className="font-semibold text-foreground">{inputFocusCount}</span>
             </p>
           </div>
-          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-slider/samples/input-props.tsx.sample" />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-slider/samples/class-name-e-input-props.tsx.sample" />
         </Section>
 
         <Section title={t(i18n, `${K}.section6Title`)} description={t(i18n, `${K}.section6Description`)}>
@@ -409,6 +411,17 @@ export default function SgSliderPage() {
         </Section>
 
         <Section title={t(i18n, `${K}.section7Title`)} description={t(i18n, `${K}.section7Description`)}>
+          <form onSubmit={handleSubmit((values) => setEnviado(String(values.brilho)))}>
+            <SgStack gap={12} align="start">
+              <SgSlider id="brilho" name="brilho" control={control} minValue={0} maxValue={100} step={10} />
+              <SgButton type="submit">Enviar</SgButton>
+              {enviado ? <p className="text-sm">Enviado: {enviado}</p> : null}
+            </SgStack>
+          </form>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-slider/samples/dentro-de-um-formulario.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section8Title`)} description={t(i18n, `${K}.section8Description`)}>
           <SgPlayground
             title={t(i18n, `${K}.playgroundTitle`)}
             interactive

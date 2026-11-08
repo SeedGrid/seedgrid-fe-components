@@ -1,0 +1,24 @@
+import { SgPickList, type SgPickListItem } from "@seedgrid/fe-components";
+
+const CITIES: SgPickListItem[] = [
+  { label: "Berlin", value: "berlin" },
+  { label: "Boston", value: "boston" },
+  { label: "Lisbon", value: "lisbon" },
+  { label: "Madrid", value: "madrid" },
+  { label: "Sao Paulo", value: "sao-paulo" }
+];
+
+export default function Example() {
+  return (
+    <SgPickList
+      id="pick-starts-with"
+      title="Cidades"
+      source={CITIES}
+      target={[]}
+      showSourceFilter
+      showTargetFilter
+      filterMatchMode="startsWith"
+      selectionMode="single"
+    />
+  );
+}

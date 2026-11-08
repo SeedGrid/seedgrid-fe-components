@@ -1,0 +1,48 @@
+"use client";
+
+import * as React from "react";
+import { SgStringAnimator, type SgStringAnimatorRef, SgButton } from "@seedgrid/fe-components";
+
+const DIGITS_CHARSET = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
+export default function Example() {
+  const numerosRef = React.useRef<SgStringAnimatorRef>(null);
+  const letrasRef = React.useRef<SgStringAnimatorRef>(null);
+
+  return (
+    <div className="flex flex-col gap-4">
+      <SgStringAnimator
+        ref={numerosRef}
+        sourceString="7"
+        targetString="2048"
+        stringAnimatorStyle="roller3d"
+        alignTo="right"
+        emptyChar="0"
+        charset={DIGITS_CHARSET}
+        fontSize={28}
+        velocity={90}
+      />
+      <SgStringAnimator
+        ref={letrasRef}
+        sourceString="ABCDEFG"
+        targetString="XY"
+        stringAnimatorStyle="flip"
+        alignTo="left"
+        emptyChar="."
+        fontSize={22}
+        velocity={100}
+      />
+      <div>
+        <SgButton
+          size="sm"
+          onClick={() => {
+            numerosRef.current?.startAnimation();
+            letrasRef.current?.startAnimation();
+          }}
+        >
+          Animar
+        </SgButton>
+      </div>
+    </div>
+  );
+}

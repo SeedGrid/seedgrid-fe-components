@@ -602,6 +602,22 @@ export default function SgDockMenuPage() {
       </Section>
 
       <Section title={t(i18n, `${K}.section9Title`)} description={t(i18n, `${K}.section9Description`)}>
+        <div className="relative h-60 rounded-lg border-2 border-dashed border-border bg-muted/20">
+          <SgDockMenu
+            id="dock-zoom"
+            items={basicItems.slice(0, 3)}
+            position="center-bottom"
+            magnifyScale={2}
+            elevation="sm"
+            offset={{ y: -8 }}
+            zIndex={10}
+            style={{ position: "absolute" }}
+          />
+        </div>
+        <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-dock-menu/samples/zoom-elevacao-e-deslocamento.tsx.sample" />
+      </Section>
+
+      <Section title={t(i18n, `${K}.section10Title`)} description={t(i18n, `${K}.section10Description`)}>
         <SgPlayground
           title="SgDockMenu Playground"
           interactive

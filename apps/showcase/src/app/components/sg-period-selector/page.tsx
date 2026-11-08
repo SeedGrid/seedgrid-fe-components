@@ -1,7 +1,14 @@
 "use client";
 
 import React from "react";
-import { SgPeriodSelector, SgToggleSwitch, type ResolvedPeriod } from "@seedgrid/fe-components";
+import { useForm } from "react-hook-form";
+import {
+  SgButton,
+  SgPeriodSelector,
+  SgStack,
+  SgToggleSwitch,
+  type ResolvedPeriod,
+} from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import I18NReady from "../I18NReady";
 import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
@@ -110,6 +117,8 @@ function getPeriodSelectorProps(i18n: ReturnType<typeof useShowcaseI18n>): Showc
 export default function SgPeriodSelectorPage() {
   const i18n = useShowcaseI18n();
   const aiComponent = useAiManifestComponent("SgPeriodSelector");
+  const [enviado, setEnviado] = React.useState("");
+  const { control, handleSubmit } = useForm<{ periodo?: string }>({});
   const [english, setEnglish] = React.useState<ResolvedPeriod | null>(null);
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
@@ -238,9 +247,20 @@ export default function SgPeriodSelectorPage() {
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-period-selector/samples/idioma-e-data-de-referencia.tsx.sample" />
         </Section>
 
+        <Section title={t(i18n, `${K}.section7Title`)} description={t(i18n, `${K}.section7Description`)}>
+          <form onSubmit={handleSubmit((values) => setEnviado(String(values.periodo)))}>
+            <SgStack gap={12} align="start">
+              <SgPeriodSelector id="periodo-form" name="periodo" control={control} label="Período do relatório" />
+              <SgButton type="submit">Enviar</SgButton>
+              {enviado ? <p className="text-sm">Enviado: {enviado}</p> : null}
+            </SgStack>
+          </form>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-period-selector/samples/dentro-de-um-formulario.tsx.sample" />
+        </Section>
+
         <Section
-          title={t(i18n, `${K}.section7Title`)}
-          description={t(i18n, `${K}.section7Description`)}
+          title={t(i18n, `${K}.section8Title`)}
+          description={t(i18n, `${K}.section8Description`)}
         >
           <SgPlayground
             title="SgPeriodSelector Playground"

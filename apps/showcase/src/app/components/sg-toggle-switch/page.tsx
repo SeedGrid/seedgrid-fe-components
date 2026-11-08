@@ -362,7 +362,8 @@ const TOGGLE_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", ToggleText
       "6) Desabilitado e somente leitura",
       "7) Validação",
       "8) Erro externo e largura",
-      "9) Playground (SgPlayground)"
+      "9) Estado inicial (defaultChecked)",
+      "10) Playground (SgPlayground)"
     ],
     sectionDescriptions: [
       "Exemplo simples controlado por estado; clique no rótulo ou na chave (Tab foca e Espaço alterna).",
@@ -373,6 +374,7 @@ const TOGGLE_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", ToggleText
       "Demonstra os estados enabled: false e readOnly.",
       "required valida ao sair do campo (validateOnBlur) ou a cada mudança (validateOnBlur: false).",
       "error mostra uma mensagem vinda de fora; width limita a largura do componente.",
+      "defaultChecked define o estado inicial; depois disso a chave controla a si mesma (modo não controlado).",
       "Ajuste as principais props do SgToggleSwitch."
     ],
     playgroundTitle: "SgToggleSwitch Playground"
@@ -395,7 +397,8 @@ const TOGGLE_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", ToggleText
       "6) Desabilitado e somente leitura",
       "7) Validação",
       "8) Erro externo e largura",
-      "9) Playground (SgPlayground)"
+      "9) Estado inicial (defaultChecked)",
+      "10) Playground (SgPlayground)"
     ],
     sectionDescriptions: [
       "Exemplo simples controlado por estado; clique no rótulo ou no interruptor (Tab foca e Espaço alterna).",
@@ -406,6 +409,7 @@ const TOGGLE_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", ToggleText
       "Demonstra os estados enabled: false e readOnly.",
       "required valida ao sair do campo (validateOnBlur) ou a cada alteração (validateOnBlur: false).",
       "error mostra uma mensagem vinda de fora; width limita a largura do componente.",
+      "defaultChecked define o estado inicial; depois disso o interruptor controla-se a si mesmo (modo não controlado).",
       "Ajuste as principais props do SgToggleSwitch."
     ],
     playgroundTitle: "SgToggleSwitch Playground"
@@ -428,7 +432,8 @@ const TOGGLE_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", ToggleText
       "6) Disabled and read-only",
       "7) Validation",
       "8) External error and width",
-      "9) Playground (SgPlayground)"
+      "9) Initial state (defaultChecked)",
+      "10) Playground (SgPlayground)"
     ],
     sectionDescriptions: [
       "Simple example controlled by state; click the label or the switch (Tab focuses and Space toggles).",
@@ -439,6 +444,7 @@ const TOGGLE_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", ToggleText
       "Shows the enabled: false and readOnly states.",
       "required validates on blur (validateOnBlur) or on every change (validateOnBlur: false).",
       "error shows a message that comes from outside; width limits the component width.",
+      "defaultChecked sets the initial state; after that the switch manages itself (uncontrolled mode).",
       "Adjust the main SgToggleSwitch props."
     ],
     playgroundTitle: "SgToggleSwitch Playground"
@@ -461,7 +467,8 @@ const TOGGLE_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", ToggleText
       "6) Deshabilitado y solo lectura",
       "7) Validación",
       "8) Error externo y ancho",
-      "9) Playground (SgPlayground)"
+      "9) Estado inicial (defaultChecked)",
+      "10) Playground (SgPlayground)"
     ],
     sectionDescriptions: [
       "Ejemplo simple controlado por estado; haz clic en la etiqueta o en el interruptor (Tab enfoca y Espacio alterna).",
@@ -472,6 +479,7 @@ const TOGGLE_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", ToggleText
       "Muestra los estados enabled: false y readOnly.",
       "required valida al salir del campo (validateOnBlur) o en cada cambio (validateOnBlur: false).",
       "error muestra un mensaje que viene de fuera; width limita el ancho del componente.",
+      "defaultChecked define el estado inicial; después el interruptor se controla a sí mismo (modo no controlado).",
       "Ajusta las props principales de SgToggleSwitch."
     ],
     playgroundTitle: "SgToggleSwitch Playground"
@@ -494,7 +502,8 @@ const TOGGLE_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", ToggleText
       "6) Désactivé et lecture seule",
       "7) Validation",
       "8) Erreur externe et largeur",
-      "9) Playground (SgPlayground)"
+      "9) État initial (defaultChecked)",
+      "10) Playground (SgPlayground)"
     ],
     sectionDescriptions: [
       "Exemple simple contrôlé par l'état ; cliquez sur le libellé ou l'interrupteur (Tab met le focus et Espace bascule).",
@@ -505,6 +514,7 @@ const TOGGLE_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", ToggleText
       "Montre les états enabled: false et readOnly.",
       "required valide à la sortie du champ (validateOnBlur) ou à chaque changement (validateOnBlur: false).",
       "error affiche un message venu de l'extérieur ; width limite la largeur du composant.",
+      "defaultChecked définit l'état initial ; ensuite l'interrupteur se gère lui-même (mode non contrôlé).",
       "Ajustez les principales props de SgToggleSwitch."
     ],
     playgroundTitle: "SgToggleSwitch Playground",
@@ -908,6 +918,17 @@ export default function SgToggleSwitchPage() {
         id="exemplo-9"
         title={texts.sectionTitles[8] ?? ""}
         description={texts.sectionDescriptions[8] ?? ""}
+      >
+        <div className="rounded-md border border-border p-4">
+          <SgToggleSwitch id="demo-default" label="Receber novidades" defaultChecked />
+        </div>
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-toggle-switch/samples/estado-inicial-defaultchecked.tsx.sample" />
+      </Section>
+
+      <Section
+        id="exemplo-10"
+        title={texts.sectionTitles[9] ?? ""}
+        description={texts.sectionDescriptions[9] ?? ""}
       >
         <SgPlayground
           title={texts.playgroundTitle}

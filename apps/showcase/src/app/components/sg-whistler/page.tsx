@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { Pencil } from "lucide-react";
 import {
   SgButton,
   SgWhistler,
@@ -65,6 +66,7 @@ export default function SgWhistlerPage() {
   const [newestOnTop, setNewestOnTop] = React.useState(false);
   const [warmPalette, setWarmPalette] = React.useState(false);
   const [activeId, setActiveId] = React.useState<SgWhistleId | null>(null);
+  const [closedCount, setClosedCount] = React.useState(0);
 
   const whistleProps: ShowcasePropRow[] = [
     { prop: "max", type: "number", defaultValue: "4", description: t(i18n, `${K}.props.max`) },
@@ -407,6 +409,66 @@ export default function SgWhistlerPage() {
         >
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-whistler/samples/subscribe-effect.tsx.sample" />
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-whistler/samples/subscribe.tsx.sample" />
+        </Section>
+
+        <Section
+          title={t(i18n, `${K}.sections.iconOnClose.title`)}
+          description={t(i18n, `${K}.sections.iconOnClose.description`)}
+        >
+          <div className="space-y-3">
+            <div className="flex flex-wrap items-center gap-2">
+              <SgButton
+                severity="warning"
+                onClick={() =>
+                  sgWhistle.warning({
+                    title: t(i18n, `${K}.iconOnClose.title`),
+                    message: t(i18n, `${K}.iconOnClose.message`),
+                    icon: <Pencil className="h-4 w-4" />,
+                    duration: 0,
+                    onClose: () => setClosedCount((value) => value + 1)
+                  })
+                }
+              >
+                {t(i18n, `${K}.iconOnClose.button`)}
+              </SgButton>
+              <span className="text-xs text-muted-foreground">{t(i18n, `${K}.iconOnClose.counter`)}: {closedCount}</span>
+            </div>
+            <div className="rounded-xl border border-dashed border-border p-3">
+              <SgWhistler max={3} />
+            </div>
+          </div>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-whistler/samples/icon-on-close.tsx.sample" />
+        </Section>
+
+        <Section
+          title={t(i18n, `${K}.sections.gap.title`)}
+          description={t(i18n, `${K}.sections.gap.description`)}
+        >
+          <div className="space-y-4">
+            <SgButton
+              onClick={() => {
+                sgWhistle.info({ message: t(i18n, `${K}.gap.first`), duration: 4000 });
+                sgWhistle.success({ message: t(i18n, `${K}.gap.second`), duration: 4000 });
+              }}
+            >
+              {t(i18n, `${K}.gap.button`)}
+            </SgButton>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div>
+                <p className="mb-2 text-xs text-muted-foreground">gap: 0</p>
+                <div className="rounded-xl border border-dashed border-border p-3">
+                  <SgWhistler max={3} gap={0} />
+                </div>
+              </div>
+              <div>
+                <p className="mb-2 text-xs text-muted-foreground">gap: 24</p>
+                <div className="rounded-xl border border-dashed border-border p-3">
+                  <SgWhistler max={3} gap={24} />
+                </div>
+              </div>
+            </div>
+          </div>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-whistler/samples/gap.tsx.sample" />
         </Section>
 
         <Section

@@ -1,0 +1,9 @@
+import { SgToggleSwitch } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <div className="rounded-md border border-border p-4">
+      <SgToggleSwitch id="demo-default" label="Receber novidades" defaultChecked />
+    </div>
+  );
+}

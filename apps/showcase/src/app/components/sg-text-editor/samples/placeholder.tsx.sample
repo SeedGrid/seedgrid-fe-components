@@ -1,0 +1,12 @@
+import { SgTextEditor } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgTextEditor
+      id="sg-text-editor-placeholder"
+      height={160}
+      placeholder="Escreva aqui"
+      showCssEditor={false}
+    />
+  );
+}

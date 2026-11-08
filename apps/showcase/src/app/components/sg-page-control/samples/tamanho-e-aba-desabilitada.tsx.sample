@@ -1,0 +1,17 @@
+import { SgPageControl, SgPageControlPage } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgPageControl size="sm" defaultActivePageId="registration">
+      <SgPageControlPage id="registration" title="Registration">
+        Registration content
+      </SgPageControlPage>
+      <SgPageControlPage id="fiscal" title="Fiscal">
+        Fiscal content
+      </SgPageControlPage>
+      <SgPageControlPage id="access" title="Access" enabled={false}>
+        Access content
+      </SgPageControlPage>
+    </SgPageControl>
+  );
+}

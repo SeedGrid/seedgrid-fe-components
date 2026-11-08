@@ -431,10 +431,57 @@ function Ex9() {
   );
 }
 
+// ---------------------------------------------------------------------------
+// Example 10 — Charset e caractere de preenchimento
+// ---------------------------------------------------------------------------
+const DIGITS_CHARSET = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
+function Ex10() {
+  const numerosRef = React.useRef<SgStringAnimatorRef>(null);
+  const letrasRef = React.useRef<SgStringAnimatorRef>(null);
+
+  return (
+    <div className="flex flex-col gap-4">
+      <SgStringAnimator
+        ref={numerosRef}
+        sourceString="7"
+        targetString="2048"
+        stringAnimatorStyle="roller3d"
+        alignTo="right"
+        emptyChar="0"
+        charset={DIGITS_CHARSET}
+        fontSize={28}
+        velocity={90}
+      />
+      <SgStringAnimator
+        ref={letrasRef}
+        sourceString="ABCDEFG"
+        targetString="XY"
+        stringAnimatorStyle="flip"
+        alignTo="left"
+        emptyChar="."
+        fontSize={22}
+        velocity={100}
+      />
+      <div>
+        <SgButton
+          size="sm"
+          onClick={() => {
+            numerosRef.current?.startAnimation();
+            letrasRef.current?.startAnimation();
+          }}
+        >
+          Animar
+        </SgButton>
+      </div>
+    </div>
+  );
+}
 
 
 
-
+
+
 
 
 
@@ -689,7 +736,7 @@ const PROPS: ShowcasePropRow[] = [
 // Page
 // ---------------------------------------------------------------------------
 export default function SgStringAnimatorShowcase() {
-  const i18n = useShowcaseI18n();
+  const i18n = useShowcaseI18n();
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
   const aiComponent = useAiManifestComponent("SgStringAnimator");
@@ -790,6 +837,15 @@ export default function SgStringAnimatorShowcase() {
         >
           <Ex9 />
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-string-animator/samples/velocidades.tsx.sample" />
+        </Section>
+
+        {/* 10 */}
+        <Section
+          title={t(i18n, `${K}.section10Title`)}
+          description={t(i18n, `${K}.section10Description`)}
+        >
+          <Ex10 />
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-string-animator/samples/charset-e-caractere-de-preenchimento.tsx.sample" />
         </Section>
 
         {/* Playground */}

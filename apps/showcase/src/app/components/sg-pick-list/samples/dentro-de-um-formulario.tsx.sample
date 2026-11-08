@@ -1,0 +1,36 @@
+import React from "react";
+import { SgPickList, type SgPickListItem, type SgPickListValue, SgButton } from "@seedgrid/fe-components";
+import { useForm } from "react-hook-form";
+
+const TEAM_SOURCE: SgPickListItem[] = [
+  { label: "Ana", value: "ana" },
+  { label: "Bruno", value: "bruno" },
+  { label: "Carla", value: "carla" }
+];
+
+export default function Example() {
+  const { control, handleSubmit } = useForm<{ equipe: SgPickListValue }>();
+  const [submitted, setSubmitted] = React.useState("");
+
+  return (
+    <form
+      className="space-y-3"
+      onSubmit={handleSubmit((values) => setSubmitted((values.equipe?.target ?? []).map((item) => item.label).join(", ")))}
+    >
+      <SgPickList
+        id="pick-form"
+        name="equipe"
+        control={control}
+        title="Equipe"
+        source={TEAM_SOURCE}
+        target={[]}
+      />
+      <SgButton type="submit">Enviar</SgButton>
+      {submitted ? (
+        <p className="text-sm">
+          Enviado: <strong>{submitted}</strong>
+        </p>
+      ) : null}
+    </form>
+  );
+}

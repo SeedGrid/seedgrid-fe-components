@@ -256,7 +256,20 @@ export default function SgTextEditorPage() {
         </Section>
 
         <Section
-          title={`8) ${t(i18n, "showcase.component.textEditor.sections.playground.title")}`}
+          title={`8) ${t(i18n, "showcase.component.textEditor.sections.placeholder.title")}`}
+          description={t(i18n, "showcase.component.textEditor.sections.placeholder.description")}
+        >
+          <SgTextEditor
+            id="sg-text-editor-placeholder"
+            height={160}
+            placeholder={t(i18n, "showcase.component.textEditor.placeholderText")}
+            showCssEditor={false}
+          />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-text-editor/samples/placeholder.tsx.sample" />
+        </Section>
+
+        <Section
+          title={`9) ${t(i18n, "showcase.component.textEditor.sections.playground.title")}`}
           description={t(i18n, "showcase.common.playground.description.withComponent", { component: "SgTextEditor" })}
         >
           <SgPlayground

@@ -8,7 +8,9 @@ export default function Example(props: { initialServerTime?: string }) {
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap items-center gap-2">
-        <SgButton onClick={() => setShowSeconds((value) => !value)}>toggle seconds</SgButton>
+        <SgButton onClick={() => setShowSeconds((value) => !value)}>
+          {showSeconds ? "Segundos: ON" : "Segundos: OFF"}
+        </SgButton>
         <SgButton onClick={() => setFormat((value) => (value === "24h" ? "12h" : "24h"))}>{format}</SgButton>
       </div>
       <div className="rounded-xl border border-border bg-background p-6">

@@ -1,0 +1,21 @@
+import { SgTreeView, type SgTreeNode } from "@seedgrid/fe-components";
+
+const nodes: SgTreeNode[] = [
+  {
+    id: "docs",
+    label: "Documents",
+    children: [
+      { id: "contract", label: "Contract" },
+      { id: "invoice", label: "Invoice" }
+    ]
+  }
+];
+
+export default function Example() {
+  return (
+    <div className="grid gap-4 md:grid-cols-2">
+      <SgTreeView nodes={nodes} tone="default" defaultExpandedIds={["docs"]} />
+      <SgTreeView nodes={nodes} tone="muted" defaultExpandedIds={["docs"]} />
+    </div>
+  );
+}

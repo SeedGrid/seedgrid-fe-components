@@ -90,6 +90,44 @@ const JSON_DATA = [
   }
 ];
 
+const FOOD_NODES: SgTreeNode[] = [
+  {
+    id: "vegetables",
+    label: "Vegetables",
+    children: [
+      { id: "lettuce", label: "Lettuce" },
+      { id: "kale", label: "Kale" }
+    ]
+  },
+  {
+    id: "roots",
+    label: "Roots",
+    children: [{ id: "carrot", label: "Carrot" }]
+  }
+];
+
+const DOC_NODES: SgTreeNode[] = [
+  {
+    id: "docs",
+    label: "Documents",
+    children: [
+      { id: "contract", label: "Contract" },
+      { id: "invoice", label: "Invoice" }
+    ]
+  }
+];
+
+const LOCKED_NODES: SgTreeNode[] = [
+  {
+    id: "docs",
+    label: "Documents",
+    children: [
+      { id: "contract", label: "Contract" },
+      { id: "locked", label: "Locked", enabled: false }
+    ]
+  }
+];
+
 const TREE_VIEW_PLAYGROUND_CODE = `import * as React from "react";
 import {
   SgCard,
@@ -415,7 +453,40 @@ export default function SgTreeViewPage() {
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-tree-view/samples/tracks.tsx.sample" />
       </Section>
 
-      <Section title="8) Playground (SgPlayground)" description="Teste interativo das principais props do SgTreeView.">
+      <Section
+        title={`8) ${t(i18n, "showcase.component.treeView.sections.search.title")}`}
+        description={t(i18n, "showcase.component.treeView.sections.search.description")}
+      >
+        <SgTreeView
+          nodes={FOOD_NODES}
+          searchable
+          searchPlaceholder={t(i18n, "showcase.component.treeView.labels.search")}
+          defaultSearchValue="kale"
+          expandMatchesOnSearch
+        />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-tree-view/samples/search-initial.tsx.sample" />
+      </Section>
+
+      <Section
+        title={`9) ${t(i18n, "showcase.component.treeView.sections.toneMuted.title")}`}
+        description={t(i18n, "showcase.component.treeView.sections.toneMuted.description")}
+      >
+        <div className="grid gap-4 md:grid-cols-2">
+          <SgTreeView nodes={DOC_NODES} tone="default" defaultExpandedIds={["docs"]} />
+          <SgTreeView nodes={DOC_NODES} tone="muted" defaultExpandedIds={["docs"]} />
+        </div>
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-tree-view/samples/tone-muted.tsx.sample" />
+      </Section>
+
+      <Section
+        title={`10) ${t(i18n, "showcase.component.treeView.sections.disabledNode.title")}`}
+        description={t(i18n, "showcase.component.treeView.sections.disabledNode.description")}
+      >
+        <SgTreeView nodes={LOCKED_NODES} checkable defaultExpandedIds={["docs"]} />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-tree-view/samples/disabled-node.tsx.sample" />
+      </Section>
+
+      <Section title="11) Playground (SgPlayground)" description="Teste interativo das principais props do SgTreeView.">
         <SgPlayground
           title="SgTreeView Playground"
           interactive

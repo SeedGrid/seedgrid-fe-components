@@ -221,7 +221,8 @@ export default function SgPageControlShowcasePage() {
       t(i18n, `${K}.sectionTitles.2`),
       t(i18n, `${K}.sectionTitles.3`),
       t(i18n, `${K}.sectionTitles.4`),
-      t(i18n, `${K}.sectionTitles.5`)
+      t(i18n, `${K}.sectionTitles.5`),
+      t(i18n, `${K}.sectionTitles.6`)
     ],
     sectionDescriptions: [
       t(i18n, `${K}.sectionDescriptions.0`),
@@ -229,7 +230,8 @@ export default function SgPageControlShowcasePage() {
       t(i18n, `${K}.sectionDescriptions.2`),
       t(i18n, `${K}.sectionDescriptions.3`),
       t(i18n, `${K}.sectionDescriptions.4`),
-      t(i18n, `${K}.sectionDescriptions.5`)
+      t(i18n, `${K}.sectionDescriptions.5`),
+      t(i18n, `${K}.sectionDescriptions.6`)
     ],
     responsiveEqualWidths: t(i18n, `${K}.responsive.equalWidths`),
     responsiveMobileSelect: t(i18n, `${K}.responsive.mobileSelect`),
@@ -431,6 +433,21 @@ export default function SgPageControlShowcasePage() {
         </Section>
 
         <Section title={texts.sectionTitles[5] ?? ""} description={texts.sectionDescriptions[5] ?? ""}>
+          <SgPageControl size="sm" defaultActivePageId="registration">
+            <SgPageControlPage id="registration" title="Registration">
+              Registration content
+            </SgPageControlPage>
+            <SgPageControlPage id="fiscal" title="Fiscal">
+              Fiscal content
+            </SgPageControlPage>
+            <SgPageControlPage id="access" title="Access" enabled={false}>
+              Access content
+            </SgPageControlPage>
+          </SgPageControl>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-page-control/samples/tamanho-e-aba-desabilitada.tsx.sample" />
+        </Section>
+
+        <Section title={texts.sectionTitles[6] ?? ""} description={texts.sectionDescriptions[6] ?? ""}>
           <SgPlayground
             title={texts.playgroundTitle}
             interactive

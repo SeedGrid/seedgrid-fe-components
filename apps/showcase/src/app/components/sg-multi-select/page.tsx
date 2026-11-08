@@ -41,6 +41,15 @@ const COMPANIES = [
   { label: "Empresa 6", value: "e6" }
 ];
 
+const COMPANIES_LAST_DISABLED = [
+  { label: "Empresa 1", value: "e1" },
+  { label: "Empresa 2", value: "e2" },
+  { label: "Empresa 3", value: "e3" },
+  { label: "Empresa 4", value: "e4" },
+  { label: "Empresa 5", value: "e5" },
+  { label: "Empresa 6", value: "e6", enabled: false }
+];
+
 const BRANCHES = [
   { label: "1 - Matriz São Paulo", chipLabel: "1", value: 1 },
   { label: "2 - Filial Campinas", chipLabel: "2", value: 2 },
@@ -81,6 +90,7 @@ export default function SgMultiSelectPage() {
   const [capped, setCapped] = React.useState<SgMultiSelectOptionValue[]>([]);
   const [branches, setBranches] = React.useState<SgMultiSelectOptionValue[]>([1, 3]);
   const [controlled, setControlled] = React.useState<SgMultiSelectOptionValue[]>(["sp"]);
+  const [summary, setSummary] = React.useState<SgMultiSelectOptionValue[]>(["e1", "e2", "e4"]);
   const { control, handleSubmit } = useForm<{ tags: SgMultiSelectOptionValue[] }>({ defaultValues: { tags: [] } });
   const [submitted, setSubmitted] = React.useState("");
 
@@ -238,6 +248,36 @@ export default function SgMultiSelectPage() {
             ) : null}
           </form>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-multi-select/samples/dentro-de-um-formulario.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.sections.summary.title`)} description={t(i18n, `${K}.sections.summary.description`)}>
+          <div className="w-96">
+            <SgMultiSelect
+              id="ms-summary"
+              label={t(i18n, `${K}.labels.companies`)}
+              placeholder={companiesPlaceholder}
+              summaryThreshold={4}
+              options={COMPANIES}
+              value={summary}
+              onChange={setSummary}
+            />
+            <Selected label={selectedLabel} none={noneLabel} value={summary} />
+          </div>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-multi-select/samples/limite-do-resumo.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.sections.disabledOption.title`)} description={t(i18n, `${K}.sections.disabledOption.description`)}>
+          <div className="w-96">
+            <SgMultiSelect
+              id="ms-disabled-option"
+              label={t(i18n, `${K}.labels.companies`)}
+              placeholder={companiesPlaceholder}
+              searchable
+              searchPlaceholder={t(i18n, `${K}.placeholders.searchCompany`)}
+              options={COMPANIES_LAST_DISABLED}
+            />
+          </div>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-multi-select/samples/opcao-desabilitada-e-texto-da-busca.tsx.sample" />
         </Section>
 
         <Section title={t(i18n, `${K}.sections.playground.title`)} description={t(i18n, `${K}.sections.playground.description`)}>

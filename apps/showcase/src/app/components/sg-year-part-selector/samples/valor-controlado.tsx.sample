@@ -1,0 +1,41 @@
+import * as React from "react";
+import { SgButton, SgYearPartSelector, YearPartKind, type YearPartValue } from "@seedgrid/fe-components";
+
+// Com value o pai manda: escolher emite onChange e o campo só muda quando o value muda.
+// Uma fatia que não existe no recorte cai na primeira.
+export default function Example() {
+  const [controlled, setControlled] = React.useState<YearPartValue>({
+    year: 2024,
+    kind: YearPartKind.QUARTER,
+    part: 1
+  });
+
+  return (
+    <div className="w-full max-w-xl">
+      <SgYearPartSelector
+        id="yps-controlled"
+        label="Recorte do ano"
+        locale="pt-BR"
+        value={controlled}
+        onChange={(resolved) => setControlled(resolved.value)}
+      />
+      <div className="mt-2 flex flex-wrap gap-2">
+        <SgButton
+          appearance="outline"
+          onClick={() => setControlled({ year: 2024, kind: YearPartKind.QUARTER, part: 1 })}
+        >
+          1º trimestre de 2024
+        </SgButton>
+        <SgButton
+          appearance="outline"
+          onClick={() => setControlled({ year: 2023, kind: YearPartKind.BIMESTER, part: 2 })}
+        >
+          2º bimestre de 2023
+        </SgButton>
+      </div>
+      <p className="mt-2 text-xs text-muted-foreground">
+        Valor: {controlled.year} - {controlled.kind.toLowerCase()} {controlled.part}
+      </p>
+    </div>
+  );
+}

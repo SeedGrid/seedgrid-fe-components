@@ -1,0 +1,20 @@
+"use client";
+
+import * as React from "react";
+import { useForm } from "react-hook-form";
+import { SgButton, SgSlider, SgStack } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [enviado, setEnviado] = React.useState("");
+  const { control, handleSubmit } = useForm<{ brilho: number }>({ defaultValues: { brilho: 40 } });
+
+  return (
+    <form onSubmit={handleSubmit((values) => setEnviado(String(values.brilho)))}>
+      <SgStack gap={12} align="start">
+        <SgSlider id="brilho" name="brilho" control={control} minValue={0} maxValue={100} step={10} />
+        <SgButton type="submit">Enviar</SgButton>
+        {enviado ? <p className="text-sm">Enviado: {enviado}</p> : null}
+      </SgStack>
+    </form>
+  );
+}

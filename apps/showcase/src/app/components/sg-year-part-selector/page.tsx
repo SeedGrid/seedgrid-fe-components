@@ -1,7 +1,13 @@
 "use client";
 
 import React from "react";
-import { SgYearPartSelector, YearPartKind, type ResolvedYearPart } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgYearPartSelector,
+  YearPartKind,
+  type ResolvedYearPart,
+  type YearPartValue,
+} from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import I18NReady from "../I18NReady";
 import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
@@ -80,6 +86,11 @@ function getYearPartSelectorProps(i18n: ReturnType<typeof useShowcaseI18n>): Sho
 export default function SgYearPartSelectorPage() {
   const i18n = useShowcaseI18n();
   const aiComponent = useAiManifestComponent("SgYearPartSelector");
+  const [controlled, setControlled] = React.useState<YearPartValue>({
+    year: 2024,
+    kind: YearPartKind.QUARTER,
+    part: 1
+  });
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
 
@@ -213,9 +224,39 @@ export default function SgYearPartSelectorPage() {
           <CodeBlock sampleFile={`${SAMPLES}/locale-en.tsx.sample`} />
         </Section>
 
+        <Section title={t(i18n, `${K}.section6Title`)} description={t(i18n, `${K}.section6Description`)}>
+          <div className="w-full max-w-xl">
+            <SgYearPartSelector
+              id="yps-controlled"
+              label={t(i18n, `${K}.fieldLabel`)}
+              locale={i18n.locale}
+              value={controlled}
+              onChange={(resolved) => setControlled(resolved.value)}
+            />
+            <div className="mt-2 flex flex-wrap gap-2">
+              <SgButton
+                appearance="outline"
+                onClick={() => setControlled({ year: 2024, kind: YearPartKind.QUARTER, part: 1 })}
+              >
+                {t(i18n, `${K}.controlledQuarter`)}
+              </SgButton>
+              <SgButton
+                appearance="outline"
+                onClick={() => setControlled({ year: 2023, kind: YearPartKind.BIMESTER, part: 2 })}
+              >
+                {t(i18n, `${K}.controlledBimester`)}
+              </SgButton>
+            </div>
+            <p className="mt-2 text-xs text-muted-foreground">
+              {t(i18n, `${K}.valueLabel`)}: {controlled.year} - {controlled.kind.toLowerCase()} {controlled.part}
+            </p>
+          </div>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-year-part-selector/samples/valor-controlado.tsx.sample" />
+        </Section>
+
         <Section
-          title={t(i18n, `${K}.section6Title`)}
-          description={t(i18n, `${K}.section6Description`)}
+          title={t(i18n, `${K}.section7Title`)}
+          description={t(i18n, `${K}.section7Description`)}
         >
           <SgPlayground
             title="SgYearPartSelector Playground"

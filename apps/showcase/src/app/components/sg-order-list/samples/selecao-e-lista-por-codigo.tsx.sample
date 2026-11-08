@@ -1,0 +1,30 @@
+import React from "react";
+import { SgOrderList, type SgOrderListItem, type SgOrderListRef, SgButton, SgGrid } from "@seedgrid/fe-components";
+
+const PIPELINE_STEPS: SgOrderListItem[] = [
+  { label: "Prospecção", value: "lead" },
+  { label: "Qualificação", value: "qualify" },
+  { label: "Proposta", value: "proposal" },
+  { label: "Negociação", value: "negotiation" },
+  { label: "Fechamento", value: "close" }
+];
+
+export default function Example() {
+  const codeRef = React.useRef<SgOrderListRef>(null);
+
+  return (
+    <div className="space-y-4">
+      <SgOrderList
+        ref={codeRef}
+        id="order-code"
+        title="Controlada"
+        source={PIPELINE_STEPS}
+      />
+      <SgGrid columns={{ base: 1, md: 3 }} gap={8}>
+        <SgButton onClick={() => codeRef.current?.setSelection(["proposal"])}>Selecionar a 3ª</SgButton>
+        <SgButton onClick={() => codeRef.current?.moveTop()}>Mover para o topo</SgButton>
+        <SgButton onClick={() => codeRef.current?.setItems([...(codeRef.current?.getItems() ?? [])].reverse())}>Inverter</SgButton>
+      </SgGrid>
+    </div>
+  );
+}

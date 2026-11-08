@@ -380,7 +380,8 @@ export default function SgExpandablePanelPage() {
       t(i18n, `${K}.sectionTitles.2`),
       t(i18n, `${K}.sectionTitles.3`),
       t(i18n, `${K}.sectionTitles.4`),
-      t(i18n, `${K}.sectionTitles.5`)
+      t(i18n, `${K}.sectionTitles.5`),
+      t(i18n, `${K}.sectionTitles.6`)
     ],
     sectionDescriptions: [
       t(i18n, `${K}.sectionDescriptions.0`),
@@ -388,7 +389,8 @@ export default function SgExpandablePanelPage() {
       t(i18n, `${K}.sectionDescriptions.2`),
       t(i18n, `${K}.sectionDescriptions.3`),
       t(i18n, `${K}.sectionDescriptions.4`),
-      t(i18n, `${K}.sectionDescriptions.5`)
+      t(i18n, `${K}.sectionDescriptions.5`),
+      t(i18n, `${K}.sectionDescriptions.6`)
     ],
     playgroundTitle: t(i18n, `${K}.playgroundTitle`),
     propsTitle: t(i18n, `${K}.propsTitle`)
@@ -404,6 +406,7 @@ export default function SgExpandablePanelPage() {
 
   const [a11yOpen, setA11yOpen] = React.useState(false);
   const [noBackdropOpen, setNoBackdropOpen] = React.useState(false);
+  const [heightSize, setHeightSize] = React.useState<number | string>(200);
 
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({
     deps: [i18n.locale]
@@ -597,6 +600,23 @@ export default function SgExpandablePanelPage() {
         </Section>
 
         <Section title={texts.sectionTitles[5] ?? ""} description={texts.sectionDescriptions[5] ?? ""}>
+          <div className="flex h-[300px] flex-col overflow-hidden rounded-lg border border-border">
+            <p className="p-2 text-xs text-muted-foreground">{t(i18n, `${K}.resizeHeight.current`)}: {String(heightSize)}px</p>
+            <SgExpandablePanel
+              mode="inline"
+              expandTo="bottom"
+              defaultOpen
+              resizable
+              size={{ default: 200, min: 60, max: 260 }}
+              onSizeChange={setHeightSize}
+            >
+              <div className="text-sm">{t(i18n, `${K}.resizeHeight.hint`)}</div>
+            </SgExpandablePanel>
+          </div>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-expandable-panel/samples/redimensionavel-altura.tsx.sample" />
+        </Section>
+
+        <Section title={texts.sectionTitles[6] ?? ""} description={texts.sectionDescriptions[6] ?? ""}>
           <SgPlayground
             title={texts.playgroundTitle}
             interactive

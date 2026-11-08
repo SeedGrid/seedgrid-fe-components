@@ -1,0 +1,23 @@
+import React from "react";
+import { SgDockScreen, SgDockZone, SgToolBar, SgToolbarIconButton } from "@seedgrid/fe-components";
+import { Users } from "lucide-react";
+
+export default function Example() {
+  return (
+    <SgDockScreen
+      id="showcase-dock-screen-center-v1"
+      fullscreen={false}
+      height={200}
+      className="overflow-hidden rounded-xl border border-border bg-background"
+    >
+      <SgDockZone zone="left">
+        <SgToolBar id="tb-left-dock-screen-center-v1" dockZone="left" orientationDirection="vertical-down" title="Esquerda" draggable>
+          <SgToolbarIconButton icon={<Users className="size-4" />} label="Clientes" hint="Abrir clientes" />
+        </SgToolBar>
+      </SgDockZone>
+      <SgDockZone zone="free">
+        <div className="pointer-events-none text-sm text-muted-foreground">Centro</div>
+      </SgDockZone>
+    </SgDockScreen>
+  );
+}

@@ -1,0 +1,16 @@
+import { SgTreeView, type SgTreeNode } from "@seedgrid/fe-components";
+
+const nodes: SgTreeNode[] = [
+  {
+    id: "docs",
+    label: "Documents",
+    children: [
+      { id: "contract", label: "Contract" },
+      { id: "locked", label: "Locked", enabled: false }
+    ]
+  }
+];
+
+export default function Example() {
+  return <SgTreeView nodes={nodes} checkable defaultExpandedIds={["docs"]} />;
+}

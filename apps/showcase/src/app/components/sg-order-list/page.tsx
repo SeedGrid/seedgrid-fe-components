@@ -158,7 +158,8 @@ export default function SgOrderListShowcase() {
       t(i18n, `${K}.sectionTitles.4`),
       t(i18n, `${K}.sectionTitles.5`),
       t(i18n, `${K}.sectionTitles.6`),
-      t(i18n, `${K}.sectionTitles.7`)
+      t(i18n, `${K}.sectionTitles.7`),
+      t(i18n, `${K}.sectionTitles.8`)
     ] as const,
     sectionDescriptions: [
       t(i18n, `${K}.sectionDescriptions.0`),
@@ -167,7 +168,8 @@ export default function SgOrderListShowcase() {
       t(i18n, `${K}.sectionDescriptions.3`),
       t(i18n, `${K}.sectionDescriptions.4`),
       t(i18n, `${K}.sectionDescriptions.5`),
-      t(i18n, `${K}.sectionDescriptions.6`)
+      t(i18n, `${K}.sectionDescriptions.6`),
+      t(i18n, `${K}.sectionDescriptions.7`)
     ] as const,
     propsReferenceTitle: t(i18n, `${K}.propsReferenceTitle`)
   }), [i18n]);
@@ -220,6 +222,7 @@ export default function SgOrderListShowcase() {
   const [submitted, setSubmitted] = React.useState("");
 
   const pipelineRef = React.useRef<SgOrderListRef>(null);
+  const codeRef = React.useRef<SgOrderListRef>(null);
 
   return (
     <I18NReady>
@@ -364,7 +367,22 @@ export default function SgOrderListShowcase() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-order-list/samples/dentro-de-um-formulario.tsx.sample" />
         </Section>
 
-        <Section title={texts.sectionTitles[7]}>
+        <Section title={texts.sectionTitles[7]} description={texts.sectionDescriptions[7]}>
+          <SgOrderList
+            ref={codeRef}
+            id="order-code"
+            title={t(i18n, `${K}.labels.byCode`)}
+            source={PIPELINE_STEPS}
+          />
+          <SgGrid columns={{ base: 1, md: 3 }} gap={8}>
+            <SgButton onClick={() => codeRef.current?.setSelection(["proposal"])}>{t(i18n, `${K}.buttons.selectThird`)}</SgButton>
+            <SgButton onClick={() => codeRef.current?.moveTop()}>{t(i18n, `${K}.buttons.moveTop`)}</SgButton>
+            <SgButton onClick={() => codeRef.current?.setItems([...(codeRef.current?.getItems() ?? [])].reverse())}>{t(i18n, `${K}.buttons.reverse`)}</SgButton>
+          </SgGrid>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-order-list/samples/selecao-e-lista-por-codigo.tsx.sample" />
+        </Section>
+
+        <Section title={texts.sectionTitles[8]}>
           <SgPlayground
             title="SgOrderList Playground"
             interactive

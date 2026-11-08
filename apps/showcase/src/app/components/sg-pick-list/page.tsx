@@ -5,11 +5,13 @@ import {
   SgPickList,
   type SgPickListItem,
   type SgPickListRef,
+  type SgPickListValue,
   SgButton,
   SgGrid,
 } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import { Bell, Landmark, RefreshCw, Star } from "lucide-react";
+import { useForm } from "react-hook-form";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
@@ -131,6 +133,20 @@ const ROADMAP_SOURCE: SgPickListItem[] = [
   { label: "Billing", value: "billing" }
 ];
 
+const TEAM_SOURCE: SgPickListItem[] = [
+  { label: "Ana", value: "ana" },
+  { label: "Bruno", value: "bruno" },
+  { label: "Carla", value: "carla" }
+];
+
+const CITIES: SgPickListItem[] = [
+  { label: "Berlin", value: "berlin" },
+  { label: "Boston", value: "boston" },
+  { label: "Lisbon", value: "lisbon" },
+  { label: "Madrid", value: "madrid" },
+  { label: "Sao Paulo", value: "sao-paulo" }
+];
+
 export default function SgPickListShowcase() {
   const i18n = useShowcaseI18n();
   const texts = React.useMemo(() => ({
@@ -142,7 +158,9 @@ export default function SgPickListShowcase() {
       t(i18n, `${K}.sectionTitles.3`),
       t(i18n, `${K}.sectionTitles.4`),
       t(i18n, `${K}.sectionTitles.5`),
-      t(i18n, `${K}.sectionTitles.6`)
+      t(i18n, `${K}.sectionTitles.6`),
+      t(i18n, `${K}.sectionTitles.7`),
+      t(i18n, `${K}.sectionTitles.8`)
     ] as const,
     sectionDescriptions: [
       t(i18n, `${K}.sectionDescriptions.0`),
@@ -150,7 +168,9 @@ export default function SgPickListShowcase() {
       t(i18n, `${K}.sectionDescriptions.2`),
       t(i18n, `${K}.sectionDescriptions.3`),
       t(i18n, `${K}.sectionDescriptions.4`),
-      t(i18n, `${K}.sectionDescriptions.5`)
+      t(i18n, `${K}.sectionDescriptions.5`),
+      t(i18n, `${K}.sectionDescriptions.6`),
+      t(i18n, `${K}.sectionDescriptions.7`)
     ] as const,
     propsTitle: t(i18n, `${K}.propsTitle`),
     currentStateLabel: t(i18n, `${K}.currentStateLabel`),
@@ -257,6 +277,8 @@ export default function SgPickListShowcase() {
   });
 
   const pickListRef = React.useRef<SgPickListRef>(null);
+  const { control, handleSubmit } = useForm<{ equipe: SgPickListValue }>();
+  const [submitted, setSubmitted] = React.useState("");
 
   return (
     <I18NReady>
@@ -382,7 +404,44 @@ export default function SgPickListShowcase() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-pick-list/samples/item-template-customizado.tsx.sample" />
         </Section>
 
-        <Section title={texts.sectionTitles[6]}>
+        <Section title={texts.sectionTitles[6]} description={texts.sectionDescriptions[6]}>
+          <form
+            className="space-y-3"
+            onSubmit={handleSubmit((values) => setSubmitted((values.equipe?.target ?? []).map((item) => item.label).join(", ")))}
+          >
+            <SgPickList
+              id="pick-form"
+              name="equipe"
+              control={control}
+              title={t(i18n, `${K}.labels.team`)}
+              source={TEAM_SOURCE}
+              target={[]}
+            />
+            <SgButton type="submit">{t(i18n, `${K}.buttons.submit`)}</SgButton>
+            {submitted ? (
+              <p className="text-sm">
+                {t(i18n, `${K}.submittedLabel`)}: <strong>{submitted}</strong>
+              </p>
+            ) : null}
+          </form>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-pick-list/samples/dentro-de-um-formulario.tsx.sample" />
+        </Section>
+
+        <Section title={texts.sectionTitles[7]} description={texts.sectionDescriptions[7]}>
+          <SgPickList
+            id="pick-starts-with"
+            title={t(i18n, `${K}.labels.cities`)}
+            source={CITIES}
+            target={[]}
+            showSourceFilter
+            showTargetFilter
+            filterMatchMode="startsWith"
+            selectionMode="single"
+          />
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-pick-list/samples/filtro-por-inicio-e-selecao-unica.tsx.sample" />
+        </Section>
+
+        <Section title={texts.sectionTitles[8]}>
           <SgPlayground
             title="SgPickList Playground"
             interactive

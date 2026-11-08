@@ -246,6 +246,25 @@ export default function SgDockScreenPage() {
         </Section>
 
         <Section title={t(i18n, `${K}.section3Title`)} description={t(i18n, `${K}.section3Description`)}>
+          <SgDockScreen
+            id="showcase-dock-screen-center-v1"
+            fullscreen={false}
+            height={200}
+            className="overflow-hidden rounded-xl border border-border bg-background"
+          >
+            <SgDockZone zone="left">
+              <SgToolBar id="tb-left-dock-screen-center-v1" dockZone="left" orientationDirection="vertical-down" title={t(i18n, `${K}.left`)} draggable>
+                <SgToolbarIconButton icon={<Users className="size-4" />} label="Clientes" hint="Abrir clientes" />
+              </SgToolBar>
+            </SgDockZone>
+            <SgDockZone zone="free">
+              <div className="pointer-events-none text-sm text-muted-foreground">{t(i18n, `${K}.center`)}</div>
+            </SgDockZone>
+          </SgDockScreen>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-dock-screen/samples/conteudo-no-centro.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section4Title`)} description={t(i18n, `${K}.section4Description`)}>
           <SgPlayground
             title={t(i18n, `${K}.playgroundTitle`)}
             interactive

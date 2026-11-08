@@ -125,7 +125,7 @@ const RADIO_GROUP_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", Radio
       "11) Horizontal com Ícones Coloridos",
       "12) Estilo de Seleção Destacado (Lista)",
       "13) Com GroupBox Customizado",
-      "14) React Hook Form - Register",
+      "14) Formulário - Register",
       "15) Playground Interativo"
     ]
   },
@@ -153,7 +153,7 @@ const RADIO_GROUP_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", Radio
       "11) Horizontal com Ícones Coloridos",
       "12) Estilo de Seleção Destacado (Lista)",
       "13) Com GroupBox Customizado",
-      "14) React Hook Form - Register",
+      "14) Formulário - Register",
       "15) Playground Interativo"
     ]
   },
@@ -181,7 +181,7 @@ const RADIO_GROUP_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", Radio
       "11) Horizontal with Colored Icons",
       "12) Selection Style Highlight (List)",
       "13) With Custom GroupBox",
-      "14) React Hook Form - Register",
+      "14) Form - Register",
       "15) Interactive Playground"
     ]
   },
@@ -209,7 +209,7 @@ const RADIO_GROUP_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", Radio
       "11) Horizontal con Íconos Coloreados",
       "12) Estilo de Selección Destacado (Lista)",
       "13) Con GroupBox Personalizado",
-      "14) React Hook Form - Register",
+      "14) Formulario - Register",
       "15) Playground Interactivo"
     ]
   },
@@ -237,7 +237,7 @@ const RADIO_GROUP_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", Radio
       "11) Horizontal avec icônes colorées",
       "12) Mise en avant du style de selection (liste)",
       "13) Avec GroupBox personnalisé",
-      "14) React Hook Form - Register",
+      "14) Formulaire - Register",
       "15) Playground interactif",
     ],
   },

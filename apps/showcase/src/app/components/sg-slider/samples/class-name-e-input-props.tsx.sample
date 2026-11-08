@@ -16,6 +16,7 @@ export default function Example() {
         maxValue={100}
         value={value}
         ariaLabel="Volume de notificacoes"
+        className="accent-[#c56a2d]"
         onChange={setValue}
         inputProps={{
           name: "notificationVolume",

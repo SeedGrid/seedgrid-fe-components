@@ -1,0 +1,30 @@
+import { SgButton, SgWhistler, sgWhistle } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <div className="space-y-4">
+      <SgButton
+        onClick={() => {
+          sgWhistle.info({ message: "First", duration: 4000 });
+          sgWhistle.success({ message: "Second", duration: 4000 });
+        }}
+      >
+        Fire 2 notices
+      </SgButton>
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div>
+          <p className="mb-2 text-xs text-muted-foreground">gap: 0</p>
+          <div className="rounded-xl border border-dashed border-border p-3">
+            <SgWhistler max={3} gap={0} />
+          </div>
+        </div>
+        <div>
+          <p className="mb-2 text-xs text-muted-foreground">gap: 24</p>
+          <div className="rounded-xl border border-dashed border-border p-3">
+            <SgWhistler max={3} gap={24} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

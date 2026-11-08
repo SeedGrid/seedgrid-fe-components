@@ -2,6 +2,7 @@
 
 import React from "react";
 import {
+  SgAvatar,
   SgButton,
   SgDockLayout,
   SgDockZone,
@@ -1222,6 +1223,58 @@ export default function SgMenuPage() {
         </Section>
 
         <Section title={t(i18n, `${K}.section10Title`)} description={t(i18n, `${K}.section10Description`)}>
+          <div className="h-[320px] overflow-visible rounded-md border border-border p-2">
+            <SgMenu
+              ariaLabel="Navegação principal"
+              menuStyle="inline"
+              menuVariantStyle="Tiered"
+              openSubmenuOnHover
+              menu={[
+                {
+                  id: "arquivo",
+                  label: "Arquivo",
+                  children: [
+                    { id: "novo", label: "Novo" },
+                    {
+                      id: "exportar",
+                      label: "Exportar",
+                      children: [
+                        { id: "pdf", label: "PDF" },
+                        { id: "csv", label: "CSV" }
+                      ]
+                    }
+                  ]
+                },
+                { id: "editar", label: "Editar" }
+              ]}
+            />
+          </div>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-menu/samples/submenu-ao-passar-o-mouse.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section11Title`)} description={t(i18n, `${K}.section11Description`)}>
+          <div className="h-[320px] overflow-hidden rounded-lg border border-border">
+            <div className="flex h-full">
+              <SgMenu
+                menuStyle="sidebar"
+                brand={{ title: "SeedGrid ERP" }}
+                user={{
+                  name: "Lúcia Souza",
+                  subtitle: "Financeiro",
+                  avatar: <SgAvatar size="sm" label="LS" />
+                }}
+                footer={<span className="text-xs">v1.0</span>}
+                menu={[
+                  { id: "painel", label: "Painel" },
+                  { id: "financeiro", label: "Financeiro" }
+                ]}
+              />
+            </div>
+          </div>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-menu/samples/rodape-e-avatar-do-usuario.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section12Title`)} description={t(i18n, `${K}.section12Description`)}>
           <SgPlayground
             title={t(i18n, `${K}.playgroundTitle`)}
             interactive
