@@ -9446,6 +9446,12 @@
       "required": false
     },
     {
+      "name": "overflow",
+      "type": "boolean",
+      "required": false,
+      "description": "Quando a barra nao comporta todos os itens na largura (ou altura, na vertical) disponivel, os\n`SgToolbarIconButton` que nao cabem vao para um menu \"...\" (SgMenu). Abaixo de 600px de largura\nde tela o menu abre como painel inferior. Padrao: false. Ignorado com `buttonsPerDirection`."
+    },
+    {
       "name": "size",
       "type": "SgToolBarSize",
       "required": false

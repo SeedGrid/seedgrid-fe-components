@@ -141,7 +141,7 @@ export { SgWhistleHost } from "./commons/SgWhistleHost";
 export type { SgWhistleHostProps } from "./commons/SgWhistleHost";
 export { buildFabStorageKey, parseStoredFabDragPosition } from "./buttons/fab-helpers";
 export { buildDockMenuStorageKey, buildToolbarStorageKey, parseStoredPanelDragPosition } from "./layout/drag-position";
-export { buildToolbarLayoutState, resolveToolbarDockOrientationDirection, resolveToolbarOrientationDirection } from "./layout/toolbar-logic";
+export { buildToolbarLayoutState, resolveToolbarDockOrientationDirection, resolveToolbarOrientationDirection, resolveToolbarOverflow } from "./layout/toolbar-logic";
 export { buildDockMenuContainerStyle, buildDockMenuContextMenuState, buildDockMenuItemMotion, buildDockMenuLabelStyle, buildDockMenuLayout, resolveDockMenuLiftDirection, resolveDockMenuOrientation } from "./menus/dock-menu-logic";
 export { getActiveHostId, hasAnyHost, nextHostId, registerHost, subscribeHostRegistry, unregisterHost } from "./commons/sgToastHostRegistry";
 export { SgPopup } from "./overlay/SgPopup";

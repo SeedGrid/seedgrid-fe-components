@@ -69,3 +69,30 @@ export function buildToolbarLayoutState(args: {
     collapseIconDirection: resolvedOrientationDirection === "horizontal-right" ? "right" : direction
   };
 }
+
+/**
+ * Overflow da SgToolBar (mesma regra do Flutter): quantos itens cabem no espaco principal.
+ * `extents` = tamanho de cada item no eixo principal; `overflowExtent` = tamanho do botao "..."
+ * (so conta se algum item ficar de fora). Devolve `extents.length` quando tudo cabe.
+ */
+export function resolveToolbarOverflow(args: {
+  extents: number[];
+  available: number;
+  gap: number;
+  overflowExtent: number;
+}): number {
+  const { extents, available, gap, overflowExtent } = args;
+  if (!Number.isFinite(available)) return extents.length;
+  let total = 0;
+  for (let i = 0; i < extents.length; i++) total += (extents[i] ?? 0) + (i > 0 ? gap : 0);
+  if (total <= available + 0.01) return extents.length;
+  let used = 0;
+  let count = 0;
+  for (let i = 0; i < extents.length; i++) {
+    const next = used + (extents[i] ?? 0) + (count > 0 ? gap : 0);
+    if (next + gap + overflowExtent > available + 0.01) break;
+    used = next;
+    count++;
+  }
+  return count;
+}

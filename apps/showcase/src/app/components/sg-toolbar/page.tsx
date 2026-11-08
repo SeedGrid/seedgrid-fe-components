@@ -10,7 +10,7 @@ import {
   toast,
 } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
-import { Filter, Home, Pencil, Plus, RefreshCcw, Settings, Share2, Star, Trash2, Users } from "lucide-react";
+import { Copy, Filter, Home, Pencil, Plus, Printer, RefreshCcw, Settings, Share2, Star, Trash2, Users } from "lucide-react";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
@@ -138,6 +138,7 @@ const TOOLBAR_PROPS: ShowcasePropRow[] = [
   { prop: "SgToolBar.collapsed", type: "boolean", defaultValue: "controlado", description: "Controls collapsed state externally." },
   { prop: "SgToolBar.defaultCollapsed", type: "boolean", defaultValue: "false", description: "Initial collapsed state in uncontrolled mode." },
   { prop: "SgToolBar.onCollapsedChange", type: "(collapsed: boolean) => void", defaultValue: "-", description: "Callback when collapse toggles." },
+  { prop: "SgToolBar.overflow", type: "boolean", defaultValue: "false", description: "Moves the buttons that do not fit the available width into a \"...\" menu (SgMenu); below 600px of screen width it opens as a bottom panel. Ignored when buttonsPerDirection is set." },
   { prop: "SgToolBar.children", type: "ReactNode", defaultValue: "-", description: "Internal items, usually SgToolbarIconButton." },
   { prop: "SgToolbarIconButton.icon", type: "ReactNode | string", defaultValue: "-", description: "Icon or text displayed on the button." },
   { prop: "SgToolbarIconButton.label", type: "string", defaultValue: "-", description: "Visible button text." },
@@ -160,7 +161,8 @@ export default function SgToolBarPage() {
       t(i18n, `${K}.sectionTitles.2`),
       t(i18n, `${K}.sectionTitles.3`),
       t(i18n, `${K}.sectionTitles.4`),
-      t(i18n, `${K}.sectionTitles.5`)
+      t(i18n, `${K}.sectionTitles.5`),
+      t(i18n, `${K}.sectionTitles.6`)
     ],
     sectionDescriptions: [
       t(i18n, `${K}.sectionDescriptions.0`),
@@ -168,7 +170,8 @@ export default function SgToolBarPage() {
       t(i18n, `${K}.sectionDescriptions.2`),
       t(i18n, `${K}.sectionDescriptions.3`),
       t(i18n, `${K}.sectionDescriptions.4`),
-      t(i18n, `${K}.sectionDescriptions.5`)
+      t(i18n, `${K}.sectionDescriptions.5`),
+      t(i18n, `${K}.sectionDescriptions.6`)
     ],
     labels: {
       navigation: t(i18n, `${K}.labels.navigation`),
@@ -185,7 +188,11 @@ export default function SgToolBarPage() {
       highlightedTitle: t(i18n, `${K}.labels.highlightedTitle`),
       dragMe: t(i18n, `${K}.labels.dragMe`),
       favorite: t(i18n, `${K}.labels.favorite`),
-      share: t(i18n, `${K}.labels.share`)
+      share: t(i18n, `${K}.labels.share`),
+      narrow: t(i18n, `${K}.labels.narrow`),
+      new: t(i18n, `${K}.labels.new`),
+      copy: t(i18n, `${K}.labels.copy`),
+      print: t(i18n, `${K}.labels.print`)
     },
     hints: {
       goHome: t(i18n, `${K}.hints.goHome`),
@@ -361,6 +368,21 @@ export default function SgToolBarPage() {
         </Section>
 
         <Section id="exemplo-6" title={texts.sectionTitles[5] ?? ""} description={texts.sectionDescriptions[5] ?? ""}>
+          <div className="w-full">
+            <ToolbarInlineHost layoutId="tb-layout-overflow">
+              <SgToolBar id="tb-overflow" title={texts.labels.narrow} orientationDirection="horizontal-left" overflow size={{ w: 260 }}>
+                <SgToolbarIconButton icon={<Plus className="size-4" />} label={texts.labels.new} />
+                <SgToolbarIconButton icon={<Pencil className="size-4" />} label={texts.labels.edit} />
+                <SgToolbarIconButton icon={<Copy className="size-4" />} label={texts.labels.copy} />
+                <SgToolbarIconButton icon={<Printer className="size-4" />} label={texts.labels.print} />
+                <SgToolbarIconButton icon={<Share2 className="size-4" />} label={texts.labels.share} />
+              </SgToolBar>
+            </ToolbarInlineHost>
+          </div>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-toolbar/samples/overflow-itens-que-nao-cabem-vao-para-o-menu.tsx.sample" />
+        </Section>
+
+        <Section id="exemplo-7" title={texts.sectionTitles[6] ?? ""} description={texts.sectionDescriptions[6] ?? ""}>
           <div className="w-full">
             <SgPlayground
               title={texts.playgroundTitle}

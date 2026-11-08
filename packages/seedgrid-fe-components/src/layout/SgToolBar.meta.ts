@@ -69,6 +69,14 @@ export const sgMeta: SgMetaV0 = {
       bindable: true
     },
     {
+      name: "overflow",
+      type: "boolean",
+      default: false,
+      description: "Move para um menu '...' os botoes que nao cabem na largura disponivel; abaixo de 600px abre como painel inferior.",
+      semanticRole: "behavior",
+      bindable: true
+    },
+    {
       name: "children",
       type: "ReactNode",
       description: "Botoes e elementos de acao da toolbar.",

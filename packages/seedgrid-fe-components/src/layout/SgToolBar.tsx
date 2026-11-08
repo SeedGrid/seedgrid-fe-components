@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { createPortal } from "react-dom";
+import { MoreHorizontal } from "lucide-react";
 import {
   useSgDockLayout,
   type SgDockDropIndicator,
@@ -10,7 +11,9 @@ import {
 import { useHasSgEnvironmentProvider, useSgPersistence } from "../environment/SgEnvironmentProvider";
 import { t, useComponentsI18n } from "../i18n";
 import { buildToolbarStorageKey, parseStoredPanelDragPosition } from "./drag-position";
-import { buildToolbarLayoutState } from "./toolbar-logic";
+import { buildToolbarLayoutState, resolveToolbarOverflow } from "./toolbar-logic";
+import { SgMenu, type SgMenuNode } from "./SgMenu";
+import { SgPopup } from "../overlay/SgPopup";
 
 export type SgToolBarOrientation = "horizontal" | "vertical";
 export type SgToolBarOrientationDirection =
@@ -53,6 +56,13 @@ export type SgToolBarProps = {
   collapsed?: boolean;
   defaultCollapsed?: boolean;
   onCollapsedChange?: (collapsed: boolean) => void;
+
+  /**
+   * Quando a barra nao comporta todos os itens na largura (ou altura, na vertical) disponivel, os
+   * `SgToolbarIconButton` que nao cabem vao para um menu "..." (SgMenu). Abaixo de 600px de largura
+   * de tela o menu abre como painel inferior. Padrao: false. Ignorado com `buttonsPerDirection`.
+   */
+  overflow?: boolean;
 
   children?: React.ReactNode;
 };
@@ -170,6 +180,7 @@ export function SgToolBar(props: Readonly<SgToolBarProps>) {
     collapsed,
     defaultCollapsed = false,
     onCollapsedChange,
+    overflow = false,
     children
   } = props;
 
@@ -600,10 +611,13 @@ export function SgToolBar(props: Readonly<SgToolBarProps>) {
       ? Math.floor(buttonsPerDirection)
       : undefined;
 
+  const overflowActive = overflow && !normalizedButtonsPerDirection && showContent;
+
   const content = showContent ? (
     <div
       className={cn(
         "gap-2 p-2",
+        overflowActive && "min-h-0 min-w-0 flex-1",
         normalizedButtonsPerDirection
           ? "grid"
           : orientation === "horizontal"
@@ -621,7 +635,9 @@ export function SgToolBar(props: Readonly<SgToolBarProps>) {
           : undefined
       }
     >
-      {children}
+      {overflowActive ? (
+        <SgToolBarOverflowFlow horizontal={orientation === "horizontal"}>{children}</SgToolBarOverflowFlow>
+      ) : children}
     </div>
   ) : null;
 
@@ -656,6 +672,7 @@ export function SgToolBar(props: Readonly<SgToolBarProps>) {
           <div
             className={cn(
               "flex items-center gap-2 px-2 py-1",
+              overflowActive && "shrink-0",
               orientation === "horizontal" ? "w-auto" : "w-full",
               orientation === "horizontal"
                 ? showContent
@@ -861,6 +878,184 @@ export function SgToolbarIconButton(
       </button>
       {hintNode}
     </>
+  );
+}
+
+const OVERFLOW_GAP = 8;
+const OVERFLOW_NARROW_WIDTH = 600;
+
+type SgToolBarOverflowMetrics = { extents: number[]; more: number; available: number };
+
+const useIsoLayoutEffect = typeof window !== "undefined" ? React.useLayoutEffect : React.useEffect;
+
+function sameMetrics(a: SgToolBarOverflowMetrics | null, b: SgToolBarOverflowMetrics) {
+  return (
+    !!a &&
+    a.more === b.more &&
+    a.available === b.available &&
+    a.extents.length === b.extents.length &&
+    a.extents.every((v, i) => v === b.extents[i])
+  );
+}
+
+/**
+ * Itens da toolbar com `overflow`: mede a largura (ResizeObserver) e move para o menu "..." os
+ * `SgToolbarIconButton` que nao cabem. Outros elementos que nao cabem ficam escondidos.
+ * Uma copia invisivel de todos os itens ("ghost") fornece os tamanhos naturais.
+ */
+function SgToolBarOverflowFlow(props: Readonly<{ horizontal: boolean; children?: React.ReactNode }>) {
+  const { horizontal, children } = props;
+  const i18n = useComponentsI18n();
+  const items = React.Children.toArray(children);
+  const hostRef = React.useRef<HTMLDivElement>(null);
+  const ghostRef = React.useRef<HTMLDivElement>(null);
+  const moreRef = React.useRef<HTMLSpanElement>(null);
+  const [metrics, setMetrics] = React.useState<SgToolBarOverflowMetrics | null>(null);
+  const [menuOpen, setMenuOpen] = React.useState(false);
+  const [narrow, setNarrow] = React.useState(false);
+
+  const measure = React.useCallback(() => {
+    const host = hostRef.current;
+    const ghost = ghostRef.current;
+    if (!host || !ghost) return;
+    const sizes = Array.from(ghost.children).map((el) =>
+      horizontal ? (el as HTMLElement).offsetWidth : (el as HTMLElement).offsetHeight
+    );
+    const more = sizes.pop() ?? 0;
+    const next = { extents: sizes, more, available: horizontal ? host.clientWidth : host.clientHeight };
+    setMetrics((prev) => (sameMetrics(prev, next) ? prev : next));
+  }, [horizontal]);
+
+  useIsoLayoutEffect(() => {
+    measure();
+  });
+
+  React.useEffect(() => {
+    const host = hostRef.current;
+    const ghost = ghostRef.current;
+    if (typeof ResizeObserver === "undefined") {
+      window.addEventListener("resize", measure);
+      return () => window.removeEventListener("resize", measure);
+    }
+    const observer = new ResizeObserver(() => measure());
+    if (host) observer.observe(host);
+    if (ghost) observer.observe(ghost);
+    return () => observer.disconnect();
+  }, [measure]);
+
+  const count =
+    metrics && metrics.extents.length === items.length
+      ? resolveToolbarOverflow({
+        extents: metrics.extents,
+        available: metrics.available,
+        gap: OVERFLOW_GAP,
+        overflowExtent: metrics.more
+      })
+      : items.length;
+  const showMore = count < items.length;
+
+  const hiddenNodes: SgMenuNode[] = [];
+  items.forEach((item, index) => {
+    if (index < count || !React.isValidElement(item) || item.type !== SgToolbarIconButton) return;
+    const p = item.props as SgToolbarIconButtonProps;
+    hiddenNodes.push({
+      id: `sg-toolbar-overflow-${index}`,
+      label: p.label ?? p.hint ?? "",
+      hint: p.hint,
+      icon: p.icon,
+      enabled: p.enabled,
+      onClick: p.onClick ? () => { void p.onClick?.(); } : undefined
+    });
+  });
+
+  React.useEffect(() => {
+    if (!showMore && menuOpen) setMenuOpen(false);
+  }, [showMore, menuOpen]);
+
+  const total = metrics ? metrics.extents.reduce((acc, v, i) => acc + v + (i > 0 ? OVERFLOW_GAP : 0), 0) : 0;
+  const openLabel = t(i18n, "components.menu.open");
+  const flexDir = horizontal ? "row" : "column";
+
+  return (
+    <div
+      ref={hostRef}
+      data-sg-toolbar-overflow="true"
+      style={{ position: "relative", minWidth: 0, minHeight: 0, flex: "1 1 0%", display: "flex" }}
+    >
+      {metrics ? (
+        <div
+          aria-hidden="true"
+          style={{ flex: "none", width: horizontal ? total : 0, height: horizontal ? 0 : total }}
+        />
+      ) : null}
+      <div data-sg-toolbar-overflow-items="true" style={{ display: "flex", flexDirection: flexDir, alignItems: "center", gap: OVERFLOW_GAP, minWidth: 0 }}>
+        {items.slice(0, count)}
+        {showMore ? (
+          <span ref={moreRef} data-sg-toolbar-overflow-button="true" style={{ display: "inline-flex" }}>
+            <SgToolbarIconButton
+              icon={<MoreHorizontal className="size-4" />}
+              hint={openLabel}
+              onClick={() => {
+                setNarrow(typeof window !== "undefined" && window.innerWidth < OVERFLOW_NARROW_WIDTH);
+                setMenuOpen((open) => !open);
+              }}
+            />
+          </span>
+        ) : null}
+      </div>
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          left: 0,
+          top: 0,
+          width: 0,
+          height: 0,
+          overflow: "hidden",
+          visibility: "hidden",
+          pointerEvents: "none"
+        }}
+      >
+        <div
+          ref={ghostRef}
+          style={{ display: "flex", flexDirection: flexDir, alignItems: "center", gap: OVERFLOW_GAP, width: "max-content" }}
+        >
+          {items.map((item, index) => (
+            <div key={index} style={{ flex: "none" }}>{item}</div>
+          ))}
+          <div style={{ flex: "none" }}>
+            <SgToolbarIconButton icon={<MoreHorizontal className="size-4" />} />
+          </div>
+        </div>
+      </div>
+      {showMore && menuOpen ? (
+        <SgPopup
+          open
+          onOpenChange={setMenuOpen}
+          anchorRef={moreRef as React.RefObject<HTMLElement>}
+          placement={horizontal ? "bottom" : "right"}
+          align="start"
+          offset={4}
+          zIndex={1300}
+          minWidth={narrow ? 0 : 240}
+          style={
+            narrow
+              ? { top: "auto", left: 0, right: 0, bottom: 0, width: "100%", borderRadius: "12px 12px 0 0" }
+              : undefined
+          }
+        >
+          <SgMenu
+            menu={hiddenNodes}
+            menuStyle="inline"
+            border={false}
+            elevation="none"
+            expandedWidth={narrow ? "100%" : 240}
+            ariaLabel={openLabel}
+            onItemClick={() => setMenuOpen(false)}
+          />
+        </SgPopup>
+      ) : null}
+    </div>
   );
 }
 
