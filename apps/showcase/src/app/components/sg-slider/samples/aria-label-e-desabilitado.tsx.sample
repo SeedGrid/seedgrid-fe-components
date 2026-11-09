@@ -9,7 +9,7 @@ export default function Example() {
         maxValue={100}
         defaultValue={40}
         width="20rem"
-        ariaLabel="Nivel de prioridade"
+        ariaLabel="Nível de prioridade"
       />
       <SgSlider
         id="slider-disabled"

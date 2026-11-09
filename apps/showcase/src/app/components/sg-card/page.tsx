@@ -340,9 +340,9 @@ export default function SgCardPage() {
               size={size}
               clickable
               onClick={() => setClicks((prev) => prev + 1)}
-              title={`Tamanho ${size} (cliques: ${clicks})`}
+              title={t(i18n, "showcase.component.card.sizes.title", { size, clicks })}
             >
-              <div className="text-sm text-muted-foreground">Cartão clicável</div>
+              <div className="text-sm text-muted-foreground">{t(i18n, "showcase.component.card.sizes.clickable")}</div>
             </SgCard>
           ))}
         </div>

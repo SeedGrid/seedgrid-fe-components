@@ -399,24 +399,24 @@ export default function SgDockMenuPage() {
     useShowcaseAnchors({ deps: [i18n.locale] });
 
   const basicItems: SgDockMenuItem[] = [
-    { id: "home", icon: <Home size={24} />, label: "Home", onClick: () => toast.info("Home clicked") },
-    { id: "mail", icon: <Mail size={24} />, label: "Mail", badge: 5, onClick: () => toast.info("Mail clicked") },
-    { id: "notifications", icon: <Bell size={24} />, label: "Notifications", badge: 12, onClick: () => toast.info("Notifications clicked") },
-    { id: "settings", icon: <Settings size={24} />, label: "Settings", onClick: () => toast.info("Settings clicked") },
-    { id: "profile", icon: <User size={24} />, label: "Profile", onClick: () => toast.info("Profile clicked") }
+    { id: "home", icon: <Home size={24} />, label: t(i18n, "showcase.component.dockMenu.items.home"), onClick: () => toast.info(t(i18n, "showcase.component.dockMenu.clicked", { label: t(i18n, "showcase.component.dockMenu.items.home") })) },
+    { id: "mail", icon: <Mail size={24} />, label: t(i18n, "showcase.component.dockMenu.items.mail"), badge: 5, onClick: () => toast.info(t(i18n, "showcase.component.dockMenu.clicked", { label: t(i18n, "showcase.component.dockMenu.items.mail") })) },
+    { id: "notifications", icon: <Bell size={24} />, label: t(i18n, "showcase.component.dockMenu.items.notifications"), badge: 12, onClick: () => toast.info(t(i18n, "showcase.component.dockMenu.clicked", { label: t(i18n, "showcase.component.dockMenu.items.notifications") })) },
+    { id: "settings", icon: <Settings size={24} />, label: t(i18n, "showcase.component.dockMenu.items.settings"), onClick: () => toast.info(t(i18n, "showcase.component.dockMenu.clicked", { label: t(i18n, "showcase.component.dockMenu.items.settings") })) },
+    { id: "profile", icon: <User size={24} />, label: t(i18n, "showcase.component.dockMenu.items.profile"), onClick: () => toast.info(t(i18n, "showcase.component.dockMenu.clicked", { label: t(i18n, "showcase.component.dockMenu.items.profile") })) }
   ];
 
   const positionItems = basicItems.slice(0, 3);
 
   const manyItems: SgDockMenuItem[] = [
-    { id: "search", icon: <Search size={22} />, label: "Search" },
-    { id: "favorites", icon: <Heart size={22} />, label: "Favorites", badge: 3 },
-    { id: "messages", icon: <MessageSquare size={22} />, label: "Messages", badge: "99+" },
-    { id: "calendar", icon: <Calendar size={22} />, label: "Calendar" },
-    { id: "starred", icon: <Star size={22} />, label: "Starred" },
-    { id: "bookmarks", icon: <Bookmark size={22} />, label: "Bookmarks" },
-    { id: "gallery", icon: <Image size={22} />, label: "Gallery" },
-    { id: "documents", icon: <FileText size={22} />, label: "Documents" }
+    { id: "search", icon: <Search size={22} />, label: t(i18n, "showcase.component.dockMenu.items.search") },
+    { id: "favorites", icon: <Heart size={22} />, label: t(i18n, "showcase.component.dockMenu.items.favorites"), badge: 3 },
+    { id: "messages", icon: <MessageSquare size={22} />, label: t(i18n, "showcase.component.dockMenu.items.messages"), badge: "99+" },
+    { id: "calendar", icon: <Calendar size={22} />, label: t(i18n, "showcase.component.dockMenu.items.calendar") },
+    { id: "starred", icon: <Star size={22} />, label: t(i18n, "showcase.component.dockMenu.items.starred") },
+    { id: "bookmarks", icon: <Bookmark size={22} />, label: t(i18n, "showcase.component.dockMenu.items.bookmarks") },
+    { id: "gallery", icon: <Image size={22} />, label: t(i18n, "showcase.component.dockMenu.items.gallery") },
+    { id: "documents", icon: <FileText size={22} />, label: t(i18n, "showcase.component.dockMenu.items.documents") }
   ];
 
   const callbackItems: SgDockMenuItem[] = manyItems.slice(0, 6).map((item) => ({
@@ -430,11 +430,11 @@ export default function SgDockMenuPage() {
   );
 
   const externalBadgeItems: SgDockMenuItem[] = [
-    { id: "home", icon: <Home size={24} />, label: "Home", onClick: () => toast.info("Home clicked") },
-    { id: "mail", icon: <Mail size={24} />, label: "Mail", badge: externalBadges.mail, onClick: () => toast.info("Mail clicked") },
-    { id: "notifications", icon: <Bell size={24} />, label: "Notifications", badge: externalBadges.notifications, onClick: () => toast.info("Notifications clicked") },
-    { id: "settings", icon: <Settings size={24} />, label: "Settings", onClick: () => toast.info("Settings clicked") },
-    { id: "profile", icon: <User size={24} />, label: "Profile", onClick: () => toast.info("Profile clicked") }
+    { id: "home", icon: <Home size={24} />, label: t(i18n, "showcase.component.dockMenu.items.home"), onClick: () => toast.info(t(i18n, "showcase.component.dockMenu.clicked", { label: t(i18n, "showcase.component.dockMenu.items.home") })) },
+    { id: "mail", icon: <Mail size={24} />, label: t(i18n, "showcase.component.dockMenu.items.mail"), badge: externalBadges.mail, onClick: () => toast.info(t(i18n, "showcase.component.dockMenu.clicked", { label: t(i18n, "showcase.component.dockMenu.items.mail") })) },
+    { id: "notifications", icon: <Bell size={24} />, label: t(i18n, "showcase.component.dockMenu.items.notifications"), badge: externalBadges.notifications, onClick: () => toast.info(t(i18n, "showcase.component.dockMenu.clicked", { label: t(i18n, "showcase.component.dockMenu.items.notifications") })) },
+    { id: "settings", icon: <Settings size={24} />, label: t(i18n, "showcase.component.dockMenu.items.settings"), onClick: () => toast.info(t(i18n, "showcase.component.dockMenu.clicked", { label: t(i18n, "showcase.component.dockMenu.items.settings") })) },
+    { id: "profile", icon: <User size={24} />, label: t(i18n, "showcase.component.dockMenu.items.profile"), onClick: () => toast.info(t(i18n, "showcase.component.dockMenu.clicked", { label: t(i18n, "showcase.component.dockMenu.items.profile") })) }
   ];
 
   return (
@@ -483,7 +483,7 @@ export default function SgDockMenuPage() {
             appearance="outline"
             onClick={() => setExternalBadges((p) => ({ ...p, mail: p.mail + 1 }))}
           >
-            +1 Mail
+            {t(i18n, "showcase.component.dockMenu.buttons.plusMail")}
           </SgButton>
           <SgButton
             type="button"
@@ -491,7 +491,7 @@ export default function SgDockMenuPage() {
             appearance="outline"
             onClick={() => setExternalBadges((p) => ({ ...p, notifications: p.notifications + 1 }))}
           >
-            +1 Notifications
+            {t(i18n, "showcase.component.dockMenu.buttons.plusNotifications")}
           </SgButton>
           <SgButton
             type="button"
@@ -499,7 +499,7 @@ export default function SgDockMenuPage() {
             appearance="outline"
             onClick={() => setExternalBadges((p) => ({ ...p, mail: Math.max(0, p.mail - 1) }))}
           >
-            -1 Mail
+            {t(i18n, "showcase.component.dockMenu.buttons.minusMail")}
           </SgButton>
           <SgButton
             type="button"
@@ -507,7 +507,7 @@ export default function SgDockMenuPage() {
             appearance="outline"
             onClick={() => setExternalBadges({ mail: 0, notifications: 0 })}
           >
-            Reset
+            {t(i18n, "showcase.component.dockMenu.buttons.reset")}
           </SgButton>
         </SgGrid>
         <div className="relative h-64 rounded-lg border-2 border-dashed border-border bg-muted/20">

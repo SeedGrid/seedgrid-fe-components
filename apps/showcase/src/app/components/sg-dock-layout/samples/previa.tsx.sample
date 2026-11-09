@@ -12,7 +12,7 @@ export default function Example() {
         <SgDockZone zone="top" className="col-span-2 row-start-1 items-start border-b border-white/20">
           <SgToolBar id="ferramentas-previa" dockZone="top" orientationDirection="horizontal-left" title="Ferramentas" draggable>
             <SgToolbarIconButton icon={<LayoutGrid className="size-4" />} label="Painel" hint="Abrir painel" />
-            <SgToolbarIconButton icon={<ClipboardList className="size-4" />} label="Relatorio" hint="Abrir relatorios" />
+            <SgToolbarIconButton icon={<ClipboardList className="size-4" />} label="Relatório" hint="Abrir relatórios" />
           </SgToolBar>
         </SgDockZone>
         <SgDockZone zone="left" className="col-start-1 row-start-2 items-start border-r border-white/20">

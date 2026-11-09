@@ -52,6 +52,7 @@ const EX1_CODE = `const animRef = React.useRef<SgStringAnimatorRef>(null);
 </div>`;
 
 function Ex1() {
+  const i18n = useShowcaseI18n();
   const animRef = React.useRef<SgStringAnimatorRef>(null);
   return (
     <div className="flex flex-col gap-4">
@@ -64,7 +65,7 @@ function Ex1() {
         fontSize={28}
       />
       <SgButton size="sm" onClick={() => animRef.current?.startAnimation()}>
-        Animar
+        {t(i18n, `${K}.buttons.animate`)}
       </SgButton>
     </div>
   );
@@ -90,6 +91,7 @@ const EX2_CODE = `const animRef = React.useRef<SgStringAnimatorRef>(null);
 </div>`;
 
 function Ex2() {
+  const i18n = useShowcaseI18n();
   const animRef = React.useRef<SgStringAnimatorRef>(null);
   return (
     <div className="flex flex-col gap-4">
@@ -102,7 +104,7 @@ function Ex2() {
         fontSize={28}
       />
       <SgButton size="sm" onClick={() => animRef.current?.startAnimation()}>
-        Animar
+        {t(i18n, `${K}.buttons.animate`)}
       </SgButton>
     </div>
   );
@@ -128,6 +130,7 @@ const EX3_CODE = `const animRef = React.useRef<SgStringAnimatorRef>(null);
 </div>`;
 
 function Ex3() {
+  const i18n = useShowcaseI18n();
   const animRef = React.useRef<SgStringAnimatorRef>(null);
   return (
     <div className="flex flex-col gap-4">
@@ -140,7 +143,7 @@ function Ex3() {
         fontSize={28}
       />
       <SgButton size="sm" onClick={() => animRef.current?.startAnimation()}>
-        Animar
+        {t(i18n, `${K}.buttons.animate`)}
       </SgButton>
     </div>
   );
@@ -168,6 +171,7 @@ const EX4_CODE = `const animRef = React.useRef<SgStringAnimatorRef>(null);
 </div>`;
 
 function Ex4() {
+  const i18n = useShowcaseI18n();
   const animRef = React.useRef<SgStringAnimatorRef>(null);
   return (
     <div className="flex flex-col gap-4">
@@ -182,7 +186,7 @@ function Ex4() {
         backgroundColor="#090f22"
       />
       <SgButton size="sm" onClick={() => animRef.current?.startAnimation()}>
-        Animar
+        {t(i18n, `${K}.buttons.animate`)}
       </SgButton>
     </div>
   );
@@ -208,6 +212,7 @@ const EX5_CODE = `const animRef = React.useRef<SgStringAnimatorRef>(null);
 </div>`;
 
 function Ex5() {
+  const i18n = useShowcaseI18n();
   const animRef = React.useRef<SgStringAnimatorRef>(null);
   return (
     <div className="flex flex-col gap-4">
@@ -220,7 +225,7 @@ function Ex5() {
         fontSize={28}
       />
       <SgButton size="sm" onClick={() => animRef.current?.startAnimation()}>
-        Animar
+        {t(i18n, `${K}.buttons.animate`)}
       </SgButton>
     </div>
   );
@@ -246,6 +251,7 @@ const EX6_CODE = `const animRef = React.useRef<SgStringAnimatorRef>(null);
 </div>`;
 
 function Ex6() {
+  const i18n = useShowcaseI18n();
   const animRef = React.useRef<SgStringAnimatorRef>(null);
   return (
     <div className="flex flex-col gap-4">
@@ -258,7 +264,7 @@ function Ex6() {
         fontSize={28}
       />
       <SgButton size="sm" onClick={() => animRef.current?.startAnimation()}>
-        Animar
+        {t(i18n, `${K}.buttons.animate`)}
       </SgButton>
     </div>
   );
@@ -285,6 +291,7 @@ const EX7_CODE = `const animRef = React.useRef<SgStringAnimatorRef>(null);
 </div>`;
 
 function Ex7() {
+  const i18n = useShowcaseI18n();
   const animRef = React.useRef<SgStringAnimatorRef>(null);
   return (
     <div className="flex flex-col gap-4">
@@ -298,7 +305,7 @@ function Ex7() {
         backgroundColor="#0b1220"
       />
       <SgButton size="sm" onClick={() => animRef.current?.startAnimation()}>
-        Animar
+        {t(i18n, `${K}.buttons.animate`)}
       </SgButton>
     </div>
   );
@@ -336,6 +343,7 @@ const next = () => {
 const EX8_NAMES = ["LUCIANO", "MARTA", "PEDRO", "ANA", "SEEDGRID"];
 
 function Ex8() {
+  const i18n = useShowcaseI18n();
   const [idx, setIdx] = React.useState(0);
   const [target, setTarget] = React.useState(EX8_NAMES[0] ?? "");
 
@@ -358,7 +366,7 @@ function Ex8() {
         velocity={60}
       />
       <SgButton size="sm" onClick={next}>
-        Próximo nome
+        {t(i18n, `${K}.buttons.nextName`)}
       </SgButton>
     </div>
   );
@@ -399,6 +407,7 @@ const VELOCITY_CASES = [
 ] as const;
 
 function Ex9() {
+  const i18n = useShowcaseI18n();
   const refs = [
     React.useRef<SgStringAnimatorRef>(null),
     React.useRef<SgStringAnimatorRef>(null),
@@ -411,7 +420,7 @@ function Ex9() {
         const ref = refs[i] ?? refs[0];
         return (
           <div key={label} className="flex flex-col gap-2">
-            <span className="text-xs text-muted-foreground">{label}</span>
+            <span className="text-xs text-muted-foreground">{t(i18n, `${K}.velocity.${velocity}`)}</span>
             <SgStringAnimator
               ref={ref}
               sourceString="ORIGEM"
@@ -422,7 +431,7 @@ function Ex9() {
               velocity={velocity}
             />
             <SgButton size="sm" onClick={() => ref.current?.startAnimation()}>
-              Animar
+              {t(i18n, `${K}.buttons.animate`)}
             </SgButton>
           </div>
         );
@@ -437,6 +446,7 @@ function Ex9() {
 const DIGITS_CHARSET = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
 function Ex10() {
+  const i18n = useShowcaseI18n();
   const numerosRef = React.useRef<SgStringAnimatorRef>(null);
   const letrasRef = React.useRef<SgStringAnimatorRef>(null);
 
@@ -471,7 +481,7 @@ function Ex10() {
             letrasRef.current?.startAnimation();
           }}
         >
-          Animar
+          {t(i18n, `${K}.buttons.animate`)}
         </SgButton>
       </div>
     </div>

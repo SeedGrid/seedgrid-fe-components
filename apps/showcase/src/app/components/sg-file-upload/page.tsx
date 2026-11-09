@@ -325,7 +325,7 @@ export default function SgFileUploadPage() {
           title={`7) ${t(i18n, "showcase.component.fileUpload.sections.form.title")}`}
           description={t(i18n, "showcase.component.fileUpload.sections.form.description")}
         >
-          <form className="w-80 space-y-3" onSubmit={handleSubmit((values) => setSubmitted(`${values.comprovantes.length} arquivo(s)`))}>
+          <form className="w-80 space-y-3" onSubmit={handleSubmit((values) => setSubmitted(t(i18n, "showcase.component.fileUpload.form.filesCount", { count: values.comprovantes.length })))}>
             <SgFileUpload
               id="comprovantes"
               name="comprovantes"

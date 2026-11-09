@@ -181,7 +181,7 @@ export default function SgStepperInputPage() {
               onChange={setBasicValue}
             />
             <p className="text-sm text-muted-foreground">
-              Valor atual: <span className="font-semibold text-foreground">{basicValue}</span>
+              {t(i18n, `${K}.currentValueLabel`)}: <span className="font-semibold text-foreground">{basicValue}</span>
             </p>
           </div>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-stepper-input/samples/basico.tsx.sample" />
@@ -204,7 +204,7 @@ export default function SgStepperInputPage() {
               <SgButton size="sm" appearance="outline" onClick={() => setControlledValue(30)}>30</SgButton>
             </div>
             <p className="text-sm text-muted-foreground">
-              Valor controlado: <span className="font-semibold text-foreground">{controlledValue}</span>
+              {t(i18n, `${K}.controlledValueLabel`)}: <span className="font-semibold text-foreground">{controlledValue}</span>
             </p>
           </div>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-stepper-input/samples/controle-externo.tsx.sample" />
@@ -214,7 +214,7 @@ export default function SgStepperInputPage() {
           <div className="flex flex-wrap items-center gap-4">
             <SgStepperInput id="stepper-readonly" minValue={0} maxValue={10} value={7} readOnly />
             <SgStepperInput id="stepper-disabled" minValue={0} maxValue={10} value={4} enabled={false} />
-            <SgStepperInput id="stepper-error" minValue={0} maxValue={10} error="Escolha ao menos 1" />
+            <SgStepperInput id="stepper-error" minValue={0} maxValue={10} error={t(i18n, `${K}.errorMinOne`)} />
           </div>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-stepper-input/samples/read-only-e-disabled.tsx.sample" />
         </Section>
@@ -231,14 +231,29 @@ export default function SgStepperInputPage() {
           <form onSubmit={handleSubmit((values) => setEnviado(String(values.qtd)))}>
             <SgStack gap={12} align="start">
               <SgStepperInput id="qtd" name="qtd" control={control} minValue={0} maxValue={9} width={160} />
-              <SgButton type="submit">Enviar</SgButton>
-              {enviado ? <p className="text-sm">Enviado: {enviado}</p> : null}
+              <SgButton type="submit">{t(i18n, `${K}.buttons.submit`)}</SgButton>
+              {enviado ? <p className="text-sm">{t(i18n, `${K}.submittedLabel`)}: {enviado}</p> : null}
             </SgStack>
           </form>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-stepper-input/samples/dentro-de-um-formulario.tsx.sample" />
         </Section>
 
         <Section title={t(i18n, `${K}.section6Title`)} description={t(i18n, `${K}.section6Description`)}>
+          <SgStack gap={8} align="start">
+            <SgStepperInput
+              id="ingressos"
+              ariaLabel={t(i18n, `${K}.ariaLabelExample.label`)}
+              minValue={1}
+              maxValue={10}
+              defaultValue={2}
+              width={160}
+            />
+            <p className="text-sm text-muted-foreground">ariaLabel: {t(i18n, `${K}.ariaLabelExample.label`)}</p>
+          </SgStack>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-stepper-input/samples/rotulo-de-acessibilidade-arialabel.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.section7Title`)} description={t(i18n, `${K}.section7Description`)}>
           <SgPlayground
             title={t(i18n, `${K}.playgroundTitle`)}
             interactive

@@ -348,7 +348,7 @@ export default function SgWhistleHostPage() {
           description={t(i18n, `${K}.sections.precedence.description`)}
         >
           <div className="flex flex-wrap items-start gap-4">
-            <SgButton onClick={() => sgWhistle.info({ message: "Só aparece no host" })}>Disparar</SgButton>
+            <SgButton onClick={() => sgWhistle.info({ message: t(i18n, `${K}.messages.onlyInHost`) })}>{t(i18n, `${K}.buttons.fire`)}</SgButton>
             <div className="min-w-0 flex-1 rounded-xl border border-dashed border-border p-4">
               <SgWhistler />
             </div>
@@ -362,9 +362,9 @@ export default function SgWhistleHostPage() {
         >
           <div className="flex flex-wrap items-center gap-2">
             <SgButton appearance="outline" onClick={() => setExtraHost((value) => !value)}>
-              Segundo host (cantos retos): {String(extraHost)}
+              {t(i18n, `${K}.buttons.secondHost`)}: {String(extraHost)}
             </SgButton>
-            <SgButton onClick={() => sgWhistle.warning({ message: "Quem está ativo?", duration: 3000 })}>Disparar</SgButton>
+            <SgButton onClick={() => sgWhistle.warning({ message: t(i18n, `${K}.messages.whoIsActive`), duration: 3000 })}>{t(i18n, `${K}.buttons.fire`)}</SgButton>
           </div>
           {extraHost ? (
             <div className="rounded-xl border border-dashed border-border p-4">

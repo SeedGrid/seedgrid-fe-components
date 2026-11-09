@@ -17,13 +17,13 @@ export default function Example() {
         open={open}
         onOpenChange={setOpen}
         role="dialog"
-        ariaLabel="Painel de notificacoes"
+        ariaLabel="Painel de notificações"
         overlayClassName="bg-black/70"
         animation={{ type: "fade", durationMs: 260 }}
         closeOnOutsideClick={false}
         trapFocus
         size={{ default: 280, min: 180, max: 420 }}
-        header={<div className="font-medium">Notificacoes</div>}
+        header={<div className="font-medium">Notificações</div>}
         footer={
           <div className="flex justify-end">
             <SgButton size="sm" onClick={() => setOpen(false)}>Fechar</SgButton>

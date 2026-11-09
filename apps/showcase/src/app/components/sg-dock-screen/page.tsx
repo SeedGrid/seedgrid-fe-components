@@ -186,29 +186,29 @@ export default function SgDockScreenPage() {
           >
             <SgDockZone zone="top">
               <SgToolBar id="tb-top-dock-screen-v1" dockZone="top" orientationDirection="horizontal-left" title="Topo" draggable>
-                <SgToolbarIconButton icon={<Home className="size-4" />} label="Home" hint="Ir para inicio" />
-                <SgToolbarIconButton icon={<Search className="size-4" />} label="Buscar" hint="Pesquisar dados" />
+                <SgToolbarIconButton icon={<Home className="size-4" />} label={t(i18n, "showcase.component.dockScreen.toolbar.home.label")} hint={t(i18n, "showcase.component.dockScreen.toolbar.home.hint")} />
+                <SgToolbarIconButton icon={<Search className="size-4" />} label={t(i18n, "showcase.component.dockScreen.toolbar.searchData.label")} hint={t(i18n, "showcase.component.dockScreen.toolbar.searchData.hint")} />
               </SgToolBar>
             </SgDockZone>
 
             <SgDockZone zone="bottom">
               <SgToolBar id="tb-bottom-dock-screen-v1" dockZone="bottom" orientationDirection="horizontal-left" title="Base" draggable>
-                <SgToolbarIconButton icon={<LayoutGrid className="size-4" />} label="Painel" hint="Abrir painel" />
-                <SgToolbarIconButton icon={<ClipboardList className="size-4" />} label="Relatorio" hint="Abrir relatorios" />
+                <SgToolbarIconButton icon={<LayoutGrid className="size-4" />} label={t(i18n, "showcase.component.dockScreen.toolbar.panel.label")} hint={t(i18n, "showcase.component.dockScreen.toolbar.panel.hint")} />
+                <SgToolbarIconButton icon={<ClipboardList className="size-4" />} label={t(i18n, "showcase.component.dockScreen.toolbar.reports.label")} hint={t(i18n, "showcase.component.dockScreen.toolbar.reports.hint")} />
               </SgToolBar>
             </SgDockZone>
 
             <SgDockZone zone="left">
               <SgToolBar id="tb-left-dock-screen-v1" dockZone="left" orientationDirection="vertical-down" title="Navegacao" collapsible draggable>
-                <SgToolbarIconButton icon={<Users className="size-4" />} label="Clientes" hint="Abrir clientes" />
-                <SgToolbarIconButton icon={<Settings className="size-4" />} label="Config" hint="Abrir configuracoes" />
+                <SgToolbarIconButton icon={<Users className="size-4" />} label={t(i18n, "showcase.component.dockScreen.toolbar.customers.label")} hint={t(i18n, "showcase.component.dockScreen.toolbar.customers.hint")} />
+                <SgToolbarIconButton icon={<Settings className="size-4" />} label={t(i18n, "showcase.component.dockScreen.toolbar.config.label")} hint={t(i18n, "showcase.component.dockScreen.toolbar.config.hint")} />
               </SgToolBar>
             </SgDockZone>
 
             <SgDockZone zone="right">
               <SgToolBar id="tb-right-dock-screen-v1" dockZone="right" orientationDirection="vertical-down" title="Equipe" collapsible draggable>
-                <SgToolbarIconButton icon={<Users className="size-4" />} label="Usuarios" hint="Gerenciar usuarios" />
-                <SgToolbarIconButton icon={<Settings className="size-4" />} label="Ajustes" hint="Abrir ajustes" />
+                <SgToolbarIconButton icon={<Users className="size-4" />} label={t(i18n, "showcase.component.dockScreen.toolbar.users.label")} hint={t(i18n, "showcase.component.dockScreen.toolbar.users.hint")} />
+                <SgToolbarIconButton icon={<Settings className="size-4" />} label={t(i18n, "showcase.component.dockScreen.toolbar.settings.label")} hint={t(i18n, "showcase.component.dockScreen.toolbar.settings.hint")} />
               </SgToolBar>
             </SgDockZone>
 
@@ -230,12 +230,12 @@ export default function SgDockScreenPage() {
           >
             <SgDockZone zone="top">
               <SgToolBar id="tb-top-dock-screen-size-v1" dockZone="top" orientationDirection="horizontal-left" title={t(i18n, `${K}.top`)} draggable>
-                <SgToolbarIconButton icon={<Home className="size-4" />} label="Home" hint="Ir para inicio" />
+                <SgToolbarIconButton icon={<Home className="size-4" />} label={t(i18n, "showcase.component.dockScreen.toolbar.home.label")} hint={t(i18n, "showcase.component.dockScreen.toolbar.home.hint")} />
               </SgToolBar>
             </SgDockZone>
             <SgDockZone zone="left">
               <SgToolBar id="tb-left-dock-screen-size-v1" dockZone="left" orientationDirection="vertical-down" title={t(i18n, `${K}.left`)} draggable>
-                <SgToolbarIconButton icon={<Users className="size-4" />} label="Clientes" hint="Abrir clientes" />
+                <SgToolbarIconButton icon={<Users className="size-4" />} label={t(i18n, "showcase.component.dockScreen.toolbar.customers.label")} hint={t(i18n, "showcase.component.dockScreen.toolbar.customers.hint")} />
               </SgToolBar>
             </SgDockZone>
             <SgDockZone zone="free">
@@ -254,7 +254,7 @@ export default function SgDockScreenPage() {
           >
             <SgDockZone zone="left">
               <SgToolBar id="tb-left-dock-screen-center-v1" dockZone="left" orientationDirection="vertical-down" title={t(i18n, `${K}.left`)} draggable>
-                <SgToolbarIconButton icon={<Users className="size-4" />} label="Clientes" hint="Abrir clientes" />
+                <SgToolbarIconButton icon={<Users className="size-4" />} label={t(i18n, "showcase.component.dockScreen.toolbar.customers.label")} hint={t(i18n, "showcase.component.dockScreen.toolbar.customers.hint")} />
               </SgToolBar>
             </SgDockZone>
             <SgDockZone zone="free">

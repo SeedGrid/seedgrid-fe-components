@@ -236,10 +236,10 @@ export default function SgPopupPage() {
             onOpenChange={setActionsOpen}
             anchorRef={actionsBtnRef as React.RefObject<HTMLElement>}
             actions={[
-              { label: t(i18n, "showcase.component.popup.actions.edit"), icon: <Pencil className="h-4 w-4" />, hint: t(i18n, "showcase.component.popup.actions.editHint"), onClick: () => setLastAction("editar") },
-              { label: t(i18n, "showcase.component.popup.actions.duplicate"), icon: <Copy className="h-4 w-4" />, closeOnClick: false, onClick: () => setLastAction("duplicar") },
+              { label: t(i18n, "showcase.component.popup.actions.edit"), icon: <Pencil className="h-4 w-4" />, hint: t(i18n, "showcase.component.popup.actions.editHint"), onClick: () => setLastAction(t(i18n, "showcase.component.popup.actions.lastEdit")) },
+              { label: t(i18n, "showcase.component.popup.actions.duplicate"), icon: <Copy className="h-4 w-4" />, closeOnClick: false, onClick: () => setLastAction(t(i18n, "showcase.component.popup.actions.lastDuplicate")) },
               { label: t(i18n, "showcase.component.popup.actions.unavailable"), enabled: false },
-              { label: t(i18n, "showcase.component.popup.actions.delete"), icon: <Trash2 className="h-4 w-4" />, severity: "danger", onClick: () => setLastAction("excluir") }
+              { label: t(i18n, "showcase.component.popup.actions.delete"), icon: <Trash2 className="h-4 w-4" />, severity: "danger", onClick: () => setLastAction(t(i18n, "showcase.component.popup.actions.lastDelete")) }
             ]}
           />
         </div>
@@ -300,7 +300,7 @@ export default function SgPopupPage() {
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-popup/samples/fechamento.tsx.sample" />
       </Section>
 
-        <Section title="7) Playground (SgPlayground)" description="Teste interativo das principais props do SgPopup.">
+        <Section title={`7) ${t(i18n, "showcase.common.playground.sectionTitle")}`} description={t(i18n, "showcase.component.popup.playgroundDescription")}>
           <SgPlayground
             title="SgPopup Playground"
             interactive

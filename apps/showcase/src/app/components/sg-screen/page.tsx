@@ -210,9 +210,9 @@ export default function SgScreenPage() {
         <Section title={t(i18n, `${K}.section2Title`)} description={t(i18n, `${K}.section2Description`)}>
           <SgScreen fullscreen={false} height={240} padding={8}>
             <SgPanel className="h-full w-full" contentPadding={8} contentGap={8}>
-              <SgPanel align="top" height={20} borderStyle="solid">Cabeçalho</SgPanel>
-              <SgPanel align="left" width={25} borderStyle="solid">Menu</SgPanel>
-              <SgPanel align="client" borderStyle="solid">Conteúdo</SgPanel>
+              <SgPanel align="top" height={20} borderStyle="solid">{t(i18n, `${K}.docking.header`)}</SgPanel>
+              <SgPanel align="left" width={25} borderStyle="solid">{t(i18n, `${K}.docking.menu`)}</SgPanel>
+              <SgPanel align="client" borderStyle="solid">{t(i18n, `${K}.docking.content`)}</SgPanel>
             </SgPanel>
           </SgScreen>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-screen/samples/docking.tsx.sample" />
@@ -220,15 +220,15 @@ export default function SgScreenPage() {
 
         <Section title={t(i18n, `${K}.section3Title`)} description={t(i18n, `${K}.section3Description`)}>
           <SgScreen fullscreen={false} padding={12}>
-            <span>Altura do conteúdo</span>
-            <span>Segunda linha</span>
+            <span>{t(i18n, `${K}.free.contentHeight`)}</span>
+            <span>{t(i18n, `${K}.free.secondLine`)}</span>
           </SgScreen>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-screen/samples/livre.tsx.sample" />
         </Section>
 
         <Section title={t(i18n, `${K}.section4Title`)} description={t(i18n, `${K}.section4Description`)}>
           <SgScreen width="60%" height={120} padding={12}>
-            <span>60% da largura, 120 de altura</span>
+            <span>{t(i18n, `${K}.size.description`)}</span>
           </SgScreen>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-screen/samples/tamanho.tsx.sample" />
         </Section>

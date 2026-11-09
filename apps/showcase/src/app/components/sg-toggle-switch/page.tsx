@@ -158,7 +158,7 @@ export default function Example() {
     <div>
       <SgToggleSwitch
         id="demo-basic"
-        label="Ativar notificacoes"
+        label="Ativar notificações"
         checked={value}
         onChange={setValue}
       />
@@ -238,7 +238,7 @@ export default function Example() {
     <div>
       <SgToggleSwitch
         id="demo-external"
-        label="Permitir sincronizacao"
+        label="Permitir sincronização"
         checked={value}
         onChange={(next) => {
           setValue(next);
@@ -278,7 +278,7 @@ export default function Example() {
       <SgToggleSwitch
         id="demo-rhf-register"
         name="notifications"
-        label="Receber notificacoes por email"
+        label="Receber notificações por email"
         register={register}
       />
 
@@ -716,12 +716,12 @@ export default function SgToggleSwitchPage() {
         <div className="rounded-md border border-border p-4">
           <SgToggleSwitch
             id="demo-basic"
-            label="Ativar notificacoes"
+            label={t(i18n, "showcase.component.toggleSwitch.labels.enableNotifications")}
             checked={basicValue}
             onChange={setBasicValue}
           />
           <p className="mt-3 text-xs text-muted-foreground">
-            Valor atual: <code className="rounded bg-muted px-1">{String(basicValue)}</code>
+            {t(i18n, "showcase.component.toggleSwitch.currentValueLabel")}: <code className="rounded bg-muted px-1">{String(basicValue)}</code>
           </p>
         </div>
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-toggle-switch/samples/basico.tsx.sample" />
@@ -735,14 +735,14 @@ export default function SgToggleSwitchPage() {
         <div className="rounded-md border border-border p-4">
           <SgToggleSwitch
             id="demo-icons"
-            label="Status da conta"
+            label={t(i18n, "showcase.component.toggleSwitch.labels.accountStatus")}
             checked={iconValue}
             onChange={setIconValue}
             onIcon={<Check size={12} />}
             offIcon={<X size={12} />}
           />
           <p className="mt-3 text-xs text-muted-foreground">
-            Valor atual: <code className="rounded bg-muted px-1">{String(iconValue)}</code>
+            {t(i18n, "showcase.component.toggleSwitch.currentValueLabel")}: <code className="rounded bg-muted px-1">{String(iconValue)}</code>
           </p>
         </div>
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-toggle-switch/samples/com-icones-on-off.tsx.sample" />
@@ -756,7 +756,7 @@ export default function SgToggleSwitchPage() {
         <div className="rounded-md border border-border p-4">
           <SgToggleSwitch
             id="demo-remote"
-            label={remoteLoading ? "Salvando..." : "Publicar automaticamente"}
+            label={remoteLoading ? t(i18n, "showcase.component.toggleSwitch.labels.saving") : t(i18n, "showcase.component.toggleSwitch.labels.autoPublish")}
             checked={remoteValue}
             onChange={handleRemoteToggle}
             enabled={!remoteLoading}
@@ -766,7 +766,7 @@ export default function SgToggleSwitchPage() {
           <div className="mt-3 h-28 overflow-y-auto rounded border border-border bg-foreground/5 p-2 font-mono text-xs">
             {remoteLog.length === 0 ? (
               <span className="text-muted-foreground">
-                Altere o switch para registrar eventos.
+                {t(i18n, "showcase.component.toggleSwitch.hints.changeToLog")}
               </span>
             ) : (
               remoteLog.map((entry, index) => <div key={index}>{entry}</div>)
@@ -784,7 +784,7 @@ export default function SgToggleSwitchPage() {
         <div className="rounded-md border border-border p-4 space-y-3">
           <SgToggleSwitch
             id="demo-external"
-            label="Permitir sincronizacao"
+            label={t(i18n, "showcase.component.toggleSwitch.labels.allowSync")}
             checked={externalValue}
             onChange={handleExternalChange}
             onIcon={<Check size={12} />}
@@ -792,21 +792,21 @@ export default function SgToggleSwitchPage() {
           />
           <div className="flex flex-wrap gap-2">
             <SgButton appearance="outline" size="sm" onClick={() => setExternalValue(true)}>
-              Setar true
+              {t(i18n, "showcase.component.toggleSwitch.buttons.setTrue")}
             </SgButton>
             <SgButton appearance="outline" size="sm" onClick={() => setExternalValue(false)}>
-              Setar false
+              {t(i18n, "showcase.component.toggleSwitch.buttons.setFalse")}
             </SgButton>
             <SgButton appearance="outline" size="sm" onClick={() => setExternalValue((prev) => !prev)}>
-              Toggle externo
+              {t(i18n, "showcase.component.toggleSwitch.buttons.toggleExternal")}
             </SgButton>
-            <SgButton appearance="outline" size="sm" onClick={() => setCapturedValue(`captura manual -> ${String(externalValue)}`)}>
-              Capturar agora
+            <SgButton appearance="outline" size="sm" onClick={() => setCapturedValue(t(i18n, "showcase.component.toggleSwitch.manualCapture", { value: String(externalValue) }))}>
+              {t(i18n, "showcase.component.toggleSwitch.buttons.captureNow")}
             </SgButton>
           </div>
           <div className="rounded border border-border bg-foreground/5 p-2 text-xs">
-            <div>value externo: <code className="rounded bg-muted px-1">{String(externalValue)}</code></div>
-            <div>capturado: <code className="rounded bg-muted px-1">{capturedValue}</code></div>
+            <div>{t(i18n, "showcase.component.toggleSwitch.externalValueLabel")}: <code className="rounded bg-muted px-1">{String(externalValue)}</code></div>
+            <div>{t(i18n, "showcase.component.toggleSwitch.capturedLabel")}: <code className="rounded bg-muted px-1">{capturedValue}</code></div>
           </div>
         </div>
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-toggle-switch/samples/controlado-externamente-captura-do-valor.tsx.sample" />
@@ -821,13 +821,13 @@ export default function SgToggleSwitchPage() {
           <SgToggleSwitch
             id="demo-rhf-register"
             name="notifications"
-            label="Receber notificacoes por email"
+            label={t(i18n, "showcase.component.toggleSwitch.labels.emailNotifications")}
             register={register}
           />
           <SgToggleSwitch
             id="demo-rhf-control"
             name="active"
-            label="Conta ativa"
+            label={t(i18n, "showcase.component.toggleSwitch.labels.activeAccount")}
             control={control}
             onIcon={<Check size={12} />}
             offIcon={<X size={12} />}
@@ -837,7 +837,7 @@ export default function SgToggleSwitchPage() {
               type="submit"
               className="rounded border border-border px-3 py-1.5 text-sm hover:bg-foreground/5"
             >
-              Enviar
+              {t(i18n, "showcase.component.toggleSwitch.buttons.submit")}
             </button>
           </div>
           <p className="text-xs text-muted-foreground">
@@ -846,7 +846,7 @@ export default function SgToggleSwitchPage() {
             watch.active: <code className="rounded bg-muted px-1">{String(watchedActive)}</code>
           </p>
           <p className="text-xs text-muted-foreground">
-            Ultimo submit: <code className="rounded bg-muted px-1">{submitResult}</code>
+            {t(i18n, "showcase.component.toggleSwitch.lastSubmitLabel")}: <code className="rounded bg-muted px-1">{submitResult}</code>
           </p>
         </form>
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-toggle-switch/samples/react-hook-form.tsx.sample" />
@@ -886,15 +886,15 @@ export default function SgToggleSwitchPage() {
         <SgStack gap={12} align="start">
           <SgToggleSwitch
             id="termos"
-            label="Aceito os termos"
+            label={t(i18n, "showcase.component.toggleSwitch.labels.acceptTerms")}
             required
-            requiredMessage="Aceite os termos para continuar"
+            requiredMessage={t(i18n, "showcase.component.toggleSwitch.messages.acceptTerms")}
           />
           <SgToggleSwitch
             id="regra"
-            label="Não pode ligar"
+            label={t(i18n, "showcase.component.toggleSwitch.labels.cannotTurnOn")}
             validateOnBlur={false}
-            validation={(checked) => (checked ? "Esta chave deve ficar desligada" : null)}
+            validation={(checked) => (checked ? t(i18n, "showcase.component.toggleSwitch.messages.mustStayOff") : null)}
           />
         </SgStack>
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-toggle-switch/samples/validacao.tsx.sample" />
@@ -907,8 +907,8 @@ export default function SgToggleSwitchPage() {
       >
         <SgToggleSwitch
           id="erro"
-          label="Aceito os termos"
-          error="Aceite os termos para continuar"
+          label={t(i18n, "showcase.component.toggleSwitch.labels.acceptTerms")}
+          error={t(i18n, "showcase.component.toggleSwitch.messages.acceptTerms")}
           width={280}
         />
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-toggle-switch/samples/erro-externo-e-largura.tsx.sample" />
@@ -920,7 +920,7 @@ export default function SgToggleSwitchPage() {
         description={texts.sectionDescriptions[8] ?? ""}
       >
         <div className="rounded-md border border-border p-4">
-          <SgToggleSwitch id="demo-default" label="Receber novidades" defaultChecked />
+          <SgToggleSwitch id="demo-default" label={t(i18n, "showcase.component.toggleSwitch.labels.news")} defaultChecked />
         </div>
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-toggle-switch/samples/estado-inicial-defaultchecked.tsx.sample" />
       </Section>

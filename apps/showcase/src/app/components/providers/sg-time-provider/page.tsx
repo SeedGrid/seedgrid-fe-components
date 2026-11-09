@@ -123,7 +123,7 @@ export default function SgTimeProviderPage() {
           description={t(i18n, "showcase.component.timeProvider.sections.serverTime.description")}
         >
           <SgTimeProvider initialServerTime="2030-01-01T23:59:55Z">
-            <SgClock timezone="UTC" cardTitle="Hora do servidor" />
+            <SgClock timezone="UTC" cardTitle={t(i18n, "showcase.component.timeProvider.serverTime.cardTitle")} />
           </SgTimeProvider>
           <CodeBlock sampleFile="apps/showcase/src/app/components/providers/sg-time-provider/samples/hora-do-servidor.tsx.sample" />
         </Section>

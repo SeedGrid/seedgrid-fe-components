@@ -141,7 +141,7 @@ export default function SgBadgeOverlayPage() {
           description={t(i18n, "showcase.component.badgeOverlay.sections.button.description")}
         >
           <SgBadgeOverlay badge={<SgBadge value={12} max={9} size="xs" severity="danger" />}>
-            <SgButton appearance="outline">Mensagens</SgButton>
+            <SgButton appearance="outline">{t(i18n, "showcase.component.badgeOverlay.button.messages")}</SgButton>
           </SgBadgeOverlay>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-badge-overlay/samples/botao.tsx.sample" />
         </Section>

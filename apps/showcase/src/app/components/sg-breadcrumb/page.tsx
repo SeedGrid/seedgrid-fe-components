@@ -264,7 +264,7 @@ export default function SgBreadcrumbPage() {
                 showHomeIcon
                 separator={separator}
                 items={[
-                  { id: "a", label: "Pasta", href: "/p", icon: <Folder className="size-4" /> },
+                  { id: "a", label: t(i18n, `${K}.separators.folder`), href: "/p", icon: <Folder className="size-4" /> },
                   { id: "b", label: separator }
                 ]}
               />

@@ -144,7 +144,7 @@ export default function SgStackPage() {
         <Section title={t(i18n, `${K}.section3Title`)} description={t(i18n, `${K}.section3Description`)}>
           <SgStack direction="row" align="center">
             <SgStack grow>
-              <p>Este bloco cresce e empurra o botão para a direita.</p>
+              <p>{t(i18n, `${K}.grow.text`)}</p>
             </SgStack>
             <SgButton>OK</SgButton>
           </SgStack>

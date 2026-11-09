@@ -15,12 +15,12 @@ export default function Example() {
         minValue={0}
         maxValue={100}
         value={value}
-        ariaLabel="Volume de notificacoes"
+        ariaLabel="Volume de notificações"
         className="accent-[#c56a2d]"
         onChange={setValue}
         inputProps={{
           name: "notificationVolume",
-          title: "Volume de notificacoes",
+          title: "Volume de notificações",
           "aria-describedby": "slider-input-props-help",
           onFocus: () => setFocusCount((prev) => prev + 1)
         }}

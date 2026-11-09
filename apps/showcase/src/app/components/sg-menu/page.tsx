@@ -258,35 +258,43 @@ const DOCKABLE_USER_MENU: SgMenuNode[] = [
   { id: "dk-logout", label: "Sign out", onClick: () => {} }
 ];
 
-const ACCORDION_MENU: SgMenuNode[] = [
-  {
-    id: "relatorios",
-    label: "Relatórios",
-    children: [
-      { id: "relatorio-mensal", label: "Mensal" },
-      { id: "relatorio-anual", label: "Anual" }
-    ]
-  },
-  {
-    id: "cadastros",
-    label: "Cadastros",
-    children: [
-      { id: "produtos", label: "Produtos" },
-      { id: "fornecedores", label: "Fornecedores" }
-    ]
-  }
-];
+type MenuI18n = ReturnType<typeof useShowcaseI18n>;
 
-const SIMPLE_MENU: SgMenuNode[] = [
-  { id: "painel", label: "Painel", icon: <Home className="size-4" /> },
-  { id: "financeiro", label: "Financeiro", icon: <DollarSign className="size-4" /> }
-];
+function buildAccordionMenu(i18n: MenuI18n): SgMenuNode[] {
+  return [
+    {
+      id: "relatorios",
+      label: t(i18n, `${K}.items.reports`),
+      children: [
+        { id: "relatorio-mensal", label: t(i18n, `${K}.items.monthly`) },
+        { id: "relatorio-anual", label: t(i18n, `${K}.items.annual`) }
+      ]
+    },
+    {
+      id: "cadastros",
+      label: t(i18n, `${K}.items.registrations`),
+      children: [
+        { id: "produtos", label: t(i18n, `${K}.items.products`) },
+        { id: "fornecedores", label: t(i18n, `${K}.items.suppliers`) }
+      ]
+    }
+  ];
+}
 
-const USER_ACTIONS_MENU: SgMenuNode[] = [
-  { id: "perfil", label: "Meu perfil" },
-  { id: "preferencias", label: "Preferências" },
-  { id: "sair", label: "Sair" }
-];
+function buildSimpleMenu(i18n: MenuI18n): SgMenuNode[] {
+  return [
+    { id: "painel", label: t(i18n, `${K}.items.dashboard`), icon: <Home className="size-4" /> },
+    { id: "financeiro", label: t(i18n, `${K}.items.finance`), icon: <DollarSign className="size-4" /> }
+  ];
+}
+
+function buildUserActionsMenu(i18n: MenuI18n): SgMenuNode[] {
+  return [
+    { id: "perfil", label: t(i18n, `${K}.items.profile`) },
+    { id: "preferencias", label: t(i18n, `${K}.items.preferences`) },
+    { id: "sair", label: t(i18n, `${K}.items.signOut`) }
+  ];
+}
 
 const DOCKABLE_SHELL_STYLE = {
   "--primary": "27 62% 47%",
@@ -987,6 +995,9 @@ const MENU_USER_PROPS: ShowcasePropRow[] = [
 
 export default function SgMenuPage() {
   const i18n = useShowcaseI18n();
+  const accordionMenu = React.useMemo(() => buildAccordionMenu(i18n), [i18n]);
+  const simpleMenu = React.useMemo(() => buildSimpleMenu(i18n), [i18n]);
+  const userActionsMenu = React.useMemo(() => buildUserActionsMenu(i18n), [i18n]);
   const aiComponent = useAiManifestComponent("SgMenu");
   const [activeId, setActiveId] = React.useState("dashboard");
   const [tieredActiveId, setTieredActiveId] = React.useState("dashboard");
@@ -1187,7 +1198,7 @@ export default function SgMenuPage() {
           <div className="rounded-lg border border-border p-3">
             <div className="h-[360px] overflow-auto rounded-md border border-border">
               <SgMenu
-                menu={ACCORDION_MENU}
+                menu={accordionMenu}
                 selection={{ activeId: "relatorio-mensal" }}
                 menuStyle="inline"
                 mode="accordion"
@@ -1203,7 +1214,7 @@ export default function SgMenuPage() {
             <div className="h-[460px] overflow-hidden rounded-lg border border-border">
               <div className="flex h-full">
                 <SgMenu
-                  menu={SIMPLE_MENU}
+                  menu={simpleMenu}
                   menuStyle="sidebar"
                   brand={{ title: "SeedGrid ERP" }}
                   user={{
@@ -1211,7 +1222,7 @@ export default function SgMenuPage() {
                     subtitle: t(i18n, `${K}.sidebarUserSubtitle`),
                     onClick: () => setUserAction("user-block")
                   }}
-                  userMenu={USER_ACTIONS_MENU.map((item) => ({ ...item, onClick: () => setUserAction(item.id) }))}
+                  userMenu={userActionsMenu.map((item) => ({ ...item, onClick: () => setUserAction(item.id) }))}
                 />
               </div>
             </div>
@@ -1225,19 +1236,19 @@ export default function SgMenuPage() {
         <Section title={t(i18n, `${K}.section10Title`)} description={t(i18n, `${K}.section10Description`)}>
           <div className="h-[320px] overflow-visible rounded-md border border-border p-2">
             <SgMenu
-              ariaLabel="Navegação principal"
+              ariaLabel={t(i18n, `${K}.ariaMainNavigation`)}
               menuStyle="inline"
               menuVariantStyle="Tiered"
               openSubmenuOnHover
               menu={[
                 {
                   id: "arquivo",
-                  label: "Arquivo",
+                  label: t(i18n, `${K}.items.file`),
                   children: [
-                    { id: "novo", label: "Novo" },
+                    { id: "novo", label: t(i18n, `${K}.items.new`) },
                     {
                       id: "exportar",
-                      label: "Exportar",
+                      label: t(i18n, `${K}.items.export`),
                       children: [
                         { id: "pdf", label: "PDF" },
                         { id: "csv", label: "CSV" }
@@ -1245,7 +1256,7 @@ export default function SgMenuPage() {
                     }
                   ]
                 },
-                { id: "editar", label: "Editar" }
+                { id: "editar", label: t(i18n, `${K}.items.edit`) }
               ]}
             />
           </div>
@@ -1260,13 +1271,13 @@ export default function SgMenuPage() {
                 brand={{ title: "SeedGrid ERP" }}
                 user={{
                   name: "Lúcia Souza",
-                  subtitle: "Financeiro",
+                  subtitle: t(i18n, `${K}.sidebarUserSubtitle`),
                   avatar: <SgAvatar size="sm" label="LS" />
                 }}
                 footer={<span className="text-xs">v1.0</span>}
                 menu={[
-                  { id: "painel", label: "Painel" },
-                  { id: "financeiro", label: "Financeiro" }
+                  { id: "painel", label: t(i18n, `${K}.items.dashboard`) },
+                  { id: "financeiro", label: t(i18n, `${K}.items.finance`) }
                 ]}
               />
             </div>

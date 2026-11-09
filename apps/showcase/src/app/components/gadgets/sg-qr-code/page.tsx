@@ -177,7 +177,7 @@ export default function SgQRCodePage() {
           <SgQRCode
             value=""
             size={120}
-            emptyFallback={<span className="text-sm text-muted-foreground">Informe um texto</span>}
+            emptyFallback={<span className="text-sm text-muted-foreground">{t(i18n, `${K}.empty.fallback`)}</span>}
           />
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-qr-code/samples/vazio-e-erro.tsx.sample" />
         </Section>

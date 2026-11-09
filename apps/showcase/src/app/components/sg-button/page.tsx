@@ -53,60 +53,63 @@ function useFakeProcess(durationMs: number) {
 }
 
 function AutoLoadingExample() {
-  const [status, setStatus] = React.useState("Idle");
+  const i18n = useShowcaseI18n();
+  const [status, setStatus] = React.useState(() => t(i18n, `${K}.async.idle`));
 
   const save = async () => {
-    setStatus("Saving...");
+    setStatus(t(i18n, `${K}.async.saving`));
     await new Promise((resolve) => window.setTimeout(resolve, 1500));
-    setStatus("Done");
+    setStatus(t(i18n, `${K}.async.done`));
   };
 
   return (
     <div className="flex flex-wrap items-center gap-3">
-      <SgButton onClick={save}>Submit</SgButton>
+      <SgButton onClick={save}>{t(i18n, `${K}.async.submit`)}</SgButton>
       <span className="text-sm text-muted-foreground">{status}</span>
     </div>
   );
 }
 
 function SyncAsyncExample() {
-  const [panel, setPanel] = React.useState("Closed");
-  const [status, setStatus] = React.useState("Idle");
+  const i18n = useShowcaseI18n();
+  const [panel, setPanel] = React.useState(() => t(i18n, `${K}.async.closed`));
+  const [status, setStatus] = React.useState(() => t(i18n, `${K}.async.idle`));
 
-  const toggle = () => setPanel(panel === "Open" ? "Closed" : "Open");
+  const toggle = () => setPanel(panel === t(i18n, `${K}.async.open`) ? t(i18n, `${K}.async.closed`) : t(i18n, `${K}.async.open`));
 
   const save = async () => {
-    setStatus("Saving...");
+    setStatus(t(i18n, `${K}.async.saving`));
     await new Promise((resolve) => window.setTimeout(resolve, 1500));
-    setStatus("Saved");
+    setStatus(t(i18n, `${K}.async.saved`));
   };
 
   return (
     <div className="flex flex-wrap items-center gap-3">
-      <SgButton appearance="outline" onClick={toggle}>Toggle panel</SgButton>
+      <SgButton appearance="outline" onClick={toggle}>{t(i18n, `${K}.async.togglePanel`)}</SgButton>
       <span className="text-sm text-muted-foreground">{panel}</span>
-      <SgButton onClick={save}>Save</SgButton>
+      <SgButton onClick={save}>{t(i18n, `${K}.async.save`)}</SgButton>
       <span className="text-sm text-muted-foreground">{status}</span>
     </div>
   );
 }
 
 function AsyncErrorExample() {
+  const i18n = useShowcaseI18n();
   const save = async () => {
     try {
       await new Promise((resolve) => window.setTimeout(resolve, 1200));
       throw new Error("Network error");
     } catch {
       sgWhistle.error({
-        title: "Could not save",
-        message: "Check your connection and try again."
+        title: t(i18n, `${K}.async.errorTitle`),
+        message: t(i18n, `${K}.async.errorMessage`)
       });
     }
   };
 
   return (
     <div className="space-y-3">
-      <SgButton severity="danger" onClick={save}>Save (fails)</SgButton>
+      <SgButton severity="danger" onClick={save}>{t(i18n, `${K}.async.saveFails`)}</SgButton>
       <div className="rounded-xl border border-dashed border-border p-4">
         <SgWhistler />
       </div>

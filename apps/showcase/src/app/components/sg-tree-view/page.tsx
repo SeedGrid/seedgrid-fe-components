@@ -285,7 +285,7 @@ export default function SgTreeViewPage() {
         title={`2) ${t(i18n, "showcase.component.treeView.sections.iconTone.title")}`}
         description={t(i18n, "showcase.component.treeView.sections.iconTone.description")}
       >
-        <SgCard title="Icons in Primary">
+        <SgCard title={t(i18n, "showcase.component.treeView.labels.iconsPrimary")}>
           <SgTreeView
             nodes={DATA}
             iconTone="primary"
@@ -376,11 +376,11 @@ export default function SgTreeViewPage() {
         title={`7) ${t(i18n, "showcase.component.treeView.sections.tracks.title")}`}
         description={t(i18n, "showcase.component.treeView.sections.tracks.description")}
       >
-        <SgCard title="Ativo + Prioridade + Tipo + coluna livre">
+        <SgCard title={t(i18n, "showcase.component.treeView.tracks.cardTitle")}>
           <SgTreeView
             nodes={DATA}
             checkable
-            checkableLabel="Ativo"
+            checkableLabel={t(i18n, "showcase.component.treeView.tracks.active")}
             checkedIds={checkedIds}
             onCheckedChange={setCheckedIds}
             defaultExpandedIds={["root", "users", "reports"]}
@@ -388,27 +388,27 @@ export default function SgTreeViewPage() {
               {
                 id: "priority",
                 kind: "boolean",
-                label: "Prioridade",
-                ariaLabel: "Prioridade",
+                label: t(i18n, "showcase.component.treeView.tracks.priority"),
+                ariaLabel: t(i18n, "showcase.component.treeView.tracks.priority"),
                 checkedIds: priorityIds,
                 onCheckedChange: setPriorityIds,
                 adornment: (node) =>
                   node.id === "users.list" ? (
-                    <Star className="h-3.5 w-3.5 text-amber-500" aria-label="Destaque" />
+                    <Star className="h-3.5 w-3.5 text-amber-500" aria-label={t(i18n, "showcase.component.treeView.tracks.highlight")} />
                   ) : null
               },
               {
                 id: "accountType",
                 kind: "enum",
-                label: "Tipo de conta",
+                label: t(i18n, "showcase.component.treeView.tracks.accountType"),
                 width: "150px",
                 placeholder: "—",
-                mixedLabel: "— misto —",
+                mixedLabel: t(i18n, "showcase.component.treeView.tracks.mixed"),
                 options: [
-                  { value: "fixo", label: "Custo fixo" },
-                  { value: "variavel", label: "Custo variável" },
-                  { value: "despesa", label: "Despesa variável" },
-                  { value: "investimento", label: "Investimento" }
+                  { value: "fixo", label: t(i18n, "showcase.component.treeView.tracks.fixedCost") },
+                  { value: "variavel", label: t(i18n, "showcase.component.treeView.tracks.variableCost") },
+                  { value: "despesa", label: t(i18n, "showcase.component.treeView.tracks.variableExpense") },
+                  { value: "investimento", label: t(i18n, "showcase.component.treeView.tracks.investment") }
                 ],
                 valueByNodeId: accountTypeByNode,
                 onChange: setAccountTypeByNode
@@ -416,7 +416,7 @@ export default function SgTreeViewPage() {
               {
                 id: "acao",
                 kind: "custom",
-                label: "Coluna livre",
+                label: t(i18n, "showcase.component.treeView.tracks.freeColumn"),
                 width: "130px",
                 render: (node) =>
                   node.children?.length ? null : (
@@ -425,7 +425,7 @@ export default function SgTreeViewPage() {
                       className="cursor-pointer border-none bg-transparent text-xs text-sg-muted underline"
                       onClick={() => setAccountTypeByNode((prev) => ({ ...prev, [node.id]: "fixo" }))}
                     >
-                      marcar fixo
+                      {t(i18n, "showcase.component.treeView.tracks.markFixed")}
                     </button>
                   )
               }
@@ -486,7 +486,7 @@ export default function SgTreeViewPage() {
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-tree-view/samples/disabled-node.tsx.sample" />
       </Section>
 
-      <Section title="11) Playground (SgPlayground)" description="Teste interativo das principais props do SgTreeView.">
+      <Section title={`11) ${t(i18n, "showcase.common.playground.sectionTitle")}`} description={t(i18n, "showcase.component.treeView.playgroundDescription")}>
         <SgPlayground
           title="SgTreeView Playground"
           interactive

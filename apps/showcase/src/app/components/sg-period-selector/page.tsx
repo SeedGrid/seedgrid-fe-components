@@ -250,9 +250,9 @@ export default function SgPeriodSelectorPage() {
         <Section title={t(i18n, `${K}.section7Title`)} description={t(i18n, `${K}.section7Description`)}>
           <form onSubmit={handleSubmit((values) => setEnviado(String(values.periodo)))}>
             <SgStack gap={12} align="start">
-              <SgPeriodSelector id="periodo-form" name="periodo" control={control} label="Período do relatório" />
-              <SgButton type="submit">Enviar</SgButton>
-              {enviado ? <p className="text-sm">Enviado: {enviado}</p> : null}
+              <SgPeriodSelector id="periodo-form" name="periodo" control={control} label={t(i18n, `${K}.labels.reportPeriod`)} />
+              <SgButton type="submit">{t(i18n, `${K}.buttons.submit`)}</SgButton>
+              {enviado ? <p className="text-sm">{t(i18n, `${K}.submittedLabel`)}: {enviado}</p> : null}
             </SgStack>
           </form>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-period-selector/samples/dentro-de-um-formulario.tsx.sample" />

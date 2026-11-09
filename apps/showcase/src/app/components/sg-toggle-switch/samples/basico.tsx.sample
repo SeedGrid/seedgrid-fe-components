@@ -8,7 +8,7 @@ export default function Example() {
     <div>
       <SgToggleSwitch
         id="demo-basic"
-        label="Ativar notificacoes"
+        label="Ativar notificações"
         checked={value}
         onChange={setValue}
       />

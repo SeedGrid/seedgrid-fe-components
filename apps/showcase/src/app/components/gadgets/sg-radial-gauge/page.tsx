@@ -765,7 +765,7 @@ export default function SgRadialGaugePage() {
                 labelFormatter={(v) => `${Math.round(v)}%`}
                 majorTickCount={5}
                 minorTicksPerInterval={0}
-                ariaLabel="Gauge de eficiência"
+                ariaLabel={t(i18n, `${K}.aria.efficiency`)}
                 style={{ filter: "drop-shadow(0 4px 10px rgb(0 0 0 / 0.12))" }}
                 ranges={[
                   { start: 0, end: 40, color: "#22c55e", width: 12 },

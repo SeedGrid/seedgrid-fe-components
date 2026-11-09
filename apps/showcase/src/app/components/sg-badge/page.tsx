@@ -230,7 +230,7 @@ export default function SgBadgePage() {
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-badge/samples/cores-personalizadas.tsx.sample" />
       </Section>
 
-        <Section title="10) Playground (SgPlayground)" description="Ajuste as props principais do SgBadge.">
+        <Section title={`10) ${t(i18n, "showcase.common.playground.sectionTitle")}`} description={t(i18n, "showcase.component.badge.playgroundDescription")}>
           <SgPlayground
             title="SgBadge Playground"
             interactive

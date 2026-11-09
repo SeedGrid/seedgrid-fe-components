@@ -244,17 +244,17 @@ export default function SgConfirmationDialogShowcase() {
   const [openSurface, setOpenSurface] = React.useState(false);
 
   const cancelButton = React.useMemo<SgConfirmationDialogButtonConfig>(() => ({
-    label: "No, keep it",
+    label: t(i18n, "showcase.component.confirmation.demo.keepIt"),
     icon: <X className="size-4" />,
     severity: "secondary",
     appearance: "ghost"
-  }), []);
+  }), [i18n.locale]);
 
   const confirmButton = React.useMemo<SgConfirmationDialogButtonConfig>(() => ({
-    label: "Yes, delete",
+    label: t(i18n, "showcase.component.confirmation.demo.yesDelete"),
     icon: <Trash2 className="size-4" />,
     severity: "danger"
-  }), []);
+  }), [i18n.locale]);
   const sectionTitles = React.useMemo(
     () => SECTION_TITLE_KEYS.map((key) => t(i18n, key)),
     [i18n.locale]
@@ -284,17 +284,17 @@ export default function SgConfirmationDialogShowcase() {
         />
 
         <Section title={sectionTitles[0] ?? ""} description={sectionDescriptions[0]}>
-          <SgButton onClick={() => setOpenBasic(true)}>delete permission</SgButton>
+          <SgButton onClick={() => setOpenBasic(true)}>{t(i18n, "showcase.component.confirmation.demo.buttonDeletePermission")}</SgButton>
           <SgConfirmationDialog
             open={openBasic}
             onOpenChange={setOpenBasic}
-            title="Delete permission"
-            message="Confirm delete?"
+            title={t(i18n, "showcase.component.confirmation.demo.deletePermission")}
+            message={t(i18n, "showcase.component.confirmation.demo.confirmDelete")}
             severity="danger"
             onCancel={() => setBasicResult("cancel")}
             onConfirm={() => setBasicResult("confirm")}
           />
-          <p className="text-xs text-muted-foreground">result: {basicResult}</p>
+          <p className="text-xs text-muted-foreground">{t(i18n, "showcase.component.confirmation.demo.resultLabel")}: {basicResult}</p>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-confirmation-dialog/samples/basico.tsx.sample" />
         </Section>
 
@@ -325,12 +325,12 @@ export default function SgConfirmationDialogShowcase() {
         </Section>
 
         <Section title={sectionTitles[2] ?? ""} description={sectionDescriptions[2]}>
-          <SgButton appearance="outline" onClick={() => setOpenLeftIcon(true)}>open warning</SgButton>
+          <SgButton appearance="outline" onClick={() => setOpenLeftIcon(true)}>{t(i18n, "showcase.component.confirmation.demo.openWarning")}</SgButton>
           <SgConfirmationDialog
             open={openLeftIcon}
             onOpenChange={setOpenLeftIcon}
-            title="Unsaved changes"
-            message="You have pending updates. Do you want to continue without saving?"
+            title={t(i18n, "showcase.component.confirmation.demo.unsavedTitle")}
+            message={t(i18n, "showcase.component.confirmation.demo.unsavedMessage")}
             icon={<AlertTriangle className="size-5 text-amber-600" />}
             iconPlacement="left"
             severity="warning"
@@ -339,12 +339,12 @@ export default function SgConfirmationDialogShowcase() {
         </Section>
 
         <Section title={sectionTitles[3] ?? ""} description={sectionDescriptions[3]}>
-          <SgButton appearance="outline" onClick={() => setOpenTopIcon(true)}>open top icon</SgButton>
+          <SgButton appearance="outline" onClick={() => setOpenTopIcon(true)}>{t(i18n, "showcase.component.confirmation.demo.openTopIcon")}</SgButton>
           <SgConfirmationDialog
             open={openTopIcon}
             onOpenChange={setOpenTopIcon}
-            title="Sensitive action"
-            message="This operation affects all users in the selected group."
+            title={t(i18n, "showcase.component.confirmation.demo.sensitiveTitle")}
+            message={t(i18n, "showcase.component.confirmation.demo.sensitiveMessage")}
             icon={<ShieldAlert className="size-6 text-rose-600" />}
             iconPlacement="top"
             severity="danger"
@@ -354,29 +354,29 @@ export default function SgConfirmationDialogShowcase() {
         </Section>
 
         <Section title={sectionTitles[4] ?? ""} description={sectionDescriptions[4]}>
-          <SgButton severity="danger" onClick={() => setOpenCustom(true)}>delete row</SgButton>
+          <SgButton severity="danger" onClick={() => setOpenCustom(true)}>{t(i18n, "showcase.component.confirmation.demo.deleteRow")}</SgButton>
           <SgConfirmationDialog
             open={openCustom}
             onOpenChange={setOpenCustom}
-            title="Delete permission"
-            message="Confirm delete?"
+            title={t(i18n, "showcase.component.confirmation.demo.deletePermission")}
+            message={t(i18n, "showcase.component.confirmation.demo.confirmDelete")}
             severity="danger"
             cancelButton={cancelButton}
             confirmButton={confirmButton}
             onCancel={() => setCustomLog("cancel")}
             onConfirm={() => setCustomLog("confirm")}
           />
-          <p className="text-xs text-muted-foreground">last action: {customLog}</p>
+          <p className="text-xs text-muted-foreground">{t(i18n, "showcase.component.confirmation.demo.lastActionLabel")}: {customLog}</p>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-confirmation-dialog/samples/botoes-customizados.tsx.sample" />
         </Section>
 
         <Section title={sectionTitles[5] ?? ""} description={sectionDescriptions[5]}>
-          <SgButton appearance="outline" onClick={() => setOpenSurface(true)}>open custom surface</SgButton>
+          <SgButton appearance="outline" onClick={() => setOpenSurface(true)}>{t(i18n, "showcase.component.confirmation.demo.openCustomSurface")}</SgButton>
           <SgConfirmationDialog
             open={openSurface}
             onOpenChange={setOpenSurface}
-            title="Delete permission"
-            message="Confirm delete?"
+            title={t(i18n, "showcase.component.confirmation.demo.deletePermission")}
+            message={t(i18n, "showcase.component.confirmation.demo.confirmDelete")}
             severity="danger"
             customColor="#fff7ed"
             elevation="0 0 0 1px rgba(234, 88, 12, 0.22), 0 24px 56px rgba(234, 88, 12, 0.28)"

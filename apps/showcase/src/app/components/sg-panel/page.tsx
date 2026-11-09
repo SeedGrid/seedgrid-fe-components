@@ -310,9 +310,9 @@ export default function SgPanelPage() {
             contentJustify="between"
             contentAlign="center"
           >
-            <span>Início</span>
-            <SgButton label="Ação" size="sm" />
-            <span>Fim</span>
+            <span>{t(i18n, `${K}.inline.start`)}</span>
+            <SgButton label={t(i18n, `${K}.inline.action`)} size="sm" />
+            <span>{t(i18n, `${K}.inline.end`)}</span>
           </SgPanel>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-panel/samples/conteudo-em-linha.tsx.sample" />
         </Section>

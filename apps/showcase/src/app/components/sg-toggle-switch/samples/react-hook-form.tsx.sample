@@ -17,7 +17,7 @@ export default function Example() {
       <SgToggleSwitch
         id="demo-rhf-register"
         name="notifications"
-        label="Receber notificacoes por email"
+        label="Receber notificações por email"
         register={register}
       />
 
@@ -33,7 +33,7 @@ export default function Example() {
       <button type="submit">Enviar</button>
       <p>watch.notifications: {String(watch("notifications"))}</p>
       <p>watch.active: {String(watch("active"))}</p>
-      <p>Ultimo submit: {submitResult}</p>
+      <p>Último submit: {submitResult}</p>
     </form>
   );
 }

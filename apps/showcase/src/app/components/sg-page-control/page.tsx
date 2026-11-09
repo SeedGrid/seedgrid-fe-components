@@ -270,17 +270,17 @@ export default function SgPageControlShowcasePage() {
           >
             <SgPageControlPage
               id="registration"
-              title="Registration"
+              title={t(i18n, "showcase.component.pageControl.pages.registration")}
               icon={<UserRound className="size-4" />}
               style={{ backgroundColor: "rgba(59, 130, 246, 0.08)" }}
             >
-              Registration content
+              {t(i18n, "showcase.component.pageControl.pages.registrationContent")}
             </SgPageControlPage>
-            <SgPageControlPage id="fiscal" title="Fiscal" icon={<Receipt className="size-4" />}>
-              Fiscal content
+            <SgPageControlPage id="fiscal" title={t(i18n, "showcase.component.pageControl.pages.fiscal")} icon={<Receipt className="size-4" />}>
+              {t(i18n, "showcase.component.pageControl.pages.fiscalContent")}
             </SgPageControlPage>
-            <SgPageControlPage id="access" title="Access" icon={<ShieldCheck className="size-4" />}>
-              Access content
+            <SgPageControlPage id="access" title={t(i18n, "showcase.component.pageControl.pages.access")} icon={<ShieldCheck className="size-4" />}>
+              {t(i18n, "showcase.component.pageControl.pages.accessContent")}
             </SgPageControlPage>
           </SgPageControl>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-page-control/samples/basico.tsx.sample" />
@@ -288,29 +288,29 @@ export default function SgPageControlShowcasePage() {
 
         <Section title={texts.sectionTitles[1] ?? ""} description={texts.sectionDescriptions[1] ?? ""}>
           <div className="flex flex-wrap gap-2">
-            <SgButton size="sm" appearance="outline" onClick={() => setActivePageId("registration")}>Go to Registration</SgButton>
-            <SgButton size="sm" appearance="outline" onClick={() => setActivePageId("fiscal")}>Go to Fiscal</SgButton>
-            <SgButton size="sm" appearance="outline" onClick={() => setActivePageId("access")}>Go to Access</SgButton>
-            <SgButton size="sm" appearance="outline" onClick={() => setActivePageId("integrations")}>Go to Integrations</SgButton>
+            <SgButton size="sm" appearance="outline" onClick={() => setActivePageId("registration")}>{t(i18n, "showcase.component.pageControl.buttons.goto.registration")}</SgButton>
+            <SgButton size="sm" appearance="outline" onClick={() => setActivePageId("fiscal")}>{t(i18n, "showcase.component.pageControl.buttons.goto.fiscal")}</SgButton>
+            <SgButton size="sm" appearance="outline" onClick={() => setActivePageId("access")}>{t(i18n, "showcase.component.pageControl.buttons.goto.access")}</SgButton>
+            <SgButton size="sm" appearance="outline" onClick={() => setActivePageId("integrations")}>{t(i18n, "showcase.component.pageControl.buttons.goto.integrations")}</SgButton>
           </div>
 
           <SgPageControl activePageId={activePageId} onActivePageIdChange={(pageId) => setActivePageId(pageId)} pageControlStyle="pills">
-            <SgPageControlPage id="registration" title="Registration" icon={<UserRound className="size-4" />}>
-              Registration content
+            <SgPageControlPage id="registration" title={t(i18n, "showcase.component.pageControl.pages.registration")} icon={<UserRound className="size-4" />}>
+              {t(i18n, "showcase.component.pageControl.pages.registrationContent")}
             </SgPageControlPage>
-            <SgPageControlPage id="fiscal" title="Fiscal" icon={<Receipt className="size-4" />}>
-              Fiscal content
+            <SgPageControlPage id="fiscal" title={t(i18n, "showcase.component.pageControl.pages.fiscal")} icon={<Receipt className="size-4" />}>
+              {t(i18n, "showcase.component.pageControl.pages.fiscalContent")}
             </SgPageControlPage>
-            <SgPageControlPage id="access" title="Access" icon={<ShieldCheck className="size-4" />}>
-              Access content
+            <SgPageControlPage id="access" title={t(i18n, "showcase.component.pageControl.pages.access")} icon={<ShieldCheck className="size-4" />}>
+              {t(i18n, "showcase.component.pageControl.pages.accessContent")}
             </SgPageControlPage>
-            <SgPageControlPage id="integrations" title="Integrations" icon={<FolderKanban className="size-4" />}>
-              Integrations content
+            <SgPageControlPage id="integrations" title={t(i18n, "showcase.component.pageControl.pages.integrations")} icon={<FolderKanban className="size-4" />}>
+              {t(i18n, "showcase.component.pageControl.pages.integrationsContent")}
             </SgPageControlPage>
           </SgPageControl>
 
           <p className="text-sm text-muted-foreground">
-            Current active page: <span className="font-semibold text-foreground">{activePageId}</span>
+            {t(i18n, "showcase.component.pageControl.currentActivePage")}: <span className="font-semibold text-foreground">{activePageId}</span>
           </p>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-page-control/samples/controle-externo.tsx.sample" />
         </Section>
@@ -320,7 +320,7 @@ export default function SgPageControlShowcasePage() {
             {PAGE_IDS.map((id) => (
               <label key={id} className="inline-flex items-center gap-2 text-sm">
                 <input type="checkbox" checked={hiddenPageIds.includes(id)} onChange={() => toggleHidden(id)} />
-                hide {id}
+                {t(i18n, "showcase.component.pageControl.hideLabel", { id })}
               </label>
             ))}
           </div>
@@ -331,17 +331,17 @@ export default function SgPageControlShowcasePage() {
             hiddenPageIds={hiddenPageIds}
             keepMounted
           >
-            <SgPageControlPage id="registration" title="Registration" icon={<UserRound className="size-4" />}>
-              Registration content
+            <SgPageControlPage id="registration" title={t(i18n, "showcase.component.pageControl.pages.registration")} icon={<UserRound className="size-4" />}>
+              {t(i18n, "showcase.component.pageControl.pages.registrationContent")}
             </SgPageControlPage>
-            <SgPageControlPage id="fiscal" title="Fiscal" icon={<Receipt className="size-4" />}>
-              Fiscal content
+            <SgPageControlPage id="fiscal" title={t(i18n, "showcase.component.pageControl.pages.fiscal")} icon={<Receipt className="size-4" />}>
+              {t(i18n, "showcase.component.pageControl.pages.fiscalContent")}
             </SgPageControlPage>
-            <SgPageControlPage id="access" title="Access" icon={<ShieldCheck className="size-4" />}>
-              Access content
+            <SgPageControlPage id="access" title={t(i18n, "showcase.component.pageControl.pages.access")} icon={<ShieldCheck className="size-4" />}>
+              {t(i18n, "showcase.component.pageControl.pages.accessContent")}
             </SgPageControlPage>
-            <SgPageControlPage id="integrations" title="Integrations" icon={<Wrench className="size-4" />}>
-              Integrations content
+            <SgPageControlPage id="integrations" title={t(i18n, "showcase.component.pageControl.pages.integrations")} icon={<Wrench className="size-4" />}>
+              {t(i18n, "showcase.component.pageControl.pages.integrationsContent")}
             </SgPageControlPage>
           </SgPageControl>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-page-control/samples/ocultar-pagina-externamente.tsx.sample" />
@@ -351,27 +351,27 @@ export default function SgPageControlShowcasePage() {
           <SgPageControl defaultActivePageId="registration">
             <SgPageControlPage
               id="registration"
-              title="Registration"
-              hint="Create and edit registration data."
+              title={t(i18n, "showcase.component.pageControl.pages.registration")}
+              hint={t(i18n, "showcase.component.pageControl.pages.registrationHint")}
               icon={<UserRound className="size-4" />}
             >
-              Registration content
+              {t(i18n, "showcase.component.pageControl.pages.registrationContent")}
             </SgPageControlPage>
             <SgPageControlPage
               id="fiscal"
-              title="Fiscal"
-              hint="Review tax and fiscal settings."
+              title={t(i18n, "showcase.component.pageControl.pages.fiscal")}
+              hint={t(i18n, "showcase.component.pageControl.pages.fiscalHint")}
               icon={<Receipt className="size-4" />}
             >
-              Fiscal content
+              {t(i18n, "showcase.component.pageControl.pages.fiscalContent")}
             </SgPageControlPage>
             <SgPageControlPage
               id="access"
-              title="Access"
-              hint="Manage users, roles and permissions."
+              title={t(i18n, "showcase.component.pageControl.pages.access")}
+              hint={t(i18n, "showcase.component.pageControl.pages.accessHint")}
               icon={<ShieldCheck className="size-4" />}
             >
-              Access content
+              {t(i18n, "showcase.component.pageControl.pages.accessContent")}
             </SgPageControlPage>
           </SgPageControl>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-page-control/samples/com-hint-nas-abas.tsx.sample" />
@@ -382,51 +382,51 @@ export default function SgPageControlShowcasePage() {
 
           <p className="text-sm font-medium">{texts.responsiveEqualWidths}</p>
           <SgPageControl fullWidthTabs>
-            <SgPageControlPage id="registration" title="Registration" icon={<UserRound className="size-4" />}>
-              Registration content
+            <SgPageControlPage id="registration" title={t(i18n, "showcase.component.pageControl.pages.registration")} icon={<UserRound className="size-4" />}>
+              {t(i18n, "showcase.component.pageControl.pages.registrationContent")}
             </SgPageControlPage>
-            <SgPageControlPage id="fiscal" title="Fiscal" icon={<Receipt className="size-4" />}>
-              Fiscal content
+            <SgPageControlPage id="fiscal" title={t(i18n, "showcase.component.pageControl.pages.fiscal")} icon={<Receipt className="size-4" />}>
+              {t(i18n, "showcase.component.pageControl.pages.fiscalContent")}
             </SgPageControlPage>
-            <SgPageControlPage id="access" title="Access" icon={<ShieldCheck className="size-4" />}>
-              Access content
+            <SgPageControlPage id="access" title={t(i18n, "showcase.component.pageControl.pages.access")} icon={<ShieldCheck className="size-4" />}>
+              {t(i18n, "showcase.component.pageControl.pages.accessContent")}
             </SgPageControlPage>
-            <SgPageControlPage id="products" title="Products" icon={<Boxes className="size-4" />}>
-              Products content
+            <SgPageControlPage id="products" title={t(i18n, "showcase.component.pageControl.pages.products")} icon={<Boxes className="size-4" />}>
+              {t(i18n, "showcase.component.pageControl.pages.productsContent")}
             </SgPageControlPage>
-            <SgPageControlPage id="shipping" title="Shipping" icon={<Truck className="size-4" />}>
-              Shipping content
+            <SgPageControlPage id="shipping" title={t(i18n, "showcase.component.pageControl.pages.shipping")} icon={<Truck className="size-4" />}>
+              {t(i18n, "showcase.component.pageControl.pages.shippingContent")}
             </SgPageControlPage>
-            <SgPageControlPage id="integrations" title="Integrations" icon={<FolderKanban className="size-4" />}>
-              Integrations content
+            <SgPageControlPage id="integrations" title={t(i18n, "showcase.component.pageControl.pages.integrations")} icon={<FolderKanban className="size-4" />}>
+              {t(i18n, "showcase.component.pageControl.pages.integrationsContent")}
             </SgPageControlPage>
-            <SgPageControlPage id="preferences" title="Preferences" icon={<Wrench className="size-4" />}>
-              Preferences content
+            <SgPageControlPage id="preferences" title={t(i18n, "showcase.component.pageControl.pages.preferences")} icon={<Wrench className="size-4" />}>
+              {t(i18n, "showcase.component.pageControl.pages.preferencesContent")}
             </SgPageControlPage>
           </SgPageControl>
 
           <p className="text-sm font-medium">{texts.responsiveMobileSelect}</p>
           <SgPageControl mobilePageControl="select">
-            <SgPageControlPage id="registration" title="Registration" icon={<UserRound className="size-4" />}>
-              Registration content
+            <SgPageControlPage id="registration" title={t(i18n, "showcase.component.pageControl.pages.registration")} icon={<UserRound className="size-4" />}>
+              {t(i18n, "showcase.component.pageControl.pages.registrationContent")}
             </SgPageControlPage>
-            <SgPageControlPage id="fiscal" title="Fiscal" icon={<Receipt className="size-4" />}>
-              Fiscal content
+            <SgPageControlPage id="fiscal" title={t(i18n, "showcase.component.pageControl.pages.fiscal")} icon={<Receipt className="size-4" />}>
+              {t(i18n, "showcase.component.pageControl.pages.fiscalContent")}
             </SgPageControlPage>
-            <SgPageControlPage id="access" title="Access" icon={<ShieldCheck className="size-4" />}>
-              Access content
+            <SgPageControlPage id="access" title={t(i18n, "showcase.component.pageControl.pages.access")} icon={<ShieldCheck className="size-4" />}>
+              {t(i18n, "showcase.component.pageControl.pages.accessContent")}
             </SgPageControlPage>
-            <SgPageControlPage id="products" title="Products" icon={<Boxes className="size-4" />}>
-              Products content
+            <SgPageControlPage id="products" title={t(i18n, "showcase.component.pageControl.pages.products")} icon={<Boxes className="size-4" />}>
+              {t(i18n, "showcase.component.pageControl.pages.productsContent")}
             </SgPageControlPage>
-            <SgPageControlPage id="shipping" title="Shipping" icon={<Truck className="size-4" />}>
-              Shipping content
+            <SgPageControlPage id="shipping" title={t(i18n, "showcase.component.pageControl.pages.shipping")} icon={<Truck className="size-4" />}>
+              {t(i18n, "showcase.component.pageControl.pages.shippingContent")}
             </SgPageControlPage>
-            <SgPageControlPage id="integrations" title="Integrations" icon={<FolderKanban className="size-4" />}>
-              Integrations content
+            <SgPageControlPage id="integrations" title={t(i18n, "showcase.component.pageControl.pages.integrations")} icon={<FolderKanban className="size-4" />}>
+              {t(i18n, "showcase.component.pageControl.pages.integrationsContent")}
             </SgPageControlPage>
-            <SgPageControlPage id="preferences" title="Preferences" icon={<Wrench className="size-4" />}>
-              Preferences content
+            <SgPageControlPage id="preferences" title={t(i18n, "showcase.component.pageControl.pages.preferences")} icon={<Wrench className="size-4" />}>
+              {t(i18n, "showcase.component.pageControl.pages.preferencesContent")}
             </SgPageControlPage>
           </SgPageControl>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-page-control/samples/responsividade.tsx.sample" />
@@ -434,14 +434,14 @@ export default function SgPageControlShowcasePage() {
 
         <Section title={texts.sectionTitles[5] ?? ""} description={texts.sectionDescriptions[5] ?? ""}>
           <SgPageControl size="sm" defaultActivePageId="registration">
-            <SgPageControlPage id="registration" title="Registration">
-              Registration content
+            <SgPageControlPage id="registration" title={t(i18n, "showcase.component.pageControl.pages.registration")}>
+              {t(i18n, "showcase.component.pageControl.pages.registrationContent")}
             </SgPageControlPage>
-            <SgPageControlPage id="fiscal" title="Fiscal">
-              Fiscal content
+            <SgPageControlPage id="fiscal" title={t(i18n, "showcase.component.pageControl.pages.fiscal")}>
+              {t(i18n, "showcase.component.pageControl.pages.fiscalContent")}
             </SgPageControlPage>
-            <SgPageControlPage id="access" title="Access" enabled={false}>
-              Access content
+            <SgPageControlPage id="access" title={t(i18n, "showcase.component.pageControl.pages.access")} enabled={false}>
+              {t(i18n, "showcase.component.pageControl.pages.accessContent")}
             </SgPageControlPage>
           </SgPageControl>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-page-control/samples/tamanho-e-aba-desabilitada.tsx.sample" />

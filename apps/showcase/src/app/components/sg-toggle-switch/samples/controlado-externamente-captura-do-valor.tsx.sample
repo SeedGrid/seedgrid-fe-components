@@ -10,7 +10,7 @@ export default function Example() {
     <div>
       <SgToggleSwitch
         id="demo-external"
-        label="Permitir sincronizacao"
+        label="Permitir sincronização"
         checked={value}
         onChange={(next) => {
           setValue(next);

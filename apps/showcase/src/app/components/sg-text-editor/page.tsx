@@ -175,7 +175,7 @@ export default function SgTextEditorPage() {
               enabled={false}
               showCssEditor={false}
             />
-            <SgTextEditor id="sg-text-editor-error" height={120} error="Conteúdo obrigatório" />
+            <SgTextEditor id="sg-text-editor-error" height={120} error={t(i18n, "showcase.component.textEditor.errorRequired")} />
           </SgStack>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-text-editor/samples/desabilitado.tsx.sample" />
         </Section>
@@ -212,7 +212,7 @@ export default function SgTextEditorPage() {
               appearance="outline"
               onClick={() => setControlledBody("<h2>Título</h2><ul><li><p>Item</p></li></ul>")}
             >
-              Trocar o conteúdo
+              {t(i18n, "showcase.component.textEditor.buttons.replaceContent")}
             </SgButton>
           </SgStack>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-text-editor/samples/valor-controlado.tsx.sample" />
@@ -228,13 +228,13 @@ export default function SgTextEditorPage() {
               height={200}
               fileName="nota.html"
               showCssEditor
-              cssEditorLabel="CSS do documento"
+              cssEditorLabel={t(i18n, "showcase.component.textEditor.cssEditorLabel")}
               cssText={fileCss}
               onCssTextChange={setFileCss}
               onSave={(file, meta) =>
-                setFileInfo(`${file.name}: ${file.size} bytes, ${meta.cssText.length} caracteres de CSS`)
+                setFileInfo(t(i18n, "showcase.component.textEditor.fileSaved", { name: file.name, size: file.size, css: meta.cssText.length }))
               }
-              onLoad={(meta) => setFileInfo(`Carregado: ${meta.contentHtml.length} caracteres`)}
+              onLoad={(meta) => setFileInfo(t(i18n, "showcase.component.textEditor.fileLoaded", { chars: meta.contentHtml.length }))}
             />
             {fileInfo ? <p className="text-sm">{fileInfo}</p> : null}
           </SgStack>
@@ -248,8 +248,8 @@ export default function SgTextEditorPage() {
           <form onSubmit={handleSubmit((values) => setSent(values.descricao))}>
             <SgStack gap={12} align="start">
               <SgTextEditor id="sg-text-editor-form" name="descricao" control={control} height={180} />
-              <SgButton type="submit">Enviar</SgButton>
-              {sent ? <p className="text-sm">Enviado: {sent}</p> : null}
+              <SgButton type="submit">{t(i18n, "showcase.component.textEditor.buttons.submit")}</SgButton>
+              {sent ? <p className="text-sm">{t(i18n, "showcase.component.textEditor.submittedLabel")}: {sent}</p> : null}
             </SgStack>
           </form>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-text-editor/samples/dentro-de-um-formulario.tsx.sample" />

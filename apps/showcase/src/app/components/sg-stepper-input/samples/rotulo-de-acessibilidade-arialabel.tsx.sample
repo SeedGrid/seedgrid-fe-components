@@ -1,0 +1,20 @@
+"use client";
+
+import React from "react";
+import { SgStack, SgStepperInput } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgStack gap={8} align="start">
+      <SgStepperInput
+        id="ingressos"
+        ariaLabel="Quantidade de ingressos"
+        minValue={1}
+        maxValue={10}
+        defaultValue={2}
+        width={160}
+      />
+      <p className="text-sm text-muted-foreground">ariaLabel: Quantidade de ingressos</p>
+    </SgStack>
+  );
+}

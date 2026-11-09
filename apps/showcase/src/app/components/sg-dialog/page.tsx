@@ -330,7 +330,7 @@ export default function SgDialogPage() {
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-dialog/samples/animation.tsx.sample" />
       </Section>
 
-        <Section title="7) Playground (SgPlayground)" description="Teste interativo das principais props do SgDialog.">
+        <Section title={`7) ${t(i18n, "showcase.common.playground.sectionTitle")}`} description={t(i18n, "showcase.component.dialog.playgroundDescription")}>
           <SgPlayground
             title="SgDialog Playground"
             interactive

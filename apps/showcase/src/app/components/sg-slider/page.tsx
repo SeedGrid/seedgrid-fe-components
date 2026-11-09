@@ -299,7 +299,7 @@ export default function SgSliderPage() {
               onChange={setBasicValue}
             />
             <p className="text-sm text-muted-foreground">
-              Valor atual: <span className="font-semibold text-foreground">{basicValue}</span>
+              {t(i18n, `${K}.currentValueLabel`)}: <span className="font-semibold text-foreground">{basicValue}</span>
             </p>
           </div>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-slider/samples/basico.tsx.sample" />
@@ -315,12 +315,12 @@ export default function SgSliderPage() {
               onChange={setControlledValue}
             />
             <div className="flex flex-wrap gap-2">
-              <SgButton size="sm" appearance="outline" onClick={() => setControlledValue(0)}>Min</SgButton>
-              <SgButton size="sm" appearance="outline" onClick={() => setControlledValue(50)}>Meio</SgButton>
-              <SgButton size="sm" appearance="outline" onClick={() => setControlledValue(100)}>Max</SgButton>
+              <SgButton size="sm" appearance="outline" onClick={() => setControlledValue(0)}>{t(i18n, `${K}.buttons.min`)}</SgButton>
+              <SgButton size="sm" appearance="outline" onClick={() => setControlledValue(50)}>{t(i18n, `${K}.buttons.middle`)}</SgButton>
+              <SgButton size="sm" appearance="outline" onClick={() => setControlledValue(100)}>{t(i18n, `${K}.buttons.max`)}</SgButton>
             </div>
             <p className="text-sm text-muted-foreground">
-              Valor controlado: <span className="font-semibold text-foreground">{controlledValue}</span>
+              {t(i18n, `${K}.controlledValueLabel`)}: <span className="font-semibold text-foreground">{controlledValue}</span>
             </p>
           </div>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-slider/samples/controle-externo.tsx.sample" />
@@ -346,7 +346,7 @@ export default function SgSliderPage() {
               defaultValue={4}
             />
             <p className="text-sm text-muted-foreground">
-              Valor com step 5: <span className="font-semibold text-foreground">{stepWidthValue}</span>
+              {t(i18n, `${K}.stepValueLabel`)}: <span className="font-semibold text-foreground">{stepWidthValue}</span>
             </p>
           </div>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-slider/samples/step-e-width.tsx.sample" />
@@ -360,7 +360,7 @@ export default function SgSliderPage() {
               maxValue={100}
               defaultValue={40}
               width="20rem"
-              ariaLabel="Nivel de prioridade"
+              ariaLabel={t(i18n, `${K}.ariaPriority`)}
             />
             <SgSlider
               id="slider-disabled"
@@ -368,7 +368,7 @@ export default function SgSliderPage() {
               maxValue={100}
               value={65}
               enabled={false}
-              ariaLabel="Slider desabilitado"
+              ariaLabel={t(i18n, `${K}.ariaDisabled`)}
               width="20rem"
             />
           </div>
@@ -378,25 +378,25 @@ export default function SgSliderPage() {
         <Section title={t(i18n, `${K}.section5Title`)} description={t(i18n, `${K}.section5Description`)}>
           <div className="space-y-2">
             <p id="slider-input-props-help" className="text-sm text-muted-foreground">
-              Use Tab para focar o slider.
+              {t(i18n, `${K}.tabHint`)}
             </p>
             <SgSlider
               id="slider-input-props"
               minValue={0}
               maxValue={100}
               value={inputPropsValue}
-              ariaLabel="Volume de notificacoes"
+              ariaLabel={t(i18n, `${K}.ariaNotificationVolume`)}
               className="accent-[#c56a2d]"
               onChange={setInputPropsValue}
               inputProps={{
                 name: "notificationVolume",
-                title: "Volume de notificacoes",
+                title: t(i18n, `${K}.ariaNotificationVolume`),
                 "aria-describedby": "slider-input-props-help",
                 onFocus: () => setInputFocusCount((prev) => prev + 1)
               }}
             />
             <p className="text-sm text-muted-foreground">
-              Valor: <span className="font-semibold text-foreground">{inputPropsValue}</span> | Focos:{" "}
+              {t(i18n, `${K}.valueLabel`)}: <span className="font-semibold text-foreground">{inputPropsValue}</span> | {t(i18n, `${K}.focusCountLabel`)}:{" "}
               <span className="font-semibold text-foreground">{inputFocusCount}</span>
             </p>
           </div>
@@ -405,7 +405,7 @@ export default function SgSliderPage() {
 
         <Section title={t(i18n, `${K}.section6Title`)} description={t(i18n, `${K}.section6Description`)}>
           <div className="max-w-sm">
-            <SgSlider id="slider-error" minValue={0} maxValue={10} defaultValue={9} error="Valor alto demais" />
+            <SgSlider id="slider-error" minValue={0} maxValue={10} defaultValue={9} error={t(i18n, `${K}.errorHighValue`)} />
           </div>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-slider/samples/mensagem-de-erro.tsx.sample" />
         </Section>
@@ -414,8 +414,8 @@ export default function SgSliderPage() {
           <form onSubmit={handleSubmit((values) => setEnviado(String(values.brilho)))}>
             <SgStack gap={12} align="start">
               <SgSlider id="brilho" name="brilho" control={control} minValue={0} maxValue={100} step={10} />
-              <SgButton type="submit">Enviar</SgButton>
-              {enviado ? <p className="text-sm">Enviado: {enviado}</p> : null}
+              <SgButton type="submit">{t(i18n, `${K}.buttons.submit`)}</SgButton>
+              {enviado ? <p className="text-sm">{t(i18n, `${K}.submittedLabel`)}: {enviado}</p> : null}
             </SgStack>
           </form>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-slider/samples/dentro-de-um-formulario.tsx.sample" />

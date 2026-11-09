@@ -431,14 +431,14 @@ export default function SgExpandablePanelPage() {
           <div className="h-[360px] overflow-hidden rounded-lg border border-border">
             <div className="flex h-full">
               <div className="flex-1 space-y-3 p-4">
-                <h3 className="text-base font-semibold">Area principal</h3>
-                <p className="text-sm text-muted-foreground">Example inline controlado com resize.</p>
+                <h3 className="text-base font-semibold">{t(i18n, `${K}.inline.main`)}</h3>
+                <p className="text-sm text-muted-foreground">{t(i18n, `${K}.inline.hint`)}</p>
                 <div className="flex flex-wrap gap-2">
                   <SgButton size="sm" onClick={() => setInlineOpen((v) => !v)}>
-                    {inlineOpen ? "Fechar inspector" : "Abrir inspector"}
+                    {inlineOpen ? t(i18n, `${K}.inline.closeInspector`) : t(i18n, `${K}.inline.openInspector`)}
                   </SgButton>
                 </div>
-                <p className="text-xs text-muted-foreground">Largura atual: {String(inlineSize)}px</p>
+                <p className="text-xs text-muted-foreground">{t(i18n, `${K}.inline.currentWidth`)}: {String(inlineSize)}px</p>
               </div>
 
               <SgExpandablePanel
@@ -449,12 +449,12 @@ export default function SgExpandablePanelPage() {
                 size={{ default: 320, min: 240, max: 560 }}
                 resizable
                 onSizeChange={setInlineSize}
-                header={<div className="font-medium">Inspector</div>}
-                footer={<div className="text-xs text-muted-foreground">Rodape inline</div>}
+                header={<div className="font-medium">{t(i18n, `${K}.inline.inspector`)}</div>}
+                footer={<div className="text-xs text-muted-foreground">{t(i18n, `${K}.inline.footer`)}</div>}
               >
                 <div className="space-y-3 text-sm">
-                  <p>Conteudo do inspector.</p>
-                  <p>Props: open, onOpenChange, size, resizable, onSizeChange.</p>
+                  <p>{t(i18n, `${K}.inline.content`)}</p>
+                  <p>{t(i18n, `${K}.inline.props`)}</p>
                 </div>
               </SgExpandablePanel>
             </div>
@@ -464,7 +464,7 @@ export default function SgExpandablePanelPage() {
 
         <Section title={texts.sectionTitles[1] ?? ""} description={texts.sectionDescriptions[1] ?? ""}>
           <div className="flex flex-wrap gap-2">
-            <SgButton onClick={() => setDrawerOpen(true)}>Abrir drawer</SgButton>
+            <SgButton onClick={() => setDrawerOpen(true)}>{t(i18n, `${K}.drawer.open`)}</SgButton>
           </div>
 
           <SgExpandablePanel
@@ -480,18 +480,18 @@ export default function SgExpandablePanelPage() {
             trapFocus
             showBackdrop
             handle={<div className="mx-auto h-1.5 w-12 rounded-full bg-muted-foreground/35" />}
-            header={<div className="font-medium">Drawer com foco preso</div>}
+            header={<div className="font-medium">{t(i18n, `${K}.drawer.title`)}</div>}
             footer={
               <div className="flex justify-end">
-                <SgButton size="sm" onClick={() => setDrawerOpen(false)}>Fechar</SgButton>
+                <SgButton size="sm" onClick={() => setDrawerOpen(false)}>{t(i18n, `${K}.close`)}</SgButton>
               </div>
             }
           >
             <div className="space-y-2 text-sm">
-              <p>Props: placement, closeOnEsc, closeOnOutsideClick, trapFocus e showBackdrop.</p>
+              <p>{t(i18n, `${K}.drawer.props`)}</p>
               <label className="flex items-center gap-2">
                 <input type="checkbox" defaultChecked />
-                <span>Somente ativos</span>
+                <span>{t(i18n, `${K}.drawer.onlyActive`)}</span>
               </label>
             </div>
           </SgExpandablePanel>
@@ -508,9 +508,9 @@ export default function SgExpandablePanelPage() {
                 setStyledPanelKey((v) => v + 1);
               }}
             >
-              Remontar defaultOpen
+              {t(i18n, `${K}.styled.remount`)}
             </SgButton>
-            <span className="text-xs text-muted-foreground">Estado reportado: {styledPanelOpen ? "aberto" : "fechado"}</span>
+            <span className="text-xs text-muted-foreground">{t(i18n, `${K}.styled.reportedState`)}: {styledPanelOpen ? t(i18n, `${K}.styled.open`) : t(i18n, `${K}.styled.closed`)}</span>
           </div>
 
           <SgExpandablePanel
@@ -531,12 +531,12 @@ export default function SgExpandablePanelPage() {
             bodyClassName="bg-slate-900/90"
             footerClassName="border-t border-slate-700 bg-slate-800/60"
             style={{ boxShadow: "0 20px 60px rgba(15, 23, 42, 0.5)" }}
-            header={<div className="font-medium">Painel estilizado</div>}
-            footer={<div className="text-xs text-slate-300">Feche com ESC ou clique fora.</div>}
+            header={<div className="font-medium">{t(i18n, `${K}.styled.title`)}</div>}
+            footer={<div className="text-xs text-slate-300">{t(i18n, `${K}.styled.footer`)}</div>}
           >
             <div className="space-y-2 text-sm text-slate-100">
-              <p>Props visuais: elevation, border, rounded, classes e style.</p>
-              <p>Prop de estado: defaultOpen.</p>
+              <p>{t(i18n, `${K}.styled.visualProps`)}</p>
+              <p>{t(i18n, `${K}.styled.stateProp`)}</p>
             </div>
           </SgExpandablePanel>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-expandable-panel/samples/default-open-estilizacao.tsx.sample" />
@@ -544,7 +544,7 @@ export default function SgExpandablePanelPage() {
 
         <Section title={texts.sectionTitles[3] ?? ""} description={texts.sectionDescriptions[3] ?? ""}>
           <div className="flex flex-wrap gap-2">
-            <SgButton onClick={() => setA11yOpen(true)}>Abrir painel com fade</SgButton>
+            <SgButton onClick={() => setA11yOpen(true)}>{t(i18n, `${K}.a11y.open`)}</SgButton>
           </div>
 
           <SgExpandablePanel
@@ -554,27 +554,27 @@ export default function SgExpandablePanelPage() {
             open={a11yOpen}
             onOpenChange={setA11yOpen}
             role="dialog"
-            ariaLabel="Painel de notificacoes"
+            ariaLabel={t(i18n, `${K}.a11y.ariaLabel`)}
             overlayClassName="bg-black/70"
             animation={{ type: "fade", durationMs: 260 }}
             closeOnOutsideClick={false}
             trapFocus
             size={{ default: 280, min: 180, max: 420 }}
-            header={<div className="font-medium">Notificacoes</div>}
+            header={<div className="font-medium">{t(i18n, `${K}.a11y.title`)}</div>}
             footer={
               <div className="flex justify-end">
-                <SgButton size="sm" onClick={() => setA11yOpen(false)}>Fechar</SgButton>
+                <SgButton size="sm" onClick={() => setA11yOpen(false)}>{t(i18n, `${K}.close`)}</SgButton>
               </div>
             }
           >
-            <div className="text-sm">Props: role, ariaLabel, overlayClassName, animation fade e closeOnOutsideClick=false.</div>
+            <div className="text-sm">{t(i18n, `${K}.a11y.props`)}</div>
           </SgExpandablePanel>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-expandable-panel/samples/acessibilidade-fade.tsx.sample" />
         </Section>
 
         <Section title={texts.sectionTitles[4] ?? ""} description={texts.sectionDescriptions[4] ?? ""}>
           <div className="flex flex-wrap gap-2">
-            <SgButton appearance="outline" onClick={() => setNoBackdropOpen(true)}>Abrir sem backdrop</SgButton>
+            <SgButton appearance="outline" onClick={() => setNoBackdropOpen(true)}>{t(i18n, `${K}.noBackdrop.open`)}</SgButton>
           </div>
 
           <SgExpandablePanel
@@ -587,14 +587,14 @@ export default function SgExpandablePanelPage() {
             closeOnEsc
             animation={{ type: "none", durationMs: 0 }}
             size={{ default: 220, min: 160, max: 360 }}
-            header={<div className="font-medium">Sem backdrop</div>}
+            header={<div className="font-medium">{t(i18n, `${K}.noBackdrop.title`)}</div>}
             footer={
               <div className="flex justify-end">
-                <SgButton size="sm" onClick={() => setNoBackdropOpen(false)}>Fechar</SgButton>
+                <SgButton size="sm" onClick={() => setNoBackdropOpen(false)}>{t(i18n, `${K}.close`)}</SgButton>
               </div>
             }
           >
-            <div className="text-sm">Props: showBackdrop=false e animation type none.</div>
+            <div className="text-sm">{t(i18n, `${K}.noBackdrop.props`)}</div>
           </SgExpandablePanel>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-expandable-panel/samples/sem-backdrop-animation-none.tsx.sample" />
         </Section>

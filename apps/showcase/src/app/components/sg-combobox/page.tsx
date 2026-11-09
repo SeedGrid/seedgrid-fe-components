@@ -292,7 +292,7 @@ export default function SgComboboxPage() {
           <div className="w-96">
             <SgCombobox<Country>
               id="cb-basic"
-              label="Country"
+              label={t(i18n, "showcase.component.combobox.labels.country")}
               source={COUNTRIES}
               openOnFocus
               grouped
@@ -305,7 +305,7 @@ export default function SgComboboxPage() {
               onSelect={(value) => setSelectedCountry(value)}
             />
             <div className="mt-2 rounded border border-border bg-foreground/5 p-2 text-xs">
-              {selectedCountry ? JSON.stringify(selectedCountry, null, 2) : "No item selected"}
+              {selectedCountry ? JSON.stringify(selectedCountry, null, 2) : t(i18n, "showcase.component.combobox.labels.noItemSelected")}
             </div>
           </div>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-combobox/samples/basico-com-lista-de-objetos.tsx.sample" />
@@ -318,7 +318,7 @@ export default function SgComboboxPage() {
           <div className="w-96">
             <SgCombobox<Country>
               id="cb-controlled"
-              label="Country (controlled)"
+              label={t(i18n, "showcase.component.combobox.labels.countryControlled")}
               value={selectedId}
               source={COUNTRIES}
               openOnFocus
@@ -364,7 +364,7 @@ export default function SgComboboxPage() {
           <div className="w-96">
             <SgCombobox<Country>
               id="cb-async"
-              label="Country (async)"
+              label={t(i18n, "showcase.component.combobox.labels.countryAsync")}
               source={asyncSource}
               openOnFocus
               grouped
@@ -391,7 +391,7 @@ export default function SgComboboxPage() {
               onSelect={setSelectedAsync}
             />
             <div className="mt-2 rounded border border-border bg-foreground/5 p-2 text-xs">
-              {selectedAsync ? `Selected: ${selectedAsync.description} (${selectedAsync.code})` : "No item selected"}
+              {selectedAsync ? `Selected: ${selectedAsync.description} (${selectedAsync.code})` : t(i18n, "showcase.component.combobox.labels.noItemSelected")}
             </div>
           </div>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-combobox/samples/source-async-custom-render.tsx.sample" />
@@ -404,7 +404,7 @@ export default function SgComboboxPage() {
           <div className="w-96">
             <SgCombobox<Country>
               id="cb-radius"
-              label="Country with custom radius"
+              label={t(i18n, "showcase.component.combobox.labels.countryCustomRadius")}
               source={COUNTRIES}
               openOnFocus
               grouped
@@ -422,7 +422,7 @@ export default function SgComboboxPage() {
 
         <Section title={t(i18n, `${K}.section5Title`)} description={t(i18n, `${K}.section5Description`)}>
           <div className="w-96">
-            <SgCombobox<string> id="fruta" label="Fruta" source={["Abacate", "Abacaxi", "Banana", "Laranja", "Uva"]} />
+            <SgCombobox<string> id="fruta" label={t(i18n, `${K}.labels.fruit`)} source={["Abacate", "Abacaxi", "Banana", "Laranja", "Uva"]} />
           </div>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-combobox/samples/lista-simples.tsx.sample" />
         </Section>
@@ -433,13 +433,13 @@ export default function SgComboboxPage() {
               id="pagamento"
               name="pagamento"
               control={control}
-              label="Forma de pagamento"
+              label={t(i18n, `${K}.labels.paymentMethod`)}
               required
-              requiredMessage="Escolha uma forma"
+              requiredMessage={t(i18n, `${K}.messages.choosePayment`)}
               source={["Boleto", "Cartão", "Pix"]}
             />
-            <SgButton type="submit">Enviar</SgButton>
-            {submitted ? <div className="text-sm">Enviado: {submitted}</div> : null}
+            <SgButton type="submit">{t(i18n, `${K}.buttons.submit`)}</SgButton>
+            {submitted ? <div className="text-sm">{t(i18n, `${K}.submittedLabel`)}: {submitted}</div> : null}
           </form>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-combobox/samples/formulario.tsx.sample" />
         </Section>

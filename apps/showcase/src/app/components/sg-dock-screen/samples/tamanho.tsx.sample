@@ -14,7 +14,7 @@ export default function Example() {
     >
       <SgDockZone zone="top">
         <SgToolBar id="tb-top-dock-screen-size-v1" dockZone="top" orientationDirection="horizontal-left" title="Topo" draggable>
-          <SgToolbarIconButton icon={<Home className="size-4" />} label="Home" hint="Ir para inicio" />
+          <SgToolbarIconButton icon={<Home className="size-4" />} label="Home" hint="Ir para início" />
         </SgToolBar>
       </SgDockZone>
       <SgDockZone zone="left">

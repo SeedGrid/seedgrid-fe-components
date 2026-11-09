@@ -16,25 +16,25 @@ export default function Example() {
           style={{ backgroundColor: "rgba(255, 255, 255, 0.03)" }}
         >
           <SgToolBar id="tb-main-basic-v9" dockZone="top" orientationDirection="horizontal-left" title="Topo" draggable>
-            <SgToolbarIconButton icon={<Home className="size-4" />} label="Home" hint="Ir para inicio" />
+            <SgToolbarIconButton icon={<Home className="size-4" />} label="Home" hint="Ir para início" />
             <SgToolbarIconButton icon={<Search className="size-4" />} label="Buscar" hint="Pesquisar registros" />
           </SgToolBar>
           <SgToolBar id="tb-top-extra-basic-v9" dockZone="top" orientationDirection="horizontal-left" title="Acoes" draggable>
             <SgToolbarIconButton icon={<LayoutGrid className="size-4" />} label="Painel" hint="Abrir painel" />
-            <SgToolbarIconButton icon={<ClipboardList className="size-4" />} label="Relatorio" hint="Abrir relatorios" />
+            <SgToolbarIconButton icon={<ClipboardList className="size-4" />} label="Relatório" hint="Abrir relatórios" />
           </SgToolBar>
         </SgDockZone>
 
         <SgDockZone zone="left" className="col-start-1 row-start-2 items-start border-r border-white/20">
           <SgToolBar id="tb-left-basic-v9" dockZone="left" orientationDirection="vertical-down" title="Navegacao" collapsible draggable>
             <SgToolbarIconButton icon={<Users className="size-4" />} label="Clientes" hint="Abrir clientes" />
-            <SgToolbarIconButton icon={<Settings className="size-4" />} label="Config" hint="Abrir configuracoes" />
+            <SgToolbarIconButton icon={<Settings className="size-4" />} label="Config" hint="Abrir configurações" />
           </SgToolBar>
         </SgDockZone>
 
         <SgDockZone zone="right" className="col-start-3 row-start-2 items-start border-l border-white/20">
           <SgToolBar id="tb-right-basic-v9" dockZone="right" orientationDirection="vertical-down" title="Equipe" collapsible draggable>
-            <SgToolbarIconButton icon={<Users className="size-4" />} label="Usuarios" hint="Gerenciar usuarios" />
+            <SgToolbarIconButton icon={<Users className="size-4" />} label="Usuários" hint="Gerenciar usuários" />
             <SgToolbarIconButton icon={<Settings className="size-4" />} label="Ajustes" hint="Abrir ajustes" />
           </SgToolBar>
         </SgDockZone>
@@ -42,11 +42,11 @@ export default function Example() {
         <SgDockZone zone="bottom" className="col-span-3 row-start-3 items-end border-t border-white/20">
           <SgToolBar id="tb-bottom-a-basic-v9" dockZone="bottom" orientationDirection="horizontal-left" title="Rodape A" draggable>
             <SgToolbarIconButton icon={<LayoutGrid className="size-4" />} label="Painel" hint="Abrir painel" />
-            <SgToolbarIconButton icon={<Search className="size-4" />} label="Buscar" hint="Pesquisar no rodape" />
+            <SgToolbarIconButton icon={<Search className="size-4" />} label="Buscar" hint="Pesquisar no rodapé" />
           </SgToolBar>
           <SgToolBar id="tb-bottom-b-basic-v9" dockZone="bottom" orientationDirection="horizontal-left" title="Rodape B" draggable>
             <SgToolbarIconButton icon={<ClipboardList className="size-4" />} label="Tarefas" hint="Abrir tarefas" />
-            <SgToolbarIconButton icon={<Home className="size-4" />} label="Home" hint="Voltar ao inicio" />
+            <SgToolbarIconButton icon={<Home className="size-4" />} label="Home" hint="Voltar ao início" />
           </SgToolBar>
         </SgDockZone>
       </SgDockLayout>
