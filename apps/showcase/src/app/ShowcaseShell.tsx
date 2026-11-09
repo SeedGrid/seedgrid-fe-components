@@ -472,16 +472,16 @@ const COMPONENT_HINT_TEXTS_BY_SLUG: Record<string, Partial<Record<ShowcaseLocale
     es: "Grupo de checkboxes con seleccion multiple, check all, estilos highlight, iconos e integracion con React Hook Form."
   },
   "sg-order-list": {
-    "pt-BR": "Lista ordenavel inspirada no PrimeFaces OrderList, com selecao, botoes de movimento e drag and drop.",
-    "pt-PT": "Lista ordenavel inspirada no PrimeFaces OrderList, com selecao, botoes de movimento e drag and drop.",
-    "en-US": "Sortable list inspired by PrimeFaces OrderList, with selection, move controls, and drag and drop.",
-    es: "Lista ordenable inspirada en PrimeFaces OrderList, con seleccion, controles de movimiento y drag and drop."
+    "pt-BR": "Lista ordenavel com selecao, botoes de movimento e drag and drop.",
+    "pt-PT": "Lista ordenavel com selecao, botoes de movimento e drag and drop.",
+    "en-US": "Sortable list with selection, move controls, and drag and drop.",
+    es: "Lista ordenable con seleccion, controles de movimiento y drag and drop."
   },
   "sg-pick-list": {
-    "pt-BR": "PickList inspirado no PrimeFaces para mover itens entre listas com filtros, controles e drag and drop.",
-    "pt-PT": "PickList inspirado no PrimeFaces para mover itens entre listas com filtros, controlos e drag and drop.",
-    "en-US": "PrimeFaces-inspired PickList to move items between lists with filters, controls, and drag and drop.",
-    es: "PickList inspirado en PrimeFaces para mover items entre listas con filtros, controles y drag and drop."
+    "pt-BR": "PickList para mover itens entre listas com filtros, controles e drag and drop.",
+    "pt-PT": "PickList para mover itens entre listas com filtros, controlos e drag and drop.",
+    "en-US": "PickList to move items between lists with filters, controls, and drag and drop.",
+    es: "PickList para mover items entre listas con filtros, controles y drag and drop."
   },
   "sg-datatable": {
     "pt-BR": "Datatable com ordenacao, filtros por coluna, paginacao, selecao de linhas e templates customizados.",

@@ -2970,7 +2970,7 @@
   "showcase.component.orderList.propDescriptions.itemClassName": "Classe CSS supplementaire pour chaque item.",
   "showcase.component.orderList.propDescriptions.groupBoxProps": "Props supplementaires transmises a SgGroupBox.",
   "showcase.component.orderList.propDescriptions.ref": "Ref imperatif avec moveTop/moveUp/moveDown/moveBottom et APIs de selection.",
-  "showcase.component.pickList.subtitle": "PickList inspire de PrimeFaces avec transfert d'items entre listes, filtrage et reordonnancement.",
+  "showcase.component.pickList.subtitle": "PickList avec transfert d'items entre listes, filtrage et reordonnancement.",
   "showcase.component.pickList.sectionTitles.0": "1) Basique",
   "showcase.component.pickList.sectionTitles.1": "2) Avec filtres",
   "showcase.component.pickList.sectionTitles.2": "3) Transfert uniquement (sans reordonnancement)",

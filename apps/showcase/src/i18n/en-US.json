@@ -2970,7 +2970,7 @@
   "showcase.component.orderList.propDescriptions.itemClassName": "Additional CSS class for each item.",
   "showcase.component.orderList.propDescriptions.groupBoxProps": "Additional props forwarded to SgGroupBox.",
   "showcase.component.orderList.propDescriptions.ref": "Imperative ref with moveTop/moveUp/moveDown/moveBottom and selection APIs.",
-  "showcase.component.pickList.subtitle": "PrimeFaces-inspired PickList with item transfer between lists, filtering, and reordering.",
+  "showcase.component.pickList.subtitle": "PickList with item transfer between lists, filtering, and reordering.",
   "showcase.component.pickList.sectionTitles.0": "1) Basic",
   "showcase.component.pickList.sectionTitles.1": "2) With Filters",
   "showcase.component.pickList.sectionTitles.2": "3) Transfer only (no reordering)",
