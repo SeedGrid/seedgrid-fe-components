@@ -341,7 +341,7 @@ export type {
   SgRealtimeEvent,
   SgRealtimeConnectResponse
 } from "./realtime/SgRealtimeProvider";
-export type { SgClockProps, SgClockDigitalStyle } from "./gadgets/clock/SgClock";
+export type { SgClockProps, SgClockDigitalStyle, SgClockDigitalParts, SgClockDigitBuilder } from "./gadgets/clock/SgClock";
 export type { SgCalendarProps, SgCalendarWeekdayFormat } from "./gadgets/calendar";
 export { SgFlipDigit } from "./digits/flip-digit";
 export type { SgFlipDigitProps } from "./digits/flip-digit";

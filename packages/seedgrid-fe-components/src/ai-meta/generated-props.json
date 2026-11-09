@@ -761,6 +761,12 @@
       "required": false
     },
     {
+      "name": "onClick",
+      "type": "((event: MouseEvent<HTMLButtonElement, MouseEvent>) => unknown)",
+      "required": false,
+      "description": "Clique do botão. Pode devolver uma Promise (`void | Promise<void>`): o botão entra em loading (spinner,\ndesabilitado, aria-busy) até ela terminar (ou falhar) e ignora cliques nesse meio-tempo. Quem não devolve\nPromise não muda. O retorno é `unknown` só para não quebrar handlers existentes de corpo-expressão\n(`() => lista.push(x)`), que devolvem valor."
+    },
+    {
       "name": "rightIcon",
       "type": "ReactNode",
       "required": false
@@ -1330,6 +1336,12 @@
       "name": "digitalStyle",
       "type": "SgClockDigitalStyle",
       "required": false
+    },
+    {
+      "name": "digitBuilder",
+      "type": "SgClockDigitBuilder",
+      "required": false,
+      "description": "Desenha o relogio digital quando `digitalStyle` e `\"custom\"`. Sem ele, cai no estilo `default`."
     },
     {
       "name": "format",

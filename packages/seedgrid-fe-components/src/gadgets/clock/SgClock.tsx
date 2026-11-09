@@ -67,6 +67,8 @@ export type SgClockProps = {
   format?: "12h" | "24h";
   showSeconds?: boolean;
   digitalStyle?: SgClockDigitalStyle;
+  /** Desenha o relogio digital quando `digitalStyle` e `"custom"`. Sem ele, cai no estilo `default`. */
+  digitBuilder?: SgClockDigitBuilder;
   secondHandMode?: "step" | "smooth";
   themeId?: string;
   theme?: SgClockTheme;
@@ -86,7 +88,32 @@ export type SgClockDigitalStyle =
   | "fade"
   | "matrix"
   | "neon"
-  | "discard";
+  | "discard"
+  | "custom";
+
+/** Partes do relogio digital entregues ao `digitBuilder` (as mesmas do construtor do Flutter). */
+export type SgClockDigitalParts = {
+  /** Sempre com 2 digitos; em 12h vai de 01 a 12. */
+  hour: string;
+  minute: string;
+  /** Vazio quando `showSeconds` e falso. */
+  second: string;
+  /** So em 12h (`AM`/`PM` ou o que o Intl do locale devolve). */
+  dayPeriod: string | undefined;
+  is12h: boolean;
+  showSeconds: boolean;
+  /** `size` original do SgClock (`"sm"`, `"md"`, `"lg"` ou numero). */
+  size: "sm" | "md" | "lg" | number;
+  /** `HH:MM` ou `HH:MM:SS`. */
+  text: string;
+  /** `text` + periodo em maiusculas. */
+  textWithPeriod: string;
+  /** Numero = ele mesmo, sm 12, lg 28, md 16. */
+  sizePx: number;
+};
+
+/** Recebe as partes do relogio digital e devolve o desenho completo (digitos e separadores). */
+export type SgClockDigitBuilder = (parts: SgClockDigitalParts) => React.ReactNode;
 
 function getHmsForTimezone(date: Date, locale: string, timeZone?: string) {
   const parts = new Intl.DateTimeFormat(locale, {
@@ -230,6 +257,7 @@ function DigitalClock({
   showSeconds = true,
   size = "md",
   digitalStyle = "default",
+  digitBuilder,
   className,
   style
 }: Omit<SgClockProps, "clockStyle" | "secondHandMode" | "themeId" | "theme" | "centerOverlay">) {
@@ -266,6 +294,26 @@ function DigitalClock({
   const sizePx = digitalSizeToNumber(size);
   const withPeriod =
     format === "12h" && dayPeriod ? `${text} ${dayPeriod.toUpperCase()}` : text;
+
+  if (digitalStyle === "custom" && digitBuilder) {
+    const is12h = format === "12h";
+    return (
+      <div className={className} style={style} aria-label={t(i18n, "components.gadgets.clock.digitalAria")}>
+        {digitBuilder({
+          hour,
+          minute,
+          second: showSeconds ? second : "",
+          dayPeriod: is12h && dayPeriod ? dayPeriod : undefined,
+          is12h,
+          showSeconds,
+          size,
+          text,
+          textWithPeriod: withPeriod,
+          sizePx
+        })}
+      </div>
+    );
+  }
 
   if (digitalStyle === "flip") {
     const hNum = Number.parseInt(hour, 10) || 0;
@@ -616,6 +664,7 @@ export function SgClock(props: SgClockProps) {
     format = "24h",
     showSeconds = true,
     digitalStyle = "default",
+    digitBuilder,
     secondHandMode = "step",
     themeId = "classic",
     theme,
@@ -682,6 +731,7 @@ export function SgClock(props: SgClockProps) {
         showSeconds={showSeconds}
         size={size}
         digitalStyle={digitalStyle}
+        digitBuilder={digitBuilder}
         className={className}
         style={style}
       />

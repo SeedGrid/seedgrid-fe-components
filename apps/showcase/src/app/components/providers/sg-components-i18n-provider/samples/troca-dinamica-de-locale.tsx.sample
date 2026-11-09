@@ -1,10 +1,15 @@
-import React from "react";
+import * as React from "react";
 import {
+  SgButton,
   SgComponentsI18nProvider,
+  SgGrid,
   componentsMessagesEnUs,
   componentsMessagesEs,
+  componentsMessagesFr,
   componentsMessagesPtBr,
   componentsMessagesPtPt,
+  tComponents,
+  useComponentsI18n,
 } from "@seedgrid/fe-components";
 
 const LOCALES = {
@@ -12,21 +17,44 @@ const LOCALES = {
   "pt-PT": componentsMessagesPtPt,
   "en-US": componentsMessagesEnUs,
   es: componentsMessagesEs,
+  fr: componentsMessagesFr,
 };
 
-export default function App() {
-  const [locale, setLocale] = React.useState<keyof typeof LOCALES>("pt-BR");
+type LocaleId = keyof typeof LOCALES;
+
+function Mensagens() {
+  const i18n = useComponentsI18n();
 
   return (
-    <>
-      {Object.keys(LOCALES).map((l) => (
-        <button key={l} onClick={() => setLocale(l as keyof typeof LOCALES)}>
-          {l}
-        </button>
-      ))}
+    <SgGrid gap={4} className="rounded-lg border border-border bg-foreground/5 p-4 font-mono text-sm">
+      <span>locale: {i18n.locale}</span>
+      <span>components.actions.clear: {tComponents(i18n, "components.actions.clear")}</span>
+      <span>components.password.show: {tComponents(i18n, "components.password.show")}</span>
+      <span>components.inputs.required: {tComponents(i18n, "components.inputs.required")}</span>
+    </SgGrid>
+  );
+}
+
+export default function App() {
+  const [locale, setLocale] = React.useState<LocaleId>("pt-BR");
+
+  return (
+    <SgGrid gap={12}>
+      <div className="flex flex-wrap gap-2">
+        {(Object.keys(LOCALES) as LocaleId[]).map((id) => (
+          <SgButton
+            key={id}
+            size="sm"
+            appearance={id === locale ? "solid" : "outline"}
+            onClick={() => setLocale(id)}
+          >
+            {id}
+          </SgButton>
+        ))}
+      </div>
       <SgComponentsI18nProvider locale={locale} messages={LOCALES[locale]}>
-        <div>componentes refletem o locale escolhido</div>
+        <Mensagens />
       </SgComponentsI18nProvider>
-    </>
+    </SgGrid>
   );
 }

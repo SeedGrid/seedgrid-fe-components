@@ -40,14 +40,20 @@ export const sgMeta: SgMetaV0 = {
     },
     {
       id: "locale-aware",
-      title: "Componentes conscientes do locale",
+      title: "Construindo componentes cientes de locale",
       file: "apps/showcase/src/app/components/hooks/use-components-i18n/samples/componentes-conscientes-do-locale.tsx.sample",
       kind: "sample"
+    },
+    {
+      id: "playground",
+      title: "Playground",
+      file: "apps/showcase/src/app/components/hooks/use-components-i18n/use-components-i18n.tsx.playground",
+      kind: "playground"
     }
   ],
   showcase: {
     route: "/components/hooks/use-components-i18n",
-    hasPlayground: false,
+    hasPlayground: true,
     hasPropsTable: true
   }
 };

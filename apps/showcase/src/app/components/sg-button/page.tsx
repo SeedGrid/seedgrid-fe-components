@@ -52,6 +52,23 @@ function useFakeProcess(durationMs: number) {
   return { loading, run };
 }
 
+function AutoLoadingExample() {
+  const [status, setStatus] = React.useState("Idle");
+
+  const save = async () => {
+    setStatus("Saving...");
+    await new Promise((resolve) => window.setTimeout(resolve, 1500));
+    setStatus("Done");
+  };
+
+  return (
+    <div className="flex flex-wrap items-center gap-3">
+      <SgButton onClick={save}>Submit</SgButton>
+      <span className="text-sm text-muted-foreground">{status}</span>
+    </div>
+  );
+}
+
 function Section(props: { id?: string; title: string; description?: string; children: React.ReactNode }) {
   return (
     <section
@@ -93,6 +110,7 @@ const BUTTON_EXAMPLE_IDS = [
   "exemplo-13",
   "exemplo-14",
   "exemplo-15",
+  "exemplo-16",
 ] as const;
 
 
@@ -141,7 +159,7 @@ const BUTTON_PROPS: ShowcasePropRow[] = [
     prop: "loading",
     type: "boolean",
     defaultValue: "false",
-    description: "Exibe spinner e bloqueia clique."
+    description: "Exibe spinner e bloqueia clique. Vence sobre o loading automatico do onClick."
   },
   {
     prop: "enabled",
@@ -157,9 +175,9 @@ const BUTTON_PROPS: ShowcasePropRow[] = [
   },
   {
     prop: "onClick",
-    type: "(event) => void",
+    type: "(event) => void | Promise<void>",
     defaultValue: "-",
-    description: "Manipulador de clique."
+    description: "Manipulador de clique. Se devolver uma Promise, o botao fica em loading ate ela terminar ou falhar e ignora cliques nesse meio-tempo."
   },
   {
     prop: "children",
@@ -191,7 +209,8 @@ export default function SgButtonShowcase() {
       t(i18n, `${K}.sectionTitles.11`),
       t(i18n, `${K}.sectionTitles.12`),
       t(i18n, `${K}.sectionTitles.13`),
-      t(i18n, `${K}.sectionTitles.14`)
+      t(i18n, `${K}.sectionTitles.14`),
+      t(i18n, `${K}.sectionTitles.15`)
     ],
     sectionDescriptions: [
       t(i18n, `${K}.sectionDescriptions.0`),
@@ -208,7 +227,8 @@ export default function SgButtonShowcase() {
       t(i18n, `${K}.sectionDescriptions.11`),
       t(i18n, `${K}.sectionDescriptions.12`),
       t(i18n, `${K}.sectionDescriptions.13`),
-      t(i18n, `${K}.sectionDescriptions.14`)
+      t(i18n, `${K}.sectionDescriptions.14`),
+      t(i18n, `${K}.sectionDescriptions.15`)
     ],
     iconsGroupElevated: t(i18n, `${K}.iconsGroupElevated`),
     iconsGroupRounded: t(i18n, `${K}.iconsGroupRounded`),
@@ -617,6 +637,11 @@ export default function SgButtonShowcase() {
       </Section>
 
       <Section id="exemplo-15" title={sectionTitle(15)} description={sectionDescription(15)}>
+        <AutoLoadingExample />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-button/samples/loading-automatico-com-future.tsx.sample" />
+      </Section>
+
+      <Section id="exemplo-16" title={sectionTitle(16)} description={sectionDescription(16)}>
         <SgPlayground
           title="SgButton Playground"
           interactive

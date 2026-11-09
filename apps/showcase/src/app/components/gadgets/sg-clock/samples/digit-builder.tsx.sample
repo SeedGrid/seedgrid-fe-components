@@ -1,0 +1,28 @@
+import * as React from "react";
+import { SgClock, SgGrid } from "@seedgrid/fe-components";
+
+export default function Example(props: { initialServerTime?: string }) {
+  return (
+    <SgClock
+      digitalStyle="custom"
+      initialServerTime={props.initialServerTime ?? new Date().toISOString()}
+      timezone="America/Sao_Paulo"
+      digitBuilder={(parts) => (
+        <SgGrid columns={parts.text.length} gap={4} align="center">
+          {parts.text.split("").map((ch, index) =>
+            ch === ":" ? (
+              <span key={index} className="text-center">{ch}</span>
+            ) : (
+              <span
+                key={index}
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground"
+              >
+                {ch}
+              </span>
+            )
+          )}
+        </SgGrid>
+      )}
+    />
+  );
+}

@@ -7,6 +7,7 @@ import {
   SgClockThemePicker,
   SgClockThemeProvider,
   SgButton,
+  SgGrid,
   registerThemes,
   sgClockThemesBuiltIn,
 } from "@seedgrid/fe-components";
@@ -189,7 +190,8 @@ const CLOCK_PROPS: ShowcasePropRow[] = [
   { prop: "locale", type: "string", defaultValue: '"pt-BR"', description: "Locale usado para formatacao da hora." },
   { prop: "format", type: '"12h" | "24h"', defaultValue: '"24h"', description: "Formato de hora para o modo digital." },
   { prop: "showSeconds", type: "boolean", defaultValue: "true", description: "Exibe ou oculta os segundos." },
-  { prop: "digitalStyle", type: '"default" | "segment" | "sevenSegment" | "roller3d" | "flip" | "fade" | "matrix" | "neon" | "discard"', defaultValue: '"default"', description: "Estilo visual do relogio digital." },
+  { prop: "digitalStyle", type: '"default" | "segment" | "sevenSegment" | "roller3d" | "flip" | "fade" | "matrix" | "neon" | "discard" | "custom"', defaultValue: '"default"', description: "Estilo visual do relogio digital." },
+  { prop: "digitBuilder", type: "(parts: SgClockDigitalParts) => ReactNode", defaultValue: "-", description: "Desenha o relogio digital quando digitalStyle e custom; recebe hour, minute, second, dayPeriod, is12h, showSeconds, size, text, textWithPeriod e sizePx. Sem ele, usa o estilo default." },
   { prop: "secondHandMode", type: '"step" | "smooth"', defaultValue: '"step"', description: "Comportamento do ponteiro de segundos no analogico." },
   { prop: "themeId", type: "string", defaultValue: '"classic"', description: "Seleciona tema registrado para o modo analogico." },
   { prop: "theme", type: "SgClockTheme", defaultValue: "-", description: "Tema inline para o modo analogico." },
@@ -445,6 +447,36 @@ export function SgClockShowcaseClient({ initialServerTime }: { initialServerTime
             />
             <div className="mt-6">
               <CodeBlock sampleFile="apps/showcase/src/app/components/gadgets/sg-clock/samples/cartao.tsx.sample" />
+            </div>
+            </Section>
+
+            <Section
+              title={t(i18n, "showcase.component.clock.sections.digitBuilder.title")}
+              description={t(i18n, "showcase.component.clock.sections.digitBuilder.description")}
+            >
+            <SgClock
+              digitalStyle="custom"
+              initialServerTime={initialServerTime}
+              timezone="America/Sao_Paulo"
+              digitBuilder={(parts) => (
+                <SgGrid columns={parts.text.length} gap={4} align="center">
+                  {parts.text.split("").map((ch, index) =>
+                    ch === ":" ? (
+                      <span key={index} className="text-center">{ch}</span>
+                    ) : (
+                      <span
+                        key={index}
+                        className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground"
+                      >
+                        {ch}
+                      </span>
+                    )
+                  )}
+                </SgGrid>
+              )}
+            />
+            <div className="mt-6">
+              <CodeBlock sampleFile="apps/showcase/src/app/components/gadgets/sg-clock/samples/digit-builder.tsx.sample" />
             </div>
             </Section>
 

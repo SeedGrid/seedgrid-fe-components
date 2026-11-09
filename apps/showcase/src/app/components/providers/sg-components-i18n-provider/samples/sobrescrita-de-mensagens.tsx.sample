@@ -1,18 +1,37 @@
-import { SgComponentsI18nProvider, componentsMessagesEnUs } from "@seedgrid/fe-components";
+import {
+  SgComponentsI18nProvider,
+  SgGrid,
+  componentsMessagesEnUs,
+  tComponents,
+  useComponentsI18n,
+} from "@seedgrid/fe-components";
 
-const myOverrides = {
-  "sg.input.clear": "Reset",
-  "sg.input.password.show": "Reveal",
-  "sg.input.password.hide": "Conceal",
+const meusTextos = {
+  "components.actions.clear": "Reset",
+  "components.password.show": "Reveal",
+  "components.inputs.required": "Mandatory field.",
 };
+
+function Mensagens() {
+  const i18n = useComponentsI18n();
+
+  return (
+    <SgGrid gap={4} className="rounded-lg border border-border bg-foreground/5 p-4 font-mono text-sm">
+      <span>locale: {i18n.locale}</span>
+      <span>components.actions.clear: {tComponents(i18n, "components.actions.clear")}</span>
+      <span>components.password.show: {tComponents(i18n, "components.password.show")}</span>
+      <span>components.inputs.required: {tComponents(i18n, "components.inputs.required")}</span>
+    </SgGrid>
+  );
+}
 
 export default function App() {
   return (
     <SgComponentsI18nProvider
       locale="en-US"
-      messages={{ ...componentsMessagesEnUs, ...myOverrides }}
+      messages={{ ...componentsMessagesEnUs, ...meusTextos }}
     >
-      <div>mensagens sobrescritas</div>
+      <Mensagens />
     </SgComponentsI18nProvider>
   );
 }

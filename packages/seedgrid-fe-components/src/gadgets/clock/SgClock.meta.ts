@@ -16,7 +16,8 @@ export const sgMeta: SgMetaV0 = {
   fieldSemantics: ["clock", "timeDisplay", "timezoneClock", "digitalClock", "analogClock"],
   props: [
     { name: "clockStyle", type: '"digital" | "analog"', default: "digital", description: "Modo principal de exibicao do relogio.", semanticRole: "appearance", bindable: true },
-    { name: "digitalStyle", type: '"default" | "segment" | "sevenSegment" | "roller3d" | "flip" | "fade" | "matrix" | "neon" | "discard"', default: "default", description: "Estilo visual do relogio digital.", semanticRole: "appearance", bindable: true },
+    { name: "digitalStyle", type: '"default" | "segment" | "sevenSegment" | "roller3d" | "flip" | "fade" | "matrix" | "neon" | "discard" | "custom"', default: "default", description: "Estilo visual do relogio digital.", semanticRole: "appearance", bindable: true },
+    { name: "digitBuilder", type: "(parts: SgClockDigitalParts) => ReactNode", description: "Desenha o relogio digital quando digitalStyle e custom; sem ele, usa o estilo default.", semanticRole: "appearance", bindable: false },
     { name: "timezone", type: "string", description: "Timezone usada no calculo da hora exibida.", semanticRole: "behavior", bindable: true },
     { name: "format", type: '"12h" | "24h"', default: "24h", description: "Formato horario do relogio.", semanticRole: "behavior", bindable: true },
     { name: "showSeconds", type: "boolean", default: true, description: "Exibe ou oculta os segundos.", semanticRole: "appearance", bindable: true },

@@ -1,0 +1,19 @@
+import React from "react";
+import { SgButton } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [status, setStatus] = React.useState("Idle");
+
+  const save = async () => {
+    setStatus("Saving...");
+    await new Promise((resolve) => window.setTimeout(resolve, 1500));
+    setStatus("Done");
+  };
+
+  return (
+    <div className="flex flex-wrap items-center gap-3">
+      <SgButton onClick={save}>Submit</SgButton>
+      <span className="text-sm text-muted-foreground">{status}</span>
+    </div>
+  );
+}

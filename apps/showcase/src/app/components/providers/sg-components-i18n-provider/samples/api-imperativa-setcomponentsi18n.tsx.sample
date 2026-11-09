@@ -1,5 +1,37 @@
-import { componentsMessagesEnUs, setComponentsI18n } from "@seedgrid/fe-components";
+import * as React from "react";
+import {
+  SgButton,
+  SgGrid,
+  getComponentsI18n,
+  setComponentsI18n,
+  tComponents,
+} from "@seedgrid/fe-components";
 
-setComponentsI18n({ locale: "en-US", messages: componentsMessagesEnUs });
+export default function App() {
+  const [resultado, setResultado] = React.useState("");
 
-export default setComponentsI18n;
+  const aplicar = (locale: string) => {
+    const anterior = getComponentsI18n();
+
+    setComponentsI18n({ locale });
+    const atual = getComponentsI18n();
+    setResultado(`${atual.locale}: ${tComponents(atual, "components.actions.clear")}`);
+
+    // Devolve o estado global anterior para nao afetar o restante da pagina.
+    setComponentsI18n({ locale: anterior.locale, messages: anterior.messages });
+  };
+
+  return (
+    <SgGrid gap={12}>
+      <div className="flex flex-wrap gap-2">
+        <SgButton size="sm" onClick={() => aplicar("es")}>
+          es
+        </SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => aplicar("fr")}>
+          fr
+        </SgButton>
+      </div>
+      <span className="font-mono text-sm">{resultado || "-"}</span>
+    </SgGrid>
+  );
+}

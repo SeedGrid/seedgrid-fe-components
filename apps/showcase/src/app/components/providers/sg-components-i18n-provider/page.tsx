@@ -2,15 +2,20 @@
 
 import React from "react";
 import {
+  SgButton,
   SgComponentsI18nProvider,
-  useComponentsI18n,
-  setComponentsI18n,
-  componentsMessagesPtBr,
+  SgGrid,
   componentsMessagesEnUs,
   componentsMessagesEs,
+  componentsMessagesFr,
+  componentsMessagesPtBr,
   componentsMessagesPtPt,
-  SgInputText
+  getComponentsI18n,
+  setComponentsI18n,
+  tComponents,
+  useComponentsI18n
 } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../../sgCodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
@@ -38,61 +43,110 @@ function CodeBlock(props: { sampleFile: string }) {
   return <SgCodeBlockBase sampleFile={props.sampleFile} />;
 }
 
-const LOCALES = [
-  { id: "pt-BR", label: "pt-BR", messages: componentsMessagesPtBr },
-  { id: "pt-PT", label: "pt-PT", messages: componentsMessagesPtPt },
-  { id: "en-US", label: "en-US", messages: componentsMessagesEnUs },
-  { id: "es", label: "es", messages: componentsMessagesEs }
-] as const;
+const LOCALES = {
+  "pt-BR": componentsMessagesPtBr,
+  "pt-PT": componentsMessagesPtPt,
+  "en-US": componentsMessagesEnUs,
+  es: componentsMessagesEs,
+  fr: componentsMessagesFr
+};
 
-function LocaleInfo() {
+type LocaleId = keyof typeof LOCALES;
+
+function Mensagens() {
   const i18n = useComponentsI18n();
+
   return (
-    <div className="rounded-lg border border-border bg-foreground/5 p-4 text-sm space-y-1">
-      <div className="flex gap-2">
-        <span className="text-muted-foreground font-medium w-16">locale</span>
-        <span className="font-mono">{i18n.locale}</span>
-      </div>
-      <div className="flex gap-2">
-        <span className="text-muted-foreground font-medium w-16">keys</span>
-        <span className="font-mono">{Object.keys(i18n.messages).length}</span>
-      </div>
-    </div>
+    <SgGrid gap={4} className="rounded-lg border border-border bg-foreground/5 p-4 font-mono text-sm">
+      <span>locale: {i18n.locale}</span>
+      <span>components.actions.clear: {tComponents(i18n, "components.actions.clear")}</span>
+      <span>components.password.show: {tComponents(i18n, "components.password.show")}</span>
+      <span>components.inputs.required: {tComponents(i18n, "components.inputs.required")}</span>
+    </SgGrid>
+  );
+}
+
+function BasicDemo() {
+  return (
+    <SgComponentsI18nProvider locale="en-US" messages={componentsMessagesEnUs}>
+      <Mensagens />
+    </SgComponentsI18nProvider>
   );
 }
 
 function DynamicLocaleDemo() {
-  const [locale, setLocale] = React.useState<string>("pt-BR");
-  const msgs = LOCALES.find((l) => l.id === locale)?.messages ?? componentsMessagesPtBr;
+  const [locale, setLocale] = React.useState<LocaleId>("pt-BR");
 
   return (
-    <div className="space-y-4">
+    <SgGrid gap={12}>
       <div className="flex flex-wrap gap-2">
-        {LOCALES.map((l) => (
-          <button
-            key={l.id}
-            onClick={() => setLocale(l.id)}
-            className={`rounded border px-3 py-1 text-sm font-mono transition-colors ${
-              locale === l.id
-                ? "border-primary bg-primary text-primary-foreground"
-                : "border-border bg-background hover:bg-foreground/5"
-            }`}
+        {(Object.keys(LOCALES) as LocaleId[]).map((id) => (
+          <SgButton
+            key={id}
+            size="sm"
+            appearance={id === locale ? "solid" : "outline"}
+            onClick={() => setLocale(id)}
           >
-            {l.label}
-          </button>
+            {id}
+          </SgButton>
         ))}
       </div>
-      <SgComponentsI18nProvider locale={locale} messages={msgs}>
-        <LocaleInfo />
-        <SgInputText id="demo-i18n" label="Email" inputProps={{ placeholder: "demo@exemplo.com" }} />
+      <SgComponentsI18nProvider locale={locale} messages={LOCALES[locale]}>
+        <Mensagens />
       </SgComponentsI18nProvider>
-    </div>
+    </SgGrid>
+  );
+}
+
+function ImperativeDemo() {
+  const [resultado, setResultado] = React.useState("");
+
+  const aplicar = (locale: string) => {
+    const anterior = getComponentsI18n();
+
+    setComponentsI18n({ locale });
+    const atual = getComponentsI18n();
+    setResultado(`${atual.locale}: ${tComponents(atual, "components.actions.clear")}`);
+
+    // Devolve o estado global anterior para nao afetar o restante da pagina.
+    setComponentsI18n({ locale: anterior.locale, messages: anterior.messages });
+  };
+
+  return (
+    <SgGrid gap={12}>
+      <div className="flex flex-wrap gap-2">
+        <SgButton size="sm" onClick={() => aplicar("es")}>
+          es
+        </SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => aplicar("fr")}>
+          fr
+        </SgButton>
+      </div>
+      <span className="font-mono text-sm">{resultado || "-"}</span>
+    </SgGrid>
+  );
+}
+
+const meusTextos = {
+  "components.actions.clear": "Reset",
+  "components.password.show": "Reveal",
+  "components.inputs.required": "Mandatory field."
+};
+
+function CustomMessagesDemo() {
+  return (
+    <SgComponentsI18nProvider
+      locale="en-US"
+      messages={{ ...componentsMessagesEnUs, ...meusTextos }}
+    >
+      <Mensagens />
+    </SgComponentsI18nProvider>
   );
 }
 
 const I18N_PROVIDER_PROPS: ShowcasePropRow[] = [
-  { prop: "locale", type: "string", defaultValue: '"pt-BR"', description: 'Codigo do locale (ex: "pt-BR", "en-US", "es"). Afeta componentes que exibem mensagens internas.' },
-  { prop: "messages", type: "SgComponentsMessages", defaultValue: "ptBr built-in", description: "Mapa de chaves para strings traduzidas. Pode ser o objeto completo de um locale ou apenas as chaves que deseja sobrescrever." },
+  { prop: "locale", type: "string", defaultValue: '"en-US"', description: 'Codigo do locale (ex: "pt-BR", "pt-PT", "en-US", "es", "fr"). Afeta os textos internos dos componentes SeedGrid.' },
+  { prop: "messages", type: "SgComponentsMessages | SgComponentsMessagesByNamespace", defaultValue: "built-in do locale", description: "Mapa de chaves para textos. Pode ser o objeto completo de um locale ou apenas as chaves que deseja sobrescrever." },
   { prop: "children", type: "ReactNode", defaultValue: "-", description: "Arvore que vai consumir o locale via useComponentsI18n." }
 ];
 
@@ -120,6 +174,7 @@ export default function SgComponentsI18nProviderPage() {
           title={t(i18n, "showcase.component.componentsI18nProvider.sections.basic.title")}
           description={t(i18n, "showcase.component.componentsI18nProvider.sections.basic.description")}
         >
+          <BasicDemo />
           <CodeBlock sampleFile="apps/showcase/src/app/components/providers/sg-components-i18n-provider/samples/uso-basico.tsx.sample" />
         </Section>
 
@@ -135,6 +190,7 @@ export default function SgComponentsI18nProviderPage() {
           title={t(i18n, "showcase.component.componentsI18nProvider.sections.global.title")}
           description={t(i18n, "showcase.component.componentsI18nProvider.sections.global.description")}
         >
+          <ImperativeDemo />
           <CodeBlock sampleFile="apps/showcase/src/app/components/providers/sg-components-i18n-provider/samples/api-imperativa-setcomponentsi18n.tsx.sample" />
         </Section>
 
@@ -142,7 +198,22 @@ export default function SgComponentsI18nProviderPage() {
           title={t(i18n, "showcase.component.componentsI18nProvider.sections.custom.title")}
           description={t(i18n, "showcase.component.componentsI18nProvider.sections.custom.description")}
         >
+          <CustomMessagesDemo />
           <CodeBlock sampleFile="apps/showcase/src/app/components/providers/sg-components-i18n-provider/samples/sobrescrita-de-mensagens.tsx.sample" />
+        </Section>
+
+        <Section
+          title={t(i18n, "showcase.component.componentsI18nProvider.sections.playground.title")}
+          description={t(i18n, "showcase.component.componentsI18nProvider.sections.playground.description")}
+        >
+          <SgPlayground
+            title="SgComponentsI18nProvider Playground"
+            interactive
+            codeContract="appFile"
+            playgroundFile="apps/showcase/src/app/components/providers/sg-components-i18n-provider/sg-components-i18n-provider.tsx.playground"
+            height={540}
+            defaultOpen
+          />
         </Section>
 
         <ShowcasePropsReference rows={I18N_PROVIDER_PROPS} />
@@ -153,4 +224,3 @@ export default function SgComponentsI18nProviderPage() {
     </I18NReady>
   );
 }
-

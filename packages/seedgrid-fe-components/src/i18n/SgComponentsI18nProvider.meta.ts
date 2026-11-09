@@ -21,10 +21,13 @@ export const sgMeta: SgMetaV0 = {
   ],
   states: ["default", "locale-bound", "message-overridden"],
   examples: [
-    { id: "basic", title: "Uso basico", file: "apps/showcase/src/app/components/providers/sg-components-i18n-provider/samples/uso-basico.tsx.sample", kind: "sample" },
-    { id: "dynamic", title: "Troca dinamica de locale", file: "apps/showcase/src/app/components/providers/sg-components-i18n-provider/samples/troca-dinamica-de-locale.tsx.sample", kind: "sample" }
+    { id: "basic", title: "Uso básico", file: "apps/showcase/src/app/components/providers/sg-components-i18n-provider/samples/uso-basico.tsx.sample", kind: "sample" },
+    { id: "dynamic", title: "Troca dinâmica de locale", file: "apps/showcase/src/app/components/providers/sg-components-i18n-provider/samples/troca-dinamica-de-locale.tsx.sample", kind: "sample" },
+    { id: "global", title: "API imperativa (setComponentsI18n)", file: "apps/showcase/src/app/components/providers/sg-components-i18n-provider/samples/api-imperativa-setcomponentsi18n.tsx.sample", kind: "sample" },
+    { id: "custom", title: "Sobrescrita de mensagens", file: "apps/showcase/src/app/components/providers/sg-components-i18n-provider/samples/sobrescrita-de-mensagens.tsx.sample", kind: "sample" },
+    { id: "playground", title: "Playground", file: "apps/showcase/src/app/components/providers/sg-components-i18n-provider/sg-components-i18n-provider.tsx.playground", kind: "playground" }
   ],
-  showcase: { route: "/components/providers/sg-components-i18n-provider", hasPlayground: false, hasPropsTable: true },
+  showcase: { route: "/components/providers/sg-components-i18n-provider", hasPlayground: true, hasPropsTable: true },
   sdui: {
     rendererType: "provider.components-i18n",
     acceptsDataBinding: true,

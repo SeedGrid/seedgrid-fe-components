@@ -2,23 +2,19 @@
 
 import React from "react";
 import {
-  useComponentsI18n,
+  SgButton,
   SgComponentsI18nProvider,
-  componentsMessagesPtBr,
-  componentsMessagesEnUs,
-  componentsMessagesEs,
-  componentsMessagesPtPt
+  SgGrid,
+  tComponents,
+  useComponentsI18n
 } from "@seedgrid/fe-components";
+import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../../sgCodeBlockBase";
 import I18NReady from "../../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../../useShowcaseAnchors";
 import { t, useShowcaseI18n } from "../../../../i18n";
-
-function tComp(messages: Record<string, string>, key: string): string {
-  return messages[key] ?? key;
-}
 
 function Section(props: { title: string; description?: string; children: React.ReactNode }) {
   return (
@@ -37,72 +33,77 @@ function CodeBlock(props: { sampleFile: string }) {
   return <SgCodeBlockBase sampleFile={props.sampleFile} />;
 }
 
-const LOCALES = [
-  { id: "pt-BR", messages: componentsMessagesPtBr },
-  { id: "pt-PT", messages: componentsMessagesPtPt },
-  { id: "en-US", messages: componentsMessagesEnUs },
-  { id: "es", messages: componentsMessagesEs }
-] as const;
+const LOCALES = ["pt-BR", "pt-PT", "en-US", "es", "fr"];
 
-function I18nConsumer() {
+function Consumidor() {
   const i18n = useComponentsI18n();
-  const clearLabel = tComp(i18n.messages,"sg.input.clear");
-  const showLabel = tComp(i18n.messages,"sg.input.password.show");
-  const requiredLabel = tComp(i18n.messages,"sg.input.required");
 
   return (
-    <div className="rounded-lg border border-border bg-foreground/5 p-4 text-sm space-y-2 font-mono">
-      <div className="flex gap-2">
-        <span className="text-muted-foreground w-36">locale</span>
-        <span>{i18n.locale}</span>
-      </div>
-      <div className="flex gap-2">
-        <span className="text-muted-foreground w-36">sg.input.clear</span>
-        <span>{clearLabel}</span>
-      </div>
-      <div className="flex gap-2">
-        <span className="text-muted-foreground w-36">sg.input.password.show</span>
-        <span>{showLabel}</span>
-      </div>
-      <div className="flex gap-2">
-        <span className="text-muted-foreground w-36">sg.input.required</span>
-        <span>{requiredLabel}</span>
-      </div>
-    </div>
+    <SgGrid gap={4} className="rounded-lg border border-border bg-foreground/5 p-4 font-mono text-sm">
+      <span>locale: {i18n.locale}</span>
+      <span>messages: {Object.keys(i18n.messages).length}</span>
+      <span>components.actions.clear: {tComponents(i18n, "components.actions.clear")}</span>
+      <span>components.password.show: {tComponents(i18n, "components.password.show")}</span>
+      <span>components.inputs.required: {tComponents(i18n, "components.inputs.required")}</span>
+    </SgGrid>
   );
 }
 
-function DynamicDemo() {
-  const [locale, setLocale] = React.useState<string>("pt-BR");
-  const msgs = LOCALES.find((l) => l.id === locale)?.messages ?? componentsMessagesPtBr;
+function BasicDemo() {
+  const [locale, setLocale] = React.useState("pt-BR");
 
   return (
-    <div className="space-y-3">
+    <SgGrid gap={12}>
       <div className="flex flex-wrap gap-2">
-        {LOCALES.map((l) => (
-          <button
-            key={l.id}
-            onClick={() => setLocale(l.id)}
-            className={`rounded border px-3 py-1 text-sm font-mono transition-colors ${
-              locale === l.id
-                ? "border-primary bg-primary text-primary-foreground"
-                : "border-border bg-background hover:bg-foreground/5"
-            }`}
+        {LOCALES.map((id) => (
+          <SgButton
+            key={id}
+            size="sm"
+            appearance={id === locale ? "solid" : "outline"}
+            onClick={() => setLocale(id)}
           >
-            {l.id}
-          </button>
+            {id}
+          </SgButton>
         ))}
       </div>
-      <SgComponentsI18nProvider locale={locale} messages={msgs}>
-        <I18nConsumer />
+      <SgComponentsI18nProvider locale={locale}>
+        <Consumidor />
       </SgComponentsI18nProvider>
-    </div>
+    </SgGrid>
+  );
+}
+
+function BotaoLimpar({ onClear }: { onClear: () => void }) {
+  const i18n = useComponentsI18n();
+
+  return (
+    <SgButton
+      size="sm"
+      appearance="outline"
+      aria-label={tComponents(i18n, "components.actions.clear")}
+      onClick={onClear}
+    >
+      {tComponents(i18n, "components.actions.clear")}
+    </SgButton>
+  );
+}
+
+function LocaleAwareDemo() {
+  const [limpezas, setLimpezas] = React.useState(0);
+
+  return (
+    <SgComponentsI18nProvider locale="es">
+      <SgGrid gap={8}>
+        <BotaoLimpar onClear={() => setLimpezas((n) => n + 1)} />
+        <span className="font-mono text-sm">onClear: {limpezas}</span>
+      </SgGrid>
+    </SgComponentsI18nProvider>
   );
 }
 
 const HOOK_RETURN: ShowcasePropRow[] = [
-  { prop: "locale", type: "string", defaultValue: '"pt-BR"', description: "Locale atual dos componentes. Usado por componentes para formatar datas, numeros e mensagens." },
-  { prop: "messages", type: "Record<string, string>", defaultValue: "ptBr built-in", description: "Mapa de todas as chaves de traducao disponiveis para o locale atual." }
+  { prop: "locale", type: "string", defaultValue: '"en-US"', description: "Locale atual dos componentes. Vem do SgComponentsI18nProvider mais proximo ou, sem provider, do estado global." },
+  { prop: "messages", type: "Record<string, string>", defaultValue: "built-in do locale", description: "Mapa de todas as chaves de traducao disponiveis para o locale atual, ja mescladas com as sobrescritas." }
 ];
 
 export default function UseComponentsI18nPage() {
@@ -128,7 +129,7 @@ export default function UseComponentsI18nPage() {
           title={t(i18n, "showcase.hook.componentsI18n.sections.basic.title")}
           description={t(i18n, "showcase.hook.componentsI18n.sections.basic.description")}
         >
-          <DynamicDemo />
+          <BasicDemo />
           <CodeBlock sampleFile="apps/showcase/src/app/components/hooks/use-components-i18n/samples/uso-basico.tsx.sample" />
         </Section>
 
@@ -136,7 +137,22 @@ export default function UseComponentsI18nPage() {
           title={t(i18n, "showcase.hook.componentsI18n.sections.custom.title")}
           description={t(i18n, "showcase.hook.componentsI18n.sections.custom.description")}
         >
+          <LocaleAwareDemo />
           <CodeBlock sampleFile="apps/showcase/src/app/components/hooks/use-components-i18n/samples/componentes-conscientes-do-locale.tsx.sample" />
+        </Section>
+
+        <Section
+          title={t(i18n, "showcase.hook.componentsI18n.sections.playground.title")}
+          description={t(i18n, "showcase.hook.componentsI18n.sections.playground.description")}
+        >
+          <SgPlayground
+            title="useComponentsI18n Playground"
+            interactive
+            codeContract="appFile"
+            playgroundFile="apps/showcase/src/app/components/hooks/use-components-i18n/use-components-i18n.tsx.playground"
+            height={540}
+            defaultOpen
+          />
         </Section>
 
         <ShowcasePropsReference rows={HOOK_RETURN} />
@@ -145,4 +161,3 @@ export default function UseComponentsI18nPage() {
     </I18NReady>
   );
 }
-

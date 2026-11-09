@@ -30,7 +30,14 @@ export type SgButtonCustomColors = {
   ring?: string; // ex: "rgba(37,99,235,.35)"
 };
 
-export type SgButtonProps = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "color" | "disabled"> & {
+export type SgButtonProps = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "color" | "disabled" | "onClick"> & {
+  /**
+   * Clique do botão. Pode devolver uma Promise (`void | Promise<void>`): o botão entra em loading (spinner,
+   * desabilitado, aria-busy) até ela terminar (ou falhar) e ignora cliques nesse meio-tempo. Quem não devolve
+   * Promise não muda. O retorno é `unknown` só para não quebrar handlers existentes de corpo-expressão
+   * (`() => lista.push(x)`), que devolvem valor.
+   */
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => unknown;
   /** Quando false, desabilita o botão. Padrão: true. */
   enabled?: boolean;
   severity?: Severity;
@@ -200,12 +207,44 @@ export const SgButton = React.forwardRef<HTMLButtonElement, SgButtonProps>(
       style,
       customColors,
       type = "button",
+      onClick,
       ...rest
     },
     ref
   ) => {
+    const [pending, setPending] = React.useState(false);
+    const pendingRef = React.useRef(false);
+    const mountedRef = React.useRef(true);
+    React.useEffect(() => {
+      mountedRef.current = true;
+      return () => {
+        mountedRef.current = false;
+      };
+    }, []);
+
+    const isLoading = loading || pending;
+    const handleClick = React.useCallback(
+      (event: React.MouseEvent<HTMLButtonElement>) => {
+        if (!onClick || !enabled || loading || pendingRef.current) return;
+        const result = onClick(event);
+        if (!result || typeof (result as { then?: unknown }).then !== "function") return;
+        pendingRef.current = true;
+        setPending(true);
+        const done = () => {
+          pendingRef.current = false;
+          if (mountedRef.current) setPending(false);
+        };
+        // O erro da Promise nao e engolido: segue como rejeicao sem tratamento, como antes.
+        void (result as Promise<void>).then(done, (error: unknown) => {
+          done();
+          throw error;
+        });
+      },
+      [onClick, enabled, loading]
+    );
+
     const resolvedChildren = children ?? label;
-    const isDisabled = Boolean(!enabled || loading);
+    const isDisabled = Boolean(!enabled || isLoading);
     const inferredIconOnly = !resolvedChildren && (leftIcon || rightIcon);
     const isIconOnly = iconOnly ?? inferredIconOnly;
     const resolvedSize = size ?? (isIconOnly ? "sm" : "md");
@@ -222,6 +261,7 @@ export const SgButton = React.forwardRef<HTMLButtonElement, SgButtonProps>(
         ref={ref}
         type={type}
         disabled={isDisabled}
+        aria-busy={isLoading ? true : undefined}
         style={{ ...buildVars(severity, customColors), ...style }}
         className={cn(
           "inline-flex min-w-0 max-w-full items-center justify-center select-none whitespace-normal break-words text-center",
@@ -238,8 +278,9 @@ export const SgButton = React.forwardRef<HTMLButtonElement, SgButtonProps>(
           className
         )}
         {...rest}
+        onClick={onClick ? handleClick : undefined}
       >
-        {loading ? (
+        {isLoading ? (
           <span className={contentClass}>
             <Spinner className={s.icon} />
             {resolvedChildren ? <span className="min-w-0 whitespace-normal break-words">{resolvedChildren}</span> : null}

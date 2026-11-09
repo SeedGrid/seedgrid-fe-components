@@ -1,0 +1,47 @@
+import * as React from "react";
+import {
+  SgButton,
+  SgComponentsI18nProvider,
+  SgGrid,
+  tComponents,
+  useComponentsI18n,
+} from "@seedgrid/fe-components";
+
+const LOCALES = ["pt-BR", "pt-PT", "en-US", "es", "fr"] as const;
+
+function Mensagens() {
+  const i18n = useComponentsI18n();
+
+  return (
+    <SgGrid gap={4} className="rounded-lg border border-border bg-foreground/5 p-4 font-mono text-sm">
+      <span>locale: {i18n.locale}</span>
+      <span>components.actions.clear: {tComponents(i18n, "components.actions.clear")}</span>
+      <span>components.password.show: {tComponents(i18n, "components.password.show")}</span>
+      <span>components.inputs.required: {tComponents(i18n, "components.inputs.required")}</span>
+    </SgGrid>
+  );
+}
+
+export default function App() {
+  const [locale, setLocale] = React.useState<string>("pt-BR");
+
+  return (
+    <SgGrid gap={12} className="p-2">
+      <div className="flex flex-wrap gap-2">
+        {LOCALES.map((id) => (
+          <SgButton
+            key={id}
+            size="sm"
+            appearance={id === locale ? "solid" : "outline"}
+            onClick={() => setLocale(id)}
+          >
+            {id}
+          </SgButton>
+        ))}
+      </div>
+      <SgComponentsI18nProvider locale={locale} messages={{ "components.actions.clear": "Reset" }}>
+        <Mensagens />
+      </SgComponentsI18nProvider>
+    </SgGrid>
+  );
+}

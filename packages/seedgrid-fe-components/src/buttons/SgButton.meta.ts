@@ -50,7 +50,7 @@ export const sgMeta: SgMetaV0 = {
       name: "loading",
       type: "boolean",
       default: false,
-      description: "Exibe spinner e bloqueia interacao enquanto a acao esta em progresso.",
+      description: "Exibe spinner e bloqueia interacao enquanto a acao esta em progresso. Tem prioridade: o loading efetivo e loading ou Promise pendente do onClick.",
       semanticRole: "behavior",
       bindable: true
     },
@@ -78,8 +78,9 @@ export const sgMeta: SgMetaV0 = {
     },
     {
       name: "onClick",
-      type: "MouseEventHandler<HTMLButtonElement>",
-      description: "Callback disparado quando a acao e executada.",
+      type: "(event: MouseEvent<HTMLButtonElement>) => unknown",
+      description:
+        "Callback disparado quando a acao e executada. Se devolver uma Promise, o botao entra em loading ate ela terminar ou falhar e ignora cliques nesse meio-tempo.",
       semanticRole: "event",
       bindable: false
     }

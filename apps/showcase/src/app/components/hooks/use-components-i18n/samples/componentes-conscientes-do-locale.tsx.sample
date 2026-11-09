@@ -1,13 +1,36 @@
-import { tComponents, useComponentsI18n } from "@seedgrid/fe-components";
+import * as React from "react";
+import {
+  SgButton,
+  SgComponentsI18nProvider,
+  SgGrid,
+  tComponents,
+  useComponentsI18n,
+} from "@seedgrid/fe-components";
 
-function ClearButton({ onClear }: { onClear: () => void }) {
+function BotaoLimpar({ onClear }: { onClear: () => void }) {
   const i18n = useComponentsI18n();
 
   return (
-    <button onClick={onClear} aria-label={tComponents(i18n, "sg.input.clear")}>
-      {tComponents(i18n, "sg.input.clear")}
-    </button>
+    <SgButton
+      size="sm"
+      appearance="outline"
+      aria-label={tComponents(i18n, "components.actions.clear")}
+      onClick={onClear}
+    >
+      {tComponents(i18n, "components.actions.clear")}
+    </SgButton>
   );
 }
 
-export default ClearButton;
+export default function App() {
+  const [limpezas, setLimpezas] = React.useState(0);
+
+  return (
+    <SgComponentsI18nProvider locale="es">
+      <SgGrid gap={8}>
+        <BotaoLimpar onClear={() => setLimpezas((n) => n + 1)} />
+        <span className="font-mono text-sm">onClear: {limpezas}</span>
+      </SgGrid>
+    </SgComponentsI18nProvider>
+  );
+}
