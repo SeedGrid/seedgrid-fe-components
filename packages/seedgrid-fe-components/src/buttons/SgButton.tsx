@@ -32,10 +32,20 @@ export type SgButtonCustomColors = {
 
 export type SgButtonProps = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "color" | "disabled" | "onClick"> & {
   /**
-   * Clique do botão. Pode devolver uma Promise (`void | Promise<void>`): o botão entra em loading (spinner,
-   * desabilitado, aria-busy) até ela terminar (ou falhar) e ignora cliques nesse meio-tempo. Quem não devolve
-   * Promise não muda. O retorno é `unknown` só para não quebrar handlers existentes de corpo-expressão
-   * (`() => lista.push(x)`), que devolvem valor.
+   * Clique do botão. Pode ser síncrono ou assíncrono (`(event) => unknown`).
+   *
+   * - Síncrono (abrir modal, alternar painel): funciona como sempre, nada muda.
+   * - Se DEVOLVER uma Promise (`async () => { await salvar(); }` ou `() => salvar()`), o botão entra em loading
+   *   sozinho (spinner, desabilitado, aria-busy), ignora cliques até terminar (inclusive cliques seguidos antes do
+   *   re-render) e volta ao normal ao terminar ou falhar. Protege contra duplo clique e reenvio e ajuda na
+   *   idempotência da ação na tela (não substitui a chave de idempotência no servidor).
+   * - Cuidado: precisa DEVOLVER a Promise. `onClick={() => { salvar(); }}` (chaves sem return) NÃO protege.
+   * - Erro: o botão não engole o erro (sai do loading e relança como rejeição não tratada). Trate com try/catch
+   *   dentro do onClick e avise o usuário (ex.: `sgWhistle.error`).
+   * - Use async só quando a ação puder demorar ou falhar (salvar, enviar, pagar); ações instantâneas ficam síncronas.
+   * - A prop `loading` manual continua valendo e vence (loading efetivo = `loading` || Promise pendente).
+   *
+   * O retorno é `unknown` só para não quebrar handlers existentes de corpo-expressão (`() => lista.push(x)`).
    */
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => unknown;
   /** Quando false, desabilita o botão. Padrão: true. */
@@ -49,6 +59,7 @@ export type SgButtonProps = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 
   iconOnly?: boolean;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
+  /** Exibe spinner e bloqueia o clique. Vence o loading automático do onClick: loading efetivo = `loading` || Promise pendente. */
   loading?: boolean;
   customColors?: SgButtonCustomColors;
 };

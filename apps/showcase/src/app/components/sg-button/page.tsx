@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { Check, X, Bookmark, Search, Users, Bell, Heart } from "lucide-react";
-import { SgButton, SgGrid } from "@seedgrid/fe-components";
+import { SgButton, SgGrid, SgWhistler, sgWhistle } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
 import ComponentAiSummary from "../ai/ComponentAiSummary";
@@ -69,6 +69,51 @@ function AutoLoadingExample() {
   );
 }
 
+function SyncAsyncExample() {
+  const [panel, setPanel] = React.useState("Closed");
+  const [status, setStatus] = React.useState("Idle");
+
+  const toggle = () => setPanel(panel === "Open" ? "Closed" : "Open");
+
+  const save = async () => {
+    setStatus("Saving...");
+    await new Promise((resolve) => window.setTimeout(resolve, 1500));
+    setStatus("Saved");
+  };
+
+  return (
+    <div className="flex flex-wrap items-center gap-3">
+      <SgButton appearance="outline" onClick={toggle}>Toggle panel</SgButton>
+      <span className="text-sm text-muted-foreground">{panel}</span>
+      <SgButton onClick={save}>Save</SgButton>
+      <span className="text-sm text-muted-foreground">{status}</span>
+    </div>
+  );
+}
+
+function AsyncErrorExample() {
+  const save = async () => {
+    try {
+      await new Promise((resolve) => window.setTimeout(resolve, 1200));
+      throw new Error("Network error");
+    } catch {
+      sgWhistle.error({
+        title: "Could not save",
+        message: "Check your connection and try again."
+      });
+    }
+  };
+
+  return (
+    <div className="space-y-3">
+      <SgButton severity="danger" onClick={save}>Save (fails)</SgButton>
+      <div className="rounded-xl border border-dashed border-border p-4">
+        <SgWhistler />
+      </div>
+    </div>
+  );
+}
+
 function Section(props: { id?: string; title: string; description?: string; children: React.ReactNode }) {
   return (
     <section
@@ -111,6 +156,8 @@ const BUTTON_EXAMPLE_IDS = [
   "exemplo-14",
   "exemplo-15",
   "exemplo-16",
+  "exemplo-17",
+  "exemplo-18",
 ] as const;
 
 
@@ -159,7 +206,7 @@ const BUTTON_PROPS: ShowcasePropRow[] = [
     prop: "loading",
     type: "boolean",
     defaultValue: "false",
-    description: "Exibe spinner e bloqueia clique. Vence sobre o loading automatico do onClick."
+    description: "Exibe spinner e bloqueia o clique. Continua valendo e vence o loading automático do onClick: o loading efetivo é loading ou operação pendente (Promise/Future devolvida pelo onClick)."
   },
   {
     prop: "enabled",
@@ -175,9 +222,9 @@ const BUTTON_PROPS: ShowcasePropRow[] = [
   },
   {
     prop: "onClick",
-    type: "(event) => void | Promise<void>",
+    type: "(event) => unknown",
     defaultValue: "-",
-    description: "Manipulador de clique. Se devolver uma Promise, o botao fica em loading ate ela terminar ou falhar e ignora cliques nesse meio-tempo."
+    description: "Clique do botão; pode ser síncrono ou assíncrono. Síncrono (abrir modal, alternar): nada muda. Se DEVOLVER uma Promise/Future, como async () => { await salvar(); } ou () => salvar(), o botão entra em loading sozinho (spinner, desabilitado, aria-busy na web), ignora cliques até terminar (inclusive cliques seguidos antes de a tela atualizar) e volta ao normal ao terminar ou falhar. Protege contra duplo clique e reenvio e ajuda na idempotência da ação na tela (não substitui a chave de idempotência no servidor). Cuidado: a função precisa devolver a operação; com chaves e sem return (ou sem async), como () => { salvar(); } ou () { salvar(); }, não protege; já async () {...} sempre devolve. O erro não é engolido: o botão sai do loading e relança como rejeição não tratada; trate com try/catch dentro do onClick e avise o usuário (sgWhistle.error). Use async só quando a ação puder demorar ou falhar (salvar, enviar, pagar)."
   },
   {
     prop: "children",
@@ -210,7 +257,9 @@ export default function SgButtonShowcase() {
       t(i18n, `${K}.sectionTitles.12`),
       t(i18n, `${K}.sectionTitles.13`),
       t(i18n, `${K}.sectionTitles.14`),
-      t(i18n, `${K}.sectionTitles.15`)
+      t(i18n, `${K}.sectionTitles.15`),
+      t(i18n, `${K}.sectionTitles.16`),
+      t(i18n, `${K}.sectionTitles.17`)
     ],
     sectionDescriptions: [
       t(i18n, `${K}.sectionDescriptions.0`),
@@ -228,7 +277,9 @@ export default function SgButtonShowcase() {
       t(i18n, `${K}.sectionDescriptions.12`),
       t(i18n, `${K}.sectionDescriptions.13`),
       t(i18n, `${K}.sectionDescriptions.14`),
-      t(i18n, `${K}.sectionDescriptions.15`)
+      t(i18n, `${K}.sectionDescriptions.15`),
+      t(i18n, `${K}.sectionDescriptions.16`),
+      t(i18n, `${K}.sectionDescriptions.17`)
     ],
     iconsGroupElevated: t(i18n, `${K}.iconsGroupElevated`),
     iconsGroupRounded: t(i18n, `${K}.iconsGroupRounded`),
@@ -642,6 +693,16 @@ export default function SgButtonShowcase() {
       </Section>
 
       <Section id="exemplo-16" title={sectionTitle(16)} description={sectionDescription(16)}>
+        <SyncAsyncExample />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-button/samples/onclick-sincrono-x-assincrono.tsx.sample" />
+      </Section>
+
+      <Section id="exemplo-17" title={sectionTitle(17)} description={sectionDescription(17)}>
+        <AsyncErrorExample />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-button/samples/tratando-erro-no-onclick-assincrono.tsx.sample" />
+      </Section>
+
+      <Section id="exemplo-18" title={sectionTitle(18)} description={sectionDescription(18)}>
         <SgPlayground
           title="SgButton Playground"
           interactive

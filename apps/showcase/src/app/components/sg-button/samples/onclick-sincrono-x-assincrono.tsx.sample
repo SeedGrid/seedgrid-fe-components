@@ -1,0 +1,24 @@
+import React from "react";
+import { SgButton } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const [panel, setPanel] = React.useState("Closed");
+  const [status, setStatus] = React.useState("Idle");
+
+  const toggle = () => setPanel(panel === "Open" ? "Closed" : "Open");
+
+  const save = async () => {
+    setStatus("Saving...");
+    await new Promise((resolve) => window.setTimeout(resolve, 1500));
+    setStatus("Saved");
+  };
+
+  return (
+    <div className="flex flex-wrap items-center gap-3">
+      <SgButton appearance="outline" onClick={toggle}>Toggle panel</SgButton>
+      <span className="text-sm text-muted-foreground">{panel}</span>
+      <SgButton onClick={save}>Save</SgButton>
+      <span className="text-sm text-muted-foreground">{status}</span>
+    </div>
+  );
+}

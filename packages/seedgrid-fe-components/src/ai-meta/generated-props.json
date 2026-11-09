@@ -758,13 +758,14 @@
     {
       "name": "loading",
       "type": "boolean",
-      "required": false
+      "required": false,
+      "description": "Exibe spinner e bloqueia o clique. Vence o loading automático do onClick: loading efetivo = `loading` || Promise pendente."
     },
     {
       "name": "onClick",
       "type": "((event: MouseEvent<HTMLButtonElement, MouseEvent>) => unknown)",
       "required": false,
-      "description": "Clique do botão. Pode devolver uma Promise (`void | Promise<void>`): o botão entra em loading (spinner,\ndesabilitado, aria-busy) até ela terminar (ou falhar) e ignora cliques nesse meio-tempo. Quem não devolve\nPromise não muda. O retorno é `unknown` só para não quebrar handlers existentes de corpo-expressão\n(`() => lista.push(x)`), que devolvem valor."
+      "description": "Clique do botão. Pode ser síncrono ou assíncrono (`(event) => unknown`).\n\n- Síncrono (abrir modal, alternar painel): funciona como sempre, nada muda.\n- Se DEVOLVER uma Promise (`async () => { await salvar(); }` ou `() => salvar()`), o botão entra em loading\n  sozinho (spinner, desabilitado, aria-busy), ignora cliques até terminar (inclusive cliques seguidos antes do\n  re-render) e volta ao normal ao terminar ou falhar. Protege contra duplo clique e reenvio e ajuda na\n  idempotência da ação na tela (não substitui a chave de idempotência no servidor).\n- Cuidado: precisa DEVOLVER a Promise. `onClick={() => { salvar(); }}` (chaves sem return) NÃO protege.\n- Erro: o botão não engole o erro (sai do loading e relança como rejeição não tratada). Trate com try/catch\n  dentro do onClick e avise o usuário (ex.: `sgWhistle.error`).\n- Use async só quando a ação puder demorar ou falhar (salvar, enviar, pagar); ações instantâneas ficam síncronas.\n- A prop `loading` manual continua valendo e vence (loading efetivo = `loading` || Promise pendente).\n\nO retorno é `unknown` só para não quebrar handlers existentes de corpo-expressão (`() => lista.push(x)`)."
     },
     {
       "name": "rightIcon",

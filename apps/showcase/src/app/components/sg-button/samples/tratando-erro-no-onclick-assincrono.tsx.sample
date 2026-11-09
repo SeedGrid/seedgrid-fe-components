@@ -1,0 +1,25 @@
+import React from "react";
+import { SgButton, SgWhistler, sgWhistle } from "@seedgrid/fe-components";
+
+export default function Example() {
+  const save = async () => {
+    try {
+      await new Promise((resolve) => window.setTimeout(resolve, 1200));
+      throw new Error("Network error");
+    } catch {
+      sgWhistle.error({
+        title: "Could not save",
+        message: "Check your connection and try again."
+      });
+    }
+  };
+
+  return (
+    <div className="space-y-3">
+      <SgButton severity="danger" onClick={save}>Save (fails)</SgButton>
+      <div className="rounded-xl border border-dashed border-border p-4">
+        <SgWhistler />
+      </div>
+    </div>
+  );
+}
