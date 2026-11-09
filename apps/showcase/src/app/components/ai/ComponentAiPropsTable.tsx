@@ -12,7 +12,7 @@ export default function ComponentAiPropsTable(props: Readonly<ComponentAiPropsTa
   if (rows.length === 0) return null;
 
   return (
-    <section className="scroll-mt-[var(--showcase-anchor-offset,18rem)] rounded-lg border border-emerald-200 bg-emerald-50/40 p-6">
+    <section className="scroll-mt-[var(--showcase-anchor-offset,18rem)] rounded-lg border border-border bg-muted/40 p-6">
       <h2 className="text-lg font-semibold">Props from AI manifest</h2>
       <p className="mt-1 text-sm text-muted-foreground">
         Pequena prova de que o manifesto ja consegue alimentar documentacao real sem substituir a tabela manual.

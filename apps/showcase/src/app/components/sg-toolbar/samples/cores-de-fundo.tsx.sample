@@ -9,7 +9,7 @@ export default function Example() {
         <p className="mb-2 text-xs text-muted-foreground">bgColor</p>
         <SgDockLayout id="tb-layout-style-a" className="grid grid-cols-1 grid-rows-1">
           <SgDockZone zone="free" className="col-start-1 row-start-1 !items-start !justify-start !p-0">
-            <SgToolBar id="tb-style-a" title="Cor no corpo" orientationDirection="vertical-down" collapsible bgColor="#ECFEFF">
+            <SgToolBar id="tb-style-a" title="Cor no corpo" orientationDirection="vertical-down" collapsible bgColor="hsl(var(--muted))">
               <SgToolbarIconButton icon={<Home className="size-4" />} label="Home" hint="Ir para Home" severity="primary" />
               <SgToolbarIconButton icon={<Users className="size-4" />} label="Usuarios" hint="Abrir usuarios" />
               <SgToolbarIconButton icon={<Settings className="size-4" />} label="Configuracoes" hint="Abrir configuracoes" />
@@ -22,7 +22,7 @@ export default function Example() {
         <p className="mb-2 text-xs text-muted-foreground">bgColor + bgColorTitle</p>
         <SgDockLayout id="tb-layout-style-b" className="grid grid-cols-1 grid-rows-1">
           <SgDockZone zone="free" className="col-start-1 row-start-1 !items-start !justify-start !p-0">
-            <SgToolBar id="tb-style-b" title="Titulo destacado" orientationDirection="vertical-down" collapsible bgColor="#DAD7D2" bgColorTitle="#C9712D">
+            <SgToolBar id="tb-style-b" title="Titulo destacado" orientationDirection="vertical-down" collapsible bgColor="hsl(var(--secondary))" bgColorTitle="hsl(var(--border))">
               <SgToolbarIconButton icon={<Filter className="size-4" />} label="Filtro" hint="Filtrar resultados" />
               <SgToolbarIconButton icon={<RefreshCcw className="size-4" />} label="Atualizar" hint="Atualizar dados" />
               <SgToolbarIconButton icon={<Pencil className="size-4" />} label="Editar" hint="Editar registro" severity="info" />

@@ -7,7 +7,7 @@ import {
   SgClockThemePicker,
   SgClockThemeProvider,
   SgButton,
-  SgGrid,
+  SgStack,
   registerThemes,
   sgClockThemesBuiltIn,
 } from "@seedgrid/fe-components";
@@ -459,7 +459,7 @@ export function SgClockShowcaseClient({ initialServerTime }: { initialServerTime
               initialServerTime={initialServerTime}
               timezone="America/Sao_Paulo"
               digitBuilder={(parts) => (
-                <SgGrid columns={parts.text.length} gap={4} align="center">
+                <SgStack direction="row" gap={4} align="center">
                   {parts.text.split("").map((ch, index) =>
                     ch === ":" ? (
                       <span key={index} className="text-center">{ch}</span>
@@ -472,7 +472,7 @@ export function SgClockShowcaseClient({ initialServerTime }: { initialServerTime
                       </span>
                     )
                   )}
-                </SgGrid>
+                </SgStack>
               )}
             />
             <div className="mt-6">

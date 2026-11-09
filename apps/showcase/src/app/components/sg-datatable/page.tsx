@@ -261,7 +261,7 @@ const MANAGER_COLUMNS: SgDatatableColumn<ProductRow>[] = [
     header: "Stock",
     sortable: true,
     align: "right",
-    bodyClassName: (row) => (row.stock < 10 ? "font-semibold text-amber-700" : undefined)
+    bodyClassName: (row) => (row.stock < 10 ? "font-semibold text-[rgb(var(--sg-warning-900))]" : undefined)
   }
 ];
 
@@ -1427,9 +1427,9 @@ export default function SgDatatableShowcase() {
             removableSort={false}
             rowClassName={(row) =>
               row.status === "OUTOFSTOCK"
-                ? "bg-rose-50/70"
+                ? "bg-rose-500/15"
                 : row.status === "LOWSTOCK"
-                  ? "bg-amber-50/60"
+                  ? "bg-amber-500/15"
                   : undefined
             }
           />

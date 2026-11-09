@@ -31,7 +31,7 @@ type PropDescriptionTranslation = {
   es: string;
 };
 
-const PROPS_REFERENCE_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", PropsReferenceTexts> = {
+const PROPS_REFERENCE_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", PropsReferenceTexts> = {
   "pt-BR": {
     title: "Referência de Props",
     colProp: "Prop",
@@ -59,6 +59,13 @@ const PROPS_REFERENCE_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", PropsRef
     colType: "Tipo",
     colDefault: "Predeterminado",
     colDescription: "Descripción"
+  },
+  fr: {
+    title: "Référence des props",
+    colProp: "Prop",
+    colType: "Type",
+    colDefault: "Par défaut",
+    colDescription: "Description"
   }
 };
 
@@ -68,13 +75,13 @@ function getLocalizedPropDescription(description: string, locale: keyof typeof P
   const translations = PROPS_DESCRIPTION_TRANSLATIONS[description];
   if (!translations) return description;
 
-  if (locale === "en-US") return translations.en;
+  if (locale === "en-US" || locale === "fr") return translations.en;
   if (locale === "es") return translations.es;
   return translations.pt;
 }
 
 function isSupportedLocale(locale: ShowcaseLocale): locale is keyof typeof PROPS_REFERENCE_TEXTS {
-  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
+  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es" || locale === "fr";
 }
 
 export default function ShowcasePropsReference(props: Readonly<ShowcasePropsReferenceProps>) {

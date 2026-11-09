@@ -331,7 +331,7 @@ export default function SgToolBarPage() {
               <div className="rounded-lg border border-dashed border-border p-3">
                 <p className="mb-2 text-xs text-muted-foreground">bgColor</p>
                 <ToolbarInlineHost layoutId="tb-layout-style-a">
-                  <SgToolBar id="tb-style-a" title={texts.labels.panelBody} orientationDirection="vertical-down" collapsible bgColor="#ECFEFF">
+                  <SgToolBar id="tb-style-a" title={texts.labels.panelBody} orientationDirection="vertical-down" collapsible bgColor="hsl(var(--muted))">
                     <SgToolbarIconButton icon={<Home className="size-4" />} label={texts.labels.home} hint={texts.hints.goHome} severity="primary" />
                     <SgToolbarIconButton icon={<Users className="size-4" />} label={texts.labels.users} hint={texts.hints.openUsers} />
                     <SgToolbarIconButton icon={<Settings className="size-4" />} label={texts.labels.settings} hint={texts.hints.openSettings} />
@@ -341,7 +341,7 @@ export default function SgToolBarPage() {
               <div className="rounded-lg border border-dashed border-border p-3">
                 <p className="mb-2 text-xs text-muted-foreground">bgColor + bgColorTitle</p>
                 <ToolbarInlineHost layoutId="tb-layout-style-b">
-                  <SgToolBar id="tb-style-b" title={texts.labels.highlightedTitle} orientationDirection="vertical-down" collapsible bgColor="#DAD7D2" bgColorTitle="#C9712D">
+                  <SgToolBar id="tb-style-b" title={texts.labels.highlightedTitle} orientationDirection="vertical-down" collapsible bgColor="hsl(var(--secondary))" bgColorTitle="hsl(var(--border))">
                     <SgToolbarIconButton icon={<Filter className="size-4" />} label={texts.labels.filter} hint={texts.hints.filterResults} />
                     <SgToolbarIconButton icon={<RefreshCcw className="size-4" />} label={texts.labels.refresh} hint={texts.hints.refreshData} />
                     <SgToolbarIconButton icon={<Pencil className="size-4" />} label={texts.labels.edit} hint={texts.hints.editRecord} severity="info" />

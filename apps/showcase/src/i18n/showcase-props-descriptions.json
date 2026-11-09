@@ -1847,5 +1847,15 @@
     "pt": "Mapa de todas as chaves de traducao disponiveis para o locale atual.",
     "en": "Map of all translation keys available for the current locale.",
     "es": "Mapa de todas las claves de traduccion disponibles para el locale actual."
+  },
+  "Codigo do locale (ex: \"pt-BR\", \"pt-PT\", \"en-US\", \"es\", \"fr\"). Afeta os textos internos dos componentes SeedGrid.": {
+    "pt": "Codigo do locale (ex: \"pt-BR\", \"pt-PT\", \"en-US\", \"es\", \"fr\"). Afeta os textos internos dos componentes SeedGrid.",
+    "en": "Locale code (e.g. \"pt-BR\", \"pt-PT\", \"en-US\", \"es\", \"fr\"). Affects the internal texts of SeedGrid components.",
+    "es": "Codigo de locale (ej: \"pt-BR\", \"pt-PT\", \"en-US\", \"es\", \"fr\"). Afecta los textos internos de los componentes SeedGrid."
+  },
+  "Mapa de chaves para textos. Pode ser o objeto completo de um locale ou apenas as chaves que deseja sobrescrever.": {
+    "pt": "Mapa de chaves para textos. Pode ser o objeto completo de um locale ou apenas as chaves que deseja sobrescrever.",
+    "en": "Map of keys to texts. It can be the full object of a locale or only the keys you want to override.",
+    "es": "Mapa de claves a textos. Puede ser el objeto completo de un locale o solo las claves que desea sobrescribir."
   }
 }

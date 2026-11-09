@@ -3057,7 +3057,7 @@
   "showcase.component.expandablePanel.styled.open": "abierto",
   "showcase.component.expandablePanel.styled.closed": "cerrado",
   "showcase.component.expandablePanel.styled.title": "Panel con estilo",
-  "showcase.component.expandablePanel.styled.footer": "Cierra con ESC o haz clic fuera.",
+  "showcase.component.expandablePanel.styled.footer": "Pie del panel con estilo.",
   "showcase.component.expandablePanel.styled.visualProps": "Props visuales: elevation, border, rounded, classes y style.",
   "showcase.component.expandablePanel.styled.stateProp": "Prop de estado: defaultOpen.",
   "showcase.component.expandablePanel.a11y.open": "Abrir panel con fade",

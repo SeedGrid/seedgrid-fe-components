@@ -1,5 +1,5 @@
 import * as React from "react";
-import { SgClock, SgGrid } from "@seedgrid/fe-components";
+import { SgClock, SgStack } from "@seedgrid/fe-components";
 
 export default function Example(props: { initialServerTime?: string }) {
   return (
@@ -8,7 +8,7 @@ export default function Example(props: { initialServerTime?: string }) {
       initialServerTime={props.initialServerTime ?? new Date().toISOString()}
       timezone="America/Sao_Paulo"
       digitBuilder={(parts) => (
-        <SgGrid columns={parts.text.length} gap={4} align="center">
+        <SgStack direction="row" gap={4} align="center">
           {parts.text.split("").map((ch, index) =>
             ch === ":" ? (
               <span key={index} className="text-center">{ch}</span>
@@ -21,7 +21,7 @@ export default function Example(props: { initialServerTime?: string }) {
               </span>
             )
           )}
-        </SgGrid>
+        </SgStack>
       )}
     />
   );

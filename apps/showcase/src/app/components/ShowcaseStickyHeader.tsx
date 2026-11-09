@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { SgGrid } from "@seedgrid/fe-components";
+import { useSgTheme } from "@seedgrid/fe-theme";
 import type { ShowcaseExampleLink } from "./useShowcaseAnchors";
 import { useShowcaseI18n, type ShowcaseLocale } from "../../i18n";
 
@@ -19,14 +20,14 @@ type StickyHeaderTexts = {
   propsReferenceLabel: string;
 };
 
-const STICKY_HEADER_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", StickyHeaderTexts> = {
+const STICKY_HEADER_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", StickyHeaderTexts> = {
   "pt-BR": {
     examplesLabel: "Exemplos",
-    propsReferenceLabel: "Referencia de Props"
+    propsReferenceLabel: "Referência de Props"
   },
   "pt-PT": {
     examplesLabel: "Exemplos",
-    propsReferenceLabel: "Referencia de Props"
+    propsReferenceLabel: "Referência de Props"
   },
   "en-US": {
     examplesLabel: "Examples",
@@ -35,17 +36,26 @@ const STICKY_HEADER_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es", StickyHead
   es: {
     examplesLabel: "Ejemplos",
     propsReferenceLabel: "Referencia de Props"
+  },
+  fr: {
+    examplesLabel: "Exemples",
+    propsReferenceLabel: "Référence des props"
   }
 };
 
 function isSupportedLocale(locale: ShowcaseLocale): locale is keyof typeof STICKY_HEADER_TEXTS {
-  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es";
+  return locale === "pt-BR" || locale === "pt-PT" || locale === "en-US" || locale === "es" || locale === "fr";
 }
 
 export default function ShowcaseStickyHeader(props: Readonly<ShowcaseStickyHeaderProps>) {
   const i18n = useShowcaseI18n();
   const locale: keyof typeof STICKY_HEADER_TEXTS = isSupportedLocale(i18n.locale) ? i18n.locale : "en-US";
   const texts = STICKY_HEADER_TEXTS[locale];
+  const { currentMode } = useSgTheme();
+  // Tema claro: o primario (500) sobre o fundo claro tem ~1.6:1; escurece o mesmo matiz (50% com preto = ~5.7:1).
+  // Tema escuro: mantem o primario original (ja tem ~10:1).
+  const linkColorClass =
+    currentMode === "light" ? "text-[color-mix(in_srgb,rgb(var(--sg-primary-500))_50%,black)]" : "text-primary";
 
   return (
     <div ref={props.stickyHeaderRef} className="sticky top-0 z-50 isolate max-h-[52vh] overflow-y-auto bg-background pb-2 pt-2 md:-top-8 md:max-h-none md:overflow-visible md:pb-2 md:pt-8">
@@ -59,7 +69,7 @@ export default function ShowcaseStickyHeader(props: Readonly<ShowcaseStickyHeade
               key={example.id}
               href={`#${example.id}`}
               onClick={(event) => props.onAnchorClick(event, example.id)}
-              className="shrink-0 whitespace-nowrap rounded-md border border-border px-2 py-1 text-xs font-medium text-primary transition-colors hover:bg-muted/40"
+              className={`shrink-0 whitespace-nowrap rounded-md border border-border px-2 py-1 text-xs font-medium ${linkColorClass} transition-colors hover:bg-muted/40`}
             >
               {example.label}
             </Link>
@@ -67,7 +77,7 @@ export default function ShowcaseStickyHeader(props: Readonly<ShowcaseStickyHeade
           <Link
             href="#props-reference"
             onClick={(event) => props.onAnchorClick(event, "props-reference")}
-            className="shrink-0 whitespace-nowrap rounded-md border border-border px-2 py-1 text-xs font-medium text-primary transition-colors hover:bg-muted/40"
+            className={`shrink-0 whitespace-nowrap rounded-md border border-border px-2 py-1 text-xs font-medium ${linkColorClass} transition-colors hover:bg-muted/40`}
           >
             {texts.propsReferenceLabel}
           </Link>
@@ -78,7 +88,7 @@ export default function ShowcaseStickyHeader(props: Readonly<ShowcaseStickyHeade
               key={example.id}
               href={`#${example.id}`}
               onClick={(event) => props.onAnchorClick(event, example.id)}
-              className="rounded-md border border-border px-2 py-1 text-xs font-medium text-primary transition-colors hover:bg-muted/40"
+              className={`rounded-md border border-border px-2 py-1 text-xs font-medium ${linkColorClass} transition-colors hover:bg-muted/40`}
             >
               {example.label}
             </Link>
@@ -86,7 +96,7 @@ export default function ShowcaseStickyHeader(props: Readonly<ShowcaseStickyHeade
           <Link
             href="#props-reference"
             onClick={(event) => props.onAnchorClick(event, "props-reference")}
-            className="rounded-md border border-border px-2 py-1 text-xs font-medium text-primary transition-colors hover:bg-muted/40"
+            className={`rounded-md border border-border px-2 py-1 text-xs font-medium ${linkColorClass} transition-colors hover:bg-muted/40`}
           >
             {texts.propsReferenceLabel}
           </Link>
