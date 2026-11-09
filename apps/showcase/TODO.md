@@ -39,20 +39,20 @@ Se quiser, eu implemento já a Fase 1 sem quebrar API pública atual.
 // TODO -  renomear sgToast para sgWhistle e sgToastHost para sgwhistleHost - refletir isso no showcase de ambos 
 
 
-// TODO - sgDataTable -> https://www.primefaces.org/primereact-v8/datatable/
+// TODO - sgDataTable - revisar recursos avancados de tabela
 
 
 
 
-// TODO - criar Schedule  - https://showcase.primefaces.org/ui/data/schedule/basic.xhtml?jfwid=036be
-// TODO - criar schedule configuration - https://showcase.primefaces.org/ui/data/schedule/configuration.xhtml?jfwid=036be
+// TODO - criar Schedule (agenda)
+// TODO - criar configuracao do Schedule
 
-// TODO - dashboard - investigar https://showcase.primefaces.org/ui/panel/dashboard.xhtml?jfwid=036be
+// TODO - dashboard - investigar
 
 
-// TODO - Paginator - https://showcase.primefaces.org/ui/data/datatable/paginator.xhtml?jfwid=036be
+// TODO - Paginator
 
-// TODO - Datatable - https://showcase.primefaces.org/ui/data/datatable/rowGroup.xhtml?jfwid=036be
+// TODO - Datatable - agrupamento de linhas
 
 
 // TODO - por que somente alguns componentes tem o className?  (sgRadioGrouup)
