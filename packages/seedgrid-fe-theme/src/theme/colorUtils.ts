@@ -61,7 +61,7 @@ export function hslToHex(h: number, s: number, l: number) {
   return rgbToHex(r, g, b);
 }
 
-// Relative luminance (approx) to decide black/white text
+// Relative luminance (WCAG) used to compute contrast ratios
 export function relativeLuminance(hex: string) {
   const { r, g, b } = hexToRgb(hex);
   const srgb = [r, g, b].map((v) => v / 255).map((c) =>
@@ -70,9 +70,35 @@ export function relativeLuminance(hex: string) {
   return 0.2126 * (srgb[0] ?? 0) + 0.7152 * (srgb[1] ?? 0) + 0.0722 * (srgb[2] ?? 0);
 }
 
+/** Contraste minimo (WCAG, texto normal) exigido entre o fundo e a cor do texto escolhida. */
+export const MIN_CONTRAST_RATIO = 4.5;
+
+/** Candidatos a cor de texto sobre um fundo, em ordem de preferencia. */
+export const ON_COLOR_CANDIDATES = ["#FFFFFF", "#0B0B0C"] as const;
+
+/** Razao de contraste WCAG entre duas cores hex (1 a 21). */
+export function contrastRatio(aHex: string, bHex: string) {
+  const la = relativeLuminance(aHex);
+  const lb = relativeLuminance(bHex);
+  return (Math.max(la, lb) + 0.05) / (Math.min(la, lb) + 0.05);
+}
+
+/**
+ * Escolhe o texto sobre `bgHex` por contraste: devolve o primeiro candidato (branco, depois quase preto)
+ * com razao >= MIN_CONTRAST_RATIO; se nenhum alcancar, devolve o de maior contraste.
+ */
 export function pickOnColor(bgHex: string) {
-  // Simple and efficient: threshold ~0.5
-  return relativeLuminance(bgHex) > 0.5 ? "#0B0B0C" : "#FFFFFF";
+  let best: string = ON_COLOR_CANDIDATES[0];
+  let bestRatio = -1;
+  for (const candidate of ON_COLOR_CANDIDATES) {
+    const ratio = contrastRatio(bgHex, candidate);
+    if (ratio >= MIN_CONTRAST_RATIO) return candidate;
+    if (ratio > bestRatio) {
+      best = candidate;
+      bestRatio = ratio;
+    }
+  }
+  return best;
 }
 
 export function toRgbVarValue(hex: string) {

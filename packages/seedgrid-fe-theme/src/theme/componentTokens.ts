@@ -1,4 +1,5 @@
 import type { ThemeVars } from "./ThemeConfig";
+import { pickOnColor, rgbToHex, toRgbVarValue } from "./colorUtils";
 
 /**
  * Generate component-level tokens from base palette tokens.
@@ -14,10 +15,19 @@ export function generateComponentTokens(baseVars: ThemeVars): ThemeVars {
     return value ? `rgb(${value})` : "";
   };
 
+  // Texto do botao: escolhido por contraste sobre o PROPRIO fundo do botao (tom 600), nao sobre o tom 500
+  // usado por --sg-on-*. Sem fundo valido, cai no --sg-on-* informado.
+  const onBg = (bgVarName: string, fallbackOnVarName: string) => {
+    const m = /^\s*(\d+)\s+(\d+)\s+(\d+)\s*$/.exec(baseVars[bgVarName] ?? "");
+    if (!m) return rgb(fallbackOnVarName);
+    const on = pickOnColor(rgbToHex(Number(m[1]), Number(m[2]), Number(m[3])));
+    return `rgb(${toRgbVarValue(on)})`;
+  };
+
   // Button tokens
   // Primary button
   componentVars["--sg-btn-primary-bg"] = rgb("--sg-primary-600");
-  componentVars["--sg-btn-primary-fg"] = rgb("--sg-on-primary");
+  componentVars["--sg-btn-primary-fg"] = onBg("--sg-primary-600", "--sg-on-primary");
   componentVars["--sg-btn-primary-border"] = rgb("--sg-primary-600");
   componentVars["--sg-btn-primary-hover-bg"] = rgb("--sg-primary-700");
   componentVars["--sg-btn-primary-active-bg"] = rgb("--sg-primary-800");
@@ -25,7 +35,7 @@ export function generateComponentTokens(baseVars: ThemeVars): ThemeVars {
 
   // Secondary button
   componentVars["--sg-btn-secondary-bg"] = rgb("--sg-secondary-600");
-  componentVars["--sg-btn-secondary-fg"] = rgb("--sg-on-secondary");
+  componentVars["--sg-btn-secondary-fg"] = onBg("--sg-secondary-600", "--sg-on-secondary");
   componentVars["--sg-btn-secondary-border"] = rgb("--sg-secondary-600");
   componentVars["--sg-btn-secondary-hover-bg"] = rgb("--sg-secondary-700");
   componentVars["--sg-btn-secondary-active-bg"] = rgb("--sg-secondary-800");
@@ -33,7 +43,7 @@ export function generateComponentTokens(baseVars: ThemeVars): ThemeVars {
 
   // Success button
   componentVars["--sg-btn-success-bg"] = rgb("--sg-success-600");
-  componentVars["--sg-btn-success-fg"] = rgb("--sg-on-success");
+  componentVars["--sg-btn-success-fg"] = onBg("--sg-success-600", "--sg-on-success");
   componentVars["--sg-btn-success-border"] = rgb("--sg-success-600");
   componentVars["--sg-btn-success-hover-bg"] = rgb("--sg-success-700");
   componentVars["--sg-btn-success-active-bg"] = rgb("--sg-success-800");
@@ -41,7 +51,7 @@ export function generateComponentTokens(baseVars: ThemeVars): ThemeVars {
 
   // Info button
   componentVars["--sg-btn-info-bg"] = rgb("--sg-info-600");
-  componentVars["--sg-btn-info-fg"] = rgb("--sg-on-info");
+  componentVars["--sg-btn-info-fg"] = onBg("--sg-info-600", "--sg-on-info");
   componentVars["--sg-btn-info-border"] = rgb("--sg-info-600");
   componentVars["--sg-btn-info-hover-bg"] = rgb("--sg-info-700");
   componentVars["--sg-btn-info-active-bg"] = rgb("--sg-info-800");
@@ -49,7 +59,7 @@ export function generateComponentTokens(baseVars: ThemeVars): ThemeVars {
 
   // Warning button
   componentVars["--sg-btn-warning-bg"] = rgb("--sg-warning-600");
-  componentVars["--sg-btn-warning-fg"] = rgb("--sg-on-warning");
+  componentVars["--sg-btn-warning-fg"] = onBg("--sg-warning-600", "--sg-on-warning");
   componentVars["--sg-btn-warning-border"] = rgb("--sg-warning-600");
   componentVars["--sg-btn-warning-hover-bg"] = rgb("--sg-warning-700");
   componentVars["--sg-btn-warning-active-bg"] = rgb("--sg-warning-800");
@@ -57,7 +67,7 @@ export function generateComponentTokens(baseVars: ThemeVars): ThemeVars {
 
   // Danger/Error button
   componentVars["--sg-btn-danger-bg"] = rgb("--sg-error-600");
-  componentVars["--sg-btn-danger-fg"] = rgb("--sg-on-error");
+  componentVars["--sg-btn-danger-fg"] = onBg("--sg-error-600", "--sg-on-error");
   componentVars["--sg-btn-danger-border"] = rgb("--sg-error-600");
   componentVars["--sg-btn-danger-hover-bg"] = rgb("--sg-error-700");
   componentVars["--sg-btn-danger-active-bg"] = rgb("--sg-error-800");
@@ -65,7 +75,7 @@ export function generateComponentTokens(baseVars: ThemeVars): ThemeVars {
 
   // Help button (uses tertiary color for better visibility)
   componentVars["--sg-btn-help-bg"] = rgb("--sg-tertiary-600");
-  componentVars["--sg-btn-help-fg"] = rgb("--sg-on-tertiary");
+  componentVars["--sg-btn-help-fg"] = onBg("--sg-tertiary-600", "--sg-on-tertiary");
   componentVars["--sg-btn-help-border"] = rgb("--sg-tertiary-600");
   componentVars["--sg-btn-help-hover-bg"] = rgb("--sg-tertiary-700");
   componentVars["--sg-btn-help-active-bg"] = rgb("--sg-tertiary-800");

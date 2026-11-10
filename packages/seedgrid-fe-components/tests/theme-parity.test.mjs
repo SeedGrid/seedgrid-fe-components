@@ -29,7 +29,7 @@ async function load(entry) {
   return import(pathToFileURL(outfile).href);
 }
 
-test("pickOnColor identico ao gravado (limiar de luminancia)", { skip: !available }, async () => {
+test("pickOnColor identico ao gravado (contraste minimo 4,5:1)", { skip: !available }, async () => {
   const V = JSON.parse(readFileSync(VECTORS, "utf8"));
   const { pickOnColor } = await load("colorUtils.ts");
   for (const c of V.pickOnColor) assert.equal(pickOnColor(c.in), c.out, JSON.stringify(c));
