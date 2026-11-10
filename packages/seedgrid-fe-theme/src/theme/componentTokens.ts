@@ -1,5 +1,5 @@
 import type { ThemeVars } from "./ThemeConfig";
-import { pickOnColor, rgbToHex, toRgbVarValue } from "./colorUtils";
+import { adjustBgForOnColor, pickOnColor, rgbToHex, toRgbVarValue } from "./colorUtils";
 
 /**
  * Generate component-level tokens from base palette tokens.
@@ -15,71 +15,40 @@ export function generateComponentTokens(baseVars: ThemeVars): ThemeVars {
     return value ? `rgb(${value})` : "";
   };
 
-  // Texto do botao: escolhido por contraste sobre o PROPRIO fundo do botao (tom 600), nao sobre o tom 500
-  // usado por --sg-on-*. Sem fundo valido, cai no --sg-on-* informado.
-  const onBg = (bgVarName: string, fallbackOnVarName: string) => {
-    const m = /^\s*(\d+)\s+(\d+)\s+(\d+)\s*$/.exec(baseVars[bgVarName] ?? "");
-    if (!m) return rgb(fallbackOnVarName);
-    const on = pickOnColor(rgbToHex(Number(m[1]), Number(m[2]), Number(m[3])));
-    return `rgb(${toRgbVarValue(on)})`;
+  // Botao de severidade: fundo (tom 600), hover (700) e active (800). Se o melhor texto sobre o fundo ficar < 4,5:1,
+  // o fundo e ajustado (adjustBgForOnColor) e o texto de cada estado e escolhido por contraste sobre o PROPRIO
+  // fundo daquele estado. Sem fundo valido, cai no --sg-on-* informado (normal) ou no texto do estado normal.
+  const parseRgb = (varName: string) => /^\s*(\d+)\s+(\d+)\s+(\d+)\s*$/.exec(baseVars[varName] ?? "");
+  const stateColors = (varName: string) => {
+    const m = parseRgb(varName);
+    if (!m) return null;
+    const bgHex = adjustBgForOnColor(rgbToHex(Number(m[1]), Number(m[2]), Number(m[3])));
+    return { bg: `rgb(${toRgbVarValue(bgHex)})`, fg: `rgb(${toRgbVarValue(pickOnColor(bgHex))})` };
+  };
+  const severity = (token: string, scale: string, fallbackOnVarName: string) => {
+    const normal = stateColors(`--sg-${scale}-600`);
+    const hover = stateColors(`--sg-${scale}-700`);
+    const active = stateColors(`--sg-${scale}-800`);
+    const normalBg = normal?.bg ?? rgb(`--sg-${scale}-600`);
+    const normalFg = normal?.fg ?? rgb(fallbackOnVarName);
+    componentVars[`--sg-btn-${token}-bg`] = normalBg;
+    componentVars[`--sg-btn-${token}-fg`] = normalFg;
+    componentVars[`--sg-btn-${token}-border`] = normalBg;
+    componentVars[`--sg-btn-${token}-hover-bg`] = hover?.bg ?? rgb(`--sg-${scale}-700`);
+    componentVars[`--sg-btn-${token}-hover-fg`] = hover?.fg ?? normalFg;
+    componentVars[`--sg-btn-${token}-active-bg`] = active?.bg ?? rgb(`--sg-${scale}-800`);
+    componentVars[`--sg-btn-${token}-active-fg`] = active?.fg ?? normalFg;
+    componentVars[`--sg-btn-${token}-ring`] = rgb(`--sg-${scale}-400`);
   };
 
-  // Button tokens
-  // Primary button
-  componentVars["--sg-btn-primary-bg"] = rgb("--sg-primary-600");
-  componentVars["--sg-btn-primary-fg"] = onBg("--sg-primary-600", "--sg-on-primary");
-  componentVars["--sg-btn-primary-border"] = rgb("--sg-primary-600");
-  componentVars["--sg-btn-primary-hover-bg"] = rgb("--sg-primary-700");
-  componentVars["--sg-btn-primary-active-bg"] = rgb("--sg-primary-800");
-  componentVars["--sg-btn-primary-ring"] = rgb("--sg-primary-400");
-
-  // Secondary button
-  componentVars["--sg-btn-secondary-bg"] = rgb("--sg-secondary-600");
-  componentVars["--sg-btn-secondary-fg"] = onBg("--sg-secondary-600", "--sg-on-secondary");
-  componentVars["--sg-btn-secondary-border"] = rgb("--sg-secondary-600");
-  componentVars["--sg-btn-secondary-hover-bg"] = rgb("--sg-secondary-700");
-  componentVars["--sg-btn-secondary-active-bg"] = rgb("--sg-secondary-800");
-  componentVars["--sg-btn-secondary-ring"] = rgb("--sg-secondary-400");
-
-  // Success button
-  componentVars["--sg-btn-success-bg"] = rgb("--sg-success-600");
-  componentVars["--sg-btn-success-fg"] = onBg("--sg-success-600", "--sg-on-success");
-  componentVars["--sg-btn-success-border"] = rgb("--sg-success-600");
-  componentVars["--sg-btn-success-hover-bg"] = rgb("--sg-success-700");
-  componentVars["--sg-btn-success-active-bg"] = rgb("--sg-success-800");
-  componentVars["--sg-btn-success-ring"] = rgb("--sg-success-400");
-
-  // Info button
-  componentVars["--sg-btn-info-bg"] = rgb("--sg-info-600");
-  componentVars["--sg-btn-info-fg"] = onBg("--sg-info-600", "--sg-on-info");
-  componentVars["--sg-btn-info-border"] = rgb("--sg-info-600");
-  componentVars["--sg-btn-info-hover-bg"] = rgb("--sg-info-700");
-  componentVars["--sg-btn-info-active-bg"] = rgb("--sg-info-800");
-  componentVars["--sg-btn-info-ring"] = rgb("--sg-info-400");
-
-  // Warning button
-  componentVars["--sg-btn-warning-bg"] = rgb("--sg-warning-600");
-  componentVars["--sg-btn-warning-fg"] = onBg("--sg-warning-600", "--sg-on-warning");
-  componentVars["--sg-btn-warning-border"] = rgb("--sg-warning-600");
-  componentVars["--sg-btn-warning-hover-bg"] = rgb("--sg-warning-700");
-  componentVars["--sg-btn-warning-active-bg"] = rgb("--sg-warning-800");
-  componentVars["--sg-btn-warning-ring"] = rgb("--sg-warning-400");
-
-  // Danger/Error button
-  componentVars["--sg-btn-danger-bg"] = rgb("--sg-error-600");
-  componentVars["--sg-btn-danger-fg"] = onBg("--sg-error-600", "--sg-on-error");
-  componentVars["--sg-btn-danger-border"] = rgb("--sg-error-600");
-  componentVars["--sg-btn-danger-hover-bg"] = rgb("--sg-error-700");
-  componentVars["--sg-btn-danger-active-bg"] = rgb("--sg-error-800");
-  componentVars["--sg-btn-danger-ring"] = rgb("--sg-error-400");
-
-  // Help button (uses tertiary color for better visibility)
-  componentVars["--sg-btn-help-bg"] = rgb("--sg-tertiary-600");
-  componentVars["--sg-btn-help-fg"] = onBg("--sg-tertiary-600", "--sg-on-tertiary");
-  componentVars["--sg-btn-help-border"] = rgb("--sg-tertiary-600");
-  componentVars["--sg-btn-help-hover-bg"] = rgb("--sg-tertiary-700");
-  componentVars["--sg-btn-help-active-bg"] = rgb("--sg-tertiary-800");
-  componentVars["--sg-btn-help-ring"] = rgb("--sg-tertiary-400");
+  severity("primary", "primary", "--sg-on-primary");
+  severity("secondary", "secondary", "--sg-on-secondary");
+  severity("success", "success", "--sg-on-success");
+  severity("info", "info", "--sg-on-info");
+  severity("warning", "warning", "--sg-on-warning");
+  severity("danger", "error", "--sg-on-error");
+  // Help usa o terciario, para melhor visibilidade.
+  severity("help", "tertiary", "--sg-on-tertiary");
 
   // Plain/Ghost button
   componentVars["--sg-btn-plain-bg"] = "transparent";

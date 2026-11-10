@@ -70,13 +70,15 @@ function cn(...parts: Array<string | false | null | undefined>) {
 
 const PRESET: Record<
   Severity,
-  Required<Pick<SgButtonCustomColors, "bg" | "fg" | "border" | "hoverBg" | "ring">>
+  Required<Pick<SgButtonCustomColors, "bg" | "fg" | "border" | "hoverBg" | "hoverFg" | "ring">> & { activeFg: string }
 > = {
   primary: {
     bg: "var(--sg-btn-primary-bg, hsl(var(--primary)))",
     fg: "var(--sg-btn-primary-fg, hsl(var(--primary-foreground)))",
     border: "var(--sg-btn-primary-border, hsl(var(--primary)))",
     hoverBg: "var(--sg-btn-primary-hover-bg, hsl(var(--primary)))",
+    hoverFg: "var(--sg-btn-primary-hover-fg, var(--sg-btn-primary-fg, hsl(var(--primary-foreground))))",
+    activeFg: "var(--sg-btn-primary-active-fg, var(--sg-btn-primary-fg, hsl(var(--primary-foreground))))",
     ring: "var(--sg-btn-primary-ring, hsl(var(--primary)/0.35))"
   },
   secondary: {
@@ -84,6 +86,8 @@ const PRESET: Record<
     fg: "var(--sg-btn-secondary-fg, hsl(var(--secondary-foreground)))",
     border: "var(--sg-btn-secondary-border, hsl(var(--secondary)))",
     hoverBg: "var(--sg-btn-secondary-hover-bg, hsl(var(--secondary)))",
+    hoverFg: "var(--sg-btn-secondary-hover-fg, var(--sg-btn-secondary-fg, hsl(var(--secondary-foreground))))",
+    activeFg: "var(--sg-btn-secondary-active-fg, var(--sg-btn-secondary-fg, hsl(var(--secondary-foreground))))",
     ring: "var(--sg-btn-secondary-ring, hsl(var(--secondary)/0.35))"
   },
   success: {
@@ -91,6 +95,8 @@ const PRESET: Record<
     fg: "var(--sg-btn-success-fg, hsl(var(--tertiary-foreground, var(--accent-foreground, 0 0% 100%))))",
     border: "var(--sg-btn-success-border, hsl(var(--tertiary, var(--accent))))",
     hoverBg: "var(--sg-btn-success-hover-bg, hsl(var(--tertiary, var(--accent))))",
+    hoverFg: "var(--sg-btn-success-hover-fg, var(--sg-btn-success-fg, hsl(var(--tertiary-foreground, var(--accent-foreground, 0 0% 100%)))))",
+    activeFg: "var(--sg-btn-success-active-fg, var(--sg-btn-success-fg, hsl(var(--tertiary-foreground, var(--accent-foreground, 0 0% 100%)))))",
     ring: "var(--sg-btn-success-ring, hsl(var(--tertiary, var(--accent))/0.35))"
   },
   info: {
@@ -98,6 +104,8 @@ const PRESET: Record<
     fg: "var(--sg-btn-info-fg, hsl(var(--secondary-foreground, var(--primary-foreground))))",
     border: "var(--sg-btn-info-border, hsl(var(--secondary, var(--primary))))",
     hoverBg: "var(--sg-btn-info-hover-bg, hsl(var(--secondary, var(--primary))))",
+    hoverFg: "var(--sg-btn-info-hover-fg, var(--sg-btn-info-fg, hsl(var(--secondary-foreground, var(--primary-foreground)))))",
+    activeFg: "var(--sg-btn-info-active-fg, var(--sg-btn-info-fg, hsl(var(--secondary-foreground, var(--primary-foreground)))))",
     ring: "var(--sg-btn-info-ring, hsl(var(--secondary, var(--primary))/0.35))"
   },
   warning: {
@@ -105,6 +113,8 @@ const PRESET: Record<
     fg: "var(--sg-btn-warning-fg, hsl(var(--secondary-foreground, var(--accent-foreground, 0 0% 100%))))",
     border: "var(--sg-btn-warning-border, hsl(var(--secondary, var(--accent))))",
     hoverBg: "var(--sg-btn-warning-hover-bg, hsl(var(--secondary, var(--accent))))",
+    hoverFg: "var(--sg-btn-warning-hover-fg, var(--sg-btn-warning-fg, hsl(var(--secondary-foreground, var(--accent-foreground, 0 0% 100%)))))",
+    activeFg: "var(--sg-btn-warning-active-fg, var(--sg-btn-warning-fg, hsl(var(--secondary-foreground, var(--accent-foreground, 0 0% 100%)))))",
     ring: "var(--sg-btn-warning-ring, hsl(var(--secondary, var(--accent))/0.35))"
   },
   help: {
@@ -112,6 +122,8 @@ const PRESET: Record<
     fg: "var(--sg-btn-help-fg, hsl(var(--secondary-foreground, var(--primary-foreground))))",
     border: "var(--sg-btn-help-border, hsl(var(--secondary, var(--primary))))",
     hoverBg: "var(--sg-btn-help-hover-bg, hsl(var(--secondary, var(--primary))))",
+    hoverFg: "var(--sg-btn-help-hover-fg, var(--sg-btn-help-fg, hsl(var(--secondary-foreground, var(--primary-foreground)))))",
+    activeFg: "var(--sg-btn-help-active-fg, var(--sg-btn-help-fg, hsl(var(--secondary-foreground, var(--primary-foreground)))))",
     ring: "var(--sg-btn-help-ring, hsl(var(--secondary, var(--primary))/0.35))"
   },
   danger: {
@@ -119,6 +131,8 @@ const PRESET: Record<
     fg: "var(--sg-btn-danger-fg, hsl(var(--destructive-foreground)))",
     border: "var(--sg-btn-danger-border, hsl(var(--destructive)))",
     hoverBg: "var(--sg-btn-danger-hover-bg, hsl(var(--destructive)))",
+    hoverFg: "var(--sg-btn-danger-hover-fg, var(--sg-btn-danger-fg, hsl(var(--destructive-foreground))))",
+    activeFg: "var(--sg-btn-danger-active-fg, var(--sg-btn-danger-fg, hsl(var(--destructive-foreground))))",
     ring: "var(--sg-btn-danger-ring, hsl(var(--destructive)/0.35))"
   },
 };
@@ -135,16 +149,18 @@ const SIZE: Record<
 export function resolveButtonColors(
   severity: Severity,
   custom?: SgButtonCustomColors
-): Required<SgButtonCustomColors> {
+): Required<SgButtonCustomColors> & { activeFg: string } {
   const base = PRESET[severity];
   return {
     bg: custom?.bg ?? base.bg,
     fg: custom?.fg ?? base.fg,
     border: custom?.border ?? base.border,
     hoverBg: custom?.hoverBg ?? base.hoverBg,
-    hoverFg: custom?.hoverFg ?? (custom?.fg ?? base.fg),
+    // Sem cor customizada, cada estado usa o texto escolhido por contraste sobre o proprio fundo (tokens *-hover-fg/*-active-fg).
+    hoverFg: custom?.hoverFg ?? custom?.fg ?? base.hoverFg,
     hoverBorder: custom?.hoverBorder ?? (custom?.border ?? base.border),
     activeBg: custom?.activeBg ?? (custom?.hoverBg ?? base.hoverBg),
+    activeFg: custom?.hoverFg ?? custom?.fg ?? base.activeFg,
     ring: custom?.ring ?? base.ring
   };
 }
@@ -160,6 +176,7 @@ function buildVars(severity: Severity, custom?: SgButtonCustomColors): React.CSS
     ["--sg-btn-hover-fg" as any]: merged.hoverFg,
     ["--sg-btn-hover-border" as any]: merged.hoverBorder,
     ["--sg-btn-active-bg" as any]: merged.activeBg,
+    ["--sg-btn-active-fg" as any]: merged.activeFg,
     ["--sg-btn-ring" as any]: merged.ring,
     ["--sg-btn-tint" as any]: `var(--sg-${toneKey}-600)`
   };
@@ -171,7 +188,7 @@ function appearanceClass(appearance: Appearance) {
       return cn(
         "bg-[var(--sg-btn-bg)] text-[var(--sg-btn-fg)] border border-[var(--sg-btn-border)]",
         "hover:bg-[var(--sg-btn-hover-bg)] hover:text-[var(--sg-btn-hover-fg)] hover:border-[var(--sg-btn-hover-border)]",
-        "active:bg-[var(--sg-btn-active-bg)]"
+        "active:bg-[var(--sg-btn-active-bg)] active:text-[var(--sg-btn-active-fg)]"
       );
     case "outline":
       return cn(

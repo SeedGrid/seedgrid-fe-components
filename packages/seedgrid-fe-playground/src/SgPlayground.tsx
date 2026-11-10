@@ -608,6 +608,7 @@ const SANDPACK_FALLBACK_THEME_VARS: Readonly<Record<string, string>> = {
   "--sg-btn-hover-fg": "rgb(255 255 255)",
   "--sg-btn-hover-border": "rgb(21 128 61)",
   "--sg-btn-active-bg": "rgb(22 101 52)",
+  "--sg-btn-active-fg": "rgb(255 255 255)",
   "--sg-btn-ring": "rgb(74 222 128 / 0.4)",
   "--sg-btn-tint": "22 163 74",
   // Avatar component vars
@@ -691,7 +692,7 @@ const SANDPACK_SG_VARS = [
   // Button component vars
   "--sg-btn-bg", "--sg-btn-fg", "--sg-btn-border",
   "--sg-btn-hover-bg", "--sg-btn-hover-fg", "--sg-btn-hover-border",
-  "--sg-btn-active-bg", "--sg-btn-ring", "--sg-btn-tint",
+  "--sg-btn-active-bg", "--sg-btn-active-fg", "--sg-btn-ring", "--sg-btn-tint",
   // Avatar component vars
   "--sg-avatar-bg", "--sg-avatar-fg", "--sg-avatar-border", "--sg-avatar-ring",
   // Badge component vars
@@ -727,6 +728,7 @@ body {
 .hover\\:text-\\[var\\(--sg-btn-hover-fg\\)\\]:hover { color: var(--sg-btn-hover-fg); }
 .hover\\:border-\\[var\\(--sg-btn-hover-border\\)\\]:hover { border-color: var(--sg-btn-hover-border); }
 .active\\:bg-\\[var\\(--sg-btn-active-bg\\)\\]:active { background-color: var(--sg-btn-active-bg); }
+.active\\:text-\\[var\\(--sg-btn-active-fg\\)\\]:active { color: var(--sg-btn-active-fg); }
 .focus-visible\\:ring-\\[var\\(--sg-btn-ring\\)\\]:focus-visible { box-shadow: 0 0 0 4px var(--sg-btn-ring); }
 .hover\\:bg-\\[rgb\\(var\\(--sg-btn-tint\\)\\/0\\.12\\)\\]:hover { background-color: rgb(var(--sg-btn-tint) / 0.12); }
 .active\\:bg-\\[rgb\\(var\\(--sg-btn-tint\\)\\/0\\.18\\)\\]:active { background-color: rgb(var(--sg-btn-tint) / 0.18); }

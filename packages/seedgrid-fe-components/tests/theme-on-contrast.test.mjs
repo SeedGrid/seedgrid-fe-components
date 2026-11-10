@@ -132,3 +132,64 @@ test("regressao: par real do botao (bg 600 x fg) tem contraste >= 4,5 (ou o melh
     assert.equal(toHex(vars["--sg-on-primary"]).toUpperCase(), cu.pickOnColor(toHex(vars["--sg-primary-500"])), `${name} ${mode}: on-primary`);
   }
 });
+
+// Estados do botao: normal (600), hover (700) e active (800). O fundo de cada estado e o do tom da escala,
+// ajustado (adjustBgForOnColor) quando o melhor texto fica < 4,5:1; o texto e o de maior contraste sobre ELE.
+test("regressao: pares reais do botao em todos os estados (normal, hover, active)", { skip: !esbuildPath }, async () => {
+  const cu = await load("colorUtils.ts");
+  const { generateThemeVars } = await load("themeGenerator.ts");
+  const { generateComponentTokens } = await load("componentTokens.ts");
+  const toHex = (v) => { const [r, g, b] = v.replace(/[^\d ]/g, "").trim().split(" ").map(Number); return cu.rgbToHex(r, g, b); };
+  const best = (bg) => Math.max(...cu.ON_COLOR_CANDIDATES.map((c) => cu.contrastRatio(bg, c)));
+  const roles = { primary: "primary", secondary: "secondary", success: "success", info: "info", warning: "warning", danger: "error", help: "tertiary" };
+  const states = { "": "600", "hover-": "700", "active-": "800" };
+  let pairs = 0;
+  for (const [name, seed] of Object.entries(SEEDS)) for (const mode of ["light", "dark"]) {
+    const base = generateThemeVars({ seed }, mode);
+    const vars = { ...base, ...generateComponentTokens(base) };
+    for (const [role, scale] of Object.entries(roles)) for (const [st, tone] of Object.entries(states)) {
+      const original = toHex(base[`--sg-${scale}-${tone}`]);
+      const bg = toHex(vars[`--sg-btn-${role}-${st}bg`]);
+      const fg = toHex(vars[`--sg-btn-${role}-${st}fg`]);
+      const why = `${name} ${mode}: botao ${role} ${st || "normal-"}(${tone}) (${bg}, ${fg})`;
+      pairs++;
+      assert.equal(bg, cu.adjustBgForOnColor(original), why);
+      assert.equal(fg.toUpperCase(), cu.pickOnColor(bg), why);
+      if (best(original) >= cu.MIN_CONTRAST_RATIO) assert.equal(bg, original, `${why}: ja alcanca, nao ajusta`);
+      assert.ok(cu.contrastRatio(bg, fg) >= cu.MIN_CONTRAST_RATIO, why); // nas 10 sementes o ajuste sempre alcanca
+    }
+    // A borda acompanha o fundo ajustado do estado normal.
+    for (const role of Object.keys(roles)) assert.equal(vars[`--sg-btn-${role}-border`], vars[`--sg-btn-${role}-bg`], `${name} ${mode}: borda ${role}`);
+  }
+  assert.equal(pairs, 10 * 2 * 7 * 3);
+});
+
+test("adjustBgForOnColor: regra e limites", { skip: !esbuildPath }, async () => {
+  const cu = await load("colorUtils.ts");
+  const best = (bg) => Math.max(...cu.ON_COLOR_CANDIDATES.map((c) => cu.contrastRatio(bg, c)));
+  assert.equal(cu.MAX_BG_ADJUST_STEPS, 15);
+  for (const bg of ["#16803D", "#FFFFFF", "#000000", "#F59E0B", "#D32F2F"]) assert.equal(cu.adjustBgForOnColor(bg), bg, bg);
+  // danger do tema claro: 4,47:1 -> escurece 1 passo e o texto vira branco.
+  const out = cu.adjustBgForOnColor("#ED1C08");
+  assert.notEqual(out.toLowerCase(), "#ed1c08");
+  assert.equal(cu.pickOnColor(out), "#FFFFFF");
+  assert.ok(cu.contrastRatio(out, "#FFFFFF") >= cu.MIN_CONTRAST_RATIO);
+  // Varredura: variacao <= 15 passos de L (+ arredondamento); alcanca 4,5 ou devolve o original.
+  for (let h = 0; h < 360; h += 30) for (const s of [40, 70, 100]) for (let l = 30; l <= 80; l += 2.5) {
+    const bg = cu.hslToHex(h, s, l);
+    const o = cu.adjustBgForOnColor(bg);
+    if (o === bg) continue;
+    const a = cu.rgbToHsl(...Object.values(cu.hexToRgb(bg)));
+    const b = cu.rgbToHsl(...Object.values(cu.hexToRgb(o)));
+    assert.ok(Math.abs(b.l - a.l) <= cu.MAX_BG_ADJUST_STEPS + 0.5, bg);
+    assert.ok(best(o) >= cu.MIN_CONTRAST_RATIO, bg);
+  }
+});
+
+test("mesmo fundo ajustado que o Flutter (varredura gravada nos vetores)", { skip: !esbuildPath || !existsSync(VECTORS) }, async () => {
+  const V = JSON.parse(readFileSync(VECTORS, "utf8"));
+  const cu = await load("colorUtils.ts");
+  assert.equal(V.maxBgAdjustSteps, cu.MAX_BG_ADJUST_STEPS);
+  assert.ok(V.adjustBgForOnColor.length > 1000);
+  for (const c of V.adjustBgForOnColor) assert.equal(cu.adjustBgForOnColor(c.in), c.out, JSON.stringify(c));
+});

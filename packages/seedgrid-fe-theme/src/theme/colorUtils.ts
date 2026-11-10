@@ -101,6 +101,36 @@ export function pickOnColor(bgHex: string) {
   return best;
 }
 
+/** Maximo de passos de 1% de luminosidade HSL que `adjustBgForOnColor` aplica ao fundo. */
+export const MAX_BG_ADJUST_STEPS = 15;
+
+/** Maior razao de contraste que algum candidato de texto alcanca sobre `bgHex`. */
+export function bestOnContrast(bgHex: string) {
+  let best = -1;
+  for (const candidate of ON_COLOR_CANDIDATES) best = Math.max(best, contrastRatio(bgHex, candidate));
+  return best;
+}
+
+/**
+ * Ajusta o fundo quando o MELHOR texto possivel sobre ele fica abaixo de MIN_CONTRAST_RATIO: testa escurecer e
+ * clarear em passos de 1% de luminosidade HSL (no maximo MAX_BG_ADJUST_STEPS) e usa a direcao que alcanca o minimo
+ * com menos passos (empate: escurece). Matiz e saturacao ficam como estao. Sem alcancar em nenhuma direcao,
+ * devolve o fundo original (o texto continua sendo o de maior contraste).
+ */
+export function adjustBgForOnColor(bgHex: string) {
+  if (bestOnContrast(bgHex) >= MIN_CONTRAST_RATIO) return bgHex;
+  const { r, g, b } = hexToRgb(bgHex);
+  const { h, s, l } = rgbToHsl(r, g, b);
+  for (let step = 1; step <= MAX_BG_ADJUST_STEPS; step++) {
+    // Em cada passo, escurecer vem antes de clarear: o empate fica com o fundo mais escuro (texto branco).
+    for (const dir of [-1, 1]) {
+      const candidate = hslToHex(h, s, clamp(l + dir * step, 0, 100));
+      if (bestOnContrast(candidate) >= MIN_CONTRAST_RATIO) return candidate;
+    }
+  }
+  return bgHex;
+}
+
 export function toRgbVarValue(hex: string) {
   const { r, g, b } = hexToRgb(hex);
   return `${r} ${g} ${b}`; // <- ideal format for Tailwind rgb(var(--x)/alpha)
