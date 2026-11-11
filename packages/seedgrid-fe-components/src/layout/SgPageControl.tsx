@@ -14,6 +14,7 @@ export type SgPageControlPageProps = {
   icon?: React.ReactNode;
   hidden?: boolean;
   enabled?: boolean;
+  /** Mantem esta pagina montada (oculta) quando inativa. Sem valor, vale o `keepMounted` do SgPageControl. */
   keepMounted?: boolean;
   className?: string;
   style?: React.CSSProperties;
@@ -392,8 +393,10 @@ export function SgPageControl(props: Readonly<SgPageControlProps>) {
       <div className={cn("rounded-b-md border border-t-0 border-border bg-background", panelClassName)}>
         {visiblePages.length === 0 ? (
           <div className={cn(sizeClasses.panel, "text-sm text-muted-foreground")}>{resolvedEmptyMessage}</div>
-        ) : keepMounted ? (
-          visiblePages.map((record) => {
+        ) : visiblePages.some((record) => record.props.keepMounted ?? keepMounted) ? (
+          visiblePages
+            .filter((record) => record.id === resolvedActiveId || (record.props.keepMounted ?? keepMounted))
+            .map((record) => {
             const isActive = record.id === resolvedActiveId;
             const tabId = `${rootId}-tab-${record.id}`;
             const panelId = `${rootId}-panel-${record.id}`;

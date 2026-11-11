@@ -98,6 +98,11 @@
       "required": false
     },
     {
+      "name": "borderRadius",
+      "type": "string | number",
+      "required": false
+    },
+    {
       "name": "cacheEnabled",
       "type": "boolean",
       "required": false
@@ -105,6 +110,11 @@
     {
       "name": "cacheTTL",
       "type": "number",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
       "required": false
     },
     {
@@ -118,8 +128,18 @@
       "required": false
     },
     {
+      "name": "control",
+      "type": "any",
+      "required": false
+    },
+    {
       "name": "delay",
       "type": "number",
+      "required": false
+    },
+    {
+      "name": "elevation",
+      "type": "\"sm\" | \"md\" | \"lg\" | \"none\"",
       "required": false
     },
     {
@@ -168,6 +188,11 @@
       "required": true
     },
     {
+      "name": "inputProps",
+      "type": "(InputHTMLAttributes<HTMLInputElement> & { ref?: Ref<HTMLInputElement>; })",
+      "required": false
+    },
+    {
       "name": "itemTooltip",
       "type": "((item: SgAutocompleteItem) => ReactNode)",
       "required": false
@@ -180,6 +205,11 @@
     {
       "name": "labelAlign",
       "type": "\"start\" | \"center\" | \"end\"",
+      "required": false
+    },
+    {
+      "name": "labelClassName",
+      "type": "string",
       "required": false
     },
     {
@@ -323,6 +353,11 @@
       "required": false
     },
     {
+      "name": "register",
+      "type": "UseFormRegister<any>",
+      "required": false
+    },
+    {
       "name": "renderEmpty",
       "type": "((query: string) => ReactNode)",
       "required": false
@@ -355,6 +390,11 @@
     {
       "name": "requiredMessage",
       "type": "string",
+      "required": false
+    },
+    {
+      "name": "rules",
+      "type": "RegisterOptions<any>",
       "required": false
     },
     {
@@ -544,6 +584,11 @@
       "required": false
     },
     {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
       "name": "customColors",
       "type": "SgBadgeCustomColors",
       "required": false
@@ -629,6 +674,11 @@
       "required": false
     },
     {
+      "name": "style",
+      "type": "CSSProperties",
+      "required": false
+    },
+    {
       "name": "title",
       "type": "string",
       "required": false
@@ -651,14 +701,29 @@
       "required": true
     },
     {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
       "name": "placement",
       "type": "SgBadgeOverlayPlacement",
+      "required": false
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties",
       "required": false
     }
   ],
   "SgBreadcrumb": [
     {
       "name": "ariaLabel",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "className",
       "type": "string",
       "required": false
     },
@@ -718,6 +783,11 @@
       "required": false
     },
     {
+      "name": "style",
+      "type": "CSSProperties",
+      "required": false
+    },
+    {
       "name": "variant",
       "type": "\"primary\" | \"default\" | \"subtle\"",
       "required": false
@@ -732,6 +802,11 @@
     {
       "name": "customColors",
       "type": "SgButtonCustomColors",
+      "required": false
+    },
+    {
+      "name": "elevation",
+      "type": "Elevation",
       "required": false
     },
     {
@@ -899,6 +974,11 @@
       "description": "Mostra o botao de alternar entre frontal e traseira (padrao `true`)."
     },
     {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
       "name": "enabled",
       "type": "boolean",
       "required": false
@@ -994,6 +1074,11 @@
     {
       "name": "children",
       "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
       "required": false
     },
     {
@@ -1142,6 +1227,12 @@
       "description": "Enable circular mode (infinite loop)"
     },
     {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "description": "Custom class name for container"
+    },
+    {
       "name": "customNavigators",
       "type": "{ prev?: ReactNode; next?: ReactNode; }",
       "required": false,
@@ -1214,6 +1305,12 @@
       "description": "Show navigation buttons"
     },
     {
+      "name": "style",
+      "type": "CSSProperties",
+      "required": false,
+      "description": "Custom inline style for container"
+    },
+    {
       "name": "width",
       "type": "string | number",
       "required": false,
@@ -1229,6 +1326,16 @@
     {
       "name": "checkAllLabel",
       "type": "string",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "control",
+      "type": "any",
       "required": false
     },
     {
@@ -1282,8 +1389,18 @@
       "required": false
     },
     {
+      "name": "register",
+      "type": "UseFormRegister<any>",
+      "required": false
+    },
+    {
       "name": "required",
       "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "rules",
+      "type": "RegisterOptions<any>",
       "required": false
     },
     {
@@ -1300,6 +1417,11 @@
       "name": "source",
       "type": "SgCheckboxGroupOption[]",
       "required": true
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties",
+      "required": false
     },
     {
       "name": "title",
@@ -1326,6 +1448,11 @@
     {
       "name": "centerOverlay",
       "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
       "required": false
     },
     {
@@ -1375,6 +1502,11 @@
       "required": false
     },
     {
+      "name": "style",
+      "type": "CSSProperties",
+      "required": false
+    },
+    {
       "name": "theme",
       "type": "SgClockTheme",
       "required": false
@@ -1391,6 +1523,11 @@
     }
   ],
   "SgClockThemePicker": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
     {
       "name": "defaultOpen",
       "type": "boolean",
@@ -1439,6 +1576,26 @@
   ],
   "SgCombobox": [
     {
+      "name": "borderRadius",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "control",
+      "type": "any",
+      "required": false
+    },
+    {
+      "name": "elevation",
+      "type": "\"sm\" | \"md\" | \"lg\" | \"none\"",
+      "required": false
+    },
+    {
       "name": "emptyText",
       "type": "string",
       "required": false
@@ -1479,6 +1636,11 @@
       "required": true
     },
     {
+      "name": "inputProps",
+      "type": "(InputHTMLAttributes<HTMLInputElement> & { ref?: Ref<HTMLInputElement>; })",
+      "required": false
+    },
+    {
       "name": "itemTooltip",
       "type": "((item: SgAutocompleteItem) => ReactNode)",
       "required": false
@@ -1491,6 +1653,11 @@
     {
       "name": "labelAlign",
       "type": "\"start\" | \"center\" | \"end\"",
+      "required": false
+    },
+    {
+      "name": "labelClassName",
+      "type": "string",
       "required": false
     },
     {
@@ -1604,6 +1771,11 @@
       "required": false
     },
     {
+      "name": "register",
+      "type": "UseFormRegister<any>",
+      "required": false
+    },
+    {
       "name": "renderFooter",
       "type": "((query: string, hasResults: boolean) => ReactNode)",
       "required": false
@@ -1631,6 +1803,11 @@
     {
       "name": "requiredMessage",
       "type": "string",
+      "required": false
+    },
+    {
+      "name": "rules",
+      "type": "RegisterOptions<any>",
       "required": false
     },
     {
@@ -1706,6 +1883,11 @@
       "required": false
     },
     {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
       "name": "closeable",
       "type": "boolean",
       "required": false
@@ -1748,6 +1930,11 @@
     {
       "name": "defaultOpen",
       "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "elevation",
+      "type": "\"sm\" | \"md\" | \"lg\" | BoxShadow",
       "required": false
     },
     {
@@ -1841,6 +2028,11 @@
       "required": false
     },
     {
+      "name": "style",
+      "type": "CSSProperties",
+      "required": false
+    },
+    {
       "name": "subtitle",
       "type": "ReactNode",
       "required": false
@@ -1862,6 +2054,11 @@
     }
   ],
   "SgDatatable": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
     {
       "name": "columnManagerLabel",
       "type": "string",
@@ -2057,6 +2254,11 @@
       "required": false
     },
     {
+      "name": "style",
+      "type": "CSSProperties",
+      "required": false
+    },
+    {
       "name": "tableClassName",
       "type": "string",
       "required": false
@@ -2104,6 +2306,11 @@
       "required": false
     },
     {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
       "name": "closeable",
       "type": "boolean",
       "required": false
@@ -2131,6 +2338,11 @@
     {
       "name": "defaultOpen",
       "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "elevation",
+      "type": "\"sm\" | \"md\" | \"lg\" | BoxShadow",
       "required": false
     },
     {
@@ -2209,6 +2421,11 @@
       "required": false
     },
     {
+      "name": "style",
+      "type": "CSSProperties",
+      "required": false
+    },
+    {
       "name": "subtitle",
       "type": "ReactNode",
       "required": false
@@ -2249,6 +2466,12 @@
       "description": "Estrategia de animacao para mudancas por prop `value`."
     },
     {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "description": "Classes CSS adicionais."
+    },
+    {
       "name": "color",
       "type": "string",
       "required": false,
@@ -2279,6 +2502,12 @@
       "description": "Quantidade de folhas visiveis na pilha (min 2, max 30). Ignorado se totalNumberPages for definido."
     },
     {
+      "name": "style",
+      "type": "CSSProperties",
+      "required": false,
+      "description": "Estilo inline adicional."
+    },
+    {
       "name": "totalNumberPages",
       "type": "number",
       "required": false,
@@ -2304,6 +2533,11 @@
       "required": true
     },
     {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
       "name": "defaultState",
       "type": "SgDockLayoutState",
       "required": false
@@ -2312,6 +2546,11 @@
       "name": "id",
       "type": "string",
       "required": true
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties",
+      "required": false
     }
   ],
   "SgDockMenu": [
@@ -2322,10 +2561,28 @@
       "description": "Background color"
     },
     {
+      "name": "borderRadius",
+      "type": "number",
+      "required": false,
+      "description": "Border radius"
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "description": "Custom class name for container"
+    },
+    {
       "name": "dragId",
       "type": "string",
       "required": false,
       "description": "ID for persisting drag position"
+    },
+    {
+      "name": "elevation",
+      "type": "\"sm\" | \"md\" | \"lg\" | \"none\"",
+      "required": false,
+      "description": "Shadow elevation"
     },
     {
       "name": "enableDragDrop",
@@ -2394,6 +2651,12 @@
       "description": "Show labels on hover"
     },
     {
+      "name": "style",
+      "type": "CSSProperties",
+      "required": false,
+      "description": "Custom style"
+    },
+    {
       "name": "zIndex",
       "type": "number",
       "required": false,
@@ -2454,6 +2717,16 @@
       "required": false
     },
     {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties",
+      "required": false
+    },
+    {
       "name": "zone",
       "type": "SgDockZoneId",
       "required": true
@@ -2486,6 +2759,11 @@
       "required": true
     },
     {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
       "name": "closeOnEsc",
       "type": "boolean",
       "required": false
@@ -2503,6 +2781,11 @@
     {
       "name": "defaultOpen",
       "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "elevation",
+      "type": "SgExpandablePanelElevation",
       "required": false
     },
     {
@@ -2591,6 +2874,11 @@
       "required": false
     },
     {
+      "name": "style",
+      "type": "CSSProperties",
+      "required": false
+    },
+    {
       "name": "trapFocus",
       "type": "boolean",
       "required": false
@@ -2602,6 +2890,12 @@
       "type": "string",
       "required": false,
       "description": "Card background color."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "description": "Additional CSS classes on the outer card wrapper."
     },
     {
       "name": "color",
@@ -2634,6 +2928,16 @@
       "type": "string",
       "required": false,
       "description": "Tipos extras em texto livre (`.pdf`, `image/png`, `image/*`), separados por virgula; soma-se ao mediaType."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "control",
+      "type": "any",
+      "required": false
     },
     {
       "name": "defaultValue",
@@ -2757,6 +3061,11 @@
       "required": false
     },
     {
+      "name": "register",
+      "type": "UseFormRegister<any>",
+      "required": false
+    },
+    {
       "name": "required",
       "type": "boolean",
       "required": false
@@ -2764,6 +3073,11 @@
     {
       "name": "requiredMessage",
       "type": "string",
+      "required": false
+    },
+    {
+      "name": "rules",
+      "type": "RegisterOptions<any>",
       "required": false
     },
     {
@@ -2792,6 +3106,12 @@
     }
   ],
   "SgFlipDigit": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "description": "Additional CSS classes applied to the outer wrapper"
+    },
     {
       "name": "fontSize",
       "type": "number",
@@ -2852,6 +3172,11 @@
       "required": false
     },
     {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
       "name": "color",
       "type": "string",
       "required": false
@@ -2864,6 +3189,11 @@
     {
       "name": "dragId",
       "type": "string",
+      "required": false
+    },
+    {
+      "name": "elevation",
+      "type": "FABElevation",
       "required": false
     },
     {
@@ -2947,6 +3277,11 @@
       "required": false
     },
     {
+      "name": "style",
+      "type": "CSSProperties",
+      "required": false
+    },
+    {
       "name": "transitionDelay",
       "type": "number",
       "required": false
@@ -3016,8 +3351,18 @@
       "required": true
     },
     {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
       "name": "height",
       "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties",
       "required": false
     },
     {
@@ -3043,6 +3388,16 @@
       "type": "number",
       "required": false,
       "description": "Proporcao largura/altura exigida (1 = quadrada, 16 / 9)."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "control",
+      "type": "any",
+      "required": false
     },
     {
       "name": "defaultValue",
@@ -3149,6 +3504,11 @@
       "required": false
     },
     {
+      "name": "register",
+      "type": "UseFormRegister<any>",
+      "required": false
+    },
+    {
       "name": "required",
       "type": "boolean",
       "required": false
@@ -3156,6 +3516,11 @@
     {
       "name": "requiredMessage",
       "type": "string",
+      "required": false
+    },
+    {
+      "name": "rules",
+      "type": "RegisterOptions<any>",
       "required": false
     },
     {
@@ -3172,8 +3537,28 @@
       "required": false
     },
     {
+      "name": "borderRadius",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
       "name": "clearButton",
       "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "control",
+      "type": "any",
+      "required": false
+    },
+    {
+      "name": "elevation",
+      "type": "\"sm\" | \"md\" | \"lg\" | \"none\"",
       "required": false
     },
     {
@@ -3207,6 +3592,11 @@
       "required": true
     },
     {
+      "name": "inputProps",
+      "type": "(InputHTMLAttributes<HTMLInputElement> & { ref?: Ref<HTMLInputElement>; })",
+      "required": false
+    },
+    {
       "name": "label",
       "type": "string",
       "required": false
@@ -3214,6 +3604,11 @@
     {
       "name": "labelAlign",
       "type": "\"start\" | \"center\" | \"end\"",
+      "required": false
+    },
+    {
+      "name": "labelClassName",
+      "type": "string",
       "required": false
     },
     {
@@ -3334,6 +3729,11 @@
       "required": false
     },
     {
+      "name": "register",
+      "type": "UseFormRegister<any>",
+      "required": false
+    },
+    {
       "name": "required",
       "type": "boolean",
       "required": false
@@ -3341,6 +3741,11 @@
     {
       "name": "requiredMessage",
       "type": "string",
+      "required": false
+    },
+    {
+      "name": "rules",
+      "type": "RegisterOptions<any>",
       "required": false
     },
     {
@@ -3381,8 +3786,28 @@
   ],
   "SgInputCNPJ": [
     {
+      "name": "borderRadius",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
       "name": "clearButton",
       "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "control",
+      "type": "any",
+      "required": false
+    },
+    {
+      "name": "elevation",
+      "type": "\"sm\" | \"md\" | \"lg\" | \"none\"",
       "required": false
     },
     {
@@ -3416,6 +3841,11 @@
       "required": true
     },
     {
+      "name": "inputProps",
+      "type": "(InputHTMLAttributes<HTMLInputElement> & { ref?: Ref<HTMLInputElement>; })",
+      "required": false
+    },
+    {
       "name": "invalidMessage",
       "type": "string",
       "required": false
@@ -3428,6 +3858,11 @@
     {
       "name": "labelAlign",
       "type": "\"start\" | \"center\" | \"end\"",
+      "required": false
+    },
+    {
+      "name": "labelClassName",
+      "type": "string",
       "required": false
     },
     {
@@ -3553,6 +3988,11 @@
       "required": false
     },
     {
+      "name": "register",
+      "type": "UseFormRegister<any>",
+      "required": false
+    },
+    {
       "name": "required",
       "type": "boolean",
       "required": false
@@ -3560,6 +4000,11 @@
     {
       "name": "requiredMessage",
       "type": "string",
+      "required": false
+    },
+    {
+      "name": "rules",
+      "type": "RegisterOptions<any>",
       "required": false
     },
     {
@@ -3610,8 +4055,28 @@
   ],
   "SgInputCPF": [
     {
+      "name": "borderRadius",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
       "name": "clearButton",
       "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "control",
+      "type": "any",
+      "required": false
+    },
+    {
+      "name": "elevation",
+      "type": "\"sm\" | \"md\" | \"lg\" | \"none\"",
       "required": false
     },
     {
@@ -3645,6 +4110,11 @@
       "required": true
     },
     {
+      "name": "inputProps",
+      "type": "(InputHTMLAttributes<HTMLInputElement> & { ref?: Ref<HTMLInputElement>; })",
+      "required": false
+    },
+    {
       "name": "invalidMessage",
       "type": "string",
       "required": false
@@ -3657,6 +4127,11 @@
     {
       "name": "labelAlign",
       "type": "\"start\" | \"center\" | \"end\"",
+      "required": false
+    },
+    {
+      "name": "labelClassName",
+      "type": "string",
       "required": false
     },
     {
@@ -3762,6 +4237,11 @@
       "required": false
     },
     {
+      "name": "register",
+      "type": "UseFormRegister<any>",
+      "required": false
+    },
+    {
       "name": "required",
       "type": "boolean",
       "required": false
@@ -3769,6 +4249,11 @@
     {
       "name": "requiredMessage",
       "type": "string",
+      "required": false
+    },
+    {
+      "name": "rules",
+      "type": "RegisterOptions<any>",
       "required": false
     },
     {
@@ -3814,8 +4299,28 @@
   ],
   "SgInputCPFCNPJ": [
     {
+      "name": "borderRadius",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
       "name": "clearButton",
       "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "control",
+      "type": "any",
+      "required": false
+    },
+    {
+      "name": "elevation",
+      "type": "\"sm\" | \"md\" | \"lg\" | \"none\"",
       "required": false
     },
     {
@@ -3849,6 +4354,11 @@
       "required": true
     },
     {
+      "name": "inputProps",
+      "type": "(InputHTMLAttributes<HTMLInputElement> & { ref?: Ref<HTMLInputElement>; })",
+      "required": false
+    },
+    {
       "name": "invalidMessage",
       "type": "string",
       "required": false
@@ -3861,6 +4371,11 @@
     {
       "name": "labelAlign",
       "type": "\"start\" | \"center\" | \"end\"",
+      "required": false
+    },
+    {
+      "name": "labelClassName",
+      "type": "string",
       "required": false
     },
     {
@@ -3990,6 +4505,11 @@
       "required": false
     },
     {
+      "name": "register",
+      "type": "UseFormRegister<any>",
+      "required": false
+    },
+    {
       "name": "required",
       "type": "boolean",
       "required": false
@@ -3997,6 +4517,11 @@
     {
       "name": "requiredMessage",
       "type": "string",
+      "required": false
+    },
+    {
+      "name": "rules",
+      "type": "RegisterOptions<any>",
       "required": false
     },
     {
@@ -4053,8 +4578,23 @@
       "required": false
     },
     {
+      "name": "borderRadius",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
       "name": "clearButton",
       "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "control",
+      "type": "any",
       "required": false
     },
     {
@@ -4118,7 +4658,17 @@
       "required": true
     },
     {
+      "name": "inputProps",
+      "type": "(InputHTMLAttributes<HTMLInputElement> & { ref?: Ref<HTMLInputElement>; })",
+      "required": false
+    },
+    {
       "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelClassName",
       "type": "string",
       "required": false
     },
@@ -4203,6 +4753,11 @@
       "required": false
     },
     {
+      "name": "register",
+      "type": "UseFormRegister<any>",
+      "required": false
+    },
+    {
       "name": "required",
       "type": "boolean",
       "required": false
@@ -4210,6 +4765,11 @@
     {
       "name": "requiredMessage",
       "type": "string",
+      "required": false
+    },
+    {
+      "name": "rules",
+      "type": "RegisterOptions<any>",
       "required": false
     },
     {
@@ -4265,8 +4825,28 @@
       "required": false
     },
     {
+      "name": "borderRadius",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
       "name": "clearButton",
       "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "control",
+      "type": "any",
+      "required": false
+    },
+    {
+      "name": "elevation",
+      "type": "\"sm\" | \"md\" | \"lg\" | \"none\"",
       "required": false
     },
     {
@@ -4300,6 +4880,11 @@
       "required": true
     },
     {
+      "name": "inputProps",
+      "type": "(InputHTMLAttributes<HTMLInputElement> & { ref?: Ref<HTMLInputElement>; })",
+      "required": false
+    },
+    {
       "name": "label",
       "type": "string",
       "required": false
@@ -4307,6 +4892,11 @@
     {
       "name": "labelAlign",
       "type": "\"start\" | \"center\" | \"end\"",
+      "required": false
+    },
+    {
+      "name": "labelClassName",
+      "type": "string",
       "required": false
     },
     {
@@ -4417,6 +5007,11 @@
       "required": false
     },
     {
+      "name": "register",
+      "type": "UseFormRegister<any>",
+      "required": false
+    },
+    {
       "name": "required",
       "type": "boolean",
       "required": false
@@ -4424,6 +5019,11 @@
     {
       "name": "requiredMessage",
       "type": "string",
+      "required": false
+    },
+    {
+      "name": "rules",
+      "type": "RegisterOptions<any>",
       "required": false
     },
     {
@@ -4469,8 +5069,23 @@
       "required": false
     },
     {
+      "name": "borderRadius",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
       "name": "clearButton",
       "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "control",
+      "type": "any",
       "required": false
     },
     {
@@ -4478,6 +5093,11 @@
       "type": "string | Date | null",
       "required": false,
       "description": "Instante inicial (campo nao controlado)."
+    },
+    {
+      "name": "elevation",
+      "type": "\"sm\" | \"md\" | \"lg\" | \"none\"",
+      "required": false
     },
     {
       "name": "enabled",
@@ -4510,6 +5130,11 @@
       "required": true
     },
     {
+      "name": "inputProps",
+      "type": "(InputHTMLAttributes<HTMLInputElement> & { ref?: Ref<HTMLInputElement>; })",
+      "required": false
+    },
+    {
       "name": "label",
       "type": "string",
       "required": false
@@ -4517,6 +5142,11 @@
     {
       "name": "labelAlign",
       "type": "\"start\" | \"center\" | \"end\"",
+      "required": false
+    },
+    {
+      "name": "labelClassName",
+      "type": "string",
       "required": false
     },
     {
@@ -4636,6 +5266,11 @@
       "required": false
     },
     {
+      "name": "register",
+      "type": "UseFormRegister<any>",
+      "required": false
+    },
+    {
       "name": "required",
       "type": "boolean",
       "required": false
@@ -4643,6 +5278,11 @@
     {
       "name": "requiredMessage",
       "type": "string",
+      "required": false
+    },
+    {
+      "name": "rules",
+      "type": "RegisterOptions<any>",
       "required": false
     },
     {
@@ -4711,8 +5351,28 @@
       "required": false
     },
     {
+      "name": "borderRadius",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
       "name": "clearButton",
       "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "control",
+      "type": "any",
+      "required": false
+    },
+    {
+      "name": "elevation",
+      "type": "\"sm\" | \"md\" | \"lg\" | \"none\"",
       "required": false
     },
     {
@@ -4746,6 +5406,11 @@
       "required": true
     },
     {
+      "name": "inputProps",
+      "type": "(InputHTMLAttributes<HTMLInputElement> & { ref?: Ref<HTMLInputElement>; })",
+      "required": false
+    },
+    {
       "name": "invalidMessage",
       "type": "string",
       "required": false
@@ -4758,6 +5423,11 @@
     {
       "name": "labelAlign",
       "type": "\"start\" | \"center\" | \"end\"",
+      "required": false
+    },
+    {
+      "name": "labelClassName",
+      "type": "string",
       "required": false
     },
     {
@@ -4857,6 +5527,11 @@
       "required": false
     },
     {
+      "name": "register",
+      "type": "UseFormRegister<any>",
+      "required": false
+    },
+    {
       "name": "required",
       "type": "boolean",
       "required": false
@@ -4864,6 +5539,11 @@
     {
       "name": "requiredMessage",
       "type": "string",
+      "required": false
+    },
+    {
+      "name": "rules",
+      "type": "RegisterOptions<any>",
       "required": false
     },
     {
@@ -4909,13 +5589,33 @@
       "required": false
     },
     {
+      "name": "borderRadius",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
       "name": "clearButton",
       "type": "boolean",
       "required": false
     },
     {
+      "name": "control",
+      "type": "any",
+      "required": false
+    },
+    {
       "name": "decimals",
       "type": "number",
+      "required": false
+    },
+    {
+      "name": "elevation",
+      "type": "\"sm\" | \"md\" | \"lg\" | \"none\"",
       "required": false
     },
     {
@@ -4954,6 +5654,11 @@
       "required": true
     },
     {
+      "name": "inputProps",
+      "type": "(InputHTMLAttributes<HTMLInputElement> & { ref?: Ref<HTMLInputElement>; })",
+      "required": false
+    },
+    {
       "name": "label",
       "type": "string",
       "required": false
@@ -4961,6 +5666,11 @@
     {
       "name": "labelAlign",
       "type": "\"start\" | \"center\" | \"end\"",
+      "required": false
+    },
+    {
+      "name": "labelClassName",
+      "type": "string",
       "required": false
     },
     {
@@ -5049,6 +5759,11 @@
       "required": false
     },
     {
+      "name": "register",
+      "type": "UseFormRegister<any>",
+      "required": false
+    },
+    {
       "name": "required",
       "type": "boolean",
       "required": false
@@ -5056,6 +5771,11 @@
     {
       "name": "requiredMessage",
       "type": "string",
+      "required": false
+    },
+    {
+      "name": "rules",
+      "type": "RegisterOptions<any>",
       "required": false
     },
     {
@@ -5096,6 +5816,16 @@
   ],
   "SgInputOTP": [
     {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "control",
+      "type": "any",
+      "required": false
+    },
+    {
       "name": "defaultValue",
       "type": "string",
       "required": false
@@ -5124,6 +5854,11 @@
       "name": "id",
       "type": "string",
       "required": true
+    },
+    {
+      "name": "inputProps",
+      "type": "(Omit<InputHTMLAttributes<HTMLInputElement>, \"value\" | \"defaultValue\"> & { ref?: Ref<HTMLInputElement>; })",
+      "required": false
     },
     {
       "name": "label",
@@ -5181,6 +5916,11 @@
       "required": false
     },
     {
+      "name": "register",
+      "type": "UseFormRegister<any>",
+      "required": false
+    },
+    {
       "name": "required",
       "type": "boolean",
       "required": false
@@ -5188,6 +5928,11 @@
     {
       "name": "requiredMessage",
       "type": "string",
+      "required": false
+    },
+    {
+      "name": "rules",
+      "type": "RegisterOptions<any>",
       "required": false
     },
     {
@@ -5223,6 +5968,16 @@
   ],
   "SgInputPassword": [
     {
+      "name": "borderRadius",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
       "name": "clearButton",
       "type": "boolean",
       "required": false
@@ -5243,10 +5998,20 @@
       "required": false
     },
     {
+      "name": "control",
+      "type": "any",
+      "required": false
+    },
+    {
       "name": "createNewPasswordButton",
       "type": "boolean",
       "required": false,
       "description": "Exibe um botao para gerar automaticamente uma senha forte aleatoria (respeita as regras de politica)."
+    },
+    {
+      "name": "elevation",
+      "type": "\"sm\" | \"md\" | \"lg\" | \"none\"",
+      "required": false
     },
     {
       "name": "enabled",
@@ -5284,6 +6049,11 @@
       "required": true
     },
     {
+      "name": "inputProps",
+      "type": "(InputHTMLAttributes<HTMLInputElement> & { ref?: Ref<HTMLInputElement>; })",
+      "required": false
+    },
+    {
       "name": "label",
       "type": "string",
       "required": false
@@ -5291,6 +6061,11 @@
     {
       "name": "labelAlign",
       "type": "\"start\" | \"center\" | \"end\"",
+      "required": false
+    },
+    {
+      "name": "labelClassName",
+      "type": "string",
       "required": false
     },
     {
@@ -5427,6 +6202,11 @@
       "required": false
     },
     {
+      "name": "register",
+      "type": "UseFormRegister<any>",
+      "required": false
+    },
+    {
       "name": "required",
       "type": "boolean",
       "required": false
@@ -5434,6 +6214,11 @@
     {
       "name": "requiredMessage",
       "type": "string",
+      "required": false
+    },
+    {
+      "name": "rules",
+      "type": "RegisterOptions<any>",
       "required": false
     },
     {
@@ -5489,8 +6274,28 @@
   ],
   "SgInputPhone": [
     {
+      "name": "borderRadius",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
       "name": "clearButton",
       "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "control",
+      "type": "any",
+      "required": false
+    },
+    {
+      "name": "elevation",
+      "type": "\"sm\" | \"md\" | \"lg\" | \"none\"",
       "required": false
     },
     {
@@ -5524,6 +6329,11 @@
       "required": true
     },
     {
+      "name": "inputProps",
+      "type": "(InputHTMLAttributes<HTMLInputElement> & { ref?: Ref<HTMLInputElement>; })",
+      "required": false
+    },
+    {
       "name": "invalidMessage",
       "type": "string",
       "required": false
@@ -5536,6 +6346,11 @@
     {
       "name": "labelAlign",
       "type": "\"start\" | \"center\" | \"end\"",
+      "required": false
+    },
+    {
+      "name": "labelClassName",
+      "type": "string",
       "required": false
     },
     {
@@ -5641,6 +6456,11 @@
       "required": false
     },
     {
+      "name": "register",
+      "type": "UseFormRegister<any>",
+      "required": false
+    },
+    {
       "name": "required",
       "type": "boolean",
       "required": false
@@ -5648,6 +6468,11 @@
     {
       "name": "requiredMessage",
       "type": "string",
+      "required": false
+    },
+    {
+      "name": "rules",
+      "type": "RegisterOptions<any>",
       "required": false
     },
     {
@@ -5693,13 +6518,33 @@
   ],
   "SgInputPostalCode": [
     {
+      "name": "borderRadius",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
       "name": "clearButton",
       "type": "boolean",
       "required": false
     },
     {
+      "name": "control",
+      "type": "any",
+      "required": false
+    },
+    {
       "name": "country",
       "type": "PostalCodeCountry",
+      "required": false
+    },
+    {
+      "name": "elevation",
+      "type": "\"sm\" | \"md\" | \"lg\" | \"none\"",
       "required": false
     },
     {
@@ -5733,6 +6578,11 @@
       "required": true
     },
     {
+      "name": "inputProps",
+      "type": "(InputHTMLAttributes<HTMLInputElement> & { ref?: Ref<HTMLInputElement>; })",
+      "required": false
+    },
+    {
       "name": "invalidMessage",
       "type": "string",
       "required": false
@@ -5745,6 +6595,11 @@
     {
       "name": "labelAlign",
       "type": "\"start\" | \"center\" | \"end\"",
+      "required": false
+    },
+    {
+      "name": "labelClassName",
+      "type": "string",
       "required": false
     },
     {
@@ -5860,6 +6715,11 @@
       "required": false
     },
     {
+      "name": "register",
+      "type": "UseFormRegister<any>",
+      "required": false
+    },
+    {
       "name": "required",
       "type": "boolean",
       "required": false
@@ -5867,6 +6727,11 @@
     {
       "name": "requiredMessage",
       "type": "string",
+      "required": false
+    },
+    {
+      "name": "rules",
+      "type": "RegisterOptions<any>",
       "required": false
     },
     {
@@ -5927,8 +6792,28 @@
   ],
   "SgInputText": [
     {
+      "name": "borderRadius",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
       "name": "clearButton",
       "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "control",
+      "type": "any",
+      "required": false
+    },
+    {
+      "name": "elevation",
+      "type": "\"sm\" | \"md\" | \"lg\" | \"none\"",
       "required": false
     },
     {
@@ -5962,6 +6847,11 @@
       "required": true
     },
     {
+      "name": "inputProps",
+      "type": "(InputHTMLAttributes<HTMLInputElement> & { ref?: Ref<HTMLInputElement>; })",
+      "required": false
+    },
+    {
       "name": "label",
       "type": "string",
       "required": false
@@ -5969,6 +6859,11 @@
     {
       "name": "labelAlign",
       "type": "\"start\" | \"center\" | \"end\"",
+      "required": false
+    },
+    {
+      "name": "labelClassName",
+      "type": "string",
       "required": false
     },
     {
@@ -6067,6 +6962,11 @@
       "required": false
     },
     {
+      "name": "register",
+      "type": "UseFormRegister<any>",
+      "required": false
+    },
+    {
       "name": "required",
       "type": "boolean",
       "required": false
@@ -6074,6 +6974,11 @@
     {
       "name": "requiredMessage",
       "type": "string",
+      "required": false
+    },
+    {
+      "name": "rules",
+      "type": "RegisterOptions<any>",
       "required": false
     },
     {
@@ -6119,8 +7024,28 @@
   ],
   "SgInputTextArea": [
     {
+      "name": "borderRadius",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
       "name": "clearButton",
       "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "control",
+      "type": "any",
+      "required": false
+    },
+    {
+      "name": "elevation",
+      "type": "\"sm\" | \"md\" | \"lg\" | \"none\"",
       "required": false
     },
     {
@@ -6161,6 +7086,11 @@
     {
       "name": "labelAlign",
       "type": "\"start\" | \"center\" | \"end\"",
+      "required": false
+    },
+    {
+      "name": "labelClassName",
+      "type": "string",
       "required": false
     },
     {
@@ -6259,6 +7189,11 @@
       "required": false
     },
     {
+      "name": "register",
+      "type": "UseFormRegister<any>",
+      "required": false
+    },
+    {
       "name": "required",
       "type": "boolean",
       "required": false
@@ -6266,6 +7201,11 @@
     {
       "name": "requiredMessage",
       "type": "string",
+      "required": false
+    },
+    {
+      "name": "rules",
+      "type": "RegisterOptions<any>",
       "required": false
     },
     {
@@ -6301,13 +7241,33 @@
   ],
   "SgInputTextSearch": [
     {
+      "name": "borderRadius",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
       "name": "clearButton",
       "type": "boolean",
       "required": false
     },
     {
+      "name": "control",
+      "type": "any",
+      "required": false
+    },
+    {
       "name": "debounceMs",
       "type": "number",
+      "required": false
+    },
+    {
+      "name": "elevation",
+      "type": "\"sm\" | \"md\" | \"lg\" | \"none\"",
       "required": false
     },
     {
@@ -6341,6 +7301,11 @@
       "required": true
     },
     {
+      "name": "inputProps",
+      "type": "(InputHTMLAttributes<HTMLInputElement> & { ref?: Ref<HTMLInputElement>; })",
+      "required": false
+    },
+    {
       "name": "label",
       "type": "string",
       "required": false
@@ -6348,6 +7313,11 @@
     {
       "name": "labelAlign",
       "type": "\"start\" | \"center\" | \"end\"",
+      "required": false
+    },
+    {
+      "name": "labelClassName",
+      "type": "string",
       "required": false
     },
     {
@@ -6458,6 +7428,11 @@
       "required": false
     },
     {
+      "name": "register",
+      "type": "UseFormRegister<any>",
+      "required": false
+    },
+    {
       "name": "required",
       "type": "boolean",
       "required": false
@@ -6465,6 +7440,11 @@
     {
       "name": "requiredMessage",
       "type": "string",
+      "required": false
+    },
+    {
+      "name": "rules",
+      "type": "RegisterOptions<any>",
       "required": false
     },
     {
@@ -6547,6 +7527,11 @@
     {
       "name": "barThickness",
       "type": "number",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
       "required": false
     },
     {
@@ -6650,6 +7635,11 @@
       "required": false
     },
     {
+      "name": "style",
+      "type": "CSSProperties",
+      "required": false
+    },
+    {
       "name": "value",
       "type": "number",
       "required": false
@@ -6672,6 +7662,12 @@
       "type": "number",
       "required": false,
       "description": "Gap between characters in pixels."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "description": "Additional CSS classes for the outer wrapper."
     },
     {
       "name": "color",
@@ -6716,6 +7712,12 @@
       "description": "Border radius of the matrix container in pixels."
     },
     {
+      "name": "style",
+      "type": "CSSProperties",
+      "required": false,
+      "description": "Additional CSS style for the outer wrapper."
+    },
+    {
       "name": "value",
       "type": "string",
       "required": true,
@@ -6736,6 +7738,11 @@
     {
       "name": "brand",
       "type": "SgMenuBrand",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
       "required": false
     },
     {
@@ -6791,6 +7798,11 @@
     {
       "name": "draggable",
       "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "elevation",
+      "type": "\"sm\" | \"md\" | \"none\"",
       "required": false
     },
     {
@@ -6934,6 +7946,11 @@
       "required": false
     },
     {
+      "name": "style",
+      "type": "CSSProperties",
+      "required": false
+    },
+    {
       "name": "user",
       "type": "SgMenuUser",
       "required": false
@@ -6956,8 +7973,28 @@
   ],
   "SgMultiSelect": [
     {
+      "name": "borderRadius",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
       "name": "clearable",
       "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "control",
+      "type": "any",
+      "required": false
+    },
+    {
+      "name": "elevation",
+      "type": "\"sm\" | \"md\" | \"lg\" | \"none\"",
       "required": false
     },
     {
@@ -6998,6 +8035,11 @@
     {
       "name": "labelAlign",
       "type": "\"start\" | \"center\" | \"end\"",
+      "required": false
+    },
+    {
+      "name": "labelClassName",
+      "type": "string",
       "required": false
     },
     {
@@ -7091,6 +8133,11 @@
       "required": false
     },
     {
+      "name": "register",
+      "type": "UseFormRegister<any>",
+      "required": false
+    },
+    {
       "name": "required",
       "type": "boolean",
       "required": false
@@ -7098,6 +8145,11 @@
     {
       "name": "requiredMessage",
       "type": "string",
+      "required": false
+    },
+    {
+      "name": "rules",
+      "type": "RegisterOptions<any>",
       "required": false
     },
     {
@@ -7154,8 +8206,23 @@
   ],
   "SgMultiSelectChips": [
     {
+      "name": "borderRadius",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
       "name": "clearable",
       "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "control",
+      "type": "any",
       "required": false
     },
     {
@@ -7180,6 +8247,11 @@
     },
     {
       "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelClassName",
       "type": "string",
       "required": false
     },
@@ -7224,8 +8296,18 @@
       "required": false
     },
     {
+      "name": "register",
+      "type": "UseFormRegister<any>",
+      "required": false
+    },
+    {
       "name": "required",
       "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "rules",
+      "type": "RegisterOptions<any>",
       "required": false
     },
     {
@@ -7261,6 +8343,12 @@
       "type": "string",
       "required": false,
       "description": "Background color of the component surface."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "description": "Additional classes on container."
     },
     {
       "name": "color",
@@ -7323,6 +8411,12 @@
       "description": "Extra intensity factor for the glow effect."
     },
     {
+      "name": "style",
+      "type": "CSSProperties",
+      "required": false,
+      "description": "Additional style on container."
+    },
+    {
       "name": "transitionMs",
       "type": "number",
       "required": false,
@@ -7341,6 +8435,11 @@
       "type": "string",
       "required": false,
       "description": "Base das rotas da extension `user-notifications`. Default: `/api/user-notifications` (BFF, mesma origem)."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
     },
     {
       "name": "defaultUnreadOnly",
@@ -7429,6 +8528,16 @@
   ],
   "SgOrderList": [
     {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "control",
+      "type": "any",
+      "required": false
+    },
+    {
       "name": "controlsPosition",
       "type": "SgOrderListControlsPosition",
       "required": false
@@ -7499,6 +8608,16 @@
       "required": false
     },
     {
+      "name": "register",
+      "type": "UseFormRegister<any>",
+      "required": false
+    },
+    {
+      "name": "rules",
+      "type": "RegisterOptions<any>",
+      "required": false
+    },
+    {
       "name": "selectedValues",
       "type": "(string | number)[]",
       "required": false
@@ -7517,6 +8636,11 @@
       "name": "source",
       "type": "SgOrderListItem[]",
       "required": true
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties",
+      "required": false
     },
     {
       "name": "title",
@@ -7549,6 +8673,11 @@
       "name": "children",
       "type": "ReactNode",
       "required": true
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
     },
     {
       "name": "defaultActiveIndex",
@@ -7618,6 +8747,11 @@
       "required": false
     },
     {
+      "name": "style",
+      "type": "CSSProperties",
+      "required": false
+    },
+    {
       "name": "tabClassName",
       "type": "string",
       "required": false
@@ -7633,6 +8767,11 @@
       "name": "children",
       "type": "ReactNode",
       "required": true
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
     },
     {
       "name": "enabled",
@@ -7662,6 +8801,12 @@
     {
       "name": "keepMounted",
       "type": "boolean",
+      "required": false,
+      "description": "Mantem esta pagina montada (oculta) quando inativa. Sem valor, vale o `keepMounted` do SgPageControl."
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties",
       "required": false
     },
     {
@@ -7785,6 +8930,17 @@
       "description": "Habilita a opcao \"Periodo\" (intervalo customizado). Default true."
     },
     {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "control",
+      "type": "Control<FieldValues>",
+      "required": false,
+      "description": "Integracao react-hook-form (opcional)."
+    },
+    {
       "name": "enabled",
       "type": "boolean",
       "required": false
@@ -7866,12 +9022,27 @@
       "required": false
     },
     {
+      "name": "rules",
+      "type": "RegisterOptions",
+      "required": false
+    },
+    {
       "name": "value",
       "type": "PeriodPreset",
       "required": false
     }
   ],
   "SgPickList": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "control",
+      "type": "any",
+      "required": false
+    },
     {
       "name": "draggable",
       "type": "boolean",
@@ -7948,6 +9119,16 @@
       "required": false
     },
     {
+      "name": "register",
+      "type": "UseFormRegister<any>",
+      "required": false
+    },
+    {
+      "name": "rules",
+      "type": "RegisterOptions<any>",
+      "required": false
+    },
+    {
       "name": "selectionMode",
       "type": "SgPickListSelectionMode",
       "required": false
@@ -7995,6 +9176,11 @@
     {
       "name": "sourceSelection",
       "type": "(string | number)[]",
+      "required": false
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties",
       "required": false
     },
     {
@@ -8047,6 +9233,11 @@
     {
       "name": "children",
       "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
       "required": false
     },
     {
@@ -8107,6 +9298,11 @@
     {
       "name": "preferPlacement",
       "type": "SgPopupPreferPlacement",
+      "required": false
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties",
       "required": false
     },
     {
@@ -8244,6 +9440,11 @@
       "required": false
     },
     {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
       "name": "defaultValue",
       "type": "number",
       "required": false
@@ -8374,6 +9575,11 @@
       "required": false
     },
     {
+      "name": "style",
+      "type": "CSSProperties",
+      "required": false
+    },
+    {
       "name": "value",
       "type": "number",
       "required": false
@@ -8385,6 +9591,16 @@
     }
   ],
   "SgRadioGroup": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "control",
+      "type": "any",
+      "required": false
+    },
     {
       "name": "enabled",
       "type": "boolean",
@@ -8436,8 +9652,18 @@
       "required": false
     },
     {
+      "name": "register",
+      "type": "UseFormRegister<any>",
+      "required": false
+    },
+    {
       "name": "required",
       "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "rules",
+      "type": "RegisterOptions<any>",
       "required": false
     },
     {
@@ -8449,6 +9675,11 @@
       "name": "source",
       "type": "SgRadioGroupOption[]",
       "required": true
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties",
+      "required": false
     },
     {
       "name": "title",
@@ -8481,10 +9712,21 @@
       "description": "Custom icon for cancel button"
     },
     {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "description": "Custom class name"
+    },
+    {
       "name": "color",
       "type": "string",
       "required": false,
       "description": "Color for filled stars"
+    },
+    {
+      "name": "control",
+      "type": "any",
+      "required": false
     },
     {
       "name": "emptyColor",
@@ -8551,6 +9793,11 @@
       "description": "Read only mode"
     },
     {
+      "name": "register",
+      "type": "UseFormRegister<any>",
+      "required": false
+    },
+    {
       "name": "required",
       "type": "boolean",
       "required": false,
@@ -8561,6 +9808,11 @@
       "type": "string",
       "required": false,
       "description": "Required message"
+    },
+    {
+      "name": "rules",
+      "type": "RegisterOptions<any>",
+      "required": false
     },
     {
       "name": "showTooltip",
@@ -8579,6 +9831,12 @@
       "type": "number",
       "required": false,
       "description": "Number of stars"
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties",
+      "required": false,
+      "description": "Custom inline style"
     },
     {
       "name": "value",
@@ -8638,6 +9896,12 @@
   ],
   "SgRoller3DDigit": [
     {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "description": "Additional CSS classes on the outer wrapper"
+    },
+    {
       "name": "fontSize",
       "type": "number",
       "required": false,
@@ -8691,6 +9955,12 @@
   ],
   "SgSegmentDigit": [
     {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "description": "Additional classes on outer wrapper."
+    },
+    {
       "name": "color",
       "type": "string",
       "required": false,
@@ -8701,6 +9971,12 @@
       "type": "number",
       "required": false,
       "description": "Display height in pixels."
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties",
+      "required": false,
+      "description": "Additional inline styles on outer wrapper."
     },
     {
       "name": "value",
@@ -8715,6 +9991,12 @@
       "type": "string",
       "required": false,
       "description": "Background color of the component panel."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "description": "Additional classes on outer wrapper."
     },
     {
       "name": "color",
@@ -8765,6 +10047,12 @@
       "description": "Applies a subtle skew to mimic classic LED displays."
     },
     {
+      "name": "style",
+      "type": "CSSProperties",
+      "required": false,
+      "description": "Additional inline styles on outer wrapper."
+    },
+    {
       "name": "thickness",
       "type": "number",
       "required": false,
@@ -8796,6 +10084,11 @@
       "required": false
     },
     {
+      "name": "borderRadius",
+      "type": "string | number",
+      "required": false
+    },
+    {
       "name": "height",
       "type": "string | number",
       "required": false
@@ -8823,6 +10116,16 @@
       "required": false
     },
     {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "control",
+      "type": "any",
+      "required": false
+    },
+    {
       "name": "defaultValue",
       "type": "number",
       "required": false
@@ -8843,6 +10146,11 @@
       "required": true
     },
     {
+      "name": "inputProps",
+      "type": "SliderInputProps",
+      "required": false
+    },
+    {
       "name": "maxValue",
       "type": "number",
       "required": true
@@ -8860,6 +10168,16 @@
     {
       "name": "onChange",
       "type": "((value: number) => void)",
+      "required": false
+    },
+    {
+      "name": "register",
+      "type": "UseFormRegister<any>",
+      "required": false
+    },
+    {
+      "name": "rules",
+      "type": "RegisterOptions<any>",
       "required": false
     },
     {
@@ -8885,8 +10203,18 @@
       "required": false
     },
     {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
       "name": "customColors",
       "type": "SgButtonCustomColors",
+      "required": false
+    },
+    {
+      "name": "elevation",
+      "type": "Elevation",
       "required": false
     },
     {
@@ -8932,6 +10260,11 @@
     {
       "name": "size",
       "type": "Size",
+      "required": false
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties",
       "required": false
     }
   ],
@@ -8979,6 +10312,16 @@
       "required": false
     },
     {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "control",
+      "type": "any",
+      "required": false
+    },
+    {
       "name": "defaultValue",
       "type": "number",
       "required": false
@@ -9004,6 +10347,11 @@
       "required": false
     },
     {
+      "name": "inputProps",
+      "type": "StepperInputProps",
+      "required": false
+    },
+    {
       "name": "maxValue",
       "type": "number",
       "required": true
@@ -9026,6 +10374,16 @@
     {
       "name": "readOnly",
       "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "register",
+      "type": "UseFormRegister<any>",
+      "required": false
+    },
+    {
+      "name": "rules",
+      "type": "RegisterOptions<any>",
       "required": false
     },
     {
@@ -9068,6 +10426,12 @@
       "type": "string[]",
       "required": false,
       "description": "Conjunto de caracteres validos para o SgRoller3DDigit.\r\nDeve conter todos os caracteres que podem aparecer em sourceString,\r\ntargetString e emptyChar. Ignorado quando style != \"roller3d\"."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false,
+      "description": "Classes CSS adicionais no container externo"
     },
     {
       "name": "color",
@@ -9113,6 +10477,21 @@
     }
   ],
   "SgTextEditor": [
+    {
+      "name": "borderRadius",
+      "type": "string | number",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "control",
+      "type": "any",
+      "required": false
+    },
     {
       "name": "cssEditorLabel",
       "type": "string",
@@ -9184,8 +10563,23 @@
       "required": false
     },
     {
+      "name": "register",
+      "type": "UseFormRegister<any>",
+      "required": false
+    },
+    {
+      "name": "rules",
+      "type": "RegisterOptions<any>",
+      "required": false
+    },
+    {
       "name": "showCssEditor",
       "type": "boolean",
+      "required": false
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties",
       "required": false
     },
     {
@@ -9287,6 +10681,16 @@
       "required": false
     },
     {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "control",
+      "type": "any",
+      "required": false
+    },
+    {
       "name": "defaultChecked",
       "type": "boolean",
       "required": false
@@ -9312,7 +10716,17 @@
       "required": true
     },
     {
+      "name": "inputProps",
+      "type": "(InputHTMLAttributes<HTMLInputElement> & { ref?: Ref<HTMLInputElement>; })",
+      "required": false
+    },
+    {
       "name": "label",
+      "type": "string",
+      "required": false
+    },
+    {
+      "name": "labelClassName",
       "type": "string",
       "required": false
     },
@@ -9347,6 +10761,11 @@
       "required": false
     },
     {
+      "name": "register",
+      "type": "UseFormRegister<any>",
+      "required": false
+    },
+    {
       "name": "required",
       "type": "boolean",
       "required": false
@@ -9354,6 +10773,11 @@
     {
       "name": "requiredMessage",
       "type": "string",
+      "required": false
+    },
+    {
+      "name": "rules",
+      "type": "RegisterOptions<any>",
       "required": false
     },
     {
@@ -9406,6 +10830,11 @@
     {
       "name": "children",
       "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
       "required": false
     },
     {
@@ -9470,12 +10899,22 @@
       "required": false
     },
     {
+      "name": "style",
+      "type": "CSSProperties",
+      "required": false
+    },
+    {
       "name": "title",
       "type": "ReactNode",
       "required": false
     }
   ],
   "SgToolbarIconButton": [
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
     {
       "name": "enabled",
       "type": "boolean",
@@ -9515,6 +10954,11 @@
       "name": "showLabel",
       "type": "boolean",
       "required": false
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties",
+      "required": false
     }
   ],
   "SgTreeView": [
@@ -9542,6 +10986,11 @@
     {
       "name": "checkMode",
       "type": "\"live\" | \"confirm\"",
+      "required": false
+    },
+    {
+      "name": "className",
+      "type": "string",
       "required": false
     },
     {
@@ -9655,6 +11104,11 @@
       "required": false
     },
     {
+      "name": "style",
+      "type": "CSSProperties",
+      "required": false
+    },
+    {
       "name": "tone",
       "type": "SgTone",
       "required": false
@@ -9741,6 +11195,11 @@
       "required": true
     },
     {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
       "name": "enabled",
       "type": "boolean",
       "required": false,
@@ -9793,6 +11252,11 @@
       "required": false
     },
     {
+      "name": "style",
+      "type": "CSSProperties",
+      "required": false
+    },
+    {
       "name": "validateStep",
       "type": "((index: number) => boolean | Promise<boolean>)",
       "required": false
@@ -9805,8 +11269,18 @@
       "required": true
     },
     {
+      "name": "className",
+      "type": "string",
+      "required": false
+    },
+    {
       "name": "icon",
       "type": "ReactNode",
+      "required": false
+    },
+    {
+      "name": "style",
+      "type": "CSSProperties",
       "required": false
     },
     {
@@ -9821,6 +11295,11 @@
       "type": "YearPartKind[]",
       "required": false,
       "description": "Recortes oferecidos. Com um unico item o combo de recorte some. Default: os tres."
+    },
+    {
+      "name": "className",
+      "type": "string",
+      "required": false
     },
     {
       "name": "enabled",

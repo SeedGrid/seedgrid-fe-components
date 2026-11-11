@@ -19,13 +19,10 @@ const packageRoot = path.resolve(__dirname, "..");
 const srcRoot = path.join(packageRoot, "src");
 const outPath = path.join(srcRoot, "ai-meta", "generated-props.json");
 
-// Props que NAO entram no manifesto de IA: passthrough/DOM, estilo de baixo nivel, plumbing RHF.
-// (RHF e coberto pela capability "rhf"; estilo/escape-hatch nao ajuda a IA a escolher/configurar.)
-const IGNORED_PROPS = new Set([
-  "control", "register", "rules", // RHF wiring
-  "inputProps", "className", "labelClassName", "style", "ref", "key", // passthrough/estilo
-  "elevation", "borderRadius", // estilo de baixo nivel
-]);
+// Props que NAO entram no manifesto: so o encanamento do React (ref/key) e atributos aria-/data-.
+// Toda prop publica declarada no pacote (control, rules, elevation, borderRadius, className...) entra,
+// para a Referencia de Props do showcase e a KB listarem a API inteira.
+const IGNORED_PROPS = new Set(["ref", "key"]);
 const isIgnored = (name) =>
   IGNORED_PROPS.has(name) || name.startsWith("aria-") || name.startsWith("data-");
 

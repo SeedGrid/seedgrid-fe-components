@@ -4,7 +4,7 @@ import React from "react";
 import { Check, ChevronDown, X } from "lucide-react";
 import { Controller } from "react-hook-form";
 import type { ControllerFieldState, ControllerRenderProps, FieldValues } from "react-hook-form";
-import { resolveFieldError } from "../rhf";
+import { mergeRequiredRule, resolveFieldError } from "../rhf";
 import { SgInputText, type SgInputTextProps } from "./SgInputText";
 import { t, useComponentsI18n } from "../i18n";
 import { SgMultiSelectDropdown } from "./SgMultiSelectDropdown";
@@ -223,14 +223,20 @@ function SgMultiSelectBase(props: Readonly<SgMultiSelectProps>) {
 }
 
 export function SgMultiSelect(props: Readonly<SgMultiSelectProps>) {
+  const i18n = useComponentsI18n();
   const { control, name, rules, ...rest } = props;
+  const resolvedRules = mergeRequiredRule(
+    rules,
+    rest.required,
+    rest.requiredMessage ?? t(i18n, "components.inputs.required")
+  );
 
   if (control && name) {
     return (
       <Controller
         name={name}
         control={control}
-        rules={rules}
+        rules={resolvedRules}
         render={({ field, fieldState }: { field: ControllerRenderProps<FieldValues, string>; fieldState: ControllerFieldState }) => (
           <SgMultiSelectBase
             {...rest}
