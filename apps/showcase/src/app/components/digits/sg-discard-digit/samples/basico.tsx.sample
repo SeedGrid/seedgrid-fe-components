@@ -10,8 +10,8 @@ export default function Example() {
     <div className="flex items-center gap-4">
       <SgDiscardDigit value="7" color="#0f172a" font={'"Inter", "Segoe UI", sans-serif'} backgroundColor="#f8fafc" stackDepth={stackDepth} />
       <div className="flex flex-col gap-2">
-        <SgButton size="sm" onClick={() => setStackDepth((prev) => Math.min(30, prev + 1))}>Next (+1 folha)</SgButton>
-        <SgButton size="sm" severity="secondary" onClick={() => setStackDepth((prev) => Math.max(2, prev - 1))}>Previous (-1 folha)</SgButton>
+        <SgButton size="sm" onClick={() => setStackDepth((prev) => Math.min(30, prev + 1))}>Adicionar folha</SgButton>
+        <SgButton size="sm" severity="secondary" onClick={() => setStackDepth((prev) => Math.max(2, prev - 1))}>Remover folha</SgButton>
       </div>
     </div>
   );

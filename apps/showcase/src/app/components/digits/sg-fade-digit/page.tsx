@@ -38,7 +38,7 @@ function Section(props: { title: string; description?: string; children: React.R
 
 
 
-
+
 
 
 
@@ -63,7 +63,7 @@ const EX1_CODE = `const [digit, setDigit] = React.useState("0");
 
 const next   = () => setDigit((p) => String((Number(p) + 1) % 10));
 const prev   = () => setDigit((p) => String((Number(p) - 1 + 10) % 10));
-const random = () => setDigit(String(Math.floor(Math.random() * 10)));
+const random = () => setDigit((p) => String((Number(p) + 1 + Math.floor(Math.random() * 9)) % 10));
 
 <div className="flex items-center gap-4">
   <SgFadeDigit value={digit} />
@@ -78,7 +78,7 @@ function Ex1() {
   const [digit, setDigit] = React.useState("0");
   const next = () => setDigit((p) => String((Number(p) + 1) % 10));
   const prev = () => setDigit((p) => String((Number(p) - 1 + 10) % 10));
-  const random = () => setDigit(String(Math.floor(Math.random() * 10)));
+  const random = () => setDigit((p) => String((Number(p) + 1 + Math.floor(Math.random() * 9)) % 10));
   return (
     <div className="flex items-center gap-4">
       <SgFadeDigit value={digit} />
@@ -480,7 +480,7 @@ const PROPS: ShowcasePropRow[] = [
 // Page
 // ---------------------------------------------------------------------------
 export default function SgFadeDigitShowcase() {
-  const i18n = useShowcaseI18n();
+  const i18n = useShowcaseI18n();
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
   const aiComponent = useAiManifestComponent("SgFadeDigit");

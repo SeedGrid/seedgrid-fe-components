@@ -50,7 +50,11 @@ export function SgFadeDigit({
 
   React.useEffect(() => {
     // Nothing to do — already showing the right value
-    if (value === displayValue) return;
+    // (and restore opacity: a fade-out may have started for a value that came back to the current one)
+    if (value === displayValue) {
+      setOpacity(1);
+      return;
+    }
 
     // Phase 1: fade out
     setOpacity(0);

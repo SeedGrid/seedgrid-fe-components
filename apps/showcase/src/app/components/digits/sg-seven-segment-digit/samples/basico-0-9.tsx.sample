@@ -3,10 +3,17 @@
 import React from "react";
 import { SgButton, SgSevenSegmentDigit } from "@seedgrid/fe-components";
 
+const COLOR_OPTIONS = [
+  { label: "Red", value: "red" },
+  { label: "Blue", value: "blue" },
+  { label: "Yellow", value: "yellow" },
+  { label: "Green", value: "green" },
+  { label: "White", value: "white" }
+] as const;
+
 export default function Example() {
   const [digit, setDigit] = React.useState("0");
-  const [palette, setPalette] = React.useState<"red" | "blue" | "yellow" | "green" | "white">("red");
-  const palettes: typeof palette[] = ["red", "blue", "yellow", "green", "white"];
+  const [palette, setPalette] = React.useState<(typeof COLOR_OPTIONS)[number]["value"]>("red");
 
   return (
     <div className="flex items-center gap-4">
@@ -14,9 +21,17 @@ export default function Example() {
       <div className="flex flex-col gap-2">
         <SgButton size="sm" onClick={() => setDigit((prev) => String((Number(prev) + 1) % 10))}>Next (+1)</SgButton>
         <SgButton size="sm" severity="secondary" onClick={() => setDigit((prev) => String((Number(prev) - 1 + 10) % 10))}>Previous (-1)</SgButton>
-        <div className="flex flex-wrap gap-2">
-          {palettes.map((item) => (
-            <SgButton key={item} size="sm" appearance={palette === item ? "solid" : "outline"} onClick={() => setPalette(item)}>{item}</SgButton>
+        <SgButton size="sm" severity="info" onClick={() => setDigit(String(Math.floor(Math.random() * 10)))}>Random</SgButton>
+        <div className="flex flex-wrap gap-2 pt-1">
+          {COLOR_OPTIONS.map((item) => (
+            <SgButton
+              key={item.value}
+              size="sm"
+              appearance={palette === item.value ? "solid" : "outline"}
+              onClick={() => setPalette(item.value)}
+            >
+              {item.label}
+            </SgButton>
           ))}
         </div>
       </div>
