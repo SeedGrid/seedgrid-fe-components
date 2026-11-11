@@ -42,6 +42,7 @@ function CodeBlock(props: { sampleFile: string }) {
 }
 
 function RollerShowcase(props: { timezone: string; initialServerTime: string }) {
+  const i18n = useShowcaseI18n();
   const [showSeconds, setShowSeconds] = React.useState(true);
   const [format, setFormat] = React.useState<"12h" | "24h">("12h");
 
@@ -49,7 +50,7 @@ function RollerShowcase(props: { timezone: string; initialServerTime: string }) 
     <div className="space-y-4">
       <div className="flex flex-wrap items-center gap-2">
         <SgButton onClick={() => setShowSeconds((v) => !v)}>
-          {showSeconds ? "Segundos: ON" : "Segundos: OFF"}
+          {showSeconds ? t(i18n, "showcase.component.clock.labels.secondsOn") : t(i18n, "showcase.component.clock.labels.secondsOff")}
         </SgButton>
         <SgButton onClick={() => setFormat((v) => (v === "24h" ? "12h" : "24h"))}>
           {format === "24h" ? "24h" : "12h"}
@@ -75,6 +76,7 @@ function RollerShowcase(props: { timezone: string; initialServerTime: string }) 
 }
 
 function FlipShowcase(props: { timezone: string; initialServerTime: string }) {
+  const i18n = useShowcaseI18n();
   const [showSeconds, setShowSeconds] = React.useState(true);
   const [format, setFormat] = React.useState<"12h" | "24h">("24h");
 
@@ -82,7 +84,7 @@ function FlipShowcase(props: { timezone: string; initialServerTime: string }) {
     <div className="space-y-4">
       <div className="flex flex-wrap items-center gap-2">
         <SgButton onClick={() => setShowSeconds((v) => !v)}>
-          {showSeconds ? "Segundos: ON" : "Segundos: OFF"}
+          {showSeconds ? t(i18n, "showcase.component.clock.labels.secondsOn") : t(i18n, "showcase.component.clock.labels.secondsOff")}
         </SgButton>
         <SgButton onClick={() => setFormat((v) => (v === "24h" ? "12h" : "24h"))}>
           {format === "24h" ? "24h" : "12h"}
@@ -144,6 +146,7 @@ function getExtraStyleSampleFile(style: ExtraDigitalStyle): string {
 }
 
 function DigitalStyleShowcase(props: { initialServerTime: string; style: ExtraDigitalStyle }) {
+  const i18n = useShowcaseI18n();
   const [showSeconds, setShowSeconds] = React.useState(true);
   const [format, setFormat] = React.useState<"12h" | "24h">("24h");
   const size = getExtraStyleSize(props.style);
@@ -165,7 +168,7 @@ function DigitalStyleShowcase(props: { initialServerTime: string; style: ExtraDi
     <div className="space-y-4">
       <div className="flex flex-wrap items-center gap-2">
         <SgButton onClick={() => setShowSeconds((v) => !v)}>
-          {showSeconds ? "Segundos: ON" : "Segundos: OFF"}
+          {showSeconds ? t(i18n, "showcase.component.clock.labels.secondsOn") : t(i18n, "showcase.component.clock.labels.secondsOff")}
         </SgButton>
         <SgButton onClick={() => setFormat((v) => (v === "24h" ? "12h" : "24h"))}>
           {format === "24h" ? "24h" : "12h"}
@@ -482,7 +485,7 @@ export function SgClockShowcaseClient({ initialServerTime }: { initialServerTime
 
             <Section
               title="Playground"
-              description="Controle props principais do SgClock em tempo real."
+              description={t(i18n, "showcase.common.playground.description.withComponent", { component: "SgClock" })}
             >
               <SgPlayground
                 title="SgClock Playground"

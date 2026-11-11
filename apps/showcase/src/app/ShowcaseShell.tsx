@@ -853,6 +853,8 @@ export default function ShowcaseShell(props: {
       locale,
       messages: COMPONENTS_MESSAGES_BY_LOCALE[locale] ?? componentsMessagesEnUs
     });
+    // <html lang> acompanha o idioma escolhido (acessibilidade e tradutores do navegador).
+    document.documentElement.lang = locale;
     try {
       localStorage.setItem("seedgrid-showcase-locale", locale);
     } catch {
