@@ -19,6 +19,10 @@ type CreditsTexts = {
   compliance: string;
   usedInVarious: string;
   usedInShowcase: string;
+  usedInForms: string;
+  rhfDescription: string;
+  reactDescription: string;
+  nextDescription: string;
 };
 
 const CREDITS_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", CreditsTexts> = {
@@ -29,7 +33,12 @@ const CREDITS_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", CreditsTe
     compliance:
       "Todas as bibliotecas listadas acima sao distribuidas sob licencas compativeis com uso open-source e comercial. Os creditos acima sao fornecidos conforme exigido por cada licenca.",
     usedInVarious: "Varios componentes",
-    usedInShowcase: "App showcase"
+    usedInShowcase: "App showcase",
+    usedInForms: "Campos de formulario",
+    rhfDescription:
+      "Gerenciamento de formularios para React com validacao, usado por baixo dos campos (Controller). Peer dependency do pacote.",
+    reactDescription: "Biblioteca para construir interfaces de usuario; base de todos os componentes.",
+    nextDescription: "Framework React usado pelo app showcase."
   },
   "pt-PT": {
     title: "Creditos e Bibliotecas de Terceiros",
@@ -38,7 +47,12 @@ const CREDITS_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", CreditsTe
     compliance:
       "Todas as bibliotecas acima sao distribuidas sob licencas compativeis com uso open-source e comercial. Estes creditos sao apresentados conforme exigido por cada licenca.",
     usedInVarious: "Varios componentes",
-    usedInShowcase: "App showcase"
+    usedInShowcase: "App showcase",
+    usedInForms: "Campos de formulario",
+    rhfDescription:
+      "Gestao de formularios para React com validacao, usada por baixo dos campos (Controller). Peer dependency do pacote.",
+    reactDescription: "Biblioteca para construir interfaces de utilizador; base de todos os componentes.",
+    nextDescription: "Framework React usada pela app showcase."
   },
   "en-US": {
     title: "Credits and Third-Party Libraries",
@@ -47,7 +61,12 @@ const CREDITS_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", CreditsTe
     compliance:
       "All libraries listed above are distributed under licenses compatible with open-source and commercial use. Credits are provided as required by each license.",
     usedInVarious: "Various components",
-    usedInShowcase: "Showcase app"
+    usedInShowcase: "Showcase app",
+    usedInForms: "Form fields",
+    rhfDescription:
+      "Form state management and validation for React, used under the hood by the form fields (Controller). Peer dependency of the package.",
+    reactDescription: "Library for building user interfaces; the foundation of every component.",
+    nextDescription: "React framework used by the Showcase app."
   },
   es: {
     title: "Creditos y Bibliotecas de Terceros",
@@ -56,7 +75,12 @@ const CREDITS_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", CreditsTe
     compliance:
       "Todas las bibliotecas listadas arriba se distribuyen con licencias compatibles con uso open-source y comercial. Los creditos se muestran segun lo exigido por cada licencia.",
     usedInVarious: "Varios componentes",
-    usedInShowcase: "App showcase"
+    usedInShowcase: "App showcase",
+    usedInForms: "Campos de formulario",
+    rhfDescription:
+      "Gestion de formularios para React con validacion, usada por debajo de los campos (Controller). Peer dependency del paquete.",
+    reactDescription: "Biblioteca para construir interfaces de usuario; base de todos los componentes.",
+    nextDescription: "Framework de React usado por la app showcase."
   },
   fr: {
     title: "Credits et bibliotheques tierces",
@@ -65,7 +89,12 @@ const CREDITS_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", CreditsTe
     compliance:
       "Toutes les bibliotheques listees ci-dessus sont distribuees sous des licences compatibles avec un usage open-source et commercial. Les credits sont fournis comme exige par chaque licence.",
     usedInVarious: "Divers composants",
-    usedInShowcase: "Application vitrine"
+    usedInShowcase: "Application vitrine",
+    usedInForms: "Champs de formulaire",
+    rhfDescription:
+      "Gestion de formulaires et validation pour React, utilisee en interne par les champs (Controller). Peer dependency du paquet.",
+    reactDescription: "Bibliotheque pour construire des interfaces utilisateur ; base de tous les composants.",
+    nextDescription: "Framework React utilise par l'application vitrine."
   }
 };
 
@@ -85,6 +114,30 @@ export default function CreditsPage() {
   const texts = CREDITS_TEXTS[locale];
 
   const thirdPartyLibs: ThirdPartyLib[] = [
+    {
+      name: "react-hook-form",
+      version: "7.x",
+      license: "MIT",
+      url: "https://react-hook-form.com/",
+      description: texts.rhfDescription,
+      usedIn: texts.usedInForms
+    },
+    {
+      name: "react",
+      version: "18.2+ / 19",
+      license: "MIT",
+      url: "https://react.dev/",
+      description: texts.reactDescription,
+      usedIn: texts.usedInVarious
+    },
+    {
+      name: "next",
+      version: "15.x",
+      license: "MIT",
+      url: "https://nextjs.org/",
+      description: texts.nextDescription,
+      usedIn: texts.usedInShowcase
+    },
     {
       name: "@pqina/flip",
       version: "1.8.4",
