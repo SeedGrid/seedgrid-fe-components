@@ -3,7 +3,7 @@
 import React from "react";
 import { SgInputText, SgValueMaskContext, type SgInputTextProps } from "./SgInputText";
 import { resolveFieldError } from "../rhf";
-import { maskPhone, stripPhoneDdi } from "../masks";
+import { maskPhone, maskPhoneInput, stripPhoneDdi } from "../masks";
 import { t, useComponentsI18n } from "../i18n";
 
 export type SgInputPhoneProps = Omit<SgInputTextProps, "inputProps" | "error"> & {
@@ -44,6 +44,7 @@ export function SgInputPhone(props: Readonly<SgInputPhoneProps>) {
   } = props;
   const [internalError, setInternalError] = React.useState<string | null>(null);
   const [hasInteracted, setHasInteracted] = React.useState(false);
+  const previousValue = React.useRef("");
 
   const runValidation = React.useCallback(
     (value: string) => {
@@ -84,7 +85,8 @@ export function SgInputPhone(props: Readonly<SgInputPhoneProps>) {
     inputMode: inputProps?.inputMode ?? "numeric",
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
       setHasInteracted(true);
-      event.target.value = maskPhone(event.target.value);
+      event.target.value = maskPhoneInput(event.target.value, previousValue.current);
+      previousValue.current = event.target.value;
       runValidation(event.currentTarget.value);
       inputProps?.onChange?.(event);
     },
@@ -97,7 +99,7 @@ export function SgInputPhone(props: Readonly<SgInputPhoneProps>) {
   };
 
   return (
-    <SgValueMaskContext.Provider value={{ mask: maskPhone, normalize: stripPhoneDdi }}>
+    <SgValueMaskContext.Provider value={{ mask: maskPhone, normalize: stripPhoneDdi, maskInput: maskPhoneInput }}>
       <SgInputText
         {...rest}
         required={required}

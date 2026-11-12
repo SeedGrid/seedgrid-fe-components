@@ -60,6 +60,8 @@ export type SgValueMask = {
   mask: (value: string) => string;
   /** Normalizacao aplicada so a valor vindo de fora (ex.: tirar o DDI do telefone). */
   normalize?: (value: string) => string;
+  /** Mascara do que o usuario digita ou cola (conhece o valor anterior); padrao: `mask`. */
+  maskInput?: (value: string, previous: string) => string;
 };
 export const SgValueMaskContext = React.createContext<SgValueMask | null>(null);
 
@@ -128,7 +130,7 @@ function mergeInputPropsWithField(
   field: ControllerRenderProps<FieldValues, string>,
   options?: {
     normalizeValue?: (value: unknown) => string;
-    toFieldValue?: (raw: string) => string;
+    toFieldValue?: (raw: string, previous: string) => string;
   }
 ) {
   const resolvedValue =
@@ -148,7 +150,7 @@ function mergeInputPropsWithField(
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
       const rawValue = event.currentTarget.value;
       if (options?.toFieldValue) {
-        field.onChange(options.toFieldValue(rawValue));
+        field.onChange(options.toFieldValue(rawValue, String(resolvedValue ?? "")));
       } else {
         field.onChange(rawValue);
       }
@@ -650,6 +652,7 @@ export function SgInputText(props: SgInputTextProps) {
   const { control, name, register, rules, ...rest } = props;
   const maskSpec = React.useContext(SgValueMaskContext);
   const valueMask = maskSpec?.mask ?? null;
+  const lastRegisterValue = React.useRef("");
   const externalMask = maskSpec ? (value: string) => maskExternal(maskSpec, value) : null;
   const resolvedRules = mergeRequiredRule(
     rules,
@@ -670,8 +673,11 @@ export function SgInputText(props: SgInputTextProps) {
           name,
           onChange: (event) => {
             if (valueMask) {
-              const masked = valueMask(event.target.value);
+              const masked = maskSpec?.maskInput
+                ? maskSpec.maskInput(event.target.value, lastRegisterValue.current)
+                : valueMask(event.target.value);
               if (masked !== event.target.value) event.target.value = masked;
+              lastRegisterValue.current = masked;
             }
             reg.onChange(event);
             rest.inputProps?.onChange?.(event);
@@ -707,9 +713,10 @@ export function SgInputText(props: SgInputTextProps) {
       }
       return externalMask ? externalMask(text) : text;
     };
-    const toFieldValue = (raw: string) => {
+    const toFieldValue = (raw: string, previous: string) => {
       if (!raw) return "";
-      return `${prefixText}${valueMask ? valueMask(raw) : raw}${suffixText}`;
+      const typed = maskSpec?.maskInput ? maskSpec.maskInput(raw, previous) : valueMask ? valueMask(raw) : raw;
+      return `${prefixText}${typed}${suffixText}`;
     };
     return (
       <Controller

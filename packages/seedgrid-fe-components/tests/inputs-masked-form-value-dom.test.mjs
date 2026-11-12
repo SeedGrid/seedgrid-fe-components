@@ -110,3 +110,38 @@ for (const mode of ["control", "register"]) {
     }
   });
 }
+
+for (const mode of ["control", "register"]) {
+  test(`SgInputPhone (${mode}): colar numero com DDI (+55) tira o 55 no campo e no form`, async () => {
+    const m = await mountForm("SgInputPhone", mode, "");
+    try {
+      for (const pasted of ["+5511987654321", "5511987654321", "+55 (11) 98765-4321"]) {
+        await act(async () => m.form().setValue("f", ""));
+        await flushDom();
+        await dispatchInput(input(m.container), "");
+        await flushDom();
+        await dispatchInput(input(m.container), pasted);
+        await flushDom();
+        assert.equal(input(m.container).value, "(11) 98765-4321", `campo: ${pasted}`);
+        assert.equal(m.form().getValues("f"), "(11) 98765-4321", `form: ${pasted}`);
+      }
+    } finally {
+      m.harness.restore();
+    }
+  });
+}
+test("SgInputPhone (standalone): colar numero com DDI (+55) tira o 55", async () => {
+  const harness = setupDomHarness();
+  try {
+    const seen = [];
+    const { container } = await harness.render(
+      h(S.SgInputPhone, { id: "f", label: "L", inputProps: { onChange: (e) => seen.push(e.target.value) } })
+    );
+    await flushDom();
+    await dispatchInput(input(container), "+5511987654321");
+    await flushDom();
+    assert.equal(seen.at(-1), "(11) 98765-4321");
+  } finally {
+    harness.restore();
+  }
+});
