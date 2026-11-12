@@ -28,34 +28,34 @@ type CreditsTexts = {
 
 const CREDITS_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", CreditsTexts> = {
   "pt-BR": {
-    title: "Creditos e Bibliotecas de Terceiros",
+    title: "Créditos e Bibliotecas de Terceiros",
     subtitle:
-      "Listagem de todas as bibliotecas open-source utilizadas nos componentes da SeedGrid, com suas respectivas licencas e links de referencia.",
+      "Listagem de todas as bibliotecas open-source utilizadas nos componentes da SeedGrid, com suas respectivas licenças e links de referência.",
     compliance:
-      "Todas as bibliotecas listadas acima sao distribuidas sob licencas compativeis com uso open-source e comercial. Os creditos acima sao fornecidos conforme exigido por cada licenca.",
-    usedInVarious: "Varios componentes",
+      "Todas as bibliotecas listadas acima são distribuídas sob licenças compatíveis com uso open-source e comercial. Os créditos acima são fornecidos conforme exigido por cada licenca.",
+    usedInVarious: "Vários componentes",
     usedInShowcase: "App showcase",
-    usedInForms: "Campos de formulario",
+    usedInForms: "Campos de formulário",
     rhfDescription:
-      "Gerenciamento de formularios para React com validacao, usado por baixo dos campos (Controller). Peer dependency do pacote.",
-    reactDescription: "Biblioteca para construir interfaces de usuario; base de todos os componentes.",
+      "Gerenciamento de formulários para React com validação, usado por baixo dos campos (Controller). Peer dependency do pacote.",
+    reactDescription: "Biblioteca para construir interfaces de usuário; base de todos os componentes.",
     nextDescription: "Framework React usado pelo app showcase.",
-    animateDescription: "Plugin do Tailwind com utilitarios de animacao (animate-in, fade, slide) usados nas transicoes do app showcase."
+    animateDescription: "Plugin do Tailwind com utilitários de animação (animate-in, fade, slide) usados nas transições do app showcase."
   },
   "pt-PT": {
-    title: "Creditos e Bibliotecas de Terceiros",
+    title: "Créditos e Bibliotecas de Terceiros",
     subtitle:
-      "Lista de todas as bibliotecas open-source usadas nos componentes da SeedGrid, com as respetivas licencas e links de referencia.",
+      "Lista de todas as bibliotecas open-source usadas nos componentes da SeedGrid, com as respetivas licenças e links de referência.",
     compliance:
-      "Todas as bibliotecas acima sao distribuidas sob licencas compativeis com uso open-source e comercial. Estes creditos sao apresentados conforme exigido por cada licenca.",
-    usedInVarious: "Varios componentes",
+      "Todas as bibliotecas acima são distribuídas sob licenças compatíveis com uso open-source e comercial. Estes créditos são apresentados conforme exigido por cada licenca.",
+    usedInVarious: "Vários componentes",
     usedInShowcase: "App showcase",
-    usedInForms: "Campos de formulario",
+    usedInForms: "Campos de formulário",
     rhfDescription:
-      "Gestao de formularios para React com validacao, usada por baixo dos campos (Controller). Peer dependency do pacote.",
+      "Gestão de formulários para React com validação, usada por baixo dos campos (Controller). Peer dependency do pacote.",
     reactDescription: "Biblioteca para construir interfaces de utilizador; base de todos os componentes.",
     nextDescription: "Framework React usada pela app showcase.",
-    animateDescription: "Plugin do Tailwind com utilitarios de animacao (animate-in, fade, slide) usados nas transicoes da app showcase."
+    animateDescription: "Plugin do Tailwind com utilitários de animação (animate-in, fade, slide) usados nas transições da app showcase."
   },
   "en-US": {
     title: "Credits and Third-Party Libraries",
@@ -73,33 +73,33 @@ const CREDITS_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", CreditsTe
     animateDescription: "Tailwind plugin with animation utilities (animate-in, fade, slide) used for the Showcase app transitions."
   },
   es: {
-    title: "Creditos y Bibliotecas de Terceros",
+    title: "Créditos y Bibliotecas de Terceros",
     subtitle:
       "Listado de todas las bibliotecas open-source usadas en los componentes de SeedGrid, con sus licencias y enlaces de referencia.",
     compliance:
-      "Todas las bibliotecas listadas arriba se distribuyen con licencias compatibles con uso open-source y comercial. Los creditos se muestran segun lo exigido por cada licencia.",
+      "Todas las bibliotecas listadas arriba se distribuyen con licencias compatibles con uso open-source y comercial. Los créditos se muestran según lo exigido por cada licencia.",
     usedInVarious: "Varios componentes",
     usedInShowcase: "App showcase",
     usedInForms: "Campos de formulario",
     rhfDescription:
-      "Gestion de formularios para React con validacion, usada por debajo de los campos (Controller). Peer dependency del paquete.",
+      "Gestión de formularios para React con validación, usada por debajo de los campos (Controller). Peer dependency del paquete.",
     reactDescription: "Biblioteca para construir interfaces de usuario; base de todos los componentes.",
     nextDescription: "Framework de React usado por la app showcase.",
-    animateDescription: "Plugin de Tailwind con utilidades de animacion (animate-in, fade, slide) usadas en las transiciones de la app showcase."
+    animateDescription: "Plugin de Tailwind con utilidades de animación (animate-in, fade, slide) usadas en las transiciones de la app showcase."
   },
   fr: {
-    title: "Credits et bibliotheques tierces",
+    title: "Crédits et bibliothèques tierces",
     subtitle:
-      "Liste de toutes les bibliotheques open-source utilisees par les composants SeedGrid, avec leurs licences et leurs liens de reference.",
+      "Liste de toutes les bibliothèques open-source utilisées par les composants SeedGrid, avec leurs licences et leurs liens de référence.",
     compliance:
-      "Toutes les bibliotheques listees ci-dessus sont distribuees sous des licences compatibles avec un usage open-source et commercial. Les credits sont fournis comme exige par chaque licence.",
+      "Toutes les bibliothèques listées ci-dessus sont distribuées sous des licences compatibles avec un usage open-source et commercial. Les crédits sont fournis comme exigé par chaque licence.",
     usedInVarious: "Divers composants",
     usedInShowcase: "Application vitrine",
     usedInForms: "Champs de formulaire",
     rhfDescription:
       "Gestion de formulaires et validation pour React, utilisee en interne par les champs (Controller). Peer dependency du paquet.",
     reactDescription: "Bibliotheque pour construire des interfaces utilisateur ; base de tous les composants.",
-    nextDescription: "Framework React utilise par l'application vitrine.",
+    nextDescription: "Framework React utilisé par l'application vitrine.",
     animateDescription: "Plugin Tailwind avec des utilitaires d'animation (animate-in, fade, slide) utilises pour les transitions de l'application vitrine."
   }
 };

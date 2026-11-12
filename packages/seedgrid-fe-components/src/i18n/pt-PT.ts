@@ -274,6 +274,18 @@ const ptPT: Record<string, string> = {
   "components.menu.empty": "Nenhum item encontrado.",
   "components.menu.brandAlt": "Marca",
   "components.menu.pin": "Fixar menu",
+  "components.playground.copy": "Copiar",
+  "components.playground.copied": "Copiado",
+  "components.playground.error": "Erro",
+  "components.playground.run": "Executar",
+  "components.playground.running": "A executar",
+  "components.playground.reduce": "Reduzir",
+  "components.playground.expand": "Expandir",
+  "components.playground.code": "Código",
+  "components.playground.preview": "Pré-visualização",
+  "components.playground.title": "Código",
+  "components.playground.editableSnippet": "excerto editável",
+  "components.playground.editableApp": "App.tsx editável",
 };
 
 export default ptPT;

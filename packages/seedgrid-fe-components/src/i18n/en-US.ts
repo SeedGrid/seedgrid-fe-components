@@ -274,6 +274,18 @@ const enUS: Record<string, string> = {
   "components.menu.empty": "No items found.",
   "components.menu.brandAlt": "Brand",
   "components.menu.pin": "Pin menu",
+  "components.playground.copy": "Copy",
+  "components.playground.copied": "Copied",
+  "components.playground.error": "Error",
+  "components.playground.run": "Run",
+  "components.playground.running": "Running",
+  "components.playground.reduce": "Collapse",
+  "components.playground.expand": "Expand",
+  "components.playground.code": "Code",
+  "components.playground.preview": "Preview",
+  "components.playground.title": "Code",
+  "components.playground.editableSnippet": "editable snippet",
+  "components.playground.editableApp": "editable App.tsx",
 };
 
 export default enUS;

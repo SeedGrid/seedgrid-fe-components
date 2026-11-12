@@ -8,7 +8,7 @@ import {
   type SandpackFiles,
   useSandpack
 } from "@codesandbox/sandpack-react";
-import { SgButton, SgCard } from "@seedgrid/fe-components";
+import { SgButton, SgCard, tComponents, useComponentsI18n } from "@seedgrid/fe-components";
 
 function cn(...parts: Array<string | false | null | undefined>) {
   return parts.filter(Boolean).join(" ");
@@ -1137,6 +1137,7 @@ async function copyText(text: string): Promise<boolean> {
 }
 
 function CopyButton() {
+  const i18n = useComponentsI18n();
   const { sandpack } = useSandpack();
   const [copyState, setCopyState] = React.useState<"idle" | "success" | "error">("idle");
 
@@ -1159,7 +1160,11 @@ function CopyButton() {
 
   return (
     <SgButton appearance="outline" size="sm" onClick={handleCopy}>
-      {copyState === "success" ? "Copiado" : copyState === "error" ? "Erro" : "Copiar"}
+      {copyState === "success"
+        ? tComponents(i18n, "components.playground.copied")
+        : copyState === "error"
+          ? tComponents(i18n, "components.playground.error")
+          : tComponents(i18n, "components.playground.copy")}
     </SgButton>
   );
 }
@@ -1186,6 +1191,7 @@ function StylesSync({ css }: { css: string }) {
 }
 
 function RunButton({ onRun }: { onRun?: () => void }) {
+  const i18n = useComponentsI18n();
   const { sandpack } = useSandpack();
   const [running, setRunning] = React.useState(false);
 
@@ -1233,7 +1239,7 @@ function RunButton({ onRun }: { onRun?: () => void }) {
       loading={running}
       onClick={handleRun}
     >
-      {running ? "Running" : "Run"}
+      {running ? tComponents(i18n, "components.playground.running") : tComponents(i18n, "components.playground.run")}
     </SgButton>
   );
 }
@@ -1247,6 +1253,7 @@ function shouldSuppressCoreJsProviderWarning(args: unknown[]) {
 }
 
 export default function SgPlayground(props: Readonly<SgPlaygroundProps>) {
+  const i18n = useComponentsI18n();
   const {
     interactive = false,
     codeContract = "renderBody",
@@ -1790,9 +1797,11 @@ export default function SgPlayground(props: Readonly<SgPlaygroundProps>) {
         <StylesSync css={sandpackStylesCss} />
         <div className="flex items-center justify-between border-b border-border px-3 py-2">
           <div className="flex items-center gap-2">
-            {withCard ? null : <span className="text-sm font-medium">{title ?? "Example"}</span>}
+            {withCard ? null : <span className="text-sm font-medium">{title ?? tComponents(i18n, "components.playground.title")}</span>}
             <span className="text-xs text-muted-foreground">
-              {codeContract === "renderBody" ? "editable snippet" : "editable App.tsx"}
+              {codeContract === "renderBody"
+                ? tComponents(i18n, "components.playground.editableSnippet")
+                : tComponents(i18n, "components.playground.editableApp")}
             </span>
           </div>
           <div className="flex items-center gap-2">
@@ -1802,7 +1811,7 @@ export default function SgPlayground(props: Readonly<SgPlaygroundProps>) {
                 size="sm"
                 onClick={() => setIsExpanded((prev) => !prev)}
               >
-                {isExpanded ? "Reduzir" : "Expandir"}
+                {isExpanded ? tComponents(i18n, "components.playground.reduce") : tComponents(i18n, "components.playground.expand")}
               </SgButton>
             ) : null}
             <RunButton onRun={() => setActivePanel("preview")} />
@@ -1820,7 +1829,7 @@ export default function SgPlayground(props: Readonly<SgPlaygroundProps>) {
             )}
             onClick={() => setActivePanel("code")}
           >
-            CÃ³digo
+            {tComponents(i18n, "components.playground.code")}
           </button>
           <button
             type="button"
@@ -1832,7 +1841,7 @@ export default function SgPlayground(props: Readonly<SgPlaygroundProps>) {
             )}
             onClick={() => setActivePanel("preview")}
           >
-            Preview
+            {tComponents(i18n, "components.playground.preview")}
           </button>
         </div>
 
@@ -1882,7 +1891,7 @@ export default function SgPlayground(props: Readonly<SgPlaygroundProps>) {
   return (
     <SgCard
       id={cardId}
-      title={title ?? "Codigo"}
+      title={title ?? tComponents(i18n, "components.playground.title")}
       description={description}
       collapsible={collapsible}
       defaultOpen={defaultOpen}

@@ -274,6 +274,18 @@ const fr: Record<string, string> = {
   "components.menu.empty": "Aucun element trouve.",
   "components.menu.brandAlt": "Marque",
   "components.menu.pin": "Epingler le menu",
+  "components.playground.copy": "Copier",
+  "components.playground.copied": "Copié",
+  "components.playground.error": "Erreur",
+  "components.playground.run": "Exécuter",
+  "components.playground.running": "Exécution",
+  "components.playground.reduce": "Réduire",
+  "components.playground.expand": "Développer",
+  "components.playground.code": "Code",
+  "components.playground.preview": "Aperçu",
+  "components.playground.title": "Code",
+  "components.playground.editableSnippet": "extrait modifiable",
+  "components.playground.editableApp": "App.tsx modifiable",
 };
 
 export default fr;
