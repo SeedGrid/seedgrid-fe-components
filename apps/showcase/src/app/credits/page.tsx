@@ -23,6 +23,7 @@ type CreditsTexts = {
   rhfDescription: string;
   reactDescription: string;
   nextDescription: string;
+  animateDescription: string;
 };
 
 const CREDITS_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", CreditsTexts> = {
@@ -38,7 +39,8 @@ const CREDITS_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", CreditsTe
     rhfDescription:
       "Gerenciamento de formularios para React com validacao, usado por baixo dos campos (Controller). Peer dependency do pacote.",
     reactDescription: "Biblioteca para construir interfaces de usuario; base de todos os componentes.",
-    nextDescription: "Framework React usado pelo app showcase."
+    nextDescription: "Framework React usado pelo app showcase.",
+    animateDescription: "Plugin do Tailwind com utilitarios de animacao (animate-in, fade, slide) usados nas transicoes do app showcase."
   },
   "pt-PT": {
     title: "Creditos e Bibliotecas de Terceiros",
@@ -52,7 +54,8 @@ const CREDITS_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", CreditsTe
     rhfDescription:
       "Gestao de formularios para React com validacao, usada por baixo dos campos (Controller). Peer dependency do pacote.",
     reactDescription: "Biblioteca para construir interfaces de utilizador; base de todos os componentes.",
-    nextDescription: "Framework React usada pela app showcase."
+    nextDescription: "Framework React usada pela app showcase.",
+    animateDescription: "Plugin do Tailwind com utilitarios de animacao (animate-in, fade, slide) usados nas transicoes da app showcase."
   },
   "en-US": {
     title: "Credits and Third-Party Libraries",
@@ -66,7 +69,8 @@ const CREDITS_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", CreditsTe
     rhfDescription:
       "Form state management and validation for React, used under the hood by the form fields (Controller). Peer dependency of the package.",
     reactDescription: "Library for building user interfaces; the foundation of every component.",
-    nextDescription: "React framework used by the Showcase app."
+    nextDescription: "React framework used by the Showcase app.",
+    animateDescription: "Tailwind plugin with animation utilities (animate-in, fade, slide) used for the Showcase app transitions."
   },
   es: {
     title: "Creditos y Bibliotecas de Terceros",
@@ -80,7 +84,8 @@ const CREDITS_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", CreditsTe
     rhfDescription:
       "Gestion de formularios para React con validacion, usada por debajo de los campos (Controller). Peer dependency del paquete.",
     reactDescription: "Biblioteca para construir interfaces de usuario; base de todos los componentes.",
-    nextDescription: "Framework de React usado por la app showcase."
+    nextDescription: "Framework de React usado por la app showcase.",
+    animateDescription: "Plugin de Tailwind con utilidades de animacion (animate-in, fade, slide) usadas en las transiciones de la app showcase."
   },
   fr: {
     title: "Credits et bibliotheques tierces",
@@ -94,7 +99,8 @@ const CREDITS_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", CreditsTe
     rhfDescription:
       "Gestion de formulaires et validation pour React, utilisee en interne par les champs (Controller). Peer dependency du paquet.",
     reactDescription: "Bibliotheque pour construire des interfaces utilisateur ; base de tous les composants.",
-    nextDescription: "Framework React utilise par l'application vitrine."
+    nextDescription: "Framework React utilise par l'application vitrine.",
+    animateDescription: "Plugin Tailwind avec des utilitaires d'animation (animate-in, fade, slide) utilises pour les transitions de l'application vitrine."
   }
 };
 
@@ -160,6 +166,14 @@ export default function CreditsPage() {
       license: "MIT",
       url: "https://tailwindcss.com/",
       description: "Utility-first CSS framework used by the Showcase app.",
+      usedIn: texts.usedInShowcase
+    },
+    {
+      name: "tailwindcss-animate",
+      version: "1.x",
+      license: "MIT",
+      url: "https://github.com/jamiebuilds/tailwindcss-animate",
+      description: texts.animateDescription,
       usedIn: texts.usedInShowcase
     },
     {
