@@ -957,6 +957,7 @@ export default function ShowcaseShell(props: {
               id="showcase-locale-toolbar"
               title={isNarrow ? undefined : t({ locale, messages }, "showcase.toolbar.language")}
               orientationDirection="horizontal-left"
+              className="max-w-full [&>div]:flex-wrap"
               collapsible={false}
             >
               {isNarrow ? (
@@ -975,7 +976,6 @@ export default function ShowcaseShell(props: {
                   icon={<LocaleFlag locale={item.value} />}
                   label={item.value}
                   hint={item.label}
-                  showLabel={!isNarrow}
                   severity={locale === item.value ? "primary" : "plain"}
                   onClick={() => applyLocale(item.value)}
                 />
