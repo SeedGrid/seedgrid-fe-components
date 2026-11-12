@@ -339,7 +339,6 @@ export function SgCard(props: Readonly<SgCardProps>) {
     variantClasses,
     interactiveClasses,
     disabledClasses,
-    draggable ? "touch-none" : "",
     className
   );
 
@@ -423,8 +422,8 @@ export function SgCard(props: Readonly<SgCardProps>) {
     ? ""
     : draggable
     ? dragging
-      ? "cursor-grabbing"
-      : "cursor-grab"
+      ? "cursor-grabbing touch-none"
+      : "cursor-grab touch-none"
     : collapsible && toggleOnHeaderClick
     ? "cursor-pointer"
     : "";
