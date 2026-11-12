@@ -20,7 +20,7 @@ export type SgInputNumberProps = RhfFieldProps & {
   suffixText?: string;
   decimals?: number; // default 2
   allowNegative?: boolean; // default true
-  emptyValue?: "null" | "zero"; // default "zero"
+  emptyValueIsNull?: boolean; // default false (empty = 0)
   type?: React.HTMLInputTypeAttribute;
   placeholder?: string;
   className?: string;
@@ -40,7 +40,7 @@ export type SgInputNumberProps = RhfFieldProps & {
   textInputType?: React.InputHTMLAttributes<HTMLInputElement>["inputMode"];
   onEnter?: () => void;
   onExit?: () => void;
-  onChange?: (value: string) => void;
+  onChange?: (value: number | null) => void;
   onClear?: () => void;
   withBorder?: boolean;
   borderRadius?: number | string;
@@ -54,8 +54,8 @@ export type SgInputNumberProps = RhfFieldProps & {
 };
 
 type SgInputNumberBaseProps = Omit<SgInputNumberProps, "name" | "control" | "register" | "rules"> & {
-  externalValue?: string | number;
-  onExternalChange?: (value: string) => void;
+  externalValue?: string | number | null;
+  onExternalChange?: (value: number | null) => void;
 };
 
 type NumberState = {
@@ -174,7 +174,7 @@ function SgInputNumberBase(props: SgInputNumberBaseProps) {
   const i18n = useComponentsI18n();
   const decimals = props.decimals ?? 2;
   const allowNegative = props.allowNegative ?? true;
-  const emptyValue = props.emptyValue ?? "zero";
+  const emptyValue: "null" | "zero" = props.emptyValueIsNull ? "null" : "zero";
   const { decimal: decimalSep, group: groupSep } = getSeparators(i18n.locale);
   const inputProps = props.inputProps ?? {};
   const {
@@ -300,9 +300,10 @@ function SgInputNumberBase(props: SgInputNumberBaseProps) {
       setState(next);
       setHasInteracted(true);
       const value = stateToValue(next, decimals);
-      lastEmittedRef.current = value;
-      props.onExternalChange?.(value);
-      props.onChange?.(value);
+      const numberValue = stateToNumber(next, decimals);
+      lastEmittedRef.current = numberValue === null ? "" : String(numberValue);
+      props.onExternalChange?.(numberValue);
+      props.onChange?.(numberValue);
       if (inputOnChange) {
         inputOnChange({
           target: { value },
@@ -388,6 +389,10 @@ function SgInputNumberBase(props: SgInputNumberBaseProps) {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (props.readOnly || props.enabled === false || inputProps.readOnly) return;
+    if (emptyValue === "null" && event.currentTarget.value.trim() === "") {
+      commitState(null);
+      return;
+    }
     const parsed = normalizeState(event.currentTarget.value, decimals, allowNegative, decimalSep);
     commitState(parsed);
   };

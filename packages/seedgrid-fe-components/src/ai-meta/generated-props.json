@@ -4623,8 +4623,8 @@
       "required": false
     },
     {
-      "name": "emptyValue",
-      "type": "\"null\" | \"zero\"",
+      "name": "emptyValueIsNull",
+      "type": "boolean",
       "required": false
     },
     {
@@ -4709,7 +4709,7 @@
     },
     {
       "name": "onChange",
-      "type": "((value: string) => void)",
+      "type": "((value: number | null) => void)",
       "required": false
     },
     {
@@ -5619,8 +5619,8 @@
       "required": false
     },
     {
-      "name": "emptyValue",
-      "type": "\"null\" | \"zero\"",
+      "name": "emptyValueIsNull",
+      "type": "boolean",
       "required": false
     },
     {
@@ -5715,7 +5715,7 @@
     },
     {
       "name": "onChange",
-      "type": "((value: string) => void)",
+      "type": "((value: number | null) => void)",
       "required": false
     },
     {
@@ -10407,13 +10407,13 @@
       "name": "alignTo",
       "type": "SgStringAnimatorAlign",
       "required": false,
-      "description": "Alinhamento das strings:\r\n- \"left\"  — preenche a direita com emptyChar (ideal para texto/nomes)\r\n- \"right\" — preenche a esquerda com emptyChar (ideal para numeros)"
+      "description": "Alinhamento das strings:\n- \"left\"  — preenche a direita com emptyChar (ideal para texto/nomes)\n- \"right\" — preenche a esquerda com emptyChar (ideal para numeros)"
     },
     {
       "name": "autoStart",
       "type": "boolean",
       "required": false,
-      "description": "Se true, inicia a animacao automaticamente quando o componente\r\nmonta e sempre que targetString mudar."
+      "description": "Se true, inicia a animacao automaticamente quando o componente\nmonta e sempre que targetString mudar."
     },
     {
       "name": "backgroundColor",
@@ -10425,7 +10425,7 @@
       "name": "charset",
       "type": "string[]",
       "required": false,
-      "description": "Conjunto de caracteres validos para o SgRoller3DDigit.\r\nDeve conter todos os caracteres que podem aparecer em sourceString,\r\ntargetString e emptyChar. Ignorado quando style != \"roller3d\"."
+      "description": "Conjunto de caracteres validos para o SgRoller3DDigit.\nDeve conter todos os caracteres que podem aparecer em sourceString,\ntargetString e emptyChar. Ignorado quando style != \"roller3d\"."
     },
     {
       "name": "className",
@@ -10437,13 +10437,13 @@
       "name": "color",
       "type": "string",
       "required": false,
-      "description": "Cor principal do texto/ponto — aplicada nos estilos \"neon\", \"fade\",\r\n\"discard\" e \"matrix\"."
+      "description": "Cor principal do texto/ponto — aplicada nos estilos \"neon\", \"fade\",\n\"discard\" e \"matrix\"."
     },
     {
       "name": "emptyChar",
       "type": "string",
       "required": false,
-      "description": "Caractere utilizado para preencher as posicoes extras quando\r\nsourceString e targetString possuem comprimentos diferentes."
+      "description": "Caractere utilizado para preencher as posicoes extras quando\nsourceString e targetString possuem comprimentos diferentes."
     },
     {
       "name": "fontSize",
@@ -10461,7 +10461,7 @@
       "name": "stringAnimatorStyle",
       "type": "SgStringAnimatorStyle",
       "required": false,
-      "description": "Estilo de animacao por caractere.\r\n- \"roller3d\": tambor vertical (SgRoller3DDigit)\r\n- \"flip\": vira o card (SgFlipDigit)\r\n- \"neon\": brilho neon com fade (SgNeonDigit)\r\n- \"fade\": apaga e acende (SgFadeDigit)\r\n- \"discard\": folha descartada voando (SgDiscardDigit)\r\n- \"matrix\": pontos em matriz LED (SgMatrixDigit)"
+      "description": "Estilo de animacao por caractere.\n- \"roller3d\": tambor vertical (SgRoller3DDigit)\n- \"flip\": vira o card (SgFlipDigit)\n- \"neon\": brilho neon com fade (SgNeonDigit)\n- \"fade\": apaga e acende (SgFadeDigit)\n- \"discard\": folha descartada voando (SgDiscardDigit)\n- \"matrix\": pontos em matriz LED (SgMatrixDigit)"
     },
     {
       "name": "targetString",
@@ -10473,7 +10473,7 @@
       "name": "velocity",
       "type": "number",
       "required": false,
-      "description": "Velocidade de 1 (muito lento) a 100 (muito rapido).\r\nControla o intervalo de tempo entre a troca de cada caractere."
+      "description": "Velocidade de 1 (muito lento) a 100 (muito rapido).\nControla o intervalo de tempo entre a troca de cada caractere."
     }
   ],
   "SgTextEditor": [

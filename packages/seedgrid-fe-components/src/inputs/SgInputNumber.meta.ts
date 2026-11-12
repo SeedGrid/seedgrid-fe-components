@@ -46,6 +46,14 @@ export const sgMeta: SgMetaV0 = {
       bindable: true
     },
     {
+      name: "emptyValueIsNull",
+      type: "boolean",
+      default: false,
+      description: "Se true, campo vazio vale null; se false (padrao), vale 0.",
+      semanticRole: "behavior",
+      bindable: true
+    },
+    {
       name: "decimals",
       type: "number",
       description: "Quantidade de casas decimais permitidas.",
@@ -62,8 +70,8 @@ export const sgMeta: SgMetaV0 = {
     },
     {
       name: "onChange",
-      type: "(value: string) => void",
-      description: "Callback com o valor numerico atual.",
+      type: "(value: number | null) => void",
+      description: "Callback com o valor numerico atual (number; null somente com emptyValueIsNull).",
       semanticRole: "event",
       bindable: false
     }

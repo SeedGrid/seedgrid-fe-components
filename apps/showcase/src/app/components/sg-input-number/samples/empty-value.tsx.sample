@@ -6,7 +6,7 @@ export default function Example() {
       id="demo-empty"
       label="Pode ser vazio"
       name="vazio"
-      emptyValue="null"
+      emptyValueIsNull
       decimals={2}
     />
   );

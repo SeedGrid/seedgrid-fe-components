@@ -45,6 +45,14 @@ export const sgMeta: SgMetaV0 = {
       bindable: true
     },
     {
+      name: "emptyValueIsNull",
+      type: "boolean",
+      default: false,
+      description: "Se true, campo vazio vale null; se false (padrao), vale 0.",
+      semanticRole: "behavior",
+      bindable: true
+    },
+    {
       name: "required",
       type: "boolean",
       default: false,
@@ -54,8 +62,8 @@ export const sgMeta: SgMetaV0 = {
     },
     {
       name: "onChange",
-      type: "(value: string) => void",
-      description: "Callback com o valor monetario normalizado.",
+      type: "(value: number | null) => void",
+      description: "Callback com o valor monetario como number (null somente com emptyValueIsNull).",
       semanticRole: "event",
       bindable: false
     }

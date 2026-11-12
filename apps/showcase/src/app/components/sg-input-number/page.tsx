@@ -326,7 +326,7 @@ export default function SgInputNumberPage() {
     { prop: "label", type: "string", defaultValue: "-", description: t(i18n, "showcase.component.inputNumber.props.rows.label") },
     { prop: "decimals", type: "number", defaultValue: "2", description: t(i18n, "showcase.component.inputNumber.props.rows.decimals") },
     { prop: "allowNegative", type: "boolean", defaultValue: "true", description: t(i18n, "showcase.component.inputNumber.props.rows.allowNegative") },
-    { prop: "emptyValue", type: '"null" | "zero"', defaultValue: '"zero"', description: t(i18n, "showcase.component.inputNumber.props.rows.emptyValue") },
+    { prop: "emptyValueIsNull", type: "boolean", defaultValue: "false", description: t(i18n, "showcase.component.inputNumber.props.rows.emptyValue") },
     { prop: "prefixText / suffixText", type: "string", defaultValue: "-", description: t(i18n, "showcase.component.inputNumber.props.rows.prefixSuffix") },
     { prop: "minValue / maxValue", type: "number", defaultValue: "-", description: t(i18n, "showcase.component.inputNumber.props.rows.minMax") },
     { prop: "required", type: "boolean", defaultValue: "false", description: t(i18n, "showcase.component.inputNumber.props.rows.required") },
@@ -672,7 +672,7 @@ export default function SgInputNumberPage() {
             label={t(i18n, "showcase.component.inputNumber.labels.canBeEmpty")}
             name="vazio"
             register={register}
-            emptyValue="null"
+            emptyValueIsNull
             decimals={2}
           />
         </div>

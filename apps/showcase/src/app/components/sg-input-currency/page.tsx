@@ -673,7 +673,7 @@ export default function SgInputCurrencyPage() {
             label={t(i18n, "showcase.component.currencyEdit.labels.canBeEmpty")}
             name="vazio"
             register={register}
-            emptyValue="null"
+            emptyValueIsNull
             currency="BRL"
           />
         </div>

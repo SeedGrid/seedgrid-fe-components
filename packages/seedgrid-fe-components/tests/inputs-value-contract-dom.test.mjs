@@ -123,7 +123,7 @@ for (const [name, init, next, typed] of TEXT_CASES) {
   });
 }
 
-/* Numero e moeda: o campo exibe 2 casas. Digitar devolve TEXTO ("37.00") ao form, enquanto defaultValues/setValue aceitam numero. */
+/* Numero e moeda: o campo exibe 2 casas. Digitar devolve NUMERO ao form; defaultValues/setValue aceitam numero ou texto. */
 for (const [name, init, next, typed] of [
   ["SgInputNumber", 10, 25, "37"],
   ["SgInputCurrency", 10.5, 25.75, "37"]
@@ -139,9 +139,42 @@ for (const [name, init, next, typed] of [
       await resetByCode(m, init);
       assert.equal(Number(firstText(m.container)), init);
       await typeInto(visibleInputs(m.container)[0], typed);
-      assert.equal(Number(m.form().getValues("f")), Number(typed), "digitado volta ao form (hoje como texto)");
+      assert.equal(m.form().getValues("f"), Number(typed), "digitado volta ao form como NUMERO");
+      assert.equal(typeof m.form().getValues("f"), "number");
     } finally {
       m.harness.restore();
+    }
+  });
+  test(`${name}: setValue/defaultValues aceitam texto e a saida continua numero (B)`, async () => {
+    const m = await mount(name, { label: "L" }, "37.5");
+    try {
+      assert.equal(Number(firstText(m.container).replace(",", ".")), 37.5, "texto inicial exibido");
+      await setByCode(m, "12.25");
+      assert.equal(Number(firstText(m.container).replace(",", ".")), 12.25, "setValue com texto");
+      await typeInto(visibleInputs(m.container)[0], "8");
+      assert.equal(m.form().getValues("f"), 8);
+      assert.equal(typeof m.form().getValues("f"), "number");
+    } finally {
+      m.harness.restore();
+    }
+  });
+  test(`${name}: vazio vale 0 por padrao e null com emptyValueIsNull; onChange recebe number|null`, async () => {
+    for (const isNull of [false, true]) {
+      const harness = setupDomHarness();
+      try {
+        const seen = [];
+        const { container } = await harness.render(
+          h(S[name], { id: "e", label: "L", emptyValueIsNull: isNull, value: 12, onChange: (v) => seen.push(v) })
+        );
+        await flushDom();
+        const el = visibleInputs(container)[0];
+        await typeInto(el, "5");
+        assert.equal(seen.at(-1), 5, "onChange numerico");
+        await typeInto(el, "");
+        assert.equal(seen.at(-1), isNull ? null : 0, isNull ? "vazio = null" : "vazio = 0");
+      } finally {
+        harness.restore();
+      }
     }
   });
 }

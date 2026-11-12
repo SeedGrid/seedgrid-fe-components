@@ -11,7 +11,7 @@ export default function Example() {
       label="Pode ficar vazio"
       name="vazio"
       register={register}
-      emptyValue="null"
+      emptyValueIsNull
       currency="BRL"
     />
   );
