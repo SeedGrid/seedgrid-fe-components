@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { SgInputText, type SgInputTextProps } from "./SgInputText";
+import { SgInputText, SgValueMaskContext, type SgInputTextProps } from "./SgInputText";
 import { resolveFieldError } from "../rhf";
 import { maskCpf } from "../masks";
 import { isValidCpf } from "../validators";
@@ -88,22 +88,24 @@ export function SgInputCPF(props: SgInputCPFProps) {
   const shouldValidateOnBlur = validateOnBlur ?? true;
 
   return (
-    <SgInputText
-      {...rest}
-      maxLength={rest.maxLength ?? 18}
-      error={resolveFieldError(error, internalError ?? undefined)}
-      onClear={() => {
-        setInternalError(null);
-        props.onValidation?.(null);
-        rest.onClear?.();
-      }}
-      inputProps={{
-        ...inputProps,
-        onBlur: (event) => {
-          if (shouldValidateOnBlur) runValidation(event.currentTarget.value);
-          onBlur?.(event);
-        }
-      }}
-    />
+    <SgValueMaskContext.Provider value={maskCpf}>
+      <SgInputText
+        {...rest}
+        maxLength={rest.maxLength ?? 18}
+        error={resolveFieldError(error, internalError ?? undefined)}
+        onClear={() => {
+          setInternalError(null);
+          props.onValidation?.(null);
+          rest.onClear?.();
+        }}
+        inputProps={{
+          ...inputProps,
+          onBlur: (event) => {
+            if (shouldValidateOnBlur) runValidation(event.currentTarget.value);
+            onBlur?.(event);
+          }
+        }}
+      />
+    </SgValueMaskContext.Provider>
   );
 }

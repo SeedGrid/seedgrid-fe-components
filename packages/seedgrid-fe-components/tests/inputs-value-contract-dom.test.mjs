@@ -103,18 +103,28 @@ const TEXT_CASES = [
   ["SgInputBirthDate", "1990-05-10", "1985-07-20", "2000-01-01"],
   ["SgInputDateTime", "2026-01-15T10:30", "2026-02-20T14:45", "2026-03-25T08:15"]
 ];
-for (const [name, init, next, typed] of TEXT_CASES) {
+// P155.F3.T13: campos com mascara entregam SEMPRE o valor mascarado ao form (digitado ou setado por codigo).
+const FORM_MASKS = {
+  SgInputPhone: S.maskPhone,
+  SgInputPostalCode: S.maskPostalCodeBR,
+  SgInputCPF: S.maskCpf,
+  SgInputCNPJ: S.maskCnpj,
+  SgInputCPFCNPJ: S.maskCpfCnpj
+};
+for (const [name, rawInit, rawNext, rawTyped] of TEXT_CASES) {
+  const fm = FORM_MASKS[name] ?? ((v) => v);
+  const [init, next, typed] = [fm(rawInit), fm(rawNext), fm(rawTyped)];
   test(`${name}: valor inicial do form, setValue/reset por codigo e digitacao sao lidos de volta`, async () => {
-    const m = await mount(name, { label: "L" }, init);
+    const m = await mount(name, { label: "L" }, rawInit);
     try {
       assert.equal(firstText(m.container), init, "inicial aparece");
       assert.equal(m.form().getValues("f"), init, "inicial lido do form");
-      await setByCode(m, next);
+      await setByCode(m, rawNext);
       assert.equal(firstText(m.container), next, "setValue atualiza o campo");
       assert.equal(m.form().getValues("f"), next, "setValue lido de volta");
-      await resetByCode(m, init);
+      await resetByCode(m, rawInit);
       assert.equal(firstText(m.container), init, "reset volta ao inicial");
-      await typeInto(visibleInputs(m.container)[0], typed);
+      await typeInto(visibleInputs(m.container)[0], rawTyped);
       assert.equal(firstText(m.container), typed, "digitacao aparece");
       assert.equal(m.form().getValues("f"), typed, "digitacao lida do form");
     } finally {

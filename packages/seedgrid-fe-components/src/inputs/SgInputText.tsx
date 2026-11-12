@@ -55,6 +55,42 @@ export type SgInputTextProps = RhfFieldProps & {
 
 type SgInputTextBaseProps = Omit<SgInputTextProps, "name" | "control" | "register" | "rules">;
 
+/** @internal Contexto usado pelos campos mascarados (CPF, CNPJ, telefone, CEP) para que o valor do formulario seja sempre mascarado. */
+export const SgValueMaskContext = React.createContext<((value: string) => string) | null>(null);
+
+function MaskSync(props: { value: unknown; mask: (value: string) => string; onSync: (masked: string) => void }) {
+  const { value, mask, onSync } = props;
+  React.useEffect(() => {
+    if (typeof value !== "string" && typeof value !== "number") return;
+    const text = String(value);
+    const masked = mask(text);
+    if (masked !== text) onSync(masked);
+  }, [value, mask, onSync]);
+  return null;
+}
+
+function patchValueSetter(node: HTMLInputElement, mask: (value: string) => string, notify: (masked: string) => void) {
+  // Encadeia no descritor da propria instancia (o React instala um para rastrear mudancas) ou, se nao houver, no do prototipo.
+  const proto = Object.getPrototypeOf(node) as object;
+  const desc = Object.getOwnPropertyDescriptor(node, "value") ?? Object.getOwnPropertyDescriptor(proto, "value");
+  if (!desc?.get || !desc.set) return;
+  const flag = "__sgMaskPatched";
+  if ((node as unknown as Record<string, unknown>)[flag]) return;
+  (node as unknown as Record<string, unknown>)[flag] = true;
+  Object.defineProperty(node, "value", {
+    configurable: true,
+    get() {
+      return desc.get!.call(node) as string;
+    },
+    set(next: string) {
+      const text = next == null ? "" : String(next);
+      const masked = mask(text);
+      desc.set!.call(node, masked);
+      if (masked !== text) notify(masked);
+    }
+  });
+}
+
 function ErrorText(props: { message?: string }) {
   if (!props.message) return null;
   return <p data-sg-error className="text-xs text-red-600">{props.message}</p>;
@@ -598,6 +634,7 @@ function SgInputTextBase(props: SgInputTextBaseProps) {
 export function SgInputText(props: SgInputTextProps) {
   const i18n = useComponentsI18n();
   const { control, name, register, rules, ...rest } = props;
+  const valueMask = React.useContext(SgValueMaskContext);
   const resolvedRules = mergeRequiredRule(
     rules,
     rest.required,
@@ -606,6 +643,9 @@ export function SgInputText(props: SgInputTextProps) {
 
   if (name && register) {
     const reg = register(name, resolvedRules);
+    const notifyMasked = (masked: string) => {
+      void reg.onChange({ target: { name, value: masked }, type: "change" });
+    };
     return (
       <SgInputTextBase
         {...rest}
@@ -613,6 +653,10 @@ export function SgInputText(props: SgInputTextProps) {
           ...rest.inputProps,
           name,
           onChange: (event) => {
+            if (valueMask) {
+              const masked = valueMask(event.target.value);
+              if (masked !== event.target.value) event.target.value = masked;
+            }
             reg.onChange(event);
             rest.inputProps?.onChange?.(event);
           },
@@ -620,7 +664,15 @@ export function SgInputText(props: SgInputTextProps) {
             reg.onBlur(event);
             rest.inputProps?.onBlur?.(event);
           },
-          ref: mergeRefs(reg.ref, (rest.inputProps as { ref?: React.Ref<HTMLInputElement> })?.ref)
+          ref: mergeRefs(
+            valueMask
+              ? (node: HTMLInputElement | null) => {
+                  if (node) patchValueSetter(node, valueMask, notifyMasked);
+                }
+              : undefined,
+            reg.ref,
+            (rest.inputProps as { ref?: React.Ref<HTMLInputElement> })?.ref
+          )
         }}
       />
     );
@@ -637,11 +689,11 @@ export function SgInputText(props: SgInputTextProps) {
       if (suffixText && text.endsWith(suffixText)) {
         text = text.slice(0, -suffixText.length);
       }
-      return text;
+      return valueMask ? valueMask(text) : text;
     };
     const toFieldValue = (raw: string) => {
       if (!raw) return "";
-      return `${prefixText}${raw}${suffixText}`;
+      return `${prefixText}${valueMask ? valueMask(raw) : raw}${suffixText}`;
     };
     return (
       <Controller
@@ -655,14 +707,24 @@ export function SgInputText(props: SgInputTextProps) {
           field: ControllerRenderProps<FieldValues, string>;
           fieldState: ControllerFieldState;
         }) => (
-          <SgInputTextBase
-            {...rest}
-            error={resolveFieldError(rest.error, fieldState.error?.message)}
-            inputProps={mergeInputPropsWithField(rest.inputProps, field, { normalizeValue, toFieldValue })}
-          />
+          <>
+            {valueMask ? <MaskSync value={field.value} mask={valueMask} onSync={field.onChange} /> : null}
+            <SgInputTextBase
+              {...rest}
+              error={resolveFieldError(rest.error, fieldState.error?.message)}
+              inputProps={mergeInputPropsWithField(rest.inputProps, field, { normalizeValue, toFieldValue })}
+            />
+          </>
         )}
       />
     );
+  }
+  if (valueMask) {
+    const ip = rest.inputProps as (React.InputHTMLAttributes<HTMLInputElement> & { ref?: React.Ref<HTMLInputElement> }) | undefined;
+    const maskedProps = { ...ip } as typeof ip & Record<string, unknown>;
+    if (typeof ip?.value === "string") maskedProps.value = valueMask(ip.value);
+    if (typeof ip?.defaultValue === "string") maskedProps.defaultValue = valueMask(ip.defaultValue);
+    return <SgInputTextBase {...rest} inputProps={maskedProps} />;
   }
   return <SgInputTextBase {...rest} />;
 }

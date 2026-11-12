@@ -2,6 +2,16 @@
 
 ## Nao publicado
 
+### BREAKING: campos com mascara entregam sempre o valor mascarado
+
+- `SgInputCPF`, `SgInputCNPJ`, `SgInputCPFCNPJ`, `SgInputPhone` e `SgInputPostalCode` entregam o valor **mascarado**
+  (`529.982.247-25`, `(11) 98765-4321`, `01310-100`) em qualquer caminho: `onChange` standalone, `control` (Controller) e `register`,
+  tanto digitado quanto setado por codigo (`defaultValues`, `setValue`, `reset`, `value`). Antes, `control` entregava o texto cru.
+- A entrada aceita texto cru ou ja mascarado e converte; nao ha prop nova.
+- Quem precisa so dos digitos deve limpar ao usar: `value.replace(/\D/g, "")`.
+- Limites conhecidos: com `control`, se `defaultValues` vier cru o campo normaliza para mascarado e o formulario passa a constar como alterado (dirty);
+  com `register`, `reset({ campo: cru })` nao atualiza o DOM de campos nao controlados (comportamento do react-hook-form), mascare o valor ao resetar.
+
 ### BREAKING: SgInputNumber e SgInputCurrency emitem sempre numero
 
 - `onChange`, o valor gravado no formulario (react-hook-form) e `onExternalChange` agora entregam `number`

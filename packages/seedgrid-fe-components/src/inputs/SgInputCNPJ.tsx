@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { SgInputText, type SgInputTextProps } from "./SgInputText";
+import { SgInputText, SgValueMaskContext, type SgInputTextProps } from "./SgInputText";
 import { resolveFieldError } from "../rhf";
 import { maskCnpj } from "../masks";
 import { isValidCnpj } from "../validators";
@@ -158,24 +158,26 @@ export function SgInputCNPJ(props: SgInputCNPJProps) {
   const shouldValidateOnBlur = validateOnBlur ?? true;
 
   return (
-    <SgInputText
-      {...rest}
-      maxLength={rest.maxLength ?? 18}
-      error={resolveFieldError(error, internalError ?? undefined)}
-      onClear={() => {
-        setInternalError(null);
-        props.onValidation?.(null);
-        lastValidatedCnpjRef.current = null;
-        lastPublicaFoundRef.current = null;
-        rest.onClear?.();
-      }}
-      inputProps={{
-        ...inputProps,
-        onBlur: (event) => {
-          if (shouldValidateOnBlur) runValidation(event.currentTarget.value);
-          onBlur?.(event);
-        }
-      }}
-    />
+    <SgValueMaskContext.Provider value={maskCnpj}>
+      <SgInputText
+        {...rest}
+        maxLength={rest.maxLength ?? 18}
+        error={resolveFieldError(error, internalError ?? undefined)}
+        onClear={() => {
+          setInternalError(null);
+          props.onValidation?.(null);
+          lastValidatedCnpjRef.current = null;
+          lastPublicaFoundRef.current = null;
+          rest.onClear?.();
+        }}
+        inputProps={{
+          ...inputProps,
+          onBlur: (event) => {
+            if (shouldValidateOnBlur) runValidation(event.currentTarget.value);
+            onBlur?.(event);
+          }
+        }}
+      />
+    </SgValueMaskContext.Provider>
   );
 }

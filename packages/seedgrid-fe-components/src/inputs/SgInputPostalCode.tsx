@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { SgInputText, type SgInputTextProps } from "./SgInputText";
+import { SgInputText, SgValueMaskContext, type SgInputTextProps } from "./SgInputText";
 import { resolveFieldError } from "../rhf";
 import {
   maskPostalCodeBR,
@@ -269,19 +269,21 @@ export function SgInputPostalCode(props: Readonly<SgInputPostalCodeProps>) {
   };
 
   return (
-    <SgInputText
-      {...rest}
-      maxLength={rest.maxLength ?? config.maxLength}
-      error={resolveFieldError(error, internalError ?? undefined)}
-      textInputType={props.textInputType ?? (config.inputMode === "numeric" ? "numeric" : undefined)}
-      onClear={() => {
-        setInternalError(null);
-        props.onValidation?.(null);
-        onClear?.();
-        lastValidatedRef.current = null;
-        lastViaCepErroRef.current = null;
-      }}
-      inputProps={mergedInputProps}
-    />
+    <SgValueMaskContext.Provider value={config.mask}>
+      <SgInputText
+        {...rest}
+        maxLength={rest.maxLength ?? config.maxLength}
+        error={resolveFieldError(error, internalError ?? undefined)}
+        textInputType={props.textInputType ?? (config.inputMode === "numeric" ? "numeric" : undefined)}
+        onClear={() => {
+          setInternalError(null);
+          props.onValidation?.(null);
+          onClear?.();
+          lastValidatedRef.current = null;
+          lastViaCepErroRef.current = null;
+        }}
+        inputProps={mergedInputProps}
+      />
+    </SgValueMaskContext.Provider>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { SgInputText, type SgInputTextProps } from "./SgInputText";
+import { SgInputText, SgValueMaskContext, type SgInputTextProps } from "./SgInputText";
 import { resolveFieldError } from "../rhf";
 import { maskPhone } from "../masks";
 import { t, useComponentsI18n } from "../i18n";
@@ -97,18 +97,20 @@ export function SgInputPhone(props: Readonly<SgInputPhoneProps>) {
   };
 
   return (
-    <SgInputText
-      {...rest}
-      required={required}
-      requiredMessage={requiredMessage}
-      error={resolveFieldError(error, internalError ?? undefined)}
-      textInputType={props.textInputType ?? "numeric"}
-      onClear={() => {
-        setInternalError(null);
-        props.onValidation?.(null);
-        onClear?.();
-      }}
-      inputProps={mergedInputProps}
-    />
+    <SgValueMaskContext.Provider value={maskPhone}>
+      <SgInputText
+        {...rest}
+        required={required}
+        requiredMessage={requiredMessage}
+        error={resolveFieldError(error, internalError ?? undefined)}
+        textInputType={props.textInputType ?? "numeric"}
+        onClear={() => {
+          setInternalError(null);
+          props.onValidation?.(null);
+          onClear?.();
+        }}
+        inputProps={mergedInputProps}
+      />
+    </SgValueMaskContext.Provider>
   );
 }
