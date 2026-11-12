@@ -158,7 +158,7 @@ for (const [name, init, next, typed] of [
       m.harness.restore();
     }
   });
-  test(`${name}: validation recebe number (negativo, decimal, zero) e nao e chamada com vazio`, async () => {
+  test(`${name}: validation recebe number (negativo, decimal, zero/vazio=0)`, async () => {
     const harness = setupDomHarness();
     try {
       const got = [];
@@ -172,9 +172,25 @@ for (const [name, init, next, typed] of [
       await typeInto(el, "2.5");
       assert.equal(got.at(-1), 2.5, "decimal");
       assert.ok(got.every((v) => typeof v === "number"), "sempre number");
-      const before = got.length;
       await typeInto(el, "0");
-      assert.equal(got.length, before, "zero (vazio) nao chama validation");
+      assert.equal(got.at(-1), 0, "vazio/zero chega como 0");
+      await typeInto(el, "");
+      assert.equal(got.at(-1), 0, "vazio chega como 0 por padrao");
+    } finally {
+      harness.restore();
+    }
+  });
+  test(`${name}: validation recebe null so com emptyValueIsNull`, async () => {
+    const harness = setupDomHarness();
+    try {
+      const got = [];
+      const { container } = await harness.render(
+        h(S[name], { id: "vn", label: "L", emptyValueIsNull: true, validateOnBlur: false, validation: (v) => { got.push(v); return null; } })
+      );
+      await flushDom();
+      await typeInto(visibleInputs(container)[0], "3");
+      await typeInto(visibleInputs(container)[0], "");
+      assert.deepEqual(got, [3, null]);
     } finally {
       harness.restore();
     }

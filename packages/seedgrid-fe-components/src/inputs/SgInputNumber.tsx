@@ -264,8 +264,10 @@ function SgInputNumberBase(props: SgInputNumberBaseProps) {
           props.onValidation?.(message);
           return;
         }
-        setInternalError(null);
-        props.onValidation?.(null);
+        // Vazio chega como 0 (padrao) ou null (emptyValueIsNull) na validation.
+        const emptyMessage = props.validation ? props.validation(emptyValue === "null" ? null : (numberValue ?? 0)) : null;
+        setInternalError(emptyMessage);
+        props.onValidation?.(emptyMessage ?? null);
         return;
       }
       if (props.minValue !== undefined && numberValue < props.minValue) {

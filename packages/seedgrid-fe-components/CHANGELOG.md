@@ -13,5 +13,5 @@
   (uma prop explicita para texto fica para uma versao futura).
 - Backends que esperavam texto devem converter ou aceitar numero no JSON.
 - `validation` de SgInputNumber/SgInputCurrency agora recebe `number | null` (antes `string`):
-  `validation={(v) => v !== null && v >= 1000 ? null : "Minimo 1000"}`. Vazio (0) nao chama `validation`;
-  `null` so chega com `emptyValueIsNull`. `onValidation` segue `(message: string | null) => void`.
+  `validation={(v) => v !== null && v >= 1000 ? null : "Minimo 1000"}`. Vazio tambem chama `validation`: recebe `0` (padrao) ou `null` (com `emptyValueIsNull`);
+  `onValidation` segue `(message: string | null) => void`.
