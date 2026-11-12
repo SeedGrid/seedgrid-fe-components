@@ -774,11 +774,11 @@ type LocaleOption = {
 };
 
 const LOCALES: LocaleOption[] = [
-  { value: "pt-BR", label: "pt-BR (Portugues do Brasil)" },
-  { value: "pt-PT", label: "pt-PT (Portugues de Portugal)" },
-  { value: "en-US", label: "en-US (Ingles dos Estados Unidos)" },
-  { value: "es", label: "es (Espanhol)" },
-  { value: "fr", label: "fr (Frances)" }
+  { value: "pt-BR", label: "pt-BR" },
+  { value: "pt-PT", label: "pt-PT" },
+  { value: "en-US", label: "en-US" },
+  { value: "es", label: "es" },
+  { value: "fr", label: "fr" }
 ];
 
 const MESSAGES_BY_LOCALE: Record<ShowcaseLocale, Record<string, string>> = {
@@ -976,7 +976,7 @@ export default function ShowcaseShell(props: {
                   key={item.value}
                   icon={<LocaleFlag locale={item.value} />}
                   label={item.value}
-                  hint={item.label}
+                  hint={isNarrow ? undefined : `${item.value} (${t({ locale, messages }, `showcase.language.${item.value}`)})`}
                   severity={locale === item.value ? "primary" : "plain"}
                   onClick={() => applyLocale(item.value)}
                 />

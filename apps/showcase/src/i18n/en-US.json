@@ -3862,5 +3862,10 @@
   "showcase.ai.col.bindable": "Bindable",
   "showcase.ai.col.description": "Description",
   "showcase.ai.yes": "yes",
-  "showcase.ai.no": "no"
+  "showcase.ai.no": "no",
+  "showcase.language.pt-BR": "Brazilian Portuguese",
+  "showcase.language.pt-PT": "European Portuguese",
+  "showcase.language.en-US": "English (United States)",
+  "showcase.language.es": "Spanish",
+  "showcase.language.fr": "French"
 }

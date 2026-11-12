@@ -3862,5 +3862,10 @@
   "showcase.ai.col.bindable": "Vinculável",
   "showcase.ai.col.description": "Descrição",
   "showcase.ai.yes": "sim",
-  "showcase.ai.no": "não"
+  "showcase.ai.no": "não",
+  "showcase.language.pt-BR": "Português do Brasil",
+  "showcase.language.pt-PT": "Português de Portugal",
+  "showcase.language.en-US": "Inglês dos Estados Unidos",
+  "showcase.language.es": "Espanhol",
+  "showcase.language.fr": "Francês"
 }

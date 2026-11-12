@@ -58,7 +58,7 @@ export default function ShowcaseStickyHeader(props: Readonly<ShowcaseStickyHeade
     currentMode === "light" ? "text-[color-mix(in_srgb,rgb(var(--sg-primary-500))_50%,black)]" : "text-primary";
 
   return (
-    <div ref={props.stickyHeaderRef} className="sticky top-0 z-50 isolate bg-background pb-2 pt-2 md:-top-8 md:pb-2 md:pt-8">
+    <div ref={props.stickyHeaderRef} className="sticky -top-2 z-50 isolate bg-background pb-2 pt-4 md:-top-8 md:pb-2 md:pt-8">
       {/* Celular (<768 px): UMA linha rolavel na horizontal (nome + links de ancora), sem descricao. */}
       <div className="rounded-lg border border-border bg-background p-2 shadow-sm md:p-4">
        <div className="flex items-center gap-2 overflow-x-auto md:block md:overflow-visible">
