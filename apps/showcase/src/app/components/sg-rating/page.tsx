@@ -94,13 +94,14 @@ function BasicExample() {
 }
 
 function HalfTooltipExample() {
+  const i18n = useShowcaseI18n();
   const [value, setValue] = React.useState(2.5);
   const [hover, setHover] = React.useState<number | null>(null);
 
   return (
     <div className="space-y-2">
       <SgRating
-        label="Hover and click half stars"
+        label={t(i18n, "showcase.component.rating.demo.halfLabel")}
         value={value}
         allowHalf
         showTooltip
@@ -134,6 +135,7 @@ function ReadonlyDisabledExample() {
 }
 
 function SizeStarsExample() {
+  const i18n = useShowcaseI18n();
   const [smValue, setSmValue] = React.useState(3);
   const [lgValue, setLgValue] = React.useState(4);
   const [manyValue, setManyValue] = React.useState(7);
@@ -141,21 +143,21 @@ function SizeStarsExample() {
   return (
     <SgGrid columns={{ base: 1, md: 2 }} gap={16}>
       <SgRating
-        label="sm / 5 estrelas"
+        label={t(i18n, "showcase.component.rating.demo.sizeSm")}
         size="sm"
         value={smValue}
         onChange={setSmValue}
       />
 
       <SgRating
-        label="lg / 5 estrelas"
+        label={t(i18n, "showcase.component.rating.demo.sizeLg")}
         size="lg"
         value={lgValue}
         onChange={setLgValue}
       />
 
       <SgRating
-        label="10 estrelas"
+        label={t(i18n, "showcase.component.rating.demo.stars10")}
         stars={10}
         size="sm"
         value={manyValue}
@@ -251,6 +253,7 @@ function CallbackExample() {
 }
 
 function RhfExample() {
+  const i18n = useShowcaseI18n();
   const [submitResult, setSubmitResult] = React.useState("-");
   const { control, handleSubmit, watch } = useForm<FieldValues>({
     defaultValues: {
@@ -262,20 +265,20 @@ function RhfExample() {
   return (
     <form onSubmit={handleSubmit((data) => setSubmitResult(JSON.stringify(data)))} className="space-y-4">
       <SgRating
-        label="Rate the product"
+        label={t(i18n, "showcase.component.rating.demo.rateProduct")}
         name="productRating"
         control={control}
       />
 
       <SgRating
-        label="Rate the movie"
+        label={t(i18n, "showcase.component.rating.demo.rateMovie")}
         name="movieRating"
         control={control}
         allowHalf
       />
 
       <SgButton type="submit" size="sm">
-        Submit rating
+        {t(i18n, "showcase.component.rating.demo.submit")}
       </SgButton>
 
       <p className="text-xs text-muted-foreground">
@@ -283,7 +286,7 @@ function RhfExample() {
         {" | "}
         watch.movieRating: <strong>{String(watch("movieRating"))}</strong>
       </p>
-      <p className="text-xs text-muted-foreground">Last submit: {submitResult}</p>
+      <p className="text-xs text-muted-foreground">{t(i18n, "showcase.component.rating.demo.lastSubmit")}: {submitResult}</p>
     </form>
   );
 }

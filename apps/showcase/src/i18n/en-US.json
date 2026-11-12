@@ -3882,5 +3882,15 @@
   "showcase.language.pt-PT": "European Portuguese",
   "showcase.language.en-US": "English (United States)",
   "showcase.language.es": "Spanish",
-  "showcase.language.fr": "French"
+  "showcase.language.fr": "French",
+  "showcase.component.rating.demo.halfLabel": "Hover and click half stars",
+  "showcase.component.rating.demo.sizeSm": "sm / 5 stars",
+  "showcase.component.rating.demo.sizeLg": "lg / 5 stars",
+  "showcase.component.rating.demo.stars10": "10 stars",
+  "showcase.component.rating.demo.rateProduct": "Rate the product",
+  "showcase.component.rating.demo.rateMovie": "Rate the movie",
+  "showcase.component.rating.demo.submit": "Submit rating",
+  "showcase.component.rating.demo.lastSubmit": "Last submit",
+  "showcase.component.datatable.demo.filterTitle": "Search and filter",
+  "showcase.component.datatable.demo.templateTitle": "Custom body and footer"
 }

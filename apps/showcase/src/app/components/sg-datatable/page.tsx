@@ -1338,7 +1338,7 @@ export default function SgDatatableShowcase() {
         <Section title={sectionTitles[1] ?? ""} description={t(i18n, "showcase.component.datatable.sections.filters.description")}>
           <SgDatatable
             id="datatable-filter"
-            title="Search and filter"
+            title={t(i18n, "showcase.component.datatable.demo.filterTitle")}
             value={PRODUCT_ROWS}
             columns={FILTER_COLUMNS}
             dataKey="id"
@@ -1397,7 +1397,7 @@ export default function SgDatatableShowcase() {
         <Section title={sectionTitles[3] ?? ""} description={t(i18n, "showcase.component.datatable.sections.template.description")}>
           <SgDatatable
             id="datatable-template"
-            title="Custom body and footer"
+            title={t(i18n, "showcase.component.datatable.demo.templateTitle")}
             value={PRODUCT_ROWS}
             columns={TEMPLATE_COLUMNS}
             dataKey="id"

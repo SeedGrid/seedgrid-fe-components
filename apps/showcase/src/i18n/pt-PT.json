@@ -3882,5 +3882,15 @@
   "showcase.language.pt-PT": "Português de Portugal",
   "showcase.language.en-US": "Inglês dos Estados Unidos",
   "showcase.language.es": "Espanhol",
-  "showcase.language.fr": "Francês"
+  "showcase.language.fr": "Francês",
+  "showcase.component.rating.demo.halfLabel": "Passe o rato e clique em meias estrelas",
+  "showcase.component.rating.demo.sizeSm": "sm / 5 estrelas",
+  "showcase.component.rating.demo.sizeLg": "lg / 5 estrelas",
+  "showcase.component.rating.demo.stars10": "10 estrelas",
+  "showcase.component.rating.demo.rateProduct": "Avalie o produto",
+  "showcase.component.rating.demo.rateMovie": "Avalie o filme",
+  "showcase.component.rating.demo.submit": "Enviar avaliação",
+  "showcase.component.rating.demo.lastSubmit": "Último envio",
+  "showcase.component.datatable.demo.filterTitle": "Pesquisa e filtro",
+  "showcase.component.datatable.demo.templateTitle": "Corpo e rodapé personalizados"
 }

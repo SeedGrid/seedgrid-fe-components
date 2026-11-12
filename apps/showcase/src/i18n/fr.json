@@ -3882,5 +3882,15 @@
   "showcase.language.pt-PT": "Portugais du Portugal",
   "showcase.language.en-US": "Anglais des États-Unis",
   "showcase.language.es": "Espagnol",
-  "showcase.language.fr": "Français"
+  "showcase.language.fr": "Français",
+  "showcase.component.rating.demo.halfLabel": "Survolez et cliquez sur les demi-étoiles",
+  "showcase.component.rating.demo.sizeSm": "sm / 5 étoiles",
+  "showcase.component.rating.demo.sizeLg": "lg / 5 étoiles",
+  "showcase.component.rating.demo.stars10": "10 étoiles",
+  "showcase.component.rating.demo.rateProduct": "Évaluez le produit",
+  "showcase.component.rating.demo.rateMovie": "Évaluez le film",
+  "showcase.component.rating.demo.submit": "Envoyer l'évaluation",
+  "showcase.component.rating.demo.lastSubmit": "Dernier envoi",
+  "showcase.component.datatable.demo.filterTitle": "Recherche et filtre",
+  "showcase.component.datatable.demo.templateTitle": "Corps et pied personnalisés"
 }

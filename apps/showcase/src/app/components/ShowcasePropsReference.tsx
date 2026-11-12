@@ -29,6 +29,7 @@ type PropDescriptionTranslation = {
   pt: string;
   en: string;
   es: string;
+  fr?: string;
 };
 
 const PROPS_REFERENCE_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", PropsReferenceTexts> = {
@@ -75,7 +76,8 @@ function getLocalizedPropDescription(description: string, locale: keyof typeof P
   const translations = PROPS_DESCRIPTION_TRANSLATIONS[description];
   if (!translations) return description;
 
-  if (locale === "en-US" || locale === "fr") return translations.en;
+  if (locale === "fr") return translations.fr ?? translations.en;
+  if (locale === "en-US") return translations.en;
   if (locale === "es") return translations.es;
   return translations.pt;
 }
