@@ -4804,7 +4804,7 @@
     },
     {
       "name": "validation",
-      "type": "((value: string) => string | null)",
+      "type": "((value: number | null) => string | null)",
       "required": false
     },
     {
@@ -5800,7 +5800,7 @@
     },
     {
       "name": "validation",
-      "type": "((value: string) => string | null)",
+      "type": "((value: number | null) => string | null)",
       "required": false
     },
     {

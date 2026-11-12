@@ -51,7 +51,7 @@ export type SgInputCurrencyProps = RhfFieldProps & {
   requiredMessage?: string;
   iconButtons?: React.ReactNode[];
   readOnly?: boolean;
-  validation?: (value: string) => string | null;
+  validation?: (value: number | null) => string | null;
   validateOnBlur?: boolean;
   onValidation?: (message: string | null) => void;
 };
@@ -371,7 +371,7 @@ function SgInputCurrencyBase(props: SgInputCurrencyBaseProps) {
         return;
       }
       if (props.validation) {
-        const message = props.validation(stateToValue(valueState, decimals));
+        const message = props.validation(numberValue);
         setInternalError(message);
         props.onValidation?.(message ?? null);
         return;

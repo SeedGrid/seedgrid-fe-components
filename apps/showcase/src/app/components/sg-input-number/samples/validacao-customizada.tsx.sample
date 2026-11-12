@@ -8,8 +8,7 @@ export default function Example() {
       name="validation"
       decimals={0}
       validation={(v) => {
-        const n = Number(v);
-        return Number.isFinite(n) && n % 2 === 0 ? null : "Apenas números pares";
+        return v !== null && v % 2 === 0 ? null : "Apenas números pares";
       }}
       onValidation={(msg) => console.log(msg)}
     />

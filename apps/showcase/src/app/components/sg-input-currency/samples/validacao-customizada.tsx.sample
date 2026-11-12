@@ -13,8 +13,7 @@ export default function Example() {
       register={register}
       currency="BRL"
       validation={(value) => {
-        const amount = Number(value);
-        return Number.isFinite(amount) && amount >= 1000 ? null : "O valor deve ser maior ou igual a 1000.";
+        return value !== null && value >= 1000 ? null : "O valor deve ser maior ou igual a 1000.";
       }}
       onValidation={(msg) => console.log(msg)}
     />

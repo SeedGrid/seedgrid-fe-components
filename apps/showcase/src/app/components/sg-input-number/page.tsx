@@ -331,7 +331,7 @@ export default function SgInputNumberPage() {
     { prop: "minValue / maxValue", type: "number", defaultValue: "-", description: t(i18n, "showcase.component.inputNumber.props.rows.minMax") },
     { prop: "required", type: "boolean", defaultValue: "false", description: t(i18n, "showcase.component.inputNumber.props.rows.required") },
     { prop: "requiredMessage", type: "string", defaultValue: "auto", description: t(i18n, "showcase.component.inputNumber.props.rows.requiredMessage") },
-    { prop: "validation", type: "(value) => string | null", defaultValue: "-", description: t(i18n, "showcase.component.inputNumber.props.rows.validation") },
+    { prop: "validation", type: "(value: number | null) => string | null", defaultValue: "-", description: t(i18n, "showcase.component.inputNumber.props.rows.validation") },
     { prop: "onValidation", type: "(msg) => void", defaultValue: "-", description: t(i18n, "showcase.component.inputNumber.props.rows.onValidation") },
     { prop: "onChange / onEnter / onExit / onClear", type: "callbacks", defaultValue: "-", description: t(i18n, "showcase.component.inputNumber.props.rows.events") },
     { prop: "inputProps", type: "InputHTMLAttributes", defaultValue: "{}", description: t(i18n, "showcase.component.inputNumber.props.rows.inputProps") },
@@ -462,8 +462,7 @@ export default function SgInputNumberPage() {
             register={register}
             decimals={0}
             validation={(v) => {
-              const n = Number(v);
-              return Number.isFinite(n) && n % 2 === 0
+              return v !== null && v % 2 === 0
                 ? null
                 : t(i18n, "showcase.component.inputNumber.messages.evenOnly");
             }}

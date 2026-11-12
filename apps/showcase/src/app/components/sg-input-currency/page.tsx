@@ -335,7 +335,7 @@ export default function SgInputCurrencyPage() {
     { prop: "minValue / maxValue", type: "number", defaultValue: "-", description: t(i18n, "showcase.component.currencyEdit.props.rows.minMax") },
     { prop: "required", type: "boolean", defaultValue: "false", description: t(i18n, "showcase.component.currencyEdit.props.rows.required") },
     { prop: "requiredMessage", type: "string", defaultValue: "auto", description: t(i18n, "showcase.component.currencyEdit.props.rows.requiredMessage") },
-    { prop: "validation", type: "(value) => string | null", defaultValue: "-", description: t(i18n, "showcase.component.currencyEdit.props.rows.validation") },
+    { prop: "validation", type: "(value: number | null) => string | null", defaultValue: "-", description: t(i18n, "showcase.component.currencyEdit.props.rows.validation") },
     { prop: "onValidation", type: "(msg) => void", defaultValue: "-", description: t(i18n, "showcase.component.currencyEdit.props.rows.onValidation") },
     { prop: "onChange / onEnter / onExit / onClear", type: "callbacks", defaultValue: "-", description: t(i18n, "showcase.component.currencyEdit.props.rows.events") },
     { prop: "inputProps", type: "InputHTMLAttributes", defaultValue: "{}", description: t(i18n, "showcase.component.currencyEdit.props.rows.inputProps") },
@@ -466,8 +466,7 @@ export default function SgInputCurrencyPage() {
             register={register}
             currency="BRL"
             validation={(v) => {
-              const n = Number(v);
-              return Number.isFinite(n) && n >= 1000
+              return v !== null && v >= 1000
                 ? null
                 : t(i18n, "showcase.component.currencyEdit.messages.min1000");
             }}
