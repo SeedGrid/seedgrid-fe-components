@@ -186,7 +186,7 @@ export function SgInputCPFCNPJ(props: SgInputCPFCNPJProps) {
   const shouldValidateOnBlur = validateOnBlur ?? true;
 
   return (
-    <SgValueMaskContext.Provider value={maskCpfCnpj}>
+    <SgValueMaskContext.Provider value={{ mask: maskCpfCnpj }}>
       <SgInputText
         {...rest}
         maxLength={rest.maxLength ?? 18}

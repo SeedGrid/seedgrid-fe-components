@@ -90,3 +90,23 @@ for (const [name, mask, a, b, c] of CASES) {
     }
   });
 }
+
+for (const mode of ["control", "register"]) {
+  test(`SgInputPhone (${mode}): valor externo com DDI (+55) vira o numero mascarado, sem cortar digitos`, async () => {
+    const m = await mountForm("SgInputPhone", mode, "+5511987654321");
+    try {
+      assert.equal(input(m.container).value, "(11) 98765-4321");
+      assert.equal(m.form().getValues("f"), "(11) 98765-4321");
+    } finally {
+      m.harness.restore();
+    }
+  });
+  test(`SgInputCNPJ (${mode}): valor externo maior que a mascara nao e cortado em silencio`, async () => {
+    const m = await mountForm("SgInputCNPJ", mode, "112223330001811111");
+    try {
+      assert.equal(m.form().getValues("f"), "112223330001811111");
+    } finally {
+      m.harness.restore();
+    }
+  });
+}

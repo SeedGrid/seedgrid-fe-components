@@ -3,7 +3,7 @@
 import React from "react";
 import { SgInputText, SgValueMaskContext, type SgInputTextProps } from "./SgInputText";
 import { resolveFieldError } from "../rhf";
-import { maskPhone } from "../masks";
+import { maskPhone, stripPhoneDdi } from "../masks";
 import { t, useComponentsI18n } from "../i18n";
 
 export type SgInputPhoneProps = Omit<SgInputTextProps, "inputProps" | "error"> & {
@@ -97,7 +97,7 @@ export function SgInputPhone(props: Readonly<SgInputPhoneProps>) {
   };
 
   return (
-    <SgValueMaskContext.Provider value={maskPhone}>
+    <SgValueMaskContext.Provider value={{ mask: maskPhone, normalize: stripPhoneDdi }}>
       <SgInputText
         {...rest}
         required={required}

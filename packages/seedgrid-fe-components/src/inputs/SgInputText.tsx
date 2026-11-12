@@ -56,7 +56,21 @@ export type SgInputTextProps = RhfFieldProps & {
 type SgInputTextBaseProps = Omit<SgInputTextProps, "name" | "control" | "register" | "rules">;
 
 /** @internal Contexto usado pelos campos mascarados (CPF, CNPJ, telefone, CEP) para que o valor do formulario seja sempre mascarado. */
-export const SgValueMaskContext = React.createContext<((value: string) => string) | null>(null);
+export type SgValueMask = {
+  mask: (value: string) => string;
+  /** Normalizacao aplicada so a valor vindo de fora (ex.: tirar o DDI do telefone). */
+  normalize?: (value: string) => string;
+};
+export const SgValueMaskContext = React.createContext<SgValueMask | null>(null);
+
+const alnum = (value: string) => value.replace(/[^0-9A-Za-z]/g, "").toLowerCase();
+
+/** Mascara um valor vindo de FORA (defaultValues/setValue/value) sem perder caracteres: se a mascara cortaria algo, devolve como veio. */
+function maskExternal(spec: SgValueMask, value: string) {
+  const base = spec.normalize ? spec.normalize(value) : value;
+  const masked = spec.mask(base);
+  return alnum(masked) === alnum(base) ? masked : value;
+}
 
 function MaskSync(props: { value: unknown; mask: (value: string) => string; onSync: (masked: string) => void }) {
   const { value, mask, onSync } = props;
@@ -634,7 +648,9 @@ function SgInputTextBase(props: SgInputTextBaseProps) {
 export function SgInputText(props: SgInputTextProps) {
   const i18n = useComponentsI18n();
   const { control, name, register, rules, ...rest } = props;
-  const valueMask = React.useContext(SgValueMaskContext);
+  const maskSpec = React.useContext(SgValueMaskContext);
+  const valueMask = maskSpec?.mask ?? null;
+  const externalMask = maskSpec ? (value: string) => maskExternal(maskSpec, value) : null;
   const resolvedRules = mergeRequiredRule(
     rules,
     rest.required,
@@ -665,9 +681,9 @@ export function SgInputText(props: SgInputTextProps) {
             rest.inputProps?.onBlur?.(event);
           },
           ref: mergeRefs(
-            valueMask
+            externalMask
               ? (node: HTMLInputElement | null) => {
-                  if (node) patchValueSetter(node, valueMask, notifyMasked);
+                  if (node) patchValueSetter(node, externalMask, notifyMasked);
                 }
               : undefined,
             reg.ref,
@@ -689,7 +705,7 @@ export function SgInputText(props: SgInputTextProps) {
       if (suffixText && text.endsWith(suffixText)) {
         text = text.slice(0, -suffixText.length);
       }
-      return valueMask ? valueMask(text) : text;
+      return externalMask ? externalMask(text) : text;
     };
     const toFieldValue = (raw: string) => {
       if (!raw) return "";
@@ -708,7 +724,7 @@ export function SgInputText(props: SgInputTextProps) {
           fieldState: ControllerFieldState;
         }) => (
           <>
-            {valueMask ? <MaskSync value={field.value} mask={valueMask} onSync={field.onChange} /> : null}
+            {externalMask ? <MaskSync value={field.value} mask={externalMask} onSync={field.onChange} /> : null}
             <SgInputTextBase
               {...rest}
               error={resolveFieldError(rest.error, fieldState.error?.message)}
@@ -719,11 +735,11 @@ export function SgInputText(props: SgInputTextProps) {
       />
     );
   }
-  if (valueMask) {
+  if (externalMask) {
     const ip = rest.inputProps as (React.InputHTMLAttributes<HTMLInputElement> & { ref?: React.Ref<HTMLInputElement> }) | undefined;
     const maskedProps = { ...ip } as typeof ip & Record<string, unknown>;
-    if (typeof ip?.value === "string") maskedProps.value = valueMask(ip.value);
-    if (typeof ip?.defaultValue === "string") maskedProps.defaultValue = valueMask(ip.defaultValue);
+    if (typeof ip?.value === "string") maskedProps.value = externalMask(ip.value);
+    if (typeof ip?.defaultValue === "string") maskedProps.defaultValue = externalMask(ip.defaultValue);
     return <SgInputTextBase {...rest} inputProps={maskedProps} />;
   }
   return <SgInputTextBase {...rest} />;

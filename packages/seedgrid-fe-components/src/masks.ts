@@ -87,6 +87,13 @@ export function maskPostalCodePY(value: string) {
   return onlyDigits(value).slice(0, 6);
 }
 
+/** Telefone com DDI do Brasil (`+55 11 98765-4321`, `5511987654321`): tira o `55` (12 ou 13 digitos comecados em 55). */
+export function stripPhoneDdi(value: string) {
+  const digits = onlyDigits(value);
+  if ((digits.length === 12 || digits.length === 13) && digits.startsWith("55")) return digits.slice(2);
+  return value;
+}
+
 export function maskPhone(value: string) {
   const digits = onlyDigits(value).slice(0, 11);
   const ddd = digits.slice(0, 2);

@@ -269,7 +269,7 @@ export function SgInputPostalCode(props: Readonly<SgInputPostalCodeProps>) {
   };
 
   return (
-    <SgValueMaskContext.Provider value={config.mask}>
+    <SgValueMaskContext.Provider value={{ mask: config.mask }}>
       <SgInputText
         {...rest}
         maxLength={rest.maxLength ?? config.maxLength}
