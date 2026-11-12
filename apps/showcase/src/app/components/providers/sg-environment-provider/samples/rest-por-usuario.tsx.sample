@@ -1,4 +1,9 @@
-import { SgEnvironmentProvider } from "@seedgrid/fe-components";
+import {
+  SgEnvironmentProvider,
+  createApiPersistenceStrategy,
+  createCompositePersistenceStrategy,
+  createLocalStorageStrategy,
+} from "@seedgrid/fe-components";
 
 const api = createApiPersistenceStrategy({
   baseUrl: "https://api.seedgrid.com",
