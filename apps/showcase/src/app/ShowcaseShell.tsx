@@ -965,7 +965,6 @@ export default function ShowcaseShell(props: {
                 <SgToolbarIconButton
                   icon={<Menu className="size-4" />}
                   label={t({ locale, messages }, "showcase.toolbar.menu")}
-                  hint={t({ locale, messages }, "showcase.toolbar.menu")}
                   severity="secondary"
                   showLabel
                   onClick={() => setDrawerOpen(true)}
@@ -987,7 +986,6 @@ export default function ShowcaseShell(props: {
                 icon={<Palette className="size-4" />}
                 label={t({ locale, messages }, "showcase.themeEditor.hint")}
                 showLabel={false}
-                hint={t({ locale, messages }, "showcase.themeEditor.hint")}
                 severity="plain"
                 onClick={() => {
                   window.dispatchEvent(new Event("showcase:toggle-theme-editor"));
@@ -998,7 +996,6 @@ export default function ShowcaseShell(props: {
                 icon={isDarkMode ? <Sun className="size-4" /> : <Moon className="size-4" />}
                 label={t({ locale, messages }, "showcase.toolbar.toggleTheme")}
                 showLabel={false}
-                hint={t({ locale, messages }, "showcase.toolbar.toggleTheme")}
                 severity="plain"
                 onClick={() => setMode(isDarkMode ? "light" : "dark")}
               />
