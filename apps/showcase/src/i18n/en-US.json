@@ -3662,7 +3662,7 @@
   "showcase.component.inputDateTime.messages.required": "Enter the date and time",
   "showcase.component.inputDateTime.messages.min": "Choose a date from {min} onwards.",
   "showcase.component.inputDateTime.sections.basic.title": "Basic",
-  "showcase.component.inputDateTime.sections.basic.description": "onChange delivers the instant as ISO 8601 UTC (or null while the field is incomplete).",
+  "showcase.component.inputDateTime.sections.basic.description": "onChange delivers the value in the valueMode format (local by default: 2026-01-15T10:30) or null while the field is incomplete.",
   "showcase.component.inputDateTime.sections.zone.title": "Time zones",
   "showcase.component.inputDateTime.sections.zone.description": "The same instant shown in UTC, -03:00 and +05:30; editing one field updates the others.",
   "showcase.component.inputDateTime.sections.valueLocal.title": "Local value (default)",

@@ -3662,7 +3662,7 @@
   "showcase.component.inputDateTime.messages.required": "Informe la fecha y la hora",
   "showcase.component.inputDateTime.messages.min": "Elige una fecha a partir del {min}.",
   "showcase.component.inputDateTime.sections.basic.title": "Básico",
-  "showcase.component.inputDateTime.sections.basic.description": "onChange entrega el instante en ISO 8601 UTC (o null si el campo está incompleto).",
+  "showcase.component.inputDateTime.sections.basic.description": "onChange entrega el valor en el formato de valueMode (local por defecto: 2026-01-15T10:30) o null si el campo está incompleto.",
   "showcase.component.inputDateTime.sections.zone.title": "Zonas horarias",
   "showcase.component.inputDateTime.sections.zone.description": "El mismo instante en UTC, -03:00 y +05:30; editar un campo actualiza los demás.",
   "showcase.component.inputDateTime.sections.valueLocal.title": "Valor local (predeterminado)",
