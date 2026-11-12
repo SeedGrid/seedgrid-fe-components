@@ -811,7 +811,7 @@ export default function SgInputNumberPage() {
         title={`15) ${t(i18n, "showcase.component.inputNumber.sections.sizeBorder.title")}`}
         description={t(i18n, "showcase.component.inputNumber.sections.sizeBorder.description")}
       >
-        <div className="flex gap-4">
+        <div className="flex flex-wrap gap-4">
           <SgInputNumber
             id="demo-w200"
             label={t(i18n, "showcase.component.inputNumber.labels.width200")}

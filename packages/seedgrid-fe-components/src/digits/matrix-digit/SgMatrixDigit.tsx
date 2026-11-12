@@ -112,7 +112,7 @@ export function SgMatrixDigit({
     <div
       role="img"
       aria-label={value}
-      className={cn("inline-flex items-center", className)}
+      className={cn("inline-flex max-w-full items-center overflow-x-auto", className)}
       style={{
         gap: charGap,
         padding,

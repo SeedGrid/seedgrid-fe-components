@@ -575,7 +575,7 @@ export default function SgInputPostalCodePage() {
         title={`11) ${t(i18n, "showcase.common.sections.sizeBorder.title")}`}
         description={t(i18n, "showcase.common.sections.sizeBorder.description")}
       >
-        <div className="flex gap-4">
+        <div className="flex flex-wrap gap-4">
           <SgInputPostalCode
             id="demo-w200"
             label={t(i18n, "showcase.common.labels.width200")}

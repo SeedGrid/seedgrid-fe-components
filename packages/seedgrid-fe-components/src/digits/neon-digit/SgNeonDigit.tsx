@@ -95,7 +95,7 @@ export function SgNeonDigit({
     <div
       role="img"
       aria-label={value}
-      className={cn("inline-flex items-center justify-center", className)}
+      className={cn("inline-flex max-w-full items-center justify-center overflow-x-auto", className)}
       style={{
         padding,
         borderRadius: rounded,

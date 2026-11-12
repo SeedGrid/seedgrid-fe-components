@@ -172,7 +172,7 @@ export function SgSevenSegmentDigit({
     <div
       role="img"
       aria-label={value}
-      className={cn("inline-flex", className)}
+      className={cn("inline-flex max-w-full overflow-x-auto", className)}
       style={{
         width: w,
         height: h,

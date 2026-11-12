@@ -165,7 +165,7 @@ const proxima = () => {
     <p className="text-sm text-muted-foreground">
       {texts.section6PageLabelPrefix} <strong>{pagina}</strong> {texts.section6PageLabelConnector} {TOTAL_PAGES}
     </p>
-    <div className="flex gap-2">
+    <div className="flex flex-wrap gap-2">
       <SgButton size="sm" onClick={anterior} enabled={!(pagina <= 1)}>{texts.section6PreviousButton}</SgButton>
       <SgButton size="sm" onClick={proxima} enabled={!(pagina >= TOTAL_PAGES)}>{texts.section6NextButton}</SgButton>
     </div>
@@ -277,7 +277,7 @@ export default function App() {
           />
           <div className="space-y-2">
             <p className="text-xs text-muted-foreground">Pagina {pagina} de {totalNumberPages}</p>
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2">
               <SgButton size="sm" onClick={anterior} enabled={!(pagina <= 1)}>Previous</SgButton>
               <SgButton size="sm" onClick={proxima} enabled={!(pagina >= totalNumberPages)}>Proxima</SgButton>
             </div>
@@ -486,7 +486,7 @@ export default function SgDiscardDigitShowcase() {
                 <span className="font-semibold text-foreground">{paginaAtual}</span>{" "}
                 {t(i18n, `${K}.section6PageLabelConnector`)} {TOTAL_PAGES}
               </p>
-              <div className="flex gap-2">
+              <div className="flex flex-wrap gap-2">
                 <SgButton size="sm" onClick={handlePrevious} enabled={!(paginaAtual <= 1)}>
                   {t(i18n, `${K}.section6PreviousButton`)}
                 </SgButton>

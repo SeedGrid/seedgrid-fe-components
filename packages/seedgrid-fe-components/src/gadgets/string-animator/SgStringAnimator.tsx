@@ -312,7 +312,7 @@ export const SgStringAnimator = React.forwardRef<SgStringAnimatorRef, SgStringAn
     }
 
     return (
-      <div className={cn("flex items-center", gapClass, className)}>
+      <div className={cn("flex max-w-full items-center overflow-x-auto", gapClass, className)}>
         {displayChars.map((ch, i) => renderDigit(ch, i))}
       </div>
     );

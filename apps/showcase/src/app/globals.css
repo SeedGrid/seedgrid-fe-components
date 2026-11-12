@@ -56,3 +56,26 @@ a { color: inherit; text-decoration: none; }
     animation: none;
   }
 }
+
+/* Mobile: grid sem colunas definidas (coluna implicita auto) cresce ate o min-content do conteudo e
+   estoura a tela. A coluna unica passa a ser minmax(0,1fr); utilitarios grid-cols-* continuam vencendo. */
+@layer base {
+  :where(main .grid) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Mobile: larguras fixas em px (prop `width`, SVG com width/height) nunca passam da largura do conteudo. */
+@media (max-width: 767px) {
+  :where(main [style*="width"]) {
+    max-width: 100%;
+  }
+  /* Rede de seguranca: demo mais larga que a tela nao alarga a pagina (corta no proprio cartao do exemplo). */
+  main section[class*="scroll-mt"] {
+    overflow-x: clip;
+  }
+  :where(main svg[width]) {
+    max-width: 100%;
+    height: auto;
+  }
+}

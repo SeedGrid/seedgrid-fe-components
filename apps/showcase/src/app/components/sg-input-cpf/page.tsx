@@ -352,7 +352,7 @@ export default function SgInputCPFPage() {
         title={`8) ${t(i18n, "showcase.common.sections.sizeBorder.title")}`}
         description={t(i18n, "showcase.common.sections.sizeBorder.description")}
       >
-        <div className="flex gap-4">
+        <div className="flex flex-wrap gap-4">
           <SgInputCPF
             id="demo-w200"
             label={t(i18n, "showcase.common.labels.width200")}

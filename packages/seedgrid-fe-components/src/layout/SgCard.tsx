@@ -540,11 +540,11 @@ export function SgCard(props: Readonly<SgCardProps>) {
   const collapsibleBodyWrapper = collapsible ? (
     <div
       className={cn(
-        "grid transition-all duration-200 ease-out motion-reduce:transition-none",
+        "grid grid-cols-[minmax(0,1fr)] transition-all duration-200 ease-out motion-reduce:transition-none",
         isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
       )}
     >
-      <div className={isOpen ? "overflow-visible" : "overflow-hidden"}>
+      <div className={isOpen ? "min-w-0 max-w-full overflow-visible" : "min-w-0 max-w-full overflow-hidden"}>
         <div className={cn(sizeClasses.body, bodyClassName)}>{children}</div>
         {footer ? (
           <div

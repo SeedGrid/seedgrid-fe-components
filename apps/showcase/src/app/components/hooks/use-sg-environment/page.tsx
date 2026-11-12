@@ -37,23 +37,23 @@ function EnvDebug() {
 
   return (
     <div className="rounded-lg border border-border bg-foreground/5 p-4 text-sm space-y-2 font-mono">
-      <div className="flex gap-2">
+      <div className="flex flex-wrap gap-2">
         <span className="text-muted-foreground w-36">namespace</span>
         <span>{namespace || "(vazio)"}</span>
       </div>
-      <div className="flex gap-2">
+      <div className="flex flex-wrap gap-2">
         <span className="text-muted-foreground w-36">scope</span>
         <span>{env.persistence.scope}</span>
       </div>
-      <div className="flex gap-2">
+      <div className="flex flex-wrap gap-2">
         <span className="text-muted-foreground w-36">mode</span>
         <span>{env.persistence.mode}</span>
       </div>
-      <div className="flex gap-2">
+      <div className="flex flex-wrap gap-2">
         <span className="text-muted-foreground w-36">stateVersion</span>
         <span>{env.persistence.stateVersion}</span>
       </div>
-      <div className="flex gap-2">
+      <div className="flex flex-wrap gap-2">
         <span className="text-muted-foreground w-36">exampleKey</span>
         <span>{exampleKey ?? "null (sem namespace/scope)"}</span>
       </div>

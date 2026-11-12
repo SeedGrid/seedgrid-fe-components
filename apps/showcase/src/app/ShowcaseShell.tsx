@@ -955,7 +955,7 @@ export default function ShowcaseShell(props: {
             <>
             <SgToolBar
               id="showcase-locale-toolbar"
-              title={t({ locale, messages }, "showcase.toolbar.language")}
+              title={isNarrow ? undefined : t({ locale, messages }, "showcase.toolbar.language")}
               orientationDirection="horizontal-left"
               collapsible={false}
             >
@@ -964,7 +964,8 @@ export default function ShowcaseShell(props: {
                   icon={<Menu className="size-4" />}
                   label={t({ locale, messages }, "showcase.toolbar.menu")}
                   hint={t({ locale, messages }, "showcase.toolbar.menu")}
-                  severity="plain"
+                  severity="secondary"
+                  showLabel
                   onClick={() => setDrawerOpen(true)}
                 />
               ) : null}
@@ -974,6 +975,7 @@ export default function ShowcaseShell(props: {
                   icon={<LocaleFlag locale={item.value} />}
                   label={item.value}
                   hint={item.label}
+                  showLabel={!isNarrow}
                   severity={locale === item.value ? "primary" : "plain"}
                   onClick={() => applyLocale(item.value)}
                 />

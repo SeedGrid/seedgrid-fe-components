@@ -390,7 +390,7 @@ export default function SgInputEmailPage() {
         title={`10) ${t(i18n, "showcase.common.sections.sizeBorder.title")}`}
         description={t(i18n, "showcase.common.sections.sizeBorder.description")}
       >
-        <div className="flex gap-4">
+        <div className="flex flex-wrap gap-4">
           <SgInputEmail
             id="demo-w200"
             label={t(i18n, "showcase.common.labels.width200")}
