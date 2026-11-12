@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import React from "react";
+import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { SgGrid, SgInputCPF } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
@@ -36,6 +37,10 @@ export default function SgInputCPFPage() {
   const [validationMsg, setValidationMsg] = React.useState<string | null>(null);
   const [eventLog, setEventLog] = React.useState<string[]>([]);
   const stickyHeaderRef = React.useRef<HTMLDivElement | null>(null);
+  const { control: formControl, watch: watchControl } = useForm({ defaultValues: { cpf: "52998224725" } });
+  const { register: formRegister, watch: watchRegister } = useForm({ defaultValues: { cpf: "52998224725" } });
+  const controlValue = String(watchControl("cpf") ?? "");
+  const registerValue = String(watchRegister("cpf") ?? "");
   const [anchorOffset, setAnchorOffset] = React.useState(320);
 
   const log = (msg: string) => {
@@ -161,7 +166,9 @@ export default function SgInputCPFPage() {
       { id: "exemplo-9", label: `9) ${t(i18n, "showcase.common.sections.disabled.title")}` },
       { id: "exemplo-10", label: `10) ${t(i18n, "showcase.common.sections.events.title")}` },
       { id: "exemplo-11", label: `11) ${t(i18n, "showcase.common.sections.labelPosition.title")}` },
-      { id: "exemplo-12", label: "12) Playground" }
+      { id: "exemplo-12", label: `12) ${t(i18n, "showcase.common.sections.formControl.title")}` },
+      { id: "exemplo-13", label: `13) ${t(i18n, "showcase.common.sections.formRegister.title")}` },
+      { id: "exemplo-14", label: "14) Playground" }
     ],
     [i18n.locale]
   );
@@ -428,7 +435,51 @@ export default function SgInputCPFPage() {
   <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-cpf/samples/posicao-do-rotulo.tsx.sample" />
 </Section>
 
-<Section id="exemplo-12" title="12) Playground" description={t(i18n, "showcase.common.playground.description")}>
+<Section
+        id="exemplo-12"
+        title={`12) ${t(i18n, "showcase.common.sections.formControl.title")}`}
+        description={t(i18n, "showcase.common.sections.formControl.description")}
+      >
+        <div className="w-80">
+          <SgInputCPF
+            id="cpf-control"
+            name="cpf"
+            label="CPF"
+            control={formControl}
+          />
+          <p className="mt-2 text-xs text-muted-foreground">
+            {t(i18n, "showcase.common.labels.formValue", { value: `"${controlValue}"` })}
+          </p>
+          <p className="text-xs text-muted-foreground">
+            {t(i18n, "showcase.common.labels.formDigits", { value: `"${controlValue.replace(/\D/g, "")}"` })}
+          </p>
+        </div>
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-cpf/samples/formulario-control.tsx.sample" />
+      </Section>
+
+      <Section
+        id="exemplo-13"
+        title={`13) ${t(i18n, "showcase.common.sections.formRegister.title")}`}
+        description={t(i18n, "showcase.common.sections.formRegister.description")}
+      >
+        <div className="w-80">
+          <SgInputCPF
+            id="cpf-register"
+            name="cpf"
+            label="CPF"
+            register={formRegister}
+          />
+          <p className="mt-2 text-xs text-muted-foreground">
+            {t(i18n, "showcase.common.labels.formValue", { value: `"${registerValue}"` })}
+          </p>
+          <p className="text-xs text-muted-foreground">
+            {t(i18n, "showcase.common.labels.formDigits", { value: `"${registerValue.replace(/\D/g, "")}"` })}
+          </p>
+        </div>
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-cpf/samples/formulario-register.tsx.sample" />
+      </Section>
+
+      <Section id="exemplo-14" title="14) Playground" description={t(i18n, "showcase.common.playground.description")}>
         <SgPlayground
           title="SgInputCPF Playground"
           interactive

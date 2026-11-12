@@ -1,0 +1,21 @@
+import * as React from "react";
+import { useForm } from "react-hook-form";
+import { SgInputPhone } from "@seedgrid/fe-components";
+
+export default function App() {
+  const { control, watch } = useForm({ defaultValues: { telefone: "11987654321" } });
+  const value = String(watch("telefone") ?? "");
+
+  return (
+    <div>
+      <SgInputPhone
+        id="telefone-control"
+        name="telefone"
+        label="Telefone"
+        control={control}
+      />
+      <p>Valor no formulário: "{value}"</p>
+      <p>Só os dígitos: "{value.replace(/\D/g, "")}"</p>
+    </div>
+  );
+}

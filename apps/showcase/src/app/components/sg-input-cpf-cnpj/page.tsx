@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import React from "react";
+import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { SgGrid, SgInputCPFCNPJ } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
@@ -39,6 +40,10 @@ export default function SgInputCpfCnpjPage() {
   const [publicaError, setPublicaError] = React.useState<string | null>(null);
   const [eventLog, setEventLog] = React.useState<string[]>([]);
   const stickyHeaderRef = React.useRef<HTMLDivElement | null>(null);
+  const { control: formControl, watch: watchControl } = useForm({ defaultValues: { documento: "52998224725" } });
+  const { register: formRegister, watch: watchRegister } = useForm({ defaultValues: { documento: "52998224725" } });
+  const controlValue = String(watchControl("documento") ?? "");
+  const registerValue = String(watchRegister("documento") ?? "");
   const [anchorOffset, setAnchorOffset] = React.useState(320);
 
   const log = (msg: string) => {
@@ -166,7 +171,9 @@ export default function SgInputCpfCnpjPage() {
       { id: "exemplo-11", label: `11) ${t(i18n, "showcase.common.sections.events.title")}` },
       { id: "exemplo-12", label: `12) ${t(i18n, "showcase.common.sections.labelPosition.title")}` },
       { id: "exemplo-13", label: `13) ${t(i18n, "showcase.component.cpfcnpj.sections.publica.title")}` },
-      { id: "exemplo-14", label: "14) Playground" }
+      { id: "exemplo-14", label: `14) ${t(i18n, "showcase.common.sections.formControl.title")}` },
+      { id: "exemplo-15", label: `15) ${t(i18n, "showcase.common.sections.formRegister.title")}` },
+      { id: "exemplo-16", label: "16) Playground" }
     ],
     [i18n.locale]
   );
@@ -496,7 +503,51 @@ export default function SgInputCpfCnpjPage() {
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-cpf-cnpj/samples/cnpj-publico.tsx.sample" />
       </Section>
 
-<Section id="exemplo-14" title="14) Playground" description={t(i18n, "showcase.common.playground.description")}>
+<Section
+        id="exemplo-14"
+        title={`14) ${t(i18n, "showcase.common.sections.formControl.title")}`}
+        description={t(i18n, "showcase.common.sections.formControl.description")}
+      >
+        <div className="w-80">
+          <SgInputCPFCNPJ
+            id="documento-control"
+            name="documento"
+            label="CPF/CNPJ"
+            control={formControl}
+          />
+          <p className="mt-2 text-xs text-muted-foreground">
+            {t(i18n, "showcase.common.labels.formValue", { value: `"${controlValue}"` })}
+          </p>
+          <p className="text-xs text-muted-foreground">
+            {t(i18n, "showcase.common.labels.formDigits", { value: `"${controlValue.replace(/\D/g, "")}"` })}
+          </p>
+        </div>
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-cpf-cnpj/samples/formulario-control.tsx.sample" />
+      </Section>
+
+      <Section
+        id="exemplo-15"
+        title={`15) ${t(i18n, "showcase.common.sections.formRegister.title")}`}
+        description={t(i18n, "showcase.common.sections.formRegister.description")}
+      >
+        <div className="w-80">
+          <SgInputCPFCNPJ
+            id="documento-register"
+            name="documento"
+            label="CPF/CNPJ"
+            register={formRegister}
+          />
+          <p className="mt-2 text-xs text-muted-foreground">
+            {t(i18n, "showcase.common.labels.formValue", { value: `"${registerValue}"` })}
+          </p>
+          <p className="text-xs text-muted-foreground">
+            {t(i18n, "showcase.common.labels.formDigits", { value: `"${registerValue.replace(/\D/g, "")}"` })}
+          </p>
+        </div>
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-cpf-cnpj/samples/formulario-register.tsx.sample" />
+      </Section>
+
+      <Section id="exemplo-16" title="16) Playground" description={t(i18n, "showcase.common.playground.description")}>
         <SgPlayground
           title="SgInputCPFCNPJ Playground"
           interactive

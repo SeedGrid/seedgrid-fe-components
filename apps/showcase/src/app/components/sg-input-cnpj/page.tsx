@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import React from "react";
+import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { SgGrid, SgInputCNPJ } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
@@ -38,6 +39,10 @@ export default function SgInputCNPJPage() {
   const [publicaResult, setPublicaResult] = React.useState<unknown | null>(null);
   const [publicaError, setPublicaError] = React.useState<string | null>(null);
   const stickyHeaderRef = React.useRef<HTMLDivElement | null>(null);
+  const { control: formControl, watch: watchControl } = useForm({ defaultValues: { cnpj: "11222333000181" } });
+  const { register: formRegister, watch: watchRegister } = useForm({ defaultValues: { cnpj: "11222333000181" } });
+  const controlValue = String(watchControl("cnpj") ?? "");
+  const registerValue = String(watchRegister("cnpj") ?? "");
   const [anchorOffset, setAnchorOffset] = React.useState(320);
 
   const log = (msg: string) => {
@@ -166,7 +171,9 @@ export default function SgInputCNPJPage() {
       { id: "exemplo-12", label: `12) ${t(i18n, "showcase.common.sections.disabled.title")}` },
       { id: "exemplo-13", label: `13) ${t(i18n, "showcase.common.sections.events.title")}` },
       { id: "exemplo-14", label: `14) ${t(i18n, "showcase.common.sections.labelPosition.title")}` },
-      { id: "exemplo-15", label: "15) Playground" }
+      { id: "exemplo-15", label: `15) ${t(i18n, "showcase.common.sections.formControl.title")}` },
+      { id: "exemplo-16", label: `16) ${t(i18n, "showcase.common.sections.formRegister.title")}` },
+      { id: "exemplo-17", label: "17) Playground" }
     ],
     [i18n.locale]
   );
@@ -502,7 +509,51 @@ export default function SgInputCNPJPage() {
   <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-cnpj/samples/posicao-do-rotulo.tsx.sample" />
 </Section>
 
-<Section id="exemplo-15" title="15) Playground" description={t(i18n, "showcase.common.playground.description")}>
+<Section
+        id="exemplo-15"
+        title={`15) ${t(i18n, "showcase.common.sections.formControl.title")}`}
+        description={t(i18n, "showcase.common.sections.formControl.description")}
+      >
+        <div className="w-80">
+          <SgInputCNPJ
+            id="cnpj-control"
+            name="cnpj"
+            label="CNPJ"
+            control={formControl}
+          />
+          <p className="mt-2 text-xs text-muted-foreground">
+            {t(i18n, "showcase.common.labels.formValue", { value: `"${controlValue}"` })}
+          </p>
+          <p className="text-xs text-muted-foreground">
+            {t(i18n, "showcase.common.labels.formDigits", { value: `"${controlValue.replace(/\D/g, "")}"` })}
+          </p>
+        </div>
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-cnpj/samples/formulario-control.tsx.sample" />
+      </Section>
+
+      <Section
+        id="exemplo-16"
+        title={`16) ${t(i18n, "showcase.common.sections.formRegister.title")}`}
+        description={t(i18n, "showcase.common.sections.formRegister.description")}
+      >
+        <div className="w-80">
+          <SgInputCNPJ
+            id="cnpj-register"
+            name="cnpj"
+            label="CNPJ"
+            register={formRegister}
+          />
+          <p className="mt-2 text-xs text-muted-foreground">
+            {t(i18n, "showcase.common.labels.formValue", { value: `"${registerValue}"` })}
+          </p>
+          <p className="text-xs text-muted-foreground">
+            {t(i18n, "showcase.common.labels.formDigits", { value: `"${registerValue.replace(/\D/g, "")}"` })}
+          </p>
+        </div>
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-cnpj/samples/formulario-register.tsx.sample" />
+      </Section>
+
+      <Section id="exemplo-17" title="17) Playground" description={t(i18n, "showcase.common.playground.description")}>
         <SgPlayground
           title="SgInputCNPJ Playground"
           interactive

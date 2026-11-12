@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import React from "react";
+import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { SgGrid, SgInputPhone } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
@@ -42,6 +43,10 @@ export default function SgInputPhonePage() {
   };
 
   const stickyHeaderRef = React.useRef<HTMLDivElement | null>(null);
+  const { control: formControl, watch: watchControl } = useForm({ defaultValues: { telefone: "11987654321" } });
+  const { register: formRegister, watch: watchRegister } = useForm({ defaultValues: { telefone: "11987654321" } });
+  const controlValue = String(watchControl("telefone") ?? "");
+  const registerValue = String(watchRegister("telefone") ?? "");
   const [anchorOffset, setAnchorOffset] = React.useState(320);
 
   React.useEffect(() => {
@@ -164,7 +169,9 @@ export default function SgInputPhonePage() {
       { id: "exemplo-8", label: `8) ${t(i18n, "showcase.common.sections.disabled.title")}` },
       { id: "exemplo-9", label: `9) ${t(i18n, "showcase.common.sections.events.title")}` },
       { id: "exemplo-10", label: `10) ${t(i18n, "showcase.common.sections.labelPosition.title")}` },
-      { id: "exemplo-11", label: "11) Playground" }
+      { id: "exemplo-11", label: `11) ${t(i18n, "showcase.common.sections.formControl.title")}` },
+      { id: "exemplo-12", label: `12) ${t(i18n, "showcase.common.sections.formRegister.title")}` },
+      { id: "exemplo-13", label: "13) Playground" }
     ],
     [i18n.locale]
   );
@@ -421,7 +428,51 @@ export default function SgInputPhonePage() {
 
 <Section
         id="exemplo-11"
-        title="11) Playground"
+        title={`11) ${t(i18n, "showcase.common.sections.formControl.title")}`}
+        description={t(i18n, "showcase.common.sections.formControl.description")}
+      >
+        <div className="w-80">
+          <SgInputPhone
+            id="telefone-control"
+            name="telefone"
+            label={t(i18n, "showcase.component.inputPhone.labels.phone")}
+            control={formControl}
+          />
+          <p className="mt-2 text-xs text-muted-foreground">
+            {t(i18n, "showcase.common.labels.formValue", { value: `"${controlValue}"` })}
+          </p>
+          <p className="text-xs text-muted-foreground">
+            {t(i18n, "showcase.common.labels.formDigits", { value: `"${controlValue.replace(/\D/g, "")}"` })}
+          </p>
+        </div>
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-phone/samples/formulario-control.tsx.sample" />
+      </Section>
+
+      <Section
+        id="exemplo-12"
+        title={`12) ${t(i18n, "showcase.common.sections.formRegister.title")}`}
+        description={t(i18n, "showcase.common.sections.formRegister.description")}
+      >
+        <div className="w-80">
+          <SgInputPhone
+            id="telefone-register"
+            name="telefone"
+            label={t(i18n, "showcase.component.inputPhone.labels.phone")}
+            register={formRegister}
+          />
+          <p className="mt-2 text-xs text-muted-foreground">
+            {t(i18n, "showcase.common.labels.formValue", { value: `"${registerValue}"` })}
+          </p>
+          <p className="text-xs text-muted-foreground">
+            {t(i18n, "showcase.common.labels.formDigits", { value: `"${registerValue.replace(/\D/g, "")}"` })}
+          </p>
+        </div>
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-phone/samples/formulario-register.tsx.sample" />
+      </Section>
+
+      <Section
+        id="exemplo-13"
+        title="13) Playground"
         description={t(i18n, "showcase.common.playground.description.withComponent", { component: "SgInputPhone" })}
       >
         <SgPlayground

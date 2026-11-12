@@ -1,0 +1,21 @@
+import * as React from "react";
+import { useForm } from "react-hook-form";
+import { SgInputCPF } from "@seedgrid/fe-components";
+
+export default function App() {
+  const { control, watch } = useForm({ defaultValues: { cpf: "52998224725" } });
+  const value = String(watch("cpf") ?? "");
+
+  return (
+    <div>
+      <SgInputCPF
+        id="cpf-control"
+        name="cpf"
+        label="CPF"
+        control={control}
+      />
+      <p>Valor no formulário: "{value}"</p>
+      <p>Só os dígitos: "{value.replace(/\D/g, "")}"</p>
+    </div>
+  );
+}

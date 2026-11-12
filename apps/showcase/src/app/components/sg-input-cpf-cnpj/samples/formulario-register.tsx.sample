@@ -1,0 +1,21 @@
+import * as React from "react";
+import { useForm } from "react-hook-form";
+import { SgInputCPFCNPJ } from "@seedgrid/fe-components";
+
+export default function App() {
+  const { register, watch } = useForm({ defaultValues: { documento: "52998224725" } });
+  const value = String(watch("documento") ?? "");
+
+  return (
+    <div>
+      <SgInputCPFCNPJ
+        id="documento-register"
+        name="documento"
+        label="CPF/CNPJ"
+        register={register}
+      />
+      <p>Valor no formulário: "{value}"</p>
+      <p>Só os dígitos: "{value.replace(/\D/g, "")}"</p>
+    </div>
+  );
+}
