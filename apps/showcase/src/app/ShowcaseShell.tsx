@@ -928,7 +928,7 @@ export default function ShowcaseShell(props: {
         messages={COMPONENTS_MESSAGES_BY_LOCALE[locale] ?? componentsMessagesEnUs}
       >
         <SgDockScreen
-          id="showcase-shell-dock"
+          id="showcase-shell-dock-v2"
           screenId="showcase-shell-screen"
           fullscreen={false}
           className="h-screen w-full"
@@ -955,6 +955,7 @@ export default function ShowcaseShell(props: {
             <>
             <SgToolBar
               id="showcase-locale-toolbar"
+              dockZone="top"
               title={isNarrow ? undefined : t({ locale, messages }, "showcase.toolbar.language")}
               orientationDirection="horizontal-left"
               className="max-w-full [&>div]:flex-wrap"
@@ -980,9 +981,33 @@ export default function ShowcaseShell(props: {
                   onClick={() => applyLocale(item.value)}
                 />
               ))}
+              {isNarrow ? [
+              <SgToolbarIconButton
+                key="theme-editor"
+                icon={<Palette className="size-4" />}
+                label={t({ locale, messages }, "showcase.themeEditor.hint")}
+                showLabel={false}
+                hint={t({ locale, messages }, "showcase.themeEditor.hint")}
+                severity="plain"
+                onClick={() => {
+                  window.dispatchEvent(new Event("showcase:toggle-theme-editor"));
+                }}
+              />,
+              <SgToolbarIconButton
+                key="theme-toggle"
+                icon={isDarkMode ? <Sun className="size-4" /> : <Moon className="size-4" />}
+                label={t({ locale, messages }, "showcase.toolbar.toggleTheme")}
+                showLabel={false}
+                hint={t({ locale, messages }, "showcase.toolbar.toggleTheme")}
+                severity="plain"
+                onClick={() => setMode(isDarkMode ? "light" : "dark")}
+              />
+              ] : null}
             </SgToolBar>
+            {!isNarrow ? (
             <SgToolBar
               id="showcase-theme-toolbar"
+              dockZone="top"
               className="ml-auto !border-transparent !bg-transparent !shadow-none"
               orientationDirection="horizontal-right"
               collapsible={false}
@@ -1006,6 +1031,7 @@ export default function ShowcaseShell(props: {
                 onClick={() => setMode(isDarkMode ? "light" : "dark")}
               />
             </SgToolBar>
+            ) : null}
             </>
           </SgDockZone>
 
