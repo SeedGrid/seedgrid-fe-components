@@ -1,0 +1,19 @@
+import * as React from "react";
+import { SgInputDateTime } from "@seedgrid/fe-components";
+
+export default function App() {
+  const [local, setLocal] = React.useState<string | null>(null);
+  const [utc, setUtc] = React.useState<string | null>(null);
+  const [offset, setOffset] = React.useState<string | null>(null);
+
+  return (
+    <div className="w-80 space-y-4">
+      <SgInputDateTime id="demo-tz-local" label="local" timeZone="Asia/Tokyo" valueMode="local" onChange={(next) => setLocal(next)} />
+      <SgInputDateTime id="demo-tz-utc" label="utc" timeZone="Asia/Tokyo" valueMode="utc" onChange={(next) => setUtc(next)} />
+      <SgInputDateTime id="demo-tz-offset" label="offset" timeZone="Asia/Tokyo" valueMode="offset" onChange={(next) => setOffset(next)} />
+      <p className="text-xs text-muted-foreground">local: {local ?? "-"}</p>
+      <p className="text-xs text-muted-foreground">utc: {utc ?? "-"}</p>
+      <p className="text-xs text-muted-foreground">offset: {offset ?? "-"}</p>
+    </div>
+  );
+}

@@ -93,6 +93,52 @@ export function wallClockToInstant(local: string, timeZone?: string): string | n
   return new Date(instant).toISOString();
 }
 
+/**
+ * Formato do valor entregue/aceito pelo campo: `local` (relogio de parede no fuso do campo, "2026-01-15T10:30"),
+ * `utc` (instante em UTC, "2026-01-15T13:30:00Z") ou `offset` (relogio de parede com o deslocamento do fuso,
+ * "2026-01-15T10:30:00-03:00").
+ */
+export type DateTimeValueMode = "local" | "utc" | "offset";
+
+/** "+hh:mm" / "-hh:mm" a partir de minutos. */
+function formatOffset(minutes: number): string {
+  const sign = minutes < 0 ? "-" : "+";
+  const abs = Math.abs(minutes);
+  return `${sign}${pad(Math.floor(abs / 60))}:${pad(abs % 60)}`;
+}
+
+/**
+ * Relogio de parede do campo ("YYYY-MM-DDTHH:mm[:ss]", no fuso) => valor no formato pedido; `null` se vazio/invalido.
+ * `local` devolve o proprio texto; `utc` e `offset` sempre com segundos.
+ */
+export function formatDateTimeValue(local: string, mode: DateTimeValueMode = "local", timeZone?: string): string | null {
+  const text = local.trim();
+  if (!text) return null;
+  const instant = wallClockToInstant(text, timeZone);
+  if (!instant) return null;
+  if (mode === "local") return text;
+  if (mode === "utc") return instant.replace(/\.\d{3}Z$/, "Z");
+  const m = LOCAL_RE.exec(text)!;
+  const wall = `${m[1]}-${m[2]}-${m[3]}T${m[4]}:${m[5]}:${m[6] ?? "00"}`;
+  return `${wall}${formatOffset(zoneOffsetMinutes(new Date(instant).getTime(), timeZone))}`;
+}
+
+/**
+ * Valor de qualquer formato (texto local sem fuso, ISO com "Z" ou deslocamento, `Date`) => relogio de parede no fuso do campo.
+ * Texto sem fuso ("2026-01-15T10:30") ja e o relogio do campo e nao e convertido.
+ */
+export function parseDateTimeValue(value: string | Date | undefined | null, timeZone?: string, showSeconds = false): string {
+  if (value === undefined || value === null || value === "") return "";
+  if (typeof value === "string") {
+    const m = LOCAL_RE.exec(value.trim());
+    if (m) {
+      const base = `${m[1]}-${m[2]}-${m[3]}T${m[4]}:${m[5]}`;
+      return showSeconds ? `${base}:${m[6] ?? "00"}` : base;
+    }
+  }
+  return instantToWallClock(value, timeZone, showSeconds);
+}
+
 /** Arredonda os minutos ao multiplo de `step` mais proximo (passo invalido ou <= 1 mantem o valor). */
 export function snapMinutes(local: string, step?: number): string {
   const m = LOCAL_RE.exec(local.trim());

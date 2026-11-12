@@ -2,13 +2,13 @@ import * as React from "react";
 import { SgInputDateTime } from "@seedgrid/fe-components";
 
 export default function App() {
-  const [instant, setInstant] = React.useState("2026-11-03T17:30:00.000Z");
+  const [instant, setInstant] = React.useState("2026-11-03T17:30:00Z");
 
   return (
     <div className="w-80 space-y-4">
-      <SgInputDateTime id="demo-zone-utc" label="UTC" timeZone="UTC" value={instant} onChange={(value) => value !== null && setInstant(value)} />
-      <SgInputDateTime id="demo-zone-sp" label="-03:00" timeZone="-03:00" value={instant} onChange={(value) => value !== null && setInstant(value)} />
-      <SgInputDateTime id="demo-zone-in" label="+05:30" timeZone="+05:30" value={instant} onChange={(value) => value !== null && setInstant(value)} />
+      <SgInputDateTime id="demo-zone-utc" label="UTC" timeZone="UTC" valueMode="utc" value={instant} onChange={(value) => value !== null && setInstant(value)} />
+      <SgInputDateTime id="demo-zone-sp" label="-03:00" timeZone="-03:00" valueMode="utc" value={instant} onChange={(value) => value !== null && setInstant(value)} />
+      <SgInputDateTime id="demo-zone-in" label="+05:30" timeZone="+05:30" valueMode="utc" value={instant} onChange={(value) => value !== null && setInstant(value)} />
       <p className="text-xs text-muted-foreground">Valor: {instant || "-"}</p>
     </div>
   );

@@ -35,8 +35,14 @@ export default function SgInputDateTimePage() {
   const i18n = useShowcaseI18n();
   const aiComponent = useAiManifestComponent("SgInputDateTime");
   const [instant, setInstant] = React.useState<string | null>(null);
-  const [zoneInstant, setZoneInstant] = React.useState("2026-11-03T17:30:00.000Z");
+  const [zoneInstant, setZoneInstant] = React.useState("2026-11-03T17:30:00Z");
   const [lastEvent, setLastEvent] = React.useState("-");
+  const [modeLocal, setModeLocal] = React.useState<string | null>(null);
+  const [modeUtc, setModeUtc] = React.useState<string | null>(null);
+  const [modeOffset, setModeOffset] = React.useState<string | null>(null);
+  const [tzLocal, setTzLocal] = React.useState<string | null>(null);
+  const [tzUtc, setTzUtc] = React.useState<string | null>(null);
+  const [tzOffset, setTzOffset] = React.useState<string | null>(null);
   const [submitted, setSubmitted] = React.useState("");
   const { control, handleSubmit } = useForm<{ appointment: string }>({ defaultValues: { appointment: "" } });
   const stickyHeaderRef = React.useRef<HTMLDivElement | null>(null);
@@ -158,7 +164,11 @@ export default function SgInputDateTimePage() {
       { id: "exemplo-6", label: `6) ${t(i18n, "showcase.component.inputDateTime.sections.form.title")}` },
       { id: "exemplo-7", label: `7) ${t(i18n, "showcase.common.sections.labelPosition.title")}` },
       { id: "exemplo-8", label: `8) ${t(i18n, "showcase.common.sections.i18n.title")}` },
-      { id: "exemplo-9", label: "9) Playground" }
+      { id: "exemplo-9", label: `9) ${t(i18n, "showcase.component.inputDateTime.sections.valueLocal.title")}` },
+      { id: "exemplo-10", label: `10) ${t(i18n, "showcase.component.inputDateTime.sections.valueUtc.title")}` },
+      { id: "exemplo-11", label: `11) ${t(i18n, "showcase.component.inputDateTime.sections.valueOffset.title")}` },
+      { id: "exemplo-12", label: `12) ${t(i18n, "showcase.component.inputDateTime.sections.otherZone.title")}` },
+      { id: "exemplo-13", label: "13) Playground" }
     ],
     [i18n.locale]
   );
@@ -167,6 +177,7 @@ export default function SgInputDateTimePage() {
     { prop: "label", type: "string", defaultValue: "-", description: t(i18n, "showcase.component.inputDateTime.props.rows.label") },
     { prop: "value / defaultValue", type: "string | Date | null", defaultValue: "-", description: t(i18n, "showcase.component.inputDateTime.props.rows.value") },
     { prop: "onChange", type: "(value: string | null, local: string) => void", defaultValue: "-", description: t(i18n, "showcase.component.inputDateTime.props.rows.onChange") },
+    { prop: "valueMode", type: '"local" | "utc" | "offset"', defaultValue: '"local"', description: t(i18n, "showcase.component.inputDateTime.props.rows.valueMode") },
     { prop: "timeZone", type: "string", defaultValue: '"local"', description: t(i18n, "showcase.component.inputDateTime.props.rows.timeZone") },
     { prop: "minDate / maxDate", type: "string | Date", defaultValue: "-", description: t(i18n, "showcase.component.inputDateTime.props.rows.minMax") },
     { prop: "minuteStep", type: "number", defaultValue: "-", description: t(i18n, "showcase.component.inputDateTime.props.rows.minuteStep") },
@@ -222,6 +233,7 @@ export default function SgInputDateTimePage() {
               id="demo-zone-utc"
               label="UTC"
               timeZone="UTC"
+              valueMode="utc"
               value={zoneInstant}
               onChange={(value) => value !== null && setZoneInstant(value)}
             />
@@ -229,6 +241,7 @@ export default function SgInputDateTimePage() {
               id="demo-zone-sp"
               label="-03:00"
               timeZone="-03:00"
+              valueMode="utc"
               value={zoneInstant}
               onChange={(value) => value !== null && setZoneInstant(value)}
             />
@@ -236,6 +249,7 @@ export default function SgInputDateTimePage() {
               id="demo-zone-in"
               label="+05:30"
               timeZone="+05:30"
+              valueMode="utc"
               value={zoneInstant}
               onChange={(value) => value !== null && setZoneInstant(value)}
             />
@@ -370,7 +384,83 @@ export default function SgInputDateTimePage() {
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-date-time/samples/idioma.tsx.sample" />
         </Section>
 
-        <Section id="exemplo-9" title="9) Playground" description={t(i18n, "showcase.common.playground.description")}>
+        <Section
+          id="exemplo-9"
+          title={`9) ${t(i18n, "showcase.component.inputDateTime.sections.valueLocal.title")}`}
+          description={t(i18n, "showcase.component.inputDateTime.sections.valueLocal.description")}
+        >
+          <div className="w-80">
+            <SgInputDateTime
+              id="demo-mode-local"
+              label={t(i18n, "showcase.component.inputDateTime.labels.when")}
+              timeZone="America/Sao_Paulo"
+              valueMode="local"
+              onChange={(next) => setModeLocal(next)}
+            />
+            <p className="mt-2 text-xs text-muted-foreground">
+              {t(i18n, "showcase.common.labels.currentValue", { value: modeLocal ?? "-" })}
+            </p>
+          </div>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-date-time/samples/valor-local.tsx.sample" />
+        </Section>
+
+        <Section
+          id="exemplo-10"
+          title={`10) ${t(i18n, "showcase.component.inputDateTime.sections.valueUtc.title")}`}
+          description={t(i18n, "showcase.component.inputDateTime.sections.valueUtc.description")}
+        >
+          <div className="w-80">
+            <SgInputDateTime
+              id="demo-mode-utc"
+              label={t(i18n, "showcase.component.inputDateTime.labels.when")}
+              timeZone="America/Sao_Paulo"
+              valueMode="utc"
+              onChange={(next) => setModeUtc(next)}
+            />
+            <p className="mt-2 text-xs text-muted-foreground">
+              {t(i18n, "showcase.common.labels.currentValue", { value: modeUtc ?? "-" })}
+            </p>
+          </div>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-date-time/samples/valor-utc.tsx.sample" />
+        </Section>
+
+        <Section
+          id="exemplo-11"
+          title={`11) ${t(i18n, "showcase.component.inputDateTime.sections.valueOffset.title")}`}
+          description={t(i18n, "showcase.component.inputDateTime.sections.valueOffset.description")}
+        >
+          <div className="w-80">
+            <SgInputDateTime
+              id="demo-mode-offset"
+              label={t(i18n, "showcase.component.inputDateTime.labels.when")}
+              timeZone="America/Sao_Paulo"
+              valueMode="offset"
+              onChange={(next) => setModeOffset(next)}
+            />
+            <p className="mt-2 text-xs text-muted-foreground">
+              {t(i18n, "showcase.common.labels.currentValue", { value: modeOffset ?? "-" })}
+            </p>
+          </div>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-date-time/samples/valor-offset.tsx.sample" />
+        </Section>
+
+        <Section
+          id="exemplo-12"
+          title={`12) ${t(i18n, "showcase.component.inputDateTime.sections.otherZone.title")}`}
+          description={t(i18n, "showcase.component.inputDateTime.sections.otherZone.description")}
+        >
+          <div className="w-80 space-y-4">
+            <SgInputDateTime id="demo-tz-local" label="local" timeZone="Asia/Tokyo" valueMode="local" onChange={(next) => setTzLocal(next)} />
+            <SgInputDateTime id="demo-tz-utc" label="utc" timeZone="Asia/Tokyo" valueMode="utc" onChange={(next) => setTzUtc(next)} />
+            <SgInputDateTime id="demo-tz-offset" label="offset" timeZone="Asia/Tokyo" valueMode="offset" onChange={(next) => setTzOffset(next)} />
+            <p className="text-xs text-muted-foreground">local: {tzLocal ?? "-"}</p>
+            <p className="text-xs text-muted-foreground">utc: {tzUtc ?? "-"}</p>
+            <p className="text-xs text-muted-foreground">offset: {tzOffset ?? "-"}</p>
+          </div>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-date-time/samples/outro-fuso.tsx.sample" />
+        </Section>
+
+        <Section id="exemplo-13" title="13) Playground" description={t(i18n, "showcase.common.playground.description")}>
           <SgPlayground
             title="SgInputDateTime Playground"
             interactive

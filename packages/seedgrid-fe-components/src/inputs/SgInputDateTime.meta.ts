@@ -24,9 +24,10 @@ export const sgMeta: SgMetaV0 = {
     { name: "minDate", type: "string | Date", description: "Menor instante permitido.", semanticRole: "validation", bindable: true },
     { name: "maxDate", type: "string | Date", description: "Maior instante permitido.", semanticRole: "validation", bindable: true },
     { name: "timeZone", type: "string", default: "local", description: "Fuso do campo: local, UTC, deslocamento (+03:00) ou nome IANA.", semanticRole: "data", bindable: true },
+    { name: "valueMode", type: '"local" | "utc" | "offset"', default: "local", description: "Formato do valor que sai (onChange e formulario) e que o formulario aceita: local (2026-01-15T10:30), utc (2026-01-15T13:30:00Z) ou offset (2026-01-15T10:30:00-03:00).", semanticRole: "data", bindable: true },
     { name: "showSeconds", type: "boolean", default: false, description: "Mostra e aceita segundos.", semanticRole: "appearance", bindable: true },
     { name: "minuteStep", type: "number", description: "Passo dos minutos (5, 10, 15, 30).", semanticRole: "validation", bindable: true },
-    { name: "onChange", type: "(value: string | null, local: string) => void", description: "Instante ISO UTC (ou null) e texto local do campo.", semanticRole: "event", bindable: false }
+    { name: "onChange", type: "(value: string | null, local: string) => void", description: "Valor no formato de valueMode (ou null) e texto local do campo.", semanticRole: "event", bindable: false }
   ],
   states: ["default", "focused", "disabled", "readOnly", "error"],
   examples: [

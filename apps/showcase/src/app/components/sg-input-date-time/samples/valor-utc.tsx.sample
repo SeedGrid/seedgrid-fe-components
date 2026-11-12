@@ -1,0 +1,13 @@
+import * as React from "react";
+import { SgInputDateTime } from "@seedgrid/fe-components";
+
+export default function App() {
+  const [value, setValue] = React.useState<string | null>(null);
+
+  return (
+    <div className="w-80">
+      <SgInputDateTime id="demo-mode-utc" label="Quando" timeZone="America/Sao_Paulo" valueMode="utc" onChange={(next) => setValue(next)} />
+      <p className="mt-2 text-xs text-muted-foreground">Valor: {value ?? "-"}</p>
+    </div>
+  );
+}

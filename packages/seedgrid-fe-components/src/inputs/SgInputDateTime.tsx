@@ -1,26 +1,33 @@
 "use client";
 
 import React from "react";
+import { Controller } from "react-hook-form";
 import { SgInputText, type SgInputTextProps } from "./SgInputText";
-import { resolveFieldError } from "../rhf";
+import { mergeRequiredRule, resolveFieldError } from "../rhf";
 import { t, useComponentsI18n } from "../i18n";
 import { useDarkFlag } from "../gadgets/clock/themes/useDarkFlag";
 import {
+  formatDateTimeValue,
   formatWallClock,
   instantToWallClock,
+  parseDateTimeValue,
+  type DateTimeValueMode,
   snapMinutes,
-  validateDateTime,
-  wallClockToInstant
+  validateDateTime
 } from "./dateTimeLogic";
 
 export type SgInputDateTimeProps = Omit<SgInputTextProps, "type" | "onChange"> & {
-  /** Instante controlado: ISO 8601 (com offset ou "Z") ou `Date`. `null`/"" limpa o campo. */
+  /**
+   * Valor controlado, em qualquer formato: texto local sem fuso ("2026-01-15T10:30", ja no relogio do campo), ISO 8601 com
+   * "Z" ou deslocamento ("2026-01-15T13:30:00Z", "2026-01-15T10:30:00-03:00") ou `Date`. `null`/"" limpa o campo.
+   */
   value?: string | Date | null;
   /** Instante inicial (campo nao controlado). */
   defaultValue?: string | Date | null;
   /**
-   * Disparado a cada alteracao com o instante em ISO 8601 UTC (`2026-11-03T17:30:00.000Z`) ou `null` se o
-   * campo ficou vazio/incompleto/invalido; `local` e o texto do campo (`2026-11-03T14:30`) no fuso do campo.
+   * Disparado a cada alteracao com o valor no formato de `valueMode` (`local` "2026-11-03T14:30", `utc`
+   * "2026-11-03T17:30:00Z" ou `offset` "2026-11-03T14:30:00-03:00") ou `null` se o campo ficou vazio/incompleto/invalido;
+   * `local` e sempre o texto do campo (`2026-11-03T14:30`) no fuso do campo. O mesmo formato vai para o formulario (RHF).
    */
   onChange?: (value: string | null, local: string) => void;
   /** Disparado ao receber foco — padrao seedgrid. */
@@ -31,8 +38,13 @@ export type SgInputDateTimeProps = Omit<SgInputTextProps, "type" | "onChange"> &
   minDate?: string | Date;
   /** Maior instante permitido (ISO 8601 ou `Date`). */
   maxDate?: string | Date;
-  /** Fuso em que o campo mostra e interpreta a hora: "local" (padrao), "UTC", "+03:00" ou nome IANA. */
+  /** Fuso em que o campo mostra e interpreta a hora: "local" (padrao, o do dispositivo), "UTC", "+03:00" ou nome IANA. */
   timeZone?: string;
+  /**
+   * Formato do valor que sai (onChange e formulario) e que o formulario/`value` aceitam: `local` (padrao), `utc` ou `offset`.
+   * Com `register`, `utc`/`offset` so convertem o que e digitado; para atribuir por codigo use `control`.
+   */
+  valueMode?: DateTimeValueMode;
   /** Mostra e aceita segundos. */
   showSeconds?: boolean;
   /** Passo dos minutos (1, 5, 10, 15, 30...). Ignorado com `showSeconds`. */
@@ -44,10 +56,51 @@ export type SgInputDateTimeProps = Omit<SgInputTextProps, "type" | "onChange"> &
 const WIDGET_MAX = "9999-12-31T23:59";
 
 function localOf(value: string | Date | null | undefined, timeZone: string | undefined, showSeconds: boolean) {
-  return instantToWallClock(value ?? undefined, timeZone, showSeconds);
+  return parseDateTimeValue(value, timeZone, showSeconds);
 }
 
+/** Liga o campo ao react-hook-form: o formulario guarda o valor no formato de `valueMode`, aceita qualquer formato ao atribuir. */
 export function SgInputDateTime(props: SgInputDateTimeProps) {
+  const i18n = useComponentsI18n();
+  const { control, name, register, rules, ...rest } = props;
+  const mode = props.valueMode ?? "local";
+  if (control && name) {
+    return (
+      <Controller
+        name={name}
+        control={control}
+        rules={mergeRequiredRule(rules, props.required, props.requiredMessage ?? t(i18n, "components.inputs.required"))}
+        render={({ field, fieldState }) => (
+          <SgInputDateTimeBase
+            {...rest}
+            value={(field.value as string | Date | null | undefined) ?? ""}
+            error={resolveFieldError(props.error, fieldState.error?.message)}
+            onChange={(next, local) => {
+              field.onChange(next ?? "");
+              props.onChange?.(next, local);
+            }}
+            inputProps={{
+              ...props.inputProps,
+              name,
+              ref: field.ref,
+              onBlur: (event) => {
+                field.onBlur();
+                props.inputProps?.onBlur?.(event);
+              }
+            }}
+          />
+        )}
+      />
+    );
+  }
+  if (register && name && mode !== "local") {
+    const withMode = { ...rules, setValueAs: (raw: string) => formatDateTimeValue(String(raw ?? ""), mode, props.timeZone) ?? "" };
+    return <SgInputDateTimeBase {...rest} name={name} register={register} rules={withMode as typeof rules} />;
+  }
+  return <SgInputDateTimeBase {...rest} name={name} register={register} rules={rules} />;
+}
+
+function SgInputDateTimeBase(props: SgInputDateTimeProps) {
   const i18n = useComponentsI18n();
   const isDark = useDarkFlag();
   const {
@@ -57,6 +110,7 @@ export function SgInputDateTime(props: SgInputDateTimeProps) {
     minDate,
     maxDate,
     timeZone,
+    valueMode = "local",
     showSeconds = false,
     minuteStep,
     inputProps,
@@ -69,7 +123,6 @@ export function SgInputDateTime(props: SgInputDateTimeProps) {
     error,
     ...rest
   } = props;
-  const rhfManaged = Boolean((rest as { control?: unknown }).control && rest.name);
   const controlled = value !== undefined;
   const [innerLocal, setInnerLocal] = React.useState(() => localOf(defaultValue, timeZone, showSeconds));
   const local = controlled ? localOf(value, timeZone, showSeconds) : innerLocal;
@@ -126,7 +179,7 @@ export function SgInputDateTime(props: SgInputDateTimeProps) {
   }, [i18n.locale, internalError, local]);
 
   const emit = (text: string) => {
-    onChange?.(text ? wallClockToInstant(text, timeZone) : null, text);
+    onChange?.(text ? formatDateTimeValue(text, valueMode, timeZone) : null, text);
   };
 
   const mergedInputProps: React.InputHTMLAttributes<HTMLInputElement> = {
@@ -135,7 +188,7 @@ export function SgInputDateTime(props: SgInputDateTimeProps) {
     min: minLocal,
     max: maxLocal ?? WIDGET_MAX,
     step: effectiveStep,
-    ...(rhfManaged ? {} : { value: partial ? "" : local }),
+    value: partial ? "" : local,
     readOnly: inputProps?.readOnly,
     onChange: (event) => {
       const text = event.currentTarget.value;

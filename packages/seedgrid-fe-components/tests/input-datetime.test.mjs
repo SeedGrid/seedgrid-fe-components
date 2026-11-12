@@ -57,7 +57,7 @@ function mount(props) {
   return React.createElement(SgInputDateTime, { id: "dt", label: "Quando", ...props });
 }
 
-test("SgInputDateTime mostra o instante no fuso e emite ISO UTC ao digitar", async () => {
+test("SgInputDateTime mostra o instante no fuso e emite o valor local (padrao) ao digitar", async () => {
   const harness = setupDomHarness();
   try {
     const calls = [];
@@ -69,7 +69,7 @@ test("SgInputDateTime mostra o instante no fuso e emite ISO UTC ao digitar", asy
     assert.equal(input.value, "2026-11-03T14:30");
     await dispatchInput(input, "2026-11-04T08:15");
     await flushDom();
-    assert.deepEqual(calls.at(-1), ["2026-11-04T11:15:00.000Z", "2026-11-04T08:15"]);
+    assert.deepEqual(calls.at(-1), ["2026-11-04T08:15", "2026-11-04T08:15"]);
   } finally {
     harness.restore();
   }
@@ -179,3 +179,77 @@ test("SgInputDateTime recalcula a mensagem de erro quando o idioma muda (sem nov
     harness.restore();
   }
 });
+
+/* ---- Modo do valor (P155.F3.T7 C): local (padrao) | utc | offset, mais timeZone ---- */
+const MODES = [
+  ["local", "2026-01-15T10:30", "2026-01-15T10:30"],
+  ["utc", "2026-01-15T13:30:00Z", "2026-01-15T10:30"],
+  ["offset", "2026-01-15T10:30:00-03:00", "2026-01-15T10:30"]
+];
+
+test("formatDateTimeValue / parseDateTimeValue: os 3 modos em America/Sao_Paulo", () => {
+  for (const [mode, value, local] of MODES) {
+    assert.equal(L.formatDateTimeValue(local, mode, "America/Sao_Paulo"), value, mode);
+    assert.equal(L.parseDateTimeValue(value, "America/Sao_Paulo"), local, `parse ${mode}`);
+  }
+  assert.equal(L.formatDateTimeValue("", "utc", "UTC"), null);
+  assert.equal(L.formatDateTimeValue("2026-02-31T10:00", "offset", "UTC"), null);
+  assert.equal(L.formatDateTimeValue("2026-01-15T10:30:15", "offset", "-03:00"), "2026-01-15T10:30:15-03:00");
+  // texto sem fuso e o relogio do campo (nao e convertido); Date e ISO sao convertidos
+  assert.equal(L.parseDateTimeValue("2026-01-15T10:30", "Asia/Tokyo"), "2026-01-15T10:30");
+  assert.equal(L.parseDateTimeValue(new Date("2026-01-15T13:30:00Z"), "Asia/Tokyo"), "2026-01-15T22:30");
+});
+
+test("fuso diferente: o mesmo relogio vira instantes diferentes (Tokyo +09:00, Sao_Paulo -03:00)", () => {
+  assert.equal(L.formatDateTimeValue("2026-01-15T10:30", "utc", "Asia/Tokyo"), "2026-01-15T01:30:00Z");
+  assert.equal(L.formatDateTimeValue("2026-01-15T10:30", "offset", "Asia/Tokyo"), "2026-01-15T10:30:00+09:00");
+  assert.equal(L.formatDateTimeValue("2026-01-15T10:30", "offset", "America/Sao_Paulo"), "2026-01-15T10:30:00-03:00");
+});
+
+for (const [mode, value, local] of MODES) {
+  test(`SgInputDateTime valueMode=${mode}: value mostra o relogio e onChange devolve o mesmo formato (Sao_Paulo)`, async () => {
+    const harness = setupDomHarness();
+    try {
+      const calls = [];
+      await harness.render(mount({ timeZone: "America/Sao_Paulo", valueMode: mode, value, onChange: (v, l) => calls.push([v, l]) }));
+      await flushDom();
+      const input = harness.document.querySelector("input#dt");
+      assert.equal(input.value, local, "value no formato do modo aparece como relogio");
+      await dispatchInput(input, "2026-01-16T08:00");
+      await flushDom();
+      const out = { local: "2026-01-16T08:00", utc: "2026-01-16T11:00:00Z", offset: "2026-01-16T08:00:00-03:00" }[mode];
+      assert.deepEqual(calls.at(-1), [out, "2026-01-16T08:00"]);
+    } finally {
+      harness.restore();
+    }
+  });
+
+  test(`SgInputDateTime valueMode=${mode} com control: defaultValues/setValue aceitam o formato e o form guarda o formato (Sao_Paulo)`, async () => {
+    const { useForm } = require("react-hook-form");
+    const { act } = await import("react");
+    const harness = setupDomHarness();
+    try {
+      const ref = {};
+      function Host() {
+        const form = useForm({ defaultValues: { f: value } });
+        ref.form = form;
+        return React.createElement(SgInputDateTime, { id: "dt", name: "f", control: form.control, label: "Q", timeZone: "America/Sao_Paulo", valueMode: mode });
+      }
+      await harness.render(React.createElement(Host));
+      await flushDom();
+      const input = harness.document.querySelector("input#dt");
+      assert.equal(input.value, local, "inicial");
+      assert.equal(ref.form.getValues("f"), value, "form guarda o inicial como veio");
+      // atribui em OUTRO formato: o campo mostra o mesmo relogio
+      await act(async () => { ref.form.setValue("f", "2026-02-01T15:00:00Z"); });
+      await flushDom();
+      assert.equal(input.value, "2026-02-01T12:00");
+      await dispatchInput(input, "2026-03-05T09:45");
+      await flushDom();
+      const out = { local: "2026-03-05T09:45", utc: "2026-03-05T12:45:00Z", offset: "2026-03-05T09:45:00-03:00" }[mode];
+      assert.equal(ref.form.getValues("f"), out, "digitado volta ao form no formato do modo");
+    } finally {
+      harness.restore();
+    }
+  });
+}

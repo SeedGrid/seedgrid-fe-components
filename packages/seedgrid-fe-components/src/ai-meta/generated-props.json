@@ -5221,7 +5221,7 @@
       "name": "onChange",
       "type": "((value: string | null, local: string) => void)",
       "required": false,
-      "description": "Disparado a cada alteracao com o instante em ISO 8601 UTC (`2026-11-03T17:30:00.000Z`) ou `null` se o\ncampo ficou vazio/incompleto/invalido; `local` e o texto do campo (`2026-11-03T14:30`) no fuso do campo."
+      "description": "Disparado a cada alteracao com o valor no formato de `valueMode` (`local` \"2026-11-03T14:30\", `utc`\n\"2026-11-03T17:30:00Z\" ou `offset` \"2026-11-03T14:30:00-03:00\") ou `null` se o campo ficou vazio/incompleto/invalido;\n`local` e sempre o texto do campo (`2026-11-03T14:30`) no fuso do campo. O mesmo formato vai para o formulario (RHF)."
     },
     {
       "name": "onClear",
@@ -5310,7 +5310,7 @@
       "name": "timeZone",
       "type": "string",
       "required": false,
-      "description": "Fuso em que o campo mostra e interpreta a hora: \"local\" (padrao), \"UTC\", \"+03:00\" ou nome IANA."
+      "description": "Fuso em que o campo mostra e interpreta a hora: \"local\" (padrao, o do dispositivo), \"UTC\", \"+03:00\" ou nome IANA."
     },
     {
       "name": "validateOnBlur",
@@ -5326,7 +5326,13 @@
       "name": "value",
       "type": "string | Date | null",
       "required": false,
-      "description": "Instante controlado: ISO 8601 (com offset ou \"Z\") ou `Date`. `null`/\"\" limpa o campo."
+      "description": "Valor controlado, em qualquer formato: texto local sem fuso (\"2026-01-15T10:30\", ja no relogio do campo), ISO 8601 com\n\"Z\" ou deslocamento (\"2026-01-15T13:30:00Z\", \"2026-01-15T10:30:00-03:00\") ou `Date`. `null`/\"\" limpa o campo."
+    },
+    {
+      "name": "valueMode",
+      "type": "DateTimeValueMode",
+      "required": false,
+      "description": "Formato do valor que sai (onChange e formulario) e que o formulario/`value` aceitam: `local` (padrao), `utc` ou `offset`.\nCom `register`, `utc`/`offset` so convertem o que e digitado; para atribuir por codigo use `control`."
     },
     {
       "name": "width",
