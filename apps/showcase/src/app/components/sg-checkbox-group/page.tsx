@@ -30,6 +30,7 @@ import {
 } from "lucide-react";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
+import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
 import ComponentAiSummary from "../ai/ComponentAiSummary";
 import { useAiManifestComponent } from "../ai/useAiManifestComponent";
@@ -424,30 +425,13 @@ export default function SgCheckboxGroupShowcase() {
         className="max-w-6xl space-y-8"
         style={{ ["--showcase-anchor-offset" as string]: `${anchorOffset}px` } as React.CSSProperties}
       >
-        <div ref={stickyHeaderRef} className="sticky top-0 z-50 isolate max-h-[52vh] overflow-y-auto bg-background pb-2 pt-2 md:-top-8 md:max-h-none md:overflow-visible md:pb-2 md:pt-8">
-          <div className="rounded-lg border border-border bg-background p-4 shadow-sm">
-            <h1 className="text-3xl font-bold">SgCheckboxGroup</h1>
-            <p className="mt-2 text-muted-foreground">{t(i18n, `${K}.subtitle`)}</p>
-            <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">{t(i18n, `${K}.examplesLabel`)}</p>
-            <SgGrid columns={{ base: 1, sm: 2, lg: 3 }} gap={8} className="mt-2">
-              {sectionTitles.map((label, index) => ({ id: `exemplo-${index + 1}`, label })).map((example) => (
-                <Link
-                  key={example.id}
-                  href={`#${example.id}`}
-                  onClick={(event) => handleAnchorClick(event, example.id)}
-                  className="rounded-md border border-border px-2 py-1 text-xs font-medium text-primary transition-colors hover:bg-muted/40"
-                >
-                  {example.label}
-                </Link>
-              ))}
-              <Link
-                href="#props-reference"
-                onClick={(event) => handleAnchorClick(event, "props-reference")}
-                className="rounded-md border border-border px-2 py-1 text-xs font-medium text-primary transition-colors hover:bg-muted/40"
-              >{t(i18n, `${K}.propsReference`)}</Link>
-            </SgGrid>
-          </div>
-        </div>
+        <ShowcaseStickyHeader
+          stickyHeaderRef={stickyHeaderRef}
+          title="SgCheckboxGroup"
+          subtitle={t(i18n, `${K}.subtitle`)}
+          exampleLinks={sectionTitles.map((label, index) => ({ id: `exemplo-${index + 1}`, label }))}
+          onAnchorClick={handleAnchorClick}
+        />
 
         {/* 1 - Basico */}
         <Section id="exemplo-1" title={sectionTitles[0]!}>

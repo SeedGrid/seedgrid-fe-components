@@ -58,12 +58,14 @@ export default function ShowcaseStickyHeader(props: Readonly<ShowcaseStickyHeade
     currentMode === "light" ? "text-[color-mix(in_srgb,rgb(var(--sg-primary-500))_50%,black)]" : "text-primary";
 
   return (
-    <div ref={props.stickyHeaderRef} className="sticky top-0 z-50 isolate max-h-[52vh] overflow-y-auto bg-background pb-2 pt-2 md:-top-8 md:max-h-none md:overflow-visible md:pb-2 md:pt-8">
-      <div className="rounded-lg border border-border bg-background p-4 shadow-sm">
-        <h1 className="text-2xl font-bold md:text-3xl">{props.title}</h1>
-        {props.subtitle ? <p className="mt-2 text-muted-foreground">{props.subtitle}</p> : null}
-        <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">{texts.examplesLabel}</p>
-        <div className="mt-2 flex gap-2 overflow-x-auto pb-1 md:hidden">
+    <div ref={props.stickyHeaderRef} className="sticky top-0 z-50 isolate bg-background pb-2 pt-2 md:-top-8 md:pb-2 md:pt-8">
+      {/* Celular (<768 px): UMA linha rolavel na horizontal (nome + links de ancora), sem descricao. */}
+      <div className="rounded-lg border border-border bg-background p-2 shadow-sm md:p-4">
+       <div className="flex items-center gap-2 overflow-x-auto md:block md:overflow-visible">
+        <h1 className="sticky left-0 z-10 shrink-0 whitespace-nowrap bg-background pr-2 text-base font-bold md:static md:whitespace-normal md:pr-0 md:text-3xl">{props.title}</h1>
+        {props.subtitle ? <p className="mt-2 hidden text-muted-foreground md:block">{props.subtitle}</p> : null}
+        <p className="mt-3 hidden text-xs font-semibold uppercase tracking-wide text-muted-foreground md:block">{texts.examplesLabel}</p>
+        <div className="contents md:hidden">
           {props.exampleLinks.map((example) => (
             <Link
               key={example.id}
@@ -101,6 +103,7 @@ export default function ShowcaseStickyHeader(props: Readonly<ShowcaseStickyHeade
             {texts.propsReferenceLabel}
           </Link>
         </SgGrid>
+       </div>
       </div>
     </div>
   );

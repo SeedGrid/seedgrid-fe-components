@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
+import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
 import ComponentAiSummary from "../ai/ComponentAiSummary";
 import { useAiManifestComponent } from "../ai/useAiManifestComponent";
@@ -670,30 +671,13 @@ export default function SgRadioGroupShowcase() {
         className="max-w-6xl space-y-8"
         style={{ ["--showcase-anchor-offset" as string]: `${anchorOffset}px` } as React.CSSProperties}
       >
-        <div ref={stickyHeaderRef} className="sticky top-0 z-50 isolate max-h-[52vh] overflow-y-auto bg-background pb-2 pt-2 md:-top-8 md:max-h-none md:overflow-visible md:pb-2 md:pt-8">
-          <div className="rounded-lg border border-border bg-background p-4 shadow-sm">
-            <h1 className="text-3xl font-bold">SgRadioGroup</h1>
-            <p className="mt-2 text-muted-foreground">{texts.subtitle}</p>
-            <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">{texts.examplesLabel}</p>
-            <SgGrid columns={{ base: 1, sm: 2, lg: 3 }} gap={8} className="mt-2">
-              {texts.sectionTitles.map((label, index) => ({ id: `exemplo-${index + 1}`, label })).map((example) => (
-                <Link
-                  key={example.id}
-                  href={`#${example.id}`}
-                  onClick={(event) => handleAnchorClick(event, example.id)}
-                  className="rounded-md border border-border px-2 py-1 text-xs font-medium text-primary transition-colors hover:bg-muted/40"
-                >
-                  {example.label}
-                </Link>
-              ))}
-              <Link
-                href="#props-reference"
-                onClick={(event) => handleAnchorClick(event, "props-reference")}
-                className="rounded-md border border-border px-2 py-1 text-xs font-medium text-primary transition-colors hover:bg-muted/40"
-              >{texts.propsLinkLabel}</Link>
-            </SgGrid>
-          </div>
-        </div>
+        <ShowcaseStickyHeader
+          stickyHeaderRef={stickyHeaderRef}
+          title="SgRadioGroup"
+          subtitle={texts.subtitle}
+          exampleLinks={texts.sectionTitles.map((label, index) => ({ id: `exemplo-${index + 1}`, label }))}
+          onAnchorClick={handleAnchorClick}
+        />
 
       <Section id="exemplo-1" title={texts.sectionTitles[0] ?? ""}>
         <SgRadioGroup
