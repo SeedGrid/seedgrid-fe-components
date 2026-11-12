@@ -2,6 +2,8 @@
 
 import React from "react";
 import type { AiManifestComponent } from "../../lib/ai-manifest";
+import { t, useShowcaseI18n } from "../../../i18n";
+import { aiMetaText } from "../../../i18n/ai-meta";
 
 type ComponentAiSummaryProps = {
   component: AiManifestComponent;
@@ -9,6 +11,8 @@ type ComponentAiSummaryProps = {
 
 export default function ComponentAiSummary(props: Readonly<ComponentAiSummaryProps>) {
   const { component } = props;
+  const i18n = useShowcaseI18n();
+  const tx = (text: string) => aiMetaText(i18n.locale, text);
   const defaultProps = component.sgMeta.sdui?.defaultProps;
 
   return (
@@ -23,11 +27,11 @@ export default function ComponentAiSummary(props: Readonly<ComponentAiSummaryPro
         </span>
       </div>
 
-      <p className="mt-3">{component.sgMeta.description}</p>
+      <p className="mt-3">{tx(component.sgMeta.description)}</p>
 
       {component.sgMeta.fieldSemantics && component.sgMeta.fieldSemantics.length > 0 ? (
         <div className="mt-3">
-          <p className="text-xs font-semibold uppercase tracking-wide text-emerald-800">Field semantics</p>
+          <p className="text-xs font-semibold uppercase tracking-wide text-emerald-800">{t(i18n, "showcase.ai.fieldSemantics")}</p>
           <div className="mt-2 flex flex-wrap gap-2">
             {component.sgMeta.fieldSemantics.map((semantic) => (
               <span
@@ -43,18 +47,18 @@ export default function ComponentAiSummary(props: Readonly<ComponentAiSummaryPro
 
       <div className="mt-3 grid gap-3 md:grid-cols-2">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-emerald-800">Preferred use cases</p>
+          <p className="text-xs font-semibold uppercase tracking-wide text-emerald-800">{t(i18n, "showcase.ai.preferredUseCases")}</p>
           <ul className="mt-2 list-disc space-y-1 pl-5">
             {component.aiHints.preferredUseCases.map((useCase) => (
-              <li key={useCase}>{useCase}</li>
+              <li key={useCase}>{tx(useCase)}</li>
             ))}
           </ul>
         </div>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-emerald-800">Avoid use cases</p>
+          <p className="text-xs font-semibold uppercase tracking-wide text-emerald-800">{t(i18n, "showcase.ai.avoidUseCases")}</p>
           <ul className="mt-2 list-disc space-y-1 pl-5">
             {(component.aiHints.avoidUseCases ?? []).map((useCase) => (
-              <li key={useCase}>{useCase}</li>
+              <li key={useCase}>{tx(useCase)}</li>
             ))}
           </ul>
         </div>
@@ -64,12 +68,12 @@ export default function ComponentAiSummary(props: Readonly<ComponentAiSummaryPro
         <div className="mt-3 rounded-md border border-emerald-200 bg-white/60 p-3">
           <p className="text-xs font-semibold uppercase tracking-wide text-emerald-800">SDUI</p>
           <p className="mt-2">
-            <span className="font-medium">Renderer:</span> {component.sgMeta.sdui.rendererType}
+            <span className="font-medium">{t(i18n, "showcase.ai.renderer")}:</span> {component.sgMeta.sdui.rendererType}
           </p>
           {defaultProps ? (
             <div className="mt-2">
               <p>
-                <span className="font-medium">Default props:</span>
+                <span className="font-medium">{t(i18n, "showcase.ai.defaultProps")}:</span>
               </p>
               <pre className="mt-1 overflow-x-auto rounded bg-emerald-950/5 p-2 text-xs">
                 {JSON.stringify(defaultProps, null, 2)}

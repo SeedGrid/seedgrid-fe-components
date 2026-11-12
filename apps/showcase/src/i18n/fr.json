@@ -3846,5 +3846,21 @@
   "showcase.component.datatable.sections.template.description": "body dessine la cellule et footer reçoit les lignes traitées.",
   "showcase.component.datatable.sections.controlled.description": "La page et le tri sont pilotés depuis l'extérieur du composant, sans dépendre seulement de l'interaction de l'utilisateur.",
   "showcase.component.datatable.sections.columnManager.title": "Gestionnaire de colonnes, visibilité et styles",
-  "showcase.component.datatable.sections.columnManager.description": "Affiche le gestionnaire de colonnes intégré et les props de visibilité, d'ordre et de style par colonne."
+  "showcase.component.datatable.sections.columnManager.description": "Affiche le gestionnaire de colonnes intégré et les props de visibilité, d'ordre et de style par colonne.",
+  "showcase.ai.fieldSemantics": "Sémantique des champs",
+  "showcase.ai.preferredUseCases": "Cas d'usage recommandés",
+  "showcase.ai.avoidUseCases": "Cas d'usage à éviter",
+  "showcase.ai.renderer": "Moteur de rendu",
+  "showcase.ai.defaultProps": "Props par défaut",
+  "showcase.ai.propsTitle": "Props du manifeste IA",
+  "showcase.ai.propsIntro": "Petite preuve que le manifeste peut déjà alimenter une vraie documentation sans remplacer le tableau manuel.",
+  "showcase.ai.col.prop": "Prop",
+  "showcase.ai.col.type": "Type",
+  "showcase.ai.col.required": "Obligatoire",
+  "showcase.ai.col.default": "Par défaut",
+  "showcase.ai.col.semanticRole": "Rôle sémantique",
+  "showcase.ai.col.bindable": "Liable",
+  "showcase.ai.col.description": "Description",
+  "showcase.ai.yes": "oui",
+  "showcase.ai.no": "non"
 }

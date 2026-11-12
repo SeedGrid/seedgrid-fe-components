@@ -1,0 +1,1778 @@
+{
+  "Abre a lista ao focar; com um item ja selecionado abre a lista completa.": {
+    "en-US": "Opens the list on focus; with an item already selected, opens the full list.",
+    "pt-PT": "Abre a lista ao focar; com um item já selecionado, abre a lista completa.",
+    "es": "Abre la lista al enfocar; con un elemento ya seleccionado, abre la lista completa.",
+    "fr": "Ouvre la liste au focus ; avec un élément déjà sélectionné, ouvre la liste complète."
+  },
+  "Abre lista ao focar.": {
+    "en-US": "Opens the list on focus.",
+    "pt-PT": "Abre a lista ao focar.",
+    "es": "Abre la lista al enfocar.",
+    "fr": "Ouvre la liste au focus."
+  },
+  "Acoes imediatas; nesses casos prefira SgButton.": {
+    "en-US": "Immediate actions; in these cases prefer SgButton.",
+    "pt-PT": "Ações imediatas; nesses casos prefira SgButton.",
+    "es": "Acciones inmediatas; en esos casos prefiera SgButton.",
+    "fr": "Actions immédiates ; dans ces cas, préférez SgButton."
+  },
+  "Agendamentos, compromissos e prazos que exigem data e hora.": {
+    "en-US": "Scheduling, appointments and deadlines that require date and time.",
+    "pt-PT": "Agendamentos, compromissos e prazos que exigem data e hora.",
+    "es": "Programaciones, compromisos y plazos que requieren fecha y hora.",
+    "fr": "Planifications, rendez-vous et échéances nécessitant date et heure."
+  },
+  "Agrupa resultados por categoria.": {
+    "en-US": "Groups results by category.",
+    "pt-PT": "Agrupa resultados por categoria.",
+    "es": "Agrupa resultados por categoría.",
+    "fr": "Regroupe les résultats par catégorie."
+  },
+  "Array de valores selecionados.": {
+    "en-US": "Array of selected values.",
+    "pt-PT": "Array de valores selecionados.",
+    "es": "Array de valores seleccionados.",
+    "fr": "Tableau des valeurs sélectionnées."
+  },
+  "Ativa consulta ao ViaCEP para BR.": {
+    "en-US": "Enables ViaCEP lookup for BR.",
+    "pt-PT": "Ativa a consulta ao ViaCEP para BR.",
+    "es": "Activa la consulta a ViaCEP para BR.",
+    "fr": "Active la consultation de ViaCEP pour BR."
+  },
+  "Ativa paginacao.": {
+    "en-US": "Enables pagination.",
+    "pt-PT": "Ativa a paginação.",
+    "es": "Activa la paginación.",
+    "fr": "Active la pagination."
+  },
+  "Ativa validacao externa opcional.": {
+    "en-US": "Enables optional external validation.",
+    "pt-PT": "Ativa a validação externa opcional.",
+    "es": "Activa la validación externa opcional.",
+    "fr": "Active la validation externe optionnelle."
+  },
+  "Atraso do debounce em milissegundos antes de disparar onSearchChange.": {
+    "en-US": "Debounce delay in milliseconds before firing onSearchChange.",
+    "pt-PT": "Atraso do debounce em milissegundos antes de disparar onSearchChange.",
+    "es": "Retraso del debounce en milisegundos antes de disparar onSearchChange.",
+    "fr": "Délai du debounce en millisecondes avant de déclencher onSearchChange."
+  },
+  "Bloqueia dominios temporarios conhecidos.": {
+    "en-US": "Blocks known temporary domains.",
+    "pt-PT": "Bloqueia domínios temporários conhecidos.",
+    "es": "Bloquea dominios temporales conocidos.",
+    "fr": "Bloque les domaines temporaires connus."
+  },
+  "Bloqueia senhas comuns.": {
+    "en-US": "Blocks common passwords.",
+    "pt-PT": "Bloqueia palavras-passe comuns.",
+    "es": "Bloquea contraseñas comunes.",
+    "fr": "Bloque les mots de passe courants."
+  },
+  "Busca de entidades ou referencias em listas grandes.": {
+    "en-US": "Search for entities or references in large lists.",
+    "pt-PT": "Pesquisa de entidades ou referências em listas grandes.",
+    "es": "Búsqueda de entidades o referencias en listas grandes.",
+    "fr": "Recherche d'entités ou de références dans de grandes listes."
+  },
+  "Busca instantanea sem debounce; nesses casos use SgInputText com onChange direto.": {
+    "en-US": "Instant search without debounce; in these cases use SgInputText with direct onChange.",
+    "pt-PT": "Pesquisa instantânea sem debounce; nesses casos utilize SgInputText com onChange direto.",
+    "es": "Búsqueda instantánea sin debounce; en esos casos use SgInputText con onChange directo.",
+    "fr": "Recherche instantanée sans debounce ; dans ces cas, utilisez SgInputText avec onChange direct."
+  },
+  "Busca ou filtro por documento brasileiro sem tipo fixo.": {
+    "en-US": "Search or filter by Brazilian document with no fixed type.",
+    "pt-PT": "Pesquisa ou filtro por documento brasileiro sem tipo fixo.",
+    "es": "Búsqueda o filtro por documento brasileño sin tipo fijo.",
+    "fr": "Recherche ou filtre par document brésilien sans type fixe."
+  },
+  "Buscas onde se quer evitar disparos a cada tecla e exigir um minimo de caracteres.": {
+    "en-US": "Searches where you want to avoid firing on every keystroke and require a minimum number of characters.",
+    "pt-PT": "Pesquisas em que se pretende evitar disparos a cada tecla e exigir um mínimo de caracteres.",
+    "es": "Búsquedas donde se quiere evitar disparos en cada tecla y exigir un mínimo de caracteres.",
+    "fr": "Recherches où l'on veut éviter un déclenchement à chaque touche et exiger un minimum de caractères."
+  },
+  "Cadastros onde a entidade pode ser pessoa fisica ou juridica.": {
+    "en-US": "Registrations where the entity may be an individual or a legal entity.",
+    "pt-PT": "Registos em que a entidade pode ser pessoa singular ou coletiva.",
+    "es": "Registros donde la entidad puede ser persona física o jurídica.",
+    "fr": "Enregistrements où l'entité peut être une personne physique ou morale."
+  },
+  "Callback ao selecionar item.": {
+    "en-US": "Callback on item selection.",
+    "pt-PT": "Callback ao selecionar um item.",
+    "es": "Callback al seleccionar un elemento.",
+    "fr": "Callback lors de la sélection d'un élément."
+  },
+  "Callback com a data selecionada ou digitada.": {
+    "en-US": "Callback with the selected or typed date.",
+    "pt-PT": "Callback com a data selecionada ou escrita.",
+    "es": "Callback con la fecha seleccionada o escrita.",
+    "fr": "Callback avec la date sélectionnée ou saisie."
+  },
+  "Callback com o array atualizado de valores.": {
+    "en-US": "Callback with the updated array of values.",
+    "pt-PT": "Callback com o array atualizado de valores.",
+    "es": "Callback con el array actualizado de valores.",
+    "fr": "Callback avec le tableau de valeurs mis à jour."
+  },
+  "Callback com o texto multi-linha atual.": {
+    "en-US": "Callback with the current multi-line text.",
+    "pt-PT": "Callback com o texto multilinha atual.",
+    "es": "Callback con el texto multilínea actual.",
+    "fr": "Callback avec le texte multiligne actuel."
+  },
+  "Callback com o valor bruto do codigo.": {
+    "en-US": "Callback with the raw code value.",
+    "pt-PT": "Callback com o valor bruto do código.",
+    "es": "Callback con el valor bruto del código.",
+    "fr": "Callback avec la valeur brute du code."
+  },
+  "Callback com o valor monetario normalizado.": {
+    "en-US": "Callback with the normalized monetary value.",
+    "pt-PT": "Callback com o valor monetário normalizado.",
+    "es": "Callback con el valor monetario normalizado.",
+    "fr": "Callback avec la valeur monétaire normalisée."
+  },
+  "Callback com o valor numerico atual.": {
+    "en-US": "Callback with the current numeric value.",
+    "pt-PT": "Callback com o valor numérico atual.",
+    "es": "Callback con el valor numérico actual.",
+    "fr": "Callback avec la valeur numérique actuelle."
+  },
+  "Callback com o valor textual atual.": {
+    "en-US": "Callback with the current text value.",
+    "pt-PT": "Callback com o valor textual atual.",
+    "es": "Callback con el valor de texto actual.",
+    "fr": "Callback avec la valeur textuelle actuelle."
+  },
+  "Callback com resposta da consulta ViaCEP.": {
+    "en-US": "Callback with the ViaCEP lookup response.",
+    "pt-PT": "Callback com a resposta da consulta ViaCEP.",
+    "es": "Callback con la respuesta de la consulta a ViaCEP.",
+    "fr": "Callback avec la réponse de la consultation ViaCEP."
+  },
+  "Callback de mudanca de valor.": {
+    "en-US": "Value change callback.",
+    "pt-PT": "Callback de alteração de valor.",
+    "es": "Callback de cambio de valor.",
+    "fr": "Callback de changement de valeur."
+  },
+  "Callback de mudanca.": {
+    "en-US": "Change callback.",
+    "pt-PT": "Callback de alteração.",
+    "es": "Callback de cambio.",
+    "fr": "Callback de changement."
+  },
+  "Callback de ordenacao.": {
+    "en-US": "Sorting callback.",
+    "pt-PT": "Callback de ordenação.",
+    "es": "Callback de ordenación.",
+    "fr": "Callback de tri."
+  },
+  "Callback de paginacao.": {
+    "en-US": "Pagination callback.",
+    "pt-PT": "Callback de paginação.",
+    "es": "Callback de paginación.",
+    "fr": "Callback de pagination."
+  },
+  "Callback disparado ao completar o codigo.": {
+    "en-US": "Callback fired when the code is completed.",
+    "pt-PT": "Callback disparado ao completar o código.",
+    "es": "Callback disparado al completar el código.",
+    "fr": "Callback déclenché à la complétion du code."
+  },
+  "Callback disparado ao selecionar item.": {
+    "en-US": "Callback fired when an item is selected.",
+    "pt-PT": "Callback disparado ao selecionar um item.",
+    "es": "Callback disparado al seleccionar un elemento.",
+    "fr": "Callback déclenché lors de la sélection d'un élément."
+  },
+  "Callback para estado de validacao.": {
+    "en-US": "Callback for validation state.",
+    "pt-PT": "Callback para o estado de validação.",
+    "es": "Callback para el estado de validación.",
+    "fr": "Callback pour l'état de validation."
+  },
+  "Campo de busca assistida com sugestoes, fonte assincrona, cache e selecao de item a partir de texto digitado.": {
+    "en-US": "Assisted search field with suggestions, asynchronous source, caching, and item selection from typed text.",
+    "pt-PT": "Campo de pesquisa assistida com sugestões, fonte assíncrona, cache e seleção de item a partir de texto introduzido.",
+    "es": "Campo de búsqueda asistida con sugerencias, fuente asíncrona, caché y selección de elemento a partir del texto escrito.",
+    "fr": "Champ de recherche assistée avec suggestions, source asynchrone, cache et sélection d'un élément à partir du texte saisi."
+  },
+  "Campo de busca que embrulha o SgInputText com debounce sem dependencia externa: onChange imediato e onSearchChange disparado apos o debounce com o termo normalizado (trim + gate por minChars).": {
+    "en-US": "Search field that wraps SgInputText with debounce and no external dependency: immediate onChange and onSearchChange fired after the debounce with the normalized term (trim + minChars gate).",
+    "pt-PT": "Campo de pesquisa que envolve o SgInputText com debounce sem dependência externa: onChange imediato e onSearchChange disparado após o debounce com o termo normalizado (trim + gate por minChars).",
+    "es": "Campo de búsqueda que envuelve SgInputText con debounce sin dependencia externa: onChange inmediato y onSearchChange disparado tras el debounce con el término normalizado (trim + gate por minChars).",
+    "fr": "Champ de recherche qui encapsule SgInputText avec debounce sans dépendance externe : onChange immédiat et onSearchChange déclenché après le debounce avec le terme normalisé (trim + seuil minChars)."
+  },
+  "Campo de busca/filtro que dispara requisicoes apos o usuario parar de digitar.": {
+    "en-US": "Search/filter field that fires requests after the user stops typing.",
+    "pt-PT": "Campo de pesquisa/filtro que dispara pedidos depois de o utilizador parar de escrever.",
+    "es": "Campo de búsqueda/filtro que dispara solicitudes después de que el usuario deja de escribir.",
+    "fr": "Champ de recherche/filtre qui déclenche des requêtes après que l'utilisateur a cessé de saisir."
+  },
+  "Campo de data com validacao de intervalo e suporte a selecao temporal para eventos, prazos e datas de referencia.": {
+    "en-US": "Date field with range validation and time selection support for events, deadlines and reference dates.",
+    "pt-PT": "Campo de data com validação de intervalo e suporte a seleção temporal para eventos, prazos e datas de referência.",
+    "es": "Campo de fecha con validación de rango y soporte de selección temporal para eventos, plazos y fechas de referencia.",
+    "fr": "Champ de date avec validation de plage et prise en charge de la sélection temporelle pour les événements, échéances et dates de référence."
+  },
+  "Campo de data e hora que entrega e recebe instantes ISO 8601 em UTC, exibindo a hora no fuso escolhido, com limites, passo de minutos e validacao.": {
+    "en-US": "Date and time field that outputs and receives ISO 8601 instants in UTC, displaying the time in the chosen time zone, with limits, minute step and validation.",
+    "pt-PT": "Campo de data e hora que entrega e recebe instantes ISO 8601 em UTC, apresentando a hora no fuso horário escolhido, com limites, passo de minutos e validação.",
+    "es": "Campo de fecha y hora que entrega y recibe instantes ISO 8601 en UTC, mostrando la hora en la zona horaria elegida, con límites, paso de minutos y validación.",
+    "fr": "Champ de date et heure qui fournit et reçoit des instants ISO 8601 en UTC, affichant l'heure dans le fuseau choisi, avec limites, pas de minutes et validation."
+  },
+  "Campo de escolha assistida que combina digitacao e selecao de item com suporte a fonte local ou remota.": {
+    "en-US": "Assisted choice field that combines typing and item selection with support for a local or remote source.",
+    "pt-PT": "Campo de escolha assistida que combina escrita e seleção de item com suporte para fonte local ou remota.",
+    "es": "Campo de elección asistida que combina escritura y selección de elemento con soporte para fuente local o remota.",
+    "fr": "Champ de choix assisté qui combine saisie et sélection d'un élément, avec prise en charge d'une source locale ou distante."
+  },
+  "Campo de selecao multipla no estilo select: trigger com chevron que vira check ao abrir e dropdown com checkboxes que mantem a lista aberta.": {
+    "en-US": "Multi-select field in select style: trigger with a chevron that turns into a check when opened and a dropdown with checkboxes that keeps the list open.",
+    "pt-PT": "Campo de seleção múltipla ao estilo select: trigger com chevron que passa a check ao abrir e dropdown com checkboxes que mantém a lista aberta.",
+    "es": "Campo de selección múltiple al estilo select: trigger con chevron que se convierte en check al abrir y dropdown con checkboxes que mantiene la lista abierta.",
+    "fr": "Champ de sélection multiple de style select : déclencheur avec chevron qui devient une coche à l'ouverture et menu déroulant avec cases à cocher qui garde la liste ouverte."
+  },
+  "Campo especializado para CEP e codigos postais com suporte a multiplos paises, mascaras e consulta opcional ao ViaCEP.": {
+    "en-US": "Specialized field for CEP and postal codes with support for multiple countries, masks and optional ViaCEP lookup.",
+    "pt-PT": "Campo especializado para CEP e códigos postais com suporte para vários países, máscaras e consulta opcional ao ViaCEP.",
+    "es": "Campo especializado para CEP y códigos postales con soporte para múltiples países, máscaras y consulta opcional a ViaCEP.",
+    "fr": "Champ spécialisé pour le CEP et les codes postaux avec prise en charge de plusieurs pays, de masques et d'une consultation facultative de ViaCEP."
+  },
+  "Campo especializado para CNPJ com mascara, validacao de digitos e suporte opcional a consulta externa.": {
+    "en-US": "Specialized field for CNPJ with mask, digit validation, and optional support for external lookup.",
+    "pt-PT": "Campo especializado para CNPJ com máscara, validação de dígitos e suporte opcional para consulta externa.",
+    "es": "Campo especializado para CNPJ con máscara, validación de dígitos y soporte opcional para consulta externa.",
+    "fr": "Champ spécialisé pour le CNPJ avec masque, validation des chiffres et prise en charge optionnelle d'une consultation externe."
+  },
+  "Campo especializado para CPF com mascara, validacao de digitos e integracao com fluxos de cadastro de pessoa fisica.": {
+    "en-US": "Specialized field for CPF with mask, digit validation, and integration with individual-person registration flows.",
+    "pt-PT": "Campo especializado para CPF com máscara, validação de dígitos e integração com fluxos de registo de pessoa singular.",
+    "es": "Campo especializado para CPF con máscara, validación de dígitos e integración con flujos de registro de persona física.",
+    "fr": "Champ spécialisé pour le CPF avec masque, validation des chiffres et intégration aux flux d'enregistrement de personne physique."
+  },
+  "Campo especializado para data de nascimento com validacao de idade minima e maxima sobre a base de SgInputDate.": {
+    "en-US": "Specialized field for date of birth with minimum and maximum age validation, built on top of SgInputDate.",
+    "pt-PT": "Campo especializado para data de nascimento com validação de idade mínima e máxima, sobre a base de SgInputDate.",
+    "es": "Campo especializado para fecha de nacimiento con validación de edad mínima y máxima, sobre la base de SgInputDate.",
+    "fr": "Champ spécialisé pour la date de naissance avec validation de l'âge minimal et maximal, basé sur SgInputDate."
+  },
+  "Campo especializado para email com validacao de formato, bloqueio opcional de dominios temporarios e integracao com formularios.": {
+    "en-US": "Specialized email field with format validation, optional blocking of temporary domains and form integration.",
+    "pt-PT": "Campo especializado para email com validação de formato, bloqueio opcional de domínios temporários e integração com formulários.",
+    "es": "Campo especializado para email con validación de formato, bloqueo opcional de dominios temporales e integración con formularios.",
+    "fr": "Champ spécialisé pour l'email avec validation du format, blocage optionnel des domaines temporaires et intégration aux formulaires."
+  },
+  "Campo especializado para senha com validacoes de politica, alternancia de visibilidade e indicacao de forca.": {
+    "en-US": "Specialized password field with policy validations, visibility toggle and strength indication.",
+    "pt-PT": "Campo especializado para palavra-passe com validações de política, alternância de visibilidade e indicação de robustez.",
+    "es": "Campo especializado para contraseña con validaciones de política, alternancia de visibilidad e indicación de fortaleza.",
+    "fr": "Champ spécialisé pour le mot de passe avec validations de politique, bascule de visibilité et indication de robustesse."
+  },
+  "Campo especializado para telefone com mascara, validacao de comprimento e integracao com formularios.": {
+    "en-US": "Specialized phone field with mask, length validation and form integration.",
+    "pt-PT": "Campo especializado para telefone com máscara, validação de comprimento e integração com formulários.",
+    "es": "Campo especializado para teléfono con máscara, validación de longitud e integración con formularios.",
+    "fr": "Champ spécialisé pour le téléphone avec masque, validation de longueur et intégration aux formulaires."
+  },
+  "Campo hibrido para CPF ou CNPJ com mascara e validacao automatica conforme o documento informado.": {
+    "en-US": "Hybrid field for CPF or CNPJ with mask and automatic validation according to the document entered.",
+    "pt-PT": "Campo híbrido para CPF ou CNPJ com máscara e validação automática conforme o documento introduzido.",
+    "es": "Campo híbrido para CPF o CNPJ con máscara y validación automática según el documento introducido.",
+    "fr": "Champ hybride pour CPF ou CNPJ avec masque et validation automatique selon le document saisi."
+  },
+  "Campo monetario com formatacao de moeda, simbolo e validacao para precos, valores financeiros e totais.": {
+    "en-US": "Monetary field with currency formatting, symbol and validation for prices, financial values and totals.",
+    "pt-PT": "Campo monetário com formatação de moeda, símbolo e validação para preços, valores financeiros e totais.",
+    "es": "Campo monetario con formato de moneda, símbolo y validación para precios, valores financieros y totales.",
+    "fr": "Champ monétaire avec formatage de devise, symbole et validation pour les prix, valeurs financières et totaux."
+  },
+  "Campo numerico com suporte a valores inteiros e decimais, validacao de limites e integracao com react-hook-form.": {
+    "en-US": "Numeric field supporting integer and decimal values, limit validation and react-hook-form integration.",
+    "pt-PT": "Campo numérico com suporte para valores inteiros e decimais, validação de limites e integração com react-hook-form.",
+    "es": "Campo numérico con soporte para valores enteros y decimales, validación de límites e integración con react-hook-form.",
+    "fr": "Champ numérique prenant en charge les valeurs entières et décimales, la validation des limites et l'intégration avec react-hook-form."
+  },
+  "Campo OTP multi-slot para codigos de verificacao com suporte a mascara, colagem, eventos de conclusao e acesso por ref.": {
+    "en-US": "Multi-slot OTP field for verification codes with support for mask, paste, completion events and ref access.",
+    "pt-PT": "Campo OTP multi-slot para códigos de verificação com suporte para máscara, colagem, eventos de conclusão e acesso por ref.",
+    "es": "Campo OTP multi-slot para códigos de verificación con soporte de máscara, pegado, eventos de finalización y acceso por ref.",
+    "fr": "Champ OTP multi-slot pour les codes de vérification avec prise en charge du masque, du collage, des événements de complétion et de l'accès par ref."
+  },
+  "Campo textual de uso geral com suporte a react-hook-form, validacao, contador de caracteres e prefixo/sufixo.": {
+    "en-US": "General-purpose text field with support for react-hook-form, validation, character counter and prefix/suffix.",
+    "pt-PT": "Campo de texto de uso geral com suporte para react-hook-form, validação, contador de caracteres e prefixo/sufixo.",
+    "es": "Campo de texto de uso general con soporte para react-hook-form, validación, contador de caracteres y prefijo/sufijo.",
+    "fr": "Champ texte à usage général avec prise en charge de react-hook-form, validation, compteur de caractères et préfixe/suffixe."
+  },
+  "Campo textual multi-linha para descricoes, observacoes e conteudos longos com suporte a contagem e validacao.": {
+    "en-US": "Multi-line text field for descriptions, notes and long content with support for counting and validation.",
+    "pt-PT": "Campo de texto multilinha para descrições, observações e conteúdos longos com suporte para contagem e validação.",
+    "es": "Campo de texto multilínea para descripciones, observaciones y contenidos largos con soporte para conteo y validación.",
+    "fr": "Champ texte multiligne pour descriptions, observations et contenus longs avec prise en charge du comptage et de la validation."
+  },
+  "Campos curtos como nome, titulo ou codigo; nesses casos prefira SgInputText.": {
+    "en-US": "Short fields such as name, title or code; in these cases prefer SgInputText.",
+    "pt-PT": "Campos curtos como nome, título ou código; nesses casos prefira SgInputText.",
+    "es": "Campos cortos como nombre, título o código; en esos casos prefiera SgInputText.",
+    "fr": "Champs courts comme nom, titre ou code ; dans ces cas, préférez SgInputText."
+  },
+  "Campos de localizacao com comportamento dependente do pais.": {
+    "en-US": "Location fields with country-dependent behavior.",
+    "pt-PT": "Campos de localização com comportamento dependente do país.",
+    "es": "Campos de ubicación con comportamiento dependiente del país.",
+    "fr": "Champs de localisation au comportement dépendant du pays."
+  },
+  "Campos de timestamp que precisam trafegar como instante UTC.": {
+    "en-US": "Timestamp fields that need to travel as a UTC instant.",
+    "pt-PT": "Campos de timestamp que precisam de circular como instante UTC.",
+    "es": "Campos de timestamp que necesitan viajar como instante UTC.",
+    "fr": "Champs d'horodatage devant circuler sous forme d'instant UTC."
+  },
+  "Campos monetarios que exigem formatacao de moeda e simbolo visual.": {
+    "en-US": "Monetary fields that require currency formatting and a visual symbol.",
+    "pt-PT": "Campos monetários que exigem formatação de moeda e símbolo visual.",
+    "es": "Campos monetarios que requieren formato de moneda y símbolo visual.",
+    "fr": "Champs monétaires nécessitant un formatage de devise et un symbole visuel."
+  },
+  "Campos multi-linha em formularios CRUD e fluxos de atendimento.": {
+    "en-US": "Multi-line fields in CRUD forms and support flows.",
+    "pt-PT": "Campos multilinha em formulários CRUD e fluxos de atendimento.",
+    "es": "Campos multilínea en formularios CRUD y flujos de atención.",
+    "fr": "Champs multilignes dans les formulaires CRUD et les parcours de service client."
+  },
+  "Campos onde o usuario sabe parte do valor, mas nao a lista completa.": {
+    "en-US": "Fields where the user knows part of the value but not the full list.",
+    "pt-PT": "Campos em que o utilizador conhece parte do valor, mas não a lista completa.",
+    "es": "Campos en los que el usuario conoce parte del valor, pero no la lista completa.",
+    "fr": "Champs où l'utilisateur connaît une partie de la valeur, mais pas la liste complète."
+  },
+  "Campos que exigem mascara e inputMode numerico.": {
+    "en-US": "Fields that require a mask and numeric inputMode.",
+    "pt-PT": "Campos que exigem máscara e inputMode numérico.",
+    "es": "Campos que requieren máscara e inputMode numérico.",
+    "fr": "Champs nécessitant un masque et un inputMode numérique."
+  },
+  "Campos que exigem politica minima de seguranca.": {
+    "en-US": "Fields that require a minimum security policy.",
+    "pt-PT": "Campos que exigem política mínima de segurança.",
+    "es": "Campos que requieren una política mínima de seguridad.",
+    "fr": "Champs nécessitant une politique de sécurité minimale."
+  },
+  "Campos que exigem validacao de intervalo minimo e maximo de datas.": {
+    "en-US": "Fields that require minimum and maximum date range validation.",
+    "pt-PT": "Campos que exigem validação de intervalo mínimo e máximo de datas.",
+    "es": "Campos que requieren validación de rango mínimo y máximo de fechas.",
+    "fr": "Champs nécessitant une validation de plage minimale et maximale de dates."
+  },
+  "Campos que exigem validacao numerica com limites minimos e maximos.": {
+    "en-US": "Fields that require numeric validation with minimum and maximum limits.",
+    "pt-PT": "Campos que exigem validação numérica com limites mínimos e máximos.",
+    "es": "Campos que requieren validación numérica con límites mínimos y máximos.",
+    "fr": "Champs nécessitant une validation numérique avec limites minimale et maximale."
+  },
+  "Campos que precisam bloquear dominios temporarios ou descartaveis.": {
+    "en-US": "Fields that need to block temporary or disposable domains.",
+    "pt-PT": "Campos que precisam de bloquear domínios temporários ou descartáveis.",
+    "es": "Campos que necesitan bloquear dominios temporales o desechables.",
+    "fr": "Champs devant bloquer les domaines temporaires ou jetables."
+  },
+  "Campos relacionais em formularios CRUD.": {
+    "en-US": "Relational fields in CRUD forms.",
+    "pt-PT": "Campos relacionais em formulários CRUD.",
+    "es": "Campos relacionales en formularios CRUD.",
+    "fr": "Champs relationnels dans les formulaires CRUD."
+  },
+  "Campos relacionais N:N em formularios CRUD com poucos itens visiveis por vez.": {
+    "en-US": "N:N relational fields in CRUD forms with few items visible at a time.",
+    "pt-PT": "Campos relacionais N:N em formulários CRUD com poucos itens visíveis de cada vez.",
+    "es": "Campos relacionales N:N en formularios CRUD con pocos ítems visibles a la vez.",
+    "fr": "Champs relationnels N:N dans les formulaires CRUD avec peu d'éléments visibles à la fois."
+  },
+  "Campos relacionais N:N em formularios CRUD.": {
+    "en-US": "N:N relational fields in CRUD forms.",
+    "pt-PT": "Campos relacionais N:N em formulários CRUD.",
+    "es": "Campos relacionales N:N en formularios CRUD.",
+    "fr": "Champs relationnels N:N dans les formulaires CRUD."
+  },
+  "Campos temporais ligados a identidade pessoal.": {
+    "en-US": "Date fields tied to personal identity.",
+    "pt-PT": "Campos temporais ligados à identidade pessoal.",
+    "es": "Campos temporales ligados a la identidad personal.",
+    "fr": "Champs temporels liés à l'identité personnelle."
+  },
+  "Campos textuais curtos em formularios CRUD.": {
+    "en-US": "Short text fields in CRUD forms.",
+    "pt-PT": "Campos de texto curtos em formulários CRUD.",
+    "es": "Campos de texto cortos en formularios CRUD.",
+    "fr": "Champs texte courts dans les formulaires CRUD."
+  },
+  "Campos unificados que aceitam CPF ou CNPJ no mesmo fluxo.": {
+    "en-US": "Unified fields that accept CPF or CNPJ in the same flow.",
+    "pt-PT": "Campos unificados que aceitam CPF ou CNPJ no mesmo fluxo.",
+    "es": "Campos unificados que aceptan CPF o CNPJ en el mismo flujo.",
+    "fr": "Champs unifiés acceptant CPF ou CNPJ dans le même parcours."
+  },
+  "Captura de CEP ou codigo postal em formularios de endereco.": {
+    "en-US": "Capture of CEP or postal code in address forms.",
+    "pt-PT": "Recolha de CEP ou código postal em formulários de morada.",
+    "es": "Captura de CEP o código postal en formularios de dirección.",
+    "fr": "Saisie du CEP ou du code postal dans les formulaires d'adresse."
+  },
+  "Captura de CNPJ em formularios de empresa.": {
+    "en-US": "CNPJ capture in company forms.",
+    "pt-PT": "Captura de CNPJ em formulários de empresa.",
+    "es": "Captura de CNPJ en formularios de empresa.",
+    "fr": "Saisie du CNPJ dans les formulaires d'entreprise."
+  },
+  "Captura de codigo temporario de verificacao.": {
+    "en-US": "Capture of a temporary verification code.",
+    "pt-PT": "Captura de código temporário de verificação.",
+    "es": "Captura de código temporal de verificación.",
+    "fr": "Saisie d'un code de vérification temporaire."
+  },
+  "Captura de CPF em formularios de pessoa fisica.": {
+    "en-US": "CPF capture in individual-person forms.",
+    "pt-PT": "Captura de CPF em formulários de pessoa singular.",
+    "es": "Captura de CPF en formularios de persona física.",
+    "fr": "Saisie du CPF dans les formulaires de personne physique."
+  },
+  "Captura de data de nascimento em cadastros de pessoa.": {
+    "en-US": "Date of birth capture in person registrations.",
+    "pt-PT": "Captura da data de nascimento em registos de pessoa.",
+    "es": "Captura de la fecha de nacimiento en registros de personas.",
+    "fr": "Saisie de la date de naissance dans les fiches de personnes."
+  },
+  "Captura de datas de vencimento, agendamento, cadastro e referencia temporal.": {
+    "en-US": "Capture of due dates, scheduling, registration and time reference dates.",
+    "pt-PT": "Captura de datas de vencimento, agendamento, registo e referência temporal.",
+    "es": "Captura de fechas de vencimiento, programación, registro y referencia temporal.",
+    "fr": "Saisie de dates d'échéance, de planification, d'inscription et de référence temporelle."
+  },
+  "Captura de descricoes, observacoes, notas e comentarios longos.": {
+    "en-US": "Capture of long descriptions, notes and comments.",
+    "pt-PT": "Recolha de descrições, observações, notas e comentários longos.",
+    "es": "Captura de descripciones, observaciones, notas y comentarios largos.",
+    "fr": "Saisie de longues descriptions, observations, notes et commentaires."
+  },
+  "Captura de email de contato, login ou notificacao.": {
+    "en-US": "Capture of contact, login or notification email.",
+    "pt-PT": "Captura de email de contacto, início de sessão ou notificação.",
+    "es": "Captura de email de contacto, inicio de sesión o notificación.",
+    "fr": "Saisie d'email de contact, de connexion ou de notification."
+  },
+  "Captura de nome, titulo, codigo ou identificador textual.": {
+    "en-US": "Capture of a name, title, code or text identifier.",
+    "pt-PT": "Recolha de nome, título, código ou identificador textual.",
+    "es": "Captura de nombre, título, código o identificador textual.",
+    "fr": "Saisie d'un nom, titre, code ou identifiant textuel."
+  },
+  "Captura de precos, totais, descontos e valores financeiros.": {
+    "en-US": "Capture of prices, totals, discounts and financial values.",
+    "pt-PT": "Captura de preços, totais, descontos e valores financeiros.",
+    "es": "Captura de precios, totales, descuentos y valores financieros.",
+    "fr": "Saisie de prix, totaux, remises et valeurs financières."
+  },
+  "Captura de quantidades, medidas, percentuais e outros valores numericos genericos.": {
+    "en-US": "Capture of quantities, measurements, percentages and other generic numeric values.",
+    "pt-PT": "Captura de quantidades, medidas, percentagens e outros valores numéricos genéricos.",
+    "es": "Captura de cantidades, medidas, porcentajes y otros valores numéricos genéricos.",
+    "fr": "Saisie de quantités, mesures, pourcentages et autres valeurs numériques génériques."
+  },
+  "Captura de senha em login, cadastro e redefinicao de credencial.": {
+    "en-US": "Password capture in login, registration and credential reset.",
+    "pt-PT": "Captura de palavra-passe no início de sessão, registo e redefinição de credencial.",
+    "es": "Captura de contraseña en inicio de sesión, registro y restablecimiento de credencial.",
+    "fr": "Saisie du mot de passe lors de la connexion, de l'inscription et de la réinitialisation des identifiants."
+  },
+  "Captura de telefone ou celular de contato.": {
+    "en-US": "Capture of a contact phone or mobile number.",
+    "pt-PT": "Recolha de telefone ou telemóvel de contacto.",
+    "es": "Captura de teléfono o celular de contacto.",
+    "fr": "Saisie d'un téléphone ou mobile de contact."
+  },
+  "Cenarios onde a comparacao visual entre opcoes importa.": {
+    "en-US": "Scenarios where visual comparison between options matters.",
+    "pt-PT": "Cenários em que a comparação visual entre opções é importante.",
+    "es": "Escenarios donde la comparación visual entre opciones importa.",
+    "fr": "Scénarios où la comparaison visuelle entre les options est importante."
+  },
+  "Chamado (alem de onPage) quando a rolagem infinita pede a proxima pagina.": {
+    "en-US": "Called (in addition to onPage) when infinite scroll requests the next page.",
+    "pt-PT": "Chamado (além de onPage) quando o deslocamento infinito pede a página seguinte.",
+    "es": "Llamado (además de onPage) cuando el desplazamiento infinito solicita la siguiente página.",
+    "fr": "Appelé (en plus de onPage) lorsque le défilement infini demande la page suivante."
+  },
+  "Chamado quando a consulta falha.": {
+    "en-US": "Called when the lookup fails.",
+    "pt-PT": "Chamado quando a consulta falha.",
+    "es": "Se llama cuando la consulta falla.",
+    "fr": "Appelé lorsque la requête échoue."
+  },
+  "CNPJ ou documentos empresariais; nesses casos prefira SgInputCNPJ.": {
+    "en-US": "CNPJ or business documents; in those cases prefer SgInputCNPJ.",
+    "pt-PT": "CNPJ ou documentos empresariais; nesses casos, prefira SgInputCNPJ.",
+    "es": "CNPJ o documentos empresariales; en esos casos prefiera SgInputCNPJ.",
+    "fr": "CNPJ ou documents d'entreprise ; dans ces cas, préférez SgInputCNPJ."
+  },
+  "Codigo ou configuracao de moeda usada na formatacao.": {
+    "en-US": "Currency code or configuration used for formatting.",
+    "pt-PT": "Código ou configuração de moeda usada na formatação.",
+    "es": "Código o configuración de moneda usada en el formato.",
+    "fr": "Code ou configuration de devise utilisé pour le formatage."
+  },
+  "Colecoes muito visuais em formato de cards.": {
+    "en-US": "Highly visual collections in card format.",
+    "pt-PT": "Coleções muito visuais em formato de cartões.",
+    "es": "Colecciones muy visuales en formato de tarjetas.",
+    "fr": "Collections très visuelles sous forme de cartes."
+  },
+  "Comportamento em tela estreita. Omitido (padrao): cartoes quando o container fica abaixo de 600 px, tabela acima; cards: forca cartoes em qualquer largura; scroll: forca a tabela com rolagem horizontal. Nos cartoes mantem ordenacao, selecao, acoes, rodape e paginacao.": {
+    "en-US": "Behavior on narrow screens. Omitted (default): cards when the container is below 600 px, table above; cards: forces cards at any width; scroll: forces the table with horizontal scrolling. Cards keep sorting, selection, actions, footer, and pagination.",
+    "pt-PT": "Comportamento em ecrã estreito. Omitido (predefinição): cartões quando o contentor fica abaixo de 600 px, tabela acima; cards: força cartões em qualquer largura; scroll: força a tabela com deslocamento horizontal. Nos cartões mantêm-se a ordenação, a seleção, as ações, o rodapé e a paginação.",
+    "es": "Comportamiento en pantalla estrecha. Omitido (por defecto): tarjetas cuando el contenedor queda por debajo de 600 px, tabla por encima; cards: fuerza tarjetas con cualquier ancho; scroll: fuerza la tabla con desplazamiento horizontal. En las tarjetas se mantienen la ordenación, la selección, las acciones, el pie y la paginación.",
+    "fr": "Comportement sur écran étroit. Omis (par défaut) : cartes lorsque le conteneur passe sous 600 px, tableau au-dessus ; cards : force les cartes quelle que soit la largeur ; scroll : force le tableau avec défilement horizontal. Les cartes conservent le tri, la sélection, les actions, le pied de page et la pagination."
+  },
+  "Comprimento da senha gerada pelo `createNewPasswordButton`. Default: `minSize`.\r\n\r\nNAO derive isto de `maxLength`: `maxLength` existe para nao truncar o que o usuario\r\ndigita (frase-senha), e costuma ser folgado (128, 512). Usar o teto como alvo fazia o\r\nbotao gerar uma senha de 128 caracteres.": {
+    "en-US": "Length of the password generated by `createNewPasswordButton`. Default: `minSize`.\r\n\r\nDo NOT derive this from `maxLength`: `maxLength` exists so as not to truncate what the user\r\ntypes (passphrase), and is usually generous (128, 512). Using the ceiling as the target made the\r\nbutton generate a 128-character password.",
+    "pt-PT": "Comprimento da palavra-passe gerada pelo `createNewPasswordButton`. Predefinição: `minSize`.\r\n\r\nNÃO derive isto de `maxLength`: `maxLength` existe para não truncar o que o utilizador\r\nintroduz (frase-passe), e costuma ser folgado (128, 512). Usar o limite máximo como alvo fazia o\r\nbotão gerar uma palavra-passe de 128 caracteres.",
+    "es": "Longitud de la contraseña generada por `createNewPasswordButton`. Por defecto: `minSize`.\r\n\r\nNO derive esto de `maxLength`: `maxLength` existe para no truncar lo que el usuario\r\nescribe (frase de contraseña), y suele ser holgado (128, 512). Usar el techo como objetivo hacía que el\r\nbotón generara una contraseña de 128 caracteres.",
+    "fr": "Longueur du mot de passe généré par `createNewPasswordButton`. Par défaut : `minSize`.\r\n\r\nNE dérivez PAS ceci de `maxLength` : `maxLength` existe pour ne pas tronquer ce que l'utilisateur\r\nsaisit (phrase secrète), et est généralement large (128, 512). Utiliser le plafond comme cible faisait que le\r\nbouton générait un mot de passe de 128 caractères."
+  },
+  "Configuracoes booleanas agrupadas.": {
+    "en-US": "Grouped boolean settings.",
+    "pt-PT": "Configurações booleanas agrupadas.",
+    "es": "Configuraciones booleanas agrupadas.",
+    "fr": "Paramètres booléens regroupés."
+  },
+  "Confirma na base publica que o CNPJ numerico existe.": {
+    "en-US": "Confirms in the public database that the numeric CNPJ exists.",
+    "pt-PT": "Confirma na base pública que o CNPJ numérico existe.",
+    "es": "Confirma en la base pública que el CNPJ numérico existe.",
+    "fr": "Confirme dans la base publique que le CNPJ numérique existe."
+  },
+  "Consulta injetavel (padrao publica.cnpj.ws).": {
+    "en-US": "Injectable lookup (default publica.cnpj.ws).",
+    "pt-PT": "Consulta injetável (predefinição publica.cnpj.ws).",
+    "es": "Consulta inyectable (por defecto publica.cnpj.ws).",
+    "fr": "Requête injectable (par défaut publica.cnpj.ws)."
+  },
+  "CPF ou documentos de pessoa fisica; nesses casos prefira SgInputCPF.": {
+    "en-US": "CPF or individual-person documents; in those cases prefer SgInputCPF.",
+    "pt-PT": "CPF ou documentos de pessoa singular; nesses casos, prefira SgInputCPF.",
+    "es": "CPF o documentos de persona física; en esos casos, prefiera SgInputCPF.",
+    "fr": "CPF ou documents de personne physique ; dans ces cas, préférez SgInputCPF."
+  },
+  "Dados pequenos onde uma lista simples basta.": {
+    "en-US": "Small data sets where a simple list is enough.",
+    "pt-PT": "Dados pequenos em que uma lista simples basta.",
+    "es": "Datos pequeños en los que basta una lista simple.",
+    "fr": "Petits jeux de données pour lesquels une simple liste suffit."
+  },
+  "Data maxima permitida.": {
+    "en-US": "Maximum allowed date.",
+    "pt-PT": "Data máxima permitida.",
+    "es": "Fecha máxima permitida.",
+    "fr": "Date maximale autorisée."
+  },
+  "Data minima permitida.": {
+    "en-US": "Minimum allowed date.",
+    "pt-PT": "Data mínima permitida.",
+    "es": "Fecha mínima permitida.",
+    "fr": "Date minimale autorisée."
+  },
+  "Datas e horarios; nesses casos prefira SgInputDate.": {
+    "en-US": "Dates and times; in these cases prefer SgInputDate.",
+    "pt-PT": "Datas e horários; nesses casos prefira SgInputDate.",
+    "es": "Fechas y horarios; en esos casos prefiera SgInputDate.",
+    "fr": "Dates et heures ; dans ces cas, préférez SgInputDate."
+  },
+  "Datas e horas; nesses casos prefira SgInputDate.": {
+    "en-US": "Dates and times; in those cases prefer SgInputDate.",
+    "pt-PT": "Datas e horas; nesses casos, prefira SgInputDate.",
+    "es": "Fechas y horas; en esos casos prefiera SgInputDate.",
+    "fr": "Dates et heures ; dans ces cas, préférez SgInputDate."
+  },
+  "Datas genericas de agenda ou vencimento; nesses casos prefira SgInputDate.": {
+    "en-US": "Generic scheduling or due dates; in those cases prefer SgInputDate.",
+    "pt-PT": "Datas genéricas de agenda ou vencimento; nesses casos, prefira SgInputDate.",
+    "es": "Fechas genéricas de agenda o vencimiento; en esos casos, prefiera SgInputDate.",
+    "fr": "Dates génériques d'agenda ou d'échéance ; dans ces cas, préférez SgInputDate."
+  },
+  "Datas, numeros ou valores com mascara especializada.": {
+    "en-US": "Dates, numbers or values with a specialized mask.",
+    "pt-PT": "Datas, números ou valores com máscara especializada.",
+    "es": "Fechas, números o valores con máscara especializada.",
+    "fr": "Dates, nombres ou valeurs avec un masque spécialisé."
+  },
+  "Debounce da pesquisa em milissegundos.": {
+    "en-US": "Search debounce in milliseconds.",
+    "pt-PT": "Debounce da pesquisa em milissegundos.",
+    "es": "Debounce de la búsqueda en milisegundos.",
+    "fr": "Debounce de la recherche en millisecondes."
+  },
+  "Definicao das colunas da tabela. column.filterPlaceholder vence o dicionario (components.datatable.columnFilterPlaceholder).": {
+    "en-US": "Table column definitions. column.filterPlaceholder takes precedence over the dictionary (components.datatable.columnFilterPlaceholder).",
+    "pt-PT": "Definição das colunas da tabela. column.filterPlaceholder prevalece sobre o dicionário (components.datatable.columnFilterPlaceholder).",
+    "es": "Definición de las columnas de la tabla. column.filterPlaceholder prevalece sobre el diccionario (components.datatable.columnFilterPlaceholder).",
+    "fr": "Définition des colonnes du tableau. column.filterPlaceholder l'emporte sur le dictionnaire (components.datatable.columnFilterPlaceholder)."
+  },
+  "Disparado ao focar o campo.": {
+    "en-US": "Fired when the field receives focus.",
+    "pt-PT": "Disparado ao focar o campo.",
+    "es": "Disparado al enfocar el campo.",
+    "fr": "Déclenché lorsque le champ reçoit le focus."
+  },
+  "Disparado ao perder o foco (apos validacao) — padrao seedgrid.": {
+    "en-US": "Fired on losing focus (after validation) — seedgrid standard.",
+    "pt-PT": "Disparado ao perder o foco (após validação) — padrão seedgrid.",
+    "es": "Disparado al perder el foco (tras la validación) — estándar seedgrid.",
+    "fr": "Déclenché à la perte de focus (après validation) — standard seedgrid."
+  },
+  "Disparado ao receber foco — padrao seedgrid.": {
+    "en-US": "Fired on receiving focus — seedgrid standard.",
+    "pt-PT": "Disparado ao receber foco — padrão seedgrid.",
+    "es": "Disparado al recibir el foco — estándar seedgrid.",
+    "fr": "Déclenché à la prise de focus — standard seedgrid."
+  },
+  "Disparado ao sair do campo.": {
+    "en-US": "Fired when leaving the field.",
+    "pt-PT": "Disparado ao sair do campo.",
+    "es": "Disparado al salir del campo.",
+    "fr": "Déclenché lorsque l'on quitte le champ."
+  },
+  "Disparado apos o debounce, com o termo normalizado.": {
+    "en-US": "Fired after the debounce, with the normalized term.",
+    "pt-PT": "Disparado após o debounce, com o termo normalizado.",
+    "es": "Disparado tras el debounce, con el término normalizado.",
+    "fr": "Déclenché après le debounce, avec le terme normalisé."
+  },
+  "Disparado imediatamente a cada digitacao, com o valor cru.": {
+    "en-US": "Fired immediately on every keystroke, with the raw value.",
+    "pt-PT": "Disparado imediatamente a cada digitação, com o valor em bruto.",
+    "es": "Disparado inmediatamente en cada pulsación, con el valor sin procesar.",
+    "fr": "Déclenché immédiatement à chaque frappe, avec la valeur brute."
+  },
+  "Disparado quando o campo perde o foco (apos a validacao) — padrao seedgrid.": {
+    "en-US": "Fired when the field loses focus (after validation) — seedgrid standard.",
+    "pt-PT": "Disparado quando o campo perde o foco (após a validação) — padrão seedgrid.",
+    "es": "Se dispara cuando el campo pierde el foco (después de la validación) — estándar seedgrid.",
+    "fr": "Déclenché lorsque le champ perd le focus (après la validation) — standard seedgrid."
+  },
+  "Documentos pessoais, telefone ou email.": {
+    "en-US": "Personal documents, phone or email.",
+    "pt-PT": "Documentos pessoais, telefone ou email.",
+    "es": "Documentos personales, teléfono o correo electrónico.",
+    "fr": "Documents personnels, téléphone ou e-mail."
+  },
+  "Email ou outros contatos estruturados; nesses casos prefira o componente especifico.": {
+    "en-US": "Email or other structured contacts; in these cases prefer the specific component.",
+    "pt-PT": "Email ou outros contactos estruturados; nesses casos prefira o componente específico.",
+    "es": "Correo electrónico u otros contactos estructurados; en esos casos prefiera el componente específico.",
+    "fr": "E-mail ou autres contacts structurés ; dans ces cas, préférez le composant spécifique."
+  },
+  "Entrada de texto comum sem busca; nesses casos prefira SgInputText.": {
+    "en-US": "Regular text input without search; in these cases prefer SgInputText.",
+    "pt-PT": "Entrada de texto comum sem pesquisa; nesses casos prefira SgInputText.",
+    "es": "Entrada de texto común sin búsqueda; en esos casos prefiera SgInputText.",
+    "fr": "Saisie de texte ordinaire sans recherche ; dans ces cas, préférez SgInputText."
+  },
+  "Entradas curtas e estruturadas com conclusao automatica.": {
+    "en-US": "Short, structured inputs with automatic completion.",
+    "pt-PT": "Entradas curtas e estruturadas com conclusão automática.",
+    "es": "Entradas cortas y estructuradas con finalización automática.",
+    "fr": "Saisies courtes et structurées avec complétion automatique."
+  },
+  "Entradas financeiras em formularios de venda, faturamento e cadastro.": {
+    "en-US": "Financial inputs in sales, billing and registration forms.",
+    "pt-PT": "Entradas financeiras em formulários de venda, faturação e registo.",
+    "es": "Entradas financieras en formularios de venta, facturación y registro.",
+    "fr": "Saisies financières dans les formulaires de vente, de facturation et d'inscription."
+  },
+  "Entradas inteiras ou decimais em formularios CRUD.": {
+    "en-US": "Integer or decimal inputs in CRUD forms.",
+    "pt-PT": "Entradas inteiras ou decimais em formulários CRUD.",
+    "es": "Entradas enteras o decimales en formularios CRUD.",
+    "fr": "Saisies entières ou décimales dans les formulaires CRUD."
+  },
+  "Entradas livres que precisam de validacao e integracao com react-hook-form.": {
+    "en-US": "Free-form inputs that need validation and react-hook-form integration.",
+    "pt-PT": "Entradas livres que necessitam de validação e integração com react-hook-form.",
+    "es": "Entradas libres que necesitan validación e integración con react-hook-form.",
+    "fr": "Saisies libres nécessitant une validation et une intégration avec react-hook-form."
+  },
+  "Entradas monetarias, datas ou selecoes estruturadas.": {
+    "en-US": "Monetary inputs, dates or structured selections.",
+    "pt-PT": "Entradas monetárias, datas ou seleções estruturadas.",
+    "es": "Entradas monetarias, fechas o selecciones estructuradas.",
+    "fr": "Saisies monétaires, dates ou sélections structurées."
+  },
+  "Escolha unica com busca assistida em listas medias ou grandes.": {
+    "en-US": "Single choice with assisted search in medium or large lists.",
+    "pt-PT": "Escolha única com pesquisa assistida em listas médias ou grandes.",
+    "es": "Elección única con búsqueda asistida en listas medianas o grandes.",
+    "fr": "Choix unique avec recherche assistée dans des listes moyennes ou grandes."
+  },
+  "Escolha unica com opcoes visiveis ao mesmo tempo.": {
+    "en-US": "Single choice with options visible at the same time.",
+    "pt-PT": "Escolha única com opções visíveis em simultâneo.",
+    "es": "Elección única con opciones visibles al mismo tiempo.",
+    "fr": "Choix unique avec options visibles en même temps."
+  },
+  "Escolha unica; nesses casos prefira SgCombobox ou SgRadioGroup.": {
+    "en-US": "Single choice; in these cases prefer SgCombobox or SgRadioGroup.",
+    "pt-PT": "Escolha única; nesses casos prefira SgCombobox ou SgRadioGroup.",
+    "es": "Elección única; en esos casos prefiera SgCombobox o SgRadioGroup.",
+    "fr": "Choix unique ; dans ces cas, préférez SgCombobox ou SgRadioGroup."
+  },
+  "Escolha unica; nesses casos prefira SgRadioGroup ou SgCombobox.": {
+    "en-US": "Single choice; in those cases prefer SgRadioGroup or SgCombobox.",
+    "pt-PT": "Escolha única; nesses casos, prefira SgRadioGroup ou SgCombobox.",
+    "es": "Elección única; en esos casos, prefiera SgRadioGroup o SgCombobox.",
+    "fr": "Choix unique ; dans ces cas, préférez SgRadioGroup ou SgCombobox."
+  },
+  "Escolhas entre mais de dois estados.": {
+    "en-US": "Choices among more than two states.",
+    "pt-PT": "Escolhas entre mais de dois estados.",
+    "es": "Elecciones entre más de dos estados.",
+    "fr": "Choix entre plus de deux états."
+  },
+  "Escolhas estruturadas sem contexto temporal; nesses casos prefira select ou combobox.": {
+    "en-US": "Structured choices without time context; in those cases prefer select or combobox.",
+    "pt-PT": "Escolhas estruturadas sem contexto temporal; nesses casos, prefira select ou combobox.",
+    "es": "Opciones estructuradas sin contexto temporal; en esos casos prefiera select o combobox.",
+    "fr": "Choix structurés sans contexte temporel ; dans ces cas, préférez select ou combobox."
+  },
+  "Escolhas fechadas; nesses casos prefira SgCombobox, SgAutocomplete ou SgRadioGroup.": {
+    "en-US": "Closed choices; in these cases prefer SgCombobox, SgAutocomplete or SgRadioGroup.",
+    "pt-PT": "Escolhas fechadas; nesses casos prefira SgCombobox, SgAutocomplete ou SgRadioGroup.",
+    "es": "Opciones cerradas; en esos casos prefiera SgCombobox, SgAutocomplete o SgRadioGroup.",
+    "fr": "Choix fermés ; dans ces cas, préférez SgCombobox, SgAutocomplete ou SgRadioGroup."
+  },
+  "Estados ligado/desligado com feedback visual direto.": {
+    "en-US": "On/off states with direct visual feedback.",
+    "pt-PT": "Estados ligado/desligado com feedback visual direto.",
+    "es": "Estados encendido/apagado con feedback visual directo.",
+    "fr": "États activé/désactivé avec retour visuel direct."
+  },
+  "Estilo visual de selecao.": {
+    "en-US": "Visual selection style.",
+    "pt-PT": "Estilo visual de seleção.",
+    "es": "Estilo visual de selección.",
+    "fr": "Style visuel de sélection."
+  },
+  "Executa validacao no blur.": {
+    "en-US": "Runs validation on blur.",
+    "pt-PT": "Executa a validação no blur.",
+    "es": "Ejecuta la validación en el blur.",
+    "fr": "Exécute la validation au blur."
+  },
+  "Exibe acao de marcar todos.": {
+    "en-US": "Shows the select all action.",
+    "pt-PT": "Apresenta a ação de marcar todos.",
+    "es": "Muestra la acción de marcar todos.",
+    "fr": "Affiche l'action « tout cocher »."
+  },
+  "Exibe barra de forca da senha.": {
+    "en-US": "Displays the password strength bar.",
+    "pt-PT": "Apresenta a barra de robustez da palavra-passe.",
+    "es": "Muestra la barra de fortaleza de la contraseña.",
+    "fr": "Affiche la barre de robustesse du mot de passe."
+  },
+  "Exibe botao para limpar toda a selecao.": {
+    "en-US": "Displays a button to clear the entire selection.",
+    "pt-PT": "Apresenta um botão para limpar toda a seleção.",
+    "es": "Muestra un botón para limpiar toda la selección.",
+    "fr": "Affiche un bouton pour effacer toute la sélection."
+  },
+  "Exibe campo de busca no topo do dropdown.": {
+    "en-US": "Displays a search field at the top of the dropdown.",
+    "pt-PT": "Apresenta um campo de pesquisa no topo do dropdown.",
+    "es": "Muestra un campo de búsqueda en la parte superior del dropdown.",
+    "fr": "Affiche un champ de recherche en haut du menu déroulant."
+  },
+  "Exibe o botao que abre/fecha a lista. Abre a lista completa quando o texto e uma selecao; preserva o filtro quando o usuario digitou.": {
+    "en-US": "Shows the button that opens/closes the list. Opens the full list when the text is a selection; preserves the filter when the user has typed.",
+    "pt-PT": "Apresenta o botão que abre/fecha a lista. Abre a lista completa quando o texto é uma seleção; preserva o filtro quando o utilizador escreveu.",
+    "es": "Muestra el botón que abre/cierra la lista. Abre la lista completa cuando el texto es una selección; conserva el filtro cuando el usuario ha escrito.",
+    "fr": "Affiche le bouton qui ouvre/ferme la liste. Ouvre la liste complète lorsque le texte est une sélection ; conserve le filtre lorsque l'utilisateur a saisi du texte."
+  },
+  "Exibe um botao para gerar automaticamente uma senha forte aleatoria (respeita as regras de politica).": {
+    "en-US": "Displays a button to automatically generate a strong random password (respects the policy rules).",
+    "pt-PT": "Apresenta um botão para gerar automaticamente uma palavra-passe forte aleatória (respeita as regras da política).",
+    "es": "Muestra un botón para generar automáticamente una contraseña fuerte aleatoria (respeta las reglas de la política).",
+    "fr": "Affiche un bouton pour générer automatiquement un mot de passe fort aléatoire (respecte les règles de la politique)."
+  },
+  "Exibicao de colecoes tabulares com interacao.": {
+    "en-US": "Display of tabular collections with interaction.",
+    "pt-PT": "Apresentação de coleções tabulares com interação.",
+    "es": "Visualización de colecciones tabulares con interacción.",
+    "fr": "Affichage de collections tabulaires avec interaction."
+  },
+  "Filtragem de listas, tabelas ou grids com termo de pesquisa debounced.": {
+    "en-US": "Filtering of lists, tables or grids with a debounced search term.",
+    "pt-PT": "Filtragem de listas, tabelas ou grelhas com termo de pesquisa com debounce.",
+    "es": "Filtrado de listas, tablas o grids con término de búsqueda con debounce.",
+    "fr": "Filtrage de listes, tableaux ou grilles avec un terme de recherche différé (debounce)."
+  },
+  "Filtros com varias categorias ativas ao mesmo tempo.": {
+    "en-US": "Filters with several categories active at the same time.",
+    "pt-PT": "Filtros com várias categorias ativas em simultâneo.",
+    "es": "Filtros con varias categorías activas al mismo tiempo.",
+    "fr": "Filtres avec plusieurs catégories actives en même temps."
+  },
+  "Filtros multi-valor em formularios e relatorios.": {
+    "en-US": "Multi-value filters in forms and reports.",
+    "pt-PT": "Filtros multivalor em formulários e relatórios.",
+    "es": "Filtros multivalor en formularios e informes.",
+    "fr": "Filtres multivaleurs dans les formulaires et les rapports."
+  },
+  "Filtros multi-valor em que o usuario precisa enxergar tudo o que ja selecionou.": {
+    "en-US": "Multi-value filters where the user needs to see everything already selected.",
+    "pt-PT": "Filtros multivalor em que o utilizador precisa de ver tudo o que já selecionou.",
+    "es": "Filtros multivalor en los que el usuario necesita ver todo lo que ya seleccionó.",
+    "fr": "Filtres multivaleurs où l'utilisateur doit voir tout ce qu'il a déjà sélectionné."
+  },
+  "Flags booleanas e configuracoes simples.": {
+    "en-US": "Boolean flags and simple settings.",
+    "pt-PT": "Flags booleanas e configurações simples.",
+    "es": "Flags booleanos y configuraciones simples.",
+    "fr": "Flags booléens et paramètres simples."
+  },
+  "Fluxos brasileiros com enriquecimento via ViaCEP.": {
+    "en-US": "Brazilian flows with ViaCEP enrichment.",
+    "pt-PT": "Fluxos brasileiros com enriquecimento via ViaCEP.",
+    "es": "Flujos brasileños con enriquecimiento vía ViaCEP.",
+    "fr": "Parcours brésiliens avec enrichissement via ViaCEP."
+  },
+  "Fluxos de autenticacao em dois fatores e confirmacao de login.": {
+    "en-US": "Two-factor authentication and login confirmation flows.",
+    "pt-PT": "Fluxos de autenticação de dois fatores e confirmação de início de sessão.",
+    "es": "Flujos de autenticación de dos factores y confirmación de inicio de sesión.",
+    "fr": "Parcours d'authentification à deux facteurs et de confirmation de connexion."
+  },
+  "Fluxos de cadastro de fornecedor, cliente corporativo e emitente.": {
+    "en-US": "Registration flows for suppliers, corporate customers, and issuers.",
+    "pt-PT": "Fluxos de registo de fornecedor, cliente empresarial e emitente.",
+    "es": "Flujos de registro de proveedor, cliente corporativo y emisor.",
+    "fr": "Flux d'enregistrement de fournisseur, de client entreprise et d'émetteur."
+  },
+  "Fluxos de cadastro, onboarding e confirmacao de identidade.": {
+    "en-US": "Registration, onboarding and identity confirmation flows.",
+    "pt-PT": "Fluxos de registo, onboarding e confirmação de identidade.",
+    "es": "Flujos de registro, onboarding y confirmación de identidad.",
+    "fr": "Parcours d'inscription, d'onboarding et de confirmation d'identité."
+  },
+  "Fluxos que precisam exibir forca de senha ou alternar visibilidade.": {
+    "en-US": "Flows that need to display password strength or toggle visibility.",
+    "pt-PT": "Fluxos que precisam de apresentar a robustez da palavra-passe ou alternar a visibilidade.",
+    "es": "Flujos que necesitan mostrar la fortaleza de la contraseña o alternar la visibilidad.",
+    "fr": "Parcours devant afficher la robustesse du mot de passe ou basculer la visibilité."
+  },
+  "Fonte de itens.": {
+    "en-US": "Source of items.",
+    "pt-PT": "Fonte de itens.",
+    "es": "Fuente de elementos.",
+    "fr": "Source des éléments."
+  },
+  "Fonte de resultados para busca.": {
+    "en-US": "Source of search results.",
+    "pt-PT": "Fonte de resultados para pesquisa.",
+    "es": "Fuente de resultados para la búsqueda.",
+    "fr": "Source des résultats de recherche."
+  },
+  "Formularios com limites de data e hora e fuso explicito.": {
+    "en-US": "Forms with date and time limits and an explicit time zone.",
+    "pt-PT": "Formulários com limites de data e hora e fuso horário explícito.",
+    "es": "Formularios con límites de fecha y hora y zona horaria explícita.",
+    "fr": "Formulaires avec limites de date et d'heure et fuseau horaire explicite."
+  },
+  "Formularios com restricao de idade minima ou maxima.": {
+    "en-US": "Forms with minimum or maximum age restrictions.",
+    "pt-PT": "Formulários com restrição de idade mínima ou máxima.",
+    "es": "Formularios con restricción de edad mínima o máxima.",
+    "fr": "Formulaires avec restriction d'âge minimal ou maximal."
+  },
+  "Formularios com validacao de formato de email.": {
+    "en-US": "Forms with email format validation.",
+    "pt-PT": "Formulários com validação de formato de email.",
+    "es": "Formularios con validación de formato de email.",
+    "fr": "Formulaires avec validation du format d'email."
+  },
+  "Formularios de cadastro e atendimento com validacao basica de comprimento.": {
+    "en-US": "Registration and support forms with basic length validation.",
+    "pt-PT": "Formulários de registo e atendimento com validação básica de comprimento.",
+    "es": "Formularios de registro y atención con validación básica de longitud.",
+    "fr": "Formulaires d'inscription et de service client avec validation de longueur de base."
+  },
+  "Formularios de entrada simples.": {
+    "en-US": "Simple input forms.",
+    "pt-PT": "Formulários de entrada simples.",
+    "es": "Formularios de entrada simples.",
+    "fr": "Formulaires de saisie simples."
+  },
+  "Fuso do campo: local, UTC, deslocamento (+03:00) ou nome IANA.": {
+    "en-US": "Field time zone: local, UTC, offset (+03:00) or IANA name.",
+    "pt-PT": "Fuso horário do campo: local, UTC, desvio (+03:00) ou nome IANA.",
+    "es": "Zona horaria del campo: local, UTC, desplazamiento (+03:00) o nombre IANA.",
+    "fr": "Fuseau horaire du champ : local, UTC, décalage (+03:00) ou nom IANA."
+  },
+  "Grupo de checkboxes para multisselecao com orientacao, estilo de selecao e suporte opcional a marcar todos.": {
+    "en-US": "Checkbox group for multiple selection with orientation, selection style, and optional support for select all.",
+    "pt-PT": "Grupo de checkboxes para seleção múltipla com orientação, estilo de seleção e suporte opcional para marcar todos.",
+    "es": "Grupo de checkboxes para selección múltiple con orientación, estilo de selección y soporte opcional para marcar todos.",
+    "fr": "Groupe de cases à cocher pour la sélection multiple avec orientation, style de sélection et prise en charge optionnelle de « tout cocher »."
+  },
+  "Grupo de radios para escolha unica com orientacao e estilo visual configuravel.": {
+    "en-US": "Radio group for single choice with configurable orientation and visual style.",
+    "pt-PT": "Grupo de radios para escolha única com orientação e estilo visual configuráveis.",
+    "es": "Grupo de radios para elección única con orientación y estilo visual configurables.",
+    "fr": "Groupe de boutons radio pour un choix unique avec orientation et style visuel configurables."
+  },
+  "Idade maxima permitida.": {
+    "en-US": "Maximum allowed age.",
+    "pt-PT": "Idade máxima permitida.",
+    "es": "Edad máxima permitida.",
+    "fr": "Âge maximal autorisé."
+  },
+  "Idade minima permitida.": {
+    "en-US": "Minimum allowed age.",
+    "pt-PT": "Idade mínima permitida.",
+    "es": "Edad mínima permitida.",
+    "fr": "Âge minimal autorisé."
+  },
+  "Identificacao fiscal brasileira com validacao automatica.": {
+    "en-US": "Brazilian tax identification with automatic validation.",
+    "pt-PT": "Identificação fiscal brasileira com validação automática.",
+    "es": "Identificación fiscal brasileña con validación automática.",
+    "fr": "Identification fiscale brésilienne avec validation automatique."
+  },
+  "Identificacao fiscal de organizacoes brasileiras.": {
+    "en-US": "Tax identification of Brazilian organizations.",
+    "pt-PT": "Identificação fiscal de organizações brasileiras.",
+    "es": "Identificación fiscal de organizaciones brasileñas.",
+    "fr": "Identification fiscale des organisations brésiliennes."
+  },
+  "Identificador da tabela usado para DOM e persistencia do layout de colunas.": {
+    "en-US": "Table identifier used for the DOM and column layout persistence.",
+    "pt-PT": "Identificador da tabela usado para o DOM e para a persistência do layout das colunas.",
+    "es": "Identificador de la tabla usado para el DOM y la persistencia del diseño de columnas.",
+    "fr": "Identifiant du tableau utilisé pour le DOM et la persistance de la disposition des colonnes."
+  },
+  "Identificador unico do campo de data.": {
+    "en-US": "Unique identifier of the date field.",
+    "pt-PT": "Identificador único do campo de data.",
+    "es": "Identificador único del campo de fecha.",
+    "fr": "Identifiant unique du champ de date."
+  },
+  "Identificador unico do campo monetario.": {
+    "en-US": "Unique identifier of the monetary field.",
+    "pt-PT": "Identificador único do campo monetário.",
+    "es": "Identificador único del campo monetario.",
+    "fr": "Identifiant unique du champ monétaire."
+  },
+  "Identificador unico do campo multi-linha.": {
+    "en-US": "Unique identifier of the multi-line field.",
+    "pt-PT": "Identificador único do campo multilinha.",
+    "es": "Identificador único del campo multilínea.",
+    "fr": "Identifiant unique du champ multiligne."
+  },
+  "Identificador unico do campo numerico.": {
+    "en-US": "Unique identifier of the numeric field.",
+    "pt-PT": "Identificador único do campo numérico.",
+    "es": "Identificador único del campo numérico.",
+    "fr": "Identifiant unique du champ numérique."
+  },
+  "Identificador unico do campo.": {
+    "en-US": "Unique field identifier.",
+    "pt-PT": "Identificador único do campo.",
+    "es": "Identificador único del campo.",
+    "fr": "Identifiant unique du champ."
+  },
+  "Identificador unico do componente.": {
+    "en-US": "Unique identifier of the component.",
+    "pt-PT": "Identificador único do componente.",
+    "es": "Identificador único del componente.",
+    "fr": "Identifiant unique du composant."
+  },
+  "Impede alteracoes no valor.": {
+    "en-US": "Prevents changes to the value.",
+    "pt-PT": "Impede alterações ao valor.",
+    "es": "Impide cambios en el valor.",
+    "fr": "Empêche les modifications de la valeur."
+  },
+  "Impede edicao mantendo foco e leitura.": {
+    "en-US": "Prevents editing while keeping focus and readability.",
+    "pt-PT": "Impede a edição mantendo o foco e a leitura.",
+    "es": "Impide la edición manteniendo el foco y la lectura.",
+    "fr": "Empêche la modification tout en conservant le focus et la lecture."
+  },
+  "Impede edicao mantendo leitura e foco.": {
+    "en-US": "Prevents editing while keeping it readable and focusable.",
+    "pt-PT": "Impede a edição, mantendo a leitura e o foco.",
+    "es": "Impide la edición manteniendo la lectura y el foco.",
+    "fr": "Empêche la modification tout en conservant la lecture et le focus."
+  },
+  "Indica estado de carregamento.": {
+    "en-US": "Indicates loading state.",
+    "pt-PT": "Indica o estado de carregamento.",
+    "es": "Indica el estado de carga.",
+    "fr": "Indique l'état de chargement."
+  },
+  "Instante controlado (ISO 8601 ou Date).": {
+    "en-US": "Controlled instant (ISO 8601 or Date).",
+    "pt-PT": "Instante controlado (ISO 8601 ou Date).",
+    "es": "Instante controlado (ISO 8601 o Date).",
+    "fr": "Instant contrôlé (ISO 8601 ou Date)."
+  },
+  "Instante inicial (nao controlado).": {
+    "en-US": "Initial instant (uncontrolled).",
+    "pt-PT": "Instante inicial (não controlado).",
+    "es": "Instante inicial (no controlado).",
+    "fr": "Instant initial (non contrôlé)."
+  },
+  "Instante ISO UTC (ou null) e texto local do campo.": {
+    "en-US": "ISO UTC instant (or null) and the field's local text.",
+    "pt-PT": "Instante ISO UTC (ou null) e texto local do campo.",
+    "es": "Instante ISO UTC (o null) y texto local del campo.",
+    "fr": "Instant ISO UTC (ou null) et texte local du champ."
+  },
+  "Interruptor booleano para ativar ou desativar estados, flags e configuracoes simples.": {
+    "en-US": "Boolean switch to enable or disable states, flags and simple settings.",
+    "pt-PT": "Interruptor booleano para ativar ou desativar estados, flags e configurações simples.",
+    "es": "Interruptor booleano para activar o desactivar estados, flags y configuraciones simples.",
+    "fr": "Interrupteur booléen pour activer ou désactiver des états, des flags et des paramètres simples."
+  },
+  "Limite de resultados exibidos.": {
+    "en-US": "Limit of displayed results.",
+    "pt-PT": "Limite de resultados apresentados.",
+    "es": "Límite de resultados mostrados.",
+    "fr": "Limite de résultats affichés."
+  },
+  "Limite maximo de caracteres.": {
+    "en-US": "Maximum character limit.",
+    "pt-PT": "Limite máximo de caracteres.",
+    "es": "Límite máximo de caracteres.",
+    "fr": "Limite maximale de caractères."
+  },
+  "Limite maximo de itens selecionaveis.": {
+    "en-US": "Maximum limit of selectable items.",
+    "pt-PT": "Limite máximo de itens selecionáveis.",
+    "es": "Límite máximo de ítems seleccionables.",
+    "fr": "Limite maximale d'éléments sélectionnables."
+  },
+  "Limite minimo de caracteres.": {
+    "en-US": "Minimum character limit.",
+    "pt-PT": "Limite mínimo de caracteres.",
+    "es": "Límite mínimo de caracteres.",
+    "fr": "Limite minimale de caractères."
+  },
+  "Linhas por pagina quando a paginacao esta ativa (os dados vao em value).": {
+    "en-US": "Rows per page when pagination is active (the data goes in value).",
+    "pt-PT": "Linhas por página quando a paginação está ativa (os dados vão em value).",
+    "es": "Filas por página cuando la paginación está activa (los datos van en value).",
+    "fr": "Lignes par page lorsque la pagination est active (les données vont dans value)."
+  },
+  "Lista customizada de dominios bloqueados.": {
+    "en-US": "Custom list of blocked domains.",
+    "pt-PT": "Lista personalizada de domínios bloqueados.",
+    "es": "Lista personalizada de dominios bloqueados.",
+    "fr": "Liste personnalisée de domaines bloqués."
+  },
+  "Lista de opcoes disponiveis. `label` aparece na lista; `chipLabel` (opcional) e' o texto curto do item ja' selecionado (o chip), ex.: label \"3 - Filial Centro\" e chipLabel \"3\".": {
+    "en-US": "List of available options. `label` appears in the list; `chipLabel` (optional) is the short text of the already selected item (the chip), e.g.: label \"3 - Filial Centro\" and chipLabel \"3\".",
+    "pt-PT": "Lista de opções disponíveis. `label` aparece na lista; `chipLabel` (opcional) é o texto curto do item já selecionado (o chip), ex.: label \"3 - Filial Centro\" e chipLabel \"3\".",
+    "es": "Lista de opciones disponibles. `label` aparece en la lista; `chipLabel` (opcional) es el texto corto del ítem ya seleccionado (el chip), p. ej.: label \"3 - Filial Centro\" y chipLabel \"3\".",
+    "fr": "Liste des options disponibles. `label` apparaît dans la liste ; `chipLabel` (facultatif) est le texte court de l'élément déjà sélectionné (le chip), ex. : label \"3 - Filial Centro\" et chipLabel \"3\"."
+  },
+  "Lista de opcoes disponiveis. `label` aparece na lista; `chipLabel` (opcional) e' o texto curto do item ja' selecionado (o resumo do campo), ex.: label \"3 - Filial Centro\" e chipLabel \"3\".": {
+    "en-US": "List of available options. `label` appears in the list; `chipLabel` (optional) is the short text of the already selected item (the field summary), e.g.: label \"3 - Filial Centro\" and chipLabel \"3\".",
+    "pt-PT": "Lista de opções disponíveis. `label` aparece na lista; `chipLabel` (opcional) é o texto curto do item já selecionado (o resumo do campo), ex.: label \"3 - Filial Centro\" e chipLabel \"3\".",
+    "es": "Lista de opciones disponibles. `label` aparece en la lista; `chipLabel` (opcional) es el texto corto del ítem ya seleccionado (el resumen del campo), p. ej.: label \"3 - Filial Centro\" y chipLabel \"3\".",
+    "fr": "Liste des options disponibles. `label` apparaît dans la liste ; `chipLabel` (facultatif) est le texte court de l'élément déjà sélectionné (le résumé du champ), ex. : label \"3 - Filial Centro\" et chipLabel \"3\"."
+  },
+  "Listagens administrativas com filtro, ordenacao e pagina.": {
+    "en-US": "Administrative listings with filtering, sorting, and pagination.",
+    "pt-PT": "Listagens administrativas com filtro, ordenação e paginação.",
+    "es": "Listados administrativos con filtro, ordenación y paginación.",
+    "fr": "Listes administratives avec filtre, tri et pagination."
+  },
+  "Listagens que precisam funcionar em celular: por padrao (mobileMode omitido) a tabela vira cartoes abaixo de 600 px; use \"scroll\" para forcar a tabela.": {
+    "en-US": "Listings that need to work on mobile: by default (mobileMode omitted) the table becomes cards below 600 px; use \"scroll\" to force the table.",
+    "pt-PT": "Listagens que precisam de funcionar em telemóvel: por predefinição (mobileMode omitido) a tabela transforma-se em cartões abaixo de 600 px; use \"scroll\" para forçar a tabela.",
+    "es": "Listados que deben funcionar en móvil: por defecto (mobileMode omitido) la tabla se convierte en tarjetas por debajo de 600 px; use \"scroll\" para forzar la tabla.",
+    "fr": "Listes qui doivent fonctionner sur mobile : par défaut (mobileMode omis), le tableau devient des cartes en dessous de 600 px ; utilisez \"scroll\" pour forcer le tableau."
+  },
+  "Listas com busca remota assincrona; nesses casos prefira SgAutocomplete.": {
+    "en-US": "Lists with asynchronous remote search; in these cases prefer SgAutocomplete.",
+    "pt-PT": "Listas com pesquisa remota assíncrona; nesses casos prefira SgAutocomplete.",
+    "es": "Listas con búsqueda remota asíncrona; en esos casos prefiera SgAutocomplete.",
+    "fr": "Listes avec recherche distante asynchrone ; dans ces cas, préférez SgAutocomplete."
+  },
+  "Listas longas; nesses casos prefira select ou combobox.": {
+    "en-US": "Long lists; in these cases prefer select or combobox.",
+    "pt-PT": "Listas longas; nesses casos prefira select ou combobox.",
+    "es": "Listas largas; en esos casos prefiera select o combobox.",
+    "fr": "Listes longues ; dans ces cas, préférez select ou combobox."
+  },
+  "Listas muito grandes com busca remota assincrona; nesses casos prefira SgAutocomplete.": {
+    "en-US": "Very large lists with asynchronous remote search; in these cases prefer SgAutocomplete.",
+    "pt-PT": "Listas muito grandes com pesquisa remota assíncrona; nesses casos prefira SgAutocomplete.",
+    "es": "Listas muy grandes con búsqueda remota asíncrona; en esos casos prefiera SgAutocomplete.",
+    "fr": "Listes très volumineuses avec recherche distante asynchrone ; dans ces cas, préférez SgAutocomplete."
+  },
+  "Listas muito grandes com busca; nesses casos prefira componentes de lookup.": {
+    "en-US": "Very large lists with search; in those cases prefer lookup components.",
+    "pt-PT": "Listas muito grandes com pesquisa; nesses casos, prefira componentes de lookup.",
+    "es": "Listas muy grandes con búsqueda; en esos casos, prefiera componentes de lookup.",
+    "fr": "Listes très volumineuses avec recherche ; dans ces cas, préférez les composants de lookup."
+  },
+  "Listas muito pequenas e fixas; nesses casos prefira SgRadioGroup ou SgCheckboxGroup conforme o caso.": {
+    "en-US": "Very small, fixed lists; in those cases prefer SgRadioGroup or SgCheckboxGroup as appropriate.",
+    "pt-PT": "Listas muito pequenas e fixas; nesses casos, prefira SgRadioGroup ou SgCheckboxGroup consoante o caso.",
+    "es": "Listas muy pequeñas y fijas; en esos casos, prefiera SgRadioGroup o SgCheckboxGroup según corresponda.",
+    "fr": "Listes très petites et fixes ; dans ces cas, préférez SgRadioGroup ou SgCheckboxGroup selon le cas."
+  },
+  "Listas pequenas e fixas; nesses casos prefira SgCombobox ou SgRadioGroup.": {
+    "en-US": "Small, fixed lists; in those cases prefer SgCombobox or SgRadioGroup.",
+    "pt-PT": "Listas pequenas e fixas; nesses casos, prefira SgCombobox ou SgRadioGroup.",
+    "es": "Listas pequeñas y fijas; en esos casos, prefiera SgCombobox o SgRadioGroup.",
+    "fr": "Listes petites et fixes ; dans ces cas, préférez SgCombobox ou SgRadioGroup."
+  },
+  "Maior instante permitido.": {
+    "en-US": "Latest allowed instant.",
+    "pt-PT": "Maior instante permitido.",
+    "es": "Mayor instante permitido.",
+    "fr": "Plus grand instant autorisé."
+  },
+  "Marca o campo como obrigatorio.": {
+    "en-US": "Marks the field as required.",
+    "pt-PT": "Marca o campo como obrigatório.",
+    "es": "Marca el campo como obligatorio.",
+    "fr": "Marque le champ comme obligatoire."
+  },
+  "Marca o grupo como obrigatorio.": {
+    "en-US": "Marks the group as required.",
+    "pt-PT": "Marca o grupo como obrigatório.",
+    "es": "Marca el grupo como obligatorio.",
+    "fr": "Marque le groupe comme obligatoire."
+  },
+  "Mascara de slots para o codigo.": {
+    "en-US": "Slot mask for the code.",
+    "pt-PT": "Máscara de slots para o código.",
+    "es": "Máscara de slots para el código.",
+    "fr": "Masque de slots pour le code."
+  },
+  "Menor instante permitido.": {
+    "en-US": "Earliest allowed instant.",
+    "pt-PT": "Menor instante permitido.",
+    "es": "Menor instante permitido.",
+    "fr": "Plus petit instant autorisé."
+  },
+  "Mensagem exibida quando nao ha registros. Vence o dicionario (components.datatable.empty).": {
+    "en-US": "Message displayed when there are no records. Takes precedence over the dictionary (components.datatable.empty).",
+    "pt-PT": "Mensagem apresentada quando não há registos. Prevalece sobre o dicionário (components.datatable.empty).",
+    "es": "Mensaje mostrado cuando no hay registros. Prevalece sobre el diccionario (components.datatable.empty).",
+    "fr": "Message affiché lorsqu'il n'y a aucun enregistrement. L'emporte sur le dictionnaire (components.datatable.empty)."
+  },
+  "Mensagem para ausencia de valor.": {
+    "en-US": "Message for missing value.",
+    "pt-PT": "Mensagem para ausência de valor.",
+    "es": "Mensaje para ausencia de valor.",
+    "fr": "Message pour valeur absente."
+  },
+  "Mensagem para CNPJ invalido.": {
+    "en-US": "Message for invalid CNPJ.",
+    "pt-PT": "Mensagem para CNPJ inválido.",
+    "es": "Mensaje para CNPJ inválido.",
+    "fr": "Message pour CNPJ invalide."
+  },
+  "Mensagem para codigo invalido.": {
+    "en-US": "Message for an invalid code.",
+    "pt-PT": "Mensagem para código inválido.",
+    "es": "Mensaje para código inválido.",
+    "fr": "Message pour un code invalide."
+  },
+  "Mensagem para comprimento invalido.": {
+    "en-US": "Message for invalid length.",
+    "pt-PT": "Mensagem para comprimento inválido.",
+    "es": "Mensaje para longitud no válida.",
+    "fr": "Message pour longueur invalide."
+  },
+  "Mensagem para CPF invalido.": {
+    "en-US": "Message for invalid CPF.",
+    "pt-PT": "Mensagem para CPF inválido.",
+    "es": "Mensaje para CPF no válido.",
+    "fr": "Message pour CPF invalide."
+  },
+  "Mensagem para documento invalido.": {
+    "en-US": "Message for invalid document.",
+    "pt-PT": "Mensagem para documento inválido.",
+    "es": "Mensaje para documento no válido.",
+    "fr": "Message pour document invalide."
+  },
+  "Mensagem para email invalido.": {
+    "en-US": "Message for invalid email.",
+    "pt-PT": "Mensagem para email inválido.",
+    "es": "Mensaje para email no válido.",
+    "fr": "Message pour email invalide."
+  },
+  "Mensagem para falha na consulta externa.": {
+    "en-US": "Message for external lookup failure.",
+    "pt-PT": "Mensagem para falha na consulta externa.",
+    "es": "Mensaje para fallo en la consulta externa.",
+    "fr": "Message en cas d'échec de la consultation externe."
+  },
+  "Mensagem para tamanho invalido.": {
+    "en-US": "Message for invalid size.",
+    "pt-PT": "Mensagem para tamanho inválido.",
+    "es": "Mensaje para tamaño no válido.",
+    "fr": "Message pour taille invalide."
+  },
+  "Mensagem para telefone com tamanho invalido.": {
+    "en-US": "Message for a phone number with invalid length.",
+    "pt-PT": "Mensagem para telefone com tamanho inválido.",
+    "es": "Mensaje para teléfono con tamaño inválido.",
+    "fr": "Message pour un téléphone de longueur invalide."
+  },
+  "Mensagem para telefone invalido.": {
+    "en-US": "Message for an invalid phone number.",
+    "pt-PT": "Mensagem para telefone inválido.",
+    "es": "Mensaje para teléfono inválido.",
+    "fr": "Message pour un téléphone invalide."
+  },
+  "Mensagem quando a base publica nao encontra o CNPJ.": {
+    "en-US": "Message when the public database does not find the CNPJ.",
+    "pt-PT": "Mensagem quando a base pública não encontra o CNPJ.",
+    "es": "Mensaje cuando la base pública no encuentra el CNPJ.",
+    "fr": "Message lorsque la base publique ne trouve pas le CNPJ."
+  },
+  "Minimo de caracteres (apos trim) para disparar onSearchChange; 0 caracteres tambem dispara (limpar busca).": {
+    "en-US": "Minimum characters (after trim) to fire onSearchChange; 0 characters also fires (clear search).",
+    "pt-PT": "Mínimo de caracteres (após trim) para disparar onSearchChange; 0 caracteres também dispara (limpar pesquisa).",
+    "es": "Mínimo de caracteres (tras trim) para disparar onSearchChange; 0 caracteres también dispara (limpiar búsqueda).",
+    "fr": "Minimum de caractères (après trim) pour déclencher onSearchChange ; 0 caractère déclenche aussi (effacer la recherche)."
+  },
+  "Modo de selecao de linhas.": {
+    "en-US": "Row selection mode.",
+    "pt-PT": "Modo de seleção de linhas.",
+    "es": "Modo de selección de filas.",
+    "fr": "Mode de sélection des lignes."
+  },
+  "Mostra e aceita segundos.": {
+    "en-US": "Shows and accepts seconds.",
+    "pt-PT": "Mostra e aceita segundos.",
+    "es": "Muestra y acepta segundos.",
+    "fr": "Affiche et accepte les secondes."
+  },
+  "Multisselecao de opcoes independentes.": {
+    "en-US": "Multiple selection of independent options.",
+    "pt-PT": "Seleção múltipla de opções independentes.",
+    "es": "Selección múltiple de opciones independientes.",
+    "fr": "Sélection multiple d'options indépendantes."
+  },
+  "Multisselecao; nesses casos prefira outros componentes especializados.": {
+    "en-US": "Multiple selection; in those cases prefer other specialized components.",
+    "pt-PT": "Seleção múltipla; nesses casos, prefira outros componentes especializados.",
+    "es": "Selección múltiple; en esos casos, prefiera otros componentes especializados.",
+    "fr": "Sélection multiple ; dans ces cas, préférez d'autres composants spécialisés."
+  },
+  "Multisselecao; nesses casos prefira SgCheckboxGroup.": {
+    "en-US": "Multiple selection; in these cases prefer SgCheckboxGroup.",
+    "pt-PT": "Seleção múltipla; nesses casos prefira SgCheckboxGroup.",
+    "es": "Selección múltiple; en esos casos prefiera SgCheckboxGroup.",
+    "fr": "Sélection multiple ; dans ces cas, préférez SgCheckboxGroup."
+  },
+  "Nome do campo em formularios.": {
+    "en-US": "Field name in forms.",
+    "pt-PT": "Nome do campo em formulários.",
+    "es": "Nombre del campo en formularios.",
+    "fr": "Nom du champ dans les formulaires."
+  },
+  "Nome do campo para formularios.": {
+    "en-US": "Field name for forms.",
+    "pt-PT": "Nome do campo para formulários.",
+    "es": "Nombre del campo para formularios.",
+    "fr": "Nom du champ pour les formulaires."
+  },
+  "Numeros genericos sem semantica monetaria; nesses casos prefira SgInputNumber.": {
+    "en-US": "Generic numbers without monetary semantics; in those cases prefer SgInputNumber.",
+    "pt-PT": "Números genéricos sem semântica monetária; nesses casos, prefira SgInputNumber.",
+    "es": "Números genéricos sin semántica monetaria; en esos casos prefiera SgInputNumber.",
+    "fr": "Nombres génériques sans sémantique monétaire ; dans ces cas, préférez SgInputNumber."
+  },
+  "Numeros ou valores monetarios; nesses casos prefira SgInputNumber ou SgInputCurrency.": {
+    "en-US": "Numbers or monetary values; in those cases prefer SgInputNumber or SgInputCurrency.",
+    "pt-PT": "Números ou valores monetários; nesses casos, prefira SgInputNumber ou SgInputCurrency.",
+    "es": "Números o valores monetarios; en esos casos prefiera SgInputNumber o SgInputCurrency.",
+    "fr": "Nombres ou valeurs monétaires ; dans ces cas, préférez SgInputNumber ou SgInputCurrency."
+  },
+  "Numeros ou valores monetarios.": {
+    "en-US": "Numbers or monetary values.",
+    "pt-PT": "Números ou valores monetários.",
+    "es": "Números o valores monetarios.",
+    "fr": "Nombres ou valeurs monétaires."
+  },
+  "Oculta a senha inicialmente.": {
+    "en-US": "Hides the password initially.",
+    "pt-PT": "Oculta inicialmente a palavra-passe.",
+    "es": "Oculta la contraseña inicialmente.",
+    "fr": "Masque le mot de passe initialement."
+  },
+  "Opcoes disponiveis.": {
+    "en-US": "Available options.",
+    "pt-PT": "Opções disponíveis.",
+    "es": "Opciones disponibles.",
+    "fr": "Options disponibles."
+  },
+  "Orientacao visual do grupo.": {
+    "en-US": "Visual orientation of the group.",
+    "pt-PT": "Orientação visual do grupo.",
+    "es": "Orientación visual del grupo.",
+    "fr": "Orientation visuelle du groupe."
+  },
+  "OTP ou codigo temporario; nesses casos prefira SgInputOTP.": {
+    "en-US": "OTP or temporary code; in those cases prefer SgInputOTP.",
+    "pt-PT": "OTP ou código temporário; nesses casos, prefira SgInputOTP.",
+    "es": "OTP o código temporal; en esos casos prefiera SgInputOTP.",
+    "fr": "OTP ou code temporaire ; dans ces cas, préférez SgInputOTP."
+  },
+  "Pais usado para mascara e validacao.": {
+    "en-US": "Country used for mask and validation.",
+    "pt-PT": "País usado para máscara e validação.",
+    "es": "País usado para la máscara y la validación.",
+    "fr": "Pays utilisé pour le masque et la validation."
+  },
+  "Passo dos minutos (5, 10, 15, 30).": {
+    "en-US": "Minute step (5, 10, 15, 30).",
+    "pt-PT": "Passo dos minutos (5, 10, 15, 30).",
+    "es": "Paso de los minutos (5, 10, 15, 30).",
+    "fr": "Pas des minutes (5, 10, 15, 30)."
+  },
+  "Perguntas binárias ou enumeradas com poucas alternativas.": {
+    "en-US": "Binary or enumerated questions with few alternatives.",
+    "pt-PT": "Perguntas binárias ou enumeradas com poucas alternativas.",
+    "es": "Preguntas binarias o enumeradas con pocas alternativas.",
+    "fr": "Questions binaires ou énumérées avec peu d'alternatives."
+  },
+  "Permite valor fora da lista.": {
+    "en-US": "Allows a value outside the list.",
+    "pt-PT": "Permite valor fora da lista.",
+    "es": "Permite un valor fuera de la lista.",
+    "fr": "Autorise une valeur hors de la liste."
+  },
+  "Permite visualizacao sem alteracao.": {
+    "en-US": "Allows viewing without changes.",
+    "pt-PT": "Permite visualização sem alteração.",
+    "es": "Permite la visualización sin modificación.",
+    "fr": "Permet la visualisation sans modification."
+  },
+  "Placeholder da busca global. Vence o dicionario (components.datatable.globalFilterPlaceholder).": {
+    "en-US": "Global search placeholder. Takes precedence over the dictionary (components.datatable.globalFilterPlaceholder).",
+    "pt-PT": "Placeholder da pesquisa global. Prevalece sobre o dicionário (components.datatable.globalFilterPlaceholder).",
+    "es": "Placeholder de la búsqueda global. Prevalece sobre el diccionario (components.datatable.globalFilterPlaceholder).",
+    "fr": "Placeholder de la recherche globale. L'emporte sur le dictionnaire (components.datatable.globalFilterPlaceholder)."
+  },
+  "Poucas opcoes sempre visiveis; nesses casos prefira SgCheckboxGroup.": {
+    "en-US": "Few options always visible; in these cases prefer SgCheckboxGroup.",
+    "pt-PT": "Poucas opções sempre visíveis; nesses casos prefira SgCheckboxGroup.",
+    "es": "Pocas opciones siempre visibles; en esos casos prefiera SgCheckboxGroup.",
+    "fr": "Peu d'options toujours visibles ; dans ces cas, préférez SgCheckboxGroup."
+  },
+  "Preferencias, ativacoes e permissoes binarias.": {
+    "en-US": "Preferences, activations and binary permissions.",
+    "pt-PT": "Preferências, ativações e permissões binárias.",
+    "es": "Preferencias, activaciones y permisos binarios.",
+    "fr": "Préférences, activations et permissions binaires."
+  },
+  "Props nativos do input.": {
+    "en-US": "Native input props.",
+    "pt-PT": "Props nativas do input.",
+    "es": "Props nativas del input.",
+    "fr": "Props natives de l'input."
+  },
+  "Quando false, bloqueia as acoes que mudam estado: ordenacao, selecao de linhas, filtros (global e por coluna), limpar filtros e gerenciador de colunas. Paginacao, rolagem e carga de mais linhas continuam funcionando. Aparencia de desabilitado e aria-disabled.": {
+    "en-US": "When false, blocks actions that change state: sorting, row selection, filters (global and per column), clearing filters, and the column manager. Pagination, scrolling, and loading more rows keep working. Disabled appearance and aria-disabled.",
+    "pt-PT": "Quando false, bloqueia as ações que alteram o estado: ordenação, seleção de linhas, filtros (global e por coluna), limpar filtros e gestor de colunas. A paginação, o deslocamento e o carregamento de mais linhas continuam a funcionar. Aspeto de desativado e aria-disabled.",
+    "es": "Cuando es false, bloquea las acciones que cambian el estado: ordenación, selección de filas, filtros (global y por columna), limpiar filtros y gestor de columnas. La paginación, el desplazamiento y la carga de más filas siguen funcionando. Aspecto de deshabilitado y aria-disabled.",
+    "fr": "Lorsque false, bloque les actions qui modifient l'état : tri, sélection des lignes, filtres (global et par colonne), effacement des filtres et gestionnaire de colonnes. La pagination, le défilement et le chargement de lignes supplémentaires continuent de fonctionner. Apparence désactivée et aria-disabled."
+  },
+  "Quando o dominio ja define apenas CNPJ; nesses casos prefira SgInputCNPJ.": {
+    "en-US": "When the domain already defines only CNPJ; in those cases prefer SgInputCNPJ.",
+    "pt-PT": "Quando o domínio já define apenas CNPJ; nesses casos, prefira SgInputCNPJ.",
+    "es": "Cuando el dominio ya define solo CNPJ; en esos casos prefiera SgInputCNPJ.",
+    "fr": "Lorsque le domaine définit déjà uniquement un CNPJ ; dans ces cas, préférez SgInputCNPJ."
+  },
+  "Quando o dominio ja define apenas CPF; nesses casos prefira SgInputCPF.": {
+    "en-US": "When the domain already defines only CPF; in those cases prefer SgInputCPF.",
+    "pt-PT": "Quando o domínio já define apenas CPF; nesses casos, prefira SgInputCPF.",
+    "es": "Cuando el dominio ya define solo CPF; en esos casos prefiera SgInputCPF.",
+    "fr": "Lorsque le domaine définit déjà uniquement un CPF ; dans ces cas, préférez SgInputCPF."
+  },
+  "Quantidade de casas decimais permitidas.": {
+    "en-US": "Number of decimal places allowed.",
+    "pt-PT": "Quantidade de casas decimais permitidas.",
+    "es": "Cantidad de decimales permitidos.",
+    "fr": "Nombre de décimales autorisées."
+  },
+  "Quantidade de rotulos antes de mostrar 'N selecionadas'.": {
+    "en-US": "Number of labels before showing 'N selected'.",
+    "pt-PT": "Quantidade de rótulos antes de mostrar 'N selecionadas'.",
+    "es": "Cantidad de etiquetas antes de mostrar 'N seleccionadas'.",
+    "fr": "Nombre d'étiquettes avant d'afficher 'N sélectionnées'."
+  },
+  "Quantidade minima de caracteres para buscar.": {
+    "en-US": "Minimum number of characters to search.",
+    "pt-PT": "Número mínimo de carateres para pesquisar.",
+    "es": "Cantidad mínima de caracteres para buscar.",
+    "fr": "Nombre minimal de caractères pour lancer la recherche."
+  },
+  "Recebe o resultado da consulta.": {
+    "en-US": "Receives the lookup result.",
+    "pt-PT": "Recebe o resultado da consulta.",
+    "es": "Recibe el resultado de la consulta.",
+    "fr": "Reçoit le résultat de la requête."
+  },
+  "Rolagem infinita: sem paginador, ao chegar perto do fim da lista avanca a pagina (rows) e acrescenta os proximos registros, com indicador de carregando e de fim da lista. Padrao ligado quando a lista e exibida como cartoes (abaixo de 600 px no modo automatico) e desligado na tabela. Exige paginator. Com lazy, o pai acrescenta a proxima pagina a value (first/rows/page vem em onPage/onLoadMore).": {
+    "en-US": "Infinite scroll: without a paginator, when nearing the end of the list it advances the page (rows) and appends the next records, with loading and end-of-list indicators. Enabled by default when the list is displayed as cards (below 600 px in automatic mode) and disabled in the table. Requires paginator. With lazy, the parent appends the next page to value (first/rows/page come in onPage/onLoadMore).",
+    "pt-PT": "Deslocamento infinito: sem paginador, ao chegar perto do fim da lista avança a página (rows) e acrescenta os registos seguintes, com indicador de carregamento e de fim da lista. Ativado por predefinição quando a lista é apresentada como cartões (abaixo de 600 px no modo automático) e desativado na tabela. Requer paginator. Com lazy, o componente pai acrescenta a página seguinte a value (first/rows/page vêm em onPage/onLoadMore).",
+    "es": "Desplazamiento infinito: sin paginador, al acercarse al final de la lista avanza la página (rows) y añade los siguientes registros, con indicador de carga y de fin de lista. Activado por defecto cuando la lista se muestra como tarjetas (por debajo de 600 px en modo automático) y desactivado en la tabla. Requiere paginator. Con lazy, el padre añade la siguiente página a value (first/rows/page llegan en onPage/onLoadMore).",
+    "fr": "Défilement infini : sans paginateur, à l'approche de la fin de la liste, avance d'une page (rows) et ajoute les enregistrements suivants, avec indicateurs de chargement et de fin de liste. Activé par défaut lorsque la liste est affichée sous forme de cartes (sous 600 px en mode automatique) et désactivé dans le tableau. Nécessite paginator. Avec lazy, le parent ajoute la page suivante à value (first/rows/page arrivent dans onPage/onLoadMore)."
+  },
+  "Rotulo exibido ao usuario.": {
+    "en-US": "Label displayed to the user.",
+    "pt-PT": "Rótulo apresentado ao utilizador.",
+    "es": "Etiqueta mostrada al usuario.",
+    "fr": "Libellé affiché à l'utilisateur."
+  },
+  "Rotulo principal exibido ao usuario.": {
+    "en-US": "Main label displayed to the user.",
+    "pt-PT": "Rótulo principal apresentado ao utilizador.",
+    "es": "Etiqueta principal mostrada al usuario.",
+    "fr": "Libellé principal affiché à l'utilisateur."
+  },
+  "Selecao a partir de uma lista fechada; nesses casos prefira SgAutocomplete ou SgCombobox.": {
+    "en-US": "Selection from a closed list; in these cases prefer SgAutocomplete or SgCombobox.",
+    "pt-PT": "Seleção a partir de uma lista fechada; nesses casos prefira SgAutocomplete ou SgCombobox.",
+    "es": "Selección a partir de una lista cerrada; en esos casos prefiera SgAutocomplete o SgCombobox.",
+    "fr": "Sélection à partir d'une liste fermée ; dans ces cas, préférez SgAutocomplete ou SgCombobox."
+  },
+  "Selecao assistida com pesquisa incremental.": {
+    "en-US": "Assisted selection with incremental search.",
+    "pt-PT": "Seleção assistida com pesquisa incremental.",
+    "es": "Selección asistida con búsqueda incremental.",
+    "fr": "Sélection assistée avec recherche incrémentale."
+  },
+  "Selecao com melhor UX do que um select nativo.": {
+    "en-US": "Selection with better UX than a native select.",
+    "pt-PT": "Seleção com melhor UX do que um select nativo.",
+    "es": "Selección con mejor UX que un select nativo.",
+    "fr": "Sélection offrant une meilleure UX qu'un select natif."
+  },
+  "Selecao de data em formularios com contexto de calendario.": {
+    "en-US": "Date selection in forms with calendar context.",
+    "pt-PT": "Seleção de data em formulários com contexto de calendário.",
+    "es": "Selección de fecha en formularios con contexto de calendario.",
+    "fr": "Sélection de date dans les formulaires avec contexte de calendrier."
+  },
+  "Selecao de varias opcoes a partir de uma lista fechada (ex.: empresas, categorias, tags).": {
+    "en-US": "Selection of multiple options from a closed list (e.g., companies, categories, tags).",
+    "pt-PT": "Seleção de várias opções a partir de uma lista fechada (ex.: empresas, categorias, tags).",
+    "es": "Selección de varias opciones a partir de una lista cerrada (p. ej.: empresas, categorías, tags).",
+    "fr": "Sélection de plusieurs options à partir d'une liste fermée (ex. : entreprises, catégories, tags)."
+  },
+  "Selecao de varias opcoes onde e util ver e remover cada item escolhido individualmente (ex.: tags, destinatarios, empresas).": {
+    "en-US": "Selection of multiple options where it is useful to see and remove each chosen item individually (e.g., tags, recipients, companies).",
+    "pt-PT": "Seleção de várias opções em que é útil ver e remover individualmente cada item escolhido (ex.: tags, destinatários, empresas).",
+    "es": "Selección de varias opciones donde es útil ver y quitar individualmente cada ítem elegido (p. ej.: tags, destinatarios, empresas).",
+    "fr": "Sélection de plusieurs options où il est utile de voir et de retirer individuellement chaque élément choisi (ex. : tags, destinataires, entreprises)."
+  },
+  "Selecoes estruturadas ou valores monetarios.": {
+    "en-US": "Structured selections or monetary values.",
+    "pt-PT": "Seleções estruturadas ou valores monetários.",
+    "es": "Selecciones estructuradas o valores monetarios.",
+    "fr": "Sélections structurées ou valeurs monétaires."
+  },
+  "Selecoes muito numerosas onde os chips ocupariam espaco demais; nesses casos prefira SgMultiSelect (resumo 'N selecionadas').": {
+    "en-US": "Very numerous selections where chips would take up too much space; in these cases prefer SgMultiSelect ('N selected' summary).",
+    "pt-PT": "Seleções muito numerosas em que os chips ocupariam demasiado espaço; nesses casos prefira SgMultiSelect (resumo 'N selecionadas').",
+    "es": "Selecciones muy numerosas donde los chips ocuparían demasiado espacio; en esos casos prefiera SgMultiSelect (resumen 'N seleccionadas').",
+    "fr": "Sélections très nombreuses où les chips occuperaient trop d'espace ; dans ces cas, préférez SgMultiSelect (résumé 'N sélectionnées')."
+  },
+  "Senha permanente; nesses casos prefira SgInputPassword.": {
+    "en-US": "Permanent password; in those cases prefer SgInputPassword.",
+    "pt-PT": "Palavra-passe permanente; nesses casos, prefira SgInputPassword.",
+    "es": "Contraseña permanente; en esos casos prefiera SgInputPassword.",
+    "fr": "Mot de passe permanent ; dans ces cas, préférez SgInputPassword."
+  },
+  "Senhas, OTPs ou selecoes estruturadas.": {
+    "en-US": "Passwords, OTPs or structured selections.",
+    "pt-PT": "Palavras-passe, OTPs ou seleções estruturadas.",
+    "es": "Contraseñas, OTPs o selecciones estructuradas.",
+    "fr": "Mots de passe, OTP ou sélections structurées."
+  },
+  "Somente data; prefira SgInputDate.": {
+    "en-US": "Date only; prefer SgInputDate.",
+    "pt-PT": "Apenas data; prefira SgInputDate.",
+    "es": "Solo fecha; prefiera SgInputDate.",
+    "fr": "Date uniquement ; préférez SgInputDate."
+  },
+  "Somente hora do dia sem data; prefira um campo de hora.": {
+    "en-US": "Time of day only, without a date; prefer a time field.",
+    "pt-PT": "Apenas hora do dia sem data; prefira um campo de hora.",
+    "es": "Solo hora del día sin fecha; prefiera un campo de hora.",
+    "fr": "Heure de la journée uniquement, sans date ; préférez un champ d'heure."
+  },
+  "Tabela de dados interativa com colunas configuraveis, paginacao, ordenacao, filtro, selecao e persistencia de layout de colunas. Em celular vira lista de cartoes automaticamente (mobileMode omitido = automatico).": {
+    "en-US": "Interactive data table with configurable columns, pagination, sorting, filtering, selection, and column layout persistence. On mobile it automatically becomes a card list (mobileMode omitted = automatic).",
+    "pt-PT": "Tabela de dados interativa com colunas configuráveis, paginação, ordenação, filtro, seleção e persistência do layout das colunas. Em telemóvel transforma-se automaticamente numa lista de cartões (mobileMode omitido = automático).",
+    "es": "Tabla de datos interactiva con columnas configurables, paginación, ordenación, filtro, selección y persistencia del diseño de columnas. En móvil se convierte automáticamente en una lista de tarjetas (mobileMode omitido = automático).",
+    "fr": "Tableau de données interactif avec colonnes configurables, pagination, tri, filtre, sélection et persistance de la disposition des colonnes. Sur mobile, il devient automatiquement une liste de cartes (mobileMode omis = automatique)."
+  },
+  "Tabelas com acoes por linha e selecao.": {
+    "en-US": "Tables with per-row actions and selection.",
+    "pt-PT": "Tabelas com ações por linha e seleção.",
+    "es": "Tablas con acciones por fila y selección.",
+    "fr": "Tableaux avec actions par ligne et sélection."
+  },
+  "Tamanho minimo esperado da senha.": {
+    "en-US": "Expected minimum password length.",
+    "pt-PT": "Tamanho mínimo esperado da palavra-passe.",
+    "es": "Tamaño mínimo esperado de la contraseña.",
+    "fr": "Longueur minimale attendue du mot de passe."
+  },
+  "Telefone ou outros contatos nao estruturados.": {
+    "en-US": "Phone or other unstructured contacts.",
+    "pt-PT": "Telefone ou outros contactos não estruturados.",
+    "es": "Teléfono u otros contactos no estructurados.",
+    "fr": "Téléphone ou autres contacts non structurés."
+  },
+  "Texto de apoio dentro do input.": {
+    "en-US": "Helper text inside the input.",
+    "pt-PT": "Texto de apoio dentro do input.",
+    "es": "Texto de apoyo dentro del input.",
+    "fr": "Texte d'aide à l'intérieur de l'input."
+  },
+  "Texto de apoio para orientar o preenchimento da data.": {
+    "en-US": "Helper text to guide date entry.",
+    "pt-PT": "Texto de apoio para orientar o preenchimento da data.",
+    "es": "Texto de ayuda para orientar el llenado de la fecha.",
+    "fr": "Texte d'aide pour guider la saisie de la date."
+  },
+  "Texto exibido durante carregamento.": {
+    "en-US": "Text displayed while loading.",
+    "pt-PT": "Texto apresentado durante o carregamento.",
+    "es": "Texto mostrado durante la carga.",
+    "fr": "Texte affiché pendant le chargement."
+  },
+  "Texto exibido quando nada esta selecionado.": {
+    "en-US": "Text displayed when nothing is selected.",
+    "pt-PT": "Texto apresentado quando nada está selecionado.",
+    "es": "Texto mostrado cuando no hay nada seleccionado.",
+    "fr": "Texte affiché lorsque rien n'est sélectionné."
+  },
+  "Texto livre de endereco completo; nesses casos use campo textual complementar.": {
+    "en-US": "Free text for a full address; in these cases use a complementary text field.",
+    "pt-PT": "Texto livre de morada completa; nesses casos utilize um campo de texto complementar.",
+    "es": "Texto libre de dirección completa; en esos casos use un campo de texto complementario.",
+    "fr": "Texte libre d'adresse complète ; dans ces cas, utilisez un champ texte complémentaire."
+  },
+  "Texto livre ou codigos genericos.": {
+    "en-US": "Free text or generic codes.",
+    "pt-PT": "Texto livre ou códigos genéricos.",
+    "es": "Texto libre o códigos genéricos.",
+    "fr": "Texte libre ou codes génériques."
+  },
+  "Texto livre ou dados numericos.": {
+    "en-US": "Free text or numeric data.",
+    "pt-PT": "Texto livre ou dados numéricos.",
+    "es": "Texto libre o datos numéricos.",
+    "fr": "Texte libre ou données numériques."
+  },
+  "Texto livre ou descricoes; nesses casos prefira SgInputText ou SgInputTextArea.": {
+    "en-US": "Free text or descriptions; in those cases prefer SgInputText or SgInputTextArea.",
+    "pt-PT": "Texto livre ou descrições; nesses casos, prefira SgInputText ou SgInputTextArea.",
+    "es": "Texto libre o descripciones; en esos casos prefiera SgInputText o SgInputTextArea.",
+    "fr": "Texte libre ou descriptions ; dans ces cas, préférez SgInputText ou SgInputTextArea."
+  },
+  "Texto livre ou documentos; nesses casos prefira os inputs especificos.": {
+    "en-US": "Free text or documents; in those cases prefer the specific inputs.",
+    "pt-PT": "Texto livre ou documentos; nesses casos, prefira os inputs específicos.",
+    "es": "Texto libre o documentos; en esos casos, prefiera los inputs específicos.",
+    "fr": "Texte libre ou documents ; dans ces cas, préférez les inputs spécifiques."
+  },
+  "Texto livre ou identificadores genericos; nesses casos prefira SgInputText.": {
+    "en-US": "Free text or generic identifiers; in those cases prefer SgInputText.",
+    "pt-PT": "Texto livre ou identificadores genéricos; nesses casos, prefira SgInputText.",
+    "es": "Texto libre o identificadores genéricos; en esos casos prefiera SgInputText.",
+    "fr": "Texte libre ou identifiants génériques ; dans ces cas, préférez SgInputText."
+  },
+  "Texto livre ou numeros.": {
+    "en-US": "Free text or numbers.",
+    "pt-PT": "Texto livre ou números.",
+    "es": "Texto libre o números.",
+    "fr": "Texte libre ou nombres."
+  },
+  "Texto livre ou valores numericos.": {
+    "en-US": "Free text or numeric values.",
+    "pt-PT": "Texto livre ou valores numéricos.",
+    "es": "Texto libre o valores numéricos.",
+    "fr": "Texte libre ou valeurs numériques."
+  },
+  "Texto livre sem expectativa de selecao.": {
+    "en-US": "Free text with no expectation of selection.",
+    "pt-PT": "Texto livre sem expectativa de seleção.",
+    "es": "Texto libre sin expectativa de selección.",
+    "fr": "Texte libre sans attente de sélection."
+  },
+  "Texto livre sem sugestoes.": {
+    "en-US": "Free text without suggestions.",
+    "pt-PT": "Texto livre sem sugestões.",
+    "es": "Texto libre sin sugerencias.",
+    "fr": "Texte libre sans suggestions."
+  },
+  "Texto livre, codigos internos ou email.": {
+    "en-US": "Free text, internal codes, or email.",
+    "pt-PT": "Texto livre, códigos internos ou email.",
+    "es": "Texto libre, códigos internos o email.",
+    "fr": "Texte libre, codes internes ou email."
+  },
+  "Texto livre, email ou identificadores publicos.": {
+    "en-US": "Free text, email or public identifiers.",
+    "pt-PT": "Texto livre, email ou identificadores públicos.",
+    "es": "Texto libre, email o identificadores públicos.",
+    "fr": "Texte libre, email ou identifiants publics."
+  },
+  "Texto livre, email ou telefone.": {
+    "en-US": "Free text, email or phone.",
+    "pt-PT": "Texto livre, email ou telefone.",
+    "es": "Texto libre, email o teléfono.",
+    "fr": "Texte libre, email ou téléphone."
+  },
+  "Texto livre, observacoes ou codigos internos.": {
+    "en-US": "Free text, notes or internal codes.",
+    "pt-PT": "Texto livre, observações ou códigos internos.",
+    "es": "Texto libre, observaciones o códigos internos.",
+    "fr": "Texte libre, observations ou codes internes."
+  },
+  "Texto livre, telefone, email ou valores financeiros.": {
+    "en-US": "Free text, phone, email or financial values.",
+    "pt-PT": "Texto livre, telefone, email ou valores financeiros.",
+    "es": "Texto libre, teléfono, email o valores financieros.",
+    "fr": "Texte libre, téléphone, email ou valeurs financières."
+  },
+  "Texto livre; nesses casos prefira SgInputText ou SgInputTextArea.": {
+    "en-US": "Free text; in those cases prefer SgInputText or SgInputTextArea.",
+    "pt-PT": "Texto livre; nesses casos, prefira SgInputText ou SgInputTextArea.",
+    "es": "Texto libre; en esos casos prefiera SgInputText o SgInputTextArea.",
+    "fr": "Texte libre ; dans ces cas, préférez SgInputText ou SgInputTextArea."
+  },
+  "Texto livre; prefira SgInputText.": {
+    "en-US": "Free text; prefer SgInputText.",
+    "pt-PT": "Texto livre; prefira SgInputText.",
+    "es": "Texto libre; prefiera SgInputText.",
+    "fr": "Texte libre ; préférez SgInputText."
+  },
+  "Texto longo ou rico; nesses casos prefira SgInputTextArea ou SgTextEditor.": {
+    "en-US": "Long or rich text; in these cases prefer SgInputTextArea or SgTextEditor.",
+    "pt-PT": "Texto longo ou rico; nesses casos prefira SgInputTextArea ou SgTextEditor.",
+    "es": "Texto largo o enriquecido; en esos casos prefiera SgInputTextArea o SgTextEditor.",
+    "fr": "Texte long ou riche ; dans ces cas, préférez SgInputTextArea ou SgTextEditor."
+  },
+  "Textos livres que exigem mais espaco e semantica de conteudo longo.": {
+    "en-US": "Free texts that require more space and long-content semantics.",
+    "pt-PT": "Textos livres que exigem mais espaço e semântica de conteúdo longo.",
+    "es": "Textos libres que requieren más espacio y semántica de contenido largo.",
+    "fr": "Textes libres nécessitant plus d'espace et une sémantique de contenu long."
+  },
+  "Titulo do grupo.": {
+    "en-US": "Group title.",
+    "pt-PT": "Título do grupo.",
+    "es": "Título del grupo.",
+    "fr": "Titre du groupe."
+  },
+  "Titulo do painel de colunas. Vence o dicionario (components.datatable.columns).": {
+    "en-US": "Columns panel title. Takes precedence over the dictionary (components.datatable.columns).",
+    "pt-PT": "Título do painel de colunas. Prevalece sobre o dicionário (components.datatable.columns).",
+    "es": "Título del panel de columnas. Prevalece sobre el diccionario (components.datatable.columns).",
+    "fr": "Titre du panneau des colonnes. L'emporte sur le dictionnaire (components.datatable.columns)."
+  },
+  "Validacao customizada adicional.": {
+    "en-US": "Additional custom validation.",
+    "pt-PT": "Validação personalizada adicional.",
+    "es": "Validación personalizada adicional.",
+    "fr": "Validation personnalisée supplémentaire."
+  },
+  "Valor booleano atual.": {
+    "en-US": "Current boolean value.",
+    "pt-PT": "Valor booleano atual.",
+    "es": "Valor booleano actual.",
+    "fr": "Valeur booléenne actuelle."
+  },
+  "Valor selecionado.": {
+    "en-US": "Selected value.",
+    "pt-PT": "Valor selecionado.",
+    "es": "Valor seleccionado.",
+    "fr": "Valeur sélectionnée."
+  },
+  "Valores monetarios, datas e selecoes estruturadas.": {
+    "en-US": "Monetary values, dates and structured selections.",
+    "pt-PT": "Valores monetários, datas e seleções estruturadas.",
+    "es": "Valores monetarios, fechas y selecciones estructuradas.",
+    "fr": "Valeurs monétaires, dates et sélections structurées."
+  },
+  "Valores monetarios, datas ou documentos mascarados.": {
+    "en-US": "Monetary values, dates, or masked documents.",
+    "pt-PT": "Valores monetários, datas ou documentos mascarados.",
+    "es": "Valores monetarios, fechas o documentos enmascarados.",
+    "fr": "Valeurs monétaires, dates ou documents masqués."
+  },
+  "Valores monetarios, datas ou selecoes estruturadas.": {
+    "en-US": "Monetary values, dates or structured selections.",
+    "pt-PT": "Valores monetários, datas ou seleções estruturadas.",
+    "es": "Valores monetarios, fechas o selecciones estructuradas.",
+    "fr": "Valeurs monétaires, dates ou sélections structurées."
+  },
+  "Valores monetarios; nesses casos prefira SgInputCurrency.": {
+    "en-US": "Monetary values; in those cases prefer SgInputCurrency.",
+    "pt-PT": "Valores monetários; nesses casos, prefira SgInputCurrency.",
+    "es": "Valores monetarios; en esos casos prefiera SgInputCurrency.",
+    "fr": "Valeurs monétaires ; dans ces cas, préférez SgInputCurrency."
+  },
+  "Valores numericos genericos e datas.": {
+    "en-US": "Generic numeric values and dates.",
+    "pt-PT": "Valores numéricos genéricos e datas.",
+    "es": "Valores numéricos genéricos y fechas.",
+    "fr": "Valeurs numériques génériques et dates."
+  },
+  "Valores numericos ou monetarios; nesses casos prefira SgInputNumber ou SgInputCurrency.": {
+    "en-US": "Numeric or monetary values; in these cases prefer SgInputNumber or SgInputCurrency.",
+    "pt-PT": "Valores numéricos ou monetários; nesses casos prefira SgInputNumber ou SgInputCurrency.",
+    "es": "Valores numéricos o monetarios; en esos casos prefiera SgInputNumber o SgInputCurrency.",
+    "fr": "Valeurs numériques ou monétaires ; dans ces cas, préférez SgInputNumber ou SgInputCurrency."
+  },
+  "Valores numericos, monetarios ou datas.": {
+    "en-US": "Numeric values, monetary values or dates.",
+    "pt-PT": "Valores numéricos, monetários ou datas.",
+    "es": "Valores numéricos, monetarios o fechas.",
+    "fr": "Valeurs numériques, monétaires ou dates."
+  },
+  "Valores selecionados.": {
+    "en-US": "Selected values.",
+    "pt-PT": "Valores selecionados.",
+    "es": "Valores seleccionados.",
+    "fr": "Valeurs sélectionnées."
+  },
+  "Variante do multi-select onde os itens selecionados viram chips removiveis no trigger; o dropdown com checkboxes e a busca sao iguais ao SgMultiSelect.": {
+    "en-US": "Multi-select variant where selected items become removable chips in the trigger; the dropdown with checkboxes and the search are the same as SgMultiSelect.",
+    "pt-PT": "Variante do multi-select em que os itens selecionados passam a chips removíveis no trigger; o dropdown com checkboxes e a pesquisa são iguais ao SgMultiSelect.",
+    "es": "Variante del multi-select donde los ítems seleccionados se convierten en chips removibles en el trigger; el dropdown con checkboxes y la búsqueda son iguales a SgMultiSelect.",
+    "fr": "Variante du multi-select où les éléments sélectionnés deviennent des chips amovibles dans le déclencheur ; le menu déroulant avec cases à cocher et la recherche sont identiques à SgMultiSelect."
+  }
+}

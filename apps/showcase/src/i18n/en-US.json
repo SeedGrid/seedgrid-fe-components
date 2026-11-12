@@ -3846,5 +3846,21 @@
   "showcase.component.datatable.sections.template.description": "body draws the cell and footer receives the processed rows.",
   "showcase.component.datatable.sections.controlled.description": "Page and sorting are controlled from outside the component, not only by user interaction.",
   "showcase.component.datatable.sections.columnManager.title": "Column manager, visibility and styles",
-  "showcase.component.datatable.sections.columnManager.description": "Shows the built-in column manager plus the per-column visibility, order and styling props."
+  "showcase.component.datatable.sections.columnManager.description": "Shows the built-in column manager plus the per-column visibility, order and styling props.",
+  "showcase.ai.fieldSemantics": "Field semantics",
+  "showcase.ai.preferredUseCases": "Preferred use cases",
+  "showcase.ai.avoidUseCases": "Avoid use cases",
+  "showcase.ai.renderer": "Renderer",
+  "showcase.ai.defaultProps": "Default props",
+  "showcase.ai.propsTitle": "Props from AI manifest",
+  "showcase.ai.propsIntro": "A small proof that the manifest can already feed real documentation without replacing the manual table.",
+  "showcase.ai.col.prop": "Prop",
+  "showcase.ai.col.type": "Type",
+  "showcase.ai.col.required": "Required",
+  "showcase.ai.col.default": "Default",
+  "showcase.ai.col.semanticRole": "Semantic role",
+  "showcase.ai.col.bindable": "Bindable",
+  "showcase.ai.col.description": "Description",
+  "showcase.ai.yes": "yes",
+  "showcase.ai.no": "no"
 }

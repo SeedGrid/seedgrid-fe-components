@@ -3846,5 +3846,21 @@
   "showcase.component.datatable.sections.template.description": "body dibuja la celda y footer recibe las filas procesadas.",
   "showcase.component.datatable.sections.controlled.description": "La página y el orden se controlan desde fuera del componente, sin depender solo de la interacción del usuario.",
   "showcase.component.datatable.sections.columnManager.title": "Gestor de columnas, visibilidad y estilos",
-  "showcase.component.datatable.sections.columnManager.description": "Muestra el gestor de columnas integrado y las props de visibilidad, orden y estilo por columna."
+  "showcase.component.datatable.sections.columnManager.description": "Muestra el gestor de columnas integrado y las props de visibilidad, orden y estilo por columna.",
+  "showcase.ai.fieldSemantics": "Semántica de los campos",
+  "showcase.ai.preferredUseCases": "Casos de uso recomendados",
+  "showcase.ai.avoidUseCases": "Casos de uso a evitar",
+  "showcase.ai.renderer": "Renderizador",
+  "showcase.ai.defaultProps": "Props predeterminadas",
+  "showcase.ai.propsTitle": "Props del manifiesto de IA",
+  "showcase.ai.propsIntro": "Pequeña prueba de que el manifiesto ya puede alimentar documentación real sin reemplazar la tabla manual.",
+  "showcase.ai.col.prop": "Prop",
+  "showcase.ai.col.type": "Tipo",
+  "showcase.ai.col.required": "Obligatoria",
+  "showcase.ai.col.default": "Predeterminado",
+  "showcase.ai.col.semanticRole": "Rol semántico",
+  "showcase.ai.col.bindable": "Enlazable",
+  "showcase.ai.col.description": "Descripción",
+  "showcase.ai.yes": "sí",
+  "showcase.ai.no": "no"
 }
