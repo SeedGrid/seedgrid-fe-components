@@ -315,6 +315,10 @@ function SgInputCurrencyBase(props: SgInputCurrencyBaseProps) {
     const next = normalizeState(String(raw), decimals, allowNegative);
     stateRef.current = next;
     setState(next);
+    // Valor posto como TEXTO (defaultValues/setValue): o formulario passa a guardar o numero.
+    if (typeof props.externalValue === "string" && props.externalValue !== "") {
+      props.onExternalChange?.(stateToNumber(next, decimals));
+    }
   }, [props.externalValue, inputProps.value, emptyValue, decimals, allowNegative]);
 
   React.useLayoutEffect(() => {

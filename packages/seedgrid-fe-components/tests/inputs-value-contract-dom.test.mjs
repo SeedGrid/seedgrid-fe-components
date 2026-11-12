@@ -159,8 +159,10 @@ for (const [name, init, next, typed] of [
     const m = await mount(name, { label: "L" }, "37.5");
     try {
       assert.equal(Number(firstText(m.container).replace(",", ".")), 37.5, "texto inicial exibido");
+      assert.equal(m.form().getValues("f"), 37.5, "defaultValues em texto vira numero no form");
       await setByCode(m, "12.25");
       assert.equal(Number(firstText(m.container).replace(",", ".")), 12.25, "setValue com texto");
+      assert.equal(m.form().getValues("f"), 12.25, "setValue em texto vira numero no form");
       await typeInto(visibleInputs(m.container)[0], "8");
       assert.equal(m.form().getValues("f"), 8);
       assert.equal(typeof m.form().getValues("f"), "number");

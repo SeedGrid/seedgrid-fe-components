@@ -12,6 +12,10 @@
 - Limites conhecidos: com `control`, se `defaultValues` vier cru o campo normaliza para mascarado e o formulario passa a constar como alterado (dirty);
   com `register`, `reset({ campo: cru })` nao atualiza o DOM de campos nao controlados (comportamento do react-hook-form), mascare o valor ao resetar.
 
+### SgInputNumber e SgInputCurrency: texto posto por codigo vira numero no formulario
+
+- `defaultValues`, `setValue` e `initialValue` com texto (`"37.5"`) passam a ser gravados no formulario como `number` (`37.5`) logo na montagem/atribuicao, nao so apos a primeira edicao. No React isso vale com `control`; o campo normaliza e o formulario pode constar como alterado (dirty).
+
 ### BREAKING: SgInputNumber e SgInputCurrency emitem sempre numero
 
 - `onChange`, o valor gravado no formulario (react-hook-form) e `onExternalChange` agora entregam `number`
