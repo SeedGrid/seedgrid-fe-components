@@ -33,7 +33,7 @@ function Section(props: { title: string; description?: string; children: React.R
 }
 
 // ---------------------------------------------------------------------------
-// Colon helper â€” matches the flip/fade clock aesthetic
+// Colon helper — matches the flip/fade clock aesthetic
 // ---------------------------------------------------------------------------
 
 
@@ -57,7 +57,7 @@ function Colon({ height }: { height: number }) {
 }
 
 // ---------------------------------------------------------------------------
-// Example 1 â€” Basico (0-9)
+// Example 1 — Basico (0-9)
 // ---------------------------------------------------------------------------
 const EX1_CODE = `const [digit, setDigit] = React.useState("0");
 
@@ -93,7 +93,7 @@ function Ex1() {
 }
 
 // ---------------------------------------------------------------------------
-// Example 2 â€” Letras (A-Z)
+// Example 2 — Letras (A-Z)
 // ---------------------------------------------------------------------------
 const EX2_CODE = `const ALPHA = Array.from("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 const [letter, setLetter] = React.useState("A");
@@ -128,7 +128,7 @@ function Ex2() {
 }
 
 // ---------------------------------------------------------------------------
-// Example 3 â€” Cores customizadas
+// Example 3 — Cores customizadas
 // ---------------------------------------------------------------------------
 const EX3_CODE = `{/* Cada cartao usa color + backgroundColor independentes */}
 <div className="flex flex-wrap items-center gap-4">
@@ -183,7 +183,7 @@ function Ex3() {
 }
 
 // ---------------------------------------------------------------------------
-// Example 4 â€” Auto increment
+// Example 4 — Auto increment
 // ---------------------------------------------------------------------------
 const EX4_CODE = `const [running, setRunning] = React.useState(false);
 const [counter, setCounter] = React.useState("0");
@@ -225,7 +225,7 @@ function Ex4() {
 }
 
 // ---------------------------------------------------------------------------
-// Example 5 â€” Sequencia estilo relogio
+// Example 5 — Sequencia estilo relogio
 // ---------------------------------------------------------------------------
 const CARD_H_70 = Math.round(70 * 1.38); // matches default fontSize=70
 
@@ -310,7 +310,7 @@ function Ex5() {
 }
 
 // ---------------------------------------------------------------------------
-// Example 6 â€” Tamanhos
+// Example 6 — Tamanhos
 // ---------------------------------------------------------------------------
 const EX6_CODE = `<div className="flex items-end gap-6">
   <div className="text-center">

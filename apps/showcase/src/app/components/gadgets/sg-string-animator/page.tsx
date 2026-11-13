@@ -33,7 +33,7 @@ function Section(props: { title: string; description?: string; children: React.R
 }
 
 // ---------------------------------------------------------------------------
-// Example 1 â€” Nomes (Roller 3D, left-aligned, manual trigger)
+// Example 1 — Nomes (Roller 3D, left-aligned, manual trigger)
 // ---------------------------------------------------------------------------
 const EX1_CODE = `const animRef = React.useRef<SgStringAnimatorRef>(null);
 
@@ -72,7 +72,7 @@ function Ex1() {
 }
 
 // ---------------------------------------------------------------------------
-// Example 2 â€” Numeros (Roller 3D, right-aligned, manual trigger)
+// Example 2 — Numeros (Roller 3D, right-aligned, manual trigger)
 // ---------------------------------------------------------------------------
 const EX2_CODE = `const animRef = React.useRef<SgStringAnimatorRef>(null);
 
@@ -111,7 +111,7 @@ function Ex2() {
 }
 
 // ---------------------------------------------------------------------------
-// Example 3 â€” Estilo Flip
+// Example 3 — Estilo Flip
 // ---------------------------------------------------------------------------
 const EX3_CODE = `const animRef = React.useRef<SgStringAnimatorRef>(null);
 
@@ -150,7 +150,7 @@ function Ex3() {
 }
 
 // ---------------------------------------------------------------------------
-// Example 4 â€” Estilo Neon
+// Example 4 — Estilo Neon
 // ---------------------------------------------------------------------------
 const EX4_CODE = `const animRef = React.useRef<SgStringAnimatorRef>(null);
 
@@ -193,7 +193,7 @@ function Ex4() {
 }
 
 // ---------------------------------------------------------------------------
-// Example 5 â€” Estilo Fade
+// Example 5 — Estilo Fade
 // ---------------------------------------------------------------------------
 const EX5_CODE = `const animRef = React.useRef<SgStringAnimatorRef>(null);
 
@@ -232,7 +232,7 @@ function Ex5() {
 }
 
 // ---------------------------------------------------------------------------
-// Example 6 â€” Estilo Discard
+// Example 6 — Estilo Discard
 // ---------------------------------------------------------------------------
 const EX6_CODE = `const animRef = React.useRef<SgStringAnimatorRef>(null);
 
@@ -271,7 +271,7 @@ function Ex6() {
 }
 
 // ---------------------------------------------------------------------------
-// Example 7 â€” Estilo Matrix
+// Example 7 — Estilo Matrix
 // ---------------------------------------------------------------------------
 const EX7_CODE = `const animRef = React.useRef<SgStringAnimatorRef>(null);
 
@@ -312,7 +312,7 @@ function Ex7() {
 }
 
 // ---------------------------------------------------------------------------
-// Example 8 â€” autoStart: troca automatica ao mudar targetString
+// Example 8 — autoStart: troca automatica ao mudar targetString
 // ---------------------------------------------------------------------------
 const EX8_CODE = `const NAMES = ["LUCIANO", "MARTA", "PEDRO", "ANA", "SEEDGRID"];
 const [idx, setIdx] = React.useState(0);
@@ -373,7 +373,7 @@ function Ex8() {
 }
 
 // ---------------------------------------------------------------------------
-// Example 9 â€” Velocidades
+// Example 9 — Velocidades
 // ---------------------------------------------------------------------------
 const EX9_CODE = `{[
   { label: "Lento (velocity=10)",  velocity: 10 },

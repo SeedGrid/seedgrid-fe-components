@@ -5,7 +5,7 @@ function cn(...parts: Array<string | false | null | undefined>) {
 }
 
 export type SgRoller3DDigitProps = {
-  /** Current value to display â€” must be present in `items` */
+  /** Current value to display — must be present in `items` */
   value: string;
   /**
    * Ordered list of all possible values this roller can show.
@@ -13,7 +13,7 @@ export type SgRoller3DDigitProps = {
    * @default ["0","1","2","3","4","5","6","7","8","9"]
    */
   items?: string[];
-  /** Font size in pixels â€” controls overall scale */
+  /** Font size in pixels — controls overall scale */
   fontSize?: number;
   /** Transition duration in milliseconds */
   transitionMs?: number;
@@ -24,23 +24,23 @@ export type SgRoller3DDigitProps = {
 const DEFAULT_ITEMS = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
 /**
- * SgRoller3DDigit â€” a vertical drum/roller that animates between values.
+ * SgRoller3DDigit — a vertical drum/roller that animates between values.
  *
  * Renders a scrolling strip of items and smoothly transitions to the
  * position of `value` in the `items` list using a CSS transform.
  * Works with digits, letters, padded numbers or any custom strings.
  *
  * @example
- * // Digit roller (default 0â€“9)
+ * // Digit roller (default 0–9)
  * <SgRoller3DDigit value="7" fontSize={32} />
  *
  * @example
- * // Padded time roller (e.g. minutes 00â€“59)
+ * // Padded time roller (e.g. minutes 00–59)
  * const MINUTES = Array.from({ length: 60 }, (_, i) => String(i).padStart(2, "0"));
  * <SgRoller3DDigit value="42" items={MINUTES} fontSize={22} />
  *
  * @example
- * // Letter roller (Aâ€“Z) â€” animate names character by character
+ * // Letter roller (A–Z) — animate names character by character
  * const ALPHA = Array.from("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
  * <SgRoller3DDigit value="M" items={ALPHA} fontSize={32} />
  */

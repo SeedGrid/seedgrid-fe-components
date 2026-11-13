@@ -9911,7 +9911,7 @@
       "name": "fontSize",
       "type": "number",
       "required": false,
-      "description": "Font size in pixels â€” controls overall scale"
+      "description": "Font size in pixels — controls overall scale"
     },
     {
       "name": "items",
@@ -9929,7 +9929,7 @@
       "name": "value",
       "type": "string",
       "required": true,
-      "description": "Current value to display â€” must be present in `items`"
+      "description": "Current value to display — must be present in `items`"
     }
   ],
   "SgScreen": [

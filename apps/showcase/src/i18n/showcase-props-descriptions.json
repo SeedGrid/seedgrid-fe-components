@@ -2633,7 +2633,7 @@
     "es": "Personalización visual.",
     "fr": "Personnalisation visuelle."
   },
-  "CustomizaÃ§Ã£o visual.": {
+  "Customização visual.": {
     "pt": "Personalização visual.",
     "en": "Visual customization.",
     "es": "Personalización visual.",
@@ -2849,7 +2849,7 @@
     "es": "Clases CSS adicionales en el wrapper externo.",
     "fr": "Classes CSS supplémentaires sur le wrapper externe."
   },
-  "Fallback quando value estÃ¡ vazio.": {
+  "Fallback quando value está vazio.": {
     "pt": "Fallback quando value está vazio.",
     "en": "Fallback when value is empty.",
     "es": "Valor alternativo cuando value está vacío.",
@@ -3239,7 +3239,7 @@
     "es": "Nombre del evento, lista de nombres, \"prefijo.*\" o \"*\".",
     "fr": "Nom de l'événement, liste de noms, \"préfixe.*\" ou \"*\"."
   },
-  "NÃ­vel de correÃ§Ã£o de erro.": {
+  "Nível de correção de erro.": {
     "pt": "Nível de correção de erro.",
     "en": "Error correction level.",
     "es": "Nivel de corrección de errores.",
