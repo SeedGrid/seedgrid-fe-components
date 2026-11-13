@@ -280,7 +280,19 @@ export function SgCard(props: Readonly<SgCardProps>) {
     if (!el) return;
     const r = el.getBoundingClientRect();
     if (r.width === 0 && r.height === 0) return;
-    const off = r.right <= 0 || r.bottom <= 0 || r.left >= window.innerWidth || r.top >= window.innerHeight;
+    // Horizontal: contra a largura da janela. Vertical: so "acima do inicio do conteudo" (a rolagem pode
+    // esconder legitimamente um cartao abaixo da dobra; abaixo nunca e "fora", o conteudo cresce).
+    let scrollTop = window.scrollY || 0;
+    let containerTop = 0;
+    for (let p: HTMLElement | null = el.parentElement; p; p = p.parentElement) {
+      const oy = window.getComputedStyle(p).overflowY;
+      if (oy === "auto" || oy === "scroll") {
+        scrollTop = p.scrollTop;
+        containerTop = p.getBoundingClientRect().top;
+        break;
+      }
+    }
+    const off = r.right <= 0 || r.left >= window.innerWidth || r.bottom - containerTop + scrollTop <= 0;
     const dx = defaultPosition?.x ?? 0;
     const dy = defaultPosition?.y ?? 0;
     if (off && (dragPositionRef.current.x !== dx || dragPositionRef.current.y !== dy)) {

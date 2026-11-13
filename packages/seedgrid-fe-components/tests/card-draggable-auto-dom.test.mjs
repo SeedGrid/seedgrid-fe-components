@@ -68,6 +68,8 @@ async function transformOf(Comp, props, narrow, rect) {
 
 const inside = { left: 100, top: 100, width: 200, height: 100 };
 const outside = { left: 5000, top: 100, width: 200, height: 100 };
+const belowFold = { left: 100, top: 5000, width: 200, height: 100 };
+const aboveContent = { left: 100, top: -500, width: 200, height: 100 };
 
 for (const [name, Comp, props] of [
   ["SgClock", SgClock, clockProps],
@@ -96,6 +98,18 @@ for (const [name, Comp, props] of [
 
   test(`${name}: posicao salva que deixa o cartao fora da viewport e descartada`, async () => {
     const r = await transformOf(Comp, props, false, outside);
+    assert.equal(r.transform, "");
+  });
+
+  test(`${name}: cartao abaixo da dobra (rolagem) mantem a posicao salva`, async () => {
+    const r = await transformOf(Comp, props, false, belowFold);
+    assert.match(r.transform, /translate3d\(50px, 20px, 0\)/);
+    // a chave salva continua com a posicao (nao e sobrescrita por {0,0} na hidratacao)
+    assert.equal(r.stored, JSON.stringify({ x: 50, y: 20 }));
+  });
+
+  test(`${name}: cartao acima do inicio do conteudo descarta a posicao salva`, async () => {
+    const r = await transformOf(Comp, props, false, aboveContent);
     assert.equal(r.transform, "");
   });
 }
