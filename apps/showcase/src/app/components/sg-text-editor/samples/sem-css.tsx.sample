@@ -2,7 +2,7 @@ import React from "react";
 import { SgTextEditor } from "@seedgrid/fe-components";
 
 export default function Example() {
-  const [htmlBody, setHtmlBody] = React.useState("<p>Editor without CSS</p>");
+  const [htmlBody, setHtmlBody] = React.useState("<p>SgTextEditor</p>");
 
   return (
     <SgTextEditor

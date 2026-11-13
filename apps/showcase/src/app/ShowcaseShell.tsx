@@ -412,10 +412,10 @@ const COMPONENT_HINT_TEXTS_BY_SLUG: Record<string, Partial<Record<ShowcaseLocale
     es: "Campo de busqueda que envuelve SgInputText con debounce (sin rxjs): onChange inmediato y onSearchChange tras el debounce, con trim y gate por minChars."
   },
   "sg-dock-menu": {
-    "pt-BR": "Dock estilo maços com posições, drag and drop, badges, labels e magnify.",
-    "pt-PT": "Dock estilo maços com posições, drag and drop, badges, labels e magnify.",
+    "pt-BR": "Dock estilo macOS com posições, arrastar e soltar, badges, labels e magnify.",
+    "pt-PT": "Dock estilo macOS com posições, arrastar e soltar, badges, labels e magnify.",
     "en-US": "macOS-style dock with positions, drag and drop, badges, labels, and magnify.",
-    es: "Dock estilo macOS con posiciones, drag and drop, badges, labels y magnify."
+    es: "Dock estilo macOS con posiciones, arrastrar y soltar, badges, labels y magnify."
   },
   "sg-dock-screen": {
     "pt-BR": "Componente de conveniência que combina SgScreen + SgDockLayout no mesmo root.",
@@ -472,16 +472,16 @@ const COMPONENT_HINT_TEXTS_BY_SLUG: Record<string, Partial<Record<ShowcaseLocale
     es: "Grupo de checkboxes con selección multiple, check all, estilos highlight, iconos e integración con React Hook Form."
   },
   "sg-order-list": {
-    "pt-BR": "Lista ordenavel com seleção, botões de movimento e drag and drop.",
-    "pt-PT": "Lista ordenavel com seleção, botões de movimento e drag and drop.",
+    "pt-BR": "Lista ordenável com seleção, botões de movimento e arrastar e soltar.",
+    "pt-PT": "Lista ordenável com seleção, botões de movimento e arrastar e soltar.",
     "en-US": "Sortable list with selection, move controls, and drag and drop.",
-    es: "Lista ordenable con selección, controles de movimiento y drag and drop."
+    es: "Lista ordenable con selección, controles de movimiento y arrastrar y soltar."
   },
   "sg-pick-list": {
-    "pt-BR": "PickList para mover itens entre listas com filtros, controles e drag and drop.",
-    "pt-PT": "PickList para mover itens entre listas com filtros, controlos e drag and drop.",
+    "pt-BR": "PickList para mover itens entre listas com filtros, controles e arrastar e soltar.",
+    "pt-PT": "PickList para mover itens entre listas com filtros, controlos e arrastar e soltar.",
     "en-US": "PickList to move items between lists with filters, controls, and drag and drop.",
-    es: "PickList para mover items entre listas con filtros, controles y drag and drop."
+    es: "PickList para mover items entre listas con filtros, controles y arrastrar y soltar."
   },
   "sg-datatable": {
     "pt-BR": "Datatable com ordenação, filtros por coluna, paginação, seleção de linhas e templates customizados.",

@@ -84,9 +84,9 @@ export default function SgTextEditorPage() {
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({ deps: [i18n.locale] });
   const [htmlBody, setHtmlBody] = React.useState<string>("<p><strong>SeedGrid</strong> editor</p>");
   const [cssText, setCssText] = React.useState<string>("body { font-family: Arial; }");
-  const [minimalBody, setMinimalBody] = React.useState<string>("<p>Editor without CSS</p>");
-  const [radiusBody, setRadiusBody] = React.useState<string>("<p>Editor with custom border radius</p>");
-  const [controlledBody, setControlledBody] = React.useState<string>("<p>Valor controlado pelo estado da página</p>");
+  const [minimalBody, setMinimalBody] = React.useState<string>("<p>SgTextEditor</p>");
+  const [radiusBody, setRadiusBody] = React.useState<string>("<p>SgTextEditor</p>");
+  const [controlledBody, setControlledBody] = React.useState<string>("<p>valueHtml</p>");
   const [fileCss, setFileCss] = React.useState<string>("p { line-height: 1.5; }");
   const [fileInfo, setFileInfo] = React.useState<string>("");
   const [sent, setSent] = React.useState<string>("");

@@ -507,7 +507,7 @@ export default function SgFloatActionButtonPage() {
         description={t(i18n, "showcase.component.fab.sections.activeIcon.description")}
       >
         <DemoBox height="h-72" className="flex items-end justify-center">
-          <p className="absolute top-2 left-3 text-xs text-muted-foreground font-medium">activeIcon changes when open</p>
+          <p className="absolute top-2 left-3 text-xs text-muted-foreground font-medium">{t(i18n, "showcase.component.fab.labels.activeIconHint")}</p>
           <SgFloatActionButton
             absolute
             position="center-bottom"

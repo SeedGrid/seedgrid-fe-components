@@ -7,8 +7,8 @@ import {
   type SgRealtimeEvent
 } from "@seedgrid/fe-components";
 
-// WebSocket de DEMONSTRACAO no papel do SeedGrid Pulse: nao toca a rede.
-// Na aplicacao real, sem `connectOptions`: o provider conecta no Pulse de verdade.
+// WebSocket de DEMONSTRAÇÃO no papel do SeedGrid Pulse: não toca a rede.
+// Na aplicação real, sem `connectOptions`: o provider conecta no Pulse de verdade.
 class DemoPulseSocket {
   static current: DemoPulseSocket | null = null;
   readyState = 0;
@@ -61,7 +61,7 @@ class DemoPulseSocket {
   }
 }
 
-// Na aplicacao real o provider chama a BFF (`/api/realtime/connect`); aqui o token e fixo.
+// Na aplicação real o provider chama a BFF (`/api/realtime/connect`); aqui o token é fixo.
 const demoToken = async () => ({
   enabled: true,
   token: "pct_demo",

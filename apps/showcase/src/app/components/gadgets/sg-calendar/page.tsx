@@ -41,7 +41,7 @@ function BasicCalendarExample() {
       locale="pt-BR"
       defaultValue="2026-03-10"
       defaultViewDate="2026-03-01"
-      cardTitle="Calendario base"
+      cardTitle="Calendário base"
       cardProps={{ id: "showcase-calendar-basic", dragPersistKey: "showcase-calendar-basic" }}
     />
   );
@@ -132,7 +132,7 @@ export default function SgCalendarPage() {
       { prop: "enabled", type: "boolean", defaultValue: "true", description: t(i18n, "showcase.component.calendar.sections.enabled.description") },
       { prop: "showTodayShortcut", type: "boolean", defaultValue: "true", description: t(i18n, `${K}.propsTodayShortcut`) },
       { prop: "className / style", type: "string / CSSProperties", defaultValue: "-", description: t(i18n, `${K}.propsClassStyle`) },
-      { prop: "cardTitle / cardProps", type: 'ReactNode / Omit<SgCardProps, "children" | "title">', defaultValue: '"Calendar/Calendario" / -', description: t(i18n, `${K}.propsCard`) }
+      { prop: "cardTitle / cardProps", type: 'ReactNode / Omit<SgCardProps, "children" | "title">', defaultValue: '"Calendar/Calendário" / -', description: t(i18n, `${K}.propsCard`) }
     ],
     [i18n]
   );

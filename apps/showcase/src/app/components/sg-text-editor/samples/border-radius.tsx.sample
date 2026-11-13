@@ -2,7 +2,7 @@ import React from "react";
 import { SgTextEditor } from "@seedgrid/fe-components";
 
 export default function Example() {
-  const [radiusBody, setRadiusBody] = React.useState("<p>Editor with custom border radius</p>");
+  const [radiusBody, setRadiusBody] = React.useState("<p>SgTextEditor</p>");
   const [cssText, setCssText] = React.useState("body { font-family: Arial; }");
   const onSave = (file: File) => console.log(file.name);
 

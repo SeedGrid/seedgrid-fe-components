@@ -6,7 +6,7 @@ import {
   useSgRealtimeStatus
 } from "@seedgrid/fe-components";
 
-// WebSocket de DEMONSTRACAO no papel do SeedGrid Pulse: nao toca a rede.
+// WebSocket de DEMONSTRAÇÃO no papel do SeedGrid Pulse: não toca a rede.
 class DemoPulseSocket {
   static current: DemoPulseSocket | null = null;
   readyState = 0;

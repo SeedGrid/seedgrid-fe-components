@@ -143,7 +143,7 @@ export default function SgEnvironmentProviderPage() {
 
       <Section
         title="Playground"
-        description="Simule namespace e scope para visualizar a chave final de persistencia."
+        description="Simule namespace e scope para visualizar a chave final de persistência."
       >
         <SgPlayground
           title="SgEnvironmentProvider Playground"

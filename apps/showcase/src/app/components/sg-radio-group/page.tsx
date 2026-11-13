@@ -103,14 +103,14 @@ type RadioGroupTexts = {
 
 const RADIO_GROUP_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", RadioGroupTexts> = {
   "pt-BR": {
-    subtitle: "Radio button group with horizontal/vertical orientation, icons, and React Hook Form integration.",
-    examplesLabel: "Examples",
+    subtitle: "Grupo de radio buttons com orientação horizontal/vertical, ícones e integração com React Hook Form.",
+    examplesLabel: "Exemplos",
     propsLinkLabel: "Referência de Props",
     propsTitle: "Referência de Props",
     propsColProp: "Prop",
     propsColType: "Tipo",
-    propsColDefault: "Default",
-    propsColDescription: "Description",
+    propsColDefault: "Padrão",
+    propsColDescription: "Descrição",
     playgroundTitle: "SgRadioGroup Playground",
     sectionTitles: [
       "1) Básico",
@@ -131,14 +131,14 @@ const RADIO_GROUP_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", Radio
     ]
   },
   "pt-PT": {
-    subtitle: "Radio button group with horizontal/vertical orientation, icons, and React Hook Form integration.",
-    examplesLabel: "Examples",
+    subtitle: "Grupo de radio buttons com orientação horizontal/vertical, ícones e integração com React Hook Form.",
+    examplesLabel: "Exemplos",
     propsLinkLabel: "Referência de Props",
     propsTitle: "Referência de Props",
     propsColProp: "Prop",
     propsColType: "Tipo",
-    propsColDefault: "Default",
-    propsColDescription: "Description",
+    propsColDefault: "Padrão",
+    propsColDescription: "Descrição",
     playgroundTitle: "SgRadioGroup Playground",
     sectionTitles: [
       "1) Básico",
@@ -187,14 +187,14 @@ const RADIO_GROUP_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", Radio
     ]
   },
   es: {
-    subtitle: "Grupo de radio buttons con orientacion horizontal/vertical, iconos, opcion de limpiar e integracion con React Hook Form.",
+    subtitle: "Grupo de radio buttons con orientación horizontal/vertical, íconos, opción de limpiar e integración con React Hook Form.",
     examplesLabel: "Ejemplos",
-    propsLinkLabel: "Referência de Props",
-    propsTitle: "Referência de Props",
+    propsLinkLabel: "Referencia de Props",
+    propsTitle: "Referencia de Props",
     propsColProp: "Prop",
     propsColType: "Tipo",
     propsColDefault: "Predeterminado",
-    propsColDescription: "Descripcion",
+    propsColDescription: "Descripción",
     playgroundTitle: "SgRadioGroup Playground",
     sectionTitles: [
       "1) Básico",

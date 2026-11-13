@@ -2,7 +2,7 @@ import React from "react";
 import { SgButton, SgStack, SgTextEditor } from "@seedgrid/fe-components";
 
 export default function Example() {
-  const [controlledBody, setControlledBody] = React.useState("<p>Valor controlado pelo estado da página</p>");
+  const [controlledBody, setControlledBody] = React.useState("<p>valueHtml</p>");
 
   return (
     <SgStack gap={8} align="start">

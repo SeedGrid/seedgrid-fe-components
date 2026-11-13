@@ -31,6 +31,7 @@ function CodeBlock(props: { sampleFile: string }) {
 }
 
 function BasicCounterDemo() {
+  const i18n = useShowcaseI18n();
   const { value, setValue, clear, hydrated } = useSgPersistentState({
     baseKey: "showcase:counter-demo",
     defaultValue: 0
@@ -41,7 +42,7 @@ function BasicCounterDemo() {
       <div className="rounded-lg border border-border bg-foreground/5 p-4 text-center">
         <div className="text-4xl font-mono font-bold">{hydrated ? value : "..."}</div>
         <div className="mt-1 text-xs text-muted-foreground">
-          {hydrated ? "persistido no localStorage" : "carregando..."}
+          {hydrated ? t(i18n, "showcase.hook.persistentState.demo.persisted") : t(i18n, "showcase.hook.persistentState.demo.loading")}
         </div>
       </div>
       <div className="flex gap-2 justify-center">
@@ -50,7 +51,7 @@ function BasicCounterDemo() {
         <SgButton label="Reset" appearance="outline" severity="danger" onClick={() => clear()} />
       </div>
       <p className="text-xs text-muted-foreground text-center">
-        Recarregue a pagina — o valor persiste no localStorage.
+        {t(i18n, "showcase.hook.persistentState.demo.reloadHint")}
       </p>
     </div>
   );

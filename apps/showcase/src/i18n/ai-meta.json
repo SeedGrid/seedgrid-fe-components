@@ -236,19 +236,22 @@
     "en-US": "Additional CSS style for the outer wrapper.",
     "pt-PT": "Estilo CSS adicional para o wrapper externo.",
     "es": "Estilo CSS adicional para el wrapper externo.",
-    "fr": "Style CSS supplémentaire pour le wrapper externe."
+    "fr": "Style CSS supplémentaire pour le wrapper externe.",
+    "pt-BR": "Estilo CSS adicional para o wrapper externo."
   },
   "Additional inline styles on outer wrapper.": {
     "en-US": "Additional inline styles on outer wrapper.",
     "pt-PT": "Estilos inline adicionais no wrapper externo.",
     "es": "Estilos inline adicionales en el wrapper externo.",
-    "fr": "Styles inline supplémentaires sur le wrapper externe."
+    "fr": "Styles inline supplémentaires sur le wrapper externe.",
+    "pt-BR": "Estilos inline adicionais no wrapper externo."
   },
   "Additional style on container.": {
     "en-US": "Additional style on container.",
     "pt-PT": "Estilo adicional no contentor.",
     "es": "Estilo adicional en el contenedor.",
-    "fr": "Style supplémentaire sur le conteneur."
+    "fr": "Style supplémentaire sur le conteneur.",
+    "pt-BR": "Estilo adicional no contêiner."
   },
   "Adiciona um item inicial com icone de home.": {
     "en-US": "Adds an initial item with a home icon.",
@@ -560,7 +563,8 @@
     "en-US": "Applies a subtle skew to mimic classic LED displays.",
     "pt-PT": "Aplica uma inclinação subtil para imitar os displays LED clássicos.",
     "es": "Aplica una inclinación sutil para imitar los displays LED clásicos.",
-    "fr": "Applique une légère inclinaison pour imiter les affichages LED classiques."
+    "fr": "Applique une légère inclinaison pour imiter les affichages LED classiques.",
+    "pt-BR": "Aplica uma leve inclinação para imitar os displays LED clássicos."
   },
   "Apresentar grupos de cards ou imagens em navegacao sequencial.": {
     "en-US": "Present groups of cards or images in sequential navigation.",
@@ -772,7 +776,8 @@
     "en-US": "Auto play interval in milliseconds",
     "pt-PT": "Intervalo de reprodução automática em milissegundos",
     "es": "Intervalo de reproducción automática en milisegundos",
-    "fr": "Intervalle de lecture automatique en millisecondes"
+    "fr": "Intervalle de lecture automatique en millisecondes",
+    "pt-BR": "Intervalo de reprodução automática em milissegundos"
   },
   "Avisar o usuario logado de algo que terminou ou aconteceu (relatorio pronto, backup, importacao, convite) com historico e contador de nao lidas.": {
     "en-US": "Notify the logged-in user of something that finished or happened (report ready, backup, import, invitation) with history and an unread counter.",
@@ -793,13 +798,14 @@
     "pt-PT": "Avisos em tempo real para o utilizador autenticado através do SeedGrid Pulse: pede o token de ligação ao backend (que o emite para o utilizador da sessão), liga-se diretamente ao Pulse, volta a ligar-se sozinho, pára quando a credencial é revogada e expõe o estado para o ecrã decidir entre aviso e polling de reserva.",
     "es": "Avisos en tiempo real para el usuario autenticado mediante SeedGrid Pulse: solicita el token de conexión al backend (que lo emite para el usuario de la sesión), se conecta directamente a Pulse, se reconecta solo, se detiene cuando la credencial es revocada y expone el estado para que la pantalla decida entre aviso y polling de respaldo.",
     "fr": "Avis en temps réel pour l'utilisateur connecté via SeedGrid Pulse : demande le jeton de connexion au backend (qui l'émet pour l'utilisateur de la session), se connecte directement à Pulse, se reconnecte seul, s'arrête lorsque l'identifiant est révoqué et expose l'état pour que l'écran choisisse entre avis et polling de secours.",
-    "pt-BR": "Avisos em tempo real para o usuário logado pelo SeedGrid Pulse: pede o token de conexão ao backend (que o emite para o usuário da sessão), conecta direto no Pulse, reconecta sozinho, para quando a credencial e revogada e expoe o status para a tela decidir entre aviso e polling de reserva."
+    "pt-BR": "Avisos em tempo real para o usuário logado pelo SeedGrid Pulse: pede o token de conexão ao backend (que o emite para o usuário da sessão), conecta direto no Pulse, reconecta sozinho, para quando a credencial e revogada e expõe o status para a tela decidir entre aviso e polling de reserva."
   },
   "Background color": {
     "en-US": "Background color",
     "pt-PT": "Cor de fundo",
     "es": "Color de fondo",
-    "fr": "Couleur d'arrière-plan"
+    "fr": "Couleur d'arrière-plan",
+    "pt-BR": "Cor de fundo"
   },
   "Badges independentes sem elemento base; nesses casos prefira SgBadge.": {
     "en-US": "Standalone badges without a base element; in these cases prefer SgBadge.",
@@ -917,25 +923,29 @@
     "en-US": "Border radius",
     "pt-PT": "Raio da borda",
     "es": "Radio del borde",
-    "fr": "Rayon de la bordure"
+    "fr": "Rayon de la bordure",
+    "pt-BR": "Raio da borda"
   },
   "Border radius in pixels.": {
     "en-US": "Border radius in pixels.",
     "pt-PT": "Raio da borda em píxeis.",
     "es": "Radio del borde en píxeles.",
-    "fr": "Rayon de la bordure en pixels."
+    "fr": "Rayon de la bordure en pixels.",
+    "pt-BR": "Raio da borda em pixels."
   },
   "Border radius of the matrix container in pixels.": {
     "en-US": "Border radius of the matrix container in pixels.",
     "pt-PT": "Raio da borda do contentor da matriz em píxeis.",
     "es": "Radio del borde del contenedor de la matriz en píxeles.",
-    "fr": "Rayon de bordure du conteneur de la matrice en pixels."
+    "fr": "Rayon de bordure du conteneur de la matrice en pixels.",
+    "pt-BR": "Raio da borda do contêiner da matriz em pixels."
   },
   "Border radius of the panel in pixels.": {
     "en-US": "Border radius of the panel in pixels.",
     "pt-PT": "Raio da borda do painel em píxeis.",
     "es": "Radio del borde del panel en píxeles.",
-    "fr": "Rayon de bordure du panneau en pixels."
+    "fr": "Rayon de bordure du panneau en pixels.",
+    "pt-BR": "Raio da borda do painel em pixels."
   },
   "Botao compacto para toolbars com icone, label opcional, hint, loading e severidade visual.": {
     "en-US": "Compact button for toolbars with icon, optional label, hint, loading, and visual severity.",
@@ -1010,7 +1020,7 @@
     "pt-PT": "Cabeçalho da coluna do checkbox principal -- só é desenhado quando `tracks` também está\npresente (é o cabeçalho de colunas como um todo que fica ambíguo com 2+ controlos por linha,\nnão o checkbox sozinho).",
     "es": "Encabezado de la columna del checkbox principal -- solo se dibuja cuando `tracks` también está\npresente (es el encabezado de columnas en su conjunto el que resulta ambiguo con 2+ controles por fila,\nno el checkbox por sí solo).",
     "fr": "En-tête de la colonne du checkbox principal -- affiché uniquement lorsque `tracks` est aussi\nprésent (c'est l'en-tête de colonnes dans son ensemble qui devient ambigu avec 2+ contrôles par ligne,\npas le checkbox seul).",
-    "pt-BR": "Cabeçalho da coluna do checkbox principal -- so' e' desenhado quando `tracks` também esta'\npresente (e' o cabeçalho de colunas como um todo que fica ambíguo com 2+ controles por linha,\nnão o checkbox sozinho)."
+    "pt-BR": "Cabeçalho da coluna do checkbox principal -- só é desenhado quando `tracks` também está\npresente (é o cabeçalho de colunas como um todo que fica ambíguo com 2+ controles por linha,\nnão o checkbox sozinho)."
   },
   "Cadastros onde a entidade pode ser pessoa fisica ou juridica.": {
     "en-US": "Registrations where the entity may be an individual or a legal entity.",
@@ -1236,13 +1246,15 @@
     "en-US": "Callback fired when the badge is clicked.",
     "pt-PT": "Callback disparado quando o badge é clicado.",
     "es": "Callback disparado cuando se hace clic en el badge.",
-    "fr": "Callback déclenché lorsque l'on clique sur le badge."
+    "fr": "Callback déclenché lorsque l'on clique sur le badge.",
+    "pt-BR": "Callback disparado quando o badge é clicado."
   },
   "Callback disparado quando o card e acionado.": {
     "en-US": "Callback fired when the card is triggered.",
     "pt-PT": "Callback disparado quando o card é acionado.",
     "es": "Callback disparado cuando se activa el card.",
-    "fr": "Callback déclenché lorsque le card est activé."
+    "fr": "Callback déclenché lorsque le card est activé.",
+    "pt-BR": "Callback disparado quando o card é acionado."
   },
   "Callback disparado quando o conjunto de paineis abertos muda.": {
     "en-US": "Callback fired when the set of open panels changes.",
@@ -1299,19 +1311,22 @@
     "en-US": "Callback when the whistle is closed.",
     "pt-PT": "Callback quando o whistle é fechado.",
     "es": "Callback cuando el whistle se cierra.",
-    "fr": "Callback lorsque le whistle est fermé."
+    "fr": "Callback lorsque le whistle est fermé.",
+    "pt-BR": "Callback quando o whistle é fechado."
   },
   "Callback when active index changes": {
     "en-US": "Callback when active index changes",
     "pt-PT": "Callback quando o índice ativo muda",
     "es": "Callback cuando cambia el índice activo",
-    "fr": "Callback lorsque l'index actif change"
+    "fr": "Callback lorsque l'index actif change",
+    "pt-BR": "Callback quando o índice ativo muda"
   },
   "Callback when hovering over stars": {
     "en-US": "Callback when hovering over stars",
     "pt-PT": "Callback ao passar o rato sobre as estrelas",
     "es": "Callback al pasar el cursor sobre las estrellas",
-    "fr": "Callback au survol des étoiles"
+    "fr": "Callback au survol des étoiles",
+    "pt-BR": "Callback ao passar o mouse sobre as estrelas"
   },
   "Camada visual usada quando o dock esta sobreposto.": {
     "en-US": "Visual layer used when the dock is overlaid.",
@@ -1338,7 +1353,7 @@
     "pt-PT": "Campo de pesquisa assistida com sugestões, fonte assíncrona, cache e seleção de item a partir de texto introduzido.",
     "es": "Campo de búsqueda asistida con sugerencias, fuente asíncrona, caché y selección de elemento a partir del texto escrito.",
     "fr": "Champ de recherche assistée avec suggestions, source asynchrone, cache et sélection d'un élément à partir du texte saisi.",
-    "pt-BR": "Campo de busca assistida com sugestões, fonte assincrona, cache e seleção de item a partir de texto digitado."
+    "pt-BR": "Campo de busca assistida com sugestões, fonte assíncrona, cache e seleção de item a partir de texto digitado."
   },
   "Campo de busca que embrulha o SgInputText com debounce sem dependencia externa: onChange imediato e onSearchChange disparado apos o debounce com o termo normalizado (trim + gate por minChars).": {
     "en-US": "Search field that wraps SgInputText with debounce and no external dependency: immediate onChange and onSearchChange fired after the debounce with the normalized term (trim + minChars gate).",
@@ -1380,7 +1395,7 @@
     "pt-PT": "Campo de seleção múltipla ao estilo select: trigger com chevron que passa a check ao abrir e dropdown com checkboxes que mantém a lista aberta.",
     "es": "Campo de selección múltiple al estilo select: trigger con chevron que se convierte en check al abrir y dropdown con checkboxes que mantiene la lista abierta.",
     "fr": "Champ de sélection multiple de style select : déclencheur avec chevron qui devient une coche à l'ouverture et menu déroulant avec cases à cocher qui garde la liste ouverte.",
-    "pt-BR": "Campo de seleção multipla no estilo select: trigger com chevron que vira check ao abrir e dropdown com checkboxes que mantem a lista aberta."
+    "pt-BR": "Campo de seleção múltipla no estilo select: trigger com chevron que vira check ao abrir e dropdown com checkboxes que mantem a lista aberta."
   },
   "Campo especializado para CEP e codigos postais com suporte a multiplos paises, mascaras e consulta opcional ao ViaCEP.": {
     "en-US": "Specialized field for CEP and postal codes with support for multiple countries, masks and optional ViaCEP lookup.",
@@ -1422,7 +1437,7 @@
     "pt-PT": "Campo especializado para palavra-passe com validações de política, alternância de visibilidade e indicação de robustez.",
     "es": "Campo especializado para contraseña con validaciones de política, alternancia de visibilidad e indicación de fortaleza.",
     "fr": "Champ spécialisé pour le mot de passe avec validations de politique, bascule de visibilité et indication de robustesse.",
-    "pt-BR": "Campo especializado para senha com validações de politica, alternância de visibilidade e indicação de forca."
+    "pt-BR": "Campo especializado para senha com validações de politica, alternância de visibilidade e indicação de força."
   },
   "Campo especializado para telefone com mascara, validacao de comprimento e integracao com formularios.": {
     "en-US": "Specialized phone field with mask, length validation and form integration.",
@@ -1518,13 +1533,14 @@
     "pt-PT": "Campos editáveis de formulário.",
     "es": "Campos editables de formulario.",
     "fr": "Champs de formulaire modifiables.",
-    "pt-BR": "Campos editaveis de formulário."
+    "pt-BR": "Campos editáveis de formulário."
   },
   "Campos editaveis e entrada de dados.": {
     "en-US": "Editable fields and data entry.",
     "pt-PT": "Campos editáveis e entrada de dados.",
     "es": "Campos editables y entrada de datos.",
-    "fr": "Champs modifiables et saisie de données."
+    "fr": "Champs modifiables et saisie de données.",
+    "pt-BR": "Campos editáveis e entrada de dados."
   },
   "Campos monetarios que exigem formatacao de moeda e simbolo visual.": {
     "en-US": "Monetary fields that require currency formatting and a visual symbol.",
@@ -1580,7 +1596,7 @@
     "pt-PT": "Campos que precisam de bloquear domínios temporários ou descartáveis.",
     "es": "Campos que necesitan bloquear dominios temporales o desechables.",
     "fr": "Champs devant bloquer les domaines temporaires ou jetables.",
-    "pt-BR": "Campos que precisam bloquear domínios temporários ou descartaveis."
+    "pt-BR": "Campos que precisam bloquear domínios temporários ou descartáveis."
   },
   "Campos relacionais em formularios CRUD.": {
     "en-US": "Relational fields in CRUD forms.",
@@ -1655,7 +1671,7 @@
     "pt-PT": "Captura de dados ou ações por si só; nesses casos prefira componentes específicos.",
     "es": "Captura de datos o acciones por sí solo; en esos casos prefiera componentes específicos.",
     "fr": "Saisie de données ou actions à lui seul ; dans ces cas, préférez des composants spécifiques.",
-    "pt-BR": "Captura de dados ou ações por si so; nesses casos prefira componentes específicos."
+    "pt-BR": "Captura de dados ou ações por si só; nesses casos prefira componentes específicos."
   },
   "Captura de dados; nesses casos prefira componentes de input.": {
     "en-US": "Data capture; in those cases prefer input components.",
@@ -1880,7 +1896,7 @@
     "pt-PT": "Chamado (além de onPage) quando o deslocamento infinito pede a página seguinte.",
     "es": "Llamado (además de onPage) cuando el desplazamiento infinito solicita la siguiente página.",
     "fr": "Appelé (en plus de onPage) lorsque le défilement infini demande la page suivante.",
-    "pt-BR": "Chamado (além de onPage) quando a rolagem infinita pede a proxima página."
+    "pt-BR": "Chamado (além de onPage) quando a rolagem infinita pede a próxima página."
   },
   "Chamado a cada aviso que casa.": {
     "en-US": "Called on every matching notice.",
@@ -1919,7 +1935,7 @@
     "pt-PT": "Chave base para persistência (será isolada por namespace e âmbito).",
     "es": "Clave base para persistencia (será aislada por namespace y alcance).",
     "fr": "Clé de base pour la persistance (sera isolée par namespace et portée).",
-    "pt-BR": "Chave base para persistência (sera isolada por namespace e escopo)."
+    "pt-BR": "Chave base para persistência (será isolada por namespace e escopo)."
   },
   "Chaves de i18n do texto da area vazia (um arquivo / varios).": {
     "en-US": "i18n keys for the empty area text (one file / several).",
@@ -2053,25 +2069,29 @@
     "en-US": "Color for empty stars",
     "pt-PT": "Cor das estrelas vazias",
     "es": "Color de las estrellas vacías",
-    "fr": "Couleur des étoiles vides"
+    "fr": "Couleur des étoiles vides",
+    "pt-BR": "Cor das estrelas vazias"
   },
   "Color for filled stars": {
     "en-US": "Color for filled stars",
     "pt-PT": "Cor das estrelas preenchidas",
     "es": "Color de las estrellas rellenas",
-    "fr": "Couleur des étoiles remplies"
+    "fr": "Couleur des étoiles remplies",
+    "pt-BR": "Cor das estrelas preenchidas"
   },
   "Color of inactive dots.": {
     "en-US": "Color of inactive dots.",
     "pt-PT": "Cor dos pontos inativos.",
     "es": "Color de los puntos inactivos.",
-    "fr": "Couleur des points inactifs."
+    "fr": "Couleur des points inactifs.",
+    "pt-BR": "Cor dos pontos inativos."
   },
   "Color of inactive segments.": {
     "en-US": "Color of inactive segments.",
     "pt-PT": "Cor dos segmentos inativos.",
     "es": "Color de los segmentos inactivos.",
-    "fr": "Couleur des segments inactifs."
+    "fr": "Couleur des segments inactifs.",
+    "pt-BR": "Cor dos segmentos inativos."
   },
   "Combinar anotacoes e faixas de alerta em instrumentos circulares.": {
     "en-US": "Combine annotations and alert ranges in circular instruments.",
@@ -2119,13 +2139,15 @@
     "en-US": "Component height in pixels.",
     "pt-PT": "Altura do componente em píxeis.",
     "es": "Altura del componente en píxeles.",
-    "fr": "Hauteur du composant en pixels."
+    "fr": "Hauteur du composant en pixels.",
+    "pt-BR": "Altura do componente em pixels."
   },
   "Component width in pixels. By default, derived from `size`.": {
     "en-US": "Component width in pixels. By default, derived from `size`.",
     "pt-PT": "Largura do componente em píxeis. Por predefinição, derivada de `size`.",
     "es": "Ancho del componente en píxeles. Por defecto, derivado de `size`.",
-    "fr": "Largeur du composant en pixels. Par défaut, dérivée de `size`."
+    "fr": "Largeur du composant en pixels. Par défaut, dérivée de `size`.",
+    "pt-BR": "Largura do componente em pixels. Por padrão, derivada de `size`."
   },
   "Componente de conveniencia que combina SgScreen e SgDockLayout em uma unica raiz estrutural.": {
     "en-US": "Convenience component that combines SgScreen and SgDockLayout into a single structural root.",
@@ -2201,7 +2223,7 @@
     "pt-PT": "Comportamento em ecrã estreito. Omitido (predefinição): cartões quando o contentor fica abaixo de 600 px, tabela acima; cards: força cartões em qualquer largura; scroll: força a tabela com deslocamento horizontal. Nos cartões mantêm-se a ordenação, a seleção, as ações, o rodapé e a paginação.",
     "es": "Comportamiento en pantalla estrecha. Omitido (por defecto): tarjetas cuando el contenedor queda por debajo de 600 px, tabla por encima; cards: fuerza tarjetas con cualquier ancho; scroll: fuerza la tabla con desplazamiento horizontal. En las tarjetas se mantienen la ordenación, la selección, las acciones, el pie y la paginación.",
     "fr": "Comportement sur écran étroit. Omis (par défaut) : cartes lorsque le conteneur passe sous 600 px, tableau au-dessus ; cards : force les cartes quelle que soit la largeur ; scroll : force le tableau avec défilement horizontal. Les cartes conservent le tri, la sélection, les actions, le pied de page et la pagination.",
-    "pt-BR": "Comportamento em tela estreita. Omitido (padrão): cartões quando o container fica abaixo de 600 px, tabela acima; cards: forca cartões em qualquer largura; scroll: forca a tabela com rolagem horizontal. Nos cartões mantem ordenação, seleção, ações, rodapé e paginação."
+    "pt-BR": "Comportamento em tela estreita. Omitido (padrão): cartões quando o container fica abaixo de 600 px, tabela acima; cards: força cartões em qualquer largura; scroll: força a tabela com rolagem horizontal. Nos cartões mantem ordenação, seleção, ações, rodapé e paginação."
   },
   "Comportamento HTML da acao dentro de formularios.": {
     "en-US": "HTML behavior of the action inside forms.",
@@ -2885,73 +2907,85 @@
     "en-US": "CSS font-family for the digit.",
     "pt-PT": "CSS font-family para o dígito.",
     "es": "CSS font-family para el dígito.",
-    "fr": "CSS font-family pour le chiffre."
+    "fr": "CSS font-family pour le chiffre.",
+    "pt-BR": "CSS font-family do dígito."
   },
   "Custom class name": {
     "en-US": "Custom class name",
     "pt-PT": "Nome de classe personalizado",
     "es": "Nombre de clase personalizado",
-    "fr": "Nom de classe personnalisé"
+    "fr": "Nom de classe personnalisé",
+    "pt-BR": "Nome de classe personalizado"
   },
   "Custom class name for container": {
     "en-US": "Custom class name for container",
     "pt-PT": "Nome de classe personalizado para o contentor",
     "es": "Nombre de clase personalizado para el contenedor",
-    "fr": "Nom de classe personnalisé pour le conteneur"
+    "fr": "Nom de classe personnalisé pour le conteneur",
+    "pt-BR": "Nome de classe personalizado para o contêiner"
   },
   "Custom class name for items": {
     "en-US": "Custom class name for items",
     "pt-PT": "Nome de classe personalizado para os itens",
     "es": "Nombre de clase personalizado para los elementos",
-    "fr": "Nom de classe personnalisé pour les éléments"
+    "fr": "Nom de classe personnalisé pour les éléments",
+    "pt-BR": "Nome de classe personalizado para os itens"
   },
   "Custom font family.": {
     "en-US": "Custom font family.",
     "pt-PT": "Família de tipos de letra personalizada.",
     "es": "Familia de fuentes personalizada.",
-    "fr": "Famille de police personnalisée."
+    "fr": "Famille de police personnalisée.",
+    "pt-BR": "Família de fonte personalizada."
   },
   "Custom icon for cancel button": {
     "en-US": "Custom icon for cancel button",
     "pt-PT": "Ícone personalizado para o botão de cancelar",
     "es": "Icono personalizado para el botón de cancelar",
-    "fr": "Icône personnalisée pour le bouton d'annulation"
+    "fr": "Icône personnalisée pour le bouton d'annulation",
+    "pt-BR": "Ícone personalizado para o botão de cancelar"
   },
   "Custom icon for empty state": {
     "en-US": "Custom icon for empty state",
     "pt-PT": "Ícone personalizado para o estado vazio",
     "es": "Icono personalizado para el estado vacío",
-    "fr": "Icône personnalisée pour l'état vide"
+    "fr": "Icône personnalisée pour l'état vide",
+    "pt-BR": "Ícone personalizado para o estado vazio"
   },
   "Custom icon for filled state": {
     "en-US": "Custom icon for filled state",
     "pt-PT": "Ícone personalizado para o estado preenchido",
     "es": "Icono personalizado para el estado relleno",
-    "fr": "Icône personnalisée pour l'état rempli"
+    "fr": "Icône personnalisée pour l'état rempli",
+    "pt-BR": "Ícone personalizado para o estado preenchido"
   },
   "Custom inline style": {
     "en-US": "Custom inline style",
     "pt-PT": "Estilo inline personalizado",
     "es": "Estilo inline personalizado",
-    "fr": "Style inline personnalisé"
+    "fr": "Style inline personnalisé",
+    "pt-BR": "Estilo inline personalizado"
   },
   "Custom inline style for container": {
     "en-US": "Custom inline style for container",
     "pt-PT": "Estilo inline personalizado para o contentor",
     "es": "Estilo en línea personalizado para el contenedor",
-    "fr": "Style en ligne personnalisé pour le conteneur"
+    "fr": "Style en ligne personnalisé pour le conteneur",
+    "pt-BR": "Estilo inline personalizado para o contêiner"
   },
   "Custom render for navigation buttons": {
     "en-US": "Custom render for navigation buttons",
     "pt-PT": "Renderização personalizada para os botões de navegação",
     "es": "Renderizado personalizado para los botones de navegación",
-    "fr": "Rendu personnalisé pour les boutons de navigation"
+    "fr": "Rendu personnalisé pour les boutons de navigation",
+    "pt-BR": "Renderização personalizada dos botões de navegação"
   },
   "Custom style": {
     "en-US": "Custom style",
     "pt-PT": "Estilo personalizado",
     "es": "Estilo personalizado",
-    "fr": "Style personnalisé"
+    "fr": "Style personnalisé",
+    "pt-BR": "Estilo personalizado"
   },
   "Dados de negocio que vem do servidor; use useQuery ou hooks de data-fetching.": {
     "en-US": "Business data that comes from the server; use useQuery or data-fetching hooks.",
@@ -3060,7 +3094,7 @@
     "pt-PT": "Decidir permissão ou autenticação: o status só diz respeito à ligação ao Pulse.",
     "es": "Decidir permiso o autenticación: el status solo informa de la conexión con Pulse.",
     "fr": "Décider d'une permission ou d'une authentification : le status ne concerne que la connexion à Pulse.",
-    "pt-BR": "Decidir permissão ou autenticacao: o status so diz da conexão com o Pulse."
+    "pt-BR": "Decidir permissão ou autenticação: o status só diz da conexão com o Pulse."
   },
   "Declaracao de uma pagina individual dentro de um SgPageControl, com titulo, hint, icone e conteudo associado.": {
     "en-US": "Declaration of an individual page inside an SgPageControl, with title, hint, icon and associated content.",
@@ -3188,7 +3222,7 @@
     "pt-PT": "Desativa o avanço de forma declarativa: o botão Seguinte fica desativado e o stepper deixa de oferecer as etapas seguintes. Utilize quando o bloqueio JÁ é conhecido (ex.: uma verificação assíncrona já determinou que a etapa não pode avançar) — onBeforeNext/validateStep só atuam no clique e deixam o botão com aparência de clicável. Não afeta o botão da última etapa; para isso utilize onBeforeFinish.",
     "es": "Deshabilita el avance de forma declarativa: el botón Siguiente queda deshabilitado y el stepper deja de ofrecer los pasos siguientes. Úselo cuando el bloqueo YA es conocido (ej.: una comprobación asíncrona ya determinó que el paso no puede avanzar) — onBeforeNext/validateStep solo actúan al hacer clic y dejan el botón con apariencia de clicable. No afecta al botón del último paso; para eso use onBeforeFinish.",
     "fr": "Désactive l'avancement de façon déclarative : le bouton Suivant est désactivé et le stepper cesse de proposer les étapes suivantes. À utiliser quand le blocage est DÉJÀ connu (ex. : une vérification asynchrone a déjà établi que l'étape ne peut pas avancer) — onBeforeNext/validateStep n'agissent qu'au clic et laissent le bouton avec l'apparence d'un bouton cliquable. N'affecte pas le bouton de la dernière étape ; pour cela, utilisez onBeforeFinish.",
-    "pt-BR": "Desabilita o avanço de forma declarativa: o botão Próximo fica desabilitado e o stepper para de oferecer as etapas seguintes. Use quando o bloqueio JÁ e conhecido (ex.: uma checagem assincrona já resolveu que a etapa não pode avançar) — onBeforeNext/validateStep so agem no clique e deixam o botão com aparência de clicavel. Não afeta o botão da ultima etapa; para isso use onBeforeFinish."
+    "pt-BR": "Desabilita o avanço de forma declarativa: o botão Próximo fica desabilitado e o stepper para de oferecer as etapas seguintes. Use quando o bloqueio JÁ é conhecido (ex.: uma checagem assíncrona já resolveu que a etapa não pode avançar) — onBeforeNext/validateStep só agem no clique e deixam o botão com aparência de clicável. Não afeta o botão da última etapa; para isso use onBeforeFinish."
   },
   "Desabilita os tres combos (ano, recorte e fatia).": {
     "en-US": "Disables the three combos (year, slice type and part).",
@@ -3422,7 +3456,8 @@
     "en-US": "Display height in pixels.",
     "pt-PT": "Altura do display em píxeis.",
     "es": "Altura del display en píxeles.",
-    "fr": "Hauteur de l'affichage en pixels."
+    "fr": "Hauteur de l'affichage en pixels.",
+    "pt-BR": "Altura do display em pixels."
   },
   "Displays com estetica de painel digital ou matriz.": {
     "en-US": "Displays with a digital panel or matrix look.",
@@ -3481,21 +3516,22 @@
     "en-US": "Dot size in pixels.",
     "pt-PT": "Tamanho do ponto em píxeis.",
     "es": "Tamaño del punto en píxeles.",
-    "fr": "Taille du point en pixels."
+    "fr": "Taille du point en pixels.",
+    "pt-BR": "Tamanho do ponto em pixels."
   },
   "Duracao em milissegundos deste toast; tem PRIORIDADE sobre o host. Omitir NAO significa permanente: cai no `duration` do SgToaster/SgToastHost, cujo default e' 4000 (4s), igual ao par whistle/SgWhistleHost. Use 0 (ou negativo) para permanente, ate' o usuario fechar. Toast do tipo 'loading' nunca fecha sozinho, qualquer que seja o valor.": {
     "en-US": "Duration in milliseconds of this toast; it takes PRIORITY over the host. Omitting it does NOT mean permanent: it falls back to the `duration` of SgToaster/SgToastHost, whose default is 4000 (4s), same as the whistle/SgWhistleHost pair. Use 0 (or negative) for permanent, until the user closes it. A toast of type 'loading' never closes on its own, regardless of the value.",
     "pt-PT": "Duração em milissegundos deste toast; tem PRIORIDADE sobre o host. Omitir NÃO significa permanente: recorre ao `duration` do SgToaster/SgToastHost, cujo valor predefinido é 4000 (4s), tal como o par whistle/SgWhistleHost. Use 0 (ou negativo) para permanente, até o utilizador fechar. Um toast do tipo 'loading' nunca fecha sozinho, qualquer que seja o valor.",
     "es": "Duración en milisegundos de este toast; tiene PRIORIDAD sobre el host. Omitir NO significa permanente: recurre al `duration` de SgToaster/SgToastHost, cuyo valor por defecto es 4000 (4s), igual que el par whistle/SgWhistleHost. Use 0 (o negativo) para permanente, hasta que el usuario lo cierre. Un toast de tipo 'loading' nunca se cierra solo, sea cual sea el valor.",
     "fr": "Durée en millisecondes de ce toast ; elle a PRIORITÉ sur le host. L'omettre ne signifie PAS permanent : on retombe sur le `duration` de SgToaster/SgToastHost, dont la valeur par défaut est 4000 (4s), comme pour la paire whistle/SgWhistleHost. Utilisez 0 (ou négatif) pour permanent, jusqu'à ce que l'utilisateur le ferme. Un toast de type 'loading' ne se ferme jamais tout seul, quelle que soit la valeur.",
-    "pt-BR": "Duração em milissegundos deste toast; tem PRIORIDADE sobre o host. Omitir NÃO significa permanente: cai no `duration` do SgToaster/SgToastHost, cujo default e' 4000 (4s), igual ao par whistle/SgWhistleHost. Use 0 (ou negativo) para permanente, ate' o usuário fechar. Toast do tipo 'loading' nunca fecha sozinho, qualquer que seja o valor."
+    "pt-BR": "Duração em milissegundos deste toast; tem PRIORIDADE sobre o host. Omitir NÃO significa permanente: cai no `duration` do SgToaster/SgToastHost, cujo default é 4000 (4s), igual ao par whistle/SgWhistleHost. Use 0 (ou negativo) para permanente, até o usuário fechar. Toast do tipo 'loading' nunca fecha sozinho, qualquer que seja o valor."
   },
   "Duracao em milissegundos deste whistle; tem PRIORIDADE sobre o host. Omitir NAO significa permanente: cai no `duration` do SgWhistler/SgWhistleHost, cujo default e' 4000 (4s), igual ao par toast/SgToastHost. Use 0 (ou negativo) para permanente, ate' o usuario fechar no x — obrigatorio quando o aviso bloqueia uma acao ou carrega um botao de acao, porque sumir leva embora a informacao e o caminho de saida junto. Severidade 'loading' nunca expira sozinha.": {
     "en-US": "Duration in milliseconds of this whistle; it takes PRIORITY over the host. Omitting it does NOT mean permanent: it falls back to the `duration` of SgWhistler/SgWhistleHost, whose default is 4000 (4s), same as the toast/SgToastHost pair. Use 0 (or negative) for permanent, until the user closes it with the x — required when the notice blocks an action or carries an action button, because disappearing takes the information and the way out with it. Severity 'loading' never expires on its own.",
     "pt-PT": "Duração em milissegundos deste whistle; tem PRIORIDADE sobre o host. Omitir NÃO significa permanente: recorre ao `duration` do SgWhistler/SgWhistleHost, cujo valor predefinido é 4000 (4s), igual ao par toast/SgToastHost. Utilize 0 (ou negativo) para permanente, até o utilizador fechar no x — obrigatório quando o aviso bloqueia uma ação ou inclui um botão de ação, porque desaparecer leva consigo a informação e o caminho de saída. A severidade 'loading' nunca expira sozinha.",
     "es": "Duración en milisegundos de este whistle; tiene PRIORIDAD sobre el host. Omitirla NO significa permanente: recurre al `duration` de SgWhistler/SgWhistleHost, cuyo valor por defecto es 4000 (4s), igual que el par toast/SgToastHost. Use 0 (o negativo) para permanente, hasta que el usuario lo cierre con la x — obligatorio cuando el aviso bloquea una acción o incluye un botón de acción, porque al desaparecer se lleva consigo la información y la vía de salida. La severidad 'loading' nunca expira por sí sola.",
     "fr": "Durée en millisecondes de ce whistle ; elle a la PRIORITÉ sur le host. L'omettre ne signifie PAS permanent : on retombe sur le `duration` de SgWhistler/SgWhistleHost, dont la valeur par défaut est 4000 (4s), comme pour la paire toast/SgToastHost. Utilisez 0 (ou négatif) pour permanent, jusqu'à ce que l'utilisateur ferme avec le x — obligatoire lorsque l'avis bloque une action ou comporte un bouton d'action, car sa disparition emporte avec elle l'information et la voie de sortie. La sévérité 'loading' n'expire jamais d'elle-même.",
-    "pt-BR": "Duração em milissegundos deste whistle; tem PRIORIDADE sobre o host. Omitir NÃO significa permanente: cai no `duration` do SgWhistler/SgWhistleHost, cujo default e' 4000 (4s), igual ao par toast/SgToastHost. Use 0 (ou negativo) para permanente, ate' o usuário fechar no x — obrigatório quando o aviso bloqueia uma ação ou carrega um botão de ação, porque sumir leva embora a informação e o caminho de saida junto. Severidade 'loading' nunca expira sozinha."
+    "pt-BR": "Duração em milissegundos deste whistle; tem PRIORIDADE sobre o host. Omitir NÃO significa permanente: cai no `duration` do SgWhistler/SgWhistleHost, cujo default é 4000 (4s), igual ao par toast/SgToastHost. Use 0 (ou negativo) para permanente, até o usuário fechar no x — obrigatório quando o aviso bloqueia uma ação ou carrega um botão de ação, porque sumir leva embora a informação e o caminho de saída junto. Severidade 'loading' nunca expira sozinha."
   },
   "Duracao padrao aplicada aos toasts deste host.": {
     "en-US": "Default duration applied to this host's toasts.",
@@ -3570,19 +3606,22 @@
     "en-US": "Enable half stars",
     "pt-PT": "Ativar meias estrelas",
     "es": "Habilitar medias estrellas",
-    "fr": "Activer les demi-étoiles"
+    "fr": "Activer les demi-étoiles",
+    "pt-BR": "Habilitar meias estrelas"
   },
   "Enables fade-out/fade-in animation when value changes.": {
     "en-US": "Enables fade-out/fade-in animation when value changes.",
     "pt-PT": "Ativa a animação de fade-out/fade-in quando o valor muda.",
     "es": "Activa la animación de fade-out/fade-in cuando cambia el valor.",
-    "fr": "Active l'animation de fade-out/fade-in lorsque la valeur change."
+    "fr": "Active l'animation de fade-out/fade-in lorsque la valeur change.",
+    "pt-BR": "Ativa a animação de fade-out/fade-in quando o valor muda."
   },
   "Enables glow effect on active segments.": {
     "en-US": "Enables glow effect on active segments.",
     "pt-PT": "Ativa o efeito de brilho nos segmentos ativos.",
     "es": "Activa el efecto de brillo en los segmentos activos.",
-    "fr": "Active l'effet de lueur sur les segments actifs."
+    "fr": "Active l'effet de lueur sur les segments actifs.",
+    "pt-BR": "Ativa o efeito de brilho nos segmentos ativos."
   },
   "Endereço do Pulse, usado quando o token não traz `connectUrl` (Pulse sem endereço público).": {
     "en-US": "Pulse address, used when the token does not carry `connectUrl` (Pulse without a public address).",
@@ -3655,7 +3694,7 @@
     "pt-PT": "Entradas editáveis pelo utilizador.",
     "es": "Entradas editables por el usuario.",
     "fr": "Saisies modifiables par l'utilisateur.",
-    "pt-BR": "Entradas editaveis pelo usuário."
+    "pt-BR": "Entradas editáveis pelo usuário."
   },
   "Entradas financeiras em formularios de venda, faturamento e cadastro.": {
     "en-US": "Financial inputs in sales, billing and registration forms.",
@@ -3768,7 +3807,7 @@
     "pt-PT": "Escolha rápida de intervalos recorrentes (Este mês, Último trimestre, Este ano).",
     "es": "Elección rápida de intervalos recurrentes (Este mes, Último trimestre, Este año).",
     "fr": "Choix rapide d'intervalles récurrents (Ce mois-ci, Dernier trimestre, Cette année).",
-    "pt-BR": "Escolha rapida de intervalos recorrentes (Este mes, Último trimestre, Este ano)."
+    "pt-BR": "Escolha rápida de intervalos recorrentes (Este mes, Último trimestre, Este ano)."
   },
   "Escolha simples sem necessidade de ordenacao.": {
     "en-US": "Simple choice with no need for ordering.",
@@ -3981,7 +4020,7 @@
     "pt-PT": "Estado que só existe durante a sessão; use useState.",
     "es": "Estado que solo existe durante la sesión; use useState.",
     "fr": "État qui n'existe que pendant la session ; utilisez useState.",
-    "pt-BR": "Estado que so existe durante a sessão; use useState."
+    "pt-BR": "Estado que só existe durante a sessão; use useState."
   },
   "Estado simples e sem persistencia; use useState.": {
     "en-US": "Simple state without persistence; use useState.",
@@ -4000,7 +4039,8 @@
     "en-US": "Style non-clock components; use SgClockThemeProvider or direct CSS styling.",
     "pt-PT": "Estilizar componentes que não sejam clock; use SgClockThemeProvider ou estilo CSS direto.",
     "es": "Estilizar componentes que no sean clock; use SgClockThemeProvider o estilo CSS directo.",
-    "fr": "Styliser des composants non-clock ; utilisez SgClockThemeProvider ou un style CSS direct."
+    "fr": "Styliser des composants non-clock ; utilisez SgClockThemeProvider ou un style CSS direct.",
+    "pt-BR": "Estilizar componentes que não sejam clock; use SgClockThemeProvider ou estilo CSS direto."
   },
   "Estilo da borda (solid, soft, left-accent, full-accent, none).": {
     "en-US": "Border style (solid, soft, left-accent, full-accent, none).",
@@ -4287,7 +4327,7 @@
     "pt-PT": "Apresentar avisos e informações não bloqueantes.",
     "es": "Mostrar avisos e información no bloqueantes.",
     "fr": "Afficher des avertissements et informations non bloquants.",
-    "pt-BR": "Exibir avisos e informações nao-bloqueantes."
+    "pt-BR": "Exibir avisos e informações não bloqueantes."
   },
   "Exibir avisos empilhados mais persistentes do que um toast em uma area fixa.": {
     "en-US": "Display stacked notices that are more persistent than a toast in a fixed area.",
@@ -4442,7 +4482,8 @@
     "en-US": "Extra intensity factor for the glow effect.",
     "pt-PT": "Fator de intensidade extra para o efeito de brilho.",
     "es": "Factor de intensidad adicional para el efecto de brillo.",
-    "fr": "Facteur d'intensité supplémentaire pour l'effet de lueur."
+    "fr": "Facteur d'intensité supplémentaire pour l'effet de lueur.",
+    "pt-BR": "Fator de intensidade extra para o efeito de brilho."
   },
   "Faixas coloridas aplicadas sobre a escala.": {
     "en-US": "Colored ranges applied over the scale.",
@@ -4528,7 +4569,7 @@
     "pt-PT": "Feedback com várias ações para o utilizador.",
     "es": "Feedback con múltiples acciones para el usuario.",
     "fr": "Retour d'information avec plusieurs actions pour l'utilisateur.",
-    "pt-BR": "Feedback com multiplas ações para o usuário."
+    "pt-BR": "Feedback com múltiplas ações para o usuário."
   },
   "Feedback de validacao de formulario; use erros inline nos campos.": {
     "en-US": "Form validation feedback; use inline errors on the fields.",
@@ -4575,7 +4616,7 @@
     "pt-PT": "Filtro de relatório em que o período é um recorte ABSOLUTO de um ano indicado: \"1.º semestre de 2024\", \"Q3 de 2023\", \"4.º bimestre de 2025\".",
     "es": "Filtro de informe en el que el período es un recorte ABSOLUTO de un año indicado: \"1.er semestre de 2024\", \"Q3 de 2023\", \"4.º bimestre de 2025\".",
     "fr": "Filtre de rapport dans lequel la période est un découpage ABSOLU d'une année donnée : \"1er semestre de 2024\", \"Q3 de 2023\", \"4e bimestre de 2025\".",
-    "pt-BR": "Filtro de relatório em que o período e' um recorte ABSOLUTO de um ano informado: \"1o semestre de 2024\", \"Q3 de 2023\", \"4o bimestre de 2025\"."
+    "pt-BR": "Filtro de relatório em que o período é um recorte ABSOLUTO de um ano informado: \"1o semestre de 2024\", \"Q3 de 2023\", \"4o bimestre de 2025\"."
   },
   "Filtros com varias categorias ativas ao mesmo tempo.": {
     "en-US": "Filters with several categories active at the same time.",
@@ -4623,7 +4664,7 @@
     "pt-PT": "Fluxo de várias etapas com stepper, validação por etapa, navegação controlada e finalização assíncrona.",
     "es": "Flujo de varios pasos con stepper, validación por paso, navegación controlada y finalización asíncrona.",
     "fr": "Flux multi-étapes avec stepper, validation par étape, navigation contrôlée et finalisation asynchrone.",
-    "pt-BR": "Fluxo multi-etapas com stepper, validação por etapa, navegação controlada e finalização assincrona."
+    "pt-BR": "Fluxo multi-etapas com stepper, validação por etapa, navegação controlada e finalização assíncrona."
   },
   "Fluxos brasileiros com enriquecimento via ViaCEP.": {
     "en-US": "Brazilian flows with ViaCEP enrichment.",
@@ -4724,7 +4765,8 @@
     "en-US": "Font weight of the text.",
     "pt-PT": "Espessura do tipo de letra do texto.",
     "es": "Grosor de la fuente del texto.",
-    "fr": "Graisse de la police du texte."
+    "fr": "Graisse de la police du texte.",
+    "pt-BR": "Peso da fonte do texto."
   },
   "Fonte (font-family) usada no texto.": {
     "en-US": "Font (font-family) used for the text.",
@@ -4802,7 +4844,7 @@
     "pt-PT": "Formulários de registo e atendimento com validação básica de comprimento.",
     "es": "Formularios de registro y atención con validación básica de longitud.",
     "fr": "Formulaires d'inscription et de service client avec validation de longueur de base.",
-    "pt-BR": "Formulários de cadastro e atendimento com validação basica de comprimento."
+    "pt-BR": "Formulários de cadastro e atendimento com validação básica de comprimento."
   },
   "Formularios de entrada simples.": {
     "en-US": "Simple input forms.",
@@ -4960,19 +5002,22 @@
     "en-US": "Gap between characters in pixels.",
     "pt-PT": "Intervalo entre carateres em píxeis.",
     "es": "Espacio entre caracteres en píxeles.",
-    "fr": "Espace entre les caractères en pixels."
+    "fr": "Espace entre les caractères en pixels.",
+    "pt-BR": "Espaçamento entre os caracteres em pixels."
   },
   "Gap between dots in pixels.": {
     "en-US": "Gap between dots in pixels.",
     "pt-PT": "Intervalo entre pontos em píxeis.",
     "es": "Espacio entre puntos en píxeles.",
-    "fr": "Espace entre les points en pixels."
+    "fr": "Espace entre les points en pixels.",
+    "pt-BR": "Espaçamento entre os pontos em pixels."
   },
   "Gap between items in pixels": {
     "en-US": "Gap between items in pixels",
     "pt-PT": "Espaçamento entre itens em píxeis",
     "es": "Espacio entre elementos en píxeles",
-    "fr": "Espacement entre les éléments en pixels"
+    "fr": "Espacement entre les éléments en pixels",
+    "pt-BR": "Espaçamento entre os itens em pixels"
   },
   "Garantir que componentes vizuais permanecam alinhados apos SSR.": {
     "en-US": "Ensure visual components remain aligned after SSR.",
@@ -5006,7 +5051,8 @@
     "en-US": "Glow/shadow color around the text.",
     "pt-PT": "Cor do brilho/sombra à volta do texto.",
     "es": "Color del brillo/sombra alrededor del texto.",
-    "fr": "Couleur de la lueur/ombre autour du texte."
+    "fr": "Couleur de la lueur/ombre autour du texte.",
+    "pt-BR": "Cor do brilho/sombra ao redor do texto."
   },
   "Grades responsivas com varias colunas; nesses casos prefira SgGrid.": {
     "en-US": "Responsive grids with multiple columns; in these cases prefer SgGrid.",
@@ -5107,7 +5153,8 @@
     "en-US": "Height of the carousel container",
     "pt-PT": "Altura do contentor do carousel",
     "es": "Altura del contenedor del carousel",
-    "fr": "Hauteur du conteneur du carousel"
+    "fr": "Hauteur du conteneur du carousel",
+    "pt-BR": "Altura do contêiner do carousel"
   },
   "Hierarquias profundas; nesses casos prefira breadcrumb ou tree view.": {
     "en-US": "Deep hierarchies; in those cases prefer breadcrumb or tree view.",
@@ -5126,7 +5173,7 @@
     "en-US": "High-level hook for persisted state. Similar to useState but synchronizes with persistence (localStorage, API or hybrid) with asynchronous loading and namespace isolation.",
     "pt-PT": "Hook de alto nível para estado persistido. Semelhante ao useState, mas sincroniza com a persistência (localStorage, API ou híbrida) com carregamento assíncrono e isolamento por namespace.",
     "es": "Hook de alto nivel para estado persistido. Similar a useState pero sincroniza con la persistencia (localStorage, API o híbrida) con carga asíncrona y aislamiento por namespace.",
-    "fr": "Hook de haut niveau pour l'état persisté. Similaire à useState mais se synchronise avec la persistance (localStorage, API ou hybride) avec chargement asynchrone et isolation par namespace.",
+    "fr": "Hook de haut niveau pour l'état persisté. Similaire à useState mais se synchronisé avec la persistance (localStorage, API ou hybride) avec chargement asynchrone et isolation par namespace.",
     "pt-BR": "Hook de alto nível para estado persistido. Similar a useState mas sincroniza com persistência (localStorage, API ou hibrida) com carregamento asincrono e isolamento por namespace."
   },
   "Hook de baixo nivel para carregar, salvar e limpar estado persistido. Gerencia chaves isoladas por namespace e escopo, respeitando a estrategia configurada.": {
@@ -5270,7 +5317,8 @@
     "en-US": "ID for persisting drag position",
     "pt-PT": "ID para persistir a posição de arrastamento",
     "es": "ID para persistir la posición de arrastre",
-    "fr": "ID pour persister la position de glissement"
+    "fr": "ID pour persister la position de glissement",
+    "pt-BR": "ID para persistir a posição do arraste"
   },
   "ID opcional do elemento raiz de screen.": {
     "en-US": "Optional ID of the screen root element.",
@@ -5422,8 +5470,9 @@
   "Imagem recusada (type, size, total, count, dimension, aspect). As demais seguem validas.": {
     "en-US": "Rejected image (type, size, total, count, dimension, aspect). The others remain valid.",
     "pt-PT": "Imagem recusada (type, size, total, count, dimension, aspect). As restantes continuam válidas.",
-    "es": "Imagen rechazada (type, size, total, count, dimension, aspect). Las demás siguen siendo válidas.",
-    "fr": "Image refusée (type, size, total, count, dimension, aspect). Les autres restent valides."
+    "es": "Imagen rechazada (type, size, total, count, dimensión, aspect). Las demás siguen siendo válidas.",
+    "fr": "Image refusée (type, size, total, count, dimension, aspect). Les autres restent valides.",
+    "pt-BR": "Imagem recusada (type, size, total, count, dimension, aspect). As demais seguem válidas."
   },
   "Imagens controladas (sempre lista; uma imagem = lista de uma). Uma imagem ja salva entra como { name, url }.": {
     "en-US": "Controlled images (always a list; one image = a list of one). An already saved image enters as { name, url }.",
@@ -5660,13 +5709,15 @@
     "en-US": "Internal padding in pixels.",
     "pt-PT": "Espaçamento interno em píxeis.",
     "es": "Relleno interno en píxeles.",
-    "fr": "Marge interne en pixels."
+    "fr": "Marge interne en pixels.",
+    "pt-BR": "Preenchimento interno em pixels."
   },
   "Internal panel padding in pixels.": {
     "en-US": "Internal panel padding in pixels.",
     "pt-PT": "Padding interno do painel em píxeis.",
     "es": "Padding interno del panel en píxeles.",
-    "fr": "Padding interne du panneau en pixels."
+    "fr": "Padding interne du panneau en pixels.",
+    "pt-BR": "Preenchimento interno do painel em pixels."
   },
   "Interruptor booleano para ativar ou desativar estados, flags e configuracoes simples.": {
     "en-US": "Boolean switch to enable or disable states, flags and simple settings.",
@@ -5686,7 +5737,8 @@
     "en-US": "Fallback polling interval (only when Pulse is off or down), clamped between 30 and 60 s, with jitter and backoff on error.",
     "pt-PT": "Intervalo do polling de reserva (só com o Pulse desligado ou indisponível), limitado entre 30 e 60 s, com jitter e backoff em caso de erro.",
     "es": "Intervalo del polling de respaldo (solo con Pulse desactivado o caído), limitado entre 30 y 60 s, con jitter y backoff en caso de error.",
-    "fr": "Intervalle du polling de secours (uniquement avec Pulse désactivé ou hors service), limité entre 30 et 60 s, avec jitter et backoff en cas d'erreur."
+    "fr": "Intervalle du polling de secours (uniquement avec Pulse désactivé ou hors service), limité entre 30 et 60 s, avec jitter et backoff en cas d'erreur.",
+    "pt-BR": "Intervalo do polling de reserva (só com o Pulse desligado ou fora do ar), preso entre 30 e 60 s, com jitter e backoff em erro."
   },
   "Intervalos totalmente arbitrarios sem presets; use um date range dedicado.": {
     "en-US": "Fully arbitrary ranges without presets; use a dedicated date range.",
@@ -5821,7 +5873,7 @@
     "pt-PT": "Layout estrutural com zonas de dock e persistência de estado para barras e painéis arrastáveis.",
     "es": "Layout estructural con zonas de dock y persistencia de estado para barras y paneles arrastrables.",
     "fr": "Layout structurel avec zones de dock et persistance d'état pour des barres et panneaux déplaçables.",
-    "pt-BR": "Layout estrutural com zonas de dock e persistência de estado para barras e paines arrastaveis."
+    "pt-BR": "Layout estrutural com zonas de dock e persistência de estado para barras e paines arrastáveis."
   },
   "Layouts com conteudo progressivo ou dividido por categorias.": {
     "en-US": "Layouts with progressive content or content divided by categories.",
@@ -5869,13 +5921,14 @@
     "pt-PT": "Ler dados de negócio do aviso: ele só traz identificadores.",
     "es": "Leer datos de negocio del aviso: solo trae identificadores.",
     "fr": "Lire des données métier depuis l'avis : il ne contient que des identifiants.",
-    "pt-BR": "Ler dados de negócio do aviso: ele so traz identificadores."
+    "pt-BR": "Ler dados de negócio do aviso: ele só traz identificadores."
   },
   "Letter spacing in pixels.": {
     "en-US": "Letter spacing in pixels.",
     "pt-PT": "Espaçamento entre letras em píxeis.",
     "es": "Espaciado entre letras en píxeles.",
-    "fr": "Espacement des lettres en pixels."
+    "fr": "Espacement des lettres en pixels.",
+    "pt-BR": "Espaçamento entre letras em pixels."
   },
   "Liga/desliga (ex.: false enquanto nao ha usuario logado).": {
     "en-US": "Turns on/off (e.g. false while there is no logged-in user).",
@@ -6003,21 +6056,21 @@
     "pt-PT": "Lista de imagens válidas após escolher ou remover.",
     "es": "Lista de imágenes válidas después de elegir o eliminar.",
     "fr": "Liste des images valides après sélection ou suppression.",
-    "pt-BR": "Lista de imagens validas após escolher ou remover."
+    "pt-BR": "Lista de imagens válidas após escolher ou remover."
   },
   "Lista de opcoes disponiveis. `label` aparece na lista; `chipLabel` (opcional) e' o texto curto do item ja' selecionado (o chip), ex.: label \"3 - Filial Centro\" e chipLabel \"3\".": {
     "en-US": "List of available options. `label` appears in the list; `chipLabel` (optional) is the short text of the already selected item (the chip), e.g.: label \"3 - Filial Centro\" and chipLabel \"3\".",
     "pt-PT": "Lista de opções disponíveis. `label` aparece na lista; `chipLabel` (opcional) é o texto curto do item já selecionado (o chip), ex.: label \"3 - Filial Centro\" e chipLabel \"3\".",
     "es": "Lista de opciones disponibles. `label` aparece en la lista; `chipLabel` (opcional) es el texto corto del ítem ya seleccionado (el chip), p. ej.: label \"3 - Filial Centro\" y chipLabel \"3\".",
     "fr": "Liste des options disponibles. `label` apparaît dans la liste ; `chipLabel` (facultatif) est le texte court de l'élément déjà sélectionné (le chip), ex. : label \"3 - Filial Centro\" et chipLabel \"3\".",
-    "pt-BR": "Lista de opções disponíveis. `label` aparece na lista; `chipLabel` (opcional) e' o texto curto do item já' selecionado (o chip), ex.: label \"3 - Filial Centro\" e chipLabel \"3\"."
+    "pt-BR": "Lista de opções disponíveis. `label` aparece na lista; `chipLabel` (opcional) é o texto curto do item já' selecionado (o chip), ex.: label \"3 - Filial Centro\" e chipLabel \"3\"."
   },
   "Lista de opcoes disponiveis. `label` aparece na lista; `chipLabel` (opcional) e' o texto curto do item ja' selecionado (o resumo do campo), ex.: label \"3 - Filial Centro\" e chipLabel \"3\".": {
     "en-US": "List of available options. `label` appears in the list; `chipLabel` (optional) is the short text of the already selected item (the field summary), e.g.: label \"3 - Filial Centro\" and chipLabel \"3\".",
     "pt-PT": "Lista de opções disponíveis. `label` aparece na lista; `chipLabel` (opcional) é o texto curto do item já selecionado (o resumo do campo), ex.: label \"3 - Filial Centro\" e chipLabel \"3\".",
     "es": "Lista de opciones disponibles. `label` aparece en la lista; `chipLabel` (opcional) es el texto corto del ítem ya seleccionado (el resumen del campo), p. ej.: label \"3 - Filial Centro\" y chipLabel \"3\".",
     "fr": "Liste des options disponibles. `label` apparaît dans la liste ; `chipLabel` (facultatif) est le texte court de l'élément déjà sélectionné (le résumé du champ), ex. : label \"3 - Filial Centro\" et chipLabel \"3\".",
-    "pt-BR": "Lista de opções disponíveis. `label` aparece na lista; `chipLabel` (opcional) e' o texto curto do item já' selecionado (o resumo do campo), ex.: label \"3 - Filial Centro\" e chipLabel \"3\"."
+    "pt-BR": "Lista de opções disponíveis. `label` aparece na lista; `chipLabel` (opcional) é o texto curto do item já' selecionado (o resumo do campo), ex.: label \"3 - Filial Centro\" e chipLabel \"3\"."
   },
   "Lista de temas locais adicionados apenas neste escopo.": {
     "en-US": "List of local themes added only in this scope.",
@@ -6860,7 +6913,8 @@
     "en-US": "Number of stars",
     "pt-PT": "Número de estrelas",
     "es": "Número de estrellas",
-    "fr": "Nombre d'étoiles"
+    "fr": "Nombre d'étoiles",
+    "pt-BR": "Número de estrelas"
   },
   "Numeros decimais complexos; nesses casos prefira SgInputNumber.": {
     "en-US": "Complex decimal numbers; in those cases, prefer SgInputNumber.",
@@ -6947,7 +7001,8 @@
     "en-US": "Offset from the edge",
     "pt-PT": "Deslocamento em relação à margem",
     "es": "Desplazamiento respecto al borde",
-    "fr": "Décalage par rapport au bord"
+    "fr": "Décalage par rapport au bord",
+    "pt-BR": "Deslocamento em relação à borda"
   },
   "Opacidade (0-1).": {
     "en-US": "Opacity (0-1).",
@@ -6999,7 +7054,8 @@
     "en-US": "Ordered list of all possible values this roller can show.\r\nThe drum scrolls to the position of `value` in this list.",
     "pt-PT": "Lista ordenada de todos os valores possíveis que este roller pode mostrar.\r\nO tambor desloca-se para a posição de `value` nesta lista.",
     "es": "Lista ordenada de todos los valores posibles que este roller puede mostrar.\r\nEl tambor se desplaza a la posición de `value` en esta lista.",
-    "fr": "Liste ordonnée de toutes les valeurs possibles que ce roller peut afficher.\r\nLe tambour défile jusqu'à la position de `value` dans cette liste."
+    "fr": "Liste ordonnée de toutes les valeurs possibles que ce roller peut afficher.\r\nLe tambour défile jusqu'à la position de `value` dans cette liste.",
+    "pt-BR": "Lista ordenada de todos os valores possíveis que este roller pode mostrar.\nO tambor rola até a posição de `value` nesta lista."
   },
   "Organizar cadastros complexos, onboarding e configuracoes assistidas.": {
     "en-US": "Organize complex registrations, onboarding and assisted settings.",
@@ -7472,7 +7528,7 @@
     "pt-PT": "Prefixo dos ids dos três controlos internos (ano, recorte, fatia). Não é o id de um campo único: o componente monta três.",
     "es": "Prefijo de los ids de los tres controles internos (año, recorte, franja). No es el id de un único campo: el componente monta tres.",
     "fr": "Préfixe des ids des trois contrôles internes (année, découpage, tranche). Ce n'est pas l'id d'un champ unique : le composant en monte trois.",
-    "pt-BR": "Prefixo dos ids dos três controles internos (ano, recorte, fatia). Não e' o id de um campo unico: o componente monta três."
+    "pt-BR": "Prefixo dos ids dos três controles internos (ano, recorte, fatia). Não é o id de um campo único: o componente monta três."
   },
   "Preset selecionado (modo controlado).": {
     "en-US": "Selected preset (controlled mode).",
@@ -7484,7 +7540,8 @@
     "en-US": "Preset visual palette for active, inactive and background colors.",
     "pt-PT": "Paleta visual predefinida para as cores ativa, inativa e de fundo.",
     "es": "Paleta visual predefinida para los colores activo, inactivo y de fondo.",
-    "fr": "Palette visuelle prédéfinie pour les couleurs active, inactive et d'arrière-plan."
+    "fr": "Palette visuelle prédéfinie pour les couleurs active, inactive et d'arrière-plan.",
+    "pt-BR": "Paleta visual predefinida para as cores ativa, inativa e de fundo."
   },
   "Preview estatico sem interacao; nesses casos prefira SgClockThemePreview.": {
     "en-US": "Static preview without interaction; in these cases prefer SgClockThemePreview.",
@@ -7498,7 +7555,7 @@
     "pt-PT": "Pré-visualização compacta de um tema de relógio, renderizada em SVG para comparação rápida de estilos.",
     "es": "Vista previa visual compacta de un tema de reloj, renderizada en SVG para comparar estilos rápidamente.",
     "fr": "Aperçu visuel compact d'un thème d'horloge, rendu en SVG pour comparer rapidement les styles.",
-    "pt-BR": "Preview visual compacto de um tema de relógio, renderizado em SVG para comparação rapida de estilos."
+    "pt-BR": "Preview visual compacto de um tema de relógio, renderizado em SVG para comparação rápida de estilos."
   },
   "Primeiro ano oferecido na lista de anos.": {
     "en-US": "First year offered in the year list.",
@@ -7618,7 +7675,7 @@
     "pt-PT": "Quando false, o wizard inteiro fica desativado: Anterior, Seguinte, Concluir e os passos do stepper deixam de responder; a etapa atual continua visível. Diferente de nextDisabled, que só bloqueia o avanço.",
     "es": "Cuando es false, todo el wizard queda deshabilitado: Anterior, Siguiente, Concluir y los pasos del stepper dejan de responder; el paso actual sigue visible. A diferencia de nextDisabled, que solo bloquea el avance.",
     "fr": "Lorsque false, tout le wizard est désactivé : Précédent, Suivant, Terminer et les étapes du stepper cessent de répondre ; l'étape actuelle reste visible. Contrairement à nextDisabled, qui ne bloque que l'avancement.",
-    "pt-BR": "Quando false, o wizard inteiro fica desabilitado: Anterior, Próximo, Concluir e os passos do stepper deixam de responder; a etapa atual segue visível. Diferente de nextDisabled, que so bloqueia o avanço."
+    "pt-BR": "Quando false, o wizard inteiro fica desabilitado: Anterior, Próximo, Concluir e os passos do stepper deixam de responder; a etapa atual segue visível. Diferente de nextDisabled, que só bloqueia o avanço."
   },
   "Quando false, os dias, os botoes de mes anterior/proximo e o atalho hoje ficam desabilitados (nao focaveis); a data e o mes atuais continuam legiveis.": {
     "en-US": "When false, the days, the previous/next month buttons and the today shortcut are disabled (not focusable); the current date and month remain readable.",
@@ -7646,7 +7703,7 @@
     "pt-PT": "Quantas imagens o campo guarda. Com 1, escolher outra substitui; superior a 1 ativa a seleção múltipla e a grelha de miniaturas.",
     "es": "Cuántas imágenes guarda el campo. Con 1, elegir otra la reemplaza; mayor que 1 activa la selección múltiple y la cuadrícula de miniaturas.",
     "fr": "Nombre d'images que le champ conserve. Avec 1, en choisir une autre la remplace ; supérieur à 1 active la sélection multiple et la grille de miniatures.",
-    "pt-BR": "Quantas imagens o campo guarda. Com 1, escolher outra substitui; maior que 1 liga a seleção multipla e a grade de miniaturas."
+    "pt-BR": "Quantas imagens o campo guarda. Com 1, escolher outra substitui; maior que 1 liga a seleção múltipla e a grade de miniaturas."
   },
   "Quantidade de botoes distribuidos por direcao.": {
     "en-US": "Number of buttons distributed per direction.",
@@ -7756,7 +7813,7 @@
     "pt-PT": "Quantos ficheiros o campo guarda. Com 1, escolher outro substitui; maior que 1 ativa a seleção múltipla.",
     "es": "Cuántos archivos guarda el campo. Con 1, elegir otro lo reemplaza; mayor que 1 activa la selección múltiple.",
     "fr": "Nombre de fichiers que le champ conserve. Avec 1, en choisir un autre remplace le précédent ; supérieur à 1 active la sélection multiple.",
-    "pt-BR": "Quantos arquivos o campo guarda. Com 1, escolher outro substitui; maior que 1 liga a seleção multipla."
+    "pt-BR": "Quantos arquivos o campo guarda. Com 1, escolher outro substitui; maior que 1 liga a seleção múltipla."
   },
   "Raio de borda customizado.": {
     "en-US": "Custom border radius.",
@@ -7794,7 +7851,8 @@
     "en-US": "Isolated monthly slice or week; this component only slices the year into 2, 4 or 6 equal parts.",
     "pt-PT": "Recorte mensal isolado ou semana; este componente só divide o ano em 2, 4 ou 6 partes iguais.",
     "es": "Recorte mensual aislado o semana; este componente solo divide el año en 2, 4 o 6 partes iguales.",
-    "fr": "Découpage mensuel isolé ou semaine ; ce composant ne fait que découper l'année en 2, 4 ou 6 parties égales."
+    "fr": "Découpage mensuel isolé ou semaine ; ce composant ne fait que découper l'année en 2, 4 ou 6 parties égales.",
+    "pt-BR": "Recorte mensal isolado ou semana; este componente só fatia o ano em 2, 4 ou 6 partes iguais."
   },
   "Recorte ou compressao de imagem; nao fazem parte do componente.": {
     "en-US": "Image cropping or compression; they are not part of the component.",
@@ -7814,7 +7872,7 @@
     "pt-PT": "Recortes oferecidos na combo. Reduza a lista quando o domínio só aceita um deles (fecho trimestral, por exemplo); com um único item a combo de recorte deixa de fazer sentido no ecrã.",
     "es": "Recortes ofrecidos en el combo. Reduzca la lista cuando el dominio solo acepta uno de ellos (cierre trimestral, por ejemplo); con un único elemento el combo de recorte deja de tener sentido en la pantalla.",
     "fr": "Découpages proposés dans le combo. Réduisez la liste lorsque le domaine n'en accepte qu'un (clôture trimestrielle, par exemple) ; avec un seul élément, le combo de découpage n'a plus de sens à l'écran.",
-    "pt-BR": "Recortes oferecidos no combo. Reduza a lista quando o domínio so' aceita um deles (fechamento trimestral, por exemplo); com um único item o combo de recorte deixa de fazer sentido na tela."
+    "pt-BR": "Recortes oferecidos no combo. Reduza a lista quando o domínio só aceita um deles (fechamento trimestral, por exemplo); com um único item o combo de recorte deixa de fazer sentido na tela."
   },
   "Regiao nomeada dentro de um dock layout usada para alojar toolbars e conteudo por zona.": {
     "en-US": "Named region within a dock layout used to host toolbars and content per zone.",
@@ -7835,7 +7893,7 @@
     "pt-PT": "Regra extra, assíncrona, por ficheiro (depois da verificação de tipo). É assim que o SgImageUpload verifica a dimensão.",
     "es": "Regla extra, asíncrona, por archivo (después de la comprobación de tipo). Así es como SgImageUpload comprueba la dimensión.",
     "fr": "Règle supplémentaire, asynchrone, par fichier (après la vérification du type). C'est ainsi que SgImageUpload vérifie les dimensions.",
-    "pt-BR": "Regra extra, assincrona, por arquivo (depois da conferência de tipo). E como o SgImageUpload confere dimensão."
+    "pt-BR": "Regra extra, assíncrona, por arquivo (depois da conferência de tipo). E como o SgImageUpload confere dimensão."
   },
   "Relogio analogico ou digital com multiplos estilos visuais, timezone, formato 12h/24h e temas.": {
     "en-US": "Analog or digital clock with multiple visual styles, timezone, 12h/24h format and themes.",
@@ -8046,7 +8104,7 @@
     "pt-PT": "Deslocamento infinito: sem paginador, ao chegar perto do fim da lista avança a página (rows) e acrescenta os registos seguintes, com indicador de carregamento e de fim da lista. Ativado por predefinição quando a lista é apresentada como cartões (abaixo de 600 px no modo automático) e desativado na tabela. Requer paginator. Com lazy, o componente pai acrescenta a página seguinte a value (first/rows/page vêm em onPage/onLoadMore).",
     "es": "Desplazamiento infinito: sin paginador, al acercarse al final de la lista avanza la página (rows) y añade los siguientes registros, con indicador de carga y de fin de lista. Activado por defecto cuando la lista se muestra como tarjetas (por debajo de 600 px en modo automático) y desactivado en la tabla. Requiere paginator. Con lazy, el padre añade la siguiente página a value (first/rows/page llegan en onPage/onLoadMore).",
     "fr": "Défilement infini : sans paginateur, à l'approche de la fin de la liste, avance d'une page (rows) et ajoute les enregistrements suivants, avec indicateurs de chargement et de fin de liste. Activé par défaut lorsque la liste est affichée sous forme de cartes (sous 600 px en mode automatique) et désactivé dans le tableau. Nécessite paginator. Avec lazy, le parent ajoute la page suivante à value (first/rows/page arrivent dans onPage/onLoadMore).",
-    "pt-BR": "Rolagem infinita: sem paginador, ao chegar perto do fim da lista avanca a página (rows) e acrescenta os próximos registros, com indicador de carregando e de fim da lista. Padrão ligado quando a lista e exibida como cartões (abaixo de 600 px no modo automático) e desligado na tabela. Exige paginator. Com lazy, o pai acrescenta a proxima página a value (first/rows/page vem em onPage/onLoadMore)."
+    "pt-BR": "Rolagem infinita: sem paginador, ao chegar perto do fim da lista avança a página (rows) e acrescenta os próximos registros, com indicador de carregando e de fim da lista. Padrão ligado quando a lista e exibida como cartões (abaixo de 600 px no modo automático) e desligado na tabela. Exige paginator. Com lazy, o pai acrescenta a próxima página a value (first/rows/page vem em onPage/onLoadMore)."
   },
   "Rota que entrega o token de conexao do usuario logado (a BFF, na mesma origem).": {
     "en-US": "Route that delivers the logged-in user's connection token (the BFF, on the same origin).",
@@ -8184,13 +8242,15 @@
     "en-US": "Segment thickness in pixels.",
     "pt-PT": "Espessura do segmento em píxeis.",
     "es": "Grosor del segmento en píxeles.",
-    "fr": "Épaisseur du segment en pixels."
+    "fr": "Épaisseur du segment en pixels.",
+    "pt-BR": "Espessura do segmento em pixels."
   },
   "Segment transition duration in milliseconds.": {
     "en-US": "Segment transition duration in milliseconds.",
     "pt-PT": "Duração da transição do segmento em milissegundos.",
     "es": "Duración de la transición del segmento en milisegundos.",
-    "fr": "Durée de la transition du segment en millisecondes."
+    "fr": "Durée de la transition du segment en millisecondes.",
+    "pt-BR": "Duração da transição dos segmentos em milissegundos."
   },
   "Selecao a partir de uma lista fechada; nesses casos prefira SgAutocomplete ou SgCombobox.": {
     "en-US": "Selection from a closed list; in these cases prefer SgAutocomplete or SgCombobox.",
@@ -8302,7 +8362,7 @@
     "pt-PT": "Seleção visual de idioma pelo utilizador sem provider; nesses casos use UI própria combinada com este provider.",
     "es": "Selección visual de idioma por el usuario sin provider; en esos casos use una UI propia combinada con este provider.",
     "fr": "Sélection visuelle de la langue par l'utilisateur sans provider ; dans ces cas, utilisez votre propre UI combinée avec ce provider.",
-    "pt-BR": "Seleção visual de idioma pelo usuário sem provider; nesses casos use UI propria combinada com este provider."
+    "pt-BR": "Seleção visual de idioma pelo usuário sem provider; nesses casos use UI própria combinada com este provider."
   },
   "Selecao visual de tema pelo usuario; nesses casos prefira SgClockThemePicker.": {
     "en-US": "Visual theme selection by the user; in these cases prefer SgClockThemePicker.",
@@ -8430,19 +8490,22 @@
     "en-US": "Show cancel button",
     "pt-PT": "Mostrar botão de cancelar",
     "es": "Mostrar botón de cancelar",
-    "fr": "Afficher le bouton d'annulation"
+    "fr": "Afficher le bouton d'annulation",
+    "pt-BR": "Mostrar botão de cancelar"
   },
   "Show navigation buttons": {
     "en-US": "Show navigation buttons",
     "pt-PT": "Mostrar botões de navegação",
     "es": "Mostrar botones de navegación",
-    "fr": "Afficher les boutons de navigation"
+    "fr": "Afficher les boutons de navigation",
+    "pt-BR": "Mostrar botões de navegação"
   },
   "Show tooltips with value": {
     "en-US": "Show tooltips with value",
     "pt-PT": "Mostrar tooltips com o valor",
     "es": "Mostrar tooltips con el valor",
-    "fr": "Afficher des tooltips avec la valeur"
+    "fr": "Afficher des tooltips avec la valeur",
+    "pt-BR": "Mostrar tooltips com o valor"
   },
   "Simular listas, cards, tabelas e detalhes de perfil em estado pending.": {
     "en-US": "Simulate lists, cards, tables and profile details in a pending state.",
@@ -8466,13 +8529,15 @@
     "en-US": "Sync toast state with a non-React component.",
     "pt-PT": "Sincronizar o estado dos toasts com um componente não-React.",
     "es": "Sincronizar el estado de los toasts con un componente no-React.",
-    "fr": "Synchroniser l'état des toasts avec un composant non-React."
+    "fr": "Synchroniser l'état des toasts avec un composant non-React.",
+    "pt-BR": "Sincronizar o estado dos toasts com um componente não React."
   },
   "Sincronizar estado de whistles com componente nao-React.": {
     "en-US": "Sync whistle state with a non-React component.",
     "pt-PT": "Sincronizar o estado dos whistles com um componente não-React.",
     "es": "Sincronizar el estado de los whistles con un componente no-React.",
-    "fr": "Synchroniser l'état des whistles avec un composant non-React."
+    "fr": "Synchroniser l'état des whistles avec un composant non-React.",
+    "pt-BR": "Sincronizar o estado dos whistles com um componente não React."
   },
   "Sincronizar estado local com storage com fallback para valor padrao.": {
     "en-US": "Synchronize local state with storage, with fallback to the default value.",
@@ -8493,7 +8558,7 @@
     "pt-PT": "Sino de notificações do utilizador autenticado: contador de não lidas, lista de até 100 notificações com título, texto, data e estado lida/não lida, marcar como lida, eliminar, marcar todas e limpar. Autónomo: liga-se sozinho ao Pulse (token vindo do backend, sem apikey no front-end) e reaproveita o SgRealtimeProvider, se existir; com o Pulse desligado faz polling de reserva. Sem regra de negócio: cada tipo de notificação tem ícone e ação ao abrir.",
     "es": "Campana de notificaciones del usuario conectado: contador de no leídas, lista de hasta 100 notificaciones con título, texto, fecha y estado leída/no leída, marcar como leída, eliminar, marcar todas y limpiar. Autónomo: se conecta solo a Pulse (token proveniente del backend, sin apikey en el front) y reutiliza el SgRealtimeProvider si existe; con Pulse desactivado hace polling de respaldo. Sin regla de negocio: cada tipo de notificación tiene icono y acción al abrir.",
     "fr": "Cloche de notifications de l'utilisateur connecté : compteur de non lues, liste d'un maximum de 100 notifications avec titre, texte, date et état lue/non lue, marquer comme lue, supprimer, tout marquer et effacer. Autonome : se connecte seul à Pulse (jeton fourni par le backend, sans apikey dans le front) et réutilise le SgRealtimeProvider s'il existe ; avec Pulse désactivé, il effectue un polling de secours. Sans règle métier : chaque type de notification a une icône et une action à l'ouverture.",
-    "pt-BR": "Sino de notificações do usuário logado: contador de não lidas, lista de ate 100 notificações com título, texto, data e estado lida/nao lida, marcar como lida, excluir, marcar todas e limpar. Autonomo: conecta-se sozinho ao Pulse (token vindo do backend, sem apikey no front) e reaproveita o SgRealtimeProvider se houver; com o Pulse desligado faz polling de reserva. Sem regra de negocio: cada tipo de notificação tem ícone e ação ao abrir."
+    "pt-BR": "Sino de notificações do usuário logado: contador de não lidas, lista de até 100 notificações com título, texto, data e estado lida/não lida, marcar como lida, excluir, marcar todas e limpar. Autônomo: conecta-se sozinho ao Pulse (token vindo do backend, sem apikey no front) e reaproveita o SgRealtimeProvider se houver; com o Pulse desligado faz polling de reserva. Sem regra de negócio: cada tipo de notificação tem ícone e ação ao abrir."
   },
   "Sobrepor badges sem alterar a estrutura do elemento base.": {
     "en-US": "Overlay badges without changing the structure of the base element.",
@@ -8780,7 +8845,7 @@
     "pt-PT": "Temas visíveis para esta árvore: os globais do registry mais os locais do provider, ordenados por `order`.",
     "es": "Temas visibles para este árbol: los globales del registry más los locales del provider, ordenados por `order`.",
     "fr": "Thèmes visibles pour cet arbre : les globaux du registry plus les locaux du provider, triés par `order`.",
-    "pt-BR": "Temas visíveis para esta arvore: os globais do registry mais os locais do provider, ordenados por `order`."
+    "pt-BR": "Temas visíveis para esta árvore: os globais do registry mais os locais do provider, ordenados por `order`."
   },
   "Texto alternativo da imagem do avatar.": {
     "en-US": "Alternative text for the avatar image.",
@@ -8823,7 +8888,8 @@
     "en-US": "Text of the accepted types in the rejected type message (default: mediaType/accept).",
     "pt-PT": "Texto dos tipos aceites na mensagem de tipo recusado (predefinição: mediaType/accept).",
     "es": "Texto de los tipos aceptados en el mensaje de tipo rechazado (predeterminado: mediaType/accept).",
-    "fr": "Texte des types acceptés dans le message de type refusé (par défaut : mediaType/accept)."
+    "fr": "Texte des types acceptés dans le message de type refusé (par défaut : mediaType/accept).",
+    "pt-BR": "Texto dos tipos aceitos na mensagem de tipo recusado (padrão: mediaType/accept)."
   },
   "Texto exibido durante carregamento.": {
     "en-US": "Text displayed while loading.",
@@ -9231,7 +9297,8 @@
     "en-US": "Total animation time in milliseconds when value changes.",
     "pt-PT": "Duração total da animação em milissegundos quando o valor muda.",
     "es": "Duración total de la animación en milisegundos cuando cambia el valor.",
-    "fr": "Durée totale de l'animation en millisecondes lorsque la valeur change."
+    "fr": "Durée totale de l'animation en millisecondes lorsque la valeur change.",
+    "pt-BR": "Tempo total da animação em milissegundos quando o valor muda."
   },
   "Total de paginas do monte. Quando definido, a pilha visual encolhe a cada increasePage().": {
     "en-US": "Total pages in the stack. When set, the visual stack shrinks on each increasePage().",
@@ -9259,19 +9326,21 @@
     "pt-PT": "Transforma o card em superfície clicável.",
     "es": "Convierte el card en una superficie clicable.",
     "fr": "Transforme le card en surface cliquable.",
-    "pt-BR": "Transforma o card em superfície clicavel."
+    "pt-BR": "Transforma o card em superfície clicável."
   },
   "Transition duration in milliseconds": {
     "en-US": "Transition duration in milliseconds",
     "pt-PT": "Duração da transição em milissegundos",
     "es": "Duración de la transición en milisegundos",
-    "fr": "Durée de la transition en millisecondes"
+    "fr": "Durée de la transition en millisecondes",
+    "pt-BR": "Duração da transição em milissegundos"
   },
   "Transportar dados de negocio: o aviso so leva identificadores; busque o registro pela API.": {
     "en-US": "Carrying business data: the notification only carries identifiers; fetch the record through the API.",
     "pt-PT": "Transportar dados de negócio: o aviso só leva identificadores; obtenha o registo pela API.",
     "es": "Transportar datos de negocio: el aviso solo lleva identificadores; obtenga el registro mediante la API.",
-    "fr": "Transporter des données métier : l'avis ne contient que des identifiants ; récupérez l'enregistrement via l'API."
+    "fr": "Transporter des données métier : l'avis ne contient que des identifiants ; récupérez l'enregistrement via l'API.",
+    "pt-BR": "Transportar dados de negócio: o aviso só leva identificadores; busque o registro pela API."
   },
   "Trilhas de selecao extras, uma por coluna de controle na linha -- ver SgTreeTrack.": {
     "en-US": "Extra selection tracks, one per control column in the row -- see SgTreeTrack.",
@@ -9298,7 +9367,7 @@
     "pt-PT": "true só com a ligação aberta e subscrita.",
     "es": "true solo con la conexión abierta y suscrita.",
     "fr": "true uniquement avec la connexion ouverte et souscrite.",
-    "pt-BR": "true so com a conexão aberta e assinada."
+    "pt-BR": "true só com a conexão aberta e assinada."
   },
   "Ultimo ano oferecido na lista de anos.": {
     "en-US": "Last year offered in the year list.",
@@ -9324,13 +9393,15 @@
     "en-US": "Unique identifier for the carousel",
     "pt-PT": "Identificador único do carrossel",
     "es": "Identificador único del carrusel",
-    "fr": "Identifiant unique du carrousel"
+    "fr": "Identifiant unique du carrousel",
+    "pt-BR": "Identificador único do carousel"
   },
   "Unique identifier for the dock": {
     "en-US": "Unique identifier for the dock",
     "pt-PT": "Identificador único do dock",
     "es": "Identificador único del dock",
-    "fr": "Identifiant unique du dock"
+    "fr": "Identifiant unique du dock",
+    "pt-BR": "Identificador único do dock"
   },
   "URL da imagem principal do avatar.": {
     "en-US": "URL of the avatar's main image.",
@@ -9439,7 +9510,8 @@
     "en-US": "Value of the browser picker's `accept` attribute (default: derived from mediaType/accept).",
     "pt-PT": "Valor do atributo `accept` do seletor do navegador (predefinição: derivado de mediaType/accept).",
     "es": "Valor del atributo `accept` del selector del navegador (predeterminado: derivado de mediaType/accept).",
-    "fr": "Valeur de l'attribut `accept` du sélecteur du navigateur (par défaut : dérivée de mediaType/accept)."
+    "fr": "Valeur de l'attribut `accept` du sélecteur du navigateur (par défaut : dérivée de mediaType/accept).",
+    "pt-BR": "Valor do atributo `accept` do seletor do navegador (padrão: derivado de mediaType/accept)."
   },
   "Valor do ponteiro principal.": {
     "en-US": "Value of the main pointer.",
@@ -9673,7 +9745,8 @@
     "en-US": "Width of the carousel container",
     "pt-PT": "Largura do contentor do carrossel",
     "es": "Ancho del contenedor del carrusel",
-    "fr": "Largeur du conteneur du carrousel"
+    "fr": "Largeur du conteneur du carrousel",
+    "pt-BR": "Largura do contêiner do carousel"
   },
   "Wrapper para sobrepor badges e indicadores compactos sobre avatares, icones e outros elementos visuais.": {
     "en-US": "Wrapper to overlay badges and compact indicators on avatars, icons and other visual elements.",
@@ -9701,5 +9774,278 @@
     "es": "Zonas, toolbars y contenido estructural del layout.",
     "fr": "Zones, toolbars et contenu structurel du layout.",
     "pt-BR": "Zonas, toolbars e conteúdo estrutural do layout."
+  },
+  "Usar com SgButton em fluxos de busca e selecao.": {
+    "en-US": "Use with SgButton in search and selection flows.",
+    "pt-PT": "Usar com SgButton em fluxos de pesquisa e seleção.",
+    "es": "Usar con SgButton en flujos de búsqueda y selección.",
+    "fr": "À utiliser avec SgButton dans les parcours de recherche et de sélection.",
+    "pt-BR": "Usar com SgButton em fluxos de busca e seleção."
+  },
+  "selecao multipla": {
+    "en-US": "multiple selection",
+    "pt-PT": "seleção múltipla",
+    "es": "selección múltiple",
+    "fr": "sélection multiple",
+    "pt-BR": "seleção múltipla"
+  },
+  "selecao multipla com chips": {
+    "en-US": "multiple selection with chips",
+    "pt-PT": "seleção múltipla com chips",
+    "es": "selección múltiple con chips",
+    "fr": "sélection multiple avec chips",
+    "pt-BR": "seleção múltipla com chips"
+  },
+  "Preferir a SgMultiSelect quando o numero de selecoes for grande e os chips poluirem o layout.": {
+    "en-US": "Prefer SgMultiSelect when the number of selections is large and the chips clutter the layout.",
+    "pt-PT": "Preferir o SgMultiSelect quando o número de seleções for grande e os chips poluírem o layout.",
+    "es": "Preferir SgMultiSelect cuando el número de selecciones sea grande y los chips saturen el diseño.",
+    "fr": "Préférer SgMultiSelect lorsque le nombre de sélections est élevé et que les chips surchargent la mise en page.",
+    "pt-BR": "Preferir a SgMultiSelect quando o número de seleções for grande e os chips poluírem o layout."
+  },
+  "(omitido = automatico)": {
+    "en-US": "(omitted = automatic)",
+    "pt-PT": "(omitido = automático)",
+    "es": "(omitido = automático)",
+    "fr": "(omis = automatique)",
+    "pt-BR": "(omitido = automático)"
+  },
+  "Combinar com filtros acima da tabela usando inputs de busca e selecao.": {
+    "en-US": "Combine with filters above the table using search and selection inputs.",
+    "pt-PT": "Combinar com filtros acima da tabela usando inputs de pesquisa e seleção.",
+    "es": "Combinar con filtros sobre la tabla usando inputs de búsqueda y selección.",
+    "fr": "À combiner avec des filtres au-dessus du tableau, à l'aide de champs de recherche et de sélection.",
+    "pt-BR": "Combinar com filtros acima da tabela usando inputs de busca e seleção."
+  },
+  "Se true, campo vazio vale null; se false (padrao), vale 0.": {
+    "en-US": "If true, an empty field is null; if false (default), it is 0.",
+    "pt-PT": "Se true, o campo vazio vale null; se false (predefinição), vale 0.",
+    "es": "Si es true, el campo vacío vale null; si es false (predeterminado), vale 0.",
+    "fr": "Si true, un champ vide vaut null ; si false (par défaut), il vaut 0.",
+    "pt-BR": "Se true, campo vazio vale null; se false (padrão), vale 0."
+  },
+  "Combinar com SgPickList quando o fluxo exigir selecao e depois ordenacao.": {
+    "en-US": "Combine with SgPickList when the flow requires selection and then ordering.",
+    "pt-PT": "Combinar com o SgPickList quando o fluxo exigir seleção e depois ordenação.",
+    "es": "Combinar con SgPickList cuando el flujo exija selección y luego ordenación.",
+    "fr": "À combiner avec SgPickList lorsque le parcours exige une sélection puis un ordonnancement.",
+    "pt-BR": "Combinar com SgPickList quando o fluxo exigir seleção e depois ordenação."
+  },
+  "Ao trocar o recorte, a fatia fora de faixa cai para a primeira (clampYearPart); nao e' preciso tratar isso no consumidor.": {
+    "en-US": "When the cut changes, an out-of-range slice falls back to the first one (clampYearPart); the consumer does not need to handle this.",
+    "pt-PT": "Ao trocar o recorte, a fatia fora do intervalo passa para a primeira (clampYearPart); não é preciso tratar isso no consumidor.",
+    "es": "Al cambiar el recorte, la porción fuera de rango pasa a la primera (clampYearPart); no es necesario tratarlo en el consumidor.",
+    "fr": "Lorsque le découpage change, la tranche hors plage revient à la première (clampYearPart) ; le consommateur n'a pas à s'en occuper.",
+    "pt-BR": "Ao trocar o recorte, a fatia fora de faixa cai para a primeira (clampYearPart); não é preciso tratar isso no consumidor."
+  },
+  "O onClick precisa DEVOLVER a Promise para o loading automatico funcionar: onClick={() => { salvar(); }} (chaves sem return) nao protege; use () => salvar() ou async () => { await salvar(); }.": {
+    "en-US": "onClick must RETURN the Promise for automatic loading to work: onClick={() => { save(); }} (braces without return) does not protect; use () => save() or async () => { await save(); }.",
+    "pt-PT": "O onClick precisa DEVOLVER a Promise para o loading automático funcionar: onClick={() => { salvar(); }} (chavetas sem return) não protege; use () => salvar() ou async () => { await salvar(); }.",
+    "es": "El onClick debe DEVOLVER la Promise para que el loading automático funcione: onClick={() => { salvar(); }} (llaves sin return) no protege; usa () => salvar() o async () => { await salvar(); }.",
+    "fr": "onClick doit RETOURNER la Promise pour que le loading automatique fonctionne : onClick={() => { salvar(); }} (accolades sans return) ne protège pas ; utilisez () => salvar() ou async () => { await salvar(); }.",
+    "pt-BR": "O onClick precisa DEVOLVER a Promise para o loading automático funcionar: onClick={() => { salvar(); }} (chaves sem return) não protege; use () => salvar() ou async () => { await salvar(); }."
+  },
+  "O botao nao engole o erro do onClick assincrono: sai do loading e relanca como rejeicao nao tratada. Trate com try/catch dentro do onClick e avise o usuario com sgWhistle.error.": {
+    "en-US": "The button does not swallow the error of an async onClick: it leaves loading and rethrows it as an unhandled rejection. Handle it with try/catch inside onClick and notify the user with sgWhistle.error.",
+    "pt-PT": "O botão não engole o erro do onClick assíncrono: sai do loading e relança-o como rejeição não tratada. Trate com try/catch dentro do onClick e avise o utilizador com sgWhistle.error.",
+    "es": "El botón no se traga el error de un onClick asíncrono: sale del loading y lo relanza como rechazo no tratado. Trátalo con try/catch dentro del onClick y avisa al usuario con sgWhistle.error.",
+    "fr": "Le bouton n'avale pas l'erreur d'un onClick asynchrone : il quitte le loading et la relance comme rejet non traité. Traitez-la avec try/catch dans onClick et prévenez l'utilisateur avec sgWhistle.error.",
+    "pt-BR": "O botão não engole o erro do onClick assíncrono: sai do loading e relança como rejeição não tratada. Trate com try/catch dentro do onClick e avise o usuário com sgWhistle.error."
+  },
+  "O loading automatico protege a acao na tela (duplo clique/reenvio), mas nao substitui a chave de idempotencia no servidor. A prop loading manual vence: loading efetivo = loading ou operacao pendente.": {
+    "en-US": "Automatic loading protects the action on screen (double click/resubmit) but does not replace the idempotency key on the server. The manual loading prop wins: effective loading = loading or pending operation.",
+    "pt-PT": "O loading automático protege a ação no ecrã (duplo clique/reenvio), mas não substitui a chave de idempotência no servidor. A prop loading manual prevalece: loading efetivo = loading ou operação pendente.",
+    "es": "El loading automático protege la acción en pantalla (doble clic/reenvío), pero no sustituye la clave de idempotencia en el servidor. La prop loading manual prevalece: loading efectivo = loading u operación pendiente.",
+    "fr": "Le loading automatique protège l'action à l'écran (double clic/renvoi), mais ne remplace pas la clé d'idempotence côté serveur. La prop loading manuelle l'emporte : loading effectif = loading ou opération en attente.",
+    "pt-BR": "O loading automático protege a ação na tela (duplo clique/reenvio), mas não substitui a chave de idempotência no servidor. A prop loading manual vence: loading efetivo = loading ou operação pendente."
+  },
+  "Usar sobre SgPanel, SgCard ou telas longas como atalho de acao principal.": {
+    "en-US": "Use over SgPanel, SgCard or long screens as a shortcut for the main action.",
+    "pt-PT": "Usar sobre SgPanel, SgCard ou ecrãs longos como atalho da ação principal.",
+    "es": "Usar sobre SgPanel, SgCard o pantallas largas como atajo de la acción principal.",
+    "fr": "À utiliser sur SgPanel, SgCard ou des écrans longs comme raccourci de l'action principale.",
+    "pt-BR": "Usar sobre SgPanel, SgCard ou telas longas como atalho de ação principal."
+  },
+  "Combinar com listas e datatables quando a acao precisa ficar sempre acessivel.": {
+    "en-US": "Combine with lists and datatables when the action must always be accessible.",
+    "pt-PT": "Combinar com listas e datatables quando a ação precisa de estar sempre acessível.",
+    "es": "Combinar con listas y datatables cuando la acción deba estar siempre accesible.",
+    "fr": "À combiner avec des listes et des datatables lorsque l'action doit rester toujours accessible.",
+    "pt-BR": "Combinar com listas e datatables quando a ação precisa ficar sempre acessível."
+  },
+  "Usar com SgPanel e SgCard em cabecalhos de bloco ou areas de acao.": {
+    "en-US": "Use with SgPanel and SgCard in block headers or action areas.",
+    "pt-PT": "Usar com SgPanel e SgCard em cabeçalhos de bloco ou áreas de ação.",
+    "es": "Usar con SgPanel y SgCard en encabezados de bloque o áreas de acción.",
+    "fr": "À utiliser avec SgPanel et SgCard dans les en-têtes de bloc ou les zones d'action.",
+    "pt-BR": "Usar com SgPanel e SgCard em cabeçalhos de bloco ou áreas de ação."
+  },
+  "Acao e toast customizado": {
+    "en-US": "Action and custom toast",
+    "pt-PT": "Ação e toast personalizado",
+    "es": "Acción y toast personalizado",
+    "fr": "Action et toast personnalisé",
+    "pt-BR": "Ação e toast customizado"
+  },
+  "Chamar apos uma acao do usuario.": {
+    "en-US": "Call after a user action.",
+    "pt-PT": "Chamar após uma ação do utilizador.",
+    "es": "Llamar después de una acción del usuario.",
+    "fr": "À appeler après une action de l'utilisateur.",
+    "pt-BR": "Chamar após uma ação do usuário."
+  },
+  "Acao, borda e opacidade": {
+    "en-US": "Action, border and opacity",
+    "pt-PT": "Ação, borda e opacidade",
+    "es": "Acción, borde y opacidad",
+    "fr": "Action, bordure et opacité",
+    "pt-BR": "Ação, borda e opacidade"
+  },
+  "Usar junto de SgCard, SgPanel e cabecalhos de pagina.": {
+    "en-US": "Use alongside SgCard, SgPanel and page headers.",
+    "pt-PT": "Usar junto de SgCard, SgPanel e cabeçalhos de página.",
+    "es": "Usar junto con SgCard, SgPanel y encabezados de página.",
+    "fr": "À utiliser avec SgCard, SgPanel et les en-têtes de page.",
+    "pt-BR": "Usar junto de SgCard, SgPanel e cabeçalhos de página."
+  },
+  "Usar com SgButton em rodapes de acao ou cabecalhos de resumo.": {
+    "en-US": "Use with SgButton in action footers or summary headers.",
+    "pt-PT": "Usar com SgButton em rodapés de ação ou cabeçalhos de resumo.",
+    "es": "Usar con SgButton en pies de acción o encabezados de resumen.",
+    "fr": "À utiliser avec SgButton dans les pieds d'action ou les en-têtes de résumé.",
+    "pt-BR": "Usar com SgButton em rodapés de ação ou cabeçalhos de resumo."
+  },
+  "Aberto por padrao e estilizacao": {
+    "en-US": "Open by default and styling",
+    "pt-PT": "Aberto por predefinição e estilização",
+    "es": "Abierto por defecto y estilización",
+    "fr": "Ouvert par défaut et stylisation",
+    "pt-BR": "Aberto por padrão e estilização"
+  },
+  "Usar com SgBreadcrumb para navegacao local e contexto de pagina.": {
+    "en-US": "Use with SgBreadcrumb for local navigation and page context.",
+    "pt-PT": "Usar com SgBreadcrumb para navegação local e contexto de página.",
+    "es": "Usar con SgBreadcrumb para navegación local y contexto de página.",
+    "fr": "À utiliser avec SgBreadcrumb pour la navigation locale et le contexte de page.",
+    "pt-BR": "Usar com SgBreadcrumb para navegação local e contexto de página."
+  },
+  "Combinar com SgButton em rodapes de secao ou areas de acao.": {
+    "en-US": "Combine with SgButton in section footers or action areas.",
+    "pt-PT": "Combinar com SgButton em rodapés de secção ou áreas de ação.",
+    "es": "Combinar con SgButton en pies de sección o áreas de acción.",
+    "fr": "À combiner avec SgButton dans les pieds de section ou les zones d'action.",
+    "pt-BR": "Combinar com SgButton em rodapés de seção ou áreas de ação."
+  },
+  "Combinar com SgButton e dialogs em fluxos de selecao ou configuracao.": {
+    "en-US": "Combine with SgButton and dialogs in selection or configuration flows.",
+    "pt-PT": "Combinar com SgButton e dialogs em fluxos de seleção ou configuração.",
+    "es": "Combinar con SgButton y dialogs en flujos de selección o configuración.",
+    "fr": "À combiner avec SgButton et des dialogs dans les parcours de sélection ou de configuration.",
+    "pt-BR": "Combinar com SgButton e dialogs em fluxos de seleção ou configuração."
+  },
+  "Combinar com InputDate e dialogs quando houver selecao detalhada.": {
+    "en-US": "Combine with InputDate and dialogs when detailed selection is needed.",
+    "pt-PT": "Combinar com InputDate e dialogs quando houver seleção detalhada.",
+    "es": "Combinar con InputDate y dialogs cuando haya selección detallada.",
+    "fr": "À combiner avec InputDate et des dialogs lorsqu'une sélection détaillée est nécessaire.",
+    "pt-BR": "Combinar com InputDate e dialogs quando houver seleção detalhada."
+  },
+  "Usar useSgRealtimeStatus para ligar o polling de reserva quando nao estiver conectado.": {
+    "en-US": "Use useSgRealtimeStatus to turn on fallback polling when not connected.",
+    "pt-PT": "Usar useSgRealtimeStatus para ligar o polling de reserva quando não estiver ligado.",
+    "es": "Usar useSgRealtimeStatus para activar el polling de respaldo cuando no esté conectado.",
+    "fr": "Utiliser useSgRealtimeStatus pour activer le polling de secours lorsqu'il n'y a pas de connexion.",
+    "pt-BR": "Usar useSgRealtimeStatus para ligar o polling de reserva quando não estiver conectado."
+  },
+  "Tipos com icone e acao": {
+    "en-US": "Types with icon and action",
+    "pt-PT": "Tipos com ícone e ação",
+    "es": "Tipos con icono y acción",
+    "fr": "Types avec icône et action",
+    "pt-BR": "Tipos com ícone e ação"
+  },
+  "Use types para mapear cada tipo de notificacao a um icone e a acao de abrir (ex.: baixar o relatorio).": {
+    "en-US": "Use types to map each notification type to an icon and an open action (e.g. download the report).",
+    "pt-PT": "Use types para mapear cada tipo de notificação a um ícone e à ação de abrir (ex.: descarregar o relatório).",
+    "es": "Usa types para asignar a cada tipo de notificación un icono y la acción de abrir (p. ej.: descargar el informe).",
+    "fr": "Utilisez types pour associer chaque type de notification à une icône et à l'action d'ouverture (ex. : télécharger le rapport).",
+    "pt-BR": "Use types para mapear cada tipo de notificação a um ícone e à ação de abrir (ex.: baixar o relatório)."
+  },
+  "O payload da notificacao so tem identificadores: a acao de abrir busca o arquivo ou registro pela API do dono.": {
+    "en-US": "The notification payload only has identifiers: the open action fetches the file or record through the owner's API.",
+    "pt-PT": "O payload da notificação só tem identificadores: a ação de abrir obtém o ficheiro ou registo pela API do dono.",
+    "es": "El payload de la notificación solo contiene identificadores: la acción de abrir obtiene el archivo o registro mediante la API del dueño.",
+    "fr": "Le payload de la notification ne contient que des identifiants : l'action d'ouverture récupère le fichier ou l'enregistrement via l'API du propriétaire.",
+    "pt-BR": "O payload da notificação só tem identificadores: a ação de abrir busca o arquivo ou registro pela API do dono."
+  },
+  "Usar dentro de SgClockThemePicker para listas de selecao visual.": {
+    "en-US": "Use inside SgClockThemePicker for visual selection lists.",
+    "pt-PT": "Usar dentro do SgClockThemePicker para listas de seleção visual.",
+    "es": "Usar dentro de SgClockThemePicker para listas de selección visual.",
+    "fr": "À utiliser dans SgClockThemePicker pour les listes de sélection visuelle.",
+    "pt-BR": "Usar dentro de SgClockThemePicker para listas de seleção visual."
+  },
+  "Combinar com digitos animados para paineis hibridos de texto e numero.": {
+    "en-US": "Combine with animated digits for hybrid text and number panels.",
+    "pt-PT": "Combinar com dígitos animados para painéis híbridos de texto e número.",
+    "es": "Combinar con dígitos animados para paneles híbridos de texto y número.",
+    "fr": "À combiner avec des chiffres animés pour des panneaux hybrides texte et nombre.",
+    "pt-BR": "Combinar com dígitos animados para painéis híbridos de texto e número."
+  },
+  "Persistencia hibrida": {
+    "en-US": "Hybrid persistence",
+    "pt-PT": "Persistência híbrida",
+    "es": "Persistencia híbrida",
+    "fr": "Persistance hybride",
+    "pt-BR": "Persistência híbrida"
+  },
+  "Usar com hooks de persistencia e com componentes que armazenam layout ou preferencias locais.": {
+    "en-US": "Use with persistence hooks and with components that store layout or local preferences.",
+    "pt-PT": "Usar com hooks de persistência e com componentes que armazenam layout ou preferências locais.",
+    "es": "Usar con hooks de persistencia y con componentes que almacenan diseño o preferencias locales.",
+    "fr": "À utiliser avec des hooks de persistance et des composants qui stockent la mise en page ou des préférences locales.",
+    "pt-BR": "Usar com hooks de persistência e com componentes que armazenam layout ou preferências locais."
+  },
+  "Usar com useSgPersistence e useSgPersistentState para persistencia.": {
+    "en-US": "Use with useSgPersistence and useSgPersistentState for persistence.",
+    "pt-PT": "Usar com useSgPersistence e useSgPersistentState para persistência.",
+    "es": "Usar con useSgPersistence y useSgPersistentState para la persistencia.",
+    "fr": "À utiliser avec useSgPersistence et useSgPersistentState pour la persistance.",
+    "pt-BR": "Usar com useSgPersistence e useSgPersistentState para persistência."
+  },
+  "Usar com try-catch para tratar erros de persistencia.": {
+    "en-US": "Use with try-catch to handle persistence errors.",
+    "pt-PT": "Usar com try-catch para tratar erros de persistência.",
+    "es": "Usar con try-catch para tratar errores de persistencia.",
+    "fr": "À utiliser avec try-catch pour traiter les erreurs de persistance.",
+    "pt-BR": "Usar com try-catch para tratar erros de persistência."
+  },
+  "Combinar com SgEnvironmentProvider para estrategia de persistencia customizada.": {
+    "en-US": "Combine with SgEnvironmentProvider for a custom persistence strategy.",
+    "pt-PT": "Combinar com SgEnvironmentProvider para uma estratégia de persistência personalizada.",
+    "es": "Combinar con SgEnvironmentProvider para una estrategia de persistencia personalizada.",
+    "fr": "À combiner avec SgEnvironmentProvider pour une stratégie de persistance personnalisée.",
+    "pt-BR": "Combinar com SgEnvironmentProvider para estratégia de persistência customizada."
+  },
+  "Combinar com SgEnvironmentProvider quando locale e preferencias precisarem de persistencia.": {
+    "en-US": "Combine with SgEnvironmentProvider when locale and preferences need persistence.",
+    "pt-PT": "Combinar com SgEnvironmentProvider quando o locale e as preferências precisarem de persistência.",
+    "es": "Combinar con SgEnvironmentProvider cuando el locale y las preferencias necesiten persistencia.",
+    "fr": "À combiner avec SgEnvironmentProvider lorsque la locale et les préférences doivent être persistées.",
+    "pt-BR": "Combinar com SgEnvironmentProvider quando locale e preferências precisarem de persistência."
+  },
+  "Opcoes por toast (duration, etc.)": {
+    "en-US": "Per-toast options (duration, etc.)",
+    "pt-PT": "Opções por toast (duration, etc.)",
+    "es": "Opciones por toast (duration, etc.)",
+    "fr": "Options par toast (duration, etc.)",
+    "pt-BR": "Opções por toast (duration, etc.)"
+  },
+  "Default sem provider": {
+    "en-US": "Default without provider",
+    "pt-PT": "Predefinição sem provider",
+    "es": "Predeterminado sin provider",
+    "fr": "Par défaut sans provider",
+    "pt-BR": "Padrão sem provider"
   }
 }

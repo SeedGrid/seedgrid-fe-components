@@ -820,7 +820,7 @@ export default function LoadingDatatableExample() {
 
       <SgDatatable
         id="datatable-loading"
-        title="Loading and empty"
+        title="Loading / empty"
         value={showEmpty ? [] : PRODUCT_ROWS}
         columns={BASE_COLUMNS}
         dataKey="id"
@@ -1587,7 +1587,7 @@ export default function SgDatatableShowcase() {
 
           <SgDatatable
             id="datatable-loading"
-            title="Loading and empty"
+            title="Loading / empty"
             value={showEmpty ? [] : PRODUCT_ROWS}
             columns={BASE_COLUMNS}
             dataKey="id"

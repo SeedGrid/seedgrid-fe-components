@@ -116,7 +116,7 @@ const DOCK_LAYOUT_PAGE_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", 
   "pt-BR": {
     sectionBasicDescription: "Quatro zonas (top/bottom/left/right) com toolbars arrastáveis.",
     sectionPlaygroundTitle: "4) Playground (SgPlayground)",
-    sectionPlaygroundDescription: "Interactive example with dock zones and toolbars.",
+    sectionPlaygroundDescription: "Exemplo interativo com zonas de dock e toolbars.",
     playgroundTitle: "SgDockLayout Playground",
     propsTitleLayout: "Referência de Props - SgDockLayout",
     propsTitleZone: "Referência de Props - SgDockZone"
@@ -124,7 +124,7 @@ const DOCK_LAYOUT_PAGE_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", 
   "pt-PT": {
     sectionBasicDescription: "Quatro zonas (top/bottom/left/right) com toolbars arrastáveis.",
     sectionPlaygroundTitle: "4) Playground (SgPlayground)",
-    sectionPlaygroundDescription: "Interactive example with dock zones and toolbars.",
+    sectionPlaygroundDescription: "Exemplo interativo com zonas de dock e toolbars.",
     playgroundTitle: "SgDockLayout Playground",
     propsTitleLayout: "Referência de Props - SgDockLayout",
     propsTitleZone: "Referência de Props - SgDockZone"
@@ -140,10 +140,10 @@ const DOCK_LAYOUT_PAGE_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", 
   es: {
     sectionBasicDescription: "Cuatro zonas (top/bottom/left/right) con toolbars arrastrables.",
     sectionPlaygroundTitle: "4) Playground (SgPlayground)",
-    sectionPlaygroundDescription: "Interactive example with dock zones and toolbars.",
+    sectionPlaygroundDescription: "Ejemplo interactivo con zonas de dock y toolbars.",
     playgroundTitle: "SgDockLayout Playground",
-    propsTitleLayout: "Referência de Props - SgDockLayout",
-    propsTitleZone: "Referência de Props - SgDockZone"
+    propsTitleLayout: "Referencia de Props - SgDockLayout",
+    propsTitleZone: "Referencia de Props - SgDockZone"
   },
   fr: {
     sectionBasicDescription: "Quatre zones (haut/bas/gauche/droite) avec des barres d'outils déplaçables.",

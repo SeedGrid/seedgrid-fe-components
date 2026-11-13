@@ -5,7 +5,7 @@ function Component() {
   const namespace = env.namespaceProvider.getNamespace();
   const key = buildSgPersistenceKey("component:state", namespace, env.persistence.scope);
 
-  return <div>Chave resolvida: {key ?? "sem persistencia"}</div>;
+  return <div>Chave resolvida: {key ?? "sem persistência"}</div>;
 }
 
 export default Component;

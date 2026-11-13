@@ -404,7 +404,7 @@
   "Config padrao de persistencia do contexto.": {
     "pt": "Config padrão de persistência do contexto.",
     "en": "Default persistence configuration for the context.",
-    "es": "Configuracion por defecto de persistencia del contexto.",
+    "es": "Configuración por defecto de persistencia del contexto.",
     "fr": "Configuration par défaut de persistance du contexte."
   },
   "Configurações complementares da interface.": {
@@ -648,7 +648,7 @@
     "fr": "Dimension du panneau (un nombre devient %)."
   },
   "Direcao de expansao/retracao.": {
-    "pt": "Direção de expansao/retracao.",
+    "pt": "Direção de expansão/retracao.",
     "en": "Expansion/retraction direction.",
     "es": "Dirección de expansión/retracción.",
     "fr": "Direction d'expansion/rétractation."
@@ -1686,7 +1686,7 @@
     "fr": "Chaîne affichée avant l'animation. Lorsqu'elle change, l'affichage se réinitialise sur elle."
   },
   "String de destino. A animacao transiciona cada caractere ate o alvo.": {
-    "pt": "String de destino. A animação transiciona cada caractere ate o alvo.",
+    "pt": "String de destino. A animação transiciona cada caractere até o alvo.",
     "en": "Target string. The animation transitions each character until it reaches the target.",
     "es": "Cadena de destino. La animaci?n transiciona cada car?cter hasta llegar al objetivo.",
     "fr": "Chaîne cible. L'animation fait transiter chaque caractère jusqu'à la cible."
@@ -1800,7 +1800,7 @@
     "fr": "Valeur actuellement affichée. Doit exister dans items."
   },
   "Ordered list of all possible values. The drum rolls to the value position.": {
-    "pt": "Lista ordenada de todos os valores possíveis. O tambor gira ate a posição do valor.",
+    "pt": "Lista ordenada de todos os valores possíveis. O tambor gira até a posição do valor.",
     "en": "Ordered list of all possible values. The drum rolls to the value position.",
     "es": "Lista ordenada de todos los valores posibles. El tambor gira hasta la posición del valor.",
     "fr": "Liste ordonnée de toutes les valeurs possibles. Le tambour tourne jusqu'à la position de la valeur."
@@ -1908,7 +1908,7 @@
     "fr": "Style en ligne supplémentaire sur le conteneur."
   },
   "Texto/numero exibido na folha do topo.": {
-    "pt": "Texto/numero exibido na folha do topo.",
+    "pt": "Texto/número exibido na folha do topo.",
     "en": "Text/number displayed on the top sheet.",
     "es": "Texto/número mostrado en la hoja superior.",
     "fr": "Texte/nombre affiché sur la feuille du dessus."
@@ -1958,7 +1958,7 @@
   "Total de paginas do monte. A pilha visual encolhe a cada increasePage() via ref.": {
     "pt": "Total de páginas do monte. A pilha visual encolhe a cada increasePage() via ref.",
     "en": "Total number of pages in the stack. The visual stack shrinks on each increasePage() call via ref.",
-    "es": "Total de paginas del mazo. La pila visual se reduce con cada llamada a increasePage() via ref.",
+    "es": "Total de páginas del mazo. La pila visual se reduce con cada llamada a increasePage() via ref.",
     "fr": "Nombre total de pages du tas. La pile visuelle diminue à chaque appel de increasePage() via ref."
   },
   "Classes CSS adicionais.": {
@@ -2036,7 +2036,7 @@
   "Valor inicial usado antes do carregamento e apos clear().": {
     "pt": "Valor inicial usado antes do carregamento e após clear().",
     "en": "Initial value used before loading and after clear().",
-    "es": "Valor inicial usado antes de la carga y despues de clear().",
+    "es": "Valor inicial usado antes de la carga y después de clear().",
     "fr": "Valeur initiale utilisée avant le chargement et après clear()."
   },
   "Funcao opcional para serializar antes de salvar (ex: Date → ISO string).": {
@@ -2060,7 +2060,7 @@
   "Atualiza o valor e o persiste automaticamente.": {
     "pt": "Atualiza o valor e o persiste automaticamente.",
     "en": "Updates the value and persists it automatically.",
-    "es": "Actualiza el valor y lo persiste automaticamente.",
+    "es": "Actualiza el valor y lo persiste automáticamente.",
     "fr": "Met à jour la valeur et la persiste automatiquement."
   },
   "Remove o valor da persistencia e reseta para defaultValue.": {
@@ -2106,7 +2106,7 @@
     "fr": "Scope de persistance de l'environnement."
   },
   "Modo de persistencia: strict, fallback ou mirror.": {
-    "pt": "Modo de persistencia: strict, fallback ou mirror.",
+    "pt": "Modo de persistência: strict, fallback ou mirror.",
     "en": "Persistence mode: strict, fallback, or mirror.",
     "es": "Modo de persistencia: strict, fallback o mirror.",
     "fr": "Mode de persistance : strict, fallback ou mirror."
@@ -2142,7 +2142,7 @@
     "fr": "Mode : strict, fallback ou mirror."
   },
   "Versao do estado; alterar invalida dados persistidos anteriores.": {
-    "pt": "Versão do estado; alterar invalida dados persistidos anteriores.",
+    "pt": "Versão do estado; alterar inválida dados persistidos anteriores.",
     "en": "State version; changing it invalidates previously persisted data.",
     "es": "Version del estado; cambiarla invalida datos persistidos anteriores.",
     "fr": "Version de l'état ; la modifier invalide les données persistées précédentes."
@@ -2174,13 +2174,13 @@
   "Locale atual dos componentes. Usado por componentes para formatar datas, numeros e mensagens.": {
     "pt": "Locale atual dos componentes. Usado por componentes para formatar datas, números e mensagens.",
     "en": "Current locale of the components. Used by components to format dates, numbers, and messages.",
-    "es": "Locale actual de los componentes. Usado por componentes para formatear fechas, numeros y mensajes.",
+    "es": "Locale actual de los componentes. Usado por componentes para formatear fechas, números y mensajes.",
     "fr": "Locale actuelle des composants. Utilisée par les composants pour formater les dates, nombres et messages."
   },
   "Mapa de todas as chaves de traducao disponiveis para o locale atual.": {
     "pt": "Mapa de todas as chaves de tradução disponíveis para o locale atual.",
     "en": "Map of all translation keys available for the current locale.",
-    "es": "Mapa de todas las claves de traduccion disponibles para el locale actual.",
+    "es": "Mapa de todas las claves de traducción disponibles para el locale actual.",
     "fr": "Table de toutes les clés de traduction disponibles pour la locale actuelle."
   },
   "Codigo do locale (ex: \"pt-BR\", \"pt-PT\", \"en-US\", \"es\", \"fr\"). Afeta os textos internos dos componentes SeedGrid.": {
@@ -3640,5 +3640,17 @@
     "en": "Button color variant.",
     "es": "Variante de color del botón.",
     "fr": "Variante de couleur du bouton."
+  },
+  "Titulo do SgCard usado pelo gadget.": {
+    "pt": "Título do SgCard usado pelo gadget.",
+    "en": "Title of the SgCard used by the gadget.",
+    "es": "Título del SgCard usado por el gadget.",
+    "fr": "Titre du SgCard utilisé par le gadget."
+  },
+  "Sobrescreve configuracoes padrao do SgCard do gadget.": {
+    "pt": "Sobrescreve configurações padrão do SgCard do gadget.",
+    "en": "Overrides the default SgCard settings of the gadget.",
+    "es": "Sobrescribe la configuración predeterminada del SgCard del gadget.",
+    "fr": "Remplace les paramètres par défaut du SgCard du gadget."
   }
 }
