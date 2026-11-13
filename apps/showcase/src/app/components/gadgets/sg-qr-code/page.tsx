@@ -35,9 +35,9 @@ const QR_CODE_PROPS: ShowcasePropRow[] = [
   { prop: "logoSrc / logoAlt", type: "string / string", defaultValue: "- / -", description: "Logo opcional no centro." },
   { prop: "margin", type: "number", defaultValue: "2", description: "Margem interna do QR Code." },
   { prop: "fgColor / bgColor", type: "string / string", defaultValue: "#000000 / #FFFFFF", description: "Cores do QR." },
-  { prop: "errorCorrectionLevel", type: "\"L\" | \"M\" | \"Q\" | \"H\"", defaultValue: "H", description: "NÃ­vel de correÃ§Ã£o de erro." },
-  { prop: "emptyFallback", type: "ReactNode", defaultValue: "-", description: "Fallback quando value estÃ¡ vazio." },
-  { prop: "className / style", type: "string / CSSProperties", defaultValue: "-", description: "CustomizaÃ§Ã£o visual." }
+  { prop: "errorCorrectionLevel", type: "\"L\" | \"M\" | \"Q\" | \"H\"", defaultValue: "H", description: "Nível de correção de erro." },
+  { prop: "emptyFallback", type: "ReactNode", defaultValue: "-", description: "Fallback quando value está vazio." },
+  { prop: "className / style", type: "string / CSSProperties", defaultValue: "-", description: "Customização visual." }
 ];
 
 
