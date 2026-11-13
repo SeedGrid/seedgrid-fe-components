@@ -162,7 +162,7 @@ export default function App() {
       <SgInputText id="neon-font" label="Font" value={font} onChange={setFont} />
       <div className="flex items-center gap-2">
         <SgButton size="sm" onClick={() => setAnimateOnChange((prev) => !prev)}>
-          {animateOnChange ? "Animacao: ON" : "Animacao: OFF"}
+          {animateOnChange ? "Animação: ON" : "Animação: OFF"}
         </SgButton>
       </div>
 

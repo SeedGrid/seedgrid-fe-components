@@ -59,7 +59,7 @@ export default function App() {
         {hasComponent ? (
           <SgPeriodSelectorFromLib
             id="ps-playground"
-            label="Periodo"
+            label="Período"
             locale="pt-BR"
             permitCurrent={permitCurrent}
             permitPast={permitPast}

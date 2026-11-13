@@ -10,7 +10,7 @@ export default function App() {
         id="documento"
         label="Documento"
         validateWithPublicaCnpj
-        publicaCnpjErrorMessage="CNPJ nao encontrado."
+        publicaCnpjErrorMessage="CNPJ não encontrado."
         onPublicaCnpjResult={setResult}
         onPublicaCnpjError={(error) => console.log(error)}
         inputProps={{}}

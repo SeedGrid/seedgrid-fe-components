@@ -355,7 +355,7 @@ export default function Example() {
           ]}
           centerContent={
             <div className="text-center">
-              <div className="text-xs uppercase text-muted-foreground">Eficiencia</div>
+              <div className="text-xs uppercase text-muted-foreground">Eficiência</div>
               <div className="text-2xl font-bold">{Math.round(value)}%</div>
             </div>
           }

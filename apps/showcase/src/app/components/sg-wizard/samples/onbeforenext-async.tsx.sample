@@ -14,7 +14,7 @@ export default function Example() {
     >
       <SgWizardPage>
         <div className="rounded border border-border bg-foreground/5 p-4">
-          <div className="text-sm font-semibold">Validacao assicrona</div>
+          <div className="text-sm font-semibold">Validação assíncrona</div>
           <p className="mt-1 text-sm text-muted-foreground">
             Antes de avancar, o wizard aguarda uma promise.
           </p>
@@ -24,7 +24,7 @@ export default function Example() {
         <div className="rounded border border-border bg-foreground/5 p-4">
           <div className="text-sm font-semibold">Segunda etapa</div>
           <p className="mt-1 text-sm text-muted-foreground">
-            O submit final tambem pode ser assicrono.
+            O submit final também pode ser assíncrono.
           </p>
         </div>
       </SgWizardPage>

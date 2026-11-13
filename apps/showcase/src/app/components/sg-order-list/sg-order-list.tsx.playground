@@ -6,9 +6,9 @@ const SgOrderListFromLib = (SeedGrid as Record<string, unknown>).SgOrderList as 
 const ITEMS = [
   { label: "Planejamento", value: "plan" },
   { label: "Design", value: "design" },
-  { label: "Implementacao", value: "build" },
+  { label: "Implementação", value: "build" },
   { label: "Testes", value: "test" },
-  { label: "Publicacao", value: "release" }
+  { label: "Publicação", value: "release" }
 ];
 
 export default function App() {

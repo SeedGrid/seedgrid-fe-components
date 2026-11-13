@@ -2,8 +2,8 @@ import * as React from "react";
 import { SgAccordion, type SgAccordionItem } from "@seedgrid/fe-components";
 
 const items: SgAccordionItem[] = [
-  { id: "general", title: "Geral", content: <p className="text-sm">Configuracoes gerais do modulo.</p> },
-  { id: "security", title: "Seguranca", content: <p className="text-sm">Politicas e regras de acesso.</p> },
+  { id: "general", title: "Geral", content: <p className="text-sm">Configurações gerais do módulo.</p> },
+  { id: "security", title: "Segurança", content: <p className="text-sm">Políticas e regras de acesso.</p> },
   { id: "billing", title: "Faturamento (override por item)", headerBackgroundColor: "rgb(var(--sg-warning-100, 254 249 195))", content: <p className="text-sm">Este item ignora a cor global do header.</p> }
 ];
 

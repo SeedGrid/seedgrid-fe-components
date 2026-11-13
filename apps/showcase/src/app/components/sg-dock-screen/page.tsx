@@ -52,20 +52,20 @@ export default function Example() {
       <SgDockZone zone="bottom">
         <SgToolBar id="tb-bottom-dock-screen-v1" dockZone="bottom" orientationDirection="horizontal-left" title="Base" draggable>
           <SgToolbarIconButton icon={<LayoutGrid className="size-4" />} label="Painel" hint="Abrir painel" />
-          <SgToolbarIconButton icon={<ClipboardList className="size-4" />} label="Relatorio" hint="Abrir relatorios" />
+          <SgToolbarIconButton icon={<ClipboardList className="size-4" />} label="Relatório" hint="Abrir relatórios" />
         </SgToolBar>
       </SgDockZone>
 
       <SgDockZone zone="left">
         <SgToolBar id="tb-left-dock-screen-v1" dockZone="left" orientationDirection="vertical-down" title="Navegação" collapsible draggable>
           <SgToolbarIconButton icon={<Users className="size-4" />} label="Clientes" hint="Abrir clientes" />
-          <SgToolbarIconButton icon={<Settings className="size-4" />} label="Config" hint="Abrir configuracoes" />
+          <SgToolbarIconButton icon={<Settings className="size-4" />} label="Config" hint="Abrir configurações" />
         </SgToolBar>
       </SgDockZone>
 
       <SgDockZone zone="right">
         <SgToolBar id="tb-right-dock-screen-v1" dockZone="right" orientationDirection="vertical-down" title="Equipe" collapsible draggable>
-          <SgToolbarIconButton icon={<Users className="size-4" />} label="Usuarios" hint="Gerenciar usuarios" />
+          <SgToolbarIconButton icon={<Users className="size-4" />} label="Usuários" hint="Gerenciar usuários" />
           <SgToolbarIconButton icon={<Settings className="size-4" />} label="Ajustes" hint="Abrir ajustes" />
         </SgToolBar>
       </SgDockZone>
@@ -112,20 +112,20 @@ export default function App() {
       <SgDockZone zone="bottom">
         <SgToolBar id="tb-bottom-play-v1" dockZone="bottom" orientationDirection="horizontal-left" title="Base" draggable>
           <SgToolbarIconButton icon={<LayoutGrid className="size-4" />} label="Painel" hint="Abrir painel" />
-          <SgToolbarIconButton icon={<ClipboardList className="size-4" />} label="Relatorio" hint="Abrir relatorios" />
+          <SgToolbarIconButton icon={<ClipboardList className="size-4" />} label="Relatório" hint="Abrir relatórios" />
         </SgToolBar>
       </SgDockZone>
 
       <SgDockZone zone="left">
         <SgToolBar id="tb-left-play-v1" dockZone="left" orientationDirection="vertical-down" title="Esquerda" collapsible draggable>
           <SgToolbarIconButton icon={<Users className="size-4" />} label="Clientes" hint="Abrir clientes" />
-          <SgToolbarIconButton icon={<Settings className="size-4" />} label="Config" hint="Abrir configuracoes" />
+          <SgToolbarIconButton icon={<Settings className="size-4" />} label="Config" hint="Abrir configurações" />
         </SgToolBar>
       </SgDockZone>
 
       <SgDockZone zone="right">
         <SgToolBar id="tb-right-play-v1" dockZone="right" orientationDirection="vertical-down" title="Direita" collapsible draggable>
-          <SgToolbarIconButton icon={<Users className="size-4" />} label="Usuarios" hint="Gerenciar usuarios" />
+          <SgToolbarIconButton icon={<Users className="size-4" />} label="Usuários" hint="Gerenciar usuários" />
           <SgToolbarIconButton icon={<Settings className="size-4" />} label="Ajustes" hint="Abrir ajustes" />
         </SgToolBar>
       </SgDockZone>

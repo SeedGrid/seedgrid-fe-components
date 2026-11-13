@@ -8,7 +8,7 @@ const SgQRCodeFromLib = (SeedGrid as Record<string, unknown>).SgQRCode as React.
 function LocalFallback(props: { value: string; size: number }) {
   return (
     <div className="inline-flex items-center justify-center rounded border border-border bg-slate-50 text-xs text-slate-600" style={{ width: props.size, height: props.size }}>
-      {props.value ? "SgQRCode indisponivel na versao publicada" : "Informe um valor"}
+      {props.value ? "SgQRCode indisponível na versão publicada" : "Informe um valor"}
     </div>
   );
 }
@@ -25,7 +25,7 @@ export default function App() {
 
   return (
     <div className="space-y-4 p-2">
-      {!hasQrCode ? <div className="rounded border border-amber-200 bg-amber-50 p-2 text-xs text-amber-800">SgQRCode ainda nao esta na versao publicada usada pelo Sandpack. Exibindo fallback.</div> : null}
+      {!hasQrCode ? <div className="rounded border border-amber-200 bg-amber-50 p-2 text-xs text-amber-800">SgQRCode ainda não está na versão publicada usada pelo Sandpack. Exibindo fallback.</div> : null}
 
       <div className="grid gap-4 md:grid-cols-[1fr_auto] md:items-start">
         <div className="space-y-3">

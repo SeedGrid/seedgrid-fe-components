@@ -116,7 +116,7 @@ export default function SgYearPartSelectorPage() {
         />
 
         {/*
-          Fica fora de <Section> de proposito: nao e' um exemplo, e' a decisao de qual dos dois
+          Fica fora de <Section> de propósito: não é um exemplo, é a decisão de qual dos dois
           seletores usar. Dentro de Section entraria na lista de ancoras como se fosse um exemplo.
         */}
         <div className="rounded-lg border border-border bg-foreground/5 p-6">

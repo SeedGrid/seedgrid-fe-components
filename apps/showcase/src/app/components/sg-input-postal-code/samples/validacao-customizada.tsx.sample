@@ -7,7 +7,7 @@ export default function App() {
       id="cep"
       label="CEP (Brasil)"
       hintText="00000-000"
-      validation={(value) => (value.startsWith("00") ? "CEP nao pode iniciar com 00." : null)}
+      validation={(value) => (value.startsWith("00") ? "CEP não pode iniciar com 00." : null)}
       onValidation={(message) => console.log(message)}
     />
   );

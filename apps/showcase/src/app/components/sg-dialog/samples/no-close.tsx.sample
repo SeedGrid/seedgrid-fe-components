@@ -6,13 +6,13 @@ export default function Example() {
 
   return (
     <>
-      <SgButton appearance="outline" onClick={() => setOpen(true)}>Abrir sem botao de fechar</SgButton>
+      <SgButton appearance="outline" onClick={() => setOpen(true)}>Abrir sem botão de fechar</SgButton>
       <SgDialog
         open={open}
         onOpenChange={setOpen}
         closeable={false}
         title="Fluxo guiado"
-        subtitle="Sem icone de fechar"
+        subtitle="Sem ícone de fechar"
         footer={
           <>
             <SgButton appearance="ghost" onClick={() => setOpen(false)}>Cancelar</SgButton>
@@ -20,7 +20,7 @@ export default function Example() {
           </>
         }
       >
-        <div className="text-sm text-muted-foreground">O fechamento fica concentrado nas acoes do rodape.</div>
+        <div className="text-sm text-muted-foreground">O fechamento fica concentrado nas ações do rodape.</div>
       </SgDialog>
     </>
   );

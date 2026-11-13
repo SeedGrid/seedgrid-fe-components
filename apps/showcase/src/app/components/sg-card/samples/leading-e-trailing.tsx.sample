@@ -8,7 +8,7 @@ export default function Example() {
       trailing={<span className="rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground">ativo</span>}
       title="Conta enterprise"
       description="Resumo de performance e uso"
-      actions={<SgButton appearance="ghost" size="sm">Acao</SgButton>}
+      actions={<SgButton appearance="ghost" size="sm">Ação</SgButton>}
       footer={
         <div className="flex items-center justify-between text-xs text-muted-foreground">
           <span>Expira em 12 dias</span>

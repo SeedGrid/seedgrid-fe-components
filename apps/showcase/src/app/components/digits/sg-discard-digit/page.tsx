@@ -259,7 +259,7 @@ export default function App() {
       </SgGrid>
 
       <SgButton size="sm" onClick={() => setAnimateOnChange((prev) => !prev)}>
-        {animateOnChange ? "Animacao: ON" : "Animacao: OFF"}
+        {animateOnChange ? "Animação: ON" : "Animação: OFF"}
       </SgButton>
 
       <div className="rounded border border-border p-4">
@@ -276,7 +276,7 @@ export default function App() {
             animateOnChange={animateOnChange}
           />
           <div className="space-y-2">
-            <p className="text-xs text-muted-foreground">Pagina {pagina} de {totalNumberPages}</p>
+            <p className="text-xs text-muted-foreground">Página {pagina} de {totalNumberPages}</p>
             <div className="flex flex-wrap gap-2">
               <SgButton size="sm" onClick={anterior} enabled={!(pagina <= 1)}>Anterior</SgButton>
               <SgButton size="sm" onClick={proxima} enabled={!(pagina >= totalNumberPages)}>Próxima</SgButton>

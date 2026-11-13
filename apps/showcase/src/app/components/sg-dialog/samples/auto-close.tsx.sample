@@ -11,7 +11,7 @@ export default function Example() {
         open={open}
         onOpenChange={setOpen}
         autoCloseMs={3000}
-        title="Sincronizacao concluida"
+        title="Sincronização concluída"
         subtitle="O dialog fecha em 3 segundos"
       >
         <div className="text-sm text-muted-foreground">Esse exemplo mostra o uso de autoCloseMs.</div>

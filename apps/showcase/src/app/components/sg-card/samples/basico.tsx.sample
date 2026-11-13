@@ -5,11 +5,11 @@ export default function Example() {
   return (
     <SgCard
       title="Resumo financeiro"
-      description="Visao consolidada do dia"
+      description="Visão consolidada do dia"
       footer={
         <div className="flex items-center justify-between text-xs text-muted-foreground">
           <span>Atualizado agora</span>
-          <span>Ultima sincronizacao</span>
+          <span>Última sincronização</span>
         </div>
       }
     >

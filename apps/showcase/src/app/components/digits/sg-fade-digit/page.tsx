@@ -355,7 +355,7 @@ import { SgButton, SgFadeDigit } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 const PALETTE = [
-  { label: "Padrao",  color: "#edebeb", backgroundColor: "#333232" },
+  { label: "Padrão",  color: "#edebeb", backgroundColor: "#333232" },
   { label: "Verde",   color: "#4ade80", backgroundColor: "#052e16" },
   { label: "Azul",    color: "#60a5fa", backgroundColor: "#0f172a" },
   { label: "Rosa",    color: "#f472b6", backgroundColor: "#2d0a1e" },
@@ -433,7 +433,7 @@ export default function App() {
       </div>
 
       <SgButton onClick={() => setRunning((p) => !p)}>
-        {running ? "Parar" : "Iniciar relogio"}
+        {running ? "Parar" : "Iniciar relógio"}
       </SgButton>
     </div>
   );
@@ -448,7 +448,7 @@ const PROPS: ShowcasePropRow[] = [
     type: "string",
     defaultValue: "-",
     description:
-      "Caractere exibido no card. Ao mudar, o digito atual apaga e o novo acende.",
+      "Caractere exibido no card. Ao mudar, o dígito atual apaga e o novo acende.",
   },
   {
     prop: "color",

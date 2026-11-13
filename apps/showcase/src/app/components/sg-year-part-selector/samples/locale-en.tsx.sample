@@ -1,10 +1,10 @@
 import * as React from "react";
 import { SgYearPartSelector, YearPartKind } from "@seedgrid/fe-components";
 
-// A sigla entre parenteses acompanha o idioma, e NAO e' a inicial do nome traduzido: trimestre e'
-// Q1..Q4 em pt-BR e en-US (o jargao de negocio veio do ingles) mas T1..T4 em es, fr e pt-PT, onde
-// ninguem diz Q1. Semestre e' S no portugues e H (Half-year) no ingles. Bimestre nao tem sigla
-// consagrada em lingua nenhuma e sai sem parenteses.
+// A sigla entre parênteses acompanha o idioma, e NÃO é a inicial do nome traduzido: trimestre é
+// Q1..Q4 em pt-BR e en-US (o jargão de negócio veio do inglês) mas T1..T4 em es, fr e pt-PT, onde
+// ninguém diz Q1. Semestre é S no português e H (Half-year) no inglês. Bimestre não tem sigla
+// consagrada em lingua nenhuma e sai sem parênteses.
 export default function Example() {
   return (
     <div className="flex w-full flex-col gap-6">

@@ -4,8 +4,8 @@ import { SgPeriodSelector } from "@seedgrid/fe-components";
 export default function Example() {
   return (
     <div className="flex flex-wrap gap-4">
-      <SgPeriodSelector id="ps-disabled" label="Periodo" locale="pt-BR" enabled={false} />
-      <SgPeriodSelector id="ps-required" label="Periodo" locale="pt-BR" required />
+      <SgPeriodSelector id="ps-disabled" label="Período" locale="pt-BR" enabled={false} />
+      <SgPeriodSelector id="ps-required" label="Período" locale="pt-BR" required />
     </div>
   );
 }

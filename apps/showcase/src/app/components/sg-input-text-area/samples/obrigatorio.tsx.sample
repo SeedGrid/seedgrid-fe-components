@@ -4,8 +4,8 @@ import { SgInputTextArea } from "@seedgrid/fe-components";
 export default function App() {
   return (
     <>
-      <SgInputTextArea id="demo-required" label="Campo obrigatorio" required />
-      <SgInputTextArea id="demo-required-custom" label="Mensagem customizada" required requiredMessage="Campo obrigatorio" />
+      <SgInputTextArea id="demo-required" label="Campo obrigatório" required />
+      <SgInputTextArea id="demo-required-custom" label="Mensagem customizada" required requiredMessage="Campo obrigatório" />
     </>
   );
 }

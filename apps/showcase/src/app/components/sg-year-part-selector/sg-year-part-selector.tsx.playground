@@ -40,7 +40,7 @@ export default function App() {
   const [required, setRequired] = React.useState(false);
   const [resolved, setResolved] = React.useState<ResolvedYearPart | null>(null);
 
-  // Lista vazia cai no default dentro do componente, entao desmarcar tudo nao "apaga" o combo:
+  // Lista vazia cai no default dentro do componente, então desmarcar tudo não "apaga" o combo:
   // o playground mostra isso em vez de esconder.
   const toggleKind = (kind: string) =>
     setAllowedKinds((current) =>

@@ -10,8 +10,8 @@ export default function Example() {
 
   function ouvir() {
     if (pararRef.current) return;
-    // subscribeSgWhistles devolve a funcao que cancela a inscricao e ja chama o listener
-    // uma vez com a lista atual — nao e' preciso ler o estado inicial em outro lugar.
+    // subscribeSgWhistles devolve a função que cancela a inscrição e já chama o listener
+    // uma vez com a lista atual — não é preciso ler o estado inicial em outro lugar.
     pararRef.current = subscribeSgWhistles((whistles) => setTotal(whistles.length));
     setOuvindo(true);
   }

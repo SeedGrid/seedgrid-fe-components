@@ -8,7 +8,7 @@ export default function Example() {
         <SgPanel className="h-full rounded-lg bg-background p-3" contentGap={8}>
           <SgPanel align="top" height={10} borderStyle="solid" padding={12}>header</SgPanel>
           <SgPanel align="left" width={18} borderStyle="dashed" padding={8} scrollable="y">menu</SgPanel>
-          <SgPanel align="client" borderStyle="none" padding={10} scrollable="auto" scrollbarGutter>conteudo</SgPanel>
+          <SgPanel align="client" borderStyle="none" padding={10} scrollable="auto" scrollbarGutter>conteúdo</SgPanel>
         </SgPanel>
       </SgPanel>
       <SgGrid columns={{ base: 1, md: 3 }} gap={8}>

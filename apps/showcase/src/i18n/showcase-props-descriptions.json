@@ -546,7 +546,7 @@
     "fr": "Personnalisation visuelle du stack."
   },
   "Customizacoes visuais.": {
-    "pt": "Customizacoes visuais.",
+    "pt": "Customizações visuais.",
     "en": "Visual customizations.",
     "es": "Personalizaciones visuales.",
     "fr": "Personnalisations visuelles."
@@ -708,19 +708,19 @@
     "fr": "Éléments enfants empilés."
   },
   "Espacamento entre itens e interno.": {
-    "pt": "Espacamento entre itens e interno.",
+    "pt": "Espaçamento entre itens e interno.",
     "en": "Spacing between items and internal.",
     "es": "Espaciado entre elementos e interno.",
     "fr": "Espacement entre les éléments et interne."
   },
   "Espacamento entre itens em pixels.": {
-    "pt": "Espacamento entre itens em pixels.",
+    "pt": "Espaçamento entre itens em pixels.",
     "en": "Spacing between items in pixels.",
     "es": "Espaciado entre elementos en píxeles.",
     "fr": "Espacement entre les éléments en pixels."
   },
   "Espacamento entre itens.": {
-    "pt": "Espacamento entre itens.",
+    "pt": "Espaçamento entre itens.",
     "en": "Spacing between items.",
     "es": "Espaciado entre elementos.",
     "fr": "Espacement entre les éléments."
@@ -918,7 +918,7 @@
     "fr": "Plage de valeurs de la jauge."
   },
   "Habilita modo auto-fit por largura minima.": {
-    "pt": "Habilita modo auto-fit por largura minima.",
+    "pt": "Habilita modo auto-fit por largura mínima.",
     "en": "Enables auto-fit mode by minimum width.",
     "es": "Habilita el modo de ajuste automático por ancho mínimo.",
     "fr": "Active le mode auto-fit selon la largeur minimale."
@@ -1134,7 +1134,7 @@
     "fr": "Gestionnaire de clic."
   },
   "Mantem visualizacao sem permitir alteracao.": {
-    "pt": "Mantem visualização sem permitir alteração.",
+    "pt": "Mantém visualização sem permitir alteração.",
     "en": "Maintains visualization without allowing changes.",
     "es": "Mantiene la visualización sin permitir cambios.",
     "fr": "Conserve l'affichage sans permettre la modification."
@@ -1878,7 +1878,7 @@
     "fr": "Police personnalisée du texte."
   },
   "Espacamento entre letras em pixels.": {
-    "pt": "Espacamento entre letras em pixels.",
+    "pt": "Espaçamento entre letras em pixels.",
     "en": "Spacing between letters in pixels.",
     "es": "Espaciado entre letras en píxeles.",
     "fr": "Espacement entre les lettres en pixels."
@@ -3652,5 +3652,11 @@
     "en": "Overrides the default SgCard settings of the gadget.",
     "es": "Sobrescribe la configuración predeterminada del SgCard del gadget.",
     "fr": "Remplace les paramètres par défaut du SgCard du gadget."
+  },
+  "Locale atual dos componentes. Vem do SgComponentsI18nProvider mais proximo ou, sem provider, do estado global.": {
+    "pt": "Locale atual dos componentes. Vem do SgComponentsI18nProvider mais próximo ou, sem provider, do estado global.",
+    "en": "Current locale of the components. Comes from the nearest SgComponentsI18nProvider or, without a provider, from the global state.",
+    "es": "Locale actual de los componentes. Viene del SgComponentsI18nProvider más cercano o, sin provider, del estado global.",
+    "fr": "Locale actuelle des composants. Provient du SgComponentsI18nProvider le plus proche ou, sans provider, de l'état global."
   }
 }

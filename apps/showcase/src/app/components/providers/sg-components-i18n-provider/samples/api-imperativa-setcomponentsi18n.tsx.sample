@@ -17,7 +17,7 @@ export default function App() {
     const atual = getComponentsI18n();
     setResultado(`${atual.locale}: ${tComponents(atual, "components.actions.clear")}`);
 
-    // Devolve o estado global anterior para nao afetar o restante da pagina.
+    // Devolve o estado global anterior para não afetar o restante da página.
     setComponentsI18n({ locale: anterior.locale, messages: anterior.messages });
   };
 

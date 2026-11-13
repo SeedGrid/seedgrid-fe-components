@@ -9,8 +9,8 @@ export default function Example() {
     <>
       <SgButton ref={btnRef} onClick={() => setOpen(true)}>Abrir popup</SgButton>
       <SgPopup
-        title="Configuracao"
-        subtitle="Resumo da acao"
+        title="Configuração"
+        subtitle="Resumo da ação"
         open={open}
         onOpenChange={setOpen}
         anchorRef={btnRef as React.RefObject<HTMLElement>}

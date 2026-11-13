@@ -14,7 +14,7 @@ export default function Example() {
       }}
       onFinish={() => {}}
     >
-      <SgWizardPage title="Campos obrigatorios">
+      <SgWizardPage title="Campos obrigatórios">
         <div className="grid gap-3 sm:grid-cols-2">
           <SgInputText
             id="validate-step-name"
@@ -40,7 +40,7 @@ export default function Example() {
         <div className="rounded border border-border bg-foreground/5 p-4">
           <div className="text-sm font-semibold">Etapa seguinte</div>
           <p className="mt-1 text-sm text-muted-foreground">
-            So abre quando nome e email foram preenchidos.
+            Só abre quando nome e email foram preenchidos.
           </p>
         </div>
       </SgWizardPage>

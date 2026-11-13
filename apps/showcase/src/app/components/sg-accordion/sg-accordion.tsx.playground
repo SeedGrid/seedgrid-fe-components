@@ -10,9 +10,9 @@ export default function App() {
   const [active, setActive] = React.useState<number[]>([0]);
 
   const items: SgAccordionItem[] = [
-    { id: "one", title: "Painel 1", content: <p className="text-sm">Conteudo do primeiro painel.</p> },
-    { id: "two", title: "Painel 2", content: <p className="text-sm">Conteudo do segundo painel.</p> },
-    { id: "three", title: "Painel 3", content: <p className="text-sm">Conteudo do terceiro painel.</p> }
+    { id: "one", title: "Painel 1", content: <p className="text-sm">Conteúdo do primeiro painel.</p> },
+    { id: "two", title: "Painel 2", content: <p className="text-sm">Conteúdo do segundo painel.</p> },
+    { id: "three", title: "Painel 3", content: <p className="text-sm">Conteúdo do terceiro painel.</p> }
   ];
 
   return (

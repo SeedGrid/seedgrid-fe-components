@@ -28,7 +28,7 @@ export default function Example() {
         draggable={false}
       />
       <p className="text-xs text-muted-foreground">
-        Exemplo para cenarios em que voce so precisa mover itens entre listas.
+        Exemplo para cenários em que você só precisa mover itens entre listas.
       </p>
     </>
   );

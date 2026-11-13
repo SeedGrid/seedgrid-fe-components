@@ -6,8 +6,8 @@ import { SgButton, SgWhistler, sgWhistle, subscribeSgWhistles } from "@seedgrid/
 export default function Example() {
   const [total, setTotal] = React.useState(0);
 
-  // O retorno de subscribeSgWhistles e' a propria funcao de limpeza, entao ele pode ser
-  // devolvido direto do efeito: a inscricao morre junto com o componente.
+  // O retorno de subscribeSgWhistles é a própria função de limpeza, então ele pode ser
+  // devolvido direto do efeito: a inscrição morre junto com o componente.
   React.useEffect(() => subscribeSgWhistles((whistles) => setTotal(whistles.length)), []);
 
   return (

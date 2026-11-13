@@ -160,16 +160,16 @@ const items: SgAccordionItem[] = [
     content: (
       <div className="space-y-2 text-sm">
         <p>Nome completo, email e telefone para contato.</p>
-        <p className="text-muted-foreground">Edite essas informacoes no perfil do usuario.</p>
+        <p className="text-muted-foreground">Edite essas informações no perfil do usuário.</p>
       </div>
     )
   },
   {
     id: "address",
-    title: "Endereco",
+    title: "Endereço",
     content: (
       <div className="space-y-2 text-sm">
-        <p>Rua, numero, cidade, estado e CEP.</p>
+        <p>Rua, número, cidade, estado e CEP.</p>
         <p className="text-muted-foreground">Utilizado para faturamento e entregas.</p>
       </div>
     )
@@ -179,8 +179,8 @@ const items: SgAccordionItem[] = [
     title: "Faturamento",
     content: (
       <div className="space-y-2 text-sm">
-        <p>Forma de pagamento, ciclo de cobranca e historico de notas.</p>
-        <p className="text-muted-foreground">Atualizacoes podem levar alguns minutos para refletir.</p>
+        <p>Forma de pagamento, ciclo de cobrança e histórico de notas.</p>
+        <p className="text-muted-foreground">Atualizações podem levar alguns minutos para refletir.</p>
       </div>
     )
   }
@@ -195,9 +195,9 @@ import { SgAccordion, SgButton, type SgAccordionItem } from "@seedgrid/fe-compon
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 const items: SgAccordionItem[] = [
-  { id: "personal", title: "Dados pessoais", content: <p className="text-sm">Conteudo 1</p> },
-  { id: "address", title: "Endereco", content: <p className="text-sm">Conteudo 2</p> },
-  { id: "billing", title: "Faturamento", content: <p className="text-sm">Conteudo 3</p> }
+  { id: "personal", title: "Dados pessoais", content: <p className="text-sm">Conteúdo 1</p> },
+  { id: "address", title: "Endereço", content: <p className="text-sm">Conteúdo 2</p> },
+  { id: "billing", title: "Faturamento", content: <p className="text-sm">Conteúdo 3</p> }
 ];
 
 export default function Example() {
@@ -229,18 +229,18 @@ import { SgPlayground } from "@seedgrid/fe-playground";
 const items: SgAccordionItem[] = [
   {
     id: "overview",
-    title: "Visao geral",
-    content: <p className="text-sm">Indicadores principais de utilizacao, consumo e disponibilidade.</p>
+    title: "Visão geral",
+    content: <p className="text-sm">Indicadores principais de utilização, consumo e disponibilidade.</p>
   },
   {
     id: "security",
-    title: "Seguranca",
-    content: <p className="text-sm">Politicas de senha, MFA e tentativas de autenticacao.</p>
+    title: "Segurança",
+    content: <p className="text-sm">Políticas de senha, MFA e tentativas de autenticação.</p>
   },
   {
     id: "integrations",
-    title: "Integracoes",
-    content: <p className="text-sm">Conexoes com APIs, webhooks e provedores externos.</p>
+    title: "Integrações",
+    content: <p className="text-sm">Conexões com APIs, webhooks e provedores externos.</p>
   }
 ];
 
@@ -261,9 +261,9 @@ import { SgAccordion, SgButton, type SgAccordionItem } from "@seedgrid/fe-compon
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 const items: SgAccordionItem[] = [
-  { id: "personal", title: "Dados pessoais", content: <p className="text-sm">Conteudo 1</p> },
-  { id: "address", title: "Endereco", content: <p className="text-sm">Conteudo 2</p> },
-  { id: "billing", title: "Faturamento", content: <p className="text-sm">Conteudo 3</p> }
+  { id: "personal", title: "Dados pessoais", content: <p className="text-sm">Conteúdo 1</p> },
+  { id: "address", title: "Endereço", content: <p className="text-sm">Conteúdo 2</p> },
+  { id: "billing", title: "Faturamento", content: <p className="text-sm">Conteúdo 3</p> }
 ];
 
 export default function Example() {
@@ -298,20 +298,20 @@ const items: SgAccordionItem[] = [
     icon: <Mail size={14} />,
     end: <span className="rounded bg-muted px-1.5 py-0.5 text-[10px] uppercase">novo</span>,
     headerBackgroundColor: "rgb(var(--sg-info-100, 224 242 254))",
-    content: <p className="text-sm">Configuracoes de SMTP, remetente padrao e templates.</p>
+    content: <p className="text-sm">Configurações de SMTP, remetente padrão e templates.</p>
   },
   {
     id: "lock",
-    title: "Permissoes",
+    title: "Permissões",
     icon: <ShieldCheck size={14} />,
-    content: <p className="text-sm">Controle de perfis, papeis e trilhas de auditoria.</p>
+    content: <p className="text-sm">Controle de perfis, papéis e trilhas de auditoria.</p>
   },
   {
     id: "blocked",
-    title: "Modulo indisponivel",
+    title: "Módulo indisponível",
     icon: <TriangleAlert size={14} />,
     enabled: false,
-    content: <p className="text-sm">Conteudo bloqueado.</p>
+    content: <p className="text-sm">Conteúdo bloqueado.</p>
   }
 ];
 
@@ -333,12 +333,12 @@ const items: SgAccordionItem[] = [
   {
     id: "general",
     title: "Geral",
-    content: <p className="text-sm">Configuracoes gerais do modulo.</p>
+    content: <p className="text-sm">Configurações gerais do módulo.</p>
   },
   {
     id: "security",
-    title: "Seguranca",
-    content: <p className="text-sm">Politicas e regras de acesso.</p>
+    title: "Segurança",
+    content: <p className="text-sm">Políticas e regras de acesso.</p>
   },
   {
     id: "billing",
@@ -383,9 +383,9 @@ export default function App() {
 
   const items = React.useMemo(
     () => [
-      { id: "one", title: "Painel 1", content: <p className="text-sm">Conteudo do primeiro painel.</p> },
-      { id: "two", title: "Painel 2", content: <p className="text-sm">Conteudo do segundo painel.</p> },
-      { id: "three", title: "Painel 3", content: <p className="text-sm">Conteudo do terceiro painel.</p> }
+      { id: "one", title: "Painel 1", content: <p className="text-sm">Conteúdo do primeiro painel.</p> },
+      { id: "two", title: "Painel 2", content: <p className="text-sm">Conteúdo do segundo painel.</p> },
+      { id: "three", title: "Painel 3", content: <p className="text-sm">Conteúdo do terceiro painel.</p> }
     ],
     []
   );

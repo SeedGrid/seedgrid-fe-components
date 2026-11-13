@@ -66,7 +66,7 @@ export default function App() {
       </SgButton>
 
       <SgPopup
-        title="Configuracao"
+        title="Configuração"
         subtitle="Exemplo interativo"
         open={open}
         onOpenChange={setOpen}

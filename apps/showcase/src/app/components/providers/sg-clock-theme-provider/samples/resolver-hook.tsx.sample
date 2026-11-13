@@ -3,10 +3,10 @@
 import { SgClockThemeProvider, useSgClockThemeResolver } from "@seedgrid/fe-components";
 
 function TemasDisponiveis() {
-  // Fora de um SgClockThemeProvider o hook devolve null: sem provider nao ha
-  // resolvedor, e nao existe fallback implicito.
+  // Fora de um SgClockThemeProvider o hook devolve null: sem provider não há
+  // resolvedor, e não existe fallback implícito.
   const resolver = useSgClockThemeResolver();
-  if (!resolver) return <div>Sem SgClockThemeProvider na arvore.</div>;
+  if (!resolver) return <div>Sem SgClockThemeProvider na árvore.</div>;
 
   const classic = resolver.resolve("classic");
   const inexistente = resolver.resolve("nao-existe");

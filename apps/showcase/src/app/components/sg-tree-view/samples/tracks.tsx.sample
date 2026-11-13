@@ -51,8 +51,8 @@ export default function Example() {
             label: "Prioridade",
             checkedIds: priorityIds,
             onCheckedChange: setPriorityIds,
-            // Conteudo livre ao lado do controle DESTA coluna. O componente nao sabe o que ele
-            // significa -- icone, badge, contador: quem da' o significado e' a tela.
+            // Conteúdo livre ao lado do controle DESTA coluna. O componente não sabe o que ele
+            // significa -- ícone, badge, contador: quem dá o significado é a tela.
             adornment: (node) =>
               node.id === "users.list" ? (
                 <Star className="h-3.5 w-3.5 text-amber-500" aria-label="Destaque" />
@@ -80,7 +80,7 @@ export default function Example() {
             kind: "custom",
             label: "Coluna livre",
             width: "130px",
-            // Sem estado e sem cascata: a arvore so' cede a celula (largura, alinhamento,
+            // Sem estado e sem cascata: a árvore só cede a célula (largura, alinhamento,
             // cabecalho) e a tela desenha o que precisar.
             render: (node) =>
               node.children?.length ? null : (

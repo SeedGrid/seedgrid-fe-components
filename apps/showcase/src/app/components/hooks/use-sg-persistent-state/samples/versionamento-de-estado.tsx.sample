@@ -1,7 +1,7 @@
 import { SgEnvironmentProvider } from "@seedgrid/fe-components";
 
 function MyComponent() {
-  return <div>stateVersion novo, dados antigos invalidos</div>;
+  return <div>stateVersion novo, dados antigos inválidos</div>;
 }
 
 export default function App() {

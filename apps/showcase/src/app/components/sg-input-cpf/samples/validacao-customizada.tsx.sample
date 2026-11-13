@@ -7,7 +7,7 @@ export default function App() {
       id="cpf"
       label="CPF"
       hintText="000.000.000-00"
-      validation={(value) => (value.startsWith("123") ? "Nao pode iniciar com 123" : null)}
+      validation={(value) => (value.startsWith("123") ? "Não pode iniciar com 123" : null)}
       onValidation={(message) => console.log(message)}
       inputProps={{}}
     />

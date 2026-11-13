@@ -6,8 +6,8 @@ import { SgButton, SgToaster, subscribeSgToasts, toast } from "@seedgrid/fe-comp
 export default function Example() {
   const [total, setTotal] = React.useState(0);
 
-  // O retorno de subscribeSgToasts e' a propria funcao de limpeza, entao ele pode ser
-  // devolvido direto do efeito: a inscricao morre junto com o componente.
+  // O retorno de subscribeSgToasts é a própria função de limpeza, então ele pode ser
+  // devolvido direto do efeito: a inscrição morre junto com o componente.
   React.useEffect(() => subscribeSgToasts((toasts) => setTotal(toasts.length)), []);
 
   return (

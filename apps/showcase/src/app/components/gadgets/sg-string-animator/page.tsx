@@ -673,7 +673,7 @@ const PROPS: ShowcasePropRow[] = [
     type: '"roller3d" | "flip" | "neon" | "fade" | "discard" | "matrix"',
     defaultValue: '"roller3d"',
     description:
-      'Estilo de animacao por caractere: tambor vertical, flip card, neon, fade, discard (folha voadora) ou matrix LED.',
+      'Estilo de animação por caractere: tambor vertical, flip card, neon, fade, discard (folha voadora) ou matrix LED.',
   },
   {
     prop: "velocity",
@@ -686,21 +686,21 @@ const PROPS: ShowcasePropRow[] = [
     type: "string",
     defaultValue: '" "',
     description:
-      "Caractere para preencher posicoes extras quando as strings tem comprimentos diferentes.",
+      "Caractere para preencher posições extras quando as strings tem comprimentos diferentes.",
   },
   {
     prop: "alignTo",
     type: '"left" | "right"',
     defaultValue: '"left"',
     description:
-      '"left" preenche a direita (nomes), "right" preenche a esquerda (numeros). Determina tambem a ordem de animacao dos caracteres.',
+      '"left" preenche a direita (nomes), "right" preenche a esquerda (números). Determina também a ordem de animação dos caracteres.',
   },
   {
     prop: "autoStart",
     type: "boolean",
     defaultValue: "false",
     description:
-      "Se true, inicia animacao automaticamente ao montar e sempre que targetString mudar.",
+      "Se true, inicia animação automaticamente ao montar e sempre que targetString mudar.",
   },
   {
     prop: "fontSize",
@@ -726,7 +726,7 @@ const PROPS: ShowcasePropRow[] = [
     type: "string[]",
     defaultValue: "DEFAULT_CHARSET",
     description:
-      'Conjunto de caracteres validos para o SgRoller3DDigit. Ignorado quando stringAnimatorStyle != "roller3d".',
+      'Conjunto de caracteres válidos para o SgRoller3DDigit. Ignorado quando stringAnimatorStyle != "roller3d".',
   },
   {
     prop: "className",

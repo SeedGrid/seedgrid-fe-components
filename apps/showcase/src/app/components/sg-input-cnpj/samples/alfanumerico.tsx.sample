@@ -5,7 +5,7 @@ export default function App() {
   return (
     <SgInputCNPJ
       id="cnpj"
-      label="CNPJ alfanumerico"
+      label="CNPJ alfanumérico"
       hintText="00.000.000/E08G-12"
       inputProps={{ defaultValue: "00.000.000/E08G-12" }}
     />

@@ -2,9 +2,9 @@ import * as React from "react";
 import { SgAccordion, SgButton, type SgAccordionItem } from "@seedgrid/fe-components";
 
 const items: SgAccordionItem[] = [
-  { id: "personal", title: "Dados pessoais", content: <p className="text-sm">Conteudo 1</p> },
-  { id: "address", title: "Endereco", content: <p className="text-sm">Conteudo 2</p> },
-  { id: "billing", title: "Faturamento", content: <p className="text-sm">Conteudo 3</p> }
+  { id: "personal", title: "Dados pessoais", content: <p className="text-sm">Conteúdo 1</p> },
+  { id: "address", title: "Endereço", content: <p className="text-sm">Conteúdo 2</p> },
+  { id: "billing", title: "Faturamento", content: <p className="text-sm">Conteúdo 3</p> }
 ];
 
 export default function Example() {

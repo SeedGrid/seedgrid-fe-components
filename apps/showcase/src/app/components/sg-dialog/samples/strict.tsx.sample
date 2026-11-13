@@ -13,8 +13,8 @@ export default function Example() {
         closeable={false}
         closeOnOverlayClick={false}
         closeOnEsc={false}
-        title="Confirmacao obrigatoria"
-        subtitle="Nao fecha por ESC nem overlay"
+        title="Confirmação obrigatória"
+        subtitle="Não fecha por ESC nem overlay"
         footer={
           <>
             <SgButton appearance="ghost" onClick={() => setOpen(false)}>Cancelar</SgButton>
@@ -22,7 +22,7 @@ export default function Example() {
           </>
         }
       >
-        <div className="text-sm text-muted-foreground">Use este modo quando o usuario precisa tomar uma decisao explicita.</div>
+        <div className="text-sm text-muted-foreground">Use este modo quando o usuário precisa tomar uma decisão explícita.</div>
       </SgDialog>
     </>
   );

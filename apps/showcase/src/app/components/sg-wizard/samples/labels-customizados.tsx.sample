@@ -19,7 +19,7 @@ export default function Example() {
         <div className="rounded border border-border bg-foreground/5 p-4">
           <div className="text-sm font-semibold">Segundo passo customizado</div>
           <p className="mt-1 text-sm text-muted-foreground">
-            O botao final tambem pode ser renomeado.
+            O botão final também pode ser renomeado.
           </p>
         </div>
       </SgWizardPage>

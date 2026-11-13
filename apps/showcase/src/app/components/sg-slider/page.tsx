@@ -136,7 +136,7 @@ export default function Example() {
         maxValue={100}
         value={value}
         width="20rem"
-        ariaLabel="Nivel de prioridade"
+        ariaLabel="Nível de prioridade"
         className="accent-[#c56a2d]"
         onChange={setValue}
       />
@@ -150,7 +150,7 @@ export default function Example() {
         width="20rem"
       />
       <p className="text-sm text-muted-foreground">
-        Nivel de prioridade: <span className="font-semibold text-foreground">{value}</span>
+        Nível de prioridade: <span className="font-semibold text-foreground">{value}</span>
       </p>
     </div>
   );
@@ -174,11 +174,11 @@ export default function Example() {
         minValue={0}
         maxValue={100}
         value={value}
-        ariaLabel="Volume de notificacoes"
+        ariaLabel="Volume de notificações"
         onChange={setValue}
         inputProps={{
           name: "notificationVolume",
-          title: "Volume de notificacoes",
+          title: "Volume de notificações",
           "aria-describedby": "slider-input-props-help",
           onFocus: () => setFocusCount((prev) => prev + 1)
         }}

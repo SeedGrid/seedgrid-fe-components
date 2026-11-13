@@ -6,8 +6,8 @@ export default function App() {
   const { register } = useForm({ defaultValues: { required: "", requiredCustom: "" } });
   return (
     <>
-      <SgInputText id="demo-required" label="Campo obrigatorio" required name="required" register={register} />
-      <SgInputText id="demo-required-custom" label="Mensagem customizada" required requiredMessage="Campo obrigatorio" name="requiredCustom" register={register} />
+      <SgInputText id="demo-required" label="Campo obrigatório" required name="required" register={register} />
+      <SgInputText id="demo-required-custom" label="Mensagem customizada" required requiredMessage="Campo obrigatório" name="requiredCustom" register={register} />
     </>
   );
 }

@@ -10,12 +10,12 @@ export default function Example() {
       style={{ border: "1px solid rgba(59, 130, 246, 0.25)", borderRadius: 14, padding: 12 }}
     >
       <SgWizardPage
-        title="Posicao"
+        title="Posição"
         icon={<MapPin className="size-5" />}
         style={{ backgroundColor: "rgba(59, 130, 246, 0.06)" }}
       >
         <div className="rounded border border-border bg-foreground/5 p-4">
-          <div className="text-sm font-semibold">Passo 1 - Posicao</div>
+          <div className="text-sm font-semibold">Passo 1 - Posição</div>
           <p className="mt-1 text-sm text-muted-foreground">Select the desired position.</p>
         </div>
       </SgWizardPage>

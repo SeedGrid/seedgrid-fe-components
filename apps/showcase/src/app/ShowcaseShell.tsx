@@ -280,14 +280,14 @@ const COMPONENT_HINT_TEXTS_BY_SLUG: Record<string, Partial<Record<ShowcaseLocale
     es: "Calendario mensual en formato gadget, con card draggable/collapsible y soporte de locale."
   },
   "digits/sg-discard-digit": {
-    "pt-BR": "Bloco de folhas com animação 3D de descarte: a folha do topo sai e revela a proxima.",
+    "pt-BR": "Bloco de folhas com animação 3D de descarte: a folha do topo sai e revela a próxima.",
     "pt-PT": "Bloco de folhas com animação 3D de descarte: a folha no topo sai e revela a seguinte.",
     "en-US": "Stacked paper-style digit with a 3D discard animation: the top sheet leaves and reveals the next one.",
     es: "Bloque de hojas con animación 3D de descarte: la hoja superior sale y revela la siguiente."
   },
   "digits/sg-fade-digit": {
-    "pt-BR": "Card animado que \"apaga\" o dígito atual e \"acende\" o novo - efeito de lampada ou tubo nixie. Sem bibliotecas externas; animação 100% CSS + React.",
-    "pt-PT": "Card animado que \"apaga\" o dígito atual e \"acende\" o novo - efeito de lampada ou tubo nixie. Sem bibliotecas externas; animação 100% CSS + React.",
+    "pt-BR": "Card animado que \"apaga\" o dígito atual e \"acende\" o novo - efeito de lâmpada ou tubo nixie. Sem bibliotecas externas; animação 100% CSS + React.",
+    "pt-PT": "Card animado que \"apaga\" o dígito atual e \"acende\" o novo - efeito de lâmpada ou tubo nixie. Sem bibliotecas externas; animação 100% CSS + React.",
     "en-US": "Animated card that \"turns off\" the current digit and \"turns on\" the new one - lamp or nixie-tube style effect. No external libraries; animation is 100% CSS + React.",
     es: "Tarjeta animada que \"apaga\" el digito actual y \"enciende\" el nuevo - efecto tipo lampara o tubo nixie. Sin librerias externas; animación 100% CSS + React."
   },
@@ -322,8 +322,8 @@ const COMPONENT_HINT_TEXTS_BY_SLUG: Record<string, Partial<Record<ShowcaseLocale
     es: "Digito seven-segment en SVG con estilo clasico del modo segment de SgClock."
   },
   "digits/sg-seven-segment-digit": {
-    "pt-BR": "Display de sete segmentos para dígitos e caracteres hexadecimais com cor, tamanho e glow customizaveis.",
-    "pt-PT": "Display de sete segmentos para dígitos e caracteres hexadecimais com cor, tamanho e glow customizaveis.",
+    "pt-BR": "Display de sete segmentos para dígitos e caracteres hexadecimais com cor, tamanho e glow customizáveis.",
+    "pt-PT": "Display de sete segmentos para dígitos e caracteres hexadecimais com cor, tamanho e glow customizáveis.",
     "en-US": "Seven-segment display for digits and hex-style characters with customizable color, size, and glow.",
     es: "Display de siete segmentos para digitos y caracteres hexadecimales con color, tamano y glow personalizables."
   },
@@ -382,8 +382,8 @@ const COMPONENT_HINT_TEXTS_BY_SLUG: Record<string, Partial<Record<ShowcaseLocale
     es: "Un componente de carrusel responsivo con navegación horizontal/vertical, autoplay e indicadores."
   },
   "sg-confirmation-dialog": {
-    "pt-BR": "Diálogo de confirmação com título, mensagem, ícone opcional e botões customizaveis.",
-    "pt-PT": "Diálogo de confirmação com título, mensagem, ícone opcional e botões customizaveis.",
+    "pt-BR": "Diálogo de confirmação com título, mensagem, ícone opcional e botões customizáveis.",
+    "pt-PT": "Diálogo de confirmação com título, mensagem, ícone opcional e botões customizáveis.",
     "en-US": "Confirmation dialog with title, message, optional icon, and customizable action buttons.",
     es: "Diálogo de confirmación con título, mensaje, icono opcional y botones de acción personalizables."
   },
@@ -394,8 +394,8 @@ const COMPONENT_HINT_TEXTS_BY_SLUG: Record<string, Partial<Record<ShowcaseLocale
     es: "Combobox estilo select, sin escritura libre. El item seleccionado viene de source y onSelect devuelve el objeto seleccionado."
   },
   "sg-multi-select": {
-    "pt-BR": "Seleção multipla estilo select: trigger com chevron que vira check ao abrir e dropdown com checkboxes que mantem a lista aberta.",
-    "pt-PT": "Seleção multipla estilo select: trigger com chevron que vira check ao abrir e dropdown com checkboxes que mantem a lista aberta.",
+    "pt-BR": "Seleção múltipla estilo select: trigger com chevron que vira check ao abrir e dropdown com checkboxes que mantém a lista aberta.",
+    "pt-PT": "Seleção múltipla estilo select: trigger com chevron que vira check ao abrir e dropdown com checkboxes que mantém a lista aberta.",
     "en-US": "Multi-select in select style: trigger chevron turns into a check when open, and the checkbox dropdown stays open while toggling.",
     es: "Selección multiple estilo select: el chevron del trigger se vuelve un check al abrir y el dropdown con checkboxes permanece abierto."
   },
@@ -466,8 +466,8 @@ const COMPONENT_HINT_TEXTS_BY_SLUG: Record<string, Partial<Record<ShowcaseLocale
     es: "Grupo de radio buttons con orientación horizontal/vertical, iconos, opción de limpiar e integración con React Hook Form."
   },
   "sg-checkbox-group": {
-    "pt-BR": "Grupo de checkboxes com seleção multipla, check all, estilos highlight, ícones e integração com React Hook Form.",
-    "pt-PT": "Grupo de checkboxes com seleção multipla, check all, estilos highlight, ícones e integração com React Hook Form.",
+    "pt-BR": "Grupo de checkboxes com seleção múltipla, check all, estilos highlight, ícones e integração com React Hook Form.",
+    "pt-PT": "Grupo de checkboxes com seleção múltipla, check all, estilos highlight, ícones e integração com React Hook Form.",
     "en-US": "Checkbox group with multi-selection, check all, highlight style, icons, and React Hook Form integration.",
     es: "Grupo de checkboxes con selección multiple, check all, estilos highlight, iconos e integración con React Hook Form."
   },
@@ -490,14 +490,14 @@ const COMPONENT_HINT_TEXTS_BY_SLUG: Record<string, Partial<Record<ShowcaseLocale
     es: "Datatable con ordenación, filtros por columna, paginación, selección de filas y templates personalizados."
   },
   "sg-rating": {
-    "pt-BR": "Componente de avaliação com suporte a meia estrela, estados visuais, customizacao de ícones e integração com React Hook Form.",
-    "pt-PT": "Componente de avaliação com suporte a meia estrela, estados visuais, customizacao de ícones e integração com React Hook Form.",
+    "pt-BR": "Componente de avaliação com suporte a meia estrela, estados visuais, customização de ícones e integração com React Hook Form.",
+    "pt-PT": "Componente de avaliação com suporte a meia estrela, estados visuais, customização de ícones e integração com React Hook Form.",
     "en-US": "Rating component with half-star support, visual states, icon customization and React Hook Form integration.",
     es: "Componente de valoracion con soporte de media estrella, estados visuales, personalizacion de iconos e integración con React Hook Form."
   },
   "sg-screen": {
-    "pt-BR": "Container raiz para telas. O exemplo abaixo esta completo para copiar e colar.",
-    "pt-PT": "Container raiz para ecras. O exemplo abaixo esta completo para copiar e colar.",
+    "pt-BR": "Container raiz para telas. O exemplo abaixo está completo para copiar e colar.",
+    "pt-PT": "Container raiz para ecrãs. O exemplo abaixo está completo para copiar e colar.",
     "en-US": "Root container for screens. The example below is complete and copy/paste ready.",
     es: "Contenedor raiz para pantallas. El ejemplo de abajo esta completo para copiar y pegar."
   },
@@ -520,8 +520,8 @@ const COMPONENT_HINT_TEXTS_BY_SLUG: Record<string, Partial<Record<ShowcaseLocale
     es: "Botón dividido con acción principal y menu desplegable de opciones adicionales."
   },
   "sg-stack": {
-    "pt-BR": "Wrapper flex declarativo para direção, alinhamento, distribuição e espacamento.",
-    "pt-PT": "Wrapper flex declarativo para direção, alinhamento, distribuição e espacamento.",
+    "pt-BR": "Wrapper flex declarativo para direção, alinhamento, distribuição e espaçamento.",
+    "pt-PT": "Wrapper flex declarativo para direção, alinhamento, distribuição e espaçamento.",
     "en-US": "Declarative flex wrapper for direction, alignment, distribution and spacing.",
     es: "Wrapper flex declarativo para direccion, alineacion, distribucion y espaciado."
   },
@@ -562,8 +562,8 @@ const COMPONENT_HINT_TEXTS_BY_SLUG: Record<string, Partial<Record<ShowcaseLocale
     es: "Toggle switch con soporte de iconos, estados disabled/readonly e integración con react-hook-form."
   },
   "sg-toolbar": {
-    "pt-BR": "Toolbar reutilizavel com orientação vertical/horizontal, ações assincronas e customizacao visual.",
-    "pt-PT": "Toolbar reutilizavel com orientação vertical/horizontal, ações assincronas e customizacao visual.",
+    "pt-BR": "Toolbar reutilizável com orientação vertical/horizontal, ações assincronas e customização visual.",
+    "pt-PT": "Toolbar reutilizável com orientação vertical/horizontal, ações assincronas e customização visual.",
     "en-US": "Reusable toolbar with vertical/horizontal orientation, async actions, and visual customization.",
     es: "Toolbar reutilizable con orientación vertical/horizontal, acciones asincronas y personalizacion visual."
   },
@@ -586,8 +586,8 @@ const COMPONENT_HINT_TEXTS_BY_SLUG: Record<string, Partial<Record<ShowcaseLocale
     es: "Registra y distribuye temas del SgClock en todo el árbol de componentes."
   },
   "hooks/use-sg-persistent-state": {
-    "pt-BR": "Hook de estado persistido: salva e carrega automaticamente no localStorage (ou API) com suporte a namespace, versionamento e serializacao customizada.",
-    "pt-PT": "Hook de estado persistido: guarda e carrega automaticamente no localStorage (ou API) com suporte a namespace, versionamento e serializacao customizada.",
+    "pt-BR": "Hook de estado persistido: salva e carrega automaticamente no localStorage (ou API) com suporte a namespace, versionamento e serialização customizada.",
+    "pt-PT": "Hook de estado persistido: guarda e carrega automaticamente no localStorage (ou API) com suporte a namespace, versionamento e serialização customizada.",
     "en-US": "Persistent state hook: automatically saves and loads from localStorage (or API) with namespace, versioning, and custom serialization support.",
     es: "Hook de estado persistido: guarda y carga automaticamente en localStorage (o API) con soporte a namespace, versionado y serializacion personalizada."
   },
@@ -617,7 +617,7 @@ const COMPONENT_HINT_TEXTS_BY_SLUG: Record<string, Partial<Record<ShowcaseLocale
   },
   "hooks/use-sg-realtime-status": {
     "pt-BR": "Estado da conexão com o Pulse: diz quando a tela deve usar o polling de reserva.",
-    "pt-PT": "Estado da ligação ao Pulse: indica quando o ecra deve usar o polling de reserva.",
+    "pt-PT": "Estado da ligação ao Pulse: indica quando o ecrã deve usar o polling de reserva.",
     "en-US": "Pulse connection status: tells when the screen should use fallback polling.",
     es: "Estado de la conexion con el Pulse: indica cuando la pantalla debe usar el polling de respaldo."
   },
@@ -651,9 +651,9 @@ const THEME_HINT_TEXTS_BY_SLUG: Record<string, Record<ShowcaseLocale, string>> =
   },
   credits: {
     "pt-BR":
-      "Listagem de todas as bibliotecas open-source utilizadas nos componentes da SeedGrid, com suas respectivas licencas e links de referencia.",
+      "Listagem de todas as bibliotecas open-source utilizadas nos componentes da SeedGrid, com suas respectivas licenças e links de referência.",
     "pt-PT":
-      "Lista de todas as bibliotecas open-source usadas nos componentes da SeedGrid, com as respetivas licencas e links de referencia.",
+      "Lista de todas as bibliotecas open-source usadas nos componentes da SeedGrid, com as respetivas licenças e links de referência.",
     "en-US": "List of all open-source libraries used by SeedGrid components, with their licenses and reference links.",
     es: "Listado de todas las bibliotecas open-source usadas en los componentes de SeedGrid, con sus licencias y enlaces de referencia."
   }

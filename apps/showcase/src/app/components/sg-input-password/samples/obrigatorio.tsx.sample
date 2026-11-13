@@ -6,8 +6,8 @@ export default function App() {
     <div className="w-80">
       <SgInputPassword
         id="demo-required"
-        label="Senha obrigatoria"
-        hintText="Campo obrigatorio"
+        label="Senha obrigatória"
+        hintText="Campo obrigatório"
         required
       />
     </div>

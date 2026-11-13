@@ -5,9 +5,9 @@ import {
   type ResolvedPeriod
 } from "@seedgrid/fe-components";
 
-// Os flags permitPast/permitCurrent/permitFuture/permitAll comecam TRUE por padrao.
+// Os flags permitPast/permitCurrent/permitFuture/permitAll começam TRUE por padrão.
 // Aqui usamos toggles para ligar/desligar cada grupo e o SgPeriodSelector recarrega
-// a lista de opcoes conforme a selecao muda.
+// a lista de opções conforme a seleção muda.
 export default function Example() {
   const [permitPast, setPermitPast] = React.useState(true);
   const [permitCurrent, setPermitCurrent] = React.useState(true);
@@ -24,7 +24,7 @@ export default function Example() {
 
       <SgPeriodSelector
         id="ps-flags"
-        label="Periodo"
+        label="Período"
         locale="pt-BR"
         permitPast={permitPast}
         permitCurrent={permitCurrent}
@@ -40,7 +40,7 @@ export default function Example() {
               null,
               2
             )
-          : "Nenhum periodo selecionado"}
+          : "Nenhum período selecionado"}
       </pre>
     </div>
   );

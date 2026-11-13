@@ -32,7 +32,7 @@ const CREDITS_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", CreditsTe
     subtitle:
       "Listagem de todas as bibliotecas open-source utilizadas nos componentes da SeedGrid, com suas respectivas licenças e links de referência.",
     compliance:
-      "Todas as bibliotecas listadas acima são distribuídas sob licenças compatíveis com uso open-source e comercial. Os créditos acima são fornecidos conforme exigido por cada licenca.",
+      "Todas as bibliotecas listadas acima são distribuídas sob licenças compatíveis com uso open-source e comercial. Os créditos acima são fornecidos conforme exigido por cada licença.",
     usedInVarious: "Vários componentes",
     usedInShowcase: "App showcase",
     usedInForms: "Campos de formulário",
@@ -47,7 +47,7 @@ const CREDITS_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", CreditsTe
     subtitle:
       "Lista de todas as bibliotecas open-source usadas nos componentes da SeedGrid, com as respetivas licenças e links de referência.",
     compliance:
-      "Todas as bibliotecas acima são distribuídas sob licenças compatíveis com uso open-source e comercial. Estes créditos são apresentados conforme exigido por cada licenca.",
+      "Todas as bibliotecas acima são distribuídas sob licenças compatíveis com uso open-source e comercial. Estes créditos são apresentados conforme exigido por cada licença.",
     usedInVarious: "Vários componentes",
     usedInShowcase: "App showcase",
     usedInForms: "Campos de formulário",

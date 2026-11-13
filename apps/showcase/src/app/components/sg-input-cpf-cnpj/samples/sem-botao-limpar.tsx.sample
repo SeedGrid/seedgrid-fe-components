@@ -2,5 +2,5 @@ import * as React from "react";
 import { SgInputCPFCNPJ } from "@seedgrid/fe-components";
 
 export default function App() {
-  return <SgInputCPFCNPJ id="doc" label="Sem botao limpar" hintText="CPF ou CNPJ" clearButton={false} inputProps={{}} />;
+  return <SgInputCPFCNPJ id="doc" label="Sem botão limpar" hintText="CPF ou CNPJ" clearButton={false} inputProps={{}} />;
 }

@@ -6,7 +6,7 @@ export default function Example() {
 
   return (
     <div className="w-96 space-y-2">
-      <SgPeriodSelector id="ps-basic" label="Periodo" locale="pt-BR" onChange={setPeriod} />
+      <SgPeriodSelector id="ps-basic" label="Período" locale="pt-BR" onChange={setPeriod} />
       <pre className="rounded border border-border bg-foreground/5 p-2 text-xs">
         {period
           ? JSON.stringify(
@@ -14,7 +14,7 @@ export default function Example() {
               null,
               2
             )
-          : "Nenhum periodo selecionado"}
+          : "Nenhum período selecionado"}
       </pre>
     </div>
   );

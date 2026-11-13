@@ -78,7 +78,7 @@ export default function App() {
     <div className="space-y-4 p-2">
       {!hasToggle ? (
         <div className="rounded border border-amber-200 bg-amber-50 p-2 text-xs text-amber-800">
-          SgToggleSwitch ainda nao esta na versao publicada usada pelo Sandpack. Exibindo fallback.
+          SgToggleSwitch ainda não está na versão publicada usada pelo Sandpack. Exibindo fallback.
         </div>
       ) : null}
 
@@ -295,7 +295,7 @@ export default function Example() {
       <button type="submit">Enviar</button>
       <p>watch.notifications: {String(watch("notifications"))}</p>
       <p>watch.active: {String(watch("active"))}</p>
-      <p>Ultimo submit: {submitResult}</p>
+      <p>Último submit: {submitResult}</p>
     </form>
   );
 }`;

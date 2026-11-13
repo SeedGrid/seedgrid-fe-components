@@ -25,7 +25,7 @@ export default function App() {
         onOpenChange={setOpen}
         severity={severity}
         size={size}
-        title="Configuracao"
+        title="Configuração"
         subtitle="Exemplo interativo"
         footer={
           <>
@@ -34,7 +34,7 @@ export default function App() {
           </>
         }
       >
-        <div className="text-sm text-muted-foreground">Conteudo do dialogo.</div>
+        <div className="text-sm text-muted-foreground">Conteúdo do diálogo.</div>
       </SgDialog>
     </div>
   );

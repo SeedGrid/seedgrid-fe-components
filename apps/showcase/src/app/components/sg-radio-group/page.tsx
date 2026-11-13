@@ -446,7 +446,7 @@ export default function SgRadioGroupShowcase() {
 
   const onSubmit = (data: any) => {
     console.log("Form submitted:", data);
-    alert(`Dados do formulario: ${JSON.stringify(data, null, 2)}`);
+    alert(`Dados do formulário: ${JSON.stringify(data, null, 2)}`);
   };
 
   const propDefs: PropDef[] = [

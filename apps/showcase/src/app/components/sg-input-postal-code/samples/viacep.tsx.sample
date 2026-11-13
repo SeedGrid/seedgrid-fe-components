@@ -9,7 +9,7 @@ export default function App() {
       hintText="00000-000"
       country="BR"
       validateWithViaCep
-      viaCepErrorMessage="CEP invalido."
+      viaCepErrorMessage="CEP inválido."
       onViaCepResult={(data) => console.log(data)}
     />
   );

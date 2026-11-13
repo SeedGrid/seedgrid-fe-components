@@ -11,14 +11,14 @@ export default function Example() {
         defaultOpen={false}
         collapseToggleAlign="right"
         collapseIconSize={20}
-        footer={<div className="flex justify-end"><SgButton size="sm">Acao</SgButton></div>}
+        footer={<div className="flex justify-end"><SgButton size="sm">Ação</SgButton></div>}
       >
-        <div className="text-sm text-muted-foreground">Conteudo recolhivel do card.</div>
+        <div className="text-sm text-muted-foreground">Conteúdo recolhível do card.</div>
       </SgCard>
 
       <SgCard
         title="Painel aberto"
-        description="Comeca expandido"
+        description="Começa expandido"
         collapsible
         defaultOpen
         collapseToggleAlign="right"

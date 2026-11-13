@@ -11,7 +11,7 @@ export default function Example() {
     <div className="w-96">
       <SgPeriodSelector
         id="ps-clamp"
-        label="Periodo"
+        label="Período"
         locale="pt-BR"
         permitPast
         permitCurrent

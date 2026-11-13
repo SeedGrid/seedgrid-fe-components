@@ -7,7 +7,7 @@ export default function App() {
       id="telefone"
       label="Telefone"
       hintText="(11) 99999-0000"
-      validation={(value) => (value.startsWith("(00)") ? "DDD invalido" : null)}
+      validation={(value) => (value.startsWith("(00)") ? "DDD inválido" : null)}
       onValidation={(message) => console.log(message)}
     />
   );

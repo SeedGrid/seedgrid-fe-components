@@ -42,7 +42,7 @@ class DemoPulseSocket {
     this.onmessage?.({ data: JSON.stringify(frame) });
   }
 
-  /** O que o backend faz ao terminar o backup: publica para o usuario. */
+  /** O que o backend faz ao terminar o backup: publica para o usuário. */
   backupFinished(ok: boolean) {
     const id = `exp-${Date.now()}`;
     this.emit({

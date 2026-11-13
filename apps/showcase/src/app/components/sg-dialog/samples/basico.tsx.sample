@@ -10,8 +10,8 @@ export default function Example() {
       <SgDialog
         open={open}
         onOpenChange={setOpen}
-        title="Confirmar acao"
-        subtitle="Exemplo basico"
+        title="Confirmar ação"
+        subtitle="Exemplo básico"
         customColor="#fff7ed"
         elevation="0 0 0 1px rgba(234, 88, 12, 0.22), 0 24px 56px rgba(234, 88, 12, 0.28)"
         style={{ border: "1px solid rgba(59, 130, 246, 0.25)" }}
@@ -25,7 +25,7 @@ export default function Example() {
         }
       >
         <div className="space-y-2 text-sm">
-          <p>Conteudo principal do dialog.</p>
+          <p>Conteúdo principal do dialog.</p>
           <input
             data-sg-dialog-initial-focus="true"
             className="h-10 w-full rounded-lg border border-border bg-background px-3"

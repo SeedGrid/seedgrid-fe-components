@@ -4,10 +4,10 @@ import { SgWizard, SgWizardPage } from "@seedgrid/fe-components";
 export default function Example() {
   return (
     <SgWizard stepper="numbered" onFinish={() => {}}>
-      <SgWizardPage title="Introducao">
+      <SgWizardPage title="Introdução">
         <div className="rounded border border-border bg-foreground/5 p-4">
-          <div className="text-sm font-semibold">1. Introducao</div>
-          <p className="mt-1 text-sm text-muted-foreground">Conteudo introdutorio.</p>
+          <div className="text-sm font-semibold">1. Introdução</div>
+          <p className="mt-1 text-sm text-muted-foreground">Conteúdo introdutório.</p>
         </div>
       </SgWizardPage>
       <SgWizardPage title="Detalhes">
@@ -16,15 +16,15 @@ export default function Example() {
           <p className="mt-1 text-sm text-muted-foreground">Preencha os detalhes.</p>
         </div>
       </SgWizardPage>
-      <SgWizardPage title="Revisao">
+      <SgWizardPage title="Revisão">
         <div className="rounded border border-border bg-foreground/5 p-4">
-          <div className="text-sm font-semibold">3. Revisao</div>
-          <p className="mt-1 text-sm text-muted-foreground">Revise as informacoes.</p>
+          <div className="text-sm font-semibold">3. Revisão</div>
+          <p className="mt-1 text-sm text-muted-foreground">Revise as informações.</p>
         </div>
       </SgWizardPage>
-      <SgWizardPage title="Confirmacao">
+      <SgWizardPage title="Confirmação">
         <div className="rounded border border-border bg-foreground/5 p-4">
-          <div className="text-sm font-semibold">4. Confirmacao</div>
+          <div className="text-sm font-semibold">4. Confirmação</div>
           <p className="mt-1 text-sm text-muted-foreground">Confirme e finalize.</p>
         </div>
       </SgWizardPage>

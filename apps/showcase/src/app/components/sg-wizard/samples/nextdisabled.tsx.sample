@@ -2,12 +2,12 @@ import React from "react";
 import { SgInputText, SgWizard, SgWizardPage } from "@seedgrid/fe-components";
 
 /**
- * `nextDisabled` — bloqueio JA conhecido.
+ * `nextDisabled` — bloqueio JÁ conhecido.
  *
- * `onBeforeNext` e `validateStep` so agem no clique: o botao continua com aparencia de habilitado
- * e, quando eles recusam, nada acontece na tela. Quando o consumidor JA sabe que a etapa nao pode
- * avancar — tipicamente o resultado de uma checagem assincrona que ja terminou —, `nextDisabled`
- * deixa isso visivel: botao opaco, cursor de bloqueio e stepper sem oferecer as proximas etapas.
+ * `onBeforeNext` e `validateStep` só agem no clique: o botão continua com aparência de habilitado
+ * e, quando eles recusam, nada acontece na tela. Quando o consumidor JÁ sabe que a etapa não pode
+ * avançar — tipicamente o resultado de uma checagem assíncrona que já terminou —, `nextDisabled`
+ * deixa isso visível: botão opaco, cursor de bloqueio e stepper sem oferecer as próximas etapas.
  */
 export default function Example() {
   const [codigo, setCodigo] = React.useState("");
@@ -25,7 +25,7 @@ export default function Example() {
 
   return (
     <SgWizard
-      // Durante a consulta o wizard ja desabilita sozinho enquanto aguarda onBeforeNext; aqui o
+      // Durante a consulta o wizard já desabilita sozinho enquanto aguarda onBeforeNext; aqui o
       // bloqueio PERMANECE depois que a resposta chegou.
       nextDisabled={jaUsado}
       onFinish={() => undefined}
@@ -33,8 +33,8 @@ export default function Example() {
       <SgWizardPage title="Convite">
         <SgInputText
           id="wizard-codigo-convite"
-          label="Codigo do convite"
-          error={jaUsado ? "Este codigo ja foi utilizado." : undefined}
+          label="Código do convite"
+          error={jaUsado ? "Este código já foi utilizado." : undefined}
           onChange={(value) => {
             setCodigo(value);
             setJaUsado(false); // digitou de novo: reabre o avanco ate a proxima checagem
@@ -43,15 +43,15 @@ export default function Example() {
         />
         <p className="mt-2 text-sm text-muted-foreground">
           {checando
-            ? "Verificando o codigo..."
-            : 'Digite "SG-123" e saia do campo: o botao Proximo fica desabilitado.'}
+            ? "Verificando o código..."
+            : 'Digite "SG-123" e saia do campo: o botão Próximo fica desabilitado.'}
         </p>
       </SgWizardPage>
       <SgWizardPage title="Conclusao">
         <div className="rounded border border-border bg-foreground/5 p-4">
-          <div className="text-sm font-semibold">Codigo aceito</div>
+          <div className="text-sm font-semibold">Código aceito</div>
           <p className="mt-1 text-sm text-muted-foreground">
-            So se chega aqui com um codigo que a checagem liberou.
+            Só se chega aqui com um código que a checagem liberou.
           </p>
         </div>
       </SgWizardPage>

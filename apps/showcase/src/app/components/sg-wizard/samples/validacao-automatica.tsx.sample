@@ -26,13 +26,13 @@ export default function Example() {
           setSubmitted({ ...formValues });
         }}
       >
-        <SgWizardPage title="Identificacao">
+        <SgWizardPage title="Identificação">
           <div className="grid gap-3 sm:grid-cols-2">
             <SgInputText
               id="wizard-name"
               label="Nome"
               required
-              requiredMessage="Nome obrigatorio"
+              requiredMessage="Nome obrigatório"
               inputProps={{
                 value: formValues.name,
                 onChange: (event) =>
@@ -43,8 +43,8 @@ export default function Example() {
               id="wizard-email"
               label="Email"
               required
-              requiredMessage="Email obrigatorio"
-              invalidMessage="Email invalido"
+              requiredMessage="Email obrigatório"
+              invalidMessage="Email inválido"
               inputProps={{
                 value: formValues.email,
                 onChange: (event) =>
@@ -58,8 +58,8 @@ export default function Example() {
             id="wizard-phone"
             label="Telefone"
             required
-            requiredMessage="Telefone obrigatorio"
-            lengthMessage="Telefone invalido"
+            requiredMessage="Telefone obrigatório"
+            lengthMessage="Telefone inválido"
             inputProps={{
               value: formValues.phone,
               onChange: (event) =>

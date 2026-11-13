@@ -28,7 +28,7 @@ export default function App() {
         id="playground-otp"
         ref={otpRef}
         label="SgInputOTP Playground"
-        hintText="Digite ou cole o codigo"
+        hintText="Digite ou cole o código"
         mask={mask}
         onChange={setMasked}
         onRawChange={setRaw}

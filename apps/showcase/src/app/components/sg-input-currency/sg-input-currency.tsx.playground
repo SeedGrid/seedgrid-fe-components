@@ -29,7 +29,7 @@ export default function App() {
         <SgButton size="sm" appearance={currency === "BRL" ? "solid" : "outline"} onClick={() => applyCurrency("BRL", "pt-BR")}>BRL</SgButton>
         <SgButton size="sm" appearance={currency === "USD" ? "solid" : "outline"} onClick={() => applyCurrency("USD", "en-US")}>USD</SgButton>
         <SgButton size="sm" appearance={currency === "EUR" ? "solid" : "outline"} onClick={() => applyCurrency("EUR", "pt-PT")}>EUR</SgButton>
-        <SgButton size="sm" appearance={showCurrencySymbol ? "solid" : "outline"} onClick={() => setShowCurrencySymbol((prev) => !prev)}>simbolo</SgButton>
+        <SgButton size="sm" appearance={showCurrencySymbol ? "solid" : "outline"} onClick={() => setShowCurrencySymbol((prev) => !prev)}>símbolo</SgButton>
       </SgGrid>
 
       <SgGrid columns={{ base: 2, md: 4 }} gap={8}>

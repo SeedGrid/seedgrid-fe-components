@@ -44,7 +44,7 @@ export default function Example() {
     <div className="h-[360px] overflow-hidden rounded-lg border border-border">
       <div className="flex h-full">
         <div className="flex-1 space-y-3 p-4">
-          <h3 className="text-base font-semibold">Area principal</h3>
+          <h3 className="text-base font-semibold">Área principal</h3>
           <p className="text-sm text-muted-foreground">Exemplo inline controlado com resize.</p>
           <div className="flex flex-wrap gap-2">
             <SgButton size="sm" onClick={() => setOpen((v) => !v)}>
@@ -66,7 +66,7 @@ export default function Example() {
           footer={<div className="text-xs text-muted-foreground">Rodape inline</div>}
         >
           <div className="space-y-3 text-sm">
-            <p>Conteudo do inspector.</p>
+            <p>Conteúdo do inspector.</p>
             <p>Props: open, onOpenChange, size, resizable, onSizeChange.</p>
           </div>
         </SgExpandablePanel>
@@ -193,13 +193,13 @@ export default function Example() {
         open={open}
         onOpenChange={setOpen}
         role="dialog"
-        ariaLabel="Painel de notificacoes"
+        ariaLabel="Painel de notificações"
         overlayClassName="bg-black/70"
         animation={{ type: "fade", durationMs: 260 }}
         closeOnOutsideClick={false}
         trapFocus
         size={{ default: 280, min: 180, max: 420 }}
-        header={<div className="font-medium">Notificacoes</div>}
+        header={<div className="font-medium">Notificações</div>}
         footer={
           <div className="flex justify-end">
             <SgButton size="sm" onClick={() => setOpen(false)}>Fechar</SgButton>
@@ -297,7 +297,7 @@ export default function App() {
 
       <div className="h-[320px] overflow-hidden rounded-lg border border-border">
         <div className="flex h-full">
-          <div className="flex-1 p-4 text-sm">Area principal</div>
+          <div className="flex-1 p-4 text-sm">Área principal</div>
           <SgExpandablePanel
             mode={mode}
             expandTo={direction}
@@ -317,7 +317,7 @@ export default function App() {
               </div>
             }
           >
-            <div className="text-sm">Conteudo do painel.</div>
+            <div className="text-sm">Conteúdo do painel.</div>
           </SgExpandablePanel>
         </div>
       </div>

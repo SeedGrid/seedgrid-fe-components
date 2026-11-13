@@ -7,7 +7,7 @@ export default function App() {
       id="doc"
       label="CPF ou CNPJ"
       hintText="CPF ou CNPJ"
-      invalidMessage="Documento invalido"
+      invalidMessage="Documento inválido"
       inputProps={{}}
     />
   );

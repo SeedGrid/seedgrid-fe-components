@@ -5,7 +5,7 @@ export default function App() {
   return (
     <SgInputCPFCNPJ
       id="doc"
-      label="Documento obrigatorio"
+      label="Documento obrigatório"
       hintText="CPF ou CNPJ"
       required
       requiredMessage="Informe um documento"

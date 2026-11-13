@@ -5,7 +5,7 @@ export default function App() {
   return (
     <SgInputPhone
       id="telefone"
-      label="Telefone obrigatorio"
+      label="Telefone obrigatório"
       hintText="(11) 99999-0000"
       required
       requiredMessage="Informe o telefone"

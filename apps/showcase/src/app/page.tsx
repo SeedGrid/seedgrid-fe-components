@@ -12,34 +12,34 @@ const COMPONENTS = [
   {
     categoryKey: "showcase.nav.inputs",
     items: [
-      { slug: "sg-input-text", name: "SgInputText", desc: "Input de texto base com floating label, validacao, contador e botao limpar" },
+      { slug: "sg-input-text", name: "SgInputText", desc: "Input de texto base com floating label, validação, contador e botão limpar" },
       { slug: "sg-input-text-area", name: "SgInputTextArea", desc: "Input multi-linha com contagem de palavras e linhas" },
-      { slug: "sg-input-password", name: "SgInputPassword", desc: "Input de senha com toggle de visibilidade, validacao e botao limpar" },
-      { slug: "sg-input-otp", name: "SgInputOTP", desc: "Input OTP com digitos separados, colagem e mascara customizavel (# e 9)" },
-      { slug: "sg-input-date", name: "SgInputDate", desc: "Seletor de data com restricoes min/max" },
+      { slug: "sg-input-password", name: "SgInputPassword", desc: "Input de senha com toggle de visibilidade, validação e botão limpar" },
+      { slug: "sg-input-otp", name: "SgInputOTP", desc: "Input OTP com dígitos separados, colagem e máscara customizável (# e 9)" },
+      { slug: "sg-input-date", name: "SgInputDate", desc: "Seletor de data com restrições min/max" },
       { slug: "sg-input-date-time", name: "SgInputDateTime", desc: "Data e hora com fuso, instante ISO UTC e limites" },
-      { slug: "sg-file-upload", name: "SgFileUpload", desc: "Escolher um ou varios arquivos com validacao de tipo, quantidade e tamanho" },
-      { slug: "sg-image-upload", name: "SgImageUpload", desc: "Escolher uma ou varias imagens com miniaturas e validacao" },
+      { slug: "sg-file-upload", name: "SgFileUpload", desc: "Escolher um ou vários arquivos com validação de tipo, quantidade e tamanho" },
+      { slug: "sg-image-upload", name: "SgImageUpload", desc: "Escolher uma ou várias imagens com miniaturas e validação" },
       { slug: "sg-camera-capture", name: "SgCameraCapture", desc: "Camera com guia de enquadramento e captura de foto" },
-      { slug: "sg-input-birth-date", name: "SgInputBirthDate", desc: "Data de nascimento com validacao de idade minima/maxima" },
-      { slug: "sg-toggle-switch", name: "SgToggleSwitch", desc: "Switch booleano com suporte a icones, estados e RHF" },
-      { slug: "sg-input-email", name: "SgInputEmail", desc: "Input de email com validacao integrada e bloqueio de temporarios" },
-      { slug: "sg-input-cpf", name: "SgInputCPF", desc: "Input de CPF com mascara e validacao de digitos" },
-      { slug: "sg-input-cnpj", name: "SgInputCNPJ", desc: "Input de CNPJ com mascara e validacao de digitos" },
-      { slug: "sg-input-cpf-cnpj", name: "SgInputCPFCNPJ", desc: "Input que aceita CPF ou CNPJ com deteccao automatica" },
-      { slug: "sg-input-postal-code", name: "SgInputPostalCode", desc: "Input de codigo postal com mascara por pais (BR, PT, US, ES, UY, AR, PY)" },
-      { slug: "sg-input-phone", name: "SgInputPhone", desc: "Input de telefone brasileiro com mascara (XX) XXXXX-XXXX" },
+      { slug: "sg-input-birth-date", name: "SgInputBirthDate", desc: "Data de nascimento com validação de idade mínima/máxima" },
+      { slug: "sg-toggle-switch", name: "SgToggleSwitch", desc: "Switch booleano com suporte a ícones, estados e RHF" },
+      { slug: "sg-input-email", name: "SgInputEmail", desc: "Input de email com validação integrada e bloqueio de temporários" },
+      { slug: "sg-input-cpf", name: "SgInputCPF", desc: "Input de CPF com máscara e validação de dígitos" },
+      { slug: "sg-input-cnpj", name: "SgInputCNPJ", desc: "Input de CNPJ com máscara e validação de dígitos" },
+      { slug: "sg-input-cpf-cnpj", name: "SgInputCPFCNPJ", desc: "Input que aceita CPF ou CNPJ com detecção automática" },
+      { slug: "sg-input-postal-code", name: "SgInputPostalCode", desc: "Input de código postal com máscara por país (BR, PT, US, ES, UY, AR, PY)" },
+      { slug: "sg-input-phone", name: "SgInputPhone", desc: "Input de telefone brasileiro com máscara (XX) XXXXX-XXXX" },
       { slug: "sg-autocomplete", name: "SgAutocomplete", desc: "Autocomplete com busca, agrupamento e render custom" },
       { slug: "sg-combobox", name: "SgCombobox", desc: "Combobox estilo select com source de objetos e onSelect(value)" },
-      { slug: "sg-period-selector", name: "SgPeriodSelector", desc: "Seletor de periodos pre-definidos (Este mes, Ultimo trimestre) que resolve para intervalo de datas" },
+      { slug: "sg-period-selector", name: "SgPeriodSelector", desc: "Seletor de períodos pré-definidos (Este mês, Último trimestre) que resolve para intervalo de datas" },
       { slug: "sg-year-part-selector", name: "SgYearPartSelector", desc: "Seletor de recorte absoluto do ano (1o semestre de 2024, Q3 de 2023) que resolve para intervalo de datas" },
-      { slug: "sg-multi-select", name: "SgMultiSelect", desc: "Selecao multipla em dropdown com checkboxes, busca e resumo" },
-      { slug: "sg-multi-select-chips", name: "SgMultiSelectChips", desc: "Selecao multipla com os selecionados como chips removiveis + dropdown" },
+      { slug: "sg-multi-select", name: "SgMultiSelect", desc: "Seleção múltipla em dropdown com checkboxes, busca e resumo" },
+      { slug: "sg-multi-select-chips", name: "SgMultiSelectChips", desc: "Seleção múltipla com os selecionados como chips removíveis + dropdown" },
       { slug: "sg-input-text-search", name: "SgInputTextSearch", desc: "Input de busca com debounce (minChars, distinct) sobre o SgInputText" },
       { slug: "sg-slider", name: "SgSlider", desc: "Slider com minValue, maxValue e onChange(value)" },
       { slug: "sg-stepper-input", name: "SgStepperInput", desc: "Input numérico com setas e step (min/max)" },
       { slug: "sg-text-editor", name: "SgTextEditor", desc: "Editor rico HTML com save/load" },
-      { slug: "sg-datatable", name: "SgDatatable", desc: "Datatable com ordenacao, filtros, paginacao e selecao de linhas" }
+      { slug: "sg-datatable", name: "SgDatatable", desc: "Datatable com ordenação, filtros, paginação e seleção de linhas" }
     ]
   },
   {
@@ -50,43 +50,43 @@ const COMPONENTS = [
       { slug: "sg-accordion", name: "SgAccordion", desc: "Accordion com modo vertical, horizontal e controle externo" },
       { slug: "sg-skeleton", name: "SgSkeleton", desc: "Placeholder visual para estados de carregamento" },
       { slug: "sg-screen", name: "SgScreen", desc: "Container raiz de viewport para telas e layouts complexos" },
-      { slug: "sg-dock-screen", name: "SgDockScreen", desc: "Composicao pronta de SgScreen com SgDockLayout" },
+      { slug: "sg-dock-screen", name: "SgDockScreen", desc: "Composição pronta de SgScreen com SgDockLayout" },
       { slug: "sg-panel", name: "SgPanel", desc: "Container visual com borderStyle, padding, scroll e props de layout" },
       { slug: "sg-grid", name: "SgGrid", desc: "Grid responsivo com columns/minItemWidth, span, rowSpan e dense" },
       { slug: "sg-stack", name: "SgStack", desc: "Flex declarativo com direction, gap, justify, align e wrap" },
       { slug: "sg-badge", name: "SgBadge", desc: "Badge de status, contador e labels" },
       { slug: "sg-badge-overlay", name: "SgBadgeOverlay", desc: "Badge sobre icone/elemento" },
-      { slug: "sg-notification-bell", name: "SgNotificationBell", desc: "Sino de notificacoes do usuario com contador, lista, tempo real (Pulse) e polling de reserva" },
+      { slug: "sg-notification-bell", name: "SgNotificationBell", desc: "Sino de notificações do usuário com contador, lista, tempo real (Pulse) e polling de reserva" },
       { slug: "sg-avatar", name: "SgAvatar", desc: "Avatar com label, icon, image, shape, size e grupo" },
       { slug: "sg-breadcrumb", name: "SgBreadcrumb", desc: "Breadcrumb hierárquico com overflow e navegação" },
       { slug: "sg-menu", name: "SgMenu", desc: "Menu hierárquico para sidebar, drawer e inline" },
       { slug: "sg-expandable-panel", name: "SgExpandablePanel", desc: "Painel expansível inline/overlay com resize e animação" },
       { slug: "sg-dialog", name: "SgDialog", desc: "Dialog com header, severidade e footer" },
-      { slug: "sg-toolbar", name: "SgToolBar", desc: "Toolbar com botoes e drag" },
-      { slug: "sg-dock-layout", name: "SgDockLayout", desc: "Layout com dock zones e persistencia" },
-      { slug: "sg-tree-view", name: "SgTreeView", desc: "Arvore com check, busca e confirmacao" },
+      { slug: "sg-toolbar", name: "SgToolBar", desc: "Toolbar com botões e drag" },
+      { slug: "sg-dock-layout", name: "SgDockLayout", desc: "Layout com dock zones e persistência" },
+      { slug: "sg-tree-view", name: "SgTreeView", desc: "Árvore com check, busca e confirmação" },
       { slug: "sg-page-control", name: "SgPageControl", desc: "TabView com controle externo de página ativa e ocultação" }
     ]
   },
   {
     categoryKey: "showcase.nav.digits",
     items: [
-      { slug: "digits/sg-flip-digit", name: "SgFlipDigit", desc: "Digito com animacao de flip card (estilo painel digital)" },
-      { slug: "digits/sg-fade-digit", name: "SgFadeDigit", desc: "Digito com efeito de apagar/acender na troca de valor" },
-      { slug: "digits/sg-roller3d-digit", name: "SgRoller3DDigit", desc: "Digito em tambor vertical com transicao 3D suave" },
+      { slug: "digits/sg-flip-digit", name: "SgFlipDigit", desc: "Dígito com animação de flip card (estilo painel digital)" },
+      { slug: "digits/sg-fade-digit", name: "SgFadeDigit", desc: "Dígito com efeito de apagar/acender na troca de valor" },
+      { slug: "digits/sg-roller3d-digit", name: "SgRoller3DDigit", desc: "Dígito em tambor vertical com transição 3D suave" },
       { slug: "digits/sg-matrix-digit", name: "SgMatrixDigit", desc: "Caracteres matriciais em pontos com color e backgroundColor" },
-      { slug: "digits/sg-neon-digit", name: "SgNeonDigit", desc: "Texto em neon com glow configuravel (color, font, backgroundColor e shadowColor)" },
-      { slug: "digits/sg-discard-digit", name: "SgDiscardDigit", desc: "Bloco de folhas com animacao 3D de descarte e troca de valor" },
-      { slug: "digits/sg-segment-digit", name: "SgSegmentDigit", desc: "Digito seven-segment em SVG no estilo classico de painel digital" },
-      { slug: "digits/sg-seven-segment-digit", name: "SgSevenSegmentDigit", desc: "Display de sete segmentos com suporte a digitos e caracteres hexadecimais" }
+      { slug: "digits/sg-neon-digit", name: "SgNeonDigit", desc: "Texto em neon com glow configurável (color, font, backgroundColor e shadowColor)" },
+      { slug: "digits/sg-discard-digit", name: "SgDiscardDigit", desc: "Bloco de folhas com animação 3D de descarte e troca de valor" },
+      { slug: "digits/sg-segment-digit", name: "SgSegmentDigit", desc: "Dígito seven-segment em SVG no estilo clássico de painel digital" },
+      { slug: "digits/sg-seven-segment-digit", name: "SgSevenSegmentDigit", desc: "Display de sete segmentos com suporte a dígitos e caracteres hexadecimais" }
     ]
   },
   {
     categoryKey: "showcase.nav.gadgets",
     items: [
-      { slug: "gadgets/sg-clock", name: "SgClock", desc: "Relogio digital e analogico com themes" },
-      { slug: "gadgets/sg-calendar", name: "SgCalendar", desc: "Calendario mensal em card de gadget com drag e collapse" },
-      { slug: "gadgets/sg-string-animator", name: "SgStringAnimator", desc: "Animador de texto para transicoes de caracteres" },
+      { slug: "gadgets/sg-clock", name: "SgClock", desc: "Relógio digital e analógico com themes" },
+      { slug: "gadgets/sg-calendar", name: "SgCalendar", desc: "Calendário mensal em card de gadget com drag e collapse" },
+      { slug: "gadgets/sg-string-animator", name: "SgStringAnimator", desc: "Animador de texto para transições de caracteres" },
       { slug: "gadgets/sg-qr-code", name: "SgQRCode", desc: "QR Code com valor dinamico e logo central" },
       { slug: "gadgets/sg-linear-gauge", name: "SgLinearGauge", desc: "Gauge linear com ranges e pointers" },
       { slug: "gadgets/sg-radial-gauge", name: "SgRadialGauge", desc: "Gauge radial com needle, marker e annotations" }
@@ -95,7 +95,7 @@ const COMPONENTS = [
   {
     categoryKey: "showcase.nav.wizard",
     items: [
-      { slug: "sg-wizard", name: "SgWizard", desc: "Formulario multi-etapas com navegacao e callback async" }
+      { slug: "sg-wizard", name: "SgWizard", desc: "Formulário multi-etapas com navegação e callback async" }
     ]
   }
 ];

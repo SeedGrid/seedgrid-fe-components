@@ -25,7 +25,7 @@ export default function App() {
         size={size}
         collapsible={collapsible}
         title="Resumo financeiro"
-        description="Visao rapida de indicadores"
+        description="Visão rápida de indicadores"
         footer={<span className="text-xs text-muted-foreground">Atualizado agora</span>}
       >
         <div className="space-y-2 text-sm">

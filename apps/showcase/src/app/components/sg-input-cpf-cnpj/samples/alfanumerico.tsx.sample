@@ -5,7 +5,7 @@ export default function App() {
   return (
     <SgInputCPFCNPJ
       id="doc"
-      label="Documento alfanumerico"
+      label="Documento alfanumérico"
       hintText="00.000.000/E08G-12"
       inputProps={{ defaultValue: "00.000.000/E08G-12" }}
     />

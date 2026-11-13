@@ -30,13 +30,13 @@ export default function App() {
           setPayload({ ...formValues });
         }}
       >
-        <SgWizardPage title="Identificacao">
+        <SgWizardPage title="Identificação">
           <div className="grid gap-3 sm:grid-cols-2">
             <SgInputText
               id="playground-name"
               label="Nome"
               required
-              requiredMessage="Nome obrigatorio"
+              requiredMessage="Nome obrigatório"
               inputProps={{
                 value: formValues.name,
                 onChange: (event) =>
@@ -47,7 +47,7 @@ export default function App() {
               id="playground-email"
               label="Email"
               required
-              requiredMessage="Email obrigatorio"
+              requiredMessage="Email obrigatório"
               inputProps={{
                 value: formValues.email,
                 onChange: (event) =>
@@ -61,7 +61,7 @@ export default function App() {
             id="playground-phone"
             label="Telefone"
             required
-            requiredMessage="Telefone obrigatorio"
+            requiredMessage="Telefone obrigatório"
             inputProps={{
               value: formValues.phone,
               onChange: (event) =>
