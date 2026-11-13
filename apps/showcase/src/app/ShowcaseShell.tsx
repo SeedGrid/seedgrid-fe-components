@@ -274,26 +274,26 @@ const COMPONENT_HINT_KEY_BY_SLUG: Record<string, string> = {
 
 const COMPONENT_HINT_TEXTS_BY_SLUG: Record<string, Partial<Record<ShowcaseLocale, string>>> = {
   "gadgets/sg-calendar": {
-    "pt-BR": "Calendario mensal em formato de gadget, com card arrastavel/recolhivel e suporte a locale.",
-    "pt-PT": "Calendario mensal em formato de gadget, com card arrastavel/recolhivel e suporte a locale.",
+    "pt-BR": "Calendário mensal em formato de gadget, com card arrastavel/recolhivel e suporte a locale.",
+    "pt-PT": "Calendário mensal em formato de gadget, com card arrastavel/recolhivel e suporte a locale.",
     "en-US": "Monthly calendar gadget with a draggable/collapsible card and locale support.",
     es: "Calendario mensual en formato gadget, con card draggable/collapsible y soporte de locale."
   },
   "digits/sg-discard-digit": {
-    "pt-BR": "Bloco de folhas com animacao 3D de descarte: a folha do topo sai e revela a proxima.",
-    "pt-PT": "Bloco de folhas com animacao 3D de descarte: a folha no topo sai e revela a seguinte.",
+    "pt-BR": "Bloco de folhas com animação 3D de descarte: a folha do topo sai e revela a proxima.",
+    "pt-PT": "Bloco de folhas com animação 3D de descarte: a folha no topo sai e revela a seguinte.",
     "en-US": "Stacked paper-style digit with a 3D discard animation: the top sheet leaves and reveals the next one.",
-    es: "Bloque de hojas con animacion 3D de descarte: la hoja superior sale y revela la siguiente."
+    es: "Bloque de hojas con animación 3D de descarte: la hoja superior sale y revela la siguiente."
   },
   "digits/sg-fade-digit": {
-    "pt-BR": "Card animado que \"apaga\" o digito atual e \"acende\" o novo - efeito de lampada ou tubo nixie. Sem bibliotecas externas; animacao 100% CSS + React.",
-    "pt-PT": "Card animado que \"apaga\" o digito atual e \"acende\" o novo - efeito de lampada ou tubo nixie. Sem bibliotecas externas; animacao 100% CSS + React.",
+    "pt-BR": "Card animado que \"apaga\" o dígito atual e \"acende\" o novo - efeito de lampada ou tubo nixie. Sem bibliotecas externas; animação 100% CSS + React.",
+    "pt-PT": "Card animado que \"apaga\" o dígito atual e \"acende\" o novo - efeito de lampada ou tubo nixie. Sem bibliotecas externas; animação 100% CSS + React.",
     "en-US": "Animated card that \"turns off\" the current digit and \"turns on\" the new one - lamp or nixie-tube style effect. No external libraries; animation is 100% CSS + React.",
-    es: "Tarjeta animada que \"apaga\" el digito actual y \"enciende\" el nuevo - efecto tipo lampara o tubo nixie. Sin librerias externas; animacion 100% CSS + React."
+    es: "Tarjeta animada que \"apaga\" el digito actual y \"enciende\" el nuevo - efecto tipo lampara o tubo nixie. Sin librerias externas; animación 100% CSS + React."
   },
   "digits/sg-flip-digit": {
-    "pt-BR": "Componente de flip animado para exibicao de digitos e caracteres unicos.",
-    "pt-PT": "Componente de flip animado para exibicao de digitos e caracteres unicos.",
+    "pt-BR": "Componente de flip animado para exibição de dígitos e caracteres únicos.",
+    "pt-PT": "Componente de flip animado para exibição de dígitos e caracteres únicos.",
     "en-US": "Animated flip component for displaying digits and single characters.",
     es: "Componente flip animado para mostrar digitos y caracteres unicos."
   },
@@ -304,26 +304,26 @@ const COMPONENT_HINT_TEXTS_BY_SLUG: Record<string, Partial<Record<ShowcaseLocale
     es: "Componente de caracteres matriciales por puntos, con soporte para color y backgroundColor."
   },
   "digits/sg-neon-digit": {
-    "pt-BR": "Caracteres em neon com animacao de troca, color, font, backgroundColor e shadowColor.",
-    "pt-PT": "Caracteres em neon com animacao de troca, color, font, backgroundColor e shadowColor.",
+    "pt-BR": "Caracteres em neon com animação de troca, color, font, backgroundColor e shadowColor.",
+    "pt-PT": "Caracteres em neon com animação de troca, color, font, backgroundColor e shadowColor.",
     "en-US": "Neon character component with swap animation, color, font, backgroundColor, and shadowColor.",
-    es: "Caracteres neon con animacion de cambio, color, font, backgroundColor y shadowColor."
+    es: "Caracteres neon con animación de cambio, color, font, backgroundColor y shadowColor."
   },
   "digits/sg-roller3d-digit": {
-    "pt-BR": "Tambor vertical animado - exibe qualquer valor de uma lista com transicao suave via CSS.",
-    "pt-PT": "Tambor vertical animado - exibe qualquer valor de uma lista com transicao suave via CSS.",
+    "pt-BR": "Tambor vertical animado - exibe qualquer valor de uma lista com transição suave via CSS.",
+    "pt-PT": "Tambor vertical animado - exibe qualquer valor de uma lista com transição suave via CSS.",
     "en-US": "Animated vertical drum - displays any value from a list with smooth CSS transition.",
-    es: "Tambor vertical animado - muestra cualquier valor de una lista con transicion CSS suave."
+    es: "Tambor vertical animado - muestra cualquier valor de una lista con transición CSS suave."
   },
   "digits/sg-segment-digit": {
-    "pt-BR": "Digito seven-segment em SVG no estilo classico do modo segment do SgClock.",
-    "pt-PT": "Digito seven-segment em SVG no estilo classico do modo segment do SgClock.",
+    "pt-BR": "Dígito seven-segment em SVG no estilo clássico do modo segment do SgClock.",
+    "pt-PT": "Dígito seven-segment em SVG no estilo clássico do modo segment do SgClock.",
     "en-US": "Classic SVG seven-segment digit used by the segment mode in SgClock.",
     es: "Digito seven-segment en SVG con estilo clasico del modo segment de SgClock."
   },
   "digits/sg-seven-segment-digit": {
-    "pt-BR": "Display de sete segmentos para digitos e caracteres hexadecimais com cor, tamanho e glow customizaveis.",
-    "pt-PT": "Display de sete segmentos para digitos e caracteres hexadecimais com cor, tamanho e glow customizaveis.",
+    "pt-BR": "Display de sete segmentos para dígitos e caracteres hexadecimais com cor, tamanho e glow customizaveis.",
+    "pt-PT": "Display de sete segmentos para dígitos e caracteres hexadecimais com cor, tamanho e glow customizaveis.",
     "en-US": "Seven-segment display for digits and hex-style characters with customizable color, size, and glow.",
     es: "Display de siete segmentos para digitos y caracteres hexadecimales con color, tamano y glow personalizables."
   },
@@ -346,80 +346,80 @@ const COMPONENT_HINT_TEXTS_BY_SLUG: Record<string, Partial<Record<ShowcaseLocale
     es: "Gauge radial con ranges, punteros y control de anillo mas grueso (ringThickness)."
   },
   "gadgets/sg-string-animator": {
-    "pt-BR": "Anima caractere por caractere de uma string para outra. Suporta seis estilos: roller3d, flip, neon, fade, discard e matrix. Configuravel em velocidade, alinhamento e cores.",
-    "pt-PT": "Anima caractere a caractere de uma string para outra. Suporta seis estilos: roller3d, flip, neon, fade, discard e matrix. Configuravel em velocidade, alinhamento e cores.",
+    "pt-BR": "Anima caractere por caractere de uma string para outra. Suporta seis estilos: roller3d, flip, neon, fade, discard e matrix. Configurável em velocidade, alinhamento e cores.",
+    "pt-PT": "Anima caractere a caractere de uma string para outra. Suporta seis estilos: roller3d, flip, neon, fade, discard e matrix. Configurável em velocidade, alinhamento e cores.",
     "en-US": "Animates one string into another, character by character. Supports six styles: roller3d, flip, neon, fade, discard, and matrix. Fully configurable for speed, alignment, and colors.",
     es: "Anima una cadena a otra caracter por caracter. Soporta seis estilos: roller3d, flip, neon, fade, discard y matrix. Configurable en velocidad, alineacion y colores."
   },
   "sg-accordion": {
-    "pt-BR": "Accordion com configuracao vertical/horizontal, modo single ou multiple e controle externo.",
-    "pt-PT": "Accordion com configuracao vertical/horizontal, modo single ou multiple e controlo externo.",
+    "pt-BR": "Accordion com configuração vertical/horizontal, modo single ou multiple e controle externo.",
+    "pt-PT": "Accordion com configuração vertical/horizontal, modo single ou multiple e controlo externo.",
     "en-US": "Accordion with vertical/horizontal layout, single or multiple mode, and external state control.",
-    es: "Accordion con configuracion vertical/horizontal, modo single o multiple y control externo."
+    es: "Accordion con configuración vertical/horizontal, modo single o multiple y control externo."
   },
   "sg-avatar": {
-    "pt-BR": "Avatar com suporte a label, icone, imagem, severidade, tamanhos e agrupamento.",
-    "pt-PT": "Avatar com suporte a label, icone, imagem, severidade, tamanhos e agrupamento.",
+    "pt-BR": "Avatar com suporte a label, ícone, imagem, severidade, tamanhos e agrupamento.",
+    "pt-PT": "Avatar com suporte a label, ícone, imagem, severidade, tamanhos e agrupamento.",
     "en-US": "Avatar with support for label, icon, image, severity, sizes, and grouping.",
     es: "Avatar con soporte para label, icono, imagen, severidad, tamanos y agrupacion."
   },
   "sg-breadcrumb": {
-    "pt-BR": "Breadcrumb hierarquico com suporte a icones, navegacao e overflow.",
-    "pt-PT": "Breadcrumb hierarquico com suporte a icones, navegacao e overflow.",
+    "pt-BR": "Breadcrumb hierárquico com suporte a ícones, navegação e overflow.",
+    "pt-PT": "Breadcrumb hierárquico com suporte a ícones, navegação e overflow.",
     "en-US": "Hierarchical breadcrumb with support for icons, navigation, and overflow.",
-    es: "Breadcrumb jerarquico con soporte para iconos, navegacion y overflow."
+    es: "Breadcrumb jerarquico con soporte para iconos, navegación y overflow."
   },
   "sg-button": {
-    "pt-BR": "Botao com suporte a severity, appearance, shape, elevation, icons e loading.",
-    "pt-PT": "Botao com suporte a severity, appearance, shape, elevation, icons e loading.",
+    "pt-BR": "Botão com suporte a severity, appearance, shape, elevation, icons e loading.",
+    "pt-PT": "Botão com suporte a severity, appearance, shape, elevation, icons e loading.",
     "en-US": "Button with support for severity, appearance, shape, elevation, icons, and loading.",
-    es: "Boton con soporte para severity, appearance, shape, elevation, iconos y loading."
+    es: "Botón con soporte para severity, appearance, shape, elevation, iconos y loading."
   },
   "sg-carousel": {
-    "pt-BR": "Um componente de carrossel responsivo com navegacao horizontal/vertical, autoplay e indicadores.",
-    "pt-PT": "Um componente de carrossel responsivo com navegacao horizontal/vertical, autoplay e indicadores.",
+    "pt-BR": "Um componente de carrossel responsivo com navegação horizontal/vertical, autoplay e indicadores.",
+    "pt-PT": "Um componente de carrossel responsivo com navegação horizontal/vertical, autoplay e indicadores.",
     "en-US": "A responsive carousel component with horizontal/vertical navigation, autoplay, and indicators.",
-    es: "Un componente de carrusel responsivo con navegacion horizontal/vertical, autoplay e indicadores."
+    es: "Un componente de carrusel responsivo con navegación horizontal/vertical, autoplay e indicadores."
   },
   "sg-confirmation-dialog": {
-    "pt-BR": "Dialogo de confirmacao com titulo, mensagem, icone opcional e botoes customizaveis.",
-    "pt-PT": "Dialogo de confirmacao com titulo, mensagem, icone opcional e botoes customizaveis.",
+    "pt-BR": "Diálogo de confirmação com título, mensagem, ícone opcional e botões customizaveis.",
+    "pt-PT": "Diálogo de confirmação com título, mensagem, ícone opcional e botões customizaveis.",
     "en-US": "Confirmation dialog with title, message, optional icon, and customizable action buttons.",
-    es: "Dialogo de confirmacion con titulo, mensaje, icono opcional y botones de accion personalizables."
+    es: "Diálogo de confirmación con título, mensaje, icono opcional y botones de acción personalizables."
   },
   "sg-combobox": {
-    "pt-BR": "Combobox no estilo select, sem digitacao livre. O item selecionado vem de source e o evento onSelect devolve o objeto selecionado.",
-    "pt-PT": "Combobox no estilo select, sem digitacao livre. O item selecionado vem de source e o evento onSelect devolve o objeto selecionado.",
+    "pt-BR": "Combobox no estilo select, sem digitação livre. O item selecionado vem de source e o evento onSelect devolve o objeto selecionado.",
+    "pt-PT": "Combobox no estilo select, sem digitação livre. O item selecionado vem de source e o evento onSelect devolve o objeto selecionado.",
     "en-US": "Select-style combobox, no free typing. The selected item comes from source and onSelect returns the selected object.",
     es: "Combobox estilo select, sin escritura libre. El item seleccionado viene de source y onSelect devuelve el objeto seleccionado."
   },
   "sg-multi-select": {
-    "pt-BR": "Selecao multipla estilo select: trigger com chevron que vira check ao abrir e dropdown com checkboxes que mantem a lista aberta.",
-    "pt-PT": "Selecao multipla estilo select: trigger com chevron que vira check ao abrir e dropdown com checkboxes que mantem a lista aberta.",
+    "pt-BR": "Seleção multipla estilo select: trigger com chevron que vira check ao abrir e dropdown com checkboxes que mantem a lista aberta.",
+    "pt-PT": "Seleção multipla estilo select: trigger com chevron que vira check ao abrir e dropdown com checkboxes que mantem a lista aberta.",
     "en-US": "Multi-select in select style: trigger chevron turns into a check when open, and the checkbox dropdown stays open while toggling.",
-    es: "Seleccion multiple estilo select: el chevron del trigger se vuelve un check al abrir y el dropdown con checkboxes permanece abierto."
+    es: "Selección multiple estilo select: el chevron del trigger se vuelve un check al abrir y el dropdown con checkboxes permanece abierto."
   },
   "sg-multi-select-chips": {
-    "pt-BR": "Variante do multi-select com chips removiveis no trigger; reusa o dropdown com checkboxes e a busca do SgMultiSelect.",
-    "pt-PT": "Variante do multi-select com chips removiveis no trigger; reusa o dropdown com checkboxes e a pesquisa do SgMultiSelect.",
+    "pt-BR": "Variante do multi-select com chips removíveis no trigger; reusa o dropdown com checkboxes e a busca do SgMultiSelect.",
+    "pt-PT": "Variante do multi-select com chips removíveis no trigger; reusa o dropdown com checkboxes e a pesquisa do SgMultiSelect.",
     "en-US": "Multi-select variant with removable chips in the trigger; reuses the SgMultiSelect checkbox dropdown and search.",
     es: "Variante del multi-select con chips removibles en el trigger; reutiliza el dropdown con checkboxes y la busqueda de SgMultiSelect."
   },
   "sg-input-text-search": {
-    "pt-BR": "Campo de busca que embrulha o SgInputText com debounce (sem rxjs): onChange imediato e onSearchChange apos o debounce, com trim e gate por minChars.",
-    "pt-PT": "Campo de pesquisa que embrulha o SgInputText com debounce (sem rxjs): onChange imediato e onSearchChange apos o debounce, com trim e gate por minChars.",
+    "pt-BR": "Campo de busca que embrulha o SgInputText com debounce (sem rxjs): onChange imediato e onSearchChange após o debounce, com trim e gate por minChars.",
+    "pt-PT": "Campo de pesquisa que embrulha o SgInputText com debounce (sem rxjs): onChange imediato e onSearchChange após o debounce, com trim e gate por minChars.",
     "en-US": "Search field wrapping SgInputText with debounce (no rxjs): immediate onChange and debounced onSearchChange, with trim and a minChars gate.",
     es: "Campo de busqueda que envuelve SgInputText con debounce (sin rxjs): onChange inmediato y onSearchChange tras el debounce, con trim y gate por minChars."
   },
   "sg-dock-menu": {
-    "pt-BR": "Dock estilo macOS com posicoes, drag and drop, badges, labels e magnify.",
-    "pt-PT": "Dock estilo macOS com posicoes, drag and drop, badges, labels e magnify.",
+    "pt-BR": "Dock estilo maços com posições, drag and drop, badges, labels e magnify.",
+    "pt-PT": "Dock estilo maços com posições, drag and drop, badges, labels e magnify.",
     "en-US": "macOS-style dock with positions, drag and drop, badges, labels, and magnify.",
     es: "Dock estilo macOS con posiciones, drag and drop, badges, labels y magnify."
   },
   "sg-dock-screen": {
-    "pt-BR": "Componente de conveniencia que combina SgScreen + SgDockLayout no mesmo root.",
-    "pt-PT": "Componente de conveniencia que combina SgScreen + SgDockLayout no mesmo root.",
+    "pt-BR": "Componente de conveniência que combina SgScreen + SgDockLayout no mesmo root.",
+    "pt-PT": "Componente de conveniência que combina SgScreen + SgDockLayout no mesmo root.",
     "en-US": "Convenience component that combines SgScreen + SgDockLayout in a single root.",
     es: "Componente de conveniencia que combina SgScreen + SgDockLayout en el mismo root."
   },
@@ -436,22 +436,22 @@ const COMPONENT_HINT_TEXTS_BY_SLUG: Record<string, Partial<Record<ShowcaseLocale
     es: "Grid con columnas responsivas, auto-fit, span, rowSpan, dense y rowHeight."
   },
   "sg-input-otp": {
-    "pt-BR": "Input OTP com digitos separados, suporte a colagem e mascara configuravel.",
-    "pt-PT": "Input OTP com digitos separados, suporte a colagem e mascara configuravel.",
+    "pt-BR": "Input OTP com dígitos separados, suporte a colagem e máscara configurável.",
+    "pt-PT": "Input OTP com dígitos separados, suporte a colagem e máscara configurável.",
     "en-US": "OTP input with separated digits, paste support, and configurable mask.",
     es: "Input OTP con digitos separados, soporte de pegado y mascara configurable."
   },
   "sg-menu": {
-    "pt-BR": "Menu hierarquico para sidebar, drawer, inline e hibrido, com busca e multiplos estilos.",
-    "pt-PT": "Menu hierarquico para sidebar, drawer, inline e hibrido, com busca e multiplos estilos.",
+    "pt-BR": "Menu hierárquico para sidebar, drawer, inline e híbrido, com busca e múltiplos estilos.",
+    "pt-PT": "Menu hierárquico para sidebar, drawer, inline e híbrido, com busca e múltiplos estilos.",
     "en-US": "Hierarchical menu for sidebar, drawer, inline, and hybrid layouts, with search and multiple styles.",
     es: "Menu jerarquico para sidebar, drawer, inline e hibrido, con busqueda y multiples estilos."
   },
   "sg-page-control": {
-    "pt-BR": "TabView com controle externo de pagina ativa e ocultacao dinamica de tabs.",
-    "pt-PT": "TabView com controlo externo da pagina ativa e ocultacao dinamica de tabs.",
+    "pt-BR": "TabView com controle externo de página ativa e ocultação dinamica de tabs.",
+    "pt-PT": "TabView com controlo externo da página ativa e ocultação dinamica de tabs.",
     "en-US": "TabView with external active-page control and dynamic tab hiding.",
-    es: "TabView con control externo de pagina activa y ocultacion dinamica de tabs."
+    es: "TabView con control externo de página activa y ocultacion dinamica de tabs."
   },
   "sg-panel": {
     "pt-BR": "Showcase com exemplos de todas as props do SgPanel.",
@@ -460,22 +460,22 @@ const COMPONENT_HINT_TEXTS_BY_SLUG: Record<string, Partial<Record<ShowcaseLocale
     es: "Showcase con ejemplos de todas las props de SgPanel."
   },
   "sg-radio-group": {
-    "pt-BR": "Grupo de radio buttons com orientacao horizontal/vertical, icones, opcao de limpar e integracao com React Hook Form.",
-    "pt-PT": "Grupo de radio buttons com orientacao horizontal/vertical, icones, opcao de limpar e integracao com React Hook Form.",
+    "pt-BR": "Grupo de rádio buttons com orientação horizontal/vertical, ícones, opção de limpar e integração com React Hook Form.",
+    "pt-PT": "Grupo de rádio buttons com orientação horizontal/vertical, ícones, opção de limpar e integração com React Hook Form.",
     "en-US": "Radio button group with horizontal/vertical orientation, icons, clear option, and React Hook Form integration.",
-    es: "Grupo de radio buttons con orientacion horizontal/vertical, iconos, opcion de limpiar e integracion con React Hook Form."
+    es: "Grupo de radio buttons con orientación horizontal/vertical, iconos, opción de limpiar e integración con React Hook Form."
   },
   "sg-checkbox-group": {
-    "pt-BR": "Grupo de checkboxes com selecao multipla, check all, estilos highlight, icones e integracao com React Hook Form.",
-    "pt-PT": "Grupo de checkboxes com selecao multipla, check all, estilos highlight, icones e integracao com React Hook Form.",
+    "pt-BR": "Grupo de checkboxes com seleção multipla, check all, estilos highlight, ícones e integração com React Hook Form.",
+    "pt-PT": "Grupo de checkboxes com seleção multipla, check all, estilos highlight, ícones e integração com React Hook Form.",
     "en-US": "Checkbox group with multi-selection, check all, highlight style, icons, and React Hook Form integration.",
-    es: "Grupo de checkboxes con seleccion multiple, check all, estilos highlight, iconos e integracion con React Hook Form."
+    es: "Grupo de checkboxes con selección multiple, check all, estilos highlight, iconos e integración con React Hook Form."
   },
   "sg-order-list": {
-    "pt-BR": "Lista ordenavel com selecao, botoes de movimento e drag and drop.",
-    "pt-PT": "Lista ordenavel com selecao, botoes de movimento e drag and drop.",
+    "pt-BR": "Lista ordenavel com seleção, botões de movimento e drag and drop.",
+    "pt-PT": "Lista ordenavel com seleção, botões de movimento e drag and drop.",
     "en-US": "Sortable list with selection, move controls, and drag and drop.",
-    es: "Lista ordenable con seleccion, controles de movimiento y drag and drop."
+    es: "Lista ordenable con selección, controles de movimiento y drag and drop."
   },
   "sg-pick-list": {
     "pt-BR": "PickList para mover itens entre listas com filtros, controles e drag and drop.",
@@ -484,16 +484,16 @@ const COMPONENT_HINT_TEXTS_BY_SLUG: Record<string, Partial<Record<ShowcaseLocale
     es: "PickList para mover items entre listas con filtros, controles y drag and drop."
   },
   "sg-datatable": {
-    "pt-BR": "Datatable com ordenacao, filtros por coluna, paginacao, selecao de linhas e templates customizados.",
-    "pt-PT": "Datatable com ordenacao, filtros por coluna, paginacao, selecao de linhas e templates customizados.",
+    "pt-BR": "Datatable com ordenação, filtros por coluna, paginação, seleção de linhas e templates customizados.",
+    "pt-PT": "Datatable com ordenação, filtros por coluna, paginação, seleção de linhas e templates customizados.",
     "en-US": "Datatable with sorting, column filters, pagination, row selection, and custom templates.",
-    es: "Datatable con ordenacion, filtros por columna, paginacion, seleccion de filas y templates personalizados."
+    es: "Datatable con ordenación, filtros por columna, paginación, selección de filas y templates personalizados."
   },
   "sg-rating": {
-    "pt-BR": "Componente de avaliacao com suporte a meia estrela, estados visuais, customizacao de icones e integracao com React Hook Form.",
-    "pt-PT": "Componente de avaliacao com suporte a meia estrela, estados visuais, customizacao de icones e integracao com React Hook Form.",
+    "pt-BR": "Componente de avaliação com suporte a meia estrela, estados visuais, customizacao de ícones e integração com React Hook Form.",
+    "pt-PT": "Componente de avaliação com suporte a meia estrela, estados visuais, customizacao de ícones e integração com React Hook Form.",
     "en-US": "Rating component with half-star support, visual states, icon customization and React Hook Form integration.",
-    es: "Componente de valoracion con soporte de media estrella, estados visuales, personalizacion de iconos e integracion con React Hook Form."
+    es: "Componente de valoracion con soporte de media estrella, estados visuales, personalizacion de iconos e integración con React Hook Form."
   },
   "sg-screen": {
     "pt-BR": "Container raiz para telas. O exemplo abaixo esta completo para copiar e colar.",
@@ -502,10 +502,10 @@ const COMPONENT_HINT_TEXTS_BY_SLUG: Record<string, Partial<Record<ShowcaseLocale
     es: "Contenedor raiz para pantallas. El ejemplo de abajo esta completo para copiar y pegar."
   },
   "sg-skeleton": {
-    "pt-BR": "Placeholder visual para estados de carregamento com suporte a formas, tamanhos e animacao.",
-    "pt-PT": "Placeholder visual para estados de carregamento com suporte a formas, tamanhos e animacao.",
+    "pt-BR": "Placeholder visual para estados de carregamento com suporte a formas, tamanhos e animação.",
+    "pt-PT": "Placeholder visual para estados de carregamento com suporte a formas, tamanhos e animação.",
     "en-US": "Visual placeholder for loading states with shape, size, and animation support.",
-    es: "Placeholder visual para estados de carga con soporte de formas, tamanos y animacion."
+    es: "Placeholder visual para estados de carga con soporte de formas, tamanos y animación."
   },
   "sg-slider": {
     "pt-BR": "Slider com min/max, controle externo, step, width, inputProps e estado disabled.",
@@ -514,34 +514,34 @@ const COMPONENT_HINT_TEXTS_BY_SLUG: Record<string, Partial<Record<ShowcaseLocale
     es: "Slider con min/max, control externo, step, width, inputProps y estado disabled."
   },
   "sg-split-button": {
-    "pt-BR": "Botao dividido com acao principal e menu dropdown de opcoes adicionais.",
-    "pt-PT": "Botao dividido com acao principal e menu dropdown de opcoes adicionais.",
+    "pt-BR": "Botão dividido com ação principal e menu dropdown de opções adicionais.",
+    "pt-PT": "Botão dividido com ação principal e menu dropdown de opções adicionais.",
     "en-US": "Split button with primary action and dropdown menu for additional options.",
-    es: "Boton dividido con accion principal y menu desplegable de opciones adicionales."
+    es: "Botón dividido con acción principal y menu desplegable de opciones adicionales."
   },
   "sg-stack": {
-    "pt-BR": "Wrapper flex declarativo para direcao, alinhamento, distribuicao e espacamento.",
-    "pt-PT": "Wrapper flex declarativo para direcao, alinhamento, distribuicao e espacamento.",
+    "pt-BR": "Wrapper flex declarativo para direção, alinhamento, distribuição e espacamento.",
+    "pt-PT": "Wrapper flex declarativo para direção, alinhamento, distribuição e espacamento.",
     "en-US": "Declarative flex wrapper for direction, alignment, distribution and spacing.",
     es: "Wrapper flex declarativo para direccion, alineacion, distribucion y espaciado."
   },
   "sg-stepper-input": {
-    "pt-BR": "Input numerico com setas de incremento/decremento, limites min/max e callback onChange.",
-    "pt-PT": "Input numerico com setas de incremento/decremento, limites min/max e callback onChange.",
+    "pt-BR": "Input numérico com setas de incremento/decremento, limites min/max e callback onChange.",
+    "pt-PT": "Input numérico com setas de incremento/decremento, limites min/max e callback onChange.",
     "en-US": "Numeric input with increment/decrement controls, min/max limits and onChange callback.",
     es: "Input numerico con flechas de incremento/decremento, limites min/max y callback onChange."
   },
   "sg-toaster": {
-    "pt-BR": "Sistema de notificacao com API imperativa (toast) e renderer (SgToaster).",
-    "pt-PT": "Sistema de notificacao com API imperativa (toast) e renderer (SgToaster).",
+    "pt-BR": "Sistema de notificação com API imperativa (toast) e renderer (SgToaster).",
+    "pt-PT": "Sistema de notificação com API imperativa (toast) e renderer (SgToaster).",
     "en-US": "Notification system with imperative API (toast) and renderer (SgToaster).",
     es: "Sistema de notificaciones con API imperativa (toast) y renderer (SgToaster)."
   },
   "sg-toast-host": {
-    "pt-BR": "Marca o local onde os toasts aparecem. Quando multiplos hosts existem, o mais profundo na arvore tem prioridade.",
-    "pt-PT": "Marca o local onde os toasts aparecem. Quando multiplos hosts existem, o mais profundo na arvore tem prioridade.",
+    "pt-BR": "Marca o local onde os toasts aparecem. Quando múltiplos hosts existem, o mais profundo na árvore tem prioridade.",
+    "pt-PT": "Marca o local onde os toasts aparecem. Quando múltiplos hosts existem, o mais profundo na árvore tem prioridade.",
     "en-US": "Marks where toasts appear. When multiple hosts exist, the deepest in the tree takes priority.",
-    es: "Marca donde aparecen los toasts. Cuando existen multiples hosts, el mas profundo en el arbol tiene prioridad."
+    es: "Marca donde aparecen los toasts. Cuando existen multiples hosts, el mas profundo en el árbol tiene prioridad."
   },
   "sg-whistler": {
     "pt-BR": "Renderizador de mensagens contextuais em pilha (rounded, severidades, dismiss). Cede a vez quando ha um SgWhistleHost.",
@@ -550,22 +550,22 @@ const COMPONENT_HINT_TEXTS_BY_SLUG: Record<string, Partial<Record<ShowcaseLocale
     es: "Renderizador de mensajes contextuales en pila (rounded, severidades, dismiss). Cede el paso cuando hay un SgWhistleHost."
   },
   "sg-whistle-host": {
-    "pt-BR": "Marca o local onde os whistles aparecem. Varios hosts (ex.: topo e rodape) coexistem via registry: o ultimo montado fica ativo.",
-    "pt-PT": "Marca o local onde os whistles aparecem. Varios hosts (ex.: topo e rodape) coexistem via registry: o ultimo montado fica ativo.",
+    "pt-BR": "Marca o local onde os whistles aparecem. Vários hosts (ex.: topo e rodapé) coexistem via registry: o último montado fica ativo.",
+    "pt-PT": "Marca o local onde os whistles aparecem. Vários hosts (ex.: topo e rodapé) coexistem via registry: o último montado fica ativo.",
     "en-US": "Marks where whistles appear. Multiple hosts (e.g. top and bottom) coexist via a registry: the last mounted stays active.",
-    es: "Marca donde aparecen los whistles. Varios hosts (ej.: arriba y abajo) coexisten via registry: el ultimo montado queda activo."
+    es: "Marca donde aparecen los whistles. Varios hosts (ej.: arriba y abajo) coexisten via registry: el último montado queda activo."
   },
   "sg-toggle-switch": {
-    "pt-BR": "Toggle switch com suporte a icones, estados disabled/readonly e integracao com react-hook-form.",
-    "pt-PT": "Toggle switch com suporte a icones, estados disabled/readonly e integracao com react-hook-form.",
+    "pt-BR": "Toggle switch com suporte a ícones, estados disabled/readonly e integração com react-hook-form.",
+    "pt-PT": "Toggle switch com suporte a ícones, estados disabled/readonly e integração com react-hook-form.",
     "en-US": "Toggle switch with icon support, disabled/readonly states, and react-hook-form integration.",
-    es: "Toggle switch con soporte de iconos, estados disabled/readonly e integracion con react-hook-form."
+    es: "Toggle switch con soporte de iconos, estados disabled/readonly e integración con react-hook-form."
   },
   "sg-toolbar": {
-    "pt-BR": "Toolbar reutilizavel com orientacao vertical/horizontal, acoes assincronas e customizacao visual.",
-    "pt-PT": "Toolbar reutilizavel com orientacao vertical/horizontal, acoes assincronas e customizacao visual.",
+    "pt-BR": "Toolbar reutilizavel com orientação vertical/horizontal, ações assincronas e customizacao visual.",
+    "pt-PT": "Toolbar reutilizavel com orientação vertical/horizontal, ações assincronas e customizacao visual.",
     "en-US": "Reusable toolbar with vertical/horizontal orientation, async actions, and visual customization.",
-    es: "Toolbar reutilizable con orientacion vertical/horizontal, acciones asincronas y personalizacion visual."
+    es: "Toolbar reutilizable con orientación vertical/horizontal, acciones asincronas y personalizacion visual."
   },
   "providers/sg-time-provider": {
     "pt-BR": "Provedor de tempo sincronizado com o servidor, evitando desvios do relógio do cliente.",
@@ -580,10 +580,10 @@ const COMPONENT_HINT_TEXTS_BY_SLUG: Record<string, Partial<Record<ShowcaseLocale
     es: "Configura el locale y los mensajes de todos los componentes SeedGrid de forma centralizada."
   },
   "providers/sg-clock-theme-provider": {
-    "pt-BR": "Registra e distribui temas do SgClock para toda a arvore de componentes.",
-    "pt-PT": "Regista e distribui temas do SgClock para toda a arvore de componentes.",
+    "pt-BR": "Registra e distribui temas do SgClock para toda a árvore de componentes.",
+    "pt-PT": "Regista e distribui temas do SgClock para toda a árvore de componentes.",
     "en-US": "Registers and distributes SgClock themes throughout the component tree.",
-    es: "Registra y distribuye temas del SgClock en todo el arbol de componentes."
+    es: "Registra y distribuye temas del SgClock en todo el árbol de componentes."
   },
   "hooks/use-sg-persistent-state": {
     "pt-BR": "Hook de estado persistido: salva e carrega automaticamente no localStorage (ou API) com suporte a namespace, versionamento e serializacao customizada.",
@@ -592,8 +592,8 @@ const COMPONENT_HINT_TEXTS_BY_SLUG: Record<string, Partial<Record<ShowcaseLocale
     es: "Hook de estado persistido: guarda y carga automaticamente en localStorage (o API) con soporte a namespace, versionado y serializacion personalizada."
   },
   "hooks/use-sg-persistence": {
-    "pt-BR": "Acesso manual às operações de persistência (load, save, clear) da estratégia configurada no SgEnvironmentProvider.",
-    "pt-PT": "Acesso manual às operações de persistência (load, save, clear) da estratégia configurada no SgEnvironmentProvider.",
+    "pt-BR": "Acesso manual às óperações de persistência (load, save, clear) da estratégia configurada no SgEnvironmentProvider.",
+    "pt-PT": "Acesso manual às óperações de persistência (load, save, clear) da estratégia configurada no SgEnvironmentProvider.",
     "en-US": "Manual access to persistence operations (load, save, clear) from the strategy configured in SgEnvironmentProvider.",
     es: "Acceso manual a las operaciones de persistencia (load, save, clear) de la estrategia configurada en SgEnvironmentProvider."
   },
@@ -604,8 +604,8 @@ const COMPONENT_HINT_TEXTS_BY_SLUG: Record<string, Partial<Record<ShowcaseLocale
     es: "Lee el contexto de entorno actual: namespace, scope, mode y stateVersion configurados en SgEnvironmentProvider."
   },
   "providers/sg-realtime-provider": {
-    "pt-BR": "Avisos em tempo real para o usuario logado, pelo SeedGrid Pulse, com polling de reserva quando a conexao cai.",
-    "pt-PT": "Avisos em tempo real para o utilizador autenticado, pelo SeedGrid Pulse, com polling de reserva quando a ligacao cai.",
+    "pt-BR": "Avisos em tempo real para o usuário logado, pelo SeedGrid Pulse, com polling de reserva quando a conexão cai.",
+    "pt-PT": "Avisos em tempo real para o utilizador autenticado, pelo SeedGrid Pulse, com polling de reserva quando a ligação cai.",
     "en-US": "Real-time notices for the signed-in user through SeedGrid Pulse, with fallback polling when the connection drops.",
     es: "Avisos en tiempo real para el usuario autenticado, por SeedGrid Pulse, con polling de respaldo cuando la conexion cae."
   },
@@ -616,8 +616,8 @@ const COMPONENT_HINT_TEXTS_BY_SLUG: Record<string, Partial<Record<ShowcaseLocale
     es: "Reacciona a los avisos de un channel del SgRealtimeProvider (nombre, lista, prefijo.* o *)."
   },
   "hooks/use-sg-realtime-status": {
-    "pt-BR": "Estado da conexao com o Pulse: diz quando a tela deve usar o polling de reserva.",
-    "pt-PT": "Estado da ligacao ao Pulse: indica quando o ecra deve usar o polling de reserva.",
+    "pt-BR": "Estado da conexão com o Pulse: diz quando a tela deve usar o polling de reserva.",
+    "pt-PT": "Estado da ligação ao Pulse: indica quando o ecra deve usar o polling de reserva.",
     "en-US": "Pulse connection status: tells when the screen should use fallback polling.",
     es: "Estado de la conexion con el Pulse: indica cuando la pantalla debe usar el polling de respaldo."
   },

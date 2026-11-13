@@ -18,7 +18,7 @@
     "fr": "Accessibilité pour le champ de saisie."
   },
   "Acoes do rodape.": {
-    "pt": "Acoes do rodape.",
+    "pt": "Ações do rodapé.",
     "en": "Footer actions.",
     "es": "Acciones de pie de página.",
     "fr": "Actions du pied de page."
@@ -60,7 +60,7 @@
     "fr": "Hauteur du conteneur."
   },
   "Animacao de entrada/saida.": {
-    "pt": "Animacao de entrada/saida.",
+    "pt": "Animação de entrada/saida.",
     "en": "Entry/exit animation.",
     "es": "Animación de entrada/salida.",
     "fr": "Animation d'entrée/sortie."
@@ -90,13 +90,13 @@
     "fr": "Configuration de l'arc et direction de l'échelle."
   },
   "Array de itens exibidos no carrossel (obrigatorio).": {
-    "pt": "Array de itens exibidos no carrossel (obrigatorio).",
+    "pt": "Array de itens exibidos no carrossel (obrigatório).",
     "en": "Array of items displayed in the carousel (required).",
     "es": "Conjunto de elementos mostrados en el carrusel (obligatorio).",
     "fr": "Tableau des éléments affichés dans le carrousel (obligatoire)."
   },
   "Arvore que vai consumir o ambiente via contexto.": {
-    "pt": "Arvore que vai consumir o ambiente via contexto.",
+    "pt": "Árvore que vai consumir o ambiente via contexto.",
     "en": "Component tree that will consume the environment via context.",
     "es": "Arbol de componentes que consumira el entorno via contexto.",
     "fr": "Arbre qui consommera l'environnement via le contexte."
@@ -108,7 +108,7 @@
     "fr": "Active la boucle infinie."
   },
   "Ativa navegacao automatica.": {
-    "pt": "Ativa navegacao automatica.",
+    "pt": "Ativa navegação automática.",
     "en": "Activates automatic navigation.",
     "es": "Activa la navegación automática.",
     "fr": "Active la navigation automatique."
@@ -138,7 +138,7 @@
     "fr": "Orientation et direction de l'axe."
   },
   "Bloqueia edicao total ou parcial.": {
-    "pt": "Bloqueia edicao total ou parcial.",
+    "pt": "Bloqueia edição total ou parcial.",
     "en": "Blocks total or partial editing.",
     "es": "Bloquea la edición total o parcial.",
     "fr": "Bloque l'édition totale ou partielle."
@@ -150,7 +150,7 @@
     "fr": "Bordure et état désactivé."
   },
   "Botoes de navegacao customizados.": {
-    "pt": "Botoes de navegacao customizados.",
+    "pt": "Botões de navegação customizados.",
     "en": "Customized navigation buttons.",
     "es": "Botones de navegación personalizados.",
     "fr": "Boutons de navigation personnalisés."
@@ -174,7 +174,7 @@
     "fr": "Callback lors du changement d'étape."
   },
   "Callback chamado quando o indice ativo muda.": {
-    "pt": "Callback chamado quando o indice ativo muda.",
+    "pt": "Callback chamado quando o índice ativo muda.",
     "en": "Callback called when the active index changes.",
     "es": "Se llama a la devolución de llamada cuando cambia el índice activo.",
     "fr": "Callback appelé lorsque l'indice actif change."
@@ -252,19 +252,19 @@
     "fr": "Classe CSS supplémentaire appliquée à l'input range."
   },
   "Classe extra da area de body.": {
-    "pt": "Classe extra da area de body.",
+    "pt": "Classe extra da área de body.",
     "en": "Extra class in the body area.",
     "es": "Clase extra en la zona del cuerpo.",
     "fr": "Classe supplémentaire de la zone body."
   },
   "Classe extra da area de footer.": {
-    "pt": "Classe extra da area de footer.",
+    "pt": "Classe extra da área de footer.",
     "en": "Extra class of the footer area.",
     "es": "Clase extra del área del pie de página.",
     "fr": "Classe supplémentaire de la zone footer."
   },
   "Classe extra da area de header.": {
-    "pt": "Classe extra da area de header.",
+    "pt": "Classe extra da área de header.",
     "en": "Extra class from the header area.",
     "es": "Clase extra desde la zona de cabecera.",
     "fr": "Classe supplémentaire de la zone header."
@@ -282,13 +282,13 @@
     "fr": "Classe supplémentaire sur le conteneur du panneau."
   },
   "Classe extra no container do relogio.": {
-    "pt": "Classe extra no container do relogio.",
+    "pt": "Classe extra no container do relógio.",
     "en": "Extra class on the clock container.",
     "es": "Clase extra en el contenedor del reloj.",
     "fr": "Classe supplémentaire sur le conteneur de l'horloge."
   },
   "Classe extra no wrapper de conteudo.": {
-    "pt": "Classe extra no wrapper de conteudo.",
+    "pt": "Classe extra no wrapper de conteúdo.",
     "en": "Extra class in the content wrapper.",
     "es": "Clase extra en el contenedor de contenido.",
     "fr": "Classe supplémentaire sur le wrapper de contenu."
@@ -324,7 +324,7 @@
     "fr": "Classes supplémentaires du conteneur."
   },
   "Classes adicionais para o layout de dock interno; se nao informado, usa grid padrao.": {
-    "pt": "Classes adicionais para o layout de dock interno; se nao informado, usa grid padrao.",
+    "pt": "Classes adicionais para o layout de dock interno; se não informado, usa grid padrão.",
     "en": "Additional classes for the internal dock layout; if not informed, use standard grid.",
     "es": "Clases adicionales para el diseño del muelle interno; si no está informado, utilice la cuadrícula estándar.",
     "fr": "Classes supplémentaires pour la mise en page de dock interne ; si non renseigné, utilise la grille par défaut."
@@ -396,13 +396,13 @@
     "fr": "Comportement de sélection avec cases à cocher."
   },
   "Comportamento do ponteiro de segundos no analogico.": {
-    "pt": "Comportamento do ponteiro de segundos no analogico.",
+    "pt": "Comportamento do ponteiro de segundos no analógico.",
     "en": "Analog seconds hand behavior.",
     "es": "Comportamiento del segundero analógico.",
     "fr": "Comportement de l'aiguille des secondes sur l'horloge analogique."
   },
   "Config padrao de persistencia do contexto.": {
-    "pt": "Config padrao de persistencia do contexto.",
+    "pt": "Config padrão de persistência do contexto.",
     "en": "Default persistence configuration for the context.",
     "es": "Configuracion por defecto de persistencia del contexto.",
     "fr": "Configuration par défaut de persistance du contexte."
@@ -414,49 +414,49 @@
     "fr": "Paramètres complémentaires de l'interface."
   },
   "Conteudo do badge exibido na sobreposicao.": {
-    "pt": "Conteudo do badge exibido na sobreposicao.",
+    "pt": "Conteúdo do badge exibido na sobreposição.",
     "en": "Badge content displayed in the overlay.",
     "es": "Contenido de la insignia que se muestra en la superposición.",
     "fr": "Contenu du badge affiché en superposition."
   },
   "Conteudo interno (normalmente SgDockZone).": {
-    "pt": "Conteudo interno (normalmente SgDockZone).",
+    "pt": "Conteúdo interno (normalmente SgDockZone).",
     "en": "Internal content (normally SgDockZone).",
     "es": "Contenido interno (normalmente SgDockZone).",
     "fr": "Contenu interne (normalement SgDockZone)."
   },
   "Conteudo interno do botao.": {
-    "pt": "Conteudo interno do botao.",
+    "pt": "Conteúdo interno do botão.",
     "en": "Internal content of the button.",
     "es": "Contenido interno del botón.",
     "fr": "Contenu interne du bouton."
   },
   "Conteudo opcional do cabecalho.": {
-    "pt": "Conteudo opcional do cabecalho.",
+    "pt": "Conteúdo opcional do cabeçalho.",
     "en": "Optional header content.",
     "es": "Contenido de encabezado opcional.",
     "fr": "Contenu facultatif de l'en-tête."
   },
   "Conteudo opcional do rodape.": {
-    "pt": "Conteudo opcional do rodape.",
+    "pt": "Conteúdo opcional do rodapé.",
     "en": "Optional footer content.",
     "es": "Contenido de pie de página opcional.",
     "fr": "Contenu facultatif du pied de page."
   },
   "Conteudo opcional sobreposto ao centro do relogio analogico.": {
-    "pt": "Conteudo opcional sobreposto ao centro do relogio analogico.",
+    "pt": "Conteúdo opcional sobreposto ao centro do relógio analógico.",
     "en": "Optional content superimposed on the center of the analog clock.",
     "es": "Contenido opcional superpuesto en el centro del reloj analógico.",
     "fr": "Contenu facultatif superposé au centre de l'horloge analogique."
   },
   "Conteudo renderizado dentro da zona.": {
-    "pt": "Conteudo renderizado dentro da zona.",
+    "pt": "Conteúdo renderizado dentro da zona.",
     "en": "Content rendered within the zone.",
     "es": "Contenido renderizado dentro de la zona.",
     "fr": "Contenu affiché à l'intérieur de la zone."
   },
   "Conteudo textual e corpo customizado.": {
-    "pt": "Conteudo textual e corpo customizado.",
+    "pt": "Conteúdo textual e corpo customizado.",
     "en": "Textual content and customized body.",
     "es": "Contenido textual y cuerpo personalizado.",
     "fr": "Contenu textuel et corps personnalisé."
@@ -594,7 +594,7 @@
     "fr": "Définit la taille des étoiles."
   },
   "Define o tamanho do relogio analogico ou digital.": {
-    "pt": "Define o tamanho do relogio analogico ou digital.",
+    "pt": "Define o tamanho do relógio analógico ou digital.",
     "en": "Defines the size of the analog or digital clock.",
     "es": "Define el tamaño del reloj analógico o digital.",
     "fr": "Définit la taille de l'horloge analogique ou numérique."
@@ -612,31 +612,31 @@
     "fr": "Densité et espacement interne."
   },
   "Desabilita a interacao com o componente.": {
-    "pt": "Desabilita a interacao com o componente.",
+    "pt": "Desabilita a interação com o componente.",
     "en": "Disables interaction with the component.",
     "es": "Desactiva la interacción con el componente.",
     "fr": "Désactive l'interaction avec le composant."
   },
   "Desabilita interacao do slider.": {
-    "pt": "Desabilita interacao do slider.",
+    "pt": "Desabilita interação do slider.",
     "en": "Disables slider interaction.",
     "es": "Desactiva la interacción del control deslizante.",
     "fr": "Désactive l'interaction du slider."
   },
   "Desabilita o botao.": {
-    "pt": "Desabilita o botao.",
+    "pt": "Desabilita o botão.",
     "en": "Disable the button.",
     "es": "Desactiva el botón.",
     "fr": "Désactive le bouton."
   },
   "Dimensoes da tela base.": {
-    "pt": "Dimensoes da tela base.",
+    "pt": "Dimensões da tela base.",
     "en": "Base screen dimensions.",
     "es": "Dimensiones de la pantalla base.",
     "fr": "Dimensions de l'écran de base."
   },
   "Dimensoes explicitas do container (ex.: 960, 100%, 60vh).": {
-    "pt": "Dimensoes explicitas do container (ex.: 960, 100%, 60vh).",
+    "pt": "Dimensões explicitas do container (ex.: 960, 100%, 60vh).",
     "en": "Explicit dimensions of the container (e.g.: 960, 100%, 60vh).",
     "es": "Dimensiones explícitas del contenedor (por ejemplo: 960, 100%, 60vh).",
     "fr": "Dimensions explicites du conteneur (ex. : 960, 100%, 60vh)."
@@ -648,31 +648,31 @@
     "fr": "Dimension du panneau (un nombre devient %)."
   },
   "Direcao de expansao/retracao.": {
-    "pt": "Direcao de expansao/retracao.",
+    "pt": "Direção de expansao/retracao.",
     "en": "Expansion/retraction direction.",
     "es": "Dirección de expansión/retracción.",
     "fr": "Direction d'expansion/rétractation."
   },
   "Direcao principal do flex.": {
-    "pt": "Direcao principal do flex.",
+    "pt": "Direção principal do flex.",
     "en": "Main flex direction.",
     "es": "Dirección de flexión principal.",
     "fr": "Direction principale du flex."
   },
   "Disparado quando o usuario conclui o wizard.": {
-    "pt": "Disparado quando o usuario conclui o wizard.",
+    "pt": "Disparado quando o usuário conclui o wizard.",
     "en": "Fired when the user completes the wizard.",
     "es": "Se activa cuando el usuario completa el asistente.",
     "fr": "Déclenché lorsque l'utilisateur termine le wizard."
   },
   "Distancia e margem de viewport.": {
-    "pt": "Distancia e margem de viewport.",
+    "pt": "Distância e margem de viewport.",
     "en": "Viewport distance and margin.",
     "es": "Distancia y margen de la ventana gráfica.",
     "fr": "Distance et marge de la viewport."
   },
   "Distribuicao e alinhamento dos itens.": {
-    "pt": "Distribuicao e alinhamento dos itens.",
+    "pt": "Distribuição e alinhamento dos itens.",
     "en": "Distribution and alignment of items.",
     "es": "Distribución y alineación de artículos.",
     "fr": "Répartition et alignement des éléments."
@@ -756,7 +756,7 @@
     "fr": "État initial des toolbars par zone."
   },
   "Estado inicial no modo nao controlado.": {
-    "pt": "Estado inicial no modo nao controlado.",
+    "pt": "Estado inicial no modo não controlado.",
     "en": "Initial state in uncontrolled mode.",
     "es": "Estado inicial en modo no controlado.",
     "fr": "État initial en mode non contrôlé."
@@ -780,13 +780,13 @@
     "fr": "Style en ligne du conteneur du panneau."
   },
   "Estilo visual do relogio digital.": {
-    "pt": "Estilo visual do relogio digital.",
+    "pt": "Estilo visual do relógio digital.",
     "en": "Visual style of the digital clock.",
     "es": "Estilo visual del reloj digital.",
     "fr": "Style visuel de l'horloge numérique."
   },
   "Estrategia de persistencia custom (API/local/composite).": {
-    "pt": "Estrategia de persistencia custom (API/local/composite).",
+    "pt": "Estratégia de persistência custom (API/local/composite).",
     "en": "Custom persistence strategy (API/local/composite).",
     "es": "Estrategia de persistencia personalizada (API/local/composite).",
     "fr": "Stratégie de persistance personnalisée (API/local/composite)."
@@ -942,25 +942,25 @@
     "fr": "ID facultatif de l'élément racine de SgScreen."
   },
   "Icone customizado do botao de limpar.": {
-    "pt": "Icone customizado do botao de limpar.",
+    "pt": "Ícone customizado do botão de limpar.",
     "en": "Custom clear button icon.",
     "es": "Icono de botón de limpieza personalizado.",
     "fr": "Icône personnalisée du bouton d'effacement."
   },
   "Icone customizado para estado preenchido.": {
-    "pt": "Icone customizado para estado preenchido.",
+    "pt": "Ícone customizado para estado preenchido.",
     "en": "Custom icon for filled state.",
     "es": "Icono personalizado para estado lleno.",
     "fr": "Icône personnalisée pour l'état rempli."
   },
   "Icone customizado para estado vazio.": {
-    "pt": "Icone customizado para estado vazio.",
+    "pt": "Ícone customizado para estado vazio.",
     "en": "Custom icon for empty state.",
     "es": "Icono personalizado para estado vacío.",
     "fr": "Icône personnalisée pour l'état vide."
   },
   "Icones antes/depois do texto.": {
-    "pt": "Icones antes/depois do texto.",
+    "pt": "Ícones antes/depois do texto.",
     "en": "Icons before/after the text.",
     "es": "Iconos antes/después del texto.",
     "fr": "Icônes avant/après le texte."
@@ -978,7 +978,7 @@
     "fr": "Identifiant de la zone de dock."
   },
   "Identificador do SgDockLayout interno (persistencia).": {
-    "pt": "Identificador do SgDockLayout interno (persistencia).",
+    "pt": "Identificador do SgDockLayout interno (persistência).",
     "en": "Internal SgDockLayout identifier (persistence).",
     "es": "Identificador interno de SgDockLayout (persistencia).",
     "fr": "Identifiant du SgDockLayout interne (persistance)."
@@ -990,13 +990,13 @@
     "fr": "Identifiant du champ de saisie."
   },
   "Identificador unico do carrossel.": {
-    "pt": "Identificador unico do carrossel.",
+    "pt": "Identificador único do carrossel.",
     "en": "Unique carousel identifier.",
     "es": "Identificador único de carrusel.",
     "fr": "Identifiant unique du carrousel."
   },
   "Incremento entre posicoes.": {
-    "pt": "Incremento entre posicoes.",
+    "pt": "Incremento entre posições.",
     "en": "Increment between positions.",
     "es": "Incremento entre posiciones.",
     "fr": "Incrément entre les positions."
@@ -1008,7 +1008,7 @@
     "fr": "Incrément/décrément par clic."
   },
   "Indice inicial da etapa ativa.": {
-    "pt": "Indice inicial da etapa ativa.",
+    "pt": "Índice inicial da etapa ativa.",
     "en": "Starting index of the active stage.",
     "es": "Índice inicial de la etapa activa.",
     "fr": "Indice initial de l'étape active."
@@ -1068,13 +1068,13 @@
     "fr": "Largeur du champ de saisie (ex. : 320 ou 18rem)."
   },
   "Limite maximo do range.": {
-    "pt": "Limite maximo do range.",
+    "pt": "Limite máximo do range.",
     "en": "Maximum range limit.",
     "es": "Límite de alcance máximo.",
     "fr": "Limite maximale de la plage."
   },
   "Limite minimo do range.": {
-    "pt": "Limite minimo do range.",
+    "pt": "Limite mínimo do range.",
     "en": "Minimum range limit.",
     "es": "Límite de alcance mínimo.",
     "fr": "Limite minimale de la plage."
@@ -1092,7 +1092,7 @@
     "fr": "Liste des avatars du groupe."
   },
   "Locale usado para formatacao da hora.": {
-    "pt": "Locale usado para formatacao da hora.",
+    "pt": "Locale usado para formatação da hora.",
     "en": "Locale used for time formatting.",
     "es": "Configuración regional utilizada para formatear la hora.",
     "fr": "Locale utilisée pour le formatage de l'heure."
@@ -1134,7 +1134,7 @@
     "fr": "Gestionnaire de clic."
   },
   "Mantem visualizacao sem permitir alteracao.": {
-    "pt": "Mantem visualizacao sem permitir alteracao.",
+    "pt": "Mantem visualização sem permitir alteração.",
     "en": "Maintains visualization without allowing changes.",
     "es": "Mantiene la visualización sin permitir cambios.",
     "fr": "Conserve l'affichage sans permettre la modification."
@@ -1164,7 +1164,7 @@
     "fr": "Message d'erreur externe."
   },
   "Mensagem de validacao para required.": {
-    "pt": "Mensagem de validacao para required.",
+    "pt": "Mensagem de validação para required.",
     "en": "Validation message for required.",
     "es": "Mensaje de validación para requerido.",
     "fr": "Message de validation pour required."
@@ -1188,7 +1188,7 @@
     "fr": "Mode visuel du stepper."
   },
   "Mostra botoes de navegacao.": {
-    "pt": "Mostra botoes de navegacao.",
+    "pt": "Mostra botões de navegação.",
     "en": "Shows navigation buttons.",
     "es": "Muestra botones de navegación.",
     "fr": "Affiche les boutons de navigation."
@@ -1212,25 +1212,25 @@
     "fr": "Niveau d'élévation/d'ombre."
   },
   "Nome do campo para integracao com formulario.": {
-    "pt": "Nome do campo para integracao com formulario.",
+    "pt": "Nome do campo para integração com formulário.",
     "en": "Name of the field for integration with the form.",
     "es": "Nombre del campo para la integración con el formulario.",
     "fr": "Nom du champ pour l'intégration avec le formulaire."
   },
   "Numero de atualizacoes executadas por rodada.": {
-    "pt": "Numero de atualizacoes executadas por rodada.",
+    "pt": "Número de atualizações executadas por rodada.",
     "en": "Number of updates performed per round.",
     "es": "Número de actualizaciones realizadas por ronda.",
     "fr": "Nombre de mises à jour exécutées par cycle."
   },
   "Numero de itens rolados por acao.": {
-    "pt": "Numero de itens rolados por acao.",
+    "pt": "Número de itens rolados por ação.",
     "en": "Number of items rolled per action.",
     "es": "Número de elementos obtenidos por acción.",
     "fr": "Nombre d'éléments défilés par action."
   },
   "Numero de itens visiveis ao mesmo tempo.": {
-    "pt": "Numero de itens visiveis ao mesmo tempo.",
+    "pt": "Número de itens visíveis ao mesmo tempo.",
     "en": "Number of items visible at the same time.",
     "es": "Número de elementos visibles al mismo tiempo.",
     "fr": "Nombre d'éléments visibles en même temps."
@@ -1242,7 +1242,7 @@
     "fr": "Niveau de correction d'erreur."
   },
   "Orientacao do carrossel.": {
-    "pt": "Orientacao do carrossel.",
+    "pt": "Orientação do carrossel.",
     "en": "Carousel orientation.",
     "es": "Orientación del carrusel.",
     "fr": "Orientation du carrousel."
@@ -1254,7 +1254,7 @@
     "fr": "Chevauchement entre les éléments."
   },
   "Override dos textos dos botoes de navegacao.": {
-    "pt": "Override dos textos dos botoes de navegacao.",
+    "pt": "Override dos textos dos botões de navegação.",
     "en": "Override of navigation button texts.",
     "es": "Anulación de los textos de los botones de navegación.",
     "fr": "Surcharge des textes des boutons de navigation."
@@ -1278,7 +1278,7 @@
     "fr": "Padding interne de SgScreen."
   },
   "Paginas renderizadas em ordem dentro do wizard.": {
-    "pt": "Paginas renderizadas em ordem dentro do wizard.",
+    "pt": "Páginas renderizadas em ordem dentro do wizard.",
     "en": "Pages rendered in order within the wizard.",
     "es": "Páginas representadas en orden dentro del asistente.",
     "fr": "Pages affichées dans l'ordre à l'intérieur du wizard."
@@ -1290,7 +1290,7 @@
     "fr": "Panneau dans la mise en page ou en overlay."
   },
   "Papel semantico aplicado ao painel.": {
-    "pt": "Papel semantico aplicado ao painel.",
+    "pt": "Papel semântico aplicado ao painel.",
     "en": "Semantic role applied to the panel.",
     "es": "Rol semántico aplicado al panel.",
     "fr": "Rôle sémantique appliqué au panneau."
@@ -1308,7 +1308,7 @@
     "fr": "Permet le retour à la ligne."
   },
   "Permite selecao de meia estrela.": {
-    "pt": "Permite selecao de meia estrela.",
+    "pt": "Permite seleção de meia estrela.",
     "en": "Allows half-star selection.",
     "es": "Permite la selección de media estrella.",
     "fr": "Permet la sélection d'une demi-étoile."
@@ -1320,13 +1320,13 @@
     "fr": "Configuration du pointeur."
   },
   "Posicao no eixo perpendicular.": {
-    "pt": "Posicao no eixo perpendicular.",
+    "pt": "Posição no eixo perpendicular.",
     "en": "Position on the perpendicular axis.",
     "es": "Posición sobre el eje perpendicular.",
     "fr": "Position sur l'axe perpendiculaire."
   },
   "Posicionamento da sobreposicao.": {
-    "pt": "Posicionamento da sobreposicao.",
+    "pt": "Posicionamento da sobreposição.",
     "en": "Overlay positioning.",
     "es": "Posicionamiento de superposición.",
     "fr": "Positionnement de la superposition."
@@ -1392,7 +1392,7 @@
     "fr": "Lorsque true, occupe toute la viewport."
   },
   "Quantidade de campos renderizados em cada cenario.": {
-    "pt": "Quantidade de campos renderizados em cada cenario.",
+    "pt": "Quantidade de campos renderizados em cada cenário.",
     "en": "Number of fields rendered in each scenario.",
     "es": "Número de campos representados en cada escenario.",
     "fr": "Nombre de champs affichés dans chaque scénario."
@@ -1440,13 +1440,13 @@
     "fr": "Réserve de l'espace pour la scrollbar."
   },
   "Rotulo acessivel do painel.": {
-    "pt": "Rotulo acessivel do painel.",
+    "pt": "Rótulo acessível do painel.",
     "en": "Accessible panel label.",
     "es": "Etiqueta de panel accesible.",
     "fr": "Libellé accessible du panneau."
   },
   "Rotulo de acessibilidade para leitores de tela.": {
-    "pt": "Rotulo de acessibilidade para leitores de tela.",
+    "pt": "Rótulo de acessibilidade para leitores de tela.",
     "en": "Accessibility label for screen readers.",
     "es": "Etiqueta de accesibilidad para lectores de pantalla.",
     "fr": "Libellé d'accessibilité pour les lecteurs d'écran."
@@ -1470,13 +1470,13 @@
     "fr": "Seed facultatif d'heure ISO pour synchroniser le point de départ avec le serveur."
   },
   "Seleciona o modo de renderizacao do relogio.": {
-    "pt": "Seleciona o modo de renderizacao do relogio.",
+    "pt": "Seleciona o modo de renderização do relógio.",
     "en": "Selects the clock rendering mode.",
     "es": "Selecciona el modo de renderizado del reloj.",
     "fr": "Sélectionne le mode de rendu de l'horloge."
   },
   "Seleciona tema registrado para o modo analogico.": {
-    "pt": "Seleciona tema registrado para o modo analogico.",
+    "pt": "Seleciona tema registrado para o modo analógico.",
     "en": "Selects registered theme for analog mode.",
     "es": "Selecciona el tema registrado para el modo analógico.",
     "fr": "Sélectionne un thème enregistré pour le mode analogique."
@@ -1626,7 +1626,7 @@
     "fr": "Valeur actuelle en mode contrôlé."
   },
   "Valor inicial no modo nao controlado.": {
-    "pt": "Valor inicial no modo nao controlado.",
+    "pt": "Valor inicial no modo não controlado.",
     "en": "Initial value in uncontrolled mode.",
     "es": "Valor inicial en modo no controlado.",
     "fr": "Valeur initiale en mode non contrôlé."
@@ -1638,7 +1638,7 @@
     "fr": "Valeur utilisée pour générer le QR Code."
   },
   "Varia o tema visual do botao.": {
-    "pt": "Varia o tema visual do botao.",
+    "pt": "Varia o tema visual do botão.",
     "en": "Vary the visual theme of the button.",
     "es": "Varíe el tema visual del botón.",
     "fr": "Fait varier le thème visuel du bouton."
@@ -1680,49 +1680,49 @@
     "fr": "Icônes facultatives."
   },
   "String exibida antes da animacao. Ao mudar, o display reseta para ela.": {
-    "pt": "String exibida antes da animacao. Ao mudar, o display reseta para ela.",
+    "pt": "String exibida antes da animação. Ao mudar, o display reseta para ela.",
     "en": "String shown before animation. When it changes, the display resets to it.",
     "es": "Cadena mostrada antes de la animaci?n. Al cambiar, la visualizaci?n se reinicia con ella.",
     "fr": "Chaîne affichée avant l'animation. Lorsqu'elle change, l'affichage se réinitialise sur elle."
   },
   "String de destino. A animacao transiciona cada caractere ate o alvo.": {
-    "pt": "String de destino. A animacao transiciona cada caractere ate o alvo.",
+    "pt": "String de destino. A animação transiciona cada caractere ate o alvo.",
     "en": "Target string. The animation transitions each character until it reaches the target.",
     "es": "Cadena de destino. La animaci?n transiciona cada car?cter hasta llegar al objetivo.",
     "fr": "Chaîne cible. L'animation fait transiter chaque caractère jusqu'à la cible."
   },
   "Estilo de animacao por caractere: tambor vertical, flip card, neon, fade, discard (folha voadora) ou matrix LED.": {
-    "pt": "Estilo de animacao por caractere: tambor vertical, flip card, neon, fade, discard (folha voadora) ou matrix LED.",
+    "pt": "Estilo de animação por caractere: tambor vertical, flip card, neon, fade, discard (folha voadora) ou matrix LED.",
     "en": "Per-character animation style: vertical roller, flip card, neon, fade, discard (flying page), or LED matrix.",
     "es": "Estilo de animaci?n por car?cter: tambor vertical, flip card, ne?n, fade, discard (hoja voladora) o matriz LED.",
     "fr": "Style d'animation par caractère : tambour vertical, flip card, néon, fade, discard (feuille volante) ou matrice LED."
   },
   "Velocidade de 1 (lento) a 100 (rapido). Controla o delay entre cada caractere.": {
-    "pt": "Velocidade de 1 (lento) a 100 (rapido). Controla o delay entre cada caractere.",
+    "pt": "Velocidade de 1 (lento) a 100 (rápido). Controla o delay entre cada caractere.",
     "en": "Speed from 1 (slow) to 100 (fast). Controls the delay between each character.",
     "es": "Velocidad de 1 (lento) a 100 (r?pido). Controla el retraso entre cada car?cter.",
     "fr": "Vitesse de 1 (lent) à 100 (rapide). Contrôle le délai entre chaque caractère."
   },
   "Caractere para preencher posicoes extras quando as strings tem comprimentos diferentes.": {
-    "pt": "Caractere para preencher posicoes extras quando as strings tem comprimentos diferentes.",
+    "pt": "Caractere para preencher posições extras quando as strings tem comprimentos diferentes.",
     "en": "Character used to fill extra positions when strings have different lengths.",
     "es": "Car?cter usado para rellenar posiciones extra cuando las cadenas tienen longitudes diferentes.",
     "fr": "Caractère pour remplir les positions supplémentaires lorsque les chaînes ont des longueurs différentes."
   },
   "\"left\" preenche a direita (nomes), \"right\" preenche a esquerda (numeros). Determina tambem a ordem de animacao dos caracteres.": {
-    "pt": "\"left\" preenche a direita (nomes), \"right\" preenche a esquerda (numeros). Determina tambem a ordem de animacao dos caracteres.",
+    "pt": "\"left\" preenche a direita (nomes), \"right\" preenche a esquerda (números). Determina também a ordem de animação dos caracteres.",
     "en": "\"left\" pads on the right (names), \"right\" pads on the left (numbers). It also defines the character animation order.",
     "es": "\"left\" rellena a la derecha (nombres), \"right\" rellena a la izquierda (n?meros). Tambi?n define el orden de animaci?n de los caracteres.",
     "fr": "\"left\" remplit à droite (noms), \"right\" remplit à gauche (nombres). Détermine aussi l'ordre d'animation des caractères."
   },
   "Se true, inicia animacao automaticamente ao montar e sempre que targetString mudar.": {
-    "pt": "Se true, inicia animacao automaticamente ao montar e sempre que targetString mudar.",
+    "pt": "Se true, inicia animação automaticamente ao montar e sempre que targetString mudar.",
     "en": "If true, starts animation automatically on mount and whenever targetString changes.",
     "es": "Si es true, inicia la animaci?n autom?ticamente al montar y cada vez que targetString cambia.",
     "fr": "Si true, démarre l'animation automatiquement au montage et chaque fois que targetString change."
   },
   "Tamanho da fonte em pixels. Controla a escala de cada digito.": {
-    "pt": "Tamanho da fonte em pixels. Controla a escala de cada digito.",
+    "pt": "Tamanho da fonte em pixels. Controla a escala de cada dígito.",
     "en": "Font size in pixels. Controls the scale of each digit.",
     "es": "Tama?o de fuente en p?xeles. Controla la escala de cada d?gito.",
     "fr": "Taille de la police en pixels. Contrôle l'échelle de chaque chiffre."
@@ -1734,13 +1734,13 @@
     "fr": "Couleur principale du texte/point. Appliquée aux styles neon, fade, discard et matrix."
   },
   "Cor de fundo de cada digito. Aplicada nos estilos neon, fade, discard e matrix.": {
-    "pt": "Cor de fundo de cada digito. Aplicada nos estilos neon, fade, discard e matrix.",
+    "pt": "Cor de fundo de cada dígito. Aplicada nos estilos neon, fade, discard e matrix.",
     "en": "Background color of each digit. Applied in neon, fade, discard, and matrix styles.",
     "es": "Color de fondo de cada d?gito. Se aplica en los estilos ne?n, fade, discard y matrix.",
     "fr": "Couleur d'arrière-plan de chaque chiffre. Appliquée aux styles neon, fade, discard et matrix."
   },
   "Conjunto de caracteres validos para o SgRoller3DDigit. Ignorado quando style != \"roller3d\".": {
-    "pt": "Conjunto de caracteres validos para o SgRoller3DDigit. Ignorado quando style != \"roller3d\".",
+    "pt": "Conjunto de caracteres válidos para o SgRoller3DDigit. Ignorado quando style != \"roller3d\".",
     "en": "Set of valid characters for SgRoller3DDigit. Ignored when style != \"roller3d\".",
     "es": "Conjunto de caracteres v?lidos para SgRoller3DDigit. Se ignora cuando style != \"roller3d\".",
     "fr": "Ensemble de caractères valides pour SgRoller3DDigit. Ignoré lorsque style != \"roller3d\"."
@@ -1752,19 +1752,19 @@
     "fr": "Classes CSS supplémentaires sur le conteneur externe."
   },
   "Ref imperativa. Expoe o metodo startAnimation() para acionar a animacao manualmente.": {
-    "pt": "Ref imperativa. Expoe o metodo startAnimation() para acionar a animacao manualmente.",
+    "pt": "Ref imperativa. Expoe o método startAnimation() para acionar a animação manualmente.",
     "en": "Imperative ref. Exposes the startAnimation() method to trigger animation manually.",
     "es": "Ref imperativa. Expone el m?todo startAnimation() para disparar la animaci?n manualmente.",
     "fr": "Ref impérative. Expose la méthode startAnimation() pour déclencher l'animation manuellement."
   },
   "Caractere exibido no card. Ao mudar, o digito atual apaga e o novo acende.": {
-    "pt": "Caractere exibido no card. Ao mudar, o digito atual apaga e o novo acende.",
+    "pt": "Caractere exibido no card. Ao mudar, o dígito atual apaga e o novo acende.",
     "en": "Character displayed on the card. When changing, the current digit goes out and the new one lights up.",
     "es": "Carácter mostrado en la tarjeta. Al cambiar, el dígito actual se apaga y se enciende el nuevo.",
     "fr": "Caractère affiché dans la carte. Au changement, le chiffre actuel s'éteint et le nouveau s'allume."
   },
   "Cor do texto e do brilho (glow). Tambem controla o halo de luz.": {
-    "pt": "Cor do texto e do brilho (glow). Tambem controla o halo de luz.",
+    "pt": "Cor do texto e do brilho (glow). Também controla o halo de luz.",
     "en": "Text and glow color. Also controls the light halo.",
     "es": "Texto y color brillante. También controla el halo de luz.",
     "fr": "Couleur du texte et de la lueur (glow). Contrôle aussi le halo lumineux."
@@ -1776,7 +1776,7 @@
     "fr": "Couleur d'arrière-plan de la carte."
   },
   "CSS font-family aplicado ao digito.": {
-    "pt": "CSS font-family aplicado ao digito.",
+    "pt": "CSS font-family aplicado ao dígito.",
     "en": "CSS font-family applied to the digit.",
     "es": "Familia de fuentes CSS aplicada al tipo.",
     "fr": "CSS font-family appliquée au chiffre."
@@ -1800,9 +1800,9 @@
     "fr": "Valeur actuellement affichée. Doit exister dans items."
   },
   "Ordered list of all possible values. The drum rolls to the value position.": {
-    "pt": "Lista ordenada de todos os valores possiveis. O tambor gira ate a posicao do valor.",
+    "pt": "Lista ordenada de todos os valores possíveis. O tambor gira ate a posição do valor.",
     "en": "Ordered list of all possible values. The drum rolls to the value position.",
-    "es": "Lista ordenada de todos los valores posibles. El tambor gira hasta la posicion del valor.",
+    "es": "Lista ordenada de todos los valores posibles. El tambor gira hasta la posición del valor.",
     "fr": "Liste ordonnée de toutes les valeurs possibles. Le tambour tourne jusqu'à la position de la valeur."
   },
   "Tamanho da fonte em pixels. Controla a escala geral do componente.": {
@@ -1812,9 +1812,9 @@
     "fr": "Taille de la police en pixels. Contrôle l'échelle générale du composant."
   },
   "Roll transition duration in milliseconds.": {
-    "pt": "Duracao da transicao do rolo em milissegundos.",
+    "pt": "Duração da transição do rolo em milissegundos.",
     "en": "Roll transition duration in milliseconds.",
-    "es": "Duracion de la transicion del rodillo en milisegundos.",
+    "es": "Duración de la transición del rodillo en milisegundos.",
     "fr": "Durée de la transition de rotation en millisecondes."
   },
   "Texto ou caractere exibido em estilo neon.": {
@@ -1824,13 +1824,13 @@
     "fr": "Texte ou caractère affiché en style néon."
   },
   "Liga a animacao de apagar/trocar/acender quando o valor muda.": {
-    "pt": "Liga a animacao de apagar/trocar/acender quando o valor muda.",
+    "pt": "Liga a animação de apagar/trocar/acender quando o valor muda.",
     "en": "Turns on the erase/change/light animation when the value changes.",
     "es": "Activa la animación de borrar/cambiar/iluminar cuando cambia el valor.",
     "fr": "Active l'animation d'extinction/changement/allumage lorsque la valeur change."
   },
   "Duracao total da animacao em milissegundos.": {
-    "pt": "Duracao total da animacao em milissegundos.",
+    "pt": "Duração total da animação em milissegundos.",
     "en": "Total duration of the animation in milliseconds.",
     "es": "Duración total de la animación en milisegundos.",
     "fr": "Durée totale de l'animation en millisecondes."
@@ -1938,25 +1938,25 @@
     "fr": "Taille de la police en px (échelle générale du bloc)."
   },
   "Ativa animacao de descarte quando o valor muda.": {
-    "pt": "Ativa animacao de descarte quando o valor muda.",
+    "pt": "Ativa animação de descarte quando o valor muda.",
     "en": "Activates discard animation when the value changes.",
     "es": "Activa la animación de descarte cuando cambia el valor.",
     "fr": "Active l'animation de défausse lorsque la valeur change."
   },
   "Duracao total da animacao em ms.": {
-    "pt": "Duracao total da animacao em ms.",
+    "pt": "Duração total da animação em ms.",
     "en": "Total duration of the animation in ms.",
     "es": "Duración total de la animación en meses.",
     "fr": "Durée totale de l'animation en ms."
   },
   "Quantidade de folhas visiveis na pilha (2 a 30). Ignorado se totalNumberPages for definido.": {
-    "pt": "Quantidade de folhas visiveis na pilha (2 a 30). Ignorado se totalNumberPages for definido.",
+    "pt": "Quantidade de folhas visíveis na pilha (2 a 30). Ignorado se totalNumberPages for definido.",
     "en": "Number of visible sheets in the stack (2 to 30). Ignored if totalNumberPages is set.",
     "es": "Número de hojas visibles en la pila (2 a 30). Se ignora si se establece totalNumberPages.",
     "fr": "Nombre de feuilles visibles dans la pile (2 à 30). Ignoré si totalNumberPages est défini."
   },
   "Total de paginas do monte. A pilha visual encolhe a cada increasePage() via ref.": {
-    "pt": "Total de paginas do monte. A pilha visual encolhe a cada increasePage() via ref.",
+    "pt": "Total de páginas do monte. A pilha visual encolhe a cada increasePage() via ref.",
     "en": "Total number of pages in the stack. The visual stack shrinks on each increasePage() call via ref.",
     "es": "Total de paginas del mazo. La pila visual se reduce con cada llamada a increasePage() via ref.",
     "fr": "Nombre total de pages du tas. La pile visuelle diminue à chaque appel de increasePage() via ref."
@@ -1980,15 +1980,15 @@
     "fr": "Heure initiale du serveur au format ISO 8601. Utilisée pour synchroniser l'horloge et éviter la dérive du client."
   },
   "Arvore de componentes que vai consumir o tempo via useSgTime.": {
-    "pt": "Arvore de componentes que vai consumir o tempo via useSgTime.",
+    "pt": "Árvore de componentes que vai consumir o tempo via useSgTime.",
     "en": "Component tree that will consume the time via useSgTime.",
     "es": "Arbol de componentes que consumira el tiempo via useSgTime.",
     "fr": "Arbre de composants qui consommera le temps via useSgTime."
   },
   "Codigo do locale (ex: \"pt-BR\", \"en-US\", \"es\"). Afeta componentes que exibem mensagens internas.": {
-    "pt": "Codigo do locale (ex: \"pt-BR\", \"en-US\", \"es\"). Afeta componentes que exibem mensagens internas.",
+    "pt": "Código do locale (ex: \"pt-BR\", \"en-US\", \"es\"). Afeta componentes que exibem mensagens internas.",
     "en": "Locale code (e.g. \"pt-BR\", \"en-US\", \"es\"). Affects components that display internal messages.",
-    "es": "Codigo de locale (ej: \"pt-BR\", \"en-US\", \"es\"). Afecta componentes que muestran mensajes internos.",
+    "es": "Código de locale (ej: \"pt-BR\", \"en-US\", \"es\"). Afecta componentes que muestran mensajes internos.",
     "fr": "Code de la locale (ex. : \"pt-BR\", \"en-US\", \"es\"). Affecte les composants qui affichent des messages internes."
   },
   "Mapa de chaves para strings traduzidas. Pode ser o objeto completo de um locale ou apenas as chaves que deseja sobrescrever.": {
@@ -1998,19 +1998,19 @@
     "fr": "Table de clés vers des chaînes traduites. Peut être l'objet complet d'une locale ou seulement les clés à surcharger."
   },
   "Arvore que vai consumir o locale via useComponentsI18n.": {
-    "pt": "Arvore que vai consumir o locale via useComponentsI18n.",
+    "pt": "Árvore que vai consumir o locale via useComponentsI18n.",
     "en": "Component tree that will consume the locale via useComponentsI18n.",
     "es": "Arbol de componentes que consumira el locale via useComponentsI18n.",
     "fr": "Arbre qui consommera la locale via useComponentsI18n."
   },
   "Em \"fallback\", temas nao encontrados usam o fallbackThemeId. Em \"strict\", retornam null.": {
-    "pt": "Em \"fallback\", temas nao encontrados usam o fallbackThemeId. Em \"strict\", retornam null.",
+    "pt": "Em \"fallback\", temas não encontrados usam o fallbackThemeId. Em \"strict\", retornam null.",
     "en": "In \"fallback\" mode, missing themes use the fallbackThemeId. In \"strict\" mode, they return null.",
     "es": "En modo \"fallback\", los temas no encontrados usan el fallbackThemeId. En modo \"strict\", retornan null.",
     "fr": "En mode \"fallback\", les thèmes introuvables utilisent fallbackThemeId. En mode \"strict\", ils retournent null."
   },
   "ID do tema usado quando o tema solicitado nao existe (apenas no modo fallback).": {
-    "pt": "ID do tema usado quando o tema solicitado nao existe (apenas no modo fallback).",
+    "pt": "ID do tema usado quando o tema solicitado não existe (apenas no modo fallback).",
     "en": "Theme ID used when the requested theme does not exist (fallback mode only).",
     "es": "ID del tema usado cuando el tema solicitado no existe (solo en modo fallback).",
     "fr": "ID du thème utilisé lorsque le thème demandé n'existe pas (uniquement en mode fallback)."
@@ -2022,7 +2022,7 @@
     "fr": "Liste de thèmes locaux mis à disposition de ce provider. Ils complètent les thèmes globaux enregistrés via registerTheme."
   },
   "Arvore que vai resolver temas via useSgClockThemeResolver.": {
-    "pt": "Arvore que vai resolver temas via useSgClockThemeResolver.",
+    "pt": "Árvore que vai resolver temas via useSgClockThemeResolver.",
     "en": "Component tree that will resolve themes via useSgClockThemeResolver.",
     "es": "Arbol de componentes que resolvera temas via useSgClockThemeResolver.",
     "fr": "Arbre qui résoudra les thèmes via useSgClockThemeResolver."
@@ -2034,19 +2034,19 @@
     "fr": "Clé de base de l'entrée persistée. La clé finale inclut le namespace et le scope du SgEnvironmentProvider."
   },
   "Valor inicial usado antes do carregamento e apos clear().": {
-    "pt": "Valor inicial usado antes do carregamento e apos clear().",
+    "pt": "Valor inicial usado antes do carregamento e após clear().",
     "en": "Initial value used before loading and after clear().",
     "es": "Valor inicial usado antes de la carga y despues de clear().",
     "fr": "Valeur initiale utilisée avant le chargement et après clear()."
   },
   "Funcao opcional para serializar antes de salvar (ex: Date → ISO string).": {
-    "pt": "Funcao opcional para serializar antes de salvar (ex: Date → ISO string).",
+    "pt": "Função opcional para serializar antes de salvar (ex: Date → ISO string).",
     "en": "Optional function to serialize before saving (e.g. Date → ISO string).",
     "es": "Funcion opcional para serializar antes de guardar (ej: Date → ISO string).",
     "fr": "Fonction facultative pour sérialiser avant l'enregistrement (ex. : Date → chaîne ISO)."
   },
   "Funcao opcional para desserializar ao carregar (ex: ISO string → Date).": {
-    "pt": "Funcao opcional para desserializar ao carregar (ex: ISO string → Date).",
+    "pt": "Função opcional para desserializar ao carregar (ex: ISO string → Date).",
     "en": "Optional function to deserialize when loading (e.g. ISO string → Date).",
     "es": "Funcion opcional para deserializar al cargar (ej: ISO string → Date).",
     "fr": "Fonction facultative pour désérialiser au chargement (ex. : chaîne ISO → Date)."
@@ -2064,13 +2064,13 @@
     "fr": "Met à jour la valeur et la persiste automatiquement."
   },
   "Remove o valor da persistencia e reseta para defaultValue.": {
-    "pt": "Remove o valor da persistencia e reseta para defaultValue.",
+    "pt": "Remove o valor da persistência e reseta para defaultValue.",
     "en": "Removes the value from persistence and resets to defaultValue.",
     "es": "Elimina el valor de la persistencia y reinicia al defaultValue.",
     "fr": "Supprime la valeur de la persistance et réinitialise à defaultValue."
   },
   "True quando o carregamento inicial da persistencia foi concluido.": {
-    "pt": "True quando o carregamento inicial da persistencia foi concluido.",
+    "pt": "True quando o carregamento inicial da persistência foi concluído.",
     "en": "True when the initial persistence load has completed.",
     "es": "True cuando la carga inicial de la persistencia ha concluido.",
     "fr": "True lorsque le chargement initial de la persistance est terminé."
@@ -2100,7 +2100,7 @@
     "fr": "Namespace actuel retourné par le namespaceProvider de l'environnement."
   },
   "Scope de persistencia do ambiente.": {
-    "pt": "Scope de persistencia do ambiente.",
+    "pt": "Scope de persistência do ambiente.",
     "en": "Persistence scope of the environment.",
     "es": "Scope de persistencia del entorno.",
     "fr": "Scope de persistance de l'environnement."
@@ -2112,25 +2112,25 @@
     "fr": "Mode de persistance : strict, fallback ou mirror."
   },
   "Versao do estado configurada no ambiente.": {
-    "pt": "Versao do estado configurada no ambiente.",
+    "pt": "Versão do estado configurada no ambiente.",
     "en": "State version configured in the environment.",
     "es": "Version del estado configurada en el entorno.",
     "fr": "Version de l'état configurée dans l'environnement."
   },
   "Provedor do namespace atual. Retorna string vazia se nao houver SgEnvironmentProvider.": {
-    "pt": "Provedor do namespace atual. Retorna string vazia se nao houver SgEnvironmentProvider.",
+    "pt": "Provedor do namespace atual. Retorna string vazia se não houver SgEnvironmentProvider.",
     "en": "Current namespace provider. Returns an empty string if there is no SgEnvironmentProvider.",
     "es": "Proveedor del namespace actual. Retorna string vacio si no hay SgEnvironmentProvider.",
     "fr": "Fournisseur du namespace actuel. Retourne une chaîne vide s'il n'y a pas de SgEnvironmentProvider."
   },
   "Estrategia de persistencia ativa (localStorage por padrao, ou API/composite se configurada).": {
-    "pt": "Estrategia de persistencia ativa (localStorage por padrao, ou API/composite se configurada).",
+    "pt": "Estratégia de persistência ativa (localStorage por padrão, ou API/composite se configurada).",
     "en": "Active persistence strategy (localStorage by default, or API/composite if configured).",
     "es": "Estrategia de persistencia activa (localStorage por defecto, o API/composite si fue configurada).",
     "fr": "Stratégie de persistance active (localStorage par défaut, ou API/composite si configurée)."
   },
   "Scope de persistencia configurado no provider.": {
-    "pt": "Scope de persistencia configurado no provider.",
+    "pt": "Scope de persistência configurado no provider.",
     "en": "Persistence scope configured in the provider.",
     "es": "Scope de persistencia configurado en el provider.",
     "fr": "Scope de persistance configuré dans le provider."
@@ -2142,7 +2142,7 @@
     "fr": "Mode : strict, fallback ou mirror."
   },
   "Versao do estado; alterar invalida dados persistidos anteriores.": {
-    "pt": "Versao do estado; alterar invalida dados persistidos anteriores.",
+    "pt": "Versão do estado; alterar invalida dados persistidos anteriores.",
     "en": "State version; changing it invalidates previously persisted data.",
     "es": "Version del estado; cambiarla invalida datos persistidos anteriores.",
     "fr": "Version de l'état ; la modifier invalide les données persistées précédentes."
@@ -2154,7 +2154,7 @@
     "fr": "Retourne l'heure actuelle en ms, synchronisée avec le serveur lorsque SgTimeProvider est présent."
   },
   "Incrementa a cada segundo. Util para acionar re-renders em componentes que dependem do tempo.": {
-    "pt": "Incrementa a cada segundo. Util para acionar re-renders em componentes que dependem do tempo.",
+    "pt": "Incrementa a cada segundo. Útil para acionar re-renders em componentes que dependem do tempo.",
     "en": "Increments every second. Useful for triggering re-renders in time-dependent components.",
     "es": "Se incrementa cada segundo. Util para disparar re-renders en componentes que dependen del tiempo.",
     "fr": "S'incrémente chaque seconde. Utile pour déclencher de nouveaux rendus dans les composants dépendant du temps."
@@ -2166,27 +2166,27 @@
     "fr": "Timestamp du serveur au moment du montage de SgTimeProvider."
   },
   "performance.now() no momento de hidratacao. Usado internamente para calcular o delta.": {
-    "pt": "performance.now() no momento de hidratacao. Usado internamente para calcular o delta.",
+    "pt": "performance.now() no momento de hidratação. Usado internamente para calcular o delta.",
     "en": "performance.now() at hydration time. Used internally to calculate the delta.",
-    "es": "performance.now() en el momento de hidratacion. Usado internamente para calcular el delta.",
+    "es": "performance.now() en el momento de hidratación. Usado internamente para calcular el delta.",
     "fr": "performance.now() au moment de l'hydratation. Utilisé en interne pour calculer le delta."
   },
   "Locale atual dos componentes. Usado por componentes para formatar datas, numeros e mensagens.": {
-    "pt": "Locale atual dos componentes. Usado por componentes para formatar datas, numeros e mensagens.",
+    "pt": "Locale atual dos componentes. Usado por componentes para formatar datas, números e mensagens.",
     "en": "Current locale of the components. Used by components to format dates, numbers, and messages.",
     "es": "Locale actual de los componentes. Usado por componentes para formatear fechas, numeros y mensajes.",
     "fr": "Locale actuelle des composants. Utilisée par les composants pour formater les dates, nombres et messages."
   },
   "Mapa de todas as chaves de traducao disponiveis para o locale atual.": {
-    "pt": "Mapa de todas as chaves de traducao disponiveis para o locale atual.",
+    "pt": "Mapa de todas as chaves de tradução disponíveis para o locale atual.",
     "en": "Map of all translation keys available for the current locale.",
     "es": "Mapa de todas las claves de traduccion disponibles para el locale actual.",
     "fr": "Table de toutes les clés de traduction disponibles pour la locale actuelle."
   },
   "Codigo do locale (ex: \"pt-BR\", \"pt-PT\", \"en-US\", \"es\", \"fr\"). Afeta os textos internos dos componentes SeedGrid.": {
-    "pt": "Codigo do locale (ex: \"pt-BR\", \"pt-PT\", \"en-US\", \"es\", \"fr\"). Afeta os textos internos dos componentes SeedGrid.",
+    "pt": "Código do locale (ex: \"pt-BR\", \"pt-PT\", \"en-US\", \"es\", \"fr\"). Afeta os textos internos dos componentes SeedGrid.",
     "en": "Locale code (e.g. \"pt-BR\", \"pt-PT\", \"en-US\", \"es\", \"fr\"). Affects the internal texts of SeedGrid components.",
-    "es": "Codigo de locale (ej: \"pt-BR\", \"pt-PT\", \"en-US\", \"es\", \"fr\"). Afecta los textos internos de los componentes SeedGrid.",
+    "es": "Código de locale (ej: \"pt-BR\", \"pt-PT\", \"en-US\", \"es\", \"fr\"). Afecta los textos internos de los componentes SeedGrid.",
     "fr": "Code de la locale (ex. : \"pt-BR\", \"pt-PT\", \"en-US\", \"es\", \"fr\"). Affecte les textes internes des composants SeedGrid."
   },
   "Mapa de chaves para textos. Pode ser o objeto completo de um locale ou apenas as chaves que deseja sobrescrever.": {
@@ -2460,7 +2460,7 @@
     "fr": "Classes et style en ligne du conteneur du wizard."
   },
   "Clique do botão; pode ser síncrono ou assíncrono. Síncrono (abrir modal, alternar): nada muda. Se DEVOLVER uma Promise/Future, como async () => { await salvar(); } ou () => salvar(), o botão entra em loading sozinho (spinner, desabilitado, aria-busy na web), ignora cliques até terminar (inclusive cliques seguidos antes de a tela atualizar) e volta ao normal ao terminar ou falhar. Protege contra duplo clique e reenvio e ajuda na idempotência da ação na tela (não substitui a chave de idempotência no servidor). Cuidado: a função precisa devolver a operação; com chaves e sem return (ou sem async), como () => { salvar(); } ou () { salvar(); }, não protege; já async () {...} sempre devolve. O erro não é engolido: o botão sai do loading e relança como rejeição não tratada; trate com try/catch dentro do onClick e avise o usuário (sgWhistle.error). Use async só quando a ação puder demorar ou falhar (salvar, enviar, pagar).": {
-    "pt": "Clique do botão; pode ser síncrono ou assíncrono. Síncrono (abrir modal, alternar): nada muda. Se DEVOLVER uma Promise/Future, como async () => { await salvar(); } ou () => salvar(), o botão entra em loading sozinho (spinner, desabilitado, aria-busy na web), ignora cliques até terminar (inclusive cliques seguidos antes de a tela atualizar) e volta ao normal ao terminar ou falhar. Protege contra duplo clique e reenvio e ajuda na idempotência da ação na tela (não substitui a chave de idempotência no servidor). Cuidado: a função precisa devolver a operação; com chaves e sem return (ou sem async), como () => { salvar(); } ou () { salvar(); }, não protege; já async () {...} sempre devolve. O erro não é engolido: o botão sai do loading e relança como rejeição não tratada; trate com try/catch dentro do onClick e avise o usuário (sgWhistle.error). Use async só quando a ação puder demorar ou falhar (salvar, enviar, pagar).",
+    "pt": "Clique do botão; pode ser síncrono ou assíncrono. Síncrono (abrir modal, alternar): nada muda. Se DEVOLVER uma Promise/Future, como async () => { await salvar(); } ou () => salvar(), o botão entra em loading sozinho (spinner, desabilitado, aria-busy na web), ignora cliques até terminar (inclusive cliques seguidos antes de a tela atualizar) e volta ao normal ao terminar ou falhar. Protege contra duplo clique e reenvio e ajuda na idempotência da ação na tela (não substitui a chave de idempotência no servidor). Cuidado: a função precisa devolver a óperação; com chaves e sem return (ou sem async), como () => { salvar(); } ou () { salvar(); }, não protege; já async () {...} sempre devolve. O erro não é engolido: o botão sai do loading e relança como rejeição não tratada; trate com try/catch dentro do onClick e avise o usuário (sgWhistle.error). Use async só quando a ação puder demorar ou falhar (salvar, enviar, pagar).",
     "en": "Button click handler; can be synchronous or asynchronous. Synchronous (open a modal, toggle): nothing changes. If it RETURNS a Promise/Future, such as async () => { await save(); } or () => save(), the button enters loading on its own (spinner, disabled, aria-busy on web), ignores clicks until it finishes (including repeated clicks before the screen updates) and returns to normal when it finishes or fails. It protects against double clicks and resubmission and helps with the idempotency of the action on screen (it does not replace the idempotency key on the server). Careful: the function must return the operation; with braces and no return (or without async), such as () => { save(); } or () { save(); }, it does not protect; async () {...} always returns. The error is not swallowed: the button leaves loading and rethrows it as an unhandled rejection; handle it with try/catch inside onClick and notify the user (sgWhistle.error). Use async only when the action can take long or fail (save, submit, pay).",
     "es": "Clic del botón; puede ser síncrono o asíncrono. Síncrono (abrir un modal, alternar): no cambia nada. Si DEVUELVE una Promise/Future, como async () => { await guardar(); } o () => guardar(), el botón entra en loading por sí solo (spinner, deshabilitado, aria-busy en la web), ignora los clics hasta terminar (incluidos los clics seguidos antes de que se actualice la pantalla) y vuelve a la normalidad al terminar o fallar. Protege contra el doble clic y el reenvío y ayuda a la idempotencia de la acción en pantalla (no sustituye la clave de idempotencia en el servidor). Cuidado: la función debe devolver la operación; con llaves y sin return (o sin async), como () => { guardar(); } o () { guardar(); }, no protege; async () {...} siempre devuelve. El error no se traga: el botón sale del loading y lo relanza como rechazo no gestionado; trátalo con try/catch dentro de onClick y avisa al usuario (sgWhistle.error). Usa async solo cuando la acción pueda tardar o fallar (guardar, enviar, pagar).",
     "fr": "Clic du bouton ; peut être synchrone ou asynchrone. Synchrone (ouvrir une modale, basculer) : rien ne change. S'il RETOURNE une Promise/Future, comme async () => { await enregistrer(); } ou () => enregistrer(), le bouton passe en loading tout seul (spinner, désactivé, aria-busy sur le web), ignore les clics jusqu'à la fin (y compris les clics répétés avant la mise à jour de l'écran) et revient à la normale à la fin ou en cas d'échec. Il protège contre le double clic et le renvoi et aide à l'idempotence de l'action à l'écran (ne remplace pas la clé d'idempotence côté serveur). Attention : la fonction doit retourner l'opération ; avec des accolades et sans return (ou sans async), comme () => { enregistrer(); } ou () { enregistrer(); }, elle ne protège pas ; async () {...} retourne toujours. L'erreur n'est pas avalée : le bouton quitte le loading et la relance comme un rejet non géré ; traitez-la avec try/catch dans onClick et prévenez l'utilisateur (sgWhistle.error). N'utilisez async que lorsque l'action peut être longue ou échouer (enregistrer, envoyer, payer)."
@@ -2796,7 +2796,7 @@
     "fr": "Événements déclenchés lors du changement de page."
   },
   "Exibe spinner e bloqueia o clique. Continua valendo e vence o loading automático do onClick: o loading efetivo é loading ou operação pendente (Promise/Future devolvida pelo onClick).": {
-    "pt": "Exibe spinner e bloqueia o clique. Continua valendo e vence o loading automático do onClick: o loading efetivo é loading ou operação pendente (Promise/Future devolvida pelo onClick).",
+    "pt": "Exibe spinner e bloqueia o clique. Continua valendo e vence o loading automático do onClick: o loading efetivo é loading ou óperação pendente (Promise/Future devolvida pelo onClick).",
     "en": "Shows a spinner and blocks the click. It still applies and wins over onClick's automatic loading: the effective loading is loading or a pending operation (Promise/Future returned by onClick).",
     "es": "Muestra un spinner y bloquea el clic. Sigue vigente y prevalece sobre el loading automático de onClick: el loading efectivo es loading u operación pendiente (Promise/Future devuelta por onClick).",
     "fr": "Affiche un spinner et bloque le clic. Reste valable et l'emporte sur le loading automatique de onClick : le loading effectif est loading ou une opération en attente (Promise/Future retournée par onClick)."
@@ -3246,7 +3246,7 @@
     "fr": "Niveau de correction d'erreur."
   },
   "Omitted (default): automatic - below 600 px of container width each row is shown as a 'column: value' card (keeping sorting selector, selection, row actions, footer and pagination; column filters move to a panel opened by a button), above it the regular table. cards forces cards and scroll forces the horizontally scrollable table, at any width.": {
-    "pt": "Omitido (padrão): automático - abaixo de 600 px de largura do contêiner cada linha é exibida como um card 'coluna: valor' (mantendo seletor de ordenação, seleção, ações da linha, rodapé e paginação; os filtros de coluna vão para um painel aberto por um botão), acima disso a tabela normal. cards força cards e scroll força a tabela com rolagem horizontal, em qualquer largura.",
+    "pt": "Omitido (padrão): automático - abaixo de 600 px de largura do contêiner cada linha é exibida como um card 'coluna: valor' (mantendo seletor de ordenação, seleção, ações da linha, rodapé e páginação; os filtros de coluna vão para um painel aberto por um botão), acima disso a tabela normal. cards força cards e scroll força a tabela com rolagem horizontal, em qualquer largura.",
     "en": "Omitted (default): automatic - below 600 px of container width each row is shown as a 'column: value' card (keeping sorting selector, selection, row actions, footer and pagination; column filters move to a panel opened by a button), above it the regular table. cards forces cards and scroll forces the horizontally scrollable table, at any width.",
     "es": "Omitido (por defecto): automático - por debajo de 600 px de ancho del contenedor cada fila se muestra como una tarjeta 'columna: valor' (manteniendo selector de ordenación, selección, acciones de fila, pie y paginación; los filtros de columna pasan a un panel abierto por un botón), por encima la tabla normal. cards fuerza tarjetas y scroll fuerza la tabla con desplazamiento horizontal, a cualquier ancho.",
     "fr": "Omis (par défaut) : automatique - sous 600 px de largeur du conteneur, chaque ligne s'affiche comme une carte 'colonne : valeur' (en conservant le sélecteur de tri, la sélection, les actions de ligne, le pied et la pagination ; les filtres de colonne passent dans un panneau ouvert par un bouton), au-dessus le tableau classique. cards force les cartes et scroll force le tableau à défilement horizontal, quelle que soit la largeur."

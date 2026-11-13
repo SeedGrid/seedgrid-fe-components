@@ -4009,5 +4009,15 @@
   "showcase.component.roller3dDigit.buttons.plusOneMinute": "+1 minute",
   "showcase.component.roller3dDigit.buttons.nextLetter": "Lettre suivante",
   "showcase.component.roller3dDigit.buttons.toggle0And9": "Basculer 0 et 9",
-  "showcase.component.roller3dDigit.buttons.animateName": "Animer le nom"
+  "showcase.component.roller3dDigit.buttons.animateName": "Animer le nom",
+  "showcase.component.clock.sections.drag.title": "Déplacement de la carte",
+  "showcase.component.clock.sections.drag.description": "cardProps.draggable a trois états : omis (automatique : déplaçable à partir de 640 px de large, fixe sur mobile), true (toujours déplaçable) et false (jamais déplaçable).",
+  "showcase.component.clock.labels.dragAuto": "Automatique",
+  "showcase.component.clock.labels.dragAlways": "Toujours déplaçable",
+  "showcase.component.clock.labels.dragNever": "Jamais déplaçable",
+  "showcase.component.calendar.dragTitle": "Déplacement de la carte",
+  "showcase.component.calendar.dragDescription": "cardProps.draggable a trois états : omis (automatique : déplaçable à partir de 640 px de large, fixe sur mobile), true (toujours déplaçable) et false (jamais déplaçable).",
+  "showcase.component.calendar.dragAuto": "Automatique",
+  "showcase.component.calendar.dragAlways": "Toujours déplaçable",
+  "showcase.component.calendar.dragNever": "Jamais déplaçable"
 }

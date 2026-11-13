@@ -1,0 +1,30 @@
+import { SgClock, SgGrid } from "@seedgrid/fe-components";
+
+export default function Example(props: { initialServerTime?: string }) {
+  const initialServerTime = props.initialServerTime ?? new Date().toISOString();
+  return (
+    <SgGrid columns={{ base: 1, md: 3 }} gap={16}>
+      <SgClock
+        clockStyle="digital"
+        initialServerTime={initialServerTime}
+        timezone="UTC"
+        cardTitle="Automático"
+        cardProps={{ id: "arraste-auto" }}
+      />
+      <SgClock
+        clockStyle="digital"
+        initialServerTime={initialServerTime}
+        timezone="UTC"
+        cardTitle="Sempre arrasta"
+        cardProps={{ id: "arraste-sempre", draggable: true }}
+      />
+      <SgClock
+        clockStyle="digital"
+        initialServerTime={initialServerTime}
+        timezone="UTC"
+        cardTitle="Nunca arrasta"
+        cardProps={{ id: "arraste-nunca", draggable: false }}
+      />
+    </SgGrid>
+  );
+}

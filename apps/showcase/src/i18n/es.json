@@ -4009,5 +4009,15 @@
   "showcase.component.roller3dDigit.buttons.plusOneMinute": "+1 minuto",
   "showcase.component.roller3dDigit.buttons.nextLetter": "Siguiente letra",
   "showcase.component.roller3dDigit.buttons.toggle0And9": "Alternar 0 y 9",
-  "showcase.component.roller3dDigit.buttons.animateName": "Animar nombre"
+  "showcase.component.roller3dDigit.buttons.animateName": "Animar nombre",
+  "showcase.component.clock.sections.drag.title": "Arrastre de la tarjeta",
+  "showcase.component.clock.sections.drag.description": "cardProps.draggable tiene tres estados: sin indicar (automático: se arrastra desde 640 px de ancho y queda fijo en el móvil), true (siempre se arrastra) y false (nunca se arrastra).",
+  "showcase.component.clock.labels.dragAuto": "Automático",
+  "showcase.component.clock.labels.dragAlways": "Siempre se arrastra",
+  "showcase.component.clock.labels.dragNever": "Nunca se arrastra",
+  "showcase.component.calendar.dragTitle": "Arrastre de la tarjeta",
+  "showcase.component.calendar.dragDescription": "cardProps.draggable tiene tres estados: sin indicar (automático: se arrastra desde 640 px de ancho y queda fijo en el móvil), true (siempre se arrastra) y false (nunca se arrastra).",
+  "showcase.component.calendar.dragAuto": "Automático",
+  "showcase.component.calendar.dragAlways": "Siempre se arrastra",
+  "showcase.component.calendar.dragNever": "Nunca se arrastra"
 }

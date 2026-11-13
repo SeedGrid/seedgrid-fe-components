@@ -1,0 +1,11 @@
+import { SgCalendar, SgGrid } from "@seedgrid/fe-components";
+
+export default function Example() {
+  return (
+    <SgGrid columns={{ base: 1, md: 3 }} gap={16}>
+      <SgCalendar cardTitle="Automático" cardProps={{ id: "arraste-auto" }} />
+      <SgCalendar cardTitle="Sempre arrasta" cardProps={{ id: "arraste-sempre", draggable: true }} />
+      <SgCalendar cardTitle="Nunca arrasta" cardProps={{ id: "arraste-nunca", draggable: false }} />
+    </SgGrid>
+  );
+}

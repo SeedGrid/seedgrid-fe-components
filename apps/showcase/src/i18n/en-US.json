@@ -4009,5 +4009,15 @@
   "showcase.component.roller3dDigit.buttons.plusOneMinute": "+1 minute",
   "showcase.component.roller3dDigit.buttons.nextLetter": "Next letter",
   "showcase.component.roller3dDigit.buttons.toggle0And9": "Toggle 0 and 9",
-  "showcase.component.roller3dDigit.buttons.animateName": "Animate name"
+  "showcase.component.roller3dDigit.buttons.animateName": "Animate name",
+  "showcase.component.clock.sections.drag.title": "Card dragging",
+  "showcase.component.clock.sections.drag.description": "cardProps.draggable has three states: omitted (automatic: drags from 640 px wide and stays fixed on phones), true (always drags) and false (never drags).",
+  "showcase.component.clock.labels.dragAuto": "Automatic",
+  "showcase.component.clock.labels.dragAlways": "Always drags",
+  "showcase.component.clock.labels.dragNever": "Never drags",
+  "showcase.component.calendar.dragTitle": "Card dragging",
+  "showcase.component.calendar.dragDescription": "cardProps.draggable has three states: omitted (automatic: drags from 640 px wide and stays fixed on phones), true (always drags) and false (never drags).",
+  "showcase.component.calendar.dragAuto": "Automatic",
+  "showcase.component.calendar.dragAlways": "Always drags",
+  "showcase.component.calendar.dragNever": "Never drags"
 }

@@ -7,6 +7,7 @@ import {
   SgClockThemePicker,
   SgClockThemeProvider,
   SgButton,
+  SgGrid,
   SgStack,
   registerThemes,
   sgClockThemesBuiltIn,
@@ -450,6 +451,38 @@ export function SgClockShowcaseClient({ initialServerTime }: { initialServerTime
             />
             <div className="mt-6">
               <CodeBlock sampleFile="apps/showcase/src/app/components/gadgets/sg-clock/samples/cartao.tsx.sample" />
+            </div>
+            </Section>
+
+            <Section
+              title={t(i18n, "showcase.component.clock.sections.drag.title")}
+              description={t(i18n, "showcase.component.clock.sections.drag.description")}
+            >
+            <SgGrid columns={{ base: 1, md: 3 }} gap={16}>
+              <SgClock
+                clockStyle="digital"
+                initialServerTime={initialServerTime}
+                timezone="UTC"
+                cardTitle={t(i18n, "showcase.component.clock.labels.dragAuto")}
+                cardProps={{ id: "arraste-auto" }}
+              />
+              <SgClock
+                clockStyle="digital"
+                initialServerTime={initialServerTime}
+                timezone="UTC"
+                cardTitle={t(i18n, "showcase.component.clock.labels.dragAlways")}
+                cardProps={{ id: "arraste-sempre", draggable: true }}
+              />
+              <SgClock
+                clockStyle="digital"
+                initialServerTime={initialServerTime}
+                timezone="UTC"
+                cardTitle={t(i18n, "showcase.component.clock.labels.dragNever")}
+                cardProps={{ id: "arraste-nunca", draggable: false }}
+              />
+            </SgGrid>
+            <div className="mt-6">
+              <CodeBlock sampleFile="apps/showcase/src/app/components/gadgets/sg-clock/samples/arraste.tsx.sample" />
             </div>
             </Section>
 

@@ -221,6 +221,15 @@ export default function SgCalendarPage() {
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-calendar/samples/controlado.tsx.sample" />
         </Section>
 
+        <Section title={t(i18n, `${K}.dragTitle`)} description={t(i18n, `${K}.dragDescription`)}>
+          <SgGrid columns={{ base: 1, md: 3 }} gap={16}>
+            <SgCalendar cardTitle={t(i18n, `${K}.dragAuto`)} cardProps={{ id: "arraste-auto" }} />
+            <SgCalendar cardTitle={t(i18n, `${K}.dragAlways`)} cardProps={{ id: "arraste-sempre", draggable: true }} />
+            <SgCalendar cardTitle={t(i18n, `${K}.dragNever`)} cardProps={{ id: "arraste-nunca", draggable: false }} />
+          </SgGrid>
+          <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-calendar/samples/arraste.tsx.sample" />
+        </Section>
+
         <Section title={t(i18n, `${K}.section9Title`)} description={t(i18n, `${K}.section9Description`)}>
             <SgPlayground
               title={t(i18n, `${K}.playgroundTitle`)}
