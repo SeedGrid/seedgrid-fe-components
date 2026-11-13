@@ -1,8 +1,8 @@
 import * as React from "react";
 import { useSgRealtimeEvent, useSgRealtimeStatus } from "@seedgrid/fe-components";
 
-// Tela de exports: o aviso do Pulse substitui o polling; o polling só volta quando o realtime
-// não está conectado (desligado, Pulse fora, credencial revogada) E ha job em andamento.
+// Exports screen: the Pulse notice replaces polling; polling only comes back when realtime
+// is not connected (turned off, Pulse down, credential revoked) AND a job is running.
 export function ExportList({ jobs, reload }: { jobs: { status: string }[]; reload: () => void }) {
   const { connected } = useSgRealtimeStatus();
   const running = jobs.some((job) => job.status === "QUEUED" || job.status === "RUNNING");

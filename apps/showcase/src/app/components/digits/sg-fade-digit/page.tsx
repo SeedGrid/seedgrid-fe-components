@@ -105,7 +105,7 @@ const nextLetter = () => {
 
 <div className="flex items-center gap-4">
   <SgFadeDigit value={letter} />
-  <SgButton size="sm" onClick={nextLetter}>Proxima letra</SgButton>
+  <SgButton size="sm" onClick={nextLetter}>Próxima letra</SgButton>
 </div>`;
 
 const ALPHA = Array.from("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
@@ -120,7 +120,7 @@ function Ex2() {
   return (
     <div className="flex items-center gap-4">
       <SgFadeDigit value={letter} />
-      <SgButton size="sm" onClick={nextLetter}>Proxima letra</SgButton>
+      <SgButton size="sm" onClick={nextLetter}>Próxima letra</SgButton>
     </div>
   );
 }

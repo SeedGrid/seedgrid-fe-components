@@ -31,7 +31,7 @@ function Section(props: { title: string; description?: string; children: React.R
 
 
 
-
+
 
 
 
@@ -75,7 +75,7 @@ const next = () => {
 
 <div className="flex items-center gap-4">
   <SgRoller3DDigit value={letter} items={ALPHA} fontSize={32} />
-  <SgButton onClick={next} size="sm">Proxima letra</SgButton>
+  <SgButton onClick={next} size="sm">Próxima letra</SgButton>
 </div>`;
 
 const NAME_CODE = `const ALPHA = Array.from(" ABCDEFGHIJKLMNOPQRSTUVWXYZ");
@@ -235,7 +235,7 @@ function NameAnimator(props: { animateLabel: string }) {
 }
 
 export default function SgRoller3DDigitShowcase() {
-  const i18n = useShowcaseI18n();
+  const i18n = useShowcaseI18n();
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
   const aiComponent = useAiManifestComponent("SgRoller3DDigit");

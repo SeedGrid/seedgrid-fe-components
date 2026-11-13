@@ -12,7 +12,7 @@ export default function Example() {
   return (
     <div className="flex items-center gap-4">
       <SgFlipDigit value={letter} />
-      <SgButton onClick={nextLetter} size="sm">Proxima letra</SgButton>
+      <SgButton onClick={nextLetter} size="sm">Próxima letra</SgButton>
     </div>
   );
 }

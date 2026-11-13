@@ -31,7 +31,7 @@ function Section(props: { title: string; description?: string; children: React.R
 
 
 
-
+
 
 
 
@@ -46,7 +46,7 @@ const FLIP_DIGIT_PROPS: ShowcasePropRow[] = [
 ];
 
 export default function SgFlipDigitShowcase() {
-  const i18n = useShowcaseI18n();
+  const i18n = useShowcaseI18n();
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
   const aiComponent = useAiManifestComponent("SgFlipDigit");
@@ -111,7 +111,7 @@ export default function SgFlipDigitShowcase() {
         >
           <div className="flex items-center gap-4">
             <SgFlipDigit value={letter} />
-            <SgButton onClick={nextLetter} size="sm">Proxima letra</SgButton>
+            <SgButton onClick={nextLetter} size="sm">Próxima letra</SgButton>
           </div>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-flip-digit/samples/letras-a-z.tsx.sample" />
         </Section>

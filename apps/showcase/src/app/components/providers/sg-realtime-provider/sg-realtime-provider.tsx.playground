@@ -7,7 +7,7 @@ import {
   type SgRealtimeEvent
 } from "@seedgrid/fe-components";
 
-// WebSocket de DEMONSTRAÇÃO no papel do SeedGrid Pulse: não toca a rede.
+// DEMO WebSocket standing in for SeedGrid Pulse: it never touches the network.
 // Na aplicação real, sem `connectOptions`: o provider conecta no Pulse de verdade.
 class DemoPulseSocket {
   static current: DemoPulseSocket | null = null;

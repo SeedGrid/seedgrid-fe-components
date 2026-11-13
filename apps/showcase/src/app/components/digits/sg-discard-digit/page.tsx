@@ -279,7 +279,7 @@ export default function App() {
             <p className="text-xs text-muted-foreground">Pagina {pagina} de {totalNumberPages}</p>
             <div className="flex flex-wrap gap-2">
               <SgButton size="sm" onClick={anterior} enabled={!(pagina <= 1)}>Previous</SgButton>
-              <SgButton size="sm" onClick={proxima} enabled={!(pagina >= totalNumberPages)}>Proxima</SgButton>
+              <SgButton size="sm" onClick={proxima} enabled={!(pagina >= totalNumberPages)}>Próxima</SgButton>
             </div>
           </div>
         </div>
