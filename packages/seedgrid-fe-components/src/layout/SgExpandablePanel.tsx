@@ -387,7 +387,7 @@ export const SgExpandablePanel = React.forwardRef<HTMLDivElement, SgExpandablePa
         {header ? (
           <div className={cn("shrink-0 border-b border-border px-4 py-3", headerClassName)}>{header}</div>
         ) : null}
-        <div className={cn("min-h-0 flex-1 overflow-auto px-4 py-3", bodyClassName)}>{children}</div>
+        <div className={cn("min-h-0 flex-1 overflow-auto overscroll-contain px-4 py-3", bodyClassName)}>{children}</div>
         {footer ? (
           <div className={cn("shrink-0 border-t border-border px-4 py-3", footerClassName)}>{footer}</div>
         ) : null}
@@ -469,7 +469,9 @@ export const SgExpandablePanel = React.forwardRef<HTMLDivElement, SgExpandablePa
             width: mainSizeCss,
             minWidth: minSizeCss,
             maxWidth: maxSizeCss,
-            height: placement === "center" ? "calc(100% - 2rem)" : "100%"
+            height: placement === "center" ? "calc(100% - 2rem)" : "100%",
+            // dvh acompanha a barra de endereco do navegador movel (vh a ignora); o corpo do painel rola (overflow-auto).
+            maxHeight: "100dvh"
           }
         : {
             height: mainSizeCss,
@@ -511,7 +513,13 @@ export const SgExpandablePanel = React.forwardRef<HTMLDivElement, SgExpandablePa
         ) : null}
 
         <div className={overlayContainerClass}>
-          <div className="pointer-events-auto">
+          <div
+            className={cn(
+              "pointer-events-auto",
+              // Sem altura propria o painel (height:100%) crescia com o conteudo alem da tela e nada rolava.
+              axis === "x" ? (placement === "center" ? "max-h-full" : "h-full max-h-[100dvh]") : "max-w-full"
+            )}
+          >
             {renderPanelContent(overlayPanelStyle, overlayStateClass)}
           </div>
         </div>
