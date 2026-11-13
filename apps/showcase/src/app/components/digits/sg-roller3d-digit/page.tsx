@@ -48,8 +48,8 @@ const prev = () => setDigit((prev) => String((Number(prev) - 1 + 10) % 10));
 <div className="flex items-center gap-4">
   <SgRoller3DDigit value={digit} fontSize={32} />
   <div className="flex flex-col gap-2">
-    <SgButton onClick={next} size="sm">Next (+1)</SgButton>
-    <SgButton onClick={prev} size="sm" severity="secondary">Previous (-1)</SgButton>
+    <SgButton onClick={next} size="sm">Próximo (+1)</SgButton>
+    <SgButton onClick={prev} size="sm" severity="secondary">Anterior (-1)</SgButton>
   </div>
 </div>`;
 

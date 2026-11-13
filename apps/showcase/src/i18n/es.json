@@ -2494,7 +2494,7 @@
   "showcase.component.discardDigit.section6Description": "totalNumberPages define el total de hojas. El ref expone increasePage(), decreasePage() y page().",
   "showcase.component.discardDigit.section6PageLabelPrefix": "Página",
   "showcase.component.discardDigit.section6PageLabelConnector": "de",
-  "showcase.component.discardDigit.section6PreviousButton": "Previous",
+  "showcase.component.discardDigit.section6PreviousButton": "Anterior",
   "showcase.component.discardDigit.section6NextButton": "Siguiente",
   "showcase.component.discardDigit.section7Title": "7) Descarte (predeterminado)",
   "showcase.component.discardDigit.section7Description": "La hoja de arriba sale volando en 640 ms y el valor nuevo aparece debajo. El movimiento se sortea en cada cambio.",
