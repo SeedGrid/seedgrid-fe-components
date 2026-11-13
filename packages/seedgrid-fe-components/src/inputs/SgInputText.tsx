@@ -65,13 +65,10 @@ export type SgValueMask = {
 };
 export const SgValueMaskContext = React.createContext<SgValueMask | null>(null);
 
-const alnum = (value: string) => value.replace(/[^0-9A-Za-z]/g, "").toLowerCase();
-
-/** Mascara um valor vindo de FORA (defaultValues/setValue/value) sem perder caracteres: se a mascara cortaria algo, devolve como veio. */
+/** Mascara um valor vindo de FORA (defaultValues/setValue/value): excesso alem da mascara e cortado, igual a colar/digitar. */
 function maskExternal(spec: SgValueMask, value: string) {
   const base = spec.normalize ? spec.normalize(value) : value;
-  const masked = spec.mask(base);
-  return alnum(masked) === alnum(base) ? masked : value;
+  return spec.mask(base);
 }
 
 function MaskSync(props: { value: unknown; mask: (value: string) => string; onSync: (masked: string) => void }) {

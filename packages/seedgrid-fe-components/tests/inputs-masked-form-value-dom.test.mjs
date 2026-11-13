@@ -101,14 +101,27 @@ for (const mode of ["control", "register"]) {
       m.harness.restore();
     }
   });
-  test(`SgInputCNPJ (${mode}): valor externo maior que a mascara nao e cortado em silencio`, async () => {
-    const m = await mountForm("SgInputCNPJ", mode, "112223330001811111");
-    try {
-      assert.equal(m.form().getValues("f"), "112223330001811111");
-    } finally {
-      m.harness.restore();
-    }
-  });
+  for (const [comp, raw, expected] of [
+    ["SgInputCPF", "529982247251234", "529.982.247-25"],
+    ["SgInputCNPJ", "112223330001819999", "11.222.333/0001-81"],
+    ["SgInputPostalCode", "045381329999", "04538-132"]
+  ]) {
+    test(`${comp} (${mode}): valor externo maior que a mascara e cortado na mascara (defaultValue e setValue)`, async () => {
+      const m = await mountForm(comp, mode, raw);
+      try {
+        assert.equal(input(m.container).value, expected, "campo (defaultValue)");
+        assert.equal(m.form().getValues("f"), expected, "form (defaultValue)");
+        await act(async () => m.form().setValue("f", ""));
+        await flushDom();
+        await act(async () => m.form().setValue("f", raw));
+        await flushDom();
+        assert.equal(input(m.container).value, expected, "campo (setValue)");
+        assert.equal(m.form().getValues("f"), expected, "form (setValue)");
+      } finally {
+        m.harness.restore();
+      }
+    });
+  }
 }
 
 for (const mode of ["control", "register"]) {
