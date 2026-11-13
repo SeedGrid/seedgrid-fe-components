@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { SgCard, type SgCardProps } from "../../layout/SgCard";
+import { useSgAutoDraggable } from "../../layout/useSgAutoDraggable";
 import { t, useComponentsI18n } from "../../i18n";
 
 function cn(...parts: Array<string | false | null | undefined>) {
@@ -161,6 +162,7 @@ export function SgCalendar(props: Readonly<SgCalendarProps>) {
     cardProps,
     ...rest
   } = props;
+  const resolvedDraggable = useSgAutoDraggable(cardProps?.draggable); // undefined = automatico (>= 640px), true = sempre, false = nunca
   const resolvedCardTitle = cardTitle ?? t(i18n, "components.gadgets.calendar.title");
 
   const today = React.useMemo(() => normalizeDate(new Date()), []);
@@ -323,11 +325,11 @@ export function SgCalendar(props: Readonly<SgCalendarProps>) {
       defaultOpen
       collapseToggleAlign="right"
       collapseIconSize={20}
-      draggable
       bgColor="rgb(var(--sg-surface,var(--sg-bg)))"
       bgColorTitle="rgb(var(--sg-surface-2,var(--sg-surface,var(--sg-bg))))"
       cardStyle="outlined"
       {...cardProps}
+      draggable={resolvedDraggable}
       className={mergedCardClassName}
       bodyClassName={mergedCardBodyClassName}
       style={mergedCardStyle}

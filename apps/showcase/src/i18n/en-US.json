@@ -260,7 +260,7 @@
   "showcase.component.clock.sections.center.title": "Center content and no seconds",
   "showcase.component.clock.sections.center.description": "centerOverlay fills a box of 30% of the clock in the center; showSeconds: false hides the seconds hand.",
   "showcase.component.clock.sections.card.title": "Card",
-  "showcase.component.clock.sections.card.description": "The clock comes in a collapsible, draggable SgCard. cardTitle changes the title; cardProps adjusts the card.",
+  "showcase.component.clock.sections.card.description": "The clock comes in a collapsible SgCard. Dragging is automatic: on from 640 px wide and off on phones (the saved position is ignored). cardProps.draggable forces it on (true) or off (false). cardTitle changes the title; cardProps adjusts the card.",
   "showcase.component.clock.sections.digitBuilder.title": "Custom digit drawing (digitBuilder)",
   "showcase.component.clock.sections.digitBuilder.description": "With digitalStyle custom, digitBuilder receives the clock parts and returns the drawing of each digit; without it, the clock falls back to the default style.",
   "showcase.component.clock.sections.timezone.title": "Timezone",

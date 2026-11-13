@@ -145,7 +145,7 @@ export function SgCard(props: Readonly<SgCardProps>) {
     collapseIconSize = 18,
     collapseToggleAlign = "left",
     toggleOnHeaderClick = true,
-    draggable: draggableProp = false,
+    draggable = false,
     defaultPosition,
     dragPersistKey,
     onPositionChange,
@@ -154,18 +154,6 @@ export function SgCard(props: Readonly<SgCardProps>) {
     children,
     ...rest
   } = props;
-
-  // Celular (< 640px): sem arraste e sem aplicar posicao salva (px de outra tela deixam os cartoes espalhados/fora da viewport).
-  const [narrowViewport, setNarrowViewport] = React.useState(false);
-  React.useEffect(() => {
-    if (typeof window === "undefined" || typeof window.matchMedia !== "function") return;
-    const mq = window.matchMedia("(max-width: 639px)");
-    const sync = () => setNarrowViewport(mq.matches);
-    sync();
-    mq.addEventListener?.("change", sync);
-    return () => mq.removeEventListener?.("change", sync);
-  }, []);
-  const draggable = draggableProp && !narrowViewport;
 
   const hasEnvironmentProvider = useHasSgEnvironmentProvider();
   const { load: loadPersistedState, save: savePersistedState, clear: clearPersistedState } = useSgPersistence();
@@ -176,6 +164,7 @@ export function SgCard(props: Readonly<SgCardProps>) {
     y: defaultPosition?.y ?? 0
   });
   const dragPositionRef = React.useRef<SgCardPosition>(dragPosition);
+  const rootRef = React.useRef<HTMLElement | null>(null);
   const [dragHydrated, setDragHydrated] = React.useState(false);
   const [dragging, setDragging] = React.useState(false);
   const dragStateRef = React.useRef<{
@@ -282,6 +271,24 @@ export function SgCard(props: Readonly<SgCardProps>) {
     hasEnvironmentProvider,
     savePersistedState
   ]);
+
+  // Posicao salva de outra tela pode deixar o cartao fora da viewport: se, apos aplicar a salva, ele esta todo
+  // fora da tela, volta para a posicao padrao (mesma regra do Flutter).
+  React.useEffect(() => {
+    if (!draggable || !dragHydrated || typeof window === "undefined") return;
+    const el = rootRef.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    if (r.width === 0 && r.height === 0) return;
+    const off = r.right <= 0 || r.bottom <= 0 || r.left >= window.innerWidth || r.top >= window.innerHeight;
+    const dx = defaultPosition?.x ?? 0;
+    const dy = defaultPosition?.y ?? 0;
+    if (off && (dragPositionRef.current.x !== dx || dragPositionRef.current.y !== dy)) {
+      setDragPosition({ x: dx, y: dy });
+    }
+    // so na hidratacao da posicao salva
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [draggable, dragHydrated]);
 
   const [uncontrolledOpen, setUncontrolledOpen] = React.useState<boolean>(defaultOpen);
   const isControlled = typeof controlledOpen === "boolean";
@@ -600,7 +607,7 @@ export function SgCard(props: Readonly<SgCardProps>) {
   };
 
   return (
-    <Component id={id} className={rootClasses} style={rootStyle} {...buttonLikeProps} {...passiveOnClickProps} {...rest}>
+    <Component ref={rootRef} id={id} className={rootClasses} style={rootStyle} {...buttonLikeProps} {...passiveOnClickProps} {...rest}>
       {headerNode}
       {collapsible ? collapsibleBodyWrapper : null}
       {!collapsible ? bodyNode : null}

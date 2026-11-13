@@ -624,7 +624,7 @@
   "showcase.component.clock.sections.center.title": "Contenu au centre et sans secondes",
   "showcase.component.clock.sections.center.description": "centerOverlay occupe une boîte de 30 % de l'horloge au centre ; showSeconds: false masque l'aiguille des secondes.",
   "showcase.component.clock.sections.card.title": "Carte",
-  "showcase.component.clock.sections.card.description": "L'horloge est dans une SgCard repliable et déplaçable. cardTitle change le titre ; cardProps ajuste la carte.",
+  "showcase.component.clock.sections.card.description": "L'horloge est dans une SgCard repliable. Le déplacement est automatique : actif à partir de 640 px de large et désactivé sur mobile (la position enregistrée est ignorée). cardProps.draggable le force (true) ou le désactive (false). cardTitle change le titre ; cardProps ajuste la carte.",
   "showcase.component.clock.sections.digitBuilder.title": "Dessin de chiffre personnalisé (digitBuilder)",
   "showcase.component.clock.sections.digitBuilder.description": "Avec digitalStyle custom, digitBuilder reçoit les parties de l'horloge et renvoie le dessin de chaque chiffre ; sans lui, l'horloge revient au style default.",
   "showcase.component.clock.sections.timezone.title": "Fuseau horaire",

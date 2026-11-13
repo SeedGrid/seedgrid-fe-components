@@ -236,7 +236,7 @@
   "showcase.component.clock.sections.center.title": "Conteúdo no centro e sem segundos",
   "showcase.component.clock.sections.center.description": "centerOverlay ocupa uma caixa de 30% do relógio no centro; showSeconds: false esconde o ponteiro dos segundos.",
   "showcase.component.clock.sections.card.title": "Cartão",
-  "showcase.component.clock.sections.card.description": "O relógio vem num SgCard recolhível e arrastável. cardTitle troca o título; cardProps ajusta o cartão.",
+  "showcase.component.clock.sections.card.description": "O relógio vem num SgCard recolhível. O arraste do cartão é automático: ligado a partir de 640 px de largura e desligado no celular (a posição salva é ignorada). cardProps.draggable força (true) ou desliga (false). cardTitle troca o título; cardProps ajusta o cartão.",
   "showcase.component.clock.sections.digitBuilder.title": "Desenho do dígito próprio (digitBuilder)",
   "showcase.component.clock.sections.digitBuilder.description": "Com digitalStyle custom, o digitBuilder recebe as partes do relógio e devolve o desenho de cada dígito; sem ele, o relógio cai no estilo default.",
   "showcase.component.clock.sections.timezone.title": "Timezone",
