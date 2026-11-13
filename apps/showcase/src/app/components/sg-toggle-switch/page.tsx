@@ -451,7 +451,7 @@ const TOGGLE_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", ToggleText
     playgroundTitle: "SgToggleSwitch Playground"
   },
   es: {
-    subtitle: "Toggle switch con soporte de iconos, estados disabled/readonly e integracion con react-hook-form.",
+    subtitle: "Toggle switch con soporte de iconos, estados disabled/readonly e integración con react-hook-form.",
     examplesLabel: "Ejemplos",
     propsLinkLabel: "Referencia de Props",
     propsTitle: "Referencia de Props",
