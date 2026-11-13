@@ -1411,7 +1411,7 @@ export default function SgDatatableShowcase() {
         <Section title={sectionTitles[4] ?? ""} description={t(i18n, "showcase.component.datatable.sections.columnManager.description")}>
           <SgDatatable
             id="datatable-column-manager"
-            title="Column manager and styled rows"
+            title={t(i18n, "showcase.component.datatable.exampleTitles.columnManager")}
             value={PRODUCT_ROWS}
             columns={MANAGER_COLUMNS}
             dataKey="id"
@@ -1439,7 +1439,7 @@ export default function SgDatatableShowcase() {
         <Section title={sectionTitles[5] ?? ""} description={t(i18n, "showcase.component.datatable.sections.actions.description")}>
           <SgDatatable
             id="datatable-actions"
-            title="Permissions with row actions"
+            title={t(i18n, "showcase.component.datatable.exampleTitles.permissions")}
             value={permissionRows}
             columns={permissionColumns}
             dataKey="id"
@@ -1525,7 +1525,7 @@ export default function SgDatatableShowcase() {
         <Section title={sectionTitles[7] ?? ""} description={t(i18n, "showcase.component.datatable.sections.server.description")}>
           <SgDatatable
             id="datatable-server"
-            title="Server-side pagination"
+            title={t(i18n, "showcase.component.datatable.exampleTitles.serverPagination")}
             value={serverRows}
             columns={SERVER_COLUMNS}
             dataKey="id"

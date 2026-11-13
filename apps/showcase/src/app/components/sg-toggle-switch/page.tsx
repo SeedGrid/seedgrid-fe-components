@@ -486,13 +486,13 @@ const TOGGLE_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", ToggleText
     playgroundTitle: "SgToggleSwitch Playground"
   },
   fr: {
-    subtitle: "Interrupteur a bascule avec prise en charge des icones, etats desactive/lecture seule et integration react-hook-form.",
+    subtitle: "Interrupteur à bascule avec prise en charge des icônes, états désactivé/lecture seule et intégration react-hook-form.",
     examplesLabel: "Exemples",
-    propsLinkLabel: "Reference des props",
-    propsTitle: "Reference des props",
+    propsLinkLabel: "Référence des props",
+    propsTitle: "Référence des props",
     propsColProp: "Prop",
     propsColType: "Type",
-    propsColDefault: "Defaut",
+    propsColDefault: "Par défaut",
     propsColDescription: "Description",
     sectionTitles: [
       "1) Basique",

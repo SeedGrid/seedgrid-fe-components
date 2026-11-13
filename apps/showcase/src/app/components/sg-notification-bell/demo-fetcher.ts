@@ -12,14 +12,26 @@ function json(body: unknown, status = 200): Response {
   return new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json" } });
 }
 
-export function createDemoFetcher(seed: boolean = true): DemoFetcher {
+export type DemoSeedText = {
+  reportTitle: string; reportMessage: string;
+  backupTitle: string; backupMessage: string;
+  inviteTitle: string; inviteMessage: string;
+};
+
+const DEFAULT_SEED_TEXT: DemoSeedText = {
+  reportTitle: "Relatório de vendas pronto", reportMessage: "O relatório de outubro terminou de gerar.",
+  backupTitle: "Backup concluído", backupMessage: "O backup diário terminou sem erros.",
+  inviteTitle: "Convite aceito", inviteMessage: "Marina entrou na sua equipe."
+};
+
+export function createDemoFetcher(seed: boolean = true, text: DemoSeedText = DEFAULT_SEED_TEXT): DemoFetcher {
   let counter = 0;
   const minutesAgo = (m: number) => new Date(Date.now() - m * 60000).toISOString();
   let items: SgNotification[] = seed
     ? [
-        { publicId: "demo-1", type: "report.ready", title: "Relatório de vendas pronto", message: "O relatório de outubro terminou de gerar.", read: false, createdAt: minutesAgo(2) },
-        { publicId: "demo-2", type: "backup.finished", title: "Backup concluído", message: "O backup diário terminou sem erros.", read: false, createdAt: minutesAgo(18) },
-        { publicId: "demo-3", type: "invite.accepted", title: "Convite aceito", message: "Marina entrou na sua equipe.", read: true, createdAt: minutesAgo(1500) }
+        { publicId: "demo-1", type: "report.ready", title: text.reportTitle, message: text.reportMessage, read: false, createdAt: minutesAgo(2) },
+        { publicId: "demo-2", type: "backup.finished", title: text.backupTitle, message: text.backupMessage, read: false, createdAt: minutesAgo(18) },
+        { publicId: "demo-3", type: "invite.accepted", title: text.inviteTitle, message: text.inviteMessage, read: true, createdAt: minutesAgo(1500) }
       ]
     : [];
 

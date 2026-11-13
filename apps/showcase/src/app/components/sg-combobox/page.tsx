@@ -475,19 +475,19 @@ export default function SgComboboxPage() {
                 </tr>
               </thead>
               <tbody className="divide-y">
-                <tr><td className="py-2 pr-4 font-mono text-xs">source</td><td className="py-2 pr-4">array | async function</td><td className="py-2 pr-4">-</td><td className="py-2">Source for list items.</td></tr>
-                <tr><td className="py-2 pr-4 font-mono text-xs">value</td><td className="py-2 pr-4">string | number | null</td><td className="py-2 pr-4">null</td><td className="py-2">Selected value in controlled mode.</td></tr>
-                <tr><td className="py-2 pr-4 font-mono text-xs">onValueChange</td><td className="py-2 pr-4">(value) =&gt; void</td><td className="py-2 pr-4">-</td><td className="py-2">Fired when value changes.</td></tr>
-                <tr><td className="py-2 pr-4 font-mono text-xs">onSelect</td><td className="py-2 pr-4">(item) =&gt; void</td><td className="py-2 pr-4">-</td><td className="py-2">Returns the selected item.</td></tr>
-                <tr><td className="py-2 pr-4 font-mono text-xs">mapItem</td><td className="py-2 pr-4">(raw) =&gt; item</td><td className="py-2 pr-4">auto</td><td className="py-2">Maps raw item to combobox format.</td></tr>
-                <tr><td className="py-2 pr-4 font-mono text-xs">grouped / groupped</td><td className="py-2 pr-4">boolean</td><td className="py-2 pr-4">false</td><td className="py-2">Groups items by group.</td></tr>
-                <tr><td className="py-2 pr-4 font-mono text-xs">openOnFocus</td><td className="py-2 pr-4">boolean</td><td className="py-2 pr-4">false</td><td className="py-2">Opens list on focus.</td></tr>
-                <tr><td className="py-2 pr-4 font-mono text-xs">borderRadius</td><td className="py-2 pr-4">number | string</td><td className="py-2 pr-4">-</td><td className="py-2">Sets border radius for field and dropdown.</td></tr>
-                <tr><td className="py-2 pr-4 font-mono text-xs">loadingText / emptyText</td><td className="py-2 pr-4">string</td><td className="py-2 pr-4">i18n</td><td className="py-2">Texts for loading and empty list states.</td></tr>
-                <tr><td className="py-2 pr-4 font-mono text-xs">renderItem</td><td className="py-2 pr-4">(item, isActive) =&gt; ReactNode</td><td className="py-2 pr-4">-</td><td className="py-2">Custom item rendering.</td></tr>
-                <tr><td className="py-2 pr-4 font-mono text-xs">renderGroupHeader</td><td className="py-2 pr-4">(group) =&gt; ReactNode</td><td className="py-2 pr-4">-</td><td className="py-2">Custom group header rendering.</td></tr>
-                <tr><td className="py-2 pr-4 font-mono text-xs">renderFooter</td><td className="py-2 pr-4">(query, hasResults) =&gt; ReactNode</td><td className="py-2 pr-4">-</td><td className="py-2">Custom list footer rendering.</td></tr>
-                <tr><td className="py-2 pr-4 font-mono text-xs">itemTooltip</td><td className="py-2 pr-4">(item) =&gt; ReactNode</td><td className="py-2 pr-4">-</td><td className="py-2">Tooltip content for item.</td></tr>
+                <tr><td className="py-2 pr-4 font-mono text-xs">source</td><td className="py-2 pr-4">array | async function</td><td className="py-2 pr-4">-</td><td className="py-2">{t(i18n, `${K}.propsRows.source`)}</td></tr>
+                <tr><td className="py-2 pr-4 font-mono text-xs">value</td><td className="py-2 pr-4">string | number | null</td><td className="py-2 pr-4">null</td><td className="py-2">{t(i18n, `${K}.propsRows.value`)}</td></tr>
+                <tr><td className="py-2 pr-4 font-mono text-xs">onValueChange</td><td className="py-2 pr-4">(value) =&gt; void</td><td className="py-2 pr-4">-</td><td className="py-2">{t(i18n, `${K}.propsRows.onValueChange`)}</td></tr>
+                <tr><td className="py-2 pr-4 font-mono text-xs">onSelect</td><td className="py-2 pr-4">(item) =&gt; void</td><td className="py-2 pr-4">-</td><td className="py-2">{t(i18n, `${K}.propsRows.onSelect`)}</td></tr>
+                <tr><td className="py-2 pr-4 font-mono text-xs">mapItem</td><td className="py-2 pr-4">(raw) =&gt; item</td><td className="py-2 pr-4">auto</td><td className="py-2">{t(i18n, `${K}.propsRows.mapItem`)}</td></tr>
+                <tr><td className="py-2 pr-4 font-mono text-xs">grouped / groupped</td><td className="py-2 pr-4">boolean</td><td className="py-2 pr-4">false</td><td className="py-2">{t(i18n, `${K}.propsRows.grouped`)}</td></tr>
+                <tr><td className="py-2 pr-4 font-mono text-xs">openOnFocus</td><td className="py-2 pr-4">boolean</td><td className="py-2 pr-4">false</td><td className="py-2">{t(i18n, `${K}.propsRows.openOnFocus`)}</td></tr>
+                <tr><td className="py-2 pr-4 font-mono text-xs">borderRadius</td><td className="py-2 pr-4">number | string</td><td className="py-2 pr-4">-</td><td className="py-2">{t(i18n, `${K}.propsRows.borderRadius`)}</td></tr>
+                <tr><td className="py-2 pr-4 font-mono text-xs">loadingText / emptyText</td><td className="py-2 pr-4">string</td><td className="py-2 pr-4">i18n</td><td className="py-2">{t(i18n, `${K}.propsRows.loadingText`)}</td></tr>
+                <tr><td className="py-2 pr-4 font-mono text-xs">renderItem</td><td className="py-2 pr-4">(item, isActive) =&gt; ReactNode</td><td className="py-2 pr-4">-</td><td className="py-2">{t(i18n, `${K}.propsRows.renderItem`)}</td></tr>
+                <tr><td className="py-2 pr-4 font-mono text-xs">renderGroupHeader</td><td className="py-2 pr-4">(group) =&gt; ReactNode</td><td className="py-2 pr-4">-</td><td className="py-2">{t(i18n, `${K}.propsRows.renderGroupHeader`)}</td></tr>
+                <tr><td className="py-2 pr-4 font-mono text-xs">renderFooter</td><td className="py-2 pr-4">(query, hasResults) =&gt; ReactNode</td><td className="py-2 pr-4">-</td><td className="py-2">{t(i18n, `${K}.propsRows.renderFooter`)}</td></tr>
+                <tr><td className="py-2 pr-4 font-mono text-xs">itemTooltip</td><td className="py-2 pr-4">(item) =&gt; ReactNode</td><td className="py-2 pr-4">-</td><td className="py-2">{t(i18n, `${K}.propsRows.itemTooltip`)}</td></tr>
               </tbody>
             </table>
           </div>

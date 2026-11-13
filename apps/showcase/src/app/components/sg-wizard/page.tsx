@@ -39,6 +39,7 @@ function CodeBlock(props: { sampleFile: string }) {
 
 /** Demo de `nextDisabled`: checagem assincrona que, ao terminar, mantem o avanco bloqueado. */
 function NextDisabledDemo() {
+  const i18n = useShowcaseI18n();
   const [codigo, setCodigo] = React.useState("");
   const [checando, setChecando] = React.useState(false);
   const [jaUsado, setJaUsado] = React.useState(false);
@@ -53,11 +54,11 @@ function NextDisabledDemo() {
 
   return (
     <SgWizard nextDisabled={jaUsado} onFinish={() => undefined}>
-      <SgWizardPage title="Convite">
+      <SgWizardPage title={t(i18n, "showcase.component.wizard.demo.inviteStep")}>
         <SgInputText
           id="wizard-codigo-convite"
-          label="Codigo do convite"
-          error={jaUsado ? "Este codigo ja foi utilizado." : undefined}
+          label={t(i18n, "showcase.component.wizard.demo.inviteCodeLabel")}
+          error={jaUsado ? t(i18n, "showcase.component.wizard.demo.codeUsed") : undefined}
           onChange={(value) => {
             setCodigo(value);
             setJaUsado(false);
@@ -66,15 +67,15 @@ function NextDisabledDemo() {
         />
         <p className="mt-2 text-sm text-muted-foreground">
           {checando
-            ? "Verificando o codigo..."
-            : 'Digite "SG-123" e saia do campo: o botao Proximo fica desabilitado.'}
+            ? t(i18n, "showcase.component.wizard.demo.checkingCode")
+            : t(i18n, "showcase.component.wizard.demo.codeHint")}
         </p>
       </SgWizardPage>
-      <SgWizardPage title="Conclusao">
+      <SgWizardPage title={t(i18n, "showcase.component.wizard.demo.conclusionStep")}>
         <div className="rounded border border-border bg-foreground/5 p-4">
-          <div className="text-sm font-semibold">Codigo aceito</div>
+          <div className="text-sm font-semibold">{t(i18n, "showcase.component.wizard.demo.codeAccepted")}</div>
           <p className="mt-1 text-sm text-muted-foreground">
-            So se chega aqui com um codigo que a checagem liberou.
+            {t(i18n, "showcase.component.wizard.demo.codeAcceptedText")}
           </p>
         </div>
       </SgWizardPage>
@@ -230,28 +231,28 @@ export default function SgWizardPageDemo() {
           stepNavigation="previous"
           onFinish={() => {}}
         >
-          <SgWizardPage title="Introducao">
+          <SgWizardPage title={t(i18n, "showcase.component.wizard.demo.introTitle")}>
             <div className="rounded border border-border bg-foreground/5 p-4">
-              <div className="text-sm font-semibold">1. Introducao</div>
-              <p className="mt-1 text-sm text-muted-foreground">Somente etapas anteriores podem ser clicadas.</p>
+              <div className="text-sm font-semibold">1. {t(i18n, "showcase.component.wizard.demo.introTitle")}</div>
+              <p className="mt-1 text-sm text-muted-foreground">{t(i18n, "showcase.component.wizard.demo.navIntroText")}</p>
             </div>
           </SgWizardPage>
-          <SgWizardPage title="Detalhes">
+          <SgWizardPage title={t(i18n, "showcase.component.wizard.demo.detailsTitle")}>
             <div className="rounded border border-border bg-foreground/5 p-4">
-              <div className="text-sm font-semibold">2. Detalhes</div>
-              <p className="mt-1 text-sm text-muted-foreground">O usuario pode voltar clicando no stepper.</p>
+              <div className="text-sm font-semibold">2. {t(i18n, "showcase.component.wizard.demo.detailsTitle")}</div>
+              <p className="mt-1 text-sm text-muted-foreground">{t(i18n, "showcase.component.wizard.demo.navDetailsText")}</p>
             </div>
           </SgWizardPage>
-          <SgWizardPage title="Revisao">
+          <SgWizardPage title={t(i18n, "showcase.component.wizard.demo.reviewTitle")}>
             <div className="rounded border border-border bg-foreground/5 p-4">
-              <div className="text-sm font-semibold">3. Revisao</div>
-              <p className="mt-1 text-sm text-muted-foreground">O step atual nao fica clicavel.</p>
+              <div className="text-sm font-semibold">3. {t(i18n, "showcase.component.wizard.demo.reviewTitle")}</div>
+              <p className="mt-1 text-sm text-muted-foreground">{t(i18n, "showcase.component.wizard.demo.navReviewText")}</p>
             </div>
           </SgWizardPage>
-          <SgWizardPage title="Confirmacao">
+          <SgWizardPage title={t(i18n, "showcase.component.wizard.demo.confirmTitle")}>
             <div className="rounded border border-border bg-foreground/5 p-4">
-              <div className="text-sm font-semibold">4. Confirmacao</div>
-              <p className="mt-1 text-sm text-muted-foreground">Passos futuros continuam bloqueados.</p>
+              <div className="text-sm font-semibold">4. {t(i18n, "showcase.component.wizard.demo.confirmTitle")}</div>
+              <p className="mt-1 text-sm text-muted-foreground">{t(i18n, "showcase.component.wizard.demo.navConfirmText")}</p>
             </div>
           </SgWizardPage>
         </SgWizard>
@@ -268,25 +269,25 @@ export default function SgWizardPageDemo() {
           style={{ border: "1px solid rgba(59, 130, 246, 0.25)", borderRadius: 14, padding: 12 }}
         >
           <SgWizardPage
-            title="Posicao"
+            title={t(i18n, "showcase.component.wizard.demo.iconsPosition")}
             icon={<MapPin className="size-5" />}
             style={{ backgroundColor: "rgba(59, 130, 246, 0.06)" }}
           >
             <div className="rounded border border-border bg-foreground/5 p-4">
-              <div className="text-sm font-semibold">Passo 1 - Posicao</div>
-              <p className="mt-1 text-sm text-muted-foreground">Select the desired position.</p>
+              <div className="text-sm font-semibold">{t(i18n, "showcase.component.wizard.demo.stepLabel", { n: 1, name: t(i18n, "showcase.component.wizard.demo.iconsPosition") })}</div>
+              <p className="mt-1 text-sm text-muted-foreground">{t(i18n, "showcase.component.wizard.demo.positionText")}</p>
             </div>
           </SgWizardPage>
-          <SgWizardPage title="Categoria" icon={<Tag className="size-5" />}>
+          <SgWizardPage title={t(i18n, "showcase.component.wizard.demo.iconsCategory")} icon={<Tag className="size-5" />}>
             <div className="rounded border border-border bg-foreground/5 p-4">
-              <div className="text-sm font-semibold">Passo 2 - Categoria</div>
-              <p className="mt-1 text-sm text-muted-foreground">Choose the category.</p>
+              <div className="text-sm font-semibold">{t(i18n, "showcase.component.wizard.demo.stepLabel", { n: 2, name: t(i18n, "showcase.component.wizard.demo.iconsCategory") })}</div>
+              <p className="mt-1 text-sm text-muted-foreground">{t(i18n, "showcase.component.wizard.demo.categoryText")}</p>
             </div>
           </SgWizardPage>
-          <SgWizardPage title="Enviar" icon={<Send className="size-5" />}>
+          <SgWizardPage title={t(i18n, "showcase.component.wizard.demo.iconsSend")} icon={<Send className="size-5" />}>
             <div className="rounded border border-border bg-foreground/5 p-4">
-              <div className="text-sm font-semibold">Passo 3 - Enviar</div>
-              <p className="mt-1 text-sm text-muted-foreground">Revise e envie.</p>
+              <div className="text-sm font-semibold">{t(i18n, "showcase.component.wizard.demo.stepLabel", { n: 3, name: t(i18n, "showcase.component.wizard.demo.iconsSend") })}</div>
+              <p className="mt-1 text-sm text-muted-foreground">{t(i18n, "showcase.component.wizard.demo.sendText")}</p>
             </div>
           </SgWizardPage>
         </SgWizard>
@@ -301,28 +302,28 @@ export default function SgWizardPageDemo() {
           stepper="numbered"
           onFinish={() => {}}
         >
-          <SgWizardPage title="Introducao">
+          <SgWizardPage title={t(i18n, "showcase.component.wizard.demo.introTitle")}>
             <div className="rounded border border-border bg-foreground/5 p-4">
-              <div className="text-sm font-semibold">1. Introducao</div>
-              <p className="mt-1 text-sm text-muted-foreground">Conteudo introdutorio.</p>
+              <div className="text-sm font-semibold">1. {t(i18n, "showcase.component.wizard.demo.introTitle")}</div>
+              <p className="mt-1 text-sm text-muted-foreground">{t(i18n, "showcase.component.wizard.demo.numberedIntroText")}</p>
             </div>
           </SgWizardPage>
-          <SgWizardPage title="Detalhes">
+          <SgWizardPage title={t(i18n, "showcase.component.wizard.demo.detailsTitle")}>
             <div className="rounded border border-border bg-foreground/5 p-4">
-              <div className="text-sm font-semibold">2. Detalhes</div>
-              <p className="mt-1 text-sm text-muted-foreground">Preencha os detalhes.</p>
+              <div className="text-sm font-semibold">2. {t(i18n, "showcase.component.wizard.demo.detailsTitle")}</div>
+              <p className="mt-1 text-sm text-muted-foreground">{t(i18n, "showcase.component.wizard.demo.numberedDetailsText")}</p>
             </div>
           </SgWizardPage>
-          <SgWizardPage title="Revisao">
+          <SgWizardPage title={t(i18n, "showcase.component.wizard.demo.reviewTitle")}>
             <div className="rounded border border-border bg-foreground/5 p-4">
-              <div className="text-sm font-semibold">3. Revisao</div>
-              <p className="mt-1 text-sm text-muted-foreground">Revise as informacoes.</p>
+              <div className="text-sm font-semibold">3. {t(i18n, "showcase.component.wizard.demo.reviewTitle")}</div>
+              <p className="mt-1 text-sm text-muted-foreground">{t(i18n, "showcase.component.wizard.demo.numberedReviewText")}</p>
             </div>
           </SgWizardPage>
-          <SgWizardPage title="Confirmacao">
+          <SgWizardPage title={t(i18n, "showcase.component.wizard.demo.confirmTitle")}>
             <div className="rounded border border-border bg-foreground/5 p-4">
-              <div className="text-sm font-semibold">4. Confirmacao</div>
-              <p className="mt-1 text-sm text-muted-foreground">Confirme e finalize.</p>
+              <div className="text-sm font-semibold">4. {t(i18n, "showcase.component.wizard.demo.confirmTitle")}</div>
+              <p className="mt-1 text-sm text-muted-foreground">{t(i18n, "showcase.component.wizard.demo.numberedConfirmText")}</p>
             </div>
           </SgWizardPage>
         </SgWizard>
@@ -428,21 +429,21 @@ export default function SgWizardPageDemo() {
         description={t(i18n, "showcase.component.wizard.sections.enabled.description")}
       >
         <SgWizard stepper="numbered" initialStep={1} enabled={false} onFinish={() => {}}>
-          <SgWizardPage title="Dados">
-            <div className="rounded border border-border bg-foreground/5 p-4">Primeira etapa</div>
+          <SgWizardPage title={t(i18n, "showcase.component.wizard.demo.enabledData")}>
+            <div className="rounded border border-border bg-foreground/5 p-4">{t(i18n, "showcase.component.wizard.demo.enabledFirst")}</div>
           </SgWizardPage>
-          <SgWizardPage title="Revisão">
-            <div className="rounded border border-border bg-foreground/5 p-4">Segunda etapa</div>
+          <SgWizardPage title={t(i18n, "showcase.component.wizard.demo.reviewTitle")}>
+            <div className="rounded border border-border bg-foreground/5 p-4">{t(i18n, "showcase.component.wizard.demo.enabledSecond")}</div>
           </SgWizardPage>
-          <SgWizardPage title="Confirmação">
-            <div className="rounded border border-border bg-foreground/5 p-4">Terceira etapa</div>
+          <SgWizardPage title={t(i18n, "showcase.component.wizard.demo.confirmTitle")}>
+            <div className="rounded border border-border bg-foreground/5 p-4">{t(i18n, "showcase.component.wizard.demo.enabledThird")}</div>
           </SgWizardPage>
         </SgWizard>
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-wizard/samples/enabled.tsx.sample" />
       </Section>
       <Section
         title="Playground"
-        description="Sandbox para simular validacao, navegacao e submit do wizard."
+        description={t(i18n, "showcase.component.wizard.demo.playgroundDescription")}
       >
         <SgPlayground
           title="SgWizard Playground"

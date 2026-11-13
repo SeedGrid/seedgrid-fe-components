@@ -62,23 +62,25 @@ function DemoBox(props: { children: React.ReactNode; className?: string; height?
   );
 }
 
-const FAB_EXAMPLE_LINKS = [
-  { id: "exemplo-1", label: "1) Positions" },
-  { id: "exemplo-2", label: "2) Variants" },
-  { id: "exemplo-3", label: "3) Shapes & Sizes" },
-  { id: "exemplo-4", label: "4) Elevation" },
-  { id: "exemplo-5", label: "5) Hint" },
-  { id: "exemplo-6", label: "6) Actions - Linear Layout" },
-  { id: "exemplo-7", label: "7) Circle Layout" },
-  { id: "exemplo-8", label: "8) Semi-Circle Layout" },
-  { id: "exemplo-9", label: "9) Quarter-Circle Layout" },
-  { id: "exemplo-10", label: "10) Active Icon" },
-  { id: "exemplo-11", label: "11) Animations" },
-  { id: "exemplo-12", label: "12) Custom Color" },
-  { id: "exemplo-13", label: "13) Disabled & Loading" },
-  { id: "exemplo-14", label: "14) Drag & Drop" },
-  { id: "exemplo-15", label: "15) Playground" }
-];
+function getFabExampleLinks(i18n: ReturnType<typeof useShowcaseI18n>) {
+  return [
+    { id: "exemplo-1", label: `1) ${t(i18n, "showcase.component.fab.sections.positions.title")}` },
+    { id: "exemplo-2", label: `2) ${t(i18n, "showcase.component.fab.sections.variants.title")}` },
+    { id: "exemplo-3", label: `3) ${t(i18n, "showcase.component.fab.sections.shapesAndSizes.title")}` },
+    { id: "exemplo-4", label: `4) ${t(i18n, "showcase.component.fab.sections.elevation.title")}` },
+    { id: "exemplo-5", label: `5) ${t(i18n, "showcase.component.fab.sections.hint.title")}` },
+    { id: "exemplo-6", label: `6) ${t(i18n, "showcase.component.fab.sections.actions.title")}` },
+    { id: "exemplo-7", label: `7) ${t(i18n, "showcase.component.fab.sections.circle.title")}` },
+    { id: "exemplo-8", label: `8) ${t(i18n, "showcase.component.fab.sections.semiCircle.title")}` },
+    { id: "exemplo-9", label: `9) ${t(i18n, "showcase.component.fab.sections.quarterCircle.title")}` },
+    { id: "exemplo-10", label: `10) ${t(i18n, "showcase.component.fab.sections.activeIcon.title")}` },
+    { id: "exemplo-11", label: `11) ${t(i18n, "showcase.component.fab.sections.animations.title")}` },
+    { id: "exemplo-12", label: `12) ${t(i18n, "showcase.component.fab.sections.customColor.title")}` },
+    { id: "exemplo-13", label: `13) ${t(i18n, "showcase.component.fab.sections.disabled.title")}` },
+    { id: "exemplo-14", label: `14) ${t(i18n, "showcase.component.fab.sections.dragDrop.title")}` },
+    { id: "exemplo-15", label: `15) ${t(i18n, "showcase.component.fab.sections.playground.title")}` }
+  ];
+}
 
 export default function SgFloatActionButtonPage() {
   const i18n = useShowcaseI18n();
@@ -232,7 +234,7 @@ export default function SgFloatActionButtonPage() {
           stickyHeaderRef={stickyHeaderRef}
           title={t(i18n, "showcase.component.fab.title")}
           subtitle={t(i18n, "showcase.component.fab.subtitle")}
-          exampleLinks={FAB_EXAMPLE_LINKS}
+          exampleLinks={getFabExampleLinks(i18n)}
           onAnchorClick={handleAnchorClick}
         />
 
@@ -372,8 +374,8 @@ export default function SgFloatActionButtonPage() {
       {/* ── Circle Layout ── */}
       <Section
         id="exemplo-7"
-        title="7) Circle Layout"
-        description="Actions arranged in a full circle around the button"
+        title={`7) ${t(i18n, "showcase.component.fab.sections.circle.title")}`}
+        description={t(i18n, "showcase.component.fab.sections.circle.description")}
       >
         <DemoBox height="h-96" className="flex items-center justify-center">
           <p className="absolute top-2 left-3 text-xs text-muted-foreground font-medium">type=&quot;circle&quot;</p>
@@ -392,8 +394,8 @@ export default function SgFloatActionButtonPage() {
       {/* ── Semi-Circle Layout ── */}
       <Section
         id="exemplo-8"
-        title="8) Semi-Circle Layout"
-        description="Actions arranged in a semi-circle (180°) in different directions"
+        title={`8) ${t(i18n, "showcase.component.fab.sections.semiCircle.title")}`}
+        description={t(i18n, "showcase.component.fab.sections.semiCircle.description")}
       >
         <div className="grid grid-cols-2 gap-8 w-full">
           <DemoBox height="h-72" className="flex items-end justify-center">
@@ -446,8 +448,8 @@ export default function SgFloatActionButtonPage() {
       {/* ── Quarter-Circle Layout ── */}
       <Section
         id="exemplo-9"
-        title="9) Quarter-Circle Layout"
-        description="Actions arranged in a quarter circle (90°) in different directions"
+        title={`9) ${t(i18n, "showcase.component.fab.sections.quarterCircle.title")}`}
+        description={t(i18n, "showcase.component.fab.sections.quarterCircle.description")}
       >
         <div className="grid grid-cols-2 gap-8 w-full">
           <DemoBox height="h-64" className="flex items-end justify-center">
@@ -501,8 +503,8 @@ export default function SgFloatActionButtonPage() {
       {/* ── Active Icon ── */}
       <Section
         id="exemplo-10"
-        title="10) Active Icon"
-        description="Show a different icon when the menu is open"
+        title={`10) ${t(i18n, "showcase.component.fab.sections.activeIcon.title")}`}
+        description={t(i18n, "showcase.component.fab.sections.activeIcon.description")}
       >
         <DemoBox height="h-72" className="flex items-end justify-center">
           <p className="absolute top-2 left-3 text-xs text-muted-foreground font-medium">activeIcon changes when open</p>

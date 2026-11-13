@@ -215,13 +215,13 @@ const RADIO_GROUP_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", Radio
     ]
   },
   fr: {
-    subtitle: "Groupe de boutons radio avec orientation horizontale/verticale, icones et integration React Hook Form.",
+    subtitle: "Groupe de boutons radio avec orientation horizontale/verticale, icônes et intégration React Hook Form.",
     examplesLabel: "Exemples",
-    propsLinkLabel: "Reference des props",
-    propsTitle: "Reference des props",
+    propsLinkLabel: "Référence des props",
+    propsTitle: "Référence des props",
     propsColProp: "Prop",
     propsColType: "Type",
-    propsColDefault: "Defaut",
+    propsColDefault: "Par défaut",
     propsColDescription: "Description",
     playgroundTitle: "SgRadioGroup Playground",
     sectionTitles: [
@@ -236,7 +236,7 @@ const RADIO_GROUP_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", Radio
       "9) Lecture seule",
       "10) Obligatoire avec validation",
       "11) Horizontal avec icônes colorées",
-      "12) Mise en avant du style de selection (liste)",
+      "12) Mise en avant du style de sélection (liste)",
       "13) Avec GroupBox personnalisé",
       "14) Formulaire - Register",
       "15) Playground interactif",

@@ -679,6 +679,9 @@ export function SgClock(props: SgClockProps) {
   const resolvedDraggable = useSgAutoDraggable(cardProps?.draggable);
   const resolvedCardTitle = cardTitle ?? t(i18n, "components.gadgets.clock.title");
 
+  // Sem id/dragPersistKey cada instancia precisa da propria chave: uma chave unica compartilhada fazia os
+  // relogios gravarem a posicao uns por cima dos outros (o arrastado perdia o lugar ao recarregar).
+  const instanceId = React.useId();
   const resolvedDragPersistKey = React.useMemo(() => {
     const explicitPersistKey = cardProps?.dragPersistKey;
     if (typeof explicitPersistKey === "string" && explicitPersistKey.trim().length > 0) {
@@ -690,8 +693,8 @@ export function SgClock(props: SgClockProps) {
       return `sg-clock:${cardId.trim()}`;
     }
 
-    return "sg-clock";
-  }, [cardProps?.dragPersistKey, cardProps?.id]);
+    return `sg-clock:auto:${instanceId}`;
+  }, [cardProps?.dragPersistKey, cardProps?.id, instanceId]);
   const mergedCardClassName = cn("max-w-full self-start", cardProps?.className);
   const enableDiscardOverflow = clockStyle === "digital" && digitalStyle === "discard";
   const mergedCardBodyClassName = cn(

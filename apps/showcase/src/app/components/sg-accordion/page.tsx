@@ -38,112 +38,114 @@ function Section(props: { title: string; description?: string; children: React.R
 
 
 
-const VERTICAL_ITEMS: SgAccordionItem[] = [
+type I18n = ReturnType<typeof useShowcaseI18n>;
+
+const buildVerticalItems = (i18n: I18n): SgAccordionItem[] => [
   {
     id: "personal",
-    title: "Dados pessoais",
+    title: t(i18n, `${K}.demo.personalTitle`),
     content: (
       <div className="space-y-2 text-sm">
-        <p>Nome completo, email e telefone para contato.</p>
-        <p className="text-muted-foreground">Edite essas informacoes no perfil do usuario.</p>
+        <p>{t(i18n, `${K}.demo.personalLine1`)}</p>
+        <p className="text-muted-foreground">{t(i18n, `${K}.demo.personalLine2`)}</p>
       </div>
     )
   },
   {
     id: "address",
-    title: "Endereco",
+    title: t(i18n, `${K}.demo.addressTitle`),
     content: (
       <div className="space-y-2 text-sm">
-        <p>Rua, numero, cidade, estado e CEP.</p>
-        <p className="text-muted-foreground">Utilizado para faturamento e entregas.</p>
+        <p>{t(i18n, `${K}.demo.addressLine1`)}</p>
+        <p className="text-muted-foreground">{t(i18n, `${K}.demo.addressLine2`)}</p>
       </div>
     )
   },
   {
     id: "billing",
-    title: "Faturamento",
+    title: t(i18n, `${K}.demo.billingTitle`),
     content: (
       <div className="space-y-2 text-sm">
-        <p>Forma de pagamento, ciclo de cobranca e historico de notas.</p>
-        <p className="text-muted-foreground">Atualizacoes podem levar alguns minutos para refletir.</p>
+        <p>{t(i18n, `${K}.demo.billingLine1`)}</p>
+        <p className="text-muted-foreground">{t(i18n, `${K}.demo.billingLine2`)}</p>
       </div>
     )
   }
 ];
 
-const HORIZONTAL_ITEMS: SgAccordionItem[] = [
+const buildHorizontalItems = (i18n: I18n): SgAccordionItem[] => [
   {
     id: "overview",
-    title: "Visao geral",
+    title: t(i18n, `${K}.demo.overviewTitle`),
     content: (
       <div className="space-y-2 text-sm">
-        <h3 className="text-base font-semibold">Visao geral</h3>
-        <p>Indicadores principais de utilizacao, consumo e disponibilidade.</p>
+        <h3 className="text-base font-semibold">{t(i18n, `${K}.demo.overviewTitle`)}</h3>
+        <p>{t(i18n, `${K}.demo.overviewText`)}</p>
       </div>
     )
   },
   {
     id: "security",
-    title: "Seguranca",
+    title: t(i18n, `${K}.demo.securityTitle`),
     content: (
       <div className="space-y-2 text-sm">
-        <h3 className="text-base font-semibold">Seguranca</h3>
-        <p>Politicas de senha, MFA e tentativas de autenticacao.</p>
+        <h3 className="text-base font-semibold">{t(i18n, `${K}.demo.securityTitle`)}</h3>
+        <p>{t(i18n, `${K}.demo.securityText`)}</p>
       </div>
     )
   },
   {
     id: "integrations",
-    title: "Integracoes",
+    title: t(i18n, `${K}.demo.integrationsTitle`),
     content: (
       <div className="space-y-2 text-sm">
-        <h3 className="text-base font-semibold">Integracoes</h3>
-        <p>Conexoes com APIs, webhooks e provedores externos.</p>
+        <h3 className="text-base font-semibold">{t(i18n, `${K}.demo.integrationsTitle`)}</h3>
+        <p>{t(i18n, `${K}.demo.integrationsText`)}</p>
       </div>
     )
   }
 ];
 
-const CUSTOM_ITEMS: SgAccordionItem[] = [
+const buildCustomItems = (i18n: I18n): SgAccordionItem[] => [
   {
     id: "mail",
-    title: "Email",
+    title: t(i18n, `${K}.demo.mailTitle`),
     icon: <Mail size={14} />,
-    end: <span className="rounded bg-muted px-1.5 py-0.5 text-[10px] uppercase">novo</span>,
+    end: <span className="rounded bg-muted px-1.5 py-0.5 text-[10px] uppercase">{t(i18n, `${K}.demo.newBadge`)}</span>,
     headerBackgroundColor: "rgb(var(--sg-info-100, 224 242 254))",
-    content: <p className="text-sm">Configuracoes de SMTP, remetente padrao e templates.</p>
+    content: <p className="text-sm">{t(i18n, `${K}.demo.mailText`)}</p>
   },
   {
     id: "lock",
-    title: "Permissoes",
+    title: t(i18n, `${K}.demo.permissionsTitle`),
     icon: <ShieldCheck size={14} />,
-    content: <p className="text-sm">Controle de perfis, papeis e trilhas de auditoria.</p>
+    content: <p className="text-sm">{t(i18n, `${K}.demo.permissionsText`)}</p>
   },
   {
     id: "blocked",
-    title: "Modulo indisponivel",
+    title: t(i18n, `${K}.demo.blockedTitle`),
     icon: <TriangleAlert size={14} />,
     enabled: false,
-    content: <p className="text-sm">Conteudo bloqueado.</p>
+    content: <p className="text-sm">{t(i18n, `${K}.demo.blockedText`)}</p>
   }
 ];
 
-const COLOR_EXAMPLE_ITEMS: SgAccordionItem[] = [
+const buildColorExampleItems = (i18n: I18n): SgAccordionItem[] => [
   {
     id: "general",
-    title: "Geral",
-    content: <p className="text-sm">Configuracoes gerais do modulo.</p>
+    title: t(i18n, `${K}.demo.generalTitle`),
+    content: <p className="text-sm">{t(i18n, `${K}.demo.generalText`)}</p>
   },
   {
     id: "security",
-    title: "Seguranca",
-    content: <p className="text-sm">Politicas e regras de acesso.</p>
+    title: t(i18n, `${K}.demo.securityTitle`),
+    content: <p className="text-sm">{t(i18n, `${K}.demo.accessText`)}</p>
   },
   {
     id: "billing",
-    title: "Faturamento (override por item)",
+    title: t(i18n, `${K}.demo.overrideTitle`),
     headerBackgroundColor: "rgb(var(--sg-warning-100, 254 249 195))",
-    content: <p className="text-sm">Este item ignora a cor global do header.</p>
+    content: <p className="text-sm">{t(i18n, `${K}.demo.overrideText`)}</p>
   }
 ];
 
@@ -465,6 +467,10 @@ export default function SgAccordionPage() {
   const [controlled, setControlled] = React.useState<number[]>([0]);
   const [multiControlled, setMultiControlled] = React.useState<number[]>([0, 2]);
   const [headerColorExample, setHeaderColorExample] = React.useState("#eff6ff");
+  const VERTICAL_ITEMS = React.useMemo(() => buildVerticalItems(i18n), [i18n.locale]);
+  const HORIZONTAL_ITEMS = React.useMemo(() => buildHorizontalItems(i18n), [i18n.locale]);
+  const CUSTOM_ITEMS = React.useMemo(() => buildCustomItems(i18n), [i18n.locale]);
+  const COLOR_EXAMPLE_ITEMS = React.useMemo(() => buildColorExampleItems(i18n), [i18n.locale]);
 
   return (
     <I18NReady>
@@ -501,10 +507,10 @@ export default function SgAccordionPage() {
           onActiveIndexChange={setMultiControlled}
         />
         <div className="flex flex-wrap gap-2">
-          <SgButton size="sm" appearance="outline" onClick={() => setMultiControlled([0])}>Apenas 1</SgButton>
-          <SgButton size="sm" appearance="outline" onClick={() => setMultiControlled([1, 2])}>2 e 3</SgButton>
-          <SgButton size="sm" appearance="outline" onClick={() => setMultiControlled([0, 1, 2])}>Todos</SgButton>
-          <SgButton size="sm" appearance="outline" onClick={() => setMultiControlled([])}>None</SgButton>
+          <SgButton size="sm" appearance="outline" onClick={() => setMultiControlled([0])}>{t(i18n, `${K}.demo.onlyFirst`)}</SgButton>
+          <SgButton size="sm" appearance="outline" onClick={() => setMultiControlled([1, 2])}>{t(i18n, `${K}.demo.secondThird`)}</SgButton>
+          <SgButton size="sm" appearance="outline" onClick={() => setMultiControlled([0, 1, 2])}>{t(i18n, `${K}.demo.all`)}</SgButton>
+          <SgButton size="sm" appearance="outline" onClick={() => setMultiControlled([])}>{t(i18n, `${K}.demo.none`)}</SgButton>
         </div>
         <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-accordion/samples/multiple-collapsible.tsx.sample" />
       </Section>
@@ -533,10 +539,10 @@ export default function SgAccordionPage() {
           onActiveIndexChange={setControlled}
         />
         <div className="flex flex-wrap gap-2">
-          <SgButton size="sm" appearance="outline" onClick={() => setControlled([0])}>Abrir 1</SgButton>
-          <SgButton size="sm" appearance="outline" onClick={() => setControlled([1])}>Abrir 2</SgButton>
-          <SgButton size="sm" appearance="outline" onClick={() => setControlled([2])}>Abrir 3</SgButton>
-          <SgButton size="sm" appearance="outline" onClick={() => setControlled([])}>Fechar todos</SgButton>
+          <SgButton size="sm" appearance="outline" onClick={() => setControlled([0])}>{t(i18n, `${K}.demo.open1`)}</SgButton>
+          <SgButton size="sm" appearance="outline" onClick={() => setControlled([1])}>{t(i18n, `${K}.demo.open2`)}</SgButton>
+          <SgButton size="sm" appearance="outline" onClick={() => setControlled([2])}>{t(i18n, `${K}.demo.open3`)}</SgButton>
+          <SgButton size="sm" appearance="outline" onClick={() => setControlled([])}>{t(i18n, `${K}.demo.closeAll`)}</SgButton>
         </div>
         <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-accordion/samples/controlado-por-estado.tsx.sample" />
       </Section>

@@ -35,11 +35,22 @@ function CodeBlock(props: { sampleFile: string }) {
 export default function SgNotificationBellPage() {
   const i18n = useShowcaseI18n();
   const aiComponent = useAiManifestComponent("SgNotificationBell");
-  const demoBasic = React.useMemo(() => createDemoFetcher(), []);
+  const seedText = React.useMemo(
+    () => ({
+      reportTitle: t(i18n, "showcase.component.notificationBell.demo.seedReportTitle"),
+      reportMessage: t(i18n, "showcase.component.notificationBell.demo.seedReportMessage"),
+      backupTitle: t(i18n, "showcase.component.notificationBell.demo.seedBackupTitle"),
+      backupMessage: t(i18n, "showcase.component.notificationBell.demo.seedBackupMessage"),
+      inviteTitle: t(i18n, "showcase.component.notificationBell.demo.seedInviteTitle"),
+      inviteMessage: t(i18n, "showcase.component.notificationBell.demo.seedInviteMessage")
+    }),
+    [i18n.locale]
+  );
+  const demoBasic = React.useMemo(() => createDemoFetcher(true, seedText), [seedText]);
   const pulseBasic = React.useMemo(() => createDemoPulse(), []);
-  const demoTypes = React.useMemo(() => createDemoFetcher(), []);
-  const demoToggle = React.useMemo(() => createDemoFetcher(), []);
-  const demoNoToggle = React.useMemo(() => createDemoFetcher(), []);
+  const demoTypes = React.useMemo(() => createDemoFetcher(true, seedText), [seedText]);
+  const demoToggle = React.useMemo(() => createDemoFetcher(true, seedText), [seedText]);
+  const demoNoToggle = React.useMemo(() => createDemoFetcher(true, seedText), [seedText]);
   const [opened, setOpened] = React.useState("-");
   const stickyHeaderRef = React.useRef<HTMLDivElement | null>(null);
   const [anchorOffset, setAnchorOffset] = React.useState(320);
@@ -211,11 +222,11 @@ export default function SgNotificationBellPage() {
               size="sm"
               appearance="outline"
               onClick={() => {
-                const id = demoBasic.notify("report.ready", "Novo relatório", "Acabou de ficar pronto.");
+                const id = demoBasic.notify("report.ready", t(i18n, "showcase.component.notificationBell.demo.newReportTitle"), t(i18n, "showcase.component.notificationBell.demo.newReportMessage"));
                 pulseBasic.publish("user-notification.created", { notificationPublicId: id, type: "report.ready" });
               }}
             >
-              Simular notificação
+              {t(i18n, "showcase.component.notificationBell.demo.simulate")}
             </SgButton>
           </div>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-notification-bell/samples/basico.tsx.sample" />
@@ -230,13 +241,13 @@ export default function SgNotificationBellPage() {
             <SgNotificationBell
               fetcher={demoTypes}
               types={{
-                "report.ready": { icon: <FileText className="size-4" />, onOpen: (n) => setOpened(`baixar relatório ${n.publicId}`) },
-                "backup.finished": { icon: <CheckCircle2 className="size-4" />, onOpen: (n) => setOpened(`baixar backup ${n.publicId}`) }
+                "report.ready": { icon: <FileText className="size-4" />, onOpen: (n) => setOpened(t(i18n, "showcase.component.notificationBell.demo.downloadReport", { id: n.publicId })) },
+                "backup.finished": { icon: <CheckCircle2 className="size-4" />, onOpen: (n) => setOpened(t(i18n, "showcase.component.notificationBell.demo.downloadBackup", { id: n.publicId })) }
               }}
-              onOpen={(n) => setOpened((prev) => `${prev} (abriu: ${n.title})`)}
-              onNotificationDelete={(n) => setOpened(`excluiu: ${n.title}`)}
+              onOpen={(n) => setOpened((prev) => t(i18n, "showcase.component.notificationBell.demo.openedSuffix", { prev, title: n.title }))}
+              onNotificationDelete={(n) => setOpened(t(i18n, "showcase.component.notificationBell.demo.deletedLabel", { title: n.title }))}
             />
-            <span className="text-xs text-muted-foreground">Último evento: {opened}</span>
+            <span className="text-xs text-muted-foreground">{t(i18n, "showcase.component.notificationBell.demo.lastEvent", { value: opened })}</span>
           </div>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-notification-bell/samples/tipos.tsx.sample" />
         </Section>
@@ -264,9 +275,9 @@ export default function SgNotificationBellPage() {
         </Section>
 
         <section className="rounded-lg border border-border p-6">
-          <h2 className="text-lg font-semibold">Uso real (não executa na demo)</h2>
+          <h2 className="text-lg font-semibold">{t(i18n, "showcase.component.notificationBell.demo.realUseTitle")}</h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            Na sua aplicação o sino conversa com as rotas da extension user-notifications e com o Pulse; esta página usa uma caixa simulada em memória.
+            {t(i18n, "showcase.component.notificationBell.demo.realUseText")}
           </p>
           <div className="mt-4">
             <CodeBlock sampleFile="apps/showcase/src/app/components/sg-notification-bell/samples/uso-real.tsx.sample" />

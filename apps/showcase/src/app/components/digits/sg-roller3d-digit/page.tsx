@@ -193,7 +193,7 @@ const PROPS: ShowcasePropRow[] = [
   { prop: "className", type: "string", defaultValue: "-", description: "Classes CSS adicionais no container externo." },
 ];
 
-function NameAnimator() {
+function NameAnimator(props: { animateLabel: string }) {
   const NAMES_LIST = ["LUCIANO", "MARTA"];
   const [nameIdx, setNameIdx] = React.useState(0);
   const [step, setStep] = React.useState(7);
@@ -229,7 +229,7 @@ function NameAnimator() {
           <SgRoller3DDigit key={i} value={ch} items={ALPHA_WITH_SPACE} fontSize={28} transitionMs={110} />
         ))}
       </div>
-      <SgButton onClick={animate} size="sm">Animar nome</SgButton>
+      <SgButton onClick={animate} size="sm">{props.animateLabel}</SgButton>
     </div>
   );
 }
@@ -273,8 +273,8 @@ export default function SgRoller3DDigitShowcase() {
           <div className="flex items-center gap-4">
             <SgRoller3DDigit value={digit} fontSize={32} />
             <div className="flex flex-col gap-2">
-              <SgButton onClick={nextDigit} size="sm">Next (+1)</SgButton>
-              <SgButton onClick={prevDigit} size="sm" severity="secondary">Previous (-1)</SgButton>
+              <SgButton onClick={nextDigit} size="sm">{t(i18n, "showcase.component.roller3dDigit.buttons.next")}</SgButton>
+              <SgButton onClick={prevDigit} size="sm" severity="secondary">{t(i18n, "showcase.component.roller3dDigit.buttons.previous")}</SgButton>
             </div>
           </div>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-roller3d-digit/samples/basico-0-9.tsx.sample" />
@@ -283,7 +283,7 @@ export default function SgRoller3DDigitShowcase() {
         <Section title={t(i18n, `${K}.section2Title`)} description={t(i18n, `${K}.section2Description`)}>
           <div className="flex items-center gap-4">
             <SgRoller3DDigit value={minuteVal} items={MINUTES} fontSize={22} />
-            <SgButton onClick={nextMinute} size="sm">+1 minuto</SgButton>
+            <SgButton onClick={nextMinute} size="sm">{t(i18n, "showcase.component.roller3dDigit.buttons.plusOneMinute")}</SgButton>
           </div>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-roller3d-digit/samples/2-digit-padded-value.tsx.sample" />
         </Section>
@@ -291,7 +291,7 @@ export default function SgRoller3DDigitShowcase() {
         <Section title={t(i18n, `${K}.section3Title`)} description={t(i18n, `${K}.section3Description`)}>
           <div className="flex items-center gap-4">
             <SgRoller3DDigit value={letter} items={ALPHA} fontSize={32} />
-            <SgButton onClick={nextLetter} size="sm">Proxima letra</SgButton>
+            <SgButton onClick={nextLetter} size="sm">{t(i18n, "showcase.component.roller3dDigit.buttons.nextLetter")}</SgButton>
           </div>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-roller3d-digit/samples/letras-a-z.tsx.sample" />
         </Section>
@@ -300,7 +300,7 @@ export default function SgRoller3DDigitShowcase() {
           title={t(i18n, `${K}.section4Title`)}
           description={t(i18n, `${K}.section4Description`)}
         >
-          <NameAnimator />
+          <NameAnimator animateLabel={t(i18n, "showcase.component.roller3dDigit.buttons.animateName")} />
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-roller3d-digit/samples/animacao-de-nomes.tsx.sample" />
         </Section>
 
@@ -320,7 +320,7 @@ export default function SgRoller3DDigitShowcase() {
           <div className="flex flex-wrap items-center gap-4">
             <SgRoller3DDigit value={slowMode ? "9" : "0"} transitionMs={150} fontSize={28} />
             <SgRoller3DDigit value={slowMode ? "9" : "0"} transitionMs={1500} fontSize={28} />
-            <SgButton size="sm" onClick={() => setSlowMode((v) => !v)}>Alternar 0 e 9</SgButton>
+            <SgButton size="sm" onClick={() => setSlowMode((v) => !v)}>{t(i18n, "showcase.component.roller3dDigit.buttons.toggle0And9")}</SgButton>
           </div>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-roller3d-digit/samples/duracao-da-transicao.tsx.sample" />
         </Section>

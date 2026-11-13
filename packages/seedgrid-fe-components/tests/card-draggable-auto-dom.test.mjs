@@ -99,3 +99,27 @@ for (const [name, Comp, props] of [
     assert.equal(r.transform, "");
   });
 }
+
+test("SgClock sem id/dragPersistKey: cada relogio grava a posicao na propria chave", async () => {
+  const harness = setupDomHarness();
+  try {
+    setMedia(false);
+    globalThis.localStorage.clear();
+    await harness.render(
+      React.createElement(
+        "div",
+        null,
+        React.createElement(SgClock, clockProps),
+        React.createElement(SgClock, clockProps),
+        React.createElement(SgClock, clockProps)
+      )
+    );
+    await flushDom();
+    await flushDom();
+    const keys = Object.keys(globalThis.localStorage).filter((k) => k.startsWith("sg-clock"));
+    assert.equal(keys.length, 3, `chaves: ${keys.join(", ")}`);
+    assert.ok(!keys.includes("sg-clock"));
+  } finally {
+    harness.restore();
+  }
+});

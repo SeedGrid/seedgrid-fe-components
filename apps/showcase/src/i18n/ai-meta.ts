@@ -4,13 +4,18 @@
 import dictionary from "./ai-meta.json";
 
 type Entry = Partial<Record<"en-US" | "pt-PT" | "es" | "fr", string>>;
-const DICTIONARY = dictionary as Record<string, Entry>;
+const RAW_DICTIONARY = dictionary as Record<string, Entry>;
+// Chaves normalizadas (CRLF -> LF): o manifesto pode ter quebras de linha diferentes das do dicionario.
+const normalizeKey = (text: string) => text.replace(/\r\n/g, "\n");
+const DICTIONARY: Record<string, Entry> = Object.fromEntries(
+  Object.entries(RAW_DICTIONARY).map(([key, entry]) => [normalizeKey(key), entry])
+);
 
 export function aiMetaText(locale: string, pt: string): string;
 export function aiMetaText(locale: string, pt: string | undefined): string | undefined;
 export function aiMetaText(locale: string, pt: string | undefined): string | undefined {
   if (!pt || locale === "pt-BR") return pt;
-  const entry = DICTIONARY[pt];
+  const entry = DICTIONARY[normalizeKey(pt)];
   const value = entry ? (entry as Record<string, string | undefined>)[locale] : undefined;
   return value && value.trim() ? value : pt;
 }

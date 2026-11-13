@@ -153,10 +153,10 @@ export default function SgInputTextSearchPage() {
                 </tr>
               </thead>
               <tbody className="divide-y">
-                <tr><td className="py-2 pr-4 font-mono text-xs">minChars</td><td className="py-2 pr-4">number</td><td className="py-2 pr-4">3</td><td className="py-2">Minimum characters (after trim) before onSearchChange fires; 0 also fires (clearing).</td></tr>
-                <tr><td className="py-2 pr-4 font-mono text-xs">debounceMs</td><td className="py-2 pr-4">number</td><td className="py-2 pr-4">350</td><td className="py-2">Debounce delay in milliseconds.</td></tr>
-                <tr><td className="py-2 pr-4 font-mono text-xs">onChange</td><td className="py-2 pr-4">(value: string) =&gt; void</td><td className="py-2 pr-4">-</td><td className="py-2">Immediate, fired on every keystroke with the raw value.</td></tr>
-                <tr><td className="py-2 pr-4 font-mono text-xs">onSearchChange</td><td className="py-2 pr-4">(value: string) =&gt; void</td><td className="py-2 pr-4">-</td><td className="py-2">Debounced, fired with the normalized term (required).</td></tr>
+                <tr><td className="py-2 pr-4 font-mono text-xs">minChars</td><td className="py-2 pr-4">number</td><td className="py-2 pr-4">3</td><td className="py-2">{t(i18n, `${K}.propsRows.minChars`)}</td></tr>
+                <tr><td className="py-2 pr-4 font-mono text-xs">debounceMs</td><td className="py-2 pr-4">number</td><td className="py-2 pr-4">350</td><td className="py-2">{t(i18n, `${K}.propsRows.debounceMs`)}</td></tr>
+                <tr><td className="py-2 pr-4 font-mono text-xs">onChange</td><td className="py-2 pr-4">(value: string) =&gt; void</td><td className="py-2 pr-4">-</td><td className="py-2">{t(i18n, `${K}.propsRows.onChange`)}</td></tr>
+                <tr><td className="py-2 pr-4 font-mono text-xs">onSearchChange</td><td className="py-2 pr-4">(value: string) =&gt; void</td><td className="py-2 pr-4">-</td><td className="py-2">{t(i18n, `${K}.propsRows.onSearchChange`)}</td></tr>
               </tbody>
             </table>
           </div>

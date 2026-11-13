@@ -3616,5 +3616,29 @@
     "en": "true only with the connection open and signed. false = the screen uses the fallback polling.",
     "es": "true solo con la conexión abierta y firmada. false = la pantalla usa el polling de respaldo.",
     "fr": "true uniquement avec la connexion ouverte et signée. false = l'écran utilise le polling de secours."
+  },
+  "Conjunto de caracteres validos para o SgRoller3DDigit. Ignorado quando stringAnimatorStyle != \"roller3d\".": {
+    "pt": "Conjunto de caracteres válidos para o SgRoller3DDigit. Ignorado quando stringAnimatorStyle != \"roller3d\".",
+    "en": "Set of valid characters for SgRoller3DDigit. Ignored when stringAnimatorStyle != \"roller3d\".",
+    "es": "Conjunto de caracteres válidos para SgRoller3DDigit. Se ignora cuando stringAnimatorStyle != \"roller3d\".",
+    "fr": "Ensemble de caractères valides pour SgRoller3DDigit. Ignoré lorsque stringAnimatorStyle != \"roller3d\"."
+  },
+  "Defines orientation and opening direction in a single prop.": {
+    "pt": "Define orientação e direção de abertura em uma única prop.",
+    "en": "Defines orientation and opening direction in a single prop.",
+    "es": "Define la orientación y la dirección de apertura en una sola prop.",
+    "fr": "Définit l'orientation et la direction d'ouverture en une seule prop."
+  },
+  "Initial zone when used with dock.": {
+    "pt": "Zona inicial quando usado com dock.",
+    "en": "Initial zone when used with dock.",
+    "es": "Zona inicial cuando se usa con dock.",
+    "fr": "Zone initiale lorsqu'il est utilisé avec le dock."
+  },
+  "Button color variant.": {
+    "pt": "Variante de cor do botão.",
+    "en": "Button color variant.",
+    "es": "Variante de color del botón.",
+    "fr": "Variante de couleur du bouton."
   }
 }
