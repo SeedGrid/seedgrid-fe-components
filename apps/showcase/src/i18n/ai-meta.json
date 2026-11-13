@@ -6675,7 +6675,7 @@
   },
   "Mostra e aceita segundos.": {
     "en-US": "Shows and accepts seconds.",
-    "pt-PT": "Mostra é aceita segundos.",
+    "pt-PT": "Mostra e aceita segundos.",
     "es": "Muestra y acepta segundos.",
     "fr": "Affiche et accepte les secondes."
   },
@@ -8101,7 +8101,7 @@
   },
   "Rolagem infinita: sem paginador, ao chegar perto do fim da lista avanca a pagina (rows) e acrescenta os proximos registros, com indicador de carregando e de fim da lista. Padrao ligado quando a lista e exibida como cartoes (abaixo de 600 px no modo automatico) e desligado na tabela. Exige paginator. Com lazy, o pai acrescenta a proxima pagina a value (first/rows/page vem em onPage/onLoadMore).": {
     "en-US": "Infinite scroll: without a paginator, when nearing the end of the list it advances the page (rows) and appends the next records, with loading and end-of-list indicators. Enabled by default when the list is displayed as cards (below 600 px in automatic mode) and disabled in the table. Requires paginator. With lazy, the parent appends the next page to value (first/rows/page come in onPage/onLoadMore).",
-    "pt-PT": "Deslocamento infinito: sem paginador, ao chegar perto do fim da lista avança a página (rows) e acrescenta os registos seguintes, com indicador de carregamento e de fim da lista. Ativado por predefinição quando a lista é apresentada como cartões (abaixo de 600 px no modo automático) é desativado na tabela. Requer paginator. Com lazy, o componente pai acrescenta a página seguinte a value (first/rows/page vêm em onPage/onLoadMore).",
+    "pt-PT": "Deslocamento infinito: sem paginador, ao chegar perto do fim da lista avança a página (rows) e acrescenta os registos seguintes, com indicador de carregamento e de fim da lista. Ativado por predefinição quando a lista é apresentada como cartões (abaixo de 600 px no modo automático) e desativado na tabela. Requer paginator. Com lazy, o componente pai acrescenta a página seguinte a value (first/rows/page vêm em onPage/onLoadMore).",
     "es": "Desplazamiento infinito: sin paginador, al acercarse al final de la lista avanza la página (rows) y añade los siguientes registros, con indicador de carga y de fin de lista. Activado por defecto cuando la lista se muestra como tarjetas (por debajo de 600 px en modo automático) y desactivado en la tabla. Requiere paginator. Con lazy, el padre añade la siguiente página a value (first/rows/page llegan en onPage/onLoadMore).",
     "fr": "Défilement infini : sans paginateur, à l'approche de la fin de la liste, avance d'une page (rows) et ajoute les enregistrements suivants, avec indicateurs de chargement et de fin de liste. Activé par défaut lorsque la liste est affichée sous forme de cartes (sous 600 px en mode automatique) et désactivé dans le tableau. Nécessite paginator. Avec lazy, le parent ajoute la page suivante à value (first/rows/page arrivent dans onPage/onLoadMore).",
     "pt-BR": "Rolagem infinita: sem paginador, ao chegar perto do fim da lista avança a página (rows) e acrescenta os próximos registros, com indicador de carregando e de fim da lista. Padrão ligado quando a lista é exibida como cartões (abaixo de 600 px no modo automático) e desligado na tabela. Exige paginator. Com lazy, o pai acrescenta a próxima página a value (first/rows/page vem em onPage/onLoadMore)."
