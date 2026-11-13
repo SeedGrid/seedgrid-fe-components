@@ -570,7 +570,7 @@
     "fr": "Personnalisation visuelle avancée."
   },
   "Customização visual.": {
-    "pt": "Customização visual.",
+    "pt": "Personalização visual.",
     "en": "Visual customization.",
     "es": "Personalización visual.",
     "fr": "Personnalisation visuelle."
@@ -648,7 +648,7 @@
     "fr": "Dimension du panneau (un nombre devient %)."
   },
   "Direcao de expansao/retracao.": {
-    "pt": "Direção de expansão/retracao.",
+    "pt": "Direção de expansão/retração.",
     "en": "Expansion/retraction direction.",
     "es": "Dirección de expansión/retracción.",
     "fr": "Direction d'expansion/rétractation."
@@ -848,7 +848,7 @@
   "Fallback quando value está vazio.": {
     "pt": "Fallback quando value está vazio.",
     "en": "Fallback when value is empty.",
-    "es": "Reserva cuando el valor está vacío.",
+    "es": "Valor alternativo cuando value está vacío.",
     "fr": "Valeur de repli lorsque value est vide."
   },
   "Fecha ao clicar fora do painel.": {
@@ -2633,12 +2633,6 @@
     "es": "Personalización visual.",
     "fr": "Personnalisation visuelle."
   },
-  "Customização visual.": {
-    "pt": "Personalização visual.",
-    "en": "Visual customization.",
-    "es": "Personalización visual.",
-    "fr": "Personnalisation visuelle."
-  },
   "Densidade e espacamento interno.": {
     "pt": "Densidade e espaçamento interno.",
     "en": "Density and internal spacing.",
@@ -2848,12 +2842,6 @@
     "en": "Extra CSS classes on outer wrapper.",
     "es": "Clases CSS adicionales en el wrapper externo.",
     "fr": "Classes CSS supplémentaires sur le wrapper externe."
-  },
-  "Fallback quando value está vazio.": {
-    "pt": "Fallback quando value está vazio.",
-    "en": "Fallback when value is empty.",
-    "es": "Valor alternativo cuando value está vacío.",
-    "fr": "Valeur de repli lorsque value est vide."
   },
   "Filhos livres ou paines dockados.": {
     "pt": "Filhos livres ou painéis dockados.",
@@ -3238,12 +3226,6 @@
     "en": "Event name, list of names, \"prefix.*\" or \"*\".",
     "es": "Nombre del evento, lista de nombres, \"prefijo.*\" o \"*\".",
     "fr": "Nom de l'événement, liste de noms, \"préfixe.*\" ou \"*\"."
-  },
-  "Nível de correção de erro.": {
-    "pt": "Nível de correção de erro.",
-    "en": "Error correction level.",
-    "es": "Nivel de corrección de errores.",
-    "fr": "Niveau de correction d'erreur."
   },
   "Omitted (default): automatic - below 600 px of container width each row is shown as a 'column: value' card (keeping sorting selector, selection, row actions, footer and pagination; column filters move to a panel opened by a button), above it the regular table. cards forces cards and scroll forces the horizontally scrollable table, at any width.": {
     "pt": "Omitido (padrão): automático - abaixo de 600 px de largura do contêiner cada linha é exibida como um card 'coluna: valor' (mantendo seletor de ordenação, seleção, ações da linha, rodapé e páginação; os filtros de coluna vão para um painel aberto por um botão), acima disso a tabela normal. cards força cards e scroll força a tabela com rolagem horizontal, em qualquer largura.",

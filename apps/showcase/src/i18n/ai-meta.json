@@ -210,14 +210,14 @@
     "pt-PT": "Ações simples com uma única intenção; nesses casos prefira SgButton.",
     "es": "Acciones simples con una única intención; en esos casos prefiera SgButton.",
     "fr": "Actions simples avec une seule intention ; dans ces cas, préférez SgButton.",
-    "pt-BR": "Ações simples com uma unica intenção; nesses casos prefira SgButton."
+    "pt-BR": "Ações simples com uma única intenção; nesses casos prefira SgButton."
   },
   "Acoes unicas; nesses casos prefira Button ou ToolBar.": {
     "en-US": "Single actions; in these cases, prefer Button or ToolBar.",
     "pt-PT": "Ações únicas; nestes casos, prefira Button ou ToolBar.",
     "es": "Acciones únicas; en estos casos, prefiera Button o ToolBar.",
     "fr": "Actions uniques ; dans ces cas, privilégiez Button ou ToolBar.",
-    "pt-BR": "Ações unicas; nesses casos prefira Button ou ToolBar."
+    "pt-BR": "Ações únicas; nesses casos prefira Button ou ToolBar."
   },
   "Acoes unitarias simples; nesses casos prefira Button ou SplitButton.": {
     "en-US": "Simple single actions; in these cases, prefer Button or SplitButton.",
@@ -496,7 +496,7 @@
     "pt-PT": "Anexar um ou vários documentos (PDF, folhas de cálculo, apresentações, zip) a um registo ou pedido.",
     "es": "Adjuntar uno o varios documentos (PDF, hojas de cálculo, presentaciones, zip) a un registro o solicitud.",
     "fr": "Joindre un ou plusieurs documents (PDF, feuilles de calcul, présentations, zip) à un enregistrement ou à une demande.",
-    "pt-BR": "Anexar um ou vários documentos (PDF, planilhas, apresentações, zip) a um cadastro ou solicitacao."
+    "pt-BR": "Anexar um ou vários documentos (PDF, planilhas, apresentações, zip) a um cadastro ou solicitação."
   },
   "Angulo final do arco.": {
     "en-US": "End angle of the arc.",
@@ -1033,7 +1033,7 @@
     "pt-PT": "Calendário mensal em formato de gadget com suporte para locale, multimês, regras de seleção e card configurável.",
     "es": "Calendario mensual en formato de gadget con soporte para locale, multimes, reglas de selección y card configurable.",
     "fr": "Calendrier mensuel au format gadget prenant en charge locale, multi-mois, règles de sélection et card configurable.",
-    "pt-BR": "Calendário mensal em formato de gadget com suporte a locale, multi-mes, regras de seleção e card configurável."
+    "pt-BR": "Calendário mensal em formato de gadget com suporte a locale, multi-mês, regras de seleção e card configurável."
   },
   "Calendarios mensais e selecao de datas; nesses casos prefira SgCalendar ou SgInputDate.": {
     "en-US": "Monthly calendars and date selection; in these cases prefer SgCalendar or SgInputDate.",
@@ -1423,7 +1423,7 @@
     "pt-PT": "Campo especializado para data de nascimento com validação de idade mínima e máxima, sobre a base de SgInputDate.",
     "es": "Campo especializado para fecha de nacimiento con validación de edad mínima y máxima, sobre la base de SgInputDate.",
     "fr": "Champ spécialisé pour la date de naissance avec validation de l'âge minimal et maximal, basé sur SgInputDate.",
-    "pt-BR": "Campo especializado para data de nascimento com validação de idade minima e maxima sobre a base de SgInputDate."
+    "pt-BR": "Campo especializado para data de nascimento com validação de idade mínima e máxima sobre a base de SgInputDate."
   },
   "Campo especializado para email com validacao de formato, bloqueio opcional de dominios temporarios e integracao com formularios.": {
     "en-US": "Specialized email field with format validation, optional blocking of temporary domains and form integration.",
@@ -1437,7 +1437,7 @@
     "pt-PT": "Campo especializado para palavra-passe com validações de política, alternância de visibilidade e indicação de robustez.",
     "es": "Campo especializado para contraseña con validaciones de política, alternancia de visibilidad e indicación de fortaleza.",
     "fr": "Champ spécialisé pour le mot de passe avec validations de politique, bascule de visibilité et indication de robustesse.",
-    "pt-BR": "Campo especializado para senha com validações de politica, alternância de visibilidade e indicação de força."
+    "pt-BR": "Campo especializado para senha com validações de política, alternância de visibilidade e indicação de força."
   },
   "Campo especializado para telefone com mascara, validacao de comprimento e integracao com formularios.": {
     "en-US": "Specialized phone field with mask, length validation and form integration.",
@@ -1575,7 +1575,7 @@
     "pt-PT": "Campos que exigem política mínima de segurança.",
     "es": "Campos que requieren una política mínima de seguridad.",
     "fr": "Champs nécessitant une politique de sécurité minimale.",
-    "pt-BR": "Campos que exigem politica minima de segurança."
+    "pt-BR": "Campos que exigem política mínima de segurança."
   },
   "Campos que exigem validacao de intervalo minimo e maximo de datas.": {
     "en-US": "Fields that require minimum and maximum date range validation.",
@@ -1589,7 +1589,7 @@
     "pt-PT": "Campos que exigem validação numérica com limites mínimos e máximos.",
     "es": "Campos que requieren validación numérica con límites mínimos y máximos.",
     "fr": "Champs nécessitant une validation numérique avec limites minimale et maximale.",
-    "pt-BR": "Campos que exigem validação numerica com limites mínimos e máximos."
+    "pt-BR": "Campos que exigem validação numérica com limites mínimos e máximos."
   },
   "Campos que precisam bloquear dominios temporarios ou descartaveis.": {
     "en-US": "Fields that need to block temporary or disposable domains.",
@@ -2154,7 +2154,7 @@
     "pt-PT": "Componente de conveniência que combina SgScreen e SgDockLayout numa única raiz estrutural.",
     "es": "Componente de conveniencia que combina SgScreen y SgDockLayout en una única raíz estructural.",
     "fr": "Composant de commodité qui combine SgScreen et SgDockLayout en une seule racine structurelle.",
-    "pt-BR": "Componente de conveniência que combina SgScreen e SgDockLayout em uma unica raiz estrutural."
+    "pt-BR": "Componente de conveniência que combina SgScreen e SgDockLayout em uma única raiz estrutural."
   },
   "Componente de navegacao estruturada com suporte a sidebar, drawer, menu inline e variantes hierarquicas ou mega menu.": {
     "en-US": "Structured navigation component with support for sidebar, drawer, inline menu and hierarchical or mega menu variants.",
@@ -3101,7 +3101,7 @@
     "pt-PT": "Declaração de uma página individual dentro de um SgPageControl, com título, hint, ícone e conteúdo associado.",
     "es": "Declaración de una página individual dentro de un SgPageControl, con título, hint, icono y contenido asociado.",
     "fr": "Déclaration d'une page individuelle dans un SgPageControl, avec titre, hint, icône et contenu associé.",
-    "pt-BR": "Declaracao de uma página individual dentro de um SgPageControl, com título, hint, ícone e conteúdo associado."
+    "pt-BR": "Declaração de uma página individual dentro de um SgPageControl, com título, hint, ícone e conteúdo associado."
   },
   "Declarar paginas internas de um PageControl com conteudo associado.": {
     "en-US": "Declare internal pages of a PageControl with associated content.",
@@ -3299,7 +3299,7 @@
     "pt-PT": "Dialogs curtos com uma única ação.",
     "es": "Dialogs cortos con una única acción.",
     "fr": "Dialogs courts avec une seule action.",
-    "pt-BR": "Dialogs curtos com uma unica ação."
+    "pt-BR": "Dialogs curtos com uma única ação."
   },
   "Dialogs modais completos; nesses casos prefira SgDialog.": {
     "en-US": "Full modal dialogs; in those cases prefer SgDialog.",
@@ -3807,7 +3807,7 @@
     "pt-PT": "Escolha rápida de intervalos recorrentes (Este mês, Último trimestre, Este ano).",
     "es": "Elección rápida de intervalos recurrentes (Este mes, Último trimestre, Este año).",
     "fr": "Choix rapide d'intervalles récurrents (Ce mois-ci, Dernier trimestre, Cette année).",
-    "pt-BR": "Escolha rápida de intervalos recorrentes (Este mes, Último trimestre, Este ano)."
+    "pt-BR": "Escolha rápida de intervalos recorrentes (Este mês, Último trimestre, Este ano)."
   },
   "Escolha simples sem necessidade de ordenacao.": {
     "en-US": "Simple choice with no need for ordering.",
@@ -3821,21 +3821,21 @@
     "pt-PT": "Escolha única com pesquisa assistida em listas médias ou grandes.",
     "es": "Elección única con búsqueda asistida en listas medianas o grandes.",
     "fr": "Choix unique avec recherche assistée dans des listes moyennes ou grandes.",
-    "pt-BR": "Escolha unica com busca assistida em listas médias ou grandes."
+    "pt-BR": "Escolha única com busca assistida em listas médias ou grandes."
   },
   "Escolha unica com opcoes visiveis ao mesmo tempo.": {
     "en-US": "Single choice with options visible at the same time.",
     "pt-PT": "Escolha única com opções visíveis em simultâneo.",
     "es": "Elección única con opciones visibles al mismo tiempo.",
     "fr": "Choix unique avec options visibles en même temps.",
-    "pt-BR": "Escolha unica com opções visíveis ao mesmo tempo."
+    "pt-BR": "Escolha única com opções visíveis ao mesmo tempo."
   },
   "Escolha unica ou poucas opcoes; use componentes mais simples.": {
     "en-US": "Single choice or few options; use simpler components.",
     "pt-PT": "Escolha única ou poucas opções; utilize componentes mais simples.",
     "es": "Elección única o pocas opciones; use componentes más simples.",
     "fr": "Choix unique ou peu d'options ; utilisez des composants plus simples.",
-    "pt-BR": "Escolha unica ou poucas opções; use componentes mais simples."
+    "pt-BR": "Escolha única ou poucas opções; use componentes mais simples."
   },
   "Escolha unica; nesses casos prefira SgCombobox ou SgRadioGroup.": {
     "en-US": "Single choice; in these cases prefer SgCombobox or SgRadioGroup.",
@@ -3906,7 +3906,7 @@
     "pt-PT": "Limitar a resolução de temas de clock a uma subárvore específica.",
     "es": "Limitar la resolución de temas de clock a un subárbol específico.",
     "fr": "Limiter la résolution des thèmes de clock à un sous-arbre spécifique.",
-    "pt-BR": "Escopar resolução de temas de clock para uma subtree especifica."
+    "pt-BR": "Escopar resolução de temas de clock para uma subtree específica."
   },
   "Escopo logico para chaves (ex: 'app:myapp').": {
     "en-US": "Logical scope for keys (e.g. 'app:myapp').",
@@ -4300,7 +4300,7 @@
     "pt-PT": "Apresenta um botão para gerar automaticamente uma palavra-passe forte aleatória (respeita as regras da política).",
     "es": "Muestra un botón para generar automáticamente una contraseña fuerte aleatoria (respeta las reglas de la política).",
     "fr": "Affiche un bouton pour générer automatiquement un mot de passe fort aléatoire (respecte les règles de la politique).",
-    "pt-BR": "Exibe um botão para gerar automaticamente uma senha forte aleatoria (respeita as regras de politica)."
+    "pt-BR": "Exibe um botão para gerar automaticamente uma senha forte aleatoria (respeita as regras de política)."
   },
   "Exibe um pequeno marcador visual adicional.": {
     "en-US": "Displays an additional small visual marker.",
@@ -4522,7 +4522,7 @@
     "pt-PT": "Fechos periódicos (contabilístico, fiscal, apuramento de metas) que caem sempre em semestres, trimestres ou bimestres completos.",
     "es": "Cierres periódicos (contable, fiscal, cómputo de metas) que siempre caen en semestres, trimestres o bimestres completos.",
     "fr": "Clôtures périodiques (comptable, fiscale, calcul des objectifs) qui tombent toujours sur des semestres, trimestres ou bimestres entiers.",
-    "pt-BR": "Fechamentos periódicos (contábil, fiscal, apuracao de metas) que sempre caem em semestre, trimestre ou bimestre cheios."
+    "pt-BR": "Fechamentos periódicos (contábil, fiscal, apuração de metas) que sempre caem em semestre, trimestre ou bimestre cheios."
   },
   "Fechar toasts cuja duracao ja expirou; o sistema faz isso automaticamente.": {
     "en-US": "Close toasts whose duration has already expired; the system does this automatically.",
@@ -4830,7 +4830,7 @@
     "pt-PT": "Formulários com restrição de idade mínima ou máxima.",
     "es": "Formularios con restricción de edad mínima o máxima.",
     "fr": "Formulaires avec restriction d'âge minimal ou maximal.",
-    "pt-BR": "Formulários com restrição de idade minima ou maxima."
+    "pt-BR": "Formulários com restrição de idade mínima ou máxima."
   },
   "Formularios com validacao de formato de email.": {
     "en-US": "Forms with email format validation.",
@@ -4913,7 +4913,7 @@
     "pt-PT": "Fotos e imagens com miniatura, dimensão mínima ou proporção; para isso use SgImageUpload.",
     "es": "Fotos e imágenes con miniatura, dimensión mínima o proporción; para eso use SgImageUpload.",
     "fr": "Photos et images avec miniature, dimension minimale ou proportion ; pour cela, utilisez SgImageUpload.",
-    "pt-BR": "Fotos e imagens com miniatura, dimensão minima ou proporção; para isso use SgImageUpload."
+    "pt-BR": "Fotos e imagens com miniatura, dimensão mínima ou proporção; para isso use SgImageUpload."
   },
   "Funcao customizada para desserializar ao carregar.": {
     "en-US": "Custom function to deserialize when loading.",
@@ -5080,14 +5080,14 @@
     "pt-PT": "Grupo de checkboxes para seleção múltipla com orientação, estilo de seleção e suporte opcional para marcar todos.",
     "es": "Grupo de checkboxes para selección múltiple con orientación, estilo de selección y soporte opcional para marcar todos.",
     "fr": "Groupe de cases à cocher pour la sélection multiple avec orientation, style de sélection et prise en charge optionnelle de « tout cocher ».",
-    "pt-BR": "Grupo de checkboxes para multisselecao com orientação, estilo de seleção e suporte opcional a marcar todos."
+    "pt-BR": "Grupo de checkboxes para multisseleção com orientação, estilo de seleção e suporte opcional a marcar todos."
   },
   "Grupo de radios para escolha unica com orientacao e estilo visual configuravel.": {
     "en-US": "Radio group for single choice with configurable orientation and visual style.",
     "pt-PT": "Grupo de radios para escolha única com orientação e estilo visual configuráveis.",
     "es": "Grupo de radios para elección única con orientación y estilo visual configurables.",
     "fr": "Groupe de boutons radio pour un choix unique avec orientation et style visuel configurables.",
-    "pt-BR": "Grupo de rádios para escolha unica com orientação e estilo visual configurável."
+    "pt-BR": "Grupo de rádios para escolha única com orientação e estilo visual configurável."
   },
   "Guia de enquadramento sobre a pre-visualizacao.": {
     "en-US": "Framing guide over the preview.",
@@ -6247,7 +6247,7 @@
     "pt-PT": "Locale usado para formatação de mês e dias.",
     "es": "Locale usado para el formato de mes y días.",
     "fr": "Locale utilisé pour le formatage des mois et des jours.",
-    "pt-BR": "Locale usado para formatação de mes e dias."
+    "pt-BR": "Locale usado para formatação de mês e dias."
   },
   "Magnification scale": {
     "en-US": "Magnification scale",
@@ -6530,7 +6530,7 @@
     "pt-PT": "Mês visível de forma controlada.",
     "es": "Mes visible de forma controlada.",
     "fr": "Mois visible de manière contrôlée.",
-    "pt-BR": "Mes visível de forma controlada."
+    "pt-BR": "Mês visível de forma controlada."
   },
   "Mesma coisa que registerLocal, para uma lista.": {
     "en-US": "Same as registerLocal, for a list.",
@@ -6675,7 +6675,7 @@
   },
   "Mostra e aceita segundos.": {
     "en-US": "Shows and accepts seconds.",
-    "pt-PT": "Mostra e aceita segundos.",
+    "pt-PT": "Mostra é aceita segundos.",
     "es": "Muestra y acepta segundos.",
     "fr": "Affiche et accepte les secondes."
   },
@@ -6751,7 +6751,7 @@
     "pt-PT": "Seleção múltipla de opções independentes.",
     "es": "Selección múltiple de opciones independientes.",
     "fr": "Sélection multiple d'options indépendantes.",
-    "pt-BR": "Multisselecao de opções independentes."
+    "pt-BR": "Multisseleção de opções independentes."
   },
   "Multisselecao; nesses casos prefira outros componentes especializados.": {
     "en-US": "Multiple selection; in those cases prefer other specialized components.",
@@ -7160,7 +7160,7 @@
     "pt-PT": "Painéis eletrónicos com representação numérica compacta.",
     "es": "Paneles electrónicos con representación numérica compacta.",
     "fr": "Panneaux électroniques avec représentation numérique compacte.",
-    "pt-BR": "Paineis eletrônicos com representação numerica compacta."
+    "pt-BR": "Paineis eletrônicos com representação numérica compacta."
   },
   "Painel expansivel inline ou overlay, com direcao, tamanho, backdrop e comportamento de foco configuraveis.": {
     "en-US": "Expandable inline or overlay panel, with configurable direction, size, backdrop and focus behavior.",
@@ -7206,7 +7206,7 @@
     "pt-PT": "Período relativo a hoje (\"este mês\", \"último trimestre\", \"últimos 30 dias\"); utilize SgPeriodSelector, que reavalia a regra a cada abertura do ecrã.",
     "es": "Período relativo a hoy (\"este mes\", \"último trimestre\", \"últimos 30 días\"); use SgPeriodSelector, que reevalúa la regla cada vez que se abre la pantalla.",
     "fr": "Période relative à aujourd'hui (\"ce mois\", \"dernier trimestre\", \"30 derniers jours\") ; utilisez SgPeriodSelector, qui réévalue la règle à chaque ouverture de l'écran.",
-    "pt-BR": "Período relativo a hoje (\"este mes\", \"último trimestre\", \"últimos 30 dias\"); use SgPeriodSelector, que reavalia a regra a cada abertura da tela."
+    "pt-BR": "Período relativo a hoje (\"este mês\", \"último trimestre\", \"últimos 30 dias\"); use SgPeriodSelector, que reavalia a regra a cada abertura da tela."
   },
   "Permite arrastar a toolbar.": {
     "en-US": "Allows dragging the toolbar.",
@@ -7494,14 +7494,14 @@
     "pt-PT": "Precisão numérica alta; nesses casos prefira SgInputNumber.",
     "es": "Alta precisión numérica; en esos casos prefiera SgInputNumber.",
     "fr": "Précision numérique élevée ; dans ces cas, préférez SgInputNumber.",
-    "pt-BR": "Precisão numerica alta; nesses casos prefira SgInputNumber."
+    "pt-BR": "Precisão numérica alta; nesses casos prefira SgInputNumber."
   },
   "Precisao numerica de negocio; nesses casos prefira inputs numericos.": {
     "en-US": "Business numeric precision; in these cases prefer numeric inputs.",
     "pt-PT": "Precisão numérica de negócio; nesses casos prefira inputs numéricos.",
     "es": "Precisión numérica de negocio; en esos casos prefiera inputs numéricos.",
     "fr": "Précision numérique métier ; dans ces cas, préférez des inputs numériques.",
-    "pt-BR": "Precisão numerica de negócio; nesses casos prefira inputs numéricos."
+    "pt-BR": "Precisão numérica de negócio; nesses casos prefira inputs numéricos."
   },
   "Precisar de varios pontos de montagem coexistindo; nesses casos use SgWhistleHost.": {
     "en-US": "Needing several mount points coexisting; in those cases use SgWhistleHost.",
@@ -7682,7 +7682,7 @@
     "pt-PT": "Quando false, os dias, os botões de mês anterior/seguinte e o atalho hoje ficam desativados (não focáveis); a data e o mês atuais continuam legíveis.",
     "es": "Cuando es false, los días, los botones de mes anterior/siguiente y el atajo hoy quedan deshabilitados (no enfocables); la fecha y el mes actuales siguen siendo legibles.",
     "fr": "Si false, les jours, les boutons de mois précédent/suivant et le raccourci aujourd'hui sont désactivés (non focalisables) ; la date et le mois actuels restent lisibles.",
-    "pt-BR": "Quando false, os dias, os botões de mês anterior/próximo e o atalho hoje ficam desabilitados (não focaveis); a data e o mes atuais continuam legíveis."
+    "pt-BR": "Quando false, os dias, os botões de mês anterior/próximo e o atalho hoje ficam desabilitados (não focaveis); a data e o mês atuais continuam legíveis."
   },
   "Quando o dominio ja define apenas CNPJ; nesses casos prefira SgInputCNPJ.": {
     "en-US": "When the domain already defines only CNPJ; in those cases prefer SgInputCNPJ.",
@@ -7758,42 +7758,42 @@
     "pt-PT": "Quantidade máxima de avatares visíveis antes do contador de overflow.",
     "es": "Cantidad máxima de avatares visibles antes del contador de overflow.",
     "fr": "Nombre maximal d'avatars visibles avant le compteur d'overflow.",
-    "pt-BR": "Quantidade maxima de avatares visíveis antes do contador de overflow."
+    "pt-BR": "Quantidade máxima de avatares visíveis antes do contador de overflow."
   },
   "Quantidade maxima de itens visiveis antes do colapso.": {
     "en-US": "Maximum number of visible items before collapsing.",
     "pt-PT": "Quantidade máxima de itens visíveis antes do colapso.",
     "es": "Cantidad máxima de elementos visibles antes del colapso.",
     "fr": "Nombre maximal d'éléments visibles avant la réduction.",
-    "pt-BR": "Quantidade maxima de itens visíveis antes do colapso."
+    "pt-BR": "Quantidade máxima de itens visíveis antes do colapso."
   },
   "Quantidade maxima de toasts visiveis simultaneamente.": {
     "en-US": "Maximum number of toasts visible at the same time.",
     "pt-PT": "Quantidade máxima de toasts visíveis em simultâneo.",
     "es": "Cantidad máxima de toasts visibles simultáneamente.",
     "fr": "Nombre maximal de toasts visibles simultanément.",
-    "pt-BR": "Quantidade maxima de toasts visíveis simultaneamente."
+    "pt-BR": "Quantidade máxima de toasts visíveis simultaneamente."
   },
   "Quantidade maxima de toasts visiveis.": {
     "en-US": "Maximum number of visible toasts.",
     "pt-PT": "Quantidade máxima de toasts visíveis.",
     "es": "Cantidad máxima de toasts visibles.",
     "fr": "Nombre maximal de toasts visibles.",
-    "pt-BR": "Quantidade maxima de toasts visíveis."
+    "pt-BR": "Quantidade máxima de toasts visíveis."
   },
   "Quantidade maxima de whistle items visiveis neste host.": {
     "en-US": "Maximum number of visible whistle items in this host.",
     "pt-PT": "Quantidade máxima de whistle items visíveis neste host.",
     "es": "Cantidad máxima de whistle items visibles en este host.",
     "fr": "Nombre maximal de whistle items visibles dans ce host.",
-    "pt-BR": "Quantidade maxima de whistle items visíveis neste host."
+    "pt-BR": "Quantidade máxima de whistle items visíveis neste host."
   },
   "Quantidade maxima de whistle items visiveis.": {
     "en-US": "Maximum number of visible whistle items.",
     "pt-PT": "Quantidade máxima de whistle items visíveis.",
     "es": "Cantidad máxima de whistle items visibles.",
     "fr": "Nombre maximal de whistle items visibles.",
-    "pt-BR": "Quantidade maxima de whistle items visíveis."
+    "pt-BR": "Quantidade máxima de whistle items visíveis."
   },
   "Quantidade minima de caracteres para buscar.": {
     "en-US": "Minimum number of characters to search.",
@@ -8101,10 +8101,10 @@
   },
   "Rolagem infinita: sem paginador, ao chegar perto do fim da lista avanca a pagina (rows) e acrescenta os proximos registros, com indicador de carregando e de fim da lista. Padrao ligado quando a lista e exibida como cartoes (abaixo de 600 px no modo automatico) e desligado na tabela. Exige paginator. Com lazy, o pai acrescenta a proxima pagina a value (first/rows/page vem em onPage/onLoadMore).": {
     "en-US": "Infinite scroll: without a paginator, when nearing the end of the list it advances the page (rows) and appends the next records, with loading and end-of-list indicators. Enabled by default when the list is displayed as cards (below 600 px in automatic mode) and disabled in the table. Requires paginator. With lazy, the parent appends the next page to value (first/rows/page come in onPage/onLoadMore).",
-    "pt-PT": "Deslocamento infinito: sem paginador, ao chegar perto do fim da lista avança a página (rows) e acrescenta os registos seguintes, com indicador de carregamento e de fim da lista. Ativado por predefinição quando a lista é apresentada como cartões (abaixo de 600 px no modo automático) e desativado na tabela. Requer paginator. Com lazy, o componente pai acrescenta a página seguinte a value (first/rows/page vêm em onPage/onLoadMore).",
+    "pt-PT": "Deslocamento infinito: sem paginador, ao chegar perto do fim da lista avança a página (rows) e acrescenta os registos seguintes, com indicador de carregamento e de fim da lista. Ativado por predefinição quando a lista é apresentada como cartões (abaixo de 600 px no modo automático) é desativado na tabela. Requer paginator. Com lazy, o componente pai acrescenta a página seguinte a value (first/rows/page vêm em onPage/onLoadMore).",
     "es": "Desplazamiento infinito: sin paginador, al acercarse al final de la lista avanza la página (rows) y añade los siguientes registros, con indicador de carga y de fin de lista. Activado por defecto cuando la lista se muestra como tarjetas (por debajo de 600 px en modo automático) y desactivado en la tabla. Requiere paginator. Con lazy, el padre añade la siguiente página a value (first/rows/page llegan en onPage/onLoadMore).",
     "fr": "Défilement infini : sans paginateur, à l'approche de la fin de la liste, avance d'une page (rows) et ajoute les enregistrements suivants, avec indicateurs de chargement et de fin de liste. Activé par défaut lorsque la liste est affichée sous forme de cartes (sous 600 px en mode automatique) et désactivé dans le tableau. Nécessite paginator. Avec lazy, le parent ajoute la page suivante à value (first/rows/page arrivent dans onPage/onLoadMore).",
-    "pt-BR": "Rolagem infinita: sem paginador, ao chegar perto do fim da lista avança a página (rows) e acrescenta os próximos registros, com indicador de carregando e de fim da lista. Padrão ligado quando a lista e exibida como cartões (abaixo de 600 px no modo automático) e desligado na tabela. Exige paginator. Com lazy, o pai acrescenta a próxima página a value (first/rows/page vem em onPage/onLoadMore)."
+    "pt-BR": "Rolagem infinita: sem paginador, ao chegar perto do fim da lista avança a página (rows) e acrescenta os próximos registros, com indicador de carregando e de fim da lista. Padrão ligado quando a lista é exibida como cartões (abaixo de 600 px no modo automático) e desligado na tabela. Exige paginator. Com lazy, o pai acrescenta a próxima página a value (first/rows/page vem em onPage/onLoadMore)."
   },
   "Rota que entrega o token de conexao do usuario logado (a BFF, na mesma origem).": {
     "en-US": "Route that delivers the logged-in user's connection token (the BFF, on the same origin).",
@@ -8320,14 +8320,14 @@
     "pt-PT": "Seleção de uma única data específica; prefira SgInputDate.",
     "es": "Selección de una única fecha específica; prefiera SgInputDate.",
     "fr": "Sélection d'une seule date précise ; privilégiez SgInputDate.",
-    "pt-BR": "Seleção de uma unica data especifica; prefira SgInputDate."
+    "pt-BR": "Seleção de uma única data específica; prefira SgInputDate."
   },
   "Selecao de uma unica data; prefira SgInputDate.": {
     "en-US": "Selection of a single date; prefer SgInputDate.",
     "pt-PT": "Seleção de uma única data; prefira SgInputDate.",
     "es": "Selección de una única fecha; prefiera SgInputDate.",
     "fr": "Sélection d'une seule date ; préférez SgInputDate.",
-    "pt-BR": "Seleção de uma unica data; prefira SgInputDate."
+    "pt-BR": "Seleção de uma única data; prefira SgInputDate."
   },
   "Selecao de varias opcoes a partir de uma lista fechada (ex.: empresas, categorias, tags).": {
     "en-US": "Selection of multiple options from a closed list (e.g., companies, categories, tags).",
@@ -8383,7 +8383,7 @@
     "pt-PT": "Seleciona uma ou várias imagens (clique ou arrastar e largar), valida o tipo (pelo conteúdo), o tamanho, a dimensão mínima e a proporção, mostra as miniaturas e permite remover. Composição do SgFileUpload. Não envia nada para o servidor: entrega os ficheiros ao componente pai.",
     "es": "Selecciona una o varias imágenes (clic o arrastrar y soltar), valida el tipo (por el contenido), el tamaño, la dimensión mínima y la proporción, muestra las miniaturas y permite eliminar. Composición de SgFileUpload. No envía nada al servidor: entrega los archivos al padre.",
     "fr": "Sélectionne une ou plusieurs images (clic ou glisser-déposer), valide le type (d'après le contenu), la taille, la dimension minimale et le rapport d'aspect, affiche les miniatures et permet de les supprimer. Composition de SgFileUpload. N'envoie rien au serveur : transmet les fichiers au parent.",
-    "pt-BR": "Seleciona uma ou várias imagens (clique ou arrastar e soltar), valida tipo (pelo conteúdo), tamanho, dimensão minima e proporção, mostra as miniaturas e permite remover. Composição do SgFileUpload. Não envia nada ao servidor: entrega os arquivos ao pai."
+    "pt-BR": "Seleciona uma ou várias imagens (clique ou arrastar e soltar), valida tipo (pelo conteúdo), tamanho, dimensão mínima e proporção, mostra as miniaturas e permite remover. Composição do SgFileUpload. Não envia nada ao servidor: entrega os arquivos ao pai."
   },
   "Selecionar ou marcar nos em arvores administrativas e exploradores de estrutura.": {
     "en-US": "Select or check nodes in administrative trees and structure explorers.",
@@ -8411,7 +8411,7 @@
     "pt-PT": "Seletor de períodos predefinidos (Este mês, Último trimestre, etc.) que resolve a regra temporal num intervalo real de datas.",
     "es": "Selector de períodos predefinidos (Este mes, Último trimestre, etc.) que resuelve la regla temporal en un intervalo real de fechas.",
     "fr": "Sélecteur de périodes prédéfinies (Ce mois-ci, Dernier trimestre, etc.) qui résout la règle temporelle en un intervalle de dates réel.",
-    "pt-BR": "Seletor de períodos pre-definidos (Este mes, Último trimestre, etc.) que resolve a regra temporal para um intervalo real de datas."
+    "pt-BR": "Seletor de períodos pre-definidos (Este mês, Último trimestre, etc.) que resolve a regra temporal para um intervalo real de datas."
   },
   "Seletor de recorte de ano: o usuario escolhe ANO + RECORTE (semestre, trimestre ou bimestre) + FATIA, e o componente resolve para um intervalo real e fechado de datas. E' o irmao ABSOLUTO do SgPeriodSelector: aquele resolve presets RELATIVOS a hoje (\"este semestre\"), este resolve um recorte fixo de um ano civil informado (\"o 1o semestre DE 2024\"), que nao muda de significado com a passagem do tempo.": {
     "en-US": "Year-slice selector: the user chooses YEAR + SLICE TYPE (semester, quarter or bimester) + PART, and the component resolves it to a real, closed date range. It is the ABSOLUTE sibling of SgPeriodSelector: that one resolves presets RELATIVE to today (\"this semester\"), this one resolves a fixed slice of a given calendar year (\"the 1st semester OF 2024\"), which does not change meaning as time passes.",
