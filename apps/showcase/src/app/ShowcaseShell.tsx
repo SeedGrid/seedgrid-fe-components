@@ -544,8 +544,8 @@ const COMPONENT_HINT_TEXTS_BY_SLUG: Record<string, Partial<Record<ShowcaseLocale
     es: "Marca donde aparecen los toasts. Cuando existen multiples hosts, el mas profundo en el árbol tiene prioridad."
   },
   "sg-whistler": {
-    "pt-BR": "Renderizador de mensagens contextuais em pilha (rounded, severidades, dismiss). Cede a vez quando ha um SgWhistleHost.",
-    "pt-PT": "Renderizador de mensagens contextuais em pilha (rounded, severidades, dismiss). Cede a vez quando ha um SgWhistleHost.",
+    "pt-BR": "Renderizador de mensagens contextuais em pilha (rounded, severidades, dismiss). Cede a vez quando há um SgWhistleHost.",
+    "pt-PT": "Renderizador de mensagens contextuais em pilha (rounded, severidades, dismiss). Cede a vez quando há um SgWhistleHost.",
     "en-US": "Stacked contextual message renderer (rounded, severities, dismiss). Yields when a SgWhistleHost is present.",
     es: "Renderizador de mensajes contextuales en pila (rounded, severidades, dismiss). Cede el paso cuando hay un SgWhistleHost."
   },

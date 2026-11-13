@@ -2480,7 +2480,7 @@
     "pt-PT": "Conteúdo de fallback quando não há imagem.",
     "es": "Contenido de fallback cuando no hay imagen.",
     "fr": "Contenu de fallback lorsqu'il n'y a pas d'image.",
-    "pt-BR": "Conteúdo de fallback quando não ha imagem."
+    "pt-BR": "Conteúdo de fallback quando não há imagem."
   },
   "Conteudo de formulario e captura de dados.": {
     "en-US": "Form content and data capture.",
@@ -5935,7 +5935,7 @@
     "pt-PT": "Liga/desliga (ex.: false enquanto não há utilizador autenticado).",
     "es": "Activa/desactiva (ej.: false mientras no hay usuario autenticado).",
     "fr": "Active/désactive (ex. : false tant qu'aucun utilisateur n'est connecté).",
-    "pt-BR": "Liga/desliga (ex.: false enquanto não ha usuário logado)."
+    "pt-BR": "Liga/desliga (ex.: false enquanto não há usuário logado)."
   },
   "Limite de resultados exibidos.": {
     "en-US": "Limit of displayed results.",
@@ -6332,7 +6332,7 @@
     "pt-PT": "Mensagem apresentada quando não há registos. Prevalece sobre o dicionário (components.datatable.empty).",
     "es": "Mensaje mostrado cuando no hay registros. Prevalece sobre el diccionario (components.datatable.empty).",
     "fr": "Message affiché lorsqu'il n'y a aucun enregistrement. L'emporte sur le dictionnaire (components.datatable.empty).",
-    "pt-BR": "Mensagem exibida quando não ha registros. Vence o dicionário (components.datatable.empty)."
+    "pt-BR": "Mensagem exibida quando não há registros. Vence o dicionário (components.datatable.empty)."
   },
   "Mensagem para ausencia de valor.": {
     "en-US": "Message for missing value.",
@@ -6989,7 +6989,7 @@
     "pt-PT": "Oculta a página sem a remover da estrutura.",
     "es": "Oculta la página sin quitarla de la estructura.",
     "fr": "Masque la page sans la retirer de la structure.",
-    "pt-BR": "Oculta a página sem remove-la da estrutura."
+    "pt-BR": "Oculta a página sem removê-la da estrutura."
   },
   "Oculta a senha inicialmente.": {
     "en-US": "Hides the password initially.",
@@ -7034,7 +7034,7 @@
     "pt-PT": "Opções do fetch (ex.: headers com Authorization quando não há cookie).",
     "es": "Opciones del fetch (ej.: headers con Authorization cuando no hay cookie).",
     "fr": "Options du fetch (ex. : headers avec Authorization lorsqu'il n'y a pas de cookie).",
-    "pt-BR": "Opções do fetch (ex.: headers com Authorization quando não ha cookie)."
+    "pt-BR": "Opções do fetch (ex.: headers com Authorization quando não há cookie)."
   },
   "Ordenacao manual de prioridades, etapas ou itens.": {
     "en-US": "Manual ordering of priorities, steps or items.",
@@ -7487,7 +7487,7 @@
     "pt-PT": "Pré-visualização da câmara com guia de enquadramento (oval ou retângulo), alternância entre frontal e traseira e captura que devolve a imagem ao pai. Mostra os estados sem permissão e sem câmara. Não envia nada ao servidor.",
     "es": "Vista previa de la cámara con guía de encuadre (óvalo o rectángulo), alternancia entre frontal y trasera y captura que devuelve la imagen al padre. Muestra los estados sin permiso y sin cámara. No envía nada al servidor.",
     "fr": "Aperçu de la caméra avec guide de cadrage (ovale ou rectangle), bascule entre caméra avant et arrière et capture qui renvoie l'image au parent. Affiche les états sans autorisation et sans caméra. N'envoie rien au serveur.",
-    "pt-BR": "Pre-visualizacao da câmera com guia de enquadramento (oval ou retângulo), alternância entre frontal e traseira e captura que devolve a imagem ao pai. Mostra os estados sem permissão e sem câmera. Não envia nada ao servidor."
+    "pt-BR": "Pré-visualização da câmera com guia de enquadramento (oval ou retângulo), alternância entre frontal e traseira e captura que devolve a imagem ao pai. Mostra os estados sem permissão e sem câmera. Não envia nada ao servidor."
   },
   "Precisao numerica alta; nesses casos prefira SgInputNumber.": {
     "en-US": "High numeric precision; in these cases prefer SgInputNumber.",
@@ -7682,7 +7682,7 @@
     "pt-PT": "Quando false, os dias, os botões de mês anterior/seguinte e o atalho hoje ficam desativados (não focáveis); a data e o mês atuais continuam legíveis.",
     "es": "Cuando es false, los días, los botones de mes anterior/siguiente y el atajo hoy quedan deshabilitados (no enfocables); la fecha y el mes actuales siguen siendo legibles.",
     "fr": "Si false, les jours, les boutons de mois précédent/suivant et le raccourci aujourd'hui sont désactivés (non focalisables) ; la date et le mois actuels restent lisibles.",
-    "pt-BR": "Quando false, os dias, os botões de mes anterior/proximo e o atalho hoje ficam desabilitados (não focaveis); a data e o mes atuais continuam legíveis."
+    "pt-BR": "Quando false, os dias, os botões de mês anterior/próximo e o atalho hoje ficam desabilitados (não focaveis); a data e o mes atuais continuam legíveis."
   },
   "Quando o dominio ja define apenas CNPJ; nesses casos prefira SgInputCNPJ.": {
     "en-US": "When the domain already defines only CNPJ; in those cases prefer SgInputCNPJ.",
@@ -8003,7 +8003,7 @@
     "pt-PT": "Representar códigos legíveis por máquina em cards, diálogos e comprovativos.",
     "es": "Representar códigos legibles por máquina en cards, diálogos y comprobantes.",
     "fr": "Représenter des codes lisibles par machine dans des cards, des dialogues et des reçus.",
-    "pt-BR": "Representar códigos maquina-legiveis em cards, diálogos e comprovantes."
+    "pt-BR": "Representar códigos máquina-legíveis em cards, diálogos e comprovantes."
   },
   "Representar evolucao entre dois estados textuais curtos.": {
     "en-US": "Represent evolution between two short text states.",
@@ -8076,7 +8076,7 @@
     "pt-PT": "Resolvedor do SgClockThemeProvider mais próximo. Fora de um provider o hook devolve null — não há fallback implícito.",
     "es": "Resolvedor del SgClockThemeProvider más cercano. Fuera de un provider el hook devuelve null — no hay fallback implícito.",
     "fr": "Résolveur du SgClockThemeProvider le plus proche. En dehors d'un provider, le hook renvoie null — il n'y a pas de fallback implicite.",
-    "pt-BR": "Resolvedor do SgClockThemeProvider mais próximo. Fora de um provider o hook devolve null — não ha fallback implícito."
+    "pt-BR": "Resolvedor do SgClockThemeProvider mais próximo. Fora de um provider o hook devolve null — não há fallback implícito."
   },
   "Restringe os formatos de imagem em texto livre (.png, image/jpeg), separados por virgula.": {
     "en-US": "Restricts image formats in free text (.png, image/jpeg), separated by commas.",
@@ -8118,7 +8118,7 @@
     "pt-PT": "Rota que entrega o token do Pulse; usada quando não existe SgRealtimeProvider acima.",
     "es": "Ruta que entrega el token de Pulse; se usa cuando no hay SgRealtimeProvider más arriba.",
     "fr": "Route qui fournit le jeton de Pulse ; utilisée lorsqu'il n'y a pas de SgRealtimeProvider au-dessus.",
-    "pt-BR": "Rota que entrega o token do Pulse; usada quando não ha SgRealtimeProvider acima."
+    "pt-BR": "Rota que entrega o token do Pulse; usada quando não há SgRealtimeProvider acima."
   },
   "Rotacionar conteudo visual ou promocional em espacos limitados.": {
     "en-US": "Rotate visual or promotional content in limited spaces.",
@@ -8146,7 +8146,7 @@
     "pt-PT": "Rótulo apresentado acima da pré-visualização.",
     "es": "Rótulo mostrado encima de la vista previa.",
     "fr": "Libellé affiché au-dessus de l'aperçu.",
-    "pt-BR": "Rótulo exibido acima da pre-visualizacao."
+    "pt-BR": "Rótulo exibido acima da pré-visualização."
   },
   "Rotulo exibido ao usuario.": {
     "en-US": "Label displayed to the user.",
@@ -8306,7 +8306,7 @@
     "pt-PT": "Seleção de horário/hora do dia.",
     "es": "Selección de horario/hora del día.",
     "fr": "Sélection de l'horaire/heure de la journée.",
-    "pt-BR": "Seleção de horario/hora do dia."
+    "pt-BR": "Seleção de horário/hora do dia."
   },
   "Selecao de membros, permissoes ou recursos em destino final.": {
     "en-US": "Selecting members, permissions or resources in a final target.",
@@ -9271,7 +9271,7 @@
     "pt-PT": "Tom visual do avatar quando não há imagem.",
     "es": "Tono visual del avatar cuando no hay imagen.",
     "fr": "Ton visuel de l'avatar lorsqu'il n'y a pas d'image.",
-    "pt-BR": "Tom visual do avatar quando não ha imagem."
+    "pt-BR": "Tom visual do avatar quando não há imagem."
   },
   "Tom visual do botao de toolbar.": {
     "en-US": "Visual tone of the toolbar button.",
