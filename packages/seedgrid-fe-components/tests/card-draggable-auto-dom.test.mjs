@@ -37,23 +37,24 @@ function setMedia(narrow) {
 
 function stubRect(proto, rect) {
   const original = proto.getBoundingClientRect;
-  proto.getBoundingClientRect = () => ({
-    ...rect,
-    x: rect.left,
-    y: rect.top,
-    right: rect.left + rect.width,
-    bottom: rect.top + rect.height,
-    toJSON() { return this; }
-  });
+  proto.getBoundingClientRect = function () {
+    // como no navegador: o retangulo acompanha o transform inline ja aplicado
+    const m = /translate3d\(\s*(-?[\d.]+)px,\s*(-?[\d.]+)px/.exec(this.style?.transform || "");
+    const dx = m && this.tagName === "SECTION" ? parseFloat(m[1]) : 0;
+    const dy = m && this.tagName === "SECTION" ? parseFloat(m[2]) : 0;
+    const left = rect.left + dx;
+    const top = rect.top + dy;
+    return { ...rect, left, top, x: left, y: top, right: left + rect.width, bottom: top + rect.height, toJSON() { return this; } };
+  };
   return () => { proto.getBoundingClientRect = original; };
 }
 
-async function transformOf(Comp, props, narrow, rect) {
+async function transformOf(Comp, props, narrow, rect, saved = { x: 50, y: 20 }) {
   const harness = setupDomHarness();
   let restoreRect = () => {};
   try {
     setMedia(narrow);
-    globalThis.localStorage.setItem(KEY, JSON.stringify({ x: 50, y: 20 }));
+    globalThis.localStorage.setItem(KEY, JSON.stringify(saved));
     if (rect) restoreRect = stubRect(harness.window.HTMLElement.prototype, rect);
     await harness.render(React.createElement(Comp, { ...props, cardProps: { ...props.cardProps, dragPersistKey: KEY } }));
     await flushDom();
@@ -106,6 +107,11 @@ for (const [name, Comp, props] of [
     assert.match(r.transform, /translate3d\(50px, 20px, 0\)/);
     // a chave salva continua com a posicao (nao e sobrescrita por {0,0} na hidratacao)
     assert.equal(r.stored, JSON.stringify({ x: 50, y: 20 }));
+  });
+
+  test(`${name}: y salvo muito negativo (natural 1500 + -5000) e descartado`, async () => {
+    const r = await transformOf(Comp, props, false, { left: 100, top: 1500, width: 200, height: 100 }, { x: 0, y: -5000 });
+    assert.equal(r.transform, "");
   });
 
   test(`${name}: cartao acima do inicio do conteudo descarta a posicao salva`, async () => {

@@ -292,7 +292,14 @@ export function SgCard(props: Readonly<SgCardProps>) {
         break;
       }
     }
-    const off = r.right <= 0 || r.left >= window.innerWidth || r.bottom - containerTop + scrollTop <= 0;
+    // posicao final = natural + deslocamento salvo (o transform inline pode ainda nao estar aplicado aqui)
+    const m = /translate3d\(\s*(-?[\d.]+)px,\s*(-?[\d.]+)px/.exec(el.style.transform || "");
+    const appliedX = m ? parseFloat(m[1] ?? "0") : 0;
+    const appliedY = m ? parseFloat(m[2] ?? "0") : 0;
+    const dX = dragPositionRef.current.x - appliedX;
+    const dY = dragPositionRef.current.y - appliedY;
+    const off =
+      r.right + dX <= 0 || r.left + dX >= window.innerWidth || r.bottom + dY - containerTop + scrollTop <= 0;
     const dx = defaultPosition?.x ?? 0;
     const dy = defaultPosition?.y ?? 0;
     if (off && (dragPositionRef.current.x !== dx || dragPositionRef.current.y !== dy)) {
