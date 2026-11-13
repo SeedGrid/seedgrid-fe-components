@@ -3289,6 +3289,7 @@
   },
   "Preset visual palette for active, inactive and background colors.": {
     "pt": "Paleta visual predefinida para as cores ativa, inativa e de fundo.",
+    "pt-BR": "Paleta visual padrão para as cores ativa, inativa e de fundo.",
     "en": "Preset visual palette for active, inactive and background colors.",
     "es": "Paleta visual predefinida para los colores activo, inactivo y de fondo.",
     "fr": "Palette visuelle prédéfinie pour les couleurs active, inactive et d'arrière-plan."

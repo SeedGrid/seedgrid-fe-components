@@ -27,6 +27,7 @@ type PropsReferenceTexts = {
 
 type PropDescriptionTranslation = {
   pt: string;
+  "pt-BR"?: string;
   en: string;
   es: string;
   fr?: string;
@@ -79,6 +80,7 @@ function getLocalizedPropDescription(description: string, locale: keyof typeof P
   if (locale === "fr") return translations.fr ?? translations.en;
   if (locale === "en-US") return translations.en;
   if (locale === "es") return translations.es;
+  if (locale === "pt-BR") return translations["pt-BR"] ?? translations.pt;
   return translations.pt;
 }
 
