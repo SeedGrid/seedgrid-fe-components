@@ -4617,7 +4617,7 @@
     "pt-PT": "Apresentar links, payloads PIX e códigos digitalizáveis em ecrãs e comprovativos.",
     "es": "Mostrar enlaces, payloads PIX y códigos escaneables en pantallas y comprobantes.",
     "fr": "Afficher des liens, des payloads PIX et des codes scannables sur les écrans et les reçus.",
-    "pt-BR": "Exibir links, payloads PIX e códigos escaneaveis em telas e comprovantes."
+    "pt-BR": "Exibir links, payloads PIX e códigos escaneáveis em telas e comprovantes."
   },
   "Exibir medicao continua em eixo linear com faixas de referencia.": {
     "en-US": "Display a continuous measurement on a linear axis with reference ranges.",
@@ -5163,14 +5163,14 @@
     "pt-PT": "Função para disparar notificações toast. Oferece tipos predefinidos (success, error, warning, info, loading, default) com duração personalizável, ações e estilo.",
     "es": "Función para disparar notificaciones toast. Ofrece tipos predefinidos (success, error, warning, info, loading, default) con duración personalizable, acciones y estilo.",
     "fr": "Fonction pour déclencher des notifications toast. Propose des types prédéfinis (success, error, warning, info, loading, default) avec durée personnalisable, actions et style.",
-    "pt-BR": "Função para disparar notificações toast. Oferece tipos predefinidos (success, error, warning, info, loading, default) com duração customizavel, ações e estilo."
+    "pt-BR": "Função para disparar notificações toast. Oferece tipos predefinidos (success, error, warning, info, loading, default) com duração customizável, ações e estilo."
   },
   "Funcao para disparar notificacoes whistle (banners/alertas). Oferece severidades, duracao customizavel, acoes, icones e estilos customizados.": {
     "en-US": "Function to trigger whistle notifications (banners/alerts). Offers severities, customizable duration, actions, icons and custom styles.",
     "pt-PT": "Função para disparar notificações whistle (banners/alertas). Oferece severidades, duração personalizável, ações, ícones e estilos personalizados.",
     "es": "Función para disparar notificaciones whistle (banners/alertas). Ofrece severidades, duración personalizable, acciones, iconos y estilos personalizados.",
     "fr": "Fonction pour déclencher des notifications whistle (bannières/alertes). Propose des sévérités, une durée personnalisable, des actions, des icônes et des styles personnalisés.",
-    "pt-BR": "Função para disparar notificações whistle (banners/alertas). Oferece severidades, duração customizavel, ações, ícones e estilos customizados."
+    "pt-BR": "Função para disparar notificações whistle (banners/alertas). Oferece severidades, duração customizável, ações, ícones e estilos customizados."
   },
   "Funcao para fechar/remover um toast especifico ou todos os toasts. Complementa a funcao toast() para controle programatico.": {
     "en-US": "Function to close/remove a specific toast or all toasts. Complements the toast() function for programmatic control.",
@@ -6157,7 +6157,7 @@
     "pt-PT": "Layouts de secção mais neutros e sem destaque visual; nesses casos prefira SgPanel.",
     "es": "Layouts de sección más neutros y sin destaque visual; en esos casos prefiera SgPanel.",
     "fr": "Mises en page de section plus neutres et sans mise en valeur visuelle ; dans ces cas, préférez SgPanel.",
-    "pt-BR": "Layouts de secção mais neutros e sem destaque visual; nesses casos prefira SgPanel."
+    "pt-BR": "Layouts de seção mais neutros e sem destaque visual; nesses casos prefira SgPanel."
   },
   "Layouts permanentes sem alternancia.": {
     "en-US": "Permanent layouts with no switching.",
@@ -6801,7 +6801,7 @@
     "pt-PT": "Menus persistentes com pesquisa, colapso, fixação e secções de utilizador.",
     "es": "Menús persistentes con búsqueda, colapso, anclaje y secciones de usuario.",
     "fr": "Menus persistants avec recherche, repli, épinglage et sections utilisateur.",
-    "pt-BR": "Menus persistentes com busca, colapso, pinagem e secções de usuário."
+    "pt-BR": "Menus persistentes com busca, colapso, pinagem e seções de usuário."
   },
   "Menus soltos fora de PageControl.": {
     "en-US": "Standalone menus outside PageControl.",
@@ -8957,7 +8957,7 @@
     "pt-PT": "Estado de operações async com duração personalizável.",
     "es": "Estado de operaciones async con duración personalizable.",
     "fr": "Statut des opérations async avec durée personnalisable.",
-    "pt-BR": "Status de operações async com duração customizavel."
+    "pt-BR": "Status de operações async com duração customizável."
   },
   "Status persistentes dentro do layout; nesses casos prefira badge ou whistle.": {
     "en-US": "Persistent statuses within the layout; in those cases, prefer badge or whistle.",
