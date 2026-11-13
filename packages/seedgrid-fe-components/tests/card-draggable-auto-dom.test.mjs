@@ -100,7 +100,7 @@ for (const [name, Comp, props] of [
   });
 }
 
-test("SgClock sem id/dragPersistKey: cada relogio grava a posicao na propria chave", async () => {
+test("SgClock sem id/dragPersistKey nao persiste posicao (nem grava chave compartilhada)", async () => {
   const harness = setupDomHarness();
   try {
     setMedia(false);
@@ -117,8 +117,23 @@ test("SgClock sem id/dragPersistKey: cada relogio grava a posicao na propria cha
     await flushDom();
     await flushDom();
     const keys = Object.keys(globalThis.localStorage).filter((k) => k.startsWith("sg-clock"));
-    assert.equal(keys.length, 3, `chaves: ${keys.join(", ")}`);
-    assert.ok(!keys.includes("sg-clock"));
+    assert.deepEqual(keys, []);
+  } finally {
+    harness.restore();
+  }
+});
+
+test("SgClock com cardProps.id persiste na chave sg-clock:<id>", async () => {
+  const harness = setupDomHarness();
+  try {
+    setMedia(false);
+    globalThis.localStorage.clear();
+    await harness.render(
+      React.createElement(SgClock, { ...clockProps, cardProps: { id: "meu" } })
+    );
+    await flushDom();
+    await flushDom();
+    assert.ok(globalThis.localStorage.getItem("sg-clock:meu") !== null);
   } finally {
     harness.restore();
   }

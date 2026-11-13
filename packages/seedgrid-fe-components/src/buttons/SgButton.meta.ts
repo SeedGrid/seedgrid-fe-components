@@ -152,8 +152,8 @@ export const aiHints: SgAiHintsV0 = {
   compositionHints: [
     "Combinar com SgInputText e outros campos em formularios.",
     "Usar dentro de SgPanel ou SgDialog para acoes contextuais.",
-    "O onClick precisa DEVOLVER a Promise/Future para o loading automatico funcionar: onClick={() => { salvar(); }} (chaves sem return) nao protege; use () => salvar() ou async () => { await salvar(); }. No Flutter, async () {...} sempre devolve Future; () { salvar(); } nao.",
-    "O botao nao engole o erro do onClick assincrono: sai do loading e relanca como rejeicao nao tratada. Trate com try/catch dentro do onClick e avise o usuario com sgWhistle.error (Flutter: sgWhistle.error(SgWhistleOptions(...))).",
+    "O onClick precisa DEVOLVER a Promise para o loading automatico funcionar: onClick={() => { salvar(); }} (chaves sem return) nao protege; use () => salvar() ou async () => { await salvar(); }.",
+    "O botao nao engole o erro do onClick assincrono: sai do loading e relanca como rejeicao nao tratada. Trate com try/catch dentro do onClick e avise o usuario com sgWhistle.error.",
     "O loading automatico protege a acao na tela (duplo clique/reenvio), mas nao substitui a chave de idempotencia no servidor. A prop loading manual vence: loading efetivo = loading ou operacao pendente."
   ],
   rankingSignals: {
