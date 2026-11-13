@@ -3254,7 +3254,7 @@
   "showcase.component.button.sectionTitles.16": "17) Gestion des erreurs dans un onClick asynchrone",
   "showcase.component.button.sectionTitles.17": "18) Playground",
   "showcase.component.button.sectionDescriptions.0": "Bouton par défaut avec onClick et état désactivé.",
-  "showcase.component.button.sectionDescriptions.1": "Exemples complets d'icônes pour valider apparence/forme/elevation.",
+  "showcase.component.button.sectionDescriptions.1": "Exemples complets d'icônes pour valider appearance/shape/elevation.",
   "showcase.component.button.sectionDescriptions.2": "severity=\"primary\" | \"secondary\" | \"success\" | \"info\" | \"warning\" | \"help\" | \"danger\"",
   "showcase.component.button.sectionDescriptions.3": "appearance=\"solid\" + élévation=\"sm\".",
   "showcase.component.button.sectionDescriptions.4": "shape=\"rounded\" pour un format pilule.",

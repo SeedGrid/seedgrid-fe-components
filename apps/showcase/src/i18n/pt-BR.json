@@ -3254,7 +3254,7 @@
   "showcase.component.button.sectionTitles.16": "17) Tratando erro no onClick assíncrono",
   "showcase.component.button.sectionTitles.17": "18) Playground",
   "showcase.component.button.sectionDescriptions.0": "Botão padrão com onClick e estado disabled.",
-  "showcase.component.button.sectionDescriptions.1": "Examples completos com ícones para validar appearance/shape/elevation.",
+  "showcase.component.button.sectionDescriptions.1": "Exemplos completos com ícones para validar appearance/shape/elevation.",
   "showcase.component.button.sectionDescriptions.2": "severity=\"primary\" | \"secondary\" | \"success\" | \"info\" | \"warning\" | \"help\" | \"danger\"",
   "showcase.component.button.sectionDescriptions.3": "appearance=\"solid\" + elevation=\"sm\".",
   "showcase.component.button.sectionDescriptions.4": "shape=\"rounded\" para formato pill.",
