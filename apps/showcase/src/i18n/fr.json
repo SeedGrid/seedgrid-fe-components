@@ -1621,7 +1621,7 @@
   "showcase.component.wizard.sections.beforeNext.title": "onBeforeNext asynchrone",
   "showcase.component.wizard.sections.customLabels.description": "Personnalisez les libellés des boutons.",
   "showcase.component.wizard.sections.customLabels.title": "Libellés personnalisés",
-  "showcase.component.wizard.sections.stepNavigation.description": "Utilisez stepNavigation pour limiter les étapes cliquables. Le défaut est precedent-et-suivant ; cet exemple n'autorise que le clic sur les étapes précédentes.",
+  "showcase.component.wizard.sections.stepNavigation.description": "Utilisez stepNavigation pour limiter les étapes cliquables. Le défaut est previous-and-next ; cet exemple n'autorise que le clic sur les étapes précédentes.",
   "showcase.component.wizard.sections.stepNavigation.title": "stepNavigation",
   "showcase.component.wizard.sections.validateStep.description": "Validation personnalisée par étape, en plus de la validation automatique des champs.",
   "showcase.component.wizard.sections.validateStep.title": "validateStep",

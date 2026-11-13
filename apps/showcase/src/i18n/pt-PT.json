@@ -2325,7 +2325,7 @@
   "showcase.component.discardDigit.section6PageLabelPrefix": "Página",
   "showcase.component.discardDigit.section6PageLabelConnector": "de",
   "showcase.component.discardDigit.section6PreviousButton": "Previous",
-  "showcase.component.discardDigit.section6NextButton": "Proxima",
+  "showcase.component.discardDigit.section6NextButton": "Próxima",
   "showcase.component.discardDigit.section7Title": "7) Descarte (predefinição)",
   "showcase.component.discardDigit.section7Description": "A folha de cima voa para fora em 640 ms e o valor novo aparece por baixo. O movimento é sorteado a cada troca.",
   "showcase.component.discardDigit.section8Title": "8) A entrar por baixo",
