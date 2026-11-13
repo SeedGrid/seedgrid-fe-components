@@ -145,7 +145,7 @@ export function SgCard(props: Readonly<SgCardProps>) {
     collapseIconSize = 18,
     collapseToggleAlign = "left",
     toggleOnHeaderClick = true,
-    draggable = false,
+    draggable: draggableProp = false,
     defaultPosition,
     dragPersistKey,
     onPositionChange,
@@ -154,6 +154,18 @@ export function SgCard(props: Readonly<SgCardProps>) {
     children,
     ...rest
   } = props;
+
+  // Celular (< 640px): sem arraste e sem aplicar posicao salva (px de outra tela deixam os cartoes espalhados/fora da viewport).
+  const [narrowViewport, setNarrowViewport] = React.useState(false);
+  React.useEffect(() => {
+    if (typeof window === "undefined" || typeof window.matchMedia !== "function") return;
+    const mq = window.matchMedia("(max-width: 639px)");
+    const sync = () => setNarrowViewport(mq.matches);
+    sync();
+    mq.addEventListener?.("change", sync);
+    return () => mq.removeEventListener?.("change", sync);
+  }, []);
+  const draggable = draggableProp && !narrowViewport;
 
   const hasEnvironmentProvider = useHasSgEnvironmentProvider();
   const { load: loadPersistedState, save: savePersistedState, clear: clearPersistedState } = useSgPersistence();
