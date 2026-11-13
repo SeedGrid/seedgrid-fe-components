@@ -25,29 +25,29 @@ const PERMISSION_ROWS: PermissionRow[] = [
 
 export default function ActionsDatatableExample() {
   const [permissionRows, setPermissionRows] = React.useState<PermissionRow[]>(PERMISSION_ROWS);
-  const [lastPermissionAction, setLastPermissionAction] = React.useState("none");
+  const [lastPermissionAction, setLastPermissionAction] = React.useState("-");
   const [confirmDeleteOpen, setConfirmDeleteOpen] = React.useState(false);
   const [pendingDelete, setPendingDelete] = React.useState<PermissionRow | null>(null);
 
   const permissionColumns = React.useMemo<SgDatatableColumn<PermissionRow>[]>(() => [
     { field: "id", header: "ID", sortable: true, align: "left", width: 80 },
-    { field: "name", header: "Name", sortable: true },
-    { field: "description", header: "Description", sortable: true },
+    { field: "name", header: "Nome", sortable: true },
+    { field: "description", header: "Descrição", sortable: true },
     {
-      header: "Actions",
+      header: "Ações",
       align: "center",
       width: 120,
       body: (row) => (
         <SgGrid columns={2} gap={6} className="mx-auto max-w-[76px]">
-          <SgButton size="sm" appearance="ghost" severity="secondary" iconOnly leftIcon={<Pencil className="size-4" />} aria-label={`Edit ${row.name}`} title={`Edit ${row.name}`} onClick={() => setLastPermissionAction(`edit: ${row.name}`)} />
+          <SgButton size="sm" appearance="ghost" severity="secondary" iconOnly leftIcon={<Pencil className="size-4" />} aria-label={`Editar ${row.name}`} title={`Editar ${row.name}`} onClick={() => setLastPermissionAction(`editar: ${row.name}`)} />
           <SgButton
             size="sm"
             appearance="ghost"
             severity="danger"
             iconOnly
             leftIcon={<Trash2 className="size-4" />}
-            aria-label={`Delete ${row.name}`}
-            title={`Delete ${row.name}`}
+            aria-label={`Excluir ${row.name}`}
+            title={`Excluir ${row.name}`}
             onClick={() => {
               setPendingDelete(row);
               setConfirmDeleteOpen(true);
@@ -76,9 +76,9 @@ export default function ActionsDatatableExample() {
         onOpenChange={setConfirmDeleteOpen}
         closeOnOverlayClick={false}
         severity="danger"
-        title="Delete permission"
-        message={pendingDelete ? `Confirm delete ${pendingDelete.name}?` : "Confirm delete?"}
-        confirmButton={{ label: "Delete", icon: <Trash2 className="size-4" />, severity: "danger" }}
+        title="Excluir permissão"
+        message={pendingDelete ? `Confirmar exclusão de ${pendingDelete.name}?` : "Confirmar exclusão?"}
+        confirmButton={{ label: "Excluir", icon: <Trash2 className="size-4" />, severity: "danger" }}
         onCancel={() => {
           setConfirmDeleteOpen(false);
           setPendingDelete(null);
@@ -86,12 +86,12 @@ export default function ActionsDatatableExample() {
         onConfirm={() => {
           if (!pendingDelete) return;
           setPermissionRows((prev) => prev.filter((item) => item.id !== pendingDelete.id));
-          setLastPermissionAction(`delete: ${pendingDelete.name}`);
+          setLastPermissionAction(`excluir: ${pendingDelete.name}`);
           setConfirmDeleteOpen(false);
           setPendingDelete(null);
         }}
       />
-      <p className="text-xs text-muted-foreground">last action: {lastPermissionAction}</p>
+      <p className="text-xs text-muted-foreground">última ação: {lastPermissionAction}</p>
     </>
   );
 }

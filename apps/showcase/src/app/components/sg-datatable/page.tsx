@@ -81,9 +81,9 @@ const ENABLED_ROWS = [
   { id: 2, name: "Bruno" },
   { id: 3, name: "Carla" }
 ];
-const ENABLED_COLUMNS = [
+const enabledColumns = (i18n: ShowcaseI18n) => [
   { field: "id", header: "ID", sortable: true },
-  { field: "name", header: "Nome", sortable: true, filter: true }
+  { field: "name", header: t(i18n, "showcase.component.datatable.labels.name"), sortable: true, filter: true }
 ];
 
 const I18N_COLUMNS = [
@@ -127,43 +127,43 @@ const currency = new Intl.NumberFormat("en-US", {
   maximumFractionDigits: 0
 });
 
-const BASE_COLUMNS: SgDatatableColumn<ProductRow>[] = [
-  { field: "code", header: "Code", sortable: true },
-  { field: "name", header: "Name", sortable: true },
-  { field: "category", header: "Category", sortable: true },
-  { field: "price", header: "Price", sortable: true, align: "right" },
-  { field: "stock", header: "Stock", sortable: true, align: "right" }
+const baseColumns = (i18n: ShowcaseI18n): SgDatatableColumn<ProductRow>[] => [
+  { field: "code", header: t(i18n, "showcase.component.datatable.labels.code"), sortable: true },
+  { field: "name", header: t(i18n, "showcase.component.datatable.labels.name"), sortable: true },
+  { field: "category", header: t(i18n, "showcase.component.datatable.labels.category"), sortable: true },
+  { field: "price", header: t(i18n, "showcase.component.datatable.labels.price"), sortable: true, align: "right" },
+  { field: "stock", header: t(i18n, "showcase.component.datatable.labels.stock"), sortable: true, align: "right" }
 ];
 
-const CARD_COLUMNS: SgDatatableColumn<ProductRow>[] = [
-  { field: "name", header: "Name", sortable: true, filter: true, cardTitle: true },
-  { field: "code", header: "Code", sortable: true, filter: true },
-  { field: "category", header: "Category", sortable: true },
-  { field: "price", header: "Price", sortable: true, align: "right" },
-  { field: "stock", header: "Stock", sortable: true, align: "right", footer: (rows) => rows.reduce((total, row) => total + row.stock, 0) },
-  { field: "status", header: "Status", cardHidden: true }
+const cardColumns = (i18n: ShowcaseI18n): SgDatatableColumn<ProductRow>[] => [
+  { field: "name", header: t(i18n, "showcase.component.datatable.labels.name"), sortable: true, filter: true, cardTitle: true },
+  { field: "code", header: t(i18n, "showcase.component.datatable.labels.code"), sortable: true, filter: true },
+  { field: "category", header: t(i18n, "showcase.component.datatable.labels.category"), sortable: true },
+  { field: "price", header: t(i18n, "showcase.component.datatable.labels.price"), sortable: true, align: "right" },
+  { field: "stock", header: t(i18n, "showcase.component.datatable.labels.stock"), sortable: true, align: "right", footer: (rows) => rows.reduce((total, row) => total + row.stock, 0) },
+  { field: "status", header: t(i18n, "showcase.component.datatable.labels.status"), cardHidden: true }
 ];
 
-const FILTER_COLUMNS: SgDatatableColumn<ProductRow>[] = [
-  { field: "code", header: "Code", sortable: true, filter: true, filterPlaceholder: "Filter code" },
-  { field: "name", header: "Name", sortable: true, filter: true, filterPlaceholder: "Filter name" },
-  { field: "category", header: "Category", sortable: true, filter: true, filterPlaceholder: "Filter category" },
-  { field: "status", header: "Status", sortable: true, filter: true, filterPlaceholder: "Filter status" },
-  { field: "price", header: "Price", sortable: true, align: "right" }
+const filterColumns = (i18n: ShowcaseI18n): SgDatatableColumn<ProductRow>[] => [
+  { field: "code", header: t(i18n, "showcase.component.datatable.labels.code"), sortable: true, filter: true, filterPlaceholder: t(i18n, "showcase.component.datatable.labels.filterCode") },
+  { field: "name", header: t(i18n, "showcase.component.datatable.labels.name"), sortable: true, filter: true, filterPlaceholder: t(i18n, "showcase.component.datatable.labels.filterName") },
+  { field: "category", header: t(i18n, "showcase.component.datatable.labels.category"), sortable: true, filter: true, filterPlaceholder: t(i18n, "showcase.component.datatable.labels.filterCategory") },
+  { field: "status", header: t(i18n, "showcase.component.datatable.labels.status"), sortable: true, filter: true, filterPlaceholder: t(i18n, "showcase.component.datatable.labels.filterStatus") },
+  { field: "price", header: t(i18n, "showcase.component.datatable.labels.price"), sortable: true, align: "right" }
 ];
 
-const SERVER_COLUMNS: SgDatatableColumn<ProductRow>[] = [
-  { field: "code", header: "Code", sortable: true, filter: true, filterPlaceholder: "Filter code" },
-  { field: "name", header: "Name", sortable: true, filter: true, filterPlaceholder: "Filter name" },
-  { field: "category", header: "Category", sortable: true, filter: true, filterPlaceholder: "Filter category" },
-  { field: "status", header: "Status", sortable: true, filter: true, filterPlaceholder: "Filter status" },
-  { field: "price", header: "Price", sortable: true, align: "right" }
+const serverColumns = (i18n: ShowcaseI18n): SgDatatableColumn<ProductRow>[] => [
+  { field: "code", header: t(i18n, "showcase.component.datatable.labels.code"), sortable: true, filter: true, filterPlaceholder: t(i18n, "showcase.component.datatable.labels.filterCode") },
+  { field: "name", header: t(i18n, "showcase.component.datatable.labels.name"), sortable: true, filter: true, filterPlaceholder: t(i18n, "showcase.component.datatable.labels.filterName") },
+  { field: "category", header: t(i18n, "showcase.component.datatable.labels.category"), sortable: true, filter: true, filterPlaceholder: t(i18n, "showcase.component.datatable.labels.filterCategory") },
+  { field: "status", header: t(i18n, "showcase.component.datatable.labels.status"), sortable: true, filter: true, filterPlaceholder: t(i18n, "showcase.component.datatable.labels.filterStatus") },
+  { field: "price", header: t(i18n, "showcase.component.datatable.labels.price"), sortable: true, align: "right" }
 ];
 
-const TEMPLATE_COLUMNS: SgDatatableColumn<ProductRow>[] = [
+const templateColumns = (i18n: ShowcaseI18n): SgDatatableColumn<ProductRow>[] => [
   {
     field: "name",
-    header: "Product",
+    header: t(i18n, "showcase.component.datatable.labels.product"),
     sortable: true,
     body: (row) => (
       <div className="space-y-0.5">
@@ -171,12 +171,12 @@ const TEMPLATE_COLUMNS: SgDatatableColumn<ProductRow>[] = [
         <p className="text-xs text-muted-foreground">{row.code}</p>
       </div>
     ),
-    footer: (rows) => <span>Total: {rows.length}</span>
+    footer: (rows) => <span>{t(i18n, "showcase.component.datatable.labels.total")} {rows.length}</span>
   },
-  { field: "category", header: "Category", sortable: true },
+  { field: "category", header: t(i18n, "showcase.component.datatable.labels.category"), sortable: true },
   {
     field: "status",
-    header: "Status",
+    header: t(i18n, "showcase.component.datatable.labels.status"),
     sortable: true,
     body: (row) => (
       <span
@@ -194,7 +194,7 @@ const TEMPLATE_COLUMNS: SgDatatableColumn<ProductRow>[] = [
   },
   {
     field: "price",
-    header: "Price",
+    header: t(i18n, "showcase.component.datatable.labels.price"),
     sortable: true,
     align: "right",
     body: (row) => <span>{currency.format(row.price)}</span>,
@@ -205,10 +205,10 @@ const TEMPLATE_COLUMNS: SgDatatableColumn<ProductRow>[] = [
   }
 ];
 
-const MANAGER_COLUMNS: SgDatatableColumn<ProductRow>[] = [
+const managerColumns = (i18n: ShowcaseI18n): SgDatatableColumn<ProductRow>[] => [
   {
     field: "code",
-    header: "Code",
+    header: t(i18n, "showcase.component.datatable.labels.code"),
     sortable: true,
     hideable: false,
     reorderable: false,
@@ -217,7 +217,7 @@ const MANAGER_COLUMNS: SgDatatableColumn<ProductRow>[] = [
   },
   {
     field: "name",
-    header: "Product",
+    header: t(i18n, "showcase.component.datatable.labels.product"),
     sortable: true,
     minWidth: 220,
     body: (row) => (
@@ -230,18 +230,18 @@ const MANAGER_COLUMNS: SgDatatableColumn<ProductRow>[] = [
   },
   {
     field: "category",
-    header: "Category",
+    header: t(i18n, "showcase.component.datatable.labels.category"),
     sortable: true,
     filter: true,
-    filterPlaceholder: "Filter category",
+    filterPlaceholder: t(i18n, "showcase.component.datatable.labels.filterCategory"),
     hidden: true
   },
   {
     field: "status",
-    header: "Status",
+    header: t(i18n, "showcase.component.datatable.labels.status"),
     sortable: true,
     filter: true,
-    filterPlaceholder: "Filter status",
+    filterPlaceholder: t(i18n, "showcase.component.datatable.labels.filterStatus"),
     body: (row) => (
       <span
         className={
@@ -258,7 +258,7 @@ const MANAGER_COLUMNS: SgDatatableColumn<ProductRow>[] = [
   },
   {
     field: "stock",
-    header: "Stock",
+    header: t(i18n, "showcase.component.datatable.labels.stock"),
     sortable: true,
     align: "right",
     bodyClassName: (row) => (row.stock < 10 ? "font-semibold text-[rgb(var(--sg-warning-900))]" : undefined)
@@ -360,11 +360,11 @@ const PERMISSION_ROWS: PermissionRow[] = [
 ];`;
 
 const BASE_COLUMNS_CODE = `const BASE_COLUMNS = [
-  { field: "code", header: "Code", sortable: true },
-  { field: "name", header: "Name", sortable: true },
-  { field: "category", header: "Category", sortable: true },
-  { field: "price", header: "Price", sortable: true, align: "right" },
-  { field: "stock", header: "Stock", sortable: true, align: "right" }
+  { field: "code", header: "Código", sortable: true },
+  { field: "name", header: "Nome", sortable: true },
+  { field: "category", header: "Categoria", sortable: true },
+  { field: "price", header: "Preço", sortable: true, align: "right" },
+  { field: "stock", header: "Estoque", sortable: true, align: "right" }
 ];`;
 
 const BASIC_CODE = `import React from "react";
@@ -390,7 +390,7 @@ export default function BasicDatatableExample() {
   return (
     <SgDatatable
       id="datatable-basic"
-      title="Product catalog"
+      title="Catálogo de produtos"
       value={PRODUCT_ROWS}
       columns={BASE_COLUMNS}
       dataKey="id"
@@ -421,11 +421,11 @@ import { SgPlayground } from "@seedgrid/fe-playground";
 ${PRODUCT_ROWS_CODE}
 
 const FILTER_COLUMNS = [
-  { field: "code", header: "Code", sortable: true, filter: true, filterPlaceholder: "Filter code" },
-  { field: "name", header: "Name", sortable: true, filter: true, filterPlaceholder: "Filter name" },
-  { field: "category", header: "Category", sortable: true, filter: true, filterPlaceholder: "Filter category" },
-  { field: "status", header: "Status", sortable: true, filter: true, filterPlaceholder: "Filter status" },
-  { field: "price", header: "Price", sortable: true, align: "right" }
+  { field: "code", header: "Código", sortable: true, filter: true, filterPlaceholder: "Filtrar código" },
+  { field: "name", header: "Nome", sortable: true, filter: true, filterPlaceholder: "Filtrar nome" },
+  { field: "category", header: "Categoria", sortable: true, filter: true, filterPlaceholder: "Filtrar categoria" },
+  { field: "status", header: "Status", sortable: true, filter: true, filterPlaceholder: "Filtrar status" },
+  { field: "price", header: "Preço", sortable: true, align: "right" }
 ];
 
 export default function FilterDatatableExample() {
@@ -469,9 +469,9 @@ export default function SelectionDatatableExample() {
   const [selection, setSelection] = React.useState<SgDatatableSelection<ProductRow>>(null);
 
   const selectionLabel = React.useMemo(() => {
-    if (!selection) return "none";
+    if (!selection) return "-";
     if (Array.isArray(selection)) {
-      return selection.length === 0 ? "none" : selection.map((row) => row.name).join(", ");
+      return selection.length === 0 ? "-" : selection.map((row) => row.name).join(", ");
     }
     return selection.name;
   }, [selection]);
@@ -498,13 +498,13 @@ export default function SelectionDatatableExample() {
           multiple
         </SgButton>
         <SgButton appearance="outline" onClick={() => setSelection(selectionMode === "multiple" ? [] : null)}>
-          clear selection
+          limpar seleção
         </SgButton>
       </SgGrid>
 
       <SgDatatable
         id="datatable-selection"
-        title="Selectable table"
+        title="Tabela selecionável"
         value={PRODUCT_ROWS}
         columns={BASE_COLUMNS}
         dataKey="id"
@@ -516,7 +516,7 @@ export default function SelectionDatatableExample() {
       />
 
       <p className="text-sm text-[rgb(var(--sg-muted))]">
-        selected: <strong>{selectionLabel}</strong>
+        selecionado: <strong>{selectionLabel}</strong>
       </p>
     </>
   );
@@ -548,7 +548,7 @@ const currency = new Intl.NumberFormat("en-US", {
 const TEMPLATE_COLUMNS = [
   {
     field: "name",
-    header: "Product",
+    header: "Produto",
     sortable: true,
     body: (row) => (
       <div className="space-y-0.5">
@@ -558,7 +558,7 @@ const TEMPLATE_COLUMNS = [
     ),
     footer: (rows) => <span>Total: {rows.length}</span>
   },
-  { field: "category", header: "Category", sortable: true },
+  { field: "category", header: "Categoria", sortable: true },
   {
     field: "status",
     header: "Status",
@@ -579,7 +579,7 @@ const TEMPLATE_COLUMNS = [
   },
   {
     field: "price",
-    header: "Price",
+    header: "Preço",
     sortable: true,
     align: "right",
     body: (row) => <span>{currency.format(row.price)}</span>,
@@ -625,16 +625,16 @@ ${PERMISSION_ROWS_CODE}
 
 export default function ActionsDatatableExample() {
   const [permissionRows, setPermissionRows] = React.useState<PermissionRow[]>(PERMISSION_ROWS);
-  const [lastPermissionAction, setLastPermissionAction] = React.useState("none");
+  const [lastPermissionAction, setLastPermissionAction] = React.useState("-");
   const [confirmDeleteOpen, setConfirmDeleteOpen] = React.useState(false);
   const [pendingDelete, setPendingDelete] = React.useState<PermissionRow | null>(null);
 
   const permissionColumns = React.useMemo<SgDatatableColumn<PermissionRow>[]>(() => [
     { field: "id", header: "ID", sortable: true, align: "left", width: 80 },
-    { field: "name", header: "Name", sortable: true },
-    { field: "description", header: "Description", sortable: true },
+    { field: "name", header: "Nome", sortable: true },
+    { field: "description", header: "Descrição", sortable: true },
     {
-      header: "Actions",
+      header: "Ações",
       align: "center",
       width: 120,
       body: (row) => (
@@ -685,9 +685,9 @@ export default function ActionsDatatableExample() {
         onOpenChange={setConfirmDeleteOpen}
         closeOnOverlayClick={false}
         severity="danger"
-        title="Delete permission"
+        title="Excluir permissão"
         message={pendingDelete ? \`Confirm delete \${pendingDelete.name}?\` : "Confirm delete?"}
-        confirmButton={{ label: "Delete", icon: <Trash2 className="size-4" />, severity: "danger" }}
+        confirmButton={{ label: "Excluir", icon: <Trash2 className="size-4" />, severity: "danger" }}
         onCancel={() => {
           setConfirmDeleteOpen(false);
           setPendingDelete(null);
@@ -701,7 +701,7 @@ export default function ActionsDatatableExample() {
         }}
       />
       <p className="text-xs text-muted-foreground">
-        last action: {lastPermissionAction}
+        última ação: {lastPermissionAction}
       </p>
     </>
   );
@@ -742,25 +742,25 @@ export default function ControlledDatatableExample() {
             setControlledPage({ first: 0, rows: controlledPage.rows });
           }}
         >
-          sort by price desc
+          ordenar por preço (decrescente)
         </SgButton>
         <SgButton
           appearance="outline"
           onClick={() => setControlledPage((prev) => ({ ...prev, first: Math.max(0, prev.first - prev.rows) }))}
         >
-          prev page
+          página anterior
         </SgButton>
         <SgButton
           appearance="outline"
           onClick={() => setControlledPage((prev) => ({ ...prev, first: prev.first + prev.rows }))}
         >
-          next page
+          próxima página
         </SgButton>
       </SgGrid>
 
       <SgDatatable
         id="datatable-controlled"
-        title="Controlled state"
+        title="Estado controlado"
         value={PRODUCT_ROWS}
         columns={BASE_COLUMNS}
         dataKey="id"
@@ -778,7 +778,7 @@ export default function ControlledDatatableExample() {
       />
 
       <p className="text-xs text-muted-foreground">
-        sort: {controlledSort.sortField ?? "none"} ({controlledSort.sortOrder}) | first: {controlledPage.first} | rows: {controlledPage.rows}
+        ordenação: {controlledSort.sortField ?? "-"} ({controlledSort.sortOrder}) | primeiro: {controlledPage.first} | linhas: {controlledPage.rows}
       </p>
     </>
   );
@@ -811,21 +811,21 @@ export default function LoadingDatatableExample() {
     <>
       <SgGrid columns={{ base: 2, md: 4 }} gap={8}>
         <SgButton appearance={loading ? "solid" : "outline"} onClick={() => setLoading((value) => !value)}>
-          toggle loading
+          alternar carregamento
         </SgButton>
         <SgButton appearance={showEmpty ? "solid" : "outline"} onClick={() => setShowEmpty((value) => !value)}>
-          toggle empty
+          alternar vazio
         </SgButton>
       </SgGrid>
 
       <SgDatatable
         id="datatable-loading"
-        title="Loading / empty"
+        title="Carregando / vazio"
         value={showEmpty ? [] : PRODUCT_ROWS}
         columns={BASE_COLUMNS}
         dataKey="id"
         loading={loading}
-        emptyMessage="No products available."
+        emptyMessage="Nenhum produto disponível."
       />
     </>
   );
@@ -944,11 +944,11 @@ type ServerResult = {
 };
 
 const SERVER_COLUMNS: SgDatatableColumn<ProductRow>[] = [
-  { field: "code", header: "Code", sortable: true, filter: true, filterPlaceholder: "Filter code" },
-  { field: "name", header: "Name", sortable: true, filter: true, filterPlaceholder: "Filter name" },
-  { field: "category", header: "Category", sortable: true, filter: true, filterPlaceholder: "Filter category" },
-  { field: "status", header: "Status", sortable: true, filter: true, filterPlaceholder: "Filter status" },
-  { field: "price", header: "Price", sortable: true, align: "right" }
+  { field: "code", header: "Código", sortable: true, filter: true, filterPlaceholder: "Filtrar código" },
+  { field: "name", header: "Nome", sortable: true, filter: true, filterPlaceholder: "Filtrar nome" },
+  { field: "category", header: "Categoria", sortable: true, filter: true, filterPlaceholder: "Filtrar categoria" },
+  { field: "status", header: "Status", sortable: true, filter: true, filterPlaceholder: "Filtrar status" },
+  { field: "price", header: "Preço", sortable: true, align: "right" }
 ];
 
 const SERVER_DATASET: ProductRow[] = Array.from({ length: 48 }, (_, index) => {
@@ -1096,7 +1096,7 @@ export default function ServerSideDatatableExample() {
       />
 
       <p className="text-xs text-muted-foreground">
-        current page rows: {serverRows.length} | total records: {serverTotalRecords}
+        linhas da página atual: {serverRows.length} | total de registros: {serverTotalRecords}
       </p>
     </>
   );
@@ -1118,11 +1118,11 @@ const ROWS = [
 ];
 
 const COLUMNS = [
-  { field: "code", header: "Code", sortable: true },
-  { field: "name", header: "Name", sortable: true },
-  { field: "category", header: "Category", sortable: true },
-  { field: "price", header: "Price", sortable: true, align: "right" },
-  { field: "stock", header: "Stock", sortable: true, align: "right" }
+  { field: "code", header: "Código", sortable: true },
+  { field: "name", header: "Nome", sortable: true },
+  { field: "category", header: "Categoria", sortable: true },
+  { field: "price", header: "Preço", sortable: true, align: "right" },
+  { field: "stock", header: "Estoque", sortable: true, align: "right" }
 ];
 
 export default function App() {
@@ -1156,7 +1156,7 @@ export default function App() {
       <div className="grid gap-2 sm:grid-cols-3">
         <button className="rounded border border-border px-2 py-1 text-xs" onClick={() => setRows((prev) => Math.max(2, prev - 1))}>- rows</button>
         <button className="rounded border border-border px-2 py-1 text-xs" onClick={() => setRows((prev) => Math.min(10, prev + 1))}>+ rows</button>
-        <button className="rounded border border-border px-2 py-1 text-xs" onClick={() => setData((prev) => (prev.length ? [] : ROWS))}>toggle empty</button>
+        <button className="rounded border border-border px-2 py-1 text-xs" onClick={() => setData((prev) => (prev.length ? [] : ROWS))}>alternar vazio</button>
       </div>
 
       <div className="rounded border border-border p-3">
@@ -1192,6 +1192,18 @@ export default function App() {
 export default function SgDatatableShowcase() {
   const i18n = useShowcaseI18n();
   const aiComponent = useAiManifestComponent("SgDatatable");
+  const cols = React.useMemo(
+    () => ({
+      base: baseColumns(i18n),
+      card: cardColumns(i18n),
+      filter: filterColumns(i18n),
+      server: serverColumns(i18n),
+      template: templateColumns(i18n),
+      manager: managerColumns(i18n),
+      enabled: enabledColumns(i18n)
+    }),
+    [i18n.locale]
+  );
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } = useShowcaseAnchors({
     deps: [i18n.locale]
   });
@@ -1225,7 +1237,7 @@ export default function SgDatatableShowcase() {
   const [loading, setLoading] = React.useState(false);
   const [showEmpty, setShowEmpty] = React.useState(false);
   const [permissionRows, setPermissionRows] = React.useState<PermissionRow[]>(PERMISSION_ROWS);
-  const [lastPermissionAction, setLastPermissionAction] = React.useState("none");
+  const [lastPermissionAction, setLastPermissionAction] = React.useState("-");
   const [confirmDeleteOpen, setConfirmDeleteOpen] = React.useState(false);
   const [pendingDelete, setPendingDelete] = React.useState<PermissionRow | null>(null);
   const sectionTitles = React.useMemo(
@@ -1238,19 +1250,19 @@ export default function SgDatatableShowcase() {
   );
 
   const selectionLabel = React.useMemo(() => {
-    if (!selection) return "none";
+    if (!selection) return "-";
     if (Array.isArray(selection)) {
-      return selection.length === 0 ? "none" : selection.map((row) => row.name).join(", ");
+      return selection.length === 0 ? "-" : selection.map((row) => row.name).join(", ");
     }
     return selection.name;
   }, [selection]);
 
   const permissionColumns = React.useMemo<SgDatatableColumn<PermissionRow>[]>(() => [
     { field: "id", header: "ID", sortable: true, align: "left", width: 80 },
-    { field: "name", header: "Name", sortable: true },
-    { field: "description", header: "Description", sortable: true },
+    { field: "name", header: t(i18n, "showcase.component.datatable.labels.name"), sortable: true },
+    { field: "description", header: t(i18n, "showcase.component.datatable.labels.description"), sortable: true },
     {
-      header: "Actions",
+      header: t(i18n, "showcase.component.datatable.labels.actions"),
       align: "center",
       width: 120,
       body: (row) => (
@@ -1261,9 +1273,9 @@ export default function SgDatatableShowcase() {
             severity="secondary"
             iconOnly
             leftIcon={<Pencil className="size-4" />}
-            aria-label={`Edit ${row.name}`}
-            title={`Edit ${row.name}`}
-            onClick={() => setLastPermissionAction(`edit: ${row.name}`)}
+            aria-label={t(i18n, "showcase.component.datatable.labels.editRow", { name: row.name })}
+            title={t(i18n, "showcase.component.datatable.labels.editRow", { name: row.name })}
+            onClick={() => setLastPermissionAction(t(i18n, "showcase.component.datatable.labels.actionEdit", { name: row.name }))}
           />
           <SgButton
             size="sm"
@@ -1271,8 +1283,8 @@ export default function SgDatatableShowcase() {
             severity="danger"
             iconOnly
             leftIcon={<Trash2 className="size-4" />}
-            aria-label={`Delete ${row.name}`}
-            title={`Delete ${row.name}`}
+            aria-label={t(i18n, "showcase.component.datatable.labels.deleteRow", { name: row.name })}
+            title={t(i18n, "showcase.component.datatable.labels.deleteRow", { name: row.name })}
             onClick={() => {
               setPendingDelete(row);
               setConfirmDeleteOpen(true);
@@ -1281,7 +1293,7 @@ export default function SgDatatableShowcase() {
         </SgGrid>
       )
     }
-  ], []);
+  ], [i18n.locale]);
 
   React.useEffect(() => {
     let cancelled = false;
@@ -1321,9 +1333,9 @@ export default function SgDatatableShowcase() {
         <Section title={sectionTitles[0] ?? ""} description={t(i18n, "showcase.component.datatable.sections.basic.description")}>
           <SgDatatable
             id="datatable-basic"
-            title="Product catalog"
+            title={t(i18n, "showcase.component.datatable.labels.productCatalog")}
             value={PRODUCT_ROWS}
-            columns={BASE_COLUMNS}
+            columns={cols.base}
             dataKey="id"
             paginator
             infiniteScroll={false}
@@ -1340,7 +1352,7 @@ export default function SgDatatableShowcase() {
             id="datatable-filter"
             title={t(i18n, "showcase.component.datatable.demo.filterTitle")}
             value={PRODUCT_ROWS}
-            columns={FILTER_COLUMNS}
+            columns={cols.filter}
             dataKey="id"
             paginator
             rows={6}
@@ -1372,15 +1384,15 @@ export default function SgDatatableShowcase() {
               multiple
             </SgButton>
             <SgButton appearance="outline" onClick={() => setSelection(selectionMode === "multiple" ? [] : null)}>
-              clear selection
+              {t(i18n, "showcase.component.datatable.labels.clearSelection")}
             </SgButton>
           </SgGrid>
 
           <SgDatatable
             id="datatable-selection"
-            title="Selectable table"
+            title={t(i18n, "showcase.component.datatable.labels.selectableTable")}
             value={PRODUCT_ROWS}
-            columns={BASE_COLUMNS}
+            columns={cols.base}
             dataKey="id"
             paginator
             rows={5}
@@ -1389,7 +1401,7 @@ export default function SgDatatableShowcase() {
             onSelectionChange={setSelection}
           />
           <p className="text-sm text-[rgb(var(--sg-muted))]">
-            selected: <strong>{selectionLabel}</strong>
+            {t(i18n, "showcase.component.datatable.labels.selected")} <strong>{selectionLabel}</strong>
           </p>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-datatable/samples/selecao.tsx.sample" />
         </Section>
@@ -1399,7 +1411,7 @@ export default function SgDatatableShowcase() {
             id="datatable-template"
             title={t(i18n, "showcase.component.datatable.demo.templateTitle")}
             value={PRODUCT_ROWS}
-            columns={TEMPLATE_COLUMNS}
+            columns={cols.template}
             dataKey="id"
             paginator
             rows={5}
@@ -1413,7 +1425,7 @@ export default function SgDatatableShowcase() {
             id="datatable-column-manager"
             title={t(i18n, "showcase.component.datatable.exampleTitles.columnManager")}
             value={PRODUCT_ROWS}
-            columns={MANAGER_COLUMNS}
+            columns={cols.manager}
             dataKey="id"
             paginator
             rows={5}
@@ -1422,7 +1434,7 @@ export default function SgDatatableShowcase() {
             showColumnFilters
             showClearFiltersButton
             showColumnManager
-            columnManagerLabel="Manage columns"
+            columnManagerLabel={t(i18n, "showcase.component.datatable.labels.manageColumns")}
             columnManagerMaxHeight={220}
             removableSort={false}
             rowClassName={(row) =>
@@ -1453,9 +1465,9 @@ export default function SgDatatableShowcase() {
             onOpenChange={setConfirmDeleteOpen}
             closeOnOverlayClick={false}
             severity="danger"
-            title="Delete permission"
-            message={pendingDelete ? `Confirm delete ${pendingDelete.name}?` : "Confirm delete?"}
-            confirmButton={{ label: "Delete", icon: <Trash2 className="size-4" />, severity: "danger" }}
+            title={t(i18n, "showcase.component.datatable.labels.deletePermission")}
+            message={pendingDelete ? t(i18n, "showcase.component.datatable.labels.confirmDeleteNamed", { name: pendingDelete.name }) : t(i18n, "showcase.component.datatable.labels.confirmDelete")}
+            confirmButton={{ label: t(i18n, "showcase.component.datatable.labels.delete"), icon: <Trash2 className="size-4" />, severity: "danger" }}
             onCancel={() => {
               setConfirmDeleteOpen(false);
               setPendingDelete(null);
@@ -1463,13 +1475,13 @@ export default function SgDatatableShowcase() {
             onConfirm={() => {
               if (!pendingDelete) return;
               setPermissionRows((prev) => prev.filter((item) => item.id !== pendingDelete.id));
-              setLastPermissionAction(`delete: ${pendingDelete.name}`);
+              setLastPermissionAction(t(i18n, "showcase.component.datatable.labels.actionDelete", { name: pendingDelete.name }));
               setConfirmDeleteOpen(false);
               setPendingDelete(null);
             }}
           />
           <p className="text-xs text-muted-foreground">
-            last action: {lastPermissionAction}
+            {t(i18n, "showcase.component.datatable.labels.lastAction")} {lastPermissionAction}
           </p>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-datatable/samples/acoes.tsx.sample" />
         </Section>
@@ -1482,27 +1494,27 @@ export default function SgDatatableShowcase() {
                 setControlledPage({ first: 0, rows: controlledPage.rows });
               }}
             >
-              sort by price desc
+              {t(i18n, "showcase.component.datatable.labels.sortPriceDesc")}
             </SgButton>
             <SgButton
               appearance="outline"
               onClick={() => setControlledPage((prev) => ({ ...prev, first: Math.max(0, prev.first - prev.rows) }))}
             >
-              prev page
+              {t(i18n, "showcase.component.datatable.labels.prevPage")}
             </SgButton>
             <SgButton
               appearance="outline"
               onClick={() => setControlledPage((prev) => ({ ...prev, first: prev.first + prev.rows }))}
             >
-              next page
+              {t(i18n, "showcase.component.datatable.labels.nextPage")}
             </SgButton>
           </SgGrid>
 
           <SgDatatable
             id="datatable-controlled"
-            title="Controlled state"
+            title={t(i18n, "showcase.component.datatable.labels.controlledState")}
             value={PRODUCT_ROWS}
-            columns={BASE_COLUMNS}
+            columns={cols.base}
             dataKey="id"
             paginator
             rows={controlledPage.rows}
@@ -1517,7 +1529,7 @@ export default function SgDatatableShowcase() {
             }
           />
           <p className="text-xs text-muted-foreground">
-            sort: {controlledSort.sortField ?? "none"} ({controlledSort.sortOrder}) | first: {controlledPage.first} | rows: {controlledPage.rows}
+            {t(i18n, "showcase.component.datatable.labels.sortInfo", { sort: controlledSort.sortField ?? "-", order: controlledSort.sortOrder, first: controlledPage.first, rows: controlledPage.rows })}
           </p>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-datatable/samples/controlado.tsx.sample" />
         </Section>
@@ -1527,7 +1539,7 @@ export default function SgDatatableShowcase() {
             id="datatable-server"
             title={t(i18n, "showcase.component.datatable.exampleTitles.serverPagination")}
             value={serverRows}
-            columns={SERVER_COLUMNS}
+            columns={cols.server}
             dataKey="id"
             lazy
             totalRecords={serverTotalRecords}
@@ -1570,7 +1582,7 @@ export default function SgDatatableShowcase() {
             showGridlines
           />
           <p className="text-xs text-muted-foreground">
-            current page rows: {serverRows.length} | total records: {serverTotalRecords}
+            {t(i18n, "showcase.component.datatable.labels.serverInfo", { rows: serverRows.length, total: serverTotalRecords })}
           </p>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-datatable/samples/server-side.tsx.sample" />
         </Section>
@@ -1578,21 +1590,21 @@ export default function SgDatatableShowcase() {
         <Section title={sectionTitles[8] ?? ""} description={t(i18n, "showcase.component.datatable.sections.loading.description")}>
           <SgGrid columns={{ base: 2, md: 4 }} gap={8}>
             <SgButton appearance={loading ? "solid" : "outline"} onClick={() => setLoading((value) => !value)}>
-              toggle loading
+              {t(i18n, "showcase.component.datatable.labels.toggleLoading")}
             </SgButton>
             <SgButton appearance={showEmpty ? "solid" : "outline"} onClick={() => setShowEmpty((value) => !value)}>
-              toggle empty
+              {t(i18n, "showcase.component.datatable.labels.toggleEmpty")}
             </SgButton>
           </SgGrid>
 
           <SgDatatable
             id="datatable-loading"
-            title="Loading / empty"
+            title={t(i18n, "showcase.component.datatable.labels.loadingEmpty")}
             value={showEmpty ? [] : PRODUCT_ROWS}
-            columns={BASE_COLUMNS}
+            columns={cols.base}
             dataKey="id"
             loading={loading}
-            emptyMessage="No products available."
+            emptyMessage={t(i18n, "showcase.component.datatable.labels.noProducts")}
           />
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-datatable/samples/loading-e-vazio.tsx.sample" />
         </Section>
@@ -1613,9 +1625,9 @@ export default function SgDatatableShowcase() {
             <div className="mx-auto w-full max-w-[420px]">
             <SgDatatable
               id="datatable-cards"
-              title="Product catalog (cards)"
+              title={t(i18n, "showcase.component.datatable.labels.productCatalogCards")}
               value={PRODUCT_ROWS}
-              columns={CARD_COLUMNS}
+              columns={cols.card}
               dataKey="id"
               mobileMode={mobileMode}
               selectionMode="single"
@@ -1644,9 +1656,9 @@ export default function SgDatatableShowcase() {
             <div className="mx-auto h-[360px] w-full max-w-[420px] overflow-auto rounded-md border border-border">
               <SgDatatable
                 id="datatable-infinite"
-                title="Product catalog (infinite scroll)"
+                title={t(i18n, "showcase.component.datatable.labels.productCatalogInfinite")}
                 value={PRODUCT_ROWS}
-                columns={CARD_COLUMNS}
+                columns={cols.card}
                 dataKey="id"
                 mobileMode="cards"
                 infiniteScroll={infiniteScroll}
@@ -1687,9 +1699,9 @@ export default function SgDatatableShowcase() {
         >
           <SgDatatable
             id="datatable-enabled"
-            title="Pessoas"
+            title={t(i18n, "showcase.component.datatable.labels.people")}
             value={ENABLED_ROWS}
-            columns={ENABLED_COLUMNS}
+            columns={cols.enabled}
             dataKey="id"
             selectionMode="single"
             showGlobalFilter

@@ -14,7 +14,7 @@ export default function App() {
     <div className="space-y-4 p-2">
       <SgGrid columns={{ base: 2, md: 4 }} gap={8}>
         <SgButton size="sm" onClick={next}>+1</SgButton>
-        <SgButton size="sm" appearance="outline" onClick={random}>Random</SgButton>
+        <SgButton size="sm" appearance="outline" onClick={random}>Aleatório</SgButton>
         <SgButton size="sm" appearance="outline" onClick={() => setValue("A")}>A</SgButton>
         <SgButton size="sm" appearance="outline" onClick={() => setValue("Z")}>Z</SgButton>
       </SgGrid>

@@ -6,6 +6,7 @@ import {
   useSgRealtimeStatus,
   type SgRealtimeEvent
 } from "@seedgrid/fe-components";
+import { t, useShowcaseI18n } from "../../../../i18n";
 
 // DEMO WebSocket standing in for SeedGrid Pulse: it never touches the network.
 // Na aplicação real, sem `connectOptions`: o provider conecta no Pulse de verdade.
@@ -70,6 +71,7 @@ const demoToken = async () => ({
 });
 
 function ExportsScreen() {
+  const i18n = useShowcaseI18n();
   const { status, connected } = useSgRealtimeStatus();
   const [notices, setNotices] = React.useState<SgRealtimeEvent[]>([]);
 
@@ -81,14 +83,14 @@ function ExportsScreen() {
   return (
     <div className="space-y-3">
       <div className="text-sm">
-        Status: <code>{status}</code> {connected ? "(sem polling)" : "(polling de reserva)"}
+        {t(i18n, "showcase.component.realtimeProvider.labels.statusLabel")} <code>{status}</code> {connected ? t(i18n, "showcase.component.realtimeProvider.labels.noPolling") : t(i18n, "showcase.component.realtimeProvider.labels.fallbackPolling")}
       </div>
       <div className="flex gap-2">
         <SgButton enabled={connected} onClick={() => DemoPulseSocket.current?.backupFinished(true)}>
-          Simular backup pronto
+          {t(i18n, "showcase.component.realtimeProvider.labels.simulateBackupDone")}
         </SgButton>
         <SgButton severity="danger" enabled={connected} onClick={() => DemoPulseSocket.current?.backupFinished(false)}>
-          Simular backup com falha
+          {t(i18n, "showcase.component.realtimeProvider.labels.simulateBackupFail")}
         </SgButton>
       </div>
       <ul className="space-y-1 text-sm">

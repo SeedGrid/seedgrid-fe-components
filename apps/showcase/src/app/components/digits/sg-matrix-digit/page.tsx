@@ -54,9 +54,9 @@ const random = () => setDigit(String(Math.floor(Math.random() * 10)));
 <div className="flex items-center gap-4">
   <SgMatrixDigit value={digit} color="#22d3ee" backgroundColor="#0b1220" />
   <div className="flex flex-col gap-2">
-    <SgButton size="sm" onClick={next}>Next (+1)</SgButton>
-    <SgButton size="sm" severity="secondary" onClick={prev}>Previous (-1)</SgButton>
-    <SgButton size="sm" severity="info" onClick={random}>Random</SgButton>
+    <SgButton size="sm" onClick={next}>Próximo (+1)</SgButton>
+    <SgButton size="sm" severity="secondary" onClick={prev}>Anterior (-1)</SgButton>
+    <SgButton size="sm" severity="info" onClick={random}>Aleatório</SgButton>
   </div>
 </div>`;
 
@@ -75,7 +75,7 @@ const nextMessage = () => setMessageIndex((prev) => (prev + 1) % MESSAGES.length
     gap={2}
     charGap={6}
   />
-  <SgButton size="sm" onClick={nextMessage}>Change text</SgButton>
+  <SgButton size="sm" onClick={nextMessage}>Trocar texto</SgButton>
 </div>`;
 
 const COLOR_CODE = `<SgGrid columns={{ base: 1, md: 3 }} gap={12}>
@@ -84,26 +84,26 @@ const COLOR_CODE = `<SgGrid columns={{ base: 1, md: 3 }} gap={12}>
     <SgMatrixDigit value="2026" color="#22d3ee" backgroundColor="#0b1220" />
   </div>
   <div className="space-y-2">
-    <p className="text-xs text-muted-foreground">Lime</p>
+    <p className="text-xs text-muted-foreground">Lima</p>
     <SgMatrixDigit value="HELLO" color="#a3e635" backgroundColor="#05070b" />
   </div>
   <div className="space-y-2">
-    <p className="text-xs text-muted-foreground">Orange</p>
+    <p className="text-xs text-muted-foreground">Laranja</p>
     <SgMatrixDigit value="SG" color="#fb923c" backgroundColor="#101826" />
   </div>
 </SgGrid>`;
 
 const SIZE_CODE = `<SgGrid columns={{ base: 1, md: 3 }} gap={12}>
   <div className="space-y-2">
-    <p className="text-xs text-muted-foreground">Small</p>
+    <p className="text-xs text-muted-foreground">Pequeno</p>
     <SgMatrixDigit value="123" dotSize={6} gap={2} charGap={4} />
   </div>
   <div className="space-y-2">
-    <p className="text-xs text-muted-foreground">Medium</p>
+    <p className="text-xs text-muted-foreground">Médio</p>
     <SgMatrixDigit value="123" dotSize={9} gap={3} charGap={7} />
   </div>
   <div className="space-y-2">
-    <p className="text-xs text-muted-foreground">Large</p>
+    <p className="text-xs text-muted-foreground">Grande</p>
     <SgMatrixDigit value="123" dotSize={13} gap={4} charGap={10} />
   </div>
 </SgGrid>`;
@@ -242,9 +242,9 @@ export default function SgMatrixDigitShowcase() {
           <div className="flex items-center gap-4">
             <SgMatrixDigit value={digit} color="#22d3ee" backgroundColor="#0b1220" />
             <div className="flex flex-col gap-2">
-              <SgButton size="sm" onClick={nextDigit}>Next (+1)</SgButton>
-              <SgButton size="sm" severity="secondary" onClick={prevDigit}>Previous (-1)</SgButton>
-              <SgButton size="sm" severity="info" onClick={randomDigit}>Random</SgButton>
+              <SgButton size="sm" onClick={nextDigit}>{t(i18n, "showcase.common.labels.nextPlusOne")}</SgButton>
+              <SgButton size="sm" severity="secondary" onClick={prevDigit}>{t(i18n, "showcase.common.labels.previousMinusOne")}</SgButton>
+              <SgButton size="sm" severity="info" onClick={randomDigit}>{t(i18n, "showcase.common.labels.random")}</SgButton>
             </div>
           </div>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-matrix-digit/samples/basico-0-9.tsx.sample" />
@@ -260,7 +260,7 @@ export default function SgMatrixDigitShowcase() {
               gap={2}
               charGap={6}
             />
-            <SgButton size="sm" onClick={nextMessage}>Change text</SgButton>
+            <SgButton size="sm" onClick={nextMessage}>{t(i18n, "showcase.common.labels.changeText")}</SgButton>
           </div>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-matrix-digit/samples/texto-matricial.tsx.sample" />
         </Section>
@@ -268,15 +268,15 @@ export default function SgMatrixDigitShowcase() {
         <Section title={t(i18n, `${K}.section3Title`)} description={t(i18n, `${K}.section3Description`)}>
           <SgGrid columns={{ base: 1, md: 3 }} gap={12}>
             <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">Ciano</p>
+              <p className="text-xs text-muted-foreground">{t(i18n, `${K}.labels.cyan`)}</p>
               <SgMatrixDigit value="2026" color="#22d3ee" backgroundColor="#0b1220" />
             </div>
             <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">Lime</p>
+              <p className="text-xs text-muted-foreground">{t(i18n, `${K}.labels.lime`)}</p>
               <SgMatrixDigit value="HELLO" color="#a3e635" backgroundColor="#05070b" />
             </div>
             <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">Orange</p>
+              <p className="text-xs text-muted-foreground">{t(i18n, `${K}.labels.orange`)}</p>
               <SgMatrixDigit value="SG" color="#fb923c" backgroundColor="#101826" />
             </div>
           </SgGrid>
@@ -286,15 +286,15 @@ export default function SgMatrixDigitShowcase() {
         <Section title={t(i18n, `${K}.section4Title`)} description={t(i18n, `${K}.section4Description`)}>
           <SgGrid columns={{ base: 1, md: 3 }} gap={12}>
             <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">Small</p>
+              <p className="text-xs text-muted-foreground">{t(i18n, "showcase.common.labels.sizeSmall")}</p>
               <SgMatrixDigit value="123" dotSize={6} gap={2} charGap={4} />
             </div>
             <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">Medium</p>
+              <p className="text-xs text-muted-foreground">{t(i18n, "showcase.common.labels.sizeMedium")}</p>
               <SgMatrixDigit value="123" dotSize={9} gap={3} charGap={7} />
             </div>
             <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">Large</p>
+              <p className="text-xs text-muted-foreground">{t(i18n, "showcase.common.labels.sizeLarge")}</p>
               <SgMatrixDigit value="123" dotSize={13} gap={4} charGap={10} />
             </div>
           </SgGrid>

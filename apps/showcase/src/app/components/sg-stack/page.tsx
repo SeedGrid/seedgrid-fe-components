@@ -106,19 +106,19 @@ export default function SgStackPage() {
           <SgGrid columns={{ base: 1, md: 2 }} gap={16}>
             <SgPanel padding={12} className="rounded-lg">
               <SgStack gap={8}>
-                <p className="text-sm font-medium">Stack em coluna</p>
-                <SgButton>Save</SgButton>
-                <SgButton appearance="outline">Cancelar</SgButton>
-                <SgButton appearance="ghost">Ajuda</SgButton>
+                <p className="text-sm font-medium">{t(i18n, `${K}.labels.columnStack`)}</p>
+                <SgButton>{t(i18n, `${K}.labels.save`)}</SgButton>
+                <SgButton appearance="outline">{t(i18n, `${K}.labels.cancel`)}</SgButton>
+                <SgButton appearance="ghost">{t(i18n, `${K}.labels.help`)}</SgButton>
               </SgStack>
             </SgPanel>
 
             <SgPanel padding={12} className="rounded-lg">
               <SgStack direction="row" justify="between" align="center" gap={8}>
-                <p className="text-sm font-medium">Title</p>
+                <p className="text-sm font-medium">{t(i18n, `${K}.labels.title`)}</p>
                 <SgStack direction="row" gap={8}>
-                  <SgButton size="sm" appearance="outline">Voltar</SgButton>
-                  <SgButton size="sm">Confirmar</SgButton>
+                  <SgButton size="sm" appearance="outline">{t(i18n, `${K}.labels.back`)}</SgButton>
+                  <SgButton size="sm">{t(i18n, `${K}.labels.confirm`)}</SgButton>
                 </SgStack>
               </SgStack>
             </SgPanel>

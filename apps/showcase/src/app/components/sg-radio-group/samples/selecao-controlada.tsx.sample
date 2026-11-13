@@ -2,9 +2,9 @@ import React from "react";
 import { SgRadioGroup, type SgRadioGroupOption } from "@seedgrid/fe-components";
 
 const BASIC_OPTIONS: SgRadioGroupOption[] = [
-  { label: "Option 1", value: "option1" },
-  { label: "Option 2", value: "option2" },
-  { label: "Option 3", value: "option3" }
+  { label: "Opção 1", value: "option1" },
+  { label: "Opção 2", value: "option2" },
+  { label: "Opção 3", value: "option3" }
 ];
 
 export default function Example() {
@@ -12,8 +12,8 @@ export default function Example() {
 
   return (
     <>
-      <SgRadioGroup id="controlled-selection" title="Controlled selection" source={BASIC_OPTIONS} value={selectedControlled ?? undefined} onChange={setSelectedControlled} />
-      <p className="mt-2 text-sm text-[rgb(var(--sg-muted))]">Value: {selectedControlled === null ? "None" : selectedControlled}</p>
+      <SgRadioGroup id="controlled-selection" title="Seleção controlada" source={BASIC_OPTIONS} value={selectedControlled ?? undefined} onChange={setSelectedControlled} />
+      <p className="mt-2 text-sm text-[rgb(var(--sg-muted))]">Valor: {selectedControlled === null ? "Nenhum" : selectedControlled}</p>
     </>
   );
 }

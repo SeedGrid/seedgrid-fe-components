@@ -8,10 +8,10 @@ export default function Example(props: { initialServerTime?: string }) {
   return (
     <>
       <div className="flex flex-wrap gap-2">
-        <SgButton onClick={() => setTimezone("America/Sao_Paulo")}>Sao Paulo</SgButton>
+        <SgButton onClick={() => setTimezone("America/Sao_Paulo")}>São Paulo</SgButton>
         <SgButton onClick={() => setTimezone("Europe/Lisbon")}>Lisboa</SgButton>
-        <SgButton onClick={() => setTimezone("America/New_York")}>New York</SgButton>
-        <SgButton onClick={() => setTimezone("Asia/Tokyo")}>Tokyo</SgButton>
+        <SgButton onClick={() => setTimezone("America/New_York")}>Nova York</SgButton>
+        <SgButton onClick={() => setTimezone("Asia/Tokyo")}>Tóquio</SgButton>
         <SgButton onClick={() => setFormat((value) => (value === "24h" ? "12h" : "24h"))}>
           {format}
         </SgButton>

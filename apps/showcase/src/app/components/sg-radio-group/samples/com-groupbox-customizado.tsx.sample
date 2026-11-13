@@ -12,10 +12,10 @@ export default function Example() {
   return (
     <SgRadioGroup
       id="custom-groupbox"
-      title="Choose with custom style"
+      title="Escolha com estilo personalizado"
       source={OPTIONS_WITH_ICONS}
       groupBoxProps={{
-        title: "Preferences",
+        title: "Preferências",
         className: "border-2 border-[rgb(var(--sg-primary-500))]"
       }}
     />

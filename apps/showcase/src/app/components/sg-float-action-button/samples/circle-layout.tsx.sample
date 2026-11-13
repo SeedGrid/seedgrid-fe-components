@@ -10,7 +10,7 @@ const actions: SgFABAction[] = [
   { icon: <UserPlus className="size-4" />, label: "New user", onClick: () => {} },
   { icon: <FilePlus className="size-4" />, label: "New file", onClick: () => {} },
   { icon: <FolderPlus className="size-4" />, label: "New folder", onClick: () => {} },
-  { icon: <Pencil className="size-4" />, label: "Edit", onClick: () => {} }
+  { icon: <Pencil className="size-4" />, label: "Editar", onClick: () => {} }
 ];
 
 export default function Example() {

@@ -16,7 +16,7 @@ export default function Example() {
         onHover={setHover}
       />
       <p className="text-sm text-muted-foreground">
-        Selected: <strong>{value}</strong> | Hover: <strong>{hover ?? "none"}</strong>
+        Selecionado: <strong>{value}</strong> | Hover: <strong>{hover ?? "nenhum"}</strong>
       </p>
     </div>
   );

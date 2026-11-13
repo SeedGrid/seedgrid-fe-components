@@ -11,7 +11,7 @@ export default function Example() {
   return (
     <div className="flex items-center gap-4">
       <SgSevenSegmentDigit value={HEX[index] ?? "A"} color="#f97316" backgroundColor="#180b05" offColor="rgba(124,45,18,0.24)" />
-      <SgButton size="sm" onClick={() => setIndex((prev) => (prev + 1) % HEX.length)}>Next char</SgButton>
+      <SgButton size="sm" onClick={() => setIndex((prev) => (prev + 1) % HEX.length)}>Próximo caractere</SgButton>
     </div>
   );
 }

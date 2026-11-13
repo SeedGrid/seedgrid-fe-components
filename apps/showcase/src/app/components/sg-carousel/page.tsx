@@ -11,7 +11,7 @@ import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
-import { t, useShowcaseI18n } from "../../../i18n";
+import { t, useShowcaseI18n, type ShowcaseI18n } from "../../../i18n";
 
 const K = "showcase.component.carousel";
 
@@ -47,7 +47,7 @@ const sampleImages = [
   { id: 6, title: "Item 6", url: "https://picsum.photos/1200/700?random=106" }
 ];
 
-const createCarouselItems = (items = sampleImages) =>
+const createCarouselItems = (items = sampleImages, i18n?: ShowcaseI18n) =>
   items.map((item) => (
     <div
       key={item.id}
@@ -63,7 +63,7 @@ const createCarouselItems = (items = sampleImages) =>
       <SgGrid columns={1} justify="center" align="center" className="absolute inset-0">
         <div className="text-center">
           <h3 className="text-3xl font-bold">{item.title}</h3>
-          <p className="mt-2 text-sm opacity-90">Slide {item.id}</p>
+          <p className="mt-2 text-sm opacity-90">{t(i18n, `${K}.labels.slide`, { id: item.id })}</p>
         </div>
       </SgGrid>
     </div>
@@ -381,7 +381,7 @@ export default function SgCarouselPage() {
       >
         <div className="h-64">
           <SgCarousel
-            items={createCarouselItems()}
+            items={createCarouselItems(sampleImages, i18n)}
             numVisible={1}
             orientation="horizontal"
             height="100%"
@@ -399,7 +399,7 @@ export default function SgCarouselPage() {
       >
         <div className="h-64">
           <SgCarousel
-            items={createCarouselItems()}
+            items={createCarouselItems(sampleImages, i18n)}
             numVisible={3}
             numScroll={1}
             orientation="horizontal"
@@ -417,7 +417,7 @@ export default function SgCarouselPage() {
       >
         <div className="h-64">
           <SgCarousel
-            items={createCarouselItems(sampleImages.slice(0, 6))}
+            items={createCarouselItems(sampleImages.slice(0, 6), i18n)}
             numVisible={1}
             autoPlay
             autoPlayInterval={2000}
@@ -437,7 +437,7 @@ export default function SgCarouselPage() {
         <SgGrid columns={1} justify="center">
           <div className="h-96 w-80">
             <SgCarousel
-              items={createCarouselItems(sampleImages.slice(0, 6))}
+              items={createCarouselItems(sampleImages.slice(0, 6), i18n)}
               numVisible={1}
               orientation="vertical"
               height="100%"
@@ -456,7 +456,7 @@ export default function SgCarouselPage() {
         <SgGrid columns={1} justify="center">
           <div className="h-96 w-80">
             <SgCarousel
-              items={createCarouselItems()}
+              items={createCarouselItems(sampleImages, i18n)}
               numVisible={3}
               numScroll={1}
               orientation="vertical"
@@ -476,7 +476,7 @@ export default function SgCarouselPage() {
       >
         <div className="h-64">
           <SgCarousel
-            items={createCarouselItems(sampleImages.slice(0, 6))}
+            items={createCarouselItems(sampleImages.slice(0, 6), i18n)}
             numVisible={1}
             circular={false}
             orientation="horizontal"
@@ -494,7 +494,7 @@ export default function SgCarouselPage() {
       >
         <div className="h-64">
           <SgCarousel
-            items={createCarouselItems(sampleImages.slice(0, 6))}
+            items={createCarouselItems(sampleImages.slice(0, 6), i18n)}
             numVisible={1}
             showIndicators={false}
             orientation="horizontal"
@@ -512,7 +512,7 @@ export default function SgCarouselPage() {
       >
         <div className="h-64">
           <SgCarousel
-            items={createCarouselItems(sampleImages.slice(0, 6))}
+            items={createCarouselItems(sampleImages.slice(0, 6), i18n)}
             numVisible={1}
             showNavigators={false}
             autoPlay
@@ -532,7 +532,7 @@ export default function SgCarouselPage() {
       >
         <div className="h-64">
           <SgCarousel
-            items={createCarouselItems()}
+            items={createCarouselItems(sampleImages, i18n)}
             numVisible={3}
             numScroll={1}
             gap={32}
@@ -552,27 +552,27 @@ export default function SgCarouselPage() {
         <div className="space-y-4">
           <div className="rounded bg-muted/40 p-3">
             <p className="text-sm">
-              <span className="font-semibold">Índice Ativo:</span>{" "}
+              <span className="font-semibold">{t(i18n, `${K}.labels.activeIndex`)}</span>{" "}
               <code className="rounded bg-background px-2 py-1">{activeIndex1}</code>
             </p>
           </div>
           <div className="h-64">
             <SgCarousel
-              items={createCarouselItems()}
+              items={createCarouselItems(sampleImages, i18n)}
               numVisible={2}
               numScroll={1}
               orientation="horizontal"
               height="100%"
               onIndexChange={(index) => {
                 setActiveIndex1(index);
-                log(`Índice mudou para: ${index}`);
+                log(t(i18n, `${K}.labels.indexChanged`, { index }));
               }}
             />
           </div>
           <div className="h-32 overflow-y-auto rounded border border-border bg-foreground/5 p-2 font-mono text-xs">
             {eventLog.length === 0 ? (
               <span className="text-muted-foreground">
-                Navegue pelo carrossel para ver os eventos...
+                {t(i18n, `${K}.labels.navigateHint`)}
               </span>
             ) : (
               eventLog.map((entry, i) => <div key={i}>{entry}</div>)
@@ -590,7 +590,7 @@ export default function SgCarouselPage() {
       >
         <div className="h-64">
           <SgCarousel
-            items={createCarouselItems()}
+            items={createCarouselItems(sampleImages, i18n)}
             numVisible={4}
             numScroll={2}
             orientation="horizontal"
@@ -598,7 +598,7 @@ export default function SgCarouselPage() {
             className="hidden lg:block"
           />
           <SgCarousel
-            items={createCarouselItems()}
+            items={createCarouselItems(sampleImages, i18n)}
             numVisible={2}
             numScroll={1}
             orientation="horizontal"
@@ -606,7 +606,7 @@ export default function SgCarouselPage() {
             className="hidden md:block lg:hidden"
           />
           <SgCarousel
-            items={createCarouselItems()}
+            items={createCarouselItems(sampleImages, i18n)}
             numVisible={1}
             numScroll={1}
             orientation="horizontal"

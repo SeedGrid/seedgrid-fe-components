@@ -18,7 +18,7 @@ import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
-import { t, useShowcaseI18n } from "../../../i18n";
+import { t, useShowcaseI18n, type ShowcaseI18n } from "../../../i18n";
 
 const K = "showcase.component.orderList";
 
@@ -101,49 +101,49 @@ const ORDER_LIST_PROP_FIELDS: PropField[] = [
 
 
 
-const PRODUCT_ITEMS: SgOrderListItem[] = [
-  { label: "Notebook", value: "notebook", icon: <Landmark className="h-4 w-4" /> },
+const productItems = (i18n: ShowcaseI18n): SgOrderListItem[] => [
+  { label: t(i18n, `${K}.labels.laptop`), value: "notebook", icon: <Landmark className="h-4 w-4" /> },
   { label: "Mouse", value: "mouse", icon: <RefreshCw className="h-4 w-4" /> },
-  { label: "Teclado", value: "keyboard", icon: <Bell className="h-4 w-4" /> },
+  { label: t(i18n, `${K}.labels.keyboard`), value: "keyboard", icon: <Bell className="h-4 w-4" /> },
   { label: "Monitor", value: "monitor", icon: <Star className="h-4 w-4" /> },
   { label: "Webcam", value: "webcam", icon: <Heart className="h-4 w-4" /> }
 ];
 
-const PIPELINE_STEPS: SgOrderListItem[] = [
-  { label: "Prospecção", value: "lead" },
-  { label: "Qualificação", value: "qualify" },
-  { label: "Proposta", value: "proposal" },
-  { label: "Negociação", value: "negotiation" },
-  { label: "Fechamento", value: "close" }
+const pipelineSteps = (i18n: ShowcaseI18n): SgOrderListItem[] => [
+  { label: t(i18n, `${K}.labels.prospecting`), value: "lead" },
+  { label: t(i18n, `${K}.labels.qualification`), value: "qualify" },
+  { label: t(i18n, `${K}.labels.proposal`), value: "proposal" },
+  { label: t(i18n, `${K}.labels.negotiation`), value: "negotiation" },
+  { label: t(i18n, `${K}.labels.closing`), value: "close" }
 ];
 
-const TEAM_ITEMS: SgOrderListItem[] = [
-  { label: "Ana - Produto", value: "ana" },
-  { label: "Bruno - Design", value: "bruno" },
-  { label: "Carla - Frontend", value: "carla" },
-  { label: "Diego - Backend", value: "diego" },
-  { label: "Elaine - QA", value: "elaine" }
+const teamItemsData = (i18n: ShowcaseI18n): SgOrderListItem[] => [
+  { label: t(i18n, `${K}.labels.anaProduct`), value: "ana" },
+  { label: t(i18n, `${K}.labels.brunoDesign`), value: "bruno" },
+  { label: t(i18n, `${K}.labels.carlaFrontend`), value: "carla" },
+  { label: t(i18n, `${K}.labels.diegoBackend`), value: "diego" },
+  { label: t(i18n, `${K}.labels.elaineQa`), value: "elaine" }
 ];
 
-const BACKLOG_ITEMS: SgOrderListItem[] = [
-  { label: "Implementar filtros", value: "filtros", data: { effort: "M", priority: "Alta" } },
-  { label: "Ajustar layout mobile", value: "mobile", data: { effort: "S", priority: "Média" } },
-  { label: "Refatorar API de pedidos", value: "api", data: { effort: "L", priority: "Alta" } },
-  { label: "Atualizar testes E2E", value: "e2e", data: { effort: "M", priority: "Baixa" }, enabled: false}
+const backlogItemsData = (i18n: ShowcaseI18n): SgOrderListItem[] => [
+  { label: t(i18n, `${K}.labels.implementFilters`), value: "filtros", data: { effort: "M", priority: t(i18n, `${K}.labels.priorityHigh`) } },
+  { label: t(i18n, `${K}.labels.adjustMobileLayout`), value: "mobile", data: { effort: "S", priority: t(i18n, `${K}.labels.priorityMedium`) } },
+  { label: t(i18n, `${K}.labels.refactorOrdersApi`), value: "api", data: { effort: "L", priority: t(i18n, `${K}.labels.priorityHigh`) } },
+  { label: t(i18n, `${K}.labels.updateE2eTests`), value: "e2e", data: { effort: "M", priority: t(i18n, `${K}.labels.priorityLow`) }, enabled: false}
 ];
 
-const TASK_ITEMS: SgOrderListItem[] = [
-  { label: "Escrever o plano", value: 1 },
-  { label: "Revisar com o time", value: 2 },
-  { label: "Publicar", value: 3 },
-  { label: "Arquivado", value: 4, enabled: false },
-  { label: "Comemorar", value: 5 }
+const taskItems = (i18n: ShowcaseI18n): SgOrderListItem[] => [
+  { label: t(i18n, `${K}.labels.writePlan`), value: 1 },
+  { label: t(i18n, `${K}.labels.reviewWithTeam`), value: 2 },
+  { label: t(i18n, `${K}.labels.publish`), value: 3 },
+  { label: t(i18n, `${K}.labels.archived`), value: 4, enabled: false },
+  { label: t(i18n, `${K}.labels.celebrate`), value: 5 }
 ];
 
-const RANKING_ITEMS: SgOrderListItem[] = [
-  { label: "Ouro", value: "ouro" },
-  { label: "Prata", value: "prata" },
-  { label: "Bronze", value: "bronze" }
+const rankingItemsData = (i18n: ShowcaseI18n): SgOrderListItem[] => [
+  { label: t(i18n, `${K}.labels.gold`), value: "ouro" },
+  { label: t(i18n, `${K}.labels.silver`), value: "prata" },
+  { label: t(i18n, `${K}.labels.bronze`), value: "bronze" }
 ];
 
 export default function SgOrderListShowcase() {
@@ -196,7 +196,7 @@ export default function SgOrderListShowcase() {
     groupBoxProps: t(i18n, `${K}.propDescriptions.groupBoxProps`),
     ref: t(i18n, `${K}.propDescriptions.ref`)
   }), [i18n]);
-  const aiComponent = useAiManifestComponent("SgOrderList");
+  const aiComponent = useAiManifestComponent("SgOrderList");
   const orderListProps = React.useMemo<ShowcasePropRow[]>(
     () =>
       ORDER_LIST_PROP_FIELDS.map((field) => ({
@@ -212,13 +212,13 @@ export default function SgOrderListShowcase() {
     deps: [i18n.locale]
   });
 
-  const [basicItems, setBasicItems] = React.useState<SgOrderListItem[]>(PRODUCT_ITEMS);
-  const [pipelineItems, setPipelineItems] = React.useState<SgOrderListItem[]>(PIPELINE_STEPS);
-  const [teamItems, setTeamItems] = React.useState<SgOrderListItem[]>(TEAM_ITEMS);
-  const [backlogItems, setBacklogItems] = React.useState<SgOrderListItem[]>(BACKLOG_ITEMS);
-  const [controlledItems, setControlledItems] = React.useState<SgOrderListItem[]>(PRODUCT_ITEMS);
+  const [basicItems, setBasicItems] = React.useState<SgOrderListItem[]>(productItems(i18n));
+  const [pipelineItems, setPipelineItems] = React.useState<SgOrderListItem[]>(pipelineSteps(i18n));
+  const [teamItems, setTeamItems] = React.useState<SgOrderListItem[]>(teamItemsData(i18n));
+  const [backlogItems, setBacklogItems] = React.useState<SgOrderListItem[]>(backlogItemsData(i18n));
+  const [controlledItems, setControlledItems] = React.useState<SgOrderListItem[]>(productItems(i18n));
 
-  const [rankingItems, setRankingItems] = React.useState<SgOrderListItem[]>(RANKING_ITEMS);
+  const [rankingItems, setRankingItems] = React.useState<SgOrderListItem[]>(rankingItemsData(i18n));
   const [submitted, setSubmitted] = React.useState("");
 
   const pipelineRef = React.useRef<SgOrderListRef>(null);
@@ -243,7 +243,7 @@ export default function SgOrderListShowcase() {
           <SgOrderList
             id="order-basic"
             title={t(i18n, `${K}.labels.products`)}
-            source={PRODUCT_ITEMS}
+            source={productItems(i18n)}
             value={basicItems}
             onChange={setBasicItems}
           />
@@ -258,7 +258,7 @@ export default function SgOrderListShowcase() {
             ref={pipelineRef}
             id="order-ref"
             title={t(i18n, `${K}.labels.pipeline`)}
-            source={PIPELINE_STEPS}
+            source={pipelineSteps(i18n)}
             value={pipelineItems}
             onChange={setPipelineItems}
             selectionMode="multiple"
@@ -278,7 +278,7 @@ export default function SgOrderListShowcase() {
           <SgOrderList
             id="order-drag"
             title={t(i18n, `${K}.labels.team`)}
-            source={TEAM_ITEMS}
+            source={teamItemsData(i18n)}
             value={teamItems}
             onChange={setTeamItems}
             showControls={false}
@@ -294,7 +294,7 @@ export default function SgOrderListShowcase() {
           <SgOrderList
             id="order-template"
             title={t(i18n, `${K}.labels.backlog`)}
-            source={BACKLOG_ITEMS}
+            source={backlogItemsData(i18n)}
             value={backlogItems}
             onChange={setBacklogItems}
             controlsPosition="right"
@@ -315,7 +315,7 @@ export default function SgOrderListShowcase() {
 
         <Section title={texts.sectionTitles[4]} description={texts.sectionDescriptions[4]}>
           <SgGrid columns={{ base: 1, md: 3 }} gap={8}>
-            <SgButton onClick={() => setControlledItems(PRODUCT_ITEMS)}>{t(i18n, `${K}.buttons.reset`)}</SgButton>
+            <SgButton onClick={() => setControlledItems(productItems(i18n))}>{t(i18n, `${K}.buttons.reset`)}</SgButton>
             <SgButton onClick={() => setControlledItems((prev) => [...prev].reverse())}>{t(i18n, `${K}.buttons.reverse`)}</SgButton>
             <SgButton onClick={() => setControlledItems((prev) => [...prev].sort((a, b) => a.label.localeCompare(b.label)))}>
               {t(i18n, `${K}.buttons.sortAz`)}
@@ -324,7 +324,7 @@ export default function SgOrderListShowcase() {
           <SgOrderList
             id="order-controlled"
             title={t(i18n, `${K}.labels.productsControlled`)}
-            source={PRODUCT_ITEMS}
+            source={productItems(i18n)}
             value={controlledItems}
             onChange={setControlledItems}
           />
@@ -335,7 +335,7 @@ export default function SgOrderListShowcase() {
           <SgOrderList
             id="order-single"
             title={t(i18n, `${K}.labels.priorities`)}
-            source={TASK_ITEMS}
+            source={taskItems(i18n)}
             selectionMode="single"
             controlsPosition="right"
           />
@@ -353,7 +353,7 @@ export default function SgOrderListShowcase() {
             <SgOrderList
               id="order-form"
               title={t(i18n, `${K}.labels.ranking`)}
-              source={RANKING_ITEMS}
+              source={rankingItemsData(i18n)}
               value={rankingItems}
               onChange={setRankingItems}
             />
@@ -372,7 +372,7 @@ export default function SgOrderListShowcase() {
             ref={codeRef}
             id="order-code"
             title={t(i18n, `${K}.labels.byCode`)}
-            source={PIPELINE_STEPS}
+            source={pipelineSteps(i18n)}
           />
           <SgGrid columns={{ base: 1, md: 3 }} gap={8}>
             <SgButton onClick={() => codeRef.current?.setSelection(["proposal"])}>{t(i18n, `${K}.buttons.selectThird`)}</SgButton>

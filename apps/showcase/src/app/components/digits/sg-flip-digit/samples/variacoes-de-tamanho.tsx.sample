@@ -7,15 +7,15 @@ export default function Example() {
   return (
     <div className="flex items-center gap-6">
       <div className="text-center">
-        <p className="mb-2 text-xs text-muted-foreground">Small</p>
+        <p className="mb-2 text-xs text-muted-foreground">Pequeno</p>
         <SgFlipDigit value={digit} width={50} height={75} fontSize={45} />
       </div>
       <div className="text-center">
-        <p className="mb-2 text-xs text-muted-foreground">Medium</p>
+        <p className="mb-2 text-xs text-muted-foreground">Médio</p>
         <SgFlipDigit value={digit} />
       </div>
       <div className="text-center">
-        <p className="mb-2 text-xs text-muted-foreground">Large</p>
+        <p className="mb-2 text-xs text-muted-foreground">Grande</p>
         <SgFlipDigit value={digit} width={120} height={180} fontSize={120} />
       </div>
     </div>

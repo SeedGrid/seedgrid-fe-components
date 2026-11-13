@@ -12,7 +12,7 @@ export default function Example() {
         style={{ border: "1px solid rgba(59, 130, 246, 0.25)", borderRadius: 12, padding: 12 }}
       />
       <p className="text-sm text-muted-foreground">
-        Current value: <strong>{value}</strong>
+        Valor atual: <strong>{value}</strong>
       </p>
     </div>
   );

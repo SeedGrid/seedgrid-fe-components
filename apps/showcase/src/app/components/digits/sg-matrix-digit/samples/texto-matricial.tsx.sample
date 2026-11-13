@@ -12,7 +12,7 @@ export default function Example() {
   return (
     <div className="space-y-3">
       <SgMatrixDigit value={value} color="#a3e635" backgroundColor="#06090f" dotSize={8} gap={2} charGap={6} />
-      <SgButton size="sm" onClick={() => setIndex((prev) => (prev + 1) % MESSAGES.length)}>Change text</SgButton>
+      <SgButton size="sm" onClick={() => setIndex((prev) => (prev + 1) % MESSAGES.length)}>Trocar texto</SgButton>
     </div>
   );
 }

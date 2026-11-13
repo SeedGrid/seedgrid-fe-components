@@ -567,10 +567,10 @@ export default function SgInputCurrencyPage() {
                 size="sm"
                 appearance="ghost"
                 className="h-6 w-6 text-foreground/60 hover:text-primary"
-                title="Copiar valor"
+                title={t(i18n, "showcase.component.currencyEdit.actions.copyValueTitle")}
                 onClick={() => {
                   navigator.clipboard.writeText(iconBtnValue ?? "");
-                  setIconBtnLog((prev) => [`Copiado: "${iconBtnValue}"`, ...prev].slice(0, 5));
+                  setIconBtnLog((prev) => [t(i18n, "showcase.component.currencyEdit.actions.copied", { value: iconBtnValue ?? "" }), ...prev].slice(0, 5));
                 }}
                 leftIcon={
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
@@ -583,9 +583,9 @@ export default function SgInputCurrencyPage() {
                 size="sm"
                 appearance="ghost"
                 className="h-6 w-6 text-foreground/60 hover:text-primary"
-                title="Exibir alerta"
+                title={t(i18n, "showcase.component.currencyEdit.actions.showAlertTitle")}
                 onClick={() => {
-                  setIconBtnLog((prev) => ["Alerta disparado!", ...prev].slice(0, 5));
+                  setIconBtnLog((prev) => [t(i18n, "showcase.component.currencyEdit.actions.alertTriggered"), ...prev].slice(0, 5));
                 }}
                 leftIcon={
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>

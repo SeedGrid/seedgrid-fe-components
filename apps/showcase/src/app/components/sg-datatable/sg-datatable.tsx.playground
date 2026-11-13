@@ -14,11 +14,11 @@ const ROWS = [
 ];
 
 const COLUMNS = [
-  { field: "code", header: "Code", sortable: true, hideable: false, reorderable: false, width: 110 },
-  { field: "name", header: "Name", sortable: true, minWidth: 180 },
-  { field: "category", header: "Category", sortable: true, hidden: true },
-  { field: "price", header: "Price", sortable: true, align: "right" },
-  { field: "stock", header: "Stock", sortable: true, align: "right" }
+  { field: "code", header: "Código", sortable: true, hideable: false, reorderable: false, width: 110 },
+  { field: "name", header: "Nome", sortable: true, minWidth: 180 },
+  { field: "category", header: "Categoria", sortable: true, hidden: true },
+  { field: "price", header: "Preço", sortable: true, align: "right" },
+  { field: "stock", header: "Estoque", sortable: true, align: "right" }
 ];
 
 export default function App() {
@@ -63,7 +63,7 @@ export default function App() {
       <div className="grid gap-2 sm:grid-cols-3">
         <button className="rounded border border-border px-2 py-1 text-xs" onClick={() => setRows((prev) => Math.max(2, prev - 1))}>- rows</button>
         <button className="rounded border border-border px-2 py-1 text-xs" onClick={() => setRows((prev) => Math.min(10, prev + 1))}>+ rows</button>
-        <button className="rounded border border-border px-2 py-1 text-xs" onClick={() => setData((prev) => (prev.length ? [] : ROWS))}>toggle empty</button>
+        <button className="rounded border border-border px-2 py-1 text-xs" onClick={() => setData((prev) => (prev.length ? [] : ROWS))}>alternar vazio</button>
       </div>
 
       <div className="rounded border border-border p-3">
@@ -83,7 +83,7 @@ export default function App() {
             showGridlines={showGridlines}
             hoverableRows={hoverableRows}
             showColumnManager={showColumnManager}
-            columnManagerLabel="Manage columns"
+            columnManagerLabel="Gerenciar colunas"
             removableSort={removableSort}
             loading={loading}
             mobileMode={mobileMode === "" ? undefined : mobileMode}

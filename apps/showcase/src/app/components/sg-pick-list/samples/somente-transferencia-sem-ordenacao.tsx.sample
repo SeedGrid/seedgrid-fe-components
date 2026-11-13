@@ -6,11 +6,11 @@ export default function Example() {
   const [transferOnlyValue, setTransferOnlyValue] = React.useState({
     source: [
       { label: "Backlog", value: "backlog", icon: <Landmark className="h-4 w-4" /> },
-      { label: "In progress", value: "in-progress", icon: <RefreshCw className="h-4 w-4" /> },
-      { label: "Review", value: "review", icon: <Bell className="h-4 w-4" /> }
+      { label: "Em andamento", value: "in-progress", icon: <RefreshCw className="h-4 w-4" /> },
+      { label: "Revisão", value: "review", icon: <Bell className="h-4 w-4" /> }
     ] as SgPickListItem[],
     target: [
-      { label: "Done", value: "done", icon: <Star className="h-4 w-4" /> }
+      { label: "Concluído", value: "done", icon: <Star className="h-4 w-4" /> }
     ] as SgPickListItem[]
   });
 
@@ -18,7 +18,7 @@ export default function Example() {
     <>
       <SgPickList
         id="pick-transfer-only"
-        title="Transfer only"
+        title="Somente transferência"
         source={transferOnlyValue.source}
         target={transferOnlyValue.target}
         value={transferOnlyValue}

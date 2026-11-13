@@ -10,20 +10,20 @@ const nodes: SgTreeNode[] = [
     children: [
       {
         id: "users",
-        label: "Users",
+        label: "Usuários",
         icon: <Users className="h-4 w-4" />,
         children: [
-          { id: "users.list", label: "List users", icon: <FileText className="h-4 w-4" /> },
-          { id: "users.create", label: "Create user", icon: <FileText className="h-4 w-4" /> }
+          { id: "users.list", label: "Listar usuários", icon: <FileText className="h-4 w-4" /> },
+          { id: "users.create", label: "Criar usuário", icon: <FileText className="h-4 w-4" /> }
         ]
       },
       {
         id: "reports",
-        label: "Reports",
+        label: "Relatórios",
         icon: <BarChart3 className="h-4 w-4" />,
         children: [
-          { id: "reports.sales", label: "Sales report", icon: <FileText className="h-4 w-4" /> },
-          { id: "reports.financial", label: "Financial report", icon: <FileText className="h-4 w-4" /> }
+          { id: "reports.sales", label: "Relatório de vendas", icon: <FileText className="h-4 w-4" /> },
+          { id: "reports.financial", label: "Relatório financeiro", icon: <FileText className="h-4 w-4" /> }
         ]
       }
     ]

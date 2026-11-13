@@ -35,7 +35,7 @@ const currency = new Intl.NumberFormat("en-US", {
 const TEMPLATE_COLUMNS = [
   {
     field: "name",
-    header: "Product",
+    header: "Produto",
     sortable: true,
     body: (row: ProductRow) => (
       <div className="space-y-0.5">
@@ -45,7 +45,7 @@ const TEMPLATE_COLUMNS = [
     ),
     footer: (rows: ProductRow[]) => <span>Total: {rows.length}</span>
   },
-  { field: "category", header: "Category", sortable: true },
+  { field: "category", header: "Categoria", sortable: true },
   {
     field: "status",
     header: "Status",
@@ -66,7 +66,7 @@ const TEMPLATE_COLUMNS = [
   },
   {
     field: "price",
-    header: "Price",
+    header: "Preço",
     sortable: true,
     align: "right",
     body: (row: ProductRow) => <span>{currency.format(row.price)}</span>,

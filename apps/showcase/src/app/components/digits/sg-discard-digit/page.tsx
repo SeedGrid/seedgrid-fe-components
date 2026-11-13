@@ -98,7 +98,7 @@ const THEMES_CODE = `<SgGrid columns={{ base: 1, md: 3 }} gap={12}>
     />
   </div>
   <div className="space-y-2">
-    <p className="text-xs text-muted-foreground">Papel ambar</p>
+    <p className="text-xs text-muted-foreground">Papel âmbar</p>
     <SgDiscardDigit
       value="7"
       color="#4a2d13"
@@ -398,7 +398,7 @@ export default function SgDiscardDigitShowcase() {
         <Section title={t(i18n, `${K}.section3Title`)} description={t(i18n, `${K}.section3Description`)}>
           <SgGrid columns={{ base: 1, md: 3 }} gap={12}>
             <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">Papel branco</p>
+              <p className="text-xs text-muted-foreground">{t(i18n, `${K}.labels.paperWhite`)}</p>
               <SgDiscardDigit
                 value="7"
                 color="#0f172a"
@@ -407,7 +407,7 @@ export default function SgDiscardDigitShowcase() {
               />
             </div>
             <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">Papel ambar</p>
+              <p className="text-xs text-muted-foreground">{t(i18n, `${K}.labels.paperAmber`)}</p>
               <SgDiscardDigit
                 value="7"
                 color="#4a2d13"
@@ -416,7 +416,7 @@ export default function SgDiscardDigitShowcase() {
               />
             </div>
             <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">Papel azul frio</p>
+              <p className="text-xs text-muted-foreground">{t(i18n, `${K}.labels.paperCoolBlue`)}</p>
               <SgDiscardDigit
                 value="7"
                 color="#0b2f50"
@@ -431,7 +431,7 @@ export default function SgDiscardDigitShowcase() {
         <Section title={t(i18n, `${K}.section4Title`)} description={t(i18n, `${K}.section4Description`)}>
           <SgGrid columns={{ base: 1, md: 2 }} gap={12}>
             <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">Sans</p>
+              <p className="text-xs text-muted-foreground">{t(i18n, `${K}.labels.sans`)}</p>
               <SgDiscardDigit
                 value="42"
                 color="#0f172a"
@@ -441,7 +441,7 @@ export default function SgDiscardDigitShowcase() {
               />
             </div>
             <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">Serif</p>
+              <p className="text-xs text-muted-foreground">{t(i18n, `${K}.labels.serif`)}</p>
               <SgDiscardDigit
                 value="42"
                 color="#1f2937"
@@ -502,7 +502,7 @@ export default function SgDiscardDigitShowcase() {
         <Section title={t(i18n, `${K}.section7Title`)} description={t(i18n, `${K}.section7Description`)}>
           <div className="flex flex-wrap items-center gap-4">
             <SgDiscardDigit value={String(n)} />
-            <SgButton onClick={() => setN((v) => (v % 9) + 1)}>Próximo</SgButton>
+            <SgButton onClick={() => setN((v) => (v % 9) + 1)}>{t(i18n, "showcase.common.labels.next")}</SgButton>
           </div>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-discard-digit/samples/descarte-padrao.tsx.sample" />
         </Section>
@@ -510,7 +510,7 @@ export default function SgDiscardDigitShowcase() {
         <Section title={t(i18n, `${K}.section8Title`)} description={t(i18n, `${K}.section8Description`)}>
           <div className="flex flex-wrap items-center gap-4">
             <SgDiscardDigit value={String(n)} changeAnimationMode="incoming" />
-            <SgButton onClick={() => setN((v) => (v % 9) + 1)}>Próximo</SgButton>
+            <SgButton onClick={() => setN((v) => (v % 9) + 1)}>{t(i18n, "showcase.common.labels.next")}</SgButton>
           </div>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-discard-digit/samples/entrando-por-baixo.tsx.sample" />
         </Section>
@@ -519,7 +519,7 @@ export default function SgDiscardDigitShowcase() {
           <div className="flex flex-wrap items-center gap-4">
             <SgDiscardDigit ref={montoRef} value={String(montoPagina)} totalNumberPages={8} stackDepth={8} />
             <div>
-              <p>Página {montoPagina} de 8</p>
+              <p>{t(i18n, `${K}.labels.pageOf`, { page: montoPagina })}</p>
               <div className="mt-2 flex flex-wrap gap-4">
                 <SgButton
                   severity="secondary"
@@ -528,7 +528,7 @@ export default function SgDiscardDigitShowcase() {
                     setMontoPagina((p) => Math.max(1, p - 1));
                   }}
                 >
-                  Anterior
+                  {t(i18n, "showcase.common.labels.previous")}
                 </SgButton>
                 <SgButton
                   onClick={() => {
@@ -536,7 +536,7 @@ export default function SgDiscardDigitShowcase() {
                     setMontoPagina((p) => Math.min(8, p + 1));
                   }}
                 >
-                  Próxima
+                  {t(i18n, "showcase.common.labels.nextFem")}
                 </SgButton>
               </div>
             </div>
@@ -547,7 +547,7 @@ export default function SgDiscardDigitShowcase() {
         <Section title={t(i18n, `${K}.section10Title`)} description={t(i18n, `${K}.section10Description`)}>
           <div className="flex flex-wrap items-center gap-4">
             <SgDiscardDigit value={String(n)} animateOnChange={false} />
-            <SgButton onClick={() => setN((v) => (v % 9) + 1)}>Próximo</SgButton>
+            <SgButton onClick={() => setN((v) => (v % 9) + 1)}>{t(i18n, "showcase.common.labels.next")}</SgButton>
           </div>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-discard-digit/samples/sem-animacao.tsx.sample" />
         </Section>
@@ -555,7 +555,7 @@ export default function SgDiscardDigitShowcase() {
         <Section title={t(i18n, `${K}.section11Title`)} description={t(i18n, `${K}.section11Description`)}>
           <div className="flex flex-wrap items-center gap-4">
             <SgDiscardDigit value={String(n)} fontSize={48} color="#7c2d12" backgroundColor="#ffedd5" fontWeight="bold" transitionMs={900} stackDepth={10} />
-            <SgButton onClick={() => setN((v) => (v % 9) + 1)}>Próximo</SgButton>
+            <SgButton onClick={() => setN((v) => (v % 9) + 1)}>{t(i18n, "showcase.common.labels.next")}</SgButton>
           </div>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-discard-digit/samples/aparencia.tsx.sample" />
         </Section>

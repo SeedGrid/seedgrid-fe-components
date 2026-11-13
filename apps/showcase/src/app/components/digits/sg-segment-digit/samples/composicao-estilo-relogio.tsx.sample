@@ -21,7 +21,7 @@ export default function Example() {
           <SgSegmentDigit key={index} value={value} size={36} />
         ))}
       </div>
-      <SgButton size="sm" onClick={() => setSeconds((prev) => prev + 1)}>+1 second</SgButton>
+      <SgButton size="sm" onClick={() => setSeconds((prev) => prev + 1)}>+1 segundo</SgButton>
     </div>
   );
 }

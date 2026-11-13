@@ -3,8 +3,8 @@ import { ClipboardList, Home, LayoutGrid, Search, Settings, Users } from "lucide
 import { SgMenu, type SgMenuNode } from "@seedgrid/fe-components";
 
 const MENU: SgMenuNode[] = [
-  { id: "dashboard", label: "Dashboard", url: "/dashboard", icon: <Home className="size-4" /> },
-  { id: "customers", label: "Customers", icon: <Users className="size-4" />, children: [{ id: "customers-new", label: "New", icon: <LayoutGrid className="size-4" /> }, { id: "customers-reports", label: "Reports", icon: <ClipboardList className="size-4" /> }] }
+  { id: "dashboard", label: "Painel", url: "/dashboard", icon: <Home className="size-4" /> },
+  { id: "customers", label: "Clientes", icon: <Users className="size-4" />, children: [{ id: "customers-new", label: "Novo", icon: <LayoutGrid className="size-4" /> }, { id: "customers-reports", label: "Relatórios", icon: <ClipboardList className="size-4" /> }] }
 ];
 
 export default function Example() {

@@ -11,9 +11,9 @@ export default function Example() {
     <div className="flex items-center gap-4">
       <SgFlipDigit value={digit} />
       <div className="flex flex-col gap-2">
-        <SgButton onClick={nextDigit} size="sm">Next (+1)</SgButton>
-        <SgButton onClick={prevDigit} size="sm" severity="secondary">Previous (-1)</SgButton>
-        <SgButton onClick={randomDigit} size="sm" severity="info">Random</SgButton>
+        <SgButton onClick={nextDigit} size="sm">Próximo (+1)</SgButton>
+        <SgButton onClick={prevDigit} size="sm" severity="secondary">Anterior (-1)</SgButton>
+        <SgButton onClick={randomDigit} size="sm" severity="info">Aleatório</SgButton>
       </div>
     </div>
   );

@@ -51,7 +51,7 @@ export default function App() {
       </SgDockZone>
 
       <SgDockZone zone="free">
-        <div className="pointer-events-none text-sm text-muted-foreground">Area central livre</div>
+        <div className="pointer-events-none text-sm text-muted-foreground">Área central livre</div>
       </SgDockZone>
     </SgDockScreen>
   );

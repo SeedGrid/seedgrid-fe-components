@@ -77,6 +77,7 @@ const RATING_PROPS: PropRow[] = [
 
 
 function BasicExample() {
+  const i18n = useShowcaseI18n();
   const [value, setValue] = React.useState(0);
 
   return (
@@ -87,7 +88,7 @@ function BasicExample() {
         style={{ border: "1px solid rgba(59, 130, 246, 0.25)", borderRadius: 12, padding: 12 }}
       />
       <p className="text-sm text-muted-foreground">
-        Current value: <strong>{value}</strong>
+        {t(i18n, "showcase.common.labels.currentValueLabel")} <strong>{value}</strong>
       </p>
     </div>
   );
@@ -109,24 +110,25 @@ function HalfTooltipExample() {
         onHover={setHover}
       />
       <p className="text-sm text-muted-foreground">
-        Selected: <strong>{value}</strong> | Hover: <strong>{hover ?? "none"}</strong>
+        {t(i18n, `${K}.labels.selectedColon`)} <strong>{value}</strong> | {t(i18n, `${K}.labels.hoverColon`)} <strong>{hover ?? t(i18n, "showcase.common.labels.noneLower")}</strong>
       </p>
     </div>
   );
 }
 
 function ReadonlyDisabledExample() {
+  const i18n = useShowcaseI18n();
   return (
     <SgGrid columns={{ base: 1, md: 2 }} gap={16}>
       <SgRating
-        label="Read-only"
+        label={t(i18n, `${K}.labels.readOnly`)}
         value={3.5}
         allowHalf
         readOnly
       />
 
       <SgRating
-        label="Desabilitado"
+        label={t(i18n, "showcase.common.labels.disabled")}
         value={2}
         enabled={false}
       />
@@ -168,6 +170,7 @@ function SizeStarsExample() {
 }
 
 function ColorsIconsExample() {
+  const i18n = useShowcaseI18n();
   const [heartValue, setHeartValue] = React.useState(4);
   const [likeValue, setLikeValue] = React.useState(3);
   const [fireValue, setFireValue] = React.useState(5);
@@ -175,7 +178,7 @@ function ColorsIconsExample() {
   return (
     <SgGrid columns={{ base: 1, md: 2 }} gap={16}>
       <SgRating
-        label="Heart"
+        label={t(i18n, `${K}.labels.heart`)}
         value={heartValue}
         color="#ec4899"
         emptyColor="#f9a8d4"
@@ -185,7 +188,7 @@ function ColorsIconsExample() {
       />
 
       <SgRating
-        label="Likes"
+        label={t(i18n, `${K}.labels.likes`)}
         value={likeValue}
         color="#2563eb"
         emptyColor="#93c5fd"
@@ -195,7 +198,7 @@ function ColorsIconsExample() {
       />
 
       <SgRating
-        label="Fire"
+        label={t(i18n, `${K}.labels.fire`)}
         value={fireValue}
         color="#f97316"
         emptyColor="#fdba74"
@@ -208,6 +211,7 @@ function ColorsIconsExample() {
 }
 
 function CallbackExample() {
+  const i18n = useShowcaseI18n();
   const [value, setValue] = React.useState(3);
   const [hover, setHover] = React.useState<number | null>(null);
   const [logs, setLogs] = React.useState<string[]>([]);
@@ -231,22 +235,22 @@ function CallbackExample() {
 
       <SgGrid columns={{ base: 2, md: 4 }} gap={8}>
         <SgButton size="sm" appearance="outline" onClick={() => setValue(0)}>
-          Reset
+          {t(i18n, "showcase.common.labels.resetAction")}
         </SgButton>
         <SgButton size="sm" appearance="outline" onClick={() => setValue(5)}>
-          Max
+          {t(i18n, `${K}.labels.max`)}
         </SgButton>
         <SgButton size="sm" appearance="outline" onClick={() => setLogs([])}>
-          Clear log
+          {t(i18n, `${K}.labels.clearLog`)}
         </SgButton>
       </SgGrid>
 
       <p className="text-sm text-muted-foreground">
-        Selected: <strong>{value}</strong> | Hover: <strong>{hover ?? "none"}</strong>
+        {t(i18n, `${K}.labels.selectedColon`)} <strong>{value}</strong> | {t(i18n, `${K}.labels.hoverColon`)} <strong>{hover ?? t(i18n, "showcase.common.labels.noneLower")}</strong>
       </p>
 
       <div className="h-28 overflow-y-auto rounded border border-border bg-foreground/5 p-2 font-mono text-xs">
-        {logs.length === 0 ? "No events" : logs.map((entry, index) => <div key={index}>{entry}</div>)}
+        {logs.length === 0 ? t(i18n, `${K}.labels.noEvents`) : logs.map((entry, index) => <div key={index}>{entry}</div>)}
       </div>
     </div>
   );
@@ -292,32 +296,33 @@ function RhfExample() {
 }
 
 function RequiredExample() {
+  const i18n = useShowcaseI18n();
   const [value, setValue] = React.useState(0);
 
   return (
     <div className="space-y-3">
       <SgRating
-        label="Required rating"
+        label={t(i18n, `${K}.labels.requiredRating`)}
         value={value}
         required
-        requiredMessage="Provide a rating before continuing"
+        requiredMessage={t(i18n, `${K}.labels.requiredMessage`)}
         onChange={setValue}
       />
 
       <SgGrid columns={{ base: 2, md: 4 }} gap={8}>
         <SgButton size="sm" appearance="outline" onClick={() => setValue(0)}>
-          Clear
+          {t(i18n, "showcase.common.labels.clear")}
         </SgButton>
         <SgButton size="sm" appearance="outline" onClick={() => setValue(1)}>
-          Rate 1
+          {t(i18n, `${K}.labels.rate1`)}
         </SgButton>
         <SgButton size="sm" appearance="outline" onClick={() => setValue(5)}>
-          Rate 5
+          {t(i18n, `${K}.labels.rate5`)}
         </SgButton>
       </SgGrid>
 
       <p className="text-sm text-muted-foreground">
-        Current value: <strong>{value}</strong>
+        {t(i18n, "showcase.common.labels.currentValueLabel")} <strong>{value}</strong>
       </p>
     </div>
   );

@@ -11,7 +11,7 @@ import ShowcasePropsReference, { type ShowcasePropRow } from "../../ShowcaseProp
 import ShowcaseStickyHeader from "../../ShowcaseStickyHeader";
 import { useAiManifestComponent } from "../../ai/useAiManifestComponent";
 import { useShowcaseAnchors } from "../../useShowcaseAnchors";
-import { t, useShowcaseI18n } from "../../../../i18n";
+import { t, useShowcaseI18n, type ShowcaseI18n } from "../../../../i18n";
 
 const K = "showcase.component.stringAnimator";
 
@@ -400,10 +400,10 @@ const EX9_CODE = `{[
   );
 })}`;
 
-const VELOCITY_CASES = [
-  { label: "Lento (velocity=10)", velocity: 10 },
-  { label: "Médio (velocity=50)", velocity: 50 },
-  { label: "Rápido (velocity=90)", velocity: 90 },
+const velocityCases = (i18n: ShowcaseI18n) => [
+  { label: t(i18n, `${K}.labels.slow`), velocity: 10 },
+  { label: t(i18n, `${K}.labels.medium`), velocity: 50 },
+  { label: t(i18n, `${K}.labels.fast`), velocity: 90 },
 ] as const;
 
 function Ex9() {
@@ -416,7 +416,7 @@ function Ex9() {
 
   return (
     <SgGrid columns={{ base: 1, md: 3 }} gap={24}>
-      {VELOCITY_CASES.map(({ label, velocity }, i) => {
+      {velocityCases(i18n).map(({ label, velocity }, i) => {
         const ref = refs[i] ?? refs[0];
         return (
           <div key={label} className="flex flex-col gap-2">

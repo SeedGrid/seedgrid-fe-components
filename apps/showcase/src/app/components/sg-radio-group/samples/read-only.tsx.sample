@@ -2,12 +2,12 @@ import React from "react";
 import { SgRadioGroup, type SgRadioGroupOption } from "@seedgrid/fe-components";
 
 const FRUIT_OPTIONS: SgRadioGroupOption[] = [
-  { label: "Apple", value: "apple" },
+  { label: "Maçã", value: "apple" },
   { label: "Banana", value: "banana" },
-  { label: "Orange", value: "orange" },
+  { label: "Laranja", value: "orange" },
   { label: "Uva", value: "grape" }
 ];
 
 export default function Example() {
-  return <SgRadioGroup id="readonly" title="Current configuration (read-only)" source={FRUIT_OPTIONS} value="banana" readOnly />;
+  return <SgRadioGroup id="readonly" title="Configuração atual (somente leitura)" source={FRUIT_OPTIONS} value="banana" readOnly />;
 }

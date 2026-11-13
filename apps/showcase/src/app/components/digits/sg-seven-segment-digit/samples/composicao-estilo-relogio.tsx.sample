@@ -32,7 +32,7 @@ export default function Example() {
         <ColonDots />
         {ss.split("").map((value, index) => <SgSevenSegmentDigit key={`s-${index}`} value={value} size={86} />)}
       </div>
-      <SgButton size="sm" onClick={() => setSeconds((prev) => prev + 1)}>+1 second</SgButton>
+      <SgButton size="sm" onClick={() => setSeconds((prev) => prev + 1)}>+1 segundo</SgButton>
     </div>
   );
 }

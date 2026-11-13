@@ -36,18 +36,20 @@ function Section(props: { title: string; description?: string; children: React.R
 
 
 function BasicCalendarExample() {
+  const i18n = useShowcaseI18n();
   return (
     <SgCalendar
       locale="pt-BR"
       defaultValue="2026-03-10"
       defaultViewDate="2026-03-01"
-      cardTitle="Calendário base"
+      cardTitle={t(i18n, `${K}.labels.cardBase`)}
       cardProps={{ id: "showcase-calendar-basic", dragPersistKey: "showcase-calendar-basic" }}
     />
   );
 }
 
 function ControlledCalendarExample() {
+  const i18n = useShowcaseI18n();
   const [selected, setSelected] = React.useState(new Date(2026, 2, 10));
   const selectedText = React.useMemo(
     () => selected.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit", year: "numeric" }),
@@ -65,15 +67,16 @@ function ControlledCalendarExample() {
         minDate={minDate}
         maxDate={maxDate}
         isDateDisabled={(date) => date.getDay() === 0 || date.getDay() === 6}
-        cardTitle="Agenda de visitas"
+        cardTitle={t(i18n, `${K}.labels.cardVisits`)}
         cardProps={{ id: "showcase-calendar-range", dragPersistKey: "showcase-calendar-range" }}
       />
-      <p className="text-sm text-muted-foreground">Selecionado: {selectedText}</p>
+      <p className="text-sm text-muted-foreground">{t(i18n, `${K}.labels.selected`, { value: selectedText })}</p>
     </div>
   );
 }
 
 function LocaleCalendarExample() {
+  const i18n = useShowcaseI18n();
   const [locale, setLocale] = React.useState<"pt-BR" | "en-US" | "es">("pt-BR");
   const [weekStartsOn, setWeekStartsOn] = React.useState<0 | 1>(0);
   const [numberOfMonths, setNumberOfMonths] = React.useState(6);
@@ -84,15 +87,15 @@ function LocaleCalendarExample() {
         <SgButton appearance={locale === "pt-BR" ? "solid" : "outline"} onClick={() => setLocale("pt-BR")}>pt-BR</SgButton>
         <SgButton appearance={locale === "en-US" ? "solid" : "outline"} onClick={() => setLocale("en-US")}>en-US</SgButton>
         <SgButton appearance={locale === "es" ? "solid" : "outline"} onClick={() => setLocale("es")}>es</SgButton>
-        <SgButton appearance={weekStartsOn === 0 ? "solid" : "outline"} onClick={() => setWeekStartsOn(0)}>Sunday first</SgButton>
-        <SgButton appearance={weekStartsOn === 1 ? "solid" : "outline"} onClick={() => setWeekStartsOn(1)}>Monday first</SgButton>
+        <SgButton appearance={weekStartsOn === 0 ? "solid" : "outline"} onClick={() => setWeekStartsOn(0)}>{t(i18n, `${K}.labels.sundayFirst`)}</SgButton>
+        <SgButton appearance={weekStartsOn === 1 ? "solid" : "outline"} onClick={() => setWeekStartsOn(1)}>{t(i18n, `${K}.labels.mondayFirst`)}</SgButton>
       </SgGrid>
 
       <SgGrid columns={{ base: 2, md: 4 }} gap={8}>
-        <SgButton appearance={numberOfMonths === 1 ? "solid" : "outline"} onClick={() => setNumberOfMonths(1)}>1 month</SgButton>
-        <SgButton appearance={numberOfMonths === 3 ? "solid" : "outline"} onClick={() => setNumberOfMonths(3)}>3 months</SgButton>
-        <SgButton appearance={numberOfMonths === 6 ? "solid" : "outline"} onClick={() => setNumberOfMonths(6)}>6 months</SgButton>
-        <SgButton appearance={numberOfMonths === 12 ? "solid" : "outline"} onClick={() => setNumberOfMonths(12)}>12 months</SgButton>
+        <SgButton appearance={numberOfMonths === 1 ? "solid" : "outline"} onClick={() => setNumberOfMonths(1)}>{t(i18n, `${K}.labels.months1`)}</SgButton>
+        <SgButton appearance={numberOfMonths === 3 ? "solid" : "outline"} onClick={() => setNumberOfMonths(3)}>{t(i18n, `${K}.labels.months3`)}</SgButton>
+        <SgButton appearance={numberOfMonths === 6 ? "solid" : "outline"} onClick={() => setNumberOfMonths(6)}>{t(i18n, `${K}.labels.months6`)}</SgButton>
+        <SgButton appearance={numberOfMonths === 12 ? "solid" : "outline"} onClick={() => setNumberOfMonths(12)}>{t(i18n, `${K}.labels.months12`)}</SgButton>
       </SgGrid>
 
       <SgCalendar
@@ -102,7 +105,7 @@ function LocaleCalendarExample() {
         monthsPerLine={3}
         defaultValue="2026-03-10"
         defaultViewDate="2026-03-01"
-        cardTitle="Calendar i18n + multi month"
+        cardTitle={t(i18n, `${K}.labels.cardI18nMulti`)}
         cardProps={{ id: "showcase-calendar-i18n", dragPersistKey: "showcase-calendar-i18n" }}
       />
     </div>
@@ -215,7 +218,7 @@ export default function SgCalendarPage() {
               onViewDateChange={setMes}
             />
             <p className="text-sm text-muted-foreground">
-              Escolhida: {escolhida.getDate()}/{escolhida.getMonth() + 1}/{escolhida.getFullYear()}
+              {t(i18n, `${K}.labels.chosen`, { date: `${escolhida.getDate()}/${escolhida.getMonth() + 1}/${escolhida.getFullYear()}` })}
             </p>
           </div>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-calendar/samples/controlado.tsx.sample" />

@@ -35,11 +35,12 @@ function Section(props: { title: string; description?: string; children: React.R
 }
 
 function Card(props: { title: string; subtitle?: string }) {
+  const i18n = useShowcaseI18n();
   return (
     <SgPanel padding={12} className="rounded-lg">
       <SgStack gap={8}>
         <p className="font-medium">{props.title}</p>
-        <p className="text-xs text-muted-foreground">{props.subtitle ?? "Card padrao"}</p>
+        <p className="text-xs text-muted-foreground">{props.subtitle ?? t(i18n, `${K}.labels.cardDefault`)}</p>
       </SgStack>
     </SgPanel>
   );
@@ -117,7 +118,7 @@ export default function SgGridPage() {
             <SgPanel span={2} padding={12} className="rounded-lg">
               <SgStack gap={8}>
                 <p className="font-medium">Card 3 (span 2)</p>
-                <p className="text-xs text-muted-foreground">Ocupa 2 colunas.</p>
+                <p className="text-xs text-muted-foreground">{t(i18n, `${K}.labels.spans2Columns`)}</p>
               </SgStack>
             </SgPanel>
             <Card title="Card 4" />
@@ -136,14 +137,14 @@ export default function SgGridPage() {
             <SgPanel rowSpan={2} padding={12} className="rounded-lg">
               <SgStack gap={8}>
                 <p className="font-medium">Card B (rowSpan 2)</p>
-                <p className="text-xs text-muted-foreground">Ocupa 2 linhas do grid.</p>
+                <p className="text-xs text-muted-foreground">{t(i18n, `${K}.labels.spans2Rows`)}</p>
               </SgStack>
             </SgPanel>
             <Card title="Card C" />
             <SgPanel span={2} padding={12} className="rounded-lg">
               <SgStack gap={8}>
                 <p className="font-medium">Card D (span 2)</p>
-                <p className="text-xs text-muted-foreground">Ocupa 2 colunas.</p>
+                <p className="text-xs text-muted-foreground">{t(i18n, `${K}.labels.spans2Columns`)}</p>
               </SgStack>
             </SgPanel>
             <Card title="Card E" />

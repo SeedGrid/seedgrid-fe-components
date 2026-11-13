@@ -254,7 +254,7 @@ export default function SgFloatActionButtonPage() {
           <SgFloatActionButton absolute position="center-bottom" size="sm" severity="secondary" icon={<EditIcon />} onClick={() => {}} />
           <SgFloatActionButton absolute position="right-bottom" size="sm" severity="success" icon={<EditIcon />} onClick={() => {}} />
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <span className="text-xs text-muted-foreground">8 positions</span>
+            <span className="text-xs text-muted-foreground">{t(i18n, "showcase.component.fab.labels.eightPositions")}</span>
           </div>
         </DemoBox>
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-float-action-button/samples/positions.tsx.sample" />
@@ -382,7 +382,7 @@ export default function SgFloatActionButtonPage() {
           <SgFloatActionButton
             absolute
             position="center-top"
-            actions={[...actions, ...actions, { icon: <EditIcon />, label: "Edit", onClick: () => {} }]}
+            actions={[...actions, ...actions, { icon: <EditIcon />, label: t(i18n, "showcase.component.fab.labels.edit"), onClick: () => {} }]}
             type="circle"
             radius={120}
             severity="secondary"
@@ -403,7 +403,7 @@ export default function SgFloatActionButtonPage() {
             <SgFloatActionButton
               absolute
               position="center-bottom"
-              actions={[...actions, { icon: <EditIcon />, label: "Edit", onClick: () => {} }, { icon: <StarIcon />, label: "Star", onClick: () => {} }]}
+              actions={[...actions, { icon: <EditIcon />, label: t(i18n, "showcase.component.fab.labels.edit"), onClick: () => {} }, { icon: <StarIcon />, label: t(i18n, "showcase.component.fab.labels.star"), onClick: () => {} }]}
               type="semi-circle"
               direction="up"
               severity="success"
@@ -414,7 +414,7 @@ export default function SgFloatActionButtonPage() {
             <SgFloatActionButton
               absolute
               position="center-top"
-              actions={[...actions, { icon: <EditIcon />, label: "Edit", onClick: () => {} }, { icon: <StarIcon />, label: "Star", onClick: () => {} }]}
+              actions={[...actions, { icon: <EditIcon />, label: t(i18n, "showcase.component.fab.labels.edit"), onClick: () => {} }, { icon: <StarIcon />, label: t(i18n, "showcase.component.fab.labels.star"), onClick: () => {} }]}
               type="semi-circle"
               direction="down"
               severity="warning"

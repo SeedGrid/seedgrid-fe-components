@@ -31,6 +31,7 @@ function CodeBlock(props: { sampleFile: string }) {
 }
 
 function ManualPersistenceDemo() {
+  const i18n = useShowcaseI18n();
   const persistence = useSgPersistence();
   const [log, setLog] = React.useState<string[]>([]);
   const addLog = (msg: string) => setLog((prev) => [msg, ...prev].slice(0, 6));
@@ -60,7 +61,7 @@ function ManualPersistenceDemo() {
       </div>
       <div className="rounded-lg border border-border bg-foreground/5 p-3 space-y-1 min-h-[80px]">
         {log.length === 0 ? (
-          <p className="text-xs text-muted-foreground">Clique nos botoes para ver o log...</p>
+          <p className="text-xs text-muted-foreground">{t(i18n, "showcase.hook.persistence.labels.clickToSeeLog")}</p>
         ) : (
           log.map((entry, i) => (
             <p key={i} className="font-mono text-xs">{entry}</p>
@@ -68,8 +69,8 @@ function ManualPersistenceDemo() {
         )}
       </div>
       <p className="text-xs text-muted-foreground">
-        Namespace: <span className="font-mono">{persistence.namespace || "(vazio)"}</span>{" "}
-        · Scope: <span className="font-mono">{persistence.scope}</span>
+        Namespace: <span className="font-mono">{persistence.namespace || t(i18n, "showcase.common.labels.empty")}</span>{" "}
+        · {t(i18n, "showcase.hook.persistence.labels.scopeLabel")} <span className="font-mono">{persistence.scope}</span>
       </p>
     </div>
   );

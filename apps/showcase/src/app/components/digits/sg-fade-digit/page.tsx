@@ -68,13 +68,14 @@ const random = () => setDigit((p) => String((Number(p) + 1 + Math.floor(Math.ran
 <div className="flex items-center gap-4">
   <SgFadeDigit value={digit} />
   <div className="flex flex-col gap-2">
-    <SgButton size="sm" onClick={next}>Next (+1)</SgButton>
-    <SgButton size="sm" severity="secondary" onClick={prev}>Previous (-1)</SgButton>
-    <SgButton size="sm" severity="info" onClick={random}>Random</SgButton>
+    <SgButton size="sm" onClick={next}>Próximo (+1)</SgButton>
+    <SgButton size="sm" severity="secondary" onClick={prev}>Anterior (-1)</SgButton>
+    <SgButton size="sm" severity="info" onClick={random}>Aleatório</SgButton>
   </div>
 </div>`;
 
 function Ex1() {
+  const i18n = useShowcaseI18n();
   const [digit, setDigit] = React.useState("0");
   const next = () => setDigit((p) => String((Number(p) + 1) % 10));
   const prev = () => setDigit((p) => String((Number(p) - 1 + 10) % 10));
@@ -83,9 +84,9 @@ function Ex1() {
     <div className="flex items-center gap-4">
       <SgFadeDigit value={digit} />
       <div className="flex flex-col gap-2">
-        <SgButton size="sm" onClick={next}>Next (+1)</SgButton>
-        <SgButton size="sm" severity="secondary" onClick={prev}>Previous (-1)</SgButton>
-        <SgButton size="sm" severity="info" onClick={random}>Random</SgButton>
+        <SgButton size="sm" onClick={next}>{t(i18n, "showcase.common.labels.nextPlusOne")}</SgButton>
+        <SgButton size="sm" severity="secondary" onClick={prev}>{t(i18n, "showcase.common.labels.previousMinusOne")}</SgButton>
+        <SgButton size="sm" severity="info" onClick={random}>{t(i18n, "showcase.common.labels.random")}</SgButton>
       </div>
     </div>
   );
@@ -111,6 +112,7 @@ const nextLetter = () => {
 const ALPHA = Array.from("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 
 function Ex2() {
+  const i18n = useShowcaseI18n();
   const [letter, setLetter] = React.useState("A");
   const nextLetter = () => {
     const i = ALPHA.indexOf(letter);
@@ -120,7 +122,7 @@ function Ex2() {
   return (
     <div className="flex items-center gap-4">
       <SgFadeDigit value={letter} />
-      <SgButton size="sm" onClick={nextLetter}>Próxima letra</SgButton>
+      <SgButton size="sm" onClick={nextLetter}>{t(i18n, "showcase.common.labels.nextLetter")}</SgButton>
     </div>
   );
 }
@@ -131,7 +133,7 @@ function Ex2() {
 const EX3_CODE = `{/* Cada cartao usa color + backgroundColor independentes */}
 <div className="flex flex-wrap items-center gap-4">
   <div className="text-center">
-    <p className="mb-2 text-xs text-muted-foreground">Padrao</p>
+    <p className="mb-2 text-xs text-muted-foreground">Padrão</p>
     <SgFadeDigit value="7" color="#edebeb" backgroundColor="#333232" />
   </div>
   <div className="text-center">
@@ -147,32 +149,33 @@ const EX3_CODE = `{/* Cada cartao usa color + backgroundColor independentes */}
     <SgFadeDigit value="7" color="#f472b6" backgroundColor="#2d0a1e" />
   </div>
   <div className="text-center">
-    <p className="mb-2 text-xs text-muted-foreground">Ambar</p>
+    <p className="mb-2 text-xs text-muted-foreground">Âmbar</p>
     <SgFadeDigit value="7" color="#fbbf24" backgroundColor="#1c1007" />
   </div>
 </div>`;
 
 function Ex3() {
+  const i18n = useShowcaseI18n();
   return (
     <div className="flex flex-wrap items-center gap-4">
       <div className="text-center">
-        <p className="mb-2 text-xs text-muted-foreground">Padrao</p>
+        <p className="mb-2 text-xs text-muted-foreground">{t(i18n, `${K}.labels.default`)}</p>
         <SgFadeDigit value="7" color="#edebeb" backgroundColor="#333232" />
       </div>
       <div className="text-center">
-        <p className="mb-2 text-xs text-muted-foreground">Verde</p>
+        <p className="mb-2 text-xs text-muted-foreground">{t(i18n, `${K}.labels.green`)}</p>
         <SgFadeDigit value="7" color="#4ade80" backgroundColor="#052e16" />
       </div>
       <div className="text-center">
-        <p className="mb-2 text-xs text-muted-foreground">Azul</p>
+        <p className="mb-2 text-xs text-muted-foreground">{t(i18n, `${K}.labels.blue`)}</p>
         <SgFadeDigit value="7" color="#60a5fa" backgroundColor="#0f172a" />
       </div>
       <div className="text-center">
-        <p className="mb-2 text-xs text-muted-foreground">Rosa</p>
+        <p className="mb-2 text-xs text-muted-foreground">{t(i18n, `${K}.labels.pink`)}</p>
         <SgFadeDigit value="7" color="#f472b6" backgroundColor="#2d0a1e" />
       </div>
       <div className="text-center">
-        <p className="mb-2 text-xs text-muted-foreground">Ambar</p>
+        <p className="mb-2 text-xs text-muted-foreground">{t(i18n, `${K}.labels.amber`)}</p>
         <SgFadeDigit value="7" color="#fbbf24" backgroundColor="#1c1007" />
       </div>
     </div>
@@ -201,6 +204,7 @@ React.useEffect(() => {
 </div>`;
 
 function Ex4() {
+  const i18n = useShowcaseI18n();
   const [running, setRunning] = React.useState(false);
   const [counter, setCounter] = React.useState("0");
   React.useEffect(() => {
@@ -214,7 +218,7 @@ function Ex4() {
     <div className="flex items-center gap-4">
       <SgFadeDigit value={counter} />
       <SgButton onClick={() => setRunning((p) => !p)}>
-        {running ? "Parar" : "Iniciar"}
+        {running ? t(i18n, "showcase.common.labels.stop") : t(i18n, "showcase.common.labels.start")}
       </SgButton>
     </div>
   );
@@ -268,6 +272,7 @@ const Colon = () => (
 </div>`;
 
 function Ex5() {
+  const i18n = useShowcaseI18n();
   const [running, setRunning] = React.useState(false);
   const [time, setTime] = React.useState({ h: 0, m: 0, s: 0 });
   React.useEffect(() => {
@@ -298,7 +303,7 @@ function Ex5() {
         <SgFadeDigit value={pad(time.s).charAt(1)} />
       </div>
       <SgButton size="sm" onClick={() => setRunning((p) => !p)}>
-        {running ? "Parar" : "Iniciar"}
+        {running ? t(i18n, "showcase.common.labels.stop") : t(i18n, "showcase.common.labels.start")}
       </SgButton>
     </div>
   );
@@ -309,32 +314,33 @@ function Ex5() {
 // ---------------------------------------------------------------------------
 const EX6_CODE = `<div className="flex items-end gap-6">
   <div className="text-center">
-    <p className="mb-2 text-xs text-muted-foreground">Small (40px)</p>
+    <p className="mb-2 text-xs text-muted-foreground">Pequeno (40px)</p>
     <SgFadeDigit value="5" fontSize={40} />
   </div>
   <div className="text-center">
-    <p className="mb-2 text-xs text-muted-foreground">Medium (70px)</p>
+    <p className="mb-2 text-xs text-muted-foreground">Médio (70px)</p>
     <SgFadeDigit value="5" fontSize={70} />
   </div>
   <div className="text-center">
-    <p className="mb-2 text-xs text-muted-foreground">Large (110px)</p>
+    <p className="mb-2 text-xs text-muted-foreground">Grande (110px)</p>
     <SgFadeDigit value="5" fontSize={110} />
   </div>
 </div>`;
 
 function Ex6() {
+  const i18n = useShowcaseI18n();
   return (
     <div className="flex items-end gap-6">
       <div className="text-center">
-        <p className="mb-2 text-xs text-muted-foreground">Small (40px)</p>
+        <p className="mb-2 text-xs text-muted-foreground">{t(i18n, `${K}.labels.size40`)}</p>
         <SgFadeDigit value="5" fontSize={40} />
       </div>
       <div className="text-center">
-        <p className="mb-2 text-xs text-muted-foreground">Medium (70px)</p>
+        <p className="mb-2 text-xs text-muted-foreground">{t(i18n, `${K}.labels.size70`)}</p>
         <SgFadeDigit value="5" fontSize={70} />
       </div>
       <div className="text-center">
-        <p className="mb-2 text-xs text-muted-foreground">Large (110px)</p>
+        <p className="mb-2 text-xs text-muted-foreground">{t(i18n, `${K}.labels.size110`)}</p>
         <SgFadeDigit value="5" fontSize={110} />
       </div>
     </div>
@@ -563,7 +569,7 @@ export default function SgFadeDigitShowcase() {
         <Section title={t(i18n, `${K}.section9Title`)} description={t(i18n, `${K}.section9Description`)}>
           <div className="flex items-center gap-6">
             <SgFadeDigit value={String(valor)} />
-            <SgButton onClick={() => setValor((v) => (v + 1) % 10)}>Próximo</SgButton>
+            <SgButton onClick={() => setValor((v) => (v + 1) % 10)}>{t(i18n, "showcase.common.labels.next")}</SgButton>
           </div>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-fade-digit/samples/troca-de-valor.tsx.sample" />
         </Section>

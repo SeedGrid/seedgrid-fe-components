@@ -36,7 +36,7 @@ export default function Example() {
         source={source}
         openOnFocus
         grouped
-        loadingText="Loading countries..."
+        loadingText="Carregando países..."
         mapItem={(raw) => ({
           id: raw.id,
           label: raw.description,
@@ -53,7 +53,7 @@ export default function Example() {
         itemTooltip={(item) => <span>{item.label}</span>}
         renderFooter={(_, hasResults) => (
           <span className="text-xs text-muted-foreground">
-            {hasResults ? "Select one item from the list." : "No records."}
+            {hasResults ? "Selecione um item da lista." : "Nenhum registro."}
           </span>
         )}
         onSelect={setSelectedAsync}

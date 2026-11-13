@@ -4,13 +4,13 @@ import { SgPickList, type SgPickListItem } from "@seedgrid/fe-components";
 export default function Example() {
   const [reorderValue, setReorderValue] = React.useState({
     source: [
-      { label: "Task A", value: "task-a" },
-      { label: "Task B", value: "task-b" },
-      { label: "Task C", value: "task-c" }
+      { label: "Tarefa A", value: "task-a" },
+      { label: "Tarefa B", value: "task-b" },
+      { label: "Tarefa C", value: "task-c" }
     ] as SgPickListItem[],
     target: [
-      { label: "Done X", value: "done-x" },
-      { label: "Done Y", value: "done-y" }
+      { label: "Concluído X", value: "done-x" },
+      { label: "Concluído Y", value: "done-y" }
     ] as SgPickListItem[]
   });
 
@@ -19,7 +19,7 @@ export default function Example() {
       <p className="text-sm text-muted-foreground">Dica: arraste itens entre listas ou dentro da mesma lista para reordenar.</p>
       <SgPickList
         id="pick-reorder"
-        title="Sprint board"
+        title="Quadro da sprint"
         source={reorderValue.source}
         target={reorderValue.target}
         value={reorderValue}

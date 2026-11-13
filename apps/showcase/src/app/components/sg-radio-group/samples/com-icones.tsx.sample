@@ -9,5 +9,5 @@ const OPTIONS_WITH_ICONS: SgRadioGroupOption[] = [
 ];
 
 export default function Example() {
-  return <SgRadioGroup id="with-icons" title="Choose an action" source={OPTIONS_WITH_ICONS} />;
+  return <SgRadioGroup id="with-icons" title="Escolha uma ação" source={OPTIONS_WITH_ICONS} />;
 }

@@ -6,9 +6,9 @@ export default function Example() {
   return (
     <div className="space-y-3">
       <div className="flex flex-wrap items-center gap-3">
-        <SgButton size="sm">Small</SgButton>
-        <SgButton size="md">Medium</SgButton>
-        <SgButton size="lg">Large</SgButton>
+        <SgButton size="sm">Pequeno</SgButton>
+        <SgButton size="md">Médio</SgButton>
+        <SgButton size="lg">Grande</SgButton>
       </div>
       <div className="flex flex-wrap items-center gap-3">
         <SgButton size="sm" shape="rounded" leftIcon={<Check className="size-4" />} />

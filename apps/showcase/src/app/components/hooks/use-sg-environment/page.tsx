@@ -31,6 +31,7 @@ function CodeBlock(props: { sampleFile: string }) {
 }
 
 function EnvDebug() {
+  const i18n = useShowcaseI18n();
   const env = useSgEnvironment();
   const namespace = env.namespaceProvider.getNamespace();
   const exampleKey = buildSgPersistenceKey("component:state", namespace, env.persistence.scope);
@@ -39,7 +40,7 @@ function EnvDebug() {
     <div className="rounded-lg border border-border bg-foreground/5 p-4 text-sm space-y-2 font-mono">
       <div className="flex flex-wrap gap-2">
         <span className="text-muted-foreground w-36">namespace</span>
-        <span>{namespace || "(vazio)"}</span>
+        <span>{namespace || t(i18n, "showcase.common.labels.empty")}</span>
       </div>
       <div className="flex flex-wrap gap-2">
         <span className="text-muted-foreground w-36">scope</span>
@@ -55,7 +56,7 @@ function EnvDebug() {
       </div>
       <div className="flex flex-wrap gap-2">
         <span className="text-muted-foreground w-36">exampleKey</span>
-        <span>{exampleKey ?? "null (sem namespace/scope)"}</span>
+        <span>{exampleKey ?? t(i18n, "showcase.hook.environment.labels.nullNoNamespaceScope")}</span>
       </div>
     </div>
   );

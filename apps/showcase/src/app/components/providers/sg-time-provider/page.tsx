@@ -52,10 +52,11 @@ function LiveClockWithProvider() {
 }
 
 function TimeInfo() {
+  const i18n = useShowcaseI18n();
   const time = useSgTime();
   return (
     <span>
-      tick {time.tick}, agora (UTC) {new Date(time.nowMs()).toISOString()}
+      tick {time.tick}, {t(i18n, "showcase.component.timeProvider.labels.nowUtc")} {new Date(time.nowMs()).toISOString()}
     </span>
   );
 }

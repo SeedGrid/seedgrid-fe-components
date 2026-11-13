@@ -97,9 +97,9 @@ export default function SgFlipDigitShowcase() {
           <div className="flex items-center gap-4">
             <SgFlipDigit value={digit} />
             <div className="flex flex-col gap-2">
-              <SgButton onClick={nextDigit} size="sm">Next (+1)</SgButton>
-              <SgButton onClick={prevDigit} size="sm" severity="secondary">Previous (-1)</SgButton>
-              <SgButton onClick={randomDigit} size="sm" severity="info">Random</SgButton>
+              <SgButton onClick={nextDigit} size="sm">{t(i18n, "showcase.common.labels.nextPlusOne")}</SgButton>
+              <SgButton onClick={prevDigit} size="sm" severity="secondary">{t(i18n, "showcase.common.labels.previousMinusOne")}</SgButton>
+              <SgButton onClick={randomDigit} size="sm" severity="info">{t(i18n, "showcase.common.labels.random")}</SgButton>
             </div>
           </div>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-flip-digit/samples/basico.tsx.sample" />
@@ -111,7 +111,7 @@ export default function SgFlipDigitShowcase() {
         >
           <div className="flex items-center gap-4">
             <SgFlipDigit value={letter} />
-            <SgButton onClick={nextLetter} size="sm">Próxima letra</SgButton>
+            <SgButton onClick={nextLetter} size="sm">{t(i18n, "showcase.common.labels.nextLetter")}</SgButton>
           </div>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-flip-digit/samples/letras-a-z.tsx.sample" />
         </Section>
@@ -122,15 +122,15 @@ export default function SgFlipDigitShowcase() {
         >
           <div className="flex items-center gap-6">
             <div className="text-center">
-              <p className="mb-2 text-xs text-muted-foreground">Small</p>
+              <p className="mb-2 text-xs text-muted-foreground">{t(i18n, "showcase.common.labels.sizeSmall")}</p>
               <SgFlipDigit value={digit} width={50} height={75} fontSize={45} />
             </div>
             <div className="text-center">
-              <p className="mb-2 text-xs text-muted-foreground">Medium</p>
+              <p className="mb-2 text-xs text-muted-foreground">{t(i18n, "showcase.common.labels.sizeMedium")}</p>
               <SgFlipDigit value={digit} />
             </div>
             <div className="text-center">
-              <p className="mb-2 text-xs text-muted-foreground">Large</p>
+              <p className="mb-2 text-xs text-muted-foreground">{t(i18n, "showcase.common.labels.sizeLarge")}</p>
               <SgFlipDigit value={digit} width={120} height={180} fontSize={120} />
             </div>
           </div>
@@ -158,7 +158,7 @@ export default function SgFlipDigitShowcase() {
           <div className="flex items-center gap-4">
             <SgFlipDigit value={autoDigit} />
             <SgButton onClick={() => setRunning((prev) => !prev)}>
-              {running ? "Parar" : "Iniciar"}
+              {running ? t(i18n, "showcase.common.labels.stop") : t(i18n, "showcase.common.labels.start")}
             </SgButton>
           </div>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-flip-digit/samples/auto-increment.tsx.sample" />
@@ -168,7 +168,7 @@ export default function SgFlipDigitShowcase() {
           <div className="flex flex-wrap items-center gap-4">
             <SgFlipDigit value={String(counter % 10)} fontSize={56} />
             <SgButton size="sm" onClick={() => setCounter((v) => v + 1)}>+1</SgButton>
-            <SgButton size="sm" severity="secondary" onClick={() => setCounter(0)}>Zerar</SgButton>
+            <SgButton size="sm" severity="secondary" onClick={() => setCounter(0)}>{t(i18n, "showcase.common.labels.reset")}</SgButton>
           </div>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-flip-digit/samples/contador.tsx.sample" />
         </Section>
@@ -187,7 +187,7 @@ export default function SgFlipDigitShowcase() {
             {String(clockValue).padStart(4, "0").split("").map((ch, index) => (
               <SgFlipDigit key={index} value={ch} fontSize={44} />
             ))}
-            <SgButton size="sm" onClick={() => setClockValue((v) => (v + 111) % 10000)}>Somar 111</SgButton>
+            <SgButton size="sm" onClick={() => setClockValue((v) => (v + 111) % 10000)}>{t(i18n, "showcase.common.labels.add111")}</SgButton>
           </div>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-flip-digit/samples/varios-digitos.tsx.sample" />
         </Section>

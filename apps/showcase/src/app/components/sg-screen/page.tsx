@@ -47,7 +47,7 @@ export default function ExampleSgScreenPage() {
         <SgPanel className="h-full w-full" contentPadding={8} contentGap={8}>
           <SgPanel align="top" height={12} padding={10} className="rounded-md">
             <SgStack direction="row" justify="between" align="center">
-              <span className="text-sm font-medium">Header</span>
+              <span className="text-sm font-medium">Cabeçalho</span>
               <span className="text-xs text-muted-foreground">top + height=12%</span>
             </SgStack>
           </SgPanel>
@@ -55,15 +55,15 @@ export default function ExampleSgScreenPage() {
           <SgPanel align="left" width={20} padding={10} className="rounded-md">
             <SgStack gap={6}>
               <span className="text-xs font-medium text-muted-foreground">MENU</span>
-              <SgPanel borderStyle="none" className="rounded bg-muted/40" padding={6}>Dashboard</SgPanel>
-              <SgPanel borderStyle="none" className="rounded bg-muted/40" padding={6}>Relatorios</SgPanel>
+              <SgPanel borderStyle="none" className="rounded bg-muted/40" padding={6}>Painel</SgPanel>
+              <SgPanel borderStyle="none" className="rounded bg-muted/40" padding={6}>Relatórios</SgPanel>
               <SgPanel borderStyle="none" className="rounded bg-muted/40" padding={6}>Clientes</SgPanel>
             </SgStack>
           </SgPanel>
 
           <SgPanel align="right" width="18%" padding={10} className="rounded-md">
             <SgStack gap={6}>
-              <span className="text-xs font-medium text-muted-foreground">ACOES</span>
+              <span className="text-xs font-medium text-muted-foreground">AÇÕES</span>
               <SgPanel borderStyle="none" className="rounded bg-muted/40" padding={6}>Filtrar</SgPanel>
               <SgPanel borderStyle="none" className="rounded bg-muted/40" padding={6}>Exportar</SgPanel>
             </SgStack>
@@ -71,17 +71,17 @@ export default function ExampleSgScreenPage() {
 
           <SgPanel align="bottom" height="10%" padding={10} className="rounded-md">
             <SgStack direction="row" justify="between" align="center">
-              <span className="text-sm">Footer</span>
+              <span className="text-sm">Rodapé</span>
               <span className="text-xs text-muted-foreground">bottom + height=10%</span>
             </SgStack>
           </SgPanel>
 
           <SgPanel align="client" padding={10} className="rounded-md">
             <SgStack gap={8}>
-              <span className="text-sm font-medium">Area client</span>
+              <span className="text-sm font-medium">Área client</span>
               <SgPanel borderStyle="solid" className="h-24 rounded bg-muted/20" />
               <span className="text-xs text-muted-foreground">
-                Esta area ocupa todo o espaco restante.
+                Esta área ocupa todo o espaço restante.
               </span>
             </SgStack>
           </SgPanel>
@@ -160,41 +160,41 @@ export default function SgScreenPage() {
               <SgPanel className="h-full w-full" contentPadding={8} contentGap={8}>
                 <SgPanel align="top" height={12} padding={10} className="rounded-md">
                   <SgStack direction="row" justify="between" align="center">
-                    <span className="text-sm font-medium">Header</span>
+                    <span className="text-sm font-medium">{t(i18n, `${K}.labels.header`)}</span>
                     <span className="text-xs text-muted-foreground">top + height=12%</span>
                   </SgStack>
                 </SgPanel>
 
                 <SgPanel align="left" width={20} padding={10} className="rounded-md">
                   <SgStack gap={6}>
-                    <span className="text-xs font-medium text-muted-foreground">MENU</span>
-                    <SgPanel borderStyle="none" className="rounded bg-muted/40" padding={6}>Dashboard</SgPanel>
-                    <SgPanel borderStyle="none" className="rounded bg-muted/40" padding={6}>Relatorios</SgPanel>
-                    <SgPanel borderStyle="none" className="rounded bg-muted/40" padding={6}>Clientes</SgPanel>
+                    <span className="text-xs font-medium text-muted-foreground">{t(i18n, `${K}.labels.menuCaps`)}</span>
+                    <SgPanel borderStyle="none" className="rounded bg-muted/40" padding={6}>{t(i18n, `${K}.labels.dashboard`)}</SgPanel>
+                    <SgPanel borderStyle="none" className="rounded bg-muted/40" padding={6}>{t(i18n, `${K}.labels.reports`)}</SgPanel>
+                    <SgPanel borderStyle="none" className="rounded bg-muted/40" padding={6}>{t(i18n, `${K}.labels.customers`)}</SgPanel>
                   </SgStack>
                 </SgPanel>
 
                 <SgPanel align="right" width="18%" padding={10} className="rounded-md">
                   <SgStack gap={6}>
-                    <span className="text-xs font-medium text-muted-foreground">ACOES</span>
-                    <SgPanel borderStyle="none" className="rounded bg-muted/40" padding={6}>Filtrar</SgPanel>
-                    <SgPanel borderStyle="none" className="rounded bg-muted/40" padding={6}>Exportar</SgPanel>
+                    <span className="text-xs font-medium text-muted-foreground">{t(i18n, `${K}.labels.actionsCaps`)}</span>
+                    <SgPanel borderStyle="none" className="rounded bg-muted/40" padding={6}>{t(i18n, `${K}.labels.filter`)}</SgPanel>
+                    <SgPanel borderStyle="none" className="rounded bg-muted/40" padding={6}>{t(i18n, `${K}.labels.export`)}</SgPanel>
                   </SgStack>
                 </SgPanel>
 
                 <SgPanel align="bottom" height="10%" padding={10} className="rounded-md">
                   <SgStack direction="row" justify="between" align="center">
-                    <span className="text-sm">Footer</span>
+                    <span className="text-sm">{t(i18n, `${K}.labels.footer`)}</span>
                     <span className="text-xs text-muted-foreground">bottom + height=10%</span>
                   </SgStack>
                 </SgPanel>
 
                 <SgPanel align="client" padding={10} className="rounded-md">
                   <SgStack gap={8}>
-                    <span className="text-sm font-medium">Area client</span>
+                    <span className="text-sm font-medium">{t(i18n, `${K}.labels.clientArea`)}</span>
                     <SgPanel borderStyle="solid" className="h-24 rounded bg-muted/20" />
                     <span className="text-xs text-muted-foreground">
-                      Esta area ocupa todo o espaco restante.
+                      {t(i18n, `${K}.labels.fillsRemaining`)}
                     </span>
                   </SgStack>
                 </SgPanel>

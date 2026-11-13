@@ -27,11 +27,11 @@ const PRODUCT_ROWS: ProductRow[] = [
 ];
 
 const CARD_COLUMNS: SgDatatableColumn<ProductRow>[] = [
-  { field: "name", header: "Name", sortable: true, filter: true, cardTitle: true },
-  { field: "code", header: "Code", sortable: true, filter: true },
-  { field: "category", header: "Category", sortable: true },
-  { field: "price", header: "Price", sortable: true, align: "right" },
-  { field: "stock", header: "Stock", sortable: true, align: "right", footer: (rows) => rows.reduce((total, row) => total + row.stock, 0) },
+  { field: "name", header: "Nome", sortable: true, filter: true, cardTitle: true },
+  { field: "code", header: "Código", sortable: true, filter: true },
+  { field: "category", header: "Categoria", sortable: true },
+  { field: "price", header: "Preço", sortable: true, align: "right" },
+  { field: "stock", header: "Estoque", sortable: true, align: "right", footer: (rows) => rows.reduce((total, row) => total + row.stock, 0) },
   { field: "status", header: "Status", cardHidden: true }
 ];
 
@@ -54,7 +54,7 @@ export default function InfiniteScrollDatatableExample() {
       <div className="mx-auto h-[360px] w-full max-w-[420px] overflow-auto rounded-md border border-border">
         <SgDatatable
           id="datatable-infinite"
-          title="Product catalog (infinite scroll)"
+          title="Catálogo de produtos (rolagem infinita)"
           value={PRODUCT_ROWS}
           columns={CARD_COLUMNS}
           dataKey="id"

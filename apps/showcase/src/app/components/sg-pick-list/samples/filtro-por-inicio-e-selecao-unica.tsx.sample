@@ -1,11 +1,11 @@
 import { SgPickList, type SgPickListItem } from "@seedgrid/fe-components";
 
 const CITIES: SgPickListItem[] = [
-  { label: "Berlin", value: "berlin" },
+  { label: "Berlim", value: "berlin" },
   { label: "Boston", value: "boston" },
-  { label: "Lisbon", value: "lisbon" },
-  { label: "Madrid", value: "madrid" },
-  { label: "Sao Paulo", value: "sao-paulo" }
+  { label: "Lisboa", value: "lisbon" },
+  { label: "Madri", value: "madrid" },
+  { label: "São Paulo", value: "sao-paulo" }
 ];
 
 export default function Example() {

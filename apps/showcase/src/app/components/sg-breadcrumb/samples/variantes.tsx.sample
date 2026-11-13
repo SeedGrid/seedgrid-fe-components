@@ -2,12 +2,12 @@ import React from "react";
 import { SgBreadcrumb, type SgBreadcrumbItem } from "@seedgrid/fe-components";
 
 const longItems: SgBreadcrumbItem[] = [
-  { id: "home", label: "Home", href: "/" },
+  { id: "home", label: "Início", href: "/" },
   { id: "admin", label: "Admin", href: "/admin" },
   { id: "tenant", label: "Multi Tenancy", href: "/admin/tenant" },
-  { id: "billing", label: "Billing", href: "/admin/tenant/billing" },
-  { id: "plans", label: "Subscription", href: "/admin/tenant/billing/subscription" },
-  { id: "edit", label: "Edit plan" }
+  { id: "billing", label: "Faturamento", href: "/admin/tenant/billing" },
+  { id: "plans", label: "Assinatura", href: "/admin/tenant/billing/subscription" },
+  { id: "edit", label: "Editar plano" }
 ];
 
 export default function Example() {

@@ -12,42 +12,42 @@ import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
-import { t, useShowcaseI18n } from "../../../i18n";
+import { t, useShowcaseI18n, type ShowcaseI18n } from "../../../i18n";
 
 const K = "showcase.component.breadcrumb";
 
-const BASIC_ITEMS: SgBreadcrumbItem[] = [
-  { id: "modules", label: "Modules", href: "/modules", icon: <Layers3 className="size-4" /> },
-  { id: "registrations", label: "Registrations", href: "/modules/registrations", icon: <Building2 className="size-4" /> },
-  { id: "products", label: "Products", href: "/modules/registrations/products", icon: <Box className="size-4" /> },
-  { id: "edit", label: "Edit", icon: <FilePenLine className="size-4" /> }
+const basicItems = (i18n: ShowcaseI18n): SgBreadcrumbItem[] => [
+  { id: "modules", label: t(i18n, `${K}.labels.modules`), href: "/modules", icon: <Layers3 className="size-4" /> },
+  { id: "registrations", label: t(i18n, `${K}.labels.registrations`), href: "/modules/registrations", icon: <Building2 className="size-4" /> },
+  { id: "products", label: t(i18n, `${K}.labels.products`), href: "/modules/registrations/products", icon: <Box className="size-4" /> },
+  { id: "edit", label: t(i18n, `${K}.labels.edit`), icon: <FilePenLine className="size-4" /> }
 ];
 
-const ROUTES = {
+const routes = (i18n: ShowcaseI18n) => ({
   registration: [
     { id: "erp", label: "ERP", href: "/erp", icon: <Layers3 className="size-4" /> },
-    { id: "registrations", label: "Registrations", href: "/erp/registrations", icon: <Building2 className="size-4" /> },
-    { id: "customers", label: "Customers", icon: <Receipt className="size-4" /> }
+    { id: "registrations", label: t(i18n, `${K}.labels.registrations`), href: "/erp/registrations", icon: <Building2 className="size-4" /> },
+    { id: "customers", label: t(i18n, `${K}.labels.customers`), icon: <Receipt className="size-4" /> }
   ],
   fiscal: [
     { id: "erp", label: "ERP", href: "/erp", icon: <Layers3 className="size-4" /> },
-    { id: "fiscal", label: "Fiscal", href: "/erp/fiscal", icon: <Receipt className="size-4" /> },
-    { id: "access", label: "Access", icon: <FilePenLine className="size-4" /> }
+    { id: "fiscal", label: t(i18n, `${K}.labels.fiscal`), href: "/erp/fiscal", icon: <Receipt className="size-4" /> },
+    { id: "access", label: t(i18n, `${K}.labels.access`), icon: <FilePenLine className="size-4" /> }
   ],
   integration: [
     { id: "erp", label: "ERP", href: "/erp", icon: <Layers3 className="size-4" /> },
-    { id: "integration", label: "Integration", href: "/erp/integration", icon: <Settings className="size-4" /> },
-    { id: "connectors", label: "Connectors", icon: <Building2 className="size-4" /> }
+    { id: "integration", label: t(i18n, `${K}.labels.integration`), href: "/erp/integration", icon: <Settings className="size-4" /> },
+    { id: "connectors", label: t(i18n, `${K}.labels.connectors`), icon: <Building2 className="size-4" /> }
   ]
-} satisfies Record<"registration" | "fiscal" | "integration", SgBreadcrumbItem[]>;
+} satisfies Record<"registration" | "fiscal" | "integration", SgBreadcrumbItem[]>);
 
-const LONG_ITEMS: SgBreadcrumbItem[] = [
-  { id: "home", label: "Home", href: "/" },
+const longItems = (i18n: ShowcaseI18n): SgBreadcrumbItem[] => [
+  { id: "home", label: t(i18n, `${K}.labels.home`), href: "/" },
   { id: "admin", label: "Admin", href: "/admin" },
   { id: "tenant", label: "Multi Tenancy", href: "/admin/tenant" },
-  { id: "billing", label: "Billing", href: "/admin/tenant/billing" },
-  { id: "plans", label: "Subscription", href: "/admin/tenant/billing/subscription" },
-  { id: "edit", label: "Edit plan" }
+  { id: "billing", label: t(i18n, `${K}.labels.billing`), href: "/admin/tenant/billing" },
+  { id: "plans", label: t(i18n, `${K}.labels.subscription`), href: "/admin/tenant/billing/subscription" },
+  { id: "edit", label: t(i18n, `${K}.labels.editPlan`) }
 ];
 
 function Section(props: { title: string; description?: string; children: React.ReactNode }) {
@@ -82,10 +82,10 @@ import { SgBreadcrumb, SgButton, type SgBreadcrumbItem } from "@seedgrid/fe-comp
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 const items: SgBreadcrumbItem[] = [
-  { id: "modules", label: "Modules", href: "/modules", icon: <Layers3 className="size-4" /> },
-  { id: "registrations", label: "Registrations", href: "/modules/registrations", icon: <Building2 className="size-4" /> },
-  { id: "products", label: "Products", href: "/modules/registrations/products", icon: <Box className="size-4" /> },
-  { id: "edit", label: "Edit", icon: <FilePenLine className="size-4" /> }
+  { id: "modules", label: "Módulos", href: "/modules", icon: <Layers3 className="size-4" /> },
+  { id: "registrations", label: "Cadastros", href: "/modules/registrations", icon: <Building2 className="size-4" /> },
+  { id: "products", label: "Produtos", href: "/modules/registrations/products", icon: <Box className="size-4" /> },
+  { id: "edit", label: "Editar", icon: <FilePenLine className="size-4" /> }
 ];
 
 export default function Example() {
@@ -104,9 +104,9 @@ export default function Example() {
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap gap-2">
-        <SgButton size="sm" appearance="outline" onClick={() => setRouteKey("registration")}>Go to Registration</SgButton>
-        <SgButton size="sm" appearance="outline" onClick={() => setRouteKey("fiscal")}>Go to Fiscal</SgButton>
-        <SgButton size="sm" appearance="outline" onClick={() => setRouteKey("integration")}>Go to Integration</SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => setRouteKey("registration")}>Ir para Cadastros</SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => setRouteKey("fiscal")}>Ir para Fiscal</SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => setRouteKey("integration")}>Ir para Integração</SgButton>
       </div>
       <SgBreadcrumb items={routeItems} separator="arrow" variant="subtle" onNavigate={(item) => setLastNavigate(item.id)} />
       <p>active route: {routeKey} | last click: {lastNavigate}</p>
@@ -145,10 +145,10 @@ import {
 import { SgPlayground } from "@seedgrid/fe-playground";
 
 const items = [
-  { id: "modules", label: "Modules", href: "/modules", icon: <Layers3 className="size-4" /> },
-  { id: "registrations", label: "Registrations", href: "/modules/registrations", icon: <Building2 className="size-4" /> },
-  { id: "products", label: "Products", href: "/modules/registrations/products", icon: <Box className="size-4" /> },
-  { id: "edit", label: "Edit", icon: <FilePenLine className="size-4" /> }
+  { id: "modules", label: "Módulos", href: "/modules", icon: <Layers3 className="size-4" /> },
+  { id: "registrations", label: "Cadastros", href: "/modules/registrations", icon: <Building2 className="size-4" /> },
+  { id: "products", label: "Produtos", href: "/modules/registrations/products", icon: <Box className="size-4" /> },
+  { id: "edit", label: "Editar", icon: <FilePenLine className="size-4" /> }
 ];
 
 export default function App() {
@@ -191,10 +191,10 @@ const BREADCRUMB_PROPS: ShowcasePropRow[] = [
 ];
 
 export default function SgBreadcrumbPage() {
-  const [routeKey, setRouteKey] = React.useState<keyof typeof ROUTES>("registration");
+  const [routeKey, setRouteKey] = React.useState<"registration" | "fiscal" | "integration">("registration");
   const [lastNavigate, setLastNavigate] = React.useState("-");
-  const routeItems = ROUTES[routeKey];
   const i18n = useShowcaseI18n();
+  const routeItems = routes(i18n)[routeKey];
   const aiComponent = useAiManifestComponent("SgBreadcrumb");
   const { pageRef, stickyHeaderRef, anchorOffset, exampleLinks, handleAnchorClick } =
     useShowcaseAnchors({ deps: [i18n.locale] });
@@ -215,15 +215,15 @@ export default function SgBreadcrumbPage() {
         />
 
         <Section title={t(i18n, `${K}.section1Title`)} description={t(i18n, `${K}.section1Description`)}>
-          <SgBreadcrumb items={BASIC_ITEMS} separator="chevron" showHomeIcon />
+          <SgBreadcrumb items={basicItems(i18n)} separator="chevron" showHomeIcon />
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-breadcrumb/samples/basico.tsx.sample" />
         </Section>
 
         <Section title={t(i18n, `${K}.section2Title`)} description={t(i18n, `${K}.section2Description`)}>
           <div className="flex flex-wrap gap-2">
-            <SgButton size="sm" appearance="outline" onClick={() => setRouteKey("registration")}>Go to Registration</SgButton>
-            <SgButton size="sm" appearance="outline" onClick={() => setRouteKey("fiscal")}>Go to Fiscal</SgButton>
-            <SgButton size="sm" appearance="outline" onClick={() => setRouteKey("integration")}>Go to Integration</SgButton>
+            <SgButton size="sm" appearance="outline" onClick={() => setRouteKey("registration")}>{t(i18n, `${K}.labels.goRegistration`)}</SgButton>
+            <SgButton size="sm" appearance="outline" onClick={() => setRouteKey("fiscal")}>{t(i18n, `${K}.labels.goFiscal`)}</SgButton>
+            <SgButton size="sm" appearance="outline" onClick={() => setRouteKey("integration")}>{t(i18n, `${K}.labels.goIntegration`)}</SgButton>
           </div>
 
           <SgBreadcrumb
@@ -244,12 +244,12 @@ export default function SgBreadcrumbPage() {
           <div className="space-y-4">
             <div>
               <p className="mb-2 text-sm font-medium">{t(i18n, `${K}.section3CollapseLabel`)}</p>
-              <SgBreadcrumb items={LONG_ITEMS} maxItems={4} overflowBehavior="collapse" separator="slash" />
+              <SgBreadcrumb items={longItems(i18n)} maxItems={4} overflowBehavior="collapse" separator="slash" />
             </div>
             <div>
               <p className="mb-2 text-sm font-medium">{t(i18n, `${K}.section3ScrollLabel`)}</p>
               <div className="max-w-[360px] rounded-lg border border-border p-2">
-                <SgBreadcrumb items={LONG_ITEMS} overflowBehavior="scroll" separator="dot" />
+                <SgBreadcrumb items={longItems(i18n)} overflowBehavior="scroll" separator="dot" />
               </div>
             </div>
           </div>
@@ -275,9 +275,9 @@ export default function SgBreadcrumbPage() {
 
         <Section title={t(i18n, `${K}.section5Title`)} description={t(i18n, `${K}.section5Description`)}>
           <div className="space-y-2">
-            <SgBreadcrumb items={LONG_ITEMS.slice(0, 3)} size="sm" />
-            <SgBreadcrumb items={LONG_ITEMS.slice(0, 3)} variant="subtle" />
-            <SgBreadcrumb items={LONG_ITEMS.slice(0, 3)} variant="primary" size="lg" />
+            <SgBreadcrumb items={longItems(i18n).slice(0, 3)} size="sm" />
+            <SgBreadcrumb items={longItems(i18n).slice(0, 3)} variant="subtle" />
+            <SgBreadcrumb items={longItems(i18n).slice(0, 3)} variant="primary" size="lg" />
           </div>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/sg-breadcrumb/samples/variantes.tsx.sample" />
         </Section>

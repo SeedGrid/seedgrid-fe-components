@@ -448,9 +448,9 @@ export default function SgButtonShowcase() {
       <Section id="exemplo-1" title={sectionTitle(1)} description={sectionDescription(1)}>
         <Row>
           <SgButton onClick={submit.run} loading={submit.loading}>
-            Submit
+            {t(i18n, `${K}.labels.submit`)}
           </SgButton>
-          <SgButton enabled={false}>Disabled</SgButton>
+          <SgButton enabled={false}>{t(i18n, "showcase.common.labels.disabled")}</SgButton>
         </Row>
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-button/samples/basico.tsx.sample" />
       </Section>
@@ -608,9 +608,9 @@ export default function SgButtonShowcase() {
       {/* â”€â”€ Sizes â”€â”€ */}
       <Section id="exemplo-12" title={sectionTitle(12)} description={sectionDescription(12)}>
         <Row>
-          <SgButton size="sm">Small</SgButton>
-          <SgButton size="md">Medium</SgButton>
-          <SgButton size="lg">Large</SgButton>
+          <SgButton size="sm">{t(i18n, "showcase.common.labels.sizeSmall")}</SgButton>
+          <SgButton size="md">{t(i18n, "showcase.common.labels.sizeMedium")}</SgButton>
+          <SgButton size="lg">{t(i18n, "showcase.common.labels.sizeLarge")}</SgButton>
         </Row>
         <Row>
           <SgButton size="sm" shape="rounded" leftIcon={<Check className="size-4" />} />
@@ -623,9 +623,9 @@ export default function SgButtonShowcase() {
       {/* â”€â”€ Loading â”€â”€ */}
       <Section id="exemplo-13" title={sectionTitle(13)} description={sectionDescription(13)}>
         <Row>
-          <SgButton loading>Processing...</SgButton>
-          <SgButton severity="success" loading>Saving...</SgButton>
-          <SgButton severity="danger" loading leftIcon={<X className="size-4" />}>Deleting...</SgButton>
+          <SgButton loading>{t(i18n, `${K}.labels.processing`)}</SgButton>
+          <SgButton severity="success" loading>{t(i18n, `${K}.labels.saving`)}</SgButton>
+          <SgButton severity="danger" loading leftIcon={<X className="size-4" />}>{t(i18n, `${K}.labels.deleting`)}</SgButton>
           <SgButton shape="rounded" loading leftIcon={<Check className="size-4" />} />
         </Row>
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-button/samples/loading.tsx.sample" />
@@ -642,7 +642,7 @@ export default function SgButtonShowcase() {
               ring: "rgba(15,23,42,.35)"
             }}
           >
-            Brand Dark
+            {t(i18n, `${K}.labels.brandDark`)}
           </SgButton>
           <SgButton
             customColors={{
@@ -653,7 +653,7 @@ export default function SgButtonShowcase() {
               ring: "rgba(236,72,153,.35)"
             }}
           >
-            Pink
+            {t(i18n, `${K}.labels.pink`)}
           </SgButton>
           <SgButton
             appearance="outline"
@@ -664,7 +664,7 @@ export default function SgButtonShowcase() {
               ring: "rgba(139,92,246,.35)"
             }}
           >
-            Violet Outline
+            {t(i18n, `${K}.labels.violetOutline`)}
           </SgButton>
         </Row>
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-button/samples/custom-colors.tsx.sample" />

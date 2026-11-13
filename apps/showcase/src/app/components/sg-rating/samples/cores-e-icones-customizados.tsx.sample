@@ -10,7 +10,7 @@ export default function Example() {
   return (
     <SgGrid columns={{ base: 1, md: 2 }} gap={16}>
       <SgRating
-        label="Heart"
+        label="Coração"
         value={heartValue}
         color="#ec4899"
         emptyColor="#f9a8d4"
@@ -20,7 +20,7 @@ export default function Example() {
       />
 
       <SgRating
-        label="Likes"
+        label="Curtidas"
         value={likeValue}
         color="#2563eb"
         emptyColor="#93c5fd"
@@ -30,7 +30,7 @@ export default function Example() {
       />
 
       <SgRating
-        label="Fire"
+        label="Fogo"
         value={fireValue}
         color="#f97316"
         emptyColor="#fdba74"

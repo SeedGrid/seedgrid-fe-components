@@ -7,21 +7,21 @@ export default function Example() {
   return (
     <div className="space-y-3">
       <SgRating
-        label="Required rating"
+        label="Avaliação obrigatória"
         value={value}
         required
-        requiredMessage="Provide a rating before continuing"
+        requiredMessage="Informe uma avaliação antes de continuar"
         onChange={setValue}
       />
 
       <SgGrid columns={{ base: 2, md: 4 }} gap={8}>
-        <SgButton size="sm" appearance="outline" onClick={() => setValue(0)}>Clear</SgButton>
-        <SgButton size="sm" appearance="outline" onClick={() => setValue(1)}>Rate 1</SgButton>
-        <SgButton size="sm" appearance="outline" onClick={() => setValue(5)}>Rate 5</SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => setValue(0)}>Limpar</SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => setValue(1)}>Nota 1</SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => setValue(5)}>Nota 5</SgButton>
       </SgGrid>
 
       <p className="text-sm text-muted-foreground">
-        Current value: <strong>{value}</strong>
+        Valor atual: <strong>{value}</strong>
       </p>
     </div>
   );

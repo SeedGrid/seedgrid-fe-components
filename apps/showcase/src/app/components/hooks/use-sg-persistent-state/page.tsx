@@ -48,7 +48,7 @@ function BasicCounterDemo() {
       <div className="flex gap-2 justify-center">
         <SgButton label="-1" onClick={() => setValue((v) => v - 1)} />
         <SgButton label="+1" severity="success" onClick={() => setValue((v) => v + 1)} />
-        <SgButton label="Reset" appearance="outline" severity="danger" onClick={() => clear()} />
+        <SgButton label={t(i18n, "showcase.common.labels.resetAction")} appearance="outline" severity="danger" onClick={() => clear()} />
       </div>
       <p className="text-xs text-muted-foreground text-center">
         {t(i18n, "showcase.hook.persistentState.demo.reloadHint")}
@@ -58,6 +58,7 @@ function BasicCounterDemo() {
 }
 
 function NamespaceDemo() {
+  const i18n = useShowcaseI18n();
   const [namespace, setNamespace] = React.useState("user:123");
 
   return (
@@ -71,7 +72,7 @@ function NamespaceDemo() {
         >
           <option value="user:123">user:123</option>
           <option value="user:456">user:456</option>
-          <option value="">vazio (sem namespace)</option>
+          <option value="">{t(i18n, "showcase.hook.persistentState.labels.emptyNoNamespace")}</option>
         </select>
       </div>
       <SgEnvironmentProvider
@@ -87,6 +88,7 @@ function NamespaceDemo() {
 }
 
 function NamespacedCounter() {
+  const i18n = useShowcaseI18n();
   const { value, setValue, hydrated } = useSgPersistentState({
     baseKey: "showcase:ns-counter",
     defaultValue: 0
@@ -99,7 +101,7 @@ function NamespacedCounter() {
         <SgButton label="-" onClick={() => setValue((v) => v - 1)} />
         <SgButton label="+" severity="success" onClick={() => setValue((v) => v + 1)} />
       </div>
-      <p className="text-xs text-muted-foreground">Cada namespace tem seu proprio valor.</p>
+      <p className="text-xs text-muted-foreground">{t(i18n, "showcase.hook.persistentState.labels.eachNamespaceOwnValue")}</p>
     </div>
   );
 }
@@ -168,11 +170,11 @@ export default function UseSgPersistentStatePage() {
         </Section>
 
         <div className="rounded-lg border border-border p-6 space-y-4">
-          <h2 className="text-lg font-semibold">Parametros</h2>
+          <h2 className="text-lg font-semibold">{t(i18n, "showcase.hook.persistentState.labels.parameters")}</h2>
           <ShowcasePropsReference rows={HOOK_PARAMS} />
         </div>
         <div className="rounded-lg border border-border p-6 space-y-4">
-          <h2 className="text-lg font-semibold">Retorno</h2>
+          <h2 className="text-lg font-semibold">{t(i18n, "showcase.hook.persistentState.labels.returns")}</h2>
           <ShowcasePropsReference rows={HOOK_RETURN} />
         </div>
         <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />

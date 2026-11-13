@@ -80,9 +80,9 @@ const random = () => setDigit(String(Math.floor(Math.random() * 10)));
 <div className="flex items-center gap-4">
   <SgSevenSegmentDigit value={digit} palette={palette} />
   <div className="flex flex-col gap-2">
-    <SgButton size="sm" onClick={next}>Next (+1)</SgButton>
-    <SgButton size="sm" severity="secondary" onClick={prev}>Previous (-1)</SgButton>
-    <SgButton size="sm" severity="info" onClick={random}>Random</SgButton>
+    <SgButton size="sm" onClick={next}>Próximo (+1)</SgButton>
+    <SgButton size="sm" severity="secondary" onClick={prev}>Anterior (-1)</SgButton>
+    <SgButton size="sm" severity="info" onClick={random}>Aleatório</SgButton>
     <div className="flex flex-wrap gap-2 pt-1">
       {COLOR_OPTIONS.map((item) => (
         <SgButton
@@ -106,7 +106,7 @@ const next = () => setHexIndex((prev) => (prev + 1) % HEX.length);
 
 <div className="flex items-center gap-4">
   <SgSevenSegmentDigit value={hexValue} color="#f97316" backgroundColor="#180b05" offColor="rgba(124,45,18,0.24)" />
-  <SgButton size="sm" onClick={next}>Next char</SgButton>
+  <SgButton size="sm" onClick={next}>Próximo caractere</SgButton>
 </div>`;
 
 const THEMES_CODE = `<SgGrid columns={{ base: 1, md: 5 }} gap={12}>
@@ -134,15 +134,15 @@ const THEMES_CODE = `<SgGrid columns={{ base: 1, md: 5 }} gap={12}>
 
 const SIZE_CODE = `<SgGrid columns={{ base: 1, md: 3 }} gap={12}>
   <div className="space-y-2">
-    <p className="text-xs text-muted-foreground">Small</p>
+    <p className="text-xs text-muted-foreground">Pequeno</p>
     <SgSevenSegmentDigit value="5" size={72} thickness={10} />
   </div>
   <div className="space-y-2">
-    <p className="text-xs text-muted-foreground">Medium</p>
+    <p className="text-xs text-muted-foreground">Médio</p>
     <SgSevenSegmentDigit value="5" size={108} thickness={14} />
   </div>
   <div className="space-y-2">
-    <p className="text-xs text-muted-foreground">Large</p>
+    <p className="text-xs text-muted-foreground">Grande</p>
     <SgSevenSegmentDigit value="5" size={148} thickness={18} />
   </div>
 </SgGrid>`;
@@ -177,7 +177,7 @@ const ss = pad(s);
     <SgSevenSegmentDigit value={ss[0] ?? "0"} size={86} />
     <SgSevenSegmentDigit value={ss[1] ?? "0"} size={86} />
   </div>
-  <SgButton size="sm" onClick={() => setSeconds((prev) => prev + 1)}>+1 second</SgButton>
+  <SgButton size="sm" onClick={() => setSeconds((prev) => prev + 1)}>+1 segundo</SgButton>
 </div>`;
 
 const PLAYGROUND_CODE = `import * as React from "react";
@@ -298,9 +298,9 @@ export default function SgSevenSegmentDigitShowcase() {
           <div className="flex items-center gap-4">
             <SgSevenSegmentDigit value={digit} palette={palette} />
             <div className="flex flex-col gap-2">
-              <SgButton size="sm" onClick={nextDigit}>Next (+1)</SgButton>
-              <SgButton size="sm" severity="secondary" onClick={prevDigit}>Previous (-1)</SgButton>
-              <SgButton size="sm" severity="info" onClick={randomDigit}>Random</SgButton>
+              <SgButton size="sm" onClick={nextDigit}>{t(i18n, "showcase.common.labels.nextPlusOne")}</SgButton>
+              <SgButton size="sm" severity="secondary" onClick={prevDigit}>{t(i18n, "showcase.common.labels.previousMinusOne")}</SgButton>
+              <SgButton size="sm" severity="info" onClick={randomDigit}>{t(i18n, "showcase.common.labels.random")}</SgButton>
               <div className="flex flex-wrap gap-2 pt-1">
                 {COLOR_OPTIONS.map((item) => (
                   <SgButton
@@ -326,7 +326,7 @@ export default function SgSevenSegmentDigitShowcase() {
               backgroundColor="#180b05"
               offColor="rgba(124,45,18,0.24)"
             />
-            <SgButton size="sm" onClick={nextHex}>Next char</SgButton>
+            <SgButton size="sm" onClick={nextHex}>{t(i18n, `${K}.labels.nextChar`)}</SgButton>
           </div>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-seven-segment-digit/samples/hexadecimal-0-9-a-f.tsx.sample" />
         </Section>
@@ -360,15 +360,15 @@ export default function SgSevenSegmentDigitShowcase() {
         <Section title={t(i18n, `${K}.section4Title`)} description={t(i18n, `${K}.section4Description`)}>
           <SgGrid columns={{ base: 1, md: 3 }} gap={12}>
             <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">Small</p>
+              <p className="text-xs text-muted-foreground">{t(i18n, "showcase.common.labels.sizeSmall")}</p>
               <SgSevenSegmentDigit value="5" size={72} thickness={10} />
             </div>
             <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">Medium</p>
+              <p className="text-xs text-muted-foreground">{t(i18n, "showcase.common.labels.sizeMedium")}</p>
               <SgSevenSegmentDigit value="5" size={108} thickness={14} />
             </div>
             <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">Large</p>
+              <p className="text-xs text-muted-foreground">{t(i18n, "showcase.common.labels.sizeLarge")}</p>
               <SgSevenSegmentDigit value="5" size={148} thickness={18} />
             </div>
           </SgGrid>
@@ -387,7 +387,7 @@ export default function SgSevenSegmentDigitShowcase() {
               <SgSevenSegmentDigit value={ss[0] ?? "0"} size={86} />
               <SgSevenSegmentDigit value={ss[1] ?? "0"} size={86} />
             </div>
-            <SgButton size="sm" onClick={() => setSeconds((prev) => prev + 1)}>+1 second</SgButton>
+            <SgButton size="sm" onClick={() => setSeconds((prev) => prev + 1)}>{t(i18n, "showcase.common.labels.plusOneSecond")}</SgButton>
           </div>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-seven-segment-digit/samples/composicao-estilo-relogio.tsx.sample" />
         </Section>
@@ -433,7 +433,7 @@ export default function SgSevenSegmentDigitShowcase() {
         <Section title={t(i18n, `${K}.section9Title`)} description={t(i18n, `${K}.section9Description`)}>
           <div className="flex items-center gap-4">
             <SgSevenSegmentDigit value={String(contador)} size={72} thickness={8} padding={8} transitionMs={200} />
-            <SgButton onClick={() => setContador((v) => (v + 1) % 10)}>Próximo</SgButton>
+            <SgButton onClick={() => setContador((v) => (v + 1) % 10)}>{t(i18n, "showcase.common.labels.next")}</SgButton>
           </div>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-seven-segment-digit/samples/contador-com-transicao.tsx.sample" />
         </Section>

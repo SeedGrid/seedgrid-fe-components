@@ -54,8 +54,8 @@ const prev = () => setDigit((prev) => String((Number(prev) - 1 + 10) % 10));
 <div className="flex items-center gap-4">
   <SgNeonDigit value={digit} color="#f8fafc" backgroundColor="#120f2b" shadowColor="#8b5cf6" />
   <div className="flex flex-col gap-2">
-    <SgButton size="sm" onClick={next}>Next (+1)</SgButton>
-    <SgButton size="sm" severity="secondary" onClick={prev}>Previous (-1)</SgButton>
+    <SgButton size="sm" onClick={next}>Próximo (+1)</SgButton>
+    <SgButton size="sm" severity="secondary" onClick={prev}>Anterior (-1)</SgButton>
   </div>
 </div>`;
 
@@ -66,14 +66,14 @@ const nextWord = () => setWordIndex((prev) => (prev + 1) % WORDS.length);
 
 <div className="space-y-3">
   <SgNeonDigit value={word} color="#e2f6ff" backgroundColor="#101934" shadowColor="#47d1ff" />
-  <SgButton size="sm" onClick={nextWord}>Change text</SgButton>
+  <SgButton size="sm" onClick={nextWord}>Trocar texto</SgButton>
 </div>`;
 
 const SCRIPT_CODE = `const SCRIPT_FONT = "\\"Brush Script MT\\", \\"Segoe Script\\", \\"Lucida Handwriting\\", cursive";
 
 <SgGrid columns={{ base: 1, md: 2 }} gap={12}>
   <div className="space-y-2">
-    <p className="text-xs text-muted-foreground">Blue neon script</p>
+    <p className="text-xs text-muted-foreground">Script neon azul</p>
     <SgNeonDigit
       value="Your Text"
       color="#e4fbff"
@@ -87,7 +87,7 @@ const SCRIPT_CODE = `const SCRIPT_FONT = "\\"Brush Script MT\\", \\"Segoe Script
     />
   </div>
   <div className="space-y-2">
-    <p className="text-xs text-muted-foreground">Warm neon script</p>
+    <p className="text-xs text-muted-foreground">Script neon quente</p>
     <SgNeonDigit
       value="Your Text"
       color="#fff7e5"
@@ -104,30 +104,30 @@ const SCRIPT_CODE = `const SCRIPT_FONT = "\\"Brush Script MT\\", \\"Segoe Script
 
 const THEMES_CODE = `<SgGrid columns={{ base: 1, md: 3 }} gap={12}>
   <div className="space-y-2">
-    <p className="text-xs text-muted-foreground">Blue glow</p>
+    <p className="text-xs text-muted-foreground">Brilho azul</p>
     <SgNeonDigit value="teste" color="#e2f6ff" backgroundColor="#0b1130" shadowColor="#38bdf8" />
   </div>
   <div className="space-y-2">
-    <p className="text-xs text-muted-foreground">Purple glow</p>
+    <p className="text-xs text-muted-foreground">Brilho roxo</p>
     <SgNeonDigit value="teste" color="#f5e9ff" backgroundColor="#170f2b" shadowColor="#a855f7" />
   </div>
   <div className="space-y-2">
-    <p className="text-xs text-muted-foreground">Amber glow</p>
+    <p className="text-xs text-muted-foreground">Brilho âmbar</p>
     <SgNeonDigit value="teste" color="#fff7e8" backgroundColor="#2a1a14" shadowColor="#fb923c" />
   </div>
 </SgGrid>`;
 
 const SIZE_CODE = `<SgGrid columns={{ base: 1, md: 3 }} gap={12}>
   <div className="space-y-2">
-    <p className="text-xs text-muted-foreground">Small</p>
+    <p className="text-xs text-muted-foreground">Pequeno</p>
     <SgNeonDigit value="5" fontSize={24} padding={10} />
   </div>
   <div className="space-y-2">
-    <p className="text-xs text-muted-foreground">Medium</p>
+    <p className="text-xs text-muted-foreground">Médio</p>
     <SgNeonDigit value="5" fontSize={44} padding={14} />
   </div>
   <div className="space-y-2">
-    <p className="text-xs text-muted-foreground">Large</p>
+    <p className="text-xs text-muted-foreground">Grande</p>
     <SgNeonDigit value="5" fontSize={72} padding={18} />
   </div>
 </SgGrid>`;
@@ -274,8 +274,8 @@ export default function SgNeonDigitShowcase() {
           <div className="flex items-center gap-4">
             <SgNeonDigit value={digit} color="#f8fafc" backgroundColor="#120f2b" shadowColor="#8b5cf6" />
             <div className="flex flex-col gap-2">
-              <SgButton size="sm" onClick={nextDigit}>Next (+1)</SgButton>
-              <SgButton size="sm" severity="secondary" onClick={prevDigit}>Previous (-1)</SgButton>
+              <SgButton size="sm" onClick={nextDigit}>{t(i18n, "showcase.common.labels.nextPlusOne")}</SgButton>
+              <SgButton size="sm" severity="secondary" onClick={prevDigit}>{t(i18n, "showcase.common.labels.previousMinusOne")}</SgButton>
             </div>
           </div>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-neon-digit/samples/basico.tsx.sample" />
@@ -284,7 +284,7 @@ export default function SgNeonDigitShowcase() {
         <Section title={t(i18n, `${K}.section2Title`)} description={t(i18n, `${K}.section2Description`)}>
           <div className="space-y-3">
             <SgNeonDigit value={word} color="#e2f6ff" backgroundColor="#101934" shadowColor="#47d1ff" />
-            <SgButton size="sm" onClick={nextWord}>Change text</SgButton>
+            <SgButton size="sm" onClick={nextWord}>{t(i18n, "showcase.common.labels.changeText")}</SgButton>
           </div>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-neon-digit/samples/texto-em-neon.tsx.sample" />
         </Section>
@@ -292,7 +292,7 @@ export default function SgNeonDigitShowcase() {
         <Section title={t(i18n, `${K}.section3Title`)} description={t(i18n, `${K}.section3Description`)}>
           <SgGrid columns={{ base: 1, md: 2 }} gap={12}>
             <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">Blue neon script</p>
+              <p className="text-xs text-muted-foreground">{t(i18n, `${K}.labels.blueNeonScript`)}</p>
               <SgNeonDigit
                 value="Your Text"
                 color="#e4fbff"
@@ -306,7 +306,7 @@ export default function SgNeonDigitShowcase() {
               />
             </div>
             <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">Warm neon script</p>
+              <p className="text-xs text-muted-foreground">{t(i18n, `${K}.labels.warmNeonScript`)}</p>
               <SgNeonDigit
                 value="Your Text"
                 color="#fff7e5"
@@ -326,15 +326,15 @@ export default function SgNeonDigitShowcase() {
         <Section title={t(i18n, `${K}.section4Title`)} description={t(i18n, `${K}.section4Description`)}>
           <SgGrid columns={{ base: 1, md: 3 }} gap={12}>
             <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">Blue glow</p>
+              <p className="text-xs text-muted-foreground">{t(i18n, `${K}.labels.blueGlow`)}</p>
               <SgNeonDigit value="teste" color="#e2f6ff" backgroundColor="#0b1130" shadowColor="#38bdf8" />
             </div>
             <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">Purple glow</p>
+              <p className="text-xs text-muted-foreground">{t(i18n, `${K}.labels.purpleGlow`)}</p>
               <SgNeonDigit value="teste" color="#f5e9ff" backgroundColor="#170f2b" shadowColor="#a855f7" />
             </div>
             <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">Amber glow</p>
+              <p className="text-xs text-muted-foreground">{t(i18n, `${K}.labels.amberGlow`)}</p>
               <SgNeonDigit value="teste" color="#fff7e8" backgroundColor="#2a1a14" shadowColor="#fb923c" />
             </div>
           </SgGrid>
@@ -344,15 +344,15 @@ export default function SgNeonDigitShowcase() {
         <Section title={t(i18n, `${K}.section5Title`)} description={t(i18n, `${K}.section5Description`)}>
           <SgGrid columns={{ base: 1, md: 3 }} gap={12}>
             <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">Small</p>
+              <p className="text-xs text-muted-foreground">{t(i18n, "showcase.common.labels.sizeSmall")}</p>
               <SgNeonDigit value="5" fontSize={24} padding={10} />
             </div>
             <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">Medium</p>
+              <p className="text-xs text-muted-foreground">{t(i18n, "showcase.common.labels.sizeMedium")}</p>
               <SgNeonDigit value="5" fontSize={44} padding={14} />
             </div>
             <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">Large</p>
+              <p className="text-xs text-muted-foreground">{t(i18n, "showcase.common.labels.sizeLarge")}</p>
               <SgNeonDigit value="5" fontSize={72} padding={18} />
             </div>
           </SgGrid>
@@ -381,7 +381,7 @@ export default function SgNeonDigitShowcase() {
         <Section title={t(i18n, `${K}.section8Title`)} description={t(i18n, `${K}.section8Description`)}>
           <div className="flex items-center gap-6">
             <SgNeonDigit value={String(swapValue)} transitionMs={400} />
-            <SgButton size="sm" onClick={() => setSwapValue((v) => (v % 9) + 1)}>Próximo</SgButton>
+            <SgButton size="sm" onClick={() => setSwapValue((v) => (v % 9) + 1)}>{t(i18n, "showcase.common.labels.next")}</SgButton>
           </div>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-neon-digit/samples/troca-de-valor-com-apagar-e-acender.tsx.sample" />
         </Section>
@@ -389,7 +389,7 @@ export default function SgNeonDigitShowcase() {
         <Section title={t(i18n, `${K}.section9Title`)} description={t(i18n, `${K}.section9Description`)}>
           <div className="flex items-center gap-6">
             <SgNeonDigit value={String(staticValue)} animateOnChange={false} />
-            <SgButton size="sm" onClick={() => setStaticValue((v) => (v % 9) + 1)}>Próximo</SgButton>
+            <SgButton size="sm" onClick={() => setStaticValue((v) => (v % 9) + 1)}>{t(i18n, "showcase.common.labels.next")}</SgButton>
           </div>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-neon-digit/samples/sem-animacao.tsx.sample" />
         </Section>

@@ -28,7 +28,7 @@ import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import ComponentAiPropsTable from "../ai/ComponentAiPropsTable";
 import ComponentAiSummary from "../ai/ComponentAiSummary";
 import { useAiManifestComponent } from "../ai/useAiManifestComponent";
-import { t, useShowcaseI18n, type ShowcaseLocale } from "../../../i18n";
+import { t, useShowcaseI18n, type ShowcaseLocale, type ShowcaseI18n } from "../../../i18n";
 
 type PropDef = {
   name: string;
@@ -381,54 +381,54 @@ export default function App() {
 }
 `;
 
-const BASIC_OPTIONS: SgRadioGroupOption[] = [
-  { label: "Option 1", value: "option1" },
-  { label: "Option 2", value: "option2" },
-  { label: "Option 3", value: "option3" }
+const basicOptions = (i18n: ShowcaseI18n): SgRadioGroupOption[] => [
+  { label: t(i18n, "showcase.component.radioGroup.labels.option1"), value: "option1" },
+  { label: t(i18n, "showcase.component.radioGroup.labels.option2"), value: "option2" },
+  { label: t(i18n, "showcase.component.radioGroup.labels.option3"), value: "option3" }
 ];
 
-const FRUIT_OPTIONS: SgRadioGroupOption[] = [
-  { label: "Apple", value: "apple" },
-  { label: "Banana", value: "banana" },
-  { label: "Orange", value: "orange" },
-  { label: "Uva", value: "grape" }
+const fruitOptions = (i18n: ShowcaseI18n): SgRadioGroupOption[] => [
+  { label: t(i18n, "showcase.component.radioGroup.labels.apple"), value: "apple" },
+  { label: t(i18n, "showcase.component.radioGroup.labels.banana"), value: "banana" },
+  { label: t(i18n, "showcase.component.radioGroup.labels.orange"), value: "orange" },
+  { label: t(i18n, "showcase.component.radioGroup.labels.grape"), value: "grape" }
 ];
 
-const OPTIONS_WITH_ICONS: SgRadioGroupOption[] = [
-  { label: "Favorito", value: "favorite", icon: <Heart className="w-4 h-4" /> },
-  { label: "Importante", value: "important", icon: <Star className="w-4 h-4" /> },
-  { label: "Curtir", value: "like", icon: <ThumbsUp className="w-4 h-4" /> }
+const optionsWithIcons = (i18n: ShowcaseI18n): SgRadioGroupOption[] => [
+  { label: t(i18n, "showcase.component.radioGroup.labels.favorite"), value: "favorite", icon: <Heart className="w-4 h-4" /> },
+  { label: t(i18n, "showcase.component.radioGroup.labels.important"), value: "important", icon: <Star className="w-4 h-4" /> },
+  { label: t(i18n, "showcase.component.radioGroup.labels.like"), value: "like", icon: <ThumbsUp className="w-4 h-4" /> }
 ];
 
-const SHAPE_OPTIONS: SgRadioGroupOption[] = [
-  { label: "Circle", value: "circle", icon: <Circle className="w-5 h-5" /> },
-  { label: "Square", value: "square", icon: <Square className="w-5 h-5" /> },
-  { label: "Triangle", value: "triangle", icon: <Triangle className="w-5 h-5" /> }
+const shapeOptions = (i18n: ShowcaseI18n): SgRadioGroupOption[] => [
+  { label: t(i18n, "showcase.component.radioGroup.labels.circle"), value: "circle", icon: <Circle className="w-5 h-5" /> },
+  { label: t(i18n, "showcase.component.radioGroup.labels.square"), value: "square", icon: <Square className="w-5 h-5" /> },
+  { label: t(i18n, "showcase.component.radioGroup.labels.triangle"), value: "triangle", icon: <Triangle className="w-5 h-5" /> }
 ];
 
-const WEATHER_OPTIONS: SgRadioGroupOption[] = [
-  { label: "Sun", value: "sun", icon: <Sun className="w-5 h-5 text-yellow-500" /> },
-  { label: "Moon", value: "moon", icon: <Moon className="w-5 h-5 text-blue-500" /> },
-  { label: "Cloud", value: "cloud", icon: <Cloud className="w-5 h-5 text-gray-500" /> }
+const weatherOptions = (i18n: ShowcaseI18n): SgRadioGroupOption[] => [
+  { label: t(i18n, "showcase.component.radioGroup.labels.sun"), value: "sun", icon: <Sun className="w-5 h-5 text-yellow-500" /> },
+  { label: t(i18n, "showcase.component.radioGroup.labels.moon"), value: "moon", icon: <Moon className="w-5 h-5 text-blue-500" /> },
+  { label: t(i18n, "showcase.component.radioGroup.labels.cloud"), value: "cloud", icon: <Cloud className="w-5 h-5 text-gray-500" /> }
 ];
 
-const LIST_HIGHLIGHT_OPTIONS: SgRadioGroupOption[] = [
-  { label: "Reserve", value: "reserve", icon: <Landmark className="w-4 h-4 text-indigo-600" /> },
-  { label: "Alert", value: "alert", icon: <Bell className="w-4 h-4 text-rose-600" /> },
-  { label: "Refresh", value: "refresh", icon: <RefreshCw className="w-4 h-4 text-emerald-600" /> }
+const listHighlightOptions = (i18n: ShowcaseI18n): SgRadioGroupOption[] => [
+  { label: t(i18n, "showcase.component.radioGroup.labels.reserve"), value: "reserve", icon: <Landmark className="w-4 h-4 text-indigo-600" /> },
+  { label: t(i18n, "showcase.component.radioGroup.labels.alert"), value: "alert", icon: <Bell className="w-4 h-4 text-rose-600" /> },
+  { label: t(i18n, "showcase.component.radioGroup.labels.refresh"), value: "refresh", icon: <RefreshCw className="w-4 h-4 text-emerald-600" /> }
 ];
 
-const CONTACT_OPTIONS: SgRadioGroupOption[] = [
-  { label: "Email", value: "email", icon: <Mail className="w-4 h-4" /> },
-  { label: "Phone", value: "phone", icon: <Phone className="w-4 h-4" /> },
-  { label: "In person", value: "in-person", icon: <Home className="w-4 h-4" /> }
+const contactOptions = (i18n: ShowcaseI18n): SgRadioGroupOption[] => [
+  { label: t(i18n, "showcase.component.radioGroup.labels.email"), value: "email", icon: <Mail className="w-4 h-4" /> },
+  { label: t(i18n, "showcase.component.radioGroup.labels.phone"), value: "phone", icon: <Phone className="w-4 h-4" /> },
+  { label: t(i18n, "showcase.component.radioGroup.labels.inPerson"), value: "in-person", icon: <Home className="w-4 h-4" /> }
 ];
 
-const PRIORITY_OPTIONS: SgRadioGroupOption[] = [
-  { label: "Low", value: "low" },
-  { label: "Medium", value: "medium" },
-  { label: "High", value: "high" },
-  { label: "Urgent", value: "urgent", enabled: false}
+const priorityOptions = (i18n: ShowcaseI18n): SgRadioGroupOption[] => [
+  { label: t(i18n, "showcase.component.radioGroup.labels.low"), value: "low" },
+  { label: t(i18n, "showcase.component.radioGroup.labels.medium"), value: "medium" },
+  { label: t(i18n, "showcase.component.radioGroup.labels.high"), value: "high" },
+  { label: t(i18n, "showcase.component.radioGroup.labels.urgent"), value: "urgent", enabled: false}
 ];
 
 export default function SgRadioGroupShowcase() {
@@ -682,14 +682,14 @@ export default function SgRadioGroupShowcase() {
       <Section id="exemplo-1" title={texts.sectionTitles[0] ?? ""}>
         <SgRadioGroup
           id="basic"
-          title="Choose an option"
-          source={BASIC_OPTIONS}
+          title={t(i18n, "showcase.component.radioGroup.labels.chooseOption")}
+          source={basicOptions(i18n)}
           value={selectedBasic ?? undefined}
           onChange={setSelectedBasic}
           style={{ border: "1px solid rgba(59, 130, 246, 0.25)", borderRadius: 12, padding: 12 }}
         />
         <p className="mt-2 text-sm text-[rgb(var(--sg-muted))]">
-          Valor selecionado: <strong>{selectedBasic}</strong>
+          {t(i18n, "showcase.component.radioGroup.labels.selectedValue")} <strong>{selectedBasic}</strong>
         </p>
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-radio-group/samples/basico.tsx.sample" />
       </Section>
@@ -697,8 +697,8 @@ export default function SgRadioGroupShowcase() {
       <Section id="exemplo-2" title={texts.sectionTitles[1] ?? ""}>
         <SgRadioGroup
           id="horizontal"
-          title="Select a fruit"
-          source={FRUIT_OPTIONS}
+          title={t(i18n, "showcase.component.radioGroup.labels.selectFruit")}
+          source={fruitOptions(i18n)}
           orientation="horizontal"
           value={selectedFruit ?? undefined}
           onChange={setSelectedFruit}
@@ -709,8 +709,8 @@ export default function SgRadioGroupShowcase() {
       <Section id="exemplo-3" title={texts.sectionTitles[2] ?? ""}>
         <SgRadioGroup
           id="with-icons"
-          title="Choose an action"
-          source={OPTIONS_WITH_ICONS}
+          title={t(i18n, "showcase.component.radioGroup.labels.chooseAction")}
+          source={optionsWithIcons(i18n)}
         />
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-radio-group/samples/com-icones.tsx.sample" />
       </Section>
@@ -718,8 +718,8 @@ export default function SgRadioGroupShowcase() {
       <Section id="exemplo-4" title={texts.sectionTitles[3] ?? ""}>
         <SgRadioGroup
           id="icon-only"
-          title="Choose a shape"
-          source={SHAPE_OPTIONS}
+          title={t(i18n, "showcase.component.radioGroup.labels.chooseShape")}
+          source={shapeOptions(i18n)}
           iconOnly
         />
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-radio-group/samples/apenas-icones.tsx.sample" />
@@ -728,13 +728,13 @@ export default function SgRadioGroupShowcase() {
       <Section id="exemplo-5" title={texts.sectionTitles[4] ?? ""}>
         <SgRadioGroup
           id="controlled-selection"
-          title="Controlled selection"
-          source={BASIC_OPTIONS}
+          title={t(i18n, "showcase.component.radioGroup.labels.controlledSelection")}
+          source={basicOptions(i18n)}
           value={selectedControlled ?? undefined}
           onChange={setSelectedControlled}
         />
         <p className="mt-2 text-sm text-[rgb(var(--sg-muted))]">
-          Value: {selectedControlled === null ? "None" : selectedControlled}
+          {t(i18n, "showcase.common.labels.valueColon")} {selectedControlled === null ? t(i18n, "showcase.common.labels.noneUpper") : selectedControlled}
         </p>
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-radio-group/samples/selecao-controlada.tsx.sample" />
       </Section>
@@ -743,27 +743,27 @@ export default function SgRadioGroupShowcase() {
         <div className="space-y-4">
           <SgRadioGroup
             id="external-control"
-            title="Favorite fruit"
-            source={FRUIT_OPTIONS}
+            title={t(i18n, "showcase.component.radioGroup.labels.favoriteFruit")}
+            source={fruitOptions(i18n)}
             value={externalValue ?? undefined}
             onChange={setExternalValue}
           />
           <SgGrid columns={{ base: 2, md: 4 }} gap={8}>
             <SgButton onClick={() => setExternalValue("apple")}>
-              Set Apple
+              {t(i18n, "showcase.component.radioGroup.labels.setApple")}
             </SgButton>
             <SgButton onClick={() => setExternalValue("banana")}>
-              Set Banana
+              {t(i18n, "showcase.component.radioGroup.labels.setBanana")}
             </SgButton>
             <SgButton onClick={() => setExternalValue("orange")}>
-              Set Orange
+              {t(i18n, "showcase.component.radioGroup.labels.setOrange")}
             </SgButton>
             <SgButton onClick={() => setExternalValue(null)}>
-              Clear
+              {t(i18n, "showcase.common.labels.clear")}
             </SgButton>
           </SgGrid>
           <p className="text-sm text-[rgb(var(--sg-muted))]">
-            Current value: <strong>{externalValue || "None"}</strong>
+            {t(i18n, "showcase.common.labels.currentValueLabel")} <strong>{externalValue || t(i18n, "showcase.common.labels.noneUpper")}</strong>
           </p>
         </div>
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-radio-group/samples/controle-externo-setvalue-getvalue.tsx.sample" />
@@ -772,8 +772,8 @@ export default function SgRadioGroupShowcase() {
       <Section id="exemplo-7" title={texts.sectionTitles[6] ?? ""}>
         <SgRadioGroup
           id="with-disabled-option"
-          title="Priority level"
-          source={PRIORITY_OPTIONS}
+          title={t(i18n, "showcase.component.radioGroup.labels.priorityLevel")}
+          source={priorityOptions(i18n)}
         />
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-radio-group/samples/com-opcao-desabilitada.tsx.sample" />
       </Section>
@@ -781,8 +781,8 @@ export default function SgRadioGroupShowcase() {
       <Section id="exemplo-8" title={texts.sectionTitles[7] ?? ""}>
         <SgRadioGroup
           id="disabled-group"
-          title="Options desabilitadas"
-          source={BASIC_OPTIONS}
+          title={t(i18n, "showcase.component.radioGroup.labels.disabledOptions")}
+          source={basicOptions(i18n)}
           value="option2"
           enabled={false}
         />
@@ -792,8 +792,8 @@ export default function SgRadioGroupShowcase() {
       <Section id="exemplo-9" title={texts.sectionTitles[8] ?? ""}>
         <SgRadioGroup
           id="readonly"
-          title="Current configuration (read-only)"
-          source={FRUIT_OPTIONS}
+          title={t(i18n, "showcase.component.radioGroup.labels.currentConfigReadOnly")}
+          source={fruitOptions(i18n)}
           value="banana"
           readOnly
         />
@@ -804,12 +804,12 @@ export default function SgRadioGroupShowcase() {
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <SgRadioGroup
             name="preference"
-            title="Contact preference *"
-            source={CONTACT_OPTIONS}
+            title={t(i18n, "showcase.component.radioGroup.labels.contactPreference")}
+            source={contactOptions(i18n)}
             control={control}
             required
           />
-          <SgButton type="submit">Submit</SgButton>
+          <SgButton type="submit">{t(i18n, "showcase.component.radioGroup.labels.submit")}</SgButton>
         </form>
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-radio-group/samples/obrigatorio-com-validacao.tsx.sample" />
       </Section>
@@ -817,8 +817,8 @@ export default function SgRadioGroupShowcase() {
       <Section id="exemplo-11" title={texts.sectionTitles[10] ?? ""}>
         <SgRadioGroup
           id="horizontal-colored"
-          title="Weather condition"
-          source={WEATHER_OPTIONS}
+          title={t(i18n, "showcase.component.radioGroup.labels.weatherCondition")}
+          source={weatherOptions(i18n)}
           orientation="horizontal"
         />
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-radio-group/samples/horizontal-com-icones-coloridos.tsx.sample" />
@@ -827,15 +827,15 @@ export default function SgRadioGroupShowcase() {
       <Section id="exemplo-12" title={texts.sectionTitles[11] ?? ""}>
         <SgRadioGroup
           id="highlight-list"
-          title="Options"
-          source={LIST_HIGHLIGHT_OPTIONS}
+          title={t(i18n, "showcase.component.radioGroup.labels.options")}
+          source={listHighlightOptions(i18n)}
           value={selectedHighlightStyle ?? undefined}
           onChange={setSelectedHighlightStyle}
           selectionStyle="highlight"
           className="max-w-xs"
         />
         <p className="mt-2 text-sm text-[rgb(var(--sg-muted))]">
-          Value: <strong>{selectedHighlightStyle ?? "None"}</strong>
+          {t(i18n, "showcase.common.labels.valueColon")} <strong>{selectedHighlightStyle ?? t(i18n, "showcase.common.labels.noneUpper")}</strong>
         </p>
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-radio-group/samples/selection-style-highlight-lista.tsx.sample" />
       </Section>
@@ -843,10 +843,10 @@ export default function SgRadioGroupShowcase() {
       <Section id="exemplo-13" title={texts.sectionTitles[12] ?? ""}>
         <SgRadioGroup
           id="custom-groupbox"
-          title="Choose with custom style"
-          source={OPTIONS_WITH_ICONS}
+          title={t(i18n, "showcase.component.radioGroup.labels.chooseCustomStyle")}
+          source={optionsWithIcons(i18n)}
           groupBoxProps={{
-            title: "Preferences",
+            title: t(i18n, "showcase.component.radioGroup.labels.preferences"),
             className: "border-2 border-[rgb(var(--sg-primary-500))]"
           }}
         />
@@ -857,11 +857,11 @@ export default function SgRadioGroupShowcase() {
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <SgRadioGroup
             name="fruit"
-            title="Choose your fruit"
-            source={FRUIT_OPTIONS}
+            title={t(i18n, "showcase.component.radioGroup.labels.chooseYourFruit")}
+            source={fruitOptions(i18n)}
             register={register}
           />
-          <SgButton type="submit">Submit</SgButton>
+          <SgButton type="submit">{t(i18n, "showcase.component.radioGroup.labels.submit")}</SgButton>
         </form>
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-radio-group/samples/react-hook-form-register.tsx.sample" />
       </Section>

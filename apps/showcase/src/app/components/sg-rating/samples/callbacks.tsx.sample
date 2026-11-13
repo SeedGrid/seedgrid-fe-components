@@ -25,22 +25,22 @@ export default function Example() {
 
       <SgGrid columns={{ base: 2, md: 4 }} gap={8}>
         <SgButton size="sm" appearance="outline" onClick={() => setValue(0)}>
-          Reset
+          Redefinir
         </SgButton>
         <SgButton size="sm" appearance="outline" onClick={() => setValue(5)}>
-          Max
+          Máx
         </SgButton>
         <SgButton size="sm" appearance="outline" onClick={() => setLogs([])}>
-          Clear log
+          Limpar log
         </SgButton>
       </SgGrid>
 
       <p className="text-sm text-muted-foreground">
-        Selected: <strong>{value}</strong> | Hover: <strong>{hover ?? "none"}</strong>
+        Selecionado: <strong>{value}</strong> | Hover: <strong>{hover ?? "nenhum"}</strong>
       </p>
 
       <div className="h-28 overflow-y-auto rounded border border-border bg-foreground/5 p-2 font-mono text-xs">
-        {logs.length === 0 ? "No events" : logs.map((entry, index) => <div key={index}>{entry}</div>)}
+        {logs.length === 0 ? "Nenhum evento" : logs.map((entry, index) => <div key={index}>{entry}</div>)}
       </div>
     </div>
   );

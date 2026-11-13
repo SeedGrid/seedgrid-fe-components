@@ -96,10 +96,10 @@ export default function SgBadgeOverlayPage() {
           description={t(i18n, "showcase.component.badgeOverlay.sections.basic.description")}
         >
           <SgBadgeOverlay badge={<SgBadge value={7} severity="danger" size="xs" />} style={{ borderRadius: 12, padding: 2 }}>
-            <span className="inline-flex size-10 items-center justify-center rounded-lg border border-border bg-background text-sm">Bell</span>
+            <span className="inline-flex size-10 items-center justify-center rounded-lg border border-border bg-background text-sm">{t(i18n, "showcase.component.badgeOverlay.labels.bell")}</span>
           </SgBadgeOverlay>
           <SgBadgeOverlay badge={<SgBadge dot severity="success" />}>
-            <span className="inline-flex size-10 items-center justify-center rounded-lg border border-border bg-background text-sm">Check</span>
+            <span className="inline-flex size-10 items-center justify-center rounded-lg border border-border bg-background text-sm">{t(i18n, "showcase.component.badgeOverlay.labels.check")}</span>
           </SgBadgeOverlay>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-badge-overlay/samples/basico.tsx.sample" />
         </Section>

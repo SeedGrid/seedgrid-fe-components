@@ -25,7 +25,7 @@ export default function Example() {
       </SgDockZone>
 
       <SgDockZone zone="left">
-        <SgToolBar id="tb-left-dock-screen-v1" dockZone="left" orientationDirection="vertical-down" title="Navegacao" collapsible draggable>
+        <SgToolBar id="tb-left-dock-screen-v1" dockZone="left" orientationDirection="vertical-down" title="Navegação" collapsible draggable>
           <SgToolbarIconButton icon={<Users className="size-4" />} label="Clientes" hint="Abrir clientes" />
           <SgToolbarIconButton icon={<Settings className="size-4" />} label="Config" hint="Abrir configurações" />
         </SgToolBar>
@@ -39,7 +39,7 @@ export default function Example() {
       </SgDockZone>
 
       <SgDockZone zone="free">
-        <div className="pointer-events-none text-sm text-muted-foreground">Area central livre</div>
+        <div className="pointer-events-none text-sm text-muted-foreground">Área central livre</div>
       </SgDockZone>
     </SgDockScreen>
   );

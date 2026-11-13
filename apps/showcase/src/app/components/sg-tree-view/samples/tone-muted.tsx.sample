@@ -3,10 +3,10 @@ import { SgTreeView, type SgTreeNode } from "@seedgrid/fe-components";
 const nodes: SgTreeNode[] = [
   {
     id: "docs",
-    label: "Documents",
+    label: "Documentos",
     children: [
-      { id: "contract", label: "Contract" },
-      { id: "invoice", label: "Invoice" }
+      { id: "contract", label: "Contrato" },
+      { id: "invoice", label: "Fatura" }
     ]
   }
 ];

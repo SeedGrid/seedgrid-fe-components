@@ -401,10 +401,10 @@ export function SgClockShowcaseClient({ initialServerTime }: { initialServerTime
               description={t(i18n, "showcase.component.clock.sections.timezone.description")}
             >
             <div className="flex flex-wrap gap-2">
-              <SgButton onClick={() => setTimezone("America/Sao_Paulo")}>Sao Paulo</SgButton>
-              <SgButton onClick={() => setTimezone("Europe/Lisbon")}>Lisboa</SgButton>
-              <SgButton onClick={() => setTimezone("America/New_York")}>New York</SgButton>
-              <SgButton onClick={() => setTimezone("Asia/Tokyo")}>Tokyo</SgButton>
+              <SgButton onClick={() => setTimezone("America/Sao_Paulo")}>{t(i18n, `showcase.component.clock.labels.citySaoPaulo`)}</SgButton>
+              <SgButton onClick={() => setTimezone("Europe/Lisbon")}>{t(i18n, `showcase.component.clock.labels.cityLisbon`)}</SgButton>
+              <SgButton onClick={() => setTimezone("America/New_York")}>{t(i18n, `showcase.component.clock.labels.cityNewYork`)}</SgButton>
+              <SgButton onClick={() => setTimezone("Asia/Tokyo")}>{t(i18n, `showcase.component.clock.labels.cityTokyo`)}</SgButton>
               <SgButton onClick={() => setFormat((v) => (v === "24h" ? "12h" : "24h"))}>
                 {format === "24h" ? "24h" : "12h"}
               </SgButton>

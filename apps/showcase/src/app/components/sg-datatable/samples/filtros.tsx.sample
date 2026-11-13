@@ -27,11 +27,11 @@ const PRODUCT_ROWS: ProductRow[] = [
 ];
 
 const FILTER_COLUMNS = [
-  { field: "code", header: "Code", sortable: true, filter: true, filterPlaceholder: "Filter code" },
-  { field: "name", header: "Name", sortable: true, filter: true, filterPlaceholder: "Filter name" },
-  { field: "category", header: "Category", sortable: true, filter: true, filterPlaceholder: "Filter category" },
-  { field: "status", header: "Status", sortable: true, filter: true, filterPlaceholder: "Filter status" },
-  { field: "price", header: "Price", sortable: true, align: "right" }
+  { field: "code", header: "Código", sortable: true, filter: true, filterPlaceholder: "Filtrar código" },
+  { field: "name", header: "Nome", sortable: true, filter: true, filterPlaceholder: "Filtrar nome" },
+  { field: "category", header: "Categoria", sortable: true, filter: true, filterPlaceholder: "Filtrar categoria" },
+  { field: "status", header: "Status", sortable: true, filter: true, filterPlaceholder: "Filtrar status" },
+  { field: "price", header: "Preço", sortable: true, align: "right" }
 ];
 
 export default function FilterDatatableExample() {

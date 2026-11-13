@@ -204,32 +204,32 @@ export default function SgDockLayoutPage() {
                 <SgToolbarIconButton icon={<Home className="size-4" />} label={t(i18n, "showcase.component.dockLayout.toolbar.home.label")} hint={t(i18n, "showcase.component.dockLayout.toolbar.home.hint")} />
                 <SgToolbarIconButton icon={<Search className="size-4" />} label={t(i18n, "showcase.component.dockLayout.toolbar.search.label")} hint={t(i18n, "showcase.component.dockLayout.toolbar.search.hint")} />
               </SgToolBar>
-              <SgToolBar id="tb-top-extra-basic-v9" dockZone="top" orientationDirection="horizontal-left" title="Acoes" draggable>
+              <SgToolBar id="tb-top-extra-basic-v9" dockZone="top" orientationDirection="horizontal-left" title={t(i18n, "showcase.component.dockLayout.labels.tbActions")} draggable>
                 <SgToolbarIconButton icon={<LayoutGrid className="size-4" />} label={t(i18n, "showcase.component.dockLayout.toolbar.panel.label")} hint={t(i18n, "showcase.component.dockLayout.toolbar.panel.hint")} />
                 <SgToolbarIconButton icon={<ClipboardList className="size-4" />} label={t(i18n, "showcase.component.dockLayout.toolbar.reports.label")} hint={t(i18n, "showcase.component.dockLayout.toolbar.reports.hint")} />
               </SgToolBar>
             </SgDockZone>
 
             <SgDockZone zone="left" className="col-start-1 row-start-2 items-start border-r border-white/20">
-              <SgToolBar id="tb-left-basic-v9" dockZone="left" orientationDirection="vertical-down" title="Navegacao" collapsible draggable>
+              <SgToolBar id="tb-left-basic-v9" dockZone="left" orientationDirection="vertical-down" title={t(i18n, "showcase.component.dockLayout.labels.tbNavigation")} collapsible draggable>
                 <SgToolbarIconButton icon={<Users className="size-4" />} label={t(i18n, "showcase.component.dockLayout.toolbar.customers.label")} hint={t(i18n, "showcase.component.dockLayout.toolbar.customers.hint")} />
                 <SgToolbarIconButton icon={<Settings className="size-4" />} label={t(i18n, "showcase.component.dockLayout.toolbar.config.label")} hint={t(i18n, "showcase.component.dockLayout.toolbar.config.hint")} />
               </SgToolBar>
             </SgDockZone>
 
             <SgDockZone zone="right" className="col-start-3 row-start-2 items-start border-l border-white/20">
-              <SgToolBar id="tb-right-basic-v9" dockZone="right" orientationDirection="vertical-down" title="Equipe" collapsible draggable>
+              <SgToolBar id="tb-right-basic-v9" dockZone="right" orientationDirection="vertical-down" title={t(i18n, "showcase.component.dockLayout.labels.tbTeam")} collapsible draggable>
                 <SgToolbarIconButton icon={<Users className="size-4" />} label={t(i18n, "showcase.component.dockLayout.toolbar.users.label")} hint={t(i18n, "showcase.component.dockLayout.toolbar.users.hint")} />
                 <SgToolbarIconButton icon={<Settings className="size-4" />} label={t(i18n, "showcase.component.dockLayout.toolbar.settings.label")} hint={t(i18n, "showcase.component.dockLayout.toolbar.settings.hint")} />
               </SgToolBar>
             </SgDockZone>
 
             <SgDockZone zone="bottom" className="col-span-3 row-start-3 items-end border-t border-white/20">
-              <SgToolBar id="tb-bottom-a-basic-v9" dockZone="bottom" orientationDirection="horizontal-left" title="Rodape A" draggable>
+              <SgToolBar id="tb-bottom-a-basic-v9" dockZone="bottom" orientationDirection="horizontal-left" title={t(i18n, "showcase.component.dockLayout.labels.tbFooterA")} draggable>
                 <SgToolbarIconButton icon={<LayoutGrid className="size-4" />} label={t(i18n, "showcase.component.dockLayout.toolbar.panel.label")} hint={t(i18n, "showcase.component.dockLayout.toolbar.panel.hint")} />
                 <SgToolbarIconButton icon={<Search className="size-4" />} label={t(i18n, "showcase.component.dockLayout.toolbar.searchFooter.label")} hint={t(i18n, "showcase.component.dockLayout.toolbar.searchFooter.hint")} />
               </SgToolBar>
-              <SgToolBar id="tb-bottom-b-basic-v9" dockZone="bottom" orientationDirection="horizontal-left" title="Rodape B" draggable>
+              <SgToolBar id="tb-bottom-b-basic-v9" dockZone="bottom" orientationDirection="horizontal-left" title={t(i18n, "showcase.component.dockLayout.labels.tbFooterB")} draggable>
                 <SgToolbarIconButton icon={<ClipboardList className="size-4" />} label={t(i18n, "showcase.component.dockLayout.toolbar.tasks.label")} hint={t(i18n, "showcase.component.dockLayout.toolbar.tasks.hint")} />
                 <SgToolbarIconButton icon={<Home className="size-4" />} label={t(i18n, "showcase.component.dockLayout.toolbar.homeBack.label")} hint={t(i18n, "showcase.component.dockLayout.toolbar.homeBack.hint")} />
               </SgToolBar>

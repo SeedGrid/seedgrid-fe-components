@@ -237,7 +237,7 @@ export default function SgPeriodSelectorPage() {
           <div className="w-96">
             <SgPeriodSelector
               id="ps-english"
-              label="Period"
+              label={t(i18n, `${K}.labels.period`)}
               locale="en-US"
               referenceDate={new Date(2024, 1, 29)}
               onChange={setEnglish}

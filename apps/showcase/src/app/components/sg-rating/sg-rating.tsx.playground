@@ -20,8 +20,8 @@ export default function App() {
       <SgGrid columns={{ base: 2, md: 4 }} gap={8}>
         <SgButton size="sm" appearance="outline" onClick={() => setStars((prev) => Math.max(1, prev - 1))}>- stars</SgButton>
         <SgButton size="sm" appearance="outline" onClick={() => setStars((prev) => Math.min(10, prev + 1))}>+ stars</SgButton>
-        <SgButton size="sm" appearance="outline" onClick={() => setValue(0)}>Clear</SgButton>
-        <SgButton size="sm" appearance="outline" onClick={() => setValue(stars)}>Max</SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => setValue(0)}>Limpar</SgButton>
+        <SgButton size="sm" appearance="outline" onClick={() => setValue(stars)}>Máx</SgButton>
       </SgGrid>
 
       <SgGrid columns={{ base: 2, md: 4 }} gap={8}>

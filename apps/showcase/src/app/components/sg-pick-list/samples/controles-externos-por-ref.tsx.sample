@@ -17,7 +17,7 @@ export default function Example() {
       <SgPickList
         ref={pickListRef}
         id="pick-ref"
-        title="Channels"
+        title="Canais"
         source={externalValue.source}
         target={externalValue.target}
         value={externalValue}

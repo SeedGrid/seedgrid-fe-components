@@ -128,7 +128,7 @@ export default function App() {
           source={source}
           grouped={grouped}
           openOnFocus={openOnFocus}
-          loadingText="Loading countries..."
+          loadingText="Carregando países..."
           mapItem={(raw: Country) => ({
             id: raw.id,
             label: raw.description,

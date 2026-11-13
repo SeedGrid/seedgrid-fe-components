@@ -3,10 +3,10 @@ import { Box, Building2, FilePenLine, Layers3 } from "lucide-react";
 import { SgBreadcrumb, SgButton, type SgBreadcrumbSeparator } from "@seedgrid/fe-components";
 
 const items = [
-  { id: "modules", label: "Modules", href: "/modules", icon: <Layers3 className="size-4" /> },
-  { id: "registrations", label: "Registrations", href: "/modules/registrations", icon: <Building2 className="size-4" /> },
-  { id: "products", label: "Products", href: "/modules/registrations/products", icon: <Box className="size-4" /> },
-  { id: "edit", label: "Edit", icon: <FilePenLine className="size-4" /> }
+  { id: "modules", label: "Módulos", href: "/modules", icon: <Layers3 className="size-4" /> },
+  { id: "registrations", label: "Cadastros", href: "/modules/registrations", icon: <Building2 className="size-4" /> },
+  { id: "products", label: "Produtos", href: "/modules/registrations/products", icon: <Box className="size-4" /> },
+  { id: "edit", label: "Editar", icon: <FilePenLine className="size-4" /> }
 ];
 
 export default function App() {

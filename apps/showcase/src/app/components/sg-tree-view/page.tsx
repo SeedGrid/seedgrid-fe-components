@@ -18,7 +18,7 @@ import I18NReady from "../I18NReady";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
-import { t, useShowcaseI18n } from "../../../i18n";
+import { t, useShowcaseI18n, type ShowcaseI18n } from "../../../i18n";
 
 function Section(props: { title: string; description?: string; children: React.ReactNode }) {
   return (
@@ -37,7 +37,7 @@ function CodeBlock(props: { sampleFile: string }) {
   return <SgCodeBlockBase sampleFile={props.sampleFile} />;
 }
 
-const DATA: SgTreeNode[] = [
+const data = (i18n: ShowcaseI18n): SgTreeNode[] => [
   {
     id: "root",
     label: "Admin",
@@ -45,85 +45,85 @@ const DATA: SgTreeNode[] = [
     children: [
       {
         id: "users",
-        label: "Users",
+        label: t(i18n, "showcase.component.treeView.labels.users"),
         icon: <Users className="h-4 w-4" />,
         children: [
-          { id: "users.list", label: "List users", icon: <FileText className="h-4 w-4" /> },
-          { id: "users.create", label: "Create user", icon: <FileText className="h-4 w-4" /> }
+          { id: "users.list", label: t(i18n, "showcase.component.treeView.labels.listUsers"), icon: <FileText className="h-4 w-4" /> },
+          { id: "users.create", label: t(i18n, "showcase.component.treeView.labels.createUser"), icon: <FileText className="h-4 w-4" /> }
         ]
       },
       {
         id: "reports",
-        label: "Reports",
+        label: t(i18n, "showcase.component.treeView.labels.reports"),
         icon: <BarChart3 className="h-4 w-4" />,
         children: [
-          { id: "reports.sales", label: "Sales report", icon: <FileText className="h-4 w-4" /> },
-          { id: "reports.financial", label: "Financial report", icon: <FileText className="h-4 w-4" /> }
+          { id: "reports.sales", label: t(i18n, "showcase.component.treeView.labels.salesReport"), icon: <FileText className="h-4 w-4" /> },
+          { id: "reports.financial", label: t(i18n, "showcase.component.treeView.labels.financialReport"), icon: <FileText className="h-4 w-4" /> }
         ]
       }
     ]
   }
 ];
 
-const JSON_DATA = [
+const jsonData = (i18n: ShowcaseI18n) => [
   {
     id: "root",
     label: "Admin",
     children: [
       {
         id: "users",
-        label: "Users",
+        label: t(i18n, "showcase.component.treeView.labels.users"),
         children: [
-          { id: "users.list", label: "List users", checked: true },
-          { id: "users.create", label: "Create user" }
+          { id: "users.list", label: t(i18n, "showcase.component.treeView.labels.listUsers"), checked: true },
+          { id: "users.create", label: t(i18n, "showcase.component.treeView.labels.createUser") }
         ]
       },
       {
         id: "reports",
-        label: "Reports",
+        label: t(i18n, "showcase.component.treeView.labels.reports"),
         children: [
-          { id: "reports.sales", label: "Sales report", checked: true },
-          { id: "reports.financial", label: "Financial report" }
+          { id: "reports.sales", label: t(i18n, "showcase.component.treeView.labels.salesReport"), checked: true },
+          { id: "reports.financial", label: t(i18n, "showcase.component.treeView.labels.financialReport") }
         ]
       }
     ]
   }
 ];
 
-const FOOD_NODES: SgTreeNode[] = [
+const foodNodes = (i18n: ShowcaseI18n): SgTreeNode[] => [
   {
     id: "vegetables",
-    label: "Vegetables",
+    label: t(i18n, "showcase.component.treeView.labels.vegetables"),
     children: [
-      { id: "lettuce", label: "Lettuce" },
-      { id: "kale", label: "Kale" }
+      { id: "lettuce", label: t(i18n, "showcase.component.treeView.labels.lettuce") },
+      { id: "kale", label: t(i18n, "showcase.component.treeView.labels.kale") }
     ]
   },
   {
     id: "roots",
-    label: "Roots",
-    children: [{ id: "carrot", label: "Carrot" }]
+    label: t(i18n, "showcase.component.treeView.labels.roots"),
+    children: [{ id: "carrot", label: t(i18n, "showcase.component.treeView.labels.carrot") }]
   }
 ];
 
-const DOC_NODES: SgTreeNode[] = [
+const docNodes = (i18n: ShowcaseI18n): SgTreeNode[] => [
   {
     id: "docs",
-    label: "Documents",
+    label: t(i18n, "showcase.component.treeView.labels.documents"),
     children: [
-      { id: "contract", label: "Contract" },
-      { id: "invoice", label: "Invoice" }
+      { id: "contract", label: t(i18n, "showcase.component.treeView.labels.contract") },
+      { id: "invoice", label: t(i18n, "showcase.component.treeView.labels.invoice") }
     ]
   }
 ];
 
-const LOCKED_NODES: SgTreeNode[] = [
+const lockedNodes = (i18n: ShowcaseI18n): SgTreeNode[] => [
   {
     id: "docs",
-    label: "Documents",
+    label: t(i18n, "showcase.component.treeView.labels.documents"),
     children: [
-      { id: "contract", label: "Contract" },
-      { id: "locked", label: "Locked", enabled: false }
+      { id: "contract", label: t(i18n, "showcase.component.treeView.labels.contract") },
+      { id: "locked", label: t(i18n, "showcase.component.treeView.labels.locked"), enabled: false }
     ]
   }
 ];
@@ -145,18 +145,18 @@ const nodes: SgTreeNode[] = [
     children: [
       {
         id: "users",
-        label: "Users",
+        label: "Usuários",
         children: [
-          { id: "users.list", label: "List users" },
-          { id: "users.create", label: "Create user" }
+          { id: "users.list", label: "Listar usuários" },
+          { id: "users.create", label: "Criar usuário" }
         ]
       },
       {
         id: "reports",
-        label: "Reports",
+        label: "Relatórios",
         children: [
-          { id: "reports.sales", label: "Sales report" },
-          { id: "reports.financial", label: "Financial report" }
+          { id: "reports.sales", label: "Relatório de vendas" },
+          { id: "reports.financial", label: "Relatório financeiro" }
         ]
       }
     ]
@@ -239,7 +239,7 @@ export default function SgTreeViewPage() {
         <SgCard title={t(i18n, "showcase.component.treeView.labels.permissions")}>
           <SgTreeView
             ref={treeRef}
-            nodes={DATA}
+            nodes={data(i18n)}
             searchable
             searchPlaceholder={t(i18n, "showcase.component.treeView.labels.search")}
             checkable
@@ -287,7 +287,7 @@ export default function SgTreeViewPage() {
       >
         <SgCard title={t(i18n, "showcase.component.treeView.labels.iconsPrimary")}>
           <SgTreeView
-            nodes={DATA}
+            nodes={data(i18n)}
             iconTone="primary"
             searchable
             searchPlaceholder={t(i18n, "showcase.component.treeView.labels.search")}
@@ -303,7 +303,7 @@ export default function SgTreeViewPage() {
         <SgCard title={t(i18n, "showcase.component.treeView.labels.confirmTitle")}>
           <SgTreeView
             ref={confirmRef}
-            nodes={DATA}
+            nodes={data(i18n)}
             searchable
             searchPlaceholder={t(i18n, "showcase.component.treeView.labels.search")}
             checkable
@@ -330,9 +330,9 @@ export default function SgTreeViewPage() {
         description={t(i18n, "showcase.component.treeView.sections.size.description")}
       >
         <div className="grid gap-4 md:grid-cols-3">
-          <SgTreeView nodes={DATA} size="sm" density="compact" />
-          <SgTreeView nodes={DATA} size="md" density="normal" />
-          <SgTreeView nodes={DATA} size="lg" density="comfortable" />
+          <SgTreeView nodes={data(i18n)} size="sm" density="compact" />
+          <SgTreeView nodes={data(i18n)} size="md" density="normal" />
+          <SgTreeView nodes={data(i18n)} size="lg" density="comfortable" />
         </div>
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-tree-view/samples/size.tsx.sample" />
       </Section>
@@ -343,7 +343,7 @@ export default function SgTreeViewPage() {
       >
         <SgCard title={t(i18n, "showcase.component.treeView.labels.expandedTitle")}>
           <SgTreeView
-            nodes={DATA}
+            nodes={data(i18n)}
             searchable
             searchPlaceholder={t(i18n, "showcase.component.treeView.labels.search")}
             defaultExpandedIds={["root", "users"]}
@@ -358,7 +358,7 @@ export default function SgTreeViewPage() {
       >
         <SgCard title={t(i18n, "showcase.component.treeView.labels.jsonTitle")}>
           {(() => {
-            const { nodes, checkedIds } = sgTreeFromJsonWithChecked(JSON_DATA);
+            const { nodes, checkedIds } = sgTreeFromJsonWithChecked(jsonData(i18n));
             return (
               <SgTreeView
                 nodes={nodes}
@@ -378,7 +378,7 @@ export default function SgTreeViewPage() {
       >
         <SgCard title={t(i18n, "showcase.component.treeView.tracks.cardTitle")}>
           <SgTreeView
-            nodes={DATA}
+            nodes={data(i18n)}
             checkable
             checkableLabel={t(i18n, "showcase.component.treeView.tracks.active")}
             checkedIds={checkedIds}
@@ -458,7 +458,7 @@ export default function SgTreeViewPage() {
         description={t(i18n, "showcase.component.treeView.sections.search.description")}
       >
         <SgTreeView
-          nodes={FOOD_NODES}
+          nodes={foodNodes(i18n)}
           searchable
           searchPlaceholder={t(i18n, "showcase.component.treeView.labels.search")}
           defaultSearchValue="kale"
@@ -472,8 +472,8 @@ export default function SgTreeViewPage() {
         description={t(i18n, "showcase.component.treeView.sections.toneMuted.description")}
       >
         <div className="grid gap-4 md:grid-cols-2">
-          <SgTreeView nodes={DOC_NODES} tone="default" defaultExpandedIds={["docs"]} />
-          <SgTreeView nodes={DOC_NODES} tone="muted" defaultExpandedIds={["docs"]} />
+          <SgTreeView nodes={docNodes(i18n)} tone="default" defaultExpandedIds={["docs"]} />
+          <SgTreeView nodes={docNodes(i18n)} tone="muted" defaultExpandedIds={["docs"]} />
         </div>
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-tree-view/samples/tone-muted.tsx.sample" />
       </Section>
@@ -482,7 +482,7 @@ export default function SgTreeViewPage() {
         title={`10) ${t(i18n, "showcase.component.treeView.sections.disabledNode.title")}`}
         description={t(i18n, "showcase.component.treeView.sections.disabledNode.description")}
       >
-        <SgTreeView nodes={LOCKED_NODES} checkable defaultExpandedIds={["docs"]} />
+        <SgTreeView nodes={lockedNodes(i18n)} checkable defaultExpandedIds={["docs"]} />
         <CodeBlock sampleFile="apps/showcase/src/app/components/sg-tree-view/samples/disabled-node.tsx.sample" />
       </Section>
 

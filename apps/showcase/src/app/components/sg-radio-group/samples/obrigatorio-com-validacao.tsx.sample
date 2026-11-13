@@ -4,9 +4,9 @@ import { SgRadioGroup, SgButton, type SgRadioGroupOption } from "@seedgrid/fe-co
 import { Mail, Phone, Home } from "lucide-react";
 
 const CONTACT_OPTIONS: SgRadioGroupOption[] = [
-  { label: "Email", value: "email", icon: <Mail className="w-4 h-4" /> },
-  { label: "Phone", value: "phone", icon: <Phone className="w-4 h-4" /> },
-  { label: "In person", value: "in-person", icon: <Home className="w-4 h-4" /> }
+  { label: "E-mail", value: "email", icon: <Mail className="w-4 h-4" /> },
+  { label: "Telefone", value: "phone", icon: <Phone className="w-4 h-4" /> },
+  { label: "Pessoalmente", value: "in-person", icon: <Home className="w-4 h-4" /> }
 ];
 
 export default function Example() {
@@ -20,12 +20,12 @@ export default function Example() {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <SgRadioGroup
         name="preference"
-        title="Contact preference *"
+        title="Preferência de contato *"
         source={CONTACT_OPTIONS}
         control={control}
         required
       />
-      <SgButton type="submit">Submit</SgButton>
+      <SgButton type="submit">Enviar</SgButton>
     </form>
   );
 }

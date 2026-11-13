@@ -99,7 +99,7 @@ export default function SgPanelPage() {
             <SgPanel className="h-full w-full rounded-lg bg-background" contentPadding={12} contentGap={8}>
               <SgPanel align="top" height={12} contentPadding={10} className="rounded-md">
                 <SgStack direction="row" justify="between" align="center">
-                  <span className="text-sm font-medium">Header</span>
+                  <span className="text-sm font-medium">{t(i18n, `${K}.labels.header`)}</span>
                   <span className="rounded border border-border px-2 py-0.5 text-xs text-muted-foreground">
                     top + height=12%
                   </span>
@@ -108,26 +108,26 @@ export default function SgPanelPage() {
 
               <SgPanel align="left" width={20} contentPadding={10} className="rounded-md">
                 <SgStack gap={6}>
-                  <span className="text-xs font-medium text-muted-foreground">MENU</span>
-                  <SgPanel borderStyle="none" className="rounded bg-muted/40" contentPadding={6}>Dashboard</SgPanel>
-                  <SgPanel borderStyle="none" className="rounded bg-muted/40" contentPadding={6}>Relatorios</SgPanel>
-                  <SgPanel borderStyle="none" className="rounded bg-muted/40" contentPadding={6}>Clientes</SgPanel>
+                  <span className="text-xs font-medium text-muted-foreground">{t(i18n, `${K}.labels.menuCaps`)}</span>
+                  <SgPanel borderStyle="none" className="rounded bg-muted/40" contentPadding={6}>{t(i18n, `${K}.labels.dashboard`)}</SgPanel>
+                  <SgPanel borderStyle="none" className="rounded bg-muted/40" contentPadding={6}>{t(i18n, `${K}.labels.reports`)}</SgPanel>
+                  <SgPanel borderStyle="none" className="rounded bg-muted/40" contentPadding={6}>{t(i18n, `${K}.labels.customers`)}</SgPanel>
                   <span className="pt-1 text-[11px] text-muted-foreground">left + width=20%</span>
                 </SgStack>
               </SgPanel>
 
               <SgPanel align="right" width="18%" contentPadding={10} className="rounded-md">
                 <SgStack gap={6}>
-                  <span className="text-xs font-medium text-muted-foreground">ACOES</span>
-                  <SgPanel borderStyle="none" className="rounded bg-muted/40" contentPadding={6}>Filtrar</SgPanel>
-                  <SgPanel borderStyle="none" className="rounded bg-muted/40" contentPadding={6}>Exportar</SgPanel>
+                  <span className="text-xs font-medium text-muted-foreground">{t(i18n, `${K}.labels.actionsCaps`)}</span>
+                  <SgPanel borderStyle="none" className="rounded bg-muted/40" contentPadding={6}>{t(i18n, `${K}.labels.filter`)}</SgPanel>
+                  <SgPanel borderStyle="none" className="rounded bg-muted/40" contentPadding={6}>{t(i18n, `${K}.labels.export`)}</SgPanel>
                   <span className="pt-1 text-[11px] text-muted-foreground">right + width=18%</span>
                 </SgStack>
               </SgPanel>
 
               <SgPanel align="bottom" height={10} contentPadding={10} className="rounded-md">
                 <SgStack direction="row" justify="between" align="center">
-                  <span className="text-sm">Footer</span>
+                  <span className="text-sm">{t(i18n, `${K}.labels.footer`)}</span>
                   <span className="rounded border border-border px-2 py-0.5 text-xs text-muted-foreground">
                     bottom + height=10%
                   </span>
@@ -136,9 +136,9 @@ export default function SgPanelPage() {
 
               <SgPanel align="client" contentPadding={10} className="rounded-md">
                 <SgStack gap={8}>
-                  <span className="text-sm font-medium">Area client</span>
+                  <span className="text-sm font-medium">{t(i18n, `${K}.labels.clientArea`)}</span>
                   <SgPanel borderStyle="solid" className="h-24 rounded bg-muted/20" />
-                  <span className="text-xs text-muted-foreground">client ocupa o restante automaticamente.</span>
+                  <span className="text-xs text-muted-foreground">{t(i18n, `${K}.labels.clientFillsRemaining`)}</span>
                 </SgStack>
               </SgPanel>
             </SgPanel>
@@ -159,16 +159,16 @@ export default function SgPanelPage() {
                   contentPadding={8}
                   contentAlign="center"
                 >
-                  <SgButton label="TESTE" />
-                  <SgButton label="TESTE" />
-                  <SgButton label="TESTE" />
+                  <SgButton label={t(i18n, `${K}.labels.testCaps`)} />
+                  <SgButton label={t(i18n, `${K}.labels.testCaps`)} />
+                  <SgButton label={t(i18n, `${K}.labels.testCaps`)} />
                 </SgPanel>
               </SgPanel>
 
               <SgPanel align="left" width={10} contentPadding={8}>
-                <SgButton label="TESTE" />
-                <SgButton label="TESTE" />
-                <SgButton label="TESTE" />
+                <SgButton label={t(i18n, `${K}.labels.testCaps`)} />
+                <SgButton label={t(i18n, `${K}.labels.testCaps`)} />
+                <SgButton label={t(i18n, `${K}.labels.testCaps`)} />
               </SgPanel>
 
               <SgPanel align="client" contentPadding={12}>
@@ -177,9 +177,9 @@ export default function SgPanelPage() {
 
               <SgPanel align="bottom" height={5} contentPadding={8} minHeightPx={100}>
                 <SgPanel align="left" contentDirection="row" contentPadding={8}>
-                  <SgButton label="TESTE" />
-                  <SgButton label="TESTE" />
-                  <SgButton label="TESTE" />
+                  <SgButton label={t(i18n, `${K}.labels.testCaps`)} />
+                  <SgButton label={t(i18n, `${K}.labels.testCaps`)} />
+                  <SgButton label={t(i18n, `${K}.labels.testCaps`)} />
                 </SgPanel>
               </SgPanel>
             </SgScreen>
@@ -229,7 +229,7 @@ export default function SgPanelPage() {
               <SgStack gap={6}>
                 {Array.from({ length: 10 }).map((_, i) => (
                   <SgPanel key={i} borderStyle="solid" className="rounded bg-muted/30" contentPadding={8}>
-                    scrollable=true - linha {i + 1}
+                    scrollable=true - {t(i18n, `${K}.labels.lineN`, { n: i + 1 })}
                   </SgPanel>
                 ))}
               </SgStack>
@@ -239,7 +239,7 @@ export default function SgPanelPage() {
               <SgStack gap={6}>
                 {Array.from({ length: 10 }).map((_, i) => (
                   <SgPanel key={i} borderStyle="solid" className="rounded bg-muted/30" contentPadding={8}>
-                    scrollable="auto" - linha {i + 1}
+                    scrollable="auto" - {t(i18n, `${K}.labels.lineN`, { n: i + 1 })}
                   </SgPanel>
                 ))}
               </SgStack>
@@ -249,7 +249,7 @@ export default function SgPanelPage() {
               <SgStack gap={6}>
                 {Array.from({ length: 15 }).map((_, i) => (
                   <SgPanel key={i} borderStyle="solid" className="rounded bg-muted/30" contentPadding={8}>
-                    Item vertical {i + 1}
+                    {t(i18n, `${K}.labels.verticalItemN`, { n: i + 1 })}
                   </SgPanel>
                 ))}
               </SgStack>

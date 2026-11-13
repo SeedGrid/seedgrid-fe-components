@@ -12,7 +12,7 @@ export default function Example() {
           ring: "rgba(15,23,42,.35)"
         }}
       >
-        Brand Dark
+        Marca escura
       </SgButton>
       <SgButton
         customColors={{
@@ -23,7 +23,7 @@ export default function Example() {
           ring: "rgba(236,72,153,.35)"
         }}
       >
-        Pink
+        Rosa
       </SgButton>
       <SgButton
         appearance="outline"
@@ -34,7 +34,7 @@ export default function Example() {
           ring: "rgba(139,92,246,.35)"
         }}
       >
-        Violet Outline
+        Contorno violeta
       </SgButton>
     </div>
   );

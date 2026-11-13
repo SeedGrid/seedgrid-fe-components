@@ -8,18 +8,18 @@ const nodes: SgTreeNode[] = [
     children: [
       {
         id: "users",
-        label: "Users",
+        label: "Usuários",
         children: [
-          { id: "users.list", label: "List users" },
-          { id: "users.create", label: "Create user" }
+          { id: "users.list", label: "Listar usuários" },
+          { id: "users.create", label: "Criar usuário" }
         ]
       },
       {
         id: "reports",
-        label: "Reports",
+        label: "Relatórios",
         children: [
-          { id: "reports.sales", label: "Sales report" },
-          { id: "reports.financial", label: "Financial report" }
+          { id: "reports.sales", label: "Relatório de vendas" },
+          { id: "reports.financial", label: "Relatório financeiro" }
         ]
       }
     ]

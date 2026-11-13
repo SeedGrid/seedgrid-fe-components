@@ -3,27 +3,27 @@ import { ClipboardList, Home, LayoutGrid, Users } from "lucide-react";
 import { SgMenu, toast, type SgMenuNode } from "@seedgrid/fe-components";
 
 const MENU: SgMenuNode[] = [
-  { id: "dashboard", label: "Dashboard", url: "/dashboard", icon: <Home className="size-4" />, onClick: () => toast.message("Dashboard") },
+  { id: "dashboard", label: "Painel", url: "/dashboard", icon: <Home className="size-4" />, onClick: () => toast.message("Painel") },
   {
     id: "customers",
-    label: "Customers",
+    label: "Clientes",
     icon: <Users className="size-4" />,
     children: [
       {
         id: "customers-new",
-        label: "New",
+        label: "Novo",
         icon: <LayoutGrid className="size-4" />,
         children: [
-          { id: "customer-create", label: "Customer", url: "/customers/new/customer", onClick: () => toast.message("Customer") },
-          { id: "customer-duplicate", label: "Duplicate", url: "/customers/new/duplicate", onClick: () => toast.message("Duplicate") }
+          { id: "customer-create", label: "Cliente", url: "/customers/new/customer", onClick: () => toast.message("Cliente") },
+          { id: "customer-duplicate", label: "Duplicar", url: "/customers/new/duplicate", onClick: () => toast.message("Duplicar") }
         ]
       },
       {
         id: "customers-reports",
-        label: "Reports",
+        label: "Relatórios",
         icon: <ClipboardList className="size-4" />,
         children: [
-          { id: "customers-cohort", label: "Cohort", url: "/customers/reports/cohort", onClick: () => toast.message("Cohort") },
+          { id: "customers-cohort", label: "Coorte", url: "/customers/reports/cohort", onClick: () => toast.message("Coorte") },
           { id: "customers-churn", label: "Churn", url: "/customers/reports/churn", onClick: () => toast.message("Churn") }
         ]
       }

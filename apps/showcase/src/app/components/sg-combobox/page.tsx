@@ -183,7 +183,7 @@ export default function App() {
           source={source}
           grouped={grouped}
           openOnFocus={openOnFocus}
-          loadingText="Loading countries..."
+          loadingText="Carregando países..."
           mapItem={(raw: Country) => ({
             id: raw.id,
             label: raw.description,
@@ -368,7 +368,7 @@ export default function SgComboboxPage() {
               source={asyncSource}
               openOnFocus
               grouped
-              loadingText="Loading countries..."
+              loadingText={t(i18n, `${K}.labels.loadingCountries`)}
               mapItem={(raw) => ({
                 id: raw.id,
                 label: raw.description,
@@ -385,7 +385,7 @@ export default function SgComboboxPage() {
               itemTooltip={(item) => <span>{item.label}</span>}
               renderFooter={(_, hasResults) => (
                 <span className="text-xs text-muted-foreground">
-                  {hasResults ? "Select one item from the list." : "No records."}
+                  {hasResults ? t(i18n, `${K}.labels.selectOneItem`) : t(i18n, `${K}.labels.noRecords`)}
                 </span>
               )}
               onSelect={setSelectedAsync}

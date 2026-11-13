@@ -8,18 +8,18 @@ const json = [
     children: [
       {
         id: "users",
-        label: "Users",
+        label: "Usuários",
         children: [
-          { id: "users.list", label: "List users", checked: true },
-          { id: "users.create", label: "Create user" }
+          { id: "users.list", label: "Listar usuários", checked: true },
+          { id: "users.create", label: "Criar usuário" }
         ]
       },
       {
         id: "reports",
-        label: "Reports",
+        label: "Relatórios",
         children: [
-          { id: "reports.sales", label: "Sales report", checked: true },
-          { id: "reports.financial", label: "Financial report" }
+          { id: "reports.sales", label: "Relatório de vendas", checked: true },
+          { id: "reports.financial", label: "Relatório financeiro" }
         ]
       }
     ]

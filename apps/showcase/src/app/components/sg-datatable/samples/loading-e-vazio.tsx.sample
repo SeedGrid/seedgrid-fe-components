@@ -27,11 +27,11 @@ const PRODUCT_ROWS: ProductRow[] = [
 ];
 
 const BASE_COLUMNS = [
-  { field: "code", header: "Code", sortable: true },
-  { field: "name", header: "Name", sortable: true },
-  { field: "category", header: "Category", sortable: true },
-  { field: "price", header: "Price", sortable: true, align: "right" },
-  { field: "stock", header: "Stock", sortable: true, align: "right" }
+  { field: "code", header: "Código", sortable: true },
+  { field: "name", header: "Nome", sortable: true },
+  { field: "category", header: "Categoria", sortable: true },
+  { field: "price", header: "Preço", sortable: true, align: "right" },
+  { field: "stock", header: "Estoque", sortable: true, align: "right" }
 ];
 
 export default function LoadingDatatableExample() {
@@ -42,21 +42,21 @@ export default function LoadingDatatableExample() {
     <>
       <SgGrid columns={{ base: 2, md: 4 }} gap={8}>
         <SgButton appearance={loading ? "solid" : "outline"} onClick={() => setLoading((value) => !value)}>
-          toggle loading
+          alternar carregamento
         </SgButton>
         <SgButton appearance={showEmpty ? "solid" : "outline"} onClick={() => setShowEmpty((value) => !value)}>
-          toggle empty
+          alternar vazio
         </SgButton>
       </SgGrid>
 
       <SgDatatable
         id="datatable-loading"
-        title="Loading / empty"
+        title="Carregando / vazio"
         value={showEmpty ? [] : PRODUCT_ROWS}
         columns={BASE_COLUMNS}
         dataKey="id"
         loading={loading}
-        emptyMessage="No products available."
+        emptyMessage="Nenhum produto disponível."
       />
     </>
   );

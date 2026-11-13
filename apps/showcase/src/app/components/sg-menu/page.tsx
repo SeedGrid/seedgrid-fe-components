@@ -24,238 +24,238 @@ import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
-import { t, useShowcaseI18n } from "../../../i18n";
+import { t, useShowcaseI18n, type ShowcaseI18n } from "../../../i18n";
 
 const K = "showcase.component.menu";
 
-const MENU: SgMenuNode[] = [
-  { id: "dashboard", label: "Dashboard", url: "/dashboard", icon: <Home className="size-4" /> },
+const menu = (i18n: ShowcaseI18n): SgMenuNode[] => [
+  { id: "dashboard", label: t(i18n, `${K}.items.dashboard`), url: "/dashboard", icon: <Home className="size-4" /> },
   {
     id: "customers",
-    label: "Customers",
+    label: t(i18n, `${K}.items.customers`),
     icon: <Users className="size-4" />,
     children: [
       {
         id: "customers-new",
-        label: "New",
+        label: t(i18n, `${K}.items.new`),
         icon: <LayoutGrid className="size-4" />,
         children: [
-          { id: "customer-create", label: "Customer", url: "/customers/new/customer" },
-          { id: "customer-duplicate", label: "Duplicate", url: "/customers/new/duplicate" }
+          { id: "customer-create", label: t(i18n, `${K}.items.customer`), url: "/customers/new/customer" },
+          { id: "customer-duplicate", label: t(i18n, `${K}.items.duplicate`), url: "/customers/new/duplicate" }
         ]
       },
       {
         id: "customers-reports",
-        label: "Reports",
+        label: t(i18n, `${K}.items.reports`),
         icon: <ClipboardList className="size-4" />,
         children: [
-          { id: "customers-cohort", label: "Cohort", url: "/customers/reports/cohort" },
-          { id: "customers-churn", label: "Churn", url: "/customers/reports/churn" }
+          { id: "customers-cohort", label: t(i18n, `${K}.items.cohort`), url: "/customers/reports/cohort" },
+          { id: "customers-churn", label: t(i18n, `${K}.items.churn`), url: "/customers/reports/churn" }
         ]
       }
     ]
   },
   {
     id: "orders",
-    label: "Orders",
+    label: t(i18n, `${K}.items.orders`),
     icon: <LayoutGrid className="size-4" />,
     children: [
       {
         id: "orders-sales",
-        label: "Sales",
+        label: t(i18n, `${K}.items.sales`),
         icon: <Search className="size-4" />,
         children: [
-          { id: "orders-open", label: "Open Orders", url: "/orders/sales/open", badge: 4 },
-          { id: "orders-closed", label: "Closed Orders", url: "/orders/sales/closed" }
+          { id: "orders-open", label: t(i18n, `${K}.items.openOrders`), url: "/orders/sales/open", badge: 4 },
+          { id: "orders-closed", label: t(i18n, `${K}.items.closedOrders`), url: "/orders/sales/closed" }
         ]
       },
-      { id: "orders-returns", label: "Returns", url: "/orders/returns", badge: 7 }
+      { id: "orders-returns", label: t(i18n, `${K}.items.returns`), url: "/orders/returns", badge: 7 }
     ]
   },
-  { id: "profile", label: "Profile", url: "/profile", icon: <Settings className="size-4" /> }
+  { id: "profile", label: t(i18n, `${K}.items.profileLabel`), url: "/profile", icon: <Settings className="size-4" /> }
 ];
 
-const TIERED_MENU: SgMenuNode[] = [
-  { id: "dashboard", label: "Dashboard", url: "/dashboard", icon: <Home className="size-4" />, onClick: () => toast.message("Dashboard") },
+const tieredMenu = (i18n: ShowcaseI18n): SgMenuNode[] => [
+  { id: "dashboard", label: t(i18n, `${K}.items.dashboard`), url: "/dashboard", icon: <Home className="size-4" />, onClick: () => toast.message(t(i18n, `${K}.items.dashboard`)) },
   {
     id: "customers",
-    label: "Customers",
+    label: t(i18n, `${K}.items.customers`),
     icon: <Users className="size-4" />,
     children: [
       {
         id: "customers-new",
-        label: "New",
+        label: t(i18n, `${K}.items.new`),
         icon: <LayoutGrid className="size-4" />,
         children: [
-          { id: "customer-create", label: "Customer", url: "/customers/new/customer", onClick: () => toast.message("Customer") },
-          { id: "customer-duplicate", label: "Duplicate", url: "/customers/new/duplicate", onClick: () => toast.message("Duplicate") }
+          { id: "customer-create", label: t(i18n, `${K}.items.customer`), url: "/customers/new/customer", onClick: () => toast.message(t(i18n, `${K}.items.customer`)) },
+          { id: "customer-duplicate", label: t(i18n, `${K}.items.duplicate`), url: "/customers/new/duplicate", onClick: () => toast.message(t(i18n, `${K}.items.duplicate`)) }
         ]
       },
       {
         id: "customers-reports",
-        label: "Reports",
+        label: t(i18n, `${K}.items.reports`),
         icon: <ClipboardList className="size-4" />,
         children: [
-          { id: "customers-cohort", label: "Cohort", url: "/customers/reports/cohort", onClick: () => toast.message("Cohort") },
-          { id: "customers-churn", label: "Churn", url: "/customers/reports/churn", onClick: () => toast.message("Churn") }
+          { id: "customers-cohort", label: t(i18n, `${K}.items.cohort`), url: "/customers/reports/cohort", onClick: () => toast.message(t(i18n, `${K}.items.cohort`)) },
+          { id: "customers-churn", label: t(i18n, `${K}.items.churn`), url: "/customers/reports/churn", onClick: () => toast.message(t(i18n, `${K}.items.churn`)) }
         ]
       }
     ]
   },
   {
     id: "orders",
-    label: "Orders",
+    label: t(i18n, `${K}.items.orders`),
     icon: <LayoutGrid className="size-4" />,
     children: [
       {
         id: "orders-sales",
-        label: "Sales",
+        label: t(i18n, `${K}.items.sales`),
         icon: <Search className="size-4" />,
         children: [
-          { id: "orders-open", label: "Open Orders", url: "/orders/sales/open", badge: 4, onClick: () => toast.message("Open Orders") },
-          { id: "orders-closed", label: "Closed Orders", url: "/orders/sales/closed", onClick: () => toast.message("Closed Orders") }
+          { id: "orders-open", label: t(i18n, `${K}.items.openOrders`), url: "/orders/sales/open", badge: 4, onClick: () => toast.message(t(i18n, `${K}.items.openOrders`)) },
+          { id: "orders-closed", label: t(i18n, `${K}.items.closedOrders`), url: "/orders/sales/closed", onClick: () => toast.message(t(i18n, `${K}.items.closedOrders`)) }
         ]
       },
-      { id: "orders-returns", label: "Returns", url: "/orders/returns", badge: 7, onClick: () => toast.message("Returns") }
+      { id: "orders-returns", label: t(i18n, `${K}.items.returns`), url: "/orders/returns", badge: 7, onClick: () => toast.message(t(i18n, `${K}.items.returns`)) }
     ]
   },
-  { id: "profile", label: "Profile", url: "/profile", icon: <Settings className="size-4" />, onClick: () => toast.message("Profile") }
+  { id: "profile", label: t(i18n, `${K}.items.profileLabel`), url: "/profile", icon: <Settings className="size-4" />, onClick: () => toast.message(t(i18n, `${K}.items.profileLabel`)) }
 ];
 
-const MEGA_MENU: SgMenuNode[] = [
+const megaMenu = (i18n: ShowcaseI18n): SgMenuNode[] => [
   {
     id: "fashion",
-    label: "Fashion",
+    label: t(i18n, `${K}.items.fashion`),
     icon: <Users className="size-4" />,
     children: [
       {
         id: "fashion-woman",
-        label: "Woman",
+        label: t(i18n, `${K}.items.woman`),
         children: [
-          { id: "fashion-woman-1", label: "Woman Casual", url: "/fashion/woman/1" },
-          { id: "fashion-woman-2", label: "Woman Formal", url: "/fashion/woman/2" }
+          { id: "fashion-woman-1", label: t(i18n, `${K}.items.womanCasual`), url: "/fashion/woman/1" },
+          { id: "fashion-woman-2", label: t(i18n, `${K}.items.womanFormal`), url: "/fashion/woman/2" }
         ]
       },
       {
         id: "fashion-men",
-        label: "Men",
+        label: t(i18n, `${K}.items.men`),
         children: [
-          { id: "fashion-men-1", label: "Men Casual", url: "/fashion/men/1" },
-          { id: "fashion-men-2", label: "Men Formal", url: "/fashion/men/2" }
+          { id: "fashion-men-1", label: t(i18n, `${K}.items.menCasual`), url: "/fashion/men/1" },
+          { id: "fashion-men-2", label: t(i18n, `${K}.items.menFormal`), url: "/fashion/men/2" }
         ]
       }
     ]
   },
   {
     id: "electronics",
-    label: "Electronics",
+    label: t(i18n, `${K}.items.electronics`),
     icon: <Settings className="size-4" />,
     children: [
       {
         id: "electronics-computer",
-        label: "Computer",
+        label: t(i18n, `${K}.items.computer`),
         children: [
-          { id: "electronics-computer-1", label: "Laptop", url: "/electronics/computer/1" },
-          { id: "electronics-computer-2", label: "Desktop", url: "/electronics/computer/2" }
+          { id: "electronics-computer-1", label: t(i18n, `${K}.items.laptop`), url: "/electronics/computer/1" },
+          { id: "electronics-computer-2", label: t(i18n, `${K}.items.desktop`), url: "/electronics/computer/2" }
         ]
       },
       {
         id: "electronics-tv",
-        label: "TV",
+        label: t(i18n, `${K}.items.tv`),
         children: [
-          { id: "electronics-tv-1", label: "Smart TV", url: "/electronics/tv/1" },
-          { id: "electronics-tv-2", label: "Home Theater", url: "/electronics/tv/2" }
+          { id: "electronics-tv-1", label: t(i18n, `${K}.items.smartTv`), url: "/electronics/tv/1" },
+          { id: "electronics-tv-2", label: t(i18n, `${K}.items.homeTheater`), url: "/electronics/tv/2" }
         ]
       }
     ]
   }
 ];
 
-const USER_MENU: SgMenuNode[] = [
-  { id: "perfil", label: "My profile", onClick: () => {} },
-  { id: "preferencias", label: "Preferences", onClick: () => {} },
-  { id: "logout", label: "Sign out", onClick: () => {} }
+const userMenu = (i18n: ShowcaseI18n): SgMenuNode[] => [
+  { id: "perfil", label: t(i18n, `${K}.items.profile`), onClick: () => {} },
+  { id: "preferencias", label: t(i18n, `${K}.items.preferences`), onClick: () => {} },
+  { id: "logout", label: t(i18n, `${K}.items.signOut`), onClick: () => {} }
 ];
 
-const DOCKABLE_MENU: SgMenuNode[] = [
-  { id: "dk-dashboard", label: "Dashboard", url: "/dashboard", icon: <Home className="size-4" /> },
+const dockableMenu = (i18n: ShowcaseI18n): SgMenuNode[] => [
+  { id: "dk-dashboard", label: t(i18n, `${K}.items.dashboard`), url: "/dashboard", icon: <Home className="size-4" /> },
   {
     id: "dk-financeiro",
-    label: "Finance",
+    label: t(i18n, `${K}.items.finance`),
     icon: <DollarSign className="size-4" />,
     children: [
       {
         id: "dk-contas-pagar",
-        label: "Accounts Payable",
+        label: t(i18n, `${K}.items.accountsPayable`),
         icon: <CreditCard className="size-4" />,
         children: [
-          { id: "dk-pagar-aberto", label: "Open", url: "/financeiro/pagar/aberto", badge: 12 },
-          { id: "dk-pagar-vencidas", label: "Overdue", url: "/financeiro/pagar/vencidas", badge: 3 }
+          { id: "dk-pagar-aberto", label: t(i18n, `${K}.items.open`), url: "/financeiro/pagar/aberto", badge: 12 },
+          { id: "dk-pagar-vencidas", label: t(i18n, `${K}.items.overdue`), url: "/financeiro/pagar/vencidas", badge: 3 }
         ]
       },
       {
         id: "dk-contas-receber",
-        label: "Accounts Receivable",
+        label: t(i18n, `${K}.items.accountsReceivable`),
         icon: <Wallet className="size-4" />,
         children: [
-          { id: "dk-receber-aberto", label: "Open", url: "/financeiro/receber/aberto", badge: 8 },
-          { id: "dk-receber-recebidas", label: "Received", url: "/financeiro/receber/recebidas" }
+          { id: "dk-receber-aberto", label: t(i18n, `${K}.items.open`), url: "/financeiro/receber/aberto", badge: 8 },
+          { id: "dk-receber-recebidas", label: t(i18n, `${K}.items.received`), url: "/financeiro/receber/recebidas" }
         ]
       },
-      { id: "dk-financeiro-rel", label: "Reports", icon: <BarChart2 className="size-4" />, url: "/financeiro/relatorios" }
+      { id: "dk-financeiro-rel", label: t(i18n, `${K}.items.reports`), icon: <BarChart2 className="size-4" />, url: "/financeiro/relatorios" }
     ]
   },
   {
     id: "dk-clientes",
-    label: "Customers",
+    label: t(i18n, `${K}.items.customers`),
     icon: <Users className="size-4" />,
     children: [
-      { id: "dk-clientes-cadastro", label: "Register", url: "/clientes/cadastro" },
+      { id: "dk-clientes-cadastro", label: t(i18n, `${K}.items.register`), url: "/clientes/cadastro" },
       {
         id: "dk-clientes-relatorios",
-        label: "Reports",
+        label: t(i18n, `${K}.items.reports`),
         icon: <ClipboardList className="size-4" />,
         children: [
-          { id: "dk-clientes-cohort", label: "Cohort", url: "/clientes/relatorios/cohort" },
-          { id: "dk-clientes-churn", label: "Churn", url: "/clientes/relatorios/churn" }
+          { id: "dk-clientes-cohort", label: t(i18n, `${K}.items.cohort`), url: "/clientes/relatorios/cohort" },
+          { id: "dk-clientes-churn", label: t(i18n, `${K}.items.churn`), url: "/clientes/relatorios/churn" }
         ]
       }
     ]
   },
   {
     id: "dk-pedidos",
-    label: "Orders",
+    label: t(i18n, `${K}.items.orders`),
     icon: <ShoppingCart className="size-4" />,
     children: [
       {
         id: "dk-pedidos-vendas",
-        label: "Sales",
+        label: t(i18n, `${K}.items.sales`),
         icon: <Search className="size-4" />,
         children: [
-          { id: "dk-pedidos-abertos", label: "Open", url: "/pedidos/vendas/aberto", badge: 4 },
-          { id: "dk-pedidos-fechados", label: "Closed", url: "/pedidos/vendas/encerrados" }
+          { id: "dk-pedidos-abertos", label: t(i18n, `${K}.items.open`), url: "/pedidos/vendas/aberto", badge: 4 },
+          { id: "dk-pedidos-fechados", label: t(i18n, `${K}.items.closed`), url: "/pedidos/vendas/encerrados" }
         ]
       },
-      { id: "dk-pedidos-devolucoes", label: "Returns", url: "/pedidos/devolucoes", badge: 7 }
+      { id: "dk-pedidos-devolucoes", label: t(i18n, `${K}.items.returns`), url: "/pedidos/devolucoes", badge: 7 }
     ]
   },
   {
     id: "dk-configuracoes",
-    label: "Settings",
+    label: t(i18n, `${K}.items.settings`),
     icon: <Settings className="size-4" />,
     children: [
-      { id: "dk-config-usuarios", label: "Users", url: "/configuracoes/usuarios" },
-      { id: "dk-config-perfis", label: "Access Profiles", url: "/configuracoes/perfis" },
-      { id: "dk-config-sistema", label: "System", url: "/configuracoes/sistema" }
+      { id: "dk-config-usuarios", label: t(i18n, `${K}.items.users`), url: "/configuracoes/usuarios" },
+      { id: "dk-config-perfis", label: t(i18n, `${K}.items.accessProfiles`), url: "/configuracoes/perfis" },
+      { id: "dk-config-sistema", label: t(i18n, `${K}.items.system`), url: "/configuracoes/sistema" }
     ]
   }
 ];
 
-const DOCKABLE_USER_MENU: SgMenuNode[] = [
-  { id: "dk-meu-perfil", label: "My Profile", onClick: () => {} },
-  { id: "dk-preferencias", label: "Preferences", onClick: () => {} },
-  { id: "dk-trocar-empresa", label: "Switch Company", onClick: () => {} },
-  { id: "dk-logout", label: "Sign out", onClick: () => {} }
+const dockableUserMenu = (i18n: ShowcaseI18n): SgMenuNode[] => [
+  { id: "dk-meu-perfil", label: t(i18n, `${K}.items.profile`), onClick: () => {} },
+  { id: "dk-preferencias", label: t(i18n, `${K}.items.preferences`), onClick: () => {} },
+  { id: "dk-trocar-empresa", label: t(i18n, `${K}.items.switchCompany`), onClick: () => {} },
+  { id: "dk-logout", label: t(i18n, `${K}.items.signOut`), onClick: () => {} }
 ];
 
 type MenuI18n = ReturnType<typeof useShowcaseI18n>;
@@ -330,27 +330,27 @@ function CodeBlock(props: { sampleFile: string }) {
 }
 
 const MENU_CODE_SNIPPET = `const MENU = [
-  { id: "dashboard", label: "Dashboard", url: "/dashboard", icon: <Home className="size-4" /> },
+  { id: "dashboard", label: "Painel", url: "/dashboard", icon: <Home className="size-4" /> },
   {
     id: "customers",
-    label: "Customers",
+    label: "Clientes",
     icon: <Users className="size-4" />,
     children: [
       {
         id: "customers-new",
-        label: "New",
+        label: "Novo",
         icon: <LayoutGrid className="size-4" />,
         children: [
-          { id: "customer-create", label: "Customer", url: "/customers/new/customer" },
-          { id: "customer-duplicate", label: "Duplicate", url: "/customers/new/duplicate" }
+          { id: "customer-create", label: "Cliente", url: "/customers/new/customer" },
+          { id: "customer-duplicate", label: "Duplicar", url: "/customers/new/duplicate" }
         ]
       },
       {
         id: "customers-reports",
-        label: "Reports",
+        label: "Relatórios",
         icon: <ClipboardList className="size-4" />,
         children: [
-          { id: "customers-cohort", label: "Cohort", url: "/customers/reports/cohort" },
+          { id: "customers-cohort", label: "Coorte", url: "/customers/reports/cohort" },
           { id: "customers-churn", label: "Churn", url: "/customers/reports/churn" }
         ]
       }
@@ -358,58 +358,58 @@ const MENU_CODE_SNIPPET = `const MENU = [
   },
   {
     id: "orders",
-    label: "Orders",
+    label: "Pedidos",
     icon: <LayoutGrid className="size-4" />,
     children: [
       {
         id: "orders-sales",
-        label: "Sales",
+        label: "Vendas",
         icon: <Search className="size-4" />,
         children: [
-          { id: "orders-open", label: "Open Orders", url: "/orders/sales/open", badge: 4 },
-          { id: "orders-closed", label: "Closed Orders", url: "/orders/sales/closed" }
+          { id: "orders-open", label: "Pedidos abertos", url: "/orders/sales/open", badge: 4 },
+          { id: "orders-closed", label: "Pedidos fechados", url: "/orders/sales/closed" }
         ]
       },
-      { id: "orders-returns", label: "Returns", url: "/orders/returns", badge: 7 }
+      { id: "orders-returns", label: "Devoluções", url: "/orders/returns", badge: 7 }
     ]
   },
-  { id: "profile", label: "Profile", url: "/profile", icon: <Settings className="size-4" /> }
+  { id: "profile", label: "Perfil", url: "/profile", icon: <Settings className="size-4" /> }
 ];`;
 
 const MEGA_MENU_CODE_SNIPPET = `const MEGA_MENU = [
   {
     id: "fashion",
-    label: "Fashion",
+    label: "Moda",
     icon: <Users className="size-4" />,
     children: [
       {
         id: "fashion-woman",
-        label: "Woman",
+        label: "Mulher",
         children: [
-          { id: "fashion-woman-1", label: "Woman Casual", url: "/fashion/woman/1" },
-          { id: "fashion-woman-2", label: "Woman Formal", url: "/fashion/woman/2" }
+          { id: "fashion-woman-1", label: "Mulher casual", url: "/fashion/woman/1" },
+          { id: "fashion-woman-2", label: "Mulher formal", url: "/fashion/woman/2" }
         ]
       },
       {
         id: "fashion-men",
-        label: "Men",
+        label: "Homem",
         children: [
-          { id: "fashion-men-1", label: "Men Casual", url: "/fashion/men/1" },
-          { id: "fashion-men-2", label: "Men Formal", url: "/fashion/men/2" }
+          { id: "fashion-men-1", label: "Homem casual", url: "/fashion/men/1" },
+          { id: "fashion-men-2", label: "Homem formal", url: "/fashion/men/2" }
         ]
       }
     ]
   },
   {
     id: "electronics",
-    label: "Electronics",
+    label: "Eletrônicos",
     icon: <Settings className="size-4" />,
     children: [
       {
         id: "electronics-computer",
-        label: "Computer",
+        label: "Computador",
         children: [
-          { id: "electronics-computer-1", label: "Laptop", url: "/electronics/computer/1" },
+          { id: "electronics-computer-1", label: "Notebook", url: "/electronics/computer/1" },
           { id: "electronics-computer-2", label: "Desktop", url: "/electronics/computer/2" }
         ]
       },
@@ -418,7 +418,7 @@ const MEGA_MENU_CODE_SNIPPET = `const MEGA_MENU = [
         label: "TV",
         children: [
           { id: "electronics-tv-1", label: "Smart TV", url: "/electronics/tv/1" },
-          { id: "electronics-tv-2", label: "Home Theater", url: "/electronics/tv/2" }
+          { id: "electronics-tv-2", label: "Home theater", url: "/electronics/tv/2" }
         ]
       }
     ]
@@ -426,9 +426,9 @@ const MEGA_MENU_CODE_SNIPPET = `const MEGA_MENU = [
 ];`;
 
 const USER_MENU_CODE_SNIPPET = `const USER_MENU = [
-  { id: "perfil", label: "My profile", onClick: () => {} },
-  { id: "preferencias", label: "Preferences", onClick: () => {} },
-  { id: "logout", label: "Sign out", onClick: () => {} }
+  { id: "perfil", label: "Meu perfil", onClick: () => {} },
+  { id: "preferencias", label: "Preferências", onClick: () => {} },
+  { id: "logout", label: "Sair", onClick: () => {} }
 ];`;
 
 const EXAMPLE_SIDEBAR_CODE = `import React from "react";
@@ -467,7 +467,7 @@ export default function Example() {
           showCollapseButton
           search={{ enabled: true, placeholder: "Search module..." }}
           brand={{ title: "SeedGrid ERP" }}
-          user={{ name: "Lucia Souza", subtitle: "Finance" }}
+          user={{ name: "Lucia Souza", subtitle: "Financeiro" }}
           userMenu={USER_MENU}
           onNavigate={(node) => setActiveId(node.id)}
         />
@@ -665,45 +665,45 @@ import { SgPlayground } from "@seedgrid/fe-playground";
 import { BarChart2, ClipboardList, CreditCard, DollarSign, Download, Home, Plus, Printer, Save, Search, Settings, ShoppingCart, Trash2, Users, Wallet } from "lucide-react";
 
 const DOCKABLE_MENU = [
-  { id: "dk-dashboard", label: "Dashboard", url: "/dashboard", icon: <Home className="size-4" /> },
+  { id: "dk-dashboard", label: "Painel", url: "/dashboard", icon: <Home className="size-4" /> },
   {
     id: "dk-financeiro",
-    label: "Finance",
+    label: "Financeiro",
     icon: <DollarSign className="size-4" />,
     children: [
       {
         id: "dk-contas-pagar",
-        label: "Accounts Payable",
+        label: "Contas a pagar",
         icon: <CreditCard className="size-4" />,
         children: [
-          { id: "dk-pagar-aberto", label: "Open", url: "/financeiro/pagar/aberto", badge: 12 },
-          { id: "dk-pagar-vencidas", label: "Overdue", url: "/financeiro/pagar/vencidas", badge: 3 }
+          { id: "dk-pagar-aberto", label: "Em aberto", url: "/financeiro/pagar/aberto", badge: 12 },
+          { id: "dk-pagar-vencidas", label: "Vencido", url: "/financeiro/pagar/vencidas", badge: 3 }
         ]
       },
       {
         id: "dk-contas-receber",
-        label: "Accounts Receivable",
+        label: "Contas a receber",
         icon: <Wallet className="size-4" />,
         children: [
-          { id: "dk-receber-aberto", label: "Open", url: "/financeiro/receber/aberto", badge: 8 },
-          { id: "dk-receber-recebidas", label: "Received", url: "/financeiro/receber/recebidas" }
+          { id: "dk-receber-aberto", label: "Em aberto", url: "/financeiro/receber/aberto", badge: 8 },
+          { id: "dk-receber-recebidas", label: "Recebido", url: "/financeiro/receber/recebidas" }
         ]
       },
-      { id: "dk-financeiro-rel", label: "Reports", icon: <BarChart2 className="size-4" />, url: "/financeiro/relatorios" }
+      { id: "dk-financeiro-rel", label: "Relatórios", icon: <BarChart2 className="size-4" />, url: "/financeiro/relatorios" }
     ]
   },
   {
     id: "dk-clientes",
-    label: "Customers",
+    label: "Clientes",
     icon: <Users className="size-4" />,
     children: [
-      { id: "dk-clientes-cadastro", label: "Register", url: "/clientes/cadastro" },
+      { id: "dk-clientes-cadastro", label: "Cadastro", url: "/clientes/cadastro" },
       {
         id: "dk-clientes-relatorios",
-        label: "Reports",
+        label: "Relatórios",
         icon: <ClipboardList className="size-4" />,
         children: [
-          { id: "dk-clientes-cohort", label: "Cohort", url: "/clientes/relatorios/cohort" },
+          { id: "dk-clientes-cohort", label: "Coorte", url: "/clientes/relatorios/cohort" },
           { id: "dk-clientes-churn", label: "Churn", url: "/clientes/relatorios/churn" }
         ]
       }
@@ -711,38 +711,38 @@ const DOCKABLE_MENU = [
   },
   {
     id: "dk-pedidos",
-    label: "Orders",
+    label: "Pedidos",
     icon: <ShoppingCart className="size-4" />,
     children: [
       {
         id: "dk-pedidos-vendas",
-        label: "Sales",
+        label: "Vendas",
         icon: <Search className="size-4" />,
         children: [
-          { id: "dk-pedidos-abertos", label: "Open", url: "/pedidos/vendas/aberto", badge: 4 },
-          { id: "dk-pedidos-fechados", label: "Closed", url: "/pedidos/vendas/encerrados" }
+          { id: "dk-pedidos-abertos", label: "Em aberto", url: "/pedidos/vendas/aberto", badge: 4 },
+          { id: "dk-pedidos-fechados", label: "Fechado", url: "/pedidos/vendas/encerrados" }
         ]
       },
-      { id: "dk-pedidos-devolucoes", label: "Returns", url: "/pedidos/devolucoes", badge: 7 }
+      { id: "dk-pedidos-devolucoes", label: "Devoluções", url: "/pedidos/devolucoes", badge: 7 }
     ]
   },
   {
     id: "dk-configuracoes",
-    label: "Settings",
+    label: "Configurações",
     icon: <Settings className="size-4" />,
     children: [
-      { id: "dk-config-usuarios", label: "Users", url: "/configuracoes/usuarios" },
-      { id: "dk-config-perfis", label: "Access Profiles", url: "/configuracoes/perfis" },
-      { id: "dk-config-sistema", label: "System", url: "/configuracoes/sistema" }
+      { id: "dk-config-usuarios", label: "Usuários", url: "/configuracoes/usuarios" },
+      { id: "dk-config-perfis", label: "Perfis de acesso", url: "/configuracoes/perfis" },
+      { id: "dk-config-sistema", label: "Sistema", url: "/configuracoes/sistema" }
     ]
   }
 ];
 
 const DOCKABLE_USER_MENU = [
-  { id: "dk-meu-perfil", label: "My Profile", onClick: () => {} },
-  { id: "dk-preferencias", label: "Preferences", onClick: () => {} },
-  { id: "dk-trocar-empresa", label: "Switch Company", onClick: () => {} },
-  { id: "dk-logout", label: "Sign out", onClick: () => {} }
+  { id: "dk-meu-perfil", label: "Meu perfil", onClick: () => {} },
+  { id: "dk-preferencias", label: "Preferências", onClick: () => {} },
+  { id: "dk-trocar-empresa", label: "Trocar empresa", onClick: () => {} },
+  { id: "dk-logout", label: "Sair", onClick: () => {} }
 ];
 
 const DOCKABLE_MENU_STYLE_OPTIONS = [
@@ -806,7 +806,7 @@ export default function Example() {
             showCollapseButton
             search={{ enabled: true, placeholder: "Search module..." }}
             brand={{ title: "SeedGrid ERP", imageSrc: "/logo-seedgrid.svg" }}
-            user={{ name: "Lucia Souza", subtitle: "Finance" }}
+            user={{ name: "Lucia Souza", subtitle: "Financeiro" }}
             userMenu={DOCKABLE_USER_MENU}
             userSectionStyle={{ backgroundColor: "#ebe0d4" }}
             onNavigate={(node) => setDockActiveId(node.id)}
@@ -998,6 +998,12 @@ export default function SgMenuPage() {
   const accordionMenu = React.useMemo(() => buildAccordionMenu(i18n), [i18n]);
   const simpleMenu = React.useMemo(() => buildSimpleMenu(i18n), [i18n]);
   const userActionsMenu = React.useMemo(() => buildUserActionsMenu(i18n), [i18n]);
+  const menuNodes = React.useMemo(() => menu(i18n), [i18n]);
+  const tieredMenuNodes = React.useMemo(() => tieredMenu(i18n), [i18n]);
+  const megaMenuNodes = React.useMemo(() => megaMenu(i18n), [i18n]);
+  const userMenuNodes = React.useMemo(() => userMenu(i18n), [i18n]);
+  const dockableMenuNodes = React.useMemo(() => dockableMenu(i18n), [i18n]);
+  const dockableUserMenuNodes = React.useMemo(() => dockableUserMenu(i18n), [i18n]);
   const aiComponent = useAiManifestComponent("SgMenu");
   const [activeId, setActiveId] = React.useState("dashboard");
   const [tieredActiveId, setTieredActiveId] = React.useState("dashboard");
@@ -1029,7 +1035,7 @@ export default function SgMenuPage() {
           <div className="h-[460px] overflow-hidden rounded-lg border border-border">
             <div className="flex h-full">
               <SgMenu
-                menu={MENU}
+                menu={menuNodes}
                 selection={{ activeId }}
                 menuStyle="sidebar"
                 mode="accordion"
@@ -1039,7 +1045,7 @@ export default function SgMenuPage() {
                 search={{ enabled: true, placeholder: t(i18n, `${K}.sidebarSearchPlaceholder`) }}
                 brand={{ title: "SeedGrid ERP" }}
                 user={{ name: "Lucia Souza", subtitle: t(i18n, `${K}.sidebarUserSubtitle`) }}
-                userMenu={USER_MENU}
+                userMenu={userMenuNodes}
                 onNavigate={(node) => setActiveId(node.id)}
               />
               <div className="flex-1 space-y-3 p-4">
@@ -1062,7 +1068,7 @@ export default function SgMenuPage() {
           </div>
 
           <SgMenu
-            menu={MENU}
+            menu={menuNodes}
             selection={{ activeId }}
             menuStyle="drawer"
             open={drawerOpen}
@@ -1081,7 +1087,7 @@ export default function SgMenuPage() {
         <Section title={t(i18n, `${K}.section3Title`)} description={t(i18n, `${K}.section3Description`)}>
           <div className="rounded-lg border border-border p-3">
             <div className="h-[320px] overflow-auto rounded-md border border-border">
-              <SgMenu menu={MENU} selection={{ activeId }} menuStyle="inline" menuVariantStyle="PanelMenu" onNavigate={(node) => setActiveId(node.id)} />
+              <SgMenu menu={menuNodes} selection={{ activeId }} menuStyle="inline" menuVariantStyle="PanelMenu" onNavigate={(node) => setActiveId(node.id)} />
             </div>
           </div>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-menu/samples/panel-menu.tsx.sample" />
@@ -1091,7 +1097,7 @@ export default function SgMenuPage() {
           <div className="rounded-lg border border-border p-3">
             <div className="h-[320px] overflow-visible rounded-md border border-border p-2">
               <SgMenu
-                menu={TIERED_MENU}
+                menu={tieredMenuNodes}
                 selection={{ activeId: tieredActiveId }}
                 menuStyle="inline"
                 menuVariantStyle="Tiered"
@@ -1106,7 +1112,7 @@ export default function SgMenuPage() {
         <Section title={t(i18n, `${K}.section5Title`)} description={t(i18n, `${K}.section5Description`)}>
           <div className="rounded-lg border border-border p-3">
             <SgMenu
-              menu={MEGA_MENU}
+              menu={megaMenuNodes}
               selection={{ activeId: "fashion" }}
               menuStyle="inline"
               menuVariantStyle="MegaMenuHorizontal"
@@ -1118,7 +1124,7 @@ export default function SgMenuPage() {
         <Section title={t(i18n, `${K}.section6Title`)} description={t(i18n, `${K}.section6Description`)}>
           <div className="rounded-lg border border-border p-3">
             <SgMenu
-              menu={MEGA_MENU}
+              menu={megaMenuNodes}
               selection={{ activeId: "fashion" }}
               menuStyle="inline"
               menuVariantStyle="MegaMenuVertical"
@@ -1157,7 +1163,7 @@ export default function SgMenuPage() {
 
                 <SgMenu
                   id="menu-dock-sidebar-v2"
-                  menu={DOCKABLE_MENU}
+                  menu={dockableMenuNodes}
                   selection={{ activeId: dockActiveId }}
                   menuStyle="sidebar"
                   menuVariantStyle={dockMenuStyle}
@@ -1169,7 +1175,7 @@ export default function SgMenuPage() {
                   search={{ enabled: true, placeholder: t(i18n, `${K}.dockSearchPlaceholder`) }}
                   brand={{ title: "SeedGrid ERP", imageSrc: "/logo-seedgrid.svg" }}
                   user={{ name: "Lucia Souza", subtitle: t(i18n, `${K}.dockUserSubtitle`) }}
-                  userMenu={DOCKABLE_USER_MENU}
+                  userMenu={dockableUserMenuNodes}
                   userSectionStyle={{ backgroundColor: "#ebe0d4" }}
                   onNavigate={(node) => setDockActiveId(node.id)}
                 />

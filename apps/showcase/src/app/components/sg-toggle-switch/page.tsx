@@ -310,7 +310,7 @@ export default function Example() {
     <div>
       <SgToggleSwitch
         id="demo-disabled"
-        label="Disabled"
+        label="Desabilitado"
         checked
         enabled={false}
         onIcon={<Check size={12} />}
@@ -319,7 +319,7 @@ export default function Example() {
 
       <SgToggleSwitch
         id="demo-readonly"
-        label="ReadOnly"
+        label="Somente leitura"
         checked={false}
         readOnly
         onIcon={<Check size={12} />}
@@ -844,7 +844,7 @@ export default function SgToggleSwitchPage() {
         <div className="grid gap-4 rounded-md border border-border p-4 sm:grid-cols-2">
           <SgToggleSwitch
             id="demo-disabled"
-            label="Disabled"
+            label={t(i18n, "showcase.common.labels.disabled")}
             checked
             enabled={false}
             onIcon={<Check size={12} />}
@@ -852,7 +852,7 @@ export default function SgToggleSwitchPage() {
           />
           <SgToggleSwitch
             id="demo-readonly"
-            label="ReadOnly"
+            label={t(i18n, "showcase.component.toggleSwitch.labels.readOnly")}
             checked={false}
             readOnly
             onIcon={<Check size={12} />}

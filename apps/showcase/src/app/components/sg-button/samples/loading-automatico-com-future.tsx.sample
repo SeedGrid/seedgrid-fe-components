@@ -12,7 +12,7 @@ export default function Example() {
 
   return (
     <div className="flex flex-wrap items-center gap-3">
-      <SgButton onClick={save}>Submit</SgButton>
+      <SgButton onClick={save}>Enviar</SgButton>
       <span className="text-sm text-muted-foreground">{status}</span>
     </div>
   );

@@ -7,7 +7,7 @@ export default function Example() {
     <div>
       <SgToggleSwitch
         id="demo-disabled"
-        label="Disabled"
+        label="Desabilitado"
         checked
         enabled={false}
         onIcon={<Check size={12} />}
@@ -16,7 +16,7 @@ export default function Example() {
 
       <SgToggleSwitch
         id="demo-readonly"
-        label="ReadOnly"
+        label="Somente leitura"
         checked={false}
         readOnly
         onIcon={<Check size={12} />}

@@ -52,9 +52,9 @@ const random = () => setDigit(String(Math.floor(Math.random() * 10)));
 <div className="flex items-center gap-4">
   <SgSegmentDigit value={digit} size={64} />
   <div className="flex flex-col gap-2">
-    <SgButton size="sm" onClick={next}>Next (+1)</SgButton>
-    <SgButton size="sm" severity="secondary" onClick={prev}>Previous (-1)</SgButton>
-    <SgButton size="sm" severity="info" onClick={random}>Random</SgButton>
+    <SgButton size="sm" onClick={next}>Próximo (+1)</SgButton>
+    <SgButton size="sm" severity="secondary" onClick={prev}>Anterior (-1)</SgButton>
+    <SgButton size="sm" severity="info" onClick={random}>Aleatório</SgButton>
   </div>
 </div>`;
 
@@ -79,43 +79,43 @@ const ss = pad(s);
     <SgSegmentDigit value={ss[0] ?? "0"} size={36} />
     <SgSegmentDigit value={ss[1] ?? "0"} size={36} />
   </div>
-  <SgButton size="sm" onClick={() => setSeconds((prev) => prev + 1)}>+1 second</SgButton>
+  <SgButton size="sm" onClick={() => setSeconds((prev) => prev + 1)}>+1 segundo</SgButton>
 </div>`;
 
 const SIZES_CODE = `<SgGrid columns={{ base: 1, md: 3 }} gap={12}>
   <div className="space-y-2">
-    <p className="text-xs text-muted-foreground">Small</p>
+    <p className="text-xs text-muted-foreground">Pequeno</p>
     <SgSegmentDigit value="8" size={18} />
   </div>
   <div className="space-y-2">
-    <p className="text-xs text-muted-foreground">Medium</p>
+    <p className="text-xs text-muted-foreground">Médio</p>
     <SgSegmentDigit value="8" size={32} />
   </div>
   <div className="space-y-2">
-    <p className="text-xs text-muted-foreground">Large</p>
+    <p className="text-xs text-muted-foreground">Grande</p>
     <SgSegmentDigit value="8" size={52} />
   </div>
 </SgGrid>`;
 
 const COLORS_CODE = `<SgGrid columns={{ base: 1, md: 5 }} gap={12}>
   <div className="space-y-2">
-    <p className="text-xs text-muted-foreground">Default</p>
+    <p className="text-xs text-muted-foreground">Padrão</p>
     <SgSegmentDigit value="8" size={42} />
   </div>
   <div className="space-y-2">
-    <p className="text-xs text-muted-foreground">Blue</p>
+    <p className="text-xs text-muted-foreground">Azul</p>
     <SgSegmentDigit value="8" size={42} color="#3b82f6" />
   </div>
   <div className="space-y-2">
-    <p className="text-xs text-muted-foreground">Yellow</p>
+    <p className="text-xs text-muted-foreground">Amarelo</p>
     <SgSegmentDigit value="8" size={42} color="#eab308" />
   </div>
   <div className="space-y-2">
-    <p className="text-xs text-muted-foreground">Green</p>
+    <p className="text-xs text-muted-foreground">Verde</p>
     <SgSegmentDigit value="8" size={42} color="#22c55e" />
   </div>
   <div className="space-y-2">
-    <p className="text-xs text-muted-foreground">White</p>
+    <p className="text-xs text-muted-foreground">Branco</p>
     <div className="inline-block rounded bg-neutral-900 p-1">
       <SgSegmentDigit value="8" size={42} color="#f8fafc" />
     </div>
@@ -205,9 +205,9 @@ export default function SgSegmentDigitShowcase() {
           <div className="flex items-center gap-4">
             <SgSegmentDigit value={digit} size={64} />
             <div className="flex flex-col gap-2">
-              <SgButton size="sm" onClick={nextDigit}>Next (+1)</SgButton>
-              <SgButton size="sm" severity="secondary" onClick={prevDigit}>Previous (-1)</SgButton>
-              <SgButton size="sm" severity="info" onClick={randomDigit}>Random</SgButton>
+              <SgButton size="sm" onClick={nextDigit}>{t(i18n, "showcase.common.labels.nextPlusOne")}</SgButton>
+              <SgButton size="sm" severity="secondary" onClick={prevDigit}>{t(i18n, "showcase.common.labels.previousMinusOne")}</SgButton>
+              <SgButton size="sm" severity="info" onClick={randomDigit}>{t(i18n, "showcase.common.labels.random")}</SgButton>
             </div>
           </div>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-segment-digit/samples/basico-0-9.tsx.sample" />
@@ -225,7 +225,7 @@ export default function SgSegmentDigitShowcase() {
               <SgSegmentDigit value={ss[0] ?? "0"} size={36} />
               <SgSegmentDigit value={ss[1] ?? "0"} size={36} />
             </div>
-            <SgButton size="sm" onClick={() => setSeconds((prev) => prev + 1)}>+1 second</SgButton>
+            <SgButton size="sm" onClick={() => setSeconds((prev) => prev + 1)}>{t(i18n, "showcase.common.labels.plusOneSecond")}</SgButton>
           </div>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/digits/sg-segment-digit/samples/composicao-estilo-relogio.tsx.sample" />
         </Section>
@@ -233,15 +233,15 @@ export default function SgSegmentDigitShowcase() {
         <Section title={t(i18n, `${K}.section3Title`)} description={t(i18n, `${K}.section3Description`)}>
           <SgGrid columns={{ base: 1, md: 3 }} gap={12}>
             <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">Small</p>
+              <p className="text-xs text-muted-foreground">{t(i18n, "showcase.common.labels.sizeSmall")}</p>
               <SgSegmentDigit value="8" size={18} />
             </div>
             <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">Medium</p>
+              <p className="text-xs text-muted-foreground">{t(i18n, "showcase.common.labels.sizeMedium")}</p>
               <SgSegmentDigit value="8" size={32} />
             </div>
             <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">Large</p>
+              <p className="text-xs text-muted-foreground">{t(i18n, "showcase.common.labels.sizeLarge")}</p>
               <SgSegmentDigit value="8" size={52} />
             </div>
           </SgGrid>
@@ -251,23 +251,23 @@ export default function SgSegmentDigitShowcase() {
         <Section title={t(i18n, `${K}.section4Title`)} description={t(i18n, `${K}.section4Description`)}>
           <SgGrid columns={{ base: 1, md: 5 }} gap={12}>
             <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">Default</p>
+              <p className="text-xs text-muted-foreground">{t(i18n, `${K}.labels.default`)}</p>
               <SgSegmentDigit value="8" size={42} />
             </div>
             <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">Blue</p>
+              <p className="text-xs text-muted-foreground">{t(i18n, `${K}.labels.blue`)}</p>
               <SgSegmentDigit value="8" size={42} color="#3b82f6" />
             </div>
             <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">Yellow</p>
+              <p className="text-xs text-muted-foreground">{t(i18n, `${K}.labels.yellow`)}</p>
               <SgSegmentDigit value="8" size={42} color="#eab308" />
             </div>
             <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">Green</p>
+              <p className="text-xs text-muted-foreground">{t(i18n, `${K}.labels.green`)}</p>
               <SgSegmentDigit value="8" size={42} color="#22c55e" />
             </div>
             <div className="space-y-2">
-              <p className="text-xs text-muted-foreground">White</p>
+              <p className="text-xs text-muted-foreground">{t(i18n, `${K}.labels.white`)}</p>
               <div className="inline-block rounded bg-neutral-900 p-1">
                 <SgSegmentDigit value="8" size={42} color="#f8fafc" />
               </div>

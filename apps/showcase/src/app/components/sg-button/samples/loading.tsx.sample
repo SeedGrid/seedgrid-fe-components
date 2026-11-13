@@ -5,9 +5,9 @@ import { SgButton } from "@seedgrid/fe-components";
 export default function Example() {
   return (
     <div className="flex flex-wrap items-center gap-3">
-      <SgButton loading>Processing...</SgButton>
-      <SgButton severity="success" loading>Saving...</SgButton>
-      <SgButton severity="danger" loading leftIcon={<X className="size-4" />}>Deleting...</SgButton>
+      <SgButton loading>Processando...</SgButton>
+      <SgButton severity="success" loading>Salvando...</SgButton>
+      <SgButton severity="danger" loading leftIcon={<X className="size-4" />}>Excluindo...</SgButton>
       <SgButton shape="rounded" loading leftIcon={<Check className="size-4" />} />
     </div>
   );

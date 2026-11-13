@@ -10,7 +10,7 @@ import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
-import { t, useShowcaseI18n } from "../../../i18n";
+import { t, useShowcaseI18n, type ShowcaseI18n } from "../../../i18n";
 
 const K = "showcase.component.multiSelectChips";
 
@@ -32,33 +32,33 @@ function Section(props: { id?: string; title: string; description?: string; chil
   );
 }
 
-const COMPANIES = [
-  { label: "Empresa 1", value: "e1" },
-  { label: "Empresa 2", value: "e2" },
-  { label: "Empresa 3", value: "e3" },
-  { label: "Empresa 4", value: "e4" },
-  { label: "Empresa 5", value: "e5" },
-  { label: "Empresa 6", value: "e6" }
+const companies = (i18n: ShowcaseI18n) => [
+  { label: t(i18n, `${K}.labels.company1`), value: "e1" },
+  { label: t(i18n, `${K}.labels.company2`), value: "e2" },
+  { label: t(i18n, `${K}.labels.company3`), value: "e3" },
+  { label: t(i18n, `${K}.labels.company4`), value: "e4" },
+  { label: t(i18n, `${K}.labels.company5`), value: "e5" },
+  { label: t(i18n, `${K}.labels.company6`), value: "e6" }
 ];
 
-const BRANCHES = [
-  { label: "1 - Matriz São Paulo", chipLabel: "1", value: 1 },
-  { label: "2 - Filial Campinas", chipLabel: "2", value: 2 },
-  { label: "3 - Filial Centro", chipLabel: "3", value: 3 },
-  { label: "4 - Filial Ribeirão Preto", chipLabel: "4", value: 4 },
-  { label: "5 - Depósito Jundiaí", chipLabel: "5", value: 5 }
+const branchesData = (i18n: ShowcaseI18n) => [
+  { label: t(i18n, `${K}.labels.branch1`), chipLabel: "1", value: 1 },
+  { label: t(i18n, `${K}.labels.branch2`), chipLabel: "2", value: 2 },
+  { label: t(i18n, `${K}.labels.branch3`), chipLabel: "3", value: 3 },
+  { label: t(i18n, `${K}.labels.branch4`), chipLabel: "4", value: 4 },
+  { label: t(i18n, `${K}.labels.branch5`), chipLabel: "5", value: 5 }
 ];
 
-const TOPICS = [
+const topics = (i18n: ShowcaseI18n) => [
   { label: "Flutter", value: "flutter" },
   { label: "React", value: "react" },
   { label: "Quarkus", value: "quarkus" }
 ];
 
-const FORM_OPTIONS = [
-  { label: "Vendas", value: "vendas" },
-  { label: "Compras", value: "compras" },
-  { label: "Estoque", value: "estoque" }
+const formOptions = (i18n: ShowcaseI18n) => [
+  { label: t(i18n, `${K}.labels.sales`), value: "vendas" },
+  { label: t(i18n, `${K}.labels.purchasing`), value: "compras" },
+  { label: t(i18n, `${K}.labels.inventory`), value: "estoque" }
 ];
 
 function Selected(props: { label: string; none: string; value: SgMultiSelectOptionValue[] }) {
@@ -109,7 +109,7 @@ export default function SgMultiSelectChipsPage() {
               id="msc-empty"
               label={t(i18n, `${K}.labels.companies`)}
               placeholder={companiesPlaceholder}
-              options={COMPANIES}
+              options={companies(i18n)}
               value={empty}
               onChange={setEmpty}
             />
@@ -120,7 +120,7 @@ export default function SgMultiSelectChipsPage() {
               id="msc-preselected"
               label={t(i18n, `${K}.labels.companiesSelected`)}
               placeholder={companiesPlaceholder}
-              options={COMPANIES}
+              options={companies(i18n)}
               value={preselected}
               onChange={setPreselected}
             />
@@ -135,7 +135,7 @@ export default function SgMultiSelectChipsPage() {
               id="msc-searchable"
               label={t(i18n, `${K}.labels.companies`)}
               placeholder={companiesPlaceholder}
-              options={COMPANIES}
+              options={companies(i18n)}
               value={searchable}
               onChange={setSearchable}
               searchable
@@ -151,7 +151,7 @@ export default function SgMultiSelectChipsPage() {
               id="msc-capped"
               label={t(i18n, `${K}.labels.companiesMax3`)}
               placeholder={t(i18n, `${K}.placeholders.upTo3`)}
-              options={COMPANIES}
+              options={companies(i18n)}
               value={capped}
               onChange={setCapped}
               clearable
@@ -173,7 +173,7 @@ export default function SgMultiSelectChipsPage() {
               id="msc-disabled"
               label={t(i18n, `${K}.labels.companies`)}
               placeholder={companiesPlaceholder}
-              options={COMPANIES}
+              options={companies(i18n)}
               value={["e1", "e3"]}
               enabled={false}
             />
@@ -187,7 +187,7 @@ export default function SgMultiSelectChipsPage() {
               id="msc-chip-label"
               label={t(i18n, `${K}.labels.branches`)}
               placeholder={companiesPlaceholder}
-              options={BRANCHES}
+              options={branchesData(i18n)}
               value={branches}
               onChange={setBranches}
               searchable
@@ -202,12 +202,12 @@ export default function SgMultiSelectChipsPage() {
             <SgMultiSelectChips
               id="msc-controlled"
               label={t(i18n, `${K}.labels.controlledField`)}
-              options={TOPICS}
+              options={topics(i18n)}
               value={controlled}
               onChange={setControlled}
             />
             <div className="mt-2 flex flex-wrap gap-2">
-              <SgButton size="sm" appearance="outline" onClick={() => setControlled(TOPICS.map((o) => o.value))}>
+              <SgButton size="sm" appearance="outline" onClick={() => setControlled(topics(i18n).map((o) => o.value))}>
                 {t(i18n, `${K}.buttons.selectAll`)}
               </SgButton>
               <SgButton size="sm" appearance="outline" onClick={() => setControlled([])}>
@@ -227,7 +227,7 @@ export default function SgMultiSelectChipsPage() {
               control={control}
               label={t(i18n, `${K}.labels.formField`)}
               required
-              options={FORM_OPTIONS}
+              options={formOptions(i18n)}
             />
             <SgButton type="submit" className="mt-3">
               {t(i18n, `${K}.buttons.submit`)}

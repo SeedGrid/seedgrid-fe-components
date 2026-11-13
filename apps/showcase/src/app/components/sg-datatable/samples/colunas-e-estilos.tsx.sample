@@ -24,7 +24,7 @@ const PRODUCT_ROWS: ProductRow[] = [
 const MANAGER_COLUMNS: SgDatatableColumn<ProductRow>[] = [
   {
     field: "code",
-    header: "Code",
+    header: "Código",
     sortable: true,
     hideable: false,
     reorderable: false,
@@ -33,7 +33,7 @@ const MANAGER_COLUMNS: SgDatatableColumn<ProductRow>[] = [
   },
   {
     field: "name",
-    header: "Product",
+    header: "Produto",
     sortable: true,
     minWidth: 220,
     body: (row) => (
@@ -46,10 +46,10 @@ const MANAGER_COLUMNS: SgDatatableColumn<ProductRow>[] = [
   },
   {
     field: "category",
-    header: "Category",
+    header: "Categoria",
     sortable: true,
     filter: true,
-    filterPlaceholder: "Filter category",
+    filterPlaceholder: "Filtrar categoria",
     hidden: true
   },
   {
@@ -57,11 +57,11 @@ const MANAGER_COLUMNS: SgDatatableColumn<ProductRow>[] = [
     header: "Status",
     sortable: true,
     filter: true,
-    filterPlaceholder: "Filter status"
+    filterPlaceholder: "Filtrar status"
   },
   {
     field: "stock",
-    header: "Stock",
+    header: "Estoque",
     sortable: true,
     align: "right",
     bodyClassName: (row) => (row.stock < 10 ? "font-semibold text-[rgb(var(--sg-warning-900))]" : undefined)
@@ -83,7 +83,7 @@ export default function ColumnManagerDatatableExample() {
       showColumnFilters
       showClearFiltersButton
       showColumnManager
-      columnManagerLabel="Manage columns"
+      columnManagerLabel="Gerenciar colunas"
       columnManagerMaxHeight={220}
       removableSort={false}
       rowClassName={(row) =>

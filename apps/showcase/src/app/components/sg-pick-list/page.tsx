@@ -20,7 +20,7 @@ import { useAiManifestComponent } from "../ai/useAiManifestComponent";
 import ShowcasePropsReference, { type ShowcasePropRow } from "../ShowcasePropsReference";
 import ShowcaseStickyHeader from "../ShowcaseStickyHeader";
 import { useShowcaseAnchors } from "../useShowcaseAnchors";
-import { t, useShowcaseI18n } from "../../../i18n";
+import { t, useShowcaseI18n, type ShowcaseI18n } from "../../../i18n";
 
 const K = "showcase.component.pickList";
 
@@ -125,12 +125,12 @@ const PICK_LIST_PROP_FIELDS: PropField[] = [
 
 
 
-const ROADMAP_SOURCE: SgPickListItem[] = [
-  { label: "Authentication", value: "auth" },
-  { label: "Dashboard", value: "dashboard" },
-  { label: "Notifications", value: "notifications" },
-  { label: "Audit logs", value: "audit" },
-  { label: "Billing", value: "billing" }
+const roadmapSource = (i18n: ShowcaseI18n): SgPickListItem[] => [
+  { label: t(i18n, `${K}.labels.authentication`), value: "auth" },
+  { label: t(i18n, `${K}.labels.dashboard`), value: "dashboard" },
+  { label: t(i18n, `${K}.labels.notifications`), value: "notifications" },
+  { label: t(i18n, `${K}.labels.auditLogs`), value: "audit" },
+  { label: t(i18n, `${K}.labels.billing`), value: "billing" }
 ];
 
 const TEAM_SOURCE: SgPickListItem[] = [
@@ -139,12 +139,12 @@ const TEAM_SOURCE: SgPickListItem[] = [
   { label: "Carla", value: "carla" }
 ];
 
-const CITIES: SgPickListItem[] = [
-  { label: "Berlin", value: "berlin" },
-  { label: "Boston", value: "boston" },
-  { label: "Lisbon", value: "lisbon" },
-  { label: "Madrid", value: "madrid" },
-  { label: "Sao Paulo", value: "sao-paulo" }
+const cities = (i18n: ShowcaseI18n): SgPickListItem[] => [
+  { label: t(i18n, `${K}.labels.cityBerlin`), value: "berlin" },
+  { label: t(i18n, `${K}.labels.cityBoston`), value: "boston" },
+  { label: t(i18n, `${K}.labels.cityLisbon`), value: "lisbon" },
+  { label: t(i18n, `${K}.labels.cityMadrid`), value: "madrid" },
+  { label: t(i18n, `${K}.labels.citySaoPaulo`), value: "sao-paulo" }
 ];
 
 export default function SgPickListShowcase() {
@@ -227,36 +227,36 @@ export default function SgPickListShowcase() {
     deps: [i18n.locale]
   });
 
-  const [basicValue, setBasicValue] = React.useState({ source: ROADMAP_SOURCE, target: [] as SgPickListItem[] });
+  const [basicValue, setBasicValue] = React.useState({ source: roadmapSource(i18n), target: [] as SgPickListItem[] });
   const [filterValue, setFilterValue] = React.useState({
     source: [
-      { label: "Berlin", value: "berlin" },
-      { label: "Boston", value: "boston" },
-      { label: "Lisbon", value: "lisbon" },
-      { label: "Madrid", value: "madrid" },
-      { label: "Sao Paulo", value: "sao-paulo" }
+      { label: t(i18n, `${K}.labels.cityBerlin`), value: "berlin" },
+      { label: t(i18n, `${K}.labels.cityBoston`), value: "boston" },
+      { label: t(i18n, `${K}.labels.cityLisbon`), value: "lisbon" },
+      { label: t(i18n, `${K}.labels.cityMadrid`), value: "madrid" },
+      { label: t(i18n, `${K}.labels.citySaoPaulo`), value: "sao-paulo" }
     ] as SgPickListItem[],
     target: [] as SgPickListItem[]
   });
   const [transferOnlyValue, setTransferOnlyValue] = React.useState({
     source: [
-      { label: "Backlog", value: "backlog", icon: <Landmark className="h-4 w-4" /> },
-      { label: "In progress", value: "in-progress", icon: <RefreshCw className="h-4 w-4" /> },
-      { label: "Review", value: "review", icon: <Bell className="h-4 w-4" /> }
+      { label: t(i18n, `${K}.labels.backlog`), value: "backlog", icon: <Landmark className="h-4 w-4" /> },
+      { label: t(i18n, `${K}.labels.inProgress`), value: "in-progress", icon: <RefreshCw className="h-4 w-4" /> },
+      { label: t(i18n, `${K}.labels.review`), value: "review", icon: <Bell className="h-4 w-4" /> }
     ] as SgPickListItem[],
     target: [
-      { label: "Done", value: "done", icon: <Star className="h-4 w-4" /> }
+      { label: t(i18n, `${K}.labels.done`), value: "done", icon: <Star className="h-4 w-4" /> }
     ] as SgPickListItem[]
   });
   const [reorderValue, setReorderValue] = React.useState({
     source: [
-      { label: "Task A", value: "task-a" },
-      { label: "Task B", value: "task-b" },
-      { label: "Task C", value: "task-c" }
+      { label: t(i18n, `${K}.labels.taskA`), value: "task-a" },
+      { label: t(i18n, `${K}.labels.taskB`), value: "task-b" },
+      { label: t(i18n, `${K}.labels.taskC`), value: "task-c" }
     ] as SgPickListItem[],
     target: [
-      { label: "Done X", value: "done-x" },
-      { label: "Done Y", value: "done-y" }
+      { label: t(i18n, `${K}.labels.doneX`), value: "done-x" },
+      { label: t(i18n, `${K}.labels.doneY`), value: "done-y" }
     ] as SgPickListItem[]
   });
   const [templateValue, setTemplateValue] = React.useState({
@@ -298,8 +298,8 @@ export default function SgPickListShowcase() {
         <Section title={texts.sectionTitles[0]} description={texts.sectionDescriptions[0]}>
           <SgPickList
             id="pick-basic"
-            title="Roadmap planning"
-            source={ROADMAP_SOURCE}
+            title={t(i18n, `${K}.labels.roadmapPlanning`)}
+            source={roadmapSource(i18n)}
             target={[]}
             value={basicValue}
             onChange={(event) => setBasicValue({ source: event.source, target: event.target })}
@@ -313,14 +313,14 @@ export default function SgPickListShowcase() {
         <Section title={texts.sectionTitles[1]} description={texts.sectionDescriptions[1]}>
           <SgPickList
             id="pick-filter"
-            title="Cities"
+            title={t(i18n, `${K}.labels.cities`)}
             source={filterValue.source}
             target={filterValue.target}
             value={filterValue}
             onChange={(event) => setFilterValue({ source: event.source, target: event.target })}
             showSourceFilter
             showTargetFilter
-            sourceHeader="Available"
+            sourceHeader={t(i18n, `${K}.labels.available`)}
             targetHeader="Selected"
           />
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-pick-list/samples/com-filtros.tsx.sample" />
@@ -329,7 +329,7 @@ export default function SgPickListShowcase() {
         <Section title={texts.sectionTitles[2]} description={texts.sectionDescriptions[2]}>
           <SgPickList
             id="pick-transfer-only"
-            title="Transfer only"
+            title={t(i18n, `${K}.labels.transferOnly`)}
             source={transferOnlyValue.source}
             target={transferOnlyValue.target}
             value={transferOnlyValue}
@@ -348,7 +348,7 @@ export default function SgPickListShowcase() {
           <p className="text-sm text-muted-foreground">{texts.dragHint}</p>
           <SgPickList
             id="pick-reorder"
-            title="Sprint board"
+            title={t(i18n, `${K}.labels.sprintBoard`)}
             source={reorderValue.source}
             target={reorderValue.target}
             value={reorderValue}
@@ -364,7 +364,7 @@ export default function SgPickListShowcase() {
           <SgPickList
             ref={pickListRef}
             id="pick-ref"
-            title="Channels"
+            title={t(i18n, `${K}.labels.channels`)}
             source={externalValue.source}
             target={externalValue.target}
             value={externalValue}
@@ -384,7 +384,7 @@ export default function SgPickListShowcase() {
         <Section title={texts.sectionTitles[5]} description={texts.sectionDescriptions[5]}>
           <SgPickList
             id="pick-template"
-            title="Team capacity"
+            title={t(i18n, `${K}.labels.teamCapacity`)}
             source={templateValue.source}
             target={templateValue.target}
             value={templateValue}
@@ -395,7 +395,7 @@ export default function SgPickListShowcase() {
                 <SgGrid columns={{ base: 1, sm: 2 }} gap={8} className="w-full">
                   <span className="font-medium">{item.label}</span>
                   <span className="text-xs text-[rgb(var(--sg-muted))]">
-                    {"Owner: " + (meta?.owner ?? "-") + " | Effort: " + (meta?.effort ?? "-")}
+                    {t(i18n, `${K}.labels.ownerEffort`, { owner: meta?.owner ?? "-", effort: meta?.effort ?? "-" })}
                   </span>
                 </SgGrid>
               );
@@ -431,7 +431,7 @@ export default function SgPickListShowcase() {
           <SgPickList
             id="pick-starts-with"
             title={t(i18n, `${K}.labels.cities`)}
-            source={CITIES}
+            source={cities(i18n)}
             target={[]}
             showSourceFilter
             showTargetFilter

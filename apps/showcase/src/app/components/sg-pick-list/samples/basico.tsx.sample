@@ -2,11 +2,11 @@ import React from "react";
 import { SgPickList, type SgPickListItem } from "@seedgrid/fe-components";
 
 const ROADMAP_SOURCE: SgPickListItem[] = [
-  { label: "Authentication", value: "auth" },
-  { label: "Dashboard", value: "dashboard" },
-  { label: "Notifications", value: "notifications" },
-  { label: "Audit logs", value: "audit" },
-  { label: "Billing", value: "billing" }
+  { label: "Autenticação", value: "auth" },
+  { label: "Painel", value: "dashboard" },
+  { label: "Notificações", value: "notifications" },
+  { label: "Logs de auditoria", value: "audit" },
+  { label: "Faturamento", value: "billing" }
 ];
 
 export default function Example() {
@@ -16,7 +16,7 @@ export default function Example() {
     <>
       <SgPickList
         id="pick-basic"
-        title="Roadmap planning"
+        title="Planejamento do roadmap"
         source={ROADMAP_SOURCE}
         target={[]}
         value={basicValue}

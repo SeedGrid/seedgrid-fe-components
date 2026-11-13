@@ -2,11 +2,11 @@ import React from "react";
 import { SgRadioGroup, type SgRadioGroupOption } from "@seedgrid/fe-components";
 
 const BASIC_OPTIONS: SgRadioGroupOption[] = [
-  { label: "Option 1", value: "option1" },
-  { label: "Option 2", value: "option2" },
-  { label: "Option 3", value: "option3" }
+  { label: "Opção 1", value: "option1" },
+  { label: "Opção 2", value: "option2" },
+  { label: "Opção 3", value: "option3" }
 ];
 
 export default function Example() {
-  return <SgRadioGroup id="disabled-group" title="Options desabilitadas" source={BASIC_OPTIONS} value="option2" enabled={false} />;
+  return <SgRadioGroup id="disabled-group" title="Opções desabilitadas" source={BASIC_OPTIONS} value="option2" enabled={false} />;
 }
