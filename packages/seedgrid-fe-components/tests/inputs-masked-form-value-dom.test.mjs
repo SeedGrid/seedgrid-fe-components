@@ -104,6 +104,8 @@ for (const mode of ["control", "register"]) {
   for (const [comp, raw, expected] of [
     ["SgInputCPF", "529982247251234", "529.982.247-25"],
     ["SgInputCNPJ", "112223330001819999", "11.222.333/0001-81"],
+    ["SgInputCPFCNPJ", "112223330001819999", "11.222.333/0001-81"],
+    ["SgInputPhone", "119876543219999", "(11) 98765-4321"],
     ["SgInputPostalCode", "045381329999", "04538-132"]
   ]) {
     test(`${comp} (${mode}): valor externo maior que a mascara e cortado na mascara (defaultValue e setValue)`, async () => {
