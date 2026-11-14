@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "input",
   subcategory: "phone",
   description:
-    "Campo especializado para telefone com mascara, validacao de comprimento e integracao com formularios.",
+    "Campo especializado para telefone com mascara, validacao de comprimento e integracao com formularios. Contrato de valor: o valor do formulario (onChange avulso, control e register) e SEMPRE mascarado, digitado ou setado por codigo (defaultValues, setValue, reset, value); a entrada aceita valor cru ou mascarado; valor maior que a mascara e cortado; telefone com +55 perde o DDI; para guardar so digitos use value.replace(/\\D/g, \"\").",
   tags: ["form", "phone", "contact", "mask", "rhf"],
   capabilities: ["rhf", "mask", "validation", "phone-format", "clearable"],
   fieldSemantics: ["phone", "mobilePhone", "contactPhone", "telephoneNumber"],

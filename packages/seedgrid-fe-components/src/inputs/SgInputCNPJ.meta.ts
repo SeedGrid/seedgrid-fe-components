@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "input",
   subcategory: "document",
   description:
-    "Campo especializado para CNPJ com mascara, validacao de digitos e suporte opcional a consulta externa.",
+    "Campo especializado para CNPJ com mascara, validacao de digitos e suporte opcional a consulta externa. Contrato de valor: o valor do formulario (onChange avulso, control e register) e SEMPRE mascarado, digitado ou setado por codigo (defaultValues, setValue, reset, value); a entrada aceita valor cru ou mascarado; valor maior que a mascara e cortado; para guardar so digitos use value.replace(/\\D/g, \"\").",
   tags: ["form", "document", "cnpj", "brazil", "rhf"],
   capabilities: ["rhf", "mask", "validation", "cnpj", "publica-cnpj", "clearable"],
   fieldSemantics: ["cnpj", "companyTaxId", "organizationDocument", "brazilianCompanyIdentifier"],

@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "input",
   subcategory: "postal-code",
   description:
-    "Campo especializado para CEP e codigos postais com suporte a multiplos paises, mascaras e consulta opcional ao ViaCEP.",
+    "Campo especializado para CEP e codigos postais com suporte a multiplos paises, mascaras e consulta opcional ao ViaCEP. Contrato de valor: o valor do formulario (onChange avulso, control e register) e SEMPRE mascarado, digitado ou setado por codigo (defaultValues, setValue, reset, value); a entrada aceita valor cru ou mascarado; valor maior que a mascara e cortado; para guardar so digitos use value.replace(/\\D/g, \"\").",
   tags: ["form", "postal-code", "cep", "address", "rhf"],
   capabilities: ["rhf", "mask", "validation", "country-aware", "viacep", "clearable"],
   fieldSemantics: ["postalCode", "zipCode", "cep", "addressCode", "locationCode"],
