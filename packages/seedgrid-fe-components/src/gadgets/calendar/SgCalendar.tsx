@@ -132,6 +132,11 @@ export type SgCalendarProps = Omit<React.HTMLAttributes<HTMLDivElement>, "childr
   enabled?: boolean;
   showTodayShortcut?: boolean;
   cardTitle?: React.ReactNode;
+  /**
+   * Arrasto do card: undefined = automatico (arrasta em largura >= 640px), true = sempre, false = nunca.
+   * Tem prioridade sobre `cardProps.draggable`.
+   */
+  draggable?: boolean;
   cardProps?: Omit<SgCardProps, "children" | "title">;
 };
 
@@ -159,10 +164,11 @@ export function SgCalendar(props: Readonly<SgCalendarProps>) {
     className,
     style,
     cardTitle,
+    draggable,
     cardProps,
     ...rest
   } = props;
-  const resolvedDraggable = useSgAutoDraggable(cardProps?.draggable); // undefined = automatico (>= 640px), true = sempre, false = nunca
+  const resolvedDraggable = useSgAutoDraggable(draggable ?? cardProps?.draggable); // undefined = automatico (>= 640px), true = sempre, false = nunca
   const resolvedCardTitle = cardTitle ?? t(i18n, "components.gadgets.calendar.title");
 
   const today = React.useMemo(() => normalizeDate(new Date()), []);

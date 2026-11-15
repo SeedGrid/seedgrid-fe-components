@@ -203,6 +203,7 @@ const CLOCK_PROPS: ShowcasePropRow[] = [
   { prop: "style", type: "React.CSSProperties", defaultValue: "-", description: "Inline style extra no container do relogio." },
   { prop: "centerOverlay", type: "ReactNode", defaultValue: "-", description: "Conteudo opcional sobreposto ao centro do relogio analogico." },
   { prop: "cardTitle", type: "ReactNode", defaultValue: '"Clock/Relógio"', description: "Titulo do SgCard usado pelo gadget." },
+  { prop: "draggable", type: "boolean", defaultValue: "automatico", description: "Arrasto do card: automatico (arrasta em largura >= 640px), true = sempre, false = nunca. Tem prioridade sobre cardProps.draggable." },
   { prop: "cardProps", type: 'Omit<SgCardProps, "children" | "title">', defaultValue: "-", description: "Sobrescreve configuracoes padrao do SgCard do gadget." }
 ];
 export function SgClockShowcaseClient({ initialServerTime }: { initialServerTime: string }) {
@@ -447,7 +448,8 @@ export function SgClockShowcaseClient({ initialServerTime }: { initialServerTime
               initialServerTime={initialServerTime}
               timezone="America/Sao_Paulo"
               cardTitle={t(i18n, "showcase.component.clock.labels.brasiliaTime")}
-              cardProps={{ id: "brasilia", draggable: false, collapsible: false }}
+              draggable={false}
+              cardProps={{ id: "brasilia", collapsible: false }}
             />
             <div className="mt-6">
               <CodeBlock sampleFile="apps/showcase/src/app/components/gadgets/sg-clock/samples/cartao.tsx.sample" />
@@ -471,14 +473,14 @@ export function SgClockShowcaseClient({ initialServerTime }: { initialServerTime
                 initialServerTime={initialServerTime}
                 timezone="UTC"
                 cardTitle={t(i18n, "showcase.component.clock.labels.dragAlways")}
-                cardProps={{ id: "arraste-sempre", draggable: true }}
+                draggable={true} cardProps={{ id: "arraste-sempre" }}
               />
               <SgClock
                 clockStyle="digital"
                 initialServerTime={initialServerTime}
                 timezone="UTC"
                 cardTitle={t(i18n, "showcase.component.clock.labels.dragNever")}
-                cardProps={{ id: "arraste-nunca", draggable: false }}
+                draggable={false} cardProps={{ id: "arraste-nunca" }}
               />
             </SgGrid>
             <div className="mt-6">

@@ -97,6 +97,16 @@ for (const [name, Comp, props] of [
     assert.equal(r.transform, "");
   });
 
+  test(`${name}: prop de topo draggable=true arrasta sempre e tem prioridade sobre cardProps.draggable`, async () => {
+    const r = await transformOf(Comp, { ...props, draggable: true, cardProps: { draggable: false } }, true, inside);
+    assert.match(r.transform, /translate3d\(50px, 20px, 0\)/);
+  });
+
+  test(`${name}: prop de topo draggable=false nunca arrasta, mesmo >= 640px`, async () => {
+    const r = await transformOf(Comp, { ...props, draggable: false }, false, inside);
+    assert.equal(r.transform, "");
+  });
+
   test(`${name}: posicao salva que deixa o cartao fora da viewport e descartada`, async () => {
     const r = await transformOf(Comp, props, false, outside);
     assert.equal(r.transform, "");

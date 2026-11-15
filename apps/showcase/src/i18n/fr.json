@@ -4430,5 +4430,6 @@
   "showcase.component.calendar.labels.months3": "3 mois",
   "showcase.component.calendar.labels.months6": "6 mois",
   "showcase.component.calendar.labels.months12": "12 mois",
-  "showcase.component.calendar.labels.chosen": "Choisie : {date}"
+  "showcase.component.calendar.labels.chosen": "Choisie : {date}",
+  "showcase.component.calendar.propsDraggable": "Déplacement de la carte : automatique (déplaçable à partir de 640px de largeur), true = toujours, false = jamais. Prioritaire sur cardProps.draggable."
 }

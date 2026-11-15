@@ -135,6 +135,7 @@ export default function SgCalendarPage() {
       { prop: "enabled", type: "boolean", defaultValue: "true", description: t(i18n, "showcase.component.calendar.sections.enabled.description") },
       { prop: "showTodayShortcut", type: "boolean", defaultValue: "true", description: t(i18n, `${K}.propsTodayShortcut`) },
       { prop: "className / style", type: "string / CSSProperties", defaultValue: "-", description: t(i18n, `${K}.propsClassStyle`) },
+      { prop: "draggable", type: "boolean", defaultValue: "automatico", description: t(i18n, `${K}.propsDraggable`) },
       { prop: "cardTitle / cardProps", type: 'ReactNode / Omit<SgCardProps, "children" | "title">', defaultValue: '"Calendar/Calendário" / -', description: t(i18n, `${K}.propsCard`) }
     ],
     [i18n]
@@ -227,8 +228,8 @@ export default function SgCalendarPage() {
         <Section title={t(i18n, `${K}.dragTitle`)} description={t(i18n, `${K}.dragDescription`)}>
           <SgGrid columns={{ base: 1, md: 3 }} gap={16}>
             <SgCalendar cardTitle={t(i18n, `${K}.dragAuto`)} cardProps={{ id: "arraste-auto" }} />
-            <SgCalendar cardTitle={t(i18n, `${K}.dragAlways`)} cardProps={{ id: "arraste-sempre", draggable: true }} />
-            <SgCalendar cardTitle={t(i18n, `${K}.dragNever`)} cardProps={{ id: "arraste-nunca", draggable: false }} />
+            <SgCalendar cardTitle={t(i18n, `${K}.dragAlways`)} draggable={true} cardProps={{ id: "arraste-sempre" }} />
+            <SgCalendar cardTitle={t(i18n, `${K}.dragNever`)} draggable={false} cardProps={{ id: "arraste-nunca" }} />
           </SgGrid>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-calendar/samples/arraste.tsx.sample" />
         </Section>

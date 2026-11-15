@@ -3641,5 +3641,12 @@
     "en": "Current locale of the components. Comes from the nearest SgComponentsI18nProvider or, without a provider, from the global state.",
     "es": "Locale actual de los componentes. Viene del SgComponentsI18nProvider más cercano o, sin provider, del estado global.",
     "fr": "Locale actuelle des composants. Provient du SgComponentsI18nProvider le plus proche ou, sans provider, de l'état global."
+  },
+  "Arrasto do card: automatico (arrasta em largura >= 640px), true = sempre, false = nunca. Tem prioridade sobre cardProps.draggable.": {
+    "pt": "Arrasto do card: automático (arrasta em largura ≥ 640px), true = sempre, false = nunca. Tem prioridade sobre cardProps.draggable.",
+    "pt-BR": "Arrasto do card: automático (arrasta em largura ≥ 640px), true = sempre, false = nunca. Tem prioridade sobre cardProps.draggable.",
+    "en": "Card dragging: automatic (draggable at widths ≥ 640px), true = always, false = never. Takes precedence over cardProps.draggable.",
+    "es": "Arrastre de la tarjeta: automático (se arrastra con ancho ≥ 640px), true = siempre, false = nunca. Tiene prioridad sobre cardProps.draggable.",
+    "fr": "Déplacement de la carte : automatique (déplaçable à partir de 640px de largeur), true = toujours, false = jamais. Prioritaire sur cardProps.draggable."
   }
 }

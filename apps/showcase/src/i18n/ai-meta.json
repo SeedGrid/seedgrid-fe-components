@@ -10463,5 +10463,12 @@
     "es": "Predeterminado sin provider",
     "fr": "Par défaut sans provider",
     "pt-BR": "Padrão sem provider"
+  },
+  "Arrasto do card: undefined = automatico (arrasta em largura >= 640px), true = sempre, false = nunca.\r\nTem prioridade sobre `cardProps.draggable`.": {
+    "pt-BR": "Arrasto do card: undefined = automático (arrasta em largura >= 640px), true = sempre, false = nunca.\r\nTem prioridade sobre `cardProps.draggable`.",
+    "pt-PT": "Arrasto do cartão: undefined = automático (arrasta em largura >= 640px), true = sempre, false = nunca.\r\nTem prioridade sobre `cardProps.draggable`.",
+    "en-US": "Card dragging: undefined = automatic (draggable at widths >= 640px), true = always, false = never.\r\nTakes precedence over `cardProps.draggable`.",
+    "es": "Arrastre de la tarjeta: undefined = automático (se arrastra con ancho >= 640px), true = siempre, false = nunca.\r\nTiene prioridad sobre `cardProps.draggable`.",
+    "fr": "Déplacement de la carte : undefined = automatique (déplaçable à partir de 640px de largeur), true = toujours, false = jamais.\r\nPrioritaire sur `cardProps.draggable`."
   }
 }

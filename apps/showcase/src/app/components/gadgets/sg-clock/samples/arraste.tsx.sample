@@ -16,14 +16,14 @@ export default function Example(props: { initialServerTime?: string }) {
         initialServerTime={initialServerTime}
         timezone="UTC"
         cardTitle="Sempre arrasta"
-        cardProps={{ id: "arraste-sempre", draggable: true }}
+        draggable={true} cardProps={{ id: "arraste-sempre" }}
       />
       <SgClock
         clockStyle="digital"
         initialServerTime={initialServerTime}
         timezone="UTC"
         cardTitle="Nunca arrasta"
-        cardProps={{ id: "arraste-nunca", draggable: false }}
+        draggable={false} cardProps={{ id: "arraste-nunca" }}
       />
     </SgGrid>
   );

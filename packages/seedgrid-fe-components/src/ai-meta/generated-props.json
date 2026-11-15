@@ -885,6 +885,12 @@
       "required": false
     },
     {
+      "name": "draggable",
+      "type": "boolean",
+      "required": false,
+      "description": "Arrasto do card: undefined = automatico (arrasta em largura >= 640px), true = sempre, false = nunca.\r\nTem prioridade sobre `cardProps.draggable`."
+    },
+    {
       "name": "enabled",
       "type": "boolean",
       "required": false,
@@ -1470,6 +1476,12 @@
       "type": "SgClockDigitBuilder",
       "required": false,
       "description": "Desenha o relogio digital quando `digitalStyle` e `\"custom\"`. Sem ele, cai no estilo `default`."
+    },
+    {
+      "name": "draggable",
+      "type": "boolean",
+      "required": false,
+      "description": "Arrasto do card: undefined = automatico (arrasta em largura >= 640px), true = sempre, false = nunca.\r\nTem prioridade sobre `cardProps.draggable`."
     },
     {
       "name": "format",

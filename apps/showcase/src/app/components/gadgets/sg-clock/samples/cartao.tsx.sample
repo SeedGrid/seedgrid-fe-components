@@ -7,7 +7,8 @@ export default function Example(props: { initialServerTime?: string }) {
       initialServerTime={props.initialServerTime ?? new Date().toISOString()}
       timezone="America/Sao_Paulo"
       cardTitle="Hora de Brasília"
-      cardProps={{ id: "brasilia", draggable: false, collapsible: false }}
+      draggable={false}
+      cardProps={{ id: "brasilia", collapsible: false }}
     />
   );
 }

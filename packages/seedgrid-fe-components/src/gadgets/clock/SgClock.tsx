@@ -77,6 +77,11 @@ export type SgClockProps = {
   style?: React.CSSProperties;
   centerOverlay?: React.ReactNode;
   cardTitle?: React.ReactNode;
+  /**
+   * Arrasto do card: undefined = automatico (arrasta em largura >= 640px), true = sempre, false = nunca.
+   * Tem prioridade sobre `cardProps.draggable`.
+   */
+  draggable?: boolean;
   cardProps?: Omit<SgCardProps, "children" | "title">;
 };
 
@@ -673,10 +678,11 @@ export function SgClock(props: SgClockProps) {
     style,
     centerOverlay,
     cardTitle,
+    draggable,
     cardProps
   } = props;
   // cardProps.draggable: undefined = automatico (>= 640px), true = sempre, false = nunca.
-  const resolvedDraggable = useSgAutoDraggable(cardProps?.draggable);
+  const resolvedDraggable = useSgAutoDraggable(draggable ?? cardProps?.draggable);
   const resolvedCardTitle = cardTitle ?? t(i18n, "components.gadgets.clock.title");
 
   // Sem id/dragPersistKey nao ha como identificar a instancia de forma estavel entre carregamentos (uma chave
