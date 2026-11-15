@@ -76,6 +76,40 @@ function createRandomMotion(fontSize: number): DiscardMotion {
   };
 }
 
+/**
+ * Texto da folha: encolhe (escala) quando e mais largo que a folha, para nunca ser cortado pelas bordas do cartao.
+ * Mede a largura natural do texto (`white-space: nowrap`) e aplica `scale(disponivel / natural)`, nunca maior que 1.
+ */
+function FitText({
+  maxWidth,
+  style,
+  children,
+}: Readonly<{ maxWidth: number; style: React.CSSProperties; children: React.ReactNode }>) {
+  const ref = React.useRef<HTMLSpanElement | null>(null);
+  const [scale, setScale] = React.useState(1);
+  React.useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const natural = Math.max(el.offsetWidth, el.scrollWidth);
+    const next = natural > maxWidth && maxWidth > 0 ? maxWidth / natural : 1;
+    setScale((prev) => (Math.abs(prev - next) < 0.001 ? prev : next));
+  });
+  return (
+    <span
+      ref={ref}
+      data-sg-fit-text={scale < 1 ? scale.toFixed(3) : undefined}
+      style={{
+        ...style,
+        whiteSpace: "nowrap",
+        transform: scale < 1 ? `scale(${scale})` : undefined,
+        transformOrigin: "center center",
+      }}
+    >
+      {children}
+    </span>
+  );
+}
+
 /** px that each sheet peeks below the one above — visible "spine" line */
 const PER_LAYER_Y = 3;
 /** horizontal drift per layer — subtle perspective illusion */
@@ -123,6 +157,7 @@ function SgDiscardDigit({
   const cardH = Math.max(96, Math.round(fontSize * 1.52));
   const radius = Math.max(8, Math.round(fontSize * 0.15));
   const textSize = Math.max(18, Math.round(fontSize * 0.86));
+  const textMaxW = Math.max(8, cardW - 12); // largura util da folha (borda + respiro)
 
   // depth-1 backing layers so total visible sheets = depth
   const numStack = depth - 1;
@@ -341,7 +376,8 @@ function SgDiscardDigit({
             pointerEvents: "none",
           }}
         />
-        <span
+        <FitText
+          maxWidth={textMaxW}
           style={{
             position: "relative",
             zIndex: 1,
@@ -355,7 +391,7 @@ function SgDiscardDigit({
           }}
         >
           {displayValue}
-        </span>
+        </FitText>
       </div>
 
       {/* ── Incoming card (slides in from below on decreasePage) ──────────── */}
@@ -393,7 +429,8 @@ function SgDiscardDigit({
               pointerEvents: "none",
             }}
           />
-          <span
+          <FitText
+            maxWidth={textMaxW}
             style={{
               position: "relative",
               zIndex: 1,
@@ -407,7 +444,7 @@ function SgDiscardDigit({
             }}
           >
             {activeIncoming.value}
-          </span>
+          </FitText>
         </div>
       ) : null}
 
@@ -448,7 +485,8 @@ function SgDiscardDigit({
               pointerEvents: "none",
             }}
           />
-          <span
+          <FitText
+            maxWidth={textMaxW}
             style={{
               position: "relative",
               zIndex: 1,
@@ -462,7 +500,7 @@ function SgDiscardDigit({
             }}
           >
             {activeDiscard.value}
-          </span>
+          </FitText>
         </div>
       ) : null}
     </div>
