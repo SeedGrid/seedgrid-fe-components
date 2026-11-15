@@ -5,7 +5,7 @@ export default function Example() {
   const digit = "5";
 
   return (
-    <div className="flex items-center gap-6">
+    <div className="flex flex-wrap items-center gap-6">
       <div className="text-center">
         <p className="mb-2 text-xs text-muted-foreground">Pequeno</p>
         <SgFlipDigit value={digit} width={50} height={75} fontSize={45} />

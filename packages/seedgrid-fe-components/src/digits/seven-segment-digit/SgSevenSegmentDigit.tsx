@@ -176,6 +176,7 @@ export function SgSevenSegmentDigit({
       style={{
         width: w,
         height: h,
+        flexShrink: 0,
         borderRadius: rounded,
         overflow: "hidden",
         backgroundColor: panelBackground,

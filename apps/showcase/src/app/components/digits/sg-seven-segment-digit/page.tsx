@@ -54,20 +54,20 @@ function ColonDots() {
 }
 
 const HEX = Array.from("0123456789ABCDEF");
-const COLOR_OPTIONS: Array<{ label: string; value: SgSevenSegmentDigitPalette }> = [
-  { label: "Red", value: "red" },
-  { label: "Blue", value: "blue" },
-  { label: "Yellow", value: "yellow" },
-  { label: "Green", value: "green" },
-  { label: "White", value: "white" }
+const COLOR_OPTIONS: Array<{ labelKey: string; value: SgSevenSegmentDigitPalette }> = [
+  { labelKey: "colorRed", value: "red" },
+  { labelKey: "colorBlue", value: "blue" },
+  { labelKey: "colorYellow", value: "yellow" },
+  { labelKey: "colorGreen", value: "green" },
+  { labelKey: "colorWhite", value: "white" }
 ];
 
 const BASIC_CODE = `const COLOR_OPTIONS = [
-  { label: "Red", value: "red" },
-  { label: "Blue", value: "blue" },
-  { label: "Yellow", value: "yellow" },
-  { label: "Green", value: "green" },
-  { label: "White", value: "white" }
+  { label: "Vermelho", value: "red" },
+  { label: "Azul", value: "blue" },
+  { label: "Amarelo", value: "yellow" },
+  { label: "Verde", value: "green" },
+  { label: "Branco", value: "white" }
 ];
 
 const [digit, setDigit] = React.useState("0");
@@ -309,7 +309,7 @@ export default function SgSevenSegmentDigitShowcase() {
                     appearance={palette === item.value ? "solid" : "outline"}
                     onClick={() => setPalette(item.value)}
                   >
-                    {item.label}
+                    {t(i18n, `${K}.${item.labelKey}`)}
                   </SgButton>
                 ))}
               </div>

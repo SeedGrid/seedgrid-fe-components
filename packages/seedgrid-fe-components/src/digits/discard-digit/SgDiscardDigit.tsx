@@ -87,12 +87,14 @@ function FitText({
 }: Readonly<{ maxWidth: number; style: React.CSSProperties; children: React.ReactNode }>) {
   const ref = React.useRef<HTMLSpanElement | null>(null);
   const [scale, setScale] = React.useState(1);
+  const [natural, setNatural] = React.useState(0);
   React.useLayoutEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const natural = Math.max(el.offsetWidth, el.scrollWidth);
-    const next = natural > maxWidth && maxWidth > 0 ? maxWidth / natural : 1;
+    const nat = Math.max(el.offsetWidth, el.scrollWidth);
+    const next = nat > maxWidth && maxWidth > 0 ? maxWidth / nat : 1;
     setScale((prev) => (Math.abs(prev - next) < 0.001 ? prev : next));
+    setNatural((prev) => (prev === nat ? prev : nat));
   });
   return (
     <span
@@ -103,6 +105,8 @@ function FitText({
         whiteSpace: "nowrap",
         transform: scale < 1 ? `scale(${scale})` : undefined,
         transformOrigin: "center center",
+        // A caixa de layout acompanha a largura escalada, para o conteudo nao parecer estourar (scrollWidth) a folha.
+        marginInline: scale < 1 && natural > 0 ? `${-(natural * (1 - scale)) / 2}px` : undefined,
       }}
     >
       {children}
@@ -157,7 +161,7 @@ function SgDiscardDigit({
   const cardH = Math.max(96, Math.round(fontSize * 1.52));
   const radius = Math.max(8, Math.round(fontSize * 0.15));
   const textSize = Math.max(18, Math.round(fontSize * 0.86));
-  const textMaxW = Math.max(8, cardW - 12); // largura util da folha (borda + respiro)
+  const textMaxW = Math.max(8, cardW - 16); // largura util da folha (borda + respiro)
 
   // depth-1 backing layers so total visible sheets = depth
   const numStack = depth - 1;

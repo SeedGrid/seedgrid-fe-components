@@ -4,11 +4,11 @@ import React from "react";
 import { SgButton, SgSevenSegmentDigit } from "@seedgrid/fe-components";
 
 const COLOR_OPTIONS = [
-  { label: "Red", value: "red" },
-  { label: "Blue", value: "blue" },
-  { label: "Yellow", value: "yellow" },
-  { label: "Green", value: "green" },
-  { label: "White", value: "white" }
+  { label: "Vermelho", value: "red" },
+  { label: "Azul", value: "blue" },
+  { label: "Amarelo", value: "yellow" },
+  { label: "Verde", value: "green" },
+  { label: "Branco", value: "white" }
 ] as const;
 
 export default function Example() {

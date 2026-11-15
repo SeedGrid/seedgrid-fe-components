@@ -120,7 +120,7 @@ export default function SgFlipDigitShowcase() {
           title={t(i18n, `${K}.section3Title`)}
           description={t(i18n, `${K}.section3Description`)}
         >
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center gap-6">
             <div className="text-center">
               <p className="mb-2 text-xs text-muted-foreground">{t(i18n, "showcase.common.labels.sizeSmall")}</p>
               <SgFlipDigit value={digit} width={50} height={75} fontSize={45} />
@@ -141,7 +141,7 @@ export default function SgFlipDigitShowcase() {
           title={t(i18n, `${K}.section4Title`)}
           description={t(i18n, `${K}.section4Description`)}
         >
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <SgFlipDigit value={digit} />
             <SgFlipDigit value={String((Number(digit) + 1) % 10)} />
             <span className="mx-2 text-4xl font-bold">:</span>
