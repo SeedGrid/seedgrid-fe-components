@@ -1,10 +1,24 @@
 {
+  "(omitido = automatico)": {
+    "en-US": "(omitted = automatic)",
+    "pt-PT": "(omitido = automático)",
+    "es": "(omitido = automático)",
+    "fr": "(omis = automatique)",
+    "pt-BR": "(omitido = automático)"
+  },
   "Abas independentes; nesses casos prefira PageControlPage.": {
     "en-US": "Independent tabs; in those cases prefer PageControlPage.",
     "pt-PT": "Separadores independentes; nesses casos prefira PageControlPage.",
     "es": "Pestañas independientes; en esos casos prefiera PageControlPage.",
     "fr": "Onglets indépendants ; dans ces cas préférez PageControlPage.",
     "pt-BR": "Abas independentes; nesses casos prefira PageControlPage."
+  },
+  "Aberto por padrao e estilizacao": {
+    "en-US": "Open by default and styling",
+    "pt-PT": "Aberto por predefinição e estilização",
+    "es": "Abierto por defecto y estilización",
+    "fr": "Ouvert par défaut et stylisation",
+    "pt-BR": "Aberto por padrão e estilização"
   },
   "Abre a lista ao focar; com um item ja selecionado abre a lista completa.": {
     "en-US": "Opens the list on focus; with an item already selected, opens the full list.",
@@ -41,12 +55,26 @@
     "fr": "Action personnalisée (label et onClick).",
     "pt-BR": "Ação customizada (label e onClick)."
   },
+  "Acao e toast customizado": {
+    "en-US": "Action and custom toast",
+    "pt-PT": "Ação e toast personalizado",
+    "es": "Acción y toast personalizado",
+    "fr": "Action et toast personnalisé",
+    "pt-BR": "Ação e toast customizado"
+  },
   "Acao executada ao concluir o wizard.": {
     "en-US": "Action executed when completing the wizard.",
     "pt-PT": "Ação executada ao concluir o wizard.",
     "es": "Acción ejecutada al concluir el wizard.",
     "fr": "Action exécutée à la fin du wizard.",
     "pt-BR": "Ação executada ao concluir o wizard."
+  },
+  "Acao, borda e opacidade": {
+    "en-US": "Action, border and opacity",
+    "pt-PT": "Ação, borda e opacidade",
+    "es": "Acción, borde y opacidad",
+    "fr": "Action, bordure et opacité",
+    "pt-BR": "Ação, borda e opacidade"
   },
   "Acessar mensagens traduzidas dentro de componentes customizados.": {
     "en-US": "Access translated messages inside custom components.",
@@ -566,6 +594,13 @@
     "fr": "Annoter des cards, des listes et des en-têtes avec des informations de faible poids.",
     "pt-BR": "Anotar cards, listas e cabeçalhos com informação de baixo peso."
   },
+  "Ao trocar o recorte, a fatia fora de faixa cai para a primeira (clampYearPart); nao e' preciso tratar isso no consumidor.": {
+    "en-US": "When the cut changes, an out-of-range slice falls back to the first one (clampYearPart); the consumer does not need to handle this.",
+    "pt-PT": "Ao trocar o recorte, a fatia fora do intervalo passa para a primeira (clampYearPart); não é preciso tratar isso no consumidor.",
+    "es": "Al cambiar el recorte, la porción fuera de rango pasa a la primera (clampYearPart); no es necesario tratarlo en el consumidor.",
+    "fr": "Lorsque le découpage change, la tranche hors plage revient à la première (clampYearPart) ; le consommateur n'a pas à s'en occuper.",
+    "pt-BR": "Ao trocar o recorte, a fatia fora de faixa cai para a primeira (clampYearPart); não é preciso tratar isso no consumidor."
+  },
   "Apenas uma screen simples sem zonas; nesses casos prefira SgScreen.": {
     "en-US": "Just a simple screen without zones; in these cases, prefer SgScreen.",
     "pt-PT": "Apenas uma screen simples sem zonas; nestes casos, prefira SgScreen.",
@@ -635,6 +670,13 @@
     "es": "Archivos que no son imagen (PDF, hojas de cálculo); en esos casos use SgFileUpload.",
     "fr": "Fichiers qui ne sont pas des images (PDF, tableurs) ; dans ces cas, utilisez SgFileUpload.",
     "pt-BR": "Arquivos que não são imagem (PDF, planilhas); nesses casos use SgFileUpload."
+  },
+  "Arrasto do card: undefined = automatico (arrasta em largura >= 640px), true = sempre, false = nunca.\r\nTem prioridade sobre `cardProps.draggable`.": {
+    "pt-BR": "Arrasto do card: undefined = automático (arrasta em largura >= 640px), true = sempre, false = nunca.\r\nTem prioridade sobre `cardProps.draggable`.",
+    "pt-PT": "Arrasto do cartão: undefined = automático (arrasta em largura >= 640px), true = sempre, false = nunca.\r\nTem prioridade sobre `cardProps.draggable`.",
+    "en-US": "Card dragging: undefined = automatic (draggable at widths >= 640px), true = always, false = never.\r\nTakes precedence over `cardProps.draggable`.",
+    "es": "Arrastre de la tarjeta: undefined = automático (se arrastra con ancho >= 640px), true = siempre, false = nunca.\r\nTiene prioridad sobre `cardProps.draggable`.",
+    "fr": "Déplacement de la carte : undefined = automatique (déplaçable à partir de 640px de largeur), true = toujours, false = jamais.\r\nPrioritaire sur `cardProps.draggable`."
   },
   "Array de valores selecionados.": {
     "en-US": "Array of selected values.",
@@ -1161,12 +1203,26 @@
     "fr": "Callback avec la valeur brute du code.",
     "pt-BR": "Callback com o valor bruto do código."
   },
+  "Callback com o valor monetario como number (null somente com emptyValueIsNull).": {
+    "en-US": "Callback with the monetary value as a number (null only with emptyValueIsNull).",
+    "pt-PT": "Callback com o valor monetário como number (null apenas com emptyValueIsNull).",
+    "es": "Callback con el valor monetario como number (null solo con emptyValueIsNull).",
+    "fr": "Callback avec la valeur monétaire sous forme de number (null uniquement avec emptyValueIsNull).",
+    "pt-BR": "Callback com o valor monetário como number (null somente com emptyValueIsNull)."
+  },
   "Callback com o valor monetario normalizado.": {
     "en-US": "Callback with the normalized monetary value.",
     "pt-PT": "Callback com o valor monetário normalizado.",
     "es": "Callback con el valor monetario normalizado.",
     "fr": "Callback avec la valeur monétaire normalisée.",
     "pt-BR": "Callback com o valor monetário normalizado."
+  },
+  "Callback com o valor numerico atual (number; null somente com emptyValueIsNull).": {
+    "en-US": "Callback with the current numeric value (number; null only with emptyValueIsNull).",
+    "pt-PT": "Callback com o valor numérico atual (number; null apenas com emptyValueIsNull).",
+    "es": "Callback con el valor numérico actual (number; null solo con emptyValueIsNull).",
+    "fr": "Callback avec la valeur numérique actuelle (number ; null uniquement avec emptyValueIsNull).",
+    "pt-BR": "Callback com o valor numérico atual (number; null somente com emptyValueIsNull)."
   },
   "Callback com o valor numerico atual.": {
     "en-US": "Callback with the current numeric value.",
@@ -1469,6 +1525,13 @@
     "fr": "Champ spécialisé pour le CEP et les codes postaux avec prise en charge de plusieurs pays, de masques et d'une consultation facultative de ViaCEP.",
     "pt-BR": "Campo especializado para CEP e códigos postais com suporte a múltiplos países, máscaras e consulta opcional ao ViaCEP."
   },
+  "Campo especializado para CEP e codigos postais com suporte a multiplos paises, mascaras e consulta opcional ao ViaCEP. Contrato de valor: o valor do formulario (onChange avulso, control e register) e SEMPRE mascarado, digitado ou setado por codigo (defaultValues, setValue, reset, value); a entrada aceita valor cru ou mascarado; valor maior que a mascara e cortado; para guardar so digitos use value.replace(/\\D/g, \"\").": {
+    "en-US": "Specialized field for CEP and postal codes with support for multiple countries, masks and optional ViaCEP lookup. Value contract: the form value (standalone onChange, control and register) is ALWAYS masked, whether typed or set by code (defaultValues, setValue, reset, value); the input accepts a raw or a masked value; a value longer than the mask is truncated; to store digits only use value.replace(/\\D/g, \"\").",
+    "pt-PT": "Campo especializado para CEP e códigos postais com suporte para vários países, máscaras e consulta opcional ao ViaCEP. Contrato de valor: o valor do formulário (onChange avulso, control e register) é SEMPRE mascarado, digitado ou definido por código (defaultValues, setValue, reset, value); a entrada aceita valor cru ou mascarado; um valor maior do que a máscara é cortado; para guardar só dígitos use value.replace(/\\D/g, \"\").",
+    "es": "Campo especializado para CEP y códigos postales con soporte para varios países, máscaras y consulta opcional a ViaCEP. Contrato de valor: el valor del formulario (onChange suelto, control y register) es SIEMPRE enmascarado, escrito o establecido por código (defaultValues, setValue, reset, value); la entrada acepta un valor sin formato o enmascarado; un valor más largo que la máscara se recorta; para guardar solo dígitos use value.replace(/\\D/g, \"\").",
+    "fr": "Champ spécialisé pour le CEP et les codes postaux avec prise en charge de plusieurs pays, de masques et d'une consultation ViaCEP optionnelle. Contrat de valeur : la valeur du formulaire (onChange isolé, control et register) est TOUJOURS masquée, saisie ou définie par code (defaultValues, setValue, reset, value) ; la saisie accepte une valeur brute ou masquée ; une valeur plus longue que le masque est tronquée ; pour ne conserver que les chiffres, utilisez value.replace(/\\D/g, \"\").",
+    "pt-BR": "Campo especializado para CEP e códigos postais com suporte a múltiplos países, máscaras e consulta opcional ao ViaCEP. Contrato de valor: o valor do formulário (onChange avulso, control e register) é SEMPRE mascarado, digitado ou definido por código (defaultValues, setValue, reset, value); a entrada aceita valor cru ou mascarado; valor maior que a máscara é cortado; para guardar só dígitos use value.replace(/\\D/g, \"\")."
+  },
   "Campo especializado para CNPJ com mascara, validacao de digitos e suporte opcional a consulta externa.": {
     "en-US": "Specialized field for CNPJ with mask, digit validation, and optional support for external lookup.",
     "pt-PT": "Campo especializado para CNPJ com máscara, validação de dígitos e suporte opcional para consulta externa.",
@@ -1476,12 +1539,26 @@
     "fr": "Champ spécialisé pour le CNPJ avec masque, validation des chiffres et prise en charge optionnelle d'une consultation externe.",
     "pt-BR": "Campo especializado para CNPJ com máscara, validação de dígitos e suporte opcional a consulta externa."
   },
+  "Campo especializado para CNPJ com mascara, validacao de digitos e suporte opcional a consulta externa. Contrato de valor: o valor do formulario (onChange avulso, control e register) e SEMPRE mascarado, digitado ou setado por codigo (defaultValues, setValue, reset, value); a entrada aceita valor cru ou mascarado; valor maior que a mascara e cortado; para guardar so digitos use value.replace(/\\D/g, \"\").": {
+    "en-US": "Specialized field for CNPJ with mask, digit validation and optional support for external lookup. Value contract: the form value (standalone onChange, control and register) is ALWAYS masked, whether typed or set by code (defaultValues, setValue, reset, value); the input accepts a raw or a masked value; a value longer than the mask is truncated; to store digits only use value.replace(/\\D/g, \"\").",
+    "pt-PT": "Campo especializado para CNPJ com máscara, validação de dígitos e suporte opcional para consulta externa. Contrato de valor: o valor do formulário (onChange avulso, control e register) é SEMPRE mascarado, digitado ou definido por código (defaultValues, setValue, reset, value); a entrada aceita valor cru ou mascarado; um valor maior do que a máscara é cortado; para guardar só dígitos use value.replace(/\\D/g, \"\").",
+    "es": "Campo especializado para CNPJ con máscara, validación de dígitos y soporte opcional para consulta externa. Contrato de valor: el valor del formulario (onChange suelto, control y register) es SIEMPRE enmascarado, escrito o establecido por código (defaultValues, setValue, reset, value); la entrada acepta un valor sin formato o enmascarado; un valor más largo que la máscara se recorta; para guardar solo dígitos use value.replace(/\\D/g, \"\").",
+    "fr": "Champ spécialisé pour le CNPJ avec masque, validation des chiffres et prise en charge optionnelle d'une consultation externe. Contrat de valeur : la valeur du formulaire (onChange isolé, control et register) est TOUJOURS masquée, saisie ou définie par code (defaultValues, setValue, reset, value) ; la saisie accepte une valeur brute ou masquée ; une valeur plus longue que le masque est tronquée ; pour ne conserver que les chiffres, utilisez value.replace(/\\D/g, \"\").",
+    "pt-BR": "Campo especializado para CNPJ com máscara, validação de dígitos e suporte opcional a consulta externa. Contrato de valor: o valor do formulário (onChange avulso, control e register) é SEMPRE mascarado, digitado ou definido por código (defaultValues, setValue, reset, value); a entrada aceita valor cru ou mascarado; valor maior que a máscara é cortado; para guardar só dígitos use value.replace(/\\D/g, \"\")."
+  },
   "Campo especializado para CPF com mascara, validacao de digitos e integracao com fluxos de cadastro de pessoa fisica.": {
     "en-US": "Specialized field for CPF with mask, digit validation, and integration with individual-person registration flows.",
     "pt-PT": "Campo especializado para CPF com máscara, validação de dígitos e integração com fluxos de registo de pessoa singular.",
     "es": "Campo especializado para CPF con máscara, validación de dígitos e integración con flujos de registro de persona física.",
     "fr": "Champ spécialisé pour le CPF avec masque, validation des chiffres et intégration aux flux d'enregistrement de personne physique.",
     "pt-BR": "Campo especializado para CPF com máscara, validação de dígitos e integração com fluxos de cadastro de pessoa fisica."
+  },
+  "Campo especializado para CPF com mascara, validacao de digitos e integracao com fluxos de cadastro de pessoa fisica. Contrato de valor: o valor do formulario (onChange avulso, control e register) e SEMPRE mascarado, digitado ou setado por codigo (defaultValues, setValue, reset, value); a entrada aceita valor cru ou mascarado; valor maior que a mascara e cortado; para guardar so digitos use value.replace(/\\D/g, \"\").": {
+    "en-US": "Specialized field for CPF with mask, digit validation and integration with individual registration flows. Value contract: the form value (standalone onChange, control and register) is ALWAYS masked, whether typed or set by code (defaultValues, setValue, reset, value); the input accepts a raw or a masked value; a value longer than the mask is truncated; to store digits only use value.replace(/\\D/g, \"\").",
+    "pt-PT": "Campo especializado para CPF com máscara, validação de dígitos e integração com fluxos de registo de pessoa singular. Contrato de valor: o valor do formulário (onChange avulso, control e register) é SEMPRE mascarado, digitado ou definido por código (defaultValues, setValue, reset, value); a entrada aceita valor cru ou mascarado; um valor maior do que a máscara é cortado; para guardar só dígitos use value.replace(/\\D/g, \"\").",
+    "es": "Campo especializado para CPF con máscara, validación de dígitos e integración con flujos de registro de persona física. Contrato de valor: el valor del formulario (onChange suelto, control y register) es SIEMPRE enmascarado, escrito o establecido por código (defaultValues, setValue, reset, value); la entrada acepta un valor sin formato o enmascarado; un valor más largo que la máscara se recorta; para guardar solo dígitos use value.replace(/\\D/g, \"\").",
+    "fr": "Champ spécialisé pour le CPF avec masque, validation des chiffres et intégration aux parcours d'inscription de personne physique. Contrat de valeur : la valeur du formulaire (onChange isolé, control et register) est TOUJOURS masquée, saisie ou définie par code (defaultValues, setValue, reset, value) ; la saisie accepte une valeur brute ou masquée ; une valeur plus longue que le masque est tronquée ; pour ne conserver que les chiffres, utilisez value.replace(/\\D/g, \"\").",
+    "pt-BR": "Campo especializado para CPF com máscara, validação de dígitos e integração com fluxos de cadastro de pessoa física. Contrato de valor: o valor do formulário (onChange avulso, control e register) é SEMPRE mascarado, digitado ou definido por código (defaultValues, setValue, reset, value); a entrada aceita valor cru ou mascarado; valor maior que a máscara é cortado; para guardar só dígitos use value.replace(/\\D/g, \"\")."
   },
   "Campo especializado para data de nascimento com validacao de idade minima e maxima sobre a base de SgInputDate.": {
     "en-US": "Specialized field for date of birth with minimum and maximum age validation, built on top of SgInputDate.",
@@ -1511,12 +1588,26 @@
     "fr": "Champ spécialisé pour le téléphone avec masque, validation de longueur et intégration aux formulaires.",
     "pt-BR": "Campo especializado para telefone com máscara, validação de comprimento e integração com formulários."
   },
+  "Campo especializado para telefone com mascara, validacao de comprimento e integracao com formularios. Contrato de valor: o valor do formulario (onChange avulso, control e register) e SEMPRE mascarado, digitado ou setado por codigo (defaultValues, setValue, reset, value); a entrada aceita valor cru ou mascarado; valor maior que a mascara e cortado; telefone com +55 perde o DDI; para guardar so digitos use value.replace(/\\D/g, \"\").": {
+    "en-US": "Specialized field for phone numbers with mask, length validation and form integration. Value contract: the form value (standalone onChange, control and register) is ALWAYS masked, whether typed or set by code (defaultValues, setValue, reset, value); the input accepts a raw or a masked value; a value longer than the mask is truncated; a phone number with +55 loses the country code; to store digits only use value.replace(/\\D/g, \"\").",
+    "pt-PT": "Campo especializado para telefone com máscara, validação de comprimento e integração com formulários. Contrato de valor: o valor do formulário (onChange avulso, control e register) é SEMPRE mascarado, digitado ou definido por código (defaultValues, setValue, reset, value); a entrada aceita valor cru ou mascarado; um valor maior do que a máscara é cortado; telefone com +55 perde o indicativo; para guardar só dígitos use value.replace(/\\D/g, \"\").",
+    "es": "Campo especializado para teléfono con máscara, validación de longitud e integración con formularios. Contrato de valor: el valor del formulario (onChange suelto, control y register) es SIEMPRE enmascarado, escrito o establecido por código (defaultValues, setValue, reset, value); la entrada acepta un valor sin formato o enmascarado; un valor más largo que la máscara se recorta; un teléfono con +55 pierde el código de país; para guardar solo dígitos use value.replace(/\\D/g, \"\").",
+    "fr": "Champ spécialisé pour le téléphone avec masque, validation de la longueur et intégration aux formulaires. Contrat de valeur : la valeur du formulaire (onChange isolé, control et register) est TOUJOURS masquée, saisie ou définie par code (defaultValues, setValue, reset, value) ; la saisie accepte une valeur brute ou masquée ; une valeur plus longue que le masque est tronquée ; un téléphone avec +55 perd l'indicatif ; pour ne conserver que les chiffres, utilisez value.replace(/\\D/g, \"\").",
+    "pt-BR": "Campo especializado para telefone com máscara, validação de comprimento e integração com formulários. Contrato de valor: o valor do formulário (onChange avulso, control e register) é SEMPRE mascarado, digitado ou definido por código (defaultValues, setValue, reset, value); a entrada aceita valor cru ou mascarado; valor maior que a máscara é cortado; telefone com +55 perde o DDI; para guardar só dígitos use value.replace(/\\D/g, \"\")."
+  },
   "Campo hibrido para CPF ou CNPJ com mascara e validacao automatica conforme o documento informado.": {
     "en-US": "Hybrid field for CPF or CNPJ with mask and automatic validation according to the document entered.",
     "pt-PT": "Campo híbrido para CPF ou CNPJ com máscara e validação automática conforme o documento introduzido.",
     "es": "Campo híbrido para CPF o CNPJ con máscara y validación automática según el documento introducido.",
     "fr": "Champ hybride pour CPF ou CNPJ avec masque et validation automatique selon le document saisi.",
     "pt-BR": "Campo híbrido para CPF ou CNPJ com máscara e validação automática conforme o documento informado."
+  },
+  "Campo hibrido para CPF ou CNPJ com mascara e validacao automatica conforme o documento informado. Contrato de valor: o valor do formulario (onChange avulso, control e register) e SEMPRE mascarado, digitado ou setado por codigo (defaultValues, setValue, reset, value); a entrada aceita valor cru ou mascarado; valor maior que a mascara e cortado; para guardar so digitos use value.replace(/\\D/g, \"\").": {
+    "en-US": "Specialized field for CNPJ with mask, digit validation and optional support for external lookup. Value contract: the form value (standalone onChange, control and register) is ALWAYS masked, whether typed or set by code (defaultValues, setValue, reset, value); the input accepts a raw or a masked value; a value longer than the mask is truncated; to store digits only use value.replace(/\\D/g, \"\").",
+    "pt-PT": "Campo especializado para CNPJ com máscara, validação de dígitos e suporte opcional para consulta externa. Contrato de valor: o valor do formulário (onChange avulso, control e register) é SEMPRE mascarado, digitado ou definido por código (defaultValues, setValue, reset, value); a entrada aceita valor cru ou mascarado; um valor maior do que a máscara é cortado; para guardar só dígitos use value.replace(/\\D/g, \"\").",
+    "es": "Campo especializado para CNPJ con máscara, validación de dígitos y soporte opcional para consulta externa. Contrato de valor: el valor del formulario (onChange suelto, control y register) es SIEMPRE enmascarado, escrito o establecido por código (defaultValues, setValue, reset, value); la entrada acepta un valor sin formato o enmascarado; un valor más largo que la máscara se recorta; para guardar solo dígitos use value.replace(/\\D/g, \"\").",
+    "fr": "Champ spécialisé pour le CNPJ avec masque, validation des chiffres et prise en charge optionnelle d'une consultation externe. Contrat de valeur : la valeur du formulaire (onChange isolé, control et register) est TOUJOURS masquée, saisie ou définie par code (defaultValues, setValue, reset, value) ; la saisie accepte une valeur brute ou masquée ; une valeur plus longue que le masque est tronquée ; pour ne conserver que les chiffres, utilisez value.replace(/\\D/g, \"\").",
+    "pt-BR": "Campo especializado para CNPJ com máscara, validação de dígitos e suporte opcional a consulta externa. Contrato de valor: o valor do formulário (onChange avulso, control e register) é SEMPRE mascarado, digitado ou definido por código (defaultValues, setValue, reset, value); a entrada aceita valor cru ou mascarado; valor maior que a máscara é cortado; para guardar só dígitos use value.replace(/\\D/g, \"\")."
   },
   "Campo monetario com formatacao de moeda, simbolo e validacao para precos, valores financeiros e totais.": {
     "en-US": "Monetary field with currency formatting, symbol and validation for prices, financial values and totals.",
@@ -1896,6 +1987,13 @@
     "fr": "Caractère affiché sur l'affichage.",
     "pt-BR": "Caractere exibido no display."
   },
+  "Caractere utilizado para preencher as posicoes extras quando\nsourceString e targetString possuem comprimentos diferentes.": {
+    "en-US": "Character used to fill the extra positions when\nsourceString and targetString have different lengths.",
+    "pt-PT": "Carácter utilizado para preencher as posições extra quando\nsourceString e targetString têm comprimentos diferentes.",
+    "es": "Carácter utilizado para rellenar las posiciones extra cuando\nsourceString y targetString tienen longitudes diferentes.",
+    "fr": "Caractère utilisé pour remplir les positions supplémentaires lorsque\nsourceString et targetString ont des longueurs différentes.",
+    "pt-BR": "Caractere utilizado para preencher as posições extras quando\nsourceString e targetString possuem comprimentos diferentes."
+  },
   "Caractere utilizado para preencher as posicoes extras quando\r\nsourceString e targetString possuem comprimentos diferentes.": {
     "en-US": "Character used to fill the extra positions when\r\nsourceString and targetString have different lengths.",
     "pt-PT": "Caráter utilizado para preencher as posições extra quando\r\nsourceString e targetString têm comprimentos diferentes.",
@@ -1993,6 +2091,13 @@
     "es": "Se llama cuando la consulta falla.",
     "fr": "Appelé lorsque la requête échoue.",
     "pt-BR": "Chamado quando a consulta falha."
+  },
+  "Chamar apos uma acao do usuario.": {
+    "en-US": "Call after a user action.",
+    "pt-PT": "Chamar após uma ação do utilizador.",
+    "es": "Llamar después de una acción del usuario.",
+    "fr": "À appeler après une action de l'utilisateur.",
+    "pt-BR": "Chamar após uma ação do usuário."
   },
   "Channel do aviso (ex.: \"backup\").": {
     "en-US": "Notice channel (e.g.: \"backup\").",
@@ -2196,6 +2301,69 @@
     "es": "Combinar anotaciones y franjas de alerta en instrumentos circulares.",
     "fr": "Combiner annotations et plages d'alerte dans des instruments circulaires.",
     "pt-BR": "Combinar anotações e faixas de alerta em instrumentos circulares."
+  },
+  "Combinar com digitos animados para paineis hibridos de texto e numero.": {
+    "en-US": "Combine with animated digits for hybrid text and number panels.",
+    "pt-PT": "Combinar com dígitos animados para painéis híbridos de texto e número.",
+    "es": "Combinar con dígitos animados para paneles híbridos de texto y número.",
+    "fr": "À combiner avec des chiffres animés pour des panneaux hybrides texte et nombre.",
+    "pt-BR": "Combinar com dígitos animados para painéis híbridos de texto e número."
+  },
+  "Combinar com filtros acima da tabela usando inputs de busca e selecao.": {
+    "en-US": "Combine with filters above the table using search and selection inputs.",
+    "pt-PT": "Combinar com filtros acima da tabela usando inputs de pesquisa e seleção.",
+    "es": "Combinar con filtros sobre la tabla usando inputs de búsqueda y selección.",
+    "fr": "À combiner avec des filtres au-dessus du tableau, à l'aide de champs de recherche et de sélection.",
+    "pt-BR": "Combinar com filtros acima da tabela usando inputs de busca e seleção."
+  },
+  "Combinar com InputDate e dialogs quando houver selecao detalhada.": {
+    "en-US": "Combine with InputDate and dialogs when detailed selection is needed.",
+    "pt-PT": "Combinar com InputDate e dialogs quando houver seleção detalhada.",
+    "es": "Combinar con InputDate y dialogs cuando haya selección detallada.",
+    "fr": "À combiner avec InputDate et des dialogs lorsqu'une sélection détaillée est nécessaire.",
+    "pt-BR": "Combinar com InputDate e dialogs quando houver seleção detalhada."
+  },
+  "Combinar com listas e datatables quando a acao precisa ficar sempre acessivel.": {
+    "en-US": "Combine with lists and datatables when the action must always be accessible.",
+    "pt-PT": "Combinar com listas e datatables quando a ação precisa de estar sempre acessível.",
+    "es": "Combinar con listas y datatables cuando la acción deba estar siempre accesible.",
+    "fr": "À combiner avec des listes et des datatables lorsque l'action doit rester toujours accessible.",
+    "pt-BR": "Combinar com listas e datatables quando a ação precisa ficar sempre acessível."
+  },
+  "Combinar com SgButton e dialogs em fluxos de selecao ou configuracao.": {
+    "en-US": "Combine with SgButton and dialogs in selection or configuration flows.",
+    "pt-PT": "Combinar com SgButton e dialogs em fluxos de seleção ou configuração.",
+    "es": "Combinar con SgButton y dialogs en flujos de selección o configuración.",
+    "fr": "À combiner avec SgButton et des dialogs dans les parcours de sélection ou de configuration.",
+    "pt-BR": "Combinar com SgButton e dialogs em fluxos de seleção ou configuração."
+  },
+  "Combinar com SgButton em rodapes de secao ou areas de acao.": {
+    "en-US": "Combine with SgButton in section footers or action areas.",
+    "pt-PT": "Combinar com SgButton em rodapés de secção ou áreas de ação.",
+    "es": "Combinar con SgButton en pies de sección o áreas de acción.",
+    "fr": "À combiner avec SgButton dans les pieds de section ou les zones d'action.",
+    "pt-BR": "Combinar com SgButton em rodapés de seção ou áreas de ação."
+  },
+  "Combinar com SgEnvironmentProvider para estrategia de persistencia customizada.": {
+    "en-US": "Combine with SgEnvironmentProvider for a custom persistence strategy.",
+    "pt-PT": "Combinar com SgEnvironmentProvider para uma estratégia de persistência personalizada.",
+    "es": "Combinar con SgEnvironmentProvider para una estrategia de persistencia personalizada.",
+    "fr": "À combiner avec SgEnvironmentProvider pour une stratégie de persistance personnalisée.",
+    "pt-BR": "Combinar com SgEnvironmentProvider para estratégia de persistência customizada."
+  },
+  "Combinar com SgEnvironmentProvider quando locale e preferencias precisarem de persistencia.": {
+    "en-US": "Combine with SgEnvironmentProvider when locale and preferences need persistence.",
+    "pt-PT": "Combinar com SgEnvironmentProvider quando o locale e as preferências precisarem de persistência.",
+    "es": "Combinar con SgEnvironmentProvider cuando el locale y las preferencias necesiten persistencia.",
+    "fr": "À combiner avec SgEnvironmentProvider lorsque la locale et les préférences doivent être persistées.",
+    "pt-BR": "Combinar com SgEnvironmentProvider quando locale e preferências precisarem de persistência."
+  },
+  "Combinar com SgPickList quando o fluxo exigir selecao e depois ordenacao.": {
+    "en-US": "Combine with SgPickList when the flow requires selection and then ordering.",
+    "pt-PT": "Combinar com o SgPickList quando o fluxo exigir seleção e depois ordenação.",
+    "es": "Combinar con SgPickList cuando el flujo exija selección y luego ordenación.",
+    "fr": "À combiner avec SgPickList lorsque le parcours exige une sélection puis un ordonnancement.",
+    "pt-BR": "Combinar com SgPickList quando o fluxo exigir seleção e depois ordenação."
   },
   "Comparacao entre anos: mesma fatia, ano diferente (Q1/2024 contra Q1/2025).": {
     "en-US": "Comparison between years: same part, different year (Q1/2024 versus Q1/2025).",
@@ -2448,6 +2616,13 @@
     "es": "Confirmar acciones destructivas, sensibles o irreversibles.",
     "fr": "Confirmer les actions destructrices, sensibles ou irréversibles.",
     "pt-BR": "Confirmar ações destrutivas, sensíveis ou irreversíveis."
+  },
+  "Conjunto de caracteres validos para o SgRoller3DDigit.\nDeve conter todos os caracteres que podem aparecer em sourceString,\ntargetString e emptyChar. Ignorado quando style != \"roller3d\".": {
+    "en-US": "Set of valid characters for SgRoller3DDigit.\nMust contain every character that can appear in sourceString,\ntargetString and emptyChar. Ignored when style != \"roller3d\".",
+    "pt-PT": "Conjunto de caracteres válidos para o SgRoller3DDigit.\nDeve conter todos os caracteres que podem aparecer em sourceString,\ntargetString e emptyChar. Ignorado quando style != \"roller3d\".",
+    "es": "Conjunto de caracteres válidos para SgRoller3DDigit.\nDebe contener todos los caracteres que pueden aparecer en sourceString,\ntargetString y emptyChar. Se ignora cuando style != \"roller3d\".",
+    "fr": "Ensemble de caractères valides pour SgRoller3DDigit.\nDoit contenir tous les caractères pouvant apparaître dans sourceString,\ntargetString et emptyChar. Ignoré lorsque style != \"roller3d\".",
+    "pt-BR": "Conjunto de caracteres válidos para o SgRoller3DDigit.\nDeve conter todos os caracteres que podem aparecer em sourceString,\ntargetString e emptyChar. Ignorado quando style != \"roller3d\"."
   },
   "Conjunto de caracteres validos para o SgRoller3DDigit.\r\nDeve conter todos os caracteres que podem aparecer em sourceString,\r\ntargetString e emptyChar. Ignorado quando style != \"roller3d\".": {
     "en-US": "Set of valid characters for SgRoller3DDigit.\r\nMust contain all characters that may appear in sourceString,\r\ntargetString, and emptyChar. Ignored when style != \"roller3d\".",
@@ -2932,6 +3107,13 @@
     "fr": "Couleur principale du QR Code.",
     "pt-BR": "Cor principal do QR Code."
   },
+  "Cor principal do texto/ponto — aplicada nos estilos \"neon\", \"fade\",\n\"discard\" e \"matrix\".": {
+    "en-US": "Main color of the text/dot — applied to the \"neon\", \"fade\",\n\"discard\" and \"matrix\" styles.",
+    "pt-PT": "Cor principal do texto/ponto — aplicada nos estilos \"neon\", \"fade\",\n\"discard\" e \"matrix\".",
+    "es": "Color principal del texto/punto — aplicado en los estilos \"neon\", \"fade\",\n\"discard\" y \"matrix\".",
+    "fr": "Couleur principale du texte/point — appliquée aux styles \"neon\", \"fade\",\n\"discard\" et \"matrix\".",
+    "pt-BR": "Cor principal do texto/ponto — aplicada nos estilos \"neon\", \"fade\",\n\"discard\" e \"matrix\"."
+  },
   "Cor principal do texto/ponto — aplicada nos estilos \"neon\", \"fade\",\r\n\"discard\" e \"matrix\".": {
     "en-US": "Main text/dot color — applied to the \"neon\", \"fade\",\r\n\"discard\", and \"matrix\" styles.",
     "pt-PT": "Cor principal do texto/ponto — aplicada nos estilos \"neon\", \"fade\",\r\n\"discard\" e \"matrix\".",
@@ -3267,6 +3449,13 @@
     "es": "Declarar un paso individual dentro de un wizard.",
     "fr": "Déclarer une étape individuelle au sein d'un wizard.",
     "pt-BR": "Declarar uma etapa individual dentro de um wizard."
+  },
+  "Default sem provider": {
+    "en-US": "Default without provider",
+    "pt-PT": "Predefinição sem provider",
+    "es": "Predeterminado sin provider",
+    "fr": "Par défaut sans provider",
+    "pt-BR": "Padrão sem provider"
   },
   "Define a quantidade de colunas base e por breakpoint.": {
     "en-US": "Defines the base number of columns and the number per breakpoint.",
@@ -5031,6 +5220,13 @@
     "es": "Formateo aislado de fechas sin necesidad de contexto compartido.",
     "fr": "Formatage isolé de dates sans besoin de contexte partagé.",
     "pt-BR": "Formatação isolada de datas sem necessidade de contexto compartilhado."
+  },
+  "Formato do valor que sai (onChange e formulario) e que o formulario aceita: local (2026-01-15T10:30), utc (2026-01-15T13:30:00Z) ou offset (2026-01-15T10:30:00-03:00).": {
+    "en-US": "Format of the value that goes out (onChange and form) and that the form accepts: local (2026-01-15T10:30), utc (2026-01-15T13:30:00Z) or offset (2026-01-15T10:30:00-03:00).",
+    "pt-PT": "Formato do valor que sai (onChange e formulário) e que o formulário aceita: local (2026-01-15T10:30), utc (2026-01-15T13:30:00Z) ou offset (2026-01-15T10:30:00-03:00).",
+    "es": "Formato del valor que sale (onChange y formulario) y que el formulario acepta: local (2026-01-15T10:30), utc (2026-01-15T13:30:00Z) u offset (2026-01-15T10:30:00-03:00).",
+    "fr": "Format de la valeur émise (onChange et formulaire) et acceptée par le formulaire : local (2026-01-15T10:30), utc (2026-01-15T13:30:00Z) ou offset (2026-01-15T10:30:00-03:00).",
+    "pt-BR": "Formato do valor que sai (onChange e formulário) e que o formulário aceita: local (2026-01-15T10:30), utc (2026-01-15T13:30:00Z) ou offset (2026-01-15T10:30:00-03:00)."
   },
   "Formato horario do relogio.": {
     "en-US": "Time format of the clock.",
@@ -7265,12 +7461,40 @@
     "fr": "Nombres, devise ou texte libre.",
     "pt-BR": "Números, moeda ou texto livre."
   },
+  "O botao nao engole o erro do onClick assincrono: sai do loading e relanca como rejeicao nao tratada. Trate com try/catch dentro do onClick e avise o usuario com sgWhistle.error.": {
+    "en-US": "The button does not swallow the error of an async onClick: it leaves loading and rethrows it as an unhandled rejection. Handle it with try/catch inside onClick and notify the user with sgWhistle.error.",
+    "pt-PT": "O botão não engole o erro do onClick assíncrono: sai do loading e relança-o como rejeição não tratada. Trate com try/catch dentro do onClick e avise o utilizador com sgWhistle.error.",
+    "es": "El botón no se traga el error de un onClick asíncrono: sale del loading y lo relanza como rechazo no tratado. Trátalo con try/catch dentro del onClick y avisa al usuario con sgWhistle.error.",
+    "fr": "Le bouton n'avale pas l'erreur d'un onClick asynchrone : il quitte le loading et la relance comme rejet non traité. Traitez-la avec try/catch dans onClick et prévenez l'utilisateur avec sgWhistle.error.",
+    "pt-BR": "O botão não engole o erro do onClick assíncrono: sai do loading e relança como rejeição não tratada. Trate com try/catch dentro do onClick e avise o usuário com sgWhistle.error."
+  },
+  "O loading automatico protege a acao na tela (duplo clique/reenvio), mas nao substitui a chave de idempotencia no servidor. A prop loading manual vence: loading efetivo = loading ou operacao pendente.": {
+    "en-US": "Automatic loading protects the action on screen (double click/resubmit) but does not replace the idempotency key on the server. The manual loading prop wins: effective loading = loading or pending operation.",
+    "pt-PT": "O loading automático protege a ação no ecrã (duplo clique/reenvio), mas não substitui a chave de idempotência no servidor. A prop loading manual prevalece: loading efetivo = loading ou operação pendente.",
+    "es": "El loading automático protege la acción en pantalla (doble clic/reenvío), pero no sustituye la clave de idempotencia en el servidor. La prop loading manual prevalece: loading efectivo = loading u operación pendiente.",
+    "fr": "Le loading automatique protège l'action à l'écran (double clic/renvoi), mais ne remplace pas la clé d'idempotence côté serveur. La prop loading manuelle l'emporte : loading effectif = loading ou opération en attente.",
+    "pt-BR": "O loading automático protege a ação na tela (duplo clique/reenvio), mas não substitui a chave de idempotência no servidor. A prop loading manual vence: loading efetivo = loading ou operação pendente."
+  },
+  "O onClick precisa DEVOLVER a Promise para o loading automatico funcionar: onClick={() => { salvar(); }} (chaves sem return) nao protege; use () => salvar() ou async () => { await salvar(); }.": {
+    "en-US": "onClick must RETURN the Promise for automatic loading to work: onClick={() => { save(); }} (braces without return) does not protect; use () => save() or async () => { await save(); }.",
+    "pt-PT": "O onClick precisa DEVOLVER a Promise para o loading automático funcionar: onClick={() => { salvar(); }} (chavetas sem return) não protege; use () => salvar() ou async () => { await salvar(); }.",
+    "es": "El onClick debe DEVOLVER la Promise para que el loading automático funcione: onClick={() => { salvar(); }} (llaves sin return) no protege; usa () => salvar() o async () => { await salvar(); }.",
+    "fr": "onClick doit RETOURNER la Promise pour que le loading automatique fonctionne : onClick={() => { salvar(); }} (accolades sans return) ne protège pas ; utilisez () => salvar() ou async () => { await salvar(); }.",
+    "pt-BR": "O onClick precisa DEVOLVER a Promise para o loading automático funcionar: onClick={() => { salvar(); }} (chaves sem return) não protege; use () => salvar() ou async () => { await salvar(); }."
+  },
   "O painel abre em Não lidas (ainda não clicadas); ignorada com showUnreadToggle=false e não persiste entre recargas.": {
     "en-US": "The panel opens on Unread (not yet clicked); ignored with showUnreadToggle=false and does not persist across reloads.",
     "pt-PT": "O painel abre em Não lidas (ainda não clicadas); ignorada com showUnreadToggle=false e não persiste entre recarregamentos.",
     "es": "El panel se abre en No leídas (aún no clicadas); se ignora con showUnreadToggle=false y no persiste entre recargas.",
     "fr": "Le panneau s'ouvre sur Non lues (pas encore cliquées) ; ignorée avec showUnreadToggle=false et non conservée entre les rechargements.",
     "pt-BR": "O painel abre em Não lidas (ainda não clicadas); ignorada com showUnreadToggle=false e não persiste entre recargas."
+  },
+  "O payload da notificacao so tem identificadores: a acao de abrir busca o arquivo ou registro pela API do dono.": {
+    "en-US": "The notification payload only has identifiers: the open action fetches the file or record through the owner's API.",
+    "pt-PT": "O payload da notificação só tem identificadores: a ação de abrir obtém o ficheiro ou registo pela API do dono.",
+    "es": "El payload de la notificación solo contiene identificadores: la acción de abrir obtiene el archivo o registro mediante la API del dueño.",
+    "fr": "Le payload de la notification ne contient que des identifiants : l'action d'ouverture récupère le fichier ou l'enregistrement via l'API du propriétaire.",
+    "pt-BR": "O payload da notificação só tem identificadores: a ação de abrir busca o arquivo ou registro pela API do dono."
   },
   "O polling consultou a API: contador, instante da ultima consulta e motivo (disabled ou unavailable).": {
     "en-US": "The polling queried the API: counter, time of the last query and reason (disabled or unavailable).",
@@ -7348,6 +7572,13 @@
     "es": "Opciones del fetch (ej.: headers con Authorization cuando no hay cookie).",
     "fr": "Options du fetch (ex. : headers avec Authorization lorsqu'il n'y a pas de cookie).",
     "pt-BR": "Opções do fetch (ex.: headers com Authorization quando não há cookie)."
+  },
+  "Opcoes por toast (duration, etc.)": {
+    "en-US": "Per-toast options (duration, etc.)",
+    "pt-PT": "Opções por toast (duration, etc.)",
+    "es": "Opciones por toast (duration, etc.)",
+    "fr": "Options par toast (duration, etc.)",
+    "pt-BR": "Opções por toast (duration, etc.)"
   },
   "Ordenacao manual de prioridades, etapas ou itens.": {
     "en-US": "Manual ordering of priorities, steps or items.",
@@ -7671,6 +7902,13 @@
     "fr": "Persistance des préférences de l'utilisateur ; dans ces cas, combinez avec l'environnement ou le storage.",
     "pt-BR": "Persistência de preferências do usuário; nesses casos combine com ambiente ou storage."
   },
+  "Persistencia hibrida": {
+    "en-US": "Hybrid persistence",
+    "pt-PT": "Persistência híbrida",
+    "es": "Persistencia híbrida",
+    "fr": "Persistance hybride",
+    "pt-BR": "Persistência híbrida"
+  },
   "Persistencia ou configuracao de ambiente sem relacao com tempo.": {
     "en-US": "Persistence or environment configuration unrelated to time.",
     "pt-PT": "Persistência ou configuração de ambiente sem relação com tempo.",
@@ -7845,6 +8083,13 @@
     "es": "Preferencias, activaciones y permisos binarios.",
     "fr": "Préférences, activations et permissions binaires.",
     "pt-BR": "Preferências, ativações e permissões binárias."
+  },
+  "Preferir a SgMultiSelect quando o numero de selecoes for grande e os chips poluirem o layout.": {
+    "en-US": "Prefer SgMultiSelect when the number of selections is large and the chips clutter the layout.",
+    "pt-PT": "Preferir o SgMultiSelect quando o número de seleções for grande e os chips poluírem o layout.",
+    "es": "Preferir SgMultiSelect cuando el número de selecciones sea grande y los chips saturen el diseño.",
+    "fr": "Préférer SgMultiSelect lorsque le nombre de sélections est élevé et que les chips surchargent la mise en page.",
+    "pt-BR": "Preferir a SgMultiSelect quando o número de seleções for grande e os chips poluírem o layout."
   },
   "Prefixo do `data-sg` dos elementos internos (`sg-file`, `sg-image`).": {
     "en-US": "Prefix of the `data-sg` of internal elements (`sg-file`, `sg-image`).",
@@ -8560,6 +8805,20 @@
     "fr": "Enregistrer, envoyer ou payer : utilisez un onClick asynchrone (async () => { await salvar(); } ou () => salvar()) pour que le bouton passe en loading de lui-même et ignore le double clic ; les actions instantanées (ouvrir une modale, basculer) restent synchrones.",
     "pt-BR": "Salvar, enviar ou pagar: use onClick assíncrono (async () => { await salvar(); } ou () => salvar()) para o botão entrar em loading sozinho e ignorar duplo clique; ações instantâneas (abrir modal, alternar) ficam síncronas."
   },
+  "Se true, campo vazio vale null; se false (padrao), vale 0.": {
+    "en-US": "If true, an empty field is null; if false (default), it is 0.",
+    "pt-PT": "Se true, o campo vazio vale null; se false (predefinição), vale 0.",
+    "es": "Si es true, el campo vacío vale null; si es false (predeterminado), vale 0.",
+    "fr": "Si true, un champ vide vaut null ; si false (par défaut), il vaut 0.",
+    "pt-BR": "Se true, campo vazio vale null; se false (padrão), vale 0."
+  },
+  "Se true, inicia a animacao automaticamente quando o componente\nmonta e sempre que targetString mudar.": {
+    "en-US": "If true, starts the animation automatically when the component\nmounts and whenever targetString changes.",
+    "pt-PT": "Se true, inicia a animação automaticamente quando o componente\nmonta e sempre que targetString mudar.",
+    "es": "Si es true, inicia la animación automáticamente cuando el componente\nse monta y cada vez que targetString cambie.",
+    "fr": "Si true, démarre l'animation automatiquement au montage du composant\net chaque fois que targetString change.",
+    "pt-BR": "Se true, inicia a animação automaticamente quando o componente\nmonta e sempre que targetString mudar."
+  },
   "Se true, inicia a animacao automaticamente quando o componente\r\nmonta e sempre que targetString mudar.": {
     "en-US": "If true, starts the animation automatically when the component\r\nmounts and whenever targetString changes.",
     "pt-PT": "Se true, inicia a animação automaticamente quando o componente\r\nmonta e sempre que targetString mudar.",
@@ -8706,6 +8965,20 @@
     "es": "Selección genérica de opciones estructuradas sin semántica de tema visual; en esos casos prefiera Combobox o RadioGroup.",
     "fr": "Sélection générique d'options structurées sans sémantique de thème visuel ; dans ces cas, préférez Combobox ou RadioGroup.",
     "pt-BR": "Seleção genérica de opções estruturadas sem semântica de tema visual; nesses casos prefira Combobox ou RadioGroup."
+  },
+  "selecao multipla": {
+    "en-US": "multiple selection",
+    "pt-PT": "seleção múltipla",
+    "es": "selección múltiple",
+    "fr": "sélection multiple",
+    "pt-BR": "seleção múltipla"
+  },
+  "selecao multipla com chips": {
+    "en-US": "multiple selection with chips",
+    "pt-PT": "seleção múltipla com chips",
+    "es": "selección múltiple con chips",
+    "fr": "sélection multiple avec chips",
+    "pt-BR": "seleção múltipla com chips"
   },
   "Selecao visual de idioma pelo usuario sem provider; nesses casos use UI propria combinada com este provider.": {
     "en-US": "Visual language selection by the user without a provider; in these cases use your own UI combined with this provider.",
@@ -9540,6 +9813,13 @@
     "fr": "Types acceptés : image, video, audio, pdf, doc, docx, xls, xlsx, ppt, pptx, csv, txt, zip ou all. Le type est vérifié d'après le contenu du fichier.",
     "pt-BR": "Tipos aceitos: image, vídeo, áudio, pdf, doc, docx, xls, xlsx, ppt, pptx, csv, txt, zip ou all. O tipo e conferido pelo conteúdo do arquivo."
   },
+  "Tipos com icone e acao": {
+    "en-US": "Types with icon and action",
+    "pt-PT": "Tipos com ícone e ação",
+    "es": "Tipos con icono y acción",
+    "fr": "Types avec icône et action",
+    "pt-BR": "Tipos com ícone e ação"
+  },
   "Tipos extras em texto livre (.pdf, image/png, image/*), separados por virgula; soma-se ao mediaType.": {
     "en-US": "Extra types as free text (.pdf, image/png, image/*), comma-separated; added to mediaType.",
     "pt-PT": "Tipos extra em texto livre (.pdf, image/png, image/*), separados por vírgula; somam-se ao mediaType.",
@@ -9813,6 +10093,69 @@
     "fr": "URL du logo affiché au centre du QR.",
     "pt-BR": "URL da logo exibida no centro do QR."
   },
+  "Usar com hooks de persistencia e com componentes que armazenam layout ou preferencias locais.": {
+    "en-US": "Use with persistence hooks and with components that store layout or local preferences.",
+    "pt-PT": "Usar com hooks de persistência e com componentes que armazenam layout ou preferências locais.",
+    "es": "Usar con hooks de persistencia y con componentes que almacenan diseño o preferencias locales.",
+    "fr": "À utiliser avec des hooks de persistance et des composants qui stockent la mise en page ou des préférences locales.",
+    "pt-BR": "Usar com hooks de persistência e com componentes que armazenam layout ou preferências locais."
+  },
+  "Usar com SgBreadcrumb para navegacao local e contexto de pagina.": {
+    "en-US": "Use with SgBreadcrumb for local navigation and page context.",
+    "pt-PT": "Usar com SgBreadcrumb para navegação local e contexto de página.",
+    "es": "Usar con SgBreadcrumb para navegación local y contexto de página.",
+    "fr": "À utiliser avec SgBreadcrumb pour la navigation locale et le contexte de page.",
+    "pt-BR": "Usar com SgBreadcrumb para navegação local e contexto de página."
+  },
+  "Usar com SgButton em fluxos de busca e selecao.": {
+    "en-US": "Use with SgButton in search and selection flows.",
+    "pt-PT": "Usar com SgButton em fluxos de pesquisa e seleção.",
+    "es": "Usar con SgButton en flujos de búsqueda y selección.",
+    "fr": "À utiliser avec SgButton dans les parcours de recherche et de sélection.",
+    "pt-BR": "Usar com SgButton em fluxos de busca e seleção."
+  },
+  "Usar com SgButton em rodapes de acao ou cabecalhos de resumo.": {
+    "en-US": "Use with SgButton in action footers or summary headers.",
+    "pt-PT": "Usar com SgButton em rodapés de ação ou cabeçalhos de resumo.",
+    "es": "Usar con SgButton en pies de acción o encabezados de resumen.",
+    "fr": "À utiliser avec SgButton dans les pieds d'action ou les en-têtes de résumé.",
+    "pt-BR": "Usar com SgButton em rodapés de ação ou cabeçalhos de resumo."
+  },
+  "Usar com SgPanel e SgCard em cabecalhos de bloco ou areas de acao.": {
+    "en-US": "Use with SgPanel and SgCard in block headers or action areas.",
+    "pt-PT": "Usar com SgPanel e SgCard em cabeçalhos de bloco ou áreas de ação.",
+    "es": "Usar con SgPanel y SgCard en encabezados de bloque o áreas de acción.",
+    "fr": "À utiliser avec SgPanel et SgCard dans les en-têtes de bloc ou les zones d'action.",
+    "pt-BR": "Usar com SgPanel e SgCard em cabeçalhos de bloco ou áreas de ação."
+  },
+  "Usar com try-catch para tratar erros de persistencia.": {
+    "en-US": "Use with try-catch to handle persistence errors.",
+    "pt-PT": "Usar com try-catch para tratar erros de persistência.",
+    "es": "Usar con try-catch para tratar errores de persistencia.",
+    "fr": "À utiliser avec try-catch pour traiter les erreurs de persistance.",
+    "pt-BR": "Usar com try-catch para tratar erros de persistência."
+  },
+  "Usar com useSgPersistence e useSgPersistentState para persistencia.": {
+    "en-US": "Use with useSgPersistence and useSgPersistentState for persistence.",
+    "pt-PT": "Usar com useSgPersistence e useSgPersistentState para persistência.",
+    "es": "Usar con useSgPersistence y useSgPersistentState para la persistencia.",
+    "fr": "À utiliser avec useSgPersistence et useSgPersistentState pour la persistance.",
+    "pt-BR": "Usar com useSgPersistence e useSgPersistentState para persistência."
+  },
+  "Usar dentro de SgClockThemePicker para listas de selecao visual.": {
+    "en-US": "Use inside SgClockThemePicker for visual selection lists.",
+    "pt-PT": "Usar dentro do SgClockThemePicker para listas de seleção visual.",
+    "es": "Usar dentro de SgClockThemePicker para listas de selección visual.",
+    "fr": "À utiliser dans SgClockThemePicker pour les listes de sélection visuelle.",
+    "pt-BR": "Usar dentro de SgClockThemePicker para listas de seleção visual."
+  },
+  "Usar junto de SgCard, SgPanel e cabecalhos de pagina.": {
+    "en-US": "Use alongside SgCard, SgPanel and page headers.",
+    "pt-PT": "Usar junto de SgCard, SgPanel e cabeçalhos de página.",
+    "es": "Usar junto con SgCard, SgPanel y encabezados de página.",
+    "fr": "À utiliser avec SgCard, SgPanel et les en-têtes de page.",
+    "pt-BR": "Usar junto de SgCard, SgPanel e cabeçalhos de página."
+  },
   "Usar para dados de aplicacao; use useSgPersistence ou useSgPersistentState.": {
     "en-US": "Use for application data; use useSgPersistence or useSgPersistentState.",
     "pt-PT": "Usar para dados de aplicação; use useSgPersistence ou useSgPersistentState.",
@@ -9861,6 +10204,27 @@
     "es": "Usar sin haber disparado un whistle antes; valide el ID.",
     "fr": "Utiliser sans avoir déclenché de whistle auparavant ; validez l'ID.",
     "pt-BR": "Usar sem ter disparado um whistle antes; valide o ID."
+  },
+  "Usar sobre SgPanel, SgCard ou telas longas como atalho de acao principal.": {
+    "en-US": "Use over SgPanel, SgCard or long screens as a shortcut for the main action.",
+    "pt-PT": "Usar sobre SgPanel, SgCard ou ecrãs longos como atalho da ação principal.",
+    "es": "Usar sobre SgPanel, SgCard o pantallas largas como atajo de la acción principal.",
+    "fr": "À utiliser sur SgPanel, SgCard ou des écrans longs comme raccourci de l'action principale.",
+    "pt-BR": "Usar sobre SgPanel, SgCard ou telas longas como atalho de ação principal."
+  },
+  "Usar useSgRealtimeStatus para ligar o polling de reserva quando nao estiver conectado.": {
+    "en-US": "Use useSgRealtimeStatus to turn on fallback polling when not connected.",
+    "pt-PT": "Usar useSgRealtimeStatus para ligar o polling de reserva quando não estiver ligado.",
+    "es": "Usar useSgRealtimeStatus para activar el polling de respaldo cuando no esté conectado.",
+    "fr": "Utiliser useSgRealtimeStatus pour activer le polling de secours lorsqu'il n'y a pas de connexion.",
+    "pt-BR": "Usar useSgRealtimeStatus para ligar o polling de reserva quando não estiver conectado."
+  },
+  "Use types para mapear cada tipo de notificacao a um icone e a acao de abrir (ex.: baixar o relatorio).": {
+    "en-US": "Use types to map each notification type to an icon and an open action (e.g. download the report).",
+    "pt-PT": "Use types para mapear cada tipo de notificação a um ícone e à ação de abrir (ex.: descarregar o relatório).",
+    "es": "Usa types para asignar a cada tipo de notificación un icono y la acción de abrir (p. ej.: descargar el informe).",
+    "fr": "Utilisez types pour associer chaque type de notification à une icône et à l'action d'ouverture (ex. : télécharger le rapport).",
+    "pt-BR": "Use types para mapear cada tipo de notificação a um ícone e à ação de abrir (ex.: baixar o relatório)."
   },
   "Valida a etapa atual antes de avancar.": {
     "en-US": "Validates the current step before advancing.",
@@ -9966,6 +10330,13 @@
     "es": "Valor mínimo permitido.",
     "fr": "Valeur minimale autorisée.",
     "pt-BR": "Valor mínimo permitido."
+  },
+  "Valor no formato de valueMode (ou null) e texto local do campo.": {
+    "en-US": "Value in the valueMode format (or null) and the field's local text.",
+    "pt-PT": "Valor no formato de valueMode (ou null) e texto local do campo.",
+    "es": "Valor en el formato de valueMode (o null) y texto local del campo.",
+    "fr": "Valeur au format de valueMode (ou null) et texte local du champ.",
+    "pt-BR": "Valor no formato de valueMode (ou null) e texto local do campo."
   },
   "Valor padrao enquanto carrega do storage.": {
     "en-US": "Default value while loading from storage.",
@@ -10100,6 +10471,13 @@
     "fr": "Variante visuelle et comportementale du menu.",
     "pt-BR": "Variante visual e comportamental do menu."
   },
+  "Velocidade de 1 (muito lento) a 100 (muito rapido).\nControla o intervalo de tempo entre a troca de cada caractere.": {
+    "en-US": "Speed from 1 (very slow) to 100 (very fast).\nControls the time interval between each character change.",
+    "pt-PT": "Velocidade de 1 (muito lento) a 100 (muito rápido).\nControla o intervalo de tempo entre a troca de cada carácter.",
+    "es": "Velocidad de 1 (muy lento) a 100 (muy rápido).\nControla el intervalo de tiempo entre el cambio de cada carácter.",
+    "fr": "Vitesse de 1 (très lent) à 100 (très rapide).\nContrôle l'intervalle de temps entre chaque changement de caractère.",
+    "pt-BR": "Velocidade de 1 (muito lento) a 100 (muito rápido).\nControla o intervalo de tempo entre a troca de cada caractere."
+  },
   "Velocidade de 1 (muito lento) a 100 (muito rapido).\r\nControla o intervalo de tempo entre a troca de cada caractere.": {
     "en-US": "Speed from 1 (very slow) to 100 (very fast).\r\nControls the time interval between the swap of each character.",
     "pt-PT": "Velocidade de 1 (muito lento) a 100 (muito rápido).\r\nControla o intervalo de tempo entre a troca de cada caráter.",
@@ -10190,285 +10568,5 @@
     "es": "Zonas, toolbars y contenido estructural del layout.",
     "fr": "Zones, toolbars et contenu structurel du layout.",
     "pt-BR": "Zonas, toolbars e conteúdo estrutural do layout."
-  },
-  "Usar com SgButton em fluxos de busca e selecao.": {
-    "en-US": "Use with SgButton in search and selection flows.",
-    "pt-PT": "Usar com SgButton em fluxos de pesquisa e seleção.",
-    "es": "Usar con SgButton en flujos de búsqueda y selección.",
-    "fr": "À utiliser avec SgButton dans les parcours de recherche et de sélection.",
-    "pt-BR": "Usar com SgButton em fluxos de busca e seleção."
-  },
-  "selecao multipla": {
-    "en-US": "multiple selection",
-    "pt-PT": "seleção múltipla",
-    "es": "selección múltiple",
-    "fr": "sélection multiple",
-    "pt-BR": "seleção múltipla"
-  },
-  "selecao multipla com chips": {
-    "en-US": "multiple selection with chips",
-    "pt-PT": "seleção múltipla com chips",
-    "es": "selección múltiple con chips",
-    "fr": "sélection multiple avec chips",
-    "pt-BR": "seleção múltipla com chips"
-  },
-  "Preferir a SgMultiSelect quando o numero de selecoes for grande e os chips poluirem o layout.": {
-    "en-US": "Prefer SgMultiSelect when the number of selections is large and the chips clutter the layout.",
-    "pt-PT": "Preferir o SgMultiSelect quando o número de seleções for grande e os chips poluírem o layout.",
-    "es": "Preferir SgMultiSelect cuando el número de selecciones sea grande y los chips saturen el diseño.",
-    "fr": "Préférer SgMultiSelect lorsque le nombre de sélections est élevé et que les chips surchargent la mise en page.",
-    "pt-BR": "Preferir a SgMultiSelect quando o número de seleções for grande e os chips poluírem o layout."
-  },
-  "(omitido = automatico)": {
-    "en-US": "(omitted = automatic)",
-    "pt-PT": "(omitido = automático)",
-    "es": "(omitido = automático)",
-    "fr": "(omis = automatique)",
-    "pt-BR": "(omitido = automático)"
-  },
-  "Combinar com filtros acima da tabela usando inputs de busca e selecao.": {
-    "en-US": "Combine with filters above the table using search and selection inputs.",
-    "pt-PT": "Combinar com filtros acima da tabela usando inputs de pesquisa e seleção.",
-    "es": "Combinar con filtros sobre la tabla usando inputs de búsqueda y selección.",
-    "fr": "À combiner avec des filtres au-dessus du tableau, à l'aide de champs de recherche et de sélection.",
-    "pt-BR": "Combinar com filtros acima da tabela usando inputs de busca e seleção."
-  },
-  "Se true, campo vazio vale null; se false (padrao), vale 0.": {
-    "en-US": "If true, an empty field is null; if false (default), it is 0.",
-    "pt-PT": "Se true, o campo vazio vale null; se false (predefinição), vale 0.",
-    "es": "Si es true, el campo vacío vale null; si es false (predeterminado), vale 0.",
-    "fr": "Si true, un champ vide vaut null ; si false (par défaut), il vaut 0.",
-    "pt-BR": "Se true, campo vazio vale null; se false (padrão), vale 0."
-  },
-  "Combinar com SgPickList quando o fluxo exigir selecao e depois ordenacao.": {
-    "en-US": "Combine with SgPickList when the flow requires selection and then ordering.",
-    "pt-PT": "Combinar com o SgPickList quando o fluxo exigir seleção e depois ordenação.",
-    "es": "Combinar con SgPickList cuando el flujo exija selección y luego ordenación.",
-    "fr": "À combiner avec SgPickList lorsque le parcours exige une sélection puis un ordonnancement.",
-    "pt-BR": "Combinar com SgPickList quando o fluxo exigir seleção e depois ordenação."
-  },
-  "Ao trocar o recorte, a fatia fora de faixa cai para a primeira (clampYearPart); nao e' preciso tratar isso no consumidor.": {
-    "en-US": "When the cut changes, an out-of-range slice falls back to the first one (clampYearPart); the consumer does not need to handle this.",
-    "pt-PT": "Ao trocar o recorte, a fatia fora do intervalo passa para a primeira (clampYearPart); não é preciso tratar isso no consumidor.",
-    "es": "Al cambiar el recorte, la porción fuera de rango pasa a la primera (clampYearPart); no es necesario tratarlo en el consumidor.",
-    "fr": "Lorsque le découpage change, la tranche hors plage revient à la première (clampYearPart) ; le consommateur n'a pas à s'en occuper.",
-    "pt-BR": "Ao trocar o recorte, a fatia fora de faixa cai para a primeira (clampYearPart); não é preciso tratar isso no consumidor."
-  },
-  "O onClick precisa DEVOLVER a Promise para o loading automatico funcionar: onClick={() => { salvar(); }} (chaves sem return) nao protege; use () => salvar() ou async () => { await salvar(); }.": {
-    "en-US": "onClick must RETURN the Promise for automatic loading to work: onClick={() => { save(); }} (braces without return) does not protect; use () => save() or async () => { await save(); }.",
-    "pt-PT": "O onClick precisa DEVOLVER a Promise para o loading automático funcionar: onClick={() => { salvar(); }} (chavetas sem return) não protege; use () => salvar() ou async () => { await salvar(); }.",
-    "es": "El onClick debe DEVOLVER la Promise para que el loading automático funcione: onClick={() => { salvar(); }} (llaves sin return) no protege; usa () => salvar() o async () => { await salvar(); }.",
-    "fr": "onClick doit RETOURNER la Promise pour que le loading automatique fonctionne : onClick={() => { salvar(); }} (accolades sans return) ne protège pas ; utilisez () => salvar() ou async () => { await salvar(); }.",
-    "pt-BR": "O onClick precisa DEVOLVER a Promise para o loading automático funcionar: onClick={() => { salvar(); }} (chaves sem return) não protege; use () => salvar() ou async () => { await salvar(); }."
-  },
-  "O botao nao engole o erro do onClick assincrono: sai do loading e relanca como rejeicao nao tratada. Trate com try/catch dentro do onClick e avise o usuario com sgWhistle.error.": {
-    "en-US": "The button does not swallow the error of an async onClick: it leaves loading and rethrows it as an unhandled rejection. Handle it with try/catch inside onClick and notify the user with sgWhistle.error.",
-    "pt-PT": "O botão não engole o erro do onClick assíncrono: sai do loading e relança-o como rejeição não tratada. Trate com try/catch dentro do onClick e avise o utilizador com sgWhistle.error.",
-    "es": "El botón no se traga el error de un onClick asíncrono: sale del loading y lo relanza como rechazo no tratado. Trátalo con try/catch dentro del onClick y avisa al usuario con sgWhistle.error.",
-    "fr": "Le bouton n'avale pas l'erreur d'un onClick asynchrone : il quitte le loading et la relance comme rejet non traité. Traitez-la avec try/catch dans onClick et prévenez l'utilisateur avec sgWhistle.error.",
-    "pt-BR": "O botão não engole o erro do onClick assíncrono: sai do loading e relança como rejeição não tratada. Trate com try/catch dentro do onClick e avise o usuário com sgWhistle.error."
-  },
-  "O loading automatico protege a acao na tela (duplo clique/reenvio), mas nao substitui a chave de idempotencia no servidor. A prop loading manual vence: loading efetivo = loading ou operacao pendente.": {
-    "en-US": "Automatic loading protects the action on screen (double click/resubmit) but does not replace the idempotency key on the server. The manual loading prop wins: effective loading = loading or pending operation.",
-    "pt-PT": "O loading automático protege a ação no ecrã (duplo clique/reenvio), mas não substitui a chave de idempotência no servidor. A prop loading manual prevalece: loading efetivo = loading ou operação pendente.",
-    "es": "El loading automático protege la acción en pantalla (doble clic/reenvío), pero no sustituye la clave de idempotencia en el servidor. La prop loading manual prevalece: loading efectivo = loading u operación pendiente.",
-    "fr": "Le loading automatique protège l'action à l'écran (double clic/renvoi), mais ne remplace pas la clé d'idempotence côté serveur. La prop loading manuelle l'emporte : loading effectif = loading ou opération en attente.",
-    "pt-BR": "O loading automático protege a ação na tela (duplo clique/reenvio), mas não substitui a chave de idempotência no servidor. A prop loading manual vence: loading efetivo = loading ou operação pendente."
-  },
-  "Usar sobre SgPanel, SgCard ou telas longas como atalho de acao principal.": {
-    "en-US": "Use over SgPanel, SgCard or long screens as a shortcut for the main action.",
-    "pt-PT": "Usar sobre SgPanel, SgCard ou ecrãs longos como atalho da ação principal.",
-    "es": "Usar sobre SgPanel, SgCard o pantallas largas como atajo de la acción principal.",
-    "fr": "À utiliser sur SgPanel, SgCard ou des écrans longs comme raccourci de l'action principale.",
-    "pt-BR": "Usar sobre SgPanel, SgCard ou telas longas como atalho de ação principal."
-  },
-  "Combinar com listas e datatables quando a acao precisa ficar sempre acessivel.": {
-    "en-US": "Combine with lists and datatables when the action must always be accessible.",
-    "pt-PT": "Combinar com listas e datatables quando a ação precisa de estar sempre acessível.",
-    "es": "Combinar con listas y datatables cuando la acción deba estar siempre accesible.",
-    "fr": "À combiner avec des listes et des datatables lorsque l'action doit rester toujours accessible.",
-    "pt-BR": "Combinar com listas e datatables quando a ação precisa ficar sempre acessível."
-  },
-  "Usar com SgPanel e SgCard em cabecalhos de bloco ou areas de acao.": {
-    "en-US": "Use with SgPanel and SgCard in block headers or action areas.",
-    "pt-PT": "Usar com SgPanel e SgCard em cabeçalhos de bloco ou áreas de ação.",
-    "es": "Usar con SgPanel y SgCard en encabezados de bloque o áreas de acción.",
-    "fr": "À utiliser avec SgPanel et SgCard dans les en-têtes de bloc ou les zones d'action.",
-    "pt-BR": "Usar com SgPanel e SgCard em cabeçalhos de bloco ou áreas de ação."
-  },
-  "Acao e toast customizado": {
-    "en-US": "Action and custom toast",
-    "pt-PT": "Ação e toast personalizado",
-    "es": "Acción y toast personalizado",
-    "fr": "Action et toast personnalisé",
-    "pt-BR": "Ação e toast customizado"
-  },
-  "Chamar apos uma acao do usuario.": {
-    "en-US": "Call after a user action.",
-    "pt-PT": "Chamar após uma ação do utilizador.",
-    "es": "Llamar después de una acción del usuario.",
-    "fr": "À appeler après une action de l'utilisateur.",
-    "pt-BR": "Chamar após uma ação do usuário."
-  },
-  "Acao, borda e opacidade": {
-    "en-US": "Action, border and opacity",
-    "pt-PT": "Ação, borda e opacidade",
-    "es": "Acción, borde y opacidad",
-    "fr": "Action, bordure et opacité",
-    "pt-BR": "Ação, borda e opacidade"
-  },
-  "Usar junto de SgCard, SgPanel e cabecalhos de pagina.": {
-    "en-US": "Use alongside SgCard, SgPanel and page headers.",
-    "pt-PT": "Usar junto de SgCard, SgPanel e cabeçalhos de página.",
-    "es": "Usar junto con SgCard, SgPanel y encabezados de página.",
-    "fr": "À utiliser avec SgCard, SgPanel et les en-têtes de page.",
-    "pt-BR": "Usar junto de SgCard, SgPanel e cabeçalhos de página."
-  },
-  "Usar com SgButton em rodapes de acao ou cabecalhos de resumo.": {
-    "en-US": "Use with SgButton in action footers or summary headers.",
-    "pt-PT": "Usar com SgButton em rodapés de ação ou cabeçalhos de resumo.",
-    "es": "Usar con SgButton en pies de acción o encabezados de resumen.",
-    "fr": "À utiliser avec SgButton dans les pieds d'action ou les en-têtes de résumé.",
-    "pt-BR": "Usar com SgButton em rodapés de ação ou cabeçalhos de resumo."
-  },
-  "Aberto por padrao e estilizacao": {
-    "en-US": "Open by default and styling",
-    "pt-PT": "Aberto por predefinição e estilização",
-    "es": "Abierto por defecto y estilización",
-    "fr": "Ouvert par défaut et stylisation",
-    "pt-BR": "Aberto por padrão e estilização"
-  },
-  "Usar com SgBreadcrumb para navegacao local e contexto de pagina.": {
-    "en-US": "Use with SgBreadcrumb for local navigation and page context.",
-    "pt-PT": "Usar com SgBreadcrumb para navegação local e contexto de página.",
-    "es": "Usar con SgBreadcrumb para navegación local y contexto de página.",
-    "fr": "À utiliser avec SgBreadcrumb pour la navigation locale et le contexte de page.",
-    "pt-BR": "Usar com SgBreadcrumb para navegação local e contexto de página."
-  },
-  "Combinar com SgButton em rodapes de secao ou areas de acao.": {
-    "en-US": "Combine with SgButton in section footers or action areas.",
-    "pt-PT": "Combinar com SgButton em rodapés de secção ou áreas de ação.",
-    "es": "Combinar con SgButton en pies de sección o áreas de acción.",
-    "fr": "À combiner avec SgButton dans les pieds de section ou les zones d'action.",
-    "pt-BR": "Combinar com SgButton em rodapés de seção ou áreas de ação."
-  },
-  "Combinar com SgButton e dialogs em fluxos de selecao ou configuracao.": {
-    "en-US": "Combine with SgButton and dialogs in selection or configuration flows.",
-    "pt-PT": "Combinar com SgButton e dialogs em fluxos de seleção ou configuração.",
-    "es": "Combinar con SgButton y dialogs en flujos de selección o configuración.",
-    "fr": "À combiner avec SgButton et des dialogs dans les parcours de sélection ou de configuration.",
-    "pt-BR": "Combinar com SgButton e dialogs em fluxos de seleção ou configuração."
-  },
-  "Combinar com InputDate e dialogs quando houver selecao detalhada.": {
-    "en-US": "Combine with InputDate and dialogs when detailed selection is needed.",
-    "pt-PT": "Combinar com InputDate e dialogs quando houver seleção detalhada.",
-    "es": "Combinar con InputDate y dialogs cuando haya selección detallada.",
-    "fr": "À combiner avec InputDate et des dialogs lorsqu'une sélection détaillée est nécessaire.",
-    "pt-BR": "Combinar com InputDate e dialogs quando houver seleção detalhada."
-  },
-  "Usar useSgRealtimeStatus para ligar o polling de reserva quando nao estiver conectado.": {
-    "en-US": "Use useSgRealtimeStatus to turn on fallback polling when not connected.",
-    "pt-PT": "Usar useSgRealtimeStatus para ligar o polling de reserva quando não estiver ligado.",
-    "es": "Usar useSgRealtimeStatus para activar el polling de respaldo cuando no esté conectado.",
-    "fr": "Utiliser useSgRealtimeStatus pour activer le polling de secours lorsqu'il n'y a pas de connexion.",
-    "pt-BR": "Usar useSgRealtimeStatus para ligar o polling de reserva quando não estiver conectado."
-  },
-  "Tipos com icone e acao": {
-    "en-US": "Types with icon and action",
-    "pt-PT": "Tipos com ícone e ação",
-    "es": "Tipos con icono y acción",
-    "fr": "Types avec icône et action",
-    "pt-BR": "Tipos com ícone e ação"
-  },
-  "Use types para mapear cada tipo de notificacao a um icone e a acao de abrir (ex.: baixar o relatorio).": {
-    "en-US": "Use types to map each notification type to an icon and an open action (e.g. download the report).",
-    "pt-PT": "Use types para mapear cada tipo de notificação a um ícone e à ação de abrir (ex.: descarregar o relatório).",
-    "es": "Usa types para asignar a cada tipo de notificación un icono y la acción de abrir (p. ej.: descargar el informe).",
-    "fr": "Utilisez types pour associer chaque type de notification à une icône et à l'action d'ouverture (ex. : télécharger le rapport).",
-    "pt-BR": "Use types para mapear cada tipo de notificação a um ícone e à ação de abrir (ex.: baixar o relatório)."
-  },
-  "O payload da notificacao so tem identificadores: a acao de abrir busca o arquivo ou registro pela API do dono.": {
-    "en-US": "The notification payload only has identifiers: the open action fetches the file or record through the owner's API.",
-    "pt-PT": "O payload da notificação só tem identificadores: a ação de abrir obtém o ficheiro ou registo pela API do dono.",
-    "es": "El payload de la notificación solo contiene identificadores: la acción de abrir obtiene el archivo o registro mediante la API del dueño.",
-    "fr": "Le payload de la notification ne contient que des identifiants : l'action d'ouverture récupère le fichier ou l'enregistrement via l'API du propriétaire.",
-    "pt-BR": "O payload da notificação só tem identificadores: a ação de abrir busca o arquivo ou registro pela API do dono."
-  },
-  "Usar dentro de SgClockThemePicker para listas de selecao visual.": {
-    "en-US": "Use inside SgClockThemePicker for visual selection lists.",
-    "pt-PT": "Usar dentro do SgClockThemePicker para listas de seleção visual.",
-    "es": "Usar dentro de SgClockThemePicker para listas de selección visual.",
-    "fr": "À utiliser dans SgClockThemePicker pour les listes de sélection visuelle.",
-    "pt-BR": "Usar dentro de SgClockThemePicker para listas de seleção visual."
-  },
-  "Combinar com digitos animados para paineis hibridos de texto e numero.": {
-    "en-US": "Combine with animated digits for hybrid text and number panels.",
-    "pt-PT": "Combinar com dígitos animados para painéis híbridos de texto e número.",
-    "es": "Combinar con dígitos animados para paneles híbridos de texto y número.",
-    "fr": "À combiner avec des chiffres animés pour des panneaux hybrides texte et nombre.",
-    "pt-BR": "Combinar com dígitos animados para painéis híbridos de texto e número."
-  },
-  "Persistencia hibrida": {
-    "en-US": "Hybrid persistence",
-    "pt-PT": "Persistência híbrida",
-    "es": "Persistencia híbrida",
-    "fr": "Persistance hybride",
-    "pt-BR": "Persistência híbrida"
-  },
-  "Usar com hooks de persistencia e com componentes que armazenam layout ou preferencias locais.": {
-    "en-US": "Use with persistence hooks and with components that store layout or local preferences.",
-    "pt-PT": "Usar com hooks de persistência e com componentes que armazenam layout ou preferências locais.",
-    "es": "Usar con hooks de persistencia y con componentes que almacenan diseño o preferencias locales.",
-    "fr": "À utiliser avec des hooks de persistance et des composants qui stockent la mise en page ou des préférences locales.",
-    "pt-BR": "Usar com hooks de persistência e com componentes que armazenam layout ou preferências locais."
-  },
-  "Usar com useSgPersistence e useSgPersistentState para persistencia.": {
-    "en-US": "Use with useSgPersistence and useSgPersistentState for persistence.",
-    "pt-PT": "Usar com useSgPersistence e useSgPersistentState para persistência.",
-    "es": "Usar con useSgPersistence y useSgPersistentState para la persistencia.",
-    "fr": "À utiliser avec useSgPersistence et useSgPersistentState pour la persistance.",
-    "pt-BR": "Usar com useSgPersistence e useSgPersistentState para persistência."
-  },
-  "Usar com try-catch para tratar erros de persistencia.": {
-    "en-US": "Use with try-catch to handle persistence errors.",
-    "pt-PT": "Usar com try-catch para tratar erros de persistência.",
-    "es": "Usar con try-catch para tratar errores de persistencia.",
-    "fr": "À utiliser avec try-catch pour traiter les erreurs de persistance.",
-    "pt-BR": "Usar com try-catch para tratar erros de persistência."
-  },
-  "Combinar com SgEnvironmentProvider para estrategia de persistencia customizada.": {
-    "en-US": "Combine with SgEnvironmentProvider for a custom persistence strategy.",
-    "pt-PT": "Combinar com SgEnvironmentProvider para uma estratégia de persistência personalizada.",
-    "es": "Combinar con SgEnvironmentProvider para una estrategia de persistencia personalizada.",
-    "fr": "À combiner avec SgEnvironmentProvider pour une stratégie de persistance personnalisée.",
-    "pt-BR": "Combinar com SgEnvironmentProvider para estratégia de persistência customizada."
-  },
-  "Combinar com SgEnvironmentProvider quando locale e preferencias precisarem de persistencia.": {
-    "en-US": "Combine with SgEnvironmentProvider when locale and preferences need persistence.",
-    "pt-PT": "Combinar com SgEnvironmentProvider quando o locale e as preferências precisarem de persistência.",
-    "es": "Combinar con SgEnvironmentProvider cuando el locale y las preferencias necesiten persistencia.",
-    "fr": "À combiner avec SgEnvironmentProvider lorsque la locale et les préférences doivent être persistées.",
-    "pt-BR": "Combinar com SgEnvironmentProvider quando locale e preferências precisarem de persistência."
-  },
-  "Opcoes por toast (duration, etc.)": {
-    "en-US": "Per-toast options (duration, etc.)",
-    "pt-PT": "Opções por toast (duration, etc.)",
-    "es": "Opciones por toast (duration, etc.)",
-    "fr": "Options par toast (duration, etc.)",
-    "pt-BR": "Opções por toast (duration, etc.)"
-  },
-  "Default sem provider": {
-    "en-US": "Default without provider",
-    "pt-PT": "Predefinição sem provider",
-    "es": "Predeterminado sin provider",
-    "fr": "Par défaut sans provider",
-    "pt-BR": "Padrão sem provider"
-  },
-  "Arrasto do card: undefined = automatico (arrasta em largura >= 640px), true = sempre, false = nunca.\r\nTem prioridade sobre `cardProps.draggable`.": {
-    "pt-BR": "Arrasto do card: undefined = automático (arrasta em largura >= 640px), true = sempre, false = nunca.\r\nTem prioridade sobre `cardProps.draggable`.",
-    "pt-PT": "Arrasto do cartão: undefined = automático (arrasta em largura >= 640px), true = sempre, false = nunca.\r\nTem prioridade sobre `cardProps.draggable`.",
-    "en-US": "Card dragging: undefined = automatic (draggable at widths >= 640px), true = always, false = never.\r\nTakes precedence over `cardProps.draggable`.",
-    "es": "Arrastre de la tarjeta: undefined = automático (se arrastra con ancho >= 640px), true = siempre, false = nunca.\r\nTiene prioridad sobre `cardProps.draggable`.",
-    "fr": "Déplacement de la carte : undefined = automatique (déplaçable à partir de 640px de largeur), true = toujours, false = jamais.\r\nPrioritaire sur `cardProps.draggable`."
   }
 }
