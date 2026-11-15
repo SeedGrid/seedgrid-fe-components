@@ -70,10 +70,11 @@ function cn(...parts: Array<string | false | null | undefined>) {
 
 const PRESET: Record<
   Severity,
-  Required<Pick<SgButtonCustomColors, "bg" | "fg" | "border" | "hoverBg" | "hoverFg" | "ring">> & { activeFg: string }
+  Required<Pick<SgButtonCustomColors, "bg" | "fg" | "border" | "hoverBg" | "hoverFg" | "ring">> & { activeFg: string; text: string }
 > = {
   primary: {
     bg: "var(--sg-btn-primary-bg, hsl(var(--primary)))",
+    text: "var(--sg-btn-primary-text, hsl(var(--primary)))",
     fg: "var(--sg-btn-primary-fg, hsl(var(--primary-foreground)))",
     border: "var(--sg-btn-primary-border, hsl(var(--primary)))",
     hoverBg: "var(--sg-btn-primary-hover-bg, hsl(var(--primary)))",
@@ -83,6 +84,7 @@ const PRESET: Record<
   },
   secondary: {
     bg: "var(--sg-btn-secondary-bg, hsl(var(--secondary)))",
+    text: "var(--sg-btn-secondary-text, hsl(var(--secondary)))",
     fg: "var(--sg-btn-secondary-fg, hsl(var(--secondary-foreground)))",
     border: "var(--sg-btn-secondary-border, hsl(var(--secondary)))",
     hoverBg: "var(--sg-btn-secondary-hover-bg, hsl(var(--secondary)))",
@@ -92,6 +94,7 @@ const PRESET: Record<
   },
   success: {
     bg: "var(--sg-btn-success-bg, hsl(var(--tertiary, var(--accent))))",
+    text: "var(--sg-btn-success-text, hsl(var(--tertiary, var(--accent))))",
     fg: "var(--sg-btn-success-fg, hsl(var(--tertiary-foreground, var(--accent-foreground, 0 0% 100%))))",
     border: "var(--sg-btn-success-border, hsl(var(--tertiary, var(--accent))))",
     hoverBg: "var(--sg-btn-success-hover-bg, hsl(var(--tertiary, var(--accent))))",
@@ -101,6 +104,7 @@ const PRESET: Record<
   },
   info: {
     bg: "var(--sg-btn-info-bg, hsl(var(--secondary, var(--primary))))",
+    text: "var(--sg-btn-info-text, hsl(var(--secondary, var(--primary))))",
     fg: "var(--sg-btn-info-fg, hsl(var(--secondary-foreground, var(--primary-foreground))))",
     border: "var(--sg-btn-info-border, hsl(var(--secondary, var(--primary))))",
     hoverBg: "var(--sg-btn-info-hover-bg, hsl(var(--secondary, var(--primary))))",
@@ -110,6 +114,7 @@ const PRESET: Record<
   },
   warning: {
     bg: "var(--sg-btn-warning-bg, hsl(var(--secondary, var(--accent))))",
+    text: "var(--sg-btn-warning-text, hsl(var(--secondary, var(--accent))))",
     fg: "var(--sg-btn-warning-fg, hsl(var(--secondary-foreground, var(--accent-foreground, 0 0% 100%))))",
     border: "var(--sg-btn-warning-border, hsl(var(--secondary, var(--accent))))",
     hoverBg: "var(--sg-btn-warning-hover-bg, hsl(var(--secondary, var(--accent))))",
@@ -119,6 +124,7 @@ const PRESET: Record<
   },
   help: {
     bg: "var(--sg-btn-help-bg, hsl(var(--secondary, var(--primary))))",
+    text: "var(--sg-btn-help-text, hsl(var(--secondary, var(--primary))))",
     fg: "var(--sg-btn-help-fg, hsl(var(--secondary-foreground, var(--primary-foreground))))",
     border: "var(--sg-btn-help-border, hsl(var(--secondary, var(--primary))))",
     hoverBg: "var(--sg-btn-help-hover-bg, hsl(var(--secondary, var(--primary))))",
@@ -128,6 +134,7 @@ const PRESET: Record<
   },
   danger: {
     bg: "var(--sg-btn-danger-bg, hsl(var(--destructive)))",
+    text: "var(--sg-btn-danger-text, hsl(var(--destructive)))",
     fg: "var(--sg-btn-danger-fg, hsl(var(--destructive-foreground)))",
     border: "var(--sg-btn-danger-border, hsl(var(--destructive)))",
     hoverBg: "var(--sg-btn-danger-hover-bg, hsl(var(--destructive)))",
@@ -149,10 +156,12 @@ const SIZE: Record<
 export function resolveButtonColors(
   severity: Severity,
   custom?: SgButtonCustomColors
-): Required<SgButtonCustomColors> & { activeFg: string } {
+): Required<SgButtonCustomColors> & { activeFg: string; text: string } {
   const base = PRESET[severity];
   return {
     bg: custom?.bg ?? base.bg,
+    // Texto do contorno/fantasma: com cor customizada segue o fundo; sem ela usa o tom 600 (contraste >= 4,5:1).
+    text: custom?.bg ?? base.text,
     fg: custom?.fg ?? base.fg,
     border: custom?.border ?? base.border,
     hoverBg: custom?.hoverBg ?? base.hoverBg,
@@ -170,6 +179,8 @@ function buildVars(severity: Severity, custom?: SgButtonCustomColors): React.CSS
   const toneKey = severity === "danger" ? "error" : severity === "help" ? "tertiary" : severity;
   return {
     ["--sg-btn-bg" as any]: merged.bg,
+    ["--sg-btn-text" as any]: merged.text,
+    ["--sg-btn-outline-border" as any]: custom?.border ?? merged.text,
     ["--sg-btn-fg" as any]: merged.fg,
     ["--sg-btn-border" as any]: merged.border,
     ["--sg-btn-hover-bg" as any]: merged.hoverBg,
@@ -192,13 +203,13 @@ function appearanceClass(appearance: Appearance) {
       );
     case "outline":
       return cn(
-        "bg-transparent text-[var(--sg-btn-bg)] border border-[var(--sg-btn-border)]",
+        "bg-transparent text-[var(--sg-btn-text)] border border-[var(--sg-btn-outline-border)]",
         "hover:bg-[rgb(var(--sg-btn-tint)/0.12)]",
         "active:bg-[rgb(var(--sg-btn-tint)/0.18)]"
       );
     case "ghost":
       return cn(
-        "bg-transparent text-[var(--sg-btn-bg)] border border-transparent",
+        "bg-transparent text-[var(--sg-btn-text)] border border-transparent",
         "hover:bg-[rgb(var(--sg-btn-tint)/0.10)]",
         "active:bg-[rgb(var(--sg-btn-tint)/0.16)]"
       );

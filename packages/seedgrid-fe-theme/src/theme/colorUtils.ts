@@ -131,6 +131,25 @@ export function adjustBgForOnColor(bgHex: string) {
   return bgHex;
 }
 
+/** Quanto o preenchimento do botao cheio escurece (pontos de luminosidade HSL) no hover e no active do tema claro. */
+export const FILL_HOVER_STEP = 6;
+export const FILL_ACTIVE_STEP = 12;
+
+/**
+ * Preenchimento do botao cheio no tema CLARO: a cor PURA da semente (o texto, preto ou branco, e escolhido por
+ * contraste sobre ela; so escurece pelo `adjustBgForOnColor` se nenhum dos dois alcancar 4,5:1). Hover e active
+ * escurecem FILL_HOVER_STEP e FILL_ACTIVE_STEP pontos de luminosidade, mesmo matiz e saturacao.
+ */
+export function fillShades(baseHex: string) {
+  const { r, g, b } = hexToRgb(baseHex);
+  const { h, s, l } = rgbToHsl(r, g, b);
+  return {
+    normal: baseHex.toUpperCase(),
+    hover: hslToHex(h, s, clamp(l - FILL_HOVER_STEP, 0, 100)),
+    active: hslToHex(h, s, clamp(l - FILL_ACTIVE_STEP, 0, 100)),
+  };
+}
+
 export function toRgbVarValue(hex: string) {
   const { r, g, b } = hexToRgb(hex);
   return `${r} ${g} ${b}`; // <- ideal format for Tailwind rgb(var(--x)/alpha)
@@ -147,23 +166,68 @@ export function shiftHue(hex: string, dh: number, targetS?: number, targetL?: nu
 
 /* ------------- Palette generation ------------- */
 
+/** Contraste minimo do texto fino (WCAG AA) que os degraus 400, 500 e 600 da escala precisam ter sobre os fundos. */
+export const SCALE_TEXT_MIN_CONTRAST = 4.5;
+/** Folga sobre o contraste minimo, para o arredondamento do hex nao derrubar o par. */
+export const SCALE_CONTRAST_MARGIN = 0.02;
+/** Degraus da escala usados como texto/borda fina e por isso ajustados por contraste. */
+const SCALE_TEXT_STOPS = [400, 500, 600] as const;
+
+function minContrastAgainst(hex: string, against: string[]) {
+  let min = Infinity;
+  for (const bg of against) min = Math.min(min, contrastRatio(hex, bg));
+  return min;
+}
+
+/**
+ * Luminosidade HSL (mesmo matiz e saturacao) mais proxima de `nominalL` que alcanca `minRatio` contra TODOS os
+ * fundos de `against`. Tema claro escurece, tema escuro clareia; se o nominal ja passa, devolve o nominal.
+ * Biseccao (contraste e monotono na luminosidade para matiz/saturacao fixos), conferida no hex arredondado.
+ */
+export function fitLightnessForContrast(
+  h: number,
+  s: number,
+  nominalL: number,
+  against: string[],
+  resolvedMode: "light" | "dark",
+  minRatio: number = SCALE_TEXT_MIN_CONTRAST
+) {
+  // Folga de 0,02 sobre o minimo: o arredondamento do hex (8 bits) nao pode derrubar o par abaixo de 4,5:1.
+  const target = minRatio + SCALE_CONTRAST_MARGIN;
+  const passes = (l: number) => minContrastAgainst(hslToHex(h, s, l), against) >= target;
+  if (passes(nominalL)) return nominalL;
+  const far = resolvedMode === "light" ? 0 : 100;
+  if (!passes(far)) return far;
+  let ok = far; // lado que passa
+  let bad = nominalL; // lado que falha
+  for (let i = 0; i < 24; i++) {
+    const mid = (ok + bad) / 2;
+    if (passes(mid)) ok = mid;
+    else bad = mid;
+  }
+  // Arredonda para o lado que passa (claro: para baixo; escuro: para cima).
+  return resolvedMode === "light" ? Math.floor(ok * 100) / 100 : Math.ceil(ok * 100) / 100;
+}
+
 // Scale 50..900 "beautiful" (harmonizes in HSL, with L varying by stop)
+// Com `against` (fundos do tema), os degraus 400/500/600 e os mais escuros/claros que eles sao ajustados por
+// contraste (>= 4,5:1 contra todos os fundos) mantendo matiz e saturacao; sem `against` a escala e a nominal.
 export function buildScaleFromHex(
   baseHex: string,
   resolvedMode: "light" | "dark",
-  opts?: { boostS?: number; biasL?: number }
+  opts?: { boostS?: number; biasL?: number; against?: string[] }
 ) {
   const { r, g, b } = hexToRgb(baseHex);
   const { h, s, l } = rgbToHsl(r, g, b);
-  
+
   // stop -> Lightness target (lighter at 50, darker at 900)
   // For dark mode, we still want a "useful" scale (50 is less "white").
   const L_LIGHT: Record<number, number> = { 50: 96, 100: 92, 200: 86, 300: 78, 400: 68, 500: 56, 600: 48, 700: 40, 800: 32, 900: 24 };
   const L_DARK:  Record<number, number> = { 50: 22, 100: 28, 200: 34, 300: 40, 400: 48, 500: 56, 600: 64, 700: 72, 800: 80, 900: 88 };
-  
+
   const stops = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900] as const;
   const Lmap = resolvedMode === "light" ? L_LIGHT : L_DARK;
-  
+
   // Saturation adjusts slightly: less at extremes, more in the middle
   const Smap: Record<number, number> = {
     50: s * 0.25,
@@ -177,16 +241,28 @@ export function buildScaleFromHex(
     800: s * 0.95,
     900: s * 0.85,
   };
-  
+
   const boostS = opts?.boostS ?? 0;
   const biasL = opts?.biasL ?? 0;
-  
+  const against = opts?.against;
+  const dir = resolvedMode === "light" ? -1 : 1; // sentido em que a escala se afasta do fundo
+  const MIN_GAP = 2; // passo minimo de luminosidade entre degraus ajustados
+
   const out: Record<number, string> = {};
+  let prevL: number | undefined;
   for (const stop of stops) {
-    const targetL = clamp((Lmap[stop] ?? 50) + biasL, 0, 100);
+    let targetL = clamp((Lmap[stop] ?? 50) + biasL, 0, 100);
     const targetS = clamp((Smap[stop] ?? s) + boostS, 0, 100);
+    if (against && against.length > 0 && stop >= SCALE_TEXT_STOPS[0]) {
+      targetL = fitLightnessForContrast(h, targetS, targetL, against, resolvedMode);
+      // A escala continua monotona: cada degrau se afasta do fundo pelo menos MIN_GAP do anterior.
+      if (prevL !== undefined) {
+        const limit = prevL + dir * MIN_GAP;
+        if (dir < 0 ? targetL > limit : targetL < limit) targetL = clamp(limit, 0, 100);
+      }
+      prevL = targetL;
+    }
     out[stop] = hslToHex(h, targetS, targetL);
   }
   return out;
 }
-

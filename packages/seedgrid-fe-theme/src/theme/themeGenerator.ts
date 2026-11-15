@@ -7,6 +7,7 @@ import {
   shiftHue,
   toRgbVarValue,
   hslToHex,
+  fillShades,
 } from "./colorUtils";
 
 /* ------------- Semantic color generation ------------- */
@@ -52,15 +53,6 @@ export function generateThemeVars(input: SeedThemeInput, resolvedMode: "light" |
   const infoBase    = input.info    ?? buildSemanticBaseFromHue(resolvedMode, 210); // blue
   const successBase = input.success ?? buildSemanticBaseFromHue(resolvedMode, 145); // green
 
-  // Build scales
-  const primary = buildScaleFromHex(primaryBase, resolvedMode, { boostS: 4 });
-  const secondary = buildScaleFromHex(secondaryBase, resolvedMode, { boostS: 2 });
-  const tertiary = buildScaleFromHex(tertiaryBase, resolvedMode, { boostS: 0 });
-  const warning = buildScaleFromHex(warningBase, resolvedMode, { boostS: 4 });
-  const error = buildScaleFromHex(errorBase, resolvedMode, { boostS: 4 });
-  const info = buildScaleFromHex(infoBase, resolvedMode, { boostS: 2 });
-  const success = buildScaleFromHex(successBase, resolvedMode, { boostS: 2 });
-
   // Neutrals harmonized (pulled towards seed)
   const neutralBgHex = resolvedMode === "light"
     ? shiftHue(seed, 0, 10, 98)
@@ -74,6 +66,18 @@ export function generateThemeVars(input: SeedThemeInput, resolvedMode: "light" |
   const borderHex = resolvedMode === "light"
     ? shiftHue(seed, 0, 18, 84)
     : shiftHue(seed, 0, 18, 26);
+  // Fundos contra os quais o texto fino (degraus 400/500/600) precisa de >= 4,5:1
+  const against = [neutralBgHex, neutralSurfaceHex];
+
+  // Build scales
+  const primary = buildScaleFromHex(primaryBase, resolvedMode, { boostS: 4, against });
+  const secondary = buildScaleFromHex(secondaryBase, resolvedMode, { boostS: 2, against });
+  const tertiary = buildScaleFromHex(tertiaryBase, resolvedMode, { boostS: 0, against });
+  const warning = buildScaleFromHex(warningBase, resolvedMode, { boostS: 4, against });
+  const error = buildScaleFromHex(errorBase, resolvedMode, { boostS: 4, against });
+  const info = buildScaleFromHex(infoBase, resolvedMode, { boostS: 2, against });
+  const success = buildScaleFromHex(successBase, resolvedMode, { boostS: 2, against });
+
   const ringHex = primary[400] ?? primaryBase; // "beautiful" ring derived from primary
   const textHex = resolvedMode === "light" ? "#0B0B0C" : "#F6F6F7";
   const mutedTextHex = resolvedMode === "light" ? "#4B4B51" : "#B6B6BD";
@@ -157,6 +161,21 @@ export function generateThemeVars(input: SeedThemeInput, resolvedMode: "light" |
     vars[`--sg-error-${s}`] = toRgbVarValue(error[s] ?? errorBase);
     vars[`--sg-info-${s}`] = toRgbVarValue(info[s] ?? infoBase);
     vars[`--sg-success-${s}`] = toRgbVarValue(success[s] ?? successBase);
+  }
+
+  // Preenchimento do botao cheio: no claro e a cor pura de cada base (hover/active escurecem); no escuro segue os
+  // degraus 600/700/800. O texto do botao e escolhido por contraste sobre cada um (componentTokens).
+  const fillSets: Array<[string, string, Record<number, string>]> = [
+    ["primary", primaryBase, primary], ["secondary", secondaryBase, secondary], ["tertiary", tertiaryBase, tertiary],
+    ["warning", warningBase, warning], ["error", errorBase, error], ["info", infoBase, info], ["success", successBase, success],
+  ];
+  for (const [fname, fbase, fscale] of fillSets) {
+    const shades = resolvedMode === "light"
+      ? fillShades(fbase)
+      : { normal: fscale[600] ?? fbase, hover: fscale[700] ?? fbase, active: fscale[800] ?? fbase };
+    vars[`--sg-${fname}-fill`] = toRgbVarValue(shades.normal);
+    vars[`--sg-${fname}-fill-hover`] = toRgbVarValue(shades.hover);
+    vars[`--sg-${fname}-fill-active`] = toRgbVarValue(shades.active);
   }
 
   // Handy hover/active (normally 600/700)

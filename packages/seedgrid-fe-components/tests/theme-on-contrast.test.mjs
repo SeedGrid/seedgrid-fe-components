@@ -108,7 +108,7 @@ test("regressao: todo par fundo/on gerado pelo tema tem contraste >= 4,5 (ou o m
   }
 });
 
-// O botao pinta o fundo no tom 600 (--sg-btn-*-bg); o texto (--sg-btn-*-fg) e escolhido sobre ESSE fundo,
+// O botao pinta o fundo com --sg-*-fill (claro: cor pura da semente; escuro: tom 600) (--sg-btn-*-bg); o texto (--sg-btn-*-fg) e escolhido sobre ESSE fundo,
 // nao sobre o tom 500 usado por --sg-on-*.
 test("regressao: par real do botao (bg 600 x fg) tem contraste >= 4,5 (ou o melhor possivel)", { skip: !esbuildPath }, async () => {
   const cu = await load("colorUtils.ts");
@@ -148,7 +148,8 @@ test("regressao: pares reais do botao em todos os estados (normal, hover, active
     const base = generateThemeVars({ seed }, mode);
     const vars = { ...base, ...generateComponentTokens(base) };
     for (const [role, scale] of Object.entries(roles)) for (const [st, tone] of Object.entries(states)) {
-      const original = toHex(base[`--sg-${scale}-${tone}`]);
+      // Fundo do botao cheio: --sg-*-fill (claro: cor pura da semente; escuro: tons 600/700/800).
+      const original = toHex(base[`--sg-${scale}-fill${st ? "-" + st.slice(0, -1) : ""}`]);
       const bg = toHex(vars[`--sg-btn-${role}-${st}bg`]);
       const fg = toHex(vars[`--sg-btn-${role}-${st}fg`]);
       const why = `${name} ${mode}: botao ${role} ${st || "normal-"}(${tone}) (${bg}, ${fg})`;
