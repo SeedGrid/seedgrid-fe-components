@@ -123,6 +123,7 @@ import {
   Wand2,
   Wrench,
   KeyRound,
+  RotateCw,
   Zap
 } from "lucide-react";
 
@@ -816,6 +817,8 @@ export default function ShowcaseShell(props: {
   // Abaixo de 800 px o menu vira Drawer (como no showcase Flutter).
   const [isNarrow, setIsNarrow] = React.useState(false);
   const [drawerOpen, setDrawerOpen] = React.useState(false);
+  // Celular deitado (paisagem com altura < 500 px): cobre a tela com o aviso para girar o aparelho. Tablet/desktop nao mudam.
+  const [showRotateHint, setShowRotateHint] = React.useState(false);
 
   const applyLocale = React.useCallback((next: ShowcaseLocale) => {
     const nextMessages = MESSAGES_BY_LOCALE[next] ?? showcaseMessagesEnUs;
@@ -883,6 +886,15 @@ export default function ShowcaseShell(props: {
     return () => media.removeEventListener("change", sync);
   }, []);
 
+  React.useEffect(() => {
+    if (typeof window === "undefined") return;
+    const media = window.matchMedia("(orientation: landscape) and (max-height: 499px)");
+    const sync = () => setShowRotateHint(media.matches);
+    sync();
+    media.addEventListener("change", sync);
+    return () => media.removeEventListener("change", sync);
+  }, []);
+
   // Titulo da pagina atual no topo (como o AppBar do showcase Flutter).
   const pageTitle = React.useMemo(() => {
     const path = pathname ?? "/";
@@ -927,6 +939,16 @@ export default function ShowcaseShell(props: {
         locale={locale}
         messages={COMPONENTS_MESSAGES_BY_LOCALE[locale] ?? componentsMessagesEnUs}
       >
+        {showRotateHint ? (
+          <div
+            role="alert"
+            data-testid="showcase-rotate-hint"
+            className="fixed inset-0 z-[10000] flex flex-col items-center justify-center gap-3 bg-background p-6 text-center text-foreground"
+          >
+            <RotateCw className="size-10" aria-hidden="true" />
+            <p className="text-base font-semibold">{t({ locale, messages }, "showcase.orientation.rotate")}</p>
+          </div>
+        ) : null}
         <SgDockScreen
           id="showcase-shell-dock-v2"
           screenId="showcase-shell-screen"

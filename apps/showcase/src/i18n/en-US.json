@@ -4431,5 +4431,6 @@
   "showcase.component.calendar.labels.months6": "6 months",
   "showcase.component.calendar.labels.months12": "12 months",
   "showcase.component.calendar.labels.chosen": "Chosen: {date}",
-  "showcase.component.calendar.propsDraggable": "Card dragging: automatic (draggable at widths ≥ 640px), true = always, false = never. Takes precedence over cardProps.draggable."
+  "showcase.component.calendar.propsDraggable": "Card dragging: automatic (draggable at widths ≥ 640px), true = always, false = never. Takes precedence over cardProps.draggable.",
+  "showcase.orientation.rotate": "Rotate your device to view the showcase"
 }
