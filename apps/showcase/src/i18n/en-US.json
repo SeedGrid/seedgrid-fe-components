@@ -1774,6 +1774,7 @@
   "showcase.nav.inputs": "Inputs",
   "showcase.nav.layout": "Layout",
   "showcase.nav.search.label": "Search",
+  "showcase.nav.menuAria": "Showcase menu",
   "showcase.nav.search.placeholder": "Search component...",
   "showcase.nav.themeSystem": "Theme System",
   "showcase.nav.home": "Home",

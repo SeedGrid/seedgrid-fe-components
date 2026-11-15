@@ -1387,6 +1387,7 @@
   "showcase.nav.inputs": "Inputs",
   "showcase.nav.layout": "Layout",
   "showcase.nav.search.label": "Pesquisar",
+  "showcase.nav.menuAria": "Menu do showcase",
   "showcase.nav.search.placeholder": "Buscar componente...",
   "showcase.nav.themeSystem": "Sistema de Tema",
   "showcase.nav.home": "Início",

@@ -1774,6 +1774,7 @@
   "showcase.nav.inputs": "Champs",
   "showcase.nav.layout": "Disposition",
   "showcase.nav.search.label": "Rechercher",
+  "showcase.nav.menuAria": "Menu du showcase",
   "showcase.nav.search.placeholder": "Rechercher un composant...",
   "showcase.nav.themeSystem": "Système de thèmes",
   "showcase.nav.home": "Accueil",

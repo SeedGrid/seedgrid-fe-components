@@ -1082,7 +1082,7 @@ export default function ShowcaseShell(props: {
               onOpenChange={setDrawerOpen}
               search={{ enabled: true, placeholder: t({ locale, messages }, "showcase.nav.search.placeholder") }}
               border
-              ariaLabel="Menu do showcase"
+              ariaLabel={t({ locale, messages }, "showcase.nav.menuAria")}
               onNavigate={(node) => {
                 if (node.url) router.push(node.url);
                 setDrawerOpen(false);
@@ -1132,7 +1132,7 @@ export default function ShowcaseShell(props: {
               border
               className={isDarkMode ? "h-full" : "h-full bg-[#f7f3ee] text-[#2b1f14]"}
               style={isDarkMode ? undefined : SIDEBAR_THEME_VARS}
-              ariaLabel="Menu do showcase"
+              ariaLabel={t({ locale, messages }, "showcase.nav.menuAria")}
               onNavigate={(node) => {
                 if (node.url) router.push(node.url);
               }}
