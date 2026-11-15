@@ -1682,67 +1682,67 @@
   "String exibida antes da animacao. Ao mudar, o display reseta para ela.": {
     "pt": "String exibida antes da animação. Ao mudar, o display reseta para ela.",
     "en": "String shown before animation. When it changes, the display resets to it.",
-    "es": "Cadena mostrada antes de la animaci?n. Al cambiar, la visualizaci?n se reinicia con ella.",
+    "es": "Cadena mostrada antes de la animación. Al cambiar, la visualización se reinicia con ella.",
     "fr": "Chaîne affichée avant l'animation. Lorsqu'elle change, l'affichage se réinitialise sur elle."
   },
   "String de destino. A animacao transiciona cada caractere ate o alvo.": {
     "pt": "String de destino. A animação transiciona cada caractere até o alvo.",
     "en": "Target string. The animation transitions each character until it reaches the target.",
-    "es": "Cadena de destino. La animaci?n transiciona cada car?cter hasta llegar al objetivo.",
+    "es": "Cadena de destino. La animación transiciona cada carácter hasta llegar al objetivo.",
     "fr": "Chaîne cible. L'animation fait transiter chaque caractère jusqu'à la cible."
   },
   "Estilo de animacao por caractere: tambor vertical, flip card, neon, fade, discard (folha voadora) ou matrix LED.": {
     "pt": "Estilo de animação por caractere: tambor vertical, flip card, neon, fade, discard (folha voadora) ou matrix LED.",
     "en": "Per-character animation style: vertical roller, flip card, neon, fade, discard (flying page), or LED matrix.",
-    "es": "Estilo de animaci?n por car?cter: tambor vertical, flip card, ne?n, fade, discard (hoja voladora) o matriz LED.",
+    "es": "Estilo de animación por carácter: tambor vertical, flip card, neón, fade, discard (hoja voladora) o matriz LED.",
     "fr": "Style d'animation par caractère : tambour vertical, flip card, néon, fade, discard (feuille volante) ou matrice LED."
   },
   "Velocidade de 1 (lento) a 100 (rapido). Controla o delay entre cada caractere.": {
     "pt": "Velocidade de 1 (lento) a 100 (rápido). Controla o delay entre cada caractere.",
     "en": "Speed from 1 (slow) to 100 (fast). Controls the delay between each character.",
-    "es": "Velocidad de 1 (lento) a 100 (r?pido). Controla el retraso entre cada car?cter.",
+    "es": "Velocidad de 1 (lento) a 100 (rápido). Controla el retraso entre cada carácter.",
     "fr": "Vitesse de 1 (lent) à 100 (rapide). Contrôle le délai entre chaque caractère."
   },
   "Caractere para preencher posicoes extras quando as strings tem comprimentos diferentes.": {
     "pt": "Caractere para preencher posições extras quando as strings tem comprimentos diferentes.",
     "en": "Character used to fill extra positions when strings have different lengths.",
-    "es": "Car?cter usado para rellenar posiciones extra cuando las cadenas tienen longitudes diferentes.",
+    "es": "Carácter usado para rellenar posiciones extra cuando las cadenas tienen longitudes diferentes.",
     "fr": "Caractère pour remplir les positions supplémentaires lorsque les chaînes ont des longueurs différentes."
   },
   "\"left\" preenche a direita (nomes), \"right\" preenche a esquerda (numeros). Determina tambem a ordem de animacao dos caracteres.": {
     "pt": "\"left\" preenche a direita (nomes), \"right\" preenche a esquerda (números). Determina também a ordem de animação dos caracteres.",
     "en": "\"left\" pads on the right (names), \"right\" pads on the left (numbers). It also defines the character animation order.",
-    "es": "\"left\" rellena a la derecha (nombres), \"right\" rellena a la izquierda (n?meros). Tambi?n define el orden de animaci?n de los caracteres.",
+    "es": "\"left\" rellena a la derecha (nombres), \"right\" rellena a la izquierda (números). También define el orden de animación de los caracteres.",
     "fr": "\"left\" remplit à droite (noms), \"right\" remplit à gauche (nombres). Détermine aussi l'ordre d'animation des caractères."
   },
   "Se true, inicia animacao automaticamente ao montar e sempre que targetString mudar.": {
     "pt": "Se true, inicia animação automaticamente ao montar e sempre que targetString mudar.",
     "en": "If true, starts animation automatically on mount and whenever targetString changes.",
-    "es": "Si es true, inicia la animaci?n autom?ticamente al montar y cada vez que targetString cambia.",
+    "es": "Si es true, inicia la animación automáticamente al montar y cada vez que targetString cambia.",
     "fr": "Si true, démarre l'animation automatiquement au montage et chaque fois que targetString change."
   },
   "Tamanho da fonte em pixels. Controla a escala de cada digito.": {
     "pt": "Tamanho da fonte em pixels. Controla a escala de cada dígito.",
     "en": "Font size in pixels. Controls the scale of each digit.",
-    "es": "Tama?o de fuente en p?xeles. Controla la escala de cada d?gito.",
+    "es": "Tamaño de fuente en píxeles. Controla la escala de cada dígito.",
     "fr": "Taille de la police en pixels. Contrôle l'échelle de chaque chiffre."
   },
   "Cor principal do texto/ponto. Aplicada nos estilos neon, fade, discard e matrix.": {
     "pt": "Cor principal do texto/ponto. Aplicada nos estilos neon, fade, discard e matrix.",
     "en": "Primary text/dot color. Applied in neon, fade, discard, and matrix styles.",
-    "es": "Color principal del texto/punto. Se aplica en los estilos ne?n, fade, discard y matrix.",
+    "es": "Color principal del texto/punto. Se aplica en los estilos neón, fade, discard y matrix.",
     "fr": "Couleur principale du texte/point. Appliquée aux styles neon, fade, discard et matrix."
   },
   "Cor de fundo de cada digito. Aplicada nos estilos neon, fade, discard e matrix.": {
     "pt": "Cor de fundo de cada dígito. Aplicada nos estilos neon, fade, discard e matrix.",
     "en": "Background color of each digit. Applied in neon, fade, discard, and matrix styles.",
-    "es": "Color de fondo de cada d?gito. Se aplica en los estilos ne?n, fade, discard y matrix.",
+    "es": "Color de fondo de cada dígito. Se aplica en los estilos neón, fade, discard y matrix.",
     "fr": "Couleur d'arrière-plan de chaque chiffre. Appliquée aux styles neon, fade, discard et matrix."
   },
   "Conjunto de caracteres validos para o SgRoller3DDigit. Ignorado quando style != \"roller3d\".": {
     "pt": "Conjunto de caracteres válidos para o SgRoller3DDigit. Ignorado quando style != \"roller3d\".",
     "en": "Set of valid characters for SgRoller3DDigit. Ignored when style != \"roller3d\".",
-    "es": "Conjunto de caracteres v?lidos para SgRoller3DDigit. Se ignora cuando style != \"roller3d\".",
+    "es": "Conjunto de caracteres válidos para SgRoller3DDigit. Se ignora cuando style != \"roller3d\".",
     "fr": "Ensemble de caractères valides pour SgRoller3DDigit. Ignoré lorsque style != \"roller3d\"."
   },
   "Classes CSS adicionais no container externo.": {
@@ -1754,7 +1754,7 @@
   "Ref imperativa. Expoe o metodo startAnimation() para acionar a animacao manualmente.": {
     "pt": "Ref imperativa. Expoe o método startAnimation() para acionar a animação manualmente.",
     "en": "Imperative ref. Exposes the startAnimation() method to trigger animation manually.",
-    "es": "Ref imperativa. Expone el m?todo startAnimation() para disparar la animaci?n manualmente.",
+    "es": "Ref imperativa. Expone el método startAnimation() para disparar la animación manualmente.",
     "fr": "Ref impérative. Expose la méthode startAnimation() pour déclencher l'animation manuellement."
   },
   "Caractere exibido no card. Ao mudar, o digito atual apaga e o novo acende.": {

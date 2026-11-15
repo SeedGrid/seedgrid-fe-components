@@ -6,7 +6,8 @@ import dictionary from "./ai-meta.json";
 type Entry = Partial<Record<"pt-BR" | "en-US" | "pt-PT" | "es" | "fr", string>>;
 const RAW_DICTIONARY = dictionary as Record<string, Entry>;
 // Chaves normalizadas (CRLF -> LF): o manifesto pode ter quebras de linha diferentes das do dicionario.
-const normalizeKey = (text: string) => text.replace(/\r\n/g, "\n");
+// Tambem ignora acentos: o texto da pagina/manifesto pode estar acentuado e a chave do dicionario nao (e vice-versa).
+const normalizeKey = (text: string) => text.replace(/\r\n/g, "\n").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 const DICTIONARY: Record<string, Entry> = Object.fromEntries(
   Object.entries(RAW_DICTIONARY).map(([key, entry]) => [normalizeKey(key), entry])
 );

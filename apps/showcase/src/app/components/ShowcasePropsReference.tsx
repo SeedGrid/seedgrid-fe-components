@@ -73,8 +73,14 @@ const PROPS_REFERENCE_TEXTS: Record<"pt-BR" | "pt-PT" | "en-US" | "es" | "fr", P
 
 const PROPS_DESCRIPTION_TRANSLATIONS = propsDescriptionTranslations as Record<string, PropDescriptionTranslation>;
 
+// Busca tambem sem acentos: a descricao na pagina pode estar acentuada e a chave do dicionario nao.
+const plainKey = (text: string) => text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+const PROPS_DESCRIPTION_BY_PLAIN_KEY: Record<string, PropDescriptionTranslation> = Object.fromEntries(
+  Object.entries(PROPS_DESCRIPTION_TRANSLATIONS).map(([key, value]) => [plainKey(key), value])
+);
+
 function getLocalizedPropDescription(description: string, locale: keyof typeof PROPS_REFERENCE_TEXTS): string {
-  const translations = PROPS_DESCRIPTION_TRANSLATIONS[description];
+  const translations = PROPS_DESCRIPTION_TRANSLATIONS[description] ?? PROPS_DESCRIPTION_BY_PLAIN_KEY[plainKey(description)];
   if (!translations) return description;
 
   if (locale === "fr") return translations.fr ?? translations.en;
