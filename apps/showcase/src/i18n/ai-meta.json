@@ -1210,26 +1210,12 @@
     "fr": "Callback avec la valeur monétaire sous forme de number (null uniquement avec emptyValueIsNull).",
     "pt-BR": "Callback com o valor monetário como number (null somente com emptyValueIsNull)."
   },
-  "Callback com o valor monetario normalizado.": {
-    "en-US": "Callback with the normalized monetary value.",
-    "pt-PT": "Callback com o valor monetário normalizado.",
-    "es": "Callback con el valor monetario normalizado.",
-    "fr": "Callback avec la valeur monétaire normalisée.",
-    "pt-BR": "Callback com o valor monetário normalizado."
-  },
   "Callback com o valor numerico atual (number; null somente com emptyValueIsNull).": {
     "en-US": "Callback with the current numeric value (number; null only with emptyValueIsNull).",
     "pt-PT": "Callback com o valor numérico atual (number; null apenas com emptyValueIsNull).",
     "es": "Callback con el valor numérico actual (number; null solo con emptyValueIsNull).",
     "fr": "Callback avec la valeur numérique actuelle (number ; null uniquement avec emptyValueIsNull).",
     "pt-BR": "Callback com o valor numérico atual (number; null somente com emptyValueIsNull)."
-  },
-  "Callback com o valor numerico atual.": {
-    "en-US": "Callback with the current numeric value.",
-    "pt-PT": "Callback com o valor numérico atual.",
-    "es": "Callback con el valor numérico actual.",
-    "fr": "Callback avec la valeur numérique actuelle.",
-    "pt-BR": "Callback com o valor numérico atual."
   },
   "Callback com o valor textual atual.": {
     "en-US": "Callback with the current text value.",
@@ -1994,13 +1980,6 @@
     "fr": "Caractère utilisé pour remplir les positions supplémentaires lorsque\nsourceString et targetString ont des longueurs différentes.",
     "pt-BR": "Caractere utilizado para preencher as posições extras quando\nsourceString e targetString possuem comprimentos diferentes."
   },
-  "Caractere utilizado para preencher as posicoes extras quando\r\nsourceString e targetString possuem comprimentos diferentes.": {
-    "en-US": "Character used to fill the extra positions when\r\nsourceString and targetString have different lengths.",
-    "pt-PT": "Caráter utilizado para preencher as posições extra quando\r\nsourceString e targetString têm comprimentos diferentes.",
-    "es": "Carácter utilizado para rellenar las posiciones extra cuando\r\nsourceString y targetString tienen longitudes diferentes.",
-    "fr": "Caractère utilisé pour remplir les positions supplémentaires lorsque\r\nsourceString et targetString ont des longueurs différentes.",
-    "pt-BR": "Caractere utilizado para preencher as posições extras quando\r\nsourceString e targetString possuem comprimentos diferentes."
-  },
   "Carregar estado persistido de componentes customizados no init.": {
     "en-US": "Load persisted state of custom components at init.",
     "pt-PT": "Carregar o estado persistido de componentes personalizados no init.",
@@ -2624,13 +2603,6 @@
     "fr": "Ensemble de caractères valides pour SgRoller3DDigit.\nDoit contenir tous les caractères pouvant apparaître dans sourceString,\ntargetString et emptyChar. Ignoré lorsque style != \"roller3d\".",
     "pt-BR": "Conjunto de caracteres válidos para o SgRoller3DDigit.\nDeve conter todos os caracteres que podem aparecer em sourceString,\ntargetString e emptyChar. Ignorado quando style != \"roller3d\"."
   },
-  "Conjunto de caracteres validos para o SgRoller3DDigit.\r\nDeve conter todos os caracteres que podem aparecer em sourceString,\r\ntargetString e emptyChar. Ignorado quando style != \"roller3d\".": {
-    "en-US": "Set of valid characters for SgRoller3DDigit.\r\nMust contain all characters that may appear in sourceString,\r\ntargetString, and emptyChar. Ignored when style != \"roller3d\".",
-    "pt-PT": "Conjunto de carateres válidos para o SgRoller3DDigit.\r\nDeve conter todos os carateres que podem aparecer em sourceString,\r\ntargetString e emptyChar. Ignorado quando style != \"roller3d\".",
-    "es": "Conjunto de caracteres válidos para SgRoller3DDigit.\r\nDebe contener todos los caracteres que pueden aparecer en sourceString,\r\ntargetString y emptyChar. Se ignora cuando style != \"roller3d\".",
-    "fr": "Jeu de caractères valides pour SgRoller3DDigit.\r\nDoit contenir tous les caractères pouvant apparaître dans sourceString,\r\ntargetString et emptyChar. Ignoré lorsque style != \"roller3d\".",
-    "pt-BR": "Conjunto de caracteres válidos para o SgRoller3DDigit.\r\nDeve conter todos os caracteres que podem aparecer em sourceString,\r\ntargetString e emptyChar. Ignorado quando style != \"roller3d\"."
-  },
   "Construir chaves de storage que respeitam namespace.": {
     "en-US": "Build storage keys that respect the namespace.",
     "pt-PT": "Construir chaves de storage que respeitam o namespace.",
@@ -3113,13 +3085,6 @@
     "es": "Color principal del texto/punto — aplicado en los estilos \"neon\", \"fade\",\n\"discard\" y \"matrix\".",
     "fr": "Couleur principale du texte/point — appliquée aux styles \"neon\", \"fade\",\n\"discard\" et \"matrix\".",
     "pt-BR": "Cor principal do texto/ponto — aplicada nos estilos \"neon\", \"fade\",\n\"discard\" e \"matrix\"."
-  },
-  "Cor principal do texto/ponto — aplicada nos estilos \"neon\", \"fade\",\r\n\"discard\" e \"matrix\".": {
-    "en-US": "Main text/dot color — applied to the \"neon\", \"fade\",\r\n\"discard\", and \"matrix\" styles.",
-    "pt-PT": "Cor principal do texto/ponto — aplicada nos estilos \"neon\", \"fade\",\r\n\"discard\" e \"matrix\".",
-    "es": "Color principal del texto/punto — aplicado en los estilos \"neon\", \"fade\",\r\n\"discard\" y \"matrix\".",
-    "fr": "Couleur principale du texte/point — appliquée aux styles \"neon\", \"fade\",\r\n\"discard\" et \"matrix\".",
-    "pt-BR": "Cor principal do texto/ponto — aplicada nos estilos \"neon\", \"fade\",\r\n\"discard\" e \"matrix\"."
   },
   "CPF ou documentos de pessoa fisica; nesses casos prefira SgInputCPF.": {
     "en-US": "CPF or individual-person documents; in those cases prefer SgInputCPF.",
@@ -6124,13 +6089,6 @@
     "fr": "Instant initial (non contrôlé).",
     "pt-BR": "Instante inicial (não controlado)."
   },
-  "Instante ISO UTC (ou null) e texto local do campo.": {
-    "en-US": "ISO UTC instant (or null) and the field's local text.",
-    "pt-PT": "Instante ISO UTC (ou null) e texto local do campo.",
-    "es": "Instante ISO UTC (o null) y texto local del campo.",
-    "fr": "Instant ISO UTC (ou null) et texte local du champ.",
-    "pt-BR": "Instante ISO UTC (ou null) e texto local do campo."
-  },
   "Integracao react-hook-form (opcional).": {
     "en-US": "react-hook-form integration (optional).",
     "pt-PT": "Integração com react-hook-form (opcional).",
@@ -8819,13 +8777,6 @@
     "fr": "Si true, démarre l'animation automatiquement au montage du composant\net chaque fois que targetString change.",
     "pt-BR": "Se true, inicia a animação automaticamente quando o componente\nmonta e sempre que targetString mudar."
   },
-  "Se true, inicia a animacao automaticamente quando o componente\r\nmonta e sempre que targetString mudar.": {
-    "en-US": "If true, starts the animation automatically when the component\r\nmounts and whenever targetString changes.",
-    "pt-PT": "Se true, inicia a animação automaticamente quando o componente\r\nmonta e sempre que targetString mudar.",
-    "es": "Si es true, inicia la animación automáticamente cuando el componente\r\nse monta y cada vez que targetString cambie.",
-    "fr": "Si true, démarre l'animation automatiquement lorsque le composant\r\nest monté et chaque fois que targetString change.",
-    "pt-BR": "Se true, inicia a animação automaticamente quando o componente\r\nmonta e sempre que targetString mudar."
-  },
   "Secoes internas pequenas; nesses casos prefira DockLayout, Panel ou Stack.": {
     "en-US": "Small internal sections; in these cases, prefer DockLayout, Panel, or Stack.",
     "pt-PT": "Secções internas pequenas; nestes casos, prefira DockLayout, Panel ou Stack.",
@@ -10477,13 +10428,6 @@
     "es": "Velocidad de 1 (muy lento) a 100 (muy rápido).\nControla el intervalo de tiempo entre el cambio de cada carácter.",
     "fr": "Vitesse de 1 (très lent) à 100 (très rapide).\nContrôle l'intervalle de temps entre chaque changement de caractère.",
     "pt-BR": "Velocidade de 1 (muito lento) a 100 (muito rápido).\nControla o intervalo de tempo entre a troca de cada caractere."
-  },
-  "Velocidade de 1 (muito lento) a 100 (muito rapido).\r\nControla o intervalo de tempo entre a troca de cada caractere.": {
-    "en-US": "Speed from 1 (very slow) to 100 (very fast).\r\nControls the time interval between the swap of each character.",
-    "pt-PT": "Velocidade de 1 (muito lento) a 100 (muito rápido).\r\nControla o intervalo de tempo entre a troca de cada caráter.",
-    "es": "Velocidad de 1 (muy lento) a 100 (muy rápido).\r\nControla el intervalo de tiempo entre el cambio de cada carácter.",
-    "fr": "Vitesse de 1 (très lent) à 100 (très rapide).\r\nContrôle l'intervalle de temps entre le changement de chaque caractère.",
-    "pt-BR": "Velocidade de 1 (muito lento) a 100 (muito rápido).\r\nControla o intervalo de tempo entre a troca de cada caractere."
   },
   "Versao logica do estado para migracao.": {
     "en-US": "Logical version of the state for migration.",
