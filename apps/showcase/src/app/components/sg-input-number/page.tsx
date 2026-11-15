@@ -4,7 +4,16 @@ import React from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import type { FieldValues } from "react-hook-form";
-import { SgButton, SgGrid, SgInputNumber } from "@seedgrid/fe-components";
+import {
+  SgButton,
+  SgGrid,
+  SgInputCPF,
+  SgInputCurrency,
+  SgInputDateTime,
+  SgInputNumber,
+  SgInputPhone,
+  SgInputPostalCode
+} from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
@@ -124,6 +133,65 @@ export default function App() {
     </div>
   );
 }`;
+
+type ClienteApi = {
+  quantidade: number;
+  credito: number;
+  agendadoEm: string;
+  cpf: string;
+  telefone: string;
+  cep: string;
+};
+
+// API simulada: devolve o registro depois de 600 ms.
+const buscarCliente = (): Promise<ClienteApi> =>
+  new Promise((resolve) =>
+    setTimeout(
+      () =>
+        resolve({
+          quantidade: 12,
+          credito: 1500.5,
+          agendadoEm: "2026-03-10T14:30",
+          cpf: "12345678909",
+          telefone: "11987654321",
+          cep: "01310100"
+        }),
+      600
+    )
+  );
+
+function CarregarDaApiExample() {
+  const i18n = useShowcaseI18n();
+  // defaultValues assincrono: o formulario carrega o registro da API e os campos ja nascem preenchidos.
+  const { control, reset, watch, formState } = useForm<ClienteApi>({ defaultValues: buscarCliente });
+  const valores = watch();
+
+  return (
+    <div className="w-full space-y-3">
+      <SgGrid columns={{ base: 1, md: 3 }} gap={8}>
+        <SgInputNumber id="api-quantidade" label={t(i18n, "showcase.component.inputNumber.loadApi.labels.quantity")} name="quantidade" control={control} decimals={0} />
+        <SgInputCurrency id="api-credito" label={t(i18n, "showcase.component.inputNumber.loadApi.labels.credit")} name="credito" control={control} />
+        <SgInputDateTime id="api-agendado" label={t(i18n, "showcase.component.inputNumber.loadApi.labels.scheduledAt")} name="agendadoEm" control={control} />
+        <SgInputCPF id="api-cpf" label="CPF" name="cpf" control={control} />
+        <SgInputPhone id="api-telefone" label={t(i18n, "showcase.component.inputNumber.loadApi.labels.phone")} name="telefone" control={control} />
+        <SgInputPostalCode id="api-cep" label={t(i18n, "showcase.component.inputNumber.loadApi.labels.postalCode")} name="cep" control={control} />
+      </SgGrid>
+      <SgButton
+        type="button"
+        size="sm"
+        appearance="outline"
+        onClick={async () => reset(await buscarCliente())}
+      >
+        {t(i18n, "showcase.component.inputNumber.loadApi.actions.reload")}
+      </SgButton>
+      <p className="text-xs text-muted-foreground">
+        {formState.isLoading
+          ? t(i18n, "showcase.component.inputNumber.loadApi.labels.loading")
+          : t(i18n, "showcase.component.inputNumber.loadApi.labels.values", { value: JSON.stringify(valores) })}
+      </p>
+    </div>
+  );
+}
 
 export default function SgInputNumberPage() {
   const i18n = useShowcaseI18n();
@@ -317,7 +385,8 @@ export default function SgInputNumberPage() {
       { id: "exemplo-14", label: `14) ${t(i18n, "showcase.component.inputNumber.sections.events.title")}` },
       { id: "exemplo-15", label: `15) ${t(i18n, "showcase.component.inputNumber.sections.sizeBorder.title")}` },
       { id: "exemplo-16", label: `16) ${t(i18n, "showcase.common.sections.labelPosition.title")}` },
-      { id: "exemplo-17", label: "17) Playground" }
+      { id: "exemplo-17", label: `17) ${t(i18n, "showcase.component.inputNumber.sections.loadApi.title")}` },
+      { id: "exemplo-18", label: "18) Playground" }
     ],
     [i18n.locale]
   );
@@ -839,7 +908,16 @@ export default function SgInputNumberPage() {
 
 <Section
         id="exemplo-17"
-        title="17) Playground"
+        title={`17) ${t(i18n, "showcase.component.inputNumber.sections.loadApi.title")}`}
+        description={t(i18n, "showcase.component.inputNumber.sections.loadApi.description")}
+      >
+        <CarregarDaApiExample />
+        <CodeBlock sampleFile="apps/showcase/src/app/components/sg-input-number/samples/carregar-da-api.tsx.sample" />
+      </Section>
+
+      <Section
+        id="exemplo-18"
+        title="18) Playground"
         description={t(i18n, "showcase.common.playground.description.withComponent", { component: "SgInputNumber" })}
       >
         <SgPlayground

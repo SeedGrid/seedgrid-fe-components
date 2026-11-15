@@ -4433,5 +4433,15 @@
   "showcase.component.calendar.labels.months12": "12 months",
   "showcase.component.calendar.labels.chosen": "Chosen: {date}",
   "showcase.component.calendar.propsDraggable": "Card dragging: automatic (draggable at widths ≥ 640px), true = always, false = never. Takes precedence over cardProps.draggable.",
-  "showcase.orientation.rotate": "Rotate your device to view the showcase"
+  "showcase.orientation.rotate": "Rotate your device to view the showcase",
+  "showcase.component.inputNumber.sections.loadApi.title": "Load from the API and edit",
+  "showcase.component.inputNumber.sections.loadApi.description": "A record coming from a (simulated) API fills number, currency, date and time, CPF, phone and postal code through the form (async defaultValues); the user edits and \"Reload\" applies a new record with reset(), with no page state.",
+  "showcase.component.inputNumber.loadApi.labels.quantity": "Quantity",
+  "showcase.component.inputNumber.loadApi.labels.credit": "Credit",
+  "showcase.component.inputNumber.loadApi.labels.scheduledAt": "Scheduled at",
+  "showcase.component.inputNumber.loadApi.labels.phone": "Phone",
+  "showcase.component.inputNumber.loadApi.labels.postalCode": "Postal code",
+  "showcase.component.inputNumber.loadApi.labels.loading": "Loading...",
+  "showcase.component.inputNumber.loadApi.labels.values": "Values: {value}",
+  "showcase.component.inputNumber.loadApi.actions.reload": "Reload from the API"
 }

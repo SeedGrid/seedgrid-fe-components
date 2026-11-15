@@ -4433,5 +4433,15 @@
   "showcase.component.calendar.labels.months12": "12 meses",
   "showcase.component.calendar.labels.chosen": "Escolhida: {date}",
   "showcase.component.calendar.propsDraggable": "Arrasto do card: automático (arrasta em largura ≥ 640px), true = sempre, false = nunca. Tem prioridade sobre cardProps.draggable.",
-  "showcase.orientation.rotate": "Gire o aparelho para ver o showcase"
+  "showcase.orientation.rotate": "Gire o aparelho para ver o showcase",
+  "showcase.component.inputNumber.sections.loadApi.title": "Carregar da API e editar",
+  "showcase.component.inputNumber.sections.loadApi.description": "Um registro vindo de uma API (simulada) preenche número, moeda, data e hora, CPF, telefone e CEP pelo formulário (defaultValues assíncrono); o usuário edita e \"Recarregar\" aplica um novo registro com reset(), sem estado na página.",
+  "showcase.component.inputNumber.loadApi.labels.quantity": "Quantidade",
+  "showcase.component.inputNumber.loadApi.labels.credit": "Crédito",
+  "showcase.component.inputNumber.loadApi.labels.scheduledAt": "Agendado em",
+  "showcase.component.inputNumber.loadApi.labels.phone": "Telefone",
+  "showcase.component.inputNumber.loadApi.labels.postalCode": "CEP",
+  "showcase.component.inputNumber.loadApi.labels.loading": "Carregando...",
+  "showcase.component.inputNumber.loadApi.labels.values": "Valores: {value}",
+  "showcase.component.inputNumber.loadApi.actions.reload": "Recarregar da API"
 }

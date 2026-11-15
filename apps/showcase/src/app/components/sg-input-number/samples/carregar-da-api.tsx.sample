@@ -1,0 +1,67 @@
+import { useForm } from "react-hook-form";
+import {
+  SgButton,
+  SgGrid,
+  SgInputCPF,
+  SgInputCurrency,
+  SgInputDateTime,
+  SgInputNumber,
+  SgInputPhone,
+  SgInputPostalCode
+} from "@seedgrid/fe-components";
+
+type Cliente = {
+  quantidade: number;
+  credito: number;
+  agendadoEm: string;
+  cpf: string;
+  telefone: string;
+  cep: string;
+};
+
+// API simulada: devolve o registro depois de 600 ms.
+const buscarCliente = (): Promise<Cliente> =>
+  new Promise((resolve) =>
+    setTimeout(
+      () =>
+        resolve({
+          quantidade: 12,
+          credito: 1500.5,
+          agendadoEm: "2026-03-10T14:30",
+          cpf: "12345678909",
+          telefone: "11987654321",
+          cep: "01310100"
+        }),
+      600
+    )
+  );
+
+export default function Example() {
+  // defaultValues assíncrono: o formulário carrega o registro da API e os campos já nascem preenchidos.
+  const { control, reset, watch, formState } = useForm<Cliente>({ defaultValues: buscarCliente });
+  const valores = watch();
+
+  return (
+    <div className="w-full space-y-3">
+      <SgGrid columns={{ base: 1, md: 3 }} gap={8}>
+        <SgInputNumber id="api-quantidade" label="Quantidade" name="quantidade" control={control} decimals={0} />
+        <SgInputCurrency id="api-credito" label="Crédito" name="credito" control={control} />
+        <SgInputDateTime id="api-agendado" label="Agendado em" name="agendadoEm" control={control} />
+        <SgInputCPF id="api-cpf" label="CPF" name="cpf" control={control} />
+        <SgInputPhone id="api-telefone" label="Telefone" name="telefone" control={control} />
+        <SgInputPostalCode id="api-cep" label="CEP" name="cep" control={control} />
+      </SgGrid>
+      <SgButton
+        type="button"
+        size="sm"
+        appearance="outline"
+        onClick={async () => reset(await buscarCliente())}
+      >
+        Recarregar da API
+      </SgButton>
+      <p className="text-xs text-muted-foreground">
+        {formState.isLoading ? "Carregando..." : `Valores: ${JSON.stringify(valores)}`}
+      </p>
+    </div>
+  );
+}

@@ -4433,5 +4433,15 @@
   "showcase.component.calendar.labels.months12": "12 mois",
   "showcase.component.calendar.labels.chosen": "Choisie : {date}",
   "showcase.component.calendar.propsDraggable": "Déplacement de la carte : automatique (déplaçable à partir de 640px de largeur), true = toujours, false = jamais. Prioritaire sur cardProps.draggable.",
-  "showcase.orientation.rotate": "Faites pivoter l'appareil pour voir le showcase"
+  "showcase.orientation.rotate": "Faites pivoter l'appareil pour voir le showcase",
+  "showcase.component.inputNumber.sections.loadApi.title": "Charger depuis l'API et modifier",
+  "showcase.component.inputNumber.sections.loadApi.description": "Un enregistrement venant d'une API (simulée) remplit nombre, devise, date et heure, CPF, téléphone et code postal via le formulaire (defaultValues asynchrone) ; l'utilisateur modifie et « Recharger » applique un nouvel enregistrement avec reset(), sans état dans la page.",
+  "showcase.component.inputNumber.loadApi.labels.quantity": "Quantité",
+  "showcase.component.inputNumber.loadApi.labels.credit": "Crédit",
+  "showcase.component.inputNumber.loadApi.labels.scheduledAt": "Planifié le",
+  "showcase.component.inputNumber.loadApi.labels.phone": "Téléphone",
+  "showcase.component.inputNumber.loadApi.labels.postalCode": "Code postal",
+  "showcase.component.inputNumber.loadApi.labels.loading": "Chargement...",
+  "showcase.component.inputNumber.loadApi.labels.values": "Valeurs : {value}",
+  "showcase.component.inputNumber.loadApi.actions.reload": "Recharger depuis l'API"
 }
