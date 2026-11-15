@@ -141,7 +141,6 @@ Principais bibliotecas usadas pelo pacote:
 | [`qrcode.react`](https://github.com/zpao/qrcode.react) | ISC | Renderizacao de QR Code |
 | [`@tiptap/react`](https://tiptap.dev/) | MIT | Base do `SgTextEditor` |
 | [`lucide-react`](https://lucide.dev/) | ISC | Iconografia em varios componentes |
-| [`@dnd-kit/core`](https://dndkit.com/) | MIT | Interacoes de drag and drop |
 
 Lista de creditos em formato de pagina: `apps/showcase/src/app/credits/page.tsx`.
 
