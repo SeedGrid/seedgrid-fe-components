@@ -17,6 +17,7 @@ import { SgSegmentDigit } from "../../digits/segment-digit";
 import { SgSevenSegmentDigit } from "../../digits/seven-segment-digit";
 import { SgCard, type SgCardProps } from "../../layout/SgCard";
 import { useSgAutoDraggable } from "../../layout/useSgAutoDraggable";
+import { SgFitWidth } from "./FitWidth";
 import { t, useComponentsI18n } from "../../i18n";
 
 function cn(...parts: Array<string | false | null | undefined>) {
@@ -734,18 +735,20 @@ export function SgClock(props: SgClockProps) {
         );
       })()
     ) : (
-      <DigitalClock
-        timezone={timezone}
-        initialServerTime={initialServerTime}
-        locale={locale}
-        format={format}
-        showSeconds={showSeconds}
-        size={size}
-        digitalStyle={digitalStyle}
-        digitBuilder={digitBuilder}
-        className={className}
-        style={style}
-      />
+      <SgFitWidth>
+        <DigitalClock
+          timezone={timezone}
+          initialServerTime={initialServerTime}
+          locale={locale}
+          format={format}
+          showSeconds={showSeconds}
+          size={size}
+          digitalStyle={digitalStyle}
+          digitBuilder={digitBuilder}
+          className={className}
+          style={style}
+        />
+      </SgFitWidth>
     );
 
   return (

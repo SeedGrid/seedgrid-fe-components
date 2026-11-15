@@ -59,7 +59,7 @@ test("SgCalendar exposes translated card and navigation labels", () => {
   );
 
   assert.match(html, />Calendrier</);
-  assert.match(html, /aria-label="Mois precedent"/);
+  assert.match(html, /aria-label="Mois précédent"/);
   assert.match(html, /aria-label="Mois suivant"/);
   assert.match(html, /aria-label="Aller a aujourd hui"/);
 });

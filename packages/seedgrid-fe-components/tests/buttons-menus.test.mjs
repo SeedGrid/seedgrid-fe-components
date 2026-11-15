@@ -146,9 +146,9 @@ test("SgTreeView renders translated control labels for expand, collapse and clea
     })
   );
 
-  assert.match(html, />Tout developper</);
-  assert.match(html, />Tout reduire</);
-  assert.match(html, /title="Effacer la selection"/);
+  assert.match(html, />Tout développer</);
+  assert.match(html, />Tout réduire</);
+  assert.match(html, /title="Effacer la sélection"/);
 });
 
 
@@ -183,7 +183,7 @@ test("SgCard exposes translated collapse toggle labels", () => {
     )
   );
 
-  assert.match(html, /aria-label="Reduire"/);
+  assert.match(html, /aria-label="Réduire"/);
 });
 
 test("SgMenu uses translated empty states by default", () => {
