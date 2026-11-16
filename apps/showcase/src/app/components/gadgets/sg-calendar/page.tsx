@@ -77,7 +77,7 @@ function ControlledCalendarExample() {
 
 function LocaleCalendarExample() {
   const i18n = useShowcaseI18n();
-  const [locale, setLocale] = React.useState<"pt-BR" | "en-US" | "es">(i18n.locale === "en-US" || i18n.locale === "es" ? i18n.locale : "pt-BR");
+  const [locale, setLocale] = React.useState<"pt-BR" | "en-US" | "es">("pt-BR");
   const [weekStartsOn, setWeekStartsOn] = React.useState<0 | 1>(0);
   const [numberOfMonths, setNumberOfMonths] = React.useState(6);
 
