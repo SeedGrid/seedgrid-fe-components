@@ -4,16 +4,19 @@ import React from "react";
 import { SgButton, SgCalendar, SgGrid } from "@seedgrid/fe-components";
 
 export default function Example() {
-  const [locale, setLocale] = React.useState<"pt-BR" | "en-US" | "es">("pt-BR");
+  const appLocale = "pt-BR"; // idioma da sua aplicação
+  const [locale, setLocale] = React.useState<string>(appLocale);
   const [weekStartsOn, setWeekStartsOn] = React.useState<0 | 1>(0);
   const [numberOfMonths, setNumberOfMonths] = React.useState(6);
 
   return (
     <div className="space-y-3">
-      <SgGrid columns={{ base: 2, md: 5 }} gap={8}>
+      <SgGrid columns={{ base: 2, md: 4 }} gap={8}>
         <SgButton appearance={locale === "pt-BR" ? "solid" : "outline"} onClick={() => setLocale("pt-BR")}>pt-BR</SgButton>
+        <SgButton appearance={locale === "pt-PT" ? "solid" : "outline"} onClick={() => setLocale("pt-PT")}>pt-PT</SgButton>
         <SgButton appearance={locale === "en-US" ? "solid" : "outline"} onClick={() => setLocale("en-US")}>en-US</SgButton>
         <SgButton appearance={locale === "es" ? "solid" : "outline"} onClick={() => setLocale("es")}>es</SgButton>
+        <SgButton appearance={locale === "fr" ? "solid" : "outline"} onClick={() => setLocale("fr")}>fr</SgButton>
         <SgButton appearance={weekStartsOn === 0 ? "solid" : "outline"} onClick={() => setWeekStartsOn(0)}>Domingo primeiro</SgButton>
         <SgButton appearance={weekStartsOn === 1 ? "solid" : "outline"} onClick={() => setWeekStartsOn(1)}>Segunda primeiro</SgButton>
       </SgGrid>

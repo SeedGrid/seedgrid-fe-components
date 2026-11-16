@@ -77,16 +77,21 @@ function ControlledCalendarExample() {
 
 function LocaleCalendarExample() {
   const i18n = useShowcaseI18n();
-  const [locale, setLocale] = React.useState<"pt-BR" | "en-US" | "es">("pt-BR");
+  // Segue o idioma escolhido no showcase; os botoes so sobrescrevem enquanto esse idioma nao muda.
+  const [override, setOverride] = React.useState<{ base: string; value: string } | null>(null);
+  const locale = override && override.base === i18n.locale ? override.value : i18n.locale;
+  const setLocale = (value: string) => setOverride({ base: i18n.locale, value });
   const [weekStartsOn, setWeekStartsOn] = React.useState<0 | 1>(0);
   const [numberOfMonths, setNumberOfMonths] = React.useState(6);
 
   return (
     <div className="space-y-3">
-      <SgGrid columns={{ base: 2, md: 5 }} gap={8}>
+      <SgGrid columns={{ base: 2, md: 4 }} gap={8}>
         <SgButton appearance={locale === "pt-BR" ? "solid" : "outline"} onClick={() => setLocale("pt-BR")}>pt-BR</SgButton>
+        <SgButton appearance={locale === "pt-PT" ? "solid" : "outline"} onClick={() => setLocale("pt-PT")}>pt-PT</SgButton>
         <SgButton appearance={locale === "en-US" ? "solid" : "outline"} onClick={() => setLocale("en-US")}>en-US</SgButton>
         <SgButton appearance={locale === "es" ? "solid" : "outline"} onClick={() => setLocale("es")}>es</SgButton>
+        <SgButton appearance={locale === "fr" ? "solid" : "outline"} onClick={() => setLocale("fr")}>fr</SgButton>
         <SgButton appearance={weekStartsOn === 0 ? "solid" : "outline"} onClick={() => setWeekStartsOn(0)}>{t(i18n, `${K}.labels.sundayFirst`)}</SgButton>
         <SgButton appearance={weekStartsOn === 1 ? "solid" : "outline"} onClick={() => setWeekStartsOn(1)}>{t(i18n, `${K}.labels.mondayFirst`)}</SgButton>
       </SgGrid>
