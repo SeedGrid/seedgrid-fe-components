@@ -17,16 +17,16 @@ import {
 
 /**
  * Seletor de recorte de ano: o usuario escolhe ANO + RECORTE (semestre/trimestre/bimestre) + FATIA,
- * e o componente entrega o intervalo real de datas ja' resolvido.
+ * e o componente entrega o intervalo real de datas já resolvido.
  *
- * E' irmao do SgPeriodSelector e responde a pergunta que ele NAO responde: "o 1o semestre DE 2024"
+ * É irmao do SgPeriodSelector e responde a pergunta que ele NÃO responde: "o 1o semestre DE 2024"
  * (recorte absoluto) em vez de "este semestre" (preset relativo a hoje). O onChange entrega um
  * ResolvedYearPart, que espelha o formato do ResolvedPeriod de proposito — quem consome os dois
  * seletores trata os dois com o mesmo codigo.
  *
  * A aritmetica de calendario mora em ./yearPart (sem React, testavel sem DOM); aqui so' tem UI.
  *
- * Como o SgPeriodSelector, NAO emite onChange na montagem: o estado inicial e' so' o que aparece na
+ * Como o SgPeriodSelector, NÃO emite onChange na montagem: o estado inicial é so' o que aparece na
  * tela. O primeiro onChange sai quando o usuario mexe em algum dos tres controles.
  */
 export type SgYearPartSelectorProps = {
@@ -36,7 +36,7 @@ export type SgYearPartSelectorProps = {
   label?: string;
   /** Valor controlado. Ausente = o componente guarda o próprio estado. */
   value?: YearPartValue;
-  /** Recebe o recorte já' resolvido, com startDate/endDate preenchidos. */
+  /** Recebe o recorte já resolvido, com startDate/endDate preenchidos. */
   onChange?: (resolved: ResolvedYearPart) => void;
   /** Recortes oferecidos. Com um único item o combo de recorte some. Default: os três. */
   allowedKinds?: YearPartKind[];
@@ -114,7 +114,7 @@ export function SgYearPartSelector(props: Readonly<SgYearPartSelectorProps>) {
    * Normaliza antes de usar. resolveYearPart LANCA quando a fatia nao existe no recorte, e um value
    * controlado inconsistente (vindo de formulario salvo, de URL) nao pode derrubar a tela. Recorte
    * fora dos allowedKinds tambem cai para o primeiro permitido: exibir um selecionado que nao tem
-   * opcao correspondente na lista e' pior que exibir o recorte vizinho.
+   * opcao correspondente na lista é pior que exibir o recorte vizinho.
    */
   const current = React.useMemo<YearPartValue>(() => {
     const kind = kinds.includes(rawValue.kind) ? rawValue.kind : kinds[0] ?? DEFAULT_KIND;
@@ -123,7 +123,7 @@ export function SgYearPartSelector(props: Readonly<SgYearPartSelectorProps>) {
 
   const commit = React.useCallback(
     (next: YearPartValue) => {
-      // clamp aqui e nao no handler: e' o unico ponto por onde toda mudanca passa.
+      // clamp aqui e nao no handler: é o unico ponto por onde toda mudanca passa.
       const safe: YearPartValue = { ...next, part: clampYearPart(next.kind, next.part) };
       if (!isControlled) setInternalValue(safe);
       onChange?.(resolveYearPart(safe, locale));
@@ -174,10 +174,10 @@ export function SgYearPartSelector(props: Readonly<SgYearPartSelectorProps>) {
       <div className="flex w-full flex-col gap-2 sm:flex-row sm:items-start sm:gap-3">
         <div className="w-full sm:flex-1">
           {/*
-            * Combobox e nao autocomplete: o autocomplete filtra a lista pelo texto que esta' no
+            * Combobox e nao autocomplete: o autocomplete filtra a lista pelo texto que está no
             * campo, entao com 2026 escolhido o botao de "mostrar todos" abria mostrando so' 2026 —
             * justamente quando o usuario quer ver os outros anos. O combobox abre com a lista
-            * inteira e ainda filtra por digitacao, que e' o que se espera de um campo de ano.
+            * inteira e ainda filtra por digitacao, que é o que se espera de um campo de ano.
             */}
           <SgCombobox<SgAutocompleteItem>
             id={`${id}-year`}
@@ -207,7 +207,7 @@ export function SgYearPartSelector(props: Readonly<SgYearPartSelectorProps>) {
               onValueChange={(raw) => {
                 if (raw == null) return;
                 // A fatia pode nao existir no recorte novo (estava no Q4 e virou semestre); quem
-                // reajusta e' o clampYearPart dentro do commit.
+                // reajusta é o clampYearPart dentro do commit.
                 commit({ ...current, kind: String(raw) as YearPartKind });
               }}
             />

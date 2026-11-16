@@ -40,9 +40,9 @@ export type SgWizardProps = {
    * Desabilita o avanço de forma declarativa: o botão "Próximo" fica desabilitado (opaco, com
    * cursor de bloqueio) e o stepper para de oferecer as etapas seguintes.
    *
-   * Complementa `onBeforeNext`/`validateStep`, que só' agem NO CLIQUE. Quando o consumidor ja
-   * sabe que a etapa nao pode avancar — tipicamente o resultado de uma checagem assincrona que
-   * ja' terminou, como "este CNPJ já' tem cadastro" — o botão continuava com aparência de
+   * Complementa `onBeforeNext`/`validateStep`, que só agem NO CLIQUE. Quando o consumidor ja
+   * sabe que a etapa nao pode avancar — tipicamente o resultado de uma checagem assíncrona que
+   * já terminou, como "este CNPJ já tem cadastro" — o botão continuava com aparência de
    * clicável e o clique não fazia nada, sem explicar por que.
    *
    * Não afeta o botão de conclusão da última etapa: para esse caso existe `onBeforeFinish`.
@@ -51,7 +51,7 @@ export type SgWizardProps = {
   /**
    * Habilita o wizard como um todo (padrão `true`). Com `false` nada muda por interação: os botões
    * "Anterior", "Próximo" e "Concluir" ficam desabilitados e as etapas do stepper deixam de ser
-   * clicáveis; a etapa atual continua visível. O conteúdo da página e' do consumidor (use `enabled`
+   * clicáveis; a etapa atual continua visível. O conteúdo da página é do consumidor (use `enabled`
    * nos campos). Nao confundir com `nextDisabled`, que so' bloqueia o avanço.
    */
   enabled?: boolean;

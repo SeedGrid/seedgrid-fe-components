@@ -210,7 +210,7 @@ function SgMultiSelectChipsBase(props: Readonly<SgMultiSelectChipsProps>) {
                   key={String(option.value)}
                   className="inline-flex max-w-full items-center gap-1 rounded-full border border-border bg-muted/60 py-0.5 pl-2 pr-1 text-xs text-foreground"
                 >
-                  {/* title com o label completo: com chipLabel curto, e' o jeito de ver o nome sem abrir a lista. */}
+                  {/* title com o label completo: com chipLabel curto, é o jeito de ver o nome sem abrir a lista. */}
                   <span
                     className="truncate"
                     title={option.chipLabel !== undefined ? option.label : undefined}
@@ -266,7 +266,7 @@ function SgMultiSelectChipsBase(props: Readonly<SgMultiSelectChipsProps>) {
               </button>
             ) : null}
             {/* Botao de verdade, e nao um icone decorativo: o campo inteiro abre a lista, mas o
-                chevron e' o que a pessoa mira. Como botao ele tem cursor de mao (afordancia de
+                chevron é o que a pessoa mira. Como botao ele tem cursor de mao (afordancia de
                 clique) e tratador proprio — sem depender do mousedown da caixa, que o conteudo
                 da celula de uma grade pode nao entregar. `stopPropagation` para o handler do
                 trigger nao abrir e fechar no mesmo clique. */}

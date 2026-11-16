@@ -18,7 +18,7 @@ export const sgMeta: SgMetaV0 = {
     { name: "value", type: "string", required: true, description: "ID do tema atualmente selecionado.", semanticRole: "value", bindable: true },
     { name: "onChange", type: "(id: string) => void", required: true, description: "Callback disparado quando um novo tema e escolhido.", semanticRole: "event", bindable: false },
     { name: "label", type: "string", description: "Rótulo opcional exibido acima do seletor.", semanticRole: "label", bindable: true },
-    { name: "placeholder", type: "string", description: "Texto exibido quando nenhum tema valido esta resolvido.", semanticRole: "label", bindable: true },
+    { name: "placeholder", type: "string", description: "Texto exibido quando nenhum tema válido está resolvido.", semanticRole: "label", bindable: true },
     { name: "filter", type: "(theme: SgClockTheme) => boolean", description: "Filtro adicional sobre a lista de temas disponíveis.", semanticRole: "behavior", bindable: false },
     { name: "previewSize", type: "number", default: 56, description: "Tamanho do preview visual de cada tema.", semanticRole: "appearance", bindable: true },
     { name: "searchable", type: "boolean", default: true, description: "Ativa busca textual na lista de temas.", semanticRole: "behavior", bindable: true },

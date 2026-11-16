@@ -17,7 +17,7 @@ export const sgMeta: SgMetaV0 = {
   props: [
     { name: "id", type: "string", required: true, description: "Identificador único do campo.", semanticRole: "data", bindable: false },
     { name: "label", type: "string", description: "Rótulo exibido ao usuário.", semanticRole: "label", bindable: true },
-    { name: "options", type: "{ label: string; value: string | number; chipLabel?: string; enabled?: boolean }[]", description: "Lista de opções disponíveis. `label` aparece na lista; `chipLabel` (opcional) e' o texto curto do item ja' selecionado (o resumo do campo), ex.: label \"3 - Filial Centro\" e chipLabel \"3\".", semanticRole: "data", bindable: false },
+    { name: "options", type: "{ label: string; value: string | number; chipLabel?: string; enabled?: boolean }[]", description: "Lista de opções disponíveis. `label` aparece na lista; `chipLabel` (opcional) é o texto curto do item já selecionado (o resumo do campo), ex.: label \"3 - Filial Centro\" e chipLabel \"3\".", semanticRole: "data", bindable: false },
     { name: "value", type: "(string | number)[]", description: "Array de valores selecionados.", semanticRole: "value", bindable: true },
     { name: "onChange", type: "(value: (string | number)[]) => void", description: "Callback com o array atualizado de valores.", semanticRole: "event", bindable: false },
     { name: "searchable", type: "boolean", default: false, description: "Exibe campo de busca no topo do dropdown.", semanticRole: "behavior", bindable: true },
@@ -47,7 +47,7 @@ export const aiHints: SgAiHintsV0 = {
   ],
   avoidUseCases: [
     "Escolha unica; nesses casos prefira SgCombobox ou SgRadioGroup.",
-    "Listas muito grandes com busca remota assincrona; nesses casos prefira SgAutocomplete.",
+    "Listas muito grandes com busca remota assíncrona; nesses casos prefira SgAutocomplete.",
     "Poucas opcoes sempre visiveis; nesses casos prefira SgCheckboxGroup."
   ],
   synonyms: ["multi select", "multiselect", "selecao multipla", "multiple choice select", "checkbox dropdown"],

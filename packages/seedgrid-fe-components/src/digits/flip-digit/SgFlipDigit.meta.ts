@@ -18,7 +18,7 @@ export const sgMeta: SgMetaV0 = {
     { name: "value", type: "string", required: true, description: "Caractere exibido no card flip.", semanticRole: "value", bindable: true },
     { name: "width", type: "number", default: 80, description: "Largura visual do card.", semanticRole: "appearance", bindable: true },
     { name: "height", type: "number", default: 120, description: "Altura visual do card.", semanticRole: "appearance", bindable: true },
-    { name: "fontSize", type: "number", default: 70, description: "Tamanho da fonte do digito.", semanticRole: "appearance", bindable: true },
+    { name: "fontSize", type: "number", default: 70, description: "Tamanho da fonte do dígito.", semanticRole: "appearance", bindable: true },
     { name: "className", type: "string", description: "Classes CSS adicionais no container.", semanticRole: "appearance", bindable: true }
   ],
   states: ["idle", "animating"],

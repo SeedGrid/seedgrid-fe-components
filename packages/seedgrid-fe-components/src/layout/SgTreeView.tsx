@@ -85,7 +85,7 @@ export function sgTreeFromJsonWithChecked(
 type SgTreeTrackBase = {
   id: string;
   /** Cabeçalho da coluna -- some sem ele; com 2+ trilhas na mesma árvore, o usuário não tem
-   * como saber o que cada coluna significa só' pela posição. */
+   * como saber o que cada coluna significa só pela posição. */
   label?: string;
   /** Largura da coluna, valor CSS (ex.: "140px", "12rem"). Default: 110px. Colunas com conteúdo
    * mais largo que um checkbox -- um select com rótulos longos, um texto com ação ao lado --
@@ -118,7 +118,7 @@ export type SgTreeTrackEnum = SgTreeTrackBase & {
 
 export type SgTreeTrackCustom = SgTreeTrackBase & {
   kind: "custom";
-  /** A árvore só' cede a celula (largura, alinhamento, cabecalho) -- nao ha' estado nem cascata
+  /** A árvore só cede a celula (largura, alinhamento, cabecalho) -- nao ha' estado nem cascata
    * aqui: quem renderiza controla tudo. */
   render: (node: SgTreeNode) => React.ReactNode;
 };
@@ -128,7 +128,7 @@ export type SgTreeTrackCustom = SgTreeTrackBase & {
  *
  * As trilhas de selecao (`boolean` e `enum`) tem cascata pai->filhos propria e sao controladas de
  * fora (sem defaultValue) -- o estado mora em quem chama, igual ja acontece com `checkedIds`.
- * A trilha `custom` nao tem estado nenhum: e' so' uma celula alinhada com as outras, para a tela
+ * A trilha `custom` nao tem estado nenhum: é so' uma celula alinhada com as outras, para a tela
  * desenhar o que precisar.
  */
 export type SgTreeTrack = SgTreeTrackBoolean | SgTreeTrackEnum | SgTreeTrackCustom;
@@ -242,8 +242,8 @@ function setBranchChecked(
 }
 
 // Mesma ideia de computeCheckedState/setBranchChecked, generalizada de "presente num Set" pra
-// "valor num Map" -- e' o que uma trilha `kind: "enum"` (ex.: tipo de conta) precisa: em vez de
-// checked/unchecked/indeterminate, e' valor-escolhido/sem-valor/misto (filhos com valores
+// "valor num Map" -- é o que uma trilha `kind: "enum"` (ex.: tipo de conta) precisa: em vez de
+// checked/unchecked/indeterminate, é valor-escolhido/sem-valor/misto (filhos com valores
 // diferentes entre si).
 type CascadeValueResult = { readonly mixed: true } | { readonly mixed: false; readonly value: string | undefined };
 
@@ -326,7 +326,7 @@ const densityMap: Record<SgDensity, { rowPy: string; rowPx: string; gap: string;
   comfortable: { rowPy: "py-1.5", rowPx: "px-2.5", gap: "gap-2.5", caret: "h-7 w-7", indent: 18 }
 };
 
-// Cada coluna de trilha tem largura propria, aplicada igual na linha e no cabecalho -- e' o que
+// Cada coluna de trilha tem largura propria, aplicada igual na linha e no cabecalho -- é o que
 // deixa o texto do cabecalho alinhado com o controle por baixo dele, em vez de so' o controle
 // estreito sem legenda nenhuma.
 const TRACK_CELL_CLASS = "shrink-0";
@@ -390,8 +390,8 @@ export type SgTreeViewProps = {
   checkedIds?: string[];
   defaultCheckedIds?: string[];
   onCheckedChange?: (ids: string[]) => void;
-  /** Cabeçalho da coluna do checkbox principal -- só' e' desenhado quando `tracks` também esta'
-   * presente (e' o cabeçalho de colunas como um todo que fica ambíguo com 2+ controles por linha,
+  /** Cabeçalho da coluna do checkbox principal -- só é desenhado quando `tracks` também está
+   * presente (é o cabeçalho de colunas como um todo que fica ambíguo com 2+ controles por linha,
    * não o checkbox sozinho). */
   checkableLabel?: string;
   /** Trilhas de seleção extras, uma por coluna de controle na linha -- ver SgTreeTrack. */

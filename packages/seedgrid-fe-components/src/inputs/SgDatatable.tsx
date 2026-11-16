@@ -149,12 +149,12 @@ export type SgDatatableProps<T extends SgDatatableRow = SgDatatableRow> = {
   enabled?: boolean;
   columnManagerLabel?: string;
   columnManagerMaxHeight?: number | string;
-  /** Omitido (padrão): automático - cartões quando o container fica abaixo de SG_DATATABLE_MOBILE_BREAKPOINT (600 px), tabela acima. `cards` forca cartões e `scroll` forca a tabela (rolagem horizontal) em qualquer largura. */
+  /** Omitido (padrão): automático - cartões quando o container fica abaixo de SG_DATATABLE_MOBILE_BREAKPOINT (600 px), tabela acima. `cards` força cartões e `scroll` força a tabela (rolagem horizontal) em qualquer largura. */
   mobileMode?: SgDatatableMobileMode;
   /**
    * Rolagem infinita (P137): sem paginador, ao chegar perto do fim avança a página do `rows` existente.
-   * Padrão: ligada quando a lista e' exibida como cartoes (abaixo de 600 px no modo automatico) e desligada na tabela.
-   * Exige `paginator` (e' o `rows` que define o tamanho de cada página). Com `lazy`, o pai acrescenta a próxima página a `value`.
+   * Padrão: ligada quando a lista é exibida como cartoes (abaixo de 600 px no modo automatico) e desligada na tabela.
+   * Exige `paginator` (é o `rows` que define o tamanho de cada página). Com `lazy`, o pai acrescenta a próxima página a `value`.
    */
   infiniteScroll?: boolean;
   /** Chamado (além de `onPage`) quando a rolagem infinita pede a próxima página. */
@@ -1152,7 +1152,7 @@ function SgDatatableBase<T extends SgDatatableRow>(
     );
   };
 
-  // Modo cartoes: o titulo e' a primeira coluna marcada com cardTitle; as demais viram "rotulo: valor",
+  // Modo cartoes: o titulo é a primeira coluna marcada com cardTitle; as demais viram "rotulo: valor",
   // exceto as marcadas com cardHidden.
   const cardTitleColumn = cardsActive ? visibleColumns.find((column) => column.cardTitle) : undefined;
   const cardBodyColumns = cardsActive

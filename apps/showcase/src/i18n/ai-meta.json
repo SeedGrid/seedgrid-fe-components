@@ -594,7 +594,7 @@
     "fr": "Annoter des cards, des listes et des en-têtes avec des informations de faible poids.",
     "pt-BR": "Anotar cards, listas e cabeçalhos com informação de baixo peso."
   },
-  "Ao trocar o recorte, a fatia fora de faixa cai para a primeira (clampYearPart); nao e' preciso tratar isso no consumidor.": {
+  "Ao trocar o recorte, a fatia fora de faixa cai para a primeira (clampYearPart); nao é preciso tratar isso no consumidor.": {
     "en-US": "When the cut changes, an out-of-range slice falls back to the first one (clampYearPart); the consumer does not need to handle this.",
     "pt-PT": "Ao trocar o recorte, a fatia fora do intervalo passa para a primeira (clampYearPart); não é preciso tratar isso no consumidor.",
     "es": "Al cambiar el recorte, la porción fuera de rango pasa a la primera (clampYearPart); no es necesario tratarlo en el consumidor.",
@@ -1098,7 +1098,7 @@
     "fr": "Recherches où l'on veut éviter un déclenchement à chaque touche et exiger un minimum de caractères.",
     "pt-BR": "Buscas onde se quer evitar disparos a cada tecla e exigir um mínimo de caracteres."
   },
-  "Cabecalho da coluna do checkbox principal -- so' e' desenhado quando `tracks` tambem esta'\npresente (e' o cabecalho de colunas como um todo que fica ambiguo com 2+ controles por linha,\nnao o checkbox sozinho).": {
+  "Cabecalho da coluna do checkbox principal -- so' é desenhado quando `tracks` tambem esta'\npresente (é o cabecalho de colunas como um todo que fica ambiguo com 2+ controles por linha,\nnao o checkbox sozinho).": {
     "en-US": "Header of the main checkbox column -- only rendered when `tracks` is also\npresent (it is the column header as a whole that becomes ambiguous with 2+ controls per row,\nnot the checkbox alone).",
     "pt-PT": "Cabeçalho da coluna do checkbox principal -- só é desenhado quando `tracks` também está\npresente (é o cabeçalho de colunas como um todo que fica ambíguo com 2+ controlos por linha,\nnão o checkbox sozinho).",
     "es": "Encabezado de la columna del checkbox principal -- solo se dibuja cuando `tracks` también está\npresente (es el encabezado de columnas en su conjunto el que resulta ambiguo con 2+ controles por fila,\nno el checkbox por sí solo).",
@@ -1455,7 +1455,7 @@
     "fr": "Caméra initiale : avant (user) ou arrière (environment).",
     "pt-BR": "Câmera inicial: frontal (user) ou traseira (environment)."
   },
-  "Campo de busca assistida com sugestões, fonte assincrona, cache e seleção de item a partir de texto digitado.": {
+  "Campo de busca assistida com sugestões, fonte assíncrona, cache e seleção de item a partir de texto digitado.": {
     "en-US": "Assisted search field with suggestions, asynchronous source, caching, and item selection from typed text.",
     "pt-PT": "Campo de pesquisa assistida com sugestões, fonte assíncrona, cache e seleção de item a partir de texto introduzido.",
     "es": "Campo de búsqueda asistida con sugerencias, fuente asíncrona, caché y selección de elemento a partir del texto escrito.",
@@ -3065,7 +3065,7 @@
     "fr": "Couleur lumineuse principale.",
     "pt-BR": "Cor luminosa principal."
   },
-  "Cor principal do digito.": {
+  "Cor principal do dígito.": {
     "en-US": "Main color of the digit.",
     "pt-PT": "Cor principal do dígito.",
     "es": "Color principal del dígito.",
@@ -3450,7 +3450,7 @@
     "fr": "Définit si l'écran occupe toute la viewport.",
     "pt-BR": "Define se a tela ocupa toda a viewport."
   },
-  "Definição das colunas da tabela. column.filterPlaceholder vence o dicionario (components.datatable.columnFilterPlaceholder).": {
+  "Definição das colunas da tabela. column.filterPlaceholder vence o dicionário (components.datatable.columnFilterPlaceholder).": {
     "en-US": "Table column definitions. column.filterPlaceholder takes precedence over the dictionary (components.datatable.columnFilterPlaceholder).",
     "pt-PT": "Definição das colunas da tabela. column.filterPlaceholder prevalece sobre o dicionário (components.datatable.columnFilterPlaceholder).",
     "es": "Definición de las columnas de la tabla. column.filterPlaceholder prevalece sobre el diccionario (components.datatable.columnFilterPlaceholder).",
@@ -3520,7 +3520,7 @@
     "fr": "Désactive l'interaction.",
     "pt-BR": "Desabilita interação."
   },
-  "Desabilita o avanço de forma declarativa: o botão Próximo fica desabilitado e o stepper para de oferecer as etapas seguintes. Use quando o bloqueio JÁ e conhecido (ex.: uma checagem assincrona já resolveu que a etapa não pode avançar) — onBeforeNext/validateStep só agem no clique e deixam o botão com aparência de clicável. Não afeta o botão da última etapa; para isso use onBeforeFinish.": {
+  "Desabilita o avanço de forma declarativa: o botão Próximo fica desabilitado e o stepper para de oferecer as etapas seguintes. Use quando o bloqueio JÁ é conhecido (ex.: uma checagem assíncrona já resolveu que a etapa não pode avançar) — onBeforeNext/validateStep só agem no clique e deixam o botão com aparência de clicável. Não afeta o botão da última etapa; para isso use onBeforeFinish.": {
     "en-US": "Disables advancing declaratively: the Next button becomes disabled and the stepper stops offering the following steps. Use it when the block is ALREADY known (e.g., an async check has already determined that the step cannot advance) — onBeforeNext/validateStep only act on click and leave the button looking clickable. It does not affect the last step's button; for that use onBeforeFinish.",
     "pt-PT": "Desativa o avanço de forma declarativa: o botão Seguinte fica desativado e o stepper deixa de oferecer as etapas seguintes. Utilize quando o bloqueio JÁ é conhecido (ex.: uma verificação assíncrona já determinou que a etapa não pode avançar) — onBeforeNext/validateStep só atuam no clique e deixam o botão com aparência de clicável. Não afeta o botão da última etapa; para isso utilize onBeforeFinish.",
     "es": "Deshabilita el avance de forma declarativa: el botón Siguiente queda deshabilitado y el stepper deja de ofrecer los pasos siguientes. Úselo cuando el bloqueo YA es conocido (ej.: una comprobación asíncrona ya determinó que el paso no puede avanzar) — onBeforeNext/validateStep solo actúan al hacer clic y dejan el botón con apariencia de clicable. No afecta al botón del último paso; para eso use onBeforeFinish.",
@@ -3828,14 +3828,14 @@
     "fr": "Taille du point en pixels.",
     "pt-BR": "Tamanho do ponto em pixels."
   },
-  "Duração em milissegundos deste toast; tem PRIORIDADE sobre o host. Omitir NÃO significa permanente: cai no `duration` do SgToaster/SgToastHost, cujo default e' 4000 (4s), igual ao par whistle/SgWhistleHost. Use 0 (ou negativo) para permanente, ate' o usuário fechar. Toast do tipo 'loading' nunca fecha sozinho, qualquer que seja o valor.": {
+  "Duração em milissegundos deste toast; tem PRIORIDADE sobre o host. Omitir NÃO significa permanente: cai no `duration` do SgToaster/SgToastHost, cujo default é 4000 (4s), igual ao par whistle/SgWhistleHost. Use 0 (ou negativo) para permanente, ate' o usuário fechar. Toast do tipo 'loading' nunca fecha sozinho, qualquer que seja o valor.": {
     "en-US": "Duration in milliseconds of this toast; it takes PRIORITY over the host. Omitting it does NOT mean permanent: it falls back to the `duration` of SgToaster/SgToastHost, whose default is 4000 (4s), same as the whistle/SgWhistleHost pair. Use 0 (or negative) for permanent, until the user closes it. A toast of type 'loading' never closes on its own, regardless of the value.",
     "pt-PT": "Duração em milissegundos deste toast; tem PRIORIDADE sobre o host. Omitir NÃO significa permanente: recorre ao `duration` do SgToaster/SgToastHost, cujo valor predefinido é 4000 (4s), tal como o par whistle/SgWhistleHost. Use 0 (ou negativo) para permanente, até o utilizador fechar. Um toast do tipo 'loading' nunca fecha sozinho, qualquer que seja o valor.",
     "es": "Duración en milisegundos de este toast; tiene PRIORIDAD sobre el host. Omitir NO significa permanente: recurre al `duration` de SgToaster/SgToastHost, cuyo valor por defecto es 4000 (4s), igual que el par whistle/SgWhistleHost. Use 0 (o negativo) para permanente, hasta que el usuario lo cierre. Un toast de tipo 'loading' nunca se cierra solo, sea cual sea el valor.",
     "fr": "Durée en millisecondes de ce toast ; elle a PRIORITÉ sur le host. L'omettre ne signifie PAS permanent : on retombe sur le `duration` de SgToaster/SgToastHost, dont la valeur par défaut est 4000 (4s), comme pour la paire whistle/SgWhistleHost. Utilisez 0 (ou négatif) pour permanent, jusqu'à ce que l'utilisateur le ferme. Un toast de type 'loading' ne se ferme jamais tout seul, quelle que soit la valeur.",
     "pt-BR": "Duração em milissegundos deste toast; tem PRIORIDADE sobre o host. Omitir NÃO significa permanente: cai no `duration` do SgToaster/SgToastHost, cujo default é 4000 (4s), igual ao par whistle/SgWhistleHost. Use 0 (ou negativo) para permanente, até o usuário fechar. Toast do tipo 'loading' nunca fecha sozinho, qualquer que seja o valor."
   },
-  "Duração em milissegundos deste whistle; tem PRIORIDADE sobre o host. Omitir NÃO significa permanente: cai no `duration` do SgWhistler/SgWhistleHost, cujo default e' 4000 (4s), igual ao par toast/SgToastHost. Use 0 (ou negativo) para permanente, ate' o usuário fechar no x — obrigatório quando o aviso bloqueia uma ação ou carrega um botão de ação, porque sumir leva embora a informação e o caminho de saída junto. Severidade 'loading' nunca expira sozinha.": {
+  "Duração em milissegundos deste whistle; tem PRIORIDADE sobre o host. Omitir NÃO significa permanente: cai no `duration` do SgWhistler/SgWhistleHost, cujo default é 4000 (4s), igual ao par toast/SgToastHost. Use 0 (ou negativo) para permanente, ate' o usuário fechar no x — obrigatório quando o aviso bloqueia uma ação ou carrega um botão de ação, porque sumir leva embora a informação e o caminho de saída junto. Severidade 'loading' nunca expira sozinha.": {
     "en-US": "Duration in milliseconds of this whistle; it takes PRIORITY over the host. Omitting it does NOT mean permanent: it falls back to the `duration` of SgWhistler/SgWhistleHost, whose default is 4000 (4s), same as the toast/SgToastHost pair. Use 0 (or negative) for permanent, until the user closes it with the x — required when the notice blocks an action or carries an action button, because disappearing takes the information and the way out with it. Severity 'loading' never expires on its own.",
     "pt-PT": "Duração em milissegundos deste whistle; tem PRIORIDADE sobre o host. Omitir NÃO significa permanente: recorre ao `duration` do SgWhistler/SgWhistleHost, cujo valor predefinido é 4000 (4s), igual ao par toast/SgToastHost. Utilize 0 (ou negativo) para permanente, até o utilizador fechar no x — obrigatório quando o aviso bloqueia uma ação ou inclui um botão de ação, porque desaparecer leva consigo a informação e o caminho de saída. A severidade 'loading' nunca expira sozinha.",
     "es": "Duración en milisegundos de este whistle; tiene PRIORIDAD sobre el host. Omitirla NO significa permanente: recurre al `duration` de SgWhistler/SgWhistleHost, cuyo valor por defecto es 4000 (4s), igual que el par toast/SgToastHost. Use 0 (o negativo) para permanente, hasta que el usuario lo cierre con la x — obligatorio cuando el aviso bloquea una acción o incluye un botón de acción, porque al desaparecer se lleva consigo la información y la vía de salida. La severidad 'loading' nunca expira por sí sola.",
@@ -4101,7 +4101,7 @@
     "fr": "Échelle visuelle du badge.",
     "pt-BR": "Escala visual do badge."
   },
-  "Escala visual do digito.": {
+  "Escala visual do dígito.": {
     "en-US": "Visual scale of the digit.",
     "pt-PT": "Escala visual do dígito.",
     "es": "Escala visual del dígito.",
@@ -4976,7 +4976,7 @@
     "fr": "Filtre supplémentaire sur la liste des thèmes disponibles.",
     "pt-BR": "Filtro adicional sobre a lista de temas disponíveis."
   },
-  "Filtro de relatorio em que o periodo e' um recorte ABSOLUTO de um ano informado: \"1o semestre de 2024\", \"Q3 de 2023\", \"4o bimestre de 2025\".": {
+  "Filtro de relatorio em que o periodo é um recorte ABSOLUTO de um ano informado: \"1o semestre de 2024\", \"Q3 de 2023\", \"4o bimestre de 2025\".": {
     "en-US": "Report filter where the period is an ABSOLUTE slice of a given year: \"1st semester of 2024\", \"Q3 of 2023\", \"4th bimester of 2025\".",
     "pt-PT": "Filtro de relatório em que o período é um recorte ABSOLUTO de um ano indicado: \"1.º semestre de 2024\", \"Q3 de 2023\", \"4.º bimestre de 2025\".",
     "es": "Filtro de informe en el que el período es un recorte ABSOLUTO de un año indicado: \"1.er semestre de 2024\", \"Q3 de 2023\", \"4.º bimestre de 2025\".",
@@ -5025,7 +5025,7 @@
     "fr": "Flags booléens et paramètres simples.",
     "pt-BR": "Flags booleanas e configurações simples."
   },
-  "Fluxo multi-etapas com stepper, validação por etapa, navegação controlada e finalização assincrona.": {
+  "Fluxo multi-etapas com stepper, validação por etapa, navegação controlada e finalização assíncrona.": {
     "en-US": "Multi-step flow with stepper, per-step validation, controlled navigation and asynchronous completion.",
     "pt-PT": "Fluxo de várias etapas com stepper, validação por etapa, navegação controlada e finalização assíncrona.",
     "es": "Flujo de varios pasos con stepper, validación por paso, navegación controlada y finalización asíncrona.",
@@ -6481,19 +6481,19 @@
     "fr": "Liste des images valides après sélection ou suppression.",
     "pt-BR": "Lista de imagens válidas após escolher ou remover."
   },
-  "Lista de opções disponíveis. `label` aparece na lista; `chipLabel` (opcional) e' o texto curto do item ja' selecionado (o chip), ex.: label \"3 - Filial Centro\" e chipLabel \"3\".": {
+  "Lista de opções disponíveis. `label` aparece na lista; `chipLabel` (opcional) é o texto curto do item já selecionado (o chip), ex.: label \"3 - Filial Centro\" e chipLabel \"3\".": {
     "en-US": "List of available options. `label` appears in the list; `chipLabel` (optional) is the short text of the already selected item (the chip), e.g.: label \"3 - Filial Centro\" and chipLabel \"3\".",
     "pt-PT": "Lista de opções disponíveis. `label` aparece na lista; `chipLabel` (opcional) é o texto curto do item já selecionado (o chip), ex.: label \"3 - Filial Centro\" e chipLabel \"3\".",
     "es": "Lista de opciones disponibles. `label` aparece en la lista; `chipLabel` (opcional) es el texto corto del ítem ya seleccionado (el chip), p. ej.: label \"3 - Filial Centro\" y chipLabel \"3\".",
     "fr": "Liste des options disponibles. `label` apparaît dans la liste ; `chipLabel` (facultatif) est le texte court de l'élément déjà sélectionné (le chip), ex. : label \"3 - Filial Centro\" et chipLabel \"3\".",
-    "pt-BR": "Lista de opções disponíveis. `label` aparece na lista; `chipLabel` (opcional) é o texto curto do item já' selecionado (o chip), ex.: label \"3 - Filial Centro\" e chipLabel \"3\"."
+    "pt-BR": "Lista de opções disponíveis. `label` aparece na lista; `chipLabel` (opcional) é o texto curto do item já selecionado (o chip), ex.: label \"3 - Filial Centro\" e chipLabel \"3\"."
   },
-  "Lista de opções disponíveis. `label` aparece na lista; `chipLabel` (opcional) e' o texto curto do item ja' selecionado (o resumo do campo), ex.: label \"3 - Filial Centro\" e chipLabel \"3\".": {
+  "Lista de opções disponíveis. `label` aparece na lista; `chipLabel` (opcional) é o texto curto do item já selecionado (o resumo do campo), ex.: label \"3 - Filial Centro\" e chipLabel \"3\".": {
     "en-US": "List of available options. `label` appears in the list; `chipLabel` (optional) is the short text of the already selected item (the field summary), e.g.: label \"3 - Filial Centro\" and chipLabel \"3\".",
     "pt-PT": "Lista de opções disponíveis. `label` aparece na lista; `chipLabel` (opcional) é o texto curto do item já selecionado (o resumo do campo), ex.: label \"3 - Filial Centro\" e chipLabel \"3\".",
     "es": "Lista de opciones disponibles. `label` aparece en la lista; `chipLabel` (opcional) es el texto corto del ítem ya seleccionado (el resumen del campo), p. ej.: label \"3 - Filial Centro\" y chipLabel \"3\".",
     "fr": "Liste des options disponibles. `label` apparaît dans la liste ; `chipLabel` (facultatif) est le texte court de l'élément déjà sélectionné (le résumé du champ), ex. : label \"3 - Filial Centro\" et chipLabel \"3\".",
-    "pt-BR": "Lista de opções disponíveis. `label` aparece na lista; `chipLabel` (opcional) é o texto curto do item já' selecionado (o resumo do campo), ex.: label \"3 - Filial Centro\" e chipLabel \"3\"."
+    "pt-BR": "Lista de opções disponíveis. `label` aparece na lista; `chipLabel` (opcional) é o texto curto do item já selecionado (o resumo do campo), ex.: label \"3 - Filial Centro\" e chipLabel \"3\"."
   },
   "Lista de temas locais adicionados apenas neste escopo.": {
     "en-US": "List of local themes added only in this scope.",
@@ -6558,7 +6558,7 @@
     "fr": "Listes qui doivent fonctionner sur mobile : par défaut (mobileMode omis), le tableau devient des cartes en dessous de 600 px ; utilisez \"scroll\" pour forcer le tableau.",
     "pt-BR": "Listagens que precisam funcionar em celular: por padrão (mobileMode omitido) a tabela vira cartões abaixo de 600 px; use \"scroll\" para forçar a tabela."
   },
-  "Listas com busca remota assincrona; nesses casos prefira SgAutocomplete.": {
+  "Listas com busca remota assíncrona; nesses casos prefira SgAutocomplete.": {
     "en-US": "Lists with asynchronous remote search; in these cases prefer SgAutocomplete.",
     "pt-PT": "Listas com pesquisa remota assíncrona; nesses casos prefira SgAutocomplete.",
     "es": "Listas con búsqueda remota asíncrona; en esos casos prefiera SgAutocomplete.",
@@ -6607,7 +6607,7 @@
     "fr": "Listes longues ; dans ces cas, préférez select ou combobox.",
     "pt-BR": "Listas longas; nesses casos prefira select ou combobox."
   },
-  "Listas muito grandes com busca remota assincrona; nesses casos prefira SgAutocomplete.": {
+  "Listas muito grandes com busca remota assíncrona; nesses casos prefira SgAutocomplete.": {
     "en-US": "Very large lists with asynchronous remote search; in these cases prefer SgAutocomplete.",
     "pt-PT": "Listas muito grandes com pesquisa remota assíncrona; nesses casos prefira SgAutocomplete.",
     "es": "Listas muy grandes con búsqueda remota asíncrona; en esos casos prefiera SgAutocomplete.",
@@ -6663,7 +6663,7 @@
     "fr": "Locale actuelle (pt-BR, en-US, es, fr, pt-PT, en, etc).",
     "pt-BR": "Locale atual (pt-BR, en-US, es, fr, pt-PT, en, etc)."
   },
-  "Locale dos rótulos de recorte e fatia. A sigla entre parenteses acompanha o idioma: Q1..Q4 em pt-BR e en-US, T1..T4 em es, fr e pt-PT; bimestre não tem sigla e sai sem parenteses.": {
+  "Locale dos rótulos de recorte e fatia. A sigla entre parênteses acompanha o idioma: Q1..Q4 em pt-BR e en-US, T1..T4 em es, fr e pt-PT; bimestre não tem sigla e sai sem parênteses.": {
     "en-US": "Locale of the slice-type and part labels. The abbreviation in parentheses follows the language: Q1..Q4 in pt-BR and en-US, T1..T4 in es, fr and pt-PT; bimester has no abbreviation and appears without parentheses.",
     "pt-PT": "Locale dos rótulos de recorte e fatia. A sigla entre parênteses acompanha o idioma: Q1..Q4 em pt-BR e en-US, T1..T4 em es, fr e pt-PT; bimestre não tem sigla e aparece sem parênteses.",
     "es": "Locale de las etiquetas de recorte y franja. La sigla entre paréntesis acompaña al idioma: Q1..Q4 en pt-BR y en-US, T1..T4 en es, fr y pt-PT; bimestre no tiene sigla y aparece sin paréntesis.",
@@ -6768,7 +6768,7 @@
     "fr": "Plus petit instant autorisé.",
     "pt-BR": "Menor instante permitido."
   },
-  "Mensagem exibida quando não há registros. Vence o dicionario (components.datatable.empty).": {
+  "Mensagem exibida quando não há registros. Vence o dicionário (components.datatable.empty).": {
     "en-US": "Message displayed when there are no records. Takes precedence over the dictionary (components.datatable.empty).",
     "pt-PT": "Mensagem apresentada quando não há registos. Prevalece sobre o dicionário (components.datatable.empty).",
     "es": "Mensaje mostrado cuando no hay registros. Prevalece sobre el diccionario (components.datatable.empty).",
@@ -7419,7 +7419,7 @@
     "fr": "Nombres, devise ou texte libre.",
     "pt-BR": "Números, moeda ou texto livre."
   },
-  "O botao nao engole o erro do onClick assincrono: sai do loading e relanca como rejeicao nao tratada. Trate com try/catch dentro do onClick e avise o usuario com sgWhistle.error.": {
+  "O botao nao engole o erro do onClick assíncrono: sai do loading e relanca como rejeicao nao tratada. Trate com try/catch dentro do onClick e avise o usuario com sgWhistle.error.": {
     "en-US": "The button does not swallow the error of an async onClick: it leaves loading and rethrows it as an unhandled rejection. Handle it with try/catch inside onClick and notify the user with sgWhistle.error.",
     "pt-PT": "O botão não engole o erro do onClick assíncrono: sai do loading e relança-o como rejeição não tratada. Trate com try/catch dentro do onClick e avise o utilizador com sgWhistle.error.",
     "es": "El botón no se traga el error de un onClick asíncrono: sale del loading y lo relanza como rechazo no tratado. Trátalo con try/catch dentro del onClick y avisa al usuario con sgWhistle.error.",
@@ -7916,7 +7916,7 @@
     "fr": "Piles linéaires simples ; dans ces cas, privilégiez SgStack.",
     "pt-BR": "Pilhas lineares simples; nesses casos prefira SgStack."
   },
-  "Placeholder da busca global. Vence o dicionario (components.datatable.globalFilterPlaceholder).": {
+  "Placeholder da busca global. Vence o dicionário (components.datatable.globalFilterPlaceholder).": {
     "en-US": "Global search placeholder. Takes precedence over the dictionary (components.datatable.globalFilterPlaceholder).",
     "pt-PT": "Placeholder da pesquisa global. Prevalece sobre o dicionário (components.datatable.globalFilterPlaceholder).",
     "es": "Placeholder de la búsqueda global. Prevalece sobre el diccionario (components.datatable.globalFilterPlaceholder).",
@@ -8056,7 +8056,7 @@
     "fr": "Préfixe du `data-sg` des éléments internes (`sg-file`, `sg-image`).",
     "pt-BR": "Prefixo do `data-sg` dos elementos internos (`sg-file`, `sg-image`)."
   },
-  "Prefixo dos ids dos tres controles internos (ano, recorte, fatia). Nao e' o id de um campo unico: o componente monta tres.": {
+  "Prefixo dos ids dos tres controles internos (ano, recorte, fatia). Nao é o id de um campo unico: o componente monta tres.": {
     "en-US": "Prefix of the ids of the three internal controls (year, slice type, part). It is not the id of a single field: the component builds three.",
     "pt-PT": "Prefixo dos ids dos três controlos internos (ano, recorte, fatia). Não é o id de um campo único: o componente monta três.",
     "es": "Prefijo de los ids de los tres controles internos (año, recorte, franja). No es el id de un único campo: el componente monta tres.",
@@ -8413,7 +8413,7 @@
     "fr": "Découpage sélectionné en mode contrôlé : { year, kind, part }, avec part en base 1 (1..2 pour le semestre, 1..4 pour le trimestre, 1..6 pour le bimestre).",
     "pt-BR": "Recorte selecionado no modo controlado: { year, kind, part }, com part em base 1 (1..2 no semestre, 1..4 no trimestre, 1..6 no bimestre)."
   },
-  "Recortes oferecidos no combo. Reduza a lista quando o domínio só' aceita um deles (fechamento trimestral, por exemplo); com um único item o combo de recorte deixa de fazer sentido na tela.": {
+  "Recortes oferecidos no combo. Reduza a lista quando o domínio só aceita um deles (fechamento trimestral, por exemplo); com um único item o combo de recorte deixa de fazer sentido na tela.": {
     "en-US": "Slice types offered in the combo. Reduce the list when the domain accepts only one of them (quarterly closing, for example); with a single item the slice-type combo no longer makes sense on screen.",
     "pt-PT": "Recortes oferecidos na combo. Reduza a lista quando o domínio só aceita um deles (fecho trimestral, por exemplo); com um único item a combo de recorte deixa de fazer sentido no ecrã.",
     "es": "Recortes ofrecidos en el combo. Reduzca la lista cuando el dominio solo acepta uno de ellos (cierre trimestral, por ejemplo); con un único elemento el combo de recorte deja de tener sentido en la pantalla.",
@@ -8434,12 +8434,12 @@
     "fr": "Enregistre un thème uniquement dans cet arbre, sans toucher au registry global.",
     "pt-BR": "Registra um tema apenas nesta árvore, sem tocar no registry global."
   },
-  "Regra extra, assincrona, por arquivo (depois da conferencia de tipo). E como o SgImageUpload confere dimensão.": {
+  "Regra extra, assíncrona, por arquivo (depois da conferência de tipo). É como o SgImageUpload confere dimensão.": {
     "en-US": "Extra asynchronous rule, per file (after the type check). This is how SgImageUpload checks dimensions.",
     "pt-PT": "Regra extra, assíncrona, por ficheiro (depois da verificação de tipo). É assim que o SgImageUpload verifica a dimensão.",
     "es": "Regla extra, asíncrona, por archivo (después de la comprobación de tipo). Así es como SgImageUpload comprueba la dimensión.",
     "fr": "Règle supplémentaire, asynchrone, par fichier (après la vérification du type). C'est ainsi que SgImageUpload vérifie les dimensions.",
-    "pt-BR": "Regra extra, assíncrona, por arquivo (depois da conferência de tipo). E como o SgImageUpload confere dimensão."
+    "pt-BR": "Regra extra, assíncrona, por arquivo (depois da conferência de tipo). É como o SgImageUpload confere dimensão."
   },
   "Relógio analógico ou digital com múltiplos estilos visuais, timezone, formato 12h/24h e temas.": {
     "en-US": "Analog or digital clock with multiple visual styles, timezone, 12h/24h format and themes.",
@@ -8987,12 +8987,12 @@
     "fr": "Sélecteur de périodes prédéfinies (Ce mois-ci, Dernier trimestre, etc.) qui résout la règle temporelle en un intervalle de dates réel.",
     "pt-BR": "Seletor de períodos pre-definidos (Este mês, Último trimestre, etc.) que resolve a regra temporal para um intervalo real de datas."
   },
-  "Seletor de recorte de ano: o usuário escolhe ANO + RECORTE (semestre, trimestre ou bimestre) + FATIA, e o componente resolve para um intervalo real e fechado de datas. E' o irmão ABSOLUTO do SgPeriodSelector: aquele resolve presets RELATIVOS a hoje (\"este semestre\"), este resolve um recorte fixo de um ano civil informado (\"o 1o semestre DE 2024\"), que não muda de significado com a passagem do tempo.": {
+  "Seletor de recorte de ano: o usuário escolhe ANO + RECORTE (semestre, trimestre ou bimestre) + FATIA, e o componente resolve para um intervalo real e fechado de datas. É o irmão ABSOLUTO do SgPeriodSelector: aquele resolve presets RELATIVOS a hoje (\"este semestre\"), este resolve um recorte fixo de um ano civil informado (\"o 1o semestre DE 2024\"), que não muda de significado com a passagem do tempo.": {
     "en-US": "Year-slice selector: the user chooses YEAR + SLICE TYPE (semester, quarter or bimester) + PART, and the component resolves it to a real, closed date range. It is the ABSOLUTE sibling of SgPeriodSelector: that one resolves presets RELATIVE to today (\"this semester\"), this one resolves a fixed slice of a given calendar year (\"the 1st semester OF 2024\"), which does not change meaning as time passes.",
     "pt-PT": "Seletor de recorte de ano: o utilizador escolhe ANO + RECORTE (semestre, trimestre ou bimestre) + FATIA, e o componente resolve para um intervalo real e fechado de datas. É o irmão ABSOLUTO do SgPeriodSelector: aquele resolve predefinições RELATIVAS a hoje (\"este semestre\"), este resolve um recorte fixo de um ano civil indicado (\"o 1.º semestre DE 2024\"), que não muda de significado com a passagem do tempo.",
     "es": "Selector de recorte de año: el usuario elige AÑO + RECORTE (semestre, trimestre o bimestre) + FRANJA, y el componente lo resuelve a un intervalo real y cerrado de fechas. Es el hermano ABSOLUTO de SgPeriodSelector: aquel resuelve presets RELATIVOS a hoy (\"este semestre\"), este resuelve un recorte fijo de un año civil indicado (\"el 1.er semestre DE 2024\"), que no cambia de significado con el paso del tiempo.",
     "fr": "Sélecteur de découpage d'année : l'utilisateur choisit ANNÉE + DÉCOUPAGE (semestre, trimestre ou bimestre) + TRANCHE, et le composant le résout en un intervalle de dates réel et fermé. C'est le frère ABSOLU de SgPeriodSelector : celui-ci résout des presets RELATIFS à aujourd'hui (\"ce semestre\"), celui-là résout un découpage fixe d'une année civile donnée (\"le 1er semestre DE 2024\"), dont le sens ne change pas avec le temps.",
-    "pt-BR": "Seletor de recorte de ano: o usuário escolhe ANO + RECORTE (semestre, trimestre ou bimestre) + FATIA, e o componente resolve para um intervalo real e fechado de datas. E' o irmão ABSOLUTO do SgPeriodSelector: aquele resolve presets RELATIVOS a hoje (\"este semestre\"), este resolve um recorte fixo de um ano civil informado (\"o 1o semestre DE 2024\"), que não muda de significado com a passagem do tempo."
+    "pt-BR": "Seletor de recorte de ano: o usuário escolhe ANO + RECORTE (semestre, trimestre ou bimestre) + FATIA, e o componente resolve para um intervalo real e fechado de datas. É o irmão ABSOLUTO do SgPeriodSelector: aquele resolve presets RELATIVOS a hoje (\"este semestre\"), este resolve um recorte fixo de um ano civil informado (\"o 1o semestre DE 2024\"), que não muda de significado com a passagem do tempo."
   },
   "Seletor visual de temas de relógio com preview embutido, filtro de temas e integração com o resolver de temas do clock.": {
     "en-US": "Visual clock theme picker with built-in preview, theme filter and integration with the clock theme resolver.",
@@ -9316,7 +9316,7 @@
     "fr": "Grands tableaux ; dans ces cas, privilégiez les composants de données.",
     "pt-BR": "Tabelas grandes; nesses casos prefira componentes de dados."
   },
-  "Tamanho da fonte do digito.": {
+  "Tamanho da fonte do dígito.": {
     "en-US": "Font size of the digit.",
     "pt-PT": "Tamanho do tipo de letra do dígito.",
     "es": "Tamaño de la fuente del dígito.",
@@ -9505,7 +9505,7 @@
     "fr": "Texte affiché lorsque rien n'est sélectionné.",
     "pt-BR": "Texto exibido quando nada esta selecionado."
   },
-  "Texto exibido quando nenhum tema valido esta resolvido.": {
+  "Texto exibido quando nenhum tema válido está resolvido.": {
     "en-US": "Text displayed when no valid theme is resolved.",
     "pt-PT": "Texto apresentado quando nenhum tema válido está resolvido.",
     "es": "Texto mostrado cuando no hay ningún tema válido resuelto.",
@@ -9792,7 +9792,7 @@
     "fr": "Titre du groupe.",
     "pt-BR": "Título do grupo."
   },
-  "Título do painel de colunas. Vence o dicionario (components.datatable.columns).": {
+  "Título do painel de colunas. Vence o dicionário (components.datatable.columns).": {
     "en-US": "Columns panel title. Takes precedence over the dictionary (components.datatable.columns).",
     "pt-PT": "Título do painel de colunas. Prevalece sobre o dicionário (components.datatable.columns).",
     "es": "Título del panel de columnas. Prevalece sobre el diccionario (components.datatable.columns).",

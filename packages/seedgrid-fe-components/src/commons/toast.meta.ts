@@ -49,10 +49,10 @@ export const sgMeta: SgMetaV0 = {
       name: "options.duration",
       type: "number",
       // SEM default de proposito: a opcao por toast nao tem valor proprio no codigo
-      // (`toast.duration ?? duration`), quem tem default e' o host. O antigo `default: 3000`
+      // (`toast.duration ?? duration`), quem tem default é o host. O antigo `default: 3000`
       // era um terceiro numero que nao existe em lugar nenhum. Espelha `options.duration` do
-      // sgWhistle, que ja' era assim.
-      description: "Duração em milissegundos deste toast; tem PRIORIDADE sobre o host. Omitir NÃO significa permanente: cai no `duration` do SgToaster/SgToastHost, cujo default e' 4000 (4s), igual ao par whistle/SgWhistleHost. Use 0 (ou negativo) para permanente, ate' o usuário fechar. Toast do tipo 'loading' nunca fecha sozinho, qualquer que seja o valor.",
+      // sgWhistle, que já era assim.
+      description: "Duração em milissegundos deste toast; tem PRIORIDADE sobre o host. Omitir NÃO significa permanente: cai no `duration` do SgToaster/SgToastHost, cujo default é 4000 (4s), igual ao par whistle/SgWhistleHost. Use 0 (ou negativo) para permanente, ate' o usuário fechar. Toast do tipo 'loading' nunca fecha sozinho, qualquer que seja o valor.",
       semanticRole: "behavior",
       bindable: true
     },

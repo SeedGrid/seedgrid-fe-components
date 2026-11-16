@@ -55,7 +55,7 @@ export const sgMeta: SgMetaV0 = {
     {
       name: "options.duration",
       type: "number",
-      description: "Duração em milissegundos deste whistle; tem PRIORIDADE sobre o host. Omitir NÃO significa permanente: cai no `duration` do SgWhistler/SgWhistleHost, cujo default e' 4000 (4s), igual ao par toast/SgToastHost. Use 0 (ou negativo) para permanente, ate' o usuário fechar no x — obrigatório quando o aviso bloqueia uma ação ou carrega um botão de ação, porque sumir leva embora a informação e o caminho de saída junto. Severidade 'loading' nunca expira sozinha.",
+      description: "Duração em milissegundos deste whistle; tem PRIORIDADE sobre o host. Omitir NÃO significa permanente: cai no `duration` do SgWhistler/SgWhistleHost, cujo default é 4000 (4s), igual ao par toast/SgToastHost. Use 0 (ou negativo) para permanente, ate' o usuário fechar no x — obrigatório quando o aviso bloqueia uma ação ou carrega um botão de ação, porque sumir leva embora a informação e o caminho de saída junto. Severidade 'loading' nunca expira sozinha.",
       semanticRole: "behavior",
       bindable: true
     },

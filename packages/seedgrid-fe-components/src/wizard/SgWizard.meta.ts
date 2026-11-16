@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "navigation",
   subcategory: "wizard",
   description:
-    "Fluxo multi-etapas com stepper, validação por etapa, navegação controlada e finalização assincrona.",
+    "Fluxo multi-etapas com stepper, validação por etapa, navegação controlada e finalização assíncrona.",
   tags: ["navigation", "wizard", "steps", "flow", "form"],
   capabilities: ["multi-step", "validation", "stepper", "previous-next", "async-finish"],
   fieldSemantics: ["wizard", "multiStepFlow", "stepForm", "guidedFlow", "journey"],
@@ -22,7 +22,7 @@ export const sgMeta: SgMetaV0 = {
     { name: "validateStep", type: "(stepIndex: number) => boolean | Promise<boolean>", description: "Valida a etapa atual antes de avançar.", semanticRole: "validation", bindable: false },
     { name: "onBeforeNext", type: "(index: number) => boolean | Promise<boolean>", description: "Roda ao clicar em Próximo; devolver false (ou uma Promise<false>) impede o avanço. Enquanto e aguardado, o botão fica desabilitado.", semanticRole: "validation", bindable: false },
     { name: "onBeforeFinish", type: "(index: number) => boolean | Promise<boolean>", description: "Roda ao clicar em concluir; devolver false impede a finalização.", semanticRole: "validation", bindable: false },
-    { name: "nextDisabled", type: "boolean", default: false, description: "Desabilita o avanço de forma declarativa: o botão Próximo fica desabilitado e o stepper para de oferecer as etapas seguintes. Use quando o bloqueio JÁ e conhecido (ex.: uma checagem assincrona já resolveu que a etapa não pode avançar) — onBeforeNext/validateStep só agem no clique e deixam o botão com aparência de clicável. Não afeta o botão da última etapa; para isso use onBeforeFinish.", semanticRole: "behavior", bindable: true },
+    { name: "nextDisabled", type: "boolean", default: false, description: "Desabilita o avanço de forma declarativa: o botão Próximo fica desabilitado e o stepper para de oferecer as etapas seguintes. Use quando o bloqueio JÁ é conhecido (ex.: uma checagem assíncrona já resolveu que a etapa não pode avançar) — onBeforeNext/validateStep só agem no clique e deixam o botão com aparência de clicável. Não afeta o botão da última etapa; para isso use onBeforeFinish.", semanticRole: "behavior", bindable: true },
     { name: "enabled", type: "boolean", default: true, description: "Quando false, o wizard inteiro fica desabilitado: Anterior, Próximo, Concluir e os passos do stepper deixam de responder; a etapa atual segue visível. Diferente de nextDisabled, que só bloqueia o avanço.", semanticRole: "behavior", bindable: true },
     { name: "onStepChange", type: "(index: number) => void", description: "Callback disparado ao trocar de etapa.", semanticRole: "event", bindable: false },
     { name: "onFinish", type: "() => void | Promise<void>", required: true, description: "Ação executada ao concluir o wizard.", semanticRole: "event", bindable: false }
@@ -31,7 +31,7 @@ export const sgMeta: SgMetaV0 = {
   examples: [
     { id: "validacao-automatica", title: "Validacao automatica", file: "apps/showcase/src/app/components/sg-wizard/samples/validacao-automatica.tsx.sample", kind: "sample" },
     { id: "validatestep", title: "validateStep", file: "apps/showcase/src/app/components/sg-wizard/samples/validatestep.tsx.sample", kind: "sample" },
-    { id: "onbeforenext-async", title: "onBeforeNext assincrono", file: "apps/showcase/src/app/components/sg-wizard/samples/onbeforenext-async.tsx.sample", kind: "sample" },
+    { id: "onbeforenext-async", title: "onBeforeNext assíncrono", file: "apps/showcase/src/app/components/sg-wizard/samples/onbeforenext-async.tsx.sample", kind: "sample" },
     { id: "nextdisabled", title: "Avanco bloqueado (nextDisabled)", file: "apps/showcase/src/app/components/sg-wizard/samples/nextdisabled.tsx.sample", kind: "sample" },
     { id: "stepnavigation", title: "stepNavigation", file: "apps/showcase/src/app/components/sg-wizard/samples/stepnavigation.tsx.sample", kind: "sample" },
     { id: "stepper-numerado", title: "Stepper numerado", file: "apps/showcase/src/app/components/sg-wizard/samples/stepper-numerado.tsx.sample", kind: "sample" },

@@ -81,7 +81,7 @@ export function SgInputPassword(props: Readonly<SgInputPasswordProps>) {
   const [isHidden, setIsHidden] = React.useState(hidePassword ?? true);
   const [hasInteracted, setHasInteracted] = React.useState(false);
   const [unmetRequirements, setUnmetRequirements] = React.useState<string[]>([]);
-  // Barra de forca: sem texto digitado nao ha o que medir (antes ficava toda verde com o campo vazio).
+  // Barra de força: sem texto digitado nao ha o que medir (antes ficava toda verde com o campo vazio).
   const [hasText, setHasText] = React.useState(false);
   const inputRef = React.useRef<HTMLInputElement | null>(null);
   const commonPasswordSet = React.useMemo(() => {

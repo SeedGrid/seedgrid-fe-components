@@ -16,7 +16,7 @@ export const sgMeta: SgMetaV0 = {
   fieldSemantics: ["digitDisplay", "3dCounterDigit", "clockDigit", "animatedCharacter"],
   props: [
     { name: "value", type: "string", required: true, description: "Caractere exibido no display.", semanticRole: "value", bindable: true },
-    { name: "fontSize", type: "number", default: 72, description: "Tamanho da fonte do digito.", semanticRole: "appearance", bindable: true },
+    { name: "fontSize", type: "number", default: 72, description: "Tamanho da fonte do dígito.", semanticRole: "appearance", bindable: true },
     { name: "className", type: "string", description: "Classes CSS adicionais.", semanticRole: "appearance", bindable: true }
   ],
   states: ["idle", "animating"],

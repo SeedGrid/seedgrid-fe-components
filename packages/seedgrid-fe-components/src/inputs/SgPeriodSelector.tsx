@@ -407,7 +407,7 @@ export function buildPeriodOptions(
 /**
  * Converte o valor cru do <input type="date"> (ISO yyyy-MM-dd) em Date local.
  *
- * O input nativo emite um change a cada digito do ano, entao "2026" chega aqui
+ * O input nativo emite um change a cada dígito do ano, entao "2026" chega aqui
  * antes como "0002", "0020" e "0202". Esses anos incompletos sao recusados, e o
  * ano completo passa por setFullYear para escapar da regra legada do JS que
  * mapeia ano 0..99 para 1900+ano (new Date(2, 8, 19) => 1902-09-19).

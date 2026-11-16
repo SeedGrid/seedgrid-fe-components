@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "input",
   subcategory: "autocomplete",
   description:
-    "Campo de busca assistida com sugestões, fonte assincrona, cache e seleção de item a partir de texto digitado.",
+    "Campo de busca assistida com sugestões, fonte assíncrona, cache e seleção de item a partir de texto digitado.",
   tags: ["form", "autocomplete", "search", "suggestions", "rhf"],
   capabilities: ["rhf", "async-source", "search", "cache", "grouped-results", "custom-render"],
   fieldSemantics: ["searchSelection", "lookup", "entityReference", "assistedSearch"],

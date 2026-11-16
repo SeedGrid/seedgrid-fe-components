@@ -80,7 +80,7 @@ export type SgStringAnimatorProps = {
    * @default false
    */
   autoStart?: boolean;
-  /** Tamanho da fonte em pixels — controla a escala de cada digito. @default 32 */
+  /** Tamanho da fonte em pixels — controla a escala de cada dígito. @default 32 */
   fontSize?: number;
   /**
    * Conjunto de caracteres válidos para o SgRoller3DDigit.

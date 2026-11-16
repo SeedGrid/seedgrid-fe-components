@@ -56,7 +56,7 @@ export type SgFileUploadProps = RhfFieldProps & {
   className?: string;
   onEnter?: () => void;
   onExit?: () => void;
-  /** Regra extra, assincrona, por arquivo (depois da conferencia de tipo). E como o SgImageUpload confere dimensão. */
+  /** Regra extra, assíncrona, por arquivo (depois da conferência de tipo). É como o SgImageUpload confere dimensão. */
   extraCheck?: (file: File, info: { mime: string }) => Promise<SgFileRejection | null>;
   /** Miniatura de cada arquivo (sem ela, a lista usa o ícone do tipo). */
   thumbnailBuilder?: (file: SgFileValue, size: number) => React.ReactNode;

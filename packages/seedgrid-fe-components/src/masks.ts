@@ -96,7 +96,7 @@ export function stripPhoneDdi(value: string) {
 
 /**
  * Mascara do telefone para o que o usuario digita ou cola. Colar (varios digitos de uma vez) um numero com DDI do
- * Brasil (+55 ...) tira o 55; digitar um digito por vez nao tira (55 e tambem um DDD valido).
+ * Brasil (+55 ...) tira o 55; digitar um dígito por vez nao tira (55 e tambem um DDD valido).
  */
 export function maskPhoneInput(value: string, previous: string) {
   const grew = onlyDigits(value).length - onlyDigits(previous).length;

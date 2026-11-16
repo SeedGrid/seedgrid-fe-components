@@ -3,10 +3,10 @@
  *
  * Existe para o mesmo fim do SgPeriodSelector — resolver uma REGRA temporal para um intervalo real
  * de datas — mas para a pergunta que ele nao responde: "o 1o semestre DE 2024", e nao "este
- * semestre". Preset e' relativo a hoje; aqui o usuario escolhe ano e fatia.
+ * semestre". Preset é relativo a hoje; aqui o usuario escolhe ano e fatia.
  *
- * Modulo separado do componente porque isto e' aritmetica de calendario pura: da' para testar sem
- * DOM (ver tests/year-part-resolver.test.mjs), que e' onde os erros de virada de mes/ano moram.
+ * Modulo separado do componente porque isto é aritmetica de calendario pura: da' para testar sem
+ * DOM (ver tests/year-part-resolver.test.mjs), que é onde os erros de virada de mes/ano moram.
  */
 
 export enum YearPartKind {
@@ -31,7 +31,7 @@ export type YearPartValue = {
 
 /**
  * Espelha o formato de ResolvedPeriod (do SgPeriodSelector) de proposito: quem consome os dois
- * seletores — o filtro de relatorio, por exemplo — trata os dois com o mesmo codigo. A diferenca e'
+ * seletores — o filtro de relatorio, por exemplo — trata os dois com o mesmo codigo. A diferenca é
  * que aqui as datas NUNCA sao nulas: todo recorte de ano resolve para um intervalo fechado.
  */
 export type ResolvedYearPart = {
@@ -47,7 +47,7 @@ export type ResolvedYearPart = {
 
 type LocaleMap = Record<string, string>;
 
-/** Nome do recorte — e' o que aparece no combo que escolhe entre semestre/trimestre/bimestre. */
+/** Nome do recorte — é o que aparece no combo que escolhe entre semestre/trimestre/bimestre. */
 const KIND_LABELS: Record<YearPartKind, LocaleMap> = {
   [YearPartKind.SEMESTER]: { "pt-BR": "Semestre", "en-US": "Half-year", es: "Semestre", "pt-PT": "Semestre", fr: "Semestre" },
   [YearPartKind.QUARTER]: { "pt-BR": "Trimestre", "en-US": "Quarter", es: "Trimestre", "pt-PT": "Trimestre", fr: "Trimestre" },
@@ -55,10 +55,10 @@ const KIND_LABELS: Record<YearPartKind, LocaleMap> = {
 };
 
 /**
- * Sigla da fatia, entre parenteses. NAO e' a inicial do nome traduzido: trimestre e' "Q" no
+ * Sigla da fatia, entre parênteses. NÃO é a inicial do nome traduzido: trimestre é "Q" no
  * portugues do Brasil e no ingles (Q1..Q4, vindo do business em ingles) mas "T" em espanhol,
  * frances e portugues europeu, onde ninguem diz Q1. Bimestre nao tem sigla consagrada em lingua
- * nenhuma — fica sem parenteses em vez de inventar uma.
+ * nenhuma — fica sem parênteses em vez de inventar uma.
  */
 const PART_ABBR: Partial<Record<YearPartKind, LocaleMap>> = {
   [YearPartKind.SEMESTER]: { "pt-BR": "S", "en-US": "H", es: "S", "pt-PT": "S", fr: "S" },
@@ -88,7 +88,7 @@ export function yearPartKindLabel(kind: YearPartKind, locale = "pt-BR"): string 
  * Rotulo de uma fatia: "Trimestre 1 (Q1)", "Semestre 2 (S2)", "Bimestre 3".
  *
  * O numero vem DEPOIS do nome porque a forma ordinal ("1o trimestre") exigiria o indicador
- * ordinal, que esta' fora do ASCII que esta familia de componentes usa nos rotulos.
+ * ordinal, que está fora do ASCII que esta familia de componentes usa nos rotulos.
  */
 export function yearPartLabel(kind: YearPartKind, part: number, locale = "pt-BR"): string {
   const name = yearPartKindLabel(kind, locale);
@@ -124,11 +124,11 @@ export function clampYearPart(kind: YearPartKind, part: number): number {
 /**
  * Resolve o recorte para o intervalo fechado de datas.
  *
- * O ultimo dia sai de `new Date(ano, primeiroMesDaProximaFatia, 0)`: dia zero e' o ultimo dia do
+ * O ultimo dia sai de `new Date(ano, primeiroMesDaProximaFatia, 0)`: dia zero é o ultimo dia do
  * mes anterior, entao fevereiro devolve 29 em ano bissexto sem nenhuma tabela de dias por mes.
  *
  * Lanca quando a fatia nao existe no recorte — numero errado aqui vira intervalo errado no
- * relatorio, e intervalo errado com cara de certo e' pior que erro na cara.
+ * relatorio, e intervalo errado com cara de certo é pior que erro na cara.
  */
 export function resolveYearPart(value: YearPartValue, locale = "pt-BR"): ResolvedYearPart {
   const { year, kind, part } = value;

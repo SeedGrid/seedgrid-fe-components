@@ -2141,7 +2141,7 @@
       "name": "infiniteScroll",
       "type": "boolean",
       "required": false,
-      "description": "Rolagem infinita (P137): sem paginador, ao chegar perto do fim avança a página do `rows` existente.\nPadrão: ligada quando a lista e' exibida como cartoes (abaixo de 600 px no modo automatico) e desligada na tabela.\nExige `paginator` (e' o `rows` que define o tamanho de cada página). Com `lazy`, o pai acrescenta a próxima página a `value`."
+      "description": "Rolagem infinita (P137): sem paginador, ao chegar perto do fim avança a página do `rows` existente.\nPadrão: ligada quando a lista é exibida como cartoes (abaixo de 600 px no modo automatico) e desligada na tabela.\nExige `paginator` (é o `rows` que define o tamanho de cada página). Com `lazy`, o pai acrescenta a próxima página a `value`."
     },
     {
       "name": "lazy",
@@ -2157,7 +2157,7 @@
       "name": "mobileMode",
       "type": "SgDatatableMobileMode",
       "required": false,
-      "description": "Omitido (padrão): automático - cartões quando o container fica abaixo de SG_DATATABLE_MOBILE_BREAKPOINT (600 px), tabela acima. `cards` forca cartões e `scroll` forca a tabela (rolagem horizontal) em qualquer largura."
+      "description": "Omitido (padrão): automático - cartões quando o container fica abaixo de SG_DATATABLE_MOBILE_BREAKPOINT (600 px), tabela acima. `cards` força cartões e `scroll` força a tabela (rolagem horizontal) em qualquer largura."
     },
     {
       "name": "onFilter",
@@ -2982,7 +2982,7 @@
       "name": "extraCheck",
       "type": "((file: File, info: { mime: string; }) => Promise<SgFileRejection | null>)",
       "required": false,
-      "description": "Regra extra, assincrona, por arquivo (depois da conferencia de tipo). E como o SgImageUpload confere dimensão."
+      "description": "Regra extra, assíncrona, por arquivo (depois da conferência de tipo). É como o SgImageUpload confere dimensão."
     },
     {
       "name": "hintText",
@@ -8324,6 +8324,11 @@
       "required": false
     },
     {
+      "name": "requiredMessage",
+      "type": "string",
+      "required": false
+    },
+    {
       "name": "rules",
       "type": "RegisterOptions<any>",
       "required": false
@@ -10467,7 +10472,7 @@
       "name": "fontSize",
       "type": "number",
       "required": false,
-      "description": "Tamanho da fonte em pixels — controla a escala de cada digito."
+      "description": "Tamanho da fonte em pixels — controla a escala de cada dígito."
     },
     {
       "name": "sourceString",
@@ -10994,7 +10999,7 @@
       "name": "checkableLabel",
       "type": "string",
       "required": false,
-      "description": "Cabeçalho da coluna do checkbox principal -- só' e' desenhado quando `tracks` também esta'\r\npresente (e' o cabeçalho de colunas como um todo que fica ambíguo com 2+ controles por linha,\r\nnão o checkbox sozinho)."
+      "description": "Cabeçalho da coluna do checkbox principal -- só é desenhado quando `tracks` também está\r\npresente (é o cabeçalho de colunas como um todo que fica ambíguo com 2+ controles por linha,\r\nnão o checkbox sozinho)."
     },
     {
       "name": "checkedIds",
@@ -11221,7 +11226,7 @@
       "name": "enabled",
       "type": "boolean",
       "required": false,
-      "description": "Habilita o wizard como um todo (padrão `true`). Com `false` nada muda por interação: os botões\r\n\"Anterior\", \"Próximo\" e \"Concluir\" ficam desabilitados e as etapas do stepper deixam de ser\r\nclicáveis; a etapa atual continua visível. O conteúdo da página e' do consumidor (use `enabled`\r\nnos campos). Nao confundir com `nextDisabled`, que so' bloqueia o avanço."
+      "description": "Habilita o wizard como um todo (padrão `true`). Com `false` nada muda por interação: os botões\r\n\"Anterior\", \"Próximo\" e \"Concluir\" ficam desabilitados e as etapas do stepper deixam de ser\r\nclicáveis; a etapa atual continua visível. O conteúdo da página é do consumidor (use `enabled`\r\nnos campos). Nao confundir com `nextDisabled`, que so' bloqueia o avanço."
     },
     {
       "name": "initialStep",
@@ -11237,7 +11242,7 @@
       "name": "nextDisabled",
       "type": "boolean",
       "required": false,
-      "description": "Desabilita o avanço de forma declarativa: o botão \"Próximo\" fica desabilitado (opaco, com\r\ncursor de bloqueio) e o stepper para de oferecer as etapas seguintes.\r\n\r\nComplementa `onBeforeNext`/`validateStep`, que só' agem NO CLIQUE. Quando o consumidor ja\r\nsabe que a etapa nao pode avancar — tipicamente o resultado de uma checagem assincrona que\r\nja' terminou, como \"este CNPJ já' tem cadastro\" — o botão continuava com aparência de\r\nclicável e o clique não fazia nada, sem explicar por que.\r\n\r\nNão afeta o botão de conclusão da última etapa: para esse caso existe `onBeforeFinish`."
+      "description": "Desabilita o avanço de forma declarativa: o botão \"Próximo\" fica desabilitado (opaco, com\r\ncursor de bloqueio) e o stepper para de oferecer as etapas seguintes.\r\n\r\nComplementa `onBeforeNext`/`validateStep`, que só agem NO CLIQUE. Quando o consumidor ja\r\nsabe que a etapa nao pode avancar — tipicamente o resultado de uma checagem assíncrona que\r\njá terminou, como \"este CNPJ já tem cadastro\" — o botão continuava com aparência de\r\nclicável e o clique não fazia nada, sem explicar por que.\r\n\r\nNão afeta o botão de conclusão da última etapa: para esse caso existe `onBeforeFinish`."
     },
     {
       "name": "onBeforeFinish",
@@ -11358,7 +11363,7 @@
       "name": "onChange",
       "type": "((resolved: ResolvedYearPart) => void)",
       "required": false,
-      "description": "Recebe o recorte já' resolvido, com startDate/endDate preenchidos."
+      "description": "Recebe o recorte já resolvido, com startDate/endDate preenchidos."
     },
     {
       "name": "required",

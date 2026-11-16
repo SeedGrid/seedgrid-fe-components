@@ -102,13 +102,13 @@ export const sgMeta: SgMetaV0 = {
     {
       id: "sync-vs-async",
       title: "onClick síncrono x assíncrono",
-      file: "apps/showcase/src/app/components/sg-button/samples/onclick-sincrono-x-assincrono.tsx.sample",
+      file: "apps/showcase/src/app/components/sg-button/samples/onclick-sincrono-x-assíncrono.tsx.sample",
       kind: "sample"
     },
     {
       id: "async-error",
       title: "Tratando erro no onClick assíncrono",
-      file: "apps/showcase/src/app/components/sg-button/samples/tratando-erro-no-onclick-assincrono.tsx.sample",
+      file: "apps/showcase/src/app/components/sg-button/samples/tratando-erro-no-onclick-assíncrono.tsx.sample",
       kind: "sample"
     },
     {
@@ -153,7 +153,7 @@ export const aiHints: SgAiHintsV0 = {
     "Combinar com SgInputText e outros campos em formularios.",
     "Usar dentro de SgPanel ou SgDialog para acoes contextuais.",
     "O onClick precisa DEVOLVER a Promise para o loading automatico funcionar: onClick={() => { salvar(); }} (chaves sem return) nao protege; use () => salvar() ou async () => { await salvar(); }.",
-    "O botao nao engole o erro do onClick assincrono: sai do loading e relanca como rejeicao nao tratada. Trate com try/catch dentro do onClick e avise o usuario com sgWhistle.error.",
+    "O botao nao engole o erro do onClick assíncrono: sai do loading e relanca como rejeicao nao tratada. Trate com try/catch dentro do onClick e avise o usuario com sgWhistle.error.",
     "O loading automatico protege a acao na tela (duplo clique/reenvio), mas nao substitui a chave de idempotencia no servidor. A prop loading manual vence: loading efetivo = loading ou operacao pendente."
   ],
   rankingSignals: {
