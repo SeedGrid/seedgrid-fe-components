@@ -86,8 +86,8 @@ function cn(...parts: Array<string | false | null | undefined>) {
 
 const BTN_COLORS: Record<SgToolBarSeverity, { bg: string; fg: string; ring: string }> = {
   primary: {
-    bg: "hsl(var(--primary))",
-    fg: "hsl(var(--primary-foreground))",
+    bg: "hsl(var(--primary-fill,var(--primary)))",
+    fg: "hsl(var(--primary-fill-foreground,var(--primary-foreground)))",
     ring: "hsl(var(--primary)/0.35)"
   },
   secondary: {
@@ -116,8 +116,8 @@ const BTN_COLORS: Record<SgToolBarSeverity, { bg: string; fg: string; ring: stri
     ring: "hsl(var(--secondary,var(--primary))/0.35)"
   },
   danger: {
-    bg: "hsl(var(--destructive))",
-    fg: "hsl(var(--destructive-foreground))",
+    bg: "hsl(var(--destructive-fill,var(--destructive)))",
+    fg: "hsl(var(--destructive-fill-foreground,var(--destructive-foreground)))",
     ring: "hsl(var(--destructive)/0.35)"
   },
   plain: {

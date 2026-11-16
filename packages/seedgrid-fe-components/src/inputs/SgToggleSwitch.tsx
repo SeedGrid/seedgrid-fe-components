@@ -245,7 +245,7 @@ function SgToggleSwitchBase(props: Readonly<SgToggleSwitchBaseProps>) {
               checked
                 ? hasError
                   ? "border-[hsl(var(--destructive))] bg-[hsl(var(--destructive)/0.2)]"
-                  : "border-[hsl(var(--primary))] bg-[hsl(var(--primary))]"
+                  : "border-[hsl(var(--primary-fill,var(--primary)))] bg-[hsl(var(--primary-fill,var(--primary)))]"
                 : hasError
                   ? "border-[hsl(var(--destructive))] bg-[hsl(var(--destructive)/0.05)]"
                   : "border-border bg-muted",

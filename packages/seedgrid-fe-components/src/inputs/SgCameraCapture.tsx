@@ -207,7 +207,7 @@ export function SgCameraCapture(props: SgCameraCaptureProps) {
           onClick={capture}
           disabled={!enabled || status !== "ready"}
           aria-label={t(i18n, "components.inputs.camera.capture")}
-          className="inline-flex items-center gap-2 rounded-md border border-border bg-[hsl(var(--primary))] px-3 py-2 text-sm font-medium text-[hsl(var(--primary-foreground))] disabled:cursor-not-allowed disabled:opacity-50"
+          className="inline-flex items-center gap-2 rounded-md border border-border bg-[hsl(var(--primary-fill,var(--primary)))] px-3 py-2 text-sm font-medium text-[hsl(var(--primary-fill-foreground,var(--primary-foreground)))] disabled:cursor-not-allowed disabled:opacity-50"
         >
           <Camera className="size-4" aria-hidden="true" />
           {t(i18n, "components.inputs.camera.capture")}

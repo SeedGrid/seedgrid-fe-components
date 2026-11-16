@@ -75,7 +75,7 @@ export type SgPopupProps = {
 };
 
 const ACTION_CLS: Record<SgPopupSeverity, string> = {
-  primary: "text-primary-foreground bg-primary hover:brightness-95",
+  primary: "text-[hsl(var(--primary-fill-foreground,var(--primary-foreground)))] bg-[hsl(var(--primary-fill,var(--primary)))] hover:brightness-95",
   secondary: "text-secondary-foreground bg-secondary hover:brightness-95",
   success: "text-white bg-emerald-600 hover:brightness-95",
   info: "text-white bg-sky-600 hover:brightness-95",
@@ -331,7 +331,7 @@ export function SgPopup(props: Readonly<SgPopupProps>) {
       aria-label={resolvedAriaLabel}
     >
       {title ? (
-        <div className="bg-primary px-3 py-2 text-xs font-medium text-primary-foreground">
+        <div className="bg-[hsl(var(--primary-fill,var(--primary)))] px-3 py-2 text-xs font-medium text-[hsl(var(--primary-fill-foreground,var(--primary-foreground)))]">
           {title}
         </div>
       ) : null}

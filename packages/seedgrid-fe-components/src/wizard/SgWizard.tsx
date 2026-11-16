@@ -102,7 +102,7 @@ function StepperBar({
                 aria-current={isCurrent ? "step" : undefined}
                 className={`flex items-center justify-center rounded-full border-2 transition-colors duration-200 ${
                   isCompleted
-                    ? "border-[hsl(var(--primary))] bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))]"
+                    ? "border-[hsl(var(--primary-fill,var(--primary)))] bg-[hsl(var(--primary-fill,var(--primary)))] text-[hsl(var(--primary-fill-foreground,var(--primary-foreground)))]"
                     : isCurrent
                       ? "border-[hsl(var(--primary))] bg-[rgb(var(--sg-surface,var(--sg-bg)))] text-[hsl(var(--primary))]"
                       : "border-border bg-[rgb(var(--sg-surface,var(--sg-bg)))] text-muted-foreground"
@@ -149,7 +149,7 @@ function StepperBar({
                 <div className="flex-1 mx-2 self-start" style={{ marginTop: 19 }}>
                   <div
                     className={`h-0.5 w-full transition-colors duration-200 ${
-                      isCompleted ? "bg-[hsl(var(--primary))]" : "bg-border"
+                      isCompleted ? "bg-[hsl(var(--primary-fill,var(--primary)))]" : "bg-border"
                     }`}
                   />
                 </div>
@@ -317,7 +317,7 @@ export function SgWizard(props: SgWizardProps) {
               type="button"
               onClick={goNext}
               disabled={!enabled || isValidating || nextDisabled}
-              className="inline-flex h-10 items-center justify-center rounded-full bg-[hsl(var(--primary))] px-5 text-sm font-semibold text-[hsl(var(--primary-foreground))] shadow-lg shadow-[hsl(var(--primary)/0.35)] transition hover:brightness-95 disabled:cursor-not-allowed disabled:opacity-60"
+              className="inline-flex h-10 items-center justify-center rounded-full bg-[hsl(var(--primary-fill,var(--primary)))] px-5 text-sm font-semibold text-[hsl(var(--primary-fill-foreground,var(--primary-foreground)))] shadow-lg shadow-[hsl(var(--primary)/0.35)] transition hover:brightness-95 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {labels.next}
             </button>
@@ -326,7 +326,7 @@ export function SgWizard(props: SgWizardProps) {
               type="button"
               onClick={handleFinish}
               disabled={!enabled || isFinishing || isValidating}
-              className="inline-flex h-10 items-center justify-center rounded-full bg-[hsl(var(--primary))] px-5 text-sm font-semibold text-[hsl(var(--primary-foreground))] shadow-lg shadow-[hsl(var(--primary)/0.35)] transition hover:brightness-95 disabled:cursor-not-allowed disabled:opacity-60"
+              className="inline-flex h-10 items-center justify-center rounded-full bg-[hsl(var(--primary-fill,var(--primary)))] px-5 text-sm font-semibold text-[hsl(var(--primary-fill-foreground,var(--primary-foreground)))] shadow-lg shadow-[hsl(var(--primary)/0.35)] transition hover:brightness-95 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {labels.finish}
             </button>

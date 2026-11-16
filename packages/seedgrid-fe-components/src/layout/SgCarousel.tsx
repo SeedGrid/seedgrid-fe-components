@@ -321,7 +321,7 @@ export function SgCarousel(props: SgCarouselProps) {
                   transition-all
                   ${isHorizontal ? "h-2" : "w-2"}
                   ${isActive
-                    ? `${isHorizontal ? "w-8" : "h-8"} bg-primary`
+                    ? `${isHorizontal ? "w-8" : "h-8"} bg-[hsl(var(--primary-fill,var(--primary)))]`
                     : `${isHorizontal ? "w-2" : "h-2"} bg-foreground/20 hover:bg-foreground/35`
                   }
                   rounded-full

@@ -176,6 +176,13 @@ export function generateThemeVars(input: SeedThemeInput, resolvedMode: "light" |
     vars[`--sg-${fname}-fill`] = toRgbVarValue(shades.normal);
     vars[`--sg-${fname}-fill-hover`] = toRgbVarValue(shades.hover);
     vars[`--sg-${fname}-fill-active`] = toRgbVarValue(shades.active);
+    // Aliases legados (hsl) do PREENCHIMENTO: `--primary`/`--destructive` seguem a escala ajustada (servem de texto, >= 4,5:1);
+    // fundos cheios (botao da barra, passo do wizard, chip marcado...) usam estes, com o texto escolhido por contraste.
+    if (fname === "primary" || fname === "error") {
+      const legacy = fname === "primary" ? "primary" : "destructive";
+      vars[`--${legacy}-fill`] = toHslVarValue(shades.normal);
+      vars[`--${legacy}-fill-foreground`] = toHslVarValue(pickOnColor(shades.normal));
+    }
   }
 
   // Handy hover/active (normally 600/700)

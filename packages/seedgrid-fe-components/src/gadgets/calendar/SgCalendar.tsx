@@ -449,7 +449,7 @@ export function SgCalendar(props: Readonly<SgCalendarProps>) {
                             className={cn(
                               "mx-auto inline-flex aspect-square h-auto w-full max-w-10 items-center justify-center rounded-full text-sm font-medium transition-colors",
                               selected
-                                ? "bg-primary text-primary-foreground shadow-sm"
+                                ? "bg-[hsl(var(--primary-fill,var(--primary)))] text-[hsl(var(--primary-fill-foreground,var(--primary-foreground)))] shadow-sm"
                                 : "hover:bg-muted",
                               inCurrentMonth ? "text-foreground" : "text-muted-foreground",
                               disabled ? "cursor-not-allowed opacity-40" : "",

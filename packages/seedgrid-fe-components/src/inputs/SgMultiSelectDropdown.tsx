@@ -97,7 +97,7 @@ export function SgMultiSelectDropdown(props: Readonly<SgMultiSelectDropdownProps
                   className={[
                     "flex h-4 w-4 shrink-0 items-center justify-center rounded border",
                     checked
-                      ? "border-[hsl(var(--primary))] bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))]"
+                      ? "border-[hsl(var(--primary-fill,var(--primary)))] bg-[hsl(var(--primary-fill,var(--primary)))] text-[hsl(var(--primary-fill-foreground,var(--primary-foreground)))]"
                       : "border-border bg-[var(--sg-input-bg,hsl(var(--background)))]"
                   ].join(" ")}
                 >

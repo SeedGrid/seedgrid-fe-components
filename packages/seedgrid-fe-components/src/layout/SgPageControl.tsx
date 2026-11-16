@@ -264,7 +264,7 @@ export function SgPageControl(props: Readonly<SgPageControlProps>) {
             "rounded-full border border-transparent text-muted-foreground",
             "hover:bg-muted/70 hover:text-foreground"
           ),
-          active: "bg-primary text-primary-foreground border-primary shadow-sm",
+          active: "bg-[hsl(var(--primary-fill,var(--primary)))] text-[hsl(var(--primary-fill-foreground,var(--primary-foreground)))] border-primary shadow-sm",
           inactive: ""
         }
       : {
