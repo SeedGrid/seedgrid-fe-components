@@ -1,5 +1,5 @@
 {
-  "(omitido = automatico)": {
+  "(omitido = automático)": {
     "en-US": "(omitted = automatic)",
     "pt-PT": "(omitido = automático)",
     "es": "(omitido = automático)",
@@ -1560,7 +1560,7 @@
     "fr": "Champ spécialisé pour l'email avec validation du format, blocage optionnel des domaines temporaires et intégration aux formulaires.",
     "pt-BR": "Campo especializado para email com validação de formato, bloqueio opcional de domínios temporários e integração com formulários."
   },
-  "Campo especializado para senha com validações de política, alternância de visibilidade e indicação de forca.": {
+  "Campo especializado para senha com validações de política, alternância de visibilidade e indicação de força.": {
     "en-US": "Specialized password field with policy validations, visibility toggle and strength indication.",
     "pt-PT": "Campo especializado para palavra-passe com validações de política, alternância de visibilidade e indicação de robustez.",
     "es": "Campo especializado para contraseña con validaciones de política, alternancia de visibilidad e indicación de fortaleza.",
@@ -2463,7 +2463,7 @@
     "fr": "Composer des workspaces avec des zones ancrées pour toolbars, menus et panneaux.",
     "pt-BR": "Compor workspaces com zonas dockadas para toolbars, menus e painéis."
   },
-  "Comportamento em tela estreita. Omitido (padrão): cartões quando o container fica abaixo de 600 px, tabela acima; cards: forca cartões em qualquer largura; scroll: forca a tabela com rolagem horizontal. Nos cartões mantém ordenação, seleção, ações, rodapé e paginação.": {
+  "Comportamento em tela estreita. Omitido (padrão): cartões quando o container fica abaixo de 600 px, tabela acima; cards: força cartões em qualquer largura; scroll: força a tabela com rolagem horizontal. Nos cartões mantém ordenação, seleção, ações, rodapé e paginação.": {
     "en-US": "Behavior on narrow screens. Omitted (default): cards when the container is below 600 px, table above; cards: forces cards at any width; scroll: forces the table with horizontal scrolling. Cards keep sorting, selection, actions, footer, and pagination.",
     "pt-PT": "Comportamento em ecrã estreito. Omitido (predefinição): cartões quando o contentor fica abaixo de 600 px, tabela acima; cards: força cartões em qualquer largura; scroll: força a tabela com deslocamento horizontal. Nos cartões mantêm-se a ordenação, a seleção, as ações, o rodapé e a paginação.",
     "es": "Comportamiento en pantalla estrecha. Omitido (por defecto): tarjetas cuando el contenedor queda por debajo de 600 px, tabla por encima; cards: fuerza tarjetas con cualquier ancho; scroll: fuerza la tabla con desplazamiento horizontal. En las tarjetas se mantienen la ordenación, la selección, las acciones, el pie y la paginación.",
@@ -4542,7 +4542,7 @@
     "fr": "Affiche l'action « tout cocher ».",
     "pt-BR": "Exibe ação de marcar todos."
   },
-  "Exibe barra de forca da senha.": {
+  "Exibe barra de força da senha.": {
     "en-US": "Displays the password strength bar.",
     "pt-PT": "Apresenta a barra de robustez da palavra-passe.",
     "es": "Muestra la barra de fortaleza de la contraseña.",
@@ -5109,7 +5109,7 @@
     "fr": "Flux nécessitant la caméra de l'appareil et la gestion d'une autorisation refusée.",
     "pt-BR": "Fluxos que precisam da câmera do dispositivo e de tratamento de permissão negada."
   },
-  "Fluxos que precisam exibir forca de senha ou alternar visibilidade.": {
+  "Fluxos que precisam exibir força de senha ou alternar visibilidade.": {
     "en-US": "Flows that need to display password strength or toggle visibility.",
     "pt-PT": "Fluxos que precisam de apresentar a robustez da palavra-passe ou alternar a visibilidade.",
     "es": "Flujos que necesitan mostrar la fortaleza de la contraseña o alternar la visibilidad.",

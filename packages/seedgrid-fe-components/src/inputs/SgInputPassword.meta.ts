@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "input",
   subcategory: "password",
   description:
-    "Campo especializado para senha com validações de política, alternância de visibilidade e indicação de forca.",
+    "Campo especializado para senha com validações de política, alternância de visibilidade e indicação de força.",
   tags: ["form", "password", "security", "auth", "rhf"],
   capabilities: ["rhf", "validation", "password-policy", "strength-bar", "hide-show", "clearable"],
   fieldSemantics: ["password", "secret", "credential", "loginPassword", "newPassword"],
@@ -20,7 +20,7 @@ export const sgMeta: SgMetaV0 = {
     { name: "label", type: "string", description: "Rótulo exibido ao usuário.", semanticRole: "label", bindable: true },
     { name: "required", type: "boolean", default: false, description: "Marca o campo como obrigatório.", semanticRole: "validation", bindable: true },
     { name: "minSize", type: "number", default: 8, description: "Tamanho mínimo esperado da senha.", semanticRole: "validation", bindable: true },
-    { name: "showStrengthBar", type: "boolean", default: true, description: "Exibe barra de forca da senha.", semanticRole: "appearance", bindable: true },
+    { name: "showStrengthBar", type: "boolean", default: true, description: "Exibe barra de força da senha.", semanticRole: "appearance", bindable: true },
     { name: "commonPasswordCheck", type: "boolean", default: true, description: "Bloqueia senhas comuns.", semanticRole: "validation", bindable: true },
     { name: "hidePassword", type: "boolean", default: true, description: "Oculta a senha inicialmente.", semanticRole: "behavior", bindable: true },
     { name: "onValidation", type: "(message: string | null) => void", description: "Callback para estado de validação.", semanticRole: "event", bindable: false }
@@ -62,7 +62,7 @@ export const aiHints: SgAiHintsV0 = {
   preferredUseCases: [
     "Captura de senha em login, cadastro e redefinicao de credencial.",
     "Campos que exigem politica minima de seguranca.",
-    "Fluxos que precisam exibir forca de senha ou alternar visibilidade."
+    "Fluxos que precisam exibir força de senha ou alternar visibilidade."
   ],
   avoidUseCases: [
     "OTP ou codigo temporario; nesses casos prefira SgInputOTP.",
