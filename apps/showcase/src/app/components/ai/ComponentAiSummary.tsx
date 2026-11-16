@@ -31,7 +31,7 @@ export default function ComponentAiSummary(props: Readonly<ComponentAiSummaryPro
 
       {component.sgMeta.fieldSemantics && component.sgMeta.fieldSemantics.length > 0 ? (
         <div className="mt-3">
-          <p className="text-xs font-semibold uppercase tracking-wide text-emerald-800 dark:text-emerald-300">{t(i18n, "showcase.ai.fieldSemantics")}</p>
+          <p className="text-xs font-semibold uppercase tracking-wide text-foreground">{t(i18n, "showcase.ai.fieldSemantics")}</p>
           <div className="mt-2 flex flex-wrap gap-2">
             {component.sgMeta.fieldSemantics.map((semantic) => (
               <span
@@ -47,7 +47,7 @@ export default function ComponentAiSummary(props: Readonly<ComponentAiSummaryPro
 
       <div className="mt-3 grid gap-3 md:grid-cols-2">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-emerald-800 dark:text-emerald-300">{t(i18n, "showcase.ai.preferredUseCases")}</p>
+          <p className="text-xs font-semibold uppercase tracking-wide text-foreground">{t(i18n, "showcase.ai.preferredUseCases")}</p>
           <ul className="mt-2 list-disc space-y-1 pl-5">
             {component.aiHints.preferredUseCases.map((useCase) => (
               <li key={useCase}>{tx(useCase)}</li>
@@ -55,7 +55,7 @@ export default function ComponentAiSummary(props: Readonly<ComponentAiSummaryPro
           </ul>
         </div>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-emerald-800 dark:text-emerald-300">{t(i18n, "showcase.ai.avoidUseCases")}</p>
+          <p className="text-xs font-semibold uppercase tracking-wide text-foreground">{t(i18n, "showcase.ai.avoidUseCases")}</p>
           <ul className="mt-2 list-disc space-y-1 pl-5">
             {(component.aiHints.avoidUseCases ?? []).map((useCase) => (
               <li key={useCase}>{tx(useCase)}</li>
@@ -66,7 +66,7 @@ export default function ComponentAiSummary(props: Readonly<ComponentAiSummaryPro
 
       {component.sgMeta.sdui ? (
         <div className="mt-3 rounded-md border border-emerald-200 bg-white/60 p-3">
-          <p className="text-xs font-semibold uppercase tracking-wide text-emerald-800 dark:text-emerald-300">SDUI</p>
+          <p className="text-xs font-semibold uppercase tracking-wide text-foreground">SDUI</p>
           <p className="mt-2">
             <span className="font-medium">{t(i18n, "showcase.ai.renderer")}:</span> {component.sgMeta.sdui.rendererType}
           </p>
