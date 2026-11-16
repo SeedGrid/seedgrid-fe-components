@@ -178,7 +178,7 @@ export default function SgCalendarPage() {
           </Section>
 
           <Section
-            title={`4) ${t(i18n, "showcase.common.sections.enabled.title")}`}
+            title={t(i18n, `${K}.enabledTitle`)}
             description={t(i18n, "showcase.component.calendar.sections.enabled.description")}
           >
             <SgCalendar locale={i18n.locale} defaultValue="2026-11-10" defaultViewDate="2026-11-01" enabled={false} />
@@ -227,7 +227,7 @@ export default function SgCalendarPage() {
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-calendar/samples/controlado.tsx.sample" />
         </Section>
 
-        <Section title={`10) ${t(i18n, `${K}.dragTitle`)}`} description={t(i18n, `${K}.dragDescription`)}>
+        <Section title={t(i18n, `${K}.dragTitle`)} description={t(i18n, `${K}.dragDescription`)}>
           <SgGrid columns={{ base: 1, md: 3 }} gap={16}>
             <SgCalendar locale={i18n.locale} cardTitle={t(i18n, `${K}.dragAuto`)} cardProps={{ id: "arraste-auto" }} />
             <SgCalendar locale={i18n.locale} cardTitle={t(i18n, `${K}.dragAlways`)} draggable={true} cardProps={{ id: "arraste-sempre" }} />
