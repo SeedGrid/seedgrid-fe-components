@@ -72,7 +72,7 @@ const SECTION_TITLE_KEYS = [
   "showcase.component.datatable.sections.loading.title",
   "showcase.component.datatable.sections.mobile.title",
   "showcase.component.datatable.sections.infinite.title",
-  "showcase.common.sections.i18n.title",
+  "showcase.component.datatable.sections.i18n.title",
   "showcase.component.datatable.sections.playground.title"
 ] as const;
 
@@ -1694,7 +1694,7 @@ export default function SgDatatableShowcase() {
         </Section>
 
         <Section
-          title={t(i18n, "showcase.common.sections.enabled.title")}
+          title={t(i18n, "showcase.component.datatable.sections.enabled.title")}
           description={t(i18n, "showcase.component.datatable.sections.enabled.description")}
         >
           <SgDatatable

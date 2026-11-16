@@ -802,8 +802,9 @@ export const SgTreeView = React.forwardRef<SgTreeViewRef, SgTreeViewProps>(funct
 
   return (
     <div className={cn("w-full", className)} style={style}>
-      <div className="mb-2 flex items-center gap-2">
+      <div className="mb-2 flex flex-wrap items-center gap-2">
         {searchable && (
+          <div className="min-w-[10rem] flex-1 sm:flex-none">
           <SgInputText
             id={searchId}
             labelText={searchPlaceholder}
@@ -814,6 +815,7 @@ export const SgTreeView = React.forwardRef<SgTreeViewRef, SgTreeViewProps>(funct
             inputProps={{ value: search }}
             onChange={(value) => setSearch(value)}
           />
+          </div>
         )}
 
         <SgButton
@@ -821,6 +823,7 @@ export const SgTreeView = React.forwardRef<SgTreeViewRef, SgTreeViewProps>(funct
           appearance="ghost"
           size="sm"
           shape="rounded"
+          className="shrink-0 whitespace-nowrap"
           onClick={expandAll}
           leftIcon={<ChevronDown className="size-4" />}
         >
@@ -832,6 +835,7 @@ export const SgTreeView = React.forwardRef<SgTreeViewRef, SgTreeViewProps>(funct
           appearance="ghost"
           size="sm"
           shape="rounded"
+          className="shrink-0 whitespace-nowrap"
           onClick={collapseAll}
           leftIcon={<ChevronUp className="size-4" />}
         >
@@ -844,6 +848,7 @@ export const SgTreeView = React.forwardRef<SgTreeViewRef, SgTreeViewProps>(funct
             appearance="outline"
             size="sm"
             shape="rounded"
+            className="shrink-0 whitespace-nowrap"
             onClick={clearChecked}
             title={t(i18n, "components.actions.clearSelection")}
           >
@@ -900,7 +905,7 @@ export const SgTreeView = React.forwardRef<SgTreeViewRef, SgTreeViewProps>(funct
               (confirmCfg.sticky ?? true) && "sticky bottom-0 bg-sg-surface/95 bg-background/95 backdrop-blur"
             )}
           >
-            <div className="flex items-center justify-between gap-3">
+            <div className="flex flex-wrap items-center justify-between gap-3">
               <div className={cn("text-xs", T.subtle)}>
                 {confirmCfg.hint ?? (
                   <>
@@ -910,7 +915,7 @@ export const SgTreeView = React.forwardRef<SgTreeViewRef, SgTreeViewProps>(funct
                 )}
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
                 {(confirmCfg.showCancel ?? false) && (
                   <button
                     type="button"

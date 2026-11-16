@@ -519,7 +519,7 @@ export function SgClockShowcaseClient({ initialServerTime }: { initialServerTime
             </Section>
 
             <Section
-              title="Playground"
+              title={t(i18n, "showcase.component.clock.sections.playground.title")}
               description={t(i18n, "showcase.common.playground.description.withComponent", { component: "SgClock" })}
             >
               <SgPlayground

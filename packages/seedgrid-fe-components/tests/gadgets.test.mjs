@@ -71,7 +71,7 @@ test("SgClock exposes translated digital aria labels", () => {
     React.createElement(SgClock, { clockStyle: "digital", locale: "fr", showSeconds: false })
   );
 
-  assert.match(html, /aria-label="Horloge numerique"/);
+  assert.match(html, /aria-label="Horloge numérique"/);
   assert.match(html, />Horloge</);
 });
 
@@ -89,7 +89,7 @@ test("SgClockThemePicker exposes translated placeholder text", () => {
   );
 
   assert.match(html, />Theme</);
-  assert.match(html, />Selectionnez un theme\.\.\.</);
+  assert.match(html, />Sélectionnez un thème\.\.\.</);
 });
 
 test("gauges expose translated default accessibility labels", () => {

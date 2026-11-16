@@ -314,14 +314,23 @@ export function SgCalendar(props: Readonly<SgCalendarProps>) {
   );
   const monthGridStyle: React.CSSProperties = {
     // min(..., 100%): em telas estreitas a coluna encolhe para a largura disponivel (nunca corta a 7a coluna).
-    gridTemplateColumns: `repeat(${visibleColumns}, minmax(min(${monthColumnMinWidth}, 100%), 1fr))`,
+    // Varios meses: no maximo `monthsPerLine` por linha (o minimo de cada coluna e a fracao da linha) e menos colunas
+    // quando nao cabem (auto-fit), entao o bloco quebra em vez de rolar na horizontal.
+    gridTemplateColumns:
+      visibleColumns === 1
+        ? `repeat(1, minmax(min(${monthColumnMinWidth}, 100%), 1fr))`
+        : `repeat(auto-fit, minmax(max(min(${monthColumnMinWidth}, 100%), calc((100% - ${visibleColumns - 1}rem) / ${visibleColumns})), 1fr))`,
     width: "100%"
   };
   const mergedCardClassName = cn("max-w-full", cardProps?.className);
   const mergedCardBodyClassName = cn("max-h-full max-w-full overflow-auto", cardProps?.bodyClassName);
+  // Varios meses: largura definida (o auto-fit precisa dela) limitada ao tamanho de `monthsPerLine` colunas.
   const mergedCardStyle: React.CSSProperties = {
-    width: "fit-content",
-    maxWidth: "100%",
+    width: visibleColumns === 1 ? "fit-content" : "100%",
+    maxWidth:
+      visibleColumns === 1
+        ? "100%"
+        : `min(100%, calc(${visibleColumns} * ${monthColumnMinWidth} + ${visibleColumns - 1}rem + 3rem))`,
     ...(cardProps?.style ?? {})
   };
 
@@ -343,7 +352,8 @@ export function SgCalendar(props: Readonly<SgCalendarProps>) {
     >
       <div
         className={cn(
-          "inline-flex max-w-full select-none flex-col gap-3",
+          visibleColumns === 1 ? "inline-flex" : "flex w-full",
+          "max-w-full select-none flex-col gap-3",
           !enabled && "opacity-60",
           className
         )}
