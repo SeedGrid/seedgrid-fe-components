@@ -135,7 +135,7 @@ export default function SgCalendarPage() {
       { prop: "enabled", type: "boolean", defaultValue: "true", description: t(i18n, "showcase.component.calendar.sections.enabled.description") },
       { prop: "showTodayShortcut", type: "boolean", defaultValue: "true", description: t(i18n, `${K}.propsTodayShortcut`) },
       { prop: "className / style", type: "string / CSSProperties", defaultValue: "-", description: t(i18n, `${K}.propsClassStyle`) },
-      { prop: "draggable", type: "boolean", defaultValue: "automatico", description: t(i18n, `${K}.propsDraggable`) },
+      { prop: "draggable", type: "boolean", defaultValue: "automático", description: t(i18n, `${K}.propsDraggable`) },
       { prop: "cardTitle / cardProps", type: 'ReactNode / Omit<SgCardProps, "children" | "title">', defaultValue: '"Calendar/Calendário" / -', description: t(i18n, `${K}.propsCard`) }
     ],
     [i18n]

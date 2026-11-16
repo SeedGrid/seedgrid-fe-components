@@ -203,7 +203,7 @@ const CLOCK_PROPS: ShowcasePropRow[] = [
   { prop: "style", type: "React.CSSProperties", defaultValue: "-", description: "Inline style extra no container do relogio." },
   { prop: "centerOverlay", type: "ReactNode", defaultValue: "-", description: "Conteudo opcional sobreposto ao centro do relogio analogico." },
   { prop: "cardTitle", type: "ReactNode", defaultValue: '"Clock/Relógio"', description: "Titulo do SgCard usado pelo gadget." },
-  { prop: "draggable", type: "boolean", defaultValue: "automatico", description: "Arrasto do card: automatico (arrasta em largura >= 640px), true = sempre, false = nunca. Tem prioridade sobre cardProps.draggable." },
+  { prop: "draggable", type: "boolean", defaultValue: "automático", description: "Arrasto do card: automatico (arrasta em largura >= 640px), true = sempre, false = nunca. Tem prioridade sobre cardProps.draggable." },
   { prop: "cardProps", type: 'Omit<SgCardProps, "children" | "title">', defaultValue: "-", description: "Sobrescreve configuracoes padrao do SgCard do gadget." }
 ];
 export function SgClockShowcaseClient({ initialServerTime }: { initialServerTime: string }) {
