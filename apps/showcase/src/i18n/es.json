@@ -2957,7 +2957,7 @@
   "showcase.component.grid.labels.cardDefault": "Card predeterminado",
   "showcase.component.inputTextSearch.headerSubtitle": "Campo de búsqueda que envuelve SgInputText con un debounce sin dependencia externa. onChange dispara de inmediato; onSearchChange dispara tras el debounce con el término normalizado (trim + gate por minChars).",
   "showcase.component.inputTextSearch.section1Title": "1) Básico (minChars 3, debounce 350ms)",
-  "showcase.component.inputTextSearch.section1Description": "Escribe y observa: el valor inmediato cambia con cada tecla, mientras el termino de búsqueda solo se actualiza al dejar de escribir y con 3+ caracteres.",
+  "showcase.component.inputTextSearch.section1Description": "Escribe y observa: el valor inmediato cambia con cada tecla, mientras el término de búsqueda solo se actualiza al dejar de escribir y con 3+ caracteres.",
   "showcase.component.inputTextSearch.section2Title": "2) minChars 1, debounce 800ms",
   "showcase.component.inputTextSearch.section2Description": "Dispara con un solo carácter, pero con un debounce más largo.",
   "showcase.component.inputTextSearch.propsTitle": "Referencia de Props",

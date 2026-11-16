@@ -905,7 +905,7 @@
   "Base das rotas da extension user-notifications (BFF, mesma origem).": {
     "en-US": "Base of the user-notifications extension routes (BFF, same origin).",
     "pt-PT": "Base das rotas da extension user-notifications (BFF, mesma origem).",
-    "es": "Base de las rutas de la extension user-notifications (BFF, mismo origen).",
+    "es": "Base de las rutas de la extensión user-notifications (BFF, mismo origen).",
     "fr": "Base des routes de l'extension user-notifications (BFF, même origine).",
     "pt-BR": "Base das rotas da extension user-notifications (BFF, mesma origem)."
   },
@@ -7163,7 +7163,7 @@
   "Mostrar notificacoes sem a extension user-notifications no backend.": {
     "en-US": "Showing notifications without the user-notifications extension on the backend.",
     "pt-PT": "Mostrar notificações sem a extension user-notifications no backend.",
-    "es": "Mostrar notificaciones sin la extension user-notifications en el backend.",
+    "es": "Mostrar notificaciones sin la extensión user-notifications en el backend.",
     "fr": "Afficher des notifications sans l'extension user-notifications dans le backend.",
     "pt-BR": "Mostrar notificações sem a extension user-notifications no backend."
   },
