@@ -249,7 +249,7 @@ function SgToggleSwitchBase(props: Readonly<SgToggleSwitchBaseProps>) {
                 : hasError
                   ? "border-[hsl(var(--destructive))] bg-[hsl(var(--destructive)/0.05)]"
                   : "border-border bg-muted",
-              "peer-focus-visible:ring-2 peer-focus-visible:ring-[rgb(var(--sg-ring))]",
+              "peer-focus-visible:ring-2 peer-focus-visible:ring-[hsl(var(--primary)/0.25)]",
               hasError ? "peer-focus-visible:ring-[hsl(var(--destructive)/0.25)]" : undefined,
               props.trackClassName
             )}

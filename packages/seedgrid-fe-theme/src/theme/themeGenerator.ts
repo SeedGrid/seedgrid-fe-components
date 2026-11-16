@@ -66,19 +66,19 @@ export function generateThemeVars(input: SeedThemeInput, resolvedMode: "light" |
   const borderHex = resolvedMode === "light"
     ? shiftHue(seed, 0, 18, 84)
     : shiftHue(seed, 0, 18, 26);
-  // Fundos contra os quais o texto fino (degraus 400/500/600) precisa de >= 4,5:1
-  const against = [neutralBgHex, neutralSurfaceHex];
-
   // Build scales
-  const primary = buildScaleFromHex(primaryBase, resolvedMode, { boostS: 4, against });
-  const secondary = buildScaleFromHex(secondaryBase, resolvedMode, { boostS: 2, against });
-  const tertiary = buildScaleFromHex(tertiaryBase, resolvedMode, { boostS: 0, against });
-  const warning = buildScaleFromHex(warningBase, resolvedMode, { boostS: 4, against });
-  const error = buildScaleFromHex(errorBase, resolvedMode, { boostS: 4, against });
-  const info = buildScaleFromHex(infoBase, resolvedMode, { boostS: 2, against });
-  const success = buildScaleFromHex(successBase, resolvedMode, { boostS: 2, against });
+  const primary = buildScaleFromHex(primaryBase, resolvedMode, { boostS: 4 });
+  const secondary = buildScaleFromHex(secondaryBase, resolvedMode, { boostS: 2 });
+  const tertiary = buildScaleFromHex(tertiaryBase, resolvedMode, { boostS: 0 });
+  const warning = buildScaleFromHex(warningBase, resolvedMode, { boostS: 4 });
+  const error = buildScaleFromHex(errorBase, resolvedMode, { boostS: 4 });
+  const info = buildScaleFromHex(infoBase, resolvedMode, { boostS: 2 });
+  const success = buildScaleFromHex(successBase, resolvedMode, { boostS: 2 });
 
-  const ringHex = primary[400] ?? primaryBase; // "beautiful" ring derived from primary
+  // Borda de foco, anel e rotulo flutuante dos campos: no CLARO usam a PROPRIA SEMENTE (cor pura), sem correcao automatica
+  // (o seletor so avisa quando o contraste fica abaixo de 2:1); no ESCURO seguem a escala nominal.
+  const fieldHex = resolvedMode === "light" ? primaryBase : (primary[500] ?? primaryBase);
+  const ringHex = resolvedMode === "light" ? primaryBase : (primary[400] ?? primaryBase);
   const textHex = resolvedMode === "light" ? "#0B0B0C" : "#F6F6F7";
   const mutedTextHex = resolvedMode === "light" ? "#4B4B51" : "#B6B6BD";
   const disabledHex = resolvedMode === "light" ? "#E7E7EA" : "#2A2A2F";
@@ -123,8 +123,8 @@ export function generateThemeVars(input: SeedThemeInput, resolvedMode: "light" |
     "--card-foreground": toHslVarValue(textHex),
     "--popover": toHslVarValue(neutralSurfaceHex),
     "--popover-foreground": toHslVarValue(textHex),
-    "--primary": toHslVarValue(primaryHex500),
-    "--primary-foreground": toHslVarValue(onPrimaryHex),
+    "--primary": toHslVarValue(fieldHex),
+    "--primary-foreground": toHslVarValue(pickOnColor(fieldHex)),
     "--secondary": toHslVarValue(neutralMutedSurfaceHex),
     "--secondary-foreground": toHslVarValue(textHex),
     "--muted": toHslVarValue(neutralMutedSurfaceHex),
@@ -176,7 +176,7 @@ export function generateThemeVars(input: SeedThemeInput, resolvedMode: "light" |
     vars[`--sg-${fname}-fill`] = toRgbVarValue(shades.normal);
     vars[`--sg-${fname}-fill-hover`] = toRgbVarValue(shades.hover);
     vars[`--sg-${fname}-fill-active`] = toRgbVarValue(shades.active);
-    // Aliases legados (hsl) do PREENCHIMENTO: `--primary`/`--destructive` seguem a escala ajustada (servem de texto, >= 4,5:1);
+    // Aliases legados (hsl) do PREENCHIMENTO: `--primary` e a cor dos campos (semente no claro) e `--destructive` o degrau 500;
     // fundos cheios (botao da barra, passo do wizard, chip marcado...) usam estes, com o texto escolhido por contraste.
     if (fname === "primary" || fname === "error") {
       const legacy = fname === "primary" ? "primary" : "destructive";

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useSgTheme } from "@seedgrid/fe-theme";
+import { isLowContrastOnLight, useSgTheme } from "@seedgrid/fe-theme";
 import {
   SgInputText,
   SgDialog,
@@ -11,6 +11,8 @@ import {
 } from "@seedgrid/fe-components";
 import { t, useShowcaseI18n } from "../i18n";
 
+// Sem Amarelo: a cor pura dele fica abaixo de 2:1 contra o fundo claro (borda e rotulo quase invisiveis). Quem quiser
+// amarelo usa a cor livre (com o aviso de contraste baixo).
 const PRESET_COLORS = [
   { name: "Verde SeedGrid", value: "#16803D" },
   { name: "Azul", value: "#0EA5E9" },
@@ -18,7 +20,6 @@ const PRESET_COLORS = [
   { name: "Rosa", value: "#EC4899" },
   { name: "Laranja", value: "#F97316" },
   { name: "Vermelho", value: "#EF4444" },
-  { name: "Amarelo", value: "#F59E0B" },
   { name: "Verde", value: "#10B981" },
 ];
 
@@ -234,6 +235,11 @@ export function ThemeEditor() {
                 onChange={handleTextChange}
               />
             </div>
+            {isValidCustom && isLowContrastOnLight(customColor) ? (
+              <p className="mt-2 text-xs text-[rgb(var(--sg-muted))]" role="status">
+                {t(i18n, "showcase.themeEditor.lowContrast")}
+              </p>
+            ) : null}
           </div>
 
           {/* Preset colors */}

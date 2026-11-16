@@ -1792,6 +1792,7 @@
   "showcase.themeEditor.customColor": "Custom Color",
   "showcase.themeEditor.hint": "Configure theme",
   "showcase.themeEditor.invalidHex": "Invalid hex color",
+  "showcase.themeEditor.lowContrast": "Low contrast on the light theme: field borders and labels will be hard to see. Pick another color.",
   "showcase.themeEditor.mode": "Mode",
   "showcase.themeEditor.modeToDark": "Switch to Dark",
   "showcase.themeEditor.modeToLight": "Switch to Light",

@@ -1405,6 +1405,7 @@
   "showcase.themeEditor.customColor": "Color Personalizado",
   "showcase.themeEditor.hint": "Configurar tema",
   "showcase.themeEditor.invalidHex": "Color hex inválido",
+  "showcase.themeEditor.lowContrast": "Contraste bajo en el tema claro: el borde y la etiqueta de los campos se verán poco. Elija otro color.",
   "showcase.themeEditor.mode": "Modo",
   "showcase.themeEditor.modeToDark": "Cambiar a Oscuro",
   "showcase.themeEditor.modeToLight": "Cambiar a Claro",

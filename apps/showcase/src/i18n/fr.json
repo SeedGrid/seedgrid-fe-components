@@ -1792,6 +1792,7 @@
   "showcase.themeEditor.customColor": "Couleur personnalisée",
   "showcase.themeEditor.hint": "Configurer le thème",
   "showcase.themeEditor.invalidHex": "Couleur hexadécimale invalide",
+  "showcase.themeEditor.lowContrast": "Contraste faible sur le thème clair : la bordure et le libellé des champs seront peu visibles. Choisissez une autre couleur.",
   "showcase.themeEditor.mode": "Mode",
   "showcase.themeEditor.modeToDark": "Passer en sombre",
   "showcase.themeEditor.modeToLight": "Passer en clair",

@@ -52,7 +52,7 @@ export function SgMultiSelectDropdown(props: Readonly<SgMultiSelectDropdownProps
             type="text"
             value={props.query}
             placeholder={props.searchPlaceholder ?? t(i18n, "components.actions.search")}
-            className="h-8 w-full rounded border border-border bg-[var(--sg-input-bg,hsl(var(--background)))] px-2 text-sm text-[var(--sg-input-fg,hsl(var(--foreground)))] focus:outline-none focus:ring-2 focus:ring-[rgb(var(--sg-ring))]"
+            className="h-8 w-full rounded border border-border bg-[var(--sg-input-bg,hsl(var(--background)))] px-2 text-sm text-[var(--sg-input-fg,hsl(var(--foreground)))] focus:outline-none focus:ring-2 focus:ring-[hsl(var(--primary)/0.25)]"
             onChange={(event) => {
               props.setQuery(event.currentTarget.value);
               props.setActiveIndex(0);
