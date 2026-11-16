@@ -98,7 +98,7 @@
   "Arvore que vai consumir o ambiente via contexto.": {
     "pt": "Árvore que vai consumir o ambiente via contexto.",
     "en": "Component tree that will consume the environment via context.",
-    "es": "Arbol de componentes que consumira el entorno via contexto.",
+    "es": "Árbol de componentes que consumirá el entorno via contexto.",
     "fr": "Arbre qui consommera l'environnement via le contexte."
   },
   "Ativa loop infinito.": {
@@ -1982,7 +1982,7 @@
   "Arvore de componentes que vai consumir o tempo via useSgTime.": {
     "pt": "Árvore de componentes que vai consumir o tempo via useSgTime.",
     "en": "Component tree that will consume the time via useSgTime.",
-    "es": "Arbol de componentes que consumira el tiempo via useSgTime.",
+    "es": "Árbol de componentes que consumirá el tiempo via useSgTime.",
     "fr": "Arbre de composants qui consommera le temps via useSgTime."
   },
   "Codigo do locale (ex: \"pt-BR\", \"en-US\", \"es\"). Afeta componentes que exibem mensagens internas.": {
@@ -2000,7 +2000,7 @@
   "Arvore que vai consumir o locale via useComponentsI18n.": {
     "pt": "Árvore que vai consumir o locale via useComponentsI18n.",
     "en": "Component tree that will consume the locale via useComponentsI18n.",
-    "es": "Arbol de componentes que consumira el locale via useComponentsI18n.",
+    "es": "Árbol de componentes que consumirá el locale via useComponentsI18n.",
     "fr": "Arbre qui consommera la locale via useComponentsI18n."
   },
   "Em \"fallback\", temas nao encontrados usam o fallbackThemeId. Em \"strict\", retornam null.": {
@@ -2024,7 +2024,7 @@
   "Arvore que vai resolver temas via useSgClockThemeResolver.": {
     "pt": "Árvore que vai resolver temas via useSgClockThemeResolver.",
     "en": "Component tree that will resolve themes via useSgClockThemeResolver.",
-    "es": "Arbol de componentes que resolvera temas via useSgClockThemeResolver.",
+    "es": "Árbol de componentes que resolverá temas via useSgClockThemeResolver.",
     "fr": "Arbre qui résoudra les thèmes via useSgClockThemeResolver."
   },
   "Chave base da entrada persistida. A chave final inclui namespace e scope do SgEnvironmentProvider.": {
@@ -2114,13 +2114,13 @@
   "Versao do estado configurada no ambiente.": {
     "pt": "Versão do estado configurada no ambiente.",
     "en": "State version configured in the environment.",
-    "es": "Version del estado configurada en el entorno.",
+    "es": "Versión del estado configurada en el entorno.",
     "fr": "Version de l'état configurée dans l'environnement."
   },
   "Provedor do namespace atual. Retorna string vazia se nao houver SgEnvironmentProvider.": {
     "pt": "Provedor do namespace atual. Retorna string vazia se não houver SgEnvironmentProvider.",
     "en": "Current namespace provider. Returns an empty string if there is no SgEnvironmentProvider.",
-    "es": "Proveedor del namespace actual. Retorna string vacio si no hay SgEnvironmentProvider.",
+    "es": "Proveedor del namespace actual. Retorna string vacío si no hay SgEnvironmentProvider.",
     "fr": "Fournisseur du namespace actuel. Retourne une chaîne vide s'il n'y a pas de SgEnvironmentProvider."
   },
   "Estrategia de persistencia ativa (localStorage por padrao, ou API/composite se configurada).": {
@@ -2144,7 +2144,7 @@
   "Versao do estado; alterar invalida dados persistidos anteriores.": {
     "pt": "Versão do estado; alterar inválida dados persistidos anteriores.",
     "en": "State version; changing it invalidates previously persisted data.",
-    "es": "Version del estado; cambiarla invalida datos persistidos anteriores.",
+    "es": "Versión del estado; cambiarla invalida datos persistidos anteriores.",
     "fr": "Version de l'état ; la modifier invalide les données persistées précédentes."
   },
   "Retorna o tempo atual em ms, sincronizado com o servidor quando SgTimeProvider esta presente.": {

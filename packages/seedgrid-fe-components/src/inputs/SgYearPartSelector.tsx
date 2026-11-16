@@ -58,8 +58,8 @@ export type SgYearPartSelectorProps = {
 type LocaleMap = Record<string, string>;
 
 const FIELD_LABELS = {
-  year: { "pt-BR": "Ano", "en-US": "Year", es: "Ano", "pt-PT": "Ano", fr: "Annee" } as LocaleMap,
-  kind: { "pt-BR": "Recorte", "en-US": "Breakdown", es: "Recorte", "pt-PT": "Recorte", fr: "Decoupage" } as LocaleMap,
+  year: { "pt-BR": "Ano", "en-US": "Year", es: "Año", "pt-PT": "Ano", fr: "Année" } as LocaleMap,
+  kind: { "pt-BR": "Recorte", "en-US": "Breakdown", es: "Recorte", "pt-PT": "Recorte", fr: "Découpage" } as LocaleMap,
   part: { "pt-BR": "Fatia", "en-US": "Part", es: "Parte", "pt-PT": "Fatia", fr: "Partie" } as LocaleMap
 };
 

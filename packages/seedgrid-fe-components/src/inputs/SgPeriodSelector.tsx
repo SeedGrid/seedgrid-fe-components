@@ -102,34 +102,34 @@ type LocaleMap = Record<string, string>;
 
 const PERIOD_PRESET_LABELS: Record<PeriodPreset, LocaleMap> = {
   [PeriodPreset.ALL]: { "pt-BR": "Todos", "en-US": "All", es: "Todos", "pt-PT": "Todos", fr: "Tous" },
-  [PeriodPreset.CUSTOM]: { "pt-BR": "Periodo", "en-US": "Custom period", es: "Periodo", "pt-PT": "Periodo", fr: "Periode" },
+  [PeriodPreset.CUSTOM]: { "pt-BR": "Período", "en-US": "Custom period", es: "Período", "pt-PT": "Período", fr: "Période" },
   [PeriodPreset.TODAY]: { "pt-BR": "Hoje", "en-US": "Today", es: "Hoy", "pt-PT": "Hoje", fr: "Aujourd'hui" },
   [PeriodPreset.YESTERDAY]: { "pt-BR": "Ontem", "en-US": "Yesterday", es: "Ayer", "pt-PT": "Ontem", fr: "Hier" },
-  [PeriodPreset.TOMORROW]: { "pt-BR": "Amanha", "en-US": "Tomorrow", es: "Manana", "pt-PT": "Amanha", fr: "Demain" },
+  [PeriodPreset.TOMORROW]: { "pt-BR": "Amanhã", "en-US": "Tomorrow", es: "Mañana", "pt-PT": "Amanhã", fr: "Demain" },
   [PeriodPreset.THIS_WEEK]: { "pt-BR": "Esta semana", "en-US": "This week", es: "Esta semana", "pt-PT": "Esta semana", fr: "Cette semaine" },
   [PeriodPreset.THIS_QUINZENA]: { "pt-BR": "Esta quinzena", "en-US": "This fortnight", es: "Esta quincena", "pt-PT": "Esta quinzena", fr: "Cette quinzaine" },
-  [PeriodPreset.THIS_MONTH]: { "pt-BR": "Este mes", "en-US": "This month", es: "Este mes", "pt-PT": "Este mes", fr: "Ce mois" },
+  [PeriodPreset.THIS_MONTH]: { "pt-BR": "Este mês", "en-US": "This month", es: "Este mes", "pt-PT": "Este mês", fr: "Ce mois" },
   [PeriodPreset.THIS_QUARTER]: { "pt-BR": "Este trimestre", "en-US": "This quarter", es: "Este trimestre", "pt-PT": "Este trimestre", fr: "Ce trimestre" },
   [PeriodPreset.THIS_SEMESTER]: { "pt-BR": "Este semestre", "en-US": "This semester", es: "Este semestre", "pt-PT": "Este semestre", fr: "Ce semestre" },
-  [PeriodPreset.THIS_YEAR]: { "pt-BR": "Este ano", "en-US": "This year", es: "Este ano", "pt-PT": "Este ano", fr: "Cette annee" },
-  [PeriodPreset.LAST_WEEK]: { "pt-BR": "Semana passada", "en-US": "Last week", es: "Semana pasada", "pt-PT": "Semana passada", fr: "Semaine derniere" },
-  [PeriodPreset.LAST_QUINZENA]: { "pt-BR": "Quinzena passada", "en-US": "Last fortnight", es: "Quincena pasada", "pt-PT": "Quinzena passada", fr: "Quinzaine derniere" },
-  [PeriodPreset.LAST_MONTH]: { "pt-BR": "Mes passado", "en-US": "Last month", es: "Mes pasado", "pt-PT": "Mes passado", fr: "Mois dernier" },
+  [PeriodPreset.THIS_YEAR]: { "pt-BR": "Este ano", "en-US": "This year", es: "Este año", "pt-PT": "Este ano", fr: "Cette année" },
+  [PeriodPreset.LAST_WEEK]: { "pt-BR": "Semana passada", "en-US": "Last week", es: "Semana pasada", "pt-PT": "Semana passada", fr: "Semaine dernière" },
+  [PeriodPreset.LAST_QUINZENA]: { "pt-BR": "Quinzena passada", "en-US": "Last fortnight", es: "Quincena pasada", "pt-PT": "Quinzena passada", fr: "Quinzaine dernière" },
+  [PeriodPreset.LAST_MONTH]: { "pt-BR": "Mês passado", "en-US": "Last month", es: "Mes pasado", "pt-PT": "Mês passado", fr: "Mois dernier" },
   [PeriodPreset.LAST_QUARTER]: { "pt-BR": "Trimestre passado", "en-US": "Last quarter", es: "Trimestre pasado", "pt-PT": "Trimestre passado", fr: "Trimestre dernier" },
   [PeriodPreset.LAST_SEMESTER]: { "pt-BR": "Semestre passado", "en-US": "Last semester", es: "Semestre pasado", "pt-PT": "Semestre passado", fr: "Semestre dernier" },
-  [PeriodPreset.LAST_YEAR]: { "pt-BR": "Ano passado", "en-US": "Last year", es: "Ano pasado", "pt-PT": "Ano passado", fr: "Annee derniere" },
-  [PeriodPreset.NEXT_WEEK]: { "pt-BR": "Proxima semana", "en-US": "Next week", es: "Proxima semana", "pt-PT": "Proxima semana", fr: "Semaine prochaine" },
-  [PeriodPreset.NEXT_QUINZENA]: { "pt-BR": "Proxima quinzena", "en-US": "Next fortnight", es: "Proxima quincena", "pt-PT": "Proxima quinzena", fr: "Quinzaine prochaine" },
-  [PeriodPreset.NEXT_MONTH]: { "pt-BR": "Proximo mes", "en-US": "Next month", es: "Proximo mes", "pt-PT": "Proximo mes", fr: "Mois prochain" },
-  [PeriodPreset.NEXT_QUARTER]: { "pt-BR": "Proximo trimestre", "en-US": "Next quarter", es: "Proximo trimestre", "pt-PT": "Proximo trimestre", fr: "Trimestre prochain" },
-  [PeriodPreset.NEXT_SEMESTER]: { "pt-BR": "Proximo semestre", "en-US": "Next semester", es: "Proximo semestre", "pt-PT": "Proximo semestre", fr: "Semestre prochain" },
-  [PeriodPreset.NEXT_YEAR]: { "pt-BR": "Proximo ano", "en-US": "Next year", es: "Proximo ano", "pt-PT": "Proximo ano", fr: "Annee prochaine" }
+  [PeriodPreset.LAST_YEAR]: { "pt-BR": "Ano passado", "en-US": "Last year", es: "Año pasado", "pt-PT": "Ano passado", fr: "Année dernière" },
+  [PeriodPreset.NEXT_WEEK]: { "pt-BR": "Próxima semana", "en-US": "Next week", es: "Próxima semana", "pt-PT": "Próxima semana", fr: "Semaine prochaine" },
+  [PeriodPreset.NEXT_QUINZENA]: { "pt-BR": "Próxima quinzena", "en-US": "Next fortnight", es: "Próxima quincena", "pt-PT": "Próxima quinzena", fr: "Quinzaine prochaine" },
+  [PeriodPreset.NEXT_MONTH]: { "pt-BR": "Próximo mês", "en-US": "Next month", es: "Próximo mes", "pt-PT": "Próximo mês", fr: "Mois prochain" },
+  [PeriodPreset.NEXT_QUARTER]: { "pt-BR": "Próximo trimestre", "en-US": "Next quarter", es: "Próximo trimestre", "pt-PT": "Próximo trimestre", fr: "Trimestre prochain" },
+  [PeriodPreset.NEXT_SEMESTER]: { "pt-BR": "Próximo semestre", "en-US": "Next semester", es: "Próximo semestre", "pt-PT": "Próximo semestre", fr: "Semestre prochain" },
+  [PeriodPreset.NEXT_YEAR]: { "pt-BR": "Próximo ano", "en-US": "Next year", es: "Próximo año", "pt-PT": "Próximo ano", fr: "Année prochaine" }
 };
 
 const GROUP_LABELS = {
   current: { "pt-BR": "Atuais", "en-US": "Current", es: "Actuales", "pt-PT": "Atuais", fr: "Actuels" } as LocaleMap,
   future: { "pt-BR": "Futuros", "en-US": "Future", es: "Futuros", "pt-PT": "Futuros", fr: "Futurs" } as LocaleMap,
-  past: { "pt-BR": "Passados", "en-US": "Past", es: "Pasados", "pt-PT": "Passados", fr: "Passes" } as LocaleMap
+  past: { "pt-BR": "Passados", "en-US": "Past", es: "Pasados", "pt-PT": "Passados", fr: "Passés" } as LocaleMap
 };
 
 function pickLocale(map: LocaleMap, locale: string): string {
