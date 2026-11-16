@@ -3,7 +3,8 @@
 import { SgCalendar } from "@seedgrid/fe-components";
 
 export default function Example() {
+  const locale = "pt-BR"; // idioma do calendário (use o da sua aplicação)
   return (
-    <SgCalendar numberOfMonths={3} monthsPerLine={2} showAdjacentMonths={false} defaultViewDate="2026-03-01" />
+    <SgCalendar locale={locale} numberOfMonths={3} monthsPerLine={2} showAdjacentMonths={false} defaultViewDate="2026-03-01" />
   );
 }

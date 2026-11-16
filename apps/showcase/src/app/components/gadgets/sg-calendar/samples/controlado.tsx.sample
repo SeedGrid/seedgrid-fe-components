@@ -4,12 +4,14 @@ import * as React from "react";
 import { SgCalendar } from "@seedgrid/fe-components";
 
 export default function Example() {
+  const locale = "pt-BR"; // idioma do calendário (use o da sua aplicação)
   const [escolhida, setEscolhida] = React.useState(new Date(2026, 2, 18));
   const [mes, setMes] = React.useState(new Date(2026, 2, 1));
 
   return (
     <div className="space-y-2">
       <SgCalendar
+        locale={locale}
         value={escolhida}
         viewDate={mes}
         onValueChange={setEscolhida}

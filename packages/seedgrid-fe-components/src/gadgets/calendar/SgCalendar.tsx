@@ -313,8 +313,9 @@ export function SgCalendar(props: Readonly<SgCalendarProps>) {
     visibleColumns === 1 ? "20.75rem" : "16rem"
   );
   const monthGridStyle: React.CSSProperties = {
-    gridTemplateColumns: `repeat(${visibleColumns}, minmax(${monthColumnMinWidth}, 1fr))`,
-    width: visibleColumns === 1 ? "max-content" : "100%"
+    // min(..., 100%): em telas estreitas a coluna encolhe para a largura disponivel (nunca corta a 7a coluna).
+    gridTemplateColumns: `repeat(${visibleColumns}, minmax(min(${monthColumnMinWidth}, 100%), 1fr))`,
+    width: "100%"
   };
   const mergedCardClassName = cn("max-w-full", cardProps?.className);
   const mergedCardBodyClassName = cn("max-h-full max-w-full overflow-auto", cardProps?.bodyClassName);
@@ -433,7 +434,7 @@ export function SgCalendar(props: Readonly<SgCalendarProps>) {
                           return (
                             <span
                               key={`${dateKey(day)}-blank`}
-                              className="mx-auto inline-flex h-10 w-10"
+                              className="mx-auto inline-flex aspect-square h-auto w-full max-w-10"
                               aria-hidden="true"
                             />
                           );
@@ -446,7 +447,7 @@ export function SgCalendar(props: Readonly<SgCalendarProps>) {
                             onClick={() => handleSelectDate(day)}
                             disabled={disabled}
                             className={cn(
-                              "mx-auto inline-flex h-10 w-10 items-center justify-center rounded-full text-sm font-medium transition-colors",
+                              "mx-auto inline-flex aspect-square h-auto w-full max-w-10 items-center justify-center rounded-full text-sm font-medium transition-colors",
                               selected
                                 ? "bg-primary text-primary-foreground shadow-sm"
                                 : "hover:bg-muted",

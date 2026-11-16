@@ -39,7 +39,7 @@ function BasicCalendarExample() {
   const i18n = useShowcaseI18n();
   return (
     <SgCalendar
-      locale="pt-BR"
+      locale={i18n.locale}
       defaultValue="2026-03-10"
       defaultViewDate="2026-03-01"
       cardTitle={t(i18n, `${K}.labels.cardBase`)}
@@ -52,7 +52,7 @@ function ControlledCalendarExample() {
   const i18n = useShowcaseI18n();
   const [selected, setSelected] = React.useState(new Date(2026, 2, 10));
   const selectedText = React.useMemo(
-    () => selected.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit", year: "numeric" }),
+    () => selected.toLocaleDateString(i18n.locale, { day: "2-digit", month: "2-digit", year: "numeric" }),
     [selected]
   );
   const minDate = React.useMemo(() => new Date(2026, 2, 5), []);
@@ -63,7 +63,7 @@ function ControlledCalendarExample() {
       <SgCalendar
         value={selected}
         onValueChange={setSelected}
-        locale="pt-BR"
+        locale={i18n.locale}
         minDate={minDate}
         maxDate={maxDate}
         isDateDisabled={(date) => date.getDay() === 0 || date.getDay() === 6}
@@ -77,7 +77,7 @@ function ControlledCalendarExample() {
 
 function LocaleCalendarExample() {
   const i18n = useShowcaseI18n();
-  const [locale, setLocale] = React.useState<"pt-BR" | "en-US" | "es">("pt-BR");
+  const [locale, setLocale] = React.useState<"pt-BR" | "en-US" | "es">(i18n.locale === "en-US" || i18n.locale === "es" ? i18n.locale : "pt-BR");
   const [weekStartsOn, setWeekStartsOn] = React.useState<0 | 1>(0);
   const [numberOfMonths, setNumberOfMonths] = React.useState(6);
 
@@ -178,15 +178,15 @@ export default function SgCalendarPage() {
           </Section>
 
           <Section
-            title={t(i18n, "showcase.common.sections.enabled.title")}
+            title={`4) ${t(i18n, "showcase.common.sections.enabled.title")}`}
             description={t(i18n, "showcase.component.calendar.sections.enabled.description")}
           >
-            <SgCalendar defaultValue="2026-11-10" defaultViewDate="2026-11-01" enabled={false} />
+            <SgCalendar locale={i18n.locale} defaultValue="2026-11-10" defaultViewDate="2026-11-01" enabled={false} />
             <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-calendar/samples/desabilitado-enabled.tsx.sample" />
           </Section>
 
           <Section title={t(i18n, `${K}.section4Title`)} description={t(i18n, `${K}.section4Description`)}>
-          <SgCalendar onValueChange={(data) => console.log("Escolheu", data)} />
+          <SgCalendar locale={i18n.locale} onValueChange={(data) => console.log("Escolheu", data)} />
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-calendar/samples/basico.tsx.sample" />
         </Section>
 
@@ -197,6 +197,7 @@ export default function SgCalendarPage() {
 
         <Section title={t(i18n, `${K}.section6Title`)} description={t(i18n, `${K}.section6Description`)}>
           <SgCalendar
+            locale={i18n.locale}
             defaultValue="2026-03-16"
             minDate="2026-03-10"
             maxDate="2026-03-27"
@@ -206,13 +207,14 @@ export default function SgCalendarPage() {
         </Section>
 
         <Section title={t(i18n, `${K}.section7Title`)} description={t(i18n, `${K}.section7Description`)}>
-          <SgCalendar numberOfMonths={3} monthsPerLine={2} showAdjacentMonths={false} defaultViewDate="2026-03-01" />
+          <SgCalendar locale={i18n.locale} numberOfMonths={3} monthsPerLine={2} showAdjacentMonths={false} defaultViewDate="2026-03-01" />
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-calendar/samples/varios-meses.tsx.sample" />
         </Section>
 
         <Section title={t(i18n, `${K}.section8Title`)} description={t(i18n, `${K}.section8Description`)}>
           <div className="space-y-2">
             <SgCalendar
+              locale={i18n.locale}
               value={escolhida}
               viewDate={mes}
               onValueChange={setEscolhida}
@@ -225,11 +227,11 @@ export default function SgCalendarPage() {
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-calendar/samples/controlado.tsx.sample" />
         </Section>
 
-        <Section title={t(i18n, `${K}.dragTitle`)} description={t(i18n, `${K}.dragDescription`)}>
+        <Section title={`10) ${t(i18n, `${K}.dragTitle`)}`} description={t(i18n, `${K}.dragDescription`)}>
           <SgGrid columns={{ base: 1, md: 3 }} gap={16}>
-            <SgCalendar cardTitle={t(i18n, `${K}.dragAuto`)} cardProps={{ id: "arraste-auto" }} />
-            <SgCalendar cardTitle={t(i18n, `${K}.dragAlways`)} draggable={true} cardProps={{ id: "arraste-sempre" }} />
-            <SgCalendar cardTitle={t(i18n, `${K}.dragNever`)} draggable={false} cardProps={{ id: "arraste-nunca" }} />
+            <SgCalendar locale={i18n.locale} cardTitle={t(i18n, `${K}.dragAuto`)} cardProps={{ id: "arraste-auto" }} />
+            <SgCalendar locale={i18n.locale} cardTitle={t(i18n, `${K}.dragAlways`)} draggable={true} cardProps={{ id: "arraste-sempre" }} />
+            <SgCalendar locale={i18n.locale} cardTitle={t(i18n, `${K}.dragNever`)} draggable={false} cardProps={{ id: "arraste-nunca" }} />
           </SgGrid>
           <SgCodeBlockBase sampleFile="apps/showcase/src/app/components/gadgets/sg-calendar/samples/arraste.tsx.sample" />
         </Section>

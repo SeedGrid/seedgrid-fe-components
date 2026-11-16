@@ -292,7 +292,7 @@ function Ex5() {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex items-center gap-2">
+      <div className="flex flex-wrap items-center gap-2">
         <SgFadeDigit value={pad(time.h).charAt(0)} />
         <SgFadeDigit value={pad(time.h).charAt(1)} />
         <Colon height={CARD_H_70} />

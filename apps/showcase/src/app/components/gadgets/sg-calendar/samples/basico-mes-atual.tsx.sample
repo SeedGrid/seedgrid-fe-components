@@ -3,9 +3,10 @@
 import { SgCalendar } from "@seedgrid/fe-components";
 
 export default function Example() {
+  const locale = "pt-BR"; // idioma do calendário (use o da sua aplicação)
   return (
     <SgCalendar
-      locale="pt-BR"
+      locale={locale}
       defaultValue="2026-03-10"
       defaultViewDate="2026-03-01"
       cardTitle="Calendário base"

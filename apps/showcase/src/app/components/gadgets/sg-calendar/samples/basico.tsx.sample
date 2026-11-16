@@ -3,7 +3,8 @@
 import { SgCalendar } from "@seedgrid/fe-components";
 
 export default function Example() {
+  const locale = "pt-BR"; // idioma do calendário (use o da sua aplicação)
   return (
-    <SgCalendar onValueChange={(data) => console.log("Escolheu", data)} />
+    <SgCalendar locale={locale} onValueChange={(data) => console.log("Escolheu", data)} />
   );
 }

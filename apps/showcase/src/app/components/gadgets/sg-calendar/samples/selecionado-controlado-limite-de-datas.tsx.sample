@@ -4,6 +4,7 @@ import React from "react";
 import { SgCalendar } from "@seedgrid/fe-components";
 
 export default function Example() {
+  const locale = "pt-BR"; // idioma do calendário (use o da sua aplicação)
   const [selected, setSelected] = React.useState(new Date(2026, 2, 10));
   const minDate = React.useMemo(() => new Date(2026, 2, 5), []);
   const maxDate = React.useMemo(() => new Date(2026, 2, 25), []);
@@ -13,7 +14,7 @@ export default function Example() {
       <SgCalendar
         value={selected}
         onValueChange={setSelected}
-        locale="pt-BR"
+        locale={locale}
         minDate={minDate}
         maxDate={maxDate}
         isDateDisabled={(date) => date.getDay() === 0 || date.getDay() === 6}
@@ -21,7 +22,7 @@ export default function Example() {
         cardProps={{ id: "showcase-calendar-range", dragPersistKey: "showcase-calendar-range" }}
       />
       <p className="text-sm text-muted-foreground">
-        Selecionado: {selected.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit", year: "numeric" })}
+        Selecionado: {selected.toLocaleDateString(locale, { day: "2-digit", month: "2-digit", year: "numeric" })}
       </p>
     </div>
   );

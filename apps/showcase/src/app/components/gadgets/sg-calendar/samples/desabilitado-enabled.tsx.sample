@@ -3,5 +3,5 @@
 import { SgCalendar } from "@seedgrid/fe-components";
 
 export default function App() {
-  return <SgCalendar defaultValue="2026-11-10" defaultViewDate="2026-11-01" enabled={false} />;
+  return <SgCalendar locale={locale} defaultValue="2026-11-10" defaultViewDate="2026-11-01" enabled={false} />;
 }

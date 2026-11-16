@@ -1,11 +1,12 @@
 import { SgCalendar, SgGrid } from "@seedgrid/fe-components";
 
 export default function Example() {
+  const locale = "pt-BR"; // idioma do calendário (use o da sua aplicação)
   return (
     <SgGrid columns={{ base: 1, md: 3 }} gap={16}>
-      <SgCalendar cardTitle="Automático" cardProps={{ id: "arraste-auto" }} />
-      <SgCalendar cardTitle="Sempre arrasta" draggable={true} cardProps={{ id: "arraste-sempre" }} />
-      <SgCalendar cardTitle="Nunca arrasta" draggable={false} cardProps={{ id: "arraste-nunca" }} />
+      <SgCalendar locale={locale} cardTitle="Automático" cardProps={{ id: "arraste-auto" }} />
+      <SgCalendar locale={locale} cardTitle="Sempre arrasta" draggable={true} cardProps={{ id: "arraste-sempre" }} />
+      <SgCalendar locale={locale} cardTitle="Nunca arrasta" draggable={false} cardProps={{ id: "arraste-nunca" }} />
     </SgGrid>
   );
 }
