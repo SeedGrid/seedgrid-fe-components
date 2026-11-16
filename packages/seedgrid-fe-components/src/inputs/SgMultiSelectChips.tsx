@@ -22,6 +22,7 @@ export type SgMultiSelectChipsProps = RhfFieldProps & {
   borderRadius?: number | string;
   enabled?: boolean;
   required?: boolean;
+  requiredMessage?: string;
   options: SgMultiSelectOption[];
   value?: SgMultiSelectOptionValue[];
   onChange?: (value: SgMultiSelectOptionValue[]) => void;
@@ -46,6 +47,7 @@ function SgMultiSelectChipsBase(props: Readonly<SgMultiSelectChipsProps>) {
     borderRadius,
     enabled,
     required,
+    requiredMessage,
     options,
     value,
     onChange,
@@ -78,7 +80,14 @@ function SgMultiSelectChipsBase(props: Readonly<SgMultiSelectChipsProps>) {
 
   const triggerRef = React.useRef<HTMLDivElement | null>(null);
 
-  const hasError = Boolean(error);
+  // Fora de formulário `required` também mostra a mensagem: ao sair do campo sem seleção.
+  const [requiredError, setRequiredError] = React.useState<string | null>(null);
+  const hasSelection = (value?.length ?? 0) > 0;
+  React.useEffect(() => {
+    if (hasSelection) setRequiredError(null);
+  }, [hasSelection]);
+  const effectiveError = error ?? requiredError ?? undefined;
+  const hasError = Boolean(effectiveError);
   const resolvedBorderRadius =
     borderRadius === undefined
       ? undefined
@@ -165,6 +174,9 @@ function SgMultiSelectChipsBase(props: Readonly<SgMultiSelectChipsProps>) {
                 ms.ignoreBlurRef.current = false;
               }, 0);
               return;
+            }
+            if (required && !hasSelection) {
+              setRequiredError(requiredMessage ?? t(i18n, "components.inputs.required"));
             }
             onExit?.();
           }}
@@ -277,7 +289,7 @@ function SgMultiSelectChipsBase(props: Readonly<SgMultiSelectChipsProps>) {
           </span>
         </div>
 
-        {error ? <p data-sg-error className="mt-1 text-xs text-red-600">{error}</p> : null}
+        {effectiveError ? <p data-sg-error className="mt-1 text-xs text-red-600">{effectiveError}</p> : null}
 
         {ms.open && !isDisabled ? (
           <SgMultiSelectDropdown
@@ -308,7 +320,11 @@ function SgMultiSelectChipsBase(props: Readonly<SgMultiSelectChipsProps>) {
 export function SgMultiSelectChips(props: Readonly<SgMultiSelectChipsProps>) {
   const i18n = useComponentsI18n();
   const { control, name, rules, ...rest } = props;
-  const resolvedRules = mergeRequiredRule(rules, rest.required, t(i18n, "components.inputs.required"));
+  const resolvedRules = mergeRequiredRule(
+    rules,
+    rest.required,
+    rest.requiredMessage ?? t(i18n, "components.inputs.required")
+  );
 
   if (control && name) {
     return (
