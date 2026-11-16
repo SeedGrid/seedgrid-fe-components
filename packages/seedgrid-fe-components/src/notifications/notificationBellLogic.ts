@@ -8,7 +8,7 @@
 /** Item da caixa do usuario, como a API devolve. `payload` so tem identificadores. */
 export type SgNotification = {
   publicId: string;
-  /** Livre (ex.: `report.ready`); o sino nao interpreta, so mapeia para icone e acao. */
+  /** Livre (ex.: `report.ready`); o sino não interpreta, só mapeia para ícone e ação. */
   type: string;
   title: string;
   message?: string | null;

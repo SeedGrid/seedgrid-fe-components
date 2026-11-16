@@ -209,17 +209,17 @@ export type PickedFacts = { name: string; type: string; size: number; head: Uint
 export type AddRules = {
   mediaType?: MediaType[];
   accept?: string;
-  /** Quantos arquivos o campo guarda (padrao 1). Com 1, escolher outro SUBSTITUI o atual. */
+  /** Quantos arquivos o campo guarda (padrão 1). Com 1, escolher outro SUBSTITUI o atual. */
   maxFiles?: number;
   maxSizePerFile?: SizeLimit;
   maxSizeTotal?: SizeLimit;
 };
 
 export type AddPlan = {
-  /** Indices (em `picked`) dos arquivos que entram, na ordem. */
+  /** Índices (em `picked`) dos arquivos que entram, na ordem. */
   accepted: number[];
   rejected: Array<{ index: number; code: FileErrorCode }>;
-  /** `true` quando `maxFiles` e 1: o aceito substitui o que ja havia. */
+  /** `true` quando `maxFiles` e 1: o aceito substitui o que já havia. */
   replace: boolean;
 };
 

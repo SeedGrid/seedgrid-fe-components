@@ -10,18 +10,18 @@ export const sgMeta: SgMetaV0 = {
   category: "layout",
   subcategory: "carousel",
   description:
-    "Componente de navegacao sequencial para colecoes visuais com autoplay, navegadores e indicadores.",
+    "Componente de navegação sequencial para coleções visuais com autoplay, navegadores e indicadores.",
   tags: ["layout", "carousel", "slider", "gallery"],
   capabilities: ["sequential-navigation", "autoplay", "indicators", "orientation", "circular-loop"],
   fieldSemantics: ["carousel", "gallery", "sequentialContent", "slidingCollection"],
   props: [
-    { name: "items", type: "ReactNode[]", required: true, description: "Colecao de slides renderizados.", semanticRole: "data", bindable: true },
-    { name: "numVisible", type: "number", default: 1, description: "Quantidade de itens visiveis simultaneamente.", semanticRole: "behavior", bindable: true },
-    { name: "numScroll", type: "number", default: 1, description: "Quantidade de itens avancados por interacao.", semanticRole: "behavior", bindable: true },
-    { name: "orientation", type: '"horizontal" | "vertical"', default: "horizontal", description: "Orientacao do fluxo do carousel.", semanticRole: "behavior", bindable: true },
+    { name: "items", type: "ReactNode[]", required: true, description: "Coleção de slides renderizados.", semanticRole: "data", bindable: true },
+    { name: "numVisible", type: "number", default: 1, description: "Quantidade de itens visíveis simultaneamente.", semanticRole: "behavior", bindable: true },
+    { name: "numScroll", type: "number", default: 1, description: "Quantidade de itens avançados por interação.", semanticRole: "behavior", bindable: true },
+    { name: "orientation", type: '"horizontal" | "vertical"', default: "horizontal", description: "Orientação do fluxo do carousel.", semanticRole: "behavior", bindable: true },
     { name: "circular", type: "boolean", default: true, description: "Permite loop continuo dos itens.", semanticRole: "behavior", bindable: true },
-    { name: "autoPlay", type: "boolean", default: false, description: "Ativa reproducao automatica do carousel.", semanticRole: "behavior", bindable: true },
-    { name: "showIndicators", type: "boolean", default: true, description: "Exibe indicadores de pagina.", semanticRole: "appearance", bindable: true }
+    { name: "autoPlay", type: "boolean", default: false, description: "Ativa reprodução automática do carousel.", semanticRole: "behavior", bindable: true },
+    { name: "showIndicators", type: "boolean", default: true, description: "Exibe indicadores de página.", semanticRole: "appearance", bindable: true }
   ],
   states: ["idle", "sliding", "autoplay"],
   examples: [

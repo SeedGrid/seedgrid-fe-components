@@ -7,9 +7,9 @@ import { maskPhone, maskPhoneInput, stripPhoneDdi } from "../masks";
 import { t, useComponentsI18n } from "../i18n";
 
 export type SgInputPhoneProps = Omit<SgInputTextProps, "inputProps" | "error"> & {
-  /** Disparado ao receber foco — padrao seedgrid. */
+  /** Disparado ao receber foco — padrão seedgrid. */
   onEnter?: () => void;
-  /** Disparado ao perder o foco (apos validacao) — padrao seedgrid. */
+  /** Disparado ao perder o foco (após validação) — padrão seedgrid. */
   onExit?: () => void;
   inputProps?: React.InputHTMLAttributes<HTMLInputElement> & {
     ref?: React.Ref<HTMLInputElement>;

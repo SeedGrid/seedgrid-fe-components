@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "hook",
   subcategory: "notification",
   description:
-    "Funcao para fechar/remover um whistle especifico ou todos os whistles. Complementa sgWhistle() para controle programatico.",
+    "Função para fechar/remover um whistle especifico ou todos os whistles. Complementa sgWhistle() para controle programatico.",
   tags: ["hook", "whistle", "notification", "dismiss"],
   capabilities: ["dismiss-specific", "dismiss-all", "programmatic-control"],
   fieldSemantics: ["dismissal", "notificationControl", "cleanup"],

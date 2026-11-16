@@ -14,7 +14,7 @@ export type SgPageControlPageProps = {
   icon?: React.ReactNode;
   hidden?: boolean;
   enabled?: boolean;
-  /** Mantem esta pagina montada (oculta) quando inativa. Sem valor, vale o `keepMounted` do SgPageControl. */
+  /** Mantém esta página montada (oculta) quando inativa. Sem valor, vale o `keepMounted` do SgPageControl. */
   keepMounted?: boolean;
   className?: string;
   style?: React.CSSProperties;
@@ -45,16 +45,16 @@ export type SgPageControlProps = {
   size?: "sm" | "md" | "lg";
   /**
    * Distribui as abas em larguras iguais a partir do tablet (`md`, 768px).
-   * No celular as abas mantem a largura natural e a lista rola — abas iguais numa
-   * tela estreita espremem os rotulos ate ninguem conseguir ler.
+   * No celular as abas mantém a largura natural e a lista rola — abas iguais numa
+   * tela estreita espremem os rótulos até ninguém conseguir ler.
    */
   fullWidthTabs?: boolean;
   /**
    * Comportamento das abas no celular (abaixo de `md`, 768px).
    * - `"scroll"` (default): continuam abas, com rolagem horizontal, e a aba ativa
-   *   e trazida para a area visivel sozinha.
-   * - `"select"`: viram um `<select>` nativo, util quando sao muitas abas ou os
-   *   rotulos sao longos. Tablet e desktop nao mudam.
+   *   e trazida para a área visível sozinha.
+   * - `"select"`: viram um `<select>` nativo, útil quando são muitas abas ou os
+   *   rótulos são longos. Tablet e desktop não mudam.
    */
   mobilePageControl?: "scroll" | "select";
   keyboardNavigation?: boolean;

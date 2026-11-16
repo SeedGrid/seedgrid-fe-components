@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "layout",
   subcategory: "card",
   description:
-    "Container visual para destacar conteudo em blocos com cabecalho, descricao, acoes, rodape e estados colapsaveis.",
+    "Container visual para destacar conteúdo em blocos com cabeçalho, descrição, ações, rodapé e estados colapsáveis.",
   tags: ["layout", "card", "container", "surface", "content-block"],
   capabilities: ["header-footer", "highlighted-content", "collapsible", "clickable", "draggable", "surface-styles"],
   fieldSemantics: ["container", "contentCard", "summaryBlock", "highlightedContent", "section"],
@@ -18,14 +18,14 @@ export const sgMeta: SgMetaV0 = {
     {
       name: "title",
       type: "ReactNode",
-      description: "Titulo principal do card.",
+      description: "Título principal do card.",
       semanticRole: "label",
       bindable: true
     },
     {
       name: "description",
       type: "ReactNode",
-      description: "Descricao ou subtitulo complementar do cabecalho.",
+      description: "Descrição ou subtítulo complementar do cabeçalho.",
       semanticRole: "label",
       bindable: true
     },
@@ -33,7 +33,7 @@ export const sgMeta: SgMetaV0 = {
       name: "children",
       type: "ReactNode",
       required: true,
-      description: "Conteudo principal exibido dentro do card.",
+      description: "Conteúdo principal exibido dentro do card.",
       semanticRole: "data",
       bindable: false
     },
@@ -41,7 +41,7 @@ export const sgMeta: SgMetaV0 = {
       name: "cardStyle",
       type: '"default" | "outlined" | "elevated" | "flat"',
       default: "default",
-      description: "Estilo visual da superficie do card.",
+      description: "Estilo visual da superfície do card.",
       semanticRole: "appearance",
       bindable: true
     },
@@ -49,7 +49,7 @@ export const sgMeta: SgMetaV0 = {
       name: "size",
       type: '"sm" | "md" | "lg"',
       default: "md",
-      description: "Escala geral de espacos e dimensoes do card.",
+      description: "Escala geral de espaços e dimensões do card.",
       semanticRole: "appearance",
       bindable: true
     },
@@ -57,7 +57,7 @@ export const sgMeta: SgMetaV0 = {
       name: "collapsible",
       type: "boolean",
       default: false,
-      description: "Permite recolher e expandir o conteudo do card.",
+      description: "Permite recolher e expandir o conteúdo do card.",
       semanticRole: "behavior",
       bindable: true
     },
@@ -65,7 +65,7 @@ export const sgMeta: SgMetaV0 = {
       name: "clickable",
       type: "boolean",
       default: false,
-      description: "Transforma o card em superficie clicavel.",
+      description: "Transforma o card em superfície clicável.",
       semanticRole: "behavior",
       bindable: true
     },

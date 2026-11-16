@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "gadget",
   subcategory: "digit",
   description:
-    "Digito animado estilo flip para exibir numeros ou caracteres unicos em relogios, contadores e paines visuais.",
+    "Digito animado estilo flip para exibir números ou caracteres únicos em relógios, contadores e paines visuais.",
   tags: ["gadget", "digit", "flip", "clock", "counter"],
   capabilities: ["single-character-display", "flip-animation", "clock-composition", "size-variants"],
   fieldSemantics: ["digitDisplay", "counterDigit", "clockDigit", "animatedCharacter"],

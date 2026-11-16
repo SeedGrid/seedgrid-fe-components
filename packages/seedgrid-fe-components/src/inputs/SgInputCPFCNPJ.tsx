@@ -9,9 +9,9 @@ import { t, useComponentsI18n } from "../i18n";
 import { defaultPublicaCnpjFetch } from "./publicaCnpj";
 
 export type SgInputCPFCNPJProps = Omit<SgInputTextProps, "inputProps" | "error"> & {
-  /** Disparado ao receber foco — padrao seedgrid. */
+  /** Disparado ao receber foco — padrão seedgrid. */
   onEnter?: () => void;
-  /** Disparado ao perder o foco (apos validacao) — padrao seedgrid. */
+  /** Disparado ao perder o foco (após validação) — padrão seedgrid. */
   onExit?: () => void;
   inputProps?: React.InputHTMLAttributes<HTMLInputElement> & {
     ref?: React.Ref<HTMLInputElement>;
@@ -24,15 +24,15 @@ export type SgInputCPFCNPJProps = Omit<SgInputTextProps, "inputProps" | "error">
   validation?: (value: string) => string | null;
   onValidation?: (message: string | null) => void;
   validateOnBlur?: boolean;
-  /** Quando o documento e um CNPJ numerico valido, confirma na base publica (publica.cnpj.ws) que ele existe. */
+  /** Quando o documento e um CNPJ numérico valido, confirma na base publica (publica.cnpj.ws) que ele existe. */
   validateWithPublicaCnpj?: boolean;
-  /** Mensagem quando a base publica nao encontra o CNPJ. */
+  /** Mensagem quando a base publica não encontra o CNPJ. */
   publicaCnpjErrorMessage?: string;
-  /** Consulta injetavel (testes sem rede). Padrao: https://publica.cnpj.ws. */
+  /** Consulta injetável (testes sem rede). Padrão: https://publica.cnpj.ws. */
   publicaCnpjFetch?: (cnpj: string) => Promise<unknown | null>;
-  /** Recebe o resultado da consulta (`null` quando nao achou). */
+  /** Recebe o resultado da consulta (`null` quando não achou). */
   onPublicaCnpjResult?: (data: unknown | null) => void;
-  /** Chamado quando a consulta falha (rede ou limite da API); a validacao passa. */
+  /** Chamado quando a consulta falha (rede ou limite da API); a validação passa. */
   onPublicaCnpjError?: (error: unknown) => void;
 };
 

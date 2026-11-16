@@ -9,15 +9,15 @@ export const sgMeta: SgMetaV0 = {
   displayName: "SgTextEditor",
   category: "input",
   subcategory: "rich-text",
-  description: "Editor de texto rico para conteudo formatado, comentarios elaborados e edicao textual com recursos visuais.",
+  description: "Editor de texto rico para conteúdo formatado, comentários elaborados e edição textual com recursos visuais.",
   tags: ["form", "rich-text", "editor", "content", "html"],
   capabilities: ["rich-text", "formatted-content", "toolbar", "upload-hooks", "save-metadata"],
   fieldSemantics: ["richText", "formattedDescription", "articleBody", "htmlContent"],
   props: [
-    { name: "id", type: "string", description: "Identificador unico do editor.", semanticRole: "data", bindable: false },
+    { name: "id", type: "string", description: "Identificador único do editor.", semanticRole: "data", bindable: false },
     { name: "placeholder", type: "string", description: "Texto de ajuda inicial.", semanticRole: "appearance", bindable: true },
     { name: "height", type: "number", description: "Altura do editor.", semanticRole: "appearance", bindable: true },
-    { name: "onSave", type: "(file: File, meta: SgTextEditorSaveMeta) => void", description: "Callback de persistencia do conteudo.", semanticRole: "event", bindable: false }
+    { name: "onSave", type: "(file: File, meta: SgTextEditorSaveMeta) => void", description: "Callback de persistência do conteúdo.", semanticRole: "event", bindable: false }
   ],
   states: ["default", "readOnly", "disabled", "error"],
   showcase: { route: "/components/sg-text-editor", hasPlayground: true, hasPropsTable: true },

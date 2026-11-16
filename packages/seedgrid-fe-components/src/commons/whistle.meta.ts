@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "hook",
   subcategory: "notification",
   description:
-    "Funcao para disparar notificacoes whistle (banners/alertas). Oferece severidades, duracao customizavel, acoes, icones e estilos customizados.",
+    "Função para disparar notificações whistle (banners/alertas). Oferece severidades, duração customizável, ações, ícones e estilos customizados.",
   tags: ["hook", "whistle", "notification", "banner", "alert"],
   capabilities: ["severity-support", "custom-styling", "actions", "promises", "dismiss"],
   fieldSemantics: ["notification", "userAlert", "bannerMessage"],
@@ -34,28 +34,28 @@ export const sgMeta: SgMetaV0 = {
     {
       name: "options.title",
       type: "string",
-      description: "Titulo opcional do whistle.",
+      description: "Título opcional do whistle.",
       semanticRole: "label",
       bindable: true
     },
     {
       name: "options.id",
       type: "string",
-      description: "ID unico para referenciar o whistle.",
+      description: "ID único para referenciar o whistle.",
       semanticRole: "data",
       bindable: false
     },
     {
       name: "options.icon",
       type: "ReactNode",
-      description: "Icone customizado.",
+      description: "Ícone customizado.",
       semanticRole: "appearance",
       bindable: false
     },
     {
       name: "options.duration",
       type: "number",
-      description: "Duracao em milissegundos deste whistle; tem PRIORIDADE sobre o host. Omitir NAO significa permanente: cai no `duration` do SgWhistler/SgWhistleHost, cujo default e' 4000 (4s), igual ao par toast/SgToastHost. Use 0 (ou negativo) para permanente, ate' o usuario fechar no x — obrigatorio quando o aviso bloqueia uma acao ou carrega um botao de acao, porque sumir leva embora a informacao e o caminho de saida junto. Severidade 'loading' nunca expira sozinha.",
+      description: "Duração em milissegundos deste whistle; tem PRIORIDADE sobre o host. Omitir NÃO significa permanente: cai no `duration` do SgWhistler/SgWhistleHost, cujo default e' 4000 (4s), igual ao par toast/SgToastHost. Use 0 (ou negativo) para permanente, ate' o usuário fechar no x — obrigatório quando o aviso bloqueia uma ação ou carrega um botão de ação, porque sumir leva embora a informação e o caminho de saída junto. Severidade 'loading' nunca expira sozinha.",
       semanticRole: "behavior",
       bindable: true
     },
@@ -85,7 +85,7 @@ export const sgMeta: SgMetaV0 = {
     {
       name: "options.action",
       type: "SgWhistleAction",
-      description: "Acao customizada (label e onClick).",
+      description: "Ação customizada (label e onClick).",
       semanticRole: "event",
       bindable: false
     },

@@ -10,13 +10,13 @@ export const sgMeta: SgMetaV0 = {
   category: "gadget",
   subcategory: "theme-preview",
   description:
-    "Preview visual compacto de um tema de relogio, renderizado em SVG para comparacao rapida de estilos.",
+    "Preview visual compacto de um tema de relógio, renderizado em SVG para comparação rápida de estilos.",
   tags: ["gadget", "clock", "theme", "preview", "svg"],
   capabilities: ["theme-preview", "svg-rendering", "compact-visualization", "dark-flag-aware"],
   fieldSemantics: ["themePreview", "clockThemePreview", "visualStylePreview"],
   props: [
-    { name: "theme", type: "SgClockTheme", required: true, description: "Tema visual usado na renderizacao do preview.", semanticRole: "value", bindable: true },
-    { name: "size", type: "number", default: 64, description: "Dimensao do preview quadrado em pixels.", semanticRole: "appearance", bindable: true },
+    { name: "theme", type: "SgClockTheme", required: true, description: "Tema visual usado na renderização do preview.", semanticRole: "value", bindable: true },
+    { name: "size", type: "number", default: 64, description: "Dimensão do preview quadrado em pixels.", semanticRole: "appearance", bindable: true },
     { name: "className", type: "string", description: "Classes adicionais aplicadas ao SVG raiz.", semanticRole: "appearance", bindable: true }
   ],
   states: ["default", "dark-aware"],

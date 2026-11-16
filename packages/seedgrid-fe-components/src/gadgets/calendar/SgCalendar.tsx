@@ -125,15 +125,15 @@ export type SgCalendarProps = Omit<React.HTMLAttributes<HTMLDivElement>, "childr
   maxDate?: Date | string;
   isDateDisabled?: (date: Date) => boolean;
   /**
-   * Habilita o calendario (padrao `true`). Com `false` os dias, os botoes de mes anterior/proximo
-   * e o atalho "hoje" ficam desabilitados (nao focaveis, sem clique); a data e o mes atuais seguem
-   * legiveis.
+   * Habilita o calendário (padrão `true`). Com `false` os dias, os botões de mês anterior/próximo
+   * e o atalho "hoje" ficam desabilitados (não focáveis, sem clique); a data e o mês atuais seguem
+   * legíveis.
    */
   enabled?: boolean;
   showTodayShortcut?: boolean;
   cardTitle?: React.ReactNode;
   /**
-   * Arrasto do card: undefined = automatico (arrasta em largura >= 640px), true = sempre, false = nunca.
+   * Arrasto do card: undefined = automático (arrasta em largura >= 640px), true = sempre, false = nunca.
    * Tem prioridade sobre `cardProps.draggable`.
    */
   draggable?: boolean;

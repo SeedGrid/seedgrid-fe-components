@@ -8,9 +8,9 @@ import { useDarkFlag } from "../gadgets/clock/themes/useDarkFlag";
 import { formatLocalizedDate } from "./dateTimeLogic";
 
 export type SgInputDateProps = Omit<SgInputTextProps, "type"> & {
-  /** Disparado ao receber foco — padrao seedgrid. */
+  /** Disparado ao receber foco — padrão seedgrid. */
   onEnter?: () => void;
-  /** Disparado ao perder o foco (apos validacao) — padrao seedgrid. */
+  /** Disparado ao perder o foco (após validação) — padrão seedgrid. */
   onExit?: () => void;
   minDate?: string | Date;
   maxDate?: string | Date;

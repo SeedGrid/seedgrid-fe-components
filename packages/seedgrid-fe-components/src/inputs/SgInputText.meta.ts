@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "input",
   subcategory: "text",
   description:
-    "Campo textual de uso geral com suporte a react-hook-form, validacao, contador de caracteres e prefixo/sufixo.",
+    "Campo textual de uso geral com suporte a react-hook-form, validação, contador de caracteres e prefixo/sufixo.",
   tags: ["form", "text", "field", "rhf"],
   capabilities: ["rhf", "controlled", "validation", "clearable", "prefix-suffix", "char-counter"],
   fieldSemantics: ["freeText", "shortText", "name", "title", "code", "identifier"],
@@ -19,21 +19,21 @@ export const sgMeta: SgMetaV0 = {
       name: "id",
       type: "string",
       required: true,
-      description: "Identificador unico do campo.",
+      description: "Identificador único do campo.",
       semanticRole: "data",
       bindable: false
     },
     {
       name: "name",
       type: "string",
-      description: "Nome do campo para formularios.",
+      description: "Nome do campo para formulários.",
       semanticRole: "data",
       bindable: true
     },
     {
       name: "label",
       type: "string",
-      description: "Rotulo principal exibido ao usuario.",
+      description: "Rótulo principal exibido ao usuário.",
       semanticRole: "label",
       bindable: true
     },
@@ -48,7 +48,7 @@ export const sgMeta: SgMetaV0 = {
       name: "required",
       type: "boolean",
       default: false,
-      description: "Marca o campo como obrigatorio.",
+      description: "Marca o campo como obrigatório.",
       semanticRole: "validation",
       bindable: true
     },
@@ -56,21 +56,21 @@ export const sgMeta: SgMetaV0 = {
       name: "readOnly",
       type: "boolean",
       default: false,
-      description: "Impede edicao mantendo foco e leitura.",
+      description: "Impede edição mantendo foco e leitura.",
       semanticRole: "appearance",
       bindable: true
     },
     {
       name: "maxLength",
       type: "number",
-      description: "Limite maximo de caracteres.",
+      description: "Limite máximo de caracteres.",
       semanticRole: "validation",
       bindable: true
     },
     {
       name: "minLength",
       type: "number",
-      description: "Limite minimo de caracteres.",
+      description: "Limite mínimo de caracteres.",
       semanticRole: "validation",
       bindable: true
     },

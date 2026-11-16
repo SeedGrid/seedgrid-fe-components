@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "hook",
   subcategory: "persistence",
   description:
-    "Hook de baixo nivel para carregar, salvar e limpar estado persistido. Gerencia chaves isoladas por namespace e escopo, respeitando a estrategia configurada.",
+    "Hook de baixo nível para carregar, salvar e limpar estado persistido. Gerencia chaves isoladas por namespace e escopo, respeitando a estratégia configurada.",
   tags: ["hook", "persistence", "storage", "state-management"],
   capabilities: ["load-state", "save-state", "clear-state", "namespace-isolation"],
   fieldSemantics: ["persistenceLayer", "stateStorage", "asyncStorage"],
@@ -25,21 +25,21 @@ export const sgMeta: SgMetaV0 = {
     {
       name: "returns.scope",
       type: "string",
-      description: "Escopo logico para chaves (ex: 'app:myapp').",
+      description: "Escopo lógico para chaves (ex: 'app:myapp').",
       semanticRole: "data",
       bindable: false
     },
     {
       name: "returns.mode",
       type: "SgPersistenceMode",
-      description: "Modo de persistencia (local, api, fallback).",
+      description: "Modo de persistência (local, api, fallback).",
       semanticRole: "behavior",
       bindable: false
     },
     {
       name: "returns.stateVersion",
       type: "number",
-      description: "Versao logica do estado para migracao.",
+      description: "Versão lógica do estado para migração.",
       semanticRole: "data",
       bindable: false
     },

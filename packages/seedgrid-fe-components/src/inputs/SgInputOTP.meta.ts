@@ -10,20 +10,20 @@ export const sgMeta: SgMetaV0 = {
   category: "input",
   subcategory: "otp",
   description:
-    "Campo OTP multi-slot para codigos de verificacao com suporte a mascara, colagem, eventos de conclusao e acesso por ref.",
+    "Campo OTP multi-slot para códigos de verificação com suporte a máscara, colagem, eventos de conclusão e acesso por ref.",
   tags: ["form", "otp", "verification", "code", "security", "rhf"],
   capabilities: ["rhf", "mask", "multi-slot", "paste-support", "on-complete", "clearable"],
   fieldSemantics: ["otp", "verificationCode", "authCode", "securityCode", "tokenCode"],
   props: [
-    { name: "id", type: "string", required: true, description: "Identificador unico do componente.", semanticRole: "data", bindable: false },
-    { name: "name", type: "string", description: "Nome do campo em formularios.", semanticRole: "data", bindable: true },
-    { name: "label", type: "string", description: "Rotulo exibido ao usuario.", semanticRole: "label", bindable: true },
-    { name: "mask", type: "string", default: "999999", description: "Mascara de slots para o codigo.", semanticRole: "behavior", bindable: true },
-    { name: "required", type: "boolean", default: false, description: "Marca o campo como obrigatorio.", semanticRole: "validation", bindable: true },
-    { name: "validateOnBlur", type: "boolean", default: true, description: "Executa validacao no blur.", semanticRole: "behavior", bindable: true },
-    { name: "onRawChange", type: "(rawValue: string) => void", description: "Callback com o valor bruto do codigo.", semanticRole: "event", bindable: false },
-    { name: "onComplete", type: "(value: string) => void", description: "Callback disparado ao completar o codigo.", semanticRole: "event", bindable: false },
-    { name: "onValidation", type: "(message: string | null) => void", description: "Callback para estado de validacao.", semanticRole: "event", bindable: false }
+    { name: "id", type: "string", required: true, description: "Identificador único do componente.", semanticRole: "data", bindable: false },
+    { name: "name", type: "string", description: "Nome do campo em formulários.", semanticRole: "data", bindable: true },
+    { name: "label", type: "string", description: "Rótulo exibido ao usuário.", semanticRole: "label", bindable: true },
+    { name: "mask", type: "string", default: "999999", description: "Máscara de slots para o código.", semanticRole: "behavior", bindable: true },
+    { name: "required", type: "boolean", default: false, description: "Marca o campo como obrigatório.", semanticRole: "validation", bindable: true },
+    { name: "validateOnBlur", type: "boolean", default: true, description: "Executa validação no blur.", semanticRole: "behavior", bindable: true },
+    { name: "onRawChange", type: "(rawValue: string) => void", description: "Callback com o valor bruto do código.", semanticRole: "event", bindable: false },
+    { name: "onComplete", type: "(value: string) => void", description: "Callback disparado ao completar o código.", semanticRole: "event", bindable: false },
+    { name: "onValidation", type: "(message: string | null) => void", description: "Callback para estado de validação.", semanticRole: "event", bindable: false }
   ],
   states: ["default", "focused", "disabled", "readOnly", "error", "complete"],
   examples: [

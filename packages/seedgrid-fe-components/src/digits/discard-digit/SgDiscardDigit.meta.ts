@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "gadget",
   subcategory: "digit",
   description:
-    "Digito animado com transicao de descarte para representar mudanca de valores em displays compactos.",
+    "Digito animado com transição de descarte para representar mudança de valores em displays compactos.",
   tags: ["gadget", "digit", "discard", "display", "counter"],
   capabilities: ["single-character-display", "discard-animation", "counter-composition", "custom-colors"],
   fieldSemantics: ["digitDisplay", "counterDigit", "animatedCharacter", "transitionalMetric"],

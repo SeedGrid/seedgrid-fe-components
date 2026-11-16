@@ -9,16 +9,16 @@ export const sgMeta: SgMetaV0 = {
   displayName: "SgToggleSwitch",
   category: "input",
   subcategory: "toggle",
-  description: "Interruptor booleano para ativar ou desativar estados, flags e configuracoes simples.",
+  description: "Interruptor booleano para ativar ou desativar estados, flags e configurações simples.",
   tags: ["form", "toggle", "switch", "boolean", "rhf"],
   capabilities: ["rhf", "boolean-value", "on-off", "visual-state"],
   fieldSemantics: ["boolean", "flag", "enabledState", "onOff"],
   props: [
-    { name: "id", type: "string", required: true, description: "Identificador unico do componente.", semanticRole: "data", bindable: false },
-    { name: "label", type: "string", description: "Rotulo exibido ao usuario.", semanticRole: "label", bindable: true },
+    { name: "id", type: "string", required: true, description: "Identificador único do componente.", semanticRole: "data", bindable: false },
+    { name: "label", type: "string", description: "Rótulo exibido ao usuário.", semanticRole: "label", bindable: true },
     { name: "checked", type: "boolean", description: "Valor booleano atual.", semanticRole: "value", bindable: true },
-    { name: "readOnly", type: "boolean", default: false, description: "Permite visualizacao sem alteracao.", semanticRole: "behavior", bindable: true },
-    { name: "onChange", type: "(checked: boolean) => void", description: "Callback de mudanca.", semanticRole: "event", bindable: false }
+    { name: "readOnly", type: "boolean", default: false, description: "Permite visualização sem alteração.", semanticRole: "behavior", bindable: true },
+    { name: "onChange", type: "(checked: boolean) => void", description: "Callback de mudança.", semanticRole: "event", bindable: false }
   ],
   states: ["default", "checked", "unchecked", "disabled", "readOnly"],
   showcase: { route: "/components/sg-toggle-switch", hasPlayground: true, hasPropsTable: true },

@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "hook",
   subcategory: "internationalization",
   description:
-    "Hook para acessar contexto de internacionalizacao dos componentes SeedGrid. Fornece locale atual e funcoes de traducao.",
+    "Hook para acessar contexto de internacionalização dos componentes SeedGrid. Fornece locale atual e funções de tradução.",
   tags: ["hook", "i18n", "internationalization", "locale", "translation"],
   capabilities: ["locale-access", "message-resolution", "dynamic-translation"],
   fieldSemantics: ["i18nContext", "locale", "translation"],

@@ -3990,6 +3990,7 @@
   "showcase.component.yearPartSelector.section7Description": "Changez les découpages autorisés, la plage d'années et la locale, et observez l'intervalle résolu en temps réel.",
   "showcase.component.yearPartSelector.defaults.minYear": "année courante - 30",
   "showcase.component.yearPartSelector.defaults.maxYear": "année courante + 10",
+  "showcase.common.automatic": "automatique",
   "showcase.component.yearPartSelector.props.id": "Préfixe des ids des trois contrôles internes ; ce n'est pas l'id d'un champ unique.",
   "showcase.component.yearPartSelector.props.label": "Libellé du groupe, au-dessus de la ligne de contrôles.",
   "showcase.component.yearPartSelector.props.value": "Découpage sélectionné en mode contrôle : { year, kind, part }, avec part en base 1.",

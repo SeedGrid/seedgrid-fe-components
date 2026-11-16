@@ -10,14 +10,14 @@ export const sgMeta: SgMetaV0 = {
   category: "feedback",
   subcategory: "toast-host",
   description:
-    "Ponto explicito de montagem para notificacoes toast, usado quando a aplicacao precisa controlar a localizacao ativa do host.",
+    "Ponto explicito de montagem para notificações toast, usado quando a aplicação precisa controlar a localização ativa do host.",
   tags: ["feedback", "toast", "host", "notification"],
   capabilities: ["host-priority", "toast-mount-point", "custom-positioning"],
   fieldSemantics: ["toastHost", "notificationMountPoint", "feedbackHost"],
   props: [
-    { name: "position", type: '"top-right" | "top-left" | "top-center" | "bottom-right" | "bottom-left" | "bottom-center"', default: "top-right", description: "Posicao dos toasts renderizados por este host.", semanticRole: "appearance", bindable: true },
-    { name: "duration", type: "number", default: 4000, description: "Duracao padrao aplicada aos toasts deste host.", semanticRole: "behavior", bindable: true },
-    { name: "visibleToasts", type: "number", default: 6, description: "Quantidade maxima de toasts visiveis.", semanticRole: "behavior", bindable: true }
+    { name: "position", type: '"top-right" | "top-left" | "top-center" | "bottom-right" | "bottom-left" | "bottom-center"', default: "top-right", description: "Posição dos toasts renderizados por este host.", semanticRole: "appearance", bindable: true },
+    { name: "duration", type: "number", default: 4000, description: "Duração padrão aplicada aos toasts deste host.", semanticRole: "behavior", bindable: true },
+    { name: "visibleToasts", type: "number", default: 6, description: "Quantidade máxima de toasts visíveis.", semanticRole: "behavior", bindable: true }
   ],
   states: ["inactive", "active-host"],
   examples: [

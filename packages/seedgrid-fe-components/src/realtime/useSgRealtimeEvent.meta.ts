@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "hook",
   subcategory: "realtime",
   description:
-    "Hook que chama o handler a cada aviso do SgRealtimeProvider no channel informado cujo evento casa o padrao (nome, lista, prefixo.* ou *).",
+    "Hook que chama o handler a cada aviso do SgRealtimeProvider no channel informado cujo evento casa o padrão (nome, lista, prefixo.* ou *).",
   tags: ["hook", "realtime", "pulse", "event"],
   capabilities: ["event-subscription", "wildcard-match"],
   fieldSemantics: ["realtimeChannel", "eventPattern", "eventHandler"],

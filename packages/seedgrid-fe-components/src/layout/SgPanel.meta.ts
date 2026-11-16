@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "layout",
   subcategory: "panel",
   description:
-    "Container visual e estrutural para agrupamento de conteudo, composicao de secoes e cenarios com dock, padding e scroll.",
+    "Container visual e estrutural para agrupamento de conteúdo, composição de seções e cenários com dock, padding e scroll.",
   tags: ["layout", "container", "panel", "group"],
   capabilities: ["container", "grouping", "dock-layout", "scrollable", "grid-span"],
   fieldSemantics: ["container", "section", "group", "formSection", "highlightedContent"],
@@ -19,21 +19,21 @@ export const sgMeta: SgMetaV0 = {
       name: "align",
       type: '"top" | "left" | "right" | "bottom" | "client"',
       default: "client",
-      description: "Posicionamento relativo ao container pai em cenarios de dock.",
+      description: "Posicionamento relativo ao container pai em cenários de dock.",
       semanticRole: "behavior",
       bindable: true
     },
     {
       name: "width",
       type: "number | `${number}%`",
-      description: "Largura do painel quando dockado ou usado em composicoes controladas.",
+      description: "Largura do painel quando dockado ou usado em composições controladas.",
       semanticRole: "behavior",
       bindable: true
     },
     {
       name: "height",
       type: "number | `${number}%`",
-      description: "Altura do painel quando dockado ou usado em composicoes controladas.",
+      description: "Altura do painel quando dockado ou usado em composições controladas.",
       semanticRole: "behavior",
       bindable: true
     },
@@ -49,7 +49,7 @@ export const sgMeta: SgMetaV0 = {
       name: "padding",
       type: "number | string",
       default: 0,
-      description: "Espacamento externo do painel em relacao ao slot recebido do pai.",
+      description: "Espaçamento externo do painel em relação ao slot recebido do pai.",
       semanticRole: "appearance",
       bindable: true
     },
@@ -57,7 +57,7 @@ export const sgMeta: SgMetaV0 = {
       name: "contentPadding",
       type: "number | string",
       default: 0,
-      description: "Espacamento interno entre a borda e o conteudo.",
+      description: "Espaçamento interno entre a borda e o conteúdo.",
       semanticRole: "appearance",
       bindable: true
     },
@@ -73,14 +73,14 @@ export const sgMeta: SgMetaV0 = {
       name: "scrollbarGutter",
       type: "boolean",
       default: false,
-      description: "Reserva espaco visual para scrollbar.",
+      description: "Reserva espaço visual para scrollbar.",
       semanticRole: "appearance",
       bindable: true
     },
     {
       name: "children",
       type: "ReactNode",
-      description: "Conteudo livre ou outros elementos de layout aninhados.",
+      description: "Conteúdo livre ou outros elementos de layout aninhados.",
       semanticRole: "data",
       bindable: false
     }

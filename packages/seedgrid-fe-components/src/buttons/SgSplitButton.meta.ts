@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "action",
   subcategory: "split-button",
   description:
-    "Botao de acao com trigger principal e menu secundario acoplado para variacoes contextuais da mesma tarefa.",
+    "Botão de ação com trigger principal e menu secundário acoplado para variações contextuais da mesma tarefa.",
   tags: ["action", "button", "menu", "dropdown", "cta"],
   capabilities: ["primary-action", "secondary-actions", "menu-items", "severity", "loading", "disabled"],
   fieldSemantics: ["primaryAction", "secondaryAction", "menuAction", "contextAction"],
@@ -18,7 +18,7 @@ export const sgMeta: SgMetaV0 = {
     {
       name: "label",
       type: "string",
-      description: "Conteudo textual principal da acao.",
+      description: "Conteúdo textual principal da ação.",
       semanticRole: "label",
       bindable: true
     },
@@ -26,7 +26,7 @@ export const sgMeta: SgMetaV0 = {
       name: "items",
       type: "SgSplitButtonItem[]",
       required: true,
-      description: "Lista de acoes secundarias exibidas no menu dropdown.",
+      description: "Lista de ações secundárias exibidas no menu dropdown.",
       semanticRole: "data",
       bindable: true
     },
@@ -34,7 +34,7 @@ export const sgMeta: SgMetaV0 = {
       name: "severity",
       type: '"primary" | "secondary" | "success" | "info" | "warning" | "help" | "danger"',
       default: "primary",
-      description: "Peso visual e semantico da acao principal.",
+      description: "Peso visual e semântico da ação principal.",
       semanticRole: "appearance",
       bindable: true
     },
@@ -50,7 +50,7 @@ export const sgMeta: SgMetaV0 = {
       name: "enabled",
       type: "boolean",
       default: true,
-      description: "Desabilita a acao principal e o menu secundario.",
+      description: "Desabilita a ação principal e o menu secundário.",
       semanticRole: "behavior",
       bindable: true
     },
@@ -58,21 +58,21 @@ export const sgMeta: SgMetaV0 = {
       name: "loading",
       type: "boolean",
       default: false,
-      description: "Exibe estado de carregamento na acao principal.",
+      description: "Exibe estado de carregamento na ação principal.",
       semanticRole: "behavior",
       bindable: true
     },
     {
       name: "leftIcon",
       type: "ReactNode",
-      description: "Icone exibido junto do label principal.",
+      description: "Ícone exibido junto do label principal.",
       semanticRole: "appearance",
       bindable: false
     },
     {
       name: "onClick",
       type: "() => void",
-      description: "Callback disparado na acao principal.",
+      description: "Callback disparado na ação principal.",
       semanticRole: "event",
       bindable: false
     }

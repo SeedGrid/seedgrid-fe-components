@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "feedback",
   subcategory: "badge",
   description:
-    "Indicador compacto para status, contagens, rotulos curtos e destaque visual de pequenos estados.",
+    "Indicador compacto para status, contagens, rótulos curtos e destaque visual de pequenos estados.",
   tags: ["feedback", "badge", "status", "counter", "label"],
   capabilities: ["status-indicator", "counter", "severity", "variant", "removable", "dot"],
   fieldSemantics: ["status", "counter", "tag", "indicator", "label"],
@@ -18,7 +18,7 @@ export const sgMeta: SgMetaV0 = {
     {
       name: "value",
       type: "ReactNode",
-      description: "Conteudo principal exibido dentro do badge.",
+      description: "Conteúdo principal exibido dentro do badge.",
       semanticRole: "label",
       bindable: true
     },
@@ -26,7 +26,7 @@ export const sgMeta: SgMetaV0 = {
       name: "severity",
       type: '"primary" | "secondary" | "success" | "warning" | "danger" | "info" | "neutral" | "custom"',
       default: "primary",
-      description: "Tom semantico do indicador.",
+      description: "Tom semântico do indicador.",
       semanticRole: "appearance",
       bindable: true
     },
@@ -58,7 +58,7 @@ export const sgMeta: SgMetaV0 = {
       name: "removable",
       type: "boolean",
       default: false,
-      description: "Permite remover o badge com um botao interno.",
+      description: "Permite remover o badge com um botão interno.",
       semanticRole: "behavior",
       bindable: true
     },

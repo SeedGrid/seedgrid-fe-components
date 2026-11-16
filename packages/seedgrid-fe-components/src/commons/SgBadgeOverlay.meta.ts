@@ -10,14 +10,14 @@ export const sgMeta: SgMetaV0 = {
   category: "feedback",
   subcategory: "badge-overlay",
   description:
-    "Wrapper para sobrepor badges e indicadores compactos sobre avatares, icones e outros elementos visuais.",
+    "Wrapper para sobrepor badges e indicadores compactos sobre avatares, ícones e outros elementos visuais.",
   tags: ["feedback", "badge", "overlay", "indicator"],
   capabilities: ["overlay-indicator", "badge-positioning", "status-overlay"],
   fieldSemantics: ["statusOverlay", "counterOverlay", "indicatorOverlay"],
   props: [
-    { name: "children", type: "ReactNode", required: true, description: "Elemento base que recebera o badge sobreposto.", semanticRole: "data", bindable: false },
-    { name: "badge", type: "ReactNode", required: true, description: "Conteudo do indicador exibido sobre o elemento base.", semanticRole: "label", bindable: true },
-    { name: "placement", type: '"top-left" | "top-right" | "bottom-left" | "bottom-right" | "right" | "left" | "top" | "bottom"', default: "top-right", description: "Posicao do badge sobreposto.", semanticRole: "appearance", bindable: true }
+    { name: "children", type: "ReactNode", required: true, description: "Elemento base que receberá o badge sobreposto.", semanticRole: "data", bindable: false },
+    { name: "badge", type: "ReactNode", required: true, description: "Conteúdo do indicador exibido sobre o elemento base.", semanticRole: "label", bindable: true },
+    { name: "placement", type: '"top-left" | "top-right" | "bottom-left" | "bottom-right" | "right" | "left" | "top" | "bottom"', default: "top-right", description: "Posição do badge sobreposto.", semanticRole: "appearance", bindable: true }
   ],
   states: ["default"],
   examples: [

@@ -18,19 +18,19 @@ export type SgCameraCaptureProps = {
   id: string;
   label?: string;
   labelText?: string;
-  /** Camera inicial: `user` (frontal) ou `environment` (traseira). Padrao `user`. */
+  /** Câmera inicial: `user` (frontal) ou `environment` (traseira). Padrão `user`. */
   facing?: CameraFacing;
-  /** Guia de enquadramento sobre a pre-visualizacao: `none` (padrao), `oval` ou `rect`. */
+  /** Guia de enquadramento sobre a pré-visualização: `none` (padrão), `oval` ou `rect`. */
   guide?: CameraGuide;
-  /** Resolucao pedida: `low` (640x480), `medium` (1280x720, padrao) ou `high` (1920x1080). */
+  /** Resolução pedida: `low` (640x480), `medium` (1280x720, padrão) ou `high` (1920x1080). */
   resolution?: CameraResolution;
   /** Disparado ao capturar, com a imagem JPEG. O envio ao servidor e do host. */
   onCapture?: (image: Blob) => void;
-  /** Disparado quando a camera nao abre: `permission`, `noCamera` ou `failed`. `message` ja vem traduzida. */
+  /** Disparado quando a câmera não abre: `permission`, `noCamera` ou `failed`. `message` já vem traduzida. */
   onError?: (code: CameraErrorCode, message: string) => void;
-  /** Mostra o botao de alternar entre frontal e traseira (padrao `true`). */
+  /** Mostra o botão de alternar entre frontal e traseira (padrão `true`). */
   allowSwitch?: boolean;
-  /** Altura da pre-visualizacao em px (padrao 320). */
+  /** Altura da pré-visualização em px (padrão 320). */
   previewHeight?: number;
   hintText?: string;
   enabled?: boolean;

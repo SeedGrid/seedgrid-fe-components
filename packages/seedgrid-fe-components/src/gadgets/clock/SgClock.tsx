@@ -69,7 +69,7 @@ export type SgClockProps = {
   format?: "12h" | "24h";
   showSeconds?: boolean;
   digitalStyle?: SgClockDigitalStyle;
-  /** Desenha o relogio digital quando `digitalStyle` e `"custom"`. Sem ele, cai no estilo `default`. */
+  /** Desenha o relógio digital quando `digitalStyle` e `"custom"`. Sem ele, cai no estilo `default`. */
   digitBuilder?: SgClockDigitBuilder;
   secondHandMode?: "step" | "smooth";
   themeId?: string;
@@ -79,7 +79,7 @@ export type SgClockProps = {
   centerOverlay?: React.ReactNode;
   cardTitle?: React.ReactNode;
   /**
-   * Arrasto do card: undefined = automatico (arrasta em largura >= 640px), true = sempre, false = nunca.
+   * Arrasto do card: undefined = automático (arrasta em largura >= 640px), true = sempre, false = nunca.
    * Tem prioridade sobre `cardProps.draggable`.
    */
   draggable?: boolean;
@@ -100,22 +100,22 @@ export type SgClockDigitalStyle =
 
 /** Partes do relogio digital entregues ao `digitBuilder` (as mesmas do construtor do Flutter). */
 export type SgClockDigitalParts = {
-  /** Sempre com 2 digitos; em 12h vai de 01 a 12. */
+  /** Sempre com 2 dígitos; em 12h vai de 01 a 12. */
   hour: string;
   minute: string;
   /** Vazio quando `showSeconds` e falso. */
   second: string;
-  /** So em 12h (`AM`/`PM` ou o que o Intl do locale devolve). */
+  /** Só em 12h (`AM`/`PM` ou o que o Intl do locale devolve). */
   dayPeriod: string | undefined;
   is12h: boolean;
   showSeconds: boolean;
-  /** `size` original do SgClock (`"sm"`, `"md"`, `"lg"` ou numero). */
+  /** `size` original do SgClock (`"sm"`, `"md"`, `"lg"` ou número). */
   size: "sm" | "md" | "lg" | number;
   /** `HH:MM` ou `HH:MM:SS`. */
   text: string;
-  /** `text` + periodo em maiusculas. */
+  /** `text` + período em maiúsculas. */
   textWithPeriod: string;
-  /** Numero = ele mesmo, sm 12, lg 28, md 16. */
+  /** Número = ele mesmo, sm 12, lg 28, md 16. */
   sizePx: number;
 };
 

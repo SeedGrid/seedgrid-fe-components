@@ -10,18 +10,18 @@ export const sgMeta: SgMetaV0 = {
   category: "input",
   subcategory: "search",
   description:
-    "Campo de busca que embrulha o SgInputText com debounce sem dependencia externa: onChange imediato e onSearchChange disparado apos o debounce com o termo normalizado (trim + gate por minChars).",
+    "Campo de busca que embrulha o SgInputText com debounce sem dependência externa: onChange imediato e onSearchChange disparado após o debounce com o termo normalizado (trim + gate por minChars).",
   tags: ["form", "search", "debounce", "text", "filter"],
   capabilities: ["debounce", "min-chars-gate", "distinct", "controlled"],
   fieldSemantics: ["freeText", "search", "filter"],
   props: [
-    { name: "id", type: "string", required: true, description: "Identificador unico do campo.", semanticRole: "data", bindable: false },
-    { name: "label", type: "string", description: "Rotulo exibido ao usuario.", semanticRole: "label", bindable: true },
+    { name: "id", type: "string", required: true, description: "Identificador único do campo.", semanticRole: "data", bindable: false },
+    { name: "label", type: "string", description: "Rótulo exibido ao usuário.", semanticRole: "label", bindable: true },
     { name: "placeholder", type: "string", description: "Texto de apoio dentro do input.", semanticRole: "label", bindable: true },
-    { name: "minChars", type: "number", default: 3, description: "Minimo de caracteres (apos trim) para disparar onSearchChange; 0 caracteres tambem dispara (limpar busca).", semanticRole: "behavior", bindable: true },
+    { name: "minChars", type: "number", default: 3, description: "Mínimo de caracteres (após trim) para disparar onSearchChange; 0 caracteres também dispara (limpar busca).", semanticRole: "behavior", bindable: true },
     { name: "debounceMs", type: "number", default: 350, description: "Atraso do debounce em milissegundos antes de disparar onSearchChange.", semanticRole: "behavior", bindable: true },
-    { name: "onChange", type: "(value: string) => void", description: "Disparado imediatamente a cada digitacao, com o valor cru.", semanticRole: "event", bindable: false },
-    { name: "onSearchChange", type: "(value: string) => void", required: true, description: "Disparado apos o debounce, com o termo normalizado.", semanticRole: "event", bindable: false }
+    { name: "onChange", type: "(value: string) => void", description: "Disparado imediatamente a cada digitação, com o valor cru.", semanticRole: "event", bindable: false },
+    { name: "onSearchChange", type: "(value: string) => void", required: true, description: "Disparado após o debounce, com o termo normalizado.", semanticRole: "event", bindable: false }
   ],
   states: ["default", "focused", "disabled", "error"],
   showcase: { route: "/components/sg-input-text-search", hasPlayground: false, hasPropsTable: true },

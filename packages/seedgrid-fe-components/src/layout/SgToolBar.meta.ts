@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "navigation",
   subcategory: "toolbar",
   description:
-    "Barra de ferramentas para agrupar acoes frequentes com suporte a orientacao, colapso, arraste e encaixe em zonas de layout.",
+    "Barra de ferramentas para agrupar ações frequentes com suporte a orientação, colapso, arraste e encaixe em zonas de layout.",
   tags: ["navigation", "toolbar", "actions", "dock", "draggable"],
   capabilities: ["action-grouping", "dockable", "draggable", "collapsible", "orientation-control"],
   fieldSemantics: ["toolbar", "actionBar", "contextActions", "dockedActions"],
@@ -19,28 +19,28 @@ export const sgMeta: SgMetaV0 = {
       name: "id",
       type: "string",
       required: true,
-      description: "Identificador estavel da toolbar.",
+      description: "Identificador estável da toolbar.",
       semanticRole: "data",
       bindable: false
     },
     {
       name: "title",
       type: "ReactNode",
-      description: "Titulo opcional exibido na barra.",
+      description: "Título opcional exibido na barra.",
       semanticRole: "label",
       bindable: true
     },
     {
       name: "orientationDirection",
       type: '"vertical-up" | "vertical-down" | "horizontal-left" | "horizontal-right"',
-      description: "Direcao e orientacao da toolbar.",
+      description: "Direção e orientação da toolbar.",
       semanticRole: "behavior",
       bindable: true
     },
     {
       name: "buttonsPerDirection",
       type: "number",
-      description: "Quantidade de botoes distribuidos por direcao.",
+      description: "Quantidade de botões distribuídos por direção.",
       semanticRole: "behavior",
       bindable: true
     },
@@ -72,14 +72,14 @@ export const sgMeta: SgMetaV0 = {
       name: "overflow",
       type: "boolean",
       default: false,
-      description: "Move para um menu '...' os botoes que nao cabem na largura disponivel; abaixo de 600px abre como painel inferior.",
+      description: "Move para um menu '...' os botões que não cabem na largura disponível; abaixo de 600px abre como painel inferior.",
       semanticRole: "behavior",
       bindable: true
     },
     {
       name: "children",
       type: "ReactNode",
-      description: "Botoes e elementos de acao da toolbar.",
+      description: "Botões e elementos de ação da toolbar.",
       semanticRole: "data",
       bindable: false
     }

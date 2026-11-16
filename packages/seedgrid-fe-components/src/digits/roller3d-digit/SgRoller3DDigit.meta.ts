@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "gadget",
   subcategory: "digit",
   description:
-    "Digito animado com efeito roller 3D para mostrar caracteres unicos em relogios, marcadores e displays visuais.",
+    "Digito animado com efeito roller 3D para mostrar caracteres únicos em relógios, marcadores e displays visuais.",
   tags: ["gadget", "digit", "roller3d", "clock", "display"],
   capabilities: ["single-character-display", "3d-animation", "clock-composition", "themeable"],
   fieldSemantics: ["digitDisplay", "3dCounterDigit", "clockDigit", "animatedCharacter"],

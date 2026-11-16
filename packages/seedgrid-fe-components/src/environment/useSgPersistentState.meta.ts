@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "hook",
   subcategory: "persistent-state",
   description:
-    "Hook de alto nivel para estado persistido. Similar a useState mas sincroniza com persistencia (localStorage, API ou hibrida) com carregamento asincrono e isolamento por namespace.",
+    "Hook de alto nível para estado persistido. Similar a useState mas sincroniza com persistência (localStorage, API ou híbrida) com carregamento asincrono e isolamento por namespace.",
   tags: ["hook", "persistent-state", "storage", "state-sync"],
   capabilities: ["state-persistence", "async-init", "serialization", "namespace-isolation"],
   fieldSemantics: ["persistentState", "syncedState", "storedValue"],
@@ -19,7 +19,7 @@ export const sgMeta: SgMetaV0 = {
       name: "args.baseKey",
       type: "string",
       required: true,
-      description: "Chave base para persistencia (sera isolada por namespace e escopo).",
+      description: "Chave base para persistência (será isolada por namespace e escopo).",
       semanticRole: "data",
       bindable: false
     },
@@ -27,21 +27,21 @@ export const sgMeta: SgMetaV0 = {
       name: "args.defaultValue",
       type: "T",
       required: true,
-      description: "Valor padrao enquanto carrega do storage.",
+      description: "Valor padrão enquanto carrega do storage.",
       semanticRole: "data",
       bindable: true
     },
     {
       name: "args.serialize",
       type: "(value: T) => unknown",
-      description: "Funcao customizada para serializar ao persistir.",
+      description: "Função customizada para serializar ao persistir.",
       semanticRole: "behavior",
       bindable: false
     },
     {
       name: "args.deserialize",
       type: "(value: unknown) => T",
-      description: "Funcao customizada para desserializar ao carregar.",
+      description: "Função customizada para desserializar ao carregar.",
       semanticRole: "behavior",
       bindable: false
     },
@@ -55,7 +55,7 @@ export const sgMeta: SgMetaV0 = {
     {
       name: "returns[1]",
       type: "(value: T) => Promise<void>",
-      description: "Funcao para atualizar estado e persistir asincronamente.",
+      description: "Função para atualizar estado e persistir asincronamente.",
       semanticRole: "event",
       bindable: false
     }

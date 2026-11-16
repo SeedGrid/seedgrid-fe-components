@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "input",
   subcategory: "date",
   description:
-    "Campo de data com validacao de intervalo e suporte a selecao temporal para eventos, prazos e datas de referencia.",
+    "Campo de data com validação de intervalo e suporte a seleção temporal para eventos, prazos e datas de referência.",
   tags: ["form", "date", "calendar", "rhf"],
   capabilities: ["rhf", "controlled", "date-format", "min-max", "calendar-selection"],
   fieldSemantics: ["date", "calendarDate", "deadline", "schedule", "referenceDate"],
@@ -19,21 +19,21 @@ export const sgMeta: SgMetaV0 = {
       name: "id",
       type: "string",
       required: true,
-      description: "Identificador unico do campo de data.",
+      description: "Identificador único do campo de data.",
       semanticRole: "data",
       bindable: false
     },
     {
       name: "name",
       type: "string",
-      description: "Nome do campo para formularios.",
+      description: "Nome do campo para formulários.",
       semanticRole: "data",
       bindable: true
     },
     {
       name: "label",
       type: "string",
-      description: "Rotulo principal exibido ao usuario.",
+      description: "Rótulo principal exibido ao usuário.",
       semanticRole: "label",
       bindable: true
     },
@@ -41,21 +41,21 @@ export const sgMeta: SgMetaV0 = {
       name: "required",
       type: "boolean",
       default: false,
-      description: "Marca o campo como obrigatorio.",
+      description: "Marca o campo como obrigatório.",
       semanticRole: "validation",
       bindable: true
     },
     {
       name: "minDate",
       type: "string | Date",
-      description: "Data minima permitida.",
+      description: "Data mínima permitida.",
       semanticRole: "validation",
       bindable: true
     },
     {
       name: "maxDate",
       type: "string | Date",
-      description: "Data maxima permitida.",
+      description: "Data máxima permitida.",
       semanticRole: "validation",
       bindable: true
     },
@@ -70,7 +70,7 @@ export const sgMeta: SgMetaV0 = {
       name: "readOnly",
       type: "boolean",
       default: false,
-      description: "Impede edicao mantendo leitura e foco.",
+      description: "Impede edição mantendo leitura e foco.",
       semanticRole: "appearance",
       bindable: true
     },

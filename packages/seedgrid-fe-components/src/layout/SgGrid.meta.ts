@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "layout",
   subcategory: "grid",
   description:
-    "Primitive de layout em grade responsiva para distribuicao de cards, blocos e formularios em colunas e linhas.",
+    "Primitive de layout em grade responsiva para distribuição de cards, blocos e formulários em colunas e linhas.",
   tags: ["layout", "grid", "responsive", "columns", "container"],
   capabilities: ["responsive-columns", "auto-fit", "dense-flow", "row-span", "column-span"],
   fieldSemantics: ["container", "gridLayout", "responsiveLayout", "collectionLayout"],
@@ -25,7 +25,7 @@ export const sgMeta: SgMetaV0 = {
     {
       name: "minItemWidth",
       type: "number | string",
-      description: "Largura minima dos itens em modo auto-fit.",
+      description: "Largura mínima dos itens em modo auto-fit.",
       semanticRole: "behavior",
       bindable: true
     },
@@ -33,14 +33,14 @@ export const sgMeta: SgMetaV0 = {
       name: "gap",
       type: "number | string",
       default: 0,
-      description: "Espacamento entre os itens da grade.",
+      description: "Espaçamento entre os itens da grade.",
       semanticRole: "appearance",
       bindable: true
     },
     {
       name: "padding",
       type: "number | string",
-      description: "Espacamento interno do container grid.",
+      description: "Espaçamento interno do container grid.",
       semanticRole: "appearance",
       bindable: true
     },
@@ -55,7 +55,7 @@ export const sgMeta: SgMetaV0 = {
     {
       name: "rowHeight",
       type: "number | string",
-      description: "Altura automatica das linhas da grade.",
+      description: "Altura automática das linhas da grade.",
       semanticRole: "behavior",
       bindable: true
     },

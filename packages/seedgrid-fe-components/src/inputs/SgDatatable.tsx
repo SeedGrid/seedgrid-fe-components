@@ -80,9 +80,9 @@ export type SgDatatableColumn<T extends SgDatatableRow = SgDatatableRow> = {
   hidden?: boolean;
   hideable?: boolean;
   reorderable?: boolean;
-  /** No modo cartoes, nao mostra esta coluna no cartao (continua na tabela). */
+  /** No modo cartões, não mostra esta coluna no cartão (continua na tabela). */
   cardHidden?: boolean;
-  /** No modo cartoes, o valor desta coluna vira o titulo do cartao (sem rotulo). So a primeira marcada vale. */
+  /** No modo cartões, o valor desta coluna vira o título do cartão (sem rótulo). Só a primeira marcada vale. */
   cardTitle?: boolean;
   className?: string;
   headerClassName?: string;
@@ -141,23 +141,23 @@ export type SgDatatableProps<T extends SgDatatableRow = SgDatatableRow> = {
   groupBoxProps?: Omit<Partial<SgGroupBoxProps>, "children" | "title"> & { title?: string };
   showColumnManager?: boolean;
   /**
-   * Habilita a tabela (padrao `true`). Com `false` as acoes que mudam estado ficam bloqueadas:
-   * ordenacao, selecao de linhas, filtros (global e por coluna), limpar filtros e o gerenciador de
-   * colunas. A leitura continua: paginacao, rolagem e carga de mais linhas seguem funcionando.
-   * O componente fica com aparencia de desabilitado e `aria-disabled`.
+   * Habilita a tabela (padrão `true`). Com `false` as ações que mudam estado ficam bloqueadas:
+   * ordenação, seleção de linhas, filtros (global e por coluna), limpar filtros e o gerenciador de
+   * colunas. A leitura continua: paginação, rolagem e carga de mais linhas seguem funcionando.
+   * O componente fica com aparência de desabilitado e `aria-disabled`.
    */
   enabled?: boolean;
   columnManagerLabel?: string;
   columnManagerMaxHeight?: number | string;
-  /** Omitido (padrao): automatico - cartoes quando o container fica abaixo de SG_DATATABLE_MOBILE_BREAKPOINT (600 px), tabela acima. `cards` forca cartoes e `scroll` forca a tabela (rolagem horizontal) em qualquer largura. */
+  /** Omitido (padrão): automático - cartões quando o container fica abaixo de SG_DATATABLE_MOBILE_BREAKPOINT (600 px), tabela acima. `cards` forca cartões e `scroll` forca a tabela (rolagem horizontal) em qualquer largura. */
   mobileMode?: SgDatatableMobileMode;
   /**
-   * Rolagem infinita (P137): sem paginador, ao chegar perto do fim avanca a pagina do `rows` existente.
-   * Padrao: ligada quando a lista e' exibida como cartoes (abaixo de 600 px no modo automatico) e desligada na tabela.
-   * Exige `paginator` (e' o `rows` que define o tamanho de cada pagina). Com `lazy`, o pai acrescenta a proxima pagina a `value`.
+   * Rolagem infinita (P137): sem paginador, ao chegar perto do fim avança a página do `rows` existente.
+   * Padrão: ligada quando a lista e' exibida como cartoes (abaixo de 600 px no modo automatico) e desligada na tabela.
+   * Exige `paginator` (e' o `rows` que define o tamanho de cada página). Com `lazy`, o pai acrescenta a próxima página a `value`.
    */
   infiniteScroll?: boolean;
-  /** Chamado (alem de `onPage`) quando a rolagem infinita pede a proxima pagina. */
+  /** Chamado (além de `onPage`) quando a rolagem infinita pede a próxima página. */
   onLoadMore?: (event: SgDatatablePageEvent) => void;
 };
 

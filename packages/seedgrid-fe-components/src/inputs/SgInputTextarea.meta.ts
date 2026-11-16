@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "input",
   subcategory: "textarea",
   description:
-    "Campo textual multi-linha para descricoes, observacoes e conteudos longos com suporte a contagem e validacao.",
+    "Campo textual multi-linha para descrições, observações e conteúdos longos com suporte a contagem e validação.",
   tags: ["form", "textarea", "long-text", "notes", "rhf"],
   capabilities: ["rhf", "controlled", "multiline", "validation", "char-counter", "word-count"],
   fieldSemantics: ["longText", "description", "notes", "comments", "details"],
@@ -19,21 +19,21 @@ export const sgMeta: SgMetaV0 = {
       name: "id",
       type: "string",
       required: true,
-      description: "Identificador unico do campo multi-linha.",
+      description: "Identificador único do campo multi-linha.",
       semanticRole: "data",
       bindable: false
     },
     {
       name: "name",
       type: "string",
-      description: "Nome do campo para formularios.",
+      description: "Nome do campo para formulários.",
       semanticRole: "data",
       bindable: true
     },
     {
       name: "label",
       type: "string",
-      description: "Rotulo principal exibido ao usuario.",
+      description: "Rótulo principal exibido ao usuário.",
       semanticRole: "label",
       bindable: true
     },
@@ -41,21 +41,21 @@ export const sgMeta: SgMetaV0 = {
       name: "required",
       type: "boolean",
       default: false,
-      description: "Marca o campo como obrigatorio.",
+      description: "Marca o campo como obrigatório.",
       semanticRole: "validation",
       bindable: true
     },
     {
       name: "maxLength",
       type: "number",
-      description: "Limite maximo de caracteres.",
+      description: "Limite máximo de caracteres.",
       semanticRole: "validation",
       bindable: true
     },
     {
       name: "minLength",
       type: "number",
-      description: "Limite minimo de caracteres.",
+      description: "Limite mínimo de caracteres.",
       semanticRole: "validation",
       bindable: true
     },

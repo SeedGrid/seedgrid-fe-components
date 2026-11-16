@@ -10,20 +10,20 @@ export const sgMeta: SgMetaV0 = {
   category: "input",
   subcategory: "birth-date",
   description:
-    "Campo especializado para data de nascimento com validacao de idade minima e maxima sobre a base de SgInputDate.",
+    "Campo especializado para data de nascimento com validação de idade mínima e máxima sobre a base de SgInputDate.",
   tags: ["form", "birth-date", "date", "age", "rhf"],
   capabilities: ["rhf", "controlled", "date-format", "min-age", "max-age", "validation"],
   fieldSemantics: ["birthDate", "personBirthDate", "ageConstrainedDate", "personalData"],
   props: [
-    { name: "id", type: "string", required: true, description: "Identificador unico do campo.", semanticRole: "data", bindable: false },
-    { name: "name", type: "string", description: "Nome do campo em formularios.", semanticRole: "data", bindable: true },
-    { name: "label", type: "string", description: "Rotulo exibido ao usuario.", semanticRole: "label", bindable: true },
-    { name: "required", type: "boolean", default: false, description: "Marca o campo como obrigatorio.", semanticRole: "validation", bindable: true },
-    { name: "minAge", type: "number", description: "Idade minima permitida.", semanticRole: "validation", bindable: true },
-    { name: "maxAge", type: "number", description: "Idade maxima permitida.", semanticRole: "validation", bindable: true },
-    { name: "minDate", type: "string | Date", description: "Data minima permitida.", semanticRole: "validation", bindable: true },
-    { name: "maxDate", type: "string | Date", description: "Data maxima permitida.", semanticRole: "validation", bindable: true },
-    { name: "onValidation", type: "(message: string | null) => void", description: "Callback para estado de validacao.", semanticRole: "event", bindable: false }
+    { name: "id", type: "string", required: true, description: "Identificador único do campo.", semanticRole: "data", bindable: false },
+    { name: "name", type: "string", description: "Nome do campo em formulários.", semanticRole: "data", bindable: true },
+    { name: "label", type: "string", description: "Rótulo exibido ao usuário.", semanticRole: "label", bindable: true },
+    { name: "required", type: "boolean", default: false, description: "Marca o campo como obrigatório.", semanticRole: "validation", bindable: true },
+    { name: "minAge", type: "number", description: "Idade mínima permitida.", semanticRole: "validation", bindable: true },
+    { name: "maxAge", type: "number", description: "Idade máxima permitida.", semanticRole: "validation", bindable: true },
+    { name: "minDate", type: "string | Date", description: "Data mínima permitida.", semanticRole: "validation", bindable: true },
+    { name: "maxDate", type: "string | Date", description: "Data máxima permitida.", semanticRole: "validation", bindable: true },
+    { name: "onValidation", type: "(message: string | null) => void", description: "Callback para estado de validação.", semanticRole: "event", bindable: false }
   ],
   states: ["default", "focused", "disabled", "readOnly", "error"],
   examples: [

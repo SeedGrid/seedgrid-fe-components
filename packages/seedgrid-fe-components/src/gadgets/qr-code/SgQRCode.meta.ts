@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "gadget",
   subcategory: "qr-code",
   description:
-    "Gerador visual de QR Code com configuracao de valor, logo central, tamanho, margem e cores.",
+    "Gerador visual de QR Code com configuração de valor, logo central, tamanho, margem e cores.",
   tags: ["gadget", "qr-code", "barcode", "pix", "share"],
   capabilities: ["qr-generation", "logo-overlay", "size-control", "color-customization", "empty-fallback"],
   fieldSemantics: ["qrCode", "shareCode", "pixCode", "encodedLink", "machineReadableCode"],

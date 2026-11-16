@@ -10,15 +10,15 @@ export const sgMeta: SgMetaV0 = {
   category: "feedback",
   subcategory: "toaster",
   description:
-    "Host visual de notificacoes toast globais, com controle de posicao, duracao, quantidade visivel e estilos ricos.",
+    "Host visual de notificações toast globais, com controle de posição, duração, quantidade visível e estilos ricos.",
   tags: ["feedback", "toast", "notification", "toaster"],
   capabilities: ["toast-hosting", "global-feedback", "positioning", "duration-control", "rich-colors"],
   fieldSemantics: ["toastContainer", "notificationFeedback", "globalFeedback"],
   props: [
-    { name: "position", type: '"top-right" | "top-left" | "top-center" | "bottom-right" | "bottom-left" | "bottom-center"', default: "top-right", description: "Posicao global do stack de toasts.", semanticRole: "appearance", bindable: true },
-    { name: "duration", type: "number", default: 4000, description: "Duracao padrao dos toasts em milissegundos.", semanticRole: "behavior", bindable: true },
-    { name: "visibleToasts", type: "number", default: 6, description: "Quantidade maxima de toasts visiveis simultaneamente.", semanticRole: "behavior", bindable: true },
-    { name: "closeButton", type: "boolean", default: true, description: "Exibe botao de fechar em cada toast.", semanticRole: "appearance", bindable: true },
+    { name: "position", type: '"top-right" | "top-left" | "top-center" | "bottom-right" | "bottom-left" | "bottom-center"', default: "top-right", description: "Posição global do stack de toasts.", semanticRole: "appearance", bindable: true },
+    { name: "duration", type: "number", default: 4000, description: "Duração padrão dos toasts em milissegundos.", semanticRole: "behavior", bindable: true },
+    { name: "visibleToasts", type: "number", default: 6, description: "Quantidade máxima de toasts visíveis simultaneamente.", semanticRole: "behavior", bindable: true },
+    { name: "closeButton", type: "boolean", default: true, description: "Exibe botão de fechar em cada toast.", semanticRole: "appearance", bindable: true },
     { name: "richColors", type: "boolean", default: true, description: "Ativa paleta visual rica por tipo de toast.", semanticRole: "appearance", bindable: true },
     { name: "rounded", type: "boolean", default: true, description: "Arredonda os cantos de cada toast (desligue para cantos retos).", semanticRole: "appearance", bindable: true }
   ],

@@ -37,7 +37,7 @@ export type SgMultiSelectProps = SgMultiSelectBaseHostProps & {
   maxSelected?: number;
   emptyText?: string;
   /**
-   * Quantos rotulos exibir antes de cair no resumo "N selecionadas".
+   * Quantos rótulos exibir antes de cair no resumo "N selecionadas".
    * @default 2
    */
   summaryThreshold?: number;

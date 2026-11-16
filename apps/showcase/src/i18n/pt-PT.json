@@ -3990,6 +3990,7 @@
   "showcase.component.yearPartSelector.section7Description": "Alterne os recortes permitidos, o intervalo de anos e o locale e veja o intervalo resolvido em tempo real.",
   "showcase.component.yearPartSelector.defaults.minYear": "ano corrente - 30",
   "showcase.component.yearPartSelector.defaults.maxYear": "ano corrente + 10",
+  "showcase.common.automatic": "automático",
   "showcase.component.yearPartSelector.props.id": "Prefixo dos ids dos três controlos internos; não e' o id de um campo único.",
   "showcase.component.yearPartSelector.props.label": "Rótulo do grupo, acima da linha de controlos.",
   "showcase.component.yearPartSelector.props.value": "Recorte selecionado no modo controlado: { year, kind, part }, com part em base 1.",

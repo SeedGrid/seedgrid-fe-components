@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "layout",
   subcategory: "accordion",
   description:
-    "Container colapsavel por secoes para organizar conteudo em paineis expansivos, verticais ou horizontais.",
+    "Container colapsável por seções para organizar conteúdo em painéis expansivos, verticais ou horizontais.",
   tags: ["layout", "accordion", "collapse", "sections", "disclosure"],
   capabilities: ["collapsible-sections", "multiple-open", "horizontal", "controlled-state", "keep-mounted"],
   fieldSemantics: ["container", "sectionGroup", "collapsibleSection", "disclosure"],
@@ -19,7 +19,7 @@ export const sgMeta: SgMetaV0 = {
       name: "items",
       type: "SgAccordionItem[]",
       required: true,
-      description: "Colecao de secoes renderizadas pelo accordion.",
+      description: "Coleção de seções renderizadas pelo accordion.",
       semanticRole: "data",
       bindable: true
     },
@@ -27,7 +27,7 @@ export const sgMeta: SgMetaV0 = {
       name: "orientation",
       type: '"vertical" | "horizontal"',
       default: "vertical",
-      description: "Direcao de expansao dos paineis.",
+      description: "Direção de expansão dos painéis.",
       semanticRole: "behavior",
       bindable: true
     },
@@ -35,7 +35,7 @@ export const sgMeta: SgMetaV0 = {
       name: "multiple",
       type: "boolean",
       default: false,
-      description: "Permite manter varios paineis abertos simultaneamente.",
+      description: "Permite manter vários painéis abertos simultaneamente.",
       semanticRole: "behavior",
       bindable: true
     },
@@ -43,21 +43,21 @@ export const sgMeta: SgMetaV0 = {
       name: "collapsible",
       type: "boolean",
       default: true,
-      description: "Permite fechar um painel ja ativo.",
+      description: "Permite fechar um painel já ativo.",
       semanticRole: "behavior",
       bindable: true
     },
     {
       name: "activeIndex",
       type: "number | number[]",
-      description: "Estado controlado dos paineis abertos.",
+      description: "Estado controlado dos painéis abertos.",
       semanticRole: "value",
       bindable: true
     },
     {
       name: "defaultActiveIndex",
       type: "number | number[]",
-      description: "Estado inicial dos paineis abertos.",
+      description: "Estado inicial dos painéis abertos.",
       semanticRole: "behavior",
       bindable: true
     },
@@ -71,7 +71,7 @@ export const sgMeta: SgMetaV0 = {
     {
       name: "onActiveIndexChange",
       type: "(indexes: number[]) => void",
-      description: "Callback disparado quando o conjunto de paineis abertos muda.",
+      description: "Callback disparado quando o conjunto de painéis abertos muda.",
       semanticRole: "event",
       bindable: false
     }

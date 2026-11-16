@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "input",
   subcategory: "number",
   description:
-    "Campo numerico com suporte a valores inteiros e decimais, validacao de limites e integracao com react-hook-form.",
+    "Campo numérico com suporte a valores inteiros e decimais, validação de limites e integração com react-hook-form.",
   tags: ["form", "number", "numeric", "rhf"],
   capabilities: ["rhf", "controlled", "validation", "min-max", "decimal", "clearable"],
   fieldSemantics: ["number", "integer", "decimal", "quantity", "measurement"],
@@ -19,21 +19,21 @@ export const sgMeta: SgMetaV0 = {
       name: "id",
       type: "string",
       required: true,
-      description: "Identificador unico do campo numerico.",
+      description: "Identificador único do campo numérico.",
       semanticRole: "data",
       bindable: false
     },
     {
       name: "name",
       type: "string",
-      description: "Nome do campo para formularios.",
+      description: "Nome do campo para formulários.",
       semanticRole: "data",
       bindable: true
     },
     {
       name: "label",
       type: "string",
-      description: "Rotulo principal exibido ao usuario.",
+      description: "Rótulo principal exibido ao usuário.",
       semanticRole: "label",
       bindable: true
     },
@@ -41,7 +41,7 @@ export const sgMeta: SgMetaV0 = {
       name: "required",
       type: "boolean",
       default: false,
-      description: "Marca o campo como obrigatorio.",
+      description: "Marca o campo como obrigatório.",
       semanticRole: "validation",
       bindable: true
     },
@@ -49,7 +49,7 @@ export const sgMeta: SgMetaV0 = {
       name: "emptyValueIsNull",
       type: "boolean",
       default: false,
-      description: "Se true, campo vazio vale null; se false (padrao), vale 0.",
+      description: "Se true, campo vazio vale null; se false (padrão), vale 0.",
       semanticRole: "behavior",
       bindable: true
     },
@@ -64,14 +64,14 @@ export const sgMeta: SgMetaV0 = {
       name: "readOnly",
       type: "boolean",
       default: false,
-      description: "Impede edicao mantendo leitura e foco.",
+      description: "Impede edição mantendo leitura e foco.",
       semanticRole: "appearance",
       bindable: true
     },
     {
       name: "onChange",
       type: "(value: number | null) => void",
-      description: "Callback com o valor numerico atual (number; null somente com emptyValueIsNull).",
+      description: "Callback com o valor numérico atual (number; null somente com emptyValueIsNull).",
       semanticRole: "event",
       bindable: false
     }

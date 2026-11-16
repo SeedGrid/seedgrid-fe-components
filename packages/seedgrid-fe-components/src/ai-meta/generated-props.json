@@ -894,7 +894,7 @@
       "name": "enabled",
       "type": "boolean",
       "required": false,
-      "description": "Habilita o calendario (padrao `true`). Com `false` os dias, os botoes de mes anterior/proximo\r\ne o atalho \"hoje\" ficam desabilitados (nao focaveis, sem clique); a data e o mes atuais seguem\r\nlegiveis."
+      "description": "Habilita o calendário (padrão `true`). Com `false` os dias, os botões de mês anterior/próximo\r\ne o atalho \"hoje\" ficam desabilitados (não focaveis, sem clique); a data e o mês atuais seguem\r\nlegiveis."
     },
     {
       "name": "isDateDisabled",
@@ -977,7 +977,7 @@
       "name": "allowSwitch",
       "type": "boolean",
       "required": false,
-      "description": "Mostra o botao de alternar entre frontal e traseira (padrao `true`)."
+      "description": "Mostra o botão de alternar entre frontal e traseira (padrão `true`)."
     },
     {
       "name": "className",
@@ -993,13 +993,13 @@
       "name": "facing",
       "type": "CameraFacing",
       "required": false,
-      "description": "Camera inicial: `user` (frontal) ou `environment` (traseira). Padrao `user`."
+      "description": "Câmera inicial: `user` (frontal) ou `environment` (traseira). Padrão `user`."
     },
     {
       "name": "guide",
       "type": "CameraGuide",
       "required": false,
-      "description": "Guia de enquadramento sobre a pre-visualizacao: `none` (padrao), `oval` ou `rect`."
+      "description": "Guia de enquadramento sobre a pre-visualizacao: `none` (padrão), `oval` ou `rect`."
     },
     {
       "name": "hintText",
@@ -1031,19 +1031,19 @@
       "name": "onError",
       "type": "((code: CameraErrorCode, message: string) => void)",
       "required": false,
-      "description": "Disparado quando a camera nao abre: `permission`, `noCamera` ou `failed`. `message` ja vem traduzida."
+      "description": "Disparado quando a câmera não abre: `permission`, `noCamera` ou `failed`. `message` já vem traduzida."
     },
     {
       "name": "previewHeight",
       "type": "number",
       "required": false,
-      "description": "Altura da pre-visualizacao em px (padrao 320)."
+      "description": "Altura da pre-visualizacao em px (padrão 320)."
     },
     {
       "name": "resolution",
       "type": "CameraResolution",
       "required": false,
-      "description": "Resolucao pedida: `low` (640x480), `medium` (1280x720, padrao) ou `high` (1920x1080)."
+      "description": "Resolução pedida: `low` (640x480), `medium` (1280x720, padrão) ou `high` (1920x1080)."
     }
   ],
   "SgCard": [
@@ -1475,7 +1475,7 @@
       "name": "digitBuilder",
       "type": "SgClockDigitBuilder",
       "required": false,
-      "description": "Desenha o relogio digital quando `digitalStyle` e `\"custom\"`. Sem ele, cai no estilo `default`."
+      "description": "Desenha o relógio digital quando `digitalStyle` e `\"custom\"`. Sem ele, cai no estilo `default`."
     },
     {
       "name": "draggable",
@@ -2100,7 +2100,7 @@
       "name": "enabled",
       "type": "boolean",
       "required": false,
-      "description": "Habilita a tabela (padrao `true`). Com `false` as acoes que mudam estado ficam bloqueadas:\nordenacao, selecao de linhas, filtros (global e por coluna), limpar filtros e o gerenciador de\ncolunas. A leitura continua: paginacao, rolagem e carga de mais linhas seguem funcionando.\nO componente fica com aparencia de desabilitado e `aria-disabled`."
+      "description": "Habilita a tabela (padrão `true`). Com `false` as ações que mudam estado ficam bloqueadas:\nordenação, seleção de linhas, filtros (global e por coluna), limpar filtros e o gerenciador de\ncolunas. A leitura continua: paginacao, rolagem e carga de mais linhas seguem funcionando.\nO componente fica com aparência de desabilitado e `aria-disabled`."
     },
     {
       "name": "filters",
@@ -2141,7 +2141,7 @@
       "name": "infiniteScroll",
       "type": "boolean",
       "required": false,
-      "description": "Rolagem infinita (P137): sem paginador, ao chegar perto do fim avanca a pagina do `rows` existente.\nPadrao: ligada quando a lista e' exibida como cartoes (abaixo de 600 px no modo automatico) e desligada na tabela.\nExige `paginator` (e' o `rows` que define o tamanho de cada pagina). Com `lazy`, o pai acrescenta a proxima pagina a `value`."
+      "description": "Rolagem infinita (P137): sem paginador, ao chegar perto do fim avança a página do `rows` existente.\nPadrão: ligada quando a lista e' exibida como cartoes (abaixo de 600 px no modo automatico) e desligada na tabela.\nExige `paginator` (e' o `rows` que define o tamanho de cada página). Com `lazy`, o pai acrescenta a próxima página a `value`."
     },
     {
       "name": "lazy",
@@ -2157,7 +2157,7 @@
       "name": "mobileMode",
       "type": "SgDatatableMobileMode",
       "required": false,
-      "description": "Omitido (padrao): automatico - cartoes quando o container fica abaixo de SG_DATATABLE_MOBILE_BREAKPOINT (600 px), tabela acima. `cards` forca cartoes e `scroll` forca a tabela (rolagem horizontal) em qualquer largura."
+      "description": "Omitido (padrão): automatico - cartões quando o container fica abaixo de SG_DATATABLE_MOBILE_BREAKPOINT (600 px), tabela acima. `cards` forca cartões e `scroll` forca a tabela (rolagem horizontal) em qualquer largura."
     },
     {
       "name": "onFilter",
@@ -2173,7 +2173,7 @@
       "name": "onLoadMore",
       "type": "((event: SgDatatablePageEvent) => void)",
       "required": false,
-      "description": "Chamado (alem de `onPage`) quando a rolagem infinita pede a proxima pagina."
+      "description": "Chamado (além de `onPage`) quando a rolagem infinita pede a próxima página."
     },
     {
       "name": "onPage",
@@ -2463,7 +2463,7 @@
       "name": "animateOnChange",
       "type": "boolean",
       "required": false,
-      "description": "Ativa animacao de descarte quando o valor muda."
+      "description": "Ativa animação de descarte quando o valor muda."
     },
     {
       "name": "backgroundColor",
@@ -2475,7 +2475,7 @@
       "name": "changeAnimationMode",
       "type": "\"discard\" | \"incoming\"",
       "required": false,
-      "description": "Estrategia de animacao para mudancas por prop `value`."
+      "description": "Estratégia de animação para mudanças por prop `value`."
     },
     {
       "name": "className",
@@ -2511,7 +2511,7 @@
       "name": "stackDepth",
       "type": "number",
       "required": false,
-      "description": "Quantidade de folhas visiveis na pilha (min 2, max 30). Ignorado se totalNumberPages for definido."
+      "description": "Quantidade de folhas visíveis na pilha (min 2, max 30). Ignorado se totalNumberPages for definido."
     },
     {
       "name": "style",
@@ -2523,13 +2523,13 @@
       "name": "totalNumberPages",
       "type": "number",
       "required": false,
-      "description": "Total de paginas do monte. Quando definido, a pilha visual encolhe a cada increasePage()."
+      "description": "Total de páginas do monte. Quando definido, a pilha visual encolhe a cada increasePage()."
     },
     {
       "name": "transitionMs",
       "type": "number",
       "required": false,
-      "description": "Duracao total da animacao em ms."
+      "description": "Duração total da animação em ms."
     },
     {
       "name": "value",
@@ -2939,7 +2939,7 @@
       "name": "accept",
       "type": "string",
       "required": false,
-      "description": "Tipos extras em texto livre (`.pdf`, `image/png`, `image/*`), separados por virgula; soma-se ao mediaType."
+      "description": "Tipos extras em texto livre (`.pdf`, `image/png`, `image/*`), separados por vírgula; soma-se ao mediaType."
     },
     {
       "name": "className",
@@ -2955,7 +2955,7 @@
       "name": "defaultValue",
       "type": "SgFileValue[]",
       "required": false,
-      "description": "Arquivos iniciais (campo nao controlado)."
+      "description": "Arquivos iniciais (campo não controlado)."
     },
     {
       "name": "dropManyTextKey",
@@ -2966,7 +2966,7 @@
       "name": "dropTextKey",
       "type": "string",
       "required": false,
-      "description": "Chaves de i18n do texto da area vazia (um arquivo / varios)."
+      "description": "Chaves de i18n do texto da área vazia (um arquivo / vários)."
     },
     {
       "name": "enabled",
@@ -2982,7 +2982,7 @@
       "name": "extraCheck",
       "type": "((file: File, info: { mime: string; }) => Promise<SgFileRejection | null>)",
       "required": false,
-      "description": "Regra extra, assincrona, por arquivo (depois da conferencia de tipo). E como o SgImageUpload confere dimensao."
+      "description": "Regra extra, assincrona, por arquivo (depois da conferencia de tipo). E como o SgImageUpload confere dimensão."
     },
     {
       "name": "hintText",
@@ -3014,25 +3014,25 @@
       "name": "maxFiles",
       "type": "number",
       "required": false,
-      "description": "Quantos arquivos o campo guarda (padrao 1). Com 1, escolher outro substitui; maior que 1 liga a selecao multipla."
+      "description": "Quantos arquivos o campo guarda (padrão 1). Com 1, escolher outro substitui; maior que 1 liga a seleção múltipla."
     },
     {
       "name": "maxSizePerFile",
       "type": "SizeLimit",
       "required": false,
-      "description": "Tamanho maximo de cada arquivo: bytes (numero) ou texto com unidade (\"500KB\", \"1.5MB\", \"1GB\")."
+      "description": "Tamanho máximo de cada arquivo: bytes (número) ou texto com unidade (\"500KB\", \"1.5MB\", \"1GB\")."
     },
     {
       "name": "maxSizeTotal",
       "type": "SizeLimit",
       "required": false,
-      "description": "Tamanho maximo da soma dos arquivos (mesmo formato)."
+      "description": "Tamanho máximo da soma dos arquivos (mesmo formato)."
     },
     {
       "name": "mediaType",
       "type": "MediaType[]",
       "required": false,
-      "description": "Tipos aceitos (`image`, `pdf`, `xlsx`...). O tipo e conferido pelo conteudo do arquivo."
+      "description": "Tipos aceitos (`image`, `pdf`, `xlsx`...). O tipo e conferido pelo conteúdo do arquivo."
     },
     {
       "name": "name",
@@ -3043,7 +3043,7 @@
       "name": "onChange",
       "type": "((files: SgFileValue[]) => void)",
       "required": false,
-      "description": "Lista de arquivos validos apos escolher ou remover. O envio ao servidor e do host."
+      "description": "Lista de arquivos válidos após escolher ou remover. O envio ao servidor e do host."
     },
     {
       "name": "onEnter",
@@ -3054,7 +3054,7 @@
       "name": "onError",
       "type": "((code: FileErrorCode, message: string, fileName: string) => void)",
       "required": false,
-      "description": "Arquivo recusado: codigo, mensagem ja traduzida e nome do arquivo. Os demais seguem validos."
+      "description": "Arquivo recusado: código, mensagem já traduzida e nome do arquivo. Os demais seguem válidos."
     },
     {
       "name": "onExit",
@@ -3065,7 +3065,7 @@
       "name": "pickerAccept",
       "type": "string",
       "required": false,
-      "description": "Valor do atributo `accept` do seletor do navegador (padrao: derivado de mediaType/accept)."
+      "description": "Valor do atributo `accept` do seletor do navegador (padrão: derivado de mediaType/accept)."
     },
     {
       "name": "readOnly",
@@ -3096,19 +3096,19 @@
       "name": "thumbnailBuilder",
       "type": "((file: SgFileValue, size: number) => ReactNode)",
       "required": false,
-      "description": "Miniatura de cada arquivo (sem ela, a lista usa o icone do tipo)."
+      "description": "Miniatura de cada arquivo (sem ela, a lista usa o ícone do tipo)."
     },
     {
       "name": "thumbnailSize",
       "type": "number",
       "required": false,
-      "description": "Lado da miniatura em px (padrao 96)."
+      "description": "Lado da miniatura em px (padrão 96)."
     },
     {
       "name": "typeNames",
       "type": "string",
       "required": false,
-      "description": "Texto dos tipos aceitos na mensagem de tipo recusado (padrao: mediaType/accept)."
+      "description": "Texto dos tipos aceitos na mensagem de tipo recusado (padrão: mediaType/accept)."
     },
     {
       "name": "value",
@@ -3393,13 +3393,13 @@
       "name": "accept",
       "type": "string",
       "required": false,
-      "description": "Tipos extras em texto livre (`.pdf`, `image/png`, `image/*`), separados por virgula; soma-se ao mediaType.\nRestringe os formatos de imagem em texto livre (`.png`, `image/jpeg`), separados por virgula."
+      "description": "Tipos extras em texto livre (`.pdf`, `image/png`, `image/*`), separados por vírgula; soma-se ao mediaType.\nRestringe os formatos de imagem em texto livre (`.png`, `image/jpeg`), separados por vírgula."
     },
     {
       "name": "aspect",
       "type": "number",
       "required": false,
-      "description": "Proporcao largura/altura exigida (1 = quadrada, 16 / 9)."
+      "description": "Proporção largura/altura exigida (1 = quadrada, 16 / 9)."
     },
     {
       "name": "className",
@@ -3415,7 +3415,7 @@
       "name": "defaultValue",
       "type": "SgFileValue[]",
       "required": false,
-      "description": "Arquivos iniciais (campo nao controlado)."
+      "description": "Arquivos iniciais (campo não controlado)."
     },
     {
       "name": "enabled",
@@ -3451,31 +3451,31 @@
       "name": "maxFiles",
       "type": "number",
       "required": false,
-      "description": "Quantos arquivos o campo guarda (padrao 1). Com 1, escolher outro substitui; maior que 1 liga a selecao multipla."
+      "description": "Quantos arquivos o campo guarda (padrão 1). Com 1, escolher outro substitui; maior que 1 liga a seleção múltipla."
     },
     {
       "name": "maxSizePerFile",
       "type": "SizeLimit",
       "required": false,
-      "description": "Tamanho maximo de cada arquivo: bytes (numero) ou texto com unidade (\"500KB\", \"1.5MB\", \"1GB\")."
+      "description": "Tamanho máximo de cada arquivo: bytes (número) ou texto com unidade (\"500KB\", \"1.5MB\", \"1GB\")."
     },
     {
       "name": "maxSizeTotal",
       "type": "SizeLimit",
       "required": false,
-      "description": "Tamanho maximo da soma dos arquivos (mesmo formato)."
+      "description": "Tamanho máximo da soma dos arquivos (mesmo formato)."
     },
     {
       "name": "minHeight",
       "type": "number",
       "required": false,
-      "description": "Altura minima em px."
+      "description": "Altura mínima em px."
     },
     {
       "name": "minWidth",
       "type": "number",
       "required": false,
-      "description": "Largura minima em px."
+      "description": "Largura mínima em px."
     },
     {
       "name": "name",
@@ -3486,7 +3486,7 @@
       "name": "onChange",
       "type": "((files: SgFileValue[]) => void)",
       "required": false,
-      "description": "Lista de arquivos validos apos escolher ou remover. O envio ao servidor e do host."
+      "description": "Lista de arquivos válidos após escolher ou remover. O envio ao servidor e do host."
     },
     {
       "name": "onEnter",
@@ -3497,7 +3497,7 @@
       "name": "onError",
       "type": "((code: FileErrorCode, message: string, fileName: string) => void)",
       "required": false,
-      "description": "Arquivo recusado: codigo, mensagem ja traduzida e nome do arquivo. Os demais seguem validos."
+      "description": "Arquivo recusado: código, mensagem já traduzida e nome do arquivo. Os demais seguem válidos."
     },
     {
       "name": "onExit",
@@ -3508,7 +3508,7 @@
       "name": "previewHeight",
       "type": "number",
       "required": false,
-      "description": "Altura da miniatura em px (padrao 160; na grade, no maximo 120)."
+      "description": "Altura da miniatura em px (padrão 160; na grade, no máximo 120)."
     },
     {
       "name": "readOnly",
@@ -3707,13 +3707,13 @@
       "name": "onEnter",
       "type": "((() => void) & (() => void) & (() => void))",
       "required": false,
-      "description": "Disparado ao receber foco — padrao seedgrid."
+      "description": "Disparado ao receber foco — padrão seedgrid."
     },
     {
       "name": "onExit",
       "type": "((() => void) & (() => void) & (() => void))",
       "required": false,
-      "description": "Disparado ao perder o foco (apos validacao) — padrao seedgrid."
+      "description": "Disparado ao perder o foco (após validação) — padrão seedgrid."
     },
     {
       "name": "onValidation",
@@ -3946,13 +3946,13 @@
       "name": "onEnter",
       "type": "((() => void) & (() => void))",
       "required": false,
-      "description": "Disparado ao receber foco — padrao seedgrid."
+      "description": "Disparado ao receber foco — padrão seedgrid."
     },
     {
       "name": "onExit",
       "type": "((() => void) & (() => void))",
       "required": false,
-      "description": "Disparado ao perder o foco (apos validacao) — padrao seedgrid."
+      "description": "Disparado ao perder o foco (após validação) — padrão seedgrid."
     },
     {
       "name": "onPublicaCnpjError",
@@ -4215,13 +4215,13 @@
       "name": "onEnter",
       "type": "((() => void) & (() => void))",
       "required": false,
-      "description": "Disparado ao receber foco — padrao seedgrid."
+      "description": "Disparado ao receber foco — padrão seedgrid."
     },
     {
       "name": "onExit",
       "type": "((() => void) & (() => void))",
       "required": false,
-      "description": "Disparado ao perder o foco (apos validacao) — padrao seedgrid."
+      "description": "Disparado ao perder o foco (após validação) — padrão seedgrid."
     },
     {
       "name": "onValidation",
@@ -4459,25 +4459,25 @@
       "name": "onEnter",
       "type": "((() => void) & (() => void))",
       "required": false,
-      "description": "Disparado ao receber foco — padrao seedgrid."
+      "description": "Disparado ao receber foco — padrão seedgrid."
     },
     {
       "name": "onExit",
       "type": "((() => void) & (() => void))",
       "required": false,
-      "description": "Disparado ao perder o foco (apos validacao) — padrao seedgrid."
+      "description": "Disparado ao perder o foco (após validação) — padrão seedgrid."
     },
     {
       "name": "onPublicaCnpjError",
       "type": "((error: unknown) => void)",
       "required": false,
-      "description": "Chamado quando a consulta falha (rede ou limite da API); a validacao passa."
+      "description": "Chamado quando a consulta falha (rede ou limite da API); a validação passa."
     },
     {
       "name": "onPublicaCnpjResult",
       "type": "((data: unknown) => void)",
       "required": false,
-      "description": "Recebe o resultado da consulta (`null` quando nao achou)."
+      "description": "Recebe o resultado da consulta (`null` quando não achou)."
     },
     {
       "name": "onValidation",
@@ -4503,13 +4503,13 @@
       "name": "publicaCnpjErrorMessage",
       "type": "string",
       "required": false,
-      "description": "Mensagem quando a base publica nao encontra o CNPJ."
+      "description": "Mensagem quando a base publica não encontra o CNPJ."
     },
     {
       "name": "publicaCnpjFetch",
       "type": "((cnpj: string) => Promise<unknown>)",
       "required": false,
-      "description": "Consulta injetavel (testes sem rede). Padrao: https://publica.cnpj.ws."
+      "description": "Consulta injetavel (testes sem rede). Padrão: https://publica.cnpj.ws."
     },
     {
       "name": "readOnly",
@@ -4565,7 +4565,7 @@
       "name": "validateWithPublicaCnpj",
       "type": "boolean",
       "required": false,
-      "description": "Quando o documento e um CNPJ numerico valido, confirma na base publica (publica.cnpj.ws) que ele existe."
+      "description": "Quando o documento e um CNPJ numérico valido, confirma na base publica (publica.cnpj.ws) que ele existe."
     },
     {
       "name": "validation",
@@ -4985,13 +4985,13 @@
       "name": "onEnter",
       "type": "((() => void) & (() => void))",
       "required": false,
-      "description": "Disparado ao receber foco — padrao seedgrid."
+      "description": "Disparado ao receber foco — padrão seedgrid."
     },
     {
       "name": "onExit",
       "type": "((() => void) & (() => void))",
       "required": false,
-      "description": "Disparado ao perder o foco (apos validacao) — padrao seedgrid."
+      "description": "Disparado ao perder o foco (após validação) — padrão seedgrid."
     },
     {
       "name": "onValidation",
@@ -5104,7 +5104,7 @@
       "name": "defaultValue",
       "type": "string | Date | null",
       "required": false,
-      "description": "Instante inicial (campo nao controlado)."
+      "description": "Instante inicial (campo não controlado)."
     },
     {
       "name": "elevation",
@@ -5233,7 +5233,7 @@
       "name": "onChange",
       "type": "((value: string | null, local: string) => void)",
       "required": false,
-      "description": "Disparado a cada alteracao com o valor no formato de `valueMode` (`local` \"2026-11-03T14:30\", `utc`\n\"2026-11-03T17:30:00Z\" ou `offset` \"2026-11-03T14:30:00-03:00\") ou `null` se o campo ficou vazio/incompleto/invalido;\n`local` e sempre o texto do campo (`2026-11-03T14:30`) no fuso do campo. O mesmo formato vai para o formulario (RHF)."
+      "description": "Disparado a cada alteração com o valor no formato de `valueMode` (`local` \"2026-11-03T14:30\", `utc`\r\n\"2026-11-03T17:30:00Z\" ou `offset` \"2026-11-03T14:30:00-03:00\") ou `null` se o campo ficou vazio/incompleto/inválido;\r\n`local` e sempre o texto do campo (`2026-11-03T14:30`) no fuso do campo. O mesmo formato vai para o formulário (RHF)."
     },
     {
       "name": "onClear",
@@ -5244,13 +5244,13 @@
       "name": "onEnter",
       "type": "((() => void) & (() => void))",
       "required": false,
-      "description": "Disparado ao receber foco — padrao seedgrid."
+      "description": "Disparado ao receber foco — padrão seedgrid."
     },
     {
       "name": "onExit",
       "type": "((() => void) & (() => void))",
       "required": false,
-      "description": "Disparado ao perder o foco (apos validacao) — padrao seedgrid."
+      "description": "Disparado ao perder o foco (após validação) — padrão seedgrid."
     },
     {
       "name": "onValidation",
@@ -5322,7 +5322,7 @@
       "name": "timeZone",
       "type": "string",
       "required": false,
-      "description": "Fuso em que o campo mostra e interpreta a hora: \"local\" (padrao, o do dispositivo), \"UTC\", \"+03:00\" ou nome IANA."
+      "description": "Fuso em que o campo mostra e interpreta a hora: \"local\" (padrão, o do dispositivo), \"UTC\", \"+03:00\" ou nome IANA."
     },
     {
       "name": "validateOnBlur",
@@ -5338,13 +5338,13 @@
       "name": "value",
       "type": "string | Date | null",
       "required": false,
-      "description": "Valor controlado, em qualquer formato: texto local sem fuso (\"2026-01-15T10:30\", ja no relogio do campo), ISO 8601 com\n\"Z\" ou deslocamento (\"2026-01-15T13:30:00Z\", \"2026-01-15T10:30:00-03:00\") ou `Date`. `null`/\"\" limpa o campo."
+      "description": "Valor controlado, em qualquer formato: texto local sem fuso (\"2026-01-15T10:30\", já no relógio do campo), ISO 8601 com\r\n\"Z\" ou deslocamento (\"2026-01-15T13:30:00Z\", \"2026-01-15T10:30:00-03:00\") ou `Date`. `null`/\"\" limpa o campo."
     },
     {
       "name": "valueMode",
       "type": "DateTimeValueMode",
       "required": false,
-      "description": "Formato do valor que sai (onChange e formulario) e que o formulario/`value` aceitam: `local` (padrao), `utc` ou `offset`.\nCom `register`, `utc`/`offset` so convertem o que e digitado; para atribuir por codigo use `control`."
+      "description": "Formato do valor que sai (onChange e formulário) e que o formulário/`value` aceitam: `local` (padrão), `utc` ou `offset`.\r\nCom `register`, `utc`/`offset` só convertem o que e digitado; para atribuir por código use `control`."
     },
     {
       "name": "width",
@@ -5517,7 +5517,7 @@
       "name": "onExit",
       "type": "((() => void) & (() => void))",
       "required": false,
-      "description": "Disparado quando o campo perde o foco (apos a validacao) — padrao seedgrid."
+      "description": "Disparado quando o campo perde o foco (após a validação) — padrão seedgrid."
     },
     {
       "name": "onValidation",
@@ -6024,7 +6024,7 @@
       "name": "createNewPasswordButton",
       "type": "boolean",
       "required": false,
-      "description": "Exibe um botao para gerar automaticamente uma senha forte aleatoria (respeita as regras de politica)."
+      "description": "Exibe um botão para gerar automaticamente uma senha forte aleatória (respeita as regras de política)."
     },
     {
       "name": "elevation",
@@ -6150,7 +6150,7 @@
       "name": "newPasswordLength",
       "type": "number",
       "required": false,
-      "description": "Comprimento da senha gerada pelo `createNewPasswordButton`. Default: `minSize`.\r\n\r\nNAO derive isto de `maxLength`: `maxLength` existe para nao truncar o que o usuario\r\ndigita (frase-senha), e costuma ser folgado (128, 512). Usar o teto como alvo fazia o\r\nbotao gerar uma senha de 128 caracteres."
+      "description": "Comprimento da senha gerada pelo `createNewPasswordButton`. Default: `minSize`.\r\n\r\nNÃO derive isto de `maxLength`: `maxLength` existe para não truncar o que o usuário\r\ndigita (frase-senha), e costuma ser folgado (128, 512). Usar o teto como alvo fazia o\r\nbotão gerar uma senha de 128 caracteres."
     },
     {
       "name": "numberRequired",
@@ -6171,13 +6171,13 @@
       "name": "onEnter",
       "type": "((() => void) & (() => void))",
       "required": false,
-      "description": "Disparado ao receber foco — padrao seedgrid."
+      "description": "Disparado ao receber foco — padrão seedgrid."
     },
     {
       "name": "onExit",
       "type": "((() => void) & (() => void))",
       "required": false,
-      "description": "Disparado ao perder o foco (apos validacao) — padrao seedgrid."
+      "description": "Disparado ao perder o foco (após validação) — padrão seedgrid."
     },
     {
       "name": "onValidation",
@@ -6440,13 +6440,13 @@
       "name": "onEnter",
       "type": "((() => void) & (() => void))",
       "required": false,
-      "description": "Disparado ao receber foco — padrao seedgrid."
+      "description": "Disparado ao receber foco — padrão seedgrid."
     },
     {
       "name": "onExit",
       "type": "((() => void) & (() => void))",
       "required": false,
-      "description": "Disparado ao perder o foco (apos validacao) — padrao seedgrid."
+      "description": "Disparado ao perder o foco (após validação) — padrão seedgrid."
     },
     {
       "name": "onValidation",
@@ -6689,13 +6689,13 @@
       "name": "onEnter",
       "type": "((() => void) & (() => void))",
       "required": false,
-      "description": "Disparado ao receber foco — padrao seedgrid."
+      "description": "Disparado ao receber foco — padrão seedgrid."
     },
     {
       "name": "onExit",
       "type": "((() => void) & (() => void))",
       "required": false,
-      "description": "Disparado ao perder o foco (apos validacao) — padrao seedgrid."
+      "description": "Disparado ao perder o foco (após validação) — padrão seedgrid."
     },
     {
       "name": "onValidation",
@@ -7397,7 +7397,7 @@
       "name": "onChange",
       "type": "((value: string) => void)",
       "required": false,
-      "description": "Disparado imediatamente a cada digitacao, com o valor cru."
+      "description": "Disparado imediatamente a cada digitação, com o valor cru."
     },
     {
       "name": "onClear",
@@ -7418,7 +7418,7 @@
       "name": "onSearchChange",
       "type": "(value: string) => void",
       "required": true,
-      "description": "Disparado apos o debounce, com o valor normalizado (trim + gate por minChars)."
+      "description": "Disparado após o debounce, com o valor normalizado (trim + gate por minChars)."
     },
     {
       "name": "onValidation",
@@ -8189,7 +8189,7 @@
       "name": "summaryThreshold",
       "type": "number",
       "required": false,
-      "description": "Quantos rotulos exibir antes de cair no resumo \"N selecionadas\"."
+      "description": "Quantos rótulos exibir antes de cair no resumo \"N selecionadas\"."
     },
     {
       "name": "textInputType",
@@ -8463,7 +8463,7 @@
       "name": "defaultUnreadOnly",
       "type": "boolean",
       "required": false,
-      "description": "O painel abre em \"Nao lidas\" (ainda nao clicadas). Ignorada com `showUnreadToggle=false`. Nao persiste entre recargas. Default: true."
+      "description": "O painel abre em \"Não lidas\" (ainda não clicadas). Ignorada com `showUnreadToggle=false`. Não persiste entre recargas. Default: true."
     },
     {
       "name": "eventPattern",
@@ -8475,13 +8475,13 @@
       "name": "fetcher",
       "type": "((input: string, init?: RequestInit) => Promise<Response>)",
       "required": false,
-      "description": "Substitui o `fetch` (apps sem BFF, testes, demonstracao). Default: `fetch` global."
+      "description": "Substitui o `fetch` (apps sem BFF, testes, demonstração). Default: `fetch` global."
     },
     {
       "name": "maxVisible",
       "type": "number",
       "required": false,
-      "description": "Maximo de notificacoes na lista. Default e maximo: 100 (uma pagina da rota)."
+      "description": "Máximo de notificacoes na lista. Default e máximo: 100 (uma página da rota)."
     },
     {
       "name": "onNotification",
@@ -8493,13 +8493,13 @@
       "name": "onNotificationDelete",
       "type": "((notification: SgNotification) => void)",
       "required": false,
-      "description": "O usuario excluiu uma notificacao."
+      "description": "O usuário excluiu uma notificacao."
     },
     {
       "name": "onOpen",
       "type": "((notification: SgNotification) => void)",
       "required": false,
-      "description": "O usuario abriu uma notificacao (depois do `onOpen` do tipo)."
+      "description": "O usuário abriu uma notificacao (depois do `onOpen` do tipo)."
     },
     {
       "name": "onPollingTick",
@@ -8517,31 +8517,31 @@
       "name": "pollIntervalMs",
       "type": "number",
       "required": false,
-      "description": "Intervalo do polling de reserva (so com o Pulse desligado ou fora do ar), preso entre 30 e 60 s. Default: 45000."
+      "description": "Intervalo do polling de reserva (só com o Pulse desligado ou fora do ar), preso entre 30 e 60 s. Default: 45000."
     },
     {
       "name": "requestInit",
       "type": "RequestInit",
       "required": false,
-      "description": "Opcoes do `fetch` (ex.: `headers: { Authorization }` quando nao ha cookie)."
+      "description": "Opções do `fetch` (ex.: `headers: { Authorization }` quando não ha cookie)."
     },
     {
       "name": "showUnreadToggle",
       "type": "boolean",
       "required": false,
-      "description": "Mostra o interruptor \"Nao lidas\" no topo do painel. `false` esconde so o interruptor (o sino fica) e o painel lista tudo. Default: true."
+      "description": "Mostra o interruptor \"Não lidas\" no topo do painel. `false` esconde só o interruptor (o sino fica) e o painel lista tudo. Default: true."
     },
     {
       "name": "tokenEndpoint",
       "type": "string",
       "required": false,
-      "description": "Rota que entrega o token do Pulse (usada se nao houver `SgRealtimeProvider` acima). Default: `/api/realtime/connect`."
+      "description": "Rota que entrega o token do Pulse (usada se não houver `SgRealtimeProvider` acima). Default: `/api/realtime/connect`."
     },
     {
       "name": "types",
       "type": "Record<string, SgNotificationTypeConfig>",
       "required": false,
-      "description": "Tipo -> icone e acao ao abrir. O sino nao conhece o negocio: relatorio e so um tipo."
+      "description": "Tipo -> ícone e ação ao abrir. O sino não conhece o negócio: relatório e só um tipo."
     }
   ],
   "SgOrderList": [
@@ -8716,7 +8716,7 @@
       "name": "fullWidthTabs",
       "type": "boolean",
       "required": false,
-      "description": "Distribui as abas em larguras iguais a partir do tablet (`md`, 768px).\r\nNo celular as abas mantem a largura natural e a lista rola — abas iguais numa\r\ntela estreita espremem os rotulos ate ninguem conseguir ler."
+      "description": "Distribui as abas em larguras iguais a partir do tablet (`md`, 768px).\r\nNo celular as abas mantém a largura natural e a lista rola — abas iguais numa\r\ntela estreita espremem os rótulos até ninguém conseguir ler."
     },
     {
       "name": "hiddenPageIds",
@@ -8737,7 +8737,7 @@
       "name": "mobilePageControl",
       "type": "\"scroll\" | \"select\"",
       "required": false,
-      "description": "Comportamento das abas no celular (abaixo de `md`, 768px).\r\n- `\"scroll\"` (default): continuam abas, com rolagem horizontal, e a aba ativa\r\n  e trazida para a area visivel sozinha.\r\n- `\"select\"`: viram um `<select>` nativo, util quando sao muitas abas ou os\r\n  rotulos sao longos. Tablet e desktop nao mudam."
+      "description": "Comportamento das abas no celular (abaixo de `md`, 768px).\r\n- `\"scroll\"` (default): continuam abas, com rolagem horizontal, e a aba ativa\r\n  e trazida para a área visível sozinha.\r\n- `\"select\"`: viram um `<select>` nativo, útil quando são muitas abas ou os\r\n  rótulos são longos. Tablet e desktop não mudam."
     },
     {
       "name": "onActiveIndexChange",
@@ -8820,7 +8820,7 @@
       "name": "keepMounted",
       "type": "boolean",
       "required": false,
-      "description": "Mantem esta pagina montada (oculta) quando inativa. Sem valor, vale o `keepMounted` do SgPageControl."
+      "description": "Mantém esta página montada (oculta) quando inativa. Sem valor, vale o `keepMounted` do SgPageControl."
     },
     {
       "name": "style",
@@ -8945,7 +8945,7 @@
       "name": "allowCustomPeriod",
       "type": "boolean",
       "required": false,
-      "description": "Habilita a opcao \"Periodo\" (intervalo customizado). Default true."
+      "description": "Habilita a opção \"Período\" (intervalo customizado). Default true."
     },
     {
       "name": "className",
@@ -8956,7 +8956,7 @@
       "name": "control",
       "type": "Control<FieldValues>",
       "required": false,
-      "description": "Integracao react-hook-form (opcional)."
+      "description": "Integração react-hook-form (opcional)."
     },
     {
       "name": "enabled",
@@ -8982,7 +8982,7 @@
       "name": "locale",
       "type": "string",
       "required": false,
-      "description": "Locale para labels e formatacao. Default \"pt-BR\"."
+      "description": "Locale para labels e formatação. Default \"pt-BR\"."
     },
     {
       "name": "maxDate",
@@ -9008,31 +9008,31 @@
       "name": "permitAll",
       "type": "boolean",
       "required": false,
-      "description": "Habilita a opcao \"Todos\" (sem limites de data). Default true."
+      "description": "Habilita a opção \"Todos\" (sem limites de data). Default true."
     },
     {
       "name": "permitCurrent",
       "type": "boolean",
       "required": false,
-      "description": "Habilita o grupo de periodos atuais (THIS_*, TODAY, YESTERDAY). Default true."
+      "description": "Habilita o grupo de períodos atuais (THIS_*, TODAY, YESTERDAY). Default true."
     },
     {
       "name": "permitFuture",
       "type": "boolean",
       "required": false,
-      "description": "Habilita o grupo de periodos futuros (TOMORROW, NEXT_*). Default true."
+      "description": "Habilita o grupo de períodos futuros (TOMORROW, NEXT_*). Default true."
     },
     {
       "name": "permitPast",
       "type": "boolean",
       "required": false,
-      "description": "Habilita o grupo de periodos passados (LAST_*). Default true."
+      "description": "Habilita o grupo de períodos passados (LAST_*). Default true."
     },
     {
       "name": "referenceDate",
       "type": "Date",
       "required": false,
-      "description": "Data de referencia para resolver os presets (default: agora). Util em testes."
+      "description": "Data de referência para resolver os presets (default: agora). Útil em testes."
     },
     {
       "name": "required",
@@ -10425,13 +10425,13 @@
       "name": "alignTo",
       "type": "SgStringAnimatorAlign",
       "required": false,
-      "description": "Alinhamento das strings:\n- \"left\"  — preenche a direita com emptyChar (ideal para texto/nomes)\n- \"right\" — preenche a esquerda com emptyChar (ideal para numeros)"
+      "description": "Alinhamento das strings:\r\n- \"left\"  — preenche a direita com emptyChar (ideal para texto/nomes)\r\n- \"right\" — preenche a esquerda com emptyChar (ideal para números)"
     },
     {
       "name": "autoStart",
       "type": "boolean",
       "required": false,
-      "description": "Se true, inicia a animacao automaticamente quando o componente\nmonta e sempre que targetString mudar."
+      "description": "Se true, inicia a animação automaticamente quando o componente\r\nmonta e sempre que targetString mudar."
     },
     {
       "name": "backgroundColor",
@@ -10443,7 +10443,7 @@
       "name": "charset",
       "type": "string[]",
       "required": false,
-      "description": "Conjunto de caracteres validos para o SgRoller3DDigit.\nDeve conter todos os caracteres que podem aparecer em sourceString,\ntargetString e emptyChar. Ignorado quando style != \"roller3d\"."
+      "description": "Conjunto de caracteres válidos para o SgRoller3DDigit.\r\nDeve conter todos os caracteres que podem aparecer em sourceString,\r\ntargetString e emptyChar. Ignorado quando style != \"roller3d\"."
     },
     {
       "name": "className",
@@ -10455,13 +10455,13 @@
       "name": "color",
       "type": "string",
       "required": false,
-      "description": "Cor principal do texto/ponto — aplicada nos estilos \"neon\", \"fade\",\n\"discard\" e \"matrix\"."
+      "description": "Cor principal do texto/ponto — aplicada nos estilos \"neon\", \"fade\",\r\n\"discard\" e \"matrix\"."
     },
     {
       "name": "emptyChar",
       "type": "string",
       "required": false,
-      "description": "Caractere utilizado para preencher as posicoes extras quando\nsourceString e targetString possuem comprimentos diferentes."
+      "description": "Caractere utilizado para preencher as posições extras quando\r\nsourceString e targetString possuem comprimentos diferentes."
     },
     {
       "name": "fontSize",
@@ -10473,25 +10473,25 @@
       "name": "sourceString",
       "type": "string",
       "required": true,
-      "description": "String exibida antes da animacao"
+      "description": "String exibida antes da animação"
     },
     {
       "name": "stringAnimatorStyle",
       "type": "SgStringAnimatorStyle",
       "required": false,
-      "description": "Estilo de animacao por caractere.\n- \"roller3d\": tambor vertical (SgRoller3DDigit)\n- \"flip\": vira o card (SgFlipDigit)\n- \"neon\": brilho neon com fade (SgNeonDigit)\n- \"fade\": apaga e acende (SgFadeDigit)\n- \"discard\": folha descartada voando (SgDiscardDigit)\n- \"matrix\": pontos em matriz LED (SgMatrixDigit)"
+      "description": "Estilo de animação por caractere.\r\n- \"roller3d\": tambor vertical (SgRoller3DDigit)\r\n- \"flip\": vira o card (SgFlipDigit)\r\n- \"neon\": brilho neon com fade (SgNeonDigit)\r\n- \"fade\": apaga e acende (SgFadeDigit)\r\n- \"discard\": folha descartada voando (SgDiscardDigit)\r\n- \"matrix\": pontos em matriz LED (SgMatrixDigit)"
     },
     {
       "name": "targetString",
       "type": "string",
       "required": true,
-      "description": "String de destino — o componente anima ate ela"
+      "description": "String de destino — o componente anima até ela"
     },
     {
       "name": "velocity",
       "type": "number",
       "required": false,
-      "description": "Velocidade de 1 (muito lento) a 100 (muito rapido).\nControla o intervalo de tempo entre a troca de cada caractere."
+      "description": "Velocidade de 1 (muito lento) a 100 (muito rápido).\r\nControla o intervalo de tempo entre a troca de cada caractere."
     }
   ],
   "SgTextEditor": [
@@ -10909,7 +10909,7 @@
       "name": "overflow",
       "type": "boolean",
       "required": false,
-      "description": "Quando a barra nao comporta todos os itens na largura (ou altura, na vertical) disponivel, os\n`SgToolbarIconButton` que nao cabem vao para um menu \"...\" (SgMenu). Abaixo de 600px de largura\nde tela o menu abre como painel inferior. Padrao: false. Ignorado com `buttonsPerDirection`."
+      "description": "Quando a barra não comporta todos os itens na largura (ou altura, na vertical) disponível, os\r\n`SgToolbarIconButton` que não cabem vão para um menu \"...\" (SgMenu). Abaixo de 600px de largura\r\nde tela o menu abre como painel inferior. Padrão: false. Ignorado com `buttonsPerDirection`."
     },
     {
       "name": "size",
@@ -10994,7 +10994,7 @@
       "name": "checkableLabel",
       "type": "string",
       "required": false,
-      "description": "Cabecalho da coluna do checkbox principal -- so' e' desenhado quando `tracks` tambem esta'\npresente (e' o cabecalho de colunas como um todo que fica ambiguo com 2+ controles por linha,\nnao o checkbox sozinho)."
+      "description": "Cabeçalho da coluna do checkbox principal -- só' e' desenhado quando `tracks` também esta'\r\npresente (e' o cabeçalho de colunas como um todo que fica ambíguo com 2+ controles por linha,\r\nnão o checkbox sozinho)."
     },
     {
       "name": "checkedIds",
@@ -11135,7 +11135,7 @@
       "name": "tracks",
       "type": "SgTreeTrack[]",
       "required": false,
-      "description": "Trilhas de selecao extras, uma por coluna de controle na linha -- ver SgTreeTrack."
+      "description": "Trilhas de seleção extras, uma por coluna de controle na linha -- ver SgTreeTrack."
     }
   ],
   "SgWhistleHost": [
@@ -11148,7 +11148,7 @@
       "name": "duration",
       "type": "number",
       "required": false,
-      "description": "Duracao padrao, em milissegundos, dos whistles deste host. Cada whistle pode sobrescrever\r\ncom `options.duration`, que tem PRIORIDADE. Use 0 (ou negativo) para que nada suma sozinho\r\npor padrao. Whistle `loading` nunca expira, qualquer que seja o valor.\r\n\r\nEspelha o `duration` do SgToaster/SgToastHost — mesmo default e mesma precedencia. Antes o\r\nvalor era fixo no codigo e nao havia como mudar o padrao sem repetir `duration` em toda\r\nchamada de sgWhistle."
+      "description": "Duração padrão, em milissegundos, dos whistles deste host. Cada whistle pode sobrescrever\r\ncom `options.duration`, que tem PRIORIDADE. Use 0 (ou negativo) para que nada suma sozinho\r\npor padrão. Whistle `loading` nunca expira, qualquer que seja o valor.\r\n\r\nEspelha o `duration` do SgToaster/SgToastHost — mesmo default e mesma precedencia. Antes o\r\nvalor era fixo no código e não havia como mudar o padrão sem repetir `duration` em toda\r\nchamada de sgWhistle."
     },
     {
       "name": "gap",
@@ -11182,7 +11182,7 @@
       "name": "duration",
       "type": "number",
       "required": false,
-      "description": "Duracao padrao, em milissegundos, dos whistles deste host. Cada whistle pode sobrescrever\r\ncom `options.duration`, que tem PRIORIDADE. Use 0 (ou negativo) para que nada suma sozinho\r\npor padrao. Whistle `loading` nunca expira, qualquer que seja o valor.\r\n\r\nEspelha o `duration` do SgToaster/SgToastHost — mesmo default e mesma precedencia. Antes o\r\nvalor era fixo no codigo e nao havia como mudar o padrao sem repetir `duration` em toda\r\nchamada de sgWhistle."
+      "description": "Duração padrão, em milissegundos, dos whistles deste host. Cada whistle pode sobrescrever\r\ncom `options.duration`, que tem PRIORIDADE. Use 0 (ou negativo) para que nada suma sozinho\r\npor padrão. Whistle `loading` nunca expira, qualquer que seja o valor.\r\n\r\nEspelha o `duration` do SgToaster/SgToastHost — mesmo default e mesma precedencia. Antes o\r\nvalor era fixo no código e não havia como mudar o padrão sem repetir `duration` em toda\r\nchamada de sgWhistle."
     },
     {
       "name": "gap",
@@ -11221,7 +11221,7 @@
       "name": "enabled",
       "type": "boolean",
       "required": false,
-      "description": "Habilita o wizard como um todo (padrao `true`). Com `false` nada muda por interacao: os botoes\n\"Anterior\", \"Proximo\" e \"Concluir\" ficam desabilitados e as etapas do stepper deixam de ser\nclicaveis; a etapa atual continua visivel. O conteudo da pagina e' do consumidor (use `enabled`\nnos campos). Nao confundir com `nextDisabled`, que so' bloqueia o avanco."
+      "description": "Habilita o wizard como um todo (padrão `true`). Com `false` nada muda por interação: os botões\r\n\"Anterior\", \"Próximo\" e \"Concluir\" ficam desabilitados e as etapas do stepper deixam de ser\r\nclicaveis; a etapa atual continua visível. O conteúdo da página e' do consumidor (use `enabled`\r\nnos campos). Nao confundir com `nextDisabled`, que so' bloqueia o avanço."
     },
     {
       "name": "initialStep",
@@ -11237,7 +11237,7 @@
       "name": "nextDisabled",
       "type": "boolean",
       "required": false,
-      "description": "Desabilita o avanco de forma declarativa: o botao \"Proximo\" fica desabilitado (opaco, com\ncursor de bloqueio) e o stepper para de oferecer as etapas seguintes.\n\nComplementa `onBeforeNext`/`validateStep`, que so' agem NO CLIQUE. Quando o consumidor ja\nsabe que a etapa nao pode avancar — tipicamente o resultado de uma checagem assincrona que\nja' terminou, como \"este CNPJ ja' tem cadastro\" — o botao continuava com aparencia de\nclicavel e o clique nao fazia nada, sem explicar por que.\n\nNao afeta o botao de conclusao da ultima etapa: para esse caso existe `onBeforeFinish`."
+      "description": "Desabilita o avanço de forma declarativa: o botão \"Próximo\" fica desabilitado (opaco, com\r\ncursor de bloqueio) e o stepper para de oferecer as etapas seguintes.\r\n\r\nComplementa `onBeforeNext`/`validateStep`, que só' agem NO CLIQUE. Quando o consumidor ja\r\nsabe que a etapa nao pode avancar — tipicamente o resultado de uma checagem assincrona que\r\nja' terminou, como \"este CNPJ já' tem cadastro\" — o botão continuava com aparência de\r\nclicavel e o clique não fazia nada, sem explicar por que.\r\n\r\nNão afeta o botão de conclusão da última etapa: para esse caso existe `onBeforeFinish`."
     },
     {
       "name": "onBeforeFinish",
@@ -11312,7 +11312,7 @@
       "name": "allowedKinds",
       "type": "YearPartKind[]",
       "required": false,
-      "description": "Recortes oferecidos. Com um unico item o combo de recorte some. Default: os tres."
+      "description": "Recortes oferecidos. Com um único item o combo de recorte some. Default: os três."
     },
     {
       "name": "className",
@@ -11328,25 +11328,25 @@
       "name": "id",
       "type": "string",
       "required": false,
-      "description": "Prefixo dos ids dos tres controles internos. Default \"sg-year-part-selector\"."
+      "description": "Prefixo dos ids dos três controles internos. Default \"sg-year-part-selector\"."
     },
     {
       "name": "label",
       "type": "string",
       "required": false,
-      "description": "Rotulo do grupo, acima da linha. Cada controle ainda tem o seu proprio rotulo."
+      "description": "Rótulo do grupo, acima da linha. Cada controle ainda tem o seu próprio rótulo."
     },
     {
       "name": "locale",
       "type": "string",
       "required": false,
-      "description": "Locale dos rotulos. Default \"pt-BR\"."
+      "description": "Locale dos rótulos. Default \"pt-BR\"."
     },
     {
       "name": "maxYear",
       "type": "number",
       "required": false,
-      "description": "Ultimo ano da lista. Default: ano corrente + 10."
+      "description": "Último ano da lista. Default: ano corrente + 10."
     },
     {
       "name": "minYear",
@@ -11358,7 +11358,7 @@
       "name": "onChange",
       "type": "((resolved: ResolvedYearPart) => void)",
       "required": false,
-      "description": "Recebe o recorte ja' resolvido, com startDate/endDate preenchidos."
+      "description": "Recebe o recorte já' resolvido, com startDate/endDate preenchidos."
     },
     {
       "name": "required",
@@ -11369,7 +11369,7 @@
       "name": "value",
       "type": "YearPartValue",
       "required": false,
-      "description": "Valor controlado. Ausente = o componente guarda o proprio estado."
+      "description": "Valor controlado. Ausente = o componente guarda o próprio estado."
     }
   ]
 }

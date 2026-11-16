@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "feedback",
   subcategory: "avatar",
   description:
-    "Representacao visual compacta de pessoa, usuario ou entidade por imagem, iniciais, icone ou fallback.",
+    "Representação visual compacta de pessoa, usuário ou entidade por imagem, iniciais, ícone ou fallback.",
   tags: ["feedback", "avatar", "profile", "identity", "user"],
   capabilities: ["image-avatar", "fallback", "initials", "grouping", "severity"],
   fieldSemantics: ["identity", "userAvatar", "profileImage", "entityMarker"],
@@ -32,14 +32,14 @@ export const sgMeta: SgMetaV0 = {
     {
       name: "label",
       type: "ReactNode",
-      description: "Conteudo textual usado como iniciais ou identificacao visual.",
+      description: "Conteúdo textual usado como iniciais ou identificação visual.",
       semanticRole: "label",
       bindable: true
     },
     {
       name: "fallback",
       type: "ReactNode",
-      description: "Conteudo de fallback quando nao ha imagem.",
+      description: "Conteúdo de fallback quando não há imagem.",
       semanticRole: "label",
       bindable: true
     },
@@ -63,7 +63,7 @@ export const sgMeta: SgMetaV0 = {
       name: "severity",
       type: '"primary" | "secondary" | "success" | "warning" | "danger" | "info" | "neutral" | "custom"',
       default: "primary",
-      description: "Tom visual do avatar quando nao ha imagem.",
+      description: "Tom visual do avatar quando não há imagem.",
       semanticRole: "appearance",
       bindable: true
     }

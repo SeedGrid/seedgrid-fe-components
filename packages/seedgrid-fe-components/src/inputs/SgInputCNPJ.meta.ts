@@ -10,20 +10,20 @@ export const sgMeta: SgMetaV0 = {
   category: "input",
   subcategory: "document",
   description:
-    "Campo especializado para CNPJ com mascara, validacao de digitos e suporte opcional a consulta externa. Contrato de valor: o valor do formulario (onChange avulso, control e register) e SEMPRE mascarado, digitado ou setado por codigo (defaultValues, setValue, reset, value); a entrada aceita valor cru ou mascarado; valor maior que a mascara e cortado; para guardar so digitos use value.replace(/\\D/g, \"\").",
+    "Campo especializado para CNPJ com máscara, validação de dígitos e suporte opcional a consulta externa. Contrato de valor: o valor do formulário (onChange avulso, control e register) e SEMPRE mascarado, digitado ou setado por código (defaultValues, setValue, reset, value); a entrada aceita valor cru ou mascarado; valor maior que a máscara e cortado; para guardar só dígitos use value.replace(/\\D/g, \"\").",
   tags: ["form", "document", "cnpj", "brazil", "rhf"],
   capabilities: ["rhf", "mask", "validation", "cnpj", "publica-cnpj", "clearable"],
   fieldSemantics: ["cnpj", "companyTaxId", "organizationDocument", "brazilianCompanyIdentifier"],
   props: [
-    { name: "id", type: "string", required: true, description: "Identificador unico do campo.", semanticRole: "data", bindable: false },
-    { name: "name", type: "string", description: "Nome do campo em formularios.", semanticRole: "data", bindable: true },
-    { name: "label", type: "string", description: "Rotulo exibido ao usuario.", semanticRole: "label", bindable: true },
-    { name: "required", type: "boolean", default: false, description: "Marca o campo como obrigatorio.", semanticRole: "validation", bindable: true },
-    { name: "validateWithPublicaCnpj", type: "boolean", default: false, description: "Ativa validacao externa opcional.", semanticRole: "behavior", bindable: true },
+    { name: "id", type: "string", required: true, description: "Identificador único do campo.", semanticRole: "data", bindable: false },
+    { name: "name", type: "string", description: "Nome do campo em formulários.", semanticRole: "data", bindable: true },
+    { name: "label", type: "string", description: "Rótulo exibido ao usuário.", semanticRole: "label", bindable: true },
+    { name: "required", type: "boolean", default: false, description: "Marca o campo como obrigatório.", semanticRole: "validation", bindable: true },
+    { name: "validateWithPublicaCnpj", type: "boolean", default: false, description: "Ativa validação externa opcional.", semanticRole: "behavior", bindable: true },
     { name: "publicaCnpjErrorMessage", type: "string", description: "Mensagem para falha na consulta externa.", semanticRole: "validation", bindable: true },
-    { name: "invalidMessage", type: "string", description: "Mensagem para CNPJ invalido.", semanticRole: "validation", bindable: true },
-    { name: "validateOnBlur", type: "boolean", default: true, description: "Executa validacao no blur.", semanticRole: "behavior", bindable: true },
-    { name: "onValidation", type: "(message: string | null) => void", description: "Callback para estado de validacao.", semanticRole: "event", bindable: false }
+    { name: "invalidMessage", type: "string", description: "Mensagem para CNPJ inválido.", semanticRole: "validation", bindable: true },
+    { name: "validateOnBlur", type: "boolean", default: true, description: "Executa validação no blur.", semanticRole: "behavior", bindable: true },
+    { name: "onValidation", type: "(message: string | null) => void", description: "Callback para estado de validação.", semanticRole: "event", bindable: false }
   ],
   states: ["default", "focused", "disabled", "readOnly", "error"],
   examples: [

@@ -57,31 +57,31 @@ export type SgNotificationTypeConfig = {
 export type SgNotificationBellProps = {
   /** Base das rotas da extension `user-notifications`. Default: `/api/user-notifications` (BFF, mesma origem). */
   apiUrl?: string;
-  /** Rota que entrega o token do Pulse (usada se nao houver `SgRealtimeProvider` acima). Default: `/api/realtime/connect`. */
+  /** Rota que entrega o token do Pulse (usada se não houver `SgRealtimeProvider` acima). Default: `/api/realtime/connect`. */
   tokenEndpoint?: string;
-  /** Opcoes do `fetch` (ex.: `headers: { Authorization }` quando nao ha cookie). */
+  /** Opções do `fetch` (ex.: `headers: { Authorization }` quando não há cookie). */
   requestInit?: RequestInit;
-  /** Substitui o `fetch` (apps sem BFF, testes, demonstracao). Default: `fetch` global. */
+  /** Substitui o `fetch` (apps sem BFF, testes, demonstração). Default: `fetch` global. */
   fetcher?: (input: string, init?: RequestInit) => Promise<Response>;
-  /** Tipo -> icone e acao ao abrir. O sino nao conhece o negocio: relatorio e so um tipo. */
+  /** Tipo -> ícone e ação ao abrir. O sino não conhece o negócio: relatório e só um tipo. */
   types?: Record<string, SgNotificationTypeConfig>;
   /** Evento do Pulse que dispara a leitura. Default: `user-notification.*`. */
   eventPattern?: string;
-  /** Intervalo do polling de reserva (so com o Pulse desligado ou fora do ar), preso entre 30 e 60 s. Default: 45000. */
+  /** Intervalo do polling de reserva (só com o Pulse desligado ou fora do ar), preso entre 30 e 60 s. Default: 45000. */
   pollIntervalMs?: number;
-  /** Maximo de notificacoes na lista. Default e maximo: 100 (uma pagina da rota). */
+  /** Máximo de notificações na lista. Default e máximo: 100 (uma página da rota). */
   maxVisible?: number;
   /** De que lado do sino o painel abre (como o `placement` do SgPopup). `auto` escolhe o lado em que cabe. Default: `auto`. */
   placement?: SgNotificationPlacement;
-  /** Mostra o interruptor "Nao lidas" no topo do painel. `false` esconde so o interruptor (o sino fica) e o painel lista tudo. Default: true. */
+  /** Mostra o interruptor "Não lidas" no topo do painel. `false` esconde só o interruptor (o sino fica) e o painel lista tudo. Default: true. */
   showUnreadToggle?: boolean;
-  /** O painel abre em "Nao lidas" (ainda nao clicadas). Ignorada com `showUnreadToggle=false`. Nao persiste entre recargas. Default: true. */
+  /** O painel abre em "Não lidas" (ainda não clicadas). Ignorada com `showUnreadToggle=false`. Não persiste entre recargas. Default: true. */
   defaultUnreadOnly?: boolean;
-  /** Chegou uma notificacao nova (aviso do Pulse). */
+  /** Chegou uma notificação nova (aviso do Pulse). */
   onNotification?: (notification: SgNotification) => void;
-  /** O usuario excluiu uma notificacao. */
+  /** O usuário excluiu uma notificação. */
   onNotificationDelete?: (notification: SgNotification) => void;
-  /** O usuario abriu uma notificacao (depois do `onOpen` do tipo). */
+  /** O usuário abriu uma notificação (depois do `onOpen` do tipo). */
   onOpen?: (notification: SgNotification) => void;
   /** O polling consultou a API: contador, instante e motivo. Para medir o custo. */
   onPollingTick?: (stats: SgPollingStats) => void;

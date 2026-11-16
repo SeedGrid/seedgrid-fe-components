@@ -37,22 +37,22 @@ export type SgWizardProps = {
   onBeforeFinish?: (index: number) => boolean | Promise<boolean>;
   validateStep?: (index: number) => boolean | Promise<boolean>;
   /**
-   * Desabilita o avanco de forma declarativa: o botao "Proximo" fica desabilitado (opaco, com
+   * Desabilita o avanço de forma declarativa: o botão "Próximo" fica desabilitado (opaco, com
    * cursor de bloqueio) e o stepper para de oferecer as etapas seguintes.
    *
-   * Complementa `onBeforeNext`/`validateStep`, que so' agem NO CLIQUE. Quando o consumidor ja
+   * Complementa `onBeforeNext`/`validateStep`, que só' agem NO CLIQUE. Quando o consumidor ja
    * sabe que a etapa nao pode avancar — tipicamente o resultado de uma checagem assincrona que
-   * ja' terminou, como "este CNPJ ja' tem cadastro" — o botao continuava com aparencia de
-   * clicavel e o clique nao fazia nada, sem explicar por que.
+   * ja' terminou, como "este CNPJ já' tem cadastro" — o botão continuava com aparência de
+   * clicável e o clique não fazia nada, sem explicar por que.
    *
-   * Nao afeta o botao de conclusao da ultima etapa: para esse caso existe `onBeforeFinish`.
+   * Não afeta o botão de conclusão da última etapa: para esse caso existe `onBeforeFinish`.
    */
   nextDisabled?: boolean;
   /**
-   * Habilita o wizard como um todo (padrao `true`). Com `false` nada muda por interacao: os botoes
-   * "Anterior", "Proximo" e "Concluir" ficam desabilitados e as etapas do stepper deixam de ser
-   * clicaveis; a etapa atual continua visivel. O conteudo da pagina e' do consumidor (use `enabled`
-   * nos campos). Nao confundir com `nextDisabled`, que so' bloqueia o avanco.
+   * Habilita o wizard como um todo (padrão `true`). Com `false` nada muda por interação: os botões
+   * "Anterior", "Próximo" e "Concluir" ficam desabilitados e as etapas do stepper deixam de ser
+   * clicáveis; a etapa atual continua visível. O conteúdo da página e' do consumidor (use `enabled`
+   * nos campos). Nao confundir com `nextDisabled`, que so' bloqueia o avanço.
    */
   enabled?: boolean;
   initialStep?: number;

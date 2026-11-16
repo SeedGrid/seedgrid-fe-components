@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "hook",
   subcategory: "notification",
   description:
-    "Funcao para fechar/remover um toast especifico ou todos os toasts. Complementa a funcao toast() para controle programatico.",
+    "Função para fechar/remover um toast especifico ou todos os toasts. Complementa a função toast() para controle programatico.",
   tags: ["hook", "toast", "notification", "dismiss"],
   capabilities: ["dismiss-specific", "dismiss-all", "programmatic-control"],
   fieldSemantics: ["dismissal", "notificationControl", "cleanup"],

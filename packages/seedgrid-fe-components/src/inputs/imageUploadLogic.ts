@@ -9,20 +9,20 @@ export type ImageFacts = {
   /** Tipo MIME (`image/png`); pode vir vazio. */
   type: string;
   size: number;
-  /** Dimensoes em px; ausentes quando nao foi possivel ler (as regras de dimensao/proporcao so rodam se existirem). */
+  /** Dimensões em px; ausentes quando não foi possível ler (as regras de dimensão/proporção só rodam se existirem). */
   width?: number;
   height?: number;
 };
 
 export type ImageRules = {
-  /** Lista separada por virgula: `image/*`, `image/png`, `.png`. Padrao: `image/*`. */
+  /** Lista separada por vírgula: `image/*`, `image/png`, `.png`. Padrão: `image/*`. */
   accept?: string;
   maxSizeBytes?: number;
   minWidth?: number;
   minHeight?: number;
-  /** Proporcao largura/altura exigida (`1`, `16 / 9`). */
+  /** Proporção largura/altura exigida (`1`, `16 / 9`). */
   aspect?: number;
-  /** Tolerancia relativa da proporcao (padrao 0.02 = 2%). */
+  /** Tolerância relativa da proporção (padrão 0.02 = 2%). */
   aspectTolerance?: number;
 };
 

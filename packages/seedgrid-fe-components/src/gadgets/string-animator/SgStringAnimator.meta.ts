@@ -10,14 +10,14 @@ export const sgMeta: SgMetaV0 = {
   category: "gadget",
   subcategory: "text-animation",
   description:
-    "Componente para animar transicao entre strings usando estilos como roller3d, flip e neon em displays textuais curtos.",
+    "Componente para animar transição entre strings usando estilos como roller3d, flip e neon em displays textuais curtos.",
   tags: ["gadget", "string", "animation", "display", "text"],
   capabilities: ["string-transition", "multiple-animation-styles", "manual-trigger", "alignment-control"],
   fieldSemantics: ["animatedText", "labelTransition", "displayText", "headlineAnimator"],
   props: [
-    { name: "sourceString", type: "string", required: true, description: "Texto inicial da animacao.", semanticRole: "value", bindable: true },
-    { name: "targetString", type: "string", required: true, description: "Texto final da animacao.", semanticRole: "value", bindable: true },
-    { name: "stringAnimatorStyle", type: "\"roller3d\" | \"flip\" | \"neon\" | \"fade\" | \"discard\" | \"matrix\"", default: "roller3d", description: "Estilo visual usado na transicao.", semanticRole: "appearance", bindable: true },
+    { name: "sourceString", type: "string", required: true, description: "Texto inicial da animação.", semanticRole: "value", bindable: true },
+    { name: "targetString", type: "string", required: true, description: "Texto final da animação.", semanticRole: "value", bindable: true },
+    { name: "stringAnimatorStyle", type: "\"roller3d\" | \"flip\" | \"neon\" | \"fade\" | \"discard\" | \"matrix\"", default: "roller3d", description: "Estilo visual usado na transição.", semanticRole: "appearance", bindable: true },
     { name: "alignTo", type: "\"left\" | \"right\"", default: "left", description: "Alinhamento do texto animado.", semanticRole: "appearance", bindable: true },
     { name: "fontSize", type: "number", default: 28, description: "Escala visual do display.", semanticRole: "appearance", bindable: true }
   ],

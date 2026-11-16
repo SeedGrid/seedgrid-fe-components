@@ -10,15 +10,15 @@ export const sgMeta: SgMetaV0 = {
   category: "provider",
   subcategory: "realtime",
   description:
-    "Avisos em tempo real para o usuario logado pelo SeedGrid Pulse: pede o token de conexao ao backend (que o emite para o usuario da sessao), conecta direto no Pulse, reconecta sozinho, para quando a credencial e revogada e expoe o status para a tela decidir entre aviso e polling de reserva.",
+    "Avisos em tempo real para o usuário logado pelo SeedGrid Pulse: pede o token de conexão ao backend (que o emite para o usuário da sessão), conecta direto no Pulse, reconecta sozinho, para quando a credencial e revogada e expõe o status para a tela decidir entre aviso e polling de reserva.",
   tags: ["provider", "realtime", "pulse", "websocket", "notification", "polling"],
   capabilities: ["token-from-backend", "auto-reconnect", "channel-subscription", "fallback-status"],
   fieldSemantics: ["realtimeChannels", "tokenEndpoint", "connectionStatus"],
   props: [
-    { name: "channels", type: "string[]", required: true, description: "Channels que a aplicacao quer ouvir (ex.: [\"backup\"]).", semanticRole: "data", bindable: true },
-    { name: "tokenEndpoint", type: "string", default: "/api/realtime/connect", description: "Rota que entrega o token de conexao do usuario logado (a BFF, na mesma origem).", semanticRole: "behavior", bindable: true },
-    { name: "enabled", type: "boolean", default: true, description: "Liga/desliga (ex.: false enquanto nao ha usuario logado).", semanticRole: "behavior", bindable: true },
-    { name: "children", type: "ReactNode", required: true, description: "Arvore que ouve os avisos com useSgRealtimeEvent.", semanticRole: "data", bindable: false }
+    { name: "channels", type: "string[]", required: true, description: "Channels que a aplicação quer ouvir (ex.: [\"backup\"]).", semanticRole: "data", bindable: true },
+    { name: "tokenEndpoint", type: "string", default: "/api/realtime/connect", description: "Rota que entrega o token de conexão do usuário logado (a BFF, na mesma origem).", semanticRole: "behavior", bindable: true },
+    { name: "enabled", type: "boolean", default: true, description: "Liga/desliga (ex.: false enquanto não há usuário logado).", semanticRole: "behavior", bindable: true },
+    { name: "children", type: "ReactNode", required: true, description: "Árvore que ouve os avisos com useSgRealtimeEvent.", semanticRole: "data", bindable: false }
   ],
   states: ["idle", "disabled", "connecting", "connected", "reconnecting", "unavailable", "auth-error"],
   examples: [

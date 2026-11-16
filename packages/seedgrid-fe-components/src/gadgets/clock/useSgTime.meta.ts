@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "hook",
   subcategory: "time",
   description:
-    "Hook para acessar contexto de sincronizacao de tempo com servidor. Fornece timestamp atual e tick para atualizacoes periodicas.",
+    "Hook para acessar contexto de sincronização de tempo com servidor. Fornece timestamp atual e tick para atualizações periódicas.",
   tags: ["hook", "time", "sync", "context"],
   capabilities: ["server-time-sync", "tick-updates", "fallback-local-time"],
   fieldSemantics: ["timeContext", "serverSync", "tickUpdates"],
@@ -32,14 +32,14 @@ export const sgMeta: SgMetaV0 = {
     {
       name: "returns.tick",
       type: "number",
-      description: "Contador que incrementa a cada segundo, dispara atualizacoes.",
+      description: "Contador que incrementa a cada segundo, dispara atualizações.",
       semanticRole: "data",
       bindable: false
     },
     {
       name: "returns.nowMs",
       type: "() => number",
-      description: "Funcao que retorna o timestamp atual sincronizado com servidor.",
+      description: "Função que retorna o timestamp atual sincronizado com servidor.",
       semanticRole: "data",
       bindable: false
     }

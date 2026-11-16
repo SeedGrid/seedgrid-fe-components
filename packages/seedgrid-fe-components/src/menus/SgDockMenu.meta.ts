@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "navigation",
   subcategory: "dock-menu",
   description:
-    "Menu de acoes ou navegacao com estilo dock, suporte a badges, magnify, posicoes ancoradas e persistencia de arraste.",
+    "Menu de ações ou navegação com estilo dock, suporte a badges, magnify, posições ancoradas e persistência de arraste.",
   tags: ["navigation", "menu", "dock", "actions", "launcher"],
   capabilities: ["dock-layout", "anchored-navigation", "badges", "magnify", "drag-drop", "persistent-position"],
   fieldSemantics: ["navigation", "dock", "quickActions", "appLauncher", "shortcutMenu"],
@@ -19,7 +19,7 @@ export const sgMeta: SgMetaV0 = {
       name: "items",
       type: "SgDockMenuItem[]",
       required: true,
-      description: "Itens exibidos no dock com icone, label, badge e acao.",
+      description: "Itens exibidos no dock com ícone, label, badge e ação.",
       semanticRole: "data",
       bindable: true
     },
@@ -27,7 +27,7 @@ export const sgMeta: SgMetaV0 = {
       name: "position",
       type: '"left-top" | "left-center" | "left-bottom" | "center-top" | "center-bottom" | "right-top" | "right-center" | "right-bottom"',
       default: "center-bottom",
-      description: "Posicionamento principal do dock na area alvo.",
+      description: "Posicionamento principal do dock na área alvo.",
       semanticRole: "behavior",
       bindable: true
     },
@@ -51,7 +51,7 @@ export const sgMeta: SgMetaV0 = {
       name: "magnify",
       type: "boolean",
       default: true,
-      description: "Ativa efeito de ampliacao ao passar o mouse.",
+      description: "Ativa efeito de ampliação ao passar o mouse.",
       semanticRole: "appearance",
       bindable: true
     },
@@ -59,7 +59,7 @@ export const sgMeta: SgMetaV0 = {
       name: "itemSize",
       type: "number",
       default: 48,
-      description: "Tamanho visual padrao dos itens do dock.",
+      description: "Tamanho visual padrão dos itens do dock.",
       semanticRole: "appearance",
       bindable: true
     },
@@ -67,7 +67,7 @@ export const sgMeta: SgMetaV0 = {
       name: "gap",
       type: "number",
       default: 16,
-      description: "Espacamento entre os itens do dock.",
+      description: "Espaçamento entre os itens do dock.",
       semanticRole: "appearance",
       bindable: true
     },

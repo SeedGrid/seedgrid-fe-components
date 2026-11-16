@@ -15,7 +15,7 @@ export type SgInputEmailProps = Omit<SgInputTextProps, "type" | "error"> & {
   validation?: (value: string) => string | null;
   validateOnBlur?: boolean;
   onValidation?: (message: string | null) => void;
-  /** Disparado quando o campo perde o foco (apos a validacao) — padrao seedgrid. */
+  /** Disparado quando o campo perde o foco (após a validação) — padrão seedgrid. */
   onExit?: () => void;
   iconButtons?: React.ReactNode[];
 };

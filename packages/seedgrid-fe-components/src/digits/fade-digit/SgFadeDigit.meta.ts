@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "gadget",
   subcategory: "digit",
   description:
-    "Digito animado com transicao de fade para exibicao de numeros e caracteres em relogios e contadores luminosos.",
+    "Digito animado com transição de fade para exibição de números e caracteres em relógios e contadores luminosos.",
   tags: ["gadget", "digit", "fade", "clock", "counter"],
   capabilities: ["single-character-display", "fade-animation", "clock-composition", "custom-colors"],
   fieldSemantics: ["digitDisplay", "clockDigit", "animatedCharacter", "luminousCounter"],

@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "hook",
   subcategory: "clock-theme",
   description:
-    "Hook para resolver tema do SgClock dinamicamente. Permite consultar temas registrados, alternar entre eles e acessar a configuracao current.",
+    "Hook para resolver tema do SgClock dinamicamente. Permite consultar temas registrados, alternar entre eles e acessar a configuração current.",
   tags: ["hook", "clock", "theme", "resolver"],
   capabilities: ["theme-resolution", "dynamic-theme-switching", "theme-registry-access"],
   fieldSemantics: ["themeResolver", "clockTheme", "dynamicStyling"],
@@ -19,7 +19,7 @@ export const sgMeta: SgMetaV0 = {
       name: "returns",
       type: "SgClockThemeResolver | null",
       description:
-        "Resolvedor do SgClockThemeProvider mais proximo. Fora de um provider o hook devolve null — nao ha fallback implicito.",
+        "Resolvedor do SgClockThemeProvider mais próximo. Fora de um provider o hook devolve null — não há fallback implícito.",
       semanticRole: "data",
       bindable: false
     },
@@ -35,14 +35,14 @@ export const sgMeta: SgMetaV0 = {
       name: "returns.list",
       type: "() => SgClockTheme[]",
       description:
-        "Temas visiveis para esta arvore: os globais do registry mais os locais do provider, ordenados por `order`.",
+        "Temas visíveis para esta árvore: os globais do registry mais os locais do provider, ordenados por `order`.",
       semanticRole: "data",
       bindable: false
     },
     {
       name: "returns.registerLocal",
       type: "(theme: SgClockTheme) => void",
-      description: "Registra um tema apenas nesta arvore, sem tocar no registry global.",
+      description: "Registra um tema apenas nesta árvore, sem tocar no registry global.",
       semanticRole: "behavior",
       bindable: false
     },

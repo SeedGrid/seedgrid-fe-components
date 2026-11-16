@@ -10,18 +10,18 @@ export const sgMeta: SgMetaV0 = {
   category: "navigation",
   subcategory: "page-control-page",
   description:
-    "Declaracao de uma pagina individual dentro de um SgPageControl, com titulo, hint, icone e conteudo associado.",
+    "Declaração de uma página individual dentro de um SgPageControl, com título, hint, ícone e conteúdo associado.",
   tags: ["navigation", "tabs", "page", "step", "panel"],
   capabilities: ["tab-page", "title", "hint", "icon", "mount-control"],
   fieldSemantics: ["tabPage", "navigationPage", "stepPage", "contentPanel"],
   props: [
-    { name: "id", type: "string", description: "Identificador estavel da pagina.", semanticRole: "value", bindable: true },
-    { name: "title", type: "ReactNode", required: true, description: "Titulo exibido na aba da pagina.", semanticRole: "label", bindable: true },
-    { name: "hint", type: "string", description: "Descricao curta associada a aba.", semanticRole: "label", bindable: true },
-    { name: "icon", type: "ReactNode", description: "Icone opcional da aba.", semanticRole: "label", bindable: true },
-    { name: "hidden", type: "boolean", default: false, description: "Oculta a pagina sem remove-la da estrutura.", semanticRole: "behavior", bindable: true },
-    { name: "enabled", type: "boolean", default: true, description: "Desabilita a selecao da pagina.", semanticRole: "behavior", bindable: true },
-    { name: "children", type: "ReactNode", required: true, description: "Conteudo exibido no painel desta pagina.", semanticRole: "data", bindable: false }
+    { name: "id", type: "string", description: "Identificador estável da página.", semanticRole: "value", bindable: true },
+    { name: "title", type: "ReactNode", required: true, description: "Título exibido na aba da página.", semanticRole: "label", bindable: true },
+    { name: "hint", type: "string", description: "Descrição curta associada a aba.", semanticRole: "label", bindable: true },
+    { name: "icon", type: "ReactNode", description: "Ícone opcional da aba.", semanticRole: "label", bindable: true },
+    { name: "hidden", type: "boolean", default: false, description: "Oculta a página sem remove-la da estrutura.", semanticRole: "behavior", bindable: true },
+    { name: "enabled", type: "boolean", default: true, description: "Desabilita a seleção da página.", semanticRole: "behavior", bindable: true },
+    { name: "children", type: "ReactNode", required: true, description: "Conteúdo exibido no painel desta página.", semanticRole: "data", bindable: false }
   ],
   states: ["default", "active", "hidden", "disabled"],
   examples: [{ id: "basic", title: "Basico", file: "apps/showcase/src/app/components/sg-page-control/samples/basico.tsx.sample", kind: "sample" }],

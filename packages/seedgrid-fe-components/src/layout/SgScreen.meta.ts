@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "layout",
   subcategory: "screen",
   description:
-    "Container estrutural de alto nivel para composicao de telas com area client, fullscreen opcional e suporte a docking.",
+    "Container estrutural de alto nível para composição de telas com área client, fullscreen opcional e suporte a docking.",
   tags: ["layout", "screen", "shell", "page", "docking"],
   capabilities: ["full-screen-container", "dock-layout", "root-shell", "responsive-sizing", "client-area"],
   fieldSemantics: ["screen", "pageLayout", "appShell", "workspace", "clientArea"],
@@ -18,7 +18,7 @@ export const sgMeta: SgMetaV0 = {
     {
       name: "children",
       type: "ReactNode",
-      description: "Conteudo estrutural da tela, normalmente com panels dockados.",
+      description: "Conteúdo estrutural da tela, normalmente com panels dockados.",
       semanticRole: "data",
       bindable: false
     },
@@ -33,21 +33,21 @@ export const sgMeta: SgMetaV0 = {
     {
       name: "width",
       type: "number | string",
-      description: "Largura explicita quando a tela nao for fullscreen.",
+      description: "Largura explicita quando a tela não for fullscreen.",
       semanticRole: "behavior",
       bindable: true
     },
     {
       name: "height",
       type: "number | string",
-      description: "Altura explicita quando a tela nao for fullscreen.",
+      description: "Altura explicita quando a tela não for fullscreen.",
       semanticRole: "behavior",
       bindable: true
     },
     {
       name: "padding",
       type: "number | string",
-      description: "Espacamento interno aplicado ao root da tela.",
+      description: "Espaçamento interno aplicado ao root da tela.",
       semanticRole: "appearance",
       bindable: true
     },

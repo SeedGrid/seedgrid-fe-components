@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "gadget",
   subcategory: "digit",
   description:
-    "Digito de sete segmentos para displays classicos de relogio, paineis eletronicos e contadores numericos.",
+    "Digito de sete segmentos para displays clássicos de relógio, painéis eletrônicos e contadores numéricos.",
   tags: ["gadget", "digit", "seven-segment", "clock", "counter"],
   capabilities: ["single-character-display", "seven-segment-style", "clock-composition", "retro-digital"],
   fieldSemantics: ["digitDisplay", "sevenSegmentDigit", "clockDigit", "numericPanel"],

@@ -10,19 +10,19 @@ export const sgMeta: SgMetaV0 = {
   category: "gadget",
   subcategory: "theme-picker",
   description:
-    "Seletor visual de temas de relogio com preview embutido, filtro de temas e integracao com o resolver de temas do clock.",
+    "Seletor visual de temas de relógio com preview embutido, filtro de temas e integração com o resolver de temas do clock.",
   tags: ["gadget", "clock", "theme", "picker", "selection"],
   capabilities: ["theme-selection", "preview-rendering", "searchable-themes", "resolver-aware"],
   fieldSemantics: ["themeSelection", "clockThemePicker", "visualThemeChoice"],
   props: [
     { name: "value", type: "string", required: true, description: "ID do tema atualmente selecionado.", semanticRole: "value", bindable: true },
     { name: "onChange", type: "(id: string) => void", required: true, description: "Callback disparado quando um novo tema e escolhido.", semanticRole: "event", bindable: false },
-    { name: "label", type: "string", description: "Rotulo opcional exibido acima do seletor.", semanticRole: "label", bindable: true },
+    { name: "label", type: "string", description: "Rótulo opcional exibido acima do seletor.", semanticRole: "label", bindable: true },
     { name: "placeholder", type: "string", description: "Texto exibido quando nenhum tema valido esta resolvido.", semanticRole: "label", bindable: true },
-    { name: "filter", type: "(theme: SgClockTheme) => boolean", description: "Filtro adicional sobre a lista de temas disponiveis.", semanticRole: "behavior", bindable: false },
+    { name: "filter", type: "(theme: SgClockTheme) => boolean", description: "Filtro adicional sobre a lista de temas disponíveis.", semanticRole: "behavior", bindable: false },
     { name: "previewSize", type: "number", default: 56, description: "Tamanho do preview visual de cada tema.", semanticRole: "appearance", bindable: true },
     { name: "searchable", type: "boolean", default: true, description: "Ativa busca textual na lista de temas.", semanticRole: "behavior", bindable: true },
-    { name: "fallbackThemeId", type: "string", default: "classic", description: "Tema usado quando o valor atual nao pode ser resolvido.", semanticRole: "behavior", bindable: true },
+    { name: "fallbackThemeId", type: "string", default: "classic", description: "Tema usado quando o valor atual não pode ser resolvido.", semanticRole: "behavior", bindable: true },
     { name: "defaultOpen", type: "boolean", default: false, description: "Abre a lista inicialmente no primeiro render.", semanticRole: "behavior", bindable: true }
   ],
   states: ["default", "open", "searching", "theme-selected"],

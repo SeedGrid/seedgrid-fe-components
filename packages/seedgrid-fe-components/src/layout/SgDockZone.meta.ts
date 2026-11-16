@@ -10,13 +10,13 @@ export const sgMeta: SgMetaV0 = {
   category: "layout",
   subcategory: "dock-zone",
   description:
-    "Regiao nomeada dentro de um dock layout usada para alojar toolbars e conteudo por zona.",
+    "Região nomeada dentro de um dock layout usada para alojar toolbars e conteúdo por zona.",
   tags: ["layout", "dock", "zone", "region", "workspace"],
   capabilities: ["named-zone", "drop-target", "toolbar-host", "free-zone", "preview-state"],
   fieldSemantics: ["dockZone", "layoutRegion", "workspaceRegion", "dropArea"],
   props: [
     { name: "zone", type: '"top" | "bottom" | "left" | "right" | "free"', required: true, description: "Identificador da zona dentro do dock layout.", semanticRole: "value", bindable: true },
-    { name: "children", type: "ReactNode", description: "Conteudo renderizado dentro da zona.", semanticRole: "data", bindable: false },
+    { name: "children", type: "ReactNode", description: "Conteúdo renderizado dentro da zona.", semanticRole: "data", bindable: false },
     { name: "className", type: "string", description: "Classes adicionais da zona.", semanticRole: "appearance", bindable: true }
   ],
   states: ["default", "drop-preview", "active-drop-target"],

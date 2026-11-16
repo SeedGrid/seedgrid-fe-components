@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "feedback",
   subcategory: "popup",
   description:
-    "Overlay contextual ancorado a um elemento para exibir acoes, detalhes curtos ou conteudo complementar sem abrir um modal completo.",
+    "Overlay contextual ancorado a um elemento para exibir ações, detalhes curtos ou conteúdo complementar sem abrir um modal completo.",
   tags: ["feedback", "popup", "overlay", "anchored", "contextual"],
   capabilities: ["anchored-overlay", "auto-placement", "actions", "controlled-open", "outside-click-close"],
   fieldSemantics: ["popup", "contextualOverlay", "anchoredContent", "quickActions"],
@@ -40,21 +40,21 @@ export const sgMeta: SgMetaV0 = {
     {
       name: "title",
       type: "string",
-      description: "Titulo opcional do popup.",
+      description: "Título opcional do popup.",
       semanticRole: "label",
       bindable: true
     },
     {
       name: "subtitle",
       type: "string",
-      description: "Subtitulo opcional do popup.",
+      description: "Subtítulo opcional do popup.",
       semanticRole: "label",
       bindable: true
     },
     {
       name: "actions",
       type: "SgPopupAction[]",
-      description: "Lista de acoes contextuais renderizadas no popup.",
+      description: "Lista de ações contextuais renderizadas no popup.",
       semanticRole: "data",
       bindable: true
     },
@@ -62,7 +62,7 @@ export const sgMeta: SgMetaV0 = {
       name: "placement",
       type: '"auto" | "top" | "right" | "bottom" | "left"',
       default: "auto",
-      description: "Posicionamento principal do popup em relacao a ancora.",
+      description: "Posicionamento principal do popup em relação a ancora.",
       semanticRole: "behavior",
       bindable: true
     },
@@ -70,7 +70,7 @@ export const sgMeta: SgMetaV0 = {
       name: "closeOnOutsideClick",
       type: "boolean",
       default: true,
-      description: "Fecha o popup quando o usuario clica fora dele.",
+      description: "Fecha o popup quando o usuário clica fora dele.",
       semanticRole: "behavior",
       bindable: true
     }

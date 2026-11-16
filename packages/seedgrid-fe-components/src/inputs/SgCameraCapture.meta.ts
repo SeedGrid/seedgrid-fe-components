@@ -10,21 +10,21 @@ export const sgMeta: SgMetaV0 = {
   category: "input",
   subcategory: "camera",
   description:
-    "Pre-visualizacao da camera com guia de enquadramento (oval ou retangulo), alternancia entre frontal e traseira e captura que devolve a imagem ao pai. Mostra os estados sem permissao e sem camera. Nao envia nada ao servidor.",
+    "Pré-visualização da câmera com guia de enquadramento (oval ou retângulo), alternância entre frontal e traseira e captura que devolve a imagem ao pai. Mostra os estados sem permissão e sem câmera. Não envia nada ao servidor.",
   tags: ["camera", "photo", "capture", "selfie", "getUserMedia", "input"],
   capabilities: ["camera", "preview", "guide-overlay", "switch-camera", "capture"],
   fieldSemantics: ["photo", "selfie", "picture", "documentPhoto", "avatar"],
   props: [
-    { name: "id", type: "string", required: true, description: "Identificador unico do componente.", semanticRole: "data", bindable: false },
-    { name: "label", type: "string", description: "Rotulo exibido acima da pre-visualizacao.", semanticRole: "label", bindable: true },
-    { name: "facing", type: '"user" | "environment"', default: "user", description: "Camera inicial: frontal (user) ou traseira (environment).", semanticRole: "appearance", bindable: true },
-    { name: "guide", type: '"none" | "oval" | "rect"', default: "none", description: "Guia de enquadramento sobre a pre-visualizacao.", semanticRole: "appearance", bindable: true },
-    { name: "resolution", type: '"low" | "medium" | "high"', default: "medium", description: "Resolucao pedida (640x480, 1280x720, 1920x1080).", semanticRole: "appearance", bindable: true },
-    { name: "allowSwitch", type: "boolean", default: true, description: "Mostra o botao de alternar entre frontal e traseira.", semanticRole: "appearance", bindable: true },
-    { name: "previewHeight", type: "number", default: 320, description: "Altura da pre-visualizacao em px.", semanticRole: "appearance", bindable: true },
-    { name: "enabled", type: "boolean", default: true, description: "Nao abre a camera nem permite capturar.", semanticRole: "appearance", bindable: true },
+    { name: "id", type: "string", required: true, description: "Identificador único do componente.", semanticRole: "data", bindable: false },
+    { name: "label", type: "string", description: "Rótulo exibido acima da pré-visualização.", semanticRole: "label", bindable: true },
+    { name: "facing", type: '"user" | "environment"', default: "user", description: "Câmera inicial: frontal (user) ou traseira (environment).", semanticRole: "appearance", bindable: true },
+    { name: "guide", type: '"none" | "oval" | "rect"', default: "none", description: "Guia de enquadramento sobre a pré-visualização.", semanticRole: "appearance", bindable: true },
+    { name: "resolution", type: '"low" | "medium" | "high"', default: "medium", description: "Resolução pedida (640x480, 1280x720, 1920x1080).", semanticRole: "appearance", bindable: true },
+    { name: "allowSwitch", type: "boolean", default: true, description: "Mostra o botão de alternar entre frontal e traseira.", semanticRole: "appearance", bindable: true },
+    { name: "previewHeight", type: "number", default: 320, description: "Altura da pré-visualização em px.", semanticRole: "appearance", bindable: true },
+    { name: "enabled", type: "boolean", default: true, description: "Não abre a câmera nem permite capturar.", semanticRole: "appearance", bindable: true },
     { name: "onCapture", type: "(image: Blob) => void", description: "Imagem JPEG capturada.", semanticRole: "event", bindable: false },
-    { name: "onError", type: "(code, message) => void", description: "Camera indisponivel (permission, noCamera, failed).", semanticRole: "event", bindable: false }
+    { name: "onError", type: "(code, message) => void", description: "Câmera indisponível (permission, noCamera, failed).", semanticRole: "event", bindable: false }
   ],
   states: ["default", "starting", "ready", "permission", "noCamera", "failed", "disabled"],
   examples: [

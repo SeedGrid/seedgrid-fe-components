@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "layout",
   subcategory: "stack",
   description:
-    "Primitive de layout flexivel para empilhar elementos em linha ou coluna com controle de gap, alinhamento e wrap.",
+    "Primitive de layout flexível para empilhar elementos em linha ou coluna com controle de gap, alinhamento e wrap.",
   tags: ["layout", "stack", "flex", "row", "column"],
   capabilities: ["row-column-layout", "gap", "justify", "align", "wrap", "grow"],
   fieldSemantics: ["container", "linearLayout", "stackLayout", "flexLayout"],
@@ -19,7 +19,7 @@ export const sgMeta: SgMetaV0 = {
       name: "direction",
       type: '"row" | "column"',
       default: "column",
-      description: "Direcao principal do empilhamento.",
+      description: "Direção principal do empilhamento.",
       semanticRole: "behavior",
       bindable: true
     },
@@ -27,7 +27,7 @@ export const sgMeta: SgMetaV0 = {
       name: "gap",
       type: "number | string",
       default: 0,
-      description: "Espacamento entre os itens.",
+      description: "Espaçamento entre os itens.",
       semanticRole: "appearance",
       bindable: true
     },
@@ -35,7 +35,7 @@ export const sgMeta: SgMetaV0 = {
       name: "justify",
       type: '"start" | "center" | "end" | "between" | "around" | "evenly"',
       default: "start",
-      description: "Distribuicao dos itens no eixo principal.",
+      description: "Distribuição dos itens no eixo principal.",
       semanticRole: "behavior",
       bindable: true
     },
@@ -51,7 +51,7 @@ export const sgMeta: SgMetaV0 = {
       name: "wrap",
       type: "boolean",
       default: false,
-      description: "Permite quebra de linha quando necessario.",
+      description: "Permite quebra de linha quando necessário.",
       semanticRole: "behavior",
       bindable: true
     },
@@ -59,7 +59,7 @@ export const sgMeta: SgMetaV0 = {
       name: "grow",
       type: "boolean",
       default: false,
-      description: "Permite que o stack cresca ocupando espaco disponivel.",
+      description: "Permite que o stack cresça ocupando espaço disponível.",
       semanticRole: "behavior",
       bindable: true
     },

@@ -3990,6 +3990,7 @@
   "showcase.component.yearPartSelector.section7Description": "Toggle the allowed breakdowns, the year range and the locale, and watch the resolved interval in real time.",
   "showcase.component.yearPartSelector.defaults.minYear": "current year - 30",
   "showcase.component.yearPartSelector.defaults.maxYear": "current year + 10",
+  "showcase.common.automatic": "automatic",
   "showcase.component.yearPartSelector.props.id": "Prefix for the ids of the three inner controls; not the id of a single field.",
   "showcase.component.yearPartSelector.props.label": "Group label, above the control row.",
   "showcase.component.yearPartSelector.props.value": "Selected part in controlled mode: { year, kind, part }, with part 1-based.",

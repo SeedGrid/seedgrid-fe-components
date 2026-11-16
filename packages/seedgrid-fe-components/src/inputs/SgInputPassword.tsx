@@ -9,9 +9,9 @@ export type SgInputPasswordProps = Omit<
   SgInputTextProps,
   "type" | "error" | "validation" | "required" | "requiredMessage" | "validateOnBlur"
 > & {
-  /** Disparado ao receber foco — padrao seedgrid. */
+  /** Disparado ao receber foco — padrão seedgrid. */
   onEnter?: () => void;
-  /** Disparado ao perder o foco (apos validacao) — padrao seedgrid. */
+  /** Disparado ao perder o foco (após validação) — padrão seedgrid. */
   onExit?: () => void;
   error?: string;
   onValidation?: (message: string | null) => void;
@@ -21,14 +21,14 @@ export type SgInputPasswordProps = Omit<
   hidePassword?: boolean;
   maxLength?: number;
   validation?: (value: string) => string | null;
-  /** Exibe um botao para gerar automaticamente uma senha forte aleatoria (respeita as regras de politica). */
+  /** Exibe um botão para gerar automaticamente uma senha forte aleatória (respeita as regras de política). */
   createNewPasswordButton?: boolean;
   /**
    * Comprimento da senha gerada pelo `createNewPasswordButton`. Default: `minSize`.
    *
-   * NAO derive isto de `maxLength`: `maxLength` existe para nao truncar o que o usuario
+   * NÃO derive isto de `maxLength`: `maxLength` existe para não truncar o que o usuário
    * digita (frase-senha), e costuma ser folgado (128, 512). Usar o teto como alvo fazia o
-   * botao gerar uma senha de 128 caracteres.
+   * botão gerar uma senha de 128 caracteres.
    */
   newPasswordLength?: number;
   showStrengthBar?: boolean;

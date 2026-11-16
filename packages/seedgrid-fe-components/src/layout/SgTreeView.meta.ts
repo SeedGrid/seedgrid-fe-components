@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "navigation",
   subcategory: "tree-view",
   description:
-    "Navegacao hierarquica para estruturas em arvore com expansao, selecao, busca, checkboxes e suporte a dados aninhados.",
+    "Navegação hierarquica para estruturas em árvore com expansão, seleção, busca, checkboxes e suporte a dados aninhados.",
   tags: ["navigation", "tree", "hierarchy", "selection", "search"],
   capabilities: ["hierarchical-navigation", "node-selection", "checkboxes", "search", "expand-collapse", "json-mapping"],
   fieldSemantics: ["hierarchy", "tree", "nestedNavigation", "permissionTree", "categoryTree"],
@@ -19,14 +19,14 @@ export const sgMeta: SgMetaV0 = {
       name: "nodes",
       type: "SgTreeNode[]",
       required: true,
-      description: "Lista hierarquica de nos exibidos pela arvore.",
+      description: "Lista hierarquica de nos exibidos pela árvore.",
       semanticRole: "data",
       bindable: true
     },
     {
       name: "checkedIds",
       type: "string[]",
-      description: "Nos marcados em cenarios de checkbox tree.",
+      description: "Nos marcados em cenários de checkbox tree.",
       semanticRole: "value",
       bindable: true
     },
@@ -42,7 +42,7 @@ export const sgMeta: SgMetaV0 = {
       name: "size",
       type: '"sm" | "md" | "lg"',
       default: "md",
-      description: "Escala visual da arvore e dos itens.",
+      description: "Escala visual da árvore e dos itens.",
       semanticRole: "appearance",
       bindable: true
     },

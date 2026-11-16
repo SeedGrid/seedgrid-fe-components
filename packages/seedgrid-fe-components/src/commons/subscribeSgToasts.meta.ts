@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "hook",
   subcategory: "notification",
   description:
-    "Funcao para se inscrever em mudancas de toasts. Permite monitorar e reagir quando novos toasts sao criados ou removidos.",
+    "Função para se inscrever em mudanças de toasts. Permite monitorar e reagir quando novos toasts são criados ou removidos.",
   tags: ["hook", "toast", "subscription", "reactive"],
   capabilities: ["subscribe", "listen", "reactive-updates"],
   fieldSemantics: ["subscription", "reactiveUpdates", "toastMonitoring"],

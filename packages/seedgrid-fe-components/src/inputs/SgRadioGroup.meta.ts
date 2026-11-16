@@ -10,19 +10,19 @@ export const sgMeta: SgMetaV0 = {
   category: "input",
   subcategory: "radio-group",
   description:
-    "Grupo de radios para escolha unica com orientacao e estilo visual configuravel.",
+    "Grupo de rádios para escolha única com orientação e estilo visual configurável.",
   tags: ["form", "radio", "single-choice", "options", "rhf"],
   capabilities: ["rhf", "single-selection", "group-box", "highlight-style"],
   fieldSemantics: ["singleSelection", "optionSet", "enumChoice", "structuredChoice"],
   props: [
-    { name: "title", type: "string", description: "Titulo do grupo.", semanticRole: "label", bindable: true },
-    { name: "source", type: "SgRadioGroupOption[]", description: "Opcoes disponiveis.", semanticRole: "data", bindable: true },
+    { name: "title", type: "string", description: "Título do grupo.", semanticRole: "label", bindable: true },
+    { name: "source", type: "SgRadioGroupOption[]", description: "Opções disponíveis.", semanticRole: "data", bindable: true },
     { name: "value", type: "string | number", description: "Valor selecionado.", semanticRole: "value", bindable: true },
-    { name: "orientation", type: "\"horizontal\" | \"vertical\"", default: "vertical", description: "Orientacao visual do grupo.", semanticRole: "appearance", bindable: true },
-    { name: "selectionStyle", type: "\"radio\" | \"highlight\"", default: "radio", description: "Estilo visual de selecao.", semanticRole: "appearance", bindable: true },
-    { name: "required", type: "boolean", default: false, description: "Marca o grupo como obrigatorio.", semanticRole: "validation", bindable: true },
-    { name: "readOnly", type: "boolean", default: false, description: "Impede alteracoes no valor.", semanticRole: "behavior", bindable: true },
-    { name: "onChange", type: "(value: string | number | null) => void", description: "Callback de mudanca.", semanticRole: "event", bindable: false }
+    { name: "orientation", type: "\"horizontal\" | \"vertical\"", default: "vertical", description: "Orientação visual do grupo.", semanticRole: "appearance", bindable: true },
+    { name: "selectionStyle", type: "\"radio\" | \"highlight\"", default: "radio", description: "Estilo visual de seleção.", semanticRole: "appearance", bindable: true },
+    { name: "required", type: "boolean", default: false, description: "Marca o grupo como obrigatório.", semanticRole: "validation", bindable: true },
+    { name: "readOnly", type: "boolean", default: false, description: "Impede alterações no valor.", semanticRole: "behavior", bindable: true },
+    { name: "onChange", type: "(value: string | number | null) => void", description: "Callback de mudança.", semanticRole: "event", bindable: false }
   ],
   states: ["default", "disabled", "readOnly", "error"],
   showcase: { route: "/components/sg-radio-group", hasPlayground: true, hasPropsTable: true },

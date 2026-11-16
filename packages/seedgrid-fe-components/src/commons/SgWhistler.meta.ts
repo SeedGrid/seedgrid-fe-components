@@ -10,15 +10,15 @@ export const sgMeta: SgMetaV0 = {
   category: "feedback",
   subcategory: "whistler",
   description:
-    "Renderizador de avisos persistentes ou semi-persistentes em pilha, com cores por severidade, acao opcional e controle de maximo visivel. Cede a vez quando um SgWhistleHost esta presente.",
+    "Renderizador de avisos persistentes ou semi-persistentes em pilha, com cores por severidade, ação opcional e controle de máximo visível. Cede a vez quando um SgWhistleHost esta presente.",
   tags: ["feedback", "alerts", "renderer", "inline-notifications"],
   capabilities: ["alert-stacking", "severity-colors", "dismissible-items", "timed-dismiss"],
   fieldSemantics: ["alertRenderer", "persistentFeedback", "stackedAlerts"],
   props: [
-    { name: "max", type: "number", default: 4, description: "Quantidade maxima de whistle items visiveis.", semanticRole: "behavior", bindable: true },
-    { name: "duration", type: "number", default: 4000, description: "Duracao padrao dos whistles em milissegundos (mesmo default do SgToaster). Cada whistle sobrescreve com options.duration, que tem prioridade; use 0 (ou negativo) para que nada suma sozinho. Whistle 'loading' nunca expira.", semanticRole: "behavior", bindable: true },
+    { name: "max", type: "number", default: 4, description: "Quantidade máxima de whistle items visíveis.", semanticRole: "behavior", bindable: true },
+    { name: "duration", type: "number", default: 4000, description: "Duração padrão dos whistles em milissegundos (mesmo default do SgToaster). Cada whistle sobrescreve com options.duration, que tem prioridade; use 0 (ou negativo) para que nada suma sozinho. Whistle 'loading' nunca expira.", semanticRole: "behavior", bindable: true },
     { name: "newestOnTop", type: "boolean", default: false, description: "Inverte a ordem visual para mostrar os mais novos primeiro.", semanticRole: "behavior", bindable: true },
-    { name: "gap", type: "number", default: 12, description: "Espacamento entre os avisos renderizados.", semanticRole: "appearance", bindable: true },
+    { name: "gap", type: "number", default: 12, description: "Espaçamento entre os avisos renderizados.", semanticRole: "appearance", bindable: true },
     { name: "rounded", type: "boolean", default: true, description: "Arredonda os cantos de cada whistle (desligue para cantos retos).", semanticRole: "appearance", bindable: true }
   ],
   states: ["idle", "showing-alerts"],

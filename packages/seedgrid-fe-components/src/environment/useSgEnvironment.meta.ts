@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "hook",
   subcategory: "environment",
   description:
-    "Hook para acessar configuracao de ambiente (namespace, estrategia de persistencia, modo e escopo). Retorna o contexto completo do SgEnvironmentProvider.",
+    "Hook para acessar configuração de ambiente (namespace, estratégia de persistência, modo e escopo). Retorna o contexto completo do SgEnvironmentProvider.",
   tags: ["hook", "environment", "persistence", "namespace"],
   capabilities: ["namespace-access", "persistence-config", "environment-context"],
   fieldSemantics: ["environmentContext", "persistenceConfig", "namespaceScope"],
@@ -25,28 +25,28 @@ export const sgMeta: SgMetaV0 = {
     {
       name: "returns.persistenceStrategy",
       type: "PersistenceStrategy",
-      description: "Estrategia que carrega, salva e limpa estado persistido.",
+      description: "Estratégia que carrega, salva e limpa estado persistido.",
       semanticRole: "behavior",
       bindable: false
     },
     {
       name: "returns.persistence.scope",
       type: "string",
-      description: "Escopo logico para chaves persistidas (ex: 'app:myapp').",
+      description: "Escopo lógico para chaves persistidas (ex: 'app:myapp').",
       semanticRole: "data",
       bindable: false
     },
     {
       name: "returns.persistence.mode",
       type: "SgPersistenceMode",
-      description: "Modo de persistencia (local, api, fallback).",
+      description: "Modo de persistência (local, api, fallback).",
       semanticRole: "behavior",
       bindable: false
     },
     {
       name: "returns.persistence.stateVersion",
       type: "number",
-      description: "Versao logica do estado persistido para migracao.",
+      description: "Versão lógica do estado persistido para migração.",
       semanticRole: "data",
       bindable: false
     }

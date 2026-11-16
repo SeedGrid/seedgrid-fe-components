@@ -532,7 +532,7 @@ export function SgClockShowcaseClient({ initialServerTime }: { initialServerTime
               />
             </Section>
 
-            <ShowcasePropsReference rows={CLOCK_PROPS} />
+            <ShowcasePropsReference rows={CLOCK_PROPS.map((r) => (r.defaultValue === "automático" ? { ...r, defaultValue: t(i18n, "showcase.common.automatic") } : r))} />
             {aiComponent ? <ComponentAiPropsTable component={aiComponent} /> : null}
             <div aria-hidden="true" className="pointer-events-none" style={{ height: `calc(${anchorOffset}px + 40vh)` }} />
           </div>

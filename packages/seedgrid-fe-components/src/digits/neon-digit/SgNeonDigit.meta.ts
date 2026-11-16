@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "gadget",
   subcategory: "digit",
   description:
-    "Digito com visual neon para relogios, contadores e displays que exigem alto contraste e identidade luminosa.",
+    "Digito com visual neon para relógios, contadores e displays que exigem alto contraste e identidade luminosa.",
   tags: ["gadget", "digit", "neon", "display", "counter"],
   capabilities: ["single-character-display", "neon-style", "counter-composition", "high-contrast-visual"],
   fieldSemantics: ["digitDisplay", "neonDigit", "counterDigit", "highlightMetric"],

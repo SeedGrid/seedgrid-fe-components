@@ -10,20 +10,20 @@ export const sgMeta: SgMetaV0 = {
   category: "input",
   subcategory: "phone",
   description:
-    "Campo especializado para telefone com mascara, validacao de comprimento e integracao com formularios. Contrato de valor: o valor do formulario (onChange avulso, control e register) e SEMPRE mascarado, digitado ou setado por codigo (defaultValues, setValue, reset, value); a entrada aceita valor cru ou mascarado; valor maior que a mascara e cortado; telefone com +55 perde o DDI; para guardar so digitos use value.replace(/\\D/g, \"\").",
+    "Campo especializado para telefone com máscara, validação de comprimento e integração com formulários. Contrato de valor: o valor do formulário (onChange avulso, control e register) e SEMPRE mascarado, digitado ou setado por código (defaultValues, setValue, reset, value); a entrada aceita valor cru ou mascarado; valor maior que a máscara e cortado; telefone com +55 perde o DDI; para guardar só dígitos use value.replace(/\\D/g, \"\").",
   tags: ["form", "phone", "contact", "mask", "rhf"],
   capabilities: ["rhf", "mask", "validation", "phone-format", "clearable"],
   fieldSemantics: ["phone", "mobilePhone", "contactPhone", "telephoneNumber"],
   props: [
-    { name: "id", type: "string", required: true, description: "Identificador unico do campo.", semanticRole: "data", bindable: false },
-    { name: "name", type: "string", description: "Nome do campo em formularios.", semanticRole: "data", bindable: true },
-    { name: "label", type: "string", description: "Rotulo exibido ao usuario.", semanticRole: "label", bindable: true },
-    { name: "required", type: "boolean", default: false, description: "Marca o campo como obrigatorio.", semanticRole: "validation", bindable: true },
-    { name: "lengthMessage", type: "string", description: "Mensagem para telefone com tamanho invalido.", semanticRole: "validation", bindable: true },
-    { name: "invalidMessage", type: "string", description: "Mensagem para telefone invalido.", semanticRole: "validation", bindable: true },
-    { name: "validateOnBlur", type: "boolean", default: true, description: "Executa validacao no blur.", semanticRole: "behavior", bindable: true },
+    { name: "id", type: "string", required: true, description: "Identificador único do campo.", semanticRole: "data", bindable: false },
+    { name: "name", type: "string", description: "Nome do campo em formulários.", semanticRole: "data", bindable: true },
+    { name: "label", type: "string", description: "Rótulo exibido ao usuário.", semanticRole: "label", bindable: true },
+    { name: "required", type: "boolean", default: false, description: "Marca o campo como obrigatório.", semanticRole: "validation", bindable: true },
+    { name: "lengthMessage", type: "string", description: "Mensagem para telefone com tamanho inválido.", semanticRole: "validation", bindable: true },
+    { name: "invalidMessage", type: "string", description: "Mensagem para telefone inválido.", semanticRole: "validation", bindable: true },
+    { name: "validateOnBlur", type: "boolean", default: true, description: "Executa validação no blur.", semanticRole: "behavior", bindable: true },
     { name: "inputProps", type: "InputHTMLAttributes<HTMLInputElement>", description: "Props nativos do input.", semanticRole: "appearance", bindable: false },
-    { name: "onValidation", type: "(message: string | null) => void", description: "Callback para estado de validacao.", semanticRole: "event", bindable: false }
+    { name: "onValidation", type: "(message: string | null) => void", description: "Callback para estado de validação.", semanticRole: "event", bindable: false }
   ],
   states: ["default", "focused", "disabled", "readOnly", "error"],
   examples: [

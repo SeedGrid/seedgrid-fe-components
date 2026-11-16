@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "gadget",
   subcategory: "digit",
   description:
-    "Digito em estilo segmentado para relogios, paines industriais e displays numericos classicos.",
+    "Digito em estilo segmentado para relógios, paines industriais e displays numéricos clássicos.",
   tags: ["gadget", "digit", "segment", "clock", "industrial"],
   capabilities: ["single-character-display", "segmented-style", "clock-composition", "industrial-look"],
   fieldSemantics: ["digitDisplay", "segmentDigit", "industrialCounter", "clockDigit"],

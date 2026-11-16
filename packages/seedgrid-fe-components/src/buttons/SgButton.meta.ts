@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "action",
   subcategory: "button",
   description:
-    "Botao de acao com suporte a severity, appearance, shape, loading e icones para acoes principais e secundarias.",
+    "Botão de ação com suporte a severity, appearance, shape, loading e ícones para ações principais e secundárias.",
   tags: ["action", "button", "trigger", "cta"],
   capabilities: ["trigger", "submit", "severity", "appearance", "loading", "icon-support"],
   fieldSemantics: ["primaryAction", "secondaryAction", "submit", "confirm", "dismiss"],
@@ -18,7 +18,7 @@ export const sgMeta: SgMetaV0 = {
     {
       name: "label",
       type: "ReactNode",
-      description: "Conteudo textual principal do botao.",
+      description: "Conteúdo textual principal do botão.",
       semanticRole: "label",
       bindable: true
     },
@@ -26,7 +26,7 @@ export const sgMeta: SgMetaV0 = {
       name: "severity",
       type: '"primary" | "secondary" | "success" | "info" | "warning" | "help" | "danger"',
       default: "primary",
-      description: "Define o peso visual e semantico da acao.",
+      description: "Define o peso visual e semântico da ação.",
       semanticRole: "appearance",
       bindable: true
     },
@@ -34,7 +34,7 @@ export const sgMeta: SgMetaV0 = {
       name: "appearance",
       type: '"solid" | "outline" | "ghost"',
       default: "solid",
-      description: "Variante visual base do botao.",
+      description: "Variante visual base do botão.",
       semanticRole: "appearance",
       bindable: true
     },
@@ -42,7 +42,7 @@ export const sgMeta: SgMetaV0 = {
       name: "type",
       type: '"button" | "submit" | "reset"',
       default: "button",
-      description: "Comportamento HTML da acao dentro de formularios.",
+      description: "Comportamento HTML da ação dentro de formulários.",
       semanticRole: "behavior",
       bindable: true
     },
@@ -58,21 +58,21 @@ export const sgMeta: SgMetaV0 = {
       name: "enabled",
       type: "boolean",
       default: true,
-      description: "Quando false, desabilita a interacao do botao.",
+      description: "Quando false, desabilita a interação do botão.",
       semanticRole: "behavior",
       bindable: true
     },
     {
       name: "leftIcon",
       type: "ReactNode",
-      description: "Icone exibido antes do label.",
+      description: "Ícone exibido antes do label.",
       semanticRole: "appearance",
       bindable: false
     },
     {
       name: "rightIcon",
       type: "ReactNode",
-      description: "Icone exibido depois do label.",
+      description: "Ícone exibido depois do label.",
       semanticRole: "appearance",
       bindable: false
     },

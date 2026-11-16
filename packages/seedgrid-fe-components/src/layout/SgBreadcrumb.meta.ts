@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "navigation",
   subcategory: "breadcrumb",
   description:
-    "Navegacao hierarquica compacta para indicar caminho atual e permitir retorno a niveis anteriores.",
+    "Navegação hierarquica compacta para indicar caminho atual e permitir retorno a níveis anteriores.",
   tags: ["navigation", "breadcrumb", "hierarchy", "path"],
   capabilities: ["hierarchical-navigation", "overflow-collapse", "home-icon", "custom-separator"],
   fieldSemantics: ["navigation", "hierarchy", "breadcrumbPath", "locationTrail"],
@@ -19,7 +19,7 @@ export const sgMeta: SgMetaV0 = {
       name: "items",
       type: "SgBreadcrumbItem[]",
       required: true,
-      description: "Lista ordenada de niveis do caminho de navegacao.",
+      description: "Lista ordenada de níveis do caminho de navegação.",
       semanticRole: "data",
       bindable: true
     },
@@ -27,14 +27,14 @@ export const sgMeta: SgMetaV0 = {
       name: "separator",
       type: '"slash" | "chevron" | "dot" | "arrow" | ReactNode',
       default: "chevron",
-      description: "Separador visual entre os niveis.",
+      description: "Separador visual entre os níveis.",
       semanticRole: "appearance",
       bindable: true
     },
     {
       name: "maxItems",
       type: "number",
-      description: "Quantidade maxima de itens visiveis antes do colapso.",
+      description: "Quantidade máxima de itens visíveis antes do colapso.",
       semanticRole: "behavior",
       bindable: true
     },
@@ -42,7 +42,7 @@ export const sgMeta: SgMetaV0 = {
       name: "overflowBehavior",
       type: '"collapse" | "scroll"',
       default: "collapse",
-      description: "Comportamento quando o caminho excede o espaco disponivel.",
+      description: "Comportamento quando o caminho excede o espaço disponível.",
       semanticRole: "behavior",
       bindable: true
     },
@@ -50,7 +50,7 @@ export const sgMeta: SgMetaV0 = {
       name: "showHomeIcon",
       type: "boolean",
       default: false,
-      description: "Adiciona um item inicial com icone de home.",
+      description: "Adiciona um item inicial com ícone de home.",
       semanticRole: "appearance",
       bindable: true
     },

@@ -32,21 +32,21 @@ export type SgFileUploadProps = RhfFieldProps & {
   labelText?: string;
   /** Arquivos controlados (sempre lista; um arquivo = lista de um). */
   value?: SgFileValue[] | null;
-  /** Arquivos iniciais (campo nao controlado). */
+  /** Arquivos iniciais (campo não controlado). */
   defaultValue?: SgFileValue[];
-  /** Lista de arquivos validos apos escolher ou remover. O envio ao servidor e do host. */
+  /** Lista de arquivos válidos após escolher ou remover. O envio ao servidor e do host. */
   onChange?: (files: SgFileValue[]) => void;
-  /** Arquivo recusado: codigo, mensagem ja traduzida e nome do arquivo. Os demais seguem validos. */
+  /** Arquivo recusado: código, mensagem já traduzida e nome do arquivo. Os demais seguem válidos. */
   onError?: (code: FileErrorCode, message: string, fileName: string) => void;
-  /** Tipos aceitos (`image`, `pdf`, `xlsx`...). O tipo e conferido pelo conteudo do arquivo. */
+  /** Tipos aceitos (`image`, `pdf`, `xlsx`...). O tipo e conferido pelo conteúdo do arquivo. */
   mediaType?: MediaType[];
-  /** Tipos extras em texto livre (`.pdf`, `image/png`, `image/*`), separados por virgula; soma-se ao mediaType. */
+  /** Tipos extras em texto livre (`.pdf`, `image/png`, `image/*`), separados por vírgula; soma-se ao mediaType. */
   accept?: string;
-  /** Quantos arquivos o campo guarda (padrao 1). Com 1, escolher outro substitui; maior que 1 liga a selecao multipla. */
+  /** Quantos arquivos o campo guarda (padrão 1). Com 1, escolher outro substitui; maior que 1 liga a seleção múltipla. */
   maxFiles?: number;
-  /** Tamanho maximo de cada arquivo: bytes (numero) ou texto com unidade ("500KB", "1.5MB", "1GB"). */
+  /** Tamanho máximo de cada arquivo: bytes (número) ou texto com unidade ("500KB", "1.5MB", "1GB"). */
   maxSizePerFile?: SizeLimit;
-  /** Tamanho maximo da soma dos arquivos (mesmo formato). */
+  /** Tamanho máximo da soma dos arquivos (mesmo formato). */
   maxSizeTotal?: SizeLimit;
   hintText?: string;
   required?: boolean;
@@ -56,18 +56,18 @@ export type SgFileUploadProps = RhfFieldProps & {
   className?: string;
   onEnter?: () => void;
   onExit?: () => void;
-  /** Regra extra, assincrona, por arquivo (depois da conferencia de tipo). E como o SgImageUpload confere dimensao. */
+  /** Regra extra, assincrona, por arquivo (depois da conferencia de tipo). E como o SgImageUpload confere dimensão. */
   extraCheck?: (file: File, info: { mime: string }) => Promise<SgFileRejection | null>;
-  /** Miniatura de cada arquivo (sem ela, a lista usa o icone do tipo). */
+  /** Miniatura de cada arquivo (sem ela, a lista usa o ícone do tipo). */
   thumbnailBuilder?: (file: SgFileValue, size: number) => React.ReactNode;
-  /** Lado da miniatura em px (padrao 96). */
+  /** Lado da miniatura em px (padrão 96). */
   thumbnailSize?: number;
-  /** Chaves de i18n do texto da area vazia (um arquivo / varios). */
+  /** Chaves de i18n do texto da área vazia (um arquivo / vários). */
   dropTextKey?: string;
   dropManyTextKey?: string;
-  /** Texto dos tipos aceitos na mensagem de tipo recusado (padrao: mediaType/accept). */
+  /** Texto dos tipos aceitos na mensagem de tipo recusado (padrão: mediaType/accept). */
   typeNames?: string;
-  /** Valor do atributo `accept` do seletor do navegador (padrao: derivado de mediaType/accept). */
+  /** Valor do atributo `accept` do seletor do navegador (padrão: derivado de mediaType/accept). */
   pickerAccept?: string;
   /** Prefixo do `data-sg` dos elementos internos (`sg-file`, `sg-image`). */
   keyPrefix?: string;

@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "hook",
   subcategory: "namespace",
   description:
-    "Hook para acessar o NamespaceProvider configurado. Permite obter o namespace/tenant atual para isolamento de estado e chaves de persistencia.",
+    "Hook para acessar o NamespaceProvider configurado. Permite obter o namespace/tenant atual para isolamento de estado e chaves de persistência.",
   tags: ["hook", "namespace", "tenant", "isolation"],
   capabilities: ["namespace-access", "tenant-isolation", "state-key-building"],
   fieldSemantics: ["namespaceContext", "tenantId", "isolationScope"],
@@ -18,7 +18,7 @@ export const sgMeta: SgMetaV0 = {
     {
       name: "returns.getNamespace",
       type: "() => string",
-      description: "Funcao que retorna o namespace/tenant atual.",
+      description: "Função que retorna o namespace/tenant atual.",
       semanticRole: "data",
       bindable: false
     }

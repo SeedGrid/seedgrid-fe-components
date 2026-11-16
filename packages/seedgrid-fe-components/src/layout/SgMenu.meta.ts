@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "navigation",
   subcategory: "menu",
   description:
-    "Componente de navegacao estruturada com suporte a sidebar, drawer, menu inline e variantes hierarquicas ou mega menu.",
+    "Componente de navegação estruturada com suporte a sidebar, drawer, menu inline e variantes hierarquicas ou mega menu.",
   tags: ["navigation", "menu", "sidebar", "drawer", "mega-menu"],
   capabilities: ["hierarchical-navigation", "search", "collapse", "pin", "dock", "brand-user-sections"],
   fieldSemantics: ["navigation", "menuTree", "appNavigation", "hierarchicalMenu"],
@@ -19,14 +19,14 @@ export const sgMeta: SgMetaV0 = {
       name: "menu",
       type: "SgMenuNode[]",
       required: true,
-      description: "Arvore de itens e subitens do menu.",
+      description: "Árvore de itens e subitens do menu.",
       semanticRole: "data",
       bindable: true
     },
     {
       name: "selection",
       type: "SgMenuSelection",
-      description: "Selecao ativa por id ou url.",
+      description: "Seleção ativa por id ou url.",
       semanticRole: "value",
       bindable: true
     },
@@ -56,7 +56,7 @@ export const sgMeta: SgMetaV0 = {
     {
       name: "search",
       type: "{ enabled: boolean; placeholder?: string }",
-      description: "Configuracao opcional de busca integrada.",
+      description: "Configuração opcional de busca integrada.",
       semanticRole: "behavior",
       bindable: true
     },
@@ -70,14 +70,14 @@ export const sgMeta: SgMetaV0 = {
     {
       name: "user",
       type: "SgMenuUser",
-      description: "Bloco de usuario exibido no menu.",
+      description: "Bloco de usuário exibido no menu.",
       semanticRole: "data",
       bindable: true
     },
     {
       name: "onNavigate",
       type: "(node: SgMenuNode) => void",
-      description: "Callback disparado na navegacao por um item.",
+      description: "Callback disparado na navegação por um item.",
       semanticRole: "event",
       bindable: false
     }

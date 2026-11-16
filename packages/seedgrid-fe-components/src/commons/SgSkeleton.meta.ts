@@ -27,7 +27,7 @@ export const sgMeta: SgMetaV0 = {
       name: "animation",
       type: '"wave" | "pulse" | "none"',
       default: "wave",
-      description: "Animacao aplicada ao placeholder.",
+      description: "Animação aplicada ao placeholder.",
       semanticRole: "appearance",
       bindable: true
     },
@@ -48,7 +48,7 @@ export const sgMeta: SgMetaV0 = {
     {
       name: "size",
       type: "number | string",
-      description: "Tamanho unico para placeholders quadrados ou circulares.",
+      description: "Tamanho único para placeholders quadrados ou circulares.",
       semanticRole: "appearance",
       bindable: true
     },

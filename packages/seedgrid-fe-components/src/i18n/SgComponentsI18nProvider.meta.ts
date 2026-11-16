@@ -10,14 +10,14 @@ export const sgMeta: SgMetaV0 = {
   category: "provider",
   subcategory: "i18n",
   description:
-    "Provider de internacionalizacao para os componentes SeedGrid, com locale, mensagens embutidas e sobrescrita pontual por subtree.",
+    "Provider de internacionalização para os componentes SeedGrid, com locale, mensagens embutidas e sobrescrita pontual por subtree.",
   tags: ["provider", "i18n", "locale", "messages", "context"],
   capabilities: ["locale-scoping", "message-overrides", "built-in-locales", "runtime-i18n-context"],
   fieldSemantics: ["i18nProvider", "localeScope", "messageOverrides"],
   props: [
     { name: "locale", type: "SgComponentsLocale", default: "en-US", description: "Locale aplicado aos componentes dentro do provider.", semanticRole: "behavior", bindable: true },
     { name: "messages", type: "SgComponentsMessages | SgComponentsMessagesByNamespace", description: "Mapa de mensagens customizadas ou sobrescritas.", semanticRole: "data", bindable: true },
-    { name: "children", type: "ReactNode", required: true, description: "Arvore de componentes que consome o contexto de i18n.", semanticRole: "data", bindable: false }
+    { name: "children", type: "ReactNode", required: true, description: "Árvore de componentes que consome o contexto de i18n.", semanticRole: "data", bindable: false }
   ],
   states: ["default", "locale-bound", "message-overridden"],
   examples: [

@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "feedback",
   subcategory: "dialog",
   description:
-    "Overlay modal para apresentar conteudo focado, confirmacoes e fluxos curtos com controle de abertura, fechamento e severidade visual.",
+    "Overlay modal para apresentar conteúdo focado, confirmações e fluxos curtos com controle de abertura, fechamento e severidade visual.",
   tags: ["feedback", "dialog", "modal", "overlay", "focus"],
   capabilities: ["modal", "controlled-open", "severity", "size", "animation", "auto-close"],
   fieldSemantics: ["dialog", "modal", "overlay", "focusedContent", "interruption"],
@@ -32,21 +32,21 @@ export const sgMeta: SgMetaV0 = {
     {
       name: "title",
       type: "ReactNode",
-      description: "Titulo principal do dialog.",
+      description: "Título principal do dialog.",
       semanticRole: "label",
       bindable: true
     },
     {
       name: "subtitle",
       type: "ReactNode",
-      description: "Subtitulo complementar do dialog.",
+      description: "Subtítulo complementar do dialog.",
       semanticRole: "label",
       bindable: true
     },
     {
       name: "children",
       type: "ReactNode",
-      description: "Conteudo principal do corpo do dialog.",
+      description: "Conteúdo principal do corpo do dialog.",
       semanticRole: "data",
       bindable: false
     },
@@ -62,7 +62,7 @@ export const sgMeta: SgMetaV0 = {
       name: "severity",
       type: '"primary" | "secondary" | "success" | "info" | "warning" | "help" | "danger" | "plain"',
       default: "plain",
-      description: "Tom semantico do cabecalho e acentos visuais.",
+      description: "Tom semântico do cabeçalho e acentos visuais.",
       semanticRole: "appearance",
       bindable: true
     },
@@ -70,7 +70,7 @@ export const sgMeta: SgMetaV0 = {
       name: "closeOnOverlayClick",
       type: "boolean",
       default: true,
-      description: "Fecha o dialog ao clicar fora do conteudo.",
+      description: "Fecha o dialog ao clicar fora do conteúdo.",
       semanticRole: "behavior",
       bindable: true
     }

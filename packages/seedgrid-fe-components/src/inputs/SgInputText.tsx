@@ -58,9 +58,9 @@ type SgInputTextBaseProps = Omit<SgInputTextProps, "name" | "control" | "registe
 /** @internal Contexto usado pelos campos mascarados (CPF, CNPJ, telefone, CEP) para que o valor do formulario seja sempre mascarado. */
 export type SgValueMask = {
   mask: (value: string) => string;
-  /** Normalizacao aplicada so a valor vindo de fora (ex.: tirar o DDI do telefone). */
+  /** Normalização aplicada só a valor vindo de fora (ex.: tirar o DDI do telefone). */
   normalize?: (value: string) => string;
-  /** Mascara do que o usuario digita ou cola (conhece o valor anterior); padrao: `mask`. */
+  /** Máscara do que o usuário digita ou cola (conhece o valor anterior); padrão: `mask`. */
   maskInput?: (value: string, previous: string) => string;
 };
 export const SgValueMaskContext = React.createContext<SgValueMask | null>(null);

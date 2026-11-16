@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "layout",
   subcategory: "dock-screen",
   description:
-    "Componente de conveniencia que combina SgScreen e SgDockLayout em uma unica raiz estrutural.",
+    "Componente de conveniencia que combina SgScreen e SgDockLayout em uma única raiz estrutural.",
   tags: ["layout", "screen", "dock", "workspace", "shell"],
   capabilities: ["screen-shell", "dock-layout", "root-workspace", "persistent-layout"],
   fieldSemantics: ["workspaceScreen", "dockScreen", "appShell", "rootLayout"],
@@ -20,7 +20,7 @@ export const sgMeta: SgMetaV0 = {
     { name: "defaultState", type: "SgDockLayoutState", description: "Estado inicial das toolbars e zonas internas.", semanticRole: "value", bindable: true },
     { name: "layoutClassName", type: "string", description: "Classes adicionais aplicadas ao layout interno de dock.", semanticRole: "appearance", bindable: true },
     { name: "fullscreen", type: "boolean", default: true, description: "Quando ativo, a screen ocupa a viewport inteira.", semanticRole: "behavior", bindable: true },
-    { name: "children", type: "ReactNode", description: "Zonas e conteudo estrutural do dock screen.", semanticRole: "data", bindable: false }
+    { name: "children", type: "ReactNode", description: "Zonas e conteúdo estrutural do dock screen.", semanticRole: "data", bindable: false }
   ],
   states: ["default", "fullscreen", "embedded", "persisted"],
   examples: [

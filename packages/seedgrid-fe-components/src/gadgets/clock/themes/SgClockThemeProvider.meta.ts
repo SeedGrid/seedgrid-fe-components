@@ -10,15 +10,15 @@ export const sgMeta: SgMetaV0 = {
   category: "provider",
   subcategory: "theme",
   description:
-    "Provider de resolucao de temas de relogio, com suporte a fallback, temas locais e integracao com o registro global.",
+    "Provider de resolução de temas de relógio, com suporte a fallback, temas locais e integração com o registro global.",
   tags: ["provider", "clock", "theme", "resolver", "context"],
   capabilities: ["theme-context", "fallback-resolution", "local-themes", "global-theme-merge"],
   fieldSemantics: ["themeProvider", "clockThemeResolution", "themeRegistryScope"],
   props: [
-    { name: "value.mode", type: '"fallback" | "strict"', default: "fallback", description: "Modo de resolucao para temas ausentes.", semanticRole: "behavior", bindable: true },
-    { name: "value.fallbackThemeId", type: "string", default: "classic", description: "Tema padrao usado em modo fallback.", semanticRole: "behavior", bindable: true },
+    { name: "value.mode", type: '"fallback" | "strict"', default: "fallback", description: "Modo de resolução para temas ausentes.", semanticRole: "behavior", bindable: true },
+    { name: "value.fallbackThemeId", type: "string", default: "classic", description: "Tema padrão usado em modo fallback.", semanticRole: "behavior", bindable: true },
     { name: "value.themes", type: "SgClockTheme[]", default: [], description: "Lista de temas locais adicionados apenas neste escopo.", semanticRole: "data", bindable: true },
-    { name: "children", type: "ReactNode", required: true, description: "Arvore que vai consumir o resolver de temas.", semanticRole: "data", bindable: false }
+    { name: "children", type: "ReactNode", required: true, description: "Árvore que vai consumir o resolver de temas.", semanticRole: "data", bindable: false }
   ],
   states: ["default", "fallback-mode", "strict-mode", "local-themes-loaded"],
   examples: [

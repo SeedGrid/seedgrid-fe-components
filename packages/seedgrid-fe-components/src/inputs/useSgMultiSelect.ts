@@ -9,7 +9,7 @@ export type SgMultiSelectOption = {
   label: string;
   value: SgMultiSelectOptionValue;
   /**
-   * Texto curto do item JA selecionado: o chip do SgMultiSelectChips e o resumo do SgMultiSelect.
+   * Texto curto do item JÁ selecionado: o chip do SgMultiSelectChips e o resumo do SgMultiSelect.
    * Sem ele, vale o `label`. Ex.: `label: "3 - Filial Centro"`, `chipLabel: "3"`.
    */
   chipLabel?: string;

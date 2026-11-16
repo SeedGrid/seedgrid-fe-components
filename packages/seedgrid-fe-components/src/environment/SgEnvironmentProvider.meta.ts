@@ -10,17 +10,17 @@ export const sgMeta: SgMetaV0 = {
   category: "provider",
   subcategory: "environment",
   description:
-    "Provider de ambiente para namespace, escopo e estrategia de persistencia usados pelos componentes SeedGrid.",
+    "Provider de ambiente para namespace, escopo e estratégia de persistência usados pelos componentes SeedGrid.",
   tags: ["provider", "environment", "persistence", "namespace", "context"],
   capabilities: ["namespace-scoping", "persistence-strategy", "state-key-building", "local-or-api-storage"],
   fieldSemantics: ["environmentProvider", "persistenceScope", "namespaceContext"],
   props: [
-    { name: "value.namespaceProvider", type: "NamespaceProvider", description: "Fornecedor do namespace atual para isolar estado e persistencia.", semanticRole: "behavior", bindable: true },
-    { name: "value.persistenceStrategy", type: "PersistenceStrategy", description: "Estrategia que salva, carrega e limpa o estado persistido.", semanticRole: "behavior", bindable: true },
-    { name: "value.persistence.scope", type: "string", default: "app:unknown", description: "Escopo logico usado na composicao da chave persistida.", semanticRole: "data", bindable: true },
-    { name: "value.persistence.mode", type: "SgPersistenceMode", default: "fallback", description: "Modo de persistencia usado pelo ambiente.", semanticRole: "behavior", bindable: true },
-    { name: "value.persistence.stateVersion", type: "number", default: 1, description: "Versao logica do estado persistido.", semanticRole: "data", bindable: true },
-    { name: "children", type: "ReactNode", required: true, description: "Arvore que consome o contexto de ambiente.", semanticRole: "data", bindable: false }
+    { name: "value.namespaceProvider", type: "NamespaceProvider", description: "Fornecedor do namespace atual para isolar estado e persistência.", semanticRole: "behavior", bindable: true },
+    { name: "value.persistenceStrategy", type: "PersistenceStrategy", description: "Estratégia que salva, carrega e limpa o estado persistido.", semanticRole: "behavior", bindable: true },
+    { name: "value.persistence.scope", type: "string", default: "app:unknown", description: "Escopo lógico usado na composição da chave persistida.", semanticRole: "data", bindable: true },
+    { name: "value.persistence.mode", type: "SgPersistenceMode", default: "fallback", description: "Modo de persistência usado pelo ambiente.", semanticRole: "behavior", bindable: true },
+    { name: "value.persistence.stateVersion", type: "number", default: 1, description: "Versão lógica do estado persistido.", semanticRole: "data", bindable: true },
+    { name: "children", type: "ReactNode", required: true, description: "Árvore que consome o contexto de ambiente.", semanticRole: "data", bindable: false }
   ],
   states: ["default", "namespaced", "persistent", "provider-present"],
   examples: [

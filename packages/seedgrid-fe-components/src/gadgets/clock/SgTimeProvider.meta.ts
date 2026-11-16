@@ -10,13 +10,13 @@ export const sgMeta: SgMetaV0 = {
   category: "provider",
   subcategory: "time",
   description:
-    "Provider de tempo sincronizado com o servidor, usado para clocks e gadgets temporais com atualizacao em tick controlado.",
+    "Provider de tempo sincronizado com o servidor, usado para clocks e gadgets temporais com atualização em tick controlado.",
   tags: ["provider", "time", "clock", "server-sync", "context"],
   capabilities: ["server-time-sync", "tick-context", "nowMs-provider", "hydration-aligned-updates"],
   fieldSemantics: ["timeProvider", "serverSyncedTime", "clockContext"],
   props: [
     { name: "initialServerTime", type: "string", required: true, description: "Timestamp inicial do servidor em formato ISO 8601.", semanticRole: "value", bindable: true },
-    { name: "children", type: "ReactNode", required: true, description: "Arvore que vai consumir tempo sincronizado via useSgTime.", semanticRole: "data", bindable: false }
+    { name: "children", type: "ReactNode", required: true, description: "Árvore que vai consumir tempo sincronizado via useSgTime.", semanticRole: "data", bindable: false }
   ],
   states: ["default", "hydrating", "tick-updating", "fallback-without-provider"],
   examples: [

@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "gadget",
   subcategory: "digit",
   description:
-    "Digito em estilo matriz para displays compactos de numeros e caracteres com estetica de painel digital.",
+    "Digito em estilo matriz para displays compactos de números e caracteres com estética de painel digital.",
   tags: ["gadget", "digit", "matrix", "display", "counter"],
   capabilities: ["single-character-display", "matrix-style", "counter-composition", "pixel-look"],
   fieldSemantics: ["digitDisplay", "matrixDigit", "counterDigit", "panelDigit"],

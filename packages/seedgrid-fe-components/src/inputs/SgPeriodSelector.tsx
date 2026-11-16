@@ -55,9 +55,9 @@ export type ResolvedPeriod = {
 };
 
 export type ResolvePeriodOptions = {
-  /** Nao permite que startDate seja anterior a esta data (clamp). */
+  /** Não permite que startDate seja anterior a esta data (clamp). */
   minDate?: Date;
-  /** Nao permite que endDate seja posterior a esta data (clamp). */
+  /** Não permite que endDate seja posterior a esta data (clamp). */
   maxDate?: Date;
   /** Locale usado para o label textual. Default "pt-BR". */
   locale?: string;
@@ -68,27 +68,27 @@ export type SgPeriodSelectorProps = {
   label?: string;
   value?: PeriodPreset;
   onChange?: (period: ResolvedPeriod) => void;
-  /** Habilita o grupo de periodos passados (LAST_*). Default true. */
+  /** Habilita o grupo de períodos passados (LAST_*). Default true. */
   permitPast?: boolean;
-  /** Habilita o grupo de periodos atuais (THIS_*, TODAY, YESTERDAY). Default true. */
+  /** Habilita o grupo de períodos atuais (THIS_*, TODAY, YESTERDAY). Default true. */
   permitCurrent?: boolean;
-  /** Habilita o grupo de periodos futuros (TOMORROW, NEXT_*). Default true. */
+  /** Habilita o grupo de períodos futuros (TOMORROW, NEXT_*). Default true. */
   permitFuture?: boolean;
-  /** Habilita a opcao "Todos" (sem limites de data). Default true. */
+  /** Habilita a opção "Todos" (sem limites de data). Default true. */
   permitAll?: boolean;
-  /** Habilita a opcao "Periodo" (intervalo customizado). Default true. */
+  /** Habilita a opção "Período" (intervalo customizado). Default true. */
   allowCustomPeriod?: boolean;
-  /** Locale para labels e formatacao. Default "pt-BR". */
+  /** Locale para labels e formatação. Default "pt-BR". */
   locale?: string;
   enabled?: boolean;
   required?: boolean;
   minDate?: Date;
   maxDate?: Date;
-  /** Data de referencia para resolver os presets (default: agora). Util em testes. */
+  /** Data de referência para resolver os presets (default: agora). Útil em testes. */
   referenceDate?: Date;
   className?: string;
   error?: string;
-  /** Integracao react-hook-form (opcional). */
+  /** Integração react-hook-form (opcional). */
   control?: Control<FieldValues>;
   name?: string;
   rules?: RegisterOptions;

@@ -84,12 +84,12 @@ export function sgTreeFromJsonWithChecked(
 /** O que toda trilha tem, seja ela de selecao ou de conteudo livre. */
 type SgTreeTrackBase = {
   id: string;
-  /** Cabecalho da coluna -- some sem ele; com 2+ trilhas na mesma arvore, o usuario nao tem
-   * como saber o que cada coluna significa so' pela posicao. */
+  /** Cabeçalho da coluna -- some sem ele; com 2+ trilhas na mesma árvore, o usuário não tem
+   * como saber o que cada coluna significa só' pela posição. */
   label?: string;
-  /** Largura da coluna, valor CSS (ex.: "140px", "12rem"). Default: 110px. Colunas com conteudo
-   * mais largo que um checkbox -- um select com rotulos longos, um texto com acao ao lado --
-   * precisam disso, senao o cabecalho trunca e o controle espreme. */
+  /** Largura da coluna, valor CSS (ex.: "140px", "12rem"). Default: 110px. Colunas com conteúdo
+   * mais largo que um checkbox -- um select com rótulos longos, um texto com ação ao lado --
+   * precisam disso, senão o cabeçalho trunca e o controle espreme. */
   width?: string;
 };
 
@@ -99,8 +99,8 @@ export type SgTreeTrackBoolean = SgTreeTrackBase & {
   onCheckedChange: (ids: string[]) => void;
   enabled?: (node: SgTreeNode) => boolean;
   ariaLabel?: string;
-  /** Conteudo livre ao lado do controle desta coluna, por no'. O componente nao sabe (nem
-   * precisa saber) o que ele significa -- icone, badge, contador, o que a tela quiser. */
+  /** Conteúdo livre ao lado do controle desta coluna, por no'. O componente não sabe (nem
+   * precisa saber) o que ele significa -- ícone, badge, contador, o que a tela quiser. */
   adornment?: (node: SgTreeNode) => React.ReactNode;
 };
 
@@ -118,7 +118,7 @@ export type SgTreeTrackEnum = SgTreeTrackBase & {
 
 export type SgTreeTrackCustom = SgTreeTrackBase & {
   kind: "custom";
-  /** A arvore so' cede a celula (largura, alinhamento, cabecalho) -- nao ha' estado nem cascata
+  /** A árvore só' cede a celula (largura, alinhamento, cabecalho) -- nao ha' estado nem cascata
    * aqui: quem renderiza controla tudo. */
   render: (node: SgTreeNode) => React.ReactNode;
 };
@@ -390,11 +390,11 @@ export type SgTreeViewProps = {
   checkedIds?: string[];
   defaultCheckedIds?: string[];
   onCheckedChange?: (ids: string[]) => void;
-  /** Cabecalho da coluna do checkbox principal -- so' e' desenhado quando `tracks` tambem esta'
-   * presente (e' o cabecalho de colunas como um todo que fica ambiguo com 2+ controles por linha,
-   * nao o checkbox sozinho). */
+  /** Cabeçalho da coluna do checkbox principal -- só' e' desenhado quando `tracks` também esta'
+   * presente (e' o cabeçalho de colunas como um todo que fica ambíguo com 2+ controles por linha,
+   * não o checkbox sozinho). */
   checkableLabel?: string;
-  /** Trilhas de selecao extras, uma por coluna de controle na linha -- ver SgTreeTrack. */
+  /** Trilhas de seleção extras, uma por coluna de controle na linha -- ver SgTreeTrack. */
   tracks?: SgTreeTrack[];
   expandedIds?: string[];
   defaultExpandedIds?: string[];

@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "action",
   subcategory: "floating-action-button",
   description:
-    "Botao de acao flutuante para tarefas de alto destaque, com suporte a hint, posicao fixa e expansao de acoes secundarias.",
+    "Botão de ação flutuante para tarefas de alto destaque, com suporte a hint, posição fixa e expansão de ações secundárias.",
   tags: ["action", "floating", "fab", "quick-action", "overlay"],
   capabilities: ["floating-position", "quick-action", "action-groups", "hint", "drag-drop", "auto-hide"],
   fieldSemantics: ["floatingAction", "quickAction", "primaryAction", "contextAction"],
@@ -19,14 +19,14 @@ export const sgMeta: SgMetaV0 = {
       name: "icon",
       type: "ReactNode",
       required: true,
-      description: "Icone principal exibido no FAB.",
+      description: "Ícone principal exibido no FAB.",
       semanticRole: "label",
       bindable: false
     },
     {
       name: "actions",
       type: "SgFABAction[]",
-      description: "Acoes secundarias exibidas a partir do botao flutuante.",
+      description: "Ações secundárias exibidas a partir do botão flutuante.",
       semanticRole: "data",
       bindable: true
     },
@@ -34,14 +34,14 @@ export const sgMeta: SgMetaV0 = {
       name: "position",
       type: "\"left-top\" | \"left-center\" | \"left-bottom\" | \"center-top\" | \"center-bottom\" | \"right-top\" | \"right-center\" | \"right-bottom\"",
       default: "bottom-right",
-      description: "Posicao do FAB na area visivel.",
+      description: "Posição do FAB na área visível.",
       semanticRole: "behavior",
       bindable: true
     },
     {
       name: "hint",
       type: "string",
-      description: "Rotulo textual complementar exibido como hint.",
+      description: "Rótulo textual complementar exibido como hint.",
       semanticRole: "label",
       bindable: true
     },
@@ -49,7 +49,7 @@ export const sgMeta: SgMetaV0 = {
       name: "severity",
       type: "\"primary\" | \"secondary\" | \"success\" | \"info\" | \"warning\" | \"help\" | \"danger\" | \"plain\"",
       default: "primary",
-      description: "Peso visual da acao flutuante.",
+      description: "Peso visual da ação flutuante.",
       semanticRole: "appearance",
       bindable: true
     },
@@ -57,7 +57,7 @@ export const sgMeta: SgMetaV0 = {
       name: "enabled",
       type: "boolean",
       default: true,
-      description: "Desabilita a acao principal e as acoes derivadas.",
+      description: "Desabilita a ação principal e as ações derivadas.",
       semanticRole: "behavior",
       bindable: true
     },
@@ -72,7 +72,7 @@ export const sgMeta: SgMetaV0 = {
     {
       name: "onClick",
       type: "() => void",
-      description: "Callback da acao principal do FAB.",
+      description: "Callback da ação principal do FAB.",
       semanticRole: "event",
       bindable: false
     }

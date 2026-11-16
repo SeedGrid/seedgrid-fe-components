@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "input",
   subcategory: "period",
   description:
-    "Seletor de recorte de ano: o usuario escolhe ANO + RECORTE (semestre, trimestre ou bimestre) + FATIA, e o componente resolve para um intervalo real e fechado de datas. E' o irmao ABSOLUTO do SgPeriodSelector: aquele resolve presets RELATIVOS a hoje (\"este semestre\"), este resolve um recorte fixo de um ano civil informado (\"o 1o semestre DE 2024\"), que nao muda de significado com a passagem do tempo.",
+    "Seletor de recorte de ano: o usuário escolhe ANO + RECORTE (semestre, trimestre ou bimestre) + FATIA, e o componente resolve para um intervalo real e fechado de datas. E' o irmão ABSOLUTO do SgPeriodSelector: aquele resolve presets RELATIVOS a hoje (\"este semestre\"), este resolve um recorte fixo de um ano civil informado (\"o 1o semestre DE 2024\"), que não muda de significado com a passagem do tempo.",
   tags: ["form", "period", "year", "semester", "quarter", "bimester", "date-range", "filter", "report", "rhf"],
   capabilities: [
     "single-selection",
@@ -23,16 +23,16 @@ export const sgMeta: SgMetaV0 = {
   ],
   fieldSemantics: ["dateRange", "periodFilter", "fiscalPeriod", "structuredChoice", "year"],
   props: [
-    { name: "id", type: "string", default: "sg-year-part-selector", description: "Prefixo dos ids dos tres controles internos (ano, recorte, fatia). Nao e' o id de um campo unico: o componente monta tres.", semanticRole: "data", bindable: false },
-    { name: "label", type: "string", description: "Rotulo exibido ao usuario.", semanticRole: "label", bindable: true },
+    { name: "id", type: "string", default: "sg-year-part-selector", description: "Prefixo dos ids dos três controles internos (ano, recorte, fatia). Não e' o id de um campo único: o componente monta três.", semanticRole: "data", bindable: false },
+    { name: "label", type: "string", description: "Rótulo exibido ao usuário.", semanticRole: "label", bindable: true },
     { name: "value", type: "YearPartValue", description: "Recorte selecionado no modo controlado: { year, kind, part }, com part em base 1 (1..2 no semestre, 1..4 no trimestre, 1..6 no bimestre).", semanticRole: "value", bindable: true },
-    { name: "onChange", type: "(resolved: ResolvedYearPart) => void", description: "Callback com o recorte ja resolvido: value, label e o intervalo fechado startDate/endDate. As datas NUNCA vem nulas, diferente do ResolvedPeriod do SgPeriodSelector.", semanticRole: "event", bindable: false },
-    { name: "allowedKinds", type: "YearPartKind[]", default: ["SEMESTER", "QUARTER", "BIMESTER"], description: "Recortes oferecidos no combo. Reduza a lista quando o dominio so' aceita um deles (fechamento trimestral, por exemplo); com um unico item o combo de recorte deixa de fazer sentido na tela.", semanticRole: "behavior", bindable: true },
+    { name: "onChange", type: "(resolved: ResolvedYearPart) => void", description: "Callback com o recorte já resolvido: value, label e o intervalo fechado startDate/endDate. As datas NUNCA vem nulas, diferente do ResolvedPeriod do SgPeriodSelector.", semanticRole: "event", bindable: false },
+    { name: "allowedKinds", type: "YearPartKind[]", default: ["SEMESTER", "QUARTER", "BIMESTER"], description: "Recortes oferecidos no combo. Reduza a lista quando o domínio só' aceita um deles (fechamento trimestral, por exemplo); com um único item o combo de recorte deixa de fazer sentido na tela.", semanticRole: "behavior", bindable: true },
     { name: "minYear", type: "number", default: "ano corrente - 30", description: "Primeiro ano oferecido na lista de anos.", semanticRole: "behavior", bindable: true },
-    { name: "maxYear", type: "number", default: "ano corrente + 10", description: "Ultimo ano oferecido na lista de anos.", semanticRole: "behavior", bindable: true },
-    { name: "locale", type: "string", default: "pt-BR", description: "Locale dos rotulos de recorte e fatia. A sigla entre parenteses acompanha o idioma: Q1..Q4 em pt-BR e en-US, T1..T4 em es, fr e pt-PT; bimestre nao tem sigla e sai sem parenteses.", semanticRole: "behavior", bindable: true },
-    { name: "enabled", type: "boolean", default: true, description: "Desabilita os tres combos (ano, recorte e fatia).", semanticRole: "behavior", bindable: true },
-    { name: "required", type: "boolean", default: false, description: "Marca o campo como obrigatorio.", semanticRole: "validation", bindable: true },
+    { name: "maxYear", type: "number", default: "ano corrente + 10", description: "Último ano oferecido na lista de anos.", semanticRole: "behavior", bindable: true },
+    { name: "locale", type: "string", default: "pt-BR", description: "Locale dos rótulos de recorte e fatia. A sigla entre parenteses acompanha o idioma: Q1..Q4 em pt-BR e en-US, T1..T4 em es, fr e pt-PT; bimestre não tem sigla e sai sem parenteses.", semanticRole: "behavior", bindable: true },
+    { name: "enabled", type: "boolean", default: true, description: "Desabilita os três combos (ano, recorte e fatia).", semanticRole: "behavior", bindable: true },
+    { name: "required", type: "boolean", default: false, description: "Marca o campo como obrigatório.", semanticRole: "validation", bindable: true },
     { name: "className", type: "string", description: "Classes extras aplicadas ao container do campo.", semanticRole: "appearance", bindable: false }
   ],
   states: ["default", "focused", "open", "disabled", "required", "error"],

@@ -16,15 +16,15 @@ export type SgImageUploadProps = Omit<
   SgFileUploadProps,
   "mediaType" | "extraCheck" | "thumbnailBuilder" | "thumbnailSize" | "dropTextKey" | "dropManyTextKey" | "typeNames" | "pickerAccept" | "keyPrefix"
 > & {
-  /** Restringe os formatos de imagem em texto livre (`.png`, `image/jpeg`), separados por virgula. */
+  /** Restringe os formatos de imagem em texto livre (`.png`, `image/jpeg`), separados por vírgula. */
   accept?: string;
-  /** Largura minima em px. */
+  /** Largura mínima em px. */
   minWidth?: number;
-  /** Altura minima em px. */
+  /** Altura mínima em px. */
   minHeight?: number;
-  /** Proporcao largura/altura exigida (1 = quadrada, 16 / 9). */
+  /** Proporção largura/altura exigida (1 = quadrada, 16 / 9). */
   aspect?: number;
-  /** Altura da miniatura em px (padrao 160; na grade, no maximo 120). */
+  /** Altura da miniatura em px (padrão 160; na grade, no máximo 120). */
   previewHeight?: number;
 };
 

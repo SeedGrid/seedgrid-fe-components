@@ -26,12 +26,12 @@ export type SgWhistlerProps = Omit<React.HTMLAttributes<HTMLDivElement>, "childr
   newestOnTop?: boolean;
   gap?: number;
   /**
-   * Duracao padrao, em milissegundos, dos whistles deste host. Cada whistle pode sobrescrever
+   * Duração padrão, em milissegundos, dos whistles deste host. Cada whistle pode sobrescrever
    * com `options.duration`, que tem PRIORIDADE. Use 0 (ou negativo) para que nada suma sozinho
-   * por padrao. Whistle `loading` nunca expira, qualquer que seja o valor.
+   * por padrão. Whistle `loading` nunca expira, qualquer que seja o valor.
    *
    * Espelha o `duration` do SgToaster/SgToastHost — mesmo default e mesma precedencia. Antes o
-   * valor era fixo no codigo e nao havia como mudar o padrao sem repetir `duration` em toda
+   * valor era fixo no código e não havia como mudar o padrão sem repetir `duration` em toda
    * chamada de sgWhistle.
    */
   duration?: number;

@@ -35,17 +35,17 @@ export type SgStringAnimatorStyle =
 export type SgStringAnimatorAlign = "left" | "right";
 
 export type SgStringAnimatorRef = {
-  /** Inicia a animacao de sourceString ate targetString */
+  /** Inicia a animação de sourceString até targetString */
   startAnimation: () => void;
 };
 
 export type SgStringAnimatorProps = {
-  /** String exibida antes da animacao */
+  /** String exibida antes da animação */
   sourceString: string;
-  /** String de destino — o componente anima ate ela */
+  /** String de destino — o componente anima até ela */
   targetString: string;
   /**
-   * Estilo de animacao por caractere.
+   * Estilo de animação por caractere.
    * - "roller3d": tambor vertical (SgRoller3DDigit)
    * - "flip": vira o card (SgFlipDigit)
    * - "neon": brilho neon com fade (SgNeonDigit)
@@ -56,13 +56,13 @@ export type SgStringAnimatorProps = {
    */
   stringAnimatorStyle?: SgStringAnimatorStyle;
   /**
-   * Velocidade de 1 (muito lento) a 100 (muito rapido).
+   * Velocidade de 1 (muito lento) a 100 (muito rápido).
    * Controla o intervalo de tempo entre a troca de cada caractere.
    * @default 50
    */
   velocity?: number;
   /**
-   * Caractere utilizado para preencher as posicoes extras quando
+   * Caractere utilizado para preencher as posições extras quando
    * sourceString e targetString possuem comprimentos diferentes.
    * @default " "
    */
@@ -70,12 +70,12 @@ export type SgStringAnimatorProps = {
   /**
    * Alinhamento das strings:
    * - "left"  — preenche a direita com emptyChar (ideal para texto/nomes)
-   * - "right" — preenche a esquerda com emptyChar (ideal para numeros)
+   * - "right" — preenche a esquerda com emptyChar (ideal para números)
    * @default "left"
    */
   alignTo?: SgStringAnimatorAlign;
   /**
-   * Se true, inicia a animacao automaticamente quando o componente
+   * Se true, inicia a animação automaticamente quando o componente
    * monta e sempre que targetString mudar.
    * @default false
    */
@@ -83,7 +83,7 @@ export type SgStringAnimatorProps = {
   /** Tamanho da fonte em pixels — controla a escala de cada digito. @default 32 */
   fontSize?: number;
   /**
-   * Conjunto de caracteres validos para o SgRoller3DDigit.
+   * Conjunto de caracteres válidos para o SgRoller3DDigit.
    * Deve conter todos os caracteres que podem aparecer em sourceString,
    * targetString e emptyChar. Ignorado quando style != "roller3d".
    * @default SG_STRING_ANIMATOR_DEFAULT_CHARSET

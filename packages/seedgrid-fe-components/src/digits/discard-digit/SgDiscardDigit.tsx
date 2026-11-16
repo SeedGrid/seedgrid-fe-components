@@ -39,15 +39,15 @@ export type SgDiscardDigitProps = {
   fontSize?: number;
   /** Peso da fonte. */
   fontWeight?: number | string;
-  /** Ativa animacao de descarte quando o valor muda. */
+  /** Ativa animação de descarte quando o valor muda. */
   animateOnChange?: boolean;
-  /** Duracao total da animacao em ms. */
+  /** Duração total da animação em ms. */
   transitionMs?: number;
-  /** Quantidade de folhas visiveis na pilha (min 2, max 30). Ignorado se totalNumberPages for definido. */
+  /** Quantidade de folhas visíveis na pilha (min 2, max 30). Ignorado se totalNumberPages for definido. */
   stackDepth?: number;
-  /** Total de paginas do monte. Quando definido, a pilha visual encolhe a cada increasePage(). */
+  /** Total de páginas do monte. Quando definido, a pilha visual encolhe a cada increasePage(). */
   totalNumberPages?: number;
-  /** Estrategia de animacao para mudancas por prop `value`. */
+  /** Estratégia de animação para mudanças por prop `value`. */
   changeAnimationMode?: "discard" | "incoming";
   /** Classes CSS adicionais. */
   className?: string;

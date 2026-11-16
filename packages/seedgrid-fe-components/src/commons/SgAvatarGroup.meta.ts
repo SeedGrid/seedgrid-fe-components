@@ -10,15 +10,15 @@ export const sgMeta: SgMetaV0 = {
   category: "feedback",
   subcategory: "avatar-group",
   description:
-    "Agrupamento visual de avatares com sobreposicao, limite de itens e contador de participantes restantes.",
+    "Agrupamento visual de avatares com sobreposição, limite de itens e contador de participantes restantes.",
   tags: ["feedback", "avatar", "group", "participants", "team"],
   capabilities: ["avatar-stack", "overlap", "max-limit", "overflow-counter", "team-display"],
   fieldSemantics: ["participants", "team", "members", "avatarStack", "collaborators"],
   props: [
     { name: "children", type: "ReactNode", required: true, description: "Lista de avatares exibidos no agrupamento.", semanticRole: "data", bindable: false },
-    { name: "max", type: "number", description: "Quantidade maxima de avatares visiveis antes do contador de overflow.", semanticRole: "behavior", bindable: true },
+    { name: "max", type: "number", description: "Quantidade máxima de avatares visíveis antes do contador de overflow.", semanticRole: "behavior", bindable: true },
     { name: "total", type: "number", description: "Quantidade total de participantes para calculo do overflow.", semanticRole: "value", bindable: true },
-    { name: "overlap", type: '"none" | "sm" | "md" | "lg"', default: "md", description: "Nivel de sobreposicao entre os avatares.", semanticRole: "appearance", bindable: true },
+    { name: "overlap", type: '"none" | "sm" | "md" | "lg"', default: "md", description: "Nível de sobreposição entre os avatares.", semanticRole: "appearance", bindable: true },
     { name: "size", type: '"xs" | "sm" | "md" | "lg" | "xl"', default: "md", description: "Escala aplicada aos avatares do grupo.", semanticRole: "appearance", bindable: true },
     { name: "shape", type: '"circle" | "square"', default: "circle", description: "Forma visual aplicada ao grupo de avatares.", semanticRole: "appearance", bindable: true }
   ],

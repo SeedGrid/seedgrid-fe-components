@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "hook",
   subcategory: "notification",
   description:
-    "Funcao para disparar notificacoes toast. Oferece tipos predefinidos (success, error, warning, info, loading, default) com duracao customizavel, acoes e estilo.",
+    "Função para disparar notificações toast. Oferece tipos predefinidos (success, error, warning, info, loading, default) com duração customizável, ações e estilo.",
   tags: ["hook", "toast", "notification", "alert"],
   capabilities: ["type-support", "custom-styling", "actions", "promises", "dismiss"],
   fieldSemantics: ["notification", "userFeedback", "statusMessage"],
@@ -27,21 +27,21 @@ export const sgMeta: SgMetaV0 = {
       name: "title",
       type: "ReactNode",
       required: true,
-      description: "Titulo ou mensagem principal do toast.",
+      description: "Título ou mensagem principal do toast.",
       semanticRole: "label",
       bindable: true
     },
     {
       name: "options.id",
       type: "string",
-      description: "ID unico para referenciar o toast.",
+      description: "ID único para referenciar o toast.",
       semanticRole: "data",
       bindable: false
     },
     {
       name: "options.description",
       type: "ReactNode",
-      description: "Descricao ou mensagem secundaria.",
+      description: "Descrição ou mensagem secundária.",
       semanticRole: "label",
       bindable: true
     },
@@ -52,14 +52,14 @@ export const sgMeta: SgMetaV0 = {
       // (`toast.duration ?? duration`), quem tem default e' o host. O antigo `default: 3000`
       // era um terceiro numero que nao existe em lugar nenhum. Espelha `options.duration` do
       // sgWhistle, que ja' era assim.
-      description: "Duracao em milissegundos deste toast; tem PRIORIDADE sobre o host. Omitir NAO significa permanente: cai no `duration` do SgToaster/SgToastHost, cujo default e' 4000 (4s), igual ao par whistle/SgWhistleHost. Use 0 (ou negativo) para permanente, ate' o usuario fechar. Toast do tipo 'loading' nunca fecha sozinho, qualquer que seja o valor.",
+      description: "Duração em milissegundos deste toast; tem PRIORIDADE sobre o host. Omitir NÃO significa permanente: cai no `duration` do SgToaster/SgToastHost, cujo default e' 4000 (4s), igual ao par whistle/SgWhistleHost. Use 0 (ou negativo) para permanente, ate' o usuário fechar. Toast do tipo 'loading' nunca fecha sozinho, qualquer que seja o valor.",
       semanticRole: "behavior",
       bindable: true
     },
     {
       name: "options.action",
       type: "SgToastAction",
-      description: "Acao customizada (label e onClick).",
+      description: "Ação customizada (label e onClick).",
       semanticRole: "event",
       bindable: false
     },
@@ -67,7 +67,7 @@ export const sgMeta: SgMetaV0 = {
       name: "options.closeButton",
       type: "boolean",
       default: true,
-      description: "Mostrar botao de fechar.",
+      description: "Mostrar botão de fechar.",
       semanticRole: "appearance",
       bindable: true
     },

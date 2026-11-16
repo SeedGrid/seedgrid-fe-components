@@ -10,14 +10,14 @@ export const sgMeta: SgMetaV0 = {
   category: "layout",
   subcategory: "dock-layout",
   description:
-    "Layout estrutural com zonas de dock e persistencia de estado para barras e paines arrastaveis.",
+    "Layout estrutural com zonas de dock e persistência de estado para barras e paines arrastáveis.",
   tags: ["layout", "dock", "workspace", "shell", "zones"],
   capabilities: ["zone-layout", "drag-drop", "persistent-state", "toolbar-placement", "drop-preview"],
   fieldSemantics: ["workspaceLayout", "dockLayout", "appShell", "toolArea", "panelZones"],
   props: [
-    { name: "id", type: "string", required: true, description: "Identificador do layout usado para persistencia e coordenacao interna.", semanticRole: "data", bindable: true },
+    { name: "id", type: "string", required: true, description: "Identificador do layout usado para persistência e coordenação interna.", semanticRole: "data", bindable: true },
     { name: "defaultState", type: "SgDockLayoutState", description: "Estado inicial das toolbars e zonas do layout.", semanticRole: "value", bindable: true },
-    { name: "children", type: "ReactNode", required: true, description: "Zonas, toolbars e conteudo estrutural do layout.", semanticRole: "data", bindable: false },
+    { name: "children", type: "ReactNode", required: true, description: "Zonas, toolbars e conteúdo estrutural do layout.", semanticRole: "data", bindable: false },
     { name: "className", type: "string", description: "Classes adicionais do container raiz.", semanticRole: "appearance", bindable: true }
   ],
   states: ["default", "dragging", "drop-preview", "persisted"],

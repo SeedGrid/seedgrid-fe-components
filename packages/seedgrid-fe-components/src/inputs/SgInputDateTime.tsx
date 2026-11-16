@@ -18,31 +18,31 @@ import {
 
 export type SgInputDateTimeProps = Omit<SgInputTextProps, "type" | "onChange"> & {
   /**
-   * Valor controlado, em qualquer formato: texto local sem fuso ("2026-01-15T10:30", ja no relogio do campo), ISO 8601 com
+   * Valor controlado, em qualquer formato: texto local sem fuso ("2026-01-15T10:30", já no relógio do campo), ISO 8601 com
    * "Z" ou deslocamento ("2026-01-15T13:30:00Z", "2026-01-15T10:30:00-03:00") ou `Date`. `null`/"" limpa o campo.
    */
   value?: string | Date | null;
-  /** Instante inicial (campo nao controlado). */
+  /** Instante inicial (campo não controlado). */
   defaultValue?: string | Date | null;
   /**
-   * Disparado a cada alteracao com o valor no formato de `valueMode` (`local` "2026-11-03T14:30", `utc`
-   * "2026-11-03T17:30:00Z" ou `offset` "2026-11-03T14:30:00-03:00") ou `null` se o campo ficou vazio/incompleto/invalido;
-   * `local` e sempre o texto do campo (`2026-11-03T14:30`) no fuso do campo. O mesmo formato vai para o formulario (RHF).
+   * Disparado a cada alteração com o valor no formato de `valueMode` (`local` "2026-11-03T14:30", `utc`
+   * "2026-11-03T17:30:00Z" ou `offset` "2026-11-03T14:30:00-03:00") ou `null` se o campo ficou vazio/incompleto/inválido;
+   * `local` e sempre o texto do campo (`2026-11-03T14:30`) no fuso do campo. O mesmo formato vai para o formulário (RHF).
    */
   onChange?: (value: string | null, local: string) => void;
-  /** Disparado ao receber foco — padrao seedgrid. */
+  /** Disparado ao receber foco — padrão seedgrid. */
   onEnter?: () => void;
-  /** Disparado ao perder o foco (apos validacao) — padrao seedgrid. */
+  /** Disparado ao perder o foco (após validação) — padrão seedgrid. */
   onExit?: () => void;
   /** Menor instante permitido (ISO 8601 ou `Date`). */
   minDate?: string | Date;
   /** Maior instante permitido (ISO 8601 ou `Date`). */
   maxDate?: string | Date;
-  /** Fuso em que o campo mostra e interpreta a hora: "local" (padrao, o do dispositivo), "UTC", "+03:00" ou nome IANA. */
+  /** Fuso em que o campo mostra e interpreta a hora: "local" (padrão, o do dispositivo), "UTC", "+03:00" ou nome IANA. */
   timeZone?: string;
   /**
-   * Formato do valor que sai (onChange e formulario) e que o formulario/`value` aceitam: `local` (padrao), `utc` ou `offset`.
-   * Com `register`, `utc`/`offset` so convertem o que e digitado; para atribuir por codigo use `control`.
+   * Formato do valor que sai (onChange e formulário) e que o formulário/`value` aceitam: `local` (padrão), `utc` ou `offset`.
+   * Com `register`, `utc`/`offset` só convertem o que e digitado; para atribuir por código use `control`.
    */
   valueMode?: DateTimeValueMode;
   /** Mostra e aceita segundos. */

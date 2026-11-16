@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "input",
   subcategory: "currency",
   description:
-    "Campo monetario com formatacao de moeda, simbolo e validacao para precos, valores financeiros e totais.",
+    "Campo monetário com formatação de moeda, símbolo e validação para preços, valores financeiros e totais.",
   tags: ["form", "currency", "money", "price", "rhf"],
   capabilities: ["rhf", "controlled", "currency-format", "symbol", "min-max", "validation"],
   fieldSemantics: ["money", "currency", "price", "total", "financialAmount"],
@@ -19,28 +19,28 @@ export const sgMeta: SgMetaV0 = {
       name: "id",
       type: "string",
       required: true,
-      description: "Identificador unico do campo monetario.",
+      description: "Identificador único do campo monetário.",
       semanticRole: "data",
       bindable: false
     },
     {
       name: "name",
       type: "string",
-      description: "Nome do campo para formularios.",
+      description: "Nome do campo para formulários.",
       semanticRole: "data",
       bindable: true
     },
     {
       name: "label",
       type: "string",
-      description: "Rotulo principal exibido ao usuario.",
+      description: "Rótulo principal exibido ao usuário.",
       semanticRole: "label",
       bindable: true
     },
     {
       name: "currency",
       type: "string",
-      description: "Codigo ou configuracao de moeda usada na formatacao.",
+      description: "Código ou configuração de moeda usada na formatação.",
       semanticRole: "behavior",
       bindable: true
     },
@@ -48,7 +48,7 @@ export const sgMeta: SgMetaV0 = {
       name: "emptyValueIsNull",
       type: "boolean",
       default: false,
-      description: "Se true, campo vazio vale null; se false (padrao), vale 0.",
+      description: "Se true, campo vazio vale null; se false (padrão), vale 0.",
       semanticRole: "behavior",
       bindable: true
     },
@@ -56,14 +56,14 @@ export const sgMeta: SgMetaV0 = {
       name: "required",
       type: "boolean",
       default: false,
-      description: "Marca o campo como obrigatorio.",
+      description: "Marca o campo como obrigatório.",
       semanticRole: "validation",
       bindable: true
     },
     {
       name: "onChange",
       type: "(value: number | null) => void",
-      description: "Callback com o valor monetario como number (null somente com emptyValueIsNull).",
+      description: "Callback com o valor monetário como number (null somente com emptyValueIsNull).",
       semanticRole: "event",
       bindable: false
     }

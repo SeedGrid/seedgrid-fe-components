@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "layout",
   subcategory: "group-box",
   description:
-    "Container simples com titulo visual para agrupar campos e conteudos relacionados em uma secao delimitada.",
+    "Container simples com título visual para agrupar campos e conteúdos relacionados em uma seção delimitada.",
   tags: ["layout", "group", "fieldset", "form-section", "container"],
   capabilities: ["grouping", "titled-section", "form-block", "sized-container"],
   fieldSemantics: ["container", "section", "formSection", "group"],
@@ -19,7 +19,7 @@ export const sgMeta: SgMetaV0 = {
       name: "title",
       type: "string",
       required: true,
-      description: "Titulo exibido no topo da secao agrupada.",
+      description: "Título exibido no topo da seção agrupada.",
       semanticRole: "label",
       bindable: true
     },
@@ -27,7 +27,7 @@ export const sgMeta: SgMetaV0 = {
       name: "children",
       type: "ReactNode",
       required: true,
-      description: "Conteudo agrupado dentro do fieldset.",
+      description: "Conteúdo agrupado dentro do fieldset.",
       semanticRole: "data",
       bindable: false
     },

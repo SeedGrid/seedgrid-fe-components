@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "hook",
   subcategory: "notification",
   description:
-    "Funcao para se inscrever em mudancas de whistles. Permite monitorar e reagir quando novos whistles sao criados ou removidos.",
+    "Função para se inscrever em mudanças de whistles. Permite monitorar e reagir quando novos whistles são criados ou removidos.",
   tags: ["hook", "whistle", "subscription", "reactive"],
   capabilities: ["subscribe", "listen", "reactive-updates"],
   fieldSemantics: ["subscription", "reactiveUpdates", "whistleMonitoring"],

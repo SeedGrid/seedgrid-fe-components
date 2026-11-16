@@ -10,20 +10,20 @@ export const sgMeta: SgMetaV0 = {
   category: "input",
   subcategory: "email",
   description:
-    "Campo especializado para email com validacao de formato, bloqueio opcional de dominios temporarios e integracao com formularios.",
+    "Campo especializado para email com validação de formato, bloqueio opcional de domínios temporários e integração com formulários.",
   tags: ["form", "email", "contact", "login", "rhf"],
   capabilities: ["rhf", "controlled", "validation", "email-format", "blocked-domains", "clearable"],
   fieldSemantics: ["email", "contactEmail", "loginEmail", "notificationEmail"],
   props: [
-    { name: "id", type: "string", required: true, description: "Identificador unico do campo.", semanticRole: "data", bindable: false },
-    { name: "name", type: "string", description: "Nome do campo em formularios.", semanticRole: "data", bindable: true },
-    { name: "label", type: "string", description: "Rotulo exibido ao usuario.", semanticRole: "label", bindable: true },
-    { name: "required", type: "boolean", default: false, description: "Marca o campo como obrigatorio.", semanticRole: "validation", bindable: true },
-    { name: "invalidMessage", type: "string", description: "Mensagem para email invalido.", semanticRole: "validation", bindable: true },
-    { name: "blockFakeMail", type: "boolean", default: true, description: "Bloqueia dominios temporarios conhecidos.", semanticRole: "behavior", bindable: true },
-    { name: "blockedEmailDomains", type: "string[]", description: "Lista customizada de dominios bloqueados.", semanticRole: "data", bindable: true },
-    { name: "validateOnBlur", type: "boolean", default: true, description: "Executa validacao no blur.", semanticRole: "behavior", bindable: true },
-    { name: "onValidation", type: "(message: string | null) => void", description: "Callback para estado de validacao.", semanticRole: "event", bindable: false }
+    { name: "id", type: "string", required: true, description: "Identificador único do campo.", semanticRole: "data", bindable: false },
+    { name: "name", type: "string", description: "Nome do campo em formulários.", semanticRole: "data", bindable: true },
+    { name: "label", type: "string", description: "Rótulo exibido ao usuário.", semanticRole: "label", bindable: true },
+    { name: "required", type: "boolean", default: false, description: "Marca o campo como obrigatório.", semanticRole: "validation", bindable: true },
+    { name: "invalidMessage", type: "string", description: "Mensagem para email inválido.", semanticRole: "validation", bindable: true },
+    { name: "blockFakeMail", type: "boolean", default: true, description: "Bloqueia domínios temporários conhecidos.", semanticRole: "behavior", bindable: true },
+    { name: "blockedEmailDomains", type: "string[]", description: "Lista customizada de domínios bloqueados.", semanticRole: "data", bindable: true },
+    { name: "validateOnBlur", type: "boolean", default: true, description: "Executa validação no blur.", semanticRole: "behavior", bindable: true },
+    { name: "onValidation", type: "(message: string | null) => void", description: "Callback para estado de validação.", semanticRole: "event", bindable: false }
   ],
   states: ["default", "focused", "disabled", "readOnly", "error"],
   examples: [

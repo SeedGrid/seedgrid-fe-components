@@ -10,7 +10,7 @@ export const sgMeta: SgMetaV0 = {
   category: "feedback",
   subcategory: "confirmation-dialog",
   description:
-    "Dialog especializado em confirmacao de acoes sensiveis, com mensagem, severidade e botoes de confirmar e cancelar.",
+    "Dialog especializado em confirmação de ações sensíveis, com mensagem, severidade e botões de confirmar e cancelar.",
   tags: ["feedback", "confirmation", "dialog", "danger", "warning"],
   capabilities: ["confirmation-flow", "confirm-cancel", "severity", "custom-buttons", "safe-defaults"],
   fieldSemantics: ["confirmationDialog", "dangerConfirmation", "warningPrompt", "decisionModal"],
@@ -18,21 +18,21 @@ export const sgMeta: SgMetaV0 = {
     {
       name: "open",
       type: "boolean",
-      description: "Controla a abertura do dialog de confirmacao.",
+      description: "Controla a abertura do dialog de confirmação.",
       semanticRole: "value",
       bindable: true
     },
     {
       name: "title",
       type: "ReactNode",
-      description: "Titulo principal da confirmacao.",
+      description: "Título principal da confirmação.",
       semanticRole: "label",
       bindable: true
     },
     {
       name: "message",
       type: "ReactNode",
-      description: "Mensagem principal explicando o risco ou decisao.",
+      description: "Mensagem principal explicando o risco ou decisão.",
       semanticRole: "label",
       bindable: true
     },
@@ -40,35 +40,35 @@ export const sgMeta: SgMetaV0 = {
       name: "severity",
       type: '"primary" | "secondary" | "success" | "info" | "warning" | "help" | "danger" | "plain"',
       default: "warning",
-      description: "Tom semantico da confirmacao.",
+      description: "Tom semântico da confirmação.",
       semanticRole: "appearance",
       bindable: true
     },
     {
       name: "confirmButton",
       type: "SgConfirmationDialogButtonConfig",
-      description: "Configuracao visual e comportamental do botao de confirmacao.",
+      description: "Configuração visual e comportamental do botão de confirmação.",
       semanticRole: "data",
       bindable: true
     },
     {
       name: "cancelButton",
       type: "SgConfirmationDialogButtonConfig",
-      description: "Configuracao visual e comportamental do botao de cancelamento.",
+      description: "Configuração visual e comportamental do botão de cancelamento.",
       semanticRole: "data",
       bindable: true
     },
     {
       name: "onConfirm",
       type: "() => void",
-      description: "Callback disparado quando o usuario confirma a acao.",
+      description: "Callback disparado quando o usuário confirma a ação.",
       semanticRole: "event",
       bindable: false
     },
     {
       name: "onCancel",
       type: "() => void",
-      description: "Callback disparado quando o usuario cancela a acao.",
+      description: "Callback disparado quando o usuário cancela a ação.",
       semanticRole: "event",
       bindable: false
     }

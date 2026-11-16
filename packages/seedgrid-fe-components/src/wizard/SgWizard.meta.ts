@@ -10,22 +10,22 @@ export const sgMeta: SgMetaV0 = {
   category: "navigation",
   subcategory: "wizard",
   description:
-    "Fluxo multi-etapas com stepper, validacao por etapa, navegacao controlada e finalizacao assincrona.",
+    "Fluxo multi-etapas com stepper, validação por etapa, navegação controlada e finalização assincrona.",
   tags: ["navigation", "wizard", "steps", "flow", "form"],
   capabilities: ["multi-step", "validation", "stepper", "previous-next", "async-finish"],
   fieldSemantics: ["wizard", "multiStepFlow", "stepForm", "guidedFlow", "journey"],
   props: [
-    { name: "children", type: "ReactNode", required: true, description: "Paginas do wizard renderizadas em ordem.", semanticRole: "data", bindable: false },
-    { name: "initialStep", type: "number", default: 0, description: "Indice inicial da etapa ativa.", semanticRole: "value", bindable: true },
+    { name: "children", type: "ReactNode", required: true, description: "Páginas do wizard renderizadas em ordem.", semanticRole: "data", bindable: false },
+    { name: "initialStep", type: "number", default: 0, description: "Índice inicial da etapa ativa.", semanticRole: "value", bindable: true },
     { name: "stepper", type: '"numbered" | "icons" | "none"', default: "none", description: "Modo visual do stepper.", semanticRole: "appearance", bindable: true },
     { name: "stepNavigation", type: '"none" | "previous" | "previous-and-next"', default: "previous-and-next", description: "Define quais etapas podem ser acessadas clicando no stepper.", semanticRole: "behavior", bindable: true },
-    { name: "validateStep", type: "(stepIndex: number) => boolean | Promise<boolean>", description: "Valida a etapa atual antes de avancar.", semanticRole: "validation", bindable: false },
-    { name: "onBeforeNext", type: "(index: number) => boolean | Promise<boolean>", description: "Roda ao clicar em Proximo; devolver false (ou uma Promise<false>) impede o avanco. Enquanto e aguardado, o botao fica desabilitado.", semanticRole: "validation", bindable: false },
-    { name: "onBeforeFinish", type: "(index: number) => boolean | Promise<boolean>", description: "Roda ao clicar em concluir; devolver false impede a finalizacao.", semanticRole: "validation", bindable: false },
-    { name: "nextDisabled", type: "boolean", default: false, description: "Desabilita o avanco de forma declarativa: o botao Proximo fica desabilitado e o stepper para de oferecer as etapas seguintes. Use quando o bloqueio JA e conhecido (ex.: uma checagem assincrona ja resolveu que a etapa nao pode avancar) — onBeforeNext/validateStep so agem no clique e deixam o botao com aparencia de clicavel. Nao afeta o botao da ultima etapa; para isso use onBeforeFinish.", semanticRole: "behavior", bindable: true },
-    { name: "enabled", type: "boolean", default: true, description: "Quando false, o wizard inteiro fica desabilitado: Anterior, Proximo, Concluir e os passos do stepper deixam de responder; a etapa atual segue visivel. Diferente de nextDisabled, que so bloqueia o avanco.", semanticRole: "behavior", bindable: true },
+    { name: "validateStep", type: "(stepIndex: number) => boolean | Promise<boolean>", description: "Valida a etapa atual antes de avançar.", semanticRole: "validation", bindable: false },
+    { name: "onBeforeNext", type: "(index: number) => boolean | Promise<boolean>", description: "Roda ao clicar em Próximo; devolver false (ou uma Promise<false>) impede o avanço. Enquanto e aguardado, o botão fica desabilitado.", semanticRole: "validation", bindable: false },
+    { name: "onBeforeFinish", type: "(index: number) => boolean | Promise<boolean>", description: "Roda ao clicar em concluir; devolver false impede a finalização.", semanticRole: "validation", bindable: false },
+    { name: "nextDisabled", type: "boolean", default: false, description: "Desabilita o avanço de forma declarativa: o botão Próximo fica desabilitado e o stepper para de oferecer as etapas seguintes. Use quando o bloqueio JÁ e conhecido (ex.: uma checagem assincrona já resolveu que a etapa não pode avançar) — onBeforeNext/validateStep só agem no clique e deixam o botão com aparência de clicável. Não afeta o botão da última etapa; para isso use onBeforeFinish.", semanticRole: "behavior", bindable: true },
+    { name: "enabled", type: "boolean", default: true, description: "Quando false, o wizard inteiro fica desabilitado: Anterior, Próximo, Concluir e os passos do stepper deixam de responder; a etapa atual segue visível. Diferente de nextDisabled, que só bloqueia o avanço.", semanticRole: "behavior", bindable: true },
     { name: "onStepChange", type: "(index: number) => void", description: "Callback disparado ao trocar de etapa.", semanticRole: "event", bindable: false },
-    { name: "onFinish", type: "() => void | Promise<void>", required: true, description: "Acao executada ao concluir o wizard.", semanticRole: "event", bindable: false }
+    { name: "onFinish", type: "() => void | Promise<void>", required: true, description: "Ação executada ao concluir o wizard.", semanticRole: "event", bindable: false }
   ],
   states: ["default", "validating", "finishing", "completed"],
   examples: [

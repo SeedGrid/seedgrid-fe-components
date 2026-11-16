@@ -10,14 +10,14 @@ export const sgMeta: SgMetaV0 = {
   category: "navigation",
   subcategory: "wizard-page",
   description:
-    "Pagina individual dentro de um wizard, com titulo, icone e conteudo associado a uma etapa.",
+    "Página individual dentro de um wizard, com título, ícone e conteúdo associado a uma etapa.",
   tags: ["navigation", "wizard", "step", "page", "form-step"],
   capabilities: ["step-content", "title", "icon", "wizard-children"],
   fieldSemantics: ["wizardStep", "stepPage", "guidedStep", "formStep"],
   props: [
-    { name: "title", type: "string", description: "Titulo exibido no stepper do wizard.", semanticRole: "label", bindable: true },
-    { name: "icon", type: "ReactNode", description: "Icone opcional exibido quando o wizard usa stepper por icones.", semanticRole: "label", bindable: true },
-    { name: "children", type: "ReactNode", required: true, description: "Conteudo da etapa.", semanticRole: "data", bindable: false },
+    { name: "title", type: "string", description: "Título exibido no stepper do wizard.", semanticRole: "label", bindable: true },
+    { name: "icon", type: "ReactNode", description: "Ícone opcional exibido quando o wizard usa stepper por ícones.", semanticRole: "label", bindable: true },
+    { name: "children", type: "ReactNode", required: true, description: "Conteúdo da etapa.", semanticRole: "data", bindable: false },
     { name: "className", type: "string", description: "Classes adicionais da etapa.", semanticRole: "appearance", bindable: true }
   ],
   states: ["default", "active", "completed"],

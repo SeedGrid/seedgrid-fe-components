@@ -12,9 +12,9 @@ import { SgInputText, type SgInputTextProps } from "./SgInputText";
 export type SgInputTextSearchProps = Omit<SgInputTextProps, "onChange"> & {
   minChars?: number;
   debounceMs?: number;
-  /** Disparado imediatamente a cada digitacao, com o valor cru. */
+  /** Disparado imediatamente a cada digitação, com o valor cru. */
   onChange?: (value: string) => void;
-  /** Disparado apos o debounce, com o valor normalizado (trim + gate por minChars). */
+  /** Disparado após o debounce, com o valor normalizado (trim + gate por minChars). */
   onSearchChange: (value: string) => void;
 };
 

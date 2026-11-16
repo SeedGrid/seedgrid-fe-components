@@ -10,13 +10,13 @@ export const sgMeta: SgMetaV0 = {
   category: "hook",
   subcategory: "realtime",
   description:
-    "Hook com o estado da conexao do SgRealtimeProvider com o Pulse. connected falso indica que a tela deve usar o polling de reserva.",
+    "Hook com o estado da conexão do SgRealtimeProvider com o Pulse. connected falso indica que a tela deve usar o polling de reserva.",
   tags: ["hook", "realtime", "pulse", "status", "polling"],
   capabilities: ["connection-status", "fallback-signal"],
   fieldSemantics: ["connectionStatus", "connected"],
   props: [
     { name: "returns.status", type: "SgRealtimeStatus", description: "idle, disabled, connecting, connected, reconnecting, unavailable ou auth-error.", semanticRole: "data", bindable: false },
-    { name: "returns.connected", type: "boolean", description: "true so com a conexao aberta e assinada.", semanticRole: "data", bindable: false }
+    { name: "returns.connected", type: "boolean", description: "true só com a conexão aberta e assinada.", semanticRole: "data", bindable: false }
   ],
   states: ["disabled", "connected", "unavailable"],
   examples: [

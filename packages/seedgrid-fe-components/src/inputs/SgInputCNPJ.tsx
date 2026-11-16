@@ -9,9 +9,9 @@ import { t, useComponentsI18n } from "../i18n";
 import { defaultPublicaCnpjFetch } from "./publicaCnpj";
 
 export type SgInputCNPJProps = Omit<SgInputTextProps, "inputProps" | "error"> & {
-  /** Disparado ao receber foco — padrao seedgrid. */
+  /** Disparado ao receber foco — padrão seedgrid. */
   onEnter?: () => void;
-  /** Disparado ao perder o foco (apos validacao) — padrao seedgrid. */
+  /** Disparado ao perder o foco (após validação) — padrão seedgrid. */
   onExit?: () => void;
   inputProps?: React.InputHTMLAttributes<HTMLInputElement> & {
     ref?: React.Ref<HTMLInputElement>;

@@ -30,21 +30,21 @@ import {
  * tela. O primeiro onChange sai quando o usuario mexe em algum dos tres controles.
  */
 export type SgYearPartSelectorProps = {
-  /** Prefixo dos ids dos tres controles internos. Default "sg-year-part-selector". */
+  /** Prefixo dos ids dos três controles internos. Default "sg-year-part-selector". */
   id?: string;
-  /** Rotulo do grupo, acima da linha. Cada controle ainda tem o seu proprio rotulo. */
+  /** Rótulo do grupo, acima da linha. Cada controle ainda tem o seu próprio rótulo. */
   label?: string;
-  /** Valor controlado. Ausente = o componente guarda o proprio estado. */
+  /** Valor controlado. Ausente = o componente guarda o próprio estado. */
   value?: YearPartValue;
-  /** Recebe o recorte ja' resolvido, com startDate/endDate preenchidos. */
+  /** Recebe o recorte já' resolvido, com startDate/endDate preenchidos. */
   onChange?: (resolved: ResolvedYearPart) => void;
-  /** Recortes oferecidos. Com um unico item o combo de recorte some. Default: os tres. */
+  /** Recortes oferecidos. Com um único item o combo de recorte some. Default: os três. */
   allowedKinds?: YearPartKind[];
   /** Primeiro ano da lista. Default: ano corrente - 30. */
   minYear?: number;
-  /** Ultimo ano da lista. Default: ano corrente + 10. */
+  /** Último ano da lista. Default: ano corrente + 10. */
   maxYear?: number;
-  /** Locale dos rotulos. Default "pt-BR". */
+  /** Locale dos rótulos. Default "pt-BR". */
   locale?: string;
   enabled?: boolean;
   required?: boolean;

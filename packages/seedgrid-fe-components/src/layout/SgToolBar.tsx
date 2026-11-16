@@ -58,9 +58,9 @@ export type SgToolBarProps = {
   onCollapsedChange?: (collapsed: boolean) => void;
 
   /**
-   * Quando a barra nao comporta todos os itens na largura (ou altura, na vertical) disponivel, os
-   * `SgToolbarIconButton` que nao cabem vao para um menu "..." (SgMenu). Abaixo de 600px de largura
-   * de tela o menu abre como painel inferior. Padrao: false. Ignorado com `buttonsPerDirection`.
+   * Quando a barra não comporta todos os itens na largura (ou altura, na vertical) disponível, os
+   * `SgToolbarIconButton` que não cabem vão para um menu "..." (SgMenu). Abaixo de 600px de largura
+   * de tela o menu abre como painel inferior. Padrão: false. Ignorado com `buttonsPerDirection`.
    */
   overflow?: boolean;
 

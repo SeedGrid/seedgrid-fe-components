@@ -10,19 +10,19 @@ export const sgMeta: SgMetaV0 = {
   category: "gadget",
   subcategory: "clock",
   description:
-    "Relogio analogico ou digital com multiplos estilos visuais, timezone, formato 12h/24h e temas.",
+    "Relógio analógico ou digital com múltiplos estilos visuais, timezone, formato 12h/24h e temas.",
   tags: ["gadget", "clock", "time", "timezone", "digital", "analog"],
   capabilities: ["analog-clock", "digital-clock", "themes", "timezone", "format-12h-24h", "card-wrapper"],
   fieldSemantics: ["clock", "timeDisplay", "timezoneClock", "digitalClock", "analogClock"],
   props: [
-    { name: "clockStyle", type: '"digital" | "analog"', default: "digital", description: "Modo principal de exibicao do relogio.", semanticRole: "appearance", bindable: true },
-    { name: "digitalStyle", type: '"default" | "segment" | "sevenSegment" | "roller3d" | "flip" | "fade" | "matrix" | "neon" | "discard" | "custom"', default: "default", description: "Estilo visual do relogio digital.", semanticRole: "appearance", bindable: true },
-    { name: "digitBuilder", type: "(parts: SgClockDigitalParts) => ReactNode", description: "Desenha o relogio digital quando digitalStyle e custom; sem ele, usa o estilo default.", semanticRole: "appearance", bindable: false },
+    { name: "clockStyle", type: '"digital" | "analog"', default: "digital", description: "Modo principal de exibição do relógio.", semanticRole: "appearance", bindable: true },
+    { name: "digitalStyle", type: '"default" | "segment" | "sevenSegment" | "roller3d" | "flip" | "fade" | "matrix" | "neon" | "discard" | "custom"', default: "default", description: "Estilo visual do relógio digital.", semanticRole: "appearance", bindable: true },
+    { name: "digitBuilder", type: "(parts: SgClockDigitalParts) => ReactNode", description: "Desenha o relógio digital quando digitalStyle e custom; sem ele, usa o estilo default.", semanticRole: "appearance", bindable: false },
     { name: "timezone", type: "string", description: "Timezone usada no calculo da hora exibida.", semanticRole: "behavior", bindable: true },
-    { name: "format", type: '"12h" | "24h"', default: "24h", description: "Formato horario do relogio.", semanticRole: "behavior", bindable: true },
+    { name: "format", type: '"12h" | "24h"', default: "24h", description: "Formato horário do relógio.", semanticRole: "behavior", bindable: true },
     { name: "showSeconds", type: "boolean", default: true, description: "Exibe ou oculta os segundos.", semanticRole: "appearance", bindable: true },
-    { name: "themeId", type: "string", description: "Tema visual aplicado ao relogio.", semanticRole: "appearance", bindable: true },
-    { name: "size", type: '"sm" | "md" | "lg" | number', default: "md", description: "Escala visual do relogio.", semanticRole: "appearance", bindable: true }
+    { name: "themeId", type: "string", description: "Tema visual aplicado ao relógio.", semanticRole: "appearance", bindable: true },
+    { name: "size", type: '"sm" | "md" | "lg" | number', default: "md", description: "Escala visual do relógio.", semanticRole: "appearance", bindable: true }
   ],
   states: ["default", "analog", "digital", "themed", "provider-driven"],
   examples: [
