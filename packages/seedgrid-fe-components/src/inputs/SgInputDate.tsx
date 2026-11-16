@@ -156,7 +156,7 @@ export function SgInputDate(props: SgInputDateProps) {
       "peer h-11 w-full rounded-md bg-[var(--sg-input-bg,hsl(var(--background)))] text-[var(--sg-input-fg,hsl(var(--foreground)))] caret-[var(--sg-input-fg,hsl(var(--foreground)))] pl-3 pr-7 py-2.5 text-sm placeholder-transparent focus:outline-none";
     const borderClass = hasError
       ? "border border-[hsl(var(--destructive))] focus:border-[hsl(var(--destructive))] focus:ring-2 focus:ring-[hsl(var(--destructive)/0.25)]"
-      : "border border-border focus:border-[hsl(var(--primary))] focus:ring-2 focus:ring-[hsl(var(--primary)/0.25)]";
+      : "border border-border focus:border-[hsl(var(--primary))] focus:ring-2 focus:ring-[rgb(var(--sg-ring))]";
     return [baseClass, borderClass, elevationClass].filter(Boolean).join(" ");
   })();
 

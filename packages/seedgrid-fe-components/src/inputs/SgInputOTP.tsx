@@ -592,7 +592,7 @@ const SgInputOTPBase = React.forwardRef<SgInputOTPRef, SgInputOTPBaseProps>(func
     "h-12 w-11 border bg-[var(--sg-input-bg,hsl(var(--background)))] text-[var(--sg-input-fg,hsl(var(--foreground)))] caret-[var(--sg-input-fg,hsl(var(--foreground)))] px-0 text-center text-base font-medium shadow-sm outline-none transition-all",
     hasError
       ? "border-[hsl(var(--destructive))] focus:border-[hsl(var(--destructive))] focus:ring-2 focus:ring-[hsl(var(--destructive)/0.25)]"
-      : "border-border focus:border-[hsl(var(--primary))] focus:ring-2 focus:ring-[hsl(var(--primary)/0.25)]",
+      : "border-border focus:border-[hsl(var(--primary))] focus:ring-2 focus:ring-[rgb(var(--sg-ring))]",
     "disabled:cursor-not-allowed disabled:bg-muted/40 disabled:text-foreground/40",
     "read-only:cursor-default read-only:bg-muted/30",
     inputClassName ?? "",

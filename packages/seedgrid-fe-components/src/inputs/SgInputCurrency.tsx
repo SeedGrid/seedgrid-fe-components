@@ -542,7 +542,7 @@ function SgInputCurrencyBase(props: SgInputCurrencyBaseProps) {
   const borderClass = (props.withBorder ?? true) || hasError
     ? hasError
       ? "border border-[hsl(var(--destructive))] shadow-sm focus:border-[hsl(var(--destructive))] focus:ring-2 focus:ring-[hsl(var(--destructive)/0.25)]"
-      : "border border-border shadow-sm focus:border-[hsl(var(--primary))] focus:ring-2 focus:ring-[hsl(var(--primary)/0.25)]"
+      : "border border-border shadow-sm focus:border-[hsl(var(--primary))] focus:ring-2 focus:ring-[rgb(var(--sg-ring))]"
     : "border border-transparent";
   const bgClass = props.filled
     ? "bg-muted/40"

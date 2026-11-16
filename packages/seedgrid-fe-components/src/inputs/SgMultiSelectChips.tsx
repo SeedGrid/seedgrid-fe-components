@@ -89,7 +89,7 @@ function SgMultiSelectChipsBase(props: Readonly<SgMultiSelectChipsProps>) {
   const borderClass = hasError
     ? "border border-[hsl(var(--destructive))]"
     : ms.open
-      ? "border border-[hsl(var(--primary))] ring-2 ring-[hsl(var(--primary)/0.25)]"
+      ? "border border-[hsl(var(--primary))] ring-2 ring-[rgb(var(--sg-ring))]"
       : "border border-border";
 
   const triggerClass = [
