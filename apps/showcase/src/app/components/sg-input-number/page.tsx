@@ -461,7 +461,7 @@ export default function SgInputNumberPage() {
           <SgInputNumber
             id="demo-required"
             label={t(i18n, "showcase.component.inputNumber.labels.required")}
-            required
+            minValue={0.01}
             name="required"
             register={register}
             decimals={2}
@@ -471,8 +471,8 @@ export default function SgInputNumberPage() {
           <SgInputNumber
             id="demo-required-custom"
             label={t(i18n, "showcase.component.inputNumber.labels.customMessage")}
-            required
-            requiredMessage={t(i18n, "showcase.component.inputNumber.messages.requiredCustom")}
+            minValue={0.01}
+            minValueMessage={t(i18n, "showcase.component.inputNumber.messages.requiredCustom")}
             name="requiredCustom"
             register={register}
             decimals={2}
@@ -831,7 +831,6 @@ export default function SgInputNumberPage() {
           <SgInputNumber
             id="demo-events"
             label={t(i18n, "showcase.component.inputNumber.labels.typeAndLog")}
-            required
             decimals={2}
             onChange={(v) => log(`onChange: ${v}`)}
             onEnter={() => log("onEnter (focus)")}

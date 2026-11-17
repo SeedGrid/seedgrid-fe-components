@@ -7,12 +7,19 @@ export default function Example() {
 
   return (
     <>
-      <SgInputCurrency id="demo-required" label="Obrigatório" required name="required" register={register} currency="BRL" />
+      <SgInputCurrency
+        id="demo-required"
+        label="Maior que zero"
+        minValue={0.01}
+        name="required"
+        register={register}
+        currency="BRL"
+      />
       <SgInputCurrency
         id="demo-required-custom"
         label="Mensagem customizada"
-        required
-        requiredMessage="Informe um valor monetário."
+        minValue={0.01}
+        minValueMessage="Informe um valor maior que zero."
         name="requiredCustom"
         register={register}
         currency="BRL"

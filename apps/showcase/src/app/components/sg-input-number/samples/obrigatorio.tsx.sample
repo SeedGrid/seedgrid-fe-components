@@ -5,8 +5,8 @@ export default function Example() {
     <>
       <SgInputNumber
         id="demo-required"
-        label="Obrigatório"
-        required
+        label="Maior que zero"
+        minValue={0.01}
         name="required"
         decimals={2}
       />
@@ -14,8 +14,8 @@ export default function Example() {
       <SgInputNumber
         id="demo-required-custom"
         label="Mensagem customizada"
-        required
-        requiredMessage="Campo obrigatório customizado"
+        minValue={0.01}
+        minValueMessage="Informe um valor maior que zero."
         name="requiredCustom"
         decimals={2}
       />

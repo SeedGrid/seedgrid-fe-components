@@ -53,14 +53,6 @@ export const sgMeta: SgMetaV0 = {
       bindable: true
     },
     {
-      name: "required",
-      type: "boolean",
-      default: false,
-      description: "Marca o campo como obrigatório.",
-      semanticRole: "validation",
-      bindable: true
-    },
-    {
       name: "onChange",
       type: "(value: number | null) => void",
       description: "Callback com o valor monetário como number (null somente com emptyValueIsNull).",

@@ -4770,16 +4770,6 @@
       "required": false
     },
     {
-      "name": "required",
-      "type": "boolean",
-      "required": false
-    },
-    {
-      "name": "requiredMessage",
-      "type": "string",
-      "required": false
-    },
-    {
       "name": "rules",
       "type": "RegisterOptions<any>",
       "required": false
@@ -5779,16 +5769,6 @@
     {
       "name": "register",
       "type": "UseFormRegister<any>",
-      "required": false
-    },
-    {
-      "name": "required",
-      "type": "boolean",
-      "required": false
-    },
-    {
-      "name": "requiredMessage",
-      "type": "string",
       "required": false
     },
     {

@@ -5,7 +5,6 @@ export default function Example() {
     <SgInputNumber
       id="demo-events"
       label="Digite e acompanhe"
-      required
       decimals={2}
       onChange={(v) => console.log("onChange:", v)}
       onEnter={() => console.log("focus")}

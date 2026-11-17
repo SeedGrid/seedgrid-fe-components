@@ -4,7 +4,7 @@ import React from "react";
 import { X } from "lucide-react";
 import { Controller } from "react-hook-form";
 import type { ControllerFieldState, ControllerRenderProps, FieldValues } from "react-hook-form";
-import { mergeRequiredRule, resolveFieldError, type RhfFieldProps } from "../rhf";
+import { resolveFieldError, type RhfFieldProps } from "../rhf";
 import { t, useComponentsI18n } from "../i18n";
 
 export type SgInputNumberProps = RhfFieldProps & {
@@ -44,8 +44,6 @@ export type SgInputNumberProps = RhfFieldProps & {
   onClear?: () => void;
   withBorder?: boolean;
   borderRadius?: number | string;
-  required?: boolean;
-  requiredMessage?: string;
   iconButtons?: React.ReactNode[];
   readOnly?: boolean;
   validation?: (value: number | null) => string | null;
@@ -234,6 +232,19 @@ function SgInputNumberBase(props: SgInputNumberBaseProps) {
 
   // Locale change only affects formatting. State is locale-agnostic (digits + flags).
 
+  // Valor inicial posto pelo formulario (register + defaultValues grava o texto cru, ex. "0.00", direto no input):
+  // vira estado do campo e aparece formatado no idioma (0,00).
+  React.useLayoutEffect(() => {
+    const el = inputRef.current;
+    if (!el || (props as { externalValue?: unknown }).externalValue !== undefined || inputProps.value !== undefined) return;
+    const raw = el.value;
+    if (!raw || raw === displayValue) return;
+    const next = normalizeState(raw, decimals, allowNegative, ".");
+    stateRef.current = next;
+    setState(next);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   React.useLayoutEffect(() => {
     if (prefixRef.current) {
       const next = prefixRef.current.offsetWidth;
@@ -254,7 +265,6 @@ function SgInputNumberBase(props: SgInputNumberBaseProps) {
 
   const runValidation = React.useCallback(
     (valueState: NumberState | null) => {
-      const required = props.required ?? false;
       const numberValue = stateToNumber(valueState, decimals);
       const isZeroValue =
         valueState != null &&
@@ -262,12 +272,6 @@ function SgInputNumberBase(props: SgInputNumberBaseProps) {
         valueState.intDigits.replace(/^0+(?!$)/, "0") === "0" &&
         (decimals <= 0 || valueState.decDigits.replace(/0/g, "") === "");
       if (!valueState || numberValue === null || (emptyValue === "zero" && isZeroValue)) {
-        if (required) {
-          const message = props.requiredMessage ?? t(i18n, "components.inputs.required");
-          setInternalError(message);
-          props.onValidation?.(message);
-          return;
-        }
         // Vazio chega como 0 (padrao) ou null (emptyValueIsNull) na validation.
         const emptyMessage = props.validation ? props.validation(emptyValue === "null" ? null : (numberValue ?? 0)) : null;
         setInternalError(emptyMessage);
@@ -334,7 +338,17 @@ function SgInputNumberBase(props: SgInputNumberBaseProps) {
 
     event.preventDefault();
 
+    // Ctrl+A (ou selecao de tudo): a proxima tecla substitui o valor inteiro, como num campo de texto.
+    const el = event.currentTarget;
+    const allSelected = el.value.length > 0 && el.selectionStart === 0 && el.selectionEnd === el.value.length;
+    const fresh: NumberState = { negative: false, intDigits: "0", decDigits: "", hasDecimal: false };
+    const base: NumberState | null = allSelected ? null : stateRef.current;
+
     if (key === "Backspace" || key === "Delete") {
+      if (allSelected) {
+        commitState(emptyValue === "null" ? null : fresh);
+        return;
+      }
       const current = stateRef.current;
       if (!current) {
         if (emptyValue === "zero") {
@@ -364,25 +378,22 @@ function SgInputNumberBase(props: SgInputNumberBaseProps) {
     }
 
     if ((key === "-" || key === "_") && allowNegative) {
-      const base = stateRef.current ?? { negative: false, intDigits: "0", decDigits: "", hasDecimal: false };
-      const next = base;
-      commitState({ ...next, negative: !next.negative });
+      const current = base ?? fresh;
+      commitState({ ...current, negative: !current.negative });
       return;
     }
 
     const isDecimalKey = key === decimalSep || key === "." || key === ",";
     if (isDecimalKey) {
       if (decimals <= 0) return;
-      const next =
-        stateRef.current ?? { negative: false, intDigits: "0", decDigits: "", hasDecimal: false };
+      const next = base ?? fresh;
       const decDigits = next.decDigits.length >= decimals ? "" : next.decDigits;
       commitState({ ...next, hasDecimal: true, decDigits });
       return;
     }
 
     if (/\d/.test(key)) {
-      const next =
-        stateRef.current ?? { negative: false, intDigits: "0", decDigits: "", hasDecimal: false };
+      const next = base ?? fresh;
       if (next.hasDecimal && decimals > 0 && next.decDigits.length < decimals) {
         commitState({ ...next, decDigits: `${next.decDigits}${key}` });
         return;
@@ -592,11 +603,6 @@ function SgInputNumberBase(props: SgInputNumberBaseProps) {
             style={{ left: labelLeftStyle }}
           >
             <span>{labelText}</span>
-            {props.required ? (
-              <span className="ml-1 text-[hsl(var(--destructive))]" aria-hidden="true">
-                *
-              </span>
-            ) : null}
           </label>
         ) : null}
         {hasSuffix ? (
@@ -642,11 +648,6 @@ function SgInputNumberBase(props: SgInputNumberBaseProps) {
           {showExternalLabel ? (
             <label htmlFor={props.id} className={externalLabelClass}>
               <span>{labelText}</span>
-              {props.required ? (
-                <span className="ml-1 text-[hsl(var(--destructive))]" aria-hidden="true">
-                  *
-                </span>
-              ) : null}
             </label>
           ) : null}
           <div>{fieldNode}</div>
@@ -660,11 +661,6 @@ function SgInputNumberBase(props: SgInputNumberBaseProps) {
       {showExternalLabel ? (
         <label htmlFor={props.id} className={externalLabelClass}>
           <span>{labelText}</span>
-          {props.required ? (
-            <span className="ml-1 text-[hsl(var(--destructive))]" aria-hidden="true">
-              *
-            </span>
-          ) : null}
         </label>
       ) : null}
       <div className={showExternalLabel ? "mt-1" : undefined}>
@@ -675,13 +671,8 @@ function SgInputNumberBase(props: SgInputNumberBaseProps) {
 }
 
 export function SgInputNumber(props: SgInputNumberProps) {
-  const i18n = useComponentsI18n();
   const { control, name, register, rules, ...rest } = props;
-  const resolvedRules = mergeRequiredRule(
-    rules,
-    rest.required,
-    rest.requiredMessage ?? t(i18n, "components.inputs.required")
-  );
+  const resolvedRules = rules;
 
   if (name && register) {
     const reg = register(name, resolvedRules);

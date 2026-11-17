@@ -38,14 +38,6 @@ export const sgMeta: SgMetaV0 = {
       bindable: true
     },
     {
-      name: "required",
-      type: "boolean",
-      default: false,
-      description: "Marca o campo como obrigatório.",
-      semanticRole: "validation",
-      bindable: true
-    },
-    {
       name: "emptyValueIsNull",
       type: "boolean",
       default: false,

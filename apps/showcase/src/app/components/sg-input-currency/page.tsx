@@ -396,7 +396,7 @@ export default function SgInputCurrencyPage() {
           <SgInputCurrency
             id="demo-required"
             label={t(i18n, "showcase.component.currencyEdit.labels.required")}
-            required
+            minValue={0.01}
             name="required"
             register={register}
             currency="BRL"
@@ -406,8 +406,8 @@ export default function SgInputCurrencyPage() {
           <SgInputCurrency
             id="demo-required-custom"
             label={t(i18n, "showcase.component.currencyEdit.labels.customMessage")}
-            required
-            requiredMessage={t(i18n, "showcase.component.currencyEdit.messages.requiredCustom")}
+            minValue={0.01}
+            minValueMessage={t(i18n, "showcase.component.currencyEdit.messages.requiredCustom")}
             name="requiredCustom"
             register={register}
             currency="BRL"
@@ -763,7 +763,6 @@ export default function SgInputCurrencyPage() {
           <SgInputCurrency
             id="demo-events"
             label={t(i18n, "showcase.component.currencyEdit.labels.typeAndLog")}
-            required
             currency="BRL"
             onChange={(v) => log(`onChange: ${v}`)}
             onEnter={() => log("onEnter (focus)")}

@@ -6,7 +6,6 @@ export default function Example() {
     <SgInputCurrency
       id="demo-events"
       label="Digite e acompanhe"
-      required
       currency="BRL"
       onChange={(v) => console.log("onChange:", v)}
       onEnter={() => console.log("focus")}
