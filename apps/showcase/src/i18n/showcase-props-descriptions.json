@@ -3127,6 +3127,7 @@
   },
   "Liga/desliga (ex.: false enquanto nao ha usuario logado).": {
     "pt": "Liga/desliga (ex.: false enquanto não há usuário logado).",
+    "pt-PT": "Liga/desliga (ex.: false enquanto não há utilizador autenticado).",
     "en": "Turns on/off (e.g. false while there is no logged-in user).",
     "es": "Activa/desactiva (p. ej.: false mientras no haya usuario conectado).",
     "fr": "Active/désactive (ex. : false tant qu'aucun utilisateur n'est connecté)."
@@ -3320,6 +3321,7 @@
   },
   "Rota que entrega o token de conexao do usuario logado (a BFF, na mesma origem).": {
     "pt": "Rota que entrega o token de conexão do usuário logado (a BFF, na mesma origem).",
+    "pt-PT": "Rota que entrega o token de ligação do utilizador autenticado (a BFF, na mesma origem).",
     "en": "Route that delivers the logged-in user's connection token (the BFF, on the same origin).",
     "es": "Ruta que entrega el token de conexión del usuario conectado (el BFF, en el mismo origen).",
     "fr": "Route qui fournit le jeton de connexion de l'utilisateur connecté (le BFF, sur la même origine)."
