@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Nao publicado] - 2026-11-17
+
+### Changed
+
+- Contraste garantido na cor de destaque: o tema escolhe o tom da semente que atinge 4,5:1 (no claro escurece, no escuro clareia so o que falha) para texto sobre fundo,
+  texto do contorno (tom 600) e anel de foco; o fundo cheio de botao usa a cor pura da semente (`--primary-fill`/`--destructive-fill`).
+
 ## [0.3.0] - 2026-02-10
 
 ### Added

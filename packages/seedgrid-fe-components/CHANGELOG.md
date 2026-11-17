@@ -1,6 +1,45 @@
 # Changelog
 
-## Nao publicado
+## 2026.11.14 - 2026-11-17
+
+### BREAKING: SgInputNumber e SgInputCurrency sem `required` e `requiredMessage`
+
+- As props `required` e `requiredMessage` foram **removidas** de `SgInputNumber` e `SgInputCurrency` (tipos, asterisco no rotulo e validacao). Para exigir um valor use
+  `minValue` e `minValueMessage` (ex.: `minValue={0.01} minValueMessage="Informe um valor maior que zero."`).
+- O zero passa a contar como valor: `minValue` e `maxValue` validam tambem o `0` (antes o zero era tratado como vazio e pulava os limites).
+  Com `emptyValueIsNull`, o campo vazio de verdade (`null`) continua sem erro de limite.
+- `Ctrl+A` seguido de digito substitui o valor; `Backspace`/`Delete` com tudo selecionado apaga tudo.
+- Com `register`, o valor inicial vindo do formulario e formatado no idioma (`"0.00"` aparece como `0,00` em pt-BR em `SgInputCurrency`).
+- A mensagem padrao de `minValue`/`maxValue` usa o separador decimal do idioma (pt-BR `0,01`; en-US `0.01`).
+
+### SgMultiSelect e SgMultiSelectChips: `requiredMessage` e obrigatorio fora de formulario
+
+- Nova prop `requiredMessage` (mensagem para ausencia de valor). Os chips mostram o erro de `required` tambem fora de um formulario.
+
+### SgButton: `onClick` aceita Promise com loading automatico
+
+- `onClick` pode devolver uma `Promise`: enquanto pendente o botao fica em `loading` (`aria-busy`), cliques sao ignorados e o erro e relancado.
+  `onClick` sincrono continua igual.
+
+### Arraste do cartao: `draggable` com tres estados em SgCard, SgClock e SgCalendar
+
+- `SgClock` e `SgCalendar` ganham a prop `draggable` no topo (`undefined` = automatico, arrasta a partir de 640 px; `true` = sempre; `false` = nunca), com prioridade sobre `cardProps.draggable`.
+  `SgCard` avulso continua nao arrastavel por padrao. Sem `id`/`dragPersistKey` o `SgClock` nao persiste a posicao, e posicao salva fora da tela e descartada.
+
+### Campos mascarados: detalhes
+
+- Valor externo (`value`, `defaultValue`, `setValue`) maior que a mascara e cortado nela, como ao digitar ou colar; colar telefone com DDI `+55` tira o `55`.
+  As secoes seguintes (mascara, numero sempre numero, `valueMode`) fazem parte do mesmo lote.
+
+### Tema (`@seedgrid/fe-theme`): cor de destaque com contraste garantido
+
+- O tema escolhe, a partir da cor semente, o tom que garante contraste minimo de 4,5:1 (claro escurece, escuro clareia so o que falha): texto sobre fundo, texto do contorno
+  (tom 600), anel de foco solido e rotulos. Fundo cheio de botao usa a cor pura da semente (`--primary-fill`/`--destructive-fill`). No tema claro, borda, anel e rotulo dos campos usam a cor pura
+  da semente. No editor de tema do showcase, a cor livre avisa quando o contraste e baixo e o seletor tem 7 cores predefinidas (o amarelo saiu).
+
+### Showcase
+
+- Aviso "gire o aparelho" com o celular deitado (paisagem e altura menor que 500 px), nos 5 idiomas.
 
 ### BREAKING: campos com mascara entregam sempre o valor mascarado
 
