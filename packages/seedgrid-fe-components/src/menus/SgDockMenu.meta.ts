@@ -75,7 +75,7 @@ export const sgMeta: SgMetaV0 = {
       name: "zIndex",
       type: "number",
       default: 50,
-      description: "Camada visual usada quando o dock esta sobreposto.",
+      description: "Camada visual usada quando o dock está sobreposto.",
       semanticRole: "behavior",
       bindable: true
     }

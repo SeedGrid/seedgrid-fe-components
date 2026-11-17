@@ -1434,12 +1434,12 @@
     "fr": "Callback au survol des étoiles",
     "pt-BR": "Callback ao passar o mouse sobre as estrelas"
   },
-  "Camada visual usada quando o dock esta sobreposto.": {
+  "Camada visual usada quando o dock está sobreposto.": {
     "en-US": "Visual layer used when the dock is overlaid.",
     "pt-PT": "Camada visual usada quando o dock está sobreposto.",
     "es": "Capa visual usada cuando el dock está superpuesto.",
     "fr": "Couche visuelle utilisée lorsque le dock est superposé.",
-    "pt-BR": "Camada visual usada quando o dock esta sobreposto."
+    "pt-BR": "Camada visual usada quando o dock está sobreposto."
   },
   "Câmera indisponível (permission, noCamera, failed).": {
     "en-US": "Camera unavailable (permission, noCamera, failed).",
