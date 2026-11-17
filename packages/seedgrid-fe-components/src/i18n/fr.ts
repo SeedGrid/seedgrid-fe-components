@@ -271,7 +271,7 @@ const fr: Record<string, string> = {
   "components.wizard.progress": "Progression",
   "components.menu.unpin": "Détacher le menu",
   "components.wizard.step": "Étape {step}",
-  "components.menu.empty": "Aucun élément trouve.",
+  "components.menu.empty": "Aucun élément trouvé.",
   "components.menu.brandAlt": "Marque",
   "components.menu.pin": "Epingler le menu",
   "components.playground.copy": "Copier",

@@ -61,7 +61,7 @@ test("SgCalendar exposes translated card and navigation labels", () => {
   assert.match(html, />Calendrier</);
   assert.match(html, /aria-label="Mois précédent"/);
   assert.match(html, /aria-label="Mois suivant"/);
-  assert.match(html, /aria-label="Aller a aujourd hui"/);
+  assert.match(html, /aria-label="Aller à aujourd&#x27;hui"/);
 });
 
 
@@ -88,7 +88,7 @@ test("SgClockThemePicker exposes translated placeholder text", () => {
     )
   );
 
-  assert.match(html, />Theme</);
+  assert.match(html, />Thème</);
   assert.match(html, />Sélectionnez un thème\.\.\.</);
 });
 

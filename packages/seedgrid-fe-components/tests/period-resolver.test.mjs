@@ -56,11 +56,11 @@ test("ALL returns null bounds", () => {
   assert.equal(r.preset, PeriodPreset.ALL);
 });
 
-test("CUSTOM returns null bounds and Periodo label (pt-BR)", () => {
+test("CUSTOM returns null bounds and Período label (pt-BR)", () => {
   const r = resolvePeriod(PeriodPreset.CUSTOM, REF);
   assert.equal(r.startDate, null);
   assert.equal(r.endDate, null);
-  assert.equal(r.label, "Periodo");
+  assert.equal(r.label, "Período");
 });
 
 test("TODAY / YESTERDAY / TOMORROW are single days", () => {
@@ -155,5 +155,5 @@ test("minDate / maxDate clamp the resolved interval", () => {
 test("locale option drives the label", () => {
   assert.equal(resolvePeriod(PeriodPreset.THIS_MONTH, REF, { locale: "en-US" }).label, "This month");
   assert.equal(resolvePeriod(PeriodPreset.THIS_MONTH, REF, { locale: "fr" }).label, "Ce mois");
-  assert.equal(periodPresetLabel(PeriodPreset.THIS_MONTH, "pt-BR"), "Este mes");
+  assert.equal(periodPresetLabel(PeriodPreset.THIS_MONTH, "pt-BR"), "Este mês");
 });

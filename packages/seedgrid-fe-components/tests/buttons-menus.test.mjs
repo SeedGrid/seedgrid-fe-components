@@ -195,7 +195,7 @@ test("SgMenu uses translated empty states by default", () => {
     })
   );
 
-  assert.match(html, />Aucun element trouve\.</);
+  assert.match(html, />Aucun élément trouvé\.</);
 });
 test("SgMenu uses translated search placeholder by default", () => {
   const html = renderWithLocale(
@@ -596,7 +596,7 @@ test("SgPageControl uses the translated tablist aria-label by default", () => {
   );
 
   assert.match(html, /role="tablist"/);
-  assert.match(html, /aria-label="Controle de pages"/);
+  assert.match(html, /aria-label="Contrôle de pages"/);
 });
 
 
