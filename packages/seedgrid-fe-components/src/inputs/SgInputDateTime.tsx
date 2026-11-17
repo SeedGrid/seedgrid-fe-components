@@ -252,6 +252,9 @@ function SgInputDateTimeBase(props: SgInputDateTimeProps) {
       ) : null}
       <SgInputText
         {...rest}
+        // O rotulo ja e desenhado acima (com htmlFor): o interno ficaria duplicado no DOM.
+        label=""
+        labelText=""
         type="datetime-local"
         error={resolveFieldError(error, internalError ?? undefined)}
         inputProps={mergedInputProps}

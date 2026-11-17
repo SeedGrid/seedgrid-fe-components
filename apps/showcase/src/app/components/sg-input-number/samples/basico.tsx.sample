@@ -1,12 +1,17 @@
+import { useForm, type FieldValues } from "react-hook-form";
 import { SgButton, SgInputNumber } from "@seedgrid/fe-components";
 
 export default function Example() {
+  const { register, handleSubmit, watch } = useForm<FieldValues>();
+  const valor = watch("valor");
+
   return (
-    <>
+    <form onSubmit={handleSubmit((data) => console.log(data))}>
       <SgInputNumber
         id="demo-basic"
         label="Valor"
         name="valor"
+        register={register}
         decimals={2}
       />
 
@@ -14,7 +19,7 @@ export default function Example() {
         Submit
       </SgButton>
 
-      <p>Valor atual: {"{watch(\"valor\")}"}</p>
-    </>
+      <p>Valor atual: {valor}</p>
+    </form>
   );
 }

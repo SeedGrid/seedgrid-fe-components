@@ -17,7 +17,7 @@ export default function Example() {
       />
       <SgInputCurrency
         id="demo-code"
-        label="Código no sufixo"
+        label="USD no sufixo"
         name="codeSuffix"
         register={register}
         currency="USD"
