@@ -266,12 +266,8 @@ function SgInputNumberBase(props: SgInputNumberBaseProps) {
   const runValidation = React.useCallback(
     (valueState: NumberState | null) => {
       const numberValue = stateToNumber(valueState, decimals);
-      const isZeroValue =
-        valueState != null &&
-        valueState.negative === false &&
-        valueState.intDigits.replace(/^0+(?!$)/, "0") === "0" &&
-        (decimals <= 0 || valueState.decDigits.replace(/0/g, "") === "");
-      if (!valueState || numberValue === null || (emptyValue === "zero" && isZeroValue)) {
+      // Vazio de verdade (emptyValueIsNull): sem erro de limite. O zero conta como valor e segue para minValue/maxValue.
+      if (!valueState || numberValue === null) {
         // Vazio chega como 0 (padrao) ou null (emptyValueIsNull) na validation.
         const emptyMessage = props.validation ? props.validation(emptyValue === "null" ? null : (numberValue ?? 0)) : null;
         setInternalError(emptyMessage);

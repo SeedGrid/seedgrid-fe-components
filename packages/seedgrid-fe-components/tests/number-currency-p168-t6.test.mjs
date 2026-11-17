@@ -5,7 +5,7 @@ import test from "node:test";
 import { createRequire } from "node:module";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { setupDomHarness, flushDom, dispatchKeyboard, dispatchFocus } from "./dom-harness.mjs";
+import { setupDomHarness, flushDom, dispatchKeyboard, dispatchFocus, dispatchBlur } from "./dom-harness.mjs";
 
 const require = createRequire(import.meta.url);
 const Module = require("node:module");
@@ -119,3 +119,38 @@ test("SgInputNumber/SgInputCurrency: required e requiredMessage nao existem mais
     harness.restore();
   }
 });
+
+for (const [name, Comp, extra] of [
+  ["SgInputNumber", SgInputNumber, { decimals: 2 }],
+  ["SgInputCurrency", SgInputCurrency, { currency: "BRL" }]
+]) {
+  test(`${name}: minValue vale para o zero (campo vazio = 0 e abaixo do minimo gera erro)`, async () => {
+    const harness = setupDomHarness();
+    try {
+      await harness.render(h(Comp, { id: "m", label: "M", minValue: 0.01, minValueMessage: "Informe um valor", ...extra }));
+      await flushDom();
+      const el = harness.document.querySelector("input#m");
+      await dispatchFocus(el);
+      await dispatchBlur(el);
+      await flushDom();
+      assert.equal(harness.document.querySelector("[data-sg-error]")?.textContent, "Informe um valor");
+    } finally {
+      harness.restore();
+    }
+  });
+
+  test(`${name}: emptyValueIsNull com campo vazio nao dispara minValue`, async () => {
+    const harness = setupDomHarness();
+    try {
+      await harness.render(h(Comp, { id: "m", label: "M", minValue: 1, emptyValueIsNull: true, ...extra }));
+      await flushDom();
+      const el = harness.document.querySelector("input#m");
+      await dispatchFocus(el);
+      await dispatchBlur(el);
+      await flushDom();
+      assert.equal(harness.document.querySelector("[data-sg-error]"), null);
+    } finally {
+      harness.restore();
+    }
+  });
+}
