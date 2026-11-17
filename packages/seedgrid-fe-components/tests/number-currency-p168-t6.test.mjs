@@ -154,3 +154,30 @@ for (const [name, Comp, extra] of [
     }
   });
 }
+
+// P168.F1.T7: a mensagem padrao de minValue/maxValue usa o separador decimal do idioma (pt-BR "0,01"; en-US "0.01").
+for (const [name, Comp, extra] of [
+  ["SgInputNumber", SgInputNumber, { decimals: 2 }],
+  ["SgInputCurrency", SgInputCurrency, { currency: "BRL" }]
+]) {
+  for (const [locale, expected] of [["pt-BR", "0,01"], ["en-US", "0.01"]]) {
+    test(`${name} ${locale}: mensagem padrao de minValue usa o separador do idioma`, async () => {
+      const harness = setupDomHarness();
+      try {
+        await harness.render(
+          h(SgComponentsI18nProvider, { locale }, h(Comp, { id: "f", label: "V", minValue: 0.01, ...extra, locale }))
+        );
+        await flushDom();
+        const el = harness.document.querySelector("input#f");
+        await dispatchFocus(el);
+        await dispatchBlur(el);
+        await flushDom();
+        const text = harness.document.body.textContent ?? "";
+        assert.ok(text.includes(expected), `esperava ${expected} em: ${text.slice(0, 200)}`);
+        assert.ok(!(locale === "pt-BR" && text.includes("0.01")), "pt-BR nao pode usar ponto");
+      } finally {
+        harness.restore();
+      }
+    });
+  }
+}

@@ -276,14 +276,14 @@ function SgInputNumberBase(props: SgInputNumberBaseProps) {
       }
       if (props.minValue !== undefined && numberValue < props.minValue) {
         const message =
-          props.minValueMessage ?? t(i18n, "components.inputs.number.min", { min: props.minValue });
+          props.minValueMessage ?? t(i18n, "components.inputs.number.min", { min: String(props.minValue).replace(".", decimalSep) });
         setInternalError(message);
         props.onValidation?.(message);
         return;
       }
       if (props.maxValue !== undefined && numberValue > props.maxValue) {
         const message =
-          props.maxValueMessage ?? t(i18n, "components.inputs.number.max", { max: props.maxValue });
+          props.maxValueMessage ?? t(i18n, "components.inputs.number.max", { max: String(props.maxValue).replace(".", decimalSep) });
         setInternalError(message);
         props.onValidation?.(message);
         return;
