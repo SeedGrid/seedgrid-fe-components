@@ -121,7 +121,7 @@
   "showcase.component.inputBirthDate.props.rows.id": "Identifiant unique.",
   "showcase.component.inputBirthDate.props.rows.labelHintText": "Libellé et texte d'aide.",
   "showcase.component.inputBirthDate.props.rows.required": "Validation de champ obligatoire.",
-  "showcase.component.inputBirthDate.props.rows.ageRange": "Plage d'age autorisée.",
+  "showcase.component.inputBirthDate.props.rows.ageRange": "Plage d'âge autorisée.",
   "showcase.component.inputBirthDate.props.rows.visualFlags": "Indicateurs de style visuel et d'éditabilité.",
   "showcase.component.inputBirthDate.props.rows.widthBorderRadius": "Taille du champ et rayon de bordure.",
   "showcase.component.inputBirthDate.props.rows.events": "Callbacks de valeur et de validation.",
