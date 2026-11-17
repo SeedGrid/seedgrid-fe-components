@@ -11,7 +11,7 @@ import { SgInputDate } from "./SgInputDate";
 import type { SgAutocompleteItem } from "./SgAutocomplete";
 
 /**
- * Presets temporais pre-definidos para filtros de relatorios/dashboards.
+ * Presets temporais pré-definidos para filtros de relatorios/dashboards.
  * O valor de cada membro e igual ao seu nome (string) para trafegar bem em
  * fontes de dados, JSON e no id de item do SgCombobox.
  */

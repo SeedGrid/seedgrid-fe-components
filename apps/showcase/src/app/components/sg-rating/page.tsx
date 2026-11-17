@@ -52,7 +52,7 @@ const RATING_PROPS: PropRow[] = [
   { prop: "allowHalf", type: "boolean", defaultValue: "false", description: "Permite selecao de meia estrela." },
   { prop: "cancel", type: "boolean", defaultValue: "true", description: "Shows a button to clear the rating." },
   { prop: "enabled", type: "boolean", defaultValue: "true", description: "Desabilita a interacao com o componente." },
-  { prop: "readOnly", type: "boolean", defaultValue: "false", description: "Mantem visualizacao sem permitir alteracao." },
+  { prop: "readOnly", type: "boolean", defaultValue: "false", description: "Mantém visualizacao sem permitir alteracao." },
   { prop: "size", type: "\"sm\" | \"md\" | \"lg\" | \"xl\"", defaultValue: "\"md\"", description: "Define o tamanho das estrelas." },
   { prop: "className", type: "string", defaultValue: "-", description: "Classe CSS customizada para o container." },
   { prop: "style", type: "React.CSSProperties", defaultValue: "-", description: "Inline style customizado para o container." },

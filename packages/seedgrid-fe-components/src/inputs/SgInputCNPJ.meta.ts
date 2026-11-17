@@ -65,7 +65,7 @@ export const aiHints: SgAiHintsV0 = {
     "Fluxos de cadastro de fornecedor, cliente corporativo e emitente."
   ],
   avoidUseCases: [
-    "CPF ou documentos de pessoa fisica; nesses casos prefira SgInputCPF.",
+    "CPF ou documentos de pessoa física; nesses casos prefira SgInputCPF.",
     "Texto livre, codigos internos ou email.",
     "Valores numericos genericos e datas."
   ],

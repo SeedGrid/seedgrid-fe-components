@@ -120,7 +120,7 @@ export default function App() {
 
 const SCREEN_PROPS: ShowcasePropRow[] = [
   { prop: "fullscreen", type: "boolean", defaultValue: "true", description: "Define se ocupa toda a viewport." },
-  { prop: "width / height", type: "number | string", defaultValue: "-", description: "Dimensoes explicitas do container (ex.: 960, 100%, 60vh)." },
+  { prop: "width / height", type: "number | string", defaultValue: "-", description: "Dimensoes explícitas do container (ex.: 960, 100%, 60vh)." },
   { prop: "padding", type: "number", defaultValue: "0", description: "Padding interno aplicado ao root da tela." },
   { prop: "children", type: "ReactNode", defaultValue: "-", description: "Main screen content." },
   { prop: "className / style", type: "string / CSSProperties", defaultValue: "-", description: "Customizacao visual do container." }

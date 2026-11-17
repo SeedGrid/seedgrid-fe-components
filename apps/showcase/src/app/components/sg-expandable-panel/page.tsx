@@ -348,7 +348,7 @@ const EXPANDABLE_PANEL_PROPS: ShowcasePropRow[] = [
   { prop: "trapFocus", type: "boolean", defaultValue: "mode === overlay", description: "Prende foco dentro do painel." },
   { prop: "showBackdrop", type: "boolean", defaultValue: "true", description: "Mostra camada de fundo no overlay." },
 
-  { prop: "animation", type: '{ type?: "slide" | "fade" | "none"; durationMs?: number }', defaultValue: "slide / 180", description: "Animacao de entrada/saida." },
+  { prop: "animation", type: '{ type?: "slide" | "fade" | "none"; durationMs?: number }', defaultValue: "slide / 180", description: "Animacao de entrada/saída." },
 
   { prop: "elevation", type: '"none" | "sm" | "md" | "lg"', defaultValue: "md", description: "Sombra do painel." },
   { prop: "border", type: "boolean", defaultValue: "true", description: "Exibe borda do container." },

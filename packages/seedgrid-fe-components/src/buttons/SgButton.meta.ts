@@ -138,7 +138,7 @@ export const aiHints: SgAiHintsV0 = {
   version: "0.1",
   preferredUseCases: [
     "Acoes primarias e secundarias em formularios e telas CRUD.",
-    "Submit, confirmacao, salvar, cancelar e outras acoes explicitas do usuario.",
+    "Submit, confirmacao, salvar, cancelar e outras acoes explícitas do usuario.",
     "Chamadas para acao com feedback visual de loading.",
     "Salvar, enviar ou pagar: use onClick assíncrono (async () => { await salvar(); } ou () => salvar()) para o botão entrar em loading sozinho e ignorar duplo clique; acoes instantaneas (abrir modal, alternar) ficam sincronas."
   ],

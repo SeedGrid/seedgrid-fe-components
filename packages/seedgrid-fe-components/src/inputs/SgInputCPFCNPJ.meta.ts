@@ -71,7 +71,7 @@ export const aiHints: SgAiHintsV0 = {
   version: "0.1",
   preferredUseCases: [
     "Campos unificados que aceitam CPF ou CNPJ no mesmo fluxo.",
-    "Cadastros onde a entidade pode ser pessoa fisica ou juridica.",
+    "Cadastros onde a entidade pode ser pessoa física ou juridica.",
     "Busca ou filtro por documento brasileiro sem tipo fixo."
   ],
   avoidUseCases: [

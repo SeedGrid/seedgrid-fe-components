@@ -738,7 +738,7 @@ const PROPS: ShowcasePropRow[] = [
     prop: "ref",
     type: "SgStringAnimatorRef",
     defaultValue: "-",
-    description: "Ref imperativa. Expoe o metodo startAnimation() para acionar a animacao manualmente.",
+    description: "Ref imperativa. Expõe o metodo startAnimation() para acionar a animacao manualmente.",
   },
 ];
 

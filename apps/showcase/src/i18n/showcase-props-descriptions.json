@@ -59,8 +59,8 @@
     "es": "Altura del contenedor.",
     "fr": "Hauteur du conteneur."
   },
-  "Animacao de entrada/saida.": {
-    "pt": "Animação de entrada/saida.",
+  "Animacao de entrada/saída.": {
+    "pt": "Animação de entrada/saída.",
     "en": "Entry/exit animation.",
     "es": "Animación de entrada/salida.",
     "fr": "Animation d'entrée/sortie."
@@ -635,8 +635,8 @@
     "es": "Dimensiones de la pantalla base.",
     "fr": "Dimensions de l'écran de base."
   },
-  "Dimensoes explicitas do container (ex.: 960, 100%, 60vh).": {
-    "pt": "Dimensões explicitas do container (ex.: 960, 100%, 60vh).",
+  "Dimensoes explícitas do container (ex.: 960, 100%, 60vh).": {
+    "pt": "Dimensões explícitas do container (ex.: 960, 100%, 60vh).",
     "en": "Explicit dimensions of the container (e.g.: 960, 100%, 60vh).",
     "es": "Dimensiones explícitas del contenedor (por ejemplo: 960, 100%, 60vh).",
     "fr": "Dimensions explicites du conteneur (ex. : 960, 100%, 60vh)."
@@ -1133,7 +1133,7 @@
     "es": "Haga clic en el controlador.",
     "fr": "Gestionnaire de clic."
   },
-  "Mantem visualizacao sem permitir alteracao.": {
+  "Mantém visualizacao sem permitir alteracao.": {
     "pt": "Mantém visualização sem permitir alteração.",
     "en": "Maintains visualization without allowing changes.",
     "es": "Mantiene la visualización sin permitir cambios.",
@@ -1751,8 +1751,8 @@
     "es": "Clases CSS adicionales en el contenedor externo.",
     "fr": "Classes CSS supplémentaires sur le conteneur externe."
   },
-  "Ref imperativa. Expoe o metodo startAnimation() para acionar a animacao manualmente.": {
-    "pt": "Ref imperativa. Expoe o método startAnimation() para acionar a animação manualmente.",
+  "Ref imperativa. Expõe o metodo startAnimation() para acionar a animacao manualmente.": {
+    "pt": "Ref imperativa. Expõe o método startAnimation() para acionar a animação manualmente.",
     "en": "Imperative ref. Exposes the startAnimation() method to trigger animation manually.",
     "es": "Ref imperativa. Expone el método startAnimation() para disparar la animación manualmente.",
     "fr": "Ref impérative. Expose la méthode startAnimation() pour déclencher l'animation manuellement."
@@ -2147,10 +2147,10 @@
     "es": "Versión del estado; cambiarla invalida datos persistidos anteriores.",
     "fr": "Version de l'état ; la modifier invalide les données persistées précédentes."
   },
-  "Retorna o tempo atual em ms, sincronizado com o servidor quando SgTimeProvider esta presente.": {
-    "pt": "Retorna o tempo atual em ms, sincronizado com o servidor quando SgTimeProvider esta presente.",
+  "Retorna o tempo atual em ms, sincronizado com o servidor quando SgTimeProvider está presente.": {
+    "pt": "Retorna o tempo atual em ms, sincronizado com o servidor quando SgTimeProvider está presente.",
     "en": "Returns the current time in ms, synchronized with the server when SgTimeProvider is present.",
-    "es": "Retorna el tiempo actual en ms, sincronizado con el servidor cuando SgTimeProvider esta presente.",
+    "es": "Retorna el tiempo actual en ms, sincronizado con el servidor cuando SgTimeProvider está presente.",
     "fr": "Retourne l'heure actuelle en ms, synchronisée avec le serveur lorsque SgTimeProvider est présent."
   },
   "Incrementa a cada segundo. Util para acionar re-renders em componentes que dependem do tempo.": {

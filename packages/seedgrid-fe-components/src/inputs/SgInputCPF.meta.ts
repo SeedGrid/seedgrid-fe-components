@@ -59,7 +59,7 @@ export const sgMeta: SgMetaV0 = {
 export const aiHints: SgAiHintsV0 = {
   version: "0.1",
   preferredUseCases: [
-    "Captura de CPF em formularios de pessoa fisica.",
+    "Captura de CPF em formularios de pessoa física.",
     "Identificacao fiscal brasileira com validacao automatica.",
     "Fluxos de cadastro, onboarding e confirmacao de identidade."
   ],
@@ -71,7 +71,7 @@ export const aiHints: SgAiHintsV0 = {
   synonyms: ["cpf", "tax id", "documento cpf", "personal tax id"],
   relatedEntityFields: ["cpf", "document", "taxId", "personDocument"],
   compositionHints: [
-    "Combinar com SgInputBirthDate e SgInputEmail em cadastro de pessoa fisica.",
+    "Combinar com SgInputBirthDate e SgInputEmail em cadastro de pessoa física.",
     "Usar dentro de SgPanel em blocos de identificacao."
   ],
   rankingSignals: {

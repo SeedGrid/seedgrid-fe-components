@@ -52,7 +52,7 @@ function FallbackClock() {
 }
 
 const HOOK_RETURN: ShowcasePropRow[] = [
-  { prop: "nowMs()", type: "() => number", defaultValue: "Date.now()", description: "Retorna o tempo atual em ms, sincronizado com o servidor quando SgTimeProvider esta presente." },
+  { prop: "nowMs()", type: "() => number", defaultValue: "Date.now()", description: "Retorna o tempo atual em ms, sincronizado com o servidor quando SgTimeProvider está presente." },
   { prop: "tick", type: "number", defaultValue: "0", description: "Incrementa a cada segundo. Util para acionar re-renders em componentes que dependem do tempo." },
   { prop: "serverStartMs", type: "number", defaultValue: "Date.now()", description: "Timestamp do servidor no momento em que SgTimeProvider foi montado." },
   { prop: "perfStartMs", type: "number", defaultValue: "0", description: "performance.now() no momento de hidratacao. Usado internamente para calcular o delta." }

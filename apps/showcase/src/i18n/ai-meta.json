@@ -1098,19 +1098,19 @@
     "fr": "Recherches où l'on veut éviter un déclenchement à chaque touche et exiger un minimum de caractères.",
     "pt-BR": "Buscas onde se quer evitar disparos a cada tecla e exigir um mínimo de caracteres."
   },
-  "Cabecalho da coluna do checkbox principal -- so' é desenhado quando `tracks` tambem esta'\npresente (é o cabecalho de colunas como um todo que fica ambiguo com 2+ controles por linha,\nnao o checkbox sozinho).": {
+  "Cabeçalho da coluna do checkbox principal -- só é desenhado quando `tracks` também está\r\npresente (é o cabeçalho de colunas como um todo que fica ambíguo com 2+ controles por linha,\r\nnão o checkbox sozinho).": {
     "en-US": "Header of the main checkbox column -- only rendered when `tracks` is also\npresent (it is the column header as a whole that becomes ambiguous with 2+ controls per row,\nnot the checkbox alone).",
     "pt-PT": "Cabeçalho da coluna do checkbox principal -- só é desenhado quando `tracks` também está\npresente (é o cabeçalho de colunas como um todo que fica ambíguo com 2+ controlos por linha,\nnão o checkbox sozinho).",
     "es": "Encabezado de la columna del checkbox principal -- solo se dibuja cuando `tracks` también está\npresente (es el encabezado de columnas en su conjunto el que resulta ambiguo con 2+ controles por fila,\nno el checkbox por sí solo).",
     "fr": "En-tête de la colonne du checkbox principal -- affiché uniquement lorsque `tracks` est aussi\nprésent (c'est l'en-tête de colonnes dans son ensemble qui devient ambigu avec 2+ contrôles par ligne,\npas le checkbox seul).",
     "pt-BR": "Cabeçalho da coluna do checkbox principal -- só é desenhado quando `tracks` também está\npresente (é o cabeçalho de colunas como um todo que fica ambíguo com 2+ controles por linha,\nnão o checkbox sozinho)."
   },
-  "Cadastros onde a entidade pode ser pessoa fisica ou juridica.": {
+  "Cadastros onde a entidade pode ser pessoa física ou juridica.": {
     "en-US": "Registrations where the entity may be an individual or a legal entity.",
     "pt-PT": "Registos em que a entidade pode ser pessoa singular ou coletiva.",
     "es": "Registros donde la entidad puede ser persona física o jurídica.",
     "fr": "Enregistrements où l'entité peut être une personne physique ou morale.",
-    "pt-BR": "Cadastros onde a entidade pode ser pessoa fisica ou juridica."
+    "pt-BR": "Cadastros onde a entidade pode ser pessoa física ou juridica."
   },
   "Calendário mensal em formato de gadget com suporte a locale, multi-mês, regras de seleção e card configurável.": {
     "en-US": "Monthly calendar in gadget format with support for locale, multi-month, selection rules and a configurable card.",
@@ -1532,12 +1532,12 @@
     "fr": "Champ spécialisé pour le CNPJ avec masque, validation des chiffres et prise en charge optionnelle d'une consultation externe. Contrat de valeur : la valeur du formulaire (onChange isolé, control et register) est TOUJOURS masquée, saisie ou définie par code (defaultValues, setValue, reset, value) ; la saisie accepte une valeur brute ou masquée ; une valeur plus longue que le masque est tronquée ; pour ne conserver que les chiffres, utilisez value.replace(/\\D/g, \"\").",
     "pt-BR": "Campo especializado para CNPJ com máscara, validação de dígitos e suporte opcional a consulta externa. Contrato de valor: o valor do formulário (onChange avulso, control e register) é SEMPRE mascarado, digitado ou definido por código (defaultValues, setValue, reset, value); a entrada aceita valor cru ou mascarado; valor maior que a máscara é cortado; para guardar só dígitos use value.replace(/\\D/g, \"\")."
   },
-  "Campo especializado para CPF com mascara, validacao de digitos e integracao com fluxos de cadastro de pessoa fisica.": {
+  "Campo especializado para CPF com mascara, validacao de digitos e integracao com fluxos de cadastro de pessoa física.": {
     "en-US": "Specialized field for CPF with mask, digit validation, and integration with individual-person registration flows.",
     "pt-PT": "Campo especializado para CPF com máscara, validação de dígitos e integração com fluxos de registo de pessoa singular.",
     "es": "Campo especializado para CPF con máscara, validación de dígitos e integración con flujos de registro de persona física.",
     "fr": "Champ spécialisé pour le CPF avec masque, validation des chiffres et intégration aux flux d'enregistrement de personne physique.",
-    "pt-BR": "Campo especializado para CPF com máscara, validação de dígitos e integração com fluxos de cadastro de pessoa fisica."
+    "pt-BR": "Campo especializado para CPF com máscara, validação de dígitos e integração com fluxos de cadastro de pessoa física."
   },
   "Campo especializado para CPF com máscara, validação de dígitos e integração com fluxos de cadastro de pessoa física. Contrato de valor: o valor do formulário (onChange avulso, control e register) e SEMPRE mascarado, digitado ou setado por código (defaultValues, setValue, reset, value); a entrada aceita valor cru ou mascarado; valor maior que a máscara e cortado; para guardar só dígitos use value.replace(/\\D/g, \"\").": {
     "en-US": "Specialized field for CPF with mask, digit validation and integration with individual registration flows. Value contract: the form value (standalone onChange, control and register) is ALWAYS masked, whether typed or set by code (defaultValues, setValue, reset, value); the input accepts a raw or a masked value; a value longer than the mask is truncated; to store digits only use value.replace(/\\D/g, \"\").",
@@ -1805,12 +1805,12 @@
     "fr": "Saisie d'un code de vérification temporaire.",
     "pt-BR": "Captura de código temporário de verificação."
   },
-  "Captura de CPF em formularios de pessoa fisica.": {
+  "Captura de CPF em formularios de pessoa física.": {
     "en-US": "CPF capture in individual-person forms.",
     "pt-PT": "Captura de CPF em formulários de pessoa singular.",
     "es": "Captura de CPF en formularios de persona física.",
     "fr": "Saisie du CPF dans les formulaires de personne physique.",
-    "pt-BR": "Captura de CPF em formulários de pessoa fisica."
+    "pt-BR": "Captura de CPF em formulários de pessoa física."
   },
   "Captura de dados ou acoes por si so; nesses casos prefira componentes especificos.": {
     "en-US": "Data capture or actions on their own; in these cases prefer specific components.",
@@ -3086,12 +3086,12 @@
     "fr": "Couleur principale du texte/point — appliquée aux styles \"neon\", \"fade\",\n\"discard\" et \"matrix\".",
     "pt-BR": "Cor principal do texto/ponto — aplicada nos estilos \"neon\", \"fade\",\n\"discard\" e \"matrix\"."
   },
-  "CPF ou documentos de pessoa fisica; nesses casos prefira SgInputCPF.": {
+  "CPF ou documentos de pessoa física; nesses casos prefira SgInputCPF.": {
     "en-US": "CPF or individual-person documents; in those cases prefer SgInputCPF.",
     "pt-PT": "CPF ou documentos de pessoa singular; nesses casos, prefira SgInputCPF.",
     "es": "CPF o documentos de persona física; en esos casos, prefiera SgInputCPF.",
     "fr": "CPF ou documents de personne physique ; dans ces cas, préférez SgInputCPF.",
-    "pt-BR": "CPF ou documentos de pessoa fisica; nesses casos prefira SgInputCPF."
+    "pt-BR": "CPF ou documentos de pessoa física; nesses casos prefira SgInputCPF."
   },
   "Criar area raiz para estruturas com docking, sidebars, header e footer.": {
     "en-US": "Create a root area for structures with docking, sidebars, header and footer.",
@@ -8985,7 +8985,7 @@
     "pt-PT": "Seletor de períodos predefinidos (Este mês, Último trimestre, etc.) que resolve a regra temporal num intervalo real de datas.",
     "es": "Selector de períodos predefinidos (Este mes, Último trimestre, etc.) que resuelve la regla temporal en un intervalo real de fechas.",
     "fr": "Sélecteur de périodes prédéfinies (Ce mois-ci, Dernier trimestre, etc.) qui résout la règle temporelle en un intervalle de dates réel.",
-    "pt-BR": "Seletor de períodos pre-definidos (Este mês, Último trimestre, etc.) que resolve a regra temporal para um intervalo real de datas."
+    "pt-BR": "Seletor de períodos pré-definidos (Este mês, Último trimestre, etc.) que resolve a regra temporal para um intervalo real de datas."
   },
   "Seletor de recorte de ano: o usuário escolhe ANO + RECORTE (semestre, trimestre ou bimestre) + FATIA, e o componente resolve para um intervalo real e fechado de datas. É o irmão ABSOLUTO do SgPeriodSelector: aquele resolve presets RELATIVOS a hoje (\"este semestre\"), este resolve um recorte fixo de um ano civil informado (\"o 1o semestre DE 2024\"), que não muda de significado com a passagem do tempo.": {
     "en-US": "Year-slice selector: the user chooses YEAR + SLICE TYPE (semester, quarter or bimester) + PART, and the component resolves it to a real, closed date range. It is the ABSOLUTE sibling of SgPeriodSelector: that one resolves presets RELATIVE to today (\"this semester\"), this one resolves a fixed slice of a given calendar year (\"the 1st semester OF 2024\"), which does not change meaning as time passes.",
@@ -9204,7 +9204,7 @@
     "fr": "Statuts textuels ou compteurs ; dans ces cas, préférez SgBadge.",
     "pt-BR": "Status textuais ou contadores; nesses casos prefira SgBadge."
   },
-  "Submit, confirmacao, salvar, cancelar e outras acoes explicitas do usuario.": {
+  "Submit, confirmacao, salvar, cancelar e outras acoes explícitas do usuario.": {
     "en-US": "Submit, confirm, save, cancel and other explicit user actions.",
     "pt-PT": "Submit, confirmação, guardar, cancelar e outras ações explícitas do utilizador.",
     "es": "Submit, confirmación, guardar, cancelar y otras acciones explícitas del usuario.",
@@ -9510,7 +9510,7 @@
     "pt-PT": "Texto apresentado quando nenhum tema válido está resolvido.",
     "es": "Texto mostrado cuando no hay ningún tema válido resuelto.",
     "fr": "Texte affiché lorsqu'aucun thème valide n'est résolu.",
-    "pt-BR": "Texto exibido quando nenhum tema válido esta resolvido."
+    "pt-BR": "Texto exibido quando nenhum tema válido está resolvido."
   },
   "Texto final da animação.": {
     "en-US": "Final text of the animation.",
@@ -10526,5 +10526,19 @@
     "es": "año actual - 30",
     "fr": "année courante - 30",
     "pt-BR": "ano corrente - 30"
+  },
+  "Liga/desliga (ex.: `false` enquanto não há usuário logado). Default: `true`.": {
+    "en-US": "Turns it on/off (e.g. `false` while there is no logged-in user). Default: `true`.",
+    "pt-PT": "Liga/desliga (ex.: `false` enquanto não há utilizador autenticado). Predefinição: `true`.",
+    "es": "Activa/desactiva (p. ej.: `false` mientras no hay usuario autenticado). Por defecto: `true`.",
+    "fr": "Active/désactive (ex. : `false` tant qu'aucun utilisateur n'est connecté). Par défaut : `true`.",
+    "pt-BR": "Liga/desliga (ex.: `false` enquanto não há usuário logado). Default: `true`."
+  },
+  "Rota que entrega o token de conexão do usuário logado. Default: `/api/realtime/connect` (a BFF, na\nmesma origem — o navegador manda o cookie da sessão).": {
+    "en-US": "Route that delivers the connection token of the logged-in user. Default: `/api/realtime/connect` (the BFF, same origin — the browser sends the session cookie).",
+    "pt-PT": "Rota que entrega o token de ligação do utilizador autenticado. Predefinição: `/api/realtime/connect` (a BFF, na mesma origem — o navegador envia o cookie da sessão).",
+    "es": "Ruta que entrega el token de conexión del usuario autenticado. Por defecto: `/api/realtime/connect` (el BFF, en el mismo origen — el navegador envía la cookie de sesión).",
+    "fr": "Route qui fournit le jeton de connexion de l'utilisateur connecté. Par défaut : `/api/realtime/connect` (le BFF, même origine — le navigateur envoie le cookie de session).",
+    "pt-BR": "Rota que entrega o token de conexão do usuário logado. Default: `/api/realtime/connect` (a BFF, na\nmesma origem — o navegador manda o cookie da sessão)."
   }
 }

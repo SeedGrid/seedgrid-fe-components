@@ -39,7 +39,7 @@ export default function ComponentAiPropsTable(props: Readonly<ComponentAiPropsTa
                 <td className="py-2 pr-4 font-mono text-xs">{prop.name}</td>
                 <td className="py-2 pr-4">{prop.type}</td>
                 <td className="py-2 pr-4">{prop.required ? t(i18n, "showcase.ai.yes") : t(i18n, "showcase.ai.no")}</td>
-                <td className="py-2 pr-4">{prop.default === undefined ? "-" : JSON.stringify(prop.default)}</td>
+                <td className="py-2 pr-4">{prop.default === undefined ? "-" : JSON.stringify(typeof prop.default === "string" ? (aiMetaText(i18n.locale, prop.default) ?? prop.default) : prop.default)}</td>
                 <td className="py-2 pr-4">{prop.semanticRole ?? "-"}</td>
                 <td className="py-2 pr-4">{prop.bindable === undefined ? "-" : prop.bindable ? t(i18n, "showcase.ai.yes") : t(i18n, "showcase.ai.no")}</td>
                 <td className="py-2">{aiMetaText(i18n.locale, prop.description) ?? "-"}</td>
