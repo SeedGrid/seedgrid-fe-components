@@ -9,7 +9,7 @@
 //  4. A metadata inline do nav (COMPONENT_HINT_TEXTS_BY_SLUG) deve trazer os 4 locales em toda entrada.
 import test from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync, readdirSync, statSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -92,7 +92,19 @@ test(`paginas de componente hardcoded (sem t(i18n)) nao crescem alem de ${HARDCO
     }
   };
   walk(componentsDir);
-  const hardcoded = pages.filter((p) => !readFileSync(p, "utf8").includes("t(i18n"));
+  // A pagina pode so embrulhar um cliente irmao (`./xxx-showcase-client`): vale o i18n do cliente.
+  const usesI18n = (file) => {
+    const src = readFileSync(file, "utf8");
+    if (src.includes("t(i18n")) return true;
+    return [...src.matchAll(/from\s+"(\.\/[^"]+)"/g)].some(([, rel]) => {
+      for (const ext of [".tsx", ".ts"]) {
+        const sibling = path.resolve(path.dirname(file), rel + ext);
+        if (existsSync(sibling) && readFileSync(sibling, "utf8").includes("t(i18n")) return true;
+      }
+      return false;
+    });
+  };
+  const hardcoded = pages.filter((p) => !usesI18n(p));
   assert.ok(
     hardcoded.length <= HARDCODED_PAGES_BASELINE,
     `Paginas hardcoded subiram para ${hardcoded.length} (baseline ${HARDCODED_PAGES_BASELINE}). ` +
