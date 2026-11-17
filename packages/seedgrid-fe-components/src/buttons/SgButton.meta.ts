@@ -102,13 +102,13 @@ export const sgMeta: SgMetaV0 = {
     {
       id: "sync-vs-async",
       title: "onClick síncrono x assíncrono",
-      file: "apps/showcase/src/app/components/sg-button/samples/onclick-sincrono-x-assíncrono.tsx.sample",
+      file: "apps/showcase/src/app/components/sg-button/samples/onclick-sincrono-x-assincrono.tsx.sample",
       kind: "sample"
     },
     {
       id: "async-error",
       title: "Tratando erro no onClick assíncrono",
-      file: "apps/showcase/src/app/components/sg-button/samples/tratando-erro-no-onclick-assíncrono.tsx.sample",
+      file: "apps/showcase/src/app/components/sg-button/samples/tratando-erro-no-onclick-assincrono.tsx.sample",
       kind: "sample"
     },
     {

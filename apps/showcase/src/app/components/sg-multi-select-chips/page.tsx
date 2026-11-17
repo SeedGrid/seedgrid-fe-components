@@ -83,6 +83,8 @@ export default function SgMultiSelectChipsPage() {
   const [controlled, setControlled] = React.useState<SgMultiSelectOptionValue[]>(["flutter"]);
   const { control, handleSubmit } = useForm<{ areas: SgMultiSelectOptionValue[] }>({ defaultValues: { areas: [] } });
   const [submitted, setSubmitted] = React.useState("");
+  const [reqA, setReqA] = React.useState<SgMultiSelectOptionValue[]>([]);
+  const [reqB, setReqB] = React.useState<SgMultiSelectOptionValue[]>([]);
 
   const selectedLabel = t(i18n, `${K}.selectedLabel`);
   const noneLabel = t(i18n, `${K}.noneLabel`);
@@ -239,6 +241,31 @@ export default function SgMultiSelectChipsPage() {
             ) : null}
           </form>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-multi-select-chips/samples/erro-e-formulario.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.sections.required.title`)} description={t(i18n, `${K}.sections.required.description`)}>
+          <div className="w-96">
+            <SgMultiSelectChips
+              id="msc-required"
+              label={t(i18n, `${K}.labels.companies`)}
+              required
+              options={companies(i18n)}
+              value={reqA}
+              onChange={setReqA}
+            />
+          </div>
+          <div className="w-96">
+            <SgMultiSelectChips
+              id="msc-required-message"
+              label={t(i18n, `${K}.labels.companies`)}
+              required
+              requiredMessage={t(i18n, `${K}.labels.requiredCustom`)}
+              options={companies(i18n)}
+              value={reqB}
+              onChange={setReqB}
+            />
+          </div>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-multi-select-chips/samples/obrigatorio.tsx.sample" />
         </Section>
 
         <Section title={t(i18n, `${K}.sections.playground.title`)} description={t(i18n, `${K}.sections.playground.description`)}>

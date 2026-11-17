@@ -1127,7 +1127,7 @@
   "showcase.component.multiSelectChips.labels.formField": "Áreas",
   "showcase.component.multiSelectChips.sections.controlled.description": "Con value, manda el padre: el campo solo cambia cuando value cambia.",
   "showcase.component.multiSelectChips.sections.controlled.title": "6) Valor controlado",
-  "showcase.component.multiSelectChips.sections.form.description": "required solo añade el asterisco a la etiqueta; con name + control el campo guarda la lista de valores marcados.",
+  "showcase.component.multiSelectChips.sections.form.description": "required marca el campo como obligatorio (asterisco en la etiqueta y mensaje si queda vacío); con name + control el campo guarda la lista de valores marcados.",
   "showcase.component.multiSelectChips.sections.form.title": "7) Error y formulario",
   "showcase.component.multiSelectChips.submittedLabel": "Enviado",
   "showcase.component.orderList.buttons.clearSelection": "Limpiar selección",
@@ -4454,5 +4454,11 @@
   "showcase.component.inputNumber.loadApi.labels.postalCode": "Código postal",
   "showcase.component.inputNumber.loadApi.labels.loading": "Cargando...",
   "showcase.component.inputNumber.loadApi.labels.values": "Valores: {value}",
-  "showcase.component.inputNumber.loadApi.actions.reload": "Recargar desde la API"
+  "showcase.component.inputNumber.loadApi.actions.reload": "Recargar desde la API",
+  "showcase.component.multiSelect.sections.required.title": "10) Campo obligatorio y mensaje propio",
+  "showcase.component.multiSelect.sections.required.description": "required exige al menos un elemento: al salir del campo vacío aparece el mensaje de obligatorio, en el idioma de la página. requiredMessage cambia el texto.",
+  "showcase.component.multiSelect.labels.requiredCustom": "Elija al menos una empresa.",
+  "showcase.component.multiSelectChips.sections.required.title": "8) Campo obligatorio y mensaje propio",
+  "showcase.component.multiSelectChips.sections.required.description": "required exige al menos un chip: al salir del campo vacío aparece el mensaje de obligatorio, en el idioma de la página. requiredMessage cambia el texto.",
+  "showcase.component.multiSelectChips.labels.requiredCustom": "Elija al menos una empresa."
 }

@@ -93,6 +93,8 @@ export default function SgMultiSelectPage() {
   const [summary, setSummary] = React.useState<SgMultiSelectOptionValue[]>(["e1", "e2", "e4"]);
   const { control, handleSubmit } = useForm<{ tags: SgMultiSelectOptionValue[] }>({ defaultValues: { tags: [] } });
   const [submitted, setSubmitted] = React.useState("");
+  const [reqA, setReqA] = React.useState<SgMultiSelectOptionValue[]>([]);
+  const [reqB, setReqB] = React.useState<SgMultiSelectOptionValue[]>([]);
 
   const selectedLabel = t(i18n, `${K}.selectedLabel`);
   const noneLabel = t(i18n, `${K}.noneLabel`);
@@ -278,6 +280,31 @@ export default function SgMultiSelectPage() {
             />
           </div>
           <CodeBlock sampleFile="apps/showcase/src/app/components/sg-multi-select/samples/opcao-desabilitada-e-texto-da-busca.tsx.sample" />
+        </Section>
+
+        <Section title={t(i18n, `${K}.sections.required.title`)} description={t(i18n, `${K}.sections.required.description`)}>
+          <div className="w-96">
+            <SgMultiSelect
+              id="ms-required"
+              label={t(i18n, `${K}.labels.companies`)}
+              required
+              options={companies(i18n)}
+              value={reqA}
+              onChange={setReqA}
+            />
+          </div>
+          <div className="w-96">
+            <SgMultiSelect
+              id="ms-required-message"
+              label={t(i18n, `${K}.labels.companies`)}
+              required
+              requiredMessage={t(i18n, `${K}.labels.requiredCustom`)}
+              options={companies(i18n)}
+              value={reqB}
+              onChange={setReqB}
+            />
+          </div>
+          <CodeBlock sampleFile="apps/showcase/src/app/components/sg-multi-select/samples/obrigatorio.tsx.sample" />
         </Section>
 
         <Section title={t(i18n, `${K}.sections.playground.title`)} description={t(i18n, `${K}.sections.playground.description`)}>

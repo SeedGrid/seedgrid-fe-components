@@ -1,0 +1,37 @@
+import * as React from "react";
+import { SgMultiSelect, type SgMultiSelectOptionValue } from "@seedgrid/fe-components";
+
+const COMPANIES = [
+  { label: "Empresa 1", value: "e1" },
+  { label: "Empresa 2", value: "e2" },
+  { label: "Empresa 3", value: "e3" },
+  { label: "Empresa 4", value: "e4" },
+  { label: "Empresa 5", value: "e5" },
+  { label: "Empresa 6", value: "e6" }
+];
+
+export default function App() {
+  const [a, setA] = React.useState<SgMultiSelectOptionValue[]>([]);
+  const [b, setB] = React.useState<SgMultiSelectOptionValue[]>([]);
+  return (
+    <>
+      <SgMultiSelect
+        id="ms-required"
+        label="Empresas"
+        required
+        options={COMPANIES}
+        value={a}
+        onChange={setA}
+      />
+      <SgMultiSelect
+        id="ms-required-message"
+        label="Empresas"
+        required
+        requiredMessage="Escolha ao menos uma empresa."
+        options={COMPANIES}
+        value={b}
+        onChange={setB}
+      />
+    </>
+  );
+}

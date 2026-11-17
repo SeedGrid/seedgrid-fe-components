@@ -199,7 +199,7 @@
   "showcase.component.multiSelectChips.labels.formField": "Domaines",
   "showcase.component.multiSelectChips.sections.controlled.description": "Avec value, c'est le parent qui décide : le champ ne change que lorsque value change.",
   "showcase.component.multiSelectChips.sections.controlled.title": "6) Valeur contrôlée",
-  "showcase.component.multiSelectChips.sections.form.description": "required ajoute seulement l'astérisque au libellé ; avec name + control le champ garde la liste des valeurs cochées.",
+  "showcase.component.multiSelectChips.sections.form.description": "required marque le champ comme obligatoire (astérisque sur le libellé et message s'il reste vide) ; avec name + control le champ garde la liste des valeurs cochées.",
   "showcase.component.multiSelectChips.sections.form.title": "7) Erreur et formulaire",
   "showcase.component.multiSelectChips.submittedLabel": "Envoyé",
   "showcase.component.orderList.buttons.clearSelection": "Effacer la sélection",
@@ -4454,5 +4454,11 @@
   "showcase.component.inputNumber.loadApi.labels.postalCode": "Code postal",
   "showcase.component.inputNumber.loadApi.labels.loading": "Chargement...",
   "showcase.component.inputNumber.loadApi.labels.values": "Valeurs : {value}",
-  "showcase.component.inputNumber.loadApi.actions.reload": "Recharger depuis l'API"
+  "showcase.component.inputNumber.loadApi.actions.reload": "Recharger depuis l'API",
+  "showcase.component.multiSelect.sections.required.title": "10) Champ obligatoire et message personnalisé",
+  "showcase.component.multiSelect.sections.required.description": "required exige au moins un élément : quitter le champ vide affiche le message d'obligation, dans la langue de la page. requiredMessage remplace le texte.",
+  "showcase.component.multiSelect.labels.requiredCustom": "Choisissez au moins une entreprise.",
+  "showcase.component.multiSelectChips.sections.required.title": "8) Champ obligatoire et message personnalisé",
+  "showcase.component.multiSelectChips.sections.required.description": "required exige au moins une puce : quitter le champ vide affiche le message d'obligation, dans la langue de la page. requiredMessage remplace le texte.",
+  "showcase.component.multiSelectChips.labels.requiredCustom": "Choisissez au moins une entreprise."
 }

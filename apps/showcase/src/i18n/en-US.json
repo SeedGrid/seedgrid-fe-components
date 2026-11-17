@@ -953,7 +953,7 @@
   "showcase.component.multiSelectChips.labels.formField": "Areas",
   "showcase.component.multiSelectChips.sections.controlled.description": "With value, the parent is in charge: the field only changes when value changes.",
   "showcase.component.multiSelectChips.sections.controlled.title": "6) Controlled value",
-  "showcase.component.multiSelectChips.sections.form.description": "required only adds the asterisk to the label; with name + control the field stores the list of checked values.",
+  "showcase.component.multiSelectChips.sections.form.description": "required marks the field as required (asterisk on the label and a message if left empty); with name + control the field stores the list of checked values.",
   "showcase.component.multiSelectChips.sections.form.title": "7) Error and form",
   "showcase.component.multiSelectChips.submittedLabel": "Submitted",
   "showcase.component.orderList.buttons.clearSelection": "Clear selection",
@@ -4454,5 +4454,11 @@
   "showcase.component.inputNumber.loadApi.labels.postalCode": "Postal code",
   "showcase.component.inputNumber.loadApi.labels.loading": "Loading...",
   "showcase.component.inputNumber.loadApi.labels.values": "Values: {value}",
-  "showcase.component.inputNumber.loadApi.actions.reload": "Reload from the API"
+  "showcase.component.inputNumber.loadApi.actions.reload": "Reload from the API",
+  "showcase.component.multiSelect.sections.required.title": "10) Required field and custom message",
+  "showcase.component.multiSelect.sections.required.description": "required demands at least one item: leaving the field empty shows the required message, in the page language. requiredMessage replaces the text.",
+  "showcase.component.multiSelect.labels.requiredCustom": "Choose at least one company.",
+  "showcase.component.multiSelectChips.sections.required.title": "8) Required field and custom message",
+  "showcase.component.multiSelectChips.sections.required.description": "required demands at least one chip: leaving the field empty shows the required message, in the page language. requiredMessage replaces the text.",
+  "showcase.component.multiSelectChips.labels.requiredCustom": "Choose at least one company."
 }

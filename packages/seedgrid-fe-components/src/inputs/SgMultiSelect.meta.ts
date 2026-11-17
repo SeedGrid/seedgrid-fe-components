@@ -26,6 +26,7 @@ export const sgMeta: SgMetaV0 = {
     { name: "placeholder", type: "string", description: "Texto exibido quando nada esta selecionado.", semanticRole: "label", bindable: true },
     { name: "summaryThreshold", type: "number", default: 2, description: "Quantidade de rótulos antes de mostrar 'N selecionadas'.", semanticRole: "appearance", bindable: true },
     { name: "required", type: "boolean", default: false, description: "Marca o campo como obrigatório.", semanticRole: "validation", bindable: true },
+    { name: "requiredMessage", type: "string", description: "Mensagem para ausência de valor.", semanticRole: "validation", bindable: true },
     { name: "onEnter", type: "() => void", description: "Disparado ao focar o campo.", semanticRole: "event", bindable: false },
     { name: "onExit", type: "() => void", description: "Disparado ao sair do campo.", semanticRole: "event", bindable: false }
   ],
