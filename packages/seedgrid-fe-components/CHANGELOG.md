@@ -37,6 +37,12 @@
   (tom 600), anel de foco solido e rotulos. Fundo cheio de botao usa a cor pura da semente (`--primary-fill`/`--destructive-fill`). No tema claro, borda, anel e rotulo dos campos usam a cor pura
   da semente. No editor de tema do showcase, a cor livre avisa quando o contraste e baixo e o seletor tem 7 cores predefinidas (o amarelo saiu).
 
+### Tema: vermelho de erro com texto branco legivel (selo e avatar `danger`)
+
+- O numero do selo do `SgNotificationBell` (e o texto de `SgBadge`/`SgAvatar` com `severity="danger"`) saia PRETO sobre o vermelho (o branco dava ~3,8:1 e o tema caia no preto). Agora o
+  `--destructive` escurece so o necessario para o BRANCO passar em 4,5:1 (claro `#E7200D`, 4,56:1; escuro `#E62514`, 4,53:1) e o texto fica branco, nos dois modos e com qualquer vermelho
+  customizado (`error`). O degrau `--sg-error-500` acompanha. O botao `danger` (fundo `--sg-error-fill`) nao muda.
+
 ### Showcase
 
 - Aviso "gire o aparelho" com o celular deitado (paisagem e altura menor que 500 px), nos 5 idiomas.

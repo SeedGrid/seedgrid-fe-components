@@ -194,3 +194,29 @@ test("mesmo fundo ajustado que o Flutter (varredura gravada nos vetores)", { ski
   assert.ok(V.adjustBgForOnColor.length > 1000);
   for (const c of V.adjustBgForOnColor) assert.equal(cu.adjustBgForOnColor(c.in), c.out, JSON.stringify(c));
 });
+
+// P168.F1.T8: o vermelho de erro leva texto BRANCO (selo, avatar e botao "danger" lendo --destructive/--destructive-foreground).
+// Escurece so o necessario para o branco passar em 4,5:1, nos temas claro e escuro, com o vermelho padrao e com vermelhos customizados.
+test("P168.F1.T8: --destructive com texto branco >= 4,5:1, escurecendo so o necessario (grade de sementes, modos e vermelhos)", { skip: !esbuildPath }, async () => {
+  const cu = await load("colorUtils.ts");
+  const { generateThemeVars } = await load("themeGenerator.ts");
+  const hsl = (v) => {
+    const m = v.match(/(-?[\d.]+) ([\d.]+)% ([\d.]+)%/);
+    return cu.hslToHex(+m[1], +m[2], +m[3]);
+  };
+  const reds = [undefined, "#F33C2B", "#FF0000", "#FF6B6B", "#B91C1C", "#FCA5A5", "#7F1D1D"];
+  for (const [name, seed] of Object.entries(SEEDS)) for (const mode of ["light", "dark"]) for (const error of reds) {
+    const vars = generateThemeVars(error ? { seed, error } : { seed }, mode);
+    const bg = hsl(vars["--destructive"]);
+    const fg = hsl(vars["--destructive-foreground"]);
+    const why = `${name} ${mode} erro=${error ?? "padrao"}: ${bg} com ${fg}`;
+    assert.equal(fg.toUpperCase(), "#FFFFFF", why);
+    assert.ok(cu.contrastRatio(bg, "#FFFFFF") >= cu.MIN_CONTRAST_RATIO - 0.05, why);
+    // so o necessario: um passo de 1% mais claro ja reprovaria (a menos que nada tenha sido escurecido)
+    const { h, s, l } = cu.rgbToHsl(...Object.values(cu.hexToRgb(bg)));
+    const lighter = cu.hslToHex(h, s, Math.min(100, l + 2));
+    assert.ok(cu.contrastRatio(lighter, "#FFFFFF") < cu.MIN_CONTRAST_RATIO + 0.35 || l >= 99, `${why}: escureceu alem do necessario`);
+    // --sg-on-error e --sg-error-500 acompanham
+    assert.equal(cu.rgbToHex(...vars["--sg-on-error"].split(" ").map(Number)).toUpperCase(), "#FFFFFF", why);
+  }
+});

@@ -131,6 +131,26 @@ export function adjustBgForOnColor(bgHex: string) {
   return bgHex;
 }
 
+/** Maximo de passos de 1% de luminosidade HSL que `darkenForWhiteText` aplica. */
+export const MAX_WHITE_TEXT_STEPS = 25;
+
+/**
+ * Fundo para texto BRANCO: se o branco ja alcanca MIN_CONTRAST_RATIO sobre `bgHex`, devolve o proprio fundo; senao escurece
+ * (passos de 1% de luminosidade HSL, mesmo matiz e saturacao) so o necessario para o branco passar. Usado no vermelho de erro
+ * (selo, botao e avatar "danger" com numero/texto branco). Sem alcancar em MAX_WHITE_TEXT_STEPS, devolve o mais escuro testado.
+ */
+export function darkenForWhiteText(bgHex: string) {
+  if (contrastRatio(bgHex, "#FFFFFF") >= MIN_CONTRAST_RATIO) return bgHex;
+  const { r, g, b } = hexToRgb(bgHex);
+  const { h, s, l } = rgbToHsl(r, g, b);
+  let out = bgHex;
+  for (let step = 1; step <= MAX_WHITE_TEXT_STEPS; step++) {
+    out = hslToHex(h, s, clamp(l - step, 0, 100));
+    if (contrastRatio(out, "#FFFFFF") >= MIN_CONTRAST_RATIO) return out;
+  }
+  return out;
+}
+
 /** Quanto o preenchimento do botao cheio escurece (pontos de luminosidade HSL) no hover e no active do tema claro. */
 export const FILL_HOVER_STEP = 6;
 export const FILL_ACTIVE_STEP = 12;

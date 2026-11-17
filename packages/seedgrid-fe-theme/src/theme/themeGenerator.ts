@@ -8,6 +8,7 @@ import {
   toRgbVarValue,
   hslToHex,
   fillShades,
+  darkenForWhiteText,
 } from "./colorUtils";
 
 /* ------------- Semantic color generation ------------- */
@@ -72,6 +73,8 @@ export function generateThemeVars(input: SeedThemeInput, resolvedMode: "light" |
   const tertiary = buildScaleFromHex(tertiaryBase, resolvedMode, { boostS: 0 });
   const warning = buildScaleFromHex(warningBase, resolvedMode, { boostS: 4 });
   const error = buildScaleFromHex(errorBase, resolvedMode, { boostS: 4 });
+  // Vermelho de erro com texto BRANCO (selo, botao e avatar "danger"): escurece so o necessario para o branco passar em 4,5:1.
+  error[500] = darkenForWhiteText(error[500] ?? errorBase);
   const info = buildScaleFromHex(infoBase, resolvedMode, { boostS: 2 });
   const success = buildScaleFromHex(successBase, resolvedMode, { boostS: 2 });
 
