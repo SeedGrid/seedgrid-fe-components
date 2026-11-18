@@ -76,6 +76,8 @@ export function generateThemeVars(input: SeedThemeInput, resolvedMode: "light" |
   // Vermelho de erro com texto BRANCO (selo, botao e avatar "danger"): escurece so o necessario para o branco passar em 4,5:1.
   error[500] = darkenForWhiteText(error[500] ?? errorBase);
   const info = buildScaleFromHex(infoBase, resolvedMode, { boostS: 2 });
+  // Info tambem com texto BRANCO (selo/avatar "info"): mesmo criterio do vermelho de erro.
+  info[500] = darkenForWhiteText(info[500] ?? infoBase);
   const success = buildScaleFromHex(successBase, resolvedMode, { boostS: 2 });
 
   // Borda de foco, anel e rotulo flutuante dos campos: no CLARO usam a PROPRIA SEMENTE (cor pura), sem correcao automatica
@@ -173,9 +175,12 @@ export function generateThemeVars(input: SeedThemeInput, resolvedMode: "light" |
     ["warning", warningBase, warning], ["error", errorBase, error], ["info", infoBase, info], ["success", successBase, success],
   ];
   for (const [fname, fbase, fscale] of fillSets) {
-    const shades = resolvedMode === "light"
+    let shades = resolvedMode === "light"
       ? fillShades(fbase)
       : { normal: fscale[600] ?? fbase, hover: fscale[700] ?? fbase, active: fscale[800] ?? fbase };
+    // Botao "danger" e "info": texto BRANCO nos dois modos. O fundo escurece so o necessario para o branco passar em 4,5:1
+    // (a mesma cor no claro e no escuro) e hover/active escurecem a partir dele.
+    if (fname === "error" || fname === "info") shades = fillShades(darkenForWhiteText(shades.normal));
     vars[`--sg-${fname}-fill`] = toRgbVarValue(shades.normal);
     vars[`--sg-${fname}-fill-hover`] = toRgbVarValue(shades.hover);
     vars[`--sg-${fname}-fill-active`] = toRgbVarValue(shades.active);

@@ -220,3 +220,36 @@ test("P168.F1.T8: --destructive com texto branco >= 4,5:1, escurecendo so o nece
     assert.equal(cu.rgbToHex(...vars["--sg-on-error"].split(" ").map(Number)).toUpperCase(), "#FFFFFF", why);
   }
 });
+
+// P168.F1.T9: botao "danger" e cor "info" tambem com texto BRANCO >= 4,5:1 nos dois modos (fundo escurecido so o necessario).
+test("P168.F1.T9: botao danger/info, --sg-on-info e --sg-info-500 com branco >= 4,5:1 em todos os estados (grade)", { skip: !esbuildPath }, async () => {
+  const cu = await load("colorUtils.ts");
+  const { generateThemeVars } = await load("themeGenerator.ts");
+  const { generateComponentTokens } = await load("componentTokens.ts");
+  const hex = (v) => {
+    const m = String(v).match(/(\d+)\D+(\d+)\D+(\d+)/);
+    return cu.rgbToHex(+m[1], +m[2], +m[3]).toUpperCase();
+  };
+  const infos = [undefined, "#2563EB", "#0EA5E9", "#38BDF8", "#1D4ED8", "#60A5FA", "#7DD3FC"];
+  const reds = [undefined, "#F33C2B", "#FF6B6B", "#B91C1C"];
+  for (const [name, seed] of Object.entries(SEEDS)) for (const mode of ["light", "dark"]) for (const info of infos) for (const error of reds) {
+    const input = { seed, ...(info ? { info } : {}), ...(error ? { error } : {}) };
+    const vars = generateThemeVars(input, mode);
+    const comp = generateComponentTokens(vars);
+    for (const token of ["danger", "info"]) {
+      const states = [];
+      for (const st of ["", "hover-", "active-"]) {
+        const bg = hex(comp[`--sg-btn-${token}-${st}bg`]);
+        const fg = hex(comp[`--sg-btn-${token}-${st}fg`]);
+        states.push(bg);
+        const why = `${name} ${mode} ${token}${st ? " " + st : ""} info=${info ?? "padrao"} erro=${error ?? "padrao"}: ${bg} com ${fg}`;
+        assert.equal(fg, "#FFFFFF", why);
+        assert.ok(cu.contrastRatio(bg, fg) >= cu.MIN_CONTRAST_RATIO - 0.05, why);
+      }
+      assert.notEqual(states[0], states[2], `${name} ${mode} ${token}: active deve diferir do normal`);
+    }
+    const i500 = hex(vars["--sg-info-500"]);
+    assert.equal(hex(vars["--sg-on-info"]), "#FFFFFF", `${name} ${mode} on-info`);
+    assert.ok(cu.contrastRatio(i500, "#FFFFFF") >= cu.MIN_CONTRAST_RATIO - 0.05, `${name} ${mode} info-500 ${i500}`);
+  }
+});

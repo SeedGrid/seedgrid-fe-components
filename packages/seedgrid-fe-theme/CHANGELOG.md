@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+- Botao `danger` e cor `info` com texto BRANCO nos dois modos: o preenchimento (`--sg-error-fill*`, `--sg-info-fill*`) e `--sg-info-500` escurecem so o necessario para o branco alcancar 4,5:1;
+  `--sg-on-info` passa a ser `#FFFFFF`. `MAX_WHITE_TEXT_STEPS` sobe para 45 (azuis claros).
 - Vermelho de erro com texto BRANCO: `darkenForWhiteText` (novo, exportado) escurece a cor so o necessario para o branco alcancar 4,5:1, e o gerador aplica ao degrau 500 de `error`
   (`--destructive`, `--sg-error-500`, `--sg-on-error`/`--destructive-foreground` agora sempre `#FFFFFF`). Antes o numero do selo `danger` saia preto sobre o vermelho `#F33C2B`.
 - Contraste garantido na cor de destaque: o tema escolhe o tom da semente que atinge 4,5:1 (no claro escurece, no escuro clareia so o que falha) para texto sobre fundo,

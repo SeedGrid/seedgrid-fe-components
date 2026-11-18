@@ -43,6 +43,11 @@
   `--destructive` escurece so o necessario para o BRANCO passar em 4,5:1 (claro `#E7200D`, 4,56:1; escuro `#E62514`, 4,53:1) e o texto fica branco, nos dois modos e com qualquer vermelho
   customizado (`error`). O degrau `--sg-error-500` acompanha. O botao `danger` (fundo `--sg-error-fill`) nao muda.
 
+### Tema: botao `danger` e cor `info` com texto branco
+
+- O botao `danger` no tema escuro (antes texto preto) e o botao, o selo e o avatar `info` (claro e escuro) passam a ter texto BRANCO com contraste >= 4,5:1. O fundo escurece so o necessario
+  (`darkenForWhiteText`), com a mesma cor nos dois temas; hover e active escurecem a partir dele. Alerta e link nao mudam.
+
 ### Showcase
 
 - Aviso "gire o aparelho" com o celular deitado (paisagem e altura menor que 500 px), nos 5 idiomas.

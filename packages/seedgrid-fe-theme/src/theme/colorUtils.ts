@@ -132,7 +132,7 @@ export function adjustBgForOnColor(bgHex: string) {
 }
 
 /** Maximo de passos de 1% de luminosidade HSL que `darkenForWhiteText` aplica. */
-export const MAX_WHITE_TEXT_STEPS = 25;
+export const MAX_WHITE_TEXT_STEPS = 45;
 
 /**
  * Fundo para texto BRANCO: se o branco ja alcanca MIN_CONTRAST_RATIO sobre `bgHex`, devolve o proprio fundo; senao escurece
