@@ -5,7 +5,7 @@ import type { SgNotification, SgRealtimeProvider } from "@seedgrid/fe-components
 
 export type DemoFetcher = ((input: string, init?: RequestInit) => Promise<Response>) & {
   /** Cria uma notificacao nova (como se o backend a tivesse gravado). */
-  notify: (type: string, title: string, message: string) => string;
+  notify: (type: string, title: string, message: string, actionable?: boolean) => string;
 };
 
 function json(body: unknown, status = 200): Response {
@@ -24,13 +24,14 @@ const DEFAULT_SEED_TEXT: DemoSeedText = {
   inviteTitle: "Convite aceito", inviteMessage: "Marina entrou na sua equipe."
 };
 
-export function createDemoFetcher(seed: boolean = true, text: DemoSeedText = DEFAULT_SEED_TEXT): DemoFetcher {
+/** `actionable`: o "backend" marca relatorio e backup como abriveis (o convite continua so informativo). */
+export function createDemoFetcher(seed: boolean = true, text: DemoSeedText = DEFAULT_SEED_TEXT, actionable: boolean = false): DemoFetcher {
   let counter = 0;
   const minutesAgo = (m: number) => new Date(Date.now() - m * 60000).toISOString();
   let items: SgNotification[] = seed
     ? [
-        { publicId: "demo-1", type: "report.ready", title: text.reportTitle, message: text.reportMessage, read: false, createdAt: minutesAgo(2) },
-        { publicId: "demo-2", type: "backup.finished", title: text.backupTitle, message: text.backupMessage, read: false, createdAt: minutesAgo(18) },
+        { publicId: "demo-1", type: "report.ready", title: text.reportTitle, message: text.reportMessage, actionable, read: false, createdAt: minutesAgo(2) },
+        { publicId: "demo-2", type: "backup.finished", title: text.backupTitle, message: text.backupMessage, actionable, read: false, createdAt: minutesAgo(18) },
         { publicId: "demo-3", type: "invite.accepted", title: text.inviteTitle, message: text.inviteMessage, read: true, createdAt: minutesAgo(1500) }
       ]
     : [];
@@ -65,10 +66,10 @@ export function createDemoFetcher(seed: boolean = true, text: DemoSeedText = DEF
     return json({}, 404);
   }) as DemoFetcher;
 
-  fetcher.notify = (type, title, message) => {
+  fetcher.notify = (type, title, message, isActionable = false) => {
     counter += 1;
     const publicId = `demo-new-${counter}`;
-    items = [{ publicId, type, title, message, read: false, createdAt: new Date().toISOString() }, ...items];
+    items = [{ publicId, type, title, message, actionable: isActionable, read: false, createdAt: new Date().toISOString() }, ...items];
     return publicId;
   };
   return fetcher;

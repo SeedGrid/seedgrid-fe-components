@@ -92,6 +92,8 @@ const ptBR: Record<string, string> = {
   "components.notifications.bell.days": "há {n} d",
   "components.notifications.bell.announce": "Nova notificação: {title}",
   "components.notifications.bell.actionFailed": "Não foi possível concluir a ação. Tente de novo.",
+  "components.notifications.bell.openFailed": "Não foi possível abrir «{title}»: {reason}",
+  "components.notifications.bell.openFailedNoReason": "Não foi possível abrir «{title}». Tente de novo.",
   "components.inputs.imageupload.dropMany": "Arraste imagens aqui ou clique para escolher (até {max})",
   "components.notifications.bell.unreadOnly": "Não lidas",
   "components.notifications.bell.caughtUp": "Tudo em dia",

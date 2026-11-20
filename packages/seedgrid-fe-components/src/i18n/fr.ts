@@ -92,6 +92,8 @@ const fr: Record<string, string> = {
   "components.notifications.bell.days": "il y a {n} j",
   "components.notifications.bell.announce": "Nouvelle notification : {title}",
   "components.notifications.bell.actionFailed": "Impossible de terminer l'action. Réessayez.",
+  "components.notifications.bell.openFailed": "Impossible d'ouvrir «{title}» : {reason}",
+  "components.notifications.bell.openFailedNoReason": "Impossible d'ouvrir «{title}». Réessayez.",
   "components.inputs.imageupload.dropMany": "Faites glisser des images ici ou cliquez pour choisir (jusqu'à {max})",
   "components.notifications.bell.unreadOnly": "Non lues",
   "components.notifications.bell.caughtUp": "Tout est à jour",

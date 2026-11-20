@@ -16,7 +16,7 @@ Module._load = function patchedLoad(request, parent, isMain) {
   }
   return originalLoad.call(this, request, parent, isMain);
 };
-const { SgNotificationBell, SgRealtimeProvider } = require("../dist/sandbox.cjs");
+const { SgNotificationBell, SgRealtimeProvider, registerNotificationAction, unregisterNotificationAction } = require("../dist/sandbox.cjs");
 Module._load = originalLoad;
 
 class FakePulseSocket {
@@ -559,4 +559,124 @@ test("defaultUnreadOnly=false: o painel abre em Todas, com o interruptor desliga
     globalThis.fetch = realFetch;
     h.restore();
   }
+});
+
+// P186 - acao ao abrir por tipo: registro por modulo, informativa x abrivel, erro legivel, valvula de escape.
+async function withBell(items, props, fn) {
+  const h = setupDomHarness();
+  const realFetch = globalThis.fetch;
+  try {
+    const api = fakeApi(items);
+    globalThis.fetch = api.fetchImpl;
+    await h.render(NO_PULSE(React.createElement(SgNotificationBell, { defaultUnreadOnly: false, ...props })));
+    await settle();
+    await click(h, bell(h));
+    await fn(h, api);
+  } finally {
+    unregisterNotificationAction("backup.finished");
+    unregisterNotificationAction("backup.failed");
+    globalThis.fetch = realFetch;
+    h.restore();
+  }
+}
+const item = (h, id) => [...h.document.querySelectorAll("li")].find((li) => li.textContent.includes("Titulo " + id));
+
+test("P186: tipo registrado e actionable=true executa a acao com a notificacao, marca como lida e fecha", async () => {
+  const ran = [];
+  registerNotificationAction("backup.finished", { label: "Baixar", run: (n) => void ran.push(n.payload.exportPublicId) });
+  await withBell([note("a", recent(1), { type: "backup.finished", actionable: true, payload: { exportPublicId: "e1" } })], {}, async (h, api) => {
+    assert.equal(item(h, "a").getAttribute("data-actionable"), "true");
+    assert.match(item(h, "a").textContent, /Baixar/);
+    await click(h, byLabel(h, "Titulo a"));
+    assert.deepEqual(ran, ["e1"]);
+    assert.ok(api.state.calls.includes("POST /api/user-notifications/a/read"));
+    assert.equal(h.document.querySelector('[role="dialog"]'), null);
+  });
+});
+
+test("P186: sem o campo actionable (ou false) e informativa mesmo com acao registrada: clique so marca como lida", async () => {
+  const ran = [];
+  registerNotificationAction("backup.finished", { run: (n) => void ran.push(n.publicId) });
+  await withBell(
+    [note("a", recent(1), { type: "backup.finished" }), note("b", recent(2), { type: "backup.finished", actionable: false })],
+    {},
+    async (h, api) => {
+      assert.equal(item(h, "a").getAttribute("data-actionable"), "false");
+      assert.equal(item(h, "b").getAttribute("data-actionable"), "false");
+      await click(h, byLabel(h, "Titulo a"));
+      assert.deepEqual(ran, []);
+      assert.ok(api.state.calls.includes("POST /api/user-notifications/a/read"));
+      assert.equal(h.document.querySelector('[role="dialog"]'), null);
+    }
+  );
+});
+
+test("P186: actionable=true sem acao registrada fica informativa e avisa no console (uma vez por tipo)", async () => {
+  const warns = [];
+  const realWarn = console.warn;
+  console.warn = (...a) => void warns.push(a.join(" "));
+  try {
+    await withBell(
+      [note("a", recent(1), { type: "backup.finished", actionable: true }), note("b", recent(2), { type: "backup.finished", actionable: true })],
+      {},
+      async (h, api) => {
+        assert.equal(item(h, "a").getAttribute("data-actionable"), "false");
+        await click(h, byLabel(h, "Titulo a"));
+        assert.ok(api.state.calls.includes("POST /api/user-notifications/a/read"));
+      }
+    );
+  } finally {
+    console.warn = realWarn;
+  }
+  const mine = warns.filter((w) => w.includes("backup.finished") && w.includes("registerNotificationAction"));
+  assert.equal(mine.length, 1, warns.join("|"));
+});
+
+test("P186: erro lancado pela acao mostra a mensagem legivel, mantem o painel aberto e a notificacao lida", async () => {
+  registerNotificationAction("backup.finished", {
+    run: () => {
+      throw new Error("O backup expirou. Gere um novo.");
+    }
+  });
+  await withBell([note("a", recent(1), { type: "backup.finished", actionable: true })], {}, async (h, api) => {
+    await click(h, byLabel(h, "Titulo a"));
+    const alert = h.document.querySelector('[role="alert"]');
+    assert.ok(alert, "sem alerta");
+    assert.match(alert.textContent, /Titulo a/);
+    assert.match(alert.textContent, /O backup expirou\. Gere um novo\./);
+    assert.ok(h.document.querySelector('[role="dialog"]'), "painel deveria seguir aberto");
+    assert.ok(api.state.calls.includes("POST /api/user-notifications/a/read"));
+  });
+});
+
+test("P186: erro sem texto usa a mensagem padrao; acao assincrona que falha tambem e tratada", async () => {
+  registerNotificationAction("backup.finished", { run: async () => Promise.reject(new Error("")) });
+  await withBell([note("a", recent(1), { type: "backup.finished", actionable: true })], {}, async (h) => {
+    await click(h, byLabel(h, "Titulo a"));
+    assert.match(h.document.querySelector('[role="alert"]').textContent, /Could not open/);
+  });
+});
+
+test("P186: a acao da instancia (prop actions) vence a registrada; onOpen continua como valvula de escape", async () => {
+  const ran = [];
+  registerNotificationAction("backup.finished", { run: () => void ran.push("registro") });
+  await withBell(
+    [note("a", recent(1), { type: "backup.finished", actionable: true })],
+    { actions: { "backup.finished": { run: () => void ran.push("instancia") } }, onOpen: () => ran.push("onOpen") },
+    async (h) => {
+      await click(h, byLabel(h, "Titulo a"));
+      assert.deepEqual(ran, ["instancia", "onOpen"]);
+    }
+  );
+});
+
+test("P186: modulo que registra depois do sino montar torna o item abrivel", async () => {
+  await withBell([note("a", recent(1), { type: "backup.finished", actionable: true })], {}, async (h) => {
+    assert.equal(item(h, "a").getAttribute("data-actionable"), "false");
+    await act(async () => {
+      registerNotificationAction("backup.finished", { run: () => {} });
+    });
+    await settle();
+    assert.equal(item(h, "a").getAttribute("data-actionable"), "true");
+  });
 });

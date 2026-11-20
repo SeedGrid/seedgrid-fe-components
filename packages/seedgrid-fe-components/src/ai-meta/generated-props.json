@@ -8434,6 +8434,12 @@
   ],
   "SgNotificationBell": [
     {
+      "name": "actions",
+      "type": "Record<string, SgNotificationAction>",
+      "required": false,
+      "description": "Ações por tipo só para esta instância (P186). Têm prioridade sobre as registradas por `registerNotificationAction`,\r\nque é o caminho normal: cada módulo registra os tipos que emite."
+    },
+    {
       "name": "apiUrl",
       "type": "string",
       "required": false,
@@ -8484,7 +8490,7 @@
       "name": "onOpen",
       "type": "((notification: SgNotification) => void)",
       "required": false,
-      "description": "O usuário abriu uma notificação (depois do `onOpen` do tipo)."
+      "description": "Válvula de escape: o usuário abriu uma notificação (depois da ação do tipo, quando houver). O caminho normal é o registro de ações."
     },
     {
       "name": "onPollingTick",

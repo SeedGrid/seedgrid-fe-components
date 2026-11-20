@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { CheckCircle2, FileText } from "lucide-react";
-import { SgButton, SgGrid, SgNotificationBell, SgRealtimeProvider } from "@seedgrid/fe-components";
+import { SgButton, SgGrid, SgNotificationBell, SgRealtimeProvider, registerNotificationAction } from "@seedgrid/fe-components";
 import { SgPlayground } from "@seedgrid/fe-playground";
 import SgCodeBlockBase from "../sgCodeBlockBase";
 import I18NReady from "../I18NReady";
@@ -48,10 +48,20 @@ export default function SgNotificationBellPage() {
   );
   const demoBasic = React.useMemo(() => createDemoFetcher(true, seedText), [seedText]);
   const pulseBasic = React.useMemo(() => createDemoPulse(), []);
-  const demoTypes = React.useMemo(() => createDemoFetcher(true, seedText), [seedText]);
+  const demoTypes = React.useMemo(() => createDemoFetcher(true, seedText, true), [seedText]);
   const demoToggle = React.useMemo(() => createDemoFetcher(true, seedText), [seedText]);
   const demoNoToggle = React.useMemo(() => createDemoFetcher(true, seedText), [seedText]);
   const [opened, setOpened] = React.useState("-");
+
+  // Cada módulo registra a ação dos tipos que emite; o sino não conhece tipo nenhum e o host não precisa de switch.
+  React.useEffect(() => {
+    const undoReport = registerNotificationAction("report.ready", { label: t(i18n, "showcase.component.notificationBell.demo.download"), run: (n) => setOpened(t(i18n, "showcase.component.notificationBell.demo.downloadReport", { id: n.publicId })) });
+    const undoBackup = registerNotificationAction("backup.finished", { label: t(i18n, "showcase.component.notificationBell.demo.download"), run: (n) => setOpened(t(i18n, "showcase.component.notificationBell.demo.downloadBackup", { id: n.publicId })) });
+    return () => {
+      undoReport();
+      undoBackup();
+    };
+  }, [i18n.locale]);
   const stickyHeaderRef = React.useRef<HTMLDivElement | null>(null);
   const [anchorOffset, setAnchorOffset] = React.useState(320);
 
@@ -183,6 +193,7 @@ export default function SgNotificationBellPage() {
     row("requestInit", "RequestInit", "-", "requestInit"),
     row("fetcher", "(input: string, init?: RequestInit) => Promise<Response>", "-", "fetcher"),
     row("types", "Record<string, SgNotificationTypeConfig>", "-", "types"),
+    row("actions", "Record<string, SgNotificationAction>", "-", "actions"),
     row("eventPattern", "string", "user-notification.*", "eventPattern"),
     row("pollIntervalMs", "number", "45000", "pollIntervalMs"),
     row("maxVisible", "number", "100", "maxVisible"),
@@ -241,8 +252,8 @@ export default function SgNotificationBellPage() {
             <SgNotificationBell
               fetcher={demoTypes}
               types={{
-                "report.ready": { icon: <FileText className="size-4" />, onOpen: (n) => setOpened(t(i18n, "showcase.component.notificationBell.demo.downloadReport", { id: n.publicId })) },
-                "backup.finished": { icon: <CheckCircle2 className="size-4" />, onOpen: (n) => setOpened(t(i18n, "showcase.component.notificationBell.demo.downloadBackup", { id: n.publicId })) }
+                "report.ready": { icon: <FileText className="size-4" /> },
+                "backup.finished": { icon: <CheckCircle2 className="size-4" /> }
               }}
               onOpen={(n) => setOpened((prev) => t(i18n, "showcase.component.notificationBell.demo.openedSuffix", { prev, title: n.title }))}
               onNotificationDelete={(n) => setOpened(t(i18n, "showcase.component.notificationBell.demo.deletedLabel", { title: n.title }))}

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Bell, Trash2 } from "lucide-react";
+import { Bell, ChevronRight, Trash2 } from "lucide-react";
 import { t, useComponentsI18n } from "../i18n";
 import { SgBadge } from "../commons/SgBadge";
 import { SgToggleSwitch } from "../inputs/SgToggleSwitch";
@@ -13,13 +13,21 @@ import {
   useSgRealtimeStatus
 } from "../realtime/SgRealtimeProvider";
 import {
+  getNotificationAction,
+  notificationActionsVersion,
+  subscribeNotificationActions,
+  type SgNotificationAction
+} from "./notificationActions";
+import {
   DEFAULT_EVENT_PATTERN,
   DEFAULT_MAX_VISIBLE,
   EMPTY_POLLING_STATS,
   NOTIFICATIONS_CHANNEL,
   badgeText,
   clampMaxVisible,
+  actionErrorMessage,
   afterOpen,
+  openMode,
   displayUnread,
   initialUnreadOnly,
   listQuery,
@@ -47,6 +55,7 @@ import {
 } from "./notificationBellLogic";
 
 export type { SgNotification, SgNotificationPlacement, SgPollingStats } from "./notificationBellLogic";
+export type { SgNotificationAction } from "./notificationActions";
 
 /** Como um tipo de notificacao aparece (icone) e o que faz ao abrir. */
 export type SgNotificationTypeConfig = {
@@ -65,6 +74,11 @@ export type SgNotificationBellProps = {
   fetcher?: (input: string, init?: RequestInit) => Promise<Response>;
   /** Tipo -> ícone e ação ao abrir. O sino não conhece o negócio: relatório e só um tipo. */
   types?: Record<string, SgNotificationTypeConfig>;
+  /**
+   * Ações por tipo só para esta instância (P186). Têm prioridade sobre as registradas por `registerNotificationAction`,
+   * que é o caminho normal: cada módulo registra os tipos que emite.
+   */
+  actions?: Record<string, SgNotificationAction>;
   /** Evento do Pulse que dispara a leitura. Default: `user-notification.*`. */
   eventPattern?: string;
   /** Intervalo do polling de reserva (só com o Pulse desligado ou fora do ar), preso entre 30 e 60 s. Default: 45000. */
@@ -81,7 +95,7 @@ export type SgNotificationBellProps = {
   onNotification?: (notification: SgNotification) => void;
   /** O usuário excluiu uma notificação. */
   onNotificationDelete?: (notification: SgNotification) => void;
-  /** O usuário abriu uma notificação (depois do `onOpen` do tipo). */
+  /** Válvula de escape: o usuário abriu uma notificação (depois da ação do tipo, quando houver). O caminho normal é o registro de ações. */
   onOpen?: (notification: SgNotification) => void;
   /** O polling consultou a API: contador, instante e motivo. Para medir o custo. */
   onPollingTick?: (stats: SgPollingStats) => void;
@@ -119,6 +133,11 @@ function SgNotificationBellInner(props: Readonly<SgNotificationBellProps>) {
   const [loaded, setLoaded] = React.useState(false);
   const [failed, setFailed] = React.useState(false);
   const [actionFailed, setActionFailed] = React.useState(false);
+  /** Mensagem do erro lançado pela ação de um item abrível (P186); vazia quando não há. */
+  const [openError, setOpenError] = React.useState<string | null>(null);
+  // Re-renderiza quando um módulo registra (ou remove) uma ação depois que o sino já está na tela.
+  React.useSyncExternalStore(subscribeNotificationActions, notificationActionsVersion, notificationActionsVersion);
+  const warnedTypes = React.useRef(new Set<string>());
   const [open, setOpen] = React.useState(false);
   const [unreadOnly, setUnreadOnly] = React.useState(() => initialUnreadOnly(props.showUnreadToggle, props.defaultUnreadOnly));
   const unreadOnlyRef = React.useRef(unreadOnly);
@@ -317,7 +336,7 @@ function SgNotificationBellInner(props: Readonly<SgNotificationBellProps>) {
   }, [open]);
 
   /** 404 em ler/excluir: a notificacao ja nao existe no servidor (outra aba, retencao); sai da lista local. */
-  const act = async (fn: () => Promise<void>, target?: SgNotification) => {
+  const act = async (fn: () => Promise<void>, target?: SgNotification): Promise<void> => {
     try {
       await fn();
       setActionFailed(false);
@@ -333,17 +352,39 @@ function SgNotificationBellInner(props: Readonly<SgNotificationBellProps>) {
     }
   };
 
-  const openItem = (n: SgNotification) =>
-    act(async () => {
+  /** Ação do tipo: a da instância (`actions`) vence a registrada globalmente. */
+  const actionFor = (type: string): SgNotificationAction | undefined => latest.current.actions?.[type] ?? getNotificationAction(type);
+
+  const openItem = async (n: SgNotification) => {
+    const mode = openMode(n, actionFor(n.type) !== undefined);
+    setOpenError(null);
+    // Marca como lida primeiro: a ação pode sair da página (download, navegação). Se ler falhar, a ação ainda roda.
+    await act(async () => {
       if (!n.read) {
         await request(`/${encodeURIComponent(n.publicId)}/read`, "POST");
         setItems((list) => afterOpen(list, n.publicId, unreadOnlyRef.current, new Date().toISOString()));
         setServerUnread((v) => (v === null ? v : Math.max(0, v - 1)));
       }
-      setOpen(false);
-      types?.[n.type]?.onOpen?.(n);
-      latest.current.onOpen?.(n);
     }, n);
+    if (mode === "action") {
+      const action = actionFor(n.type);
+      try {
+        await action?.run(n);
+      } catch (error) {
+        // O painel fica aberto com a mensagem do erro: o usuário vê por que não abriu.
+        const reason = actionErrorMessage(error);
+        setOpenError(
+          reason
+            ? t(i18n, "components.notifications.bell.openFailed", { title: n.title, reason })
+            : t(i18n, "components.notifications.bell.openFailedNoReason", { title: n.title })
+        );
+        return;
+      }
+    }
+    setOpen(false);
+    types?.[n.type]?.onOpen?.(n);
+    latest.current.onOpen?.(n);
+  };
 
   const deleteItem = (n: SgNotification) =>
     act(async () => {
@@ -372,6 +413,20 @@ function SgNotificationBellInner(props: Readonly<SgNotificationBellProps>) {
   const shown = visibleItems(items, unreadOnly);
   const count = displayUnread(serverUnread, items);
   const view = viewState({ loaded, failed, count: shown.length, unreadOnly });
+
+  // `actionable` sem ação registrada é erro de configuração do host: o item fica informativo e o dev é avisado no console (1 vez por tipo; sem checar NODE_ENV, o bundler o fixa em production).
+  React.useEffect(() => {
+    for (const n of items) {
+      if (warnedTypes.current.has(n.type)) continue;
+      if (openMode(n, (latest.current.actions?.[n.type] ?? getNotificationAction(n.type)) !== undefined) === "misconfigured") {
+        warnedTypes.current.add(n.type);
+        console.warn(
+          `[SgNotificationBell] A notificação do tipo "${n.type}" veio com actionable=true, mas nenhuma ação está registrada para ele. ` +
+            "Chame registerNotificationAction(tipo, { run }) no módulo dono do tipo. O item fica informativo."
+        );
+      }
+    }
+  }, [items]);
 
   const changeUnreadOnly = (checked: boolean) => {
     setUnreadOnly(checked);
@@ -484,6 +539,12 @@ function SgNotificationBellInner(props: Readonly<SgNotificationBellProps>) {
             </div>
           ) : null}
 
+          {openError ? (
+            <div role="alert" className="border-b border-border px-4 py-2 text-sm text-destructive">
+              {openError}
+            </div>
+          ) : null}
+
           {actionFailed ? (
             <div role="alert" className="border-b border-border px-4 py-2 text-sm text-destructive">
               {t(i18n, "components.notifications.bell.actionFailed")}
@@ -520,19 +581,36 @@ function SgNotificationBellInner(props: Readonly<SgNotificationBellProps>) {
             ) : null}
             {view === "list" ? (
               <ul className="m-0 list-none p-0">
-                {shown.map((n) => (
+                {shown.map((n) => {
+                  const action = actionFor(n.type);
+                  const openable = openMode(n, action !== undefined) === "action";
+                  return (
                   <li
                     key={n.publicId}
                     data-unread={n.read ? "false" : "true"}
+                    data-actionable={openable ? "true" : "false"}
                     className={["flex items-start gap-3 border-b border-border px-4 py-3", n.read ? "" : "bg-muted/40"].join(" ")}
                   >
                     <span className="mt-0.5 inline-flex size-9 shrink-0 items-center justify-center rounded-full border border-border bg-background">
                       {types?.[n.type]?.icon ?? <Bell className="size-4" aria-hidden="true" />}
                     </span>
-                    <button type="button" onClick={() => void openItem(n)} className="min-w-0 flex-1 text-left">
+                    <button
+                      type="button"
+                      onClick={() => void openItem(n)}
+                      // Informativa: o clique só marca como lida (sem cursor nem seta). Abrível: executa a ação do tipo.
+                      className={["min-w-0 flex-1 text-left", openable ? "cursor-pointer" : "cursor-default"].join(" ")}
+                    >
                       <span className={["block truncate text-sm", n.read ? "font-medium" : "font-semibold"].join(" ")}>{n.title}</span>
                       {n.message ? <span className="block text-sm text-muted-foreground">{n.message}</span> : null}
-                      <span className="mt-1 block text-xs text-muted-foreground">{ageText(n)}</span>
+                      <span className="mt-1 flex items-center gap-2 text-xs text-muted-foreground">
+                        <span>{ageText(n)}</span>
+                        {openable ? (
+                          <span className="inline-flex items-center gap-1 font-medium text-primary">
+                            {action?.label ?? null}
+                            {action?.icon ?? <ChevronRight className="size-3.5" aria-hidden="true" />}
+                          </span>
+                        ) : null}
+                      </span>
                     </button>
                     <button
                       type="button"
@@ -543,7 +621,8 @@ function SgNotificationBellInner(props: Readonly<SgNotificationBellProps>) {
                       <Trash2 className="size-4" aria-hidden="true" />
                     </button>
                   </li>
-                ))}
+                  );
+                })}
               </ul>
             ) : null}
           </div>

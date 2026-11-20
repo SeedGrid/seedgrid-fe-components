@@ -1,5 +1,14 @@
 # Changelog
 
+## Nao publicado
+
+### SgNotificationBell: acao ao abrir por tipo de notificacao (P186)
+
+- Novo registro de acoes por tipo: `registerNotificationAction(type, { label?, icon?, run })` (devolve a funcao que desfaz), `unregisterNotificationAction(type)` e `getNotificationAction(type)`. Cada modulo registra os tipos que emite; o sino nao conhece tipo nenhum e o host nao precisa de `switch`.
+- `SgNotification` ganha `actionable?: boolean` (o backend declara que ESTA notificacao ainda e abrivel). O item so e clicavel com `actionable=true` E acao registrada; sem o campo ou com `false` e informativa (o clique so marca como lida). `actionable=true` sem acao registrada fica informativa e avisa uma vez por tipo no console.
+- Nova prop `actions` (acoes por tipo so da instancia, com prioridade sobre o registro). `run` recebe a notificacao (o `payload` so traz identificadores); se lancar erro, o painel fica aberto com a mensagem do erro (novas chaves i18n `bell.openFailed` e `bell.openFailedNoReason`).
+- `onOpen` continua como valvula de escape (roda depois da acao do tipo). `types[tipo].onOpen` continua funcionando.
+
 ## 2026.11.14 - 2026-11-17
 
 ### BREAKING: SgInputNumber e SgInputCurrency sem `required` e `requiredMessage`

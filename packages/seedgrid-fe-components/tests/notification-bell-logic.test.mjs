@@ -52,3 +52,44 @@ test("regras basicas independentes dos vetores", () => {
   assert.ok(L.nextPollDelay(45000, 0, 0.5) === 45000);
   assert.ok(L.nextPollDelay(45000, 20, 1) <= 300000 * 1.1);
 });
+
+// P186 - modo de abertura (informativa x abrivel) e mensagem de erro da acao.
+test("openMode: abrivel so com actionable=true E acao registrada; sem o campo e informativa", () => {
+  assert.equal(L.openMode({ actionable: true }, true), "action");
+  assert.equal(L.openMode({ actionable: true }, false), "misconfigured");
+  assert.equal(L.openMode({ actionable: false }, true), "info");
+  assert.equal(L.openMode({}, true), "info");
+  assert.equal(L.openMode({ actionable: null }, true), "info");
+  assert.equal(L.openMode({ actionable: "true" }, true), "info");
+});
+
+test("actionErrorMessage: texto do erro, de string, ou vazio", () => {
+  assert.equal(L.actionErrorMessage(new Error("  falhou  ")), "falhou");
+  assert.equal(L.actionErrorMessage("oops"), "oops");
+  assert.equal(L.actionErrorMessage(42), "");
+  assert.equal(L.actionErrorMessage(new Error("")), "");
+});
+
+test("registro de acoes: registra, substitui, desfaz so a propria e avisa quem assina", () => {
+  const A = require("../dist/notifications/notificationActions.js");
+  let ticks = 0;
+  const off = A.subscribeNotificationActions(() => void (ticks += 1));
+  const v0 = A.notificationActionsVersion();
+  const one = { run: () => {} };
+  const two = { run: () => {} };
+  const undo1 = A.registerNotificationAction("t.x", one);
+  assert.equal(A.getNotificationAction("t.x"), one);
+  const undo2 = A.registerNotificationAction("t.x", two);
+  assert.equal(A.getNotificationAction("t.x"), two);
+  undo1();
+  assert.equal(A.getNotificationAction("t.x"), two, "desfazer o registro antigo nao remove o novo");
+  undo2();
+  assert.equal(A.getNotificationAction("t.x"), undefined);
+  A.registerNotificationAction("t.y", one);
+  A.unregisterNotificationAction("t.y");
+  A.unregisterNotificationAction("t.y");
+  assert.equal(A.getNotificationAction("t.y"), undefined);
+  assert.ok(A.notificationActionsVersion() > v0);
+  assert.ok(ticks >= 5);
+  off();
+});

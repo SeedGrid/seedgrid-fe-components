@@ -329,6 +329,12 @@ export {
   useHasSgRealtimeProvider
 } from "./realtime/SgRealtimeProvider";
 export { SgNotificationBell } from "./notifications/SgNotificationBell";
+export {
+  registerNotificationAction,
+  unregisterNotificationAction,
+  getNotificationAction
+} from "./notifications/notificationActions";
+export type { SgNotificationAction } from "./notifications/notificationActions";
 export type {
   SgNotificationBellProps,
   SgNotificationTypeConfig,

@@ -13,6 +13,11 @@ export type SgNotification = {
   title: string;
   message?: string | null;
   payload?: Record<string, unknown> | null;
+  /**
+   * O backend declara que ESTA notificacao ainda e abrivel (ex.: o export do backup ainda existe). Opcional: ausente
+   * ou `false` = informativa. Sem URL nem tipo de acao: o "como" abrir vem do registro do front (P186).
+   */
+  actionable?: boolean | null;
   read: boolean;
   readAt?: string | null;
   /** ISO-8601 com offset. */
@@ -307,4 +312,22 @@ export function panelPosition(
   top = clampNumber(top, padding, viewport.height - height - padding);
   left = clampNumber(left, padding, viewport.width - width - padding);
   return { top: Math.round(top), left: Math.round(left), side, maxHeight: Math.round(height) };
+}
+
+export type SgNotificationOpenMode = "action" | "info" | "misconfigured";
+
+/**
+ * Como o item se comporta ao abrir (P186.D3): abrivel so com `actionable === true` E acao registrada para o tipo.
+ * `actionable` sem acao registrada e erro de configuracao do host (`misconfigured`): o item fica informativo e o sino
+ * avisa o dev no console. Sem `actionable` (ou `false`) e informativa, mesmo com acao registrada para o tipo.
+ */
+export function openMode(notification: Pick<SgNotification, "actionable">, hasAction: boolean): SgNotificationOpenMode {
+  if (notification.actionable !== true) return "info";
+  return hasAction ? "action" : "misconfigured";
+}
+
+/** Mensagem legivel de um erro lancado por `run` (vazia se o erro nao tiver texto). */
+export function actionErrorMessage(error: unknown): string {
+  if (error instanceof Error) return error.message.trim();
+  return typeof error === "string" ? error.trim() : "";
 }

@@ -6,7 +6,7 @@ function createDemo(seed: boolean) {
   let n = 0;
   let items: any[] = seed
     ? [
-        { publicId: "d1", type: "report.ready", title: "Relatório pronto", message: "Terminou de gerar.", read: false, createdAt: new Date(Date.now() - 120000).toISOString() },
+        { publicId: "d1", type: "report.ready", title: "Relatório pronto", message: "Terminou de gerar.", actionable: true, read: false, createdAt: new Date(Date.now() - 120000).toISOString() },
         { publicId: "d2", type: "backup.finished", title: "Backup concluído", message: "Sem erros.", read: true, createdAt: new Date(Date.now() - 3600000).toISOString() }
       ]
     : [];
@@ -35,6 +35,7 @@ export default function App() {
   const [limited, setLimited] = React.useState(false);
   const [noToggle, setNoToggle] = React.useState(false);
   const [ticks, setTicks] = React.useState("-");
+  const [opened, setOpened] = React.useState("-");
   const demo = React.useMemo(() => createDemo(!empty), [empty]);
 
   return (
@@ -53,12 +54,13 @@ export default function App() {
           maxVisible={limited ? 2 : 100}
           showUnreadToggle={!noToggle}
           pollIntervalMs={30000}
+          actions={{ "report.ready": { label: "Baixar", run: (n) => setOpened(`baixar ${n.publicId}`) } }}
           onPollingTick={(stats) => setTicks(`${stats.count} consulta(s), motivo ${stats.reason}`)}
         />
       </div>
 
       <div className="rounded border border-border bg-muted/40 p-3 text-xs">
-        Polling: <strong>{ticks}</strong>
+        Polling: <strong>{ticks}</strong> · Ação: <strong>{opened}</strong>
       </div>
     </div>
   );

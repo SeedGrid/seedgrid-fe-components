@@ -92,6 +92,8 @@ const es: Record<string, string> = {
   "components.notifications.bell.days": "hace {n} d",
   "components.notifications.bell.announce": "Nueva notificación: {title}",
   "components.notifications.bell.actionFailed": "No se pudo completar la acción. Inténtelo de nuevo.",
+  "components.notifications.bell.openFailed": "No se pudo abrir «{title}»: {reason}",
+  "components.notifications.bell.openFailedNoReason": "No se pudo abrir «{title}». Inténtelo de nuevo.",
   "components.inputs.imageupload.dropMany": "Arrastra imágenes aquí o haz clic para elegir (hasta {max})",
   "components.notifications.bell.unreadOnly": "No leídas",
   "components.notifications.bell.caughtUp": "Todo al día",
